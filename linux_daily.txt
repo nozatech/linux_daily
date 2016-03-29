@@ -1,6 +1,6 @@
 Daily Linux CMD List & Scripts
 
-1. GIT
+1. GIT (clone, pull, status, add, commit, push)
 	Client A: 
 		a. git clone https://github.com/nozatech/daily_cmd.git
 		b. git status
@@ -27,7 +27,14 @@ Daily Linux CMD List & Scripts
 		h. git commit -m " updated"
 
 
-
+	Git Branch
+		a. git branch		<= check 
+		b. git branch function01
+			$ git branch
+			  function01		<= all the files are copied to function01 from the master branch
+			* master
+		c. $ git checkout 'function01'
+			 Switched to branch 'function01'
 
 
 
@@ -312,33 +319,33 @@ Disk usage
 
 
 4. list file by modified date 
-    ls -atl    <= -a all, -t modified time, -l per line 
-    ls -atlr   <= -r reverse
+    $ ls -atl    <= -a all, -t modified time, -l per line 
+    $ ls -atlr   <= -r reverse
 
 
 5. df    <= Check Disk Free
 
-	df -h | xargs | awk '{ print $11 " / " $9 " are free" }'
+	$ df -h | xargs | awk '{ print $11 " / " $9 " are free" }'
 
-	df -h | grep /dev/mapper | awk '{print $4 "/" $2 "GB is free"}'
+	$ df -h | grep /dev/mapper | awk '{print $4 "/" $2 "GB is free"}'
 
-	df -h | awk '{print $5}' | grep % | grep -v Use |  sort -n | tail -1 | cut -d "%" -f1 -
+	$ df -h | awk '{print $5}' | grep % | grep -v Use |  sort -n | tail -1 | cut -d "%" -f1 -
 
 
 
 
 6. Count Active connections
 
-	netstat -ntap | grep ESTA | wc -l			<== n no reverse lookup(quick), t tcp, a all, p program
-	netstat -ntap | grep ESTABLISHED.*sshd		<= sshd connection list
-	ps auxwww | grep sshd:						<= sshd connection list
-	netstat -plunt								<= which ports are open and which application is on each one
-	netstat -punt								<= 
-	netstat -ntl <= LISTEN port
+	$ netstat -ntap | grep ESTA | wc -l			<== n no reverse lookup(quick), t tcp, a all, p program
+	$ netstat -ntap | grep ESTABLISHED.*sshd		<= sshd connection list
+	$ ps auxwww | grep sshd:						<= sshd connection list
+	$ netstat -plunt								<= which ports are open and which application is on each one
+	$ netstat -punt								<= 
+	$ netstat -ntl <= LISTEN port
 
-	watch -d -n1 "netstat -ntap | grep ESTA"  <= Print active connections n1 <= every 1sec
+	$ watch -d -n1 "netstat -ntap | grep ESTA"  <= Print active connections n1 <= every 1sec
 	
-	watch -d -n5 'netstat -ntap | grep ESTA | wc -l'
+	$ watch -d -n5 'netstat -ntap | grep ESTA | wc -l'
 
 	
 	ss <= socket statistic
