@@ -209,7 +209,7 @@ Daily Linux CMD List & Scripts
 		dm-0              2.98        33.48        11.34     217373      73592
 		dm-1              0.04         0.17         0.00       1080          0
 	
-	# iostat -N 	<= With -N (Uppercase) parameter displays only LVM statistics as shown.
+	# iostat -N 	<= With -N (Upper-case) parameter displays only LVM statistics as shown.
 	# iostat -p sda <= By default it displays statistics of all partitions, with -p and 
 					   device name arguments displays only disks I/O statistics for specific device only as shown.
 	# iostat -d		<= -d arguments displays only disks I/O statistics of all partitions as shown.
@@ -287,26 +287,28 @@ Disk usage
 	192.168.1.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
 
 	Add / setup a new route
-	route add default gw {IP_ADDRESS} {INTERFACE_NAME}
-	# route add default gw 192.168.1.254 eth0
-	# ip route add 192.168.1.0/24 dev eth0
-	# ip route add 192.168.1.0/24 via 192.168.1.254
+	$ route add default gw {IP_ADDRESS} {INTERFACE_NAME}
+	
+	$ route add default gw 192.168.1.254 eth0
+	
+	$ ip route add 192.168.1.0/24 dev eth0
+	$ ip route add 192.168.1.0/24 via 192.168.1.254
 	
 	
 	
 	
 4. tar (backup) and cron (schedule job) 
-Creating tar file
-#sudo tar -c(backup)v(verbose)p(preserve permission)z(compression)f(filename)
-#sudo tar -cvpzf backup.tar.gz /(location) --exclude=/mnt /
-#sudo tar -cvpzf backup.tar.gz /home/nozatech
+	Creating tar file
+		$ tar -c(backup)v(verbose)p(preserve permission)z(compression)f(filename)
+		$ tar -cvpzf backup.tar.gz /(location) --exclude=/mnt /
+		$ tar -cvpzf backup.tar.gz /home/nozatech
 
-Extract tar file
-#sudo tar -x(extract)v(verbose)p(permission)z(uncompress)f(file name) backup.tar.gz -C(change to different directory) /recover
-#sudo crontab -e (first time ask a editor - choose vim)
-min            hr          day of month       month            day of montn          command
-0-59 mins 0-23 hrs   1-31days              1-12           0(sun)-6(sat)
-30	   2     	 *	         *                           2(tuesday)
+	Extract tar file
+		$ tar -x(extract)v(verbose)p(permission)z(uncompress)f(file name) backup.tar.gz -C(change to different directory) /recover
+		$  rontab -e (first time ask a editor - choose vim)
+		min            hr          day of month       month            day of montn          command
+		0-59 mins 0-23 hrs   1-31days              1-12           0(sun)-6(sat)
+		30	   2     	 *	         *                           2(tuesday)
 
 
 4. list file by modified date 

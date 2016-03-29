@@ -48,16 +48,16 @@ GRANT ALL PRIVILEGES ON *.* To 'user'@'hostname' IDENTIFIED BY 'password';
  REVOKE [type of permission] ON [database name].[table name] FROM ‘[username]’@‘localhost’;
 
 
-###
-# MySQL DB backup
-###
+#####################
+# MySQL DB backup ###
+#####################
 
 mysqldump -u dbadmin -p --all-databases --events --master-data > /tmp/master-dump.db
 
 
-###
-# DB transfer
-###
+#################
+# DB transfer ###
+#################
 scp -pv /tmp/master-dump.db apark@10.128.69.203:/tmp
 
 ##############################
@@ -84,20 +84,6 @@ scp -pv /tmp/master-dump.db apark@10.128.69.203:/tmp
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #################
 ### Create DB ###
 #################
@@ -107,34 +93,34 @@ scp -pv /tmp/master-dump.db apark@10.128.69.203:/tmp
 # show databases;
 #
 
-CREATE DATABASE bmwi8;
+# CREATE DATABASE bmwi8;
 
-SHOW DATABASES;
+# SHOW DATABASES;
 
-USE bmwi8;
+# USE bmwi8;
 
-SHOW TABLES;
+# SHOW TABLES;
 
-CREATE TABLE model (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+# CREATE TABLE model (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
 		   name CHAR(25), 
 		   price INT(7)
 		   );
 
-INSERT INTO model (id, name, price) 
+# INSERT INTO model (id, name, price) 
 	VALUES ( 'NULL', 'mega', '135000');
 
-SELECT * FROM model;
+# SELECT * FROM model;
 
 
 
-CREATE TABLE spec (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, engine VARCHAR(25), speed INT(3));
+# CREATE TABLE spec (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, engine VARCHAR(25), speed INT(3));
 
-INSERT INTO spec (id, engine, speed) VALUES ('NULL', 'V8', '155'), ('NULL', 'i6', '130');
+# INSERT INTO spec (id, engine, speed) VALUES ('NULL', 'V8', '155'), ('NULL', 'i6', '130');
 
-SELECT * FROM spec;
+# SELECT * FROM spec;
 
 
-CREATE TABLE modle (
+# CREATE TABLE model (
 		id int not null primary key auto_increment, 
 		name char(25), 
 		price INT(6),  
@@ -142,18 +128,18 @@ CREATE TABLE modle (
 		speed INT(3)
 		);
 
-INSERT INTO modle (id, name, price, engine, speed) 
+INSERT INTO model (id, name, price, engine, speed) 
 	    values('null','mega','135000','V8','153');
-INSERT INTO modle (id, name, price, engine, speed) 
-            values('null','giga','125000','V6','143');
-INSERT INTO modle (id, name, price, engine, speed) 
+INSERT INTO model (id, name, price, engine, speed) 
+        values('null','giga','125000','V6','143');
+INSERT INTO model (id, name, price, engine, speed) 
 	    values('null','pega','165000','V8','163');
-INSERT INTO modle (id, name, price, engine, speed) 
+INSERT INTO model (id, name, price, engine, speed) 
 	    values('null','peta','165000','V8','173');
 
 
 
-SELECT * FROM model;
+# SELECT * FROM model;
 +----+------+--------+--------+-------+
 | id | name | price  | engine | speed |
 +----+------+--------+--------+-------+
@@ -164,29 +150,33 @@ SELECT * FROM model;
 +----+------+--------+--------+-------+
 
 
-SELECT * FROM model where engine ='v8' AND speed ='153';
+# SELECT * FROM model where engine ='v8' AND speed ='153';
 +----+------+--------+--------+-------+
 | id | name | price  | engine | speed |
 +----+------+--------+--------+-------+
 |  1 | mega | 135000 | V8     |   153 |
 +----+------+--------+--------+-------+
 
-select count(*) from model;  		<= Using count function to total count
-SELECT * FROM model LIMIT 10;		<= View 10 lines
+# select count(*) from model;  		<= Using count function to total count
+# SELECT * FROM model LIMIT 10;		<= View 10 lines
 
-UPDATE model SET engine ='v6' WHERE id =1;
+# UPDATE model SET engine ='v6' WHERE id =1;
 
-SELECT * FROM model WHERE engine = 'v8';
+# SELECT * FROM model WHERE engine = 'v8';
 
-RENAME TABLE modle TO model;
+# RENAME TABLE model TO model;
 
-SELECT * FROM modle WHERE speed >=163;
+# SELECT * FROM model WHERE speed >=163;
 
-SHOW COLUMNS FROM spec;
+# SHOW COLUMNS FROM spec;
 
-DROP TABLE car;   <= Delete car from table
+# DROP TABLE car;   		<= Delete car from table
 
-DROP DATABASE address;
+# DROP DATABASE address;  	<= Delete DB
+
+
+
+
 
 ########################
 # 7-2 String functions #
@@ -263,7 +253,7 @@ mysql> SELECT id, album_id, title, track_number, CONCAT_WS ( ':', duration DIV 6
 |  2 |        1 | Night Life                            |            2 | 5:44     |
 
 ###########################
-# 7-3 Numberic Functions  #
+# 7-3 Numeric Functions   #
 ###########################
 
 mysql> SELECT 320 DIV 60, 320 MOD 60;
@@ -316,9 +306,9 @@ mysql> SELECT FORMAT (10000000, 2);
 | 10,000,000.00        |
 +----------------------+
 
-###
-# 7-4 Date and Time functions
-
+#################################
+# 7-4 Date and Time functions ###
+#################################
 mysql> SELECT NOW();
 +---------------------+
 | NOW()               |
@@ -372,12 +362,12 @@ mysql> SELECT DATE_FORMAT( NOW(), '%W, %D %M %Y, %T');
 | DATE_FORMAT( NOW(), '%W, %d %M %Y, %T') |	<=%W day of the week
 +-----------------------------------------+	<=%D day of the month
 | Friday, 03 April 2015, 16:27:17         |	<=%M month of the year
-+-----------------------------------------+     <=%Y year
++-----------------------------------------+ <=%Y year
 
 
-###
-# Tiem zones in MySQL
-###
+########################
+# Tiem zones in MySQL ##
+########################
 
 mysql> CREATE TABLE tztest ( id INT AUTO_INCREMENT NOT NULL PRIMARY KEY, name VARCHAR(255), stamp TIMESTAMP );
 
@@ -389,9 +379,9 @@ mysql> SELECT @@time_zone;   <= @@  ask the system
 | SYSTEM      |
 +-------------+
 
-###
-# MySQL Time zone table install first!
-###
+########################################
+# MySQL Time zone table install first! #
+########################################
 
 SET time_zone='US/EASTERN';
 mysql> select @@time_zone;
@@ -403,9 +393,9 @@ mysql> select @@time_zone;
 
 mysql>select time_zone='system';
 
-###
-# 7-8 Aggregate functions
-###
+############################
+# 7-8 Aggregate functions ##
+############################
 
 mysql> show columns from country;
 +----------------+----------------------
@@ -443,7 +433,9 @@ mysql> SELECT region, GROUP_CONCAT(name ORDER BY name SEPARATOR ' / ' ) FROM cou
 | region                    | GROUP_CONCAT(name) 
 | Baltic Countries          | Estonia / Latvia / Lithuania
 
-7-8 Full-text speech
+########################
+# 7-8 Full-text speech #
+########################
 mysql> CREATE TABLE articles ( id INT AUTO_INCREMENT NOT NULL PRIMARY KEY, title VARCHAR(255), body TEXT, FULLTEXT( title, body ) );
 
 
@@ -469,9 +461,9 @@ mysql> SELECT * FROM articles WHERE MATCH (title, body) AGAINST ( 'dbms');
 |  1 | MySQL Tutorial | DBMS stands for DataMase Mangement System ... |
 +----+----------------+-----------------------------------------------+
 
-
+####################
 ####BOOLEAN MODE ###
-
+####################
 mysql> SELECT * FROM articles WHERE MATCH (title, body) AGAINST ( '+dbms -management' IN BOOLEAN MODE);
 +----+----------------+-----------------------------------------------+
 | id | title          | body                                          |
@@ -504,114 +496,28 @@ MySQLi & PDO(PHP Data Object)
 +---------------------------+
 
 
+#################################
+### Ubuntu LAMP stack install ###
+#################################
 
+# sudo apt-get install lamp-server^  
 
+###############################################
+# Cygwin connecting Windows WAMP Mysql server #
+###############################################
 
-
-
-
-
-
-
-
-
-
-MySQL
---------------------------------------------------------------
-###					###
-###  DAILY PRACTICE			###
-###					###
-
-
-CentOS7
-sudo rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
-sudo yum -y install mysql-community-server
-
-
-
-CREATE DATABASE bmwi8;			vs  
-
-SHOW DATABASES;
-
-USE bmwi8;
-
-SHOW TABLES;
-
-CREATE TABLE model (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name CHAR(25), price INT(7));
-
-INSERT INTO model (id, name, price) VALUES ( 'NULL', 'mega', '135000');
-
-SELECT * FROM model;
-
-CREATE TABLE spec (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, engine VARCHAR(25), speed INT(3));
-
-INSERT INTO spec (id, engine, speed) VALUES ('NULL', 'V8', '155'), ('NULL', 'i6', '130');
-SELECT * FROM spec;
-
-CREATE TABLE modle (id int not null primary key auto_increment, name char(25), price INT(6),  engine VARCHAR(3), speed INT(3));
-
-INSERT INTO modle (id, name, price, engine, speed) values('null','mega','135000','V8','153');
-
-INSERT INTO modle (id, name, price, engine, speed) values('null','giga','125000','V6','143');
-
-INSERT INTO modle (id, name, price, engine, speed) values('null','pega','165000','V8','163');
-
-INSERT INTO modle (id, name, price, engine, speed) values('null','peta','165000','V8','173');
-
-RENAME TABLE modle TO model;
-
-SELECT * FROM model;
-+----+------+--------+--------+-------+
-| id | name | price  | engine | speed |
-+----+------+--------+--------+-------+
-|  1 | mega | 135000 | V8     |   153 |
-|  2 | giga | 125000 | V6     |   143 |
-|  3 | pega | 165000 | V8     |   163 |
-|  4 | peta | 165000 | V8     |   173 |
-+----+------+--------+--------+-------+
-
-
-SELECT * FROM model where engine ='v8' AND speed ='153';
-+----+------+--------+--------+-------+
-| id | name | price  | engine | speed |
-+----+------+--------+--------+-------+
-|  1 | mega | 135000 | V8     |   153 |
-+----+------+--------+--------+-------+
-
-UPDATE model SET engine ='v6' WHERE id =1;
-
-SELECT * FROM model WHERE engine = 'v8';
-
-RENAME TABLE modle TO model;
-
-SELECT * FROM modle WHERE speed >=163;
-
-SHOW COLUMNS FROM spec;
-
-DROP TABLE car;   <= Delete car from table
-
-DROP DATABASE address;
-
-###
-###
-###
-
-
-#######################################
-## sudo apt-get install lamp-server^  # <= Ubuntu LAMP stack install
-#######################################
-
-Cygwin connecting Windows WAMP Mysql server
 Install Cygwin MySQL packages
 $which mysql   		<= check
 /usr/bin/mysql
 Since no mysql server running under /usr/bin/mysql, connect through ip
-#####################################
-# $mysql -u root -p -h 127.0.0.1	#
-#####################################
 
 
-Ubuntu 14
+$ mysql -u root -p -h 127.0.0.1			<= remote MySQL connection using IP
+
+
+##############
+#  Ubuntu 14 #
+##############
 1. apt-get install mysql-server
 
 2. mysql_install_db
