@@ -31,7 +31,7 @@ Daily Linux CMD List & Scripts
 
 
 
-1. ./script.sh
+2. ./script.sh
     sh ./script.sh   ( same as 'sh script.sh')
     sh +x script.sh   <= +x for debug
     bash +x ./script.sh  ( same as 'bash script.sh') 
@@ -69,7 +69,7 @@ Daily Linux CMD List & Scripts
 	* Must be quoted, otherwise it defaults to $@
 	
 	
-2. ssh -v root@172.16.248.xx > result.txt	<= -v debugging mode
+3. ssh -v root@172.16.248.xx > result.txt	<= -v debugging mode
    ssh -v root@172.16.248.xx 2>&1 > result.txt	
 
    ssh -l ubuntu ip_address			<= -l login user name
@@ -87,7 +87,7 @@ Daily Linux CMD List & Scripts
     debug1: identity file /home/apark/.ssh/id_rsa type 1
 ###
 
-3.  RSA KEY
+4.  RSA KEY
 	ssh-keygen -t rsa
 	# Generate  id_rsa (Private Key) & id_rsa.pub (Public Key)
 	
@@ -98,10 +98,24 @@ Daily Linux CMD List & Scripts
 
 	ssh sg-eu "cat .ssh/*.pub"
 
-	
-	
-	Using WGET to download a file using user_id & PW
+5. WGET to download a file using user_id & PW
 	$ wget --user=user_id --password='my_passwd' http://download.com/foo.pdf
+
+	cURL
+	A. Content of the URL and display it in the STDOUT (i.e on your terminal)
+		$ curl http://www.centos.org
+	B. To store the output in a file, you an redirect it
+		$ curl http://www.centos.org > /tmp/centos-org.html  <= save to file
+	C. Save the cURL Output to a file
+		-o (lowercase o) the result will be saved in the filename provided in the command line
+		-O (uppercase O) the filename in the URL will be taken and it will be used as the filename to store the result
+	D. 
+	   $ curl -o mygettext.html http://www.gnu.org/text_info.html				<= save to mygettext.html
+	   
+	   $ curl -O http://www.gnu.org/software/gettext/manual/gettext.html or file_name		<= save the file to local 
+	   $ wget http://www.gnu.org/software/gettext/manual/gettext.html  or file_name	
+	
+
 
 
 	Environment variable
@@ -148,25 +162,38 @@ Daily Linux CMD List & Scripts
 
 5. vmstat   
 	virtual memory statistics =reports information about processes, memory, paging, block IO, traps, and cpu activity.	
+	$ vmstat 1 20 		<= one (1) second twenty (20) times:
+	$ vmstat 30 		<= ongoing report for intervals of 30 seconds
+	$ vmstat -S k 1 10  <= S-switch unit (k kilibyte, K, m, M)
 	$ vmstat 10(sec) 6(times)  	
 	$ vmstat -a (active)
 		procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 		r  b   swpd   free  inact active   si   so    bi    bo   in   cs us sy id wa st
 		1  0      0 600324 140380 175672    0    0     5     2    8   13  0  0 100  0  0
-	
+		
+		procs	<= umber of processing jobs waiting to run
+		memory  <= same as free -m
+		swap	<= memory is sent to or retrieved from the swap system
+		io		<= input and output activity per second  in terms of blocks read and blocks written
+				   bi -block in, bo-block out
+		system	<= number of system operations per second
+		cpu		<= always add to 100 and reflect “percentage of available time”.	
+			
 	$vmstat -s    <=-s switch displays summary of various event counters and memory statistics.
       1009992 K total memory
        410888 K used memory
        176468 K active memory
        140376 K inactive memory
 
-	$$vmstat -d	<=-d option display all disks statistics.
+	$$vmstat -d  		<=  -d option display all disks statistics.
 	    disk- ------------reads------------ ------------writes----------- -----IO------
 				total merged sectors      ms  total merged sectors      ms    cur    sec
 		ram0       0      0       0       0      0      0       0       0      0      0
 		ram1       0      0       0       0      0      0       0       0      0      0
 		ram2       0      0       0       0      0      0       0       0      0      0
-6. vnstat
+
+		
+		6. vnstat
 
 
 
@@ -195,10 +222,9 @@ Daily Linux CMD List & Scripts
 	
 Utility to check real time processing
     A. top
-        top -bn 1 | awk "/$1/ {tot =+ \$6; n++} END {print tot\" \"n}"         
-            -b <= batch mode, n <=number, 1 <=count
-             Return => 3252 250
-
+        top -bn 1 | awk "/$1/ {tot =+ \$6; n++} END {print tot\" \"n}"        <= -b <=batch mode, n <=number, 1 <=count  
+        3252 250
+		
 	B. atop
 		Atop is an ASCII full-screen performance monitor which can log and report 
 		the activity of all server processe upto 28days log.
@@ -343,19 +369,27 @@ To correct zone and time
 	systemctl restart  ntpd.service
 
 	
-	
+9.	tar & gzip  archiving and zipping tar.gz file	
+		
+		tar -czvf archive-name.tar.gz directory-name
+			-z : Compress archive using gzip program
+			-c: Create archive
+			-v: Verbose i.e display progress while creating archive
+			-f: Archive File name
+			
+		tar -xzvf archive-name.tar.gz
 
 9. cat /usr/bin/bash XXXX
-   strings /usr/bin/bash  <= human readable content buried inside the program.
+    strings /usr/bin/bash  <= human readable content buried inside the program.
  
-   view zip file
-   zcat        
-   +
+    view zip file
+    zcat        
+    +
    
-   uptime
+10. uptime
    
    
-10.cli command recorder for terminal "SCRIPT"
+10. cli command recorder for terminal "SCRIPT"
 
 
 10.1 List of services running
