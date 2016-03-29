@@ -1,6 +1,6 @@
 Daily Linux CMD List & Scripts
 
-1. GIT (clone, pull, status, add, commit, push)
+1. GIT
 	Client A: 
 		a. git clone https://github.com/nozatech/daily_cmd.git
 		b. git status
@@ -27,14 +27,41 @@ Daily Linux CMD List & Scripts
 		h. git commit -m " updated"
 
 
-	Git Branch
-		a. git branch		<= check 
-		b. git branch function01
-			$ git branch
-			  function01		<= all the files are copied to function01 from the master branch
+2. GIT BRANCHING
+		a. $ git pull
+		b. $ git branch
+		* master
+		c. $ git branch function01 		<= creating 'function01' branch from Master
+		d. $ git branch
+			function01					<= complete copy of MASTER
 			* master
-		c. $ git checkout 'function01'
-			 Switched to branch 'function01'
+		e. $ git checkout 'function01'
+			Switched to branch 'function01'    <= SWITCHED TO FUNCTION01 ****
+		<< EDIT FILES ... >>	
+		f. $ git status
+			On branch function01
+			Changes not staged for commit:
+			(use "git add <file>..." to update what will be committed)
+			(use "git checkout -- <file>..." to discard changes in working directory)
+
+			modified:   linux_daily.txt
+			no changes added to commit (use "git add" and/or "git commit -a")
+
+		h. $ git add -A			<= add all my changes ****
+		
+		i.	$ git commit -m "added branches "
+			[function01 def7db3] added branches
+			1 file changed, 22 insertions(+), 15 deletions(-)
+		----------------------------------------------------------
+		j. $ git branch
+			* function01
+			master
+		k. $ git checkout master
+			Switched to branch 'master'
+			Your branch is up-to-date with 'origin/master'.
+
+
+
 
 
 
@@ -319,33 +346,33 @@ Disk usage
 
 
 4. list file by modified date 
-    $ ls -atl    <= -a all, -t modified time, -l per line 
-    $ ls -atlr   <= -r reverse
+    ls -atl    <= -a all, -t modified time, -l per line 
+    ls -atlr   <= -r reverse
 
 
 5. df    <= Check Disk Free
 
-	$ df -h | xargs | awk '{ print $11 " / " $9 " are free" }'
+	df -h | xargs | awk '{ print $11 " / " $9 " are free" }'
 
-	$ df -h | grep /dev/mapper | awk '{print $4 "/" $2 "GB is free"}'
+	df -h | grep /dev/mapper | awk '{print $4 "/" $2 "GB is free"}'
 
-	$ df -h | awk '{print $5}' | grep % | grep -v Use |  sort -n | tail -1 | cut -d "%" -f1 -
+	df -h | awk '{print $5}' | grep % | grep -v Use |  sort -n | tail -1 | cut -d "%" -f1 -
 
 
 
 
 6. Count Active connections
 
-	$ netstat -ntap | grep ESTA | wc -l			<== n no reverse lookup(quick), t tcp, a all, p program
-	$ netstat -ntap | grep ESTABLISHED.*sshd		<= sshd connection list
-	$ ps auxwww | grep sshd:						<= sshd connection list
-	$ netstat -plunt								<= which ports are open and which application is on each one
-	$ netstat -punt								<= 
-	$ netstat -ntl <= LISTEN port
+	netstat -ntap | grep ESTA | wc -l			<== n no reverse lookup(quick), t tcp, a all, p program
+	netstat -ntap | grep ESTABLISHED.*sshd		<= sshd connection list
+	ps auxwww | grep sshd:						<= sshd connection list
+	netstat -plunt								<= which ports are open and which application is on each one
+	netstat -punt								<= 
+	netstat -ntl <= LISTEN port
 
-	$ watch -d -n1 "netstat -ntap | grep ESTA"  <= Print active connections n1 <= every 1sec
+	watch -d -n1 "netstat -ntap | grep ESTA"  <= Print active connections n1 <= every 1sec
 	
-	$ watch -d -n5 'netstat -ntap | grep ESTA | wc -l'
+	watch -d -n5 'netstat -ntap | grep ESTA | wc -l'
 
 	
 	ss <= socket statistic
