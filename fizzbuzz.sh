@@ -49,12 +49,12 @@ sleep 2
 
 #!/bin/bash
 (( i=1 ));
-while (( i<31 ));
+while (( i < 31 ));
 do
         if (( $i % 3 == 0 )) && (( $i % 5 == 0 )); then echo "for-loop"
         elif (( $i % 3 == 0 )); then echo "for"
         elif (( $i % 5 == 0 )); then echo "loop"
-        else echo $i;
+        else echo "$i";
         fi
 ((i++))
 done
