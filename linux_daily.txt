@@ -1,0 +1,3387 @@
+Daily Linux CMD List & Scripts
+
+1. GIT
+	Client A: 
+		a. git clone https://github.com/nozatech/daily_cmd.git
+		b. git status
+		c. git add . (or file_name)
+		d. git commit -m "message"
+		e. git push
+		f. client2 edit files  <= 
+		
+		g. git pull <= every morning gets updated codes
+		h. changes
+		i. git commit -m "more changes"
+		j. 
+		
+		
+		
+	Client B:
+		a. git clone https://github.com/nozatech/daily_cmd.git
+		b. git pull
+		c. MODIFY FILES
+		d. git status
+		e. git add UNTRACTED_file_name
+		f. git status
+		g. git add . ( or '-A') <= add all	
+		h. git commit -m " updated"
+
+
+
+
+
+
+1. ./script.sh
+    sh ./script.sh   ( same as 'sh script.sh')
+    sh +x script.sh   <= +x for debug
+    bash +x ./script.sh  ( same as 'bash script.sh') 
+    . script.sh      <= current login shell to run
+    exec ./script    <= after run, the login shell exit 
+
+   Run script within vim or vi
+    :w   	      	<= write first
+    :!sh %   (# :! sh %)     	<= :! =run, sh =shell, % =curren open file
+	:!!         				<= run same script again 
+    :!./script_name.sh
+    :! python %
+    :! perl %
+    :! sh -x %		<= -x is for DEBUG(verbose) mode
+    #!/bin/bash -x      <= -x to #! line for debug mode
+    set -x              <= End of file +x for TURN OFF
+
+###
+# Special Shell Variables
+###
+	$0 	file name of script
+	$1	positional parameter #1
+	$2-9	positional parameter #2-9
+	${10}	positional parameter #10
+	$#		number of positional parameter
+	"$*"	all the positional parameters(as separate word)*
+	"$@"	all the positional parameters(as separate strings)
+	${#*}	number of positional parameters
+	${#@}	number of positional parameters
+	$?		return value
+	$$	 	process ID(PID) of script
+	$-		flags passed to sript(using set)
+	$_		last argument of previous command
+	$!		process ID(PID) of last job run in background
+	* Must be quoted, otherwise it defaults to $@
+	
+	
+2. ssh -v root@172.16.248.xx > result.txt	<= -v debugging mode
+   ssh -v root@172.16.248.xx 2>&1 > result.txt	
+
+   ssh -l ubuntu ip_address			<= -l login user name
+   ssh -l ubuntu hostname
+
+	# login ec2-user
+	# su apark
+	# chmod 700 .ssh
+
+*** ssh -v nozatech@192.168.221.129
+    OpenSSH_6.7p1, OpenSSL 1.0.1k 8 Jan 2015
+    debug1: Reading configuration data /etc/ssh_config
+    debug1: Connecting to 192.168.221.129 [192.168.221.129] port 22.
+    debug1: Connection established.
+    debug1: identity file /home/apark/.ssh/id_rsa type 1
+###
+
+3.  RSA KEY
+	ssh-keygen -t rsa
+	# Generate  id_rsa (Private Key) & id_rsa.pub (Public Key)
+	
+    ssh-copy-id user@ip_address
+	# Transferring Public Key
+	
+    cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+
+	ssh sg-eu "cat .ssh/*.pub"
+
+	
+	
+	Using WGET to download a file using user_id & PW
+	$ wget --user=user_id --password='my_passwd' http://download.com/foo.pdf
+
+
+	Environment variable
+	AWS Access Key/ Secret key
+	
+	
+	/home/ubuntu/jarvis/ami/tcg/production/
+	
+    sudo sh -c "export OC_AWS_ACCESS_KEY=AKIAI6FBDACL5LFOEACA;
+				export OC_AWS_SECRET_KEY=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; 
+				fab tcg.credit_gems:host=10.10.1.50,player_id="544053a5c66354d43f5f07d3",amount=50"
+	
+	
+	
+	
+	
+	
+	
+	To make a usage listing of the directories in the /home partition.  Note that this runs the commands in a
+     sub-shell to make the cd and file redirection work.
+
+           $ sudo sh -c "cd /home ; du -s * | sort -rn > USAGE"
+
+	
+
+
+4. free    <= Check memory
+
+	free -m | xargs | awk '{ print "Free/Total memory " $10 "/" $8 "MB" }'
+
+	free -m | grep Mem | awk '{print $4 "/" $2 "MB free"}'
+
+	free -tom
+         -m MB 
+         -t switch displays a line containing the totals.
+         -o switch disables the display of a "buffer adjusted" line.  If the -o
+            option is not specified, free subtracts buffer memory from the  used
+            memory and adds it to the free memory reported.
+
+	
+	free 
+	    displays the total amount of free and used physical and swap memory in the system, 
+		as well as the buffers used by the kernel. The shared memory column should be ignored; it is obsolete.
+
+5. vmstat   
+	virtual memory statistics =reports information about processes, memory, paging, block IO, traps, and cpu activity.	
+	$ vmstat 10(sec) 6(times)  	
+	$ vmstat -a (active)
+		procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+		r  b   swpd   free  inact active   si   so    bi    bo   in   cs us sy id wa st
+		1  0      0 600324 140380 175672    0    0     5     2    8   13  0  0 100  0  0
+	
+	$vmstat -s    <=-s switch displays summary of various event counters and memory statistics.
+      1009992 K total memory
+       410888 K used memory
+       176468 K active memory
+       140376 K inactive memory
+
+	$$vmstat -d	<=-d option display all disks statistics.
+	    disk- ------------reads------------ ------------writes----------- -----IO------
+				total merged sectors      ms  total merged sectors      ms    cur    sec
+		ram0       0      0       0       0      0      0       0       0      0      0
+		ram1       0      0       0       0      0      0       0       0      0      0
+		ram2       0      0       0       0      0      0       0       0      0      0
+6. vnstat
+
+
+
+6. iostat
+		displays CPU and I/O statistics of all partitions as shown below.
+	$iostat
+		Linux 3.16.0-23-generic (puppet.nozatech.com)   03/24/2016      _x86_64_        (8 CPU)
+		avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+				0.01    0.01    0.08    0.05    0.00   99.86
+		Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+		sda               2.01        36.44        11.34     236588      73606
+		dm-0              2.98        33.48        11.34     217373      73592
+		dm-1              0.04         0.17         0.00       1080          0
+	
+	# iostat -N 	<= With -N (Uppercase) parameter displays only LVM statistics as shown.
+	# iostat -p sda <= By default it displays statistics of all partitions, with -p and 
+					   device name arguments displays only disks I/O statistics for specific device only as shown.
+	# iostat -d		<= -d arguments displays only disks I/O statistics of all partitions as shown.
+		
+6.	slabinfo - kernel slab allocator statistics
+	cat /proc/slabinfo
+	Slab allocation is a memory management mechanism intended for the efficient memory allocation of kernel objects.
+	
+	
+	
+	
+Utility to check real time processing
+    A. top
+        top -bn 1 | awk "/$1/ {tot =+ \$6; n++} END {print tot\" \"n}"         
+            -b <= batch mode, n <=number, 1 <=count
+             Return => 3252 250
+
+	B. atop
+		Atop is an ASCII full-screen performance monitor which can log and report 
+		the activity of all server processe upto 28days log.
+	
+		atop -a <= sort in order of most active resource.
+		atop -c <= revert to sorting by cpu consumption (default).
+		atop -d <= sort in order of disk activity.
+		atop -m <= sort in order of memory usage
+		atop -n <= sort in order of network activity
+  
+    C. htop
+		Up/Down arrow keys to select a process, and then you can kill it with the F9 key
+
+Disk usage
+	
+	du -sh /home/nozatech*  | sort -nr
+	
+######################################################################################
+				total       used       free     shared    buffers     cached
+	Mem:           482        304        178          0         51        137
+	-/+ buffers/cache:        115      **367** <= Actual Free Memory
+
+
+	# free -m | awk 'NR==3 {print $4 " MB"}'
+	#
+	# When thinking about 'how much memory is really being used' :
+	# 'used' - ('buffers' + 'cached')
+	Actual Memory usage 116MB = 304-(51+137)
+	#
+	# When thinking about 'how much memory is really free' :
+	# 'free' + ('buffers' + 'cached')
+	Actual Free memory   336MB = 178+(51+137)
+######################################################################################
+
+3.1 Date
+	$DATE=`date +%Y-%m-%d-%H-%M-%S`   <= %y is 16
+	$echo $DATE
+	2016-03-24-22-15-39
+
+	$DATE=`date +%H:%M:%S`
+	$echo $DATE
+	 22:18:35
+
+	 
+	 
+3.2 Route or IP
+
+	$route
+	Kernel IP routing table
+	Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+	default         Cisco           0.0.0.0         UG    0      0        0 eth0
+	192.168.1.0     *               255.255.255.0   U     0      0        0 eth0
+
+
+	$ /sbin/route -n					<=Numeric value
+	Kernel IP routing table
+	Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+	0.0.0.0         192.168.1.1     0.0.0.0         UG    0      0        0 eth0
+	192.168.1.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
+
+	Add / setup a new route
+	route add default gw {IP_ADDRESS} {INTERFACE_NAME}
+	# route add default gw 192.168.1.254 eth0
+	# ip route add 192.168.1.0/24 dev eth0
+	# ip route add 192.168.1.0/24 via 192.168.1.254
+	
+	
+	
+	
+4. tar (backup) and cron (schedule job) 
+Creating tar file
+#sudo tar -c(backup)v(verbose)p(preserve permission)z(compression)f(filename)
+#sudo tar -cvpzf backup.tar.gz /(location) --exclude=/mnt /
+#sudo tar -cvpzf backup.tar.gz /home/nozatech
+
+Extract tar file
+#sudo tar -x(extract)v(verbose)p(permission)z(uncompress)f(file name) backup.tar.gz -C(change to different directory) /recover
+#sudo crontab -e (first time ask a editor - choose vim)
+min            hr          day of month       month            day of montn          command
+0-59 mins 0-23 hrs   1-31days              1-12           0(sun)-6(sat)
+30	   2     	 *	         *                           2(tuesday)
+
+
+4. list file by modified date 
+    ls -atl    <= -a all, -t modified time, -l per line 
+    ls -atlr   <= -r reverse
+
+
+5. df    <= Check Disk Free
+
+	df -h | xargs | awk '{ print $11 " / " $9 " are free" }'
+
+	df -h | grep /dev/mapper | awk '{print $4 "/" $2 "GB is free"}'
+
+	df -h | awk '{print $5}' | grep % | grep -v Use |  sort -n | tail -1 | cut -d "%" -f1 -
+
+
+
+
+6. Count Active connections
+
+	netstat -ntap | grep ESTA | wc -l			<== n no reverse lookup(quick), t tcp, a all, p program
+	netstat -ntap | grep ESTABLISHED.*sshd		<= sshd connection list
+	ps auxwww | grep sshd:						<= sshd connection list
+	netstat -plunt								<= which ports are open and which application is on each one
+	netstat -punt								<= 
+	netstat -ntl <= LISTEN port
+
+	watch -d -n1 "netstat -ntap | grep ESTA"  <= Print active connections n1 <= every 1sec
+	
+	watch -d -n5 'netstat -ntap | grep ESTA | wc -l'
+
+	
+	ss <= socket statistic
+
+
+7. vmstat - report virtual memory statistics
+	  - vmstat reports information about processes, memory, paging, block IO, 
+	    traps, disks and cpu activity.
+
+
+ 
+
+
+8. Time NPT
+
+	alias today='date +"%A, %B %-d, %Y"'
+
+	date  => Thu Dec  4 10:11:00 EST 2014
+	today => Thursday, December 4, 2014
+	date +"%m-%d-%Y" => 12-04-2014
+
+### CentOS7 ###
+timedatectl - Control the system time and date
+ 	   --adjust-system-clock
+           If set-local-rtc is invoked and this option is passed, the system
+           clock is synchronized from the RTC again, taking the new setting
+           into account. Otherwise, the RTC is synchronized from the system
+           clock.
+
+To correct zone and time
+	systemctl restart  ntpd.service
+
+	
+	
+
+9. cat /usr/bin/bash XXXX
+   strings /usr/bin/bash  <= human readable content buried inside the program.
+ 
+   view zip file
+   zcat        
+   +
+   
+   uptime
+   
+   
+10.cli command recorder for terminal "SCRIPT"
+
+
+10.1 List of services running
+  /sbin/service --status-all
+
+
+
+
+
+11. echo "PC name is $HOSTNAME." 		<= PC name is PC.
+
+    echo "PC name is \"$HOSTNAME\"."		<=  
+    
+    echo 'Single quotes "protect" double quotes'
+          Single quotes "protect" double quotes
+
+    echo "Well, isn’t that \"special\"?"
+          Well, isn’t that "special"?
+
+    echo "You have `ls | wc -l` files in `pwd`"
+          You have 43 files in /home/bob
+ 
+    echo "The value of \$x is $x"
+          The value of $x is 100
+
+	\n		newline 	adding blank lines to text
+	e.g. echo -e "Inserting blank\n\n\n"
+	\t		tab			inserting tabs
+	e.g. echo -e "worlds\tseperate\tby\ttabs."
+	\a		alert		makes your terminal beep\
+	e.g. echo -e "\aMy computer went \"beep\"."
+	\\		backslash	insert a backslash
+	
+
+12. last	<= show liting of last logged in users
+    lastlog	<= reports the most recent login of all users 
+    lsof	<= list open files
+
+
+
+13. echo -e     <= Enables interpretation of backslash escapes
+    echo -e "Inserting serveral one blank line \n"  <= \n a new line using -e flag
+    echo -e "Words\tseparated\tby\ttabs."	    <= \t  a tab
+    echo -e "\aMy computer went \"beep\"."	    <= 
+    echo -e "DEL C:\\WIN2k\\LEGACY_OS.EXE"	    <=
+
+
+14. 
+
+15. Is .bash_profile is a file???? 
+	if [ -f .bash_profile ] ; then 			<= -f file is exist & 							   regular file
+		echo "you have the file in your home dir"
+    	else 
+		echo "You do not have it"
+	fi
+
+16. id -u        (-u <= short typing --user <= for script)   
+	print real and effective user and group ID
+	uid=0(root) gid=0(root) groups=0(root) 				context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+
+
+17. if [ $id -u != "0" ] ;then
+	echo "You must be the supperuser to run this script" >&2  <= user id -u failure message
+	exit 1				<= exit status sets to 1(failure)
+    fi
+
+    
+
+
+18. in system directory, vi create_file and try save doesn't work.
+
+	:w !sudo tee %                  <= type(L)load at the prompt to reload.
+
+
+19. Arithmatic
+	echo $(( 1+2 ))
+	+, -, *, /, %, **,
+	
+	#!/bin/bash
+	number=0
+
+	echo -n "Enter a number >"
+	read number
+
+	echo "The number is $number"
+
+	if [ $(( number %2 )) -eq 0 ]; then
+        echo "The number is even"
+	else
+        echo "The number is odd"
+	fi
+
+
+20. Read
+# -t timing
+# -s security hidden
+
+	#!/bin/bash
+	echo -n  "Enter your SSN before expire within 3sec > "
+	if read -t 3  -s response; then
+	        echo "Great, you made it in time"
+	else
+        	echo "Sorry, you are too slow"
+	fi
+
+
+21. rm -rf ./tmp/test/delme/*    <=delete folder contents
+    
+    !!! Danger !!!
+    rm -fr ./tmp/test/delme/ *   <=delete whole root folder(./tmp/test/delme)   
+
+22. touch file_{1..100}    <= creating 100 files
+    touch file_{01..100}   <= to resolve file format problem above logic
+    touch {1,2,3,4,5}	   <= creating 1,2,3,4,5 files
+    touch ./ls/{1..100}    <= creating files under ./ls/ folder
+    touch ./tmp/test/delme/file_{01..100}
+
+
+    
+    echo {1..10}            <= print out 1,2,..10
+    echo {1..10..2}	    <= Prints out 1 3 5 7 9
+    echo {1..10..3}         <= Prints out 1 4 7 10
+    echo {A..Z}              
+    echo {A..z}		    <= Capital first    
+    echo {w..d..2}	    <= Reverse order for every 2nd alphabet
+
+    touch {apple,banana,cherry,durian}_{01..100}{1..10} 
+    ls -1 | wc -l    	    <= 4000 result
+
+    Prints special character without errors	
+    echo '"! # $ % & '\'' ( ) * + , - . / : ; & < = > ? @ [ \ ] ^ _ { | } ~"'
+    echo "! # $ % & '\'' ( ) * + , - . / : ; & < = > ? @ [ \ ] ^ _ { | } ~"
+
+23. 
+	echo $BASH_VERSION
+	echo $MACHTYPE
+	echo $SECONDS 			<=Count script started 
+
+
+	d=$(pwd)
+	echo $d
+
+	echo 1/3 | bc -l                <= .33333333333333333333
+
+	
+
+23-1. tail
+  tail -f *Slave.log
+  tail -f *vSlave.log | grep "Info: Slave - Sending status"	
+
+24. Comparison operation for test [[ expresstion ]]     0:TRUE  1:FALSE 
+	A. Comparing variables
+		Less than			        [[ $a < $b ]]
+		greater than			    [[ $a > $b ]]
+		less than or requal to 		[[ $a <= $b ]]
+		greater than or equal to 	[[ $a >= $b ]]
+		equal				        [[ $a == $b ]]
+		not equal			        [[ $a != $b ]]
+	ex)     [[ "cat" == "cat" ]]
+		a=cat
+		b=dog
+		[[ $a == $b ]]
+		echo $?			<= 1:FALSE 0:TRUE
+
+	B. Logical Operations
+		AND     [[ $a && $b ]]
+		OR   	[[ $a || $b ]] 
+		NOT     [[ ! $a ]]
+
+	C. Number comparison operations
+		less than			         [[ $a -lt $b ]]
+		greater than			     [[ $a -gt $b ]]
+		less than or equal to 		 [[ $a -le $b ]]
+		greater than or equal to	 [[ $a -ge $b ]]
+		equal				         [[ $a -eq $b ]]
+		not equal			         [[ $a -ne $b ]]
+	Ex)	[[ 20 -gt 100 ]]
+		echo $?
+	
+	D. String null value
+		is null?			    [[ -z $a ]]
+		is not null?			[[ -n $a ]]
+
+	Ex)	a=""
+		b="cat"
+		[[ -z $a && -n $b ]]
+		echo $?
+
+		if [ $? == 0 ]; then
+			echo "TRUE"
+		else
+			echo "FALSE"
+		fi
+
+25. a="hello"
+	echo ${#a}   <= 5 number for character
+	
+
+
+26. Today's date & time
+	date +"%m-%d-%Y"   <= 12-17-2014
+	date +"%H:%M:%S"   <= 10:20:18
+	date +"Today's date is %m-%d-%Y and time is %H:%M:%S."
+
+
+27. printf
+	
+
+
+
+28. Array (can do from prompt)
+	
+	a=()
+	b=("apple" "banana" "cherry" "$today" "$time")
+	echo ${b[2]}
+	b[5]="kiwi"
+	b+=("mango")
+	echo ${b[@]}            # @ <= whole array
+	echo ${b[@]: -1}        # -1 <= last item in array
+
+
+29. Empty file contents or logs
+                     Bourne POSIX  zsh    csh/tcsh  rc/es  fish
+> file                Y      Y      N(1)   N(1)      N      N
+: > file              N/Y(2) Y(3)   Y      Y(4)      N(5)   N(5)
+true > file           Y(5)   Y      Y      Y(5)      Y(5)   Y(5)
+cat /dev/null > file  Y(5)   Y      Y(5)   Y(5)      Y(5)   Y(5)
+cp /dev/null file (7) Y(5)   Y      Y(5)   Y(5)      Y(5)   Y(5)
+printf '' > file      Y(5)   Y      Y      Y(5)      Y(5)   Y
+eval > file           Y(3,8) Y(3)   Y      Y(6)      Y      Y
+
+
+30. df . and  df / are same result
+
+	df -h / | grep -E "\/$" | awk '{print $4}'
+	df -h / | xargs | awk '{print $11}'       <= Same result
+
+	fdisk -l
+	sfdisk -l -uM
+	cfdisk /dev/sda1  <= a linux partition editor with an 		
+			     interactive user interface based on ncurses
+	
+	parted -l  <= list out partitions 
+	df -h | gep ^/dev
+	lsblk  <= Lists out all the storage blocks
+	blkid  <= prints the block device(partitions and storage media) 
+		  attributes like uuid and file system type.
+	
+
+
+
+
+ 
+
+31. Comparisons: cmp vs diff
+	cmp -  compare files byte by byte
+	cmp -s $file1 $file2
+    
+    comm <= Compare two sorted files line by line   
+
+    diff - compare files line by line
+	diff $file1 $file2 > /dev/null
+
+32. if Condition statement
+
+	a. if condition ; then	<= if condition is true, commands run
+		commands
+   	   fi			<= if condition is false, do nothing!
+
+	b. if condition ; then  <= if condition is true, 1st commands run otherwise 
+	   	commands   
+	   else			<= if condition is false, 2nd commands run
+		commands
+	   fi
+
+	c. if condition ; then   <= if condition is true, 1st commands run
+	   	commands
+	   elif conditions; then <= if condition is false, and if the 2nd command is true
+	   	commands	 <= then 2nd set of commands run  	
+	   if
+	   
+	#!/bin/bash
+	if [ -f /etc/foo ]; then     # -f for file exit?
+        	cp /etc/foo .
+       		echo "copy done!"
+	else
+        	echo "This file does not exist"
+        	exit (1 ??)
+	fi
+--------------------------------------------------
+
+	if cmp -s "$file1" "$file2"
+		then
+	   echo "The files match"
+	else
+	   echo "The files are different"
+	fi
+
+
+
+
+# Exit code
+	#!/bin/bash
+
+	touch /root/test 2> /dev/null
+
+	if [ $? -eq 0 ]
+	then
+  	  echo "Successfully created file"
+	  exit 0
+	else
+	  echo "Could not create file" >&2
+	  exit 1
+	fi
+	
+
+	## With the exit command in this script, we will exit with a successful message 
+	and 0 exit code if the touch command is successful. If the touch command fails 
+	however, we will print a failure message to stderr and exit with a 1 value 
+	which indicates failure. ##
+
+	
+	# Move or rename file from CMD
+	$ if [ -e .vimrc ]; then mv .vimrc .vimrc_bak; fi
+
+
+
+33. while and until statement  <= while & until true statement
+	i=0
+	while [ $i -le 10 ]; do
+        	echo i = $i
+        	((i++))
+	done			<= 0 ~ 10
+        ------------------------------------
+        j=0
+        until [$j -ge 10 ]; do
+              echo j = $j
+              ((j++))
+        done			<= 0 ~ 9
+--------------------------------------------------
+
+	#!/bin/bash
+	x=0			<= initializing to 0
+	while [ $x -le 10 ] ; do 
+        	echo "Current value of X is $x."
+        	x=$(expr $x + 1 )  <= ((x++)
+        	sleep 1
+	done
+--------------------------------------------------
+	x=0;
+
+	while [ $x -gt -10 ] ; do
+        	echo "X value is $x"
+	        ((x--))
+	done
+
+
+34. for loop
+	x="nozatech"
+	for i in /home/* ; do
+		echo $x is exist in home direcotry
+	done
+--------------------------------------------------
+	for i in /home/*; do
+        	echo $x is exit
+	done
+
+
+	
+   ** Finding cron job list for all users.**
+
+       Run as root and shell
+	   
+       $ for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
+
+
+
+35. file
+	i=1
+	while read f; do
+		echo "Line $i: $f"
+		((i++))
+	done < ffile.txt
+
+
+36. vi/vim  set number
+	a. set nu / set nu!  <= set number on/off
+	b. :e file_name      <= open & create  file
+ 	c. :w new_name 	     <= save as to new_name
+	
+    vi -V to		     <= check vi/vim version
+     
+Cut and Paste(v/V-d/y-p/P)
+	 a. Position the cursor where you want to begin cutting.
+V    b. Press v to select characters (or V - whole lines).
+     c. Move the cursor to the end of what you want to cut.
+d    d. Press d to cut (or y to copy).
+     e. Move to where you would like to paste.
+p    f. Press P to paste before the cursor, or p to paste after.
+
+Undo
+
+
+
+
+37.read -p "What year?[nnnn] " a
+   while [[ ! $a =~ [0-9]{4} ]]; do
+       read -p "A year, pelase! [nnnn] " a
+   done
+   echo "Selected year: $a"
+
+
+
+
+38. && ( AND )   
+
+#T&&R    true  && echo runs		<= if cmd1 runs then cmd2 runs also 
+
+#F&&N    false && echo runs		<= if cmd2 fails then cmd2 No runs
+	
+e.g.	cd $directory && rm -rf *
+
+# Both run in cmd line and bash script
+	    *TRUE*	   *RUN!*
+	[ ! -d ~/tmp ] && mkdir ~/tmp
+	echo $? <= 0  Success
+
+	    *FALSE*	   *NO RUN*
+	[ ! -d ~/tmp ] && mkdir ~/tmp
+	echo $? <= 1  fail  Did not created!
+
+
+Coding
+### FIZZBUZZ  ###	
+	Prints out when there is a number divied by 3 == 0, then fizz
+	Prints out when there is a number divied by 5 == 0, then buzz
+	Prints out when there is a number divied by 3 == 0 && 5 == 0, then FizzBuzz
+
+	
+	#!/bin/bash  
+	for i in {1..100}; do
+        if (( i % 3 == 0 )) && (( i % 5 == 0)); then echo "fizzbuzz"
+                elif (( i % 3 == 0 )); then echo "fizz"
+                elif (( i % 5 == 0 )); then echo "buzz"
+        else
+                echo $i;
+        fi
+	done
+
+	
+	#!/bin/bash
+	for i in {1..100}; do
+		if (! ((i % 3)) ) && (! ((i % 5)) ); then echo "FizzBuzz"
+			elif (! ((i % 3)) ); then echo "fizz"
+			elif (! ((i % 5)) ); then echo "buzz"
+		else
+			echo $i;
+		fi
+	done
+
+	### check modulo value from terminal ###
+	# m=$(( 1 % 5 ))
+	# echo $m
+	# 1
+	# m=$(( 55 % 5 ))
+	# echo $m
+	# 0
+
+39. || ( OR )
+
+#T||N    true  || echo runs		<= if cmd1 runs then cmd2 NO runs
+
+#F||R    false || echo runs		<= if cmd1 fails then cmd2 RUNS!
+
+   	     *TRUE*	   *NO RUN*
+	[ -d ~/tmp ] || mkdir ~/tmp
+	echo $? <= 1  False
+
+	    *FALSE*	   *YES RUN*
+	[ -d ~/tmp ] || mkdir ~/tmp
+	echo $? <= 0  Created folder!
+
+
+
+
+
+e.g.    cd $directory || error_exit "No such dir and aborting!"
+
+
+
+
+39. Function
+
+#!/bin/bash
+function numberthings {		<= Declaring function name
+        i=1			<= 
+        for f in $@; do		<= $@ special array variable that represents all 
+				   of the arguments pass to a function
+
+                echo $i: $f
+                ((i+=1))	<= incrementing
+        done
+}
+
+numberthings $(ls)
+numberthings pine birch maple spruce
+
+
+
+
+40. Argument
+	#!/bin/bash
+	echo $1
+	echo $2
+
+    $./my.sh apple banana
+
+
+	#!/bin/bash
+	echo $1
+	echo $2
+    $./my.sh "apple Apple" "banana Banana"   <=use " " for when space in them
+
+###
+# Don't have to define the variables to saves a lot of time
+###
+
+	#!/bin/bash
+	for i in $@			<= array arugment $@
+	do
+		echo $i
+	done
+	echo "There were $# arugments." <= $# contains number of argument
+
+$./my.sh apple orange kiwi lemon
+
+
+
+40. Cleanup
+# Run as root, of course.
+
+  cd /var/log
+  cat /dev/null > messages
+  cat /dev/null > wtmp			<= utmp, wtmp - login records
+  echo "Log files cleaned up."
+
+	utmp <= complete picture of users logins at which terminals, logouts, system events and current status 		of the system, system boot time (used by uptime) etc.
+	wtmp <= historical data of utmp.
+	btmp <= records only failed login attempts.
+
+  last 		<= default location without using -f(file) /var/log/wtmp  
+  last -f /var/run/utmp   <= /var/run/utmp for different location using -f flag
+  last -f /var/log/btmp
+
+41.
+  #watch lsof -i	<=Watching who are connecting to a system and disconnecting
+  #strace foobar.sh  <=debugging a command/script
+  
+  watch -n 1 "ps aux | grep RR"
+
+
+
+42. stty -echo   <= hide(turn off) terminal typing
+    stty echo   <= show(restore) terminal typing
+    TTY  <= TeleTYpe
+    stty <= change and print terminal line settings
+
+
+43. stat <= dtailed and statistic on a given file (ls -l foo.bar)
+    stat foo.bar 
+	stat -c%n foo.bar       <= file name
+	stat -c%n foo.bar       <= file owner
+	stat -c%n foo.bar		<= file size
+	stat -c%n foo.bar		<= file inode
+	stat -c%n foo.bar		<= file type
+	stat -c%n foo.bar		<= file access rights
+
+
+44. lsmod =(same as) cat /proc/modules
+
+# alias lp='ls -al ../'						#ls -al parent directory 
+
+
+
+45. CentOS 6.5(sysV) vs CentOS 7(systemd)
+
+
+A. CentOS 6.5(sysV)
+
+	a.List of all services for system
+	  chkconfig --list  | more
+	b.Runlevel
+	  cat /etc/inittab
+	c.check runlevel
+	  runlevel
+	d.Service scripts
+	  ls /etc/init.d/
+ 	e.symbolic link to init.d directory
+	  ls /etc/rc3.d
+	  
+
+
+
+B. CentOS 7(systemd)
+	a.List of all services for system
+	  systemctl list-units --type service --all
+	b.
+	  /etc/systemd.system
+
+	c. same as /etc/init.d
+	  /usr/lib/systemd/system
+
+	d.
+  
+
+	
+CentOS 6.5(sysV)     		   vs     	 CentOS 7 (systemd)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+service httpd status				    systemctl -l(full) status httpd
+ 
+chkconfig --level 35 httopd  on			systemctl enable/disable httpd.service
+chkconfig --list | grep httpd			systemctl start httpd
+service httpd start/stop		     	systemctl stop httpd
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+target						systemctl list-unit-files
+cat /etc/inittab				systemctl list-units --type target  (--all for not active)					                        systemctl list-units --type services
+						systemctl get-default
+						change to multi-user target
+						systemctl set-default multi-uiser.target
+						systemctl reboot
+						startx <= Windows environment 
+						systemctl set-default graphical.target
+						systemctl reboot
+						systemctl start/stop sshd.service
+						systemctl enable/disalbe sshd.service  (constant run)					systemctl is-enabled sshd  <= check for sshd
+  
+
+journalctl - Query the systemd journal
+	journalctl may be used to query the contents of the systemd(1)
+    journal as written by systemd-journald.service(8).
+
+
+	journalctl | grep fail
+
+
+	journalctl -b          <= current boot
+	journalctl -b -1       <= previous boot
+	journalctl -f          <= just happened log check
+	journalctl -u sshd     <= -u unit, 
+
+46. List of package installed
+
+    online <=    yum list *httpd
+    system <=    yum list installed (same as rpm -qa) | grep httpd
+    yum info httpd  <=version and detail pkg info
+
+
+47. EPEL (Extra Packages for Enterprise Linux) 
+
+48. Test statement [ -n ]       -n <= string non zero
+				-z <= The length of the string is zero
+				-d <= directory
+				-f <= file
+				-e <= exist
+
+e.g.
+	if [ -f .bashrc ]; then	
+	    echo "you have the .bashrc."
+	else
+		echo "No .bashrc found!"
+	fi	
+
+	if [ $(id -u) = "0" ]; then
+		echo "supersuser"
+	fi
+	
+
+
+	
+49. echo command
+	#!/bin/bash
+	now=$(date)			              <= $(date) will print date command
+	echo $now			              <= invoke variable now
+	echo "Today's date is $(date)."   <= $(date) will print date command
+	cal 	 		                  <= display calendar
+
+50.History with time stamp
+ export into ~/.bash_profile as well as /root/.bash_profile
+ 
+export HISTTIMEFORMAT="%F %T "
+
+
+
+
+51. Diff between two remote folders through SSH
+
+
+Server 1
+
+IP: images.server1.com
+User: ubuntu1
+Password: pa$$word1
+Images Path: /home/www/images/test_images
+Server 2
+
+IP: images.server2.com
+User: ubuntu2
+Password: pa$$word2
+Images Path: /var/www/site/images/test_images
+
+
+-------------------------------------------------------------------------------------------
+diff -B <(sshpass -p 'pa$$word1' ssh ubuntu1@images.server1.com "find /home/www/images/test_images -type f | sed 's/\/home\/www\/images\/test_images\///g'" | sort -n) <(sshpass -p 'pa$$word2' ssh ubuntu2@images.server2.com "find /var/www/site/images/test_images -type f | sed 's/\/var\/www\/site\/images\/test_images\///g'" | sort -n) | grep ">" | awk '{print $2}'
+-------------------------------------------------------------------------------------------
+
+Explanation:
+
+You can use diff -B <() <() for taking the diff between two streams. The command first uses sshpass to ssh into the two servers without having to enter your passwords interactively.
+
+Each parameter for diff -B uses find command to recursively list all your images in the specified directory and uses sed to remove the root path of the files (because they are different for two servers - and to make it work for the diff command); and the sort command to sort them.
+
+Since the output of the diff command returns either > or <, grep is used to filter out only the diffs from your Server 2. Last, awk prints out only the second column (removes the > column from the output).
+
+NOTE: You need to install sshpass first. 
+sudo apt-get install sshpass
+
+
+  csplit   Split a file into context-determined pieces
+  cut      Divide a file into several parts
+
+
+52. # chkconfig --add <script_name>
+	# chkconfig <script_name> on
+
+
+chkconfig  provides  a  simple  command-line  tool  d maintaining the
+       /etc/rc[0-6].d directory hierarchy by relieving  system  administrators
+       of  the  task  of  directly manipulating the numerous symbolic links in
+       those directories.
+
+       This implementation of chkconfig was inspired by the chkconfig  command
+       present  in the IRIX operating system. Rather than maintaining configu‐
+       ration information outside of the  /etc/rc[0-6].d  hierarchy,  however,
+       this  version  directly  manages  the  symlinks in /etc/rc[0-6].d. This
+       leaves all of the configuration  information  regarding  what  services
+       init starts in a single location.
+
+       chkconfig  has five distinct functions: adding new services for manage‐
+       ment, removing services from management, listing  the  current  startup
+       information  for  services,  changing  the startup information for ser‐
+       vices, and checking the startup state of a particular service.
+
+       When chkconfig is run with only a service name, it checks to see if the
+       service  is configured to be started in the current runlevel. If it is,
+       chkconfig returns true; otherwise it returns false. The --level  option
+       may be used to have chkconfig query an alternative runlevel rather than
+       the current one.
+
+       When chkconfig is run with the --list argument, or no arguments at all,
+       a listing is displayed of all services and their current configuration.
+
+       If  one  of  on,  off, reset, or reset priorities is specified after the
+       service name, chkconfig changes the start-up information for the  specified  
+	   service.  The on and off flags cause the service to be started or
+       stopped, respectively, in the runlevels being changed. The  reset  flag
+       resets  the  on/off state for all runlevels for the service to whatever
+       is specified in the init script in question, while the  reset priorities
+       flag  resets  the  start/stop priorities for the service to whatever is
+       specified in the init script.
+
+       By default, the on and off options affect only runlevels 2, 3,  4,  and
+       5,  while  reset and reset priorities affects all of the runlevels.  The
+       --level option may be used to specify which runlevels are affected.
+
+       Note that for every service, each runlevel has either a start script or
+       a  stop  script.   When  switching runlevels, init will not re-start an
+       already-started service, and will not re-stop a  service  that  is  not
+       running.
+
+       chkconfig also can manage xinetd scripts via the means of xinetd.d con‐
+       figuration files. Note that only the on, off, and --list  commands  are
+       supported for xinetd.d services.
+
+       chkconfig  supports  a  --type argument to limit actions to only a spe‐
+       cific type of services, in the case where services of either  type  may
+       share a name. Possible values for type are sysv and xinetd.
+
+53. Nagios
+	systemctl start nagios.service
+	systemctl start httpd.service
+	systemctl enable httpd.service		<= Apache in startup
+	ln -s '/usr/lib/systemd/system/httpd.service'         '/etc/systemd/system/multi-user.target.wants/httpd.service'
+
+54. List of groups
+	groups
+	/etc/group
+ 	getent group | cut -d: -f1
+
+ 
+55. SElinux <= add port to security-enhanced linux 
+  semange port -a -t http_port_t -p tcp 10051  
+
+56. Region and Time NTP
+
+#### Region - TIME ZONE ####
+
+  Ubuntu
+  sudo dpkg-reconfigure tzdata
+  sudo vi /etc/timezone	<= change to **America/Los_Angeles or  							       America/New_York
+
+
+#### NTP - TIME ZONE ####
+
+### CenOS7 ###
+  Time NTP sync
+
+  yum install ntp
+  systemctl start ntpd
+  systemctl enable ntpd
+
+  ls -l /etc/localtime 
+  timedatectl list-timezones
+  timedatectl set-timezone America/Los_Angeles
+
+
+  CentOS6.x  
+  America/Tijuana
+
+  ntpdate 0.us.pool.ntp.org  <=0~3.us.pool.ntp.org 
+  chkconfig ntpd on
+  /etc/init.d/ntpd start
+
+  Ubuntu
+  apt-get install ntp
+
+  ntpq -p  <=-p peer list of ntp servers  (ntpq=std NTP query program)
+
+  vi /etc/ntp.conf	<= replace with **US** 0~3.us.pool.ntp.org 
+  ########################
+  server 0.us.pool.ntp.org
+  server 1.us.pool.ntp.org
+  server 2.us.pool.ntp.org
+  server 3.us.pool.ntp.org
+  ########################
+
+  sudo service ntp restart 
+
+
+# To stop ntpd:
+  sudo /etc/init.d/ntp stop
+  sudo service ntp stop
+
+# To prevent it from starting at boot:
+  sudo update-rc.d -f ntp remove
+
+# Update NTP time Ubuntu
+  sudo ntpdate pool.ntp.org
+  4 May 17:34:07 ntpdate[38018]: step time server 204.2.134.163 offset 53.202434 sec
+
+
+57. CentOS6.x MySQL auto start and start MySQL services
+  c hkconfig mysqld on
+  /etc/init.d/mysqld star
+
+  DB Location
+  /var/lib/mysql/
+  
+  MySQL config file
+  /etc/my.cnf
+  
+  User List
+  SELECT User FROM mysql.user;
+  
+58. # CentOS6.xTurn off firewall and SELINUX
+
+  chkconfig iptables off && chkconfig ip6tables off && service iptables stop &&   service ip6tables stop && setenforce 0
+
+   iptables -L
+   iptables -L -n   <= NO DNS lookup (Faster)
+   iptables -nL
+  
+  
+# Security Selinux
+vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
+
+
+
+
+
+59. Prompt Color red
+
+    export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]' 	 >> .bashrc		<= green, red for 31m 
+
+    export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"  >> .bashrc		<= 2 colors
+
+	Add to .bashrc file
+	echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> .bashrc
+
+	
+	########################	Vim color scheme enable   ######################
+	http://www.server-world.info/en/note?os=CentOS_7&p=initial_conf&f=7
+
+	1. Install vim-enhanced
+	yum -y install vim-enhanced 
+
+
+	2. Edit profile
+	vi /etc/profile
+	# add at the last line
+	alias vi='vim'
+
+
+	3. reload
+	source /etc/profile 
+
+
+	4.Configure vim. ( Apply to a user below. If you applly to all users, Write the same settings in '/etc/vimrc',  some settings are applied by default though. )
+
+	# Add following 
+	syntax on
+	colorscheme desert
+
+	
+	
+	
+	
+60. tcpdump
+####################################
+# tcpdump -i any -n tcp port 10050 #    <= zabbix agent port
+####################################
+	-i = listening interface
+	-n = not to convert addresses
+
+  ### Capture Ping - icmp message ##
+  tcpdump -n icmp
+  tcpdump -v -n icmp
+  tcpdump -n icmp and 'icmp[0] != 8 and icmp[0] != 0'
+  tcpdump -n icmp and icmp[icmptype] != icmp-echo and icmp[icmptype] != icmp-echoreply
+
+  
+  Ping and capture IP only
+  ping -c 1 www.google.com | gawk -F'[()]' '/PING/{print $2}'
+  
+  
+  dig, host, nslookup, 
+  yum install bind-utils
+  host $HOSTNAME | xargs | cut -f4 -d' '
+  
+  
+61. telnet ip_address port_number  <= check port is open for connection
+or  use NetCat
+###################################
+#  nc -v 192.168.110.220 10051 #  <= netcat  -v verbose / -z listening daemon
+###################################   
+#  nc -v 192.168.110.220 10051   #
+
+  Connection to 192.168.110.220 10051 port [tcp/zabbix-trapper] succeeded!
+
+
+62. Ubuntu Package Clean ### Package Clean ###
+
+  sudo apt-get update
+
+# Backing ups:
+  sudo cp /etc/apt/sources.list /etc/apt/sources.list.original
+  sudo cp /var/lib/dpkg/status /var/lib/dpkg/status.original
+  sudo cp -r --parents home/aws/* /home/apark/awn/   #--recursive
+
+  sudo apt-get clean 
+  sudo apt-get autoclean 
+
+# Fixing dependencies using apt's fix-broken mode
+  sudo apt-get -f install
+
+##
+sudo sh -c "apt-get update;apt-get dist-upgrade;apt-get autoremove;apt-get autoclean"  
+
+## 
+sudo sh -c "apt-get update;apt-get autoclean;apt-get clean;apt-get autoremove"
+sudo dpkg --remove -force --force-remove-reinstreq package_name
+
+
+
+
+63. How do I fix a “Problem with MergeList” or “status file could not be parsed” error when trying to do an update?
+
+
+sudo rm /var/lib/apt/lists/* -vf
+sudo apt-get update
+
+
+
+64.  AWS AMI MYSQL setup root pw issue 
+1. apt-get/yum install mysql-server
+2. /usr/bin/mysql_secure_installation
+3. service mysqld stop 
+4. rm -rf /var/lib/mysql/*
+5. service mysqld start  <= recreate tables 
+6. /usr/bin/mysqladmin -u root password 'Your-New-Passwd'  <= Your mysql root's pw
+
+
+
+65. Swappiness
+
+Swappiness is a Linux kernel parameter that controls the relative weight given to 
+swapping out runtime memory, as opposed to dropping pages from the system page cache. 
+Swappiness can be set to values between 0 and 100 inclusive. A low value causes the 
+kernel to avoid swapping, a higher value causes the kernel to try to use swap space. 
+The default value is 60, and for most desktop systems, setting it to 100 may affect 
+the overall performance, whereas setting it lower (even 0) may decrease response latency.
+
+Value	Strategy
+vm.swappiness = 0	The kernel will swap only to avoid an out of memory condition.
+vm.swappiness = 60	The default value.
+vm.swappiness = 100	The kernel will swap aggressively.
+To temporarily set the swappiness in Linux, write the desired value (e.g. 10) to /proc/sys/vm/swappiness using the following command, running as root user:
+
+
+# Set the swappiness value as root
+  echo 10 > /proc/sys/vm/swappiness
+ 
+# Alternatively, run this 
+  sysctl -w vm.swappiness=10   # sysctl - configure kernel parameters at runtime
+ 
+# Verify the change
+  cat /proc/sys/vm/swappiness
+  10
+# use cat to append  
+[root@cos7 ~]#cat >> /etc/resolv.conf
+cos7.localdomain
+
+ 
+# Alternatively, verify the change
+  sysctl vm.swappiness
+  vm.swappiness = 10
+  Permanent changes are made in /etc/sysctl.conf via the following configuration line     (inserted, if not present):
+  vm.swappiness = 10
+
+66. rpm package install 
+  rpm -ivh foo-xxx.rpm <= install
+  rpm -Uvh foo-xxx.rpm <= upgrade
+
+  Remove
+  rpm -qa | grep -i webmin
+  rpm -e <package name>
+
+  rpm -qa | grep mysql
+  /sbin/ldconfig -v | grep mysql
+
+  
+67. nmap  <= Short for Network Mapper 
+    It is an open source security tool for network exploration, securi
+ty scanning and     auditing. However, nmap command comes with lots of options that can make the utility     more robust and difficult to follow for new users.
+
+
+68. pgrep, pkill - look up or signal processes based on name and other attributes
+
+69. rthunter(Root Kit Hunter)
+
+
+70. cron job search from com and line
+
+	for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
+
+	for user in $(cut -f1 -d: /etc/passwd); do echo $user; crontab -u $user -l; done
+
+	
+	a. Getting all user id info from /etc/passwd using 
+	cut -f1 -d:  /etc/passwd
+        
+	b. using crontab utility to check list of cron job list
+	crontab -u $user -l
+	##########################################
+	# #!/bin/bash
+	# for user in $(cut -f1 -d: /etc/passwd); 
+	# do 	
+	#    echo $user; crontab -u $user -l; 
+	# done
+        ##########################################
+
+		
+	for i in db lobby s1 s2; do date; done
+    Sat Aug  8 10:46:21 PDT 2015
+    Sat Aug  8 10:46:21 PDT 2015
+    Sat Aug  8 10:46:21 PDT 2015
+    Sat Aug  8 10:46:21 PDT 2015
+	
+	for i in db lobby s1 s2 s3; do ssh $i date; done
+ssh: Could not resolve hostname db: Name or service not known
+ssh: Could not resolve hostname lobby: Name or service not known
+ssh: Could not resolve hostname s1: Name or service not known
+ssh: Could not resolve hostname s2: Name or service not known
+ssh: Could not resolve hostname s3: Name or service not known
+	
+		
+71. Transfer file using SCP + pem key
+
+	scp -i /path/to/key.pem /path/to/file.jpg user_id@ip_address:/path/to/place/file
+	## -i Identity_file such as pem key
+	$ scp -i /AWS-OC-Key/oc-prod.pem /AWS-OC-Key/oc-stage.pem ec2-user@54.191.102.80:/home/ec2-user/
+
+	File Transfer
+	$ scp -pv student-files.zip nozatech@192.168.221.128:/home/nozatech/download
+	
+	$ scp -i .ssh/oc-stage.pem  ami.zip ubuntu@10.10.1.89:/home/ubuntu/
+
+	unzip ami.zip -d /jarvis
+    
+	# to copy a folder from your local computer to a remote one.
+	scp -r nameOfFolderToCopy username@ipaddress:/path/to/copy/
+
+	# to copy a folder from a remote machine to your local one.
+	scp -r username@ipaddress:/path/of/folder/to/copy /target/local/directory
+
+	
+72. Combine Xargs with Find command 
+	$ ls
+	one.c  one.h  two.c  two.h
+
+	$ find . -name "*.c" | xargs rm -rf
+
+	$ ls
+	one.h  two.h
+
+	Use fgrep in order to match for plain ., or escape the dots.
+
+	find . -type f | xargs fgrep '...'   <= or if you still want to use grep :
+
+	find . -type f | xargs grep '\.\.\.' <= And if you only want the current directory 	and not its subdirs :
+
+	find . -maxdepth 1 -type f | xargs fgrep '...'
+
+
+73. 
+	iptables -L
+	iptables -L -n
+	iptables -nvL
+
+	Ubuntu	iptables-restore < /etc/iptables/rules.v4
+	
+	CentOS	iptables-restore < /etc/sysconfig/iptables
+
+	iptables-restore and ip6tables-restore are used to restore
+	IP and IPv6 Tables from data specified on STDIN.  Use  I/O
+        redirection(> <) provided by your shell to read from a file
+	(< /etc/iptables/rules.v4)
+
+
+
+74.  Apache Log
+
+	while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; kill $! ; wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
+
+
+	A. View Apache requests per minute
+
+grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{print $2":"$3}' | sort -nk1 -nk2 | uniq -c | awk '{ if ($1 > 10) print $0}'
+
+	# grep "16/Mar/2015:06" example.com	
+	  <= Use the grep command to only show hits from today during the 06th hour 
+		from our Apache access log.
+	# cut -d[ -f2 | cut -d] -f1	
+	  <=Use the cut command with the -delimiter set to an opening bracket [ and print 
+		out the -field of data that shows up 2nd, then use the cut command again 
+		with the -delimter set to a closing bracket ] and print out the -field of 
+		data that shows up 1st which gives us just the time stamp.
+	# awk -F: '{print $2":"$3}'	
+	  <=Use the awk command with the -Field delimiter set to a colon :, then print out 
+		the $2nd column which is the hour, followed by the $3th column which is 
+		the minute.
+	# sort -nk1 -nk2 | uniq -c	
+	  <= Sort the hits numerically by the 1st column which is the hour, then by the 
+		2nd column which is the minute.
+	# awk '{ if ($1 > 10) print $0}'	
+	  <= Finally use the awk command with an if statement to only print out data when 
+		the $1st column which is the number of hits in a minute is greater than 10.
+
+
+
+
+
+
+
+75. Error 
+	1>&2    <= STD output should go to the same place as STD error is going.
+
+76. Backtick
+
+Command within backticks is evaluated (executed) by the shell before the main command (like chown in your examples), and the output of that execution is used by that command, just as if you'd type that output at that place in the command line.
+
+sudo chown `id -u` /somedir
+sudo chown 1000 /somedir
+
+
+
+77. Hostname Change
+
+Ubuntu
+/etc/hosts
+/etc/hostname
+
+
+CentOS file location =>  /etc/hostname 
+	hostname 
+	echo new_name > /etc/hostname 
+	systemctl restart systemd-hostnamed
+	cat /etc/sysconfig/network
+	hostnamectl status
+	
+	
+###########################################
+#	hostnamectl set-hostname new_name # 
+###########################################
+	
+	
+	
+	
+	
+	
+	
+###############
+Scripting
+##############
+These are positional arguments of the script. 
+position of arguments passed to the script on the command line, not line numbers
+#!/bin/sh
+echo "$1"
+echo "$2"
+
+./script.sh Hello World
+$0 = script.sh             <- File name of the current script
+$1 = Hello
+$2 = World	
+	
+The $@ variable expands to all the parameters used when calling the function
+
+function foo()
+{
+    echo "$@"
+}
+
+foo 1 2 3
+
+It would display 1 2 3. If not used inside a function, it specifies all parameters 
+used when calling the script. See the bash manual page for more info.	
+	
+The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
+
+*
+($*) Print all the parameter.
+	 Expands to the positional parameters, starting from one. When the expansion is not within double quotes, 
+     each positional parameter expands to a separate word. In contexts where it is performed, those words are 
+	 subject to further word splitting and pathname expansion. When the expansion occurs within double quotes, 
+	 it expands to a single word with the value of each parameter separated by the first character of the IFS 
+	 special variable. That is, "$*" is equivalent to "$1c$2c…", where c is the first character of the value 
+	 of the IFS variable. If IFS is unset, the parameters are separated by spaces. If IFS is null, the parameters 
+	 are joined without intervening separators.
+
+@
+($@) Individually double quoted 
+	Expands to the positional parameters, starting from one. When the expansion occurs within double quotes, 
+	each parameter expands to a separate word. That is, "$@" is equivalent to "$1" "$2" …. If the double-quoted 
+	expansion occurs within a word, the expansion of the first parameter is joined with the beginning part of the 
+	original word, and the expansion of the last parameter is joined with the last part of the original word. 
+	When there are no positional parameters, "$@" and $@ expand to nothing (i.e., they are removed).
+
+#
+($#) Expands to the number of positional parameters in decimal(Counts number of parameters).	
+ 
+($?) Exit status of the last command
+	0 - successful
+	1 - fail
+($$) Process ID under which order getting executed
+
+(?!) Process number of the last background command
+ 
+#!/bin/bash
+echo "Hello, World. Calls $# of parameters"	
+echo "argument 0 is '$0'"
+.....	
+echo "argument 9 is '$9'"
+echo "argument 10 is '{$10}'"	 # from 10, use {} 
+
+./argument.sh a b ... y z
+		Hello, World. Calls 24 of parameters
+		argument 0 is './argument.sh'
+		argument 1 is 'a'
+		.....
+		argument 10 is 'j'
+
+
+
+
+
+
+
+78. CenOS7 eno****** to eth0
+
+	Step1#
+	$sudo vi etc/sysconfig/grub	<= add "net.ifnames=0 biosdevname=0"
+GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm.lv=centos/root crashkernel=auto  vconsole.keymap=us rhgb quiet net.ifnames=0 biosdevname=0"
+
+	Step2#
+	$sudo grub2-mkconfig  -o /boot/grub2/grub.cfg
+	<= Using “grub2-mkconfig” command to re-generate a new grub configuration file
+
+	Step3#
+	$sudo mv /etc/sysconfig/network-scripts/ifcfg-eno16777736  /etc/sysconfig/network-scripts/ifcfg-eth0
+		<= Rename “Eno” network file using”mv”command
+
+
+	Step4#$
+	su vi /etc/sysconfig/network-scripts/ifcfg-eth0 <= configuration file and set 
+							the value of “Name” field to “eth0".
+	<strong>NAME=eth0</strong>
+
+	Step5# 
+	reboot system, after rebooting system, using “ifconfig” command check 
+	network interface information again.
+
+	
+	
+79.Special parameters
+
+The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
+
+Table 3-3. Special bash variables
+
+Character	Definition
+$*	Expands to the positional parameters, starting from one. When the expansion 
+	occurs within double quotes, it expands to a single word with the value of each 
+	parameter separated by the first character of the IFS special variable.
+$@	Expands to the positional parameters, starting from one. When the expansion occurs 
+	within double quotes, each parameter expands to a separate word.
+$#	Expands to the number of positional parameters in decimal.
+$?	Expands to the exit status of the most recently executed foreground pipeline.
+$-	A hyphen expands to the current option flags as specified upon invocation, by the 
+	set built-in command, or those set by the shell itself (such as the -i).
+$$	Expands to the process ID of the shell.
+$!	Expands to the process ID of the most recently executed background (asynchronous)
+	 command.
+$0	Expands to the name of the shell or shell script.
+$_	The underscore variable is set at shell startup and contains the absolute file name 
+	of the shell or script being executed as passed in the argument list. Subsequently, 
+	it expands to the last argument to the previous command, after expansion. It is also
+	set to the full pathname of each command executed and placed in the environment 
+	exported to that command. When checking mail, this parameter holds the name of the 
+	mail file.
+
+
+	grep "echo" ./function1.sh
+        	echo "Hi $1! what a nice $2!!"
+		echo "And now, a greeting!"
+	echo $_
+	./function1.sh
+	echo $$
+	35810
+	echo $!
+
+
+
+
+80.  Ubuntu apt-get update fail some of packages.
+	W:Failed to fetch bzip2:
+     	E:Some index files failed to download. 
+
+	sudo rm -rf /var/lib/apt/lists/*
+	sudo apt-get update
+
+
+
+81. Check Kernel Version
+
+	ls -al /etc/ld.so.conf.d
+
+	kernel-2.6.32-431.11.2.el6.x86_64.conf
+	
+	uname -a
+	
+	uname -r 
+	2.6.32-431.1.2.0.1.el6.x86_64
+
+
+    sudo dpkg -l | grep linux-headers | grep ii
+    sudo dpkg -l | grep linux-headers | grep ii | awk '{print $3}'
+	
+
+82. rsync
+	rsync -av iptables.vm5-sgas sg-rog:/etc/sysconfig
+	rsync -av rog sgas sg-rog:/home
+
+    rsync -av /etc/hosts sg-eu:/etc
+    rsync -av /etc/sysconfig/iptables sg-eu:/etc/sysconfig
+    
+	ssh sg-eu "service iptables restart"
+    
+	ssh sg-eu "cat .ssh/*.pub"
+
+	for i in us eu as; do echo sg-$i; ssh sg-$i "uptime"; done
+	
+	for i in sg-us sg-eu sg-as ; do echo $i; date; done
+	
+	for i in sg-eu sg-as ; do rsync -av authorized_keys $i:.ssh; done
+
+
+	
+	
+### IFS (Internal Field Separator)###
+http://unix.stackexchange.com/questions/16192/what-is-ifs-in-context-of-for-looping
+IFS isn't directly related to looping, it's related to word splitting. IFS indirectly determines how the output from the command is broken up into pieces that the loop iterates over.
+When you have an unprotected variable substitution $foo or command substitution $(foo), there are two cases:
+•	If the context expects a single word, e.g. when the substitution is between double quotes "$foo", or in a variable assignment x=$foo, then the string resulting from the substitution is used as-is.
+•	If the context expects multiple words, which is the case most of the times, then two further expansions are performed on the resulting string:
+•	The string is split into words. Any character that appears in $IFS is considered a word separator. For example IFS=":"; foo="12:34::78"; echo $foo prints 12 34  78 (with two spaces between 34 and 78, since there's an empty word).
+•	Each word is treated as a glob pattern and expanded into a list of file names. For example, foo="*"; echo $foo prints the list of files in the current directory.
+For loops, like many other contexts, expect a list of words. So
+for x in $(foo); do …
+breaks $(foo) into words, and treats each word as a glob pattern. The default value of IFS isspace, tab and newline, so if foo prints out two lines hello world and howdy then the loop body is executed with x=hello, then x=world and x=howdy. If IFS is explicitly changed to contain a newline only, then the loop is executed for hello world and howdy. If IFS is changed to be o, then the loop is executed for hell,  w, rld␤h (where ␤ is a newline character) and wdy.
+
+	
+	
+	
+############### 
+# System Info #
+###############
+
+1. ssh -i .ssh/pem_key user_id@IP_Address
+
+   ssh -p <port>       user_id@IP_Address
+
+   ssh-copy-id 	       user_id@IP_Address
+
+   sudo visudoer  
+   vi /etc/sudoers
+   nozatech ALL=(ALL:ALL) NOPASSWD:ALL
+   %sudo   ALL=(ALL:ALL) NOPASSWD:ALL
+
+2. uname -a 						#Kernel Version Check  
+   killall <process name>
+   ps -u <user_id>
+
+   
+2-1.
+  ulimit and sysctl
+  The ulimit and sysctl programs allow to limit system-wide resource use. 
+  This can help a lot in system administration, e.g. when a user starts too 
+  many processes and therefore makes the system unresponsive for other users.
+
+3. Swap space swapon
+	
+  sudo dd if=/dev/zero of=/var/swapfile bs=1M count=2048
+  sudo chmod 600 /var/swapfile
+  sudo mkswap /var/swapfile
+  echo /var/swapfile none swap defaults 0 0 | sudo tee -a /etc/fstab
+  sudo swapon -a
+
+  
+  
+4. Start Up service for Ubuntu
+  
+	sudo mv /filename /etc/init.d/
+	sudo chmod +x /etc/init.d/filename 
+	sudo update-rc.d filename defaults 
+  
+######################## 
+# Bash Shell Variables #
+########################
+
+varname=value                # defines a variable
+varname=value command        # defines a variable to be in the environment of a particular subprocess
+echo $varname                # checks a variable's value
+echo $$                      # prints process ID of the current shell
+echo $!                      # prints process ID of the most recently invoked background job
+echo $?                      # displays the exit status of the last command
+export VARNAME=value         # defines an environment variable (will be available in subprocesses)
+
+array[0] = val               # several ways to define an array
+array[1] = val
+array[2] = val
+array=([2]=val [0]=val [1]=val)
+array(val val val)
+
+${array[i]}                  # displays array's value for this index. If no index is supplied, array element 0 is assumed
+${#array[i]}                 # to find out the length of any element in the array
+${#array[@]}                 # to find out how many values there are in the array
+
+declare -a                   # the variables are treaded as arrays
+declare -f                   # uses funtion names only
+declare -F                   # displays function names without definitions
+declare -i                   # the variables are treaded as integers
+declare -r                   # makes the variables read-only
+declare -x                   # marks the variables for export via the environment
+
+${varname:-word}             # if varname exists and isn't null, return its value; otherwise return word
+${varname:=word}             # if varname exists and isn't null, return its value; otherwise set it word and then return its value
+${varname:?message}          # if varname exists and isn't null, return its value; otherwise print varname, followed by message and abort the current command or script
+${varname:+word}             # if varname exists and isn't null, return word; otherwise return null
+${varname:offset:length}     # performs substring expansion. It returns the substring of $varname starting at offset and up to length characters
+
+${variable#pattern}          # if the pattern matches the beginning of the variable's value, delete the shortest part that matches and return the rest
+${variable##pattern}         # if the pattern matches the beginning of the variable's value, delete the longest part that matches and return the rest
+${variable%pattern}          # if the pattern matches the end of the variable's value, delete the shortest part that matches and return the rest
+${variable%%pattern}         # if the pattern matches the end of the variable's value, delete the longest part that matches and return the rest
+${variable/pattern/string}   # the longest match to pattern in variable is replaced by string. Only the first match is replaced
+${variable//pattern/string}  # the longest match to pattern in variable is replaced by string. All matches are replaced
+
+${#varname}                  # returns the length of the value of the variable as a character string
+
+*(patternlist)               # matches zero or more occurences of the given patterns
++(patternlist)               # matches one or more occurences of the given patterns
+?(patternlist)               # matches zero or one occurence of the given patterns
+@(patternlist)               # matches exactly one of the given patterns
+!(patternlist)               # matches anything except one of the given patterns
+
+$(UNIX command)              # command substitution: runs the command and returns standard output
+
+  
+###############
+# FUNCTIONS   #
+###############
+The function refers to passed arguments by position (as if they were positional parameters), that is, $1, $2, and so forth. $@ is equal to "$1" "$2"... "$N", where N is the number of positional parameters. $# holds the number of positional parameters.
+functname() {
+  shell commands
+}
+
+unset -f functname  # deletes a function definition
+declare -f          # displays all defined functions in your login session
+2.3. FLOW CONTROL.
+
+statement1 && statement2  # and operator
+statement1 || statement2  # or operator
+
+-a                        # and operator inside a test conditional expression
+-o                        # or operator inside a test conditional expression
+
+str1=str2                 # str1 matches str2
+str1!=str2                # str1 does not match str2
+str1<str2                 # str1 is less than str2
+str1>str2                 # str1 is greater than str2
+-n str1                   # str1 is not null (has length greater than 0)
+-z str1                   # str1 is null (has length 0)
+
+-a file                   # file exists
+-d file                   # file exists and is a directory
+-e file                   # file exists; same -a
+-f file                   # file exists and is a regular file (i.e., not a directory or other special type of file)
+-r file                   # you have read permission
+-r file                   # file exists and is not empty
+-w file                   # your have write permission
+-x file                   # you have execute permission on file, or directory search permission if it is a directory
+-N file                   # file was modified since it was last read
+-O file                   # you own file
+-G file                   # file's group ID matches yours (or one of yours, if you are in multiple groups)
+file1 -nt file2           # file1 is newer than file2
+file1 -ot file2           # file1 is older than file2
+
+-lt                       # less than
+-le                       # less than or equal
+-eq                       # equal
+-ge                       # greater than or equal
+-gt                       # greater than
+-ne                       # not equal
+
+if condition
+then
+  statements
+[elif condition
+  then statements...]
+[else
+  statements]
+fi
+
+for x := 1 to 10 do
+begin
+  statements
+end
+
+for name [in list]
+do
+  statements that can use $name
+done
+
+for (( initialisation ; ending condition ; update ))
+do
+  statements...
+done
+
+case expression in
+  pattern1 )
+    statements ;;
+  pattern2 )
+    statements ;;
+  ...
+esac
+
+select name [in list]
+do
+  statements that can use $name
+done
+
+while condition; do
+  statements
+done
+
+until condition; do
+  statements
+done
+
+##################################
+# 4. INPUT/OUTPUT REDIRECTORS.   #
+##################################
+cmd1|cmd2  # pipe; takes standard output of cmd1 as standard input to cmd2
+> file     # directs standard output to file
+< file     # takes standard input from file
+>> file    # directs standard output to file; append to file if it already exists
+>|file     # forces standard output to file even if noclobber is set
+n>|file    # forces output to file from file descriptor n even if noclobber is set
+<> file    # uses file as both standard input and standard output
+n<>file    # uses file as both input and output for file descriptor n
+<<label    # here-document
+n>file     # directs file descriptor n to file
+n<file     # takes file descriptor n from file
+n>>file    # directs file description n to file; append to file if it already exists
+n>&        # duplicates standard output to file descriptor n
+n<&        # duplicates standard input from file descriptor n
+n>&m       # file descriptor n is made to be a copy of the output file descriptor
+n<&m       # file descriptor n is made to be a copy of the input file descriptor
+&>file     # directs standard output and standard error to file
+<&-        # closes the standard input
+>&-        # closes the standard output
+n>&-       # closes the ouput from file descriptor n
+n<&-       # closes the input from file descripor n
+
+
+#########################
+# 5. PROCESS HANDLING.  #
+#########################
+
+To suspend a job, type CTRL+Z while it is running. You can also suspend a job with CTRL+Y. This is slightly different from CTRL+Z in that the process is only stopped when it attempts to read input from terminal. Of course, to interupt a job, type CTRL+C.
+
+
+myCommand &  # runs job in the background and prompts back the shell
+
+jobs         # lists all jobs (use with -l to see associated PID)
+
+fg           # brings a background job into the foreground
+fg %+        # brings most recently invoked background job
+fg %-        # brings second most recently invoked background job
+fg %N        # brings job number N
+fg %string   # brings job whose command begins with string
+fg %?string  # brings job whose command contains string
+
+kill -l      # returns a list of all signals on the system, by name and number
+kill PID     # terminates process with specified PID
+
+ps           # prints a line of information about the current running login shell and any processes running under it
+ps -a        # selects all processes with a tty except session leaders
+
+ps aux | grep RRServer | grep -v grep | awk '{print $2}'
+
+	1. How to kill zombie process
+		A zombie is already dead, so you cannot kill it. To clean up a zombie, it must be waited on by its parent, 
+		so killing the parent should work to eliminate the zombie. (After the parent dies, the zombie will be 
+		inherited by init (process ID 1), which will wait on it and clear its entry in the process table.) If your daemon is 
+		spawning children that become zombies, you have a bug. Your daemon should notice when its children die 
+		and wait on them to determine their exit status.
+
+		Example command:
+		kill $(ps -A -ostat,ppid | awk '/[zZ]/{print $2}')
+
+			
+
+
+
+
+
+trap cmd sig1 sig2  # executes a command when a signal is received by the script
+trap "" sig1 sig2   # ignores that signals
+trap - sig1 sig2    # resets the action taken when the signal is received to the default
+
+disown <PID|JID>    # removes the process from the list of jobs
+
+wait                # waits until all background jobs have finished
+
+6. TIPS AND TRICKS.
+
+# set an alias
+cd; nano .bash_profile
+> alias gentlenode='ssh admin@gentlenode.com -p 3404'  # add your alias in .bash_profile
+
+
+# alias lp='ls -al ../'						#ls -al parent directory 
+
+# to quickly go to a specific directory
+cd; nano .bashrc
+> shopt -s cdable_vars
+> export websites="/Users/mac/Documents/websites"
+
+source .bashrc
+cd websites
+
+cd *		<= if there is only one folder
+
+################################
+# 7. DEBUGGING SHELL PROGRAMS. #
+################################
+
+bash -n scriptname  # don't run commands; check for syntax errors only
+set -o noexec       # alternative (set option in script)
+
+bash -v scriptname  # echo commands before running them
+set -o verbose      # alternative (set option in script)
+
+bash -x scriptname  # echo commands after command-line processing
+set -o xtrace       # alternative (set option in script)
+
+trap 'echo $varname' EXIT  # useful when you want to print out the values of variables 
+			     at the point that your script exits
+
+function errtrap {
+  es=$?
+  echo "ERROR line $1: Command exited with status $es."
+}
+
+trap 'errtrap $LINENO' ERR  # is run whenever a command in the surrounding script or function exists with non-zero status 
+
+function dbgtrap {
+  echo "badvar is $badvar"
+}
+
+trap dbgtrap DEBUG  # causes the trap code to be executed before every statement in a function or script
+# ...section of code in which the problem occurs...
+trap - DEBUG  # turn off the DEBUG trap
+
+function returntrap {
+  echo "A return occured"
+}
+
+trap returntrap RETURN  # is executed each time a shell function or a script executed with the . or source commands finishes executing
+
+############################################
+###
+############################################
+1. Find and Sort Files Based on Modification Date and Time
+	A. List Files Based on Modification Time
+		ls -lt
+	B. List Files Based on Last Access Time
+		
+
+
+1. Search Files
+grep pattern files   #search for pattern in files
+grep -i			#Case insensitive search
+grep -r 		#Recursive
+grep -v			#Inverted search
+grep -o			#Show matched part of file only
+
+
+
+
+
+find /dir/ -user user_ID			#Find files owned by name in dir
+find / -name file_name
+find / -iname fine_name
+
+whereis 		#Find binary /source / manual for command
+locate file 	#Find file 
+
+
+
+find /lib64 | grep mysql
+/lib64/libmysqlcppconn.so
+/lib64/libmysqlcppconn.so.7.1.1.3
+/lib64/libmysqlclient.so.18.2.0
+/lib64/libmysqlcppconn.so.7
+/lib64/libmysqlclient.so.18
+
+
+
+
+
+
+####
+Tmux  Terminal Multiplexer
+
+ctrl-b <command>
+ctrl-b c - new window
+
+
+#####
+Ubuntu Package Installed 
+
+root@puppet:~# dpkg --get-selections
+
+root@puppet:~# dpkg --get-selections | grep puppet
+puppet-common                                   install
+puppetlabs-release                              install
+puppetmaster-common                             install
+puppetmaster-passenger                          install
+
+####
+sed (stream editor)
+sed -i 's/START=no/START=yes/g' /etc/default/puppet
+          ^exiting ^change to
+
+sed -i '/extern int errno/{s/^/\/* /;s/$/ *\//;G;s/$/#include <errno.h>/;}' src/error.h
+		  
+### Add some rows and text
+root@puppetagent:~# cat << EOF >> /etc/puppet/puppet.conf
+[agent]
+server = puppetmaster.domain.tld
+EOF
+
+
+####
+Install Fabric, boto, yaml
+
+   1) Install fabric, boto and yaml
+
+         wget https://bootstrap.pypa.io/get-pip.py
+         sudo python get-pip.py
+         sudo pip install fabric
+         sudo pip install boto
+         sudo pip install PyYaml
+
+		 
+		 
+#################	 
+### Security  ###
+#################
+
+1.Verifying Which Ports Are Listening
+CentOS
+#which ports are listening for TCP connections from the network:
+	nmap -sT -O localhost   # -sT <= scan TCP  -O <= OS
+
+#To check if the port is associated with the official list of known services	
+	cat /etc/services | grep unknown_port
+
+	# check for information about the port	
+	netstat -anp | grep unknown_port     # -anp  <= All, Numerical, program
+	
+	lsof -i | grep unknown_port
+	
+	
+2.
+	
+	
+	
+Webmin 
+/etc/webmin/miniserv.conf
+
+
+
+
+SSL has been around for long enough you'd think that there would be agreed upon container formats. And you're right, there are. Too many standards as it happens. So this is what I know, and I'm sure others will chime in.
+
+.csr This is a Certificate Signing Request. Some applications can generate these for submission to certificate-authorities. The actual format is PKCS10 which is defined in RFC 2986. It includes some/all of the key details of the requested certificate such as subject, organization, state, whatnot, as well as the public key of the certificate to get signed. These get signed by the CA and a certificate is returned. The returned certificate is the public certificate (which includes the public key but not the private key), which itself can be in a couple of formats.
+.pem Defined in RFC's 1421 through 1424, this is a container format that may include just the public certificate (such as with Apache installs, and CA certificate files /etc/ssl/certs), or may include an entire certificate chain including public key, private key, and root certificates. Confusingly, it may also encode a CSR (e.g. as used here) as the PKCS10 format can be translated into PEM. The name is from Privacy Enhanced Mail (PEM), a failed method for secure email but the container format it used lives on, and is a base64 translation of the x509 ASN.1 keys.
+.key This is a PEM formatted file containing just the private-key of a specific certificate and is merely a conventional name and not a standardized one. In Apache installs, this frequently resides in /etc/ssl/private. The rights on these files are very important, and some programs will refuse to load these certificates if they are set wrong.
+.pkcs12 .pfx .p12 Originally defined by RSA in the Public-Key Cryptography Standards, the "12" variant was enhanced by Microsoft. This is a passworded container format that contains both public and private certificate pairs. Unlike .pem files, this container is fully encrypted. Openssl can turn this into a .pem file with both public and private keys: openssl pkcs12 -in file-to-convert.p12 -out converted-file.pem -nodes
+A few other formats that show up from time to time:
+
+.der A way to encode ASN.1 syntax in binary, a .pem file is just a Base64 encoded .der file. OpenSSL can convert these to .pem (openssl x509 -inform der -in to-convert.der -out converted.pem). Windows sees these as Certificate files. By default, Windows will export certificates as .DER formatted files with a different extension. Like...
+.cert .cer .crt A .pem (or rarely .der) formatted file with a different extension, one that is recognized by Windows Explorer as a certificate, which .pem is not.
+.p7b Defined in RFC 2315, this is a format used by windows for certificate interchange. Java understands these natively. Unlike .pem style certificates, this format has a defined way to include certification-path certificates.
+.crl A certificate revocation list. Certificate Authorities produce these as a way to de-authorize certificates before expiration. You can sometimes download them from CA websites.
+In summary, there are four different ways to present certificates and their components:
+
+PEM Governed by RFCs, it's used preferentially by open-source software. It can have a variety of extensions (.pem, .key, .cer, .cert, more)
+PKCS7 An open standard used by Java and supported by Windows. Does not contain private key material.
+PKCS12 A private standard that provides enhanced security versus the plain-text PEM format. This can contain private key material. It's used preferentially by Windows systems, and can be freely converted to PEM format through use of openssl.
+DER The parent format of PEM. It's useful to think of it as a binary version of the base64-encoded PEM file. Not routinely used by much outside of Windows.
+
+
+
+######################
+# MySQL CRUD Daily ###
+######################
+1. Create Accounts
+root
+
+p4SS_!_\/\/0rd  
+
+
+
+digimon
+
+pantelimon20150528
+
+
+change master to 
+master_host='dgh-db-01', 
+master_port=3306, 
+master_user='dbadmin', 
+master_password='Test00!!', 
+master_log_file='master-bin.000006', 
+master_log_pos=120;
+
+
+
+
+
+10.128.69.246 
+10.128.69.203
+
+
+###
+# Create an user account and grant permission
+###
+
+CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON db1.* To 'user'@'localhost' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON *.* To 'user'@'hostname' IDENTIFIED BY 'password';
+
+
+### To provide a specific user with a permission, you can use this framework:
+
+ GRANT [type of permission] ON [database name].[table name] TO ‘[username]’@'localhost’;
+
+### If you need to revoke a permission, the structure is almost identical to granting it:
+
+ REVOKE [type of permission] ON [database name].[table name] FROM ‘[username]’@‘localhost’;
+
+
+###
+# MySQL DB backup
+###
+
+mysqldump -u dbadmin -p --all-databases --events --master-data > /tmp/master-dump.db
+
+
+###
+# DB transfer
+###
+scp -pv /tmp/master-dump.db apark@10.128.69.203:/tmp
+
+##############################
+### MySQL root PW recovery ###
+##############################
+1. service mysqld stop 	// systemctl stop mysql
+2. mysqld_safe --skip-grant-tables
+3. update user set password=PASSWORD('p4SS_!_\/\/0rd') where User='root';
+4. flush privileges;
+5. exit;
+
+//[root@dgh-db-replica ~]# service mysqld stop
+//Redirecting to /bin/systemctl stop  mysqld.service
+//[root@dgh-db-replica ~]# mysqld_safe --skip-grant-tables
+//150609 23:34:27 mysqld_safe Logging to '/var/log/mysqld.log'.
+//150609 23:34:27 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+//mysql --user=root mysql
+//update user set password=PASSWORD('new-password') where User='root';
+//flush privileges;
+//exit;
+
+6. mysql -u root -p
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################
+### Create DB ###
+#################
+
+
+# mysql -u root -p
+# show databases;
+#
+
+CREATE DATABASE bmwi8;
+
+SHOW DATABASES;
+
+USE bmwi8;
+
+SHOW TABLES;
+
+CREATE TABLE model (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+		   name CHAR(25), 
+		   price INT(7)
+		   );
+
+INSERT INTO model (id, name, price) 
+	VALUES ( 'NULL', 'mega', '135000');
+
+SELECT * FROM model;
+
+
+
+CREATE TABLE spec (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, engine VARCHAR(25), speed INT(3));
+
+INSERT INTO spec (id, engine, speed) VALUES ('NULL', 'V8', '155'), ('NULL', 'i6', '130');
+
+SELECT * FROM spec;
+
+
+CREATE TABLE modle (
+		id int not null primary key auto_increment, 
+		name char(25), 
+		price INT(6),  
+		engine VARCHAR(3), 
+		speed INT(3)
+		);
+
+INSERT INTO modle (id, name, price, engine, speed) 
+	    values('null','mega','135000','V8','153');
+INSERT INTO modle (id, name, price, engine, speed) 
+            values('null','giga','125000','V6','143');
+INSERT INTO modle (id, name, price, engine, speed) 
+	    values('null','pega','165000','V8','163');
+INSERT INTO modle (id, name, price, engine, speed) 
+	    values('null','peta','165000','V8','173');
+
+
+
+SELECT * FROM model;
++----+------+--------+--------+-------+
+| id | name | price  | engine | speed |
++----+------+--------+--------+-------+
+|  1 | mega | 135000 | V8     |   153 |
+|  2 | giga | 125000 | V6     |   143 |
+|  3 | pega | 165000 | V8     |   163 |
+|  4 | peta | 165000 | V8     |   173 |
++----+------+--------+--------+-------+
+
+
+SELECT * FROM model where engine ='v8' AND speed ='153';
++----+------+--------+--------+-------+
+| id | name | price  | engine | speed |
++----+------+--------+--------+-------+
+|  1 | mega | 135000 | V8     |   153 |
++----+------+--------+--------+-------+
+
+select count(*) from model;  		<= Using count function to total count
+SELECT * FROM model LIMIT 10;		<= View 10 lines
+
+UPDATE model SET engine ='v6' WHERE id =1;
+
+SELECT * FROM model WHERE engine = 'v8';
+
+RENAME TABLE modle TO model;
+
+SELECT * FROM modle WHERE speed >=163;
+
+SHOW COLUMNS FROM spec;
+
+DROP TABLE car;   <= Delete car from table
+
+DROP DATABASE address;
+
+########################
+# 7-2 String functions #
+########################
+mysql> SELECT 'HELLO', 'WORLD';
++-------+-------+
+| HELLO | WORLD |
++-------+-------+
+| HELLO | WORLD |
++-------+-------+
+
+mysql> SELECT CONCAT ('HELLO', ', ', 'WORLD');
++---------------------------------+
+| CONCAT ('HELLO', ', ', 'WORLD') |
++---------------------------------+
+| HELLO, WORLD                    |
++---------------------------------+
+
+mysql> SELECT CONCAT_WS (':', 'HELLO', 'WORLD', 'one', 'tow');
++-------------------------------------------------+
+| CONCAT_WS (':', 'HELLO', 'WORLD', 'one', 'tow') |
++-------------------------------------------------+
+| HELLO:WORLD:one:tow                             |
++-------------------------------------------------+
+
+mysql> SELECT LPAD( title, 30, ' ' ) FROM album;    <= Left
++--------------------------------+
+| LPAD( title, 30, ' ' )         |
++--------------------------------+
+|         Two Men with the Blues |
+|            Hendrix in the West |
+
+
+mysql> SELECT RPAD( title, 30, ' ' ) FROM album;	<= Right
++--------------------------------+
+| RPAD( title, 30, ' ' )         |
++--------------------------------+
+| Two Men with the Blues         |
+| Hendrix in the West            |
+
+mysql> SELECT LPAD( title, 15, ' ' ) FROM album;	<= Truncated to 15 character/ Good for report
++------------------------+
+| LPAD( title, 15, ' ' ) |
++------------------------+
+| Two Men with th        |
+| Hendrix in the         |
+
+
+mysql> SELECT id, album_id, title, track_number, duration
+    -> from track
+    -> ORDER BY album_id, track_number;
++----+----------+---------------------------------------+--------------+----------+
+| id | album_id | title                                 | track_number | duration |
++----+----------+---------------------------------------+--------------+----------+
+|  1 |        1 | Bright Lights Big City                |            1 |      320 |
+|  2 |        1 | Night Life                            |            2 |      344 |
+
+
+
+mysql> SELECT id, album_id, title, track_number, SEC_TO_TIME(duration) FROM track ORDER BY album_id, track_number;
++----+----------+---------------------------------------+--------------+-----------------------+
+| id | album_id | title                                 | track_number | SEC_TO_TIME(duration) |
++----+----------+---------------------------------------+--------------+-----------------------+
+|  1 |        1 | Bright Lights Big City                |            1 | 00:05:20              |
+|  2 |        1 | Night Life                            |            2 | 00:05:44              |
+
+
+
+mysql> SELECT id, album_id, title, track_number, CONCAT_WS ( ':', duration DIV 60, LPAD(duration MOD                      60, 2, '0' )) AS Duration FROM track ORDER BY album_id, track_number;
++----+----------+---------------------------------------+--------------+----------+
+| id | album_id | title                                 | track_number | Duration |
++----+----------+---------------------------------------+--------------+----------+
+|  1 |        1 | Bright Lights Big City                |            1 | 5:20     |
+|  2 |        1 | Night Life                            |            2 | 5:44     |
+
+###########################
+# 7-3 Numberic Functions  #
+###########################
+
+mysql> SELECT 320 DIV 60, 320 MOD 60;
++------------+------------+
+| 320 DIV 60 | 320 MOD 60 |
++------------+------------+
+|          5 |         20 |
++------------+------------+
+
+
+
+mysql> SELECT CONCAT_WS( ':', duration DIV 60, LPAD ( duration MOD 60, 2, '0' ) ) FROM track;
++---------------------------------------------------------------------+
+| CONCAT_WS( ':', duration DIV 60, LPAD ( duration MOD 60, 2, '0' ) ) |
++---------------------------------------------------------------------+
+| 5:20                                                                |
+| 15:44                                                               |
+
+# CONCAT_WS for ':', duration DIV 60, LPAD ( duration MOD 60, 2, '0' ) 
+# LPAD ( duration MOD 60, 2, '0' ) 	<=Use LPAD to for mat 'duration MOD 60(Moduler sec left)
+					  2 Characters long,  padded 0 space on left.
+# duration DIV 60	<= How many mins 
+
+
+SELECT HEX ( 123 );
+SELECT BIN ( 123 );
+SELECT OCT ( 123 );
+SELECT CRC32 ( 'Hello, Word' );
+SELECT HEX(CRC32 ( 'Hello, Word' ));
+
+mysql> SELECT HEX( CRC32 ( 'Hello, World'));
++-------------------------------+
+| HEX( CRC32 ( 'Hello, World')) |
++-------------------------------+
+| 265B86C6                      |
++-------------------------------+
+
+mysql> SELECT title, HEX( CRC32 (title)) FROM track;
++---------------------------------------+---------------------+
+| title                                 | HEX( CRC32 (title)) |
++---------------------------------------+---------------------+
+| Bright Lights Big City                | AA898F03            |
+| Night Life                            | 3887EDB5            |
+
+
+mysql> SELECT FORMAT (10000000, 2);
++----------------------+
+| FORMAT (10000000, 2) |
++----------------------+
+| 10,000,000.00        |
++----------------------+
+
+###
+# 7-4 Date and Time functions
+
+mysql> SELECT NOW();
++---------------------+
+| NOW()               |
++---------------------+
+| 2015-04-03 16:18:37 
+
+mysql> SELECT CURDATE();
++------------+
+| CURDATE()  |
++------------+
+| 2015-04-03 |
++------------+
+
+mysql> SELECT CURTIME();
++-----------+
+| CURTIME() |
++-----------+
+| 16:20:50  |
++-----------+
+
+mysql> SELECT UTC_TIMESTAMP();
++---------------------+
+| UTC_TIMESTAMP()     |
++---------------------+
+| 2015-04-03 23:21:26 |
++---------------------+
+
+mysql> SELECT NOW(), UTC_TIMESTAMP(), NOW() - UTC_TIMESTAMP();
++---------------------+---------------------+-------------------------+
+| NOW()               | UTC_TIMESTAMP()     | NOW() - UTC_TIMESTAMP() |
++---------------------+---------------------+-------------------------+
+| 2015-04-03 16:23:13 | 2015-04-03 23:23:13 |                  -70000 |
++---------------------+---------------------+-------------------------+
+
+mysql> SELECT NOW(), UTC_TIMESTAMP(), TIME (NOW() - UTC_TIMESTAMP());
++---------------------+---------------------+--------------------------------+
+| NOW()               | UTC_TIMESTAMP()     | TIME (NOW() - UTC_TIMESTAMP()) |
++---------------------+---------------------+--------------------------------+
+| 2015-04-03 16:23:47 | 2015-04-03 23:23:47 | -07:00:00                      |
++---------------------+---------------------+--------------------------------+
+
+mysql> SELECT DATEDIFF (NOW(), '2015-04-01');
++--------------------------------+
+| DATEDIFF (NOW(), '2015-04-01') |
++--------------------------------+
+|                              2 | 
++--------------------------------+
+
+mysql> SELECT DATE_FORMAT( NOW(), '%W, %D %M %Y, %T');
++-----------------------------------------+	<=%T time
+| DATE_FORMAT( NOW(), '%W, %d %M %Y, %T') |	<=%W day of the week
++-----------------------------------------+	<=%D day of the month
+| Friday, 03 April 2015, 16:27:17         |	<=%M month of the year
++-----------------------------------------+     <=%Y year
+
+
+###
+# Tiem zones in MySQL
+###
+
+mysql> CREATE TABLE tztest ( id INT AUTO_INCREMENT NOT NULL PRIMARY KEY, name VARCHAR(255), stamp TIMESTAMP );
+
+
+mysql> SELECT @@time_zone;   <= @@  ask the system
++-------------+
+| @@time_zone |
++-------------+
+| SYSTEM      |
++-------------+
+
+###
+# MySQL Time zone table install first!
+###
+
+SET time_zone='US/EASTERN';
+mysql> select @@time_zone;
++-------------+
+| @@time_zone |
++-------------+
+| US/EASTERN  |
++-------------+
+
+mysql>select time_zone='system';
+
+###
+# 7-8 Aggregate functions
+###
+
+mysql> show columns from country;
++----------------+----------------------
+| Field          | Type                  
++----------------+----------------------
+| Code           | char(3)                
+| Name           | char(52)                                                       
+| Continent      | enum('Asia','Europe',
+| Region         | char(26)                                     
+
+
+mysql> SELECT COUNT(DISTINCT region) from country;
++------------------------+
+| COUNT(DISTINCT region) |
++------------------------+
+|                     25 |
+
+mysql> SELECT region, COUNT(region) FROM country GROUP BY region;
++---------------------------+---------------+
+| region                    | COUNT(region) |
++---------------------------+---------------+
+| Antarctica                |             5 |
+| Australia and New Zealand |             5 |
+| Baltic Countries          |             3 |
+
+
+mysql> SELECT region, GROUP_CONCAT(name) FROM country GROUP BY region;
+
+| region                    | GROUP_CONCAT(name)  
+| Baltic Countries          | Latvia,Lithuania,Estonia 
+
+
+mysql> SELECT region, GROUP_CONCAT(name ORDER BY name SEPARATOR ' / ' ) FROM country GROUP BY region;
+
+| region                    | GROUP_CONCAT(name) 
+| Baltic Countries          | Estonia / Latvia / Lithuania
+
+7-8 Full-text speech
+mysql> CREATE TABLE articles ( id INT AUTO_INCREMENT NOT NULL PRIMARY KEY, title VARCHAR(255), body TEXT, FULLTEXT( title, body ) );
+
+
+mysql> INSERT INTO articles (title, body) VALUES ( 'MySQL Tutorial', 'DBMS stands for DataMase Mangement System ...');
+mysql> select * from articles;
++----+-----------------------+---------------------------------------------------------------+
+| id | title                 | body                                                          |
++----+-----------------------+---------------------------------------------------------------+
+|  1 | MySQL Tutorial        | DBMS stands for DataMase Mangement System ...                 |
+|  2 | How to use MySQL Well | After you went through the ...                                |
+|  3 | Optimizing MySQL      | After you went through the ...                                |
+|  4 | Optimizing MySQL      | The tutorial will end ...                                     |
+|  5 | 1001 MySQL Tricks     | The tutorial will end show...                                 |
+|  6 | 1001 MySQL Tricks     | 1. Never rund mysql as root. 2. The tutorial will end show... |
+|  7 | 1001 MySQL Tricks     | 1. Never rund mysql as root. 2. The tutorial will end show... |
++----+-----------------------+---------------------------------------------------------------+
+
+
+mysql> SELECT * FROM articles WHERE MATCH (title, body) AGAINST ( 'dbms');
++----+----------------+-----------------------------------------------+
+| id | title          | body                                          |
++----+----------------+-----------------------------------------------+
+|  1 | MySQL Tutorial | DBMS stands for DataMase Mangement System ... |
++----+----------------+-----------------------------------------------+
+
+
+####BOOLEAN MODE ###
+
+mysql> SELECT * FROM articles WHERE MATCH (title, body) AGAINST ( '+dbms -management' IN BOOLEAN MODE);
++----+----------------+-----------------------------------------------+
+| id | title          | body                                          |
++----+----------------+-----------------------------------------------+
+|  1 | MySQL Tutorial | DBMS stands for DataMase Mangement System ... |
++----+----------------+-----------------------------------------------+
+
+
+mysql> SELECT * FROM articles WHERE MATCH (title, body) AGAINST ( 
+       '+dbms -management' WITH QUERY EXPANSION);
++----+-----------------------+---------------------------------------------------------------+
+| id | title                 | body                                                          |
++----+-----------------------+---------------------------------------------------------------+
+|  1 | MySQL Tutorial        | DBMS stands for DataMase Mangement System ...                 |
+|  6 | 1001 MySQL Tricks     | 1. Never rund mysql as root. 2. The tutorial will end show... |
+|  7 | 1001 MySQL Tricks     | 1. Never rund mysql as root. 2. The tutorial will end show... |
+|  4 | Optimizing MySQL      | The tutorial will end ...                                     |
+|  5 | 1001 MySQL Tricks     | The tutorial will end show...                                 |
+|  2 | How to use MySQL Well | After you went through the ...                                |
+|  3 | Optimizing MySQL      | After you went through the ...                                |
++----+-----------------------+---------------------------------------------------------------+
+
+
+
+
+8-1 PHP INTERFACES
+MySQLi & PDO(PHP Data Object)
+
+| HELLOWORLD                |
++---------------------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MySQL
+--------------------------------------------------------------
+###					###
+###  DAILY PRACTICE			###
+###					###
+
+
+CentOS7
+sudo rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+sudo yum -y install mysql-community-server
+
+
+
+CREATE DATABASE bmwi8;			vs  
+
+SHOW DATABASES;
+
+USE bmwi8;
+
+SHOW TABLES;
+
+CREATE TABLE model (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name CHAR(25), price INT(7));
+
+INSERT INTO model (id, name, price) VALUES ( 'NULL', 'mega', '135000');
+
+SELECT * FROM model;
+
+CREATE TABLE spec (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, engine VARCHAR(25), speed INT(3));
+
+INSERT INTO spec (id, engine, speed) VALUES ('NULL', 'V8', '155'), ('NULL', 'i6', '130');
+SELECT * FROM spec;
+
+CREATE TABLE modle (id int not null primary key auto_increment, name char(25), price INT(6),  engine VARCHAR(3), speed INT(3));
+
+INSERT INTO modle (id, name, price, engine, speed) values('null','mega','135000','V8','153');
+
+INSERT INTO modle (id, name, price, engine, speed) values('null','giga','125000','V6','143');
+
+INSERT INTO modle (id, name, price, engine, speed) values('null','pega','165000','V8','163');
+
+INSERT INTO modle (id, name, price, engine, speed) values('null','peta','165000','V8','173');
+
+RENAME TABLE modle TO model;
+
+SELECT * FROM model;
++----+------+--------+--------+-------+
+| id | name | price  | engine | speed |
++----+------+--------+--------+-------+
+|  1 | mega | 135000 | V8     |   153 |
+|  2 | giga | 125000 | V6     |   143 |
+|  3 | pega | 165000 | V8     |   163 |
+|  4 | peta | 165000 | V8     |   173 |
++----+------+--------+--------+-------+
+
+
+SELECT * FROM model where engine ='v8' AND speed ='153';
++----+------+--------+--------+-------+
+| id | name | price  | engine | speed |
++----+------+--------+--------+-------+
+|  1 | mega | 135000 | V8     |   153 |
++----+------+--------+--------+-------+
+
+UPDATE model SET engine ='v6' WHERE id =1;
+
+SELECT * FROM model WHERE engine = 'v8';
+
+RENAME TABLE modle TO model;
+
+SELECT * FROM modle WHERE speed >=163;
+
+SHOW COLUMNS FROM spec;
+
+DROP TABLE car;   <= Delete car from table
+
+DROP DATABASE address;
+
+###
+###
+###
+
+
+#######################################
+## sudo apt-get install lamp-server^  # <= Ubuntu LAMP stack install
+#######################################
+
+Cygwin connecting Windows WAMP Mysql server
+Install Cygwin MySQL packages
+$which mysql   		<= check
+/usr/bin/mysql
+Since no mysql server running under /usr/bin/mysql, connect through ip
+#####################################
+# $mysql -u root -p -h 127.0.0.1	#
+#####################################
+
+
+Ubuntu 14
+1. apt-get install mysql-server
+
+2. mysql_install_db
+   mysql_secure_installation  		<= setup root password
+
+3. Try run 
+   mysql -u root -p
+   
+   ERROR 2002 (HY000): Can't connect to local MySQL server 
+   through socket    '/var/run/mysqld/mysqld.sock' (2)
+** Because of incompleted packages installed.
+** use sudo apt-get install lamp-server^  **
+
+4. Try reinstall
+  apt-get install mysql-server-5.5
+
+5. check MySQL my.cnf file
+  vi /var/lib/mysql/mysql.sock
+
+6. check mysql status
+  mysqladmin -u root -p status
+
+7. To find all socket files on your system run:
+  sudo find / -type s
+
+8. Once you find where the socket is being opened, add or 
+   edit the line to your /etc/my.cnf file with the path to the socket file:
+  U14 
+  socket /run/mysqld/mysqld.sock
+
+  # socket=/var/lib/mysql/mysql.sock
+  
+9. Setup MySQL admin password
+  /usr/bin/mysqladmin -u root password 'new-password'
+
+Step Three ? Install PHP
+
+apt-get install php5 libapache2-mod-php5 php5-mcrypt
+
+
+
+vi /etc/apache2/mods-enabled/dir.conf
+
+It will look like this:
+
+<IfModule mod_dir.c>
+    DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
+</IfModule>
+
+
+php -r 'echo "\n\nYour PHP installation is working fine.\n\n\n";'
+
+Your PHP installation is working fine.
+
+#############################################################################
+1. 
+SHOW DATABASES;
+CREATE DATABASE db_name;    <=Creating DB
+USE db_name;				
+DROP DATABASE db_name;		<= **Warning**Delete & Empty DB at same time
+###
+# mysql> SHOW WARNINGS\G
+###
+
+2.Creating a user account
+	Admin=>	
+	GRANT ALL ON *.* TO admin@localhost WITH GRANT OPTION;
+	
+	Specific DB admin =>
+	GRANT ALL PRIVILEGES ON db_name.* TO 'db_admin'@'localhost' IDENTIFIED BY 'dbadmin';
+	
+	To apply new user's privileges =>
+	FLUSH RPIVILEGES;
+	
+	check new ID privileges =>
+	SHOW GRANTS FOR 'user_id'@'localhost';
+
+	PW set
+	UPDATE mysql.user SET PASSWORD = PASSWORD('test!!') WHERE User = 'dbadmin';
+	
+	
+	
+3. Login specific database but same by permission
+	mysql -u dbadmin -p
+	mysql -u dbadmin -p dbadmin_db
+
+4. Import DATABASE 
+	$ mysql -u dbadmin -p -h 127.0.0.1  < album-mysql.sql   
+	$ use album;
+	$ show tables;
+	+----------------+
+	| Tables_in_test |
+	+----------------+
+	| customer       |
+	| item           |
+	| numerics       |
+	| sale           |
+	+----------------+
+	$ select * from item;
+	$ select count(*) from item; 	<= If too many, just count number of items.  same as wc -l 
+	+----------+					   Function call COUNT argument in (*) 
+	| count(*) |
+	+----------+
+	|     4079 |
+	+----------+
+
+
+	
+5. Database Table creation
+mysql> CREATE TABLE subjects (						<=
+	->  id INT(11) NOT NULL AUTO_INCREMENT,			<= 10,000,000,000(10-billions/ just like a ticketing number i++)
+	->  menu_name VARCHAR(30) NOT NULL,				<= 30 character length
+	->  position INT(3) NOT NULL,					<= 999 
+	->  visible TINYINT(1) NOT NULL,				<= boolean type alias TINYINT 1 (True 0 or False 1)
+	->  PRIMARY KEY (id)							<= Indexing using ID
+	->);
+Query OK, 0 rows affected (0.05 sec)	
+
+mysql> show tables;
++----------------------+
+| Tables_in_dbadmin_db |
++----------------------+
+| subjects             |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> show columns from subjects;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| menu_name | varchar(30) | NO   |     | NULL    |                |
+| position  | int(3)      | NO   |     | NULL    |                |
+| visible   | tinyint(1)  | NO   |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+5. CRUD (90~95% usages in DB)
+	A. SQL SELECT (read)
+		SELECT *						<= select all columns or id, menu_name,
+		FROM table						<= 
+		WHERE columns1 = 'some_text'	<= matching rows
+		ORDER BY column1 ASC;			<= ascending or DESC <=descending
+	
+	B. SQL INSERT (create)
+		INSERT INTO table (column1, column2, column3)
+		VALUES (val1, val2, val3);
+		
+	C. SQL UPDATE (update)
+		UPDATE table
+		SET column1 = 'some_text'
+		WHERE id = 1;
+	
+	D. SQL DELETE (delete)
+		DELETE FROM table
+		WHERE id = 1;
+		
+		
+mysql> INSERT INTO subjects (menu_name, position, visible) VALUES ('DB admin Databse', 1, 1);
+mysql> INSERT INTO subjects (menu_name, position, visible) VALUES ('Products', 2, 1);	
+mysql> INSERT INTO subjects (menu_name, position, visible) VALUES ('Services', 3, 1);
+mysql> INSERT INTO subjects (menu_name, position, visible) VALUES ('Misc', 4, 0);
+		
+mysql> select * from subjects WHERE visible = 0;
++----+-----------+----------+---------+
+| id | menu_name | position | visible |
++----+-----------+----------+---------+
+|  4 | Misc      |        4 |       0 |
++----+-----------+----------+---------+
+1 row in set (0.00 sec)
+mysql> select * from subjects WHERE visible = 1 order by position asc;
+mysql> select * from subjects WHERE visible = 1 order by position desc;
+mysql> select * from subjects WHERE id = 2;
+
+
+UPDATE
+Change invisible to visible
+mysql> UPDATE subjects SET visible = 1 WHERE id =4;  <= visible id 4 only
+mysql> UPDATE subjects SET visible = 1 WHERE id <4;  <= visible all ids less than 4
+DELETE
+mysql> DELETE FROM subject WHERE id =4;
+
+
+One-to-Many Relationships
+
+mysql> CREATE TABLE pages (
+		->   id INT(11) NOT NULL AUTO_INCREMENT,
+		->   subject_id INT(11) NOT NULL,
+		->   menu_name VARCHAR(30) NOT NULL,
+		->   position INT(3) NOT NULL,
+		->   visible TINYINT(1) NOT NULL,
+		->   content TEXT,
+		->   PRIMARY KEY (id),
+		->   INDEX (subject_id)
+		-> );
+
+mysql> SHOW TABLES;
++----------------------+
+| Tables_in_dbadmin_db |
++----------------------+
+| pages                |
+| subjects             |
++----------------------+
+mysql> show columns from pages;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int(11)     | NO   | PRI | NULL    | auto_increment |
+| subject_id | int(11)     | NO   | MUL | NULL    |                |
+| menu_name  | varchar(30) | NO   |     | NULL    |                |
+| position   | int(3)      | NO   |     | NULL    |                |
+| visible    | tinyint(1)  | NO   |     | NULL    |                |
+| contect    | text        | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+
+Populating the relational table
+mysql> INSERT INTO pages (subject_id, menu_name, position, visible, contect)
+    -> VALUES (1,'Our Mission', 1, 1, 'Our mission has always been...');
+
+MYSQL API in PHP( mysqli and PDO(PHP Data Object-Object Orient))
+
+#################
+#   Data Type   # 
+#################
+1. Numeric
+mysql> describe numerics;
++-------+---------------+------+-----+---------+----------------+
+| Field | Type          | Null | Key | Default | Extra          |
++-------+---------------+------+-----+---------+----------------+
+| id    | int(11)       | NO   | PRI | NULL    | auto_increment |
+| da    | decimal(10,2) | YES  |     | NULL    |                |
+| db    | decimal(10,2) | YES  |     | NULL    |                |
+| fa    | float         | YES  |     | NULL    |                |
+| fb    | float         | YES  |     | NULL    |                |
++-------+---------------+------+-----+---------+----------------+
+
+mysql> select * from numerics;
++----+------+------+------+------+
+| id | da   | db   | fa   | fb   |
++----+------+------+------+------+
+|  1 | 0.10 | 0.20 |  0.1 |  0.2 |
++----+------+------+------+------+
+
+mysql> SELECT da, db, da + db FROM numerics;
++------+------+---------+
+| da   | db   | da + db |
++------+------+---------+
+| 0.10 | 0.20 |    0.30 |
++------+------+---------+
+
+mysql> SELECT da, db, da + db = .3 FROM numerics;
++------+------+--------------+
+| da   | db   | da + db = .3 |
++------+------+--------------+
+| 0.10 | 0.20 |            1 |		<= True
+
++------+------+--------------+
+
+mysql> SELECT fa, fb, fa + fb = .3 FROM numerics;
++------+------+--------------+
+| fa   | fb   | fa + fb = .3 |
++------+------+--------------+
+|  0.1 |  0.2 |            0 |		<= False
++------+------+--------------+
+
+mysql> SELECT fa, fb, fa + fb FROM numerics;
++------+------+---------------------+
+| fa   | fb   | fa + fb             |
++------+------+---------------------+
+|  0.1 |  0.2 | 0.30000000447034836 |
++------+------+---------------------+
+
+#####
+# Date and Time
+####
+mysql> CREATE TABLE date_test ( date DATETIME, stamp TIMESTAMP);
+mysql> INSERT INTO date_test ( date ) values ( '2015-04-02 12:07:29' );
+mysql> SELECT date, stamp, DATEDIFF( date, stamp ) FROM date_test;
++---------------------+-------+-------------------------+
+| date                | stamp | DATEDIFF( date, stamp ) |
++---------------------+-------+-------------------------+
+| 2015-04-02 12:07:29 | NULL  |                    NULL |
+| 2015-04-02 12:07:29 | NULL  |                    NULL |
+| 2009-05-05 15:03:34 | NULL  |                    NULL |
++---------------------+-------+-------------------------+
+
+mysql> DROP TABLE datetest;
+
+Bit Type
+mysql> CREATE TABLE bittest ( b1 BIT(8), b2 BIT(10) );
+mysql> INSERT INTO bittest (b1, b2) VALUES (b'11110000', b'01011');
+mysql> SELECT * FROM bittest;
++------+------+
+| b1   | b2   |
++------+------+
+| ▒           |		<= Unreadable value
+              |
++------+------+
+mysql> SELECT b1 + 0, b2 + 0 FROM bittest;  <= adding 0 to change to number
++--------+--------+
+| b1 + 0 | b2 + 0 |
++--------+--------+
+|    240 |     11 |
++--------+--------+
+mysql> SELECT BIN(b1), BIN(b2) FROM bittest;  <= using BIN function
++----------+---------+
+| BIN(b1)  | BIN(b2) |
++----------+---------+
+| 11110000 | 1011    |
++----------+---------+
+mysql> SELECT BIN(b1), OCT(b1), HEX(b1) FROM bittest;
++----------+---------+---------+
+| BIN(b1)  | OCT(b1) | HEX(b1) |
++----------+---------+---------+
+| 11110000 | 360     | F0      |
++----------+---------+---------+
+
+BOOLEAN VALUES
+No bloonean type in MySQL
+BOOL is an alias for TINYINT
+True is 1 
+False is 0
+BIT type is excellent for BOOLEAN value
+mysql> SELECT 5 = 5;
++-------+
+| 5 = 5 |
++-------+
+|     1 |	<= TURE
++-------+
+mysql> SELECT 5 = 6;
++-------+
+| 5 = 6 |
++-------+
+|     0 |	<= FALSE
++-------+
+Enumerator(연산자?)
+mysql> CREATE TABLE enumtest ( color ENUM( 'red', 'blue', 'green'));
+mysql> INSERT INTO enumtest (color) VALUES ( 'red' );
+mysql> SELECT * FROM enumtest;
++-------+
+| color |
++-------+
+| red   |
++-------+
+mysql> INSERT INTO enumtest (color) VALUES ( 'blue' );
+mysql> INSERT INTO enumtest (color) VALUES ( 'green' );
+mysql> SELECT * FROM enumtest;
++-------+
+| color |
++-------+
+| red   |
+| blue  |
+| green |
++-------+
+mysql> INSERT INTO enumtest (color) VALUES ( 'orange' );
+Query OK, 1 row affected, **1 warning** (0.00 sec)
+
+mysql> SELECT * FROM enumtest;
++-------+
+| color |
++-------+
+| red   |
+| blue  |
+| green |
+|       |	<= store empty value 
++-------+
+
+mysql> CREATE TABLE settest ( attrib SET ( 'bold', 'italic', 'underline'));
+
+
+
+##################################
+# Part 1. CentOS7 MYSQL Install  #
+##################################
+
+sudo rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+sudo yum -y install mysql-community-server
+
+systemctl start mysql     //     service mysqld start
+
+
+### PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !
+### To do so, start the server, then issue the following commands:
+
+/usr/bin/mysqladmin -u root password 'new-password'
+
+
+### Alternatively you can run:
+/usr/bin/mysql_secure_installation
+
+
+
+
+#########################
+# 2. Master DB Config	#
+#########################
+
+vi /etc/my.cnf
+
+# add following two lines
+[mysqld]
+server-id = 1
+log-bin = master-bin.log
+
+
+# Restart mysql
+systemctl restart mysql    //    service mysqld restart
+
+
+# Login to mysql
+mysql -u root -p
+
+
+# Creating a Slave-DB-ID account to access Master DB
+
+mysql> grant replication slave on *.* to 'slave_db_ID'@'x.x.x.x' identified by 'db_pw';
+
+mysql> flush privileges;
+
+mysql> flush tables with read lock;
+
+mysql> show master status;   // show master status\G
+
+Exit mysql
+
+
+# Backing up DB
+
+systemctl stop mysql    //    service mysqld stop
+
+mysqldump -u root -p --all-databases --events --master-data > /tmp/master-dump.db
+
+# Transfer dump.db file to slave server
+rsync -avpP -e ssh /tmp/master-dump.db root@slave:/tmp/
+
+
+
+#########################
+# 3. Slave DB Config    #
+#########################
+
+vi /etc/my.cnf
+
+# add following two lines
+[mysqld]
+
+server-id = 2
+relay-log = slave-relay-bin
+
+###Optional###
+#relay-log-index = slave-relay-bin.index
+#replicate-wild-ignore-table=mysql.%
+#replicate-wild-ignore-table=information_schema.%
+#replicate-wild-ignore-table=performance_schema.%           # % <-All or IP
+##############
+
+# Restart mysql
+systemctl restart mysql    //    service mysqld restart
+
+
+# Login to mysql
+
+mysql> start slave;        //    show slave status\G; 
+
+# Stop Slave server for DB restore
+
+mysql> stop slave; 	  
+
+mysql> exit
+
+
+# Restore master db to slave db from SHELL Prompt
+
+mysql -u root -p < /tmp/master-dump.db
+
+
+# Login to mysql
+
+mysql> start slave;        
+
+
+mysql> show slave status;     //    show slave status\G;
+
+
+
+Example:
+
+mysql> show slave status\G;
+*************************** 1. row ***************************
+               Slave_IO_State: Connecting to master
+                  Master_Host: 192.168.221.143
+                  Master_User: nozatech
+                  Master_Port: 3306
+                Connect_Retry: 60
+              Master_Log_File: master-bin.000001
+          Read_Master_Log_Pos: 415
+               Relay_Log_File: lsave-relay-bin.000001
+                Relay_Log_Pos: 4
+        Relay_Master_Log_File: master-bin.000001
+             Slave_IO_Running: Connecting
+            Slave_SQL_Running: Yes
+      ************************************
+1 row in set (0.00 sec)
+
+ERROR:
+No query specified
+
+
+
+
+### login
+mysql -u root -p
+
+
+user PW change
+
+mysql -u root -p
+mysql> show databases;
+mysql> use db_name;
+mysql> show tables;
+mysql> desc users;
+mysql> select userid,alias,passwd from users;
++--------+----------------------------------+-------+
+| userid | passwd                           | alias |
++--------+----------------------------------+-------+
+|      1 | 5fce1b3e34b520afeffb37ce08c7cd66 | Admin |
+|      2 | d41d8cd98f00b204e9800998ecf8427e | guest |
++--------+----------------------------------+-------+
+mysql> update users
+     -> set passwd=md5('XXXX')
+     -> where alias="Admin";
+
+
+
+
+
+
+

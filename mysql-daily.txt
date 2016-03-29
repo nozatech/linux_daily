@@ -1,0 +1,1146 @@
+######################
+# MySQL CRUD Daily ###
+######################
+
+1. Master/Slave replication status
+	# grep mysql /var/log/syslog
+	# grep error /var/log/mysql.log
+	# mysql> SHOW SLAVE STATUS\G
+			Slave_IO_Running: Yes
+			Slave_SQL_Running: Yes
+
+
+2. Create Accounts
+
+change master to 
+master_host='dgh-db-01', 
+master_port=3306, 
+master_user='dbadmin', 
+master_password='xxxxx', 
+master_log_file='master-bin.000006', 
+master_log_pos=120;
+
+
+
+
+
+10.128.69.246 
+10.128.69.203
+
+
+###
+# Create an user account and grant permission
+###
+
+CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON db1.* To 'user'@'localhost' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON *.* To 'user'@'hostname' IDENTIFIED BY 'password';
+
+
+### To provide a specific user with a permission, you can use this framework:
+
+ GRANT [type of permission] ON [database name].[table name] TO ‘[username]’@'localhost’;
+
+### If you need to revoke a permission, the structure is almost identical to granting it:
+
+ REVOKE [type of permission] ON [database name].[table name] FROM ‘[username]’@‘localhost’;
+
+
+###
+# MySQL DB backup
+###
+
+mysqldump -u dbadmin -p --all-databases --events --master-data > /tmp/master-dump.db
+
+
+###
+# DB transfer
+###
+scp -pv /tmp/master-dump.db apark@10.128.69.203:/tmp
+
+##############################
+### MySQL root PW recovery ###
+##############################
+1. service mysqld stop 	// systemctl stop mysql
+2. mysqld_safe --skip-grant-tables
+3. update user set password=PASSWORD('xxxxx') where User='root';
+4. flush privileges;
+5. exit;
+
+//[root@dgh-db-replica ~]# service mysqld stop
+//Redirecting to /bin/systemctl stop  mysqld.service
+//[root@dgh-db-replica ~]# mysqld_safe --skip-grant-tables
+//150609 23:34:27 mysqld_safe Logging to '/var/log/mysqld.log'.
+//150609 23:34:27 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+//mysql --user=root mysql
+//update user set password=PASSWORD('new-password') where User='root';
+//flush privileges;
+//exit;
+
+6. mysql -u root -p
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################
+### Create DB ###
+#################
+
+
+# mysql -u root -p
+# show databases;
+#
+
+CREATE DATABASE bmwi8;
+
+SHOW DATABASES;
+
+USE bmwi8;
+
+SHOW TABLES;
+
+CREATE TABLE model (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+		   name CHAR(25), 
+		   price INT(7)
+		   );
+
+INSERT INTO model (id, name, price) 
+	VALUES ( 'NULL', 'mega', '135000');
+
+SELECT * FROM model;
+
+
+
+CREATE TABLE spec (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, engine VARCHAR(25), speed INT(3));
+
+INSERT INTO spec (id, engine, speed) VALUES ('NULL', 'V8', '155'), ('NULL', 'i6', '130');
+
+SELECT * FROM spec;
+
+
+CREATE TABLE modle (
+		id int not null primary key auto_increment, 
+		name char(25), 
+		price INT(6),  
+		engine VARCHAR(3), 
+		speed INT(3)
+		);
+
+INSERT INTO modle (id, name, price, engine, speed) 
+	    values('null','mega','135000','V8','153');
+INSERT INTO modle (id, name, price, engine, speed) 
+            values('null','giga','125000','V6','143');
+INSERT INTO modle (id, name, price, engine, speed) 
+	    values('null','pega','165000','V8','163');
+INSERT INTO modle (id, name, price, engine, speed) 
+	    values('null','peta','165000','V8','173');
+
+
+
+SELECT * FROM model;
++----+------+--------+--------+-------+
+| id | name | price  | engine | speed |
++----+------+--------+--------+-------+
+|  1 | mega | 135000 | V8     |   153 |
+|  2 | giga | 125000 | V6     |   143 |
+|  3 | pega | 165000 | V8     |   163 |
+|  4 | peta | 165000 | V8     |   173 |
++----+------+--------+--------+-------+
+
+
+SELECT * FROM model where engine ='v8' AND speed ='153';
++----+------+--------+--------+-------+
+| id | name | price  | engine | speed |
++----+------+--------+--------+-------+
+|  1 | mega | 135000 | V8     |   153 |
++----+------+--------+--------+-------+
+
+select count(*) from model;  		<= Using count function to total count
+SELECT * FROM model LIMIT 10;		<= View 10 lines
+
+UPDATE model SET engine ='v6' WHERE id =1;
+
+SELECT * FROM model WHERE engine = 'v8';
+
+RENAME TABLE modle TO model;
+
+SELECT * FROM modle WHERE speed >=163;
+
+SHOW COLUMNS FROM spec;
+
+DROP TABLE car;   <= Delete car from table
+
+DROP DATABASE address;
+
+########################
+# 7-2 String functions #
+########################
+mysql> SELECT 'HELLO', 'WORLD';
++-------+-------+
+| HELLO | WORLD |
++-------+-------+
+| HELLO | WORLD |
++-------+-------+
+
+mysql> SELECT CONCAT ('HELLO', ', ', 'WORLD');
++---------------------------------+
+| CONCAT ('HELLO', ', ', 'WORLD') |
++---------------------------------+
+| HELLO, WORLD                    |
++---------------------------------+
+
+mysql> SELECT CONCAT_WS (':', 'HELLO', 'WORLD', 'one', 'tow');
++-------------------------------------------------+
+| CONCAT_WS (':', 'HELLO', 'WORLD', 'one', 'tow') |
++-------------------------------------------------+
+| HELLO:WORLD:one:tow                             |
++-------------------------------------------------+
+
+mysql> SELECT LPAD( title, 30, ' ' ) FROM album;    <= Left
++--------------------------------+
+| LPAD( title, 30, ' ' )         |
++--------------------------------+
+|         Two Men with the Blues |
+|            Hendrix in the West |
+
+
+mysql> SELECT RPAD( title, 30, ' ' ) FROM album;	<= Right
++--------------------------------+
+| RPAD( title, 30, ' ' )         |
++--------------------------------+
+| Two Men with the Blues         |
+| Hendrix in the West            |
+
+mysql> SELECT LPAD( title, 15, ' ' ) FROM album;	<= Truncated to 15 character/ Good for report
++------------------------+
+| LPAD( title, 15, ' ' ) |
++------------------------+
+| Two Men with th        |
+| Hendrix in the         |
+
+
+mysql> SELECT id, album_id, title, track_number, duration
+    -> from track
+    -> ORDER BY album_id, track_number;
++----+----------+---------------------------------------+--------------+----------+
+| id | album_id | title                                 | track_number | duration |
++----+----------+---------------------------------------+--------------+----------+
+|  1 |        1 | Bright Lights Big City                |            1 |      320 |
+|  2 |        1 | Night Life                            |            2 |      344 |
+
+
+
+mysql> SELECT id, album_id, title, track_number, SEC_TO_TIME(duration) FROM track ORDER BY album_id, track_number;
++----+----------+---------------------------------------+--------------+-----------------------+
+| id | album_id | title                                 | track_number | SEC_TO_TIME(duration) |
++----+----------+---------------------------------------+--------------+-----------------------+
+|  1 |        1 | Bright Lights Big City                |            1 | 00:05:20              |
+|  2 |        1 | Night Life                            |            2 | 00:05:44              |
+
+
+
+mysql> SELECT id, album_id, title, track_number, CONCAT_WS ( ':', duration DIV 60, LPAD(duration MOD                      60, 2, '0' )) AS Duration FROM track ORDER BY album_id, track_number;
++----+----------+---------------------------------------+--------------+----------+
+| id | album_id | title                                 | track_number | Duration |
++----+----------+---------------------------------------+--------------+----------+
+|  1 |        1 | Bright Lights Big City                |            1 | 5:20     |
+|  2 |        1 | Night Life                            |            2 | 5:44     |
+
+###########################
+# 7-3 Numberic Functions  #
+###########################
+
+mysql> SELECT 320 DIV 60, 320 MOD 60;
++------------+------------+
+| 320 DIV 60 | 320 MOD 60 |
++------------+------------+
+|          5 |         20 |
++------------+------------+
+
+
+
+mysql> SELECT CONCAT_WS( ':', duration DIV 60, LPAD ( duration MOD 60, 2, '0' ) ) FROM track;
++---------------------------------------------------------------------+
+| CONCAT_WS( ':', duration DIV 60, LPAD ( duration MOD 60, 2, '0' ) ) |
++---------------------------------------------------------------------+
+| 5:20                                                                |
+| 15:44                                                               |
+
+# CONCAT_WS for ':', duration DIV 60, LPAD ( duration MOD 60, 2, '0' ) 
+# LPAD ( duration MOD 60, 2, '0' ) 	<=Use LPAD to for mat 'duration MOD 60(Moduler sec left)
+					  2 Characters long,  padded 0 space on left.
+# duration DIV 60	<= How many mins 
+
+
+SELECT HEX ( 123 );
+SELECT BIN ( 123 );
+SELECT OCT ( 123 );
+SELECT CRC32 ( 'Hello, Word' );
+SELECT HEX(CRC32 ( 'Hello, Word' ));
+
+mysql> SELECT HEX( CRC32 ( 'Hello, World'));
++-------------------------------+
+| HEX( CRC32 ( 'Hello, World')) |
++-------------------------------+
+| 265B86C6                      |
++-------------------------------+
+
+mysql> SELECT title, HEX( CRC32 (title)) FROM track;
++---------------------------------------+---------------------+
+| title                                 | HEX( CRC32 (title)) |
++---------------------------------------+---------------------+
+| Bright Lights Big City                | AA898F03            |
+| Night Life                            | 3887EDB5            |
+
+
+mysql> SELECT FORMAT (10000000, 2);
++----------------------+
+| FORMAT (10000000, 2) |
++----------------------+
+| 10,000,000.00        |
++----------------------+
+
+###
+# 7-4 Date and Time functions
+
+mysql> SELECT NOW();
++---------------------+
+| NOW()               |
++---------------------+
+| 2015-04-03 16:18:37 
+
+mysql> SELECT CURDATE();
++------------+
+| CURDATE()  |
++------------+
+| 2015-04-03 |
++------------+
+
+mysql> SELECT CURTIME();
++-----------+
+| CURTIME() |
++-----------+
+| 16:20:50  |
++-----------+
+
+mysql> SELECT UTC_TIMESTAMP();
++---------------------+
+| UTC_TIMESTAMP()     |
++---------------------+
+| 2015-04-03 23:21:26 |
++---------------------+
+
+mysql> SELECT NOW(), UTC_TIMESTAMP(), NOW() - UTC_TIMESTAMP();
++---------------------+---------------------+-------------------------+
+| NOW()               | UTC_TIMESTAMP()     | NOW() - UTC_TIMESTAMP() |
++---------------------+---------------------+-------------------------+
+| 2015-04-03 16:23:13 | 2015-04-03 23:23:13 |                  -70000 |
++---------------------+---------------------+-------------------------+
+
+mysql> SELECT NOW(), UTC_TIMESTAMP(), TIME (NOW() - UTC_TIMESTAMP());
++---------------------+---------------------+--------------------------------+
+| NOW()               | UTC_TIMESTAMP()     | TIME (NOW() - UTC_TIMESTAMP()) |
++---------------------+---------------------+--------------------------------+
+| 2015-04-03 16:23:47 | 2015-04-03 23:23:47 | -07:00:00                      |
++---------------------+---------------------+--------------------------------+
+
+mysql> SELECT DATEDIFF (NOW(), '2015-04-01');
++--------------------------------+
+| DATEDIFF (NOW(), '2015-04-01') |
++--------------------------------+
+|                              2 | 
++--------------------------------+
+
+mysql> SELECT DATE_FORMAT( NOW(), '%W, %D %M %Y, %T');
++-----------------------------------------+	<=%T time
+| DATE_FORMAT( NOW(), '%W, %d %M %Y, %T') |	<=%W day of the week
++-----------------------------------------+	<=%D day of the month
+| Friday, 03 April 2015, 16:27:17         |	<=%M month of the year
++-----------------------------------------+     <=%Y year
+
+
+###
+# Tiem zones in MySQL
+###
+
+mysql> CREATE TABLE tztest ( id INT AUTO_INCREMENT NOT NULL PRIMARY KEY, name VARCHAR(255), stamp TIMESTAMP );
+
+
+mysql> SELECT @@time_zone;   <= @@  ask the system
++-------------+
+| @@time_zone |
++-------------+
+| SYSTEM      |
++-------------+
+
+###
+# MySQL Time zone table install first!
+###
+
+SET time_zone='US/EASTERN';
+mysql> select @@time_zone;
++-------------+
+| @@time_zone |
++-------------+
+| US/EASTERN  |
++-------------+
+
+mysql>select time_zone='system';
+
+###
+# 7-8 Aggregate functions
+###
+
+mysql> show columns from country;
++----------------+----------------------
+| Field          | Type                  
++----------------+----------------------
+| Code           | char(3)                
+| Name           | char(52)                                                       
+| Continent      | enum('Asia','Europe',
+| Region         | char(26)                                     
+
+
+mysql> SELECT COUNT(DISTINCT region) from country;
++------------------------+
+| COUNT(DISTINCT region) |
++------------------------+
+|                     25 |
+
+mysql> SELECT region, COUNT(region) FROM country GROUP BY region;
++---------------------------+---------------+
+| region                    | COUNT(region) |
++---------------------------+---------------+
+| Antarctica                |             5 |
+| Australia and New Zealand |             5 |
+| Baltic Countries          |             3 |
+
+
+mysql> SELECT region, GROUP_CONCAT(name) FROM country GROUP BY region;
+
+| region                    | GROUP_CONCAT(name)  
+| Baltic Countries          | Latvia,Lithuania,Estonia 
+
+
+mysql> SELECT region, GROUP_CONCAT(name ORDER BY name SEPARATOR ' / ' ) FROM country GROUP BY region;
+
+| region                    | GROUP_CONCAT(name) 
+| Baltic Countries          | Estonia / Latvia / Lithuania
+
+7-8 Full-text speech
+mysql> CREATE TABLE articles ( id INT AUTO_INCREMENT NOT NULL PRIMARY KEY, title VARCHAR(255), body TEXT, FULLTEXT( title, body ) );
+
+
+mysql> INSERT INTO articles (title, body) VALUES ( 'MySQL Tutorial', 'DBMS stands for DataMase Mangement System ...');
+mysql> select * from articles;
++----+-----------------------+---------------------------------------------------------------+
+| id | title                 | body                                                          |
++----+-----------------------+---------------------------------------------------------------+
+|  1 | MySQL Tutorial        | DBMS stands for DataMase Mangement System ...                 |
+|  2 | How to use MySQL Well | After you went through the ...                                |
+|  3 | Optimizing MySQL      | After you went through the ...                                |
+|  4 | Optimizing MySQL      | The tutorial will end ...                                     |
+|  5 | 1001 MySQL Tricks     | The tutorial will end show...                                 |
+|  6 | 1001 MySQL Tricks     | 1. Never rund mysql as root. 2. The tutorial will end show... |
+|  7 | 1001 MySQL Tricks     | 1. Never rund mysql as root. 2. The tutorial will end show... |
++----+-----------------------+---------------------------------------------------------------+
+
+
+mysql> SELECT * FROM articles WHERE MATCH (title, body) AGAINST ( 'dbms');
++----+----------------+-----------------------------------------------+
+| id | title          | body                                          |
++----+----------------+-----------------------------------------------+
+|  1 | MySQL Tutorial | DBMS stands for DataMase Mangement System ... |
++----+----------------+-----------------------------------------------+
+
+
+####BOOLEAN MODE ###
+
+mysql> SELECT * FROM articles WHERE MATCH (title, body) AGAINST ( '+dbms -management' IN BOOLEAN MODE);
++----+----------------+-----------------------------------------------+
+| id | title          | body                                          |
++----+----------------+-----------------------------------------------+
+|  1 | MySQL Tutorial | DBMS stands for DataMase Mangement System ... |
++----+----------------+-----------------------------------------------+
+
+
+mysql> SELECT * FROM articles WHERE MATCH (title, body) AGAINST ( 
+       '+dbms -management' WITH QUERY EXPANSION);
++----+-----------------------+---------------------------------------------------------------+
+| id | title                 | body                                                          |
++----+-----------------------+---------------------------------------------------------------+
+|  1 | MySQL Tutorial        | DBMS stands for DataMase Mangement System ...                 |
+|  6 | 1001 MySQL Tricks     | 1. Never rund mysql as root. 2. The tutorial will end show... |
+|  7 | 1001 MySQL Tricks     | 1. Never rund mysql as root. 2. The tutorial will end show... |
+|  4 | Optimizing MySQL      | The tutorial will end ...                                     |
+|  5 | 1001 MySQL Tricks     | The tutorial will end show...                                 |
+|  2 | How to use MySQL Well | After you went through the ...                                |
+|  3 | Optimizing MySQL      | After you went through the ...                                |
++----+-----------------------+---------------------------------------------------------------+
+
+
+
+
+8-1 PHP INTERFACES
+MySQLi & PDO(PHP Data Object)
+
+| HELLOWORLD                |
++---------------------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MySQL
+--------------------------------------------------------------
+###					###
+###  DAILY PRACTICE			###
+###					###
+
+
+CentOS7
+sudo rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+sudo yum -y install mysql-community-server
+
+
+
+CREATE DATABASE bmwi8;			vs  
+
+SHOW DATABASES;
+
+USE bmwi8;
+
+SHOW TABLES;
+
+CREATE TABLE model (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name CHAR(25), price INT(7));
+
+INSERT INTO model (id, name, price) VALUES ( 'NULL', 'mega', '135000');
+
+SELECT * FROM model;
+
+CREATE TABLE spec (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, engine VARCHAR(25), speed INT(3));
+
+INSERT INTO spec (id, engine, speed) VALUES ('NULL', 'V8', '155'), ('NULL', 'i6', '130');
+SELECT * FROM spec;
+
+CREATE TABLE modle (id int not null primary key auto_increment, name char(25), price INT(6),  engine VARCHAR(3), speed INT(3));
+
+INSERT INTO modle (id, name, price, engine, speed) values('null','mega','135000','V8','153');
+
+INSERT INTO modle (id, name, price, engine, speed) values('null','giga','125000','V6','143');
+
+INSERT INTO modle (id, name, price, engine, speed) values('null','pega','165000','V8','163');
+
+INSERT INTO modle (id, name, price, engine, speed) values('null','peta','165000','V8','173');
+
+RENAME TABLE modle TO model;
+
+SELECT * FROM model;
++----+------+--------+--------+-------+
+| id | name | price  | engine | speed |
++----+------+--------+--------+-------+
+|  1 | mega | 135000 | V8     |   153 |
+|  2 | giga | 125000 | V6     |   143 |
+|  3 | pega | 165000 | V8     |   163 |
+|  4 | peta | 165000 | V8     |   173 |
++----+------+--------+--------+-------+
+
+
+SELECT * FROM model where engine ='v8' AND speed ='153';
++----+------+--------+--------+-------+
+| id | name | price  | engine | speed |
++----+------+--------+--------+-------+
+|  1 | mega | 135000 | V8     |   153 |
++----+------+--------+--------+-------+
+
+UPDATE model SET engine ='v6' WHERE id =1;
+
+SELECT * FROM model WHERE engine = 'v8';
+
+RENAME TABLE modle TO model;
+
+SELECT * FROM modle WHERE speed >=163;
+
+SHOW COLUMNS FROM spec;
+
+DROP TABLE car;   <= Delete car from table
+
+DROP DATABASE address;
+
+###
+###
+###
+
+
+#######################################
+## sudo apt-get install lamp-server^  # <= Ubuntu LAMP stack install
+#######################################
+
+Cygwin connecting Windows WAMP Mysql server
+Install Cygwin MySQL packages
+$which mysql   		<= check
+/usr/bin/mysql
+Since no mysql server running under /usr/bin/mysql, connect through ip
+#####################################
+# $mysql -u root -p -h 127.0.0.1	#
+#####################################
+
+
+Ubuntu 14
+1. apt-get install mysql-server
+
+2. mysql_install_db
+   mysql_secure_installation  		<= setup root password
+
+3. Try run 
+   mysql -u root -p
+   
+   ERROR 2002 (HY000): Can't connect to local MySQL server 
+   through socket    '/var/run/mysqld/mysqld.sock' (2)
+** Because of incompleted packages installed.
+** use sudo apt-get install lamp-server^  **
+
+4. Try reinstall
+  apt-get install mysql-server-5.5
+
+5. check MySQL my.cnf file
+  vi /var/lib/mysql/mysql.sock
+
+6. check mysql status
+  mysqladmin -u root -p status
+
+7. To find all socket files on your system run:
+  sudo find / -type s
+
+8. Once you find where the socket is being opened, add or 
+   edit the line to your /etc/my.cnf file with the path to the socket file:
+  U14 
+  socket /run/mysqld/mysqld.sock
+
+  # socket=/var/lib/mysql/mysql.sock
+  
+9. Setup MySQL admin password
+  /usr/bin/mysqladmin -u root password 'new-password'
+
+Step Three ? Install PHP
+
+apt-get install php5 libapache2-mod-php5 php5-mcrypt
+
+
+
+vi /etc/apache2/mods-enabled/dir.conf
+
+It will look like this:
+
+<IfModule mod_dir.c>
+    DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
+</IfModule>
+
+
+php -r 'echo "\n\nYour PHP installation is working fine.\n\n\n";'
+
+Your PHP installation is working fine.
+
+#############################################################################
+1. 
+SHOW DATABASES;
+CREATE DATABASE db_name;    <=Creating DB
+USE db_name;				
+DROP DATABASE db_name;		<= **Warning**Delete & Empty DB at same time
+###
+# mysql> SHOW WARNINGS\G
+###
+
+2.Creating a user account
+	Admin=>	
+	GRANT ALL ON *.* TO admin@localhost WITH GRANT OPTION;
+	
+	Specific DB admin =>
+	GRANT ALL PRIVILEGES ON db_name.* TO 'db_admin'@'localhost' IDENTIFIED BY 'dbadmin';
+	
+	To apply new user's privileges =>
+	FLUSH RPIVILEGES;
+	
+	check new ID privileges =>
+	SHOW GRANTS FOR 'user_id'@'localhost';
+
+	PW set
+	UPDATE mysql.user SET PASSWORD = PASSWORD('test!!') WHERE User = 'dbadmin';
+	
+	
+	
+3. Login specific database but same by permission
+	mysql -u dbadmin -p
+	mysql -u dbadmin -p dbadmin_db
+
+4. Import DATABASE 
+	$ mysql -u dbadmin -p -h 127.0.0.1  < album-mysql.sql   
+	$ use album;
+	$ show tables;
+	+----------------+
+	| Tables_in_test |
+	+----------------+
+	| customer       |
+	| item           |
+	| numerics       |
+	| sale           |
+	+----------------+
+	$ select * from item;
+	$ select count(*) from item; 	<= If too many, just count number of items.  same as wc -l 
+	+----------+					   Function call COUNT argument in (*) 
+	| count(*) |
+	+----------+
+	|     4079 |
+	+----------+
+
+
+	
+5. Database Table creation
+mysql> CREATE TABLE subjects (						<=
+	->  id INT(11) NOT NULL AUTO_INCREMENT,			<= 10,000,000,000(10-billions/ just like a ticketing number i++)
+	->  menu_name VARCHAR(30) NOT NULL,				<= 30 character length
+	->  position INT(3) NOT NULL,					<= 999 
+	->  visible TINYINT(1) NOT NULL,				<= boolean type alias TINYINT 1 (True 0 or False 1)
+	->  PRIMARY KEY (id)							<= Indexing using ID
+	->);
+Query OK, 0 rows affected (0.05 sec)	
+
+mysql> show tables;
++----------------------+
+| Tables_in_dbadmin_db |
++----------------------+
+| subjects             |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> show columns from subjects;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| menu_name | varchar(30) | NO   |     | NULL    |                |
+| position  | int(3)      | NO   |     | NULL    |                |
+| visible   | tinyint(1)  | NO   |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+5. CRUD (90~95% usages in DB)
+	A. SQL SELECT (read)
+		SELECT *						<= select all columns or id, menu_name,
+		FROM table						<= 
+		WHERE columns1 = 'some_text'	<= matching rows
+		ORDER BY column1 ASC;			<= ascending or DESC <=descending
+	
+	B. SQL INSERT (create)
+		INSERT INTO table (column1, column2, column3)
+		VALUES (val1, val2, val3);
+		
+	C. SQL UPDATE (update)
+		UPDATE table
+		SET column1 = 'some_text'
+		WHERE id = 1;
+	
+	D. SQL DELETE (delete)
+		DELETE FROM table
+		WHERE id = 1;
+		
+		
+mysql> INSERT INTO subjects (menu_name, position, visible) VALUES ('DB admin Databse', 1, 1);
+mysql> INSERT INTO subjects (menu_name, position, visible) VALUES ('Products', 2, 1);	
+mysql> INSERT INTO subjects (menu_name, position, visible) VALUES ('Services', 3, 1);
+mysql> INSERT INTO subjects (menu_name, position, visible) VALUES ('Misc', 4, 0);
+		
+mysql> select * from subjects WHERE visible = 0;
++----+-----------+----------+---------+
+| id | menu_name | position | visible |
++----+-----------+----------+---------+
+|  4 | Misc      |        4 |       0 |
++----+-----------+----------+---------+
+1 row in set (0.00 sec)
+mysql> select * from subjects WHERE visible = 1 order by position asc;
+mysql> select * from subjects WHERE visible = 1 order by position desc;
+mysql> select * from subjects WHERE id = 2;
+
+
+UPDATE
+Change invisible to visible
+mysql> UPDATE subjects SET visible = 1 WHERE id =4;  <= visible id 4 only
+mysql> UPDATE subjects SET visible = 1 WHERE id <4;  <= visible all ids less than 4
+DELETE
+mysql> DELETE FROM subject WHERE id =4;
+
+
+One-to-Many Relationships
+
+mysql> CREATE TABLE pages (
+		->   id INT(11) NOT NULL AUTO_INCREMENT,
+		->   subject_id INT(11) NOT NULL,
+		->   menu_name VARCHAR(30) NOT NULL,
+		->   position INT(3) NOT NULL,
+		->   visible TINYINT(1) NOT NULL,
+		->   content TEXT,
+		->   PRIMARY KEY (id),
+		->   INDEX (subject_id)
+		-> );
+
+mysql> SHOW TABLES;
++----------------------+
+| Tables_in_dbadmin_db |
++----------------------+
+| pages                |
+| subjects             |
++----------------------+
+mysql> show columns from pages;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int(11)     | NO   | PRI | NULL    | auto_increment |
+| subject_id | int(11)     | NO   | MUL | NULL    |                |
+| menu_name  | varchar(30) | NO   |     | NULL    |                |
+| position   | int(3)      | NO   |     | NULL    |                |
+| visible    | tinyint(1)  | NO   |     | NULL    |                |
+| contect    | text        | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+
+Populating the relational table
+mysql> INSERT INTO pages (subject_id, menu_name, position, visible, contect)
+    -> VALUES (1,'Our Mission', 1, 1, 'Our mission has always been...');
+
+MYSQL API in PHP( mysqli and PDO(PHP Data Object-Object Orient))
+
+#################
+#   Data Type   # 
+#################
+1. Numeric
+mysql> describe numerics;
++-------+---------------+------+-----+---------+----------------+
+| Field | Type          | Null | Key | Default | Extra          |
++-------+---------------+------+-----+---------+----------------+
+| id    | int(11)       | NO   | PRI | NULL    | auto_increment |
+| da    | decimal(10,2) | YES  |     | NULL    |                |
+| db    | decimal(10,2) | YES  |     | NULL    |                |
+| fa    | float         | YES  |     | NULL    |                |
+| fb    | float         | YES  |     | NULL    |                |
++-------+---------------+------+-----+---------+----------------+
+
+mysql> select * from numerics;
++----+------+------+------+------+
+| id | da   | db   | fa   | fb   |
++----+------+------+------+------+
+|  1 | 0.10 | 0.20 |  0.1 |  0.2 |
++----+------+------+------+------+
+
+mysql> SELECT da, db, da + db FROM numerics;
++------+------+---------+
+| da   | db   | da + db |
++------+------+---------+
+| 0.10 | 0.20 |    0.30 |
++------+------+---------+
+
+mysql> SELECT da, db, da + db = .3 FROM numerics;
++------+------+--------------+
+| da   | db   | da + db = .3 |
++------+------+--------------+
+| 0.10 | 0.20 |            1 |		<= True
+
++------+------+--------------+
+
+mysql> SELECT fa, fb, fa + fb = .3 FROM numerics;
++------+------+--------------+
+| fa   | fb   | fa + fb = .3 |
++------+------+--------------+
+|  0.1 |  0.2 |            0 |		<= False
++------+------+--------------+
+
+mysql> SELECT fa, fb, fa + fb FROM numerics;
++------+------+---------------------+
+| fa   | fb   | fa + fb             |
++------+------+---------------------+
+|  0.1 |  0.2 | 0.30000000447034836 |
++------+------+---------------------+
+
+#####
+# Date and Time
+####
+mysql> CREATE TABLE date_test ( date DATETIME, stamp TIMESTAMP);
+mysql> INSERT INTO date_test ( date ) values ( '2015-04-02 12:07:29' );
+mysql> SELECT date, stamp, DATEDIFF( date, stamp ) FROM date_test;
++---------------------+-------+-------------------------+
+| date                | stamp | DATEDIFF( date, stamp ) |
++---------------------+-------+-------------------------+
+| 2015-04-02 12:07:29 | NULL  |                    NULL |
+| 2015-04-02 12:07:29 | NULL  |                    NULL |
+| 2009-05-05 15:03:34 | NULL  |                    NULL |
++---------------------+-------+-------------------------+
+
+mysql> DROP TABLE datetest;
+
+Bit Type
+mysql> CREATE TABLE bittest ( b1 BIT(8), b2 BIT(10) );
+mysql> INSERT INTO bittest (b1, b2) VALUES (b'11110000', b'01011');
+mysql> SELECT * FROM bittest;
++------+------+
+| b1   | b2   |
++------+------+
+| ▒           |		<= Unreadable value
+              |
++------+------+
+mysql> SELECT b1 + 0, b2 + 0 FROM bittest;  <= adding 0 to change to number
++--------+--------+
+| b1 + 0 | b2 + 0 |
++--------+--------+
+|    240 |     11 |
++--------+--------+
+mysql> SELECT BIN(b1), BIN(b2) FROM bittest;  <= using BIN function
++----------+---------+
+| BIN(b1)  | BIN(b2) |
++----------+---------+
+| 11110000 | 1011    |
++----------+---------+
+mysql> SELECT BIN(b1), OCT(b1), HEX(b1) FROM bittest;
++----------+---------+---------+
+| BIN(b1)  | OCT(b1) | HEX(b1) |
++----------+---------+---------+
+| 11110000 | 360     | F0      |
++----------+---------+---------+
+
+BOOLEAN VALUES
+No bloonean type in MySQL
+BOOL is an alias for TINYINT
+True is 1 
+False is 0
+BIT type is excellent for BOOLEAN value
+mysql> SELECT 5 = 5;
++-------+
+| 5 = 5 |
++-------+
+|     1 |	<= TURE
++-------+
+mysql> SELECT 5 = 6;
++-------+
+| 5 = 6 |
++-------+
+|     0 |	<= FALSE
++-------+
+Enumerator(연산자?)
+mysql> CREATE TABLE enumtest ( color ENUM( 'red', 'blue', 'green'));
+mysql> INSERT INTO enumtest (color) VALUES ( 'red' );
+mysql> SELECT * FROM enumtest;
++-------+
+| color |
++-------+
+| red   |
++-------+
+mysql> INSERT INTO enumtest (color) VALUES ( 'blue' );
+mysql> INSERT INTO enumtest (color) VALUES ( 'green' );
+mysql> SELECT * FROM enumtest;
++-------+
+| color |
++-------+
+| red   |
+| blue  |
+| green |
++-------+
+mysql> INSERT INTO enumtest (color) VALUES ( 'orange' );
+Query OK, 1 row affected, **1 warning** (0.00 sec)
+
+mysql> SELECT * FROM enumtest;
++-------+
+| color |
++-------+
+| red   |
+| blue  |
+| green |
+|       |	<= store empty value 
++-------+
+
+mysql> CREATE TABLE settest ( attrib SET ( 'bold', 'italic', 'underline'));
+
+
+
+##################################
+# Part 1. CentOS7 MYSQL Install  #
+##################################
+
+sudo rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+sudo yum -y install mysql-community-server
+
+systemctl start mysql     //     service mysqld start
+
+
+### PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !
+### To do so, start the server, then issue the following commands:
+
+/usr/bin/mysqladmin -u root password 'new-password'
+
+
+### Alternatively you can run:
+/usr/bin/mysql_secure_installation
+
+
+
+
+#########################
+# 2. Master DB Config	#
+#########################
+
+vi /etc/my.cnf
+
+# add following two lines
+[mysqld]
+server-id = 1
+log-bin = master-bin.log
+
+
+# Restart mysql
+systemctl restart mysql    //    service mysqld restart
+
+
+# Login to mysql
+mysql -u root -p
+
+
+# Creating a Slave-DB-ID account to access Master DB
+
+mysql> grant replication slave on *.* to 'slave_db_ID'@'x.x.x.x' identified by 'db_pw';
+
+mysql> flush privileges;
+
+mysql> flush tables with read lock;
+
+mysql> show master status;   // show master status\G
+
+Exit mysql
+
+
+# Backing up DB
+
+systemctl stop mysql    //    service mysqld stop
+
+mysqldump -u root -p --all-databases --events --master-data > /tmp/master-dump.db
+
+# Transfer dump.db file to slave server
+rsync -avpP -e ssh /tmp/master-dump.db root@slave:/tmp/
+
+
+
+#########################
+# 3. Slave DB Config    #
+#########################
+
+vi /etc/my.cnf
+
+# add following two lines
+[mysqld]
+
+server-id = 2
+relay-log = slave-relay-bin
+
+###Optional###
+#relay-log-index = slave-relay-bin.index
+#replicate-wild-ignore-table=mysql.%
+#replicate-wild-ignore-table=information_schema.%
+#replicate-wild-ignore-table=performance_schema.%           # % <-All or IP
+##############
+
+# Restart mysql
+systemctl restart mysql    //    service mysqld restart
+
+
+# Login to mysql
+
+mysql> start slave;        //    show slave status\G; 
+
+# Stop Slave server for DB restore
+
+mysql> stop slave; 	  
+
+mysql> exit
+
+
+# Restore master db to slave db from SHELL Prompt
+
+mysql -u root -p < /tmp/master-dump.db
+
+
+# Login to mysql
+
+mysql> start slave;        
+
+
+mysql> show slave status;     //    show slave status\G;
+
+
+
+Example:
+
+mysql> show slave status\G;
+*************************** 1. row ***************************
+               Slave_IO_State: Connecting to master
+                  Master_Host: 192.168.221.143
+                  Master_User: nozatech
+                  Master_Port: 3306
+                Connect_Retry: 60
+              Master_Log_File: master-bin.000001
+          Read_Master_Log_Pos: 415
+               Relay_Log_File: lsave-relay-bin.000001
+                Relay_Log_Pos: 4
+        Relay_Master_Log_File: master-bin.000001
+             Slave_IO_Running: Connecting
+            Slave_SQL_Running: Yes
+      ************************************
+1 row in set (0.00 sec)
+
+ERROR:
+No query specified
+
+
+
+
+### login
+mysql -u root -p
+
+
+user PW change
+
+mysql -u root -p
+mysql> show databases;
+mysql> use db_name;
+mysql> show tables;
+mysql> desc users;
+mysql> select userid,alias,passwd from users;
++--------+----------------------------------+-------+
+| userid | passwd                           | alias |
++--------+----------------------------------+-------+
+|      1 | 5fce1b3e34b520afeffb37ce08c7cd66 | Admin |
+|      2 | d41d8cd98f00b204e9800998ecf8427e | guest |
++--------+----------------------------------+-------+
+mysql> update users
+     -> set passwd=md5('XXXX')
+     -> where alias="Admin";
+
