@@ -56,14 +56,32 @@ Daily Linux CMD List & Scripts
 		k. $ git checkout master
 			Switched to branch 'master'
 			Your branch is up-to-date with 'origin/master'.
-
 		l. $ git pull   <= check if MASTER has been modified by others
+		-------------------------------------------------------------------
 		m. 	$ git checkout function01
 		n.	$ git merge master
 			
 		o.  $ git checkout f
 
+			$ git status
+				On branch function01
+				Your branch is up-to-date with 'origin/function01'.
+				nothing to commit, working directory clean
 
+		git pull does two operations; first it does a git fetch to get up to date with the commits in the remote repo (which updates the origin/master ref in your local repo), then it does a git merge to merge those commits into the current branch.
+
+		Until you do the fetch step (either on its own or via git pull) your local repo has no way to know that there are additional commits upstream, and git status only looks at your local repo (in this case it looks at the origin/master ref, which is just a commit ID stored on your local filesystem).
+
+		When git status says up to date, it means "up to date with the upstream status that was retrieved last time we did a fetch" which is not the same as "up to date with the latest live status of the upstream".	
+		
+		
+		
+		
+		
+		
+		
+		
+		
 2. ./script.sh
     sh ./script.sh   ( same as 'sh script.sh')
     sh +x script.sh   <= +x for debug
