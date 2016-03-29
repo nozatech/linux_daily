@@ -4,7 +4,7 @@ Daily Linux CMD List & Scripts
 	Client A: 
 		a. git clone https://github.com/nozatech/daily_cmd.git
 		b. git status
-		c. git add . (or file_name)
+		c. git add . (-A all, or file_name)
 		d. git commit -m "message"
 		e. git push
 		f. client2 edit files  <= 
@@ -23,7 +23,7 @@ Daily Linux CMD List & Scripts
 		d. git status
 		e. git add UNTRACTED_file_name
 		f. git status
-		g. git add . ( or '-A') <= add all	
+		g. git add . ( -A or file_name ) <= add all	
 		h. git commit -m " updated"
 
 
