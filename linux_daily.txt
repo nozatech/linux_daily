@@ -72,6 +72,7 @@ Daily Linux CMD List & Scripts
 3. ssh -v root@172.16.248.xx > result.txt	<= -v debugging mode
    ssh -v root@172.16.248.xx 2>&1 > result.txt	
 
+   
    ssh -l ubuntu ip_address			<= -l login user name
    ssh -l ubuntu hostname
 
