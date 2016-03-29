@@ -40,35 +40,16 @@ Daily Linux CMD List & Scripts
 		<< EDIT FILES ... >>	
 		f. $ git status
 			On branch function01
-<<<<<<< HEAD
-=======
-			nothing to commit, working directory clean
-		g. $ git status
-			On branch function01
->>>>>>> master
 			Changes not staged for commit:
 			(use "git add <file>..." to update what will be committed)
 			(use "git checkout -- <file>..." to discard changes in working directory)
-
 			modified:   linux_daily.txt
-<<<<<<< HEAD
 			no changes added to commit (use "git add" and/or "git commit -a")
-
 		h. $ git add -A			<= add all my changes ****
-=======
-
-			no changes added to commit (use "git add" and/or "git commit -a")
-		h. $ git add -A
->>>>>>> master
-		
 		i.	$ git commit -m "added branches "
 			[function01 def7db3] added branches
 			1 file changed, 22 insertions(+), 15 deletions(-)
-<<<<<<< HEAD
 		----------------------------------------------------------
-=======
-	
->>>>>>> master
 		j. $ git branch
 			* function01
 			master
@@ -76,9 +57,11 @@ Daily Linux CMD List & Scripts
 			Switched to branch 'master'
 			Your branch is up-to-date with 'origin/master'.
 
-
-
-
+		l. $ git pull   <= check if MASTER has been modified by others
+		m. 	$ git checkout function01
+		n.	$ git merge master
+			
+		o.  $ git checkout f
 
 
 2. ./script.sh
