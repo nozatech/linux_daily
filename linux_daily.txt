@@ -1,10 +1,6 @@
 Daily Linux CMD List & Scripts
-
 		
-		
-		
-		
-2. ./script.sh
+1. ./script.sh
     sh ./script.sh   ( same as 'sh script.sh')
     sh +x script.sh   <= +x for debug
     bash +x ./script.sh  ( same as 'bash script.sh') 
@@ -25,8 +21,8 @@ Daily Linux CMD List & Scripts
 ###
 # Special Shell Variables
 ###
-	$0 	file name of script
-	$1	positional parameter #1
+	$0 		file name of script
+	$1		positional parameter #1
 	$2-9	positional parameter #2-9
 	${10}	positional parameter #10
 	$#		number of positional parameter
