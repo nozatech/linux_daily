@@ -1,36 +1,38 @@
+How to user GIT
+1. GIT how-to between Client A and B
 
-1. GIT
-	Client A: 
-		a. git clone https://github.com/nozatech/daily_cmd.git
+	### Client A: #### 
+		a. git clone https://github.com/nozatech/daily_cmd.git     	<= first time
 		b. git status
-		c. git add . (-A all, or file_name)
-		d. git commit -m "message"
-		e. git push
-		f. client2 edit files  <= 
-		
-		g. git pull <= every morning gets updated codes
-		h. changes
-		i. git commit -m "more changes"
-		j. 
-		
-		
-		
-	Client B:
-		a. git clone https://github.com/nozatech/daily_cmd.git
-		b. git pull
-		c. MODIFY FILES
+		c. edit files & save
+		d. git status	
+		e. git add . ('-A' all, or a new file_name)
+		f. git commit -m "message"
+		g. git push
+		------------------------------------------------------
+		h. git pull <= every morning gets updated codes
+		i. edit files & save
+		j. git status
+		k. git add . ('-A' all, or file_name)
+		j. git commit -m "more changes"
+		l. git push
+		 
+			
+	### Client B: ###
+		a. git clone https://github.com/nozatech/daily_cmd.git  	<= first time
+		b. git pull				<= any updates
+		c. edit files & save
 		d. git status
-		e. git add UNTRACTED_file_name
-		f. git status
-		g. git add . ( -A or file_name ) <= add all	
-		h. git commit -m " updated"
+		e. git add . ( or -A or any new file_name )
+		f. git commit -m " updated & add new file"
+		g. git push
 
 
 2. GIT BRANCHING
 		a. $ git pull
 		b. $ git branch
 		* master
-		c. $ git branch function01 		<= creating 'function01' branch from Master
+		c. $ git branch function01 		<= creating new 'function01' branch from Master
 		d. $ git branch
 			function01					<= complete copy of MASTER
 			* master
@@ -44,15 +46,15 @@
 			(use "git checkout -- <file>..." to discard changes in working directory)
 			modified:   linux_daily.txt
 			no changes added to commit (use "git add" and/or "git commit -a")
-		h. $ git add -A			<= add all my changes ****
+		h. $ git add git add . ('-A' all, or a new file_name)
 		i.	$ git commit -m "added branches "
 			[function01 def7db3] added branches
 			1 file changed, 22 insertions(+), 15 deletions(-)
-		----------------------------------------------------------
-		j. $ git branch
+		-------------------------------------------------------------------
+		j. $ git branch						<= checking which branch you are in 'function01'
 			* function01
 			master
-		k. $ git checkout master
+		k. $ git checkout master			<= switch back to master
 			Switched to branch 'master'
 			Your branch is up-to-date with 'origin/master'.
 		l. $ git pull   <= check if MASTER has been modified by others
@@ -62,16 +64,23 @@
 			
 		o.  $ git checkout f
 
-			$ git status
+		p.	$ git status
 				On branch function01
 				Your branch is up-to-date with 'origin/function01'.
 				nothing to commit, working directory clean
 
-		git pull does two operations; first it does a git fetch to get up to date with the commits in the remote repo (which updates the origin/master ref in your local repo), then it does a git merge to merge those commits into the current branch.
+		'git pull' does two operations; first it does a 'git fetch' to get up to date with the 'commits' 
+		in the remote repo (which updates the origin/master ref in your local repo), then it does 
+		a 'git merge' to merge those commits into the current branch.
 
-		Until you do the fetch step (either on its own or via git pull) your local repo has no way to know that there are additional commits upstream, and git status only looks at your local repo (in this case it looks at the origin/master ref, which is just a commit ID stored on your local filesystem).
+		Until you do the fetch step (either on its own or via 'git pull') your local repo has no way 
+		to know that there are additional 'commits upstream', and 'git status' only looks at your local 
+		repo (in this case it looks at the origin/master ref, which is just a commit ID stored on 
+		your local file system).
 
-		When git status says up to date, it means "up to date with the upstream status that was retrieved last time we did a fetch" which is not the same as "up to date with the latest live status of the upstream".	
+		When 'git status' says up to date, it means "up to date with the upstream status that was 
+		retrieved last time we did a fetch" which is not the same as "up to date with the latest 
+		live status of the upstream".	
 		
 		
 		

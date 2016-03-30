@@ -16,14 +16,35 @@ for i in {1..30}; do
 done
 
 
-################################
+#
 echo
 sleep 2
-################################
-
+#
 
 ################
 # while loop-1 #
+################
+
+#!/bin/bash
+i=1
+while (( i < 31 ));
+do
+        if (( $i % 3 == 0 )) && (( $i % 5 == 0 )); then echo "While-Loop"
+        elif (( $i % 3 == 0 )); then echo "While"
+        elif (( $i % 5 == 0 )); then echo "Loop"
+        else echo "$i";
+        fi
+((i++))
+done
+
+#
+echo
+sleep 2
+#
+
+
+################
+# while loop-2 #
 ################
 
 i=1;
@@ -38,23 +59,6 @@ do
 (( i++ ))
 done
 
-################################
-echo
-sleep 2
-################################
 
-################
-# while loop-2 #
-################
 
-#!/bin/bash
-i=1
-while (( i < 31 ));
-do
-        if (( $i % 3 == 0 )) && (( $i % 5 == 0 )); then echo "While-Loop"
-        elif (( $i % 3 == 0 )); then echo "While"
-        elif (( $i % 5 == 0 )); then echo "Loop"
-        else echo "$i";
-        fi
-((i++))
-done
+
