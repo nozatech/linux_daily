@@ -541,7 +541,7 @@ $ mysql -u root -p -h 127.0.0.1			<= remote MySQL connection using IP
   mysqladmin -u root -p status
 
 7. To find all socket files on your system run:
-  sudo find / -type s
+  sudo find / -type s  	<= socket type files
 
 8. Once you find where the socket is being opened, add or 
    edit the line to your /etc/my.cnf file with the path to the socket file:
@@ -553,7 +553,10 @@ $ mysql -u root -p -h 127.0.0.1			<= remote MySQL connection using IP
 9. Setup MySQL admin password
   /usr/bin/mysqladmin -u root password 'new-password'
 
-Step Three ? Install PHP
+
+  
+  
+ Install PHP
 
 apt-get install php5 libapache2-mod-php5 php5-mcrypt
 
@@ -572,12 +575,21 @@ php -r 'echo "\n\nYour PHP installation is working fine.\n\n\n";'
 
 Your PHP installation is working fine.
 
+
+
+
+
 #############################################################################
 1. 
+
 SHOW DATABASES;
+
 CREATE DATABASE db_name;    <=Creating DB
+
 USE db_name;				
+
 DROP DATABASE db_name;		<= **Warning**Delete & Empty DB at same time
+
 ###
 # mysql> SHOW WARNINGS\G
 ###
@@ -605,6 +617,7 @@ DROP DATABASE db_name;		<= **Warning**Delete & Empty DB at same time
 	mysql -u dbadmin -p dbadmin_db
 
 4. Import DATABASE 
+
 	$ mysql -u dbadmin -p -h 127.0.0.1  < album-mysql.sql   
 	$ use album;
 	$ show tables;
@@ -946,7 +959,7 @@ Exit mysql
 
 # Backing up DB
 
-systemctl stop mysql    //    service mysqld stop
+systemctl stop mysql    //    service mysqld stop   <= STOP FIRST
 
 mysqldump -u root -p --all-databases --events --master-data > /tmp/master-dump.db
 
@@ -1017,7 +1030,7 @@ mysql> show slave status\G;
                Relay_Log_File: lsave-relay-bin.000001
                 Relay_Log_Pos: 4
         Relay_Master_Log_File: master-bin.000001
-             Slave_IO_Running: Connecting
+             Slave_IO_Running: Connecting					<= Check error if broken sync
             Slave_SQL_Running: Yes
       ************************************
 1 row in set (0.00 sec)

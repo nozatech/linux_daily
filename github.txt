@@ -1,4 +1,4 @@
-How to user GIT
+How to use GIT
 1. GIT how-to between Client A and B
 
 	### Client A: #### 
@@ -32,13 +32,13 @@ How to user GIT
 		a. $ git pull
 		b. $ git branch
 		* master
-		c. $ git branch function01 		<= creating new 'function01' branch from Master
+		c. $ git branch function01 				<= creating new 'function01' branch from Master
 		d. $ git branch
-			function01					<= complete copy of MASTER
+			function01							<= complete copy of MASTER
 			* master
 		e. $ git checkout 'function01'
-			Switched to branch 'function01'    <= SWITCHED TO FUNCTION01 ****
-		<< EDIT FILES ... >>	
+			Switched to branch 'function01'     <= SWITCHED TO FUNCTION01 ****
+			<<... EDIT OR ADD NEW FILES ... >>	
 		f. $ git status
 			On branch function01
 			Changes not staged for commit:
@@ -46,15 +46,15 @@ How to user GIT
 			(use "git checkout -- <file>..." to discard changes in working directory)
 			modified:   linux_daily.txt
 			no changes added to commit (use "git add" and/or "git commit -a")
-		h. $ git add git add . ('-A' all, or a new file_name)
-		i.	$ git commit -m "added branches "
+		h. $ git add . ('-A' all, or a new file_name)
+		i. $ git commit -m "added branches "
 			[function01 def7db3] added branches
 			1 file changed, 22 insertions(+), 15 deletions(-)
 		-------------------------------------------------------------------
-		j. $ git branch						<= checking which branch you are in 'function01'
+		j. $ git branch							<= checking which branch you are in 'function01'
 			* function01
 			master
-		k. $ git checkout master			<= switch back to master
+		k. $ git checkout master				<= switch back to master if others has some updates one the same file while editing
 			Switched to branch 'master'
 			Your branch is up-to-date with 'origin/master'.
 		l. $ git pull   <= check if MASTER has been modified by others
@@ -62,13 +62,15 @@ How to user GIT
 		m. 	$ git checkout function01
 		n.	$ git merge master
 			
-		o.  $ git checkout f
+		o.  $ git checkout master
 
 		p.	$ git status
 				On branch function01
 				Your branch is up-to-date with 'origin/function01'.
 				nothing to commit, working directory clean
 
+				
+				
 		'git pull' does two operations; first it does a 'git fetch' to get up to date with the 'commits' 
 		in the remote repo (which updates the origin/master ref in your local repo), then it does 
 		a 'git merge' to merge those commits into the current branch.
