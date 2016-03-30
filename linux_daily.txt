@@ -1180,15 +1180,15 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 #### NTP - TIME ZONE ####
 
 ### CenOS7 ###
-  Time NTP sync
+Time NTP sync
 
-  yum install ntp
-  systemctl start ntpd
-  systemctl enable ntpd
+	$ yum install ntp
+	$ systemctl start ntpd
+	$ systemctl enable ntpd
 
-  ls -l /etc/localtime 
-  timedatectl list-timezones
-  timedatectl set-timezone America/Los_Angeles
+	$ ls -l /etc/localtime 
+	$ timedatectl list-timezones
+	$ timedatectl set-timezone America/Los_Angeles
 
 
   CentOS6.x  
@@ -1222,22 +1222,31 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
   sudo update-rc.d -f ntp remove
 
 # Update NTP time Ubuntu
-  sudo ntpdate pool.ntp.org
-  4 May 17:34:07 ntpdate[38018]: step time server 204.2.134.163 offset 53.202434 sec
+	$ sudo ntpdate pool.ntp.org
+	4 May 17:34:07 ntpdate[38018]: step time server 204.2.134.163 offset 53.202434 sec
 
+	$ sudo ntpdate pool.ntp.org  <=  **** no servers can be used, exiting ***
+		31 Aug 19:05:55 ntpdate[8911]: the NTP socket is in use, exiting
+	$ sudo service ntp stop
+		[ ok ] Stopping NTP server: ntpd.
+	$ sudo ntpdate pool.ntp.org
+		31 Aug 19:07:11 ntpdate[10355]: adjust time server 46.29.176.115 offset -0.002893 sec
+	$ sudo service ntp start
 
+	
+	
 57. CentOS6.x MySQL auto start and start MySQL services
-  c hkconfig mysqld on
-  /etc/init.d/mysqld star
+	$ chkconfig mysqld on
+	$ /etc/init.d/mysqld start
 
   DB Location
   /var/lib/mysql/
   
   MySQL config file
-  /etc/my.cnf
+	$ /etc/my.cnf
   
   User List
-  SELECT User FROM mysql.user;
+	$ SELECT User FROM mysql.user;
   
 58. # CentOS6.xTurn off firewall and SELINUX
 
@@ -1318,9 +1327,8 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 61. telnet ip_address port_number  <= check port is open for connection
 or  use NetCat
 ###################################
-#  nc -v 192.168.110.220 10051 #  <= netcat  -v verbose / -z listening daemon
+#  nc -v 192.168.110.220 10051 	  #  <= netcat  -v verbose / -z listening daemon
 ###################################   
-#  nc -v 192.168.110.220 10051   #
 
   Connection to 192.168.110.220 10051 port [tcp/zabbix-trapper] succeeded!
 
@@ -1808,8 +1816,44 @@ breaks $(foo) into words, and treats each word as a glob pattern. The default va
    ps -u <user_id>
 
    
-2-1.
-  ulimit and sysctl
+3. ulimit 			<= Increase "Open Files Limit"
+	If you are getting error “Too many open files (24)” then your application/command/script is hitting max open file limit 
+	allowed by linux. You need to increase open file limit as below:
+	
+	Per-User Limit
+	$ cat /etc/security/limits.conf
+		#<domain>      <type>  <item>         <value>
+		#root            hard    core            100000		<=100k files to open
+		#@student        hard    nproc           20			<= only 20 files to open
+	
+	pam-limits
+	# cat /etc/pam.d/common-session 		<= session-related modules common to all services
+	
+	System-Wide Limit
+	$ echo 'fs.file-max = 2097152' >> /etc/sysctl.conf 			<= configure kernel parameters at runtime
+	$ sysctl -p 												<= -p Load in sysctl settings from the file specified or /etc/sysctl.conf 
+											
+	Verify New Limits
+	$ cat /proc/sys/fs/file-max 			<= max limit of file descriptors:
+		2097152
+	$ ulimit -Sn
+	$ ulimit -Hn
+	
+	Check limit for other user
+		$ su - www-data -c 'ulimit -aHS' -s '/bin/bash'
+		$ su - noza -c 'ulimit -aHS' -s '/bin/bash'
+		$ su - noza -c 'ulimit -aHS' -s '/bin/bash'
+			core file size          (blocks, -c) 0
+			data seg size           (kbytes, -d) unlimited
+	
+	Check limits of a running process:
+	$ cat /proc/Process_ID/limits
+		Limit                     Soft Limit           Hard Limit           Units
+		Max cpu time              unlimited            unlimited            seconds
+	
+	
+	
+4. sysctl
   The ulimit and sysctl programs allow to limit system-wide resource use. 
   This can help a lot in system administration, e.g. when a user starts too 
   many processes and therefore makes the system unresponsive for other users.
