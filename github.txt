@@ -1,5 +1,23 @@
 How to use GIT
-1. GIT how-to between Client A and B
+
+
+1. Create a new repository on the command line
+
+	echo "# jenkins" >> README.md
+	git init
+	git add README.md
+	git commit -m "first commit"
+	git remote add origin https://github.com/nozatech/jenkins.git
+	git push -u origin master
+
+
+2. push an existing repository from the command line
+
+	git remote add origin https://github.com/nozatech/jenkins.git
+	git push -u origin master
+
+
+3. GIT how-to between Client A and B
 
 	### Client A: #### 
 		a. git clone https://github.com/nozatech/daily_cmd.git     	<= first time
@@ -28,7 +46,8 @@ How to use GIT
 		g. git push
 
 
-2. GIT BRANCHING
+4. GIT BRANCHING
+4. GIT BRANCHING
 		a. $ git pull
 		b. $ git branch
 		* master
