@@ -900,27 +900,29 @@ $./my.sh apple orange kiwi lemon
 
 
 
-40. Cleanup
-# Run as root, of course.
-
-  cd /var/log
-  cat /dev/null > messages
-  cat /dev/null > wtmp			<= utmp, wtmp - login records
-  echo "Log files cleaned up."
+40. Clean Up Logs
+	
+    $ cd /var/log
+	$ > log_file
+    $ cat /dev/null > messages
+	$ cat /dev/null > wtmp			<= utmp, wtmp - login records
+  
+	echo "Log files cleaned up."
 
 	utmp <= complete picture of users logins at which terminals, logouts, system events and current status 		of the system, system boot time (used by uptime) etc.
 	wtmp <= historical data of utmp.
 	btmp <= records only failed login attempts.
 
-  last 		<= default location without using -f(file) /var/log/wtmp  
-  last -f /var/run/utmp   <= /var/run/utmp for different location using -f flag
-  last -f /var/log/btmp
+	$ last 		<= default location without using -f(file) /var/log/wtmp  
+	$ last -f /var/run/utmp   <= /var/run/utmp for different location using -f flag
+	$ last -f /var/log/btmp
 
 41.
-  #watch lsof -i	<=Watching who are connecting to a system and disconnecting
-  #strace foobar.sh  <=debugging a command/script
+	$ watch lsof -i			<= Watching who are connecting to a system and disconnecting
   
-  watch -n 1 "ps aux | grep RR"
+	$ strace foobar.sh  	<= debugging a command/script   strace - trace system calls and signals
+  
+	$ watch -n 1 "ps aux | grep RR"
 
 
 
@@ -1572,27 +1574,59 @@ Ubuntu
 /etc/hostname
 
 
-CentOS file location =>  /etc/hostname 
-	hostname 
-	echo new_name > /etc/hostname 
+CentOS6.x file location =>  
+	$ cat /etc/hostname 
+	$ hostname 
+	$ echo new_name > /etc/hostname 
+	
 	systemctl restart systemd-hostnamed
+	
 	cat /etc/sysconfig/network
+	
 	hostnamectl status
 	
 	
 ###########################################
-#	hostnamectl set-hostname new_name # 
+#	$ hostnamectl set-hostname new_name 	  # 
 ###########################################
 	
 	
+	$ timedatectl status 
+	$ timedatectl list-timezones
+	$ sudo timedatectl set-timezone UTC
+	$ sudo timedatectl set-timezone America/New_York
 	
 	
 	
+78. CenOS7 eno****** to eth0
+
+	Step1#
+	$sudo vi etc/sysconfig/grub	<= add "net.ifnames=0 biosdevname=0"
+GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm.lv=centos/root crashkernel=auto  vconsole.keymap=us rhgb quiet net.ifnames=0 biosdevname=0"
+
+	Step2#
+	$sudo grub2-mkconfig  -o /boot/grub2/grub.cfg
+	<= Using “grub2-mkconfig” command to re-generate a new grub configuration file
+
+	Step3#
+	$sudo mv /etc/sysconfig/network-scripts/ifcfg-eno16777736  /etc/sysconfig/network-scripts/ifcfg-eth0
+		<= Rename “Eno” network file using”mv”command
+
+
+	Step4#$
+	su vi /etc/sysconfig/network-scripts/ifcfg-eth0 <= configuration file and set 
+							the value of “Name” field to “eth0".
+	<strong>NAME=eth0</strong>
+
+	Step5# 
+	reboot system, after rebooting system, using “ifconfig” command check 
+	network interface information again.
 	
 	
-###############
+	
+######################################################################################################################################
 Scripting
-##############
+######################################################################################################################################
 These are positional arguments of the script. 
 position of arguments passed to the script on the command line, not line numbers
 #!/bin/sh
@@ -1666,29 +1700,6 @@ echo "argument 10 is '{$10}'"	 # from 10, use {}
 
 
 
-78. CenOS7 eno****** to eth0
-
-	Step1#
-	$sudo vi etc/sysconfig/grub	<= add "net.ifnames=0 biosdevname=0"
-GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm.lv=centos/root crashkernel=auto  vconsole.keymap=us rhgb quiet net.ifnames=0 biosdevname=0"
-
-	Step2#
-	$sudo grub2-mkconfig  -o /boot/grub2/grub.cfg
-	<= Using “grub2-mkconfig” command to re-generate a new grub configuration file
-
-	Step3#
-	$sudo mv /etc/sysconfig/network-scripts/ifcfg-eno16777736  /etc/sysconfig/network-scripts/ifcfg-eth0
-		<= Rename “Eno” network file using”mv”command
-
-
-	Step4#$
-	su vi /etc/sysconfig/network-scripts/ifcfg-eth0 <= configuration file and set 
-							the value of “Name” field to “eth0".
-	<strong>NAME=eth0</strong>
-
-	Step5# 
-	reboot system, after rebooting system, using “ifconfig” command check 
-	network interface information again.
 
 	
 	
@@ -2251,7 +2262,13 @@ CentOS
 	lsof -i | grep unknown_port
 	
 	
-2.
+2. Changing SSH port from default #22 to 2222 
+	$ vi /etc/ssh/sshd_config
+		#22 to 2222 
+	$ /etc/init.d/sshd restart
+	
+	Update the IPTables
+	$ iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 2222 -j ACCEPT
 	
 	
 	
