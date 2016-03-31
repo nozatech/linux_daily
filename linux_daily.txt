@@ -1813,15 +1813,16 @@ breaks $(foo) into words, and treats each word as a glob pattern. The default va
 
    ssh-copy-id 	       user_id@IP_Address
 
-   sudo visudoer  
-   vi /etc/sudoers
-   nozatech ALL=(ALL:ALL) NOPASSWD:ALL
-   %sudo   ALL=(ALL:ALL) NOPASSWD:ALL
+	$ sudo visudo   (old way   vi /etc/sudoers)
+		nozatech ALL=(ALL:ALL) NOPASSWD:ALL
+		%sudo   ALL=(ALL:ALL) NOPASSWD:ALL
 
 2. uname -a 						#Kernel Version Check  
    killall <process name>
    ps -u <user_id>
 
+   
+   
    
 3. ulimit 			<= Increase "Open Files Limit"
 	If you are getting error “Too many open files (24)” then your application/command/script is hitting max open file limit 
@@ -1861,10 +1862,14 @@ breaks $(foo) into words, and treats each word as a glob pattern. The default va
 	
 	
 4. sysctl
-  The ulimit and sysctl programs allow to limit system-wide resource use. 
-  This can help a lot in system administration, e.g. when a user starts too 
-  many processes and therefore makes the system unresponsive for other users.
+	The ulimit and sysctl programs allow to limit system-wide resource use. 
+	This can help a lot in system administration, e.g. when a user starts too 
+	many processes and therefore makes the system unresponsive for other users.
 
+	
+	
+	
+	
 3. Swap space swapon
 	
   sudo dd if=/dev/zero of=/var/swapfile bs=1M count=2048
@@ -1880,6 +1885,10 @@ breaks $(foo) into words, and treats each word as a glob pattern. The default va
 	sudo mv /filename /etc/init.d/
 	sudo chmod +x /etc/init.d/filename 
 	sudo update-rc.d filename defaults 
+  
+  
+  
+  
   
 ######################## 
 # Bash Shell Variables #
@@ -2178,12 +2187,13 @@ grep -o			#Show matched part of file only
 
 
 
-find /dir/ -user user_ID			#Find files owned by name in dir
-find / -name file_name
-find / -iname fine_name
 
-whereis 		#Find binary /source / manual for command
-locate file 	#Find file 
+	$ find /dir/ -user user_ID			#Find files owned by name in dir
+	$ find /dir/ -name file_name
+	$ find /dir/ -iname fine_name
+	
+	$ whereis 					<= Find binary /source / manual for command
+	$ locate file_name		 	<= DB based Find file 
 
 
 
@@ -2303,22 +2313,14 @@ DER The parent format of PEM. It's useful to think of it as a binary version of 
 # MySQL CRUD Daily ###
 ######################
 1. Create Accounts
-root
 
-p4SS_!_\/\/0rd  
-
-
-
-digimon
-
-pantelimon20150528
 
 
 change master to 
 master_host='dgh-db-01', 
 master_port=3306, 
 master_user='dbadmin', 
-master_password='Test00!!', 
+master_password='xxxxxx!!', 
 master_log_file='master-bin.000006', 
 master_log_pos=120;
 
