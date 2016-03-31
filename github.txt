@@ -1,6 +1,5 @@
 How to use GIT
 
-
 1. Create a new repository on the command line
 
 	echo "# jenkins" >> README.md
