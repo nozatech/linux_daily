@@ -45,7 +45,7 @@ How to use GIT
 		g. git push
 
 
-4. GIT BRANCHING
+
 4. GIT BRANCHING
 		a. $ git pull
 		b. $ git branch
