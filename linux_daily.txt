@@ -169,6 +169,11 @@ IP address is 32bit
 		6. vnstat
 
 
+		
+7. Swap	
+	$ dd if=/dev/zero of=/swapfile bs=1024 count=512k
+    $ mkswap /swapfile
+	$ swapon /swapfile
 
 6. iostat
 		displays CPU and I/O statistics of all partitions as shown below.
@@ -1451,7 +1456,7 @@ cos7.localdomain
 67. nmap  <= Short for Network Mapper 
     It is an open source security tool for network exploration, securi
 ty scanning and     auditing. However, nmap command comes with lots of options that can make the utility     more robust and difficult to follow for new users.
-
+	$ nmap -sT ip_address  ( s-scan, T-TCP)
 
 68. pgrep, pkill - look up or signal processes based on name and other attributes
 
@@ -1843,9 +1848,24 @@ breaks $(foo) into words, and treats each word as a glob pattern. The default va
 		nozatech ALL=(ALL:ALL) NOPASSWD:ALL
 		%sudo   ALL=(ALL:ALL) NOPASSWD:ALL
 
+		
+2 Processor
+	killall <process name>
+    kill -9 
+	kill 15
+	
+	ps -u <user_id>		<= u (user)
+		
+		
 2. uname -a 						#Kernel Version Check  
-   killall <process name>
-   ps -u <user_id>
+   
+   
+   Linux CentOS or Ubuntu Version check	
+   $ cat /etc/*rel*
+   $ uname -a		<= all include kernel, processor(32/64bit), hostname, 
+   $ uname -r 		<= kernel version
+   
+   
 
    
    
