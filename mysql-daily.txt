@@ -512,7 +512,7 @@ $which mysql   		<= check
 Since no mysql server running under /usr/bin/mysql, connect through ip
 
 
-$ mysql -u root -p -h 127.0.0.1			<= remote MySQL connection using IP
+$ mysql -u root -p -h 127.0.0.1			<= -h host, remote MySQL connection using IP
 
 
 ##############
@@ -524,7 +524,7 @@ $ mysql -u root -p -h 127.0.0.1			<= remote MySQL connection using IP
    mysql_secure_installation  		<= setup root password
 
 3. Try run 
-   mysql -u root -p
+   $ mysql -u root -p
    
    ERROR 2002 (HY000): Can't connect to local MySQL server 
    through socket    '/var/run/mysqld/mysqld.sock' (2)
@@ -538,7 +538,10 @@ $ mysql -u root -p -h 127.0.0.1			<= remote MySQL connection using IP
   vi /var/lib/mysql/mysql.sock
 
 6. check mysql status
-  mysqladmin -u root -p status
+	$ mysqladmin -u root -p status
+	Uptime: 916  Threads: 1  Questions: 579  Slow queries: 0  Opens: 189  Flush tables: 1  Open tables: 41  Queries per second avg: 0.632
+
+  
 
 7. To find all socket files on your system run:
   sudo find / -type s  	<= socket type files

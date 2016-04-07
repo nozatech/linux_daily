@@ -1857,14 +1857,12 @@ breaks $(foo) into words, and treats each word as a glob pattern. The default va
 	ps -u <user_id>		<= u (user)
 		
 		
-2. uname -a 						#Kernel Version Check  
-   
-   
-   Linux CentOS or Ubuntu Version check	
-   $ cat /etc/*rel*
-   $ uname -a		<= all include kernel, processor(32/64bit), hostname, 
-   $ uname -r 		<= kernel version
-   
+2. Linux CentOS or Ubuntu Version check	
+    $ cat /etc/*rel*
+    $ uname -a		<= all include kernel, processor(32/64bit), hostname, 
+    $ uname -r 		<= kernel version
+    $ cat /proc/version
+	$ lsb_release -a
    
 
    
