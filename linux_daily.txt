@@ -1283,10 +1283,6 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 # Security Selinux
 vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 
-
-
-
-
 59. Prompt Color red
 
     export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]' 	 >> .bashrc		<= green, red for 31m 
