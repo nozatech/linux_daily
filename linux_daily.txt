@@ -637,11 +637,6 @@ eval > file           Y(3,8) Y(3)   Y      Y(6)      Y      Y
 		  attributes like uuid and file system type.
 	
 
-
-
-
- 
-
 31. Comparisons: cmp vs diff
 	cmp -  compare files byte by byte
 	cmp -s $file1 $file2
@@ -2340,12 +2335,15 @@ DER The parent format of PEM. It's useful to think of it as a binary version of 
 
 
 
-##########
-# mistakenly deleted /boot folder and rebooted
-##########
+#####################################################
+###  mistakenly deleted /boot folder and rebooted ###
+#####################################################
 1. Bootup with Live CD.
 2. Find the drive/partition where you have installed your root filesystem. 
-	To do this you can open a terminal and run either sudo parted -l or sudo fdisk -l. 
+	To do this you can open a terminal and run either 
+	$ sudo parted -l     # parted  is  a  disk  partitioning  and  partition resizing program.o
+	$ sudo fdisk -l 	 #  a menu-driven program for creation and manipulation of partition tables.
+
 3. Assuming that your root partition that you found from the last step is /dev/sda1
 	Since Linux 2.4.0 it is possible to remount part of the file hierarchy somewhere else. The call is 'mount --bind old_dir new_dir'
 
@@ -2355,7 +2353,6 @@ DER The parent format of PEM. It's useful to think of it as a binary version of 
 	$ sudo mount --bind /proc /mnt/proc
 	$ sudo mount --bind /sys /mnt/sys
 	$ sudo chroot mnt						<= chroot - run command or interactive shell with special root directory
-
 
 4. You will now be inside a chroot environment meaning that running commands here is equivalent to running them on your installed system. 
 	The first thing you want to do is reinstall GRUB2 to the device so that it copies the correct files into the /boot folder. 
@@ -2367,15 +2364,15 @@ DER The parent format of PEM. It's useful to think of it as a binary version of 
 
 5. $ dpkg -S /boot
 		memtest86+, linux-image-3.13.0-32-generic, base-files: /boot
-
-	And to reinstall them:
+		 And to reinstall them:
 
 6. $ apt-get --reinstall install linux-image-3.13.0-32-generic
 	
 	This step will probably require internet access (unless the packages are already in the cache), so make sure you are connected if there is an problem.
 
 	Since you will have deleted your kernels and reinstalled them, this should have triggered a GRUB2 update automatically. But just in case they haven't, you can run:
-7. $ update-grub
+
+	7. $ update-grub
 	Reboot and things should now be fixed. 
 	One issue that I had the last time I did something similar was that Windows installs where not found by update-grub 
 	One issue that I had the last time I did something similar was that Windows installs where not found by update-grub 
