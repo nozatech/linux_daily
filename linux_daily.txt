@@ -128,7 +128,7 @@ IP address is 32bit
 	
 	$ vmstat 1 20 		<= one (1) second twenty (20) times:
 	$ vmstat 30 		<= ongoing report for intervals of 30 seconds
-	$ vmstat -S k 1 10  <= S-switch unit (k kilibyte, K, m, M)
+	$ vmstat -S k 1 10  <= S-switch unit (k kilobyte, K, m, M)
 	$ vmstat 10(sec) 6(times)  	
 	$ vmstat -a (active)
 		procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
