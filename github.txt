@@ -2,11 +2,11 @@ How to use GIT
 
 1. Create a new repository on the command line
 
-	echo "# jenkins" >> README.md
+	echo "$ touch README.md
 	git init
 	git add README.md
 	git commit -m "first commit"
-	git remote add origin https://github.com/nozatech/jenkins.git
+	git remote add origin https://github.com/nozatech/new_project.git
 	git push -u origin master
 
 
@@ -102,7 +102,45 @@ How to use GIT
 		retrieved last time we did a fetch" which is not the same as "up to date with the latest 
 		live status of the upstream".	
 		
-		
-		
+
+#################################################################################################	
+
+1. Add a file in github through console(First Time)
+	Open "Git Bash"
+	Go to folder/directory where you want to keep your files @local system using "cd" command.
+	Create a folder and go inside that folder
+	add a sample file in that folder from UI
+	execute following commands one by one and add your github username/password they they prompt (In Last)
+
+	$ git init
+	$ touch test.php | echo "first file" >> test.php
+	$ git add test.php
+	$ git config --global user.name "nozatech"
+	$ git config --global user.pawsswd "password"
+	$ git commit -m "test file"
+	$ git remote add origin  https://github.com/nozatech/new_project.git
+	$ git push -u origin master
+
+
+2. Add a new file in github
+	add a new file in folder (suppose file name is "arun1.php")
+	Execute following commands one by one
+	$ git add filename
+	$ git commit -m "test file filename"
+	$ git push -u origin master
+
+3. Update a file in the github
+	Change one file and save
+	Execute the following commands one by one
+	$ git add * (. or -A)
+	$ git commit -m "updated file"
+	$ git push -u origin master
+
+
+4. Delete a file
+	$ git rm filename
+	$ git commit -m "deleted file"
+	$ git push -u origin master
+	
 		
 		

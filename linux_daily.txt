@@ -4,24 +4,35 @@ Daily Linux CMD List & Scripts
 IP address is 32bit 
 		
 1. Run Scripts
-	./script.sh
-    sh ./script.sh   ( same as 'sh script.sh')
-    sh +x script.sh   								<= +x for debuging mode
-	#!/bin/bash +x    								<= +x for debuging mode in shell script
-    bash +x ./script.sh  ( same as 'bash script.sh') 
-    . script.sh      <= current login shell to run
-    exec ./script    <= after run, the login shell exit 
-
-   Run script within vim or vi
-    :w   	      	<= write first
-    :!sh %   (# :! sh %)     	<= :! =run, sh =shell, % =curren open file
-	:!!         				<= run same script again 
+	$ ./script.sh
+    $ sh ./script.sh   ( same as 'sh script.sh')
+    $ sh +x script.sh   			<= +x for debuging mode
+ 
+ # Run script within vim or vi
+    :w   	      					<= write first
+    :!sh %   (# :! sh %)     		<= :! =run, sh =shell, % =curren open file
+	:!!         					<= run same script again 
     :!./script_name.sh
     :! python %
     :! perl %
-    :! sh -x %		<= -x is for DEBUG(verbose) mode
-    #!/bin/bash -x      <= -x to #! line for debug mode
-    set -x              <= End of file +x for TURN OFF
+    :! sh -x %					<= -x is for DEBUG(verbose) mode
+    #!/bin/bash -x      		<= -x to #! line for debug mode
+    set -x              		<= End of file +x for TURN OFF
+	
+	#!/bin/bash +x    								<= +x for debuging mode in shell script
+    $ bash +x ./script.sh  ( same as 'bash script.sh') 
+    $ . script.sh      <= current login shell to run
+    $ exec ./script    <= after run, the login shell exit 
+	
+  # vi or VIM,  it won't save read only file
+	:w !sudo tee %                  	<= save as sudo privilege.  type (L) load at the prompt to reload.
+	:w !chmod 777 %    then    :wq!
+	
+	:h									<= vi, vim help 			
+	:q 									<= quit help page
+	
+	$ vi +101 filename					<= go to 101 line in filename
+	:12									<= Go to particular line number in vi editor 
 
 
 ### Special Shell Variables ###
@@ -42,33 +53,33 @@ IP address is 32bit
 	* Must be quoted, otherwise it defaults to $@
 	
 	
-3. $ ssh -v root@172.16.248.xx > result.txt					<= -v debugging mode
-   $ ssh -v root@172.16.248.xx 2>&1 > result.txt	
-
+3. SSH login
+	$ ssh -v root@172.16.248.xx > result.txt					<= -v debugging mode
+	$ ssh -v root@172.16.248.xx 2>&1 > result.txt	
    
-   $ ssh -l ubuntu ip_address								<= -l login user name
-   $ ssh -l ubuntu hostname
+	$ ssh -l ubuntu ip_address									<= -l login user name
+	$ ssh -l ubuntu hostname
 
-	# login ec2-user
+  # login ec2-user
 	$ su apark
 	$ chmod 700 .ssh
 
-*** ssh -v nozatech@192.168.221.129
-    OpenSSH_6.7p1, OpenSSL 1.0.1k 8 Jan 2015
+  # Verbose mode using -v
+	$ ssh -vvvv nozatech@192.168.221.129						<= Max verbose debugging mode
+    
+	OpenSSH_6.7p1, OpenSSL 1.0.1k 8 Jan 2015
     debug1: Reading configuration data /etc/ssh_config
     debug1: Connecting to 192.168.221.129 [192.168.221.129] port 22.
     debug1: Connection established.
     debug1: identity file /home/apark/.ssh/id_rsa type 1
 
 
-4.  RSA KEY
-	ssh-keygen -t rsa
-	# Generate  id_rsa (Private Key) & id_rsa.pub (Public Key)
+4.  RSA KEY( 1024bit, 2k, 4k bit)
+	ssh-keygen -t rsa					<= Generate  id_rsa (Private Key ) & id_rsa.pub (Public Key)	
 	
-    ssh-copy-id user@ip_address
-	# Transferring Public Key
+    ssh-copy-id user@ip_address			<= Transferring Public Key
 	
-    $ cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+	    $ cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 
 	$ ssh sg-eu "cat .ssh/*.pub"
 
@@ -157,16 +168,42 @@ IP address is 32bit
 		ram2       0      0       0       0      0      0       0       0      0      0
 
 		
-	# vnstat
-
+	# vnstat 					<= a console-based network traffic monitor
+	$ vnstat -l					<= real time network statistic
+	$ vnstat --testkernel		<= check the kernel is providing all the information
+	$ vnstat -d					<= -h hour, -d day, -w week, -w month,
+	$ vnstat --dumpdb			<= export to Excel or 
 
 		
-7. Swap	
+6. Swap	
 	$ dd if=/dev/zero of=/swapfile bs=1024 count=512k
     $ mkswap /swapfile
 	$ swapon /swapfile
 
-6. iostat
+7. sysstat	Linux Performance Monitoring package
+	Collective CPU usage
+	Individual CPU statistics
+	Memory used and available
+	Swap space used and available
+	Overall I/O activities of the system
+	Individual device I/O activities
+	Context switch statistics
+	Run queue and load average data
+	Network statistics
+	Report sar data from a specific time
+	
+	#This runs every 10 minutes and collects sar data for historical reference.
+	/usr/lib/sysstat/sa1
+	$ vi /etc/cron.d/sysstat
+	5-55/10 * * * *  or 5,15,25,35,45,55 * * * *  ( */10 * * * * 10,20,30,40,50,60)
+	/usr/lib/sysstat/sa1
+	
+	$ vi /etc/default/sysstat   						<= change to true for data collection
+	$ service sysstat restart
+	$ sar -A > $(date +`hostname`-%d-%m-%y-%H%M.log)    <=save the statistics
+	
+
+	iostat
 		displays CPU and I/O statistics of all partitions as shown below.
 	$iostat
 		Linux 3.16.0-23-generic (puppet.nozatech.com)   03/24/2016      _x86_64_        (8 CPU)
@@ -182,21 +219,21 @@ IP address is 32bit
 								device name arguments displays only disks I/O statistics for specific device only as shown.
 	$ iostat -d				<= -d arguments displays only disks I/O statistics of all partitions as shown.
 		
-6.	slabinfo - kernel slab allocator statistics
+8.	slabinfo - kernel slab allocator statistics
 	cat /proc/slabinfo
 	Slab allocation is a memory management mechanism intended for the efficient memory allocation of kernel objects.
 	
 	
 	
 	
-7. Utility to check real time processing
-    A. top
+9. Utility to check real time processing
+    A. top 
         top -bn 1 | awk "/$1/ {tot =+ \$6; n++} END {print tot\" \"n}"        <= -b <=batch mode, n <=number, 1 <=count  
-        3252 250
+        # capture into single page file 
 		
 	B. atop
 		Atop is an ASCII full-screen performance monitor which can log and report 
-		the activity of all server processe upto 28days log.
+		the activity of all server process up to 28days log.
 	
 		atop -a <= sort in order of most active resource.
 		atop -c <= revert to sorting by cpu consumption (default).
@@ -207,9 +244,9 @@ IP address is 32bit
     C. htop
 		Up/Down arrow keys to select a process, and then you can kill it with the F9 key
 
-8. Disk usage
+10. Disk usage
 	
-	du -sh /home/nozatech*  | sort -nr		<= Folder list usage, not files
+	du -sh /home/noza*  | sort -nr				<= Folder list usage, not files
 	
 ######################################################################################
 				total       used       free     shared    buffers     cached
@@ -228,7 +265,7 @@ IP address is 32bit
 	Actual Free memory   336MB = 178+(51+137)
 ######################################################################################
 
-9. Date
+11. Date
 	$ date +%Y-%m-%d-%H-%M-%S
 	
 	$DATE=`date +%Y-%m-%d-%H-%M-%S`   <= %Y is 2016, %y is 16
@@ -241,7 +278,7 @@ IP address is 32bit
 
 	 
 	 
-10. Route or IP
+12. Route or IP
 
 	$ route
 	$ ip route
@@ -253,40 +290,42 @@ IP address is 32bit
 	192.168.1.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
 
 	Add / set-up a new route
+	
 	$ route add default gw {IP_ADDRESS} {INTERFACE_NAME}
 	$ route add default gw 192.168.1.254 eth0
+	
 	$ ip route add 192.168.1.0/24 dev eth0
 	$ ip route add 192.168.1.0/24 via 192.168.1.254
 	
 	
-11. tar (backup) and cron (schedule job) 
-	Creating tar file 
-		$ tar -c(backup)v(verbose)p(preserve permission)z(compression)f(filename)
-		
+13. tar (backup) and cron (schedule job) 
+
+	A. Creating tar file 
+	$ tar -c(create)v(verbose)p(preserve permission)z(compression)f(filename)
+	$ tar -czvf archive-name.tar.gz directory-name	
+	
 	$ tar -czvf  backup.tar.gz /home/nozatech
 	$ tar -cvpzf backup.tar.gz /(location) --exclude=/mnt /
 	$ tar -cvpzf backup.tar.gz /home/nozatech
 	
-
 	Extract tar file
 		$ tar -x(extract)v(verbose)p(permission)z(uncompress)f(file name) backup.tar.gz -C(change to different directory) /recover
 	$ tar -xvzf  backup.tar.gz /home/nozatech
 	$ tar -xvpzf backup.tar.gz /home/nozatech	
-		
-		
-11. Cron Jobs
+
+	B. Cron Jobs
 	$  rontab -e (first time ask a editor - choose vim)
 		min            hr          day of month       month            day of montn          command
 		0-59 mins 0-23 hrs   1-31days              1-12           0(sun)-6(sat)
 		30	   2     	 *	         *                           2(tuesday)
 
 
-4. List files by modified date 
-    ls -atlh   			 <= -a all, -t modified time, -l per line 
+15. List files by modified date 
+    ls -atlh   			 	 <= -a all, -t modified time, -l per line 
     ls -atlhr   			 <= -r reverse
 
 	
-5. Filesystem type  
+16. Filesystem type  
 	$ df -T						<= disk free
 	$ df -Th
 	$ df -Tha
@@ -319,7 +358,7 @@ IP address is 32bit
 
 
 
-6. Count Active connections
+17. Count Active connections
 
 	netstat -na | grep ESTA | wc -l				<== n no reverse lookup(quick), t tcp, a all, p program
 	netstat -na | grep ESTABLISHED.*sshd		<= sshd connection list
@@ -336,15 +375,18 @@ IP address is 32bit
 	ss <= socket statistic
 
 
-7. vmstat - report virtual memory statistics
+18. vmstat - report virtual memory statistics
 	  - vmstat reports information about processes, memory, paging, block IO, 
 	    traps, disks and cpu activity.
 
 
- 
+19. Alias
+	$ cd; vi .bash_profile
+	$ alias server1='ssh root@ip_address -p 3404'   <= add your alias in .bash_profile
+	$ alias lp='ls -al ../'							<= ls -al parent directory  
 
 
-8. Time NTP
+19. Time NTP
 
 	alias today='date +"%A, %B %-d, %Y"'
 
@@ -352,90 +394,77 @@ IP address is 32bit
 	today => Thursday, December 4, 2014
 	date +"%m-%d-%Y" => 12-04-2014
 
-### CentOS7 ###
-timedatectl - Control the system time and date
+	### CentOS7 ###
+	$ timedatectl - Control the system time and date
  	   --adjust-system-clock
            If set-local-rtc is invoked and this option is passed, the system
            clock is synchronized from the RTC again, taking the new setting
            into account. Otherwise, the RTC is synchronized from the system
            clock.
 
-To correct zone and time
-	systemctl restart  ntpd.service
+	To correct zone and time
+	$ systemctl restart  ntpd.service
 
-	
-9.	tar & gzip  archiving and zipping tar.gz file	
-		
-		$ tar -czvf archive-name.tar.gz directory-name
-			-z : Compress archive using gzip program
-			-c: Create archive
-			-v: Verbose i.e display progress while creating archive
-			-f: Archive File name
-			
-		$ tar -xzvf archive-name.tar.gz
 
-9. cat and strings
+20. cat and strings
 	$ cat /usr/bin/bash XXXX
-    $ zcat file.archived.tar.gz			<= reading gzip (view zip) file without extract first 
+    
+	$ zcat file.archived.tar.gz			<= reading gzip (view zip) file without extract first 
 	
 	$ strings /usr/bin/bash  <= human readable content buried inside the program.
  
 
    
-10. uptime		<= uptime, number of users, CPU load 1, 5, 15 mins
+21. uptime		<= uptime, number of users, CPU load 1, 5, 15 mins
 	09:35:45 up 10 days, 21:18,  2 users,  load average: 0.03, 0.03, 0.05
 			
    
-10. cli command recorder for terminal "SCRIPT"
+22. Script 				<= Record commands in terminal session
 
 
-10. List of services running
+23. List of services running
 	/usr/sbin/service --status-all
   
 
+24. Echo 
 
+	$ HOSTNAME=hostname						<=variable HOSTNAME into command hostname
+	$ echo "PC name is $HOSTNAME." 			<= PC name is PC.
 
-
-
-11. echo "PC name is $HOSTNAME." 		<= PC name is PC.
-
-    echo "PC name is \"$HOSTNAME\"."		<=  
+    $ echo "PC name is \"$HOSTNAME\"."		<=  
     
-    echo 'Single quotes "protect" double quotes'
+    $ echo 'Single quotes "protect" double quotes'
           Single quotes "protect" double quotes
 
-    echo "Well, isn’t that \"special\"?"
-          Well, isn’t that "special"?
+    $ echo "Well, isn’t that \"special\"?"
+    $ Well, isn’t that "special"?
 
-    echo "You have `ls | wc -l` files in `pwd`"
-          You have 43 files in /home/bob
+    $ echo "You have `ls | wc -l` files in `pwd`"
+    $ You have 43 files in /home/bob
  
-    echo "The value of \$x is $x"
+    $ x=100
+	$ echo "The value of \$x is $x"
           The value of $x is 100
 
-	\n		newline 	adding blank lines to text
-	e.g. echo -e "Inserting blank\n\n\n"
-	\t		tab			inserting tabs
-	e.g. echo -e "worlds\tseperate\tby\ttabs."
-	\a		alert		makes your terminal beep\
-	e.g. echo -e "\aMy computer went \"beep\"."
-	\\		backslash	insert a backslash
+	# echo -e    						 <= Enables interpretation of backslash escapes
+	$ echo -e "Inserting blank\n\n\n" 					<= \n  adding blank newline lines to text
+		
+	$ echo -e "worlds\tseperate\tby\ttabs."				<= \t  inserting tabs
 	
+	$ echo -e "\aMy computer \\went \"beep\"." 			<= \a  alert	makes your terminal beep										
+														<= \\	backslash	insert a backslash
+	
+	
+25. $ last				<= show listing of last logged in users
+    $ who
+	$ who -r 			<= runlevel
+	
+	$ lastlog			<= reports the most recent login of all users 
+    
+	$ lsof -u noza				<= list open files user name noza
+	$ lsof -p 1234	
 
-12. last	<= show liting of last logged in users
-    lastlog	<= reports the most recent login of all users 
-    lsof	<= list open files
 
-
-
-13. echo -e     <= Enables interpretation of backslash escapes
-    echo -e "Inserting serveral one blank line \n"  <= \n a new line using -e flag
-    echo -e "Words\tseparated\tby\ttabs."	    <= \t  a tab
-    echo -e "\aMy computer went \"beep\"."	    <= 
-    echo -e "DEL C:\\WIN2k\\LEGACY_OS.EXE"	    <=
-
-
-14. 
 
 15. Is .bash_profile is a file???? 
 	if [ -f .bash_profile ] ; then 					<= -f file is exist & regular file
@@ -451,12 +480,10 @@ To correct zone and time
 
 17. if [ $id -u != "0" ] ;then
 	echo "You must be the supper user to run this script" >&2  		<= user id -u failure message
-	exit 1				<= exit status sets to 1(failure)
+	exit 1															<= exit status sets to 1(failure)
     fi
 
-18. in system directory, vi create_file and try save doesn't work.
 
-	:w !sudo tee %                  <= type (L) load at the prompt to reload.
 
 
 19. Arithmatic
@@ -493,6 +520,8 @@ To correct zone and time
 
 21. rm -rf ./tmp/test/delme/*    <=delete folder contents
     
+	find /home/noza/ -name "*.txt" | xargs rm -rf				<= search all and delete them
+	find -name “*.txt” | xargs grep “Tecmint”					<= search and search string "Techmint"
     !!! Danger !!!
     rm -fr ./tmp/test/delme/ *   <=delete whole root folder(./tmp/test/delme)   
 
@@ -521,7 +550,7 @@ To correct zone and time
 23. 
 	echo $BASH_VERSION
 	echo $MACHTYPE
-	echo $SECONDS 			<=Count script started 
+	echo $SECONDS 					<=Count script started 
 
 
 	d=$(pwd)
@@ -529,7 +558,7 @@ To correct zone and time
 
 	echo 1/3 | bc -l                <= .33333333333333333333
 
-24.	IP address using ifconfig & grep regex
+24.	IP address 						<= finding IP from ifconfig using grep regex
 	ifconfig | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
 	192.168.232.132
 
@@ -938,35 +967,54 @@ $./my.sh apple orange kiwi lemon
 	$ last -f /var/run/utmp   <= /var/run/utmp for different location using -f flag
 	$ last -f /var/log/btmp
 
-41.
-	$ watch lsof -i			<= Watching who are connecting to a system and disconnecting
+41.	Watch command to real time monitoring
+
+	$ watch lsof -i			<= Watching who are connecting to a system and disconnecting, every 2sec
   
-	$ strace foobar.sh  	<= debugging a command/script   strace - trace system calls and signals
+
   
-	$ watch -n 1 "ps aux | grep RR"
+	$ watch -n 1 "ps aux | grep app_name"
+
+
+	
+42. strace - trace system calls and signals	
+	$ strace foobar.sh  	<= debugging a command/script   
+
+43. stty 		 <= change and print terminal line settings
+	$ stty -echo   <= hide(turn off) terminal typing(Can't see typing)
+    $ stty echo    <= show(restore) terminal typing(able to see typing)
+    $ TTY  		 <= TeleTYpe
 
 
 
-42. stty -echo   <= hide(turn off) terminal typing
-    stty echo   <= show(restore) terminal typing
-    TTY  <= TeleTYpe
-    stty <= change and print terminal line settings
+43. stat 				<= detailed and statistic on a file (ls -l foo.bar)
+	
+	$ stat foo.bar 
+		File: ‘foo.bar’
+		Size: 354             Blocks: 8          IO Block: 4096   regular file
+		Device: fc00h/64512d    Inode: 1046543     Links: 1
+		Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+		Access: 2016-04-08 21:16:25.603244615 -0700
+		Modify: 2016-04-08 21:16:45.355245237 -0700
+		Change: 2016-04-08 21:16:45.355245237 -0700
+		Birth: -
 
 
-43. stat <= dtailed and statistic on a given file (ls -l foo.bar)
-    stat foo.bar 
-	stat -c%n foo.bar       <= file name
-	stat -c%n foo.bar       <= file owner
-	stat -c%n foo.bar		<= file size
-	stat -c%n foo.bar		<= file inode
-	stat -c%n foo.bar		<= file type
-	stat -c%n foo.bar		<= file access rights
+44. lsmod = Show the status of modules in the Linux Kernel
+			same as  "cat /proc/modules"
 
 
-44. lsmod =(same as) cat /proc/modules
-
-# alias lp='ls -al ../'						#ls -al parent directory 
-
+45. Wall					<= messaging to users within system 				
+	$echo testing > wall.txt
+	$wall wall.txt
+		Broadcast Message from noza@fm
+			(/dev/pts/1) at 19:46 ...
+		testing
+	
+	$ echo "Please log out" | wall 
+		Broadcast Message from noza@fm
+			(/dev/pts/1) at 19:47 ...
+		Please log out
 
 
 45. CentOS 6.5(sysV) vs CentOS 7(systemd)
@@ -1449,6 +1497,8 @@ ty scanning and     auditing. However, nmap command comes with lots of options t
 
 
 70. cron job search from com and line
+	$ crontab -l				<= current user's list of cron jobs 
+	$ crontab -e				<= edit cron job
 
 	for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
 
@@ -2138,12 +2188,7 @@ wait                # waits until all background jobs have finished
 
 6. TIPS AND TRICKS.
 
-# set an alias
-cd; nano .bash_profile
-> alias gentlenode='ssh admin@gentlenode.com -p 3404'  # add your alias in .bash_profile
 
-
-# alias lp='ls -al ../'						#ls -al parent directory 
 
 # to quickly go to a specific directory
 cd; nano .bashrc
