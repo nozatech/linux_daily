@@ -142,5 +142,16 @@ How to use GIT
 	$ git commit -m "deleted file"
 	$ git push -u origin master
 	
-		
+	
+
+
+### Please, commit your changes or stash them before you can merge.
+$ git stash
+$ git pull <remote name> <remote branch name> (or) switch branch
+$ git stash apply --index
+
+	First command store your changes temporarily and discard those changes from working directory 
+	Second command you can pull / switch branches 
+	Third command to restore the important changes which you have discarded temporarily. 
+		(--index option is useful for those files are not staged are being upstaged) 	
 		
