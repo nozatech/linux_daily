@@ -1,0 +1,5 @@
+Jenkins Pipeline setup
+
+Plug-Ins
+	1. Build Pipeline Plugin
+	2. Public over ssh

@@ -1,0 +1,19 @@
+DNS
+	A forward lookup zone 
+		a DNS zone in which hostname to IP address relations are stored. 
+		When a computer requests the IP address of a specific hostname, 
+		the forward lookup zone is queried and the result is returned. 
+	A reverse lookup zone 
+		does just the opposite. When a computer requests the hostname of an IP address, 
+		the reverse lookup zone is queried and the result is returned. 
+		( http://www.blurtit.com/q968828.html) 
+
+	A(address) record 
+		a DNS record that can be used to point your domain name and host names to a static IP address.
+	A PTR record (sometimes called a "host PTR record") 
+		is what lets someone do a "reverse" DNS lookup - that is, they have your IP address 
+		and want to know what your host/domain is ( http://aplawrence.com/Blog/B961.html) 
+
+	A CNAME record 
+		maps an alias or nickname to the real or Canonical name which may lie outside the current zone. 
+		Canonical means expected or real name.(http://www.zytrax.com/books/dns/ch8/cname.html 

@@ -1,0 +1,315 @@
+Top 18 Nginx interview question
+1) What is Nginx?
+Nginx is a web server, load balancer and a reverse proxy server for HTTP, HTTPS, SMTP, POP3 and IMAP protocols.
+2) Mention some special features of Nginx?
+Reverse proxy
+L7 Load Balancer
+Embedded Perl interpreter
+On the fly binary upgrade
+Useful for re-writing URLs and awesome PCRE(Perl-compatible regular expressions (original API)support
+3) Mention what is the difference between Nginx and Apache?
+Nginx uses an asynchronous event approach to handling multiple requests whereas Apache Web Server use the synchronous. Nginx's event-driven approach can provide more predictable performance under high loads.
+Apache Web Server handling multiple request
+|----A-----||-----B-----------||-------C------|
+Nginx handling multiple request
+ |----A-----|
+    |-----B-----------|
+        |-------C------|
+ Nginx 
+Nginx is an event based web server
+All request are handled by a single thread.
+Nginx avoids child processes idea.
+Nginx resembles speed
+Nginx is better when it comes to memory consumption and connection
+Nginx is better when you want loadbalancing
+For PHP, Nginx might be preferable as it supports PHP internally
+Nginx do not support O.S like IBMi and OpenVMS.
+Nginx comes only with core features
+Nginx performance and scalability do not depend on hardware
+Advantages: open source, 
+Disadvantage: limited critical features & functions vs Plus(Enterprise) version
+		advanced http and tcp load balancer, session persistence, cache control, app health check.
+ Apache
+Apache is a process based server
+Single thread handles a single request.
+Apache is based on child processes
+Apache resemble power
+Apache is not up-to the mark when it comes to memory consumption and connection
+Apache will refuse new connections when traffic reaches the limit of processes
+Apache support’s PHP, Python, Perl and other languages using plugins. It is useful when application is based on Python or Ruby
+Apache support much wider range of O.S
+Apache provides lot more functionality than Nginx
+Apache is dependent on hardware
+components like CPU and memory
+
+4) Explain how Nginx can handle HTTP requests?
+Nginx uses the reactor pattern. The main event loop waits for the OS to signal a readiness
+event- such that the data is accessible to read from a socket, at which instance it is read into the
+buffer and processed. A Single thread can serve tens of thousands of simultaneous
+connections.
+5) In Nginx how you can prevent processing requests with undefined server names?
+A server that just drops the requests can be defined as
+Server {
+listen 80;
+server_name “ “ ;
+return 444;
+}
+Here the server name is kept as an empty string which will match request without the “Host”
+header field, and a special Nginx’s non-standard code 444 is returned that terminates the
+connection.
+6) What is the advantage of using a “reverse proxy server”?
+The reverse proxy server can hide the presence and characteristics of the origin server. It acts
+as an intermediate between internet cloud and web server. It is good for security reason
+especially when you are using web hosting services.
+7) Mention what is the best usage of Nginx server?
+The best usage of Nginx server is to deploy dynamic HTTP content on a network with using
+	    SCGI, WSGI application servers, FastCGI handlers for scripts. 
+Use as a load balancer to foward traffic based on load handle capacity & backup.  If any of app servers failed, it stop forwarding to prevent 404 or custom error msg in /usr/share/nginx/html.
+8) Mention what is the Master and Worker Processes in Nginx Server?
+Worker processes: It reads and evaluate configuration and maintain worker processes
+Master processes: It actually process the requests
+9) Explain how you can start Nginx through a different port other than 80?
+To start Nginx through a different port, you have to go to /etc/Nginx/sites-enabled/ and if this is
+the default file, then you have to open file called “default.” Edit the file and put the port you want
+Like server { listen 81; }
+10) Explain is it possible to replace Nginx errors like 502 error with 503?
+http error 502= Bad gateway,  
+http error 503= Server overloaded
+Yes, it is possible but you to ensure that fastcgi_intercept_errors is set to ON, and use the
+error page directive.
+Location / {
+fastcgi_pass 127.0.01:9001;
+fastcgi_intercept_errors on;
+error_page 502 =503/error_page.html;
+#...
+}
+11) In Nginx, explain how you can keep double slashes in URLs?
+To keep double slashes in URLs you have to use merge_slashes_off;
+Syntax: merge_slashes [on/off]
+Default: merge_slashes on
+Context: http, server
+
+12) Explain what is ngx_http_upstream_module is used for?
+The ngx_http_upstream_module is used to define groups of servers that can reference by the
+fastcgi pass, proxy pass, uwsgi pass, memcached pass and scgi pass directives.
+upstream backend {
+    server backend1.example.com       weight=5;
+    server backend2.example.com:8080;
+    server unix:/tmp/backend3;
+    server backup1.example.com:8080   backup;
+    server backup2.example.com:8080   backup;
+}
+server {
+    location / {
+        proxy_pass http://backend;
+    }
+}
+13) Explain what is C10K problem?
+C10K problem is referred for the network socket unable to handle a large number of client
+(10,000) at the same time.
+14) What is the use of stub_status and sub_filter directives?
+Stub_status directive: This directive is used to know the current status of Nginx like current active connection, total connection accepted and handled current number of read/write/wait connection
+Sub_filter directive: It is used to search and replace the content in response, and quick fix for stale data
+15) Explain does Nginx support compress the request to the upstream?
+You can compress the request to the upstream by using the Nginx module gzip(CPU load go high). 
+The gunzip module is a filter that decompresses responses with “Content Encoding: gzip” for clients or
+	servers that do not support “gzip” encoding method. 
+http {
+    include       /etc/nginx/mime.types;
+    access_log  /var/log/nginx/access.log;
+    sendfile        on;
+    #tcp_nopush     on;
+    #keepalive_timeout  0;
+    keepalive_timeout   2;
+    tcp_nodelay        on;
+    gzip  on;
+    gzip_disable "MSIE [1-6]\.(?!.*SV1)";
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+}
+16) Explain how you can get the current time in Nginx?
+To get the current time in Nginx, you have to use variables from SSI module, $date_gmt and
+$date_local.
+Proxy_set_header THE-TIME $date_gmt;
+17) Explain what is the purpose of –s with Nginx Server?
+To run the executable file of Nginx –s parameter is used.
+18) Explain how to add modules in Nginx Server?
+Normally in Ubuntu add the Nginx repository and install the Nginx, but for an extra modules, such as Google's Pagespeed or HTTP upload module, need to recompile Nginx with those modules.
+a. Backup any sites-available or customer configuration first!! 
+b. Download modules, get Nginx Sources & Dependencies
+c. Recompile & Install nginx
+During the compilation process, Nginx modules must be selected as such run-time selection of
+modules is not supported by Nginx.
+
+19) What is the Master and Worker Processes in Nginx Server?
+Master process read and evaluate configuration, and maintain worker processes.
+Worker processes handle and process the requests.
+
+20) Where the Process ID does for Nginx Server? 
+The process ID of the master process is written in the file /usr/local/nginx/logs/nginx.pid
+
+21) What is the Best Usage of Ngins Server?
+Nginx can deploy dynamic HTTP content on a network using FastCGI, SCGI handlers for scripts, WSGI application servers or Phusion Passenger module, and it can serve as a software load balancer.
+
+22) Describe Some Best Features of Nginx?
+Simultaneous Connections with low memory, Auto Indexing, Load Balancing, Reverse Proxy with Caching, Fault Tolerance
+23) How to define Worker Processes?
+The number of worker processes is defined in the configuration file and may be fixed for a given configuration or automatically adjusted to the number of available CPU cores
+24) Where the Process ID does for Nginx Server is written? 
+The process ID of the master process is written to the file /usr/local/nginx/logs/nginx.pid
+25) What are the controls used in Nginx Server?
+There are only few controls that are assosiated with Nginx Server and these are as below;
+Nginx -s [stop | quit | reopen | reload]
+25) How to reload configuration file of Nginx Server?
+You can reload Nginx configuration file by running this command: nginx -s reload
+26) How to reopening the log files in Nginx Server?
+You can use nginx –s reopen
+
+27) What is the purpose of –s with Nginx Server?
+-s parameter is used to run the executable file of nginx.
+
+28) How to add Modules in Nginx Server?
+Nginx modules must be selected during compile, run-time selection of modules is not currently supported.
+
+29) Define some of Nginx Architerture?
+Here is brief nginx's architecture in diagram;
+
+ 
+
+APACHE
+1) You see "connection reset by peer" in error log. What could be the reason for this?
+If the end user terminates the connection when the server response was being formed or was being transferred, we see "connection reset by peer" in the error log.
+2) While installing Apache HTTP server, do we need SSL and PHP support?
+Yes, SSL and PHP support is required to install Apache HTTP server.
+3) What is virtual hosting?
+Virtual hosting is a method for hosting multiple domain names on a server using a single IP address. Virtual hosting allows one server to share its resources, such as memory and processor cycles, in order to use its resources more efficiently.
+Name-based virtual host means that multiple names are running on each IP address.
+IP-based virtual host means that a different IP address exists for each website served. Most configurations are named-based because it only requires one IP address.
+4) Is there any size limit for URL rewriting and aliasing in Apache web server?
+Apache has no fixed limit on the numbers of Aliases and Redirects which may be declared in the config files.
+5) Create a new user file and add a user with username "test" and password "test".
+htpasswd -c /usr/local/etc/httpd/users test
+User will be prompted to provide the password. The -c argument tells htpasswd to create new file for users. To add more users, -c argument can be omitted.
+6) What is the Iptables?
+Linux kernel level firewall.
+7) Towards the end of the install, you may get a warning message during starting of the Apache process because domain name is not configured yet. What could that be?
+Apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1 for ServerName
+8) What do you mean by a valid ServerName directive?
+The DNS system is used to associate IP addresses with domain names. The value of ServerName is returned when the server generates a URL. If you are using a certain domain name, you must make sure that it is included in your DNS system and will be available to clients visiting your site.
+9) What is the main difference between <Location> and <Directory> sections?
+<Directory> sections refer to file system objects; 
+<Location> sections refer to elements in the address bar of the Web page
+10) Can you record the MAC (hardware) address of clients that access your server?
+No, http protocols are communicating using network (layer 3) and only see ip address.
+11) Can you record all the cookies sent to your server by clients in Web Server logs?
+Answer: Yes, add following lines in httpd.conf file.
+CustomLog logs/cookies_in.log "%{UNIQUE_ID}e %{Cookie}i" CustomLog logs/cookies2_in.log "%{UNIQUE_ID}e %{Cookie2}i"
+12) What we can do to find out how people are reaching your site?
+ Add the following effector to your activity log format. %{Referer}
+13) If you have only one IP address, but you want to host two web sites on your server. What will you do?
+ServerName 10.111.203.25
+NameVirtualHost *:80
+<VirtualHost *:80>
+ServerName web1.test.com
+DocumentRoot /var/www/html/web1
+</VirtualHost>
+<VirtualHost *:80>
+ServerName web2.test2.com
+DocumentRoot /var/www/html/web2
+</VirtualHost>
+14) Can I serve content out of a directory other than the DocumentRootdirectory?
+uses the “Alias”.
+15) If you have to more than one URL map to the same directory but you don't have multiple Alias directives. What you will do?
+The AliasMatch directive allows you to use regular expressions to match arbitrary patterns in URLs and map anything matching the pattern to the desired URL.
+16) How you will put a limit on uploads on your web server?
+This can be achieved by LimitRequestBody directive.
+<Directory "/var/www/html/data_uploads">
+LimitRequestBody 100
+</Directory>
+17) I want to stop people using my site by Proxy server. Is it possible?
+Answer: <Directory proxy:http://www.test.com/myfiles>
+Order Allow,Deny
+Deny from all
+Satisfy All
+</Directory>
+18) What is mod_evasive module?
+ mod_evasive is a third-party module that performs one simple task, and performs it very well. It detects when your site is receiving a Denial of Service (DoS) attack, and it prevents that attack from doing as much damage. mod_evasive detects when a single client is making multiple requests in a short period of time, and denies further requests from that client. The period for which the ban is in place can be very short, because it just gets renewed the next time a request is detected from that same host.
+19)How t to enable PHP scripts on your server?
+Answer: If you have mod_php installed, use AddHandler to map .php and .phtml files to the PHP handler. AddHandler application/x-httpd-php .phtml .php
+20) Which tool you have used for Apache benchmarking?
+Answer: ab (Apache bench)
+ab -n 1000 -c 10 http://www.test.com/test.html
+21) Can we cache files which are viewed frequently?
+Answer: Yes we can do it by using mod_file_cache module.
+CacheFile /www/htdocs/index.html
+** Using Varnish and forward port to apache is better. **
+22. How do you check for the httpd.conf consistency and any errors in it?
+Answer: httpd –t     show parsed run settings
+
+23) On which port Apache listens http and https both?
+Answer : By default Apache runs on http port 80 and https port 443 (for SSL certificate). 
+netstat -plnt 
+netstat -antp | grep http
+24) Can Apache be secured with TCP wrappers?
+ No, It can’t be secured with the TCP wrappers since it doesn’t support libwrap.a library of Linux.
+25) Can we have two Apache Web servers on a single machine?
+Answer : Yes, we can run two different Apache servers at one time on a Linux machine, but the condition for that is they should listen on different ports and we can change the ports with Listen directive of Apache.
+26) How to host files in different folder and what is Alias directive?
+Answer : Yes, this can be achieved by Alias directive in the main Apache configuration file. Alias directive maps resources in File system, it takes a URL path and substitute it with a file or directory path on the system with is set up to redirect.
+To use Alias directive, Its the part of mod_alias module of Apache. The default syntax of Alias directive is:
+Alias     /images     /var/data/images/
+ln -s 	/images	     /var/data/images/
+27) How to disable Directory listing when an index file is missing?
+Answer : If, the main index file is missing in the website root directory, then the Apache will lists all the contents like files and folder of the website on the browser instead of Main website pages.
+To stop Apache directory listing, you can set the following rule in the main configuration file globally or in .htaccess file for a particular website.
+<Directory /var/www/html>
+   Options -Indexes
+</Directory>
+28) What are different log files of Apache Web Server?
+Access log & Error log ( “/var/log/httpd/access_log” ,  "/var/log/httpd/error_log”)
+29) What’s the difference between <Location> and <Directory>?
+<Location> is used to set element related to the URL / address bar of the web server.
+<Directory> refers that the location of file system object on the server
+30) What do you understand by MPM in Apache?
+MPM stands for Multi Processing Modules, actually Apache follows some mechanism to accept and complete web server requests.
+varnish is better
+31) What is the difference between Worker and Prefork MPM?
+Answer : Both MPMs, Worker and prefork has their own mechanism to work with Apache. It totally depends on you that in which mode you want to start your Apache.
+Basic difference between Worker and MPM(Multi Processing Modules) is in their process of spawning the child process. In the Prefork MPM, a master httpd process is started and this master process starts manages all other child processes to serve client requests. Whereas, In the worker MPM one httpd process is active, and it uses different threads to serve client requests.
+Prefork MPM uses multiple child processes with one thread each, where worker MPM uses multiple child processes with many threads each.
+Connection handling in the Prefork MPM, each process handles one connection at a time, whereas in the Worker mpm each thread handles one connection at a time.
+Memory footprints Prefork MPM Large memory footprints, where Worker has smaller memory footprints.
+32) What’s the use of “LimitRequestBody” and how to put limit on your uploads?
+Answer : LimitRequestBody directive is used to put a limit on the upload size.
+For example: I want to put limits of 100000 Bytes in the folder /var/www/html/tecmin/uploads. So, you need to add following directive in Apache configuration file.
+<Directory "/var/www/html/tecmint/uploads">
+LimitRequestBody 100000
+</Directory>
+32)  What is mod_perl and mod _php?
+mod_perl is an Apache module which is compiled with Apache for easy integration and to increase the performance of Perl scripts.
+mod_php is used for easy integration of PHP scripts by the web server, it embeds the PHP interpreter inside the Apache process. Its forces Apache child process to use more memory and works with Apache only but still very popular.
+33) What’s the use of mod_ssl and how SSL works with Apache?
+Answer : Mod_ssl package is an Apache module, which allows Apache to establish its connection and transfer all the data in a secure encrypted environment. With the help of SSL certificates, all the Login details and other important secret details get transferred in an encrypted manner over the Internet, which prevents our data from Eavesdropping and IP spoofing.
+34) How to implement SSL into Apache web server
+Whenever an https requests comes, these three steps Apache follows:
+Apache generates its private key and converts that private key to .CSR file (Certificate signing request).
+Then Apache sends the .csr file to the CA (Certificate Authority).
+CA will take the .csr file and convert it to .crt (certificate) and will send that .crt file back to Apache to secure and complete the https connection request.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

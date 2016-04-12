@@ -974,12 +974,16 @@ $./my.sh apple orange kiwi lemon
 
   
 	$ watch -n 1 "ps aux | grep app_name"
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 	
 42. strace - trace system calls and signals	
 	$ strace foobar.sh  	<= debugging a command/script   
 
+<<<<<<< Updated upstream
 43. stty 		 <= change and print terminal line settings
 	$ stty -echo   <= hide(turn off) terminal typing(Can't see typing)
     $ stty echo    <= show(restore) terminal typing(able to see typing)
@@ -998,11 +1002,52 @@ $./my.sh apple orange kiwi lemon
 		Modify: 2016-04-08 21:16:45.355245237 -0700
 		Change: 2016-04-08 21:16:45.355245237 -0700
 		Birth: -
+=======
+	
+42. strace - trace system calls and signals	
+	$ strace foobar.sh  	<= debugging a command/script   
+
+43. stty 		 <= change and print terminal line settings
+	$ stty -echo   <= hide(turn off) terminal typing(Can't see typing)
+    $ stty echo    <= show(restore) terminal typing(able to see typing)
+    $ TTY  		 <= TeleTYpe
 
 
+>>>>>>> Stashed changes
+
+43. stat 				<= detailed and statistic on a file (ls -l foo.bar)
+	
+	$ stat foo.bar 
+		File: ‘foo.bar’
+		Size: 354             Blocks: 8          IO Block: 4096   regular file
+		Device: fc00h/64512d    Inode: 1046543     Links: 1
+		Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+		Access: 2016-04-08 21:16:25.603244615 -0700
+		Modify: 2016-04-08 21:16:45.355245237 -0700
+		Change: 2016-04-08 21:16:45.355245237 -0700
+		Birth: -
+
+<<<<<<< Updated upstream
 44. lsmod = Show the status of modules in the Linux Kernel
 			same as  "cat /proc/modules"
 
+=======
+
+44. lsmod = Show the status of modules in the Linux Kernel
+			same as  "cat /proc/modules"
+>>>>>>> Stashed changes
+
+45. Wall					<= messaging to users within system 				
+	$echo testing > wall.txt
+	$wall wall.txt
+		Broadcast Message from noza@fm
+			(/dev/pts/1) at 19:46 ...
+		testing
+	
+	$ echo "Please log out" | wall 
+		Broadcast Message from noza@fm
+			(/dev/pts/1) at 19:47 ...
+		Please log out
 
 45. Wall					<= messaging to users within system 				
 	$echo testing > wall.txt
