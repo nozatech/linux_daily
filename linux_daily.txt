@@ -1261,14 +1261,12 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 	America/Tijuana
 
 	$ ntpdate pool.ntp.org  		<=0~3.us.pool.ntp.org 
-	$ chkconfig ntpd on
+	$ chkconfig ntpd on				<= put in into startup
 	$ /etc/init.d/ntpd start
 
 	# Ubuntu 14.04(Trusty) #
 	$ apt-get install ntp
-
 	$ ntpq -p  							<=-p peer list of ntp servers  (ntpq=std NTP query program)
-
 	$ vi /etc/ntp.conf					<= replace with **US** 0~3.us.pool.ntp.org 
 		########################
 		server 0.us.pool.ntp.org
@@ -1276,9 +1274,7 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 		server 2.us.pool.ntp.org
 		server 3.us.pool.ntp.org
 		########################
-
 	$ sudo service ntp restart 
-
 
 	# To stop ntpd #
 	$ sudo /etc/init.d/ntp stop
@@ -1305,22 +1301,32 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 	$ chkconfig mysqld on
 	$ /etc/init.d/mysqld start
 
-	DB Location
-	/var/lib/mysql/
-  
-	MySQL config file
-	$ /etc/my.cnf
-  
-	User List
-	$ SELECT User FROM mysql.user;
-  
-58. # CentOS6.xTurn off firewall and SELINUX
+	### CentOS7 ### 
+	$ sudo iptables -L
+	$ sudo yum -y install iptables-services
+	$ sudo systemctl enable iptables 		<= put into start up
+	$ sudo systemctl mask firewalld			<= disable??
+	$ sudo systemctl stop firewalld
+	$ vi /etc/sysconfig/iptables
+	$ sudo systemctl start iptables
 
-	chkconfig iptables off && chkconfig ip6tables off && service iptables stop &&   service ip6tables stop && setenforce 0
+58. # CentOS 6 Turn off firewall and SELINUX
 
-   iptables -L
-   iptables -L -n   <= NO DNS lookup (Faster)
-   iptables -nL
+	chkconfig iptables off && chkconfig ip6tables off && 
+	service iptables stop &&  service ip6tables stop && setenforce 0
+	$ vi /etc/sysconfig/iptables
+	$ iptables -L
+	$ iptables -L -n   <= NO DNS lookup (Faster)
+	$ iptables -nL
+  
+    
+  ### Ubuntu 14 ###
+	$ sudo apt-get update
+	$ sudo apt-get install iptables-persistent
+	$ sudo vi /etc/iptables/rules.v4 
+  	
+	$ /etc/init.d/iptables-persistent {start|restart|reload|force-reload| save|flush}
+	$ service iptables-persistent start | stop | restart | reload
   
   
 # Security Selinux
@@ -1824,7 +1830,7 @@ $_	The underscore variable is set at shell startup and contains the absolute fil
 
 	kernel-2.6.32-431.11.2.el6.x86_64.conf
 	
-	uname -a
+	uname -a				<= all info 
 	
 	uname -r 
 	2.6.32-431.1.2.0.1.el6.x86_64
@@ -2417,7 +2423,7 @@ DER The parent format of PEM. It's useful to think of it as a binary version of 
 
 	Since you will have deleted your kernels and reinstalled them, this should have triggered a GRUB2 update automatically. But just in case they haven't, you can run:
 
-	7. $ update-grub
+7. $ update-grub
 	Reboot and things should now be fixed. 
 	One issue that I had the last time I did something similar was that Windows installs where not found by update-grub 
 	One issue that I had the last time I did something similar was that Windows installs where not found by update-grub 

@@ -6,5 +6,6 @@
 	
 	
 2. Puppet Agent
-	$ puppet agent --test				<= polling from agent host
-	$ 
+	$ puppet agent -t 			( or --test)<= polling from agent host
+	$ service puppet restart				<= Check log from /var/log/syslog
+		# Apr 11 09:58:40 u14lts puppet-agent[2708]: Reopening log files

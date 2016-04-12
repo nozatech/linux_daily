@@ -2,6 +2,20 @@
 # MySQL CRUD Daily ###
 ######################
 
+	
+	
+	DB Location
+	/var/lib/mysql/
+  
+	MySQL config file
+	$ /etc/my.cnf
+  
+	User List
+	$ mysql -uroot -p 					<= login first
+	$ SELECT User FROM mysql.user;		<= run cmd to check
+  
+
+
 1. Master/Slave replication status
 	# grep mysql /var/log/syslog
 	# grep error /var/log/mysql.log
