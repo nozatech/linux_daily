@@ -568,9 +568,10 @@ IP address is 32bit
 	echo 1/3 | bc -l                <= .33333333333333333333
 
 24.	IP address 						<= finding IP from ifconfig using grep regex
-	ifconfig | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
-	192.168.232.132
+	$ ifconfig | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
+	 192.168.232.132
 
+	$ ip neighbor show			<= how your subnet's computers
 
 23-1. tail
   tail -f *Slave.log
@@ -684,6 +685,9 @@ eval > file           Y(3,8) Y(3)   Y      Y(6)      Y      Y
     diff - compare files line by line
 	diff $file1 $file2 > /dev/null
 
+	sdiff  <= side by side comparison
+	
+	
 32. if Condition statement
 
 	a. if condition ; then	<= if condition is true, commands run
@@ -2074,10 +2078,57 @@ breaks $(foo) into words, and treats each word as a glob pattern. The default va
 	sudo chmod +x /etc/init.d/filename 
 	sudo update-rc.d filename defaults 
   
-  
-  
-  
-  
+5. UUID  <= identifier for block devices. 
+	UUIDs are 128 bit long numbers represented by 32 hexadecimal digits and which are used in 
+	software development to uniquely identify information with no further context. 
+	
+	#Linux implementation and generation
+	 In Linux UUIDs are generated in /drivers/char/random.c?id=refs/tags/v3.8, and you can generate new ones via proc:
+	# Usage in fstab
+	As mentioned UUIDs are most often used in Linux to identify block devices. Imagine, you have a couple of hard disks 
+	attached via USBs, than there is no persistent, reliable naming of the devices: sometimes the first USB hard disk is 
+	named “sda”, sometimes it is named “sdb”. So to uniquely address the right disk for example in your /etc/fstab, you have to add an entry like:
+	
+	UUID=9043278a-1817-4ff5-8145-c79d8e24ea79 /boot ext3 defaults 0 2
+
+	For the block device itself, the uuid is stored in the superblock.
+	Beware however that UUIDs should not be used in fstab when you work with LVM snapshots(no 2 device using same uuid). 
+	
+	
+	
+	$ cat /proc/sys/kernel/random/uuid
+	eaf3a162-d770-4ec9-a819-ec96d429ea9f
+	
+	# There is also the library libuuid which is used by uuidgen and especially 
+		by the ext2/3/4 tools E2fsprogs to generate UUIDs:
+	$ uuidgen 
+	f81cc383-aa75-4714-aa8a-3ce39e8ad33c
+	
+	# bash style
+	$ls -l /dev/disk/by-uuid
+	lrwxrwxrwx. 1 root root 10 Apr 13 03:17 116a4716-c5ec-4ce5-aea4-9fea29d78f76 -> ../../dm-1
+	lrwxrwxrwx. 1 root root  9 Apr 13 03:17 2015-12-09-23-03-16-00 -> ../../sr0
+	lrwxrwxrwx. 1 root root 10 Apr 13 03:17 3479cc28-9e7d-4798-abef-a50bafef8761 -> ../../dm-0
+	lrwxrwxrwx. 1 root root 10 Apr 13 03:17 62f1fbbf-e39b-4140-90ed-3d88a7988fa5 -> ../../sda1
+
+	$sudo blkid /dev/sda1
+	/dev/sda1: UUID="62f1fbbf-e39b-4140-90ed-3d88a7988fa5" TYPE="xfs"
+	
+	$ udevadm info -q all -n /dev/sda1|grep uuid
+	S: disk/by-uuid/62f1fbbf-e39b-4140-90ed-3d88a7988fa5
+	E: DEVLINKS=/dev/disk/by-path/pci-0000:00:10.0-scsi-0:0:0:0-part1 /dev/disk/by-uuid/62f1fbbf-e39b-4140-90ed-3d88a7988fa5
+	
+	### When not to use UUID ###
+	Since it is not possible to mount two file systems with the same UUID, extra care need to be taken 
+	when LVM snapshots (or cloned disks) are used in an environment: mounting might fail due to duplicate UUIDs.
+	
+	XFS: Filesystem dm-2 has duplicate UUID – can’t mount
+	
+	One way to deal with this is by the way to change the UUID during creation or afterwards, 
+	another way is to mount with the nouuid option.
+
+	
+	
 ######################## 
 # Bash Shell Variables #
 ########################

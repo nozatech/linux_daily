@@ -1,8 +1,8 @@
 {\rtf1\ansi\ansicpg949\deff0\deflang1033\deflangfe1042{\fonttbl{\f0\fnil\fcharset129 \'b8\'bc\'c0\'ba \'b0\'ed\'b5\'f1;}{\f1\fnil\fcharset2 Symbol;}}
-{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sl276\slmult1\lang18\f0\fs20 1. What is MySQL? \par
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sl276\slmult1\lang18\b\f0\fs20 1. What is MySQL? \b0\par
 MySQL is an open source DBMS which is built, supported and distributed by MySQL AB (now acquired by Oracle)\par
 \par
-2. What is "mysqld"?\par
+\b 2. What is "mysqld"?\b0\par
 Mysqld is a daemon server program typically used to start and stop mysql server. It runs in the background\par
 Here\rquote s how mysqld can be invoked:\par
 >cd \\mysql\\bin\par
@@ -13,69 +13,74 @@ Following are the options provided:\par
 3. --log=filename- Specifies server to write log files to filename.\par
 4. --log-error=filename- Specifies server to write error log files to filename.\par
 \par
-2. What are the technical features of MySQL? \par
-MySQL database software is a client or server system which includes\par
-Multithreaded SQL server supporting various client programs and libraries\par
-Different backend\par
-Wide range of application programming interfaces and\par
-Administrative tools.\par
-\par
-3. Why MySQL is used?\par
+\b 2. MySQL backup and restore? \b0\par
+\pard\li720\sl276\slmult1 backup: # mysqldump -u root -p[root_password] [database_name] > dumpfilename.sql\par
+restore:# mysql -u root -p[root_password] [database_name] < dumpfilename.sql\par
+\pard\sl276\slmult1\par
+\b 3. Why MySQL is used?\b0\par
 MySQL database server is reliable, fast and very easy to use.  This software can be downloaded as freeware and can be downloaded from the internet.\par
 \par
-4. What are Heap tables?\par
+\b 4. What are Heap tables?\b0\par
 HEAP tables are present in memory and they are used for high speed storage on temporary basis.\par
 \par
 \bullet  BLOB or TEXT fields are not allowed\par
 \bullet  Only comparison operators can be used =, <,>, = >,=<\par
 \bullet  AUTO_INCREMENT is not supported by HEAP tables\par
 \bullet  Indexes should be NOT NULL\par
-\par
-5. What is the default port for MySQL Server?\par
+\b\par
+5. What is the default port for MySQL Server?\b0\par
 \tab The default port for MySQL server is 3306.\par
 \par
-6.  What are the advantages of MySQL when compared with Oracle? \par
-MySQL is open source software which is available at any time and has no cost involved.\par
+\b 6.  What are the advantages of MySQL when compared with Oracle? \b0\par
+\pard\li720\sl276\slmult1 MySQL is open source software which is available at any time and has no cost involved.\par
 MySQL is portable\par
 GUI with command prompt.\par
 Administration is supported using MySQL Query Browser\par
-\par
-7. Differentiate between FLOAT and DOUBLE? \par
-\bullet  Floating point numbers are stored in FLOAT with eight place accuracy and it has four bytes.\par
-\bullet  Floating point numbers are stored in DOUBLE with accuracy of 18 places and it has eight bytes.\par
-\par
- 8. Differentiate CHAR_LENGTH and LENGTH?\par
-CHAR_LENGTH  is character count whereas the LENGTH is byte count. The numbers are same for Latin characters but they are different for Unicode and other encodings.\par
-\par
-9. How to represent ENUMs and SETs internally? \par
-ENUMs and SETs are used to represent powers of two because of storage optimizations.\par
-\par
-10. What is the usage of ENUMs in MySQL?\par
-ENUM is a string object used to specify set of predefined values and that can be used during table creation.\par
+\pard\sl276\slmult1\par
+\b 7. Differentiate between FLOAT and DOUBLE? \b0\par
+\pard\li720\sl276\slmult1\bullet  Floating point numbers are stored in FLOAT with 8 place accuracy and it has 4 bytes.\par
+\bullet  Floating point numbers are stored in DOUBLE with accuracy of 18 places and it has 8 bytes.\par
+\pard\sl276\slmult1\par
+\b  8. Differentiate CHAR_LENGTH and LENGTH?\b0\par
+\pard\li720\sl276\slmult1 CHAR_LENGTH  is character count whereas the LENGTH is byte count. The numbers are same for Latin characters but they are different for Unicode and other encodings.\par
+\pard\sl276\slmult1\par
+\b 9. How to represent ENUMs and SETs internally? \b0\par
+\pard\li720\sl276\slmult1 ENUMs and SETs are used to represent powers of two 2^2 because of storage optimizations.\par
+\pard\sl276\slmult1\par
+\b 10. What is the usage of ENUMs in MySQL?\b0\par
+\pard\li720\sl276\slmult1 ENUM is a string object used to specify set of predefined values and that can be used during table creation.\par
 Create table size(name ENUM('Small', 'Medium','Large');\par
-1\par
 Create table size(name ENUM('Small', 'Medium','Large');\par
- \par
-11. Define REGEXP? \par
-REGEXP is a pattern match in which matches pattern anywhere in the search value.\par
-\par
-12. Difference between CHAR and VARCHAR? \par
-CHAR and VARCHAR types differ in storage and retrieval\par
-CHAR column length is fixed to the length that is declared while creating table. The length value ranges from 1 and 255\par
-When CHAR values are stored then they are right padded using spaces to specific length. Trailing spaces are removed when CHAR values are retrieved.\par
-\par
- 13. Give string types available for column?\par
+\pard\sl276\slmult1  \par
+\b 11. Define REGEXP? \b0\par
+\pard\li720\sl276\slmult1 REGEXP is a pattern match in which matches pattern anywhere in the search value.\par
+\pard\sl276\slmult1\par
+\b 12. Difference between CHAR and VARCHAR? \b0\par
+\pard\li720\sl276\slmult1 CHAR(fixed length <= 50% Faster) differ in \ul storage and retrieval\ulnone\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li1440\sl276\slmult1 Used to store character string value of fixed length.\par
+{\pntext\f1\'B7\tab}The maximum no. of characters the data type can hold is 255 characters.\par
+{\pntext\f1\'B7\tab}It's 50% faster than VARCHAR.\par
+{\pntext\f1\'B7\tab}Uses static memory allocation.\par
+\pard\sl276\slmult1\tab VARCHAR(variable-length) types differ in \ul storage and retrieval\ulnone\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li1080\sl276\slmult1 Used to store variable length alphanumeric data.\par
+{\pntext\f1\'B7\tab}The maximum this data type can hold is up to\par
+\pard{\pntext\f0 i.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pnlcrm{\pntxta.}}
+\fi-360\li1440\sl276\slmult1 Pre-MySQL 5.0.3: 255 characters.\par
+{\pntext\f0 ii.\tab}In MySQL 5.0.3+: 65,535 characters shared for the row.\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li1080\sl276\slmult1 It's slower than CHAR.\par
+{\pntext\f1\'B7\tab}Uses dynamic memory allocation.\par
+\pard\sl276\slmult1  \par
+\b 13. Give string types available for column?\b0\par
 \tab SET, BLOB, ENUM, CHAR, TEXT, VARCHAR\par
 \par
-14. How to get current MySQL version?\par
-$ mysql -v or \par
+\b 14. How to get current MySQL version?\b0\par
+\pard\li720\sl276\slmult1 $ mysql -v or \par
 $ mysql -u root -p  # check after login scrren\par
-\par
- 15. What storage engines are used in MySQL? \par
-MYISAM <5.5 < InnoDB Storage engines are called table types and data is stored in files using various techniques.\par
-Storage mechanism, Locking levels, Indexing, Capabilities and functions.\par
-\par
-16. What are the drivers in MySQL?\par
+\pard\sl276\slmult1\par
+\b  15. What storage engines are used in MySQL? \b0\par
+\pard\li720\sl276\slmult1 MYISAM <5.5 < InnoDB Storage engines are called table types and data is stored in files using various techniques.  Storage mechanism, Locking levels, Indexing, Capabilities and functions.\par
+\pard\sl276\slmult1\par
+\b 16. What are the drivers in MySQL?\b0\par
 \pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sl276\slmult1 PHP Driver\par
 {\pntext\f1\'B7\tab}JDBC Driver\par
 {\pntext\f1\'B7\tab}ODBC Driver\par
@@ -86,117 +91,103 @@ Storage mechanism, Locking levels, Indexing, Capabilities and functions.\par
 {\pntext\f1\'B7\tab}CAP11PHP Driver\par
 {\pntext\f1\'B7\tab}Ado.net5.mxj\par
 \pard\sl276\slmult1\par
-17. What does a TIMESTAMP do on UPDATE CURRENT_TIMESTAMP data type?\par
-TIMESTAMP column is updated with Zero when the table is created.  UPDATE CURRENT_TIMESTAMP modifier updates the timestamp field to  current time whenever there is a change in other fields of the table.\par
-\par
-18. What is the difference between primary key and candidate key?\par
-Every row of a table is identified uniquely by primary key. There is only one primary key for a table.\par
+\b 17. What does a TIMESTAMP do on UPDATE CURRENT_TIMESTAMP data type?\b0\par
+\pard\li720\sl276\slmult1 TIMESTAMP column is updated with Zero when the table is created.  UPDATE CURRENT_TIMESTAMP modifier updates the timestamp field to  current time whenever there is a change in other fields of the table.\par
+\pard\sl276\slmult1\par
+\b 18. What is the difference between primary key and candidate key?\b0\par
+\pard\li720\sl276\slmult1 Every row of a table is identified uniquely by primary key. There is only one primary key for a table.\par
 Primary Key is also a candidate key. By common convention, candidate key can be designated as primary and which can be used for any foreign key references.\par
-\par
-19. How do you login to MySql using Unix shell?\par
-$ mysql -u root -p\par
+\pard\sl276\slmult1\par
+\b 19. How do you login to MySql using Unix shell?\b0\par
+\pard\li720\sl276\slmult1 $ mysql -u root -p\par
 $ /bin/mysql -u <UserName> -p <password> -h hostname(or IP) \par
+\pard\sl276\slmult1\par
+\b 20. What does myisamchk do?\par
+\tab Repair Corrupted MySQL Tables\b0\par
 \par
-20. What does myisamchk do?\par
-It compress the MyISAM tables, which reduces their disk or memory usage.\par
-\par
-21. How do you control the max size of a HEAP table?\par
-Maximum size of Heal table can be controlled by MySQL config variable called max_heap_table_size.\par
-\par
-22. What is the difference between MyISAM Static and MyISAM Dynamic?\par
-In MyISAM static all the fields will have fixed width. The Dynamic MyISAM table will have fields like TEXT, BLOB, etc. to accommodate the data types with various lengths. faster.\par
+\b 21. How do you control the max size of a HEAP table?\b0\par
+\pard\li720\sl276\slmult1  MySQL config variable called max_heap_table_size.\par
+\pard\sl276\slmult1\par
+\b 22. What is the difference between MyISAM Static and MyISAM Dynamic?\b0\par
+\pard\li720\sl276\slmult1 In MyISAM static all the fields will have fixed width. The Dynamic MyISAM table will have fields like TEXT, BLOB, etc. to accommodate the data types with various lengths. faster.\par
 MyISAM Static would be easier to restore in case of corruption.\par
-\par
-23. What are federated tables?\par
+\pard\sl276\slmult1\par
+\pard\li720\sl276\slmult1\b 23. What are federated tables?\b0\par
 Federated tables which allow access to the tables located on other databases on other servers.\par
-\par
-24. What, if a table has one column defined as TIMESTAMP?\par
-Timestamp field gets the current timestamp whenever the row gets altered.\par
-\par
-25. What happens when the column is set to AUTO INCREMENT and if you reach maximum value in the table?\par
-\ul It stops incrementing\ulnone . Any further inserts are going to produce an error, since the key has been used already.\par
-\par
-26. How can we find out which auto increment was assigned on Last insert?\par
+\pard\sl276\slmult1\par
+\b 24. What, if a table has one column defined as TIMESTAMP?\b0\par
+\pard\li720\sl276\slmult1 Timestamp field gets the current timestamp whenever the row gets altered.\par
+\pard\sl276\slmult1\par
+\b 25. What happens when the column is set to AUTO INCREMENT and if you reach maximum value in the table?\b0\par
+\pard\li720\sl276\slmult1\ul It stops incrementing\ulnone . Any further inserts are going to produce an error, since the key has been used already.\par
+\pard\sl276\slmult1\par
+\b 26. How can we find out which auto increment was assigned on Last insert?\b0\par
 LAST_INSERT_ID will return the last value assigned by Auto_increment and it is not required to specify the table name.\par
 \par
-27. How can you see all indexes defined for a table?\par
-Indexes are defined for the table by:\par
+\b 27. How can you see all indexes defined for a table?\b0\par
+\pard\li720\sl276\slmult1 Indexes are defined for the table by:\par
 SHOW INDEX FROM <tablename>;\par
-\par
-28. What do you mean by % and _ in the LIKE statement?\par
-% corresponds to 0 or more characters, _ is exactly one character in the LIKE statement.\par
-\par
-29. How can we convert between Unix & MySQL timestamps?\par
-UNIX_TIMESTAMP is the command which converts from MySQL timestamp to Unix timestamp\par
+\pard\sl276\slmult1\par
+\b 28. What do you mean by % and _ in the LIKE statement?\b0\par
+\pard\li720\sl276\slmult1 % corresponds to 0 or more characters, _ is exactly one character in the LIKE statement.\par
+\pard\sl276\slmult1\par
+\b 29. How can we convert between Unix & MySQL timestamps?\b0\par
+\pard\li720\sl276\slmult1 UNIX_TIMESTAMP is the command which converts from MySQL timestamp to Unix timestamp\par
 FROM_UNIXTIME is the command which converts from Unix timestamp to MySQL timestamp.\par
-\par
+\pard\sl276\slmult1\par
 30. What are the column comparisons operators?\par
-The = , <>, <=, <, >=, >,<<,>>, <=>, AND, OR, or LIKE operators are used in column comparisons in SELECT statements.\par
-\par
- 31. How can we get the number of rows affected by query?\par
+\pard\li720\sl276\slmult1 The = , <>, <=, <, >=, >,<<,>>, <=>, AND, OR, or LIKE operators are used in column comparisons in SELECT statements.\par
+\pard\sl276\slmult1\par
+\b  31. How can we get the number of rows affected by query?\b0\par
 Number of rows can be obtained by\par
 SELECT COUNT (user_id) FROM users;\par
-1\par
 SELECT COUNT (user_id) FROM users;\par
-\par
-32.  Is Mysql query is case sensitive?\par
+\b\par
+32.  Is Mysql query is case sensitive?\b0\par
 No.\par
 SELECT VERSION(), CURRENT_DATE;\par
 SeLect version(), current_date;\par
 seleCt vErSiOn(), current_DATE;\par
-1\par
-2\par
-3\par
-SELECT VERSION(), CURRENT_DATE;\par
-SeLect version(), current_date;\par
-seleCt vErSiOn(), current_DATE;\par
-All these examples are same. It is not case sensitive.\par
 \par
-33. What is the difference between the LIKE and REGEXP operators?  \par
-LIKE and REGEXP operators are used to express with ^ and %.\par
+\par
+\b 33. What is the difference between the LIKE and REGEXP operators?  \b0\par
+\pard\li720\sl276\slmult1 LIKE and REGEXP operators are used to express with ^ and %.\par
 SELECT * FROM employee WHERE emp_name REGEXP "^b";\par
 SELECT * FROM employee WHERE emp_name LIKE "%b";\par
-1\par
-2\par
-SELECT * FROM employee WHERE emp_name REGEXP "^b";\par
-SELECT * FROM employee WHERE emp_name LIKE "%b";\par
-\par
-34. What is the difference between BLOB AND TEXT?\par
-A BLOB is a binary large object(pictures) that can hold a variable amount of data. There are four types of BLOB \endash\par
+\pard\sl276\slmult1\par
+\b 34. What is the difference between BLOB AND TEXT?\b0\par
+\pard\li720\sl276\slmult1 A BLOB is a binary large object(pictures) that can hold a variable amount of data. There are four types of BLOB \endash\par
 TINYBLOB\par
 BLOB\par
 MEDIUMBLOB and\par
 LONGBLOB\par
 They all differ only in the maximum length of the values they can hold.\par
-\par
-A TEXT is a case-insensitive BLOB. The four TEXT types\par
+\pard\sl276\slmult1\par
+\pard\li720\sl276\slmult1 A TEXT is a case-insensitive BLOB. The four TEXT types\par
 TINYTEXT\par
 TEXT\par
 MEDIUMTEXT and\par
 LONGTEXT\par
 They all correspond to the four BLOB types and have the same maximum lengths and storage requirements.\par
 The only difference between BLOB and TEXT types is that sorting and comparison is performed in case-sensitive for BLOB values and case-insensitive for TEXT values.\par
-\par
-35. What is the difference between mysql_fetch_array and mysql_fetch_object?\par
-Following are the differences between mysql_fetch_array and mysql_fetch_object:\par
+\pard\sl276\slmult1\par
+\b 35. What is the difference between mysql_fetch_array and mysql_fetch_object?\b0\par
+\pard\li720\sl276\slmult1 Following are the differences between mysql_fetch_array and mysql_fetch_object:\par
 mysql_fetch_array() -Returns a result row as an associated array or a regular array from database.\par
 mysql_fetch_object \endash   Returns a result row as object from database.\par
-\par
-36. How can we run batch mode in mysql?\par
-Following commands are used to run in batch mode:\par
+\pard\sl276\slmult1\par
+\b 36. How can we run batch mode in mysql\b0 ?\par
+\pard\li720\sl276\slmult1 Following commands are used to run in batch mode:\par
 mysql ;\par
 mysql mysql.out\par
-1\par
-2\par
-mysql ;\par
-mysql mysql.out\par
+\pard\sl276\slmult1\par
  \par
-37. Where MyISAM table will be stored and also give their formats of storage?\par
-Each MyISAM table is stored on disk in three formats:\par
+\b 37. Where MyISAM table will be stored and also give their formats of storage?\b0\par
+\pard\li720\sl276\slmult1 Each MyISAM table is stored on disk in three formats:\par
 The \lquote .frm\rquote  file stores the table definition\par
 The data file has a \lquote .MYD\rquote  (MYData) extension\par
 The index file has a \lquote .MYI\rquote  (MYIndex) extension\par
-\par
+\pard\sl276\slmult1\par
 38. What are the different tables present in MySQL?\par
 \pard\li720\sl276\slmult1 Total 5 types of tables are present:\par
 \pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li1440\sl276\slmult1 MyISAM\par
@@ -204,43 +195,34 @@ The index file has a \lquote .MYI\rquote  (MYIndex) extension\par
 {\pntext\f1\'B7\tab}Merge\par
 {\pntext\f1\'B7\tab}INNO DB\par
 {\pntext\f1\'B7\tab}ISAM\par
-\pard\li720\sl276\slmult1 MyISAM is the default storage engine as of MySQL .\par
+\pard\li720\sl276\slmult1 MyISAM is the default storage engine as of MySQL <5.5< InnoDB.\par
 \pard\sl276\slmult1\par
-39. What is ISAM?\par
-ISAM  is abbreviated as Indexed Sequential Access Method.  It was developed by IBM to store and retrieve data on secondary storage systems like tapes.\par
+\b 39. What is ISAM?\b0\par
+\pard\li720\sl276\slmult1 ISAM  is abbreviated as Indexed Sequential Access Method.  It was developed by IBM to store and retrieve data on secondary storage systems like tapes.\par
+\pard\sl276\slmult1\par
+ \b 40. What is InnoDB?\b0\par
+lnnoDB is a transaction safe storage engine( developed by Innobase Oy which is a Oracle Corporation now.)\par
 \par
- 40. What is InnoDB?\par
-lnnoDB is a transaction safe storage engine developed by Innobase Oy which is a Oracle Corporation now.\par
-\par
-41. How MySQL Optimizes DISTINCT?\par
-DISTINCT is converted to a GROUP BY on all columns and it will be combined with ORDER BY clause.\par
-\par
+\b 41. How MySQL Optimizes DISTINCT?\b0\par
+\pard\li720\sl276\slmult1 DISTINCT is converted to a GROUP BY on all columns and it will be combined with ORDER BY clause.\par
 SELECT DISTINCT t1.a FROM t1,t2 where t1.a=t2.a;\par
-1\par
-SELECT DISTINCT t1.a FROM t1,t2 where t1.a=t2.a;\par
-42. How to enter Characters as HEX Numbers?\par
-\par
-If you want to enter characters as HEX numbers, you can enter HEX numbers with single quotes and a prefix of (X), or just prefix HEX numbers with (Ox).\par
-\par
+\pard\sl276\slmult1\par
+\b 42. How to enter Characters as HEX Numbers?\par
+\pard\li720\sl276\slmult1\b0 If you want to enter characters as HEX numbers, you can enter HEX numbers with single quotes and a prefix of (X), or just prefix HEX numbers with (Ox).\par
 A HEX number string will be automatically converted into a character string, if the expression context is a string.\par
-\par
-43. How to display top 50 rows?\par
-In MySql, top 50 rows are displayed by using this following query:\par
-\par
-SELECT * FROM\par
+\pard\sl276\slmult1\par
+\b 43. How to display top 50 rows?\b0\par
+\pard\li720\sl276\slmult1 SELECT * FROM\par
 LIMIT 0,50;\par
- \par
-44. How many columns can be used for creating Index?\par
-Maximum of 16 indexed columns can be created for any standard table.\par
-\par
-45. What is the different between NOW() and CURRENT_DATE()?\par
-NOW () command is used to show current year,month,date with hours,minutes and seconds.\par
+\pard\sl276\slmult1  \par
+\b 44. How many columns can be used for creating Index?\b0\par
+\pard\li720\sl276\slmult1 Maximum of 16 indexed columns can be created for any standard table.\par
+\pard\sl276\slmult1\par
+\b 45. What is the different between NOW() and CURRENT_DATE()?\b0\par
+\pard\li720\sl276\slmult1 NOW () command is used to show current year,month,date with hours,minutes and seconds.\par
 CURRENT_DATE() shows current year,month and date only.\par
-\par
-46. What are the objects can be created using CREATE statement?\par
-\par
-Following objects are created using CREATE statement:\par
-\par
+\pard\sl276\slmult1\par
+\b 46. What are the objects can be created using CREATE statement?\b0\par
 \pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sl276\slmult1 DATABASE\par
 {\pntext\f1\'B7\tab}EVENT\par
 {\pntext\f1\'B7\tab}FUNCTION\par
@@ -250,9 +232,8 @@ Following objects are created using CREATE statement:\par
 {\pntext\f1\'B7\tab}TRIGGER\par
 {\pntext\f1\'B7\tab}USER\par
 {\pntext\f1\'B7\tab}VIEW\par
-\pard\sl276\slmult1 47. How many TRIGGERS are allowed in MySql table?\par
-\par
-SIX triggers are allowed in MySql table. They are as follows:\par
+{\pntext\f1\'B7\tab}\par
+\pard\sl276\slmult1\b 47. How many TRIGGERS are allowed in MySql table?\b0\par
 \pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sl276\slmult1 BEFORE INSERT\par
 {\pntext\f1\'B7\tab}AFTER INSERT\par
 {\pntext\f1\'B7\tab}BEFORE UPDATE\par
@@ -260,150 +241,45 @@ SIX triggers are allowed in MySql table. They are as follows:\par
 {\pntext\f1\'B7\tab}BEFORE DELETE and\par
 {\pntext\f1\'B7\tab}AFTER DELETE\par
 \pard\sl276\slmult1\par
-48. What are the nonstandard string types?\par
-Following are Non-Standard string types:\par
+\b 48. What are the nonstandard string types?\b0\par
 \pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sl276\slmult1 TINYTEXT\par
 {\pntext\f1\'B7\tab}TEXT\par
 {\pntext\f1\'B7\tab}MEDIUMTEXT\par
 {\pntext\f1\'B7\tab}LONGTEXT\par
 \pard\sl276\slmult1\par
-49. What are all the Common SQL Function?\par
-CONCAT(A, B) \endash  Concatenates two string values to create a single string output. Often used to combine two or more fields into one single field.\par
-FORMAT(X, D) \endash  Formats the number X to D significant digits.\par
-CURRDATE(), CURRTIME() \endash  Returns the current date or time.\par
-NOW() \endash  Returns the current date and time as one value.\par
-MONTH(), DAY(), YEAR(), WEEK(), WEEKDAY() \endash  Extracts the given data from a date value.\par
-HOUR(), MINUTE(), SECOND() \endash  Extracts the given data from a time value.\par
-DATEDIFF(A, B) \endash  Determines the difference between two dates and it is commonly used to calculate age\par
-SUBTIMES(A, B) \endash  Determines the difference between two times.\par
-FROMDAYS(INT) \endash  Converts an integer number of days into a date value.\par
+\b 49. What are all the Common SQL Function?\b0\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sl276\slmult1 CONCAT(A, B) \endash  Concatenates two string values to create a single string output. Often used to combine two or more fields into one single field.\par
+{\pntext\f1\'B7\tab}FORMAT(X, D) \endash  Formats the number X to D significant digits.\par
+{\pntext\f1\'B7\tab}CURRDATE(), CURRTIME() \endash  Returns the current date or time.\par
+{\pntext\f1\'B7\tab}NOW() \endash  Returns the current date and time as one value.\par
+{\pntext\f1\'B7\tab}MONTH(), DAY(), YEAR(), WEEK(), WEEKDAY() \endash  Extracts the given data from a date value.\par
+{\pntext\f1\'B7\tab}HOUR(), MINUTE(), SECOND() \endash  Extracts the given data from a time value.\par
+{\pntext\f1\'B7\tab}DATEDIFF(A, B) \endash  Determines the difference between two dates and it is commonly used to calculate age\par
+{\pntext\f1\'B7\tab}SUBTIMES(A, B) \endash  Determines the difference between two times.\par
+{\pntext\f1\'B7\tab}FROMDAYS(INT) \endash  Converts an integer number of days into a date value.\par
+\pard\sl276\slmult1\par
+\b 50. Explain Access Control Lists.\b0\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sl276\slmult1 An ACL (Access Control List) is a list of permissions that is associated with an object. This list is the basis for MySQL server\rquote s security model and it helps in troubleshooting problems like users not being able to connect.\par
+{\pntext\f1\'B7\tab}MySQL keeps the ACLs (also called grant tables) cached in memory. When a user tries to authenticate or run a command, MySQL checks the authentication information and permissions against the ACLs, in a predetermined order.\par
+\pard\sl276\slmult1\par
 \par
-50. Explain Access Control Lists.\par
-An ACL (Access Control List) is a list of permissions that is associated with an object. This list is the basis for MySQL server\rquote s security model and it helps in troubleshooting problems like users not being able to connect.\par
 \par
-MySQL keeps the ACLs (also called grant tables) cached in memory. When a user tries to authenticate or run a command, MySQL checks the authentication information and permissions against the ACLs, in a predetermined order.\par
-\par
-51. How many TRIGGERS are allowed in MySql table?\par
-MySql table allows following 6 triggers: \par
-- BEFORE INSERT\par
-- AFTER INSERT\par
-- BEFORE UPDATE\par
-- AFTER UPDATE\par
-- BEFORE DELETE and\par
-- AFTER DELETE\par
-\par
-52. Differentiate between FLOAT and DOUBLE.\par
-FLOAT stores floating point numbers with accuracy up to eight places and has four bytes while DOUBLE stores floating point numbers with accuracy upto 18 places and has eight bytes.\par
-\par
-53. Tell us something about Heap tables.\par
-- HEAP tables are found in memory.\par
-- They are used for high speed storage on temporary basis.\par
-\par
-Some of their characteristics are:\par
-- They do not allow BLOB or TEXT fields.\par
-- Only comparison operators like =, <, >, = >, =< can be used with them.\par
-- AUTO_INCREMENT is not supported by HEAP tables\par
-- Indexes should be NOT NULL\par
-\par
-54. How do you control the max size of a HEAP table?\par
-- Maximum size of Heap table can be controlled using MySQL config variable called max_heap_table_size.\par
-\par
-55. What are the advantages of MySQL in comparison to Oracle?\par
-- MySQL is open source software available at zero cost.\par
-- It is portable.\par
-- GUI with command prompt.\par
-- Administration is supported by MySQL Query Browser.\par
-\par
-56. What does myisamchk do?\par
-- It compresses the MyISAM tables, which reduces their disk or memory usage\par
-\par
-57. How can we convert between Unix & MySQL timestamps?\par
-- MySQL timestamp can be converted into Unix timestamp using the command UNIX_TIMESTAMP.\par
-- Unix timestamp can be converted into MySQL timestamp using the command FROM_UNIXTIME.\par
-\par
-58. What is BLOB?\par
-- BLOB stands for binary large object.\par
-- It that can hold a variable amount of data.\par
-\par
-There are four types of BLOB based on the maximum length of values they can hold:\par
-- TINYBLOB\par
-- BLOB\par
-- MEDIUMBLOB\par
-- LONGBLOB\par
-What is TEXT?\par
-\par
-TEXT is case-insensitive BLOB. The four types of TEXT are:\par
-- TINYTEXT\par
-- TEXT\par
-- MEDIUMTEXT\par
-- LONGTEXT\par
-\par
-58. What is the difference between BLOB and TEXT?\par
-- In BLOB sorting and comparison is performed in case-sensitive for BLOB values.\par
-- In TEXT types sorting and comparison is performed case-insensitive.\par
-\par
-59. How is MyISAM table stored?\par
-MyISAM table is stored on disk in three formats.\par
-- \lquote .frm\rquote  file \endash  storing the table definition\par
-- \lquote .MYD\rquote  (MYData) - data file\par
-- \lquote .MYI\rquote  (MYIndex) \endash  index file\par
-\par
-60. Explain advantages of MyISAM over InnoDB?\par
-- MyISAM follows a much more conservative approach to disk space management \endash  storing each MyISAM table in a separate file, which can be further compresses, if required.\par
-- InnoDB stores the tables in tablespace. Further optimization is difficult with them.\par
-\par
-61. How would concatenate strings in MySQL?\par
-With the use of - CONCAT (string1, string2, string3)\par
-\par
-62. How would you get the current date in Mysql?\par
-By using \par
-SELECT CURRENT_DATE();\par
-\par
-63. How would you enter Characters as HEX Numbers?\par
-- To enter characters as HEX numbers, you can enter HEX numbers with single quotes and a prefix of (X).\par
-- Alternatively, just prefix HEX numbers with (Ox).\par
-\par
-64. How are MySQL timestamps seen to a user?\par
-- MySQL time stamps are seen to a user in a readable format : YYYY-MM-DD HH:MM:SS.\par
-\par
-65. How will you export tables as an XML file in MySQL?\par
-MYSQL\rquote s query browser has a provision called \ldblquote Export Result Set\rdblquote  which allows the tables to be exported as XML.\par
-\par
-66. What is the use of i-am-a-dummy flag in MySQL?\par
-Using the i-am-dummy flag makes the SQL engine refuse any Updates or deletes to execute if the WHERE clause is not present. It is very useful when using delete statements. Using i-am-dummy flag will not allow the following statement to execute:\par
-Delete from employee;\par
-\par
-67. What are the differences between MySQL_fetch_array(), MySQL_fetch_object(), MySQL_fetch_row()?\par
-Mysql_fetch_object returns the result from the database as objects while mysql_fetch_array returns result as an array. This will allow access to the data by the field names. \par
-\par
-E.g. using mysql_fetch_object field can be accessed as $result->name and using mysql_fetch_array field can be accessed as $result->[name]. mysql_fetch_row($result):- where $result is the result resource returned from a successful query executed using the mysql_query() function.\par
-\par
-Example:\par
-$result = mysql_query(\ldblquote SELECT * from students");\par
-while($row = mysql_fetch_row($result))\par
-\{\par
-        Some statement;\par
-\}\par
-\par
-68. What is difference between mysql_connect and mysql_pconnect?\par
-Mysql_connect() opens a new connection to the database while mysql_pconnect() opens a persistent connection to the database. This means that each time the page is loaded mysql_pconnect() does not open the database. Mysql_close() cannot be used to close the persistent connection. Though it can be used to close mysql_connect().\par
-\par
-69. What is MySQL data directory? How to determine the location of the data directory?\par
-MySQL stores its data on the disk on the data dictionary. Each subdirectory under this data dictionary represents a MySQL database, inside those directories. By default the information managed my MySQL = server mysqld is stored in data directory.A default location of data directory in windows is C:\\mysql\\data or C:\\Program Files\\MySQL\\MySQL Server 5.0 \\data..\par
-\par
-70. What you can use Regular Expression for in MySQL? Support your answer with an example.\par
-\par
-Regular expressions in MySql are used in queries for searching a pattern in a string.\par
-1. * Matches 0 more instances of the string preceding it.\par
-2. + matches 1 more instances of the string preceding it.\par
-3. ? Matches 0 or 1instances of the string preceding it.\par
-4. . Matches a single character.\par
-5. [abc] matches a or b or z\par
-6. | separates strings\par
-7. ^ anchors the match from the start.\par
-\par
+\b 68. What is difference between mysql_connect and mysql_pconnect?\b0\par
+\pard\li720\sl276\slmult1\b Mysql_connect()\b0  opens a new connection to the database while \b mysql_pconnect() \b0 opens a persistent connection to the database. This means that each time the page is loaded mysql_pconnect() does not open the database. Mysql_close() cannot be used to close the persistent connection. Though it can be used to close mysql_connect().\par
+\pard\sl276\slmult1\par
+\b 69. What is MySQL data directory? How to determine the location of the data directory?\b0\par
+\pard\li720\sl276\slmult1 MySQL stores its data on the disk on the data dictionary. Each subdirectory under this data dictionary represents a MySQL database, inside those directories. By default the information managed my MySQL = server mysqld is stored in data directory.  A default location of data directory in /var/lib/mysql\par
+\pard\sl276\slmult1\par
+\b 70. What you can use Regular Expression for in MySQL? Support your answer with an example.\b0\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li1440\sl276\slmult1  * Matches 0 more instances of the string preceding it.\par
+{\pntext\f1\'B7\tab} + matches 1 more instances of the string preceding it.\par
+{\pntext\f1\'B7\tab} ? Matches 0 or 1instances of the string preceding it.\par
+{\pntext\f1\'B7\tab} . Matches a single character.\par
+{\pntext\f1\'B7\tab} [abc] matches a or b or z\par
+{\pntext\f1\'B7\tab} | separates strings\par
+{\pntext\f1\'B7\tab} ^ anchors the match from the start.\par
+\pard\li720\sl276\slmult1\par
 REGEXP can be used to match the input characters with the database.\par
-\par
 Example:\par
 The following statement retrieves all rows where column employee_name contains the text 1000 (example salary):\par
 Select employee_name\par
@@ -412,88 +288,35 @@ Where employee_name REGEXP \lquote 1000\rquote\par
 Order by employee_name\par
 \par
 \ldblquote .\rdblquote  Can be used to match any single character. \ldblquote |\rdblquote  can be used to match either of the two strings\par
+\pard\sl276\slmult1\par
+\b 71. How will you export tables as an XML file in MySQL\b0 ?\par
 \par
-71. How will you export tables as an XML file in MySQL?\par
-From the command prompt type the following statement:\par
-mysql -u test --xml -e 'SELECT * FROM t1' > t1.xml\par
+\pard\li720\sl276\slmult1 mysql -u test --xml -e 'SELECT * FROM t1' > t1.xml\par
 where \lquote\endash u test\lquote  is the user name, --xml indicates the type of the file is xml, -e for export\par
+\pard\sl276\slmult1\par
+\b 72. What is the use of i-am-a-dummy flag in MySQL?\b0\par
+\pard\li720\sl276\slmult1 The flag i-am-a-dummy flag makes the MySQL engine to deny the UPDATE and DELETE commands unless the WHERE clause is present.\par
+\pard\sl276\slmult1\par
+\b 73. What are the differences between MySQL_fetch_array(), MySQL_fetch_object(), MySQL_fetch_row()?\b0\par
 \par
-72. What is the use of i-am-a-dummy flag in MySQL?\par
-The flag i-am-a-dummy flag makes the MySQL engine to deny the UPDATE and DELETE commands unless the WHERE clause is present.\par
-\par
-73. What are the differences between MySQL_fetch_array(), MySQL_fetch_object(), MySQL_fetch_row()?\par
-\par
-The mysql_fetch_object() returns the result from the database as an object.\par
-Ex: $result->name\par
-\par
-The mysql_fetch_array() returns the result from the database as an associative array or numeric array or both by using mysql_NUM or mysql_ASSOC options.\par
+\pard\li720\sl276\slmult1 The mysql_fetch_object() returns the result from the database as an \ul object.\par
+\ulnone Ex: $result->name\par
+\pard\sl276\slmult1\par
+\pard\li720\sl276\slmult1 The mysql_fetch_array() returns the result from the database as an associative array or numeric array or both by using mysql_NUM or mysql_ASSOC options.\par
 EX: $result[0] ,$result['name']\par
-\par
-The mysql_fetch_row() returns the result from the database as a numeric array.\par
+\pard\sl276\slmult1\par
+\pard\li720\sl276\slmult1 The mysql_fetch_row() returns the result from the database as a \ul numeric array\ulnone .\par
 Ex: $result[0]\par
-\par
-74. What is difference between mysql_connect and mysql_pconnect?\par
-\par
-Mysql_connect:\par
-\par
-- Opens a new connection to the database.\par
-- The database connection can be closed.\par
-- Opens the page every time the page is loaded.\par
-\par
-Mysql_pconnect:\par
-\par
-- Opens a persistent connection to the database.\par
-- The database connection can not be closed.\par
-- The page need not be opened every time the page is loaded.\par
-\par
+\pard\sl276\slmult1\b\par
 75. What is MySQL data directory? How to determine the location of the data directory?\par
+\b0\tab can be changed in /etc/mysql/my.cnf file\par
+\tab datadir =/var/lib/mysql\par
 \par
-MySQL data directory is most important location in which all MySQL databases are stored. The default data directory is located in the file mysql.\par
-\par
-If the out of the space is the issue, then the directory need to be moved another location. Before moving, the database need to be closed. After moving the MySQL configuration file need to be edited. Look for the \lquote datadir\rquote  entry and change the path to the new directory.\par
-\par
-76. What you can use Regular Expression for in MySQL? Support your answer with an example.\par
-\par
-Regular expressions are a set of characters. Regular expressions are used for finding certain sequences in strings.\par
-\par
-The following are the regular expression characters:\par
-\par
-- * Represents matching characters that are 0 or more occurrences of the string that precedes it.\par
-- + Represents matching characters that are 1 or more occurrences of the string that precedes it.\par
-- ? Represents matching characters that are 0 or 1 occurrences of the string that precedes it.\par
-- . Represents single character pattern matching.\par
-- [abc] Represents matching characters that is either a or b or c.\par
-- | Used for separation of strings.\par
-- ^ Finds the matching pattern starting from the beginning.\par
-\par
-To match the input characters with database tables, REGEXP is used. For example:\par
-Select cityname \par
-from territories \par
-where cityname REGEXP \lquote ^(jo)*\rquote ;\par
-\par
-The above query returns all city names that has the substring \lquote jo\rquote .\par
-What are the steps required to view your MYSQL database?\par
-\par
-There are certain steps that are required to before you can view MySQL database and they are as follows:\par
-\par
-1. Login as database user\par
-\par
-example:\par
-[root@ tmp]# mysql -u mysqluser -p sales\par
-\par
-2. List all your MySQL databases: use the show command to view the list of all available MySQL databases. \par
-\par
-example \par
-To view sales database use the command shown below:\par
-\par
-mysql > show databases;\par
-| Database |\par
-| salesdata |\par
-Write a command to view MySQL database table structure\par
+76. What are the steps required to view your MYSQL database?\par
+\tab $mysql -u mysqluser -p sales\par
+\tab mysql> show databases;\par
 \par
 To view the database table structure describe command is used that provides the list of all the data fields used in the database table. \par
-\par
-Example \par
 \par
 A table named sales will have the four fields like: name, description, num and date.\par
 \par
@@ -509,36 +332,30 @@ To view all the data that is contained inside a table named sales use the select
 mysql > select * from sales limit 1;\par
 \par
 If the database is created recently then it will give a blank listing, but after the data is being entered it will show the full listing in a tabular form.\par
-What is the procedure to configure the application of MYSQL?\par
 \par
-The procedure to configure the application of MySQL is:\par
-\par
-1. First create a database\par
+\b What is the procedure to configure the application of MYSQL?\b0\par
+1. First create a database, schema setup, tables setup, value setup,\par
 2. Test the database by informing about the database name, IP address of database client server, username and password of application.\par
 3. Edit the special application specific configuration file using a GUI or command line.\par
 4. Configure the language with which MySQL will interact.\par
-What are the applications required to support MYSQL?\par
 \par
-The applications that are required to support MySQL are as follows:\par
-\par
+\b What are the applications required to support MYSQL?\b0\par
 1. php-mysql MySQL database is used specifically to support PHP\par
 2. perl-DBI : provides generic Perl interface for interacting with relational databases\par
 3. perl-DBD-MySQL database specific support for Perl\par
 4. Web server is required to configure the database and its configuration\par
 5. Programming language is required which supports MySQL.\par
-Write a query to stop MYSQL in unix\par
 \par
-The query to stop MySQL is quite useful when an error is occurred or when data has to be saved from any mishap. It is also used for retrieving the root password because it is either easily forgotten or misplaced. To stop the service the following command is required:\par
-Stop MySQL\par
-[root@ tmp]# service mysqld stop\par
+\b Write a query to stop MYSQL in unix\par
+\b0 The query to stop MySQL is quite useful when an error is occurred or when data has to be saved from any mishap. It is also used for retrieving the root password because it is either easily forgotten or misplaced. To stop the service the following command is required:\par
+$ service mysqld stop\par
 Stopping MySQL: [ OK ]\par
-[root@ tmp]#\par
 Write a query to MYSQL in safe mode and to change the root password\par
 \par
 To start MySQL in safe mode, mysqld_safe command is used which allow it to run in the safe mode and it also doesn\rquote t allow the reading of tables with the database passwords:\par
 [root@ ]# mysqld_safe --skip-grant-tables --skip-networking &[1] 13007\par
 [root@ ]# Starting mysqld daemon with databases from /var/lib/mysql\par
-[root@ ]#\par
+\par
 \par
 After running the MySQL in safe mode the password protection gets removed and to use the password protection mechanism a command is used as follows:\par
 mysql -u root command\par
@@ -583,38 +400,32 @@ What is the difference between MYSQL and SQL?\par
 - SQL is known as standard query language, as the name implies it is the language which is used to interact with the database like MySQL.\par
 \par
 - MySQL is a database that store various types of data and keep it safe. A PHP script is required to store and retrieve the values inside the database.\par
+\b\par
 How database are managed?\par
+\b0 Database is a collection of data and it is managed by a database server, which is a special program that is also known as MySQL database server. Application that you create usually communicates with the database server in the language which it can understand; mostly SQL language is used for communication. Database server in return interacts with the web server on same server or computer. Database server and web server result in the data which is being shown on the web.\par
 \par
-Database is a collection of data and it is managed by a database server, which is a special program that is also known as MySQL database server. Application that you create usually communicates with the database server in the language which it can understand; mostly SQL language is used for communication. Database server in return interacts with the web server on same server or computer. Database server and web server result in the data which is being shown on the web.\par
-\par
-What is required to create MYSQL database?\par
-\par
+\b What is required to create MYSQL database?\b0\par
 To create MySQL databse the first component which has to be present is a database server on which the queries of database will run and software tool through which you can access the applications. It also requires PHP scripts for communicating with the database using SQL commands.\par
 \par
-What do you understand by MYSQL terminal?\par
-\par
+\b What do you understand by MYSQL terminal?\b0\par
 MySQL terminal is used as a command line interface in many operating system. It provides a way to access the database and other resources using the SQL commands that are interpreted by the MySQL database server.\par
 \par
-Why phpMyAdmin is used for MYSQL?\par
-\par
+\b Why phpMyAdmin is used for MYSQL?\b0\par
 PhpMyAdmin is a very popular and easy to use GUI tool that can allow SQL commands to be run to create database, create tables, insert data and retrieve it. It provides a web based interface to the user for the ease of use. phpMyAdmin allows user to manage everything from one place and no other installation is required in the computer after this.\par
 \par
-Write a query to create a database and a table?\par
+\b Write a query to create a database and a table?\b0\par
 MySQL comes up with some default database that can be used as a base to create a new one. The command that is used to create a new database is as follows:\par
 CREATE DATABASE SQL command\par
 \par
 The command has to be written in MySQL terminal. This command will create a new database and then you can create new tables and include data in it.\par
 \par
-How can you make a database as your current database?\par
-\par
+\b How can you make a database as your current database?\b0\par
 After making a database the first thing which has to be done is to create a table inside the database to test the new database that is being created. The command which is used to do that is:\par
-USE aliendatabase;\par
+USE name_db;\par
 \par
 This command allows us to make a database which is not a current database as my current. I have to just use the USE variable and the name of the database and it will become active for use.\par
-What is the difference between a database and a table?\par
 \par
-There is a major difference between a database and a table. The differences are as follows:\par
-\par
+What is the difference between a database and a table?(DB=Single Excel file, table=a lot of Excel sheets(Tabs))\par
 1. Tables are a way to represent the division of data in a database. Whereas, database is a collection of tables and data.\par
 2. Tables group the data in relation with each other and create a dataset; this dataset will be used in the database. The data which are stored in the table in any form is a part of the database, but opposite is not true.\par
 Is the syntax correct? Explain the meaning of the syntax given below\par
@@ -684,12 +495,12 @@ Start and shutdown MySQL server.\par
 Start MySQL Server\par
 Command prompt:\par
 Set the mysql directory and type:\par
-./bin/mysqld_safe &\par
+/bin/mysqld_safe &\par
 This will ensure that the process runs in the background.\par
 \par
 Shutdown MySQL Server\par
 Command prompt:\par
-./bin/mysqladmin -u root -p shutdown\par
+/bin/mysqladmin -u root -p shutdown\par
 This will shut down sql server completely as root user.\par
 \par
 Explain the tools that are available for managing MySQL Server.\par
@@ -704,11 +515,11 @@ Example:\par
 Mysqladmin shutdown \endash  Used to shut down mysql server.\par
 Mysqladmin ping \endash  check the alive status of the server.\par
 Mysqladmin version \endash  to check version of mysql server.\par
-mysql - A command-line interface for end users to manage user data objects.\par
-mysqlcheck - A command-line interface for administrators to check and repair tables.\par
-mysqlshow - A command-line interface for end users to see information on tables and columns.\par
-mysqldump - A command-line interface for administrators or end users to export data from the server to files.\par
-mysqlimport - A command-line interface for administrators or end users to load data files into tables program tool to load data into tables.\par
+mysql - end users to manage user data objects.\par
+mysqlcheck - check and repair tables.\par
+mysqlshow - see information on tables and columns.\par
+mysqldump - export data from the server to files.\par
+mysqlimport -  load data files into tables program tool to load data into tables.\par
 \par
 Explain the purpose of "mysql" command-line interface.\par
 \par
@@ -729,22 +540,15 @@ Following are the most commonly used mysql command line options:\par
 \par
 Explain the concept of "mysqlcheck" command-line interface.\par
 \par
-Mysqlcheck is used for Admin\rquote s to check and repair the mysql tables.\par
-\par
-Following are the options:-\par
-\par
+\pard\sl240\slmult1 Mysqlcheck is used for Admin\rquote s to check and repair the mysql tables.\par
 1. "mysqlcheck databaseName tableName" - Checks the specified table in the specified database.\par
-\par
 2. "mysqlcheck databaseName" - Checks all tables in the specified database.\par
-\par
 3. "mysqlcheck --all-databases" - Checks all tables in all databases.\par
-\par
 4. "mysqlcheck --analyze databaseName tableName" - Analyzes the specified table in the specified database.\par
-\par
 5. "mysqlcheck --repair databaseName tableName" - Repairs the specified table in the specified database.\par
+\pard\sl276\slmult1\par
 \par
-\par
-What is "mysqladmin"?\par
+\b What is "mysqladmin"?\b0\par
 \par
 Mysqlcheck is used to perform administrative tasks.\par
 \par
