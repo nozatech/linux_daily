@@ -1,90 +1,102 @@
-{\rtf1\ansi\ansicpg949\deff0\deflang1033\deflangfe1042{\fonttbl{\f0\fnil\fcharset129 \'b8\'bc\'c0\'ba \'b0\'ed\'b5\'f1;}{\f1\fnil\fcharset2 Symbol;}}
+{\rtf1\ansi\ansicpg949\deff0\deflang1033\deflangfe1042{\fonttbl{\f0\fnil\fcharset129 \'b8\'bc\'c0\'ba \'b0\'ed\'b5\'f1;}{\f1\fmodern Lucida Console;}{\f2\fnil\fcharset2 Symbol;}}
 {\colortbl ;\red0\green0\blue255;}
-{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sl360\slmult1\qc\lang18\ul\f0\fs32 Nginx vs Apache questions\ulnone\fs20\par
-\pard\sl360\slmult1\b 1) What is Nginx?\b0\par
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sl240\slmult1\qc\lang18\ul\f0\fs32 Nginx vs Apache questions\ulnone\fs20\par
+\pard\sl240\slmult1\b 1) What is Nginx?\b0\par
 Nginx is a web server, load balancer and a reverse proxy server for HTTP, HTTPS, SMTP, POP3 and IMAP protocols.\par
 \b 2) Mention some special features of Nginx?\b0\par
-\pard\li720\sl360\slmult1 Reverse proxy\par
+\pard\li720\sl240\slmult1 Reverse proxy\par
 L7 Load Balancer\par
 Embedded Perl interpreter\par
 On the fly binary upgrade\par
 Useful for re-writing URLs and awesome PCRE(Perl-compatible regular expressions (original API)support\par
-\pard\sl360\slmult1\b 3) Mention what is the difference between Nginx and Apache?\b0\par
-\pard\li720\sl360\slmult1 Nginx uses an asynchronous event approach to handling multiple requests whereas Apache Web Server use the synchronous. Nginx's event-driven approach can provide more predictable performance under high loads.\par
+\pard\sl240\slmult1\b 3) Mention what is the difference between Nginx and Apache?\b0\par
+\pard\li720\sl240\slmult1 Nginx uses an asynchronous event approach to handling multiple requests whereas Apache Web Server use the synchronous. Nginx's event-driven approach can provide more predictable performance under high loads.\par
 Apache Web Server handling multiple request\par
 |----A-----||-----B-----------||-------C------|\par
 Nginx handling multiple request\par
  |----A-----|\par
     |-----B-----------|\par
         |-------C------|\par
-\pard\sl360\slmult1  Nginx \par
-\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li1080\sl360\slmult1 Nginx is an asynchronous event based web server\par
-{\pntext\f1\'B7\tab}All request are handled by a single thread.\par
-{\pntext\f1\'B7\tab}Nginx avoids child processes idea.\par
-{\pntext\f1\'B7\tab}Nginx resembles speed\par
-{\pntext\f1\'B7\tab}Nginx is better when it comes to memory consumption and connection\par
-{\pntext\f1\'B7\tab}Nginx is better when you want loadbalancing\par
-{\pntext\f1\'B7\tab}For PHP, Nginx might be preferable as it supports PHP internally\par
-{\pntext\f1\'B7\tab}Nginx do not support O.S like IBMi and OpenVMS.\par
-{\pntext\f1\'B7\tab}Nginx comes only with core features\par
-{\pntext\f1\'B7\tab}Nginx performance and scalability do not depend on hardware\par
-{\pntext\f1\'B7\tab}Advantages: open source, \par
-{\pntext\f1\'B7\tab}Disadvantage: limited critical features & functions vs Plus(Enterprise) version\par
-{\pntext\f1\'B7\tab}advanced http and tcp load balancer, session persistence, cache control, app health check.\par
-\pard\sl360\slmult1  Apache\par
-\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li1080\sl360\slmult1 Apache is a process based server\par
-{\pntext\f1\'B7\tab}Single thread handles a single request.\par
-{\pntext\f1\'B7\tab}Apache is based on child processes\par
-{\pntext\f1\'B7\tab}Apache resemble power\par
-{\pntext\f1\'B7\tab}Apache is not up-to the mark when it comes to memory consumption and connection\par
-{\pntext\f1\'B7\tab}Apache will refuse new connections when traffic reaches the limit of processes\par
-{\pntext\f1\'B7\tab}Apache support\rquote s PHP, Python, Perl and other languages using plugins. It is useful when application is based on Python or Ruby\par
-{\pntext\f1\'B7\tab}Apache support much wider range of O.S\par
-{\pntext\f1\'B7\tab}Apache provides lot more functionality than Nginx\par
-{\pntext\f1\'B7\tab}Apache is dependent on hardware\par
-{\pntext\f1\'B7\tab}components like CPU and memory\par
-\pard\sl360\slmult1\par
+\pard\sl240\slmult1  Nginx \par
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li1080\sl240\slmult1 Nginx is an asynchronous event based web server\par
+{\pntext\f2\'B7\tab}All request are handled by a single thread.\par
+{\pntext\f2\'B7\tab}Nginx avoids child processes idea.\par
+{\pntext\f2\'B7\tab}Nginx resembles speed\par
+{\pntext\f2\'B7\tab}Nginx is better when it comes to memory consumption and connection\par
+{\pntext\f2\'B7\tab}Nginx is better when you want loadbalancing\par
+{\pntext\f2\'B7\tab}For PHP, Nginx might be preferable as it supports PHP internally\par
+{\pntext\f2\'B7\tab}Nginx do not support O.S like IBMi and OpenVMS.\par
+{\pntext\f2\'B7\tab}Nginx comes only with core features\par
+{\pntext\f2\'B7\tab}Nginx performance and scalability do not depend on hardware\par
+{\pntext\f2\'B7\tab}Advantages: open source, \par
+{\pntext\f2\'B7\tab}Disadvantage: limited critical features & functions vs Plus(Enterprise) version\par
+{\pntext\f2\'B7\tab}advanced http and tcp load balancer, session persistence, cache control, app health check.\par
+\pard\sl240\slmult1  Apache\par
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li1080\sl240\slmult1 Apache is a process based server\par
+{\pntext\f2\'B7\tab}Single thread handles a single request.\par
+{\pntext\f2\'B7\tab}Apache is based on child processes\par
+{\pntext\f2\'B7\tab}Apache resemble power\par
+{\pntext\f2\'B7\tab}Apache is not up-to the mark when it comes to memory consumption and connection\par
+{\pntext\f2\'B7\tab}Apache will refuse new connections when traffic reaches the limit of processes\par
+{\pntext\f2\'B7\tab}Apache support\rquote s PHP, Python, Perl and other languages using plugins. It is useful when application is based on Python or Ruby\par
+{\pntext\f2\'B7\tab}Apache support much wider range of O.S\par
+{\pntext\f2\'B7\tab}Apache provides lot more functionality than Nginx\par
+{\pntext\f2\'B7\tab}Apache is dependent on hardware\par
+{\pntext\f2\'B7\tab}components like CPU and memory\par
+\pard\sl240\slmult1\par
 \b 4) Explain how Nginx can handle HTTP requests?\b0\par
-\pard\li720\sl360\slmult1 Nginx uses the reactor pattern. The main event loop waits for the OS to signal a readiness\par
+\pard\li720\sl240\slmult1 Nginx uses the reactor pattern. The main event loop waits for the OS to signal a readiness\par
 event- such that the data is accessible to read from a socket, at which instance it is read into the\par
-buffer and processed. A Single thread can serve tens of thousands of simultaneous\par
-connections.\par
-\pard\sl360\slmult1\b 5) In Nginx how you can prevent processing requests with undefined server names?\b0\par
-\pard\li720\sl360\slmult1 A server that just drops the requests can be defined as\par
+buffer and processed. \par
+A Single thread can serve tens of thousands of simultaneous connections.\par
+\pard\sl240\slmult1\b 5) In Nginx how you can \ul prevent processing requests with undefined server \ulnone names?\b0\par
+\pard\li720\sl240\slmult1 A server that just drops the requests can be defined as\par
 Server \{\par
 listen 80;\par
-server_name \ldblquote  \ldblquote  ;\par
-return 444;\par
+server_name \ldblquote  \ldblquote  ;\tab\tab <=Empty string\par
+return 444;\tab\tab\tab <= Nginx No Response\par
 \}\par
 Here the server name is kept as an empty string which will match request without the \ldblquote Host\rdblquote  header field, and a special Nginx\rquote s non-standard code 444 is returned that terminates the connection.\par
-\pard\sl360\slmult1\b 6) What is the advantage of using a \ldblquote reverse proxy server\rdblquote ?\b0\par
-\pard\li720\sl360\slmult1 The reverse proxy server can hide the presence and characteristics of the origin server. It acts as an intermediate between internet cloud and web server. It is good for security reason especially when you are using web hosting services.\par
-\pard\sl360\slmult1\b 7) Mention what is the best usage of Nginx server?\b0\par
-\pard\li720\sl360\slmult1 The best usage of Nginx server is to deploy dynamic HTTP content on a network with using SCGI, WSGI application servers, FastCGI handlers for scripts. \par
-Use as a load balancer to foward traffic based on load handle capacity & backup.  If any of app servers failed, it stop forwarding to prevent 404 or custom error msg in /usr/share/nginx/html.\par
-\pard\sl360\slmult1\b 8) Mention what is the Master and Worker Processes in Nginx Server?\b0\par
-\pard\li720\sl360\slmult1 Worker processes: It reads and evaluate configuration and maintain worker processes Master processes: It actually process the requests\par
-\pard\sl360\slmult1\b 9) Explain how you can start Nginx through a different port other than 80?\b0\par
-\pard\li720\sl360\slmult1 To start Nginx through a different port, you have to go to /etc/Nginx/sites-enabled/ and if this is the default file, then you have to open file called \ldblquote default.\rdblquote  Edit the file and put the port you want Like server \{ listen 81; \}\par
-\pard\sl360\slmult1\b 10) Explain is it possible to replace Nginx errors like 502 error with 503?\b0\par
-\pard\li720\sl360\slmult1 http error 502= Bad gateway,  \par
-http error 503= Server overloaded\par
-Yes, it is possible but you to ensure that fastcgi_intercept_errors is set to ON, and use the\par
+\pard\sl240\slmult1\b 6) What is the advantage of using a \ldblquote reverse proxy server\rdblquote ?\b0\par
+\pard\li720\sl240\slmult1 The reverse proxy server can hide the presence and characteristics of the origin server. It acts as an intermediate between internet cloud and web server. It is good for security reason especially for web hosting services.\par
+\pard\sl240\slmult1\b 7) Mention what is the best usage of Nginx server?\b0\par
+\pard\li720\sl240\slmult1 The best usage of Nginx server is to deploy \b dynamic HTTP content \b0 on a network with using SCGI, WSGI application servers, FastCGI handlers for scripts. \par
+Use as a\b  load balancer \b0 to foward traffic based on load handle capacity & backup.  If any of app servers failed, it stop forwarding to prevent 404 or \ul custom error msg in /usr/share/nginx/html.\ulnone\par
+\pard\sl240\slmult1\b 8) Mention what is the Master and Worker Processes in Nginx Server?\b0\par
+\pard\li720\sl240\slmult1 Master processes: It reads and evaluate configuration and maintain worker processes \par
+Worker processes: It actually process the requests\par
+Nginx works by spawning a master process when the service starts. The master service, in turn, kicks on one or more worker processes that handle the actual client connections. Nginx is designed to perform certain actions when it receives specific signals from the administrator. Using these signals provides you with the opportunity to easily upgrade Nginx or its configuration in-place, \ul without losing client connections.\ulnone\par
+\par
+Certain service scripts provided by distribution package maintainers will provide this ability for use with conventional upgrades. However, manually upgrading provides more flexibility in the approach and allows you to audit the upgrade to revert quickly if there are problems. This will also provide an option to upgrade gracefully if you have installed Nginx from source or using a method that does not provide this capability.\par
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li1440\sl240\slmult1 USR2: This spawns a new set of master/worker processes without affecting the old set.\par
+{\pntext\f2\'B7\tab}WINCH: This tells the Nginx master process to gracefully stop its associated worker instances.\par
+{\pntext\f2\'B7\tab}HUP: This tells an Nginx master process to re-read its configuration files and replace worker processes with those adhering to the new configuration. If an old and new master are running, sending this to the old master will spawn workers using their original configuration.\par
+{\pntext\f2\'B7\tab}QUIT: This shuts down a master and its workers gracefully.\par
+{\pntext\f2\'B7\tab}TERM: This initiates a fast shutdown of the master and its workers.\par
+{\pntext\f2\'B7\tab}KILL: This immediately kills a master and its workers without any cleanup.\par
+\pard\sl240\slmult1\b 9) Explain how you can start Nginx through a different port other than 80?\b0\par
+\pard\li720\sl240\slmult1 To start Nginx through a different port, you have to go to \ul /etc/Nginx/sites-enabled/ \ulnone and if this is the default file, then you have to open file called \ldblquote default.\rdblquote  Edit the file and put the port you want Like server \{ listen 81; \}\par
+\pard\sl240\slmult1\b 10) Explain is it possible to replace Nginx errors like 502 error with 503?\b0\par
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li1440\sl240\slmult1 http error 502= Bad gateway,  \par
+{\pntext\f2\'B7\tab}http error 503= Server overloaded\par
+\pard\li720\sl240\slmult1 Yes, it is possible but you to ensure that \ul fastcgi_intercept_errors\ulnone  is set to ON, and use the\par
 error page directive.\par
 Location / \{\par
 fastcgi_pass 127.0.01:9001;\par
-fastcgi_intercept_errors on;\par
-error_page 502 =503/error_page.html;\par
+\ul fastcgi_intercept_errors on;\par
+\ulnone error_page 502 \ul =503/error_page.html;\ulnone\par
 #...\par
 \}\par
-\pard\sl360\slmult1\b 11) In Nginx, explain how you can keep double slashes in URLs?\b0\par
-\pard\li720\sl360\slmult1 To keep double slashes in URLs you have to use merge_slashes_off;\par
+\pard\sl240\slmult1\b 11) In Nginx, explain how you can \ul keep double slashes \ulnone in URLs?\par
+\tab{\field{\*\fldinst{HYPERLINK "http://www.website.com/abc//section/page/"}}{\fldrslt{\ul\cf1 http://www.website.com/abc//section/page/}}}\b0\f0\fs20\par
+\pard\li720\sl240\slmult1 To keep double slashes in URLs you have to use \ul merge_slashes_off\ulnone ;\par
 Syntax: merge_slashes [on/off]\par
 Default: merge_slashes on\par
 Context: http, server\par
-\pard\sl360\slmult1\par
+# only work with \ul location matching\ulnone\par
+\pard\sl240\slmult1\tab # some of the filter variables are absent, so urls as such could be passed to this service:\par
 \b 12) Explain what is ngx_http_upstream_module is used for\b0 ?\par
-\pard\li720\sl360\slmult1 The ngx_http_upstream_module is used to define groups of servers that can reference by the\par
+\pard\li720\sl240\slmult1 The ngx_http_upstream_module is used to define groups of servers that can reference by the\par
 fastcgi pass, proxy pass, uwsgi pass, memcached pass and scgi pass directives.\par
 upstream backend \{\par
     server backend1.example.com       weight=5;\par
@@ -98,14 +110,16 @@ server \{\par
         proxy_pass {\field{\*\fldinst{HYPERLINK "http://backend"}}{\fldrslt{\ul\cf1 http://backend}}}\f0\fs20 ;\par
     \}\par
 \}\par
-\pard\sl360\slmult1\b 13) Explain what is C10K problem?\b0\par
-\pard\li720\sl360\slmult1 C10K problem is referred for the network socket unable to handle a large number of client (10,000) at the same time.\par
-\pard\sl360\slmult1\b 14) What is the use of stub_status and sub_filter directives?\b0\par
-\pard\li720\sl360\slmult1 Stub_status directive: This directive is used to know the current status of Nginx like current active connection, total connection accepted and handled current number of read/write/wait connection Sub_filter directive: It is used to search and replace the content in response, and quick fix for stale data\par
-\pard\sl360\slmult1\b 15) Explain does Nginx support compress the request to the upstream?\b0\par
-\pard\li720\sl360\slmult1 You can compress the request to the upstream by using the Nginx module gzip(CPU load go high). \par
+\b WSGI\b0 (web server gateway interface)\par
+\pard\sl240\slmult1\b 13) Explain what is C10K problem?\b0\par
+\pard\li720\sl240\slmult1 C10K problem is the\ul  network socket \ulnone unable to handle a large number of client (10,000) at the same time.\par
+\pard\sl240\slmult1\b 14) What is the use of stub_status and sub_filter directives?\b0\par
+\pard\li720\sl240\slmult1\b Stub_status directive\b0 : This directive is used to know the current status of Nginx like current active connection, total connection accepted and handled current number of read/write/wait connection \par
+\b Sub_filter directive\b0 : It is used to search and replace the content in response, and quick fix for stale data\par
+\pard\sl240\slmult1\b 15) Explain does Nginx support compress the request to the upstream?\b0\par
+\pard\li720\sl240\slmult1 Uses Nginx module gzip(CPU load go high). \par
 The gunzip module is a filter that decompresses responses with \ldblquote Content Encoding: gzip\rdblquote  for clients or\par
-\tab servers that do not support \ldblquote gzip\rdblquote  encoding method. \par
+servers that do not support \ldblquote gzip\rdblquote  encoding method. \par
 http \{\par
     include       /etc/nginx/mime.types;\par
     access_log  /var/log/nginx/access.log;\par
@@ -114,60 +128,92 @@ http \{\par
     #keepalive_timeout  0;\par
     keepalive_timeout   2;\par
     tcp_nodelay        on;\par
-    gzip  on;\par
+    \ul\b gzip  on;\ulnone\b0\par
     gzip_disable "MSIE [1-6]\\.(?!.*SV1)";\par
     include /etc/nginx/conf.d/*.conf;\par
     include /etc/nginx/sites-enabled/*;\par
 \}\par
-\pard\sl360\slmult1\b 16) Explain how you can get the current time in Nginx?\b0\par
-\pard\li720\sl360\slmult1 To get the current time in Nginx, you have to use variables from SSI module, $date_gmt and\par
-$date_local.\par
+\pard\sl240\slmult1\b 16) Explain how you can get the current time in Nginx?\b0\par
+\pard\li720\sl240\slmult1 To get the current time in Nginx, you have to use variables from \par
+SSI module, $date_gmt and $date_local.\par
 Proxy_set_header THE-TIME $date_gmt;\par
-\pard\sl360\slmult1\b 17) Explain what is the purpose of \endash s with Nginx Server?\b0\par
-\pard\li720\sl360\slmult1 To run the executable file of Nginx \endash s parameter is used.\par
-\pard\sl360\slmult1\b 18) Explain how to add modules in Nginx Server?\b0\par
-\pard\li720\sl360\slmult1 Normally in Ubuntu add the Nginx repository and install the Nginx, but for an extra modules, such as Google's Pagespeed or HTTP upload module, need to recompile Nginx with those modules.\par
-a. Backup any sites-available or customer configuration first!! \par
-b. Download modules, get Nginx Sources & Dependencies\par
+\pard\sl240\slmult1\b 17) Explain what is the purpose of \endash s with Nginx Server?\b0\par
+\pard\li720\sl240\slmult1 To run the executable file of Nginx \endash s parameter is used.\par
+\pard\sl240\slmult1\b 18) Explain how to add modules in Nginx Server?\b0\par
+\pard\li720\sl240\slmult1 Normally in Ubuntu add the Nginx repository and install the Nginx, but for an extra modules, such as Google's Pagespeed or HTTP upload module, need to recompile Nginx with those modules.\par
+a. Backup any /etc/nginx/sites-available or customer configuration first!! \par
+b. Download modules, Nginx Sources, & Dependencies\par
 c. Recompile & Install nginx\par
 During the compilation process, Nginx modules must be selected as such run-time selection of\par
 modules is not supported by Nginx.\par
-\pard\sl360\slmult1\par
+\pard\sl240\slmult1\par
 \b 19) What is the Master and Worker Processes in Nginx Server?\b0\par
-\pard\li720\sl360\slmult1 Master process read and evaluate configuration, and maintain worker processes.\par
+\pard\li720\sl240\slmult1 Master process read and evaluate configuration, and maintain worker processes.\par
 Worker processes handle and process the requests.\par
-\pard\sl360\slmult1\par
+\pard\sl240\slmult1\par
 \b 20) Where the Process ID does for Nginx Server? \b0\par
-\pard\li720\sl360\slmult1 The process ID of the master process is written in the file /usr/local/nginx/logs/nginx.pid\par
+\pard\li720\sl240\slmult1 The process ID of the master process is written in the file /usr/local/nginx/logs/nginx.pid\par
+Ubuntu /run/nginx.pid\par
 \par
-\pard\sl360\slmult1\b 21) What is the Best Usage of Ngins Server?\b0\par
-\pard\li720\sl360\slmult1 Nginx can deploy dynamic HTTP content on a network using FastCGI, SCGI handlers for scripts, WSGI application servers or Phusion Passenger module, and it can serve as a software load balancer.\par
-\pard\sl360\slmult1\par
+\pard\sl240\slmult1\b 21) What is the Best Usage of Ngins Server?\b0\par
+\pard\li720\sl240\slmult1 Nginx can deploy dynamic HTTP content on a network using FastCGI, SCGI handlers for scripts, WSGI application servers or Phusion Passenger module, and it can serve as a software load balancer.\par
+\pard\sl240\slmult1\par
 \b 22) Describe Some Best Features of Nginx?\b0\par
-\pard\li720\sl360\slmult1 Simultaneous Connections with low memory, Auto Indexing, Load Balancing, Reverse Proxy with Caching, Fault Tolerance\par
-\pard\sl360\slmult1\b 23) How to define Worker Processes?\b0\par
-\pard\li720\sl360\slmult1 The number of worker processes is defined in the configuration file and may be fixed for a given configuration or automatically adjusted to the number of available CPU cores\par
-\pard\sl360\slmult1 24) Where the Process ID does for Nginx Server is written? \par
-\pard\li720\sl360\slmult1 The process ID of the master process is written to the file /usr/local/nginx/logs/nginx.pid\par
-\pard\sl360\slmult1 25) What are the controls used in Nginx Server?\par
-\pard\li720\sl360\slmult1 There are only few controls that are assosiated with Nginx Server and these are as below;\par
-Nginx -s [stop | quit | reopen | reload]\par
-\pard\sl360\slmult1 25) How to reload configuration file of Nginx Server?\par
-\pard\li720\sl360\slmult1 You can reload Nginx configuration file by running this command: nginx -s reload\par
-\pard\sl360\slmult1 26) How to reopening the log files in Nginx Server?\par
-\pard\li720\sl360\slmult1 You can use nginx \endash s reopen\par
-\pard\sl360\slmult1\par
-27) What is the purpose of \endash s with Nginx Server?\par
-\pard\li720\sl360\slmult1 -s parameter is used to run the executable file of nginx.\par
-\pard\sl360\slmult1\par
+\pard\li720\sl240\slmult1 Simultaneous Connections with low memory, Auto Indexing, Load Balancing, Reverse Proxy with Caching, Fault Tolerance\par
+\pard\sl240\slmult1\b 23) How to define Worker Processes?\b0\par
+\pard\li720\sl240\slmult1 The number of worker processes is defined in the configuration file and may be fixed for a given configuration or automatically adjusted to the number of available CPU cores\par
+\par
+\pard\sl240\slmult1\b ### Worker Processes and Worker Connections\b0  ###\par
+\pard\li720\sl240\slmult1 The first two variables we need to tune are the worker processes and worker connections. \par
+The \b worker_processes directive \b0 is the sturdy spine of life for Nginx. This directive is responsible for letting our virtual server know many workers to spawn once it has become bound to the proper IP and port(s). It is common practice to \b run 1 worker process per core. \b0 Anything above this won't hurt your system, but it will leave idle processes usually just lying about.\par
+\par
+Checking number of cores using cpuinfo:\par
+\pard\li1440\sl240\slmult1 $ grep processor /proc/cpuinfo | wc -l\par
+$ 2   <= number of cores\par
+\pard\li720\sl240\slmult1\par
+The worker_connections command tells our worker processes how many people can simultaneously be served by Nginx. The default value is 768; however, considering that every browser usually opens up at least 2 connections/server, this number can half. This is why we need to adjust our worker connections to its full potential. We can check our core's limitations by issuing a ulimit command:\par
+\par
+$ ulimit -n\tab\tab <= maximum number of open file \par
+On a smaller machine (512MB droplet) this number will probably read 1024, which is a good starting number.\par
+\par
+$ sudo nano /etc/nginx/nginx.conf\par
+\pard\li1440\sl240\slmult1 worker_processes 1;\par
+worker_connections 1024;\par
+\pard\li720\sl240\slmult1 Remember, the amount of clients that can be served can be multiplied by the amount of cores. In this case, we can server 1024 clients/second. This is, \ul however, even further mitigated by the keepalive_timeout directive.\ulnone\par
+\b\par
+HTTP and TCP Optimizations\b0\par
+Keep alive allows for fewer reconnections from the browser.\par
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li1440\sl240\slmult1 keepalive_timeout and keepalive_requests control the keep alive settings.\par
+{\pntext\f2\'B7\tab}sendfile optimizes serving static files from the file system, like logos.\par
+{\pntext\f2\'B7\tab}tcp_nodelay allows Nginx to make TCP send multiple buffers as individual packets.\par
+{\pntext\f2\'B7\tab}tcp_nopush optimizes the amount of data sent down the wire at once by activating the TCP_CORK option within the TCP stack. TCP_CORK blocks the data until the packet reaches the MSS, which is equal to the MTU minus the 40 or 60 bytes of the IP header.\par
+\pard\li720\sl240\slmult1 $ vi /etc/nginx/nginx.conf\par
+\pard\li1440\sl240\slmult1 keepalive_timeout 65;\par
+keepalive_requests 100000;\par
+sendfile on;\par
+tcp_nopush on;\par
+tcp_nodelay on;\par
+\pard\li720\sl240\slmult1\par
+\pard\sl240\slmult1\b 24) Where the Process ID does for Nginx Server is written? \b0\par
+\pard\li720\sl240\slmult1 The process ID of the master process is written to the file \par
+/usr/local/nginx/logs/nginx.pid\par
+Ubuntu $ /run/nginx.pid\par
+\pard\sl240\slmult1\b 25) What are the controls(-s signal) used in Nginx Server?\b0\par
+\pard\li720\sl240\slmult1 Nginx \b\f1 -s\b0  Send signal to a master process: stop, quit, reopen, reload.\fs24\par
+\f0\fs20 Reload Nginx configuration file: nginx -s reload\par
+\pard\sl240\slmult1\tab Reopening the log files:  nginx \endash s reopen\par
+\par
+27) What is the purpose of \endash t with Nginx Server?\par
+\lang1042\b\tab\lang18\f1 -t\b0      Tests nginx configuration and exit.\f0\par
+\par
 28) How to add Modules in Nginx Server?\par
-\pard\li720\sl360\slmult1 Nginx modules must be selected during compile, run-time selection of modules is not currently supported.\par
-\pard\sl360\slmult1\par
+\pard\li720\sl240\slmult1 Nginx modules must be selected during compile, run-time selection of modules is not currently supported.\par
+\pard\sl240\slmult1\par
 \b 29) Define some of Nginx Architerture?\b0\par
-\pard\li720\sl360\slmult1\tab\par
-\pard\sl360\slmult1{\pict\wmetafile8\picw20320\pich11245\picwgoal11520\pichgoal6375 
-010009000003086e0d000000f26d0d000000050000000b0200000000050000000c02ed2b604ff2
-6d0d00430f2000cc0000003a02050400000000ed2b604f0000000028000000050400003a020000
+\pard\li720\sl240\slmult1\tab\par
+\pard\sl240\slmult1{\pict\wmetafile8\picw22225\pich13638\picwgoal12600\pichgoal7732 
+010009000003086e0d000000f26d0d000000050000000b0200000000050000000c024635d156f2
+6d0d00430f2000cc0000003a020504000000004635d1560000000028000000050400003a020000
 0100180000000000a0db1a00c40e0000c40e00000000000000000000ffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -45302,38 +45348,42 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 00030000000000
-}\b\fs28 APACHE\par
-\b0\fs20 1) You see "connection reset by peer" in error log. What could be the reason for this?\par
-\pard\li720\sl360\slmult1 If the end user terminates the connection when the server response was being formed or was being transferred, we see "connection reset by peer" in the error log.\par
-\pard\sl360\slmult1 2) While installing Apache HTTP server, do we need SSL and PHP support?\par
-\pard\li720\sl360\slmult1 Yes, SSL and PHP support is required to install Apache HTTP server.\par
-\pard\sl360\slmult1 3) What is virtual hosting?\par
-\pard\li720\sl360\slmult1 Virtual hosting is a method for hosting multiple domain names on a server using a single IP address. Virtual hosting allows one server to share its resources, such as memory and processor cycles, in order to use its resources more efficiently.\par
+}\par
+\b #############################################################################################\par
+\pard\sl240\slmult1\qc ### APACHE Web Server ###\par
+\pard\sl240\slmult1 ###########################################################################################\fs28\par
+\fs20 1) You see "connection reset by peer" in error log. What could be the reason for this?\b0\par
+\pard\li720\sl240\slmult1 If the end user terminates the connection when the server response was being formed or was being transferred, we see "connection reset by peer" in the error log.\par
+\pard\sl240\slmult1\b 2) While installing Apache HTTP server, do we need SSL and PHP support?\b0\par
+\pard\li720\sl240\slmult1 Yes, SSL and PHP support is required to install Apache HTTP server.\par
+\pard\sl240\slmult1\b 3) What is virtual hosting?\b0\par
+\pard\li720\sl240\slmult1 Virtual hosting is a method for hosting multiple domain names on a server using a single IP address. Virtual hosting allows one server to share its resources, such as memory and processor cycles, in order to use its resources more efficiently.\par
 Name-based virtual host means that multiple names are running on each IP address.\par
 IP-based virtual host means that a different IP address exists for each website served. Most configurations are named-based because it only requires one IP address.\par
-\pard\sl360\slmult1 4) Is there any size limit for URL rewriting and aliasing in Apache web server?\par
+\pard\sl240\slmult1\b 4) Is there any size limit for URL rewriting and aliasing in Apache web server?\b0\par
 Apache has no fixed limit on the numbers of Aliases and Redirects which may be declared in the config files.\par
-5) Create a new user file and add a user with username "test" and password "test".\par
-htpasswd -c /usr/local/etc/httpd/users test\par
-User will be prompted to provide the password. The -c argument tells htpasswd to create new file for users. To add more users, -c argument can be omitted.\par
-6) What is the Iptables?\par
-Linux kernel level firewall.\par
-7) Towards the end of the install, you may get a warning message during starting of the Apache process because domain name is not configured yet. What could that be?\par
-Apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1 for ServerName\par
-8) What do you mean by a valid ServerName directive?\par
-The DNS system is used to associate IP addresses with domain names. The value of ServerName is returned when the server generates a URL. If you are using a certain domain name, you must make sure that it is included in your DNS system and will be available to clients visiting your site.\par
-9) What is the main difference between <Location> and <Directory> sections?\par
-<Directory> sections refer to file system objects; \par
-<Location> sections refer to elements in the address bar of the Web page\par
-10) Can you record the MAC (hardware) address of clients that access your server?\par
-No, http protocols are communicating using network (layer 3) and only see ip address.\par
-11) Can you record all the cookies sent to your server by clients in Web Server logs?\par
-Answer: Yes, add following lines in httpd.conf file.\par
-CustomLog logs/cookies_in.log "%\{UNIQUE_ID\}e %\{Cookie\}i" CustomLog logs/cookies2_in.log "%\{UNIQUE_ID\}e %\{Cookie2\}i"\par
-12) What we can do to find out how people are reaching your site?\par
- Add the following effector to your activity log format. %\{Referer\}\par
-13) If you have only one IP address, but you want to host two web sites on your server. What will you do?\par
-ServerName 10.111.203.25\par
+\b 5) Create a new user file and add a user with username "test" and password "test".\b0\par
+\pard\li720\sl240\slmult1 $ htpasswd -c /usr/local/etc/httpd/users test      <= -c  create\par
+\pard\sl240\slmult1 User will be prompted to provide the password. The -c argument tells htpasswd to create new file for users. To add more users, -c argument can be omitted.\par
+\b 6) What is the Iptables?\b0\par
+\pard\li720\sl240\slmult1 Linux kernel level firewall.\par
+\pard\sl240\slmult1\b 7) Towards the end of the install, you may get a warning message during starting of the Apache process because domain name is not configured yet. What could that be?\b0\par
+\pard\li720\sl240\slmult1 Could not reliably determine the server's FQDN, using 127.0.0.1 for ServerName\par
+\pard\sl240\slmult1\b 8) What do you mean by a valid ServerName directive?\b0\par
+\pard\li720\sl240\slmult1 The DNS system is used to associate IP addresses with domain names. The value of ServerName is returned when the server generates a URL. If you are using a certain domain name, you must make sure that it is included in your DNS system and will be available to clients visiting your site.\par
+\pard\sl240\slmult1\b 9) What is the main difference between <Location> and <Directory> sections?\b0\par
+\pard\li720\sl240\slmult1 <Directory> sections refer to \ul file system objects\ulnone ; \par
+<Location> sections refer to elements in the \ul address bar of the Web page\ulnone\par
+\pard\sl240\slmult1\b 10) Can you record the MAC (hardware) address of clients that access your server?\b0\par
+\pard\li720\sl240\slmult1 No, http protocols are communicating using network (layer 3) and only see ip address.\par
+\pard\sl240\slmult1\b 11) Can you record all the cookies sent to your server by clients in Web Server logs?\b0\par
+\pard\li720\sl240\slmult1 Answer: Yes, add following lines in httpd.conf file.\par
+CustomLog logs/cookies_in.log "%\{UNIQUE_ID\}e %\{Cookie\}i" \par
+CustomLog logs/cookies2_in.log "%\{UNIQUE_ID\}e %\{Cookie2\}i"\par
+\pard\sl240\slmult1\b 12) What we can do to find out how people are reaching your site?\b0\par
+\pard\li720\sl240\slmult1  Add the following effector to your activity log format. %\{Referer\}\par
+\pard\sl240\slmult1\b 13) If you have only one IP address, but you want to host two web sites on your server. What will you do?\b0\par
+\pard\li720\sl240\slmult1 ServerName 10.111.203.25\par
 NameVirtualHost *:80\par
 <VirtualHost *:80>\par
 ServerName web1.test.com\par
@@ -45343,85 +45393,85 @@ DocumentRoot /var/www/html/web1\par
 ServerName web2.test2.com\par
 DocumentRoot /var/www/html/web2\par
 </VirtualHost>\par
-14) Can I serve content out of a directory other than the DocumentRootdirectory?\par
-uses the \ldblquote Alias\rdblquote .\par
-15) If you have to more than one URL map to the same directory but you don't have multiple Alias directives. What you will do?\par
-The AliasMatch directive allows you to use regular expressions to match arbitrary patterns in URLs and map anything matching the pattern to the desired URL.\par
-16) How you will put a limit on uploads on your web server?\par
-This can be achieved by LimitRequestBody directive.\par
+\pard\sl240\slmult1\b 14) Can I serve content out of a directory other than the DocumentRootdirectory?\b0\par
+\pard\li720\sl240\slmult1 Yes, uses the \ldblquote Alias\rdblquote .\par
+\pard\sl240\slmult1\b 15) If you have to more than one URL map to the same directory but you don't have multiple Alias directives. What you will do?\b0\par
+\pard\li720\sl240\slmult1 The AliasMatch directive allows you to use \ul\b regular expressions\b0  to match arbitrary patterns \ulnone in URLs and map anything matching the pattern to the desired URL.\par
+\pard\sl240\slmult1\b 16) How you will put a limit on uploads on your web server?\b0\par
+\pard\li720\sl240\slmult1 This can be achieved by LimitRequestBody directive.\par
 <Directory "/var/www/html/data_uploads">\par
 LimitRequestBody 100\par
 </Directory>\par
-17) I want to stop people using my site by Proxy server. Is it possible?\par
-Answer: <Directory proxy:http://www.test.com/myfiles>\par
+\pard\sl240\slmult1\b 17) I want to stop people using my site by Proxy server. Is it possible?\b0\par
+\pard\li720\sl240\slmult1 Answer: <Directory proxy:http://www.test.com/myfiles>\par
 Order Allow,Deny\par
 Deny from all\par
 Satisfy All\par
 </Directory>\par
-18) What is mod_evasive module?\par
- mod_evasive is a third-party module that performs one simple task, and performs it very well. It detects when your site is receiving a Denial of Service (DoS) attack, and it prevents that attack from doing as much damage. mod_evasive detects when a single client is making multiple requests in a short period of time, and denies further requests from that client. The period for which the ban is in place can be very short, because it just gets renewed the next time a request is detected from that same host.\par
-19)How t to enable PHP scripts on your server?\par
-Answer: If you have mod_php installed, use AddHandler to map .php and .phtml files to the PHP handler. AddHandler application/x-httpd-php .phtml .php\par
-20) Which tool you have used for Apache benchmarking?\par
-Answer: ab (Apache bench)\par
+\pard\sl240\slmult1\b 18) What is mod_evasive module?\b0\par
+\pard\li720\sl240\slmult1  mod_evasive is a third-party module that detects when your site is receiving a Denial of Service (DoS) attack, and it prevents that attack from doing as much damage. mod_evasive detects when a single client is making multiple requests in a short period of time, and denies further requests from that client. The period for which the ban is in place can be very short, because it just gets renewed the next time a request is detected from that same host.\par
+\pard\sl240\slmult1\b 19)How t to enable PHP scripts on your server?\b0\par
+\pard\li720\sl240\slmult1 Answer: If you have mod_php installed, use AddHandler to map .php and .phtml files to the PHP handler. AddHandler application/x-httpd-php .phtml .php\par
+\pard\sl240\slmult1\b 20) Which tool you have used for Apache benchmarking?\b0\par
+\pard\li720\sl240\slmult1 Answer: ab (Apache bench)\par
 ab -n 1000 -c 10 {\field{\*\fldinst{HYPERLINK "http://www.test.com/test.html"}}{\fldrslt{\ul\cf1 http://www.test.com/test.html}}}\f0\fs20\par
-21) Can we cache files which are viewed frequently?\par
-Answer: Yes we can do it by using mod_file_cache module.\par
+\pard\sl240\slmult1\b 21) Can we cache files which are viewed frequently?\b0\par
+\pard\li720\sl240\slmult1 Answer: Yes we can do it by using \b mod_file_cache module\b0 .\par
 CacheFile /www/htdocs/index.html\par
-** Using Varnish and forward port to apache is better. **\par
-22. How do you check for the httpd.conf consistency and any errors in it?\par
-Answer: httpd \endash t     show parsed run settings\par
-\par
-23) On which port Apache listens http and https both?\par
-Answer : By default Apache runs on http port 80 and https port 443 (for SSL certificate). \par
+** Using \b Varnish\b0  and forward port to apache is better. **\par
+\pard\sl240\slmult1\b 22. How do you check for the httpd.conf consistency and any errors in it?\b0\par
+\pard\li720\sl240\slmult1 Answer: httpd \endash t     show parsed run settings\par
+\pard\sl240\slmult1\par
+\b 23) On which port Apache listens http and https both?\b0\par
+\pard\li720\sl240\slmult1 Answer : By default Apache runs on http port 80 and https port 443 (for SSL certificate). \par
 netstat -plnt \par
 netstat -antp | grep http\par
-24) Can Apache be secured with TCP wrappers?\par
- No, It can\rquote t be secured with the TCP wrappers since it doesn\rquote t support libwrap.a library of Linux.\par
-25) Can we have two Apache Web servers on a single machine?\par
-Answer : Yes, we can run two different Apache servers at one time on a Linux machine, but the condition for that is they should listen on different ports and we can change the ports with Listen directive of Apache.\par
-26) How to host files in different folder and what is Alias directive?\par
-Answer : Yes, this can be achieved by Alias directive in the main Apache configuration file. Alias directive maps resources in File system, it takes a URL path and substitute it with a file or directory path on the system with is set up to redirect.\par
-To use Alias directive, Its the part of mod_alias module of Apache. The default syntax of Alias directive is:\par
+\pard\sl240\slmult1\b 24) Can Apache be secured with TCP wrappers?\par
+\pard\li720\sl240\slmult1\b0  No, It can\rquote t be secured with the TCP wrappers since it doesn\rquote t support libwrap.a library of Linux.\par
+\b TCP Wrapper\b0  is a host-based networking ACL system, used to filter network access to Internet Protocol servers on (Unix-like) operating systems such as GNU/Linux or BSD. It allows host or subnetwork IP addresses, names and/or ident query replies, to be used as tokens on which to filter for access control purposes.\par
+\pard\sl240\slmult1\b 25) Can we have two Apache Web servers on a single machine?\b0\par
+\pard\li720\sl240\slmult1 Yes, we can run two different Apache servers at one time on a Linux machine, but the condition for that is they should listen on different ports and we can change the ports with Listen directive of Apache.\par
+\pard\sl240\slmult1\b 26) How to host files in different folder and what is Alias directive?\par
+\pard\li720\sl240\slmult1\b0 Yes, this can be achieved by Alias directive in the main Apache configuration file. Alias directive maps resources in File system, it takes a URL path and substitute it with a file or directory path on the system with is set up to redirect.\par
+To use Alias directive, its the part of mod_alias module of Apache. The default syntax of Alias directive is:\par
 Alias     /images     /var/data/images/\par
 ln -s \tab /images\tab      /var/data/images/\par
-27) How to disable Directory listing when an index file is missing?\par
-Answer : If, the main index file is missing in the website root directory, then the Apache will lists all the contents like files and folder of the website on the browser instead of Main website pages.\par
-To stop Apache directory listing, you can set the following rule in the main configuration file globally or in .htaccess file for a particular website.\par
+\pard\sl240\slmult1\b 27) How to disable Directory listing when an index file is missing?\b0\par
+\pard\li720\sl240\slmult1 If, the main index file is missing in the website root directory, then the Apache will lists all the contents like files and folder of the website on the browser instead of Main website pages.\par
+To stop Apache directory listing, you can set the following rule in the main configuration file globally or \b in .htaccess\b0  file for a particular website.\par
 <Directory /var/www/html>\par
    Options -Indexes\par
 </Directory>\par
-28) What are different log files of Apache Web Server?\par
-Access log & Error log ( \ldblquote /var/log/httpd/access_log\rdblquote  ,  "/var/log/httpd/error_log\rdblquote )\par
-29) What\rquote s the difference between <Location> and <Directory>?\par
-<Location> is used to set element related to the URL / address bar of the web server.\par
+\pard\sl240\slmult1\b 28) What are different log files of Apache Web Server?\b0\par
+\pard\li720\sl240\slmult1 Access log & Error log ( \ldblquote /var/log/httpd/access_log\rdblquote  ,  "/var/log/httpd/error_log\rdblquote )\par
+\pard\sl240\slmult1\b 29) What\rquote s the difference between <Location> and <Directory>?\b0\par
+\pard\li720\sl240\slmult1 <Location> is used to set element related to the URL / address bar of the web server.\par
 <Directory> refers that the location of file system object on the server\par
-30) What do you understand by MPM in Apache?\par
-MPM stands for Multi Processing Modules, actually Apache follows some mechanism to accept and complete web server requests.\par
+\pard\sl240\slmult1\b 30) What do you understand by MPM in Apache?\b0\par
+\pard\li720\sl240\slmult1 MPM stands for Multi Processing Modules, actually Apache follows some mechanism to accept and complete web server requests.\par
 varnish is better\par
-31) What is the difference between Worker and Prefork MPM?\par
-Answer : Both MPMs, Worker and prefork has their own mechanism to work with Apache. It totally depends on you that in which mode you want to start your Apache.\par
+\pard\sl240\slmult1\b 31) What is the difference between Worker and Prefork MPM?\b0\par
+\pard\li720\sl240\slmult1 Both MPMs, Worker and prefork has their own mechanism to work with Apache. It totally depends on you that in which mode you want to start your Apache.\par
 Basic difference between Worker and MPM(Multi Processing Modules) is in their process of spawning the child process. In the Prefork MPM, a master httpd process is started and this master process starts manages all other child processes to serve client requests. Whereas, In the worker MPM one httpd process is active, and it uses different threads to serve client requests.\par
 Prefork MPM uses multiple child processes with one thread each, where worker MPM uses multiple child processes with many threads each.\par
 Connection handling in the Prefork MPM, each process handles one connection at a time, whereas in the Worker mpm each thread handles one connection at a time.\par
 Memory footprints Prefork MPM Large memory footprints, where Worker has smaller memory footprints.\par
-32) What\rquote s the use of \ldblquote LimitRequestBody\rdblquote  and how to put limit on your uploads?\par
-Answer : LimitRequestBody directive is used to put a limit on the upload size.\par
+\pard\sl240\slmult1\b 32) What\rquote s the use of \ldblquote LimitRequestBody\rdblquote  and how to put limit on your uploads?\b0\par
+\pard\li720\sl240\slmult1 LimitRequestBody directive is used to put a \ul limit on the upload size\ulnone .\par
 For example: I want to put limits of 100000 Bytes in the folder /var/www/html/tecmin/uploads. So, you need to add following directive in Apache configuration file.\par
 <Directory "/var/www/html/tecmint/uploads">\par
 LimitRequestBody 100000\par
 </Directory>\par
-32)  What is mod_perl and mod _php?\par
-mod_perl is an Apache module which is compiled with Apache for easy integration and to increase the performance of Perl scripts.\par
-mod_php is used for easy integration of PHP scripts by the web server, it embeds the PHP interpreter inside the Apache process. Its forces Apache child process to use more memory and works with Apache only but still very popular.\par
-33) What\rquote s the use of mod_ssl and how SSL works with Apache?\par
-Answer : Mod_ssl package is an Apache module, which allows Apache to establish its connection and transfer all the data in a secure encrypted environment. With the help of SSL certificates, all the Login details and other important secret details get transferred in an encrypted manner over the Internet, which prevents our data from Eavesdropping and IP spoofing.\par
-34) How to implement SSL into Apache web server\par
-Whenever an https requests comes, these three steps Apache follows:\par
-Apache generates its private key and converts that private key to .CSR file (Certificate signing request).\par
-Then Apache sends the .csr file to the CA (Certificate Authority).\par
-CA will take the .csr file and convert it to .crt (certificate) and will send that .crt file back to Apache to secure and complete the https connection request.\par
-\par
+\pard\sl240\slmult1\b 32)  What is mod_perl and mod _php?\b0\par
+\pard\li720\sl240\slmult1\b mod_perl\b0  is an Apache module which is compiled with Apache for easy integration and to increase the performance of Perl scripts.\par
+\b mod_php \b0 is used for easy integration of PHP scripts by the web server, it embeds the PHP interpreter inside the Apache process. Its forces Apache child process to use more memory and works with Apache only but still very popular.\par
+\pard\sl240\slmult1\b 33) What\rquote s the use of mod_ssl and how SSL works with Apache?\b0\par
+\pard\li720\sl240\slmult1 Mod_ssl package is an Apache module, which allows Apache to establish its connection and transfer all the data in a secure encrypted environment. With the help of SSL certificates, all the Login details and other important secret details get transferred in an encrypted manner over the Internet, which prevents our data from Eavesdropping and IP spoofing.\par
+\pard\sl240\slmult1\b 34) How to implement SSL into Apache web server\b0\par
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li1440\sl240\slmult1 Apache generates its private key and converts that private key to .CSR file (Certificate signing request).\par
+{\pntext\f2\'B7\tab}Then Apache sends the .csr file to the CA (Certificate Authority).\par
+{\pntext\f2\'B7\tab}CA will take the .csr file and convert it to .crt (certificate) and will send that .crt file back to Apache to secure and complete the https connection request.\par
+\pard\sl240\slmult1\par
 \par
 \par
 \par

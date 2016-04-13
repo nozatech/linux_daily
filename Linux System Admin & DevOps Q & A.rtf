@@ -1,33 +1,25 @@
-{\rtf1\ansi\ansicpg949\deff0\deflang1033\deflangfe1042{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+{\rtf1\ansi\ansicpg949\deff0\deflang1033\deflangfe1042{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil\fcharset2 Symbol;}}
 {\colortbl ;\red0\green0\blue0;\red0\green255\blue0;\red37\green37\blue37;\red0\green0\blue255;\red11\green0\blue128;\red255\green255\blue255;}
 {\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\fs20 Linux System Admin & DevOps Q & A\b0\par
+\b\par
+ Q:1 Why LVM is required ?\b0\par
+LVM stands for Logical Volume Manager, to \ul resize filesystem\rquote s size \ulnone online we required LVM partition in Linux. Size of LVM partition can be extended and reduced using the lvextend & lvreduce commands respectively.\par
 \par
- Q:1 Why LVM is required ?\par
-LVM stands for Logical Volume Manager, to resize filesystem\rquote s size online we required LVM partition in Linux. Size of LVM partition can be extended and reduced using the lvextend & lvreduce commands respectively.\par
-\par
-Q:2 How To check Memory stats and CPU stats ?\par
+\b Q:2 How To check Memory stats and CPU stats ?\b0\par
  Using \lquote free \endash m \rquote  & \lquote vmstat\rquote  command we can display the physical and virtual memory statistics respectively. With the help of \lquote sar\rquote  command we see the CPU utilization & other stats.\par
 vmstat - report virtual memory statistics\par
 \tab           - vmstat reports information about processes, memory, paging, block IO, traps, disks and cpu activity.\par
 \pard\cbpat6\sb750\sa100\cf1\b How do I see how much free ram I really have?\par
 \pard\b0 To see how much ram is free to use for your applications, run\~free\~-m\~and look at the row that says "-/+ buffers/cache" in the column that says "free". That is your answer in megabytes:\cf0\par
-\pard\cbpat6\cf1 $ free -m\par
+\pard\cbpat6\cf1 $ free -h ( or -m)\par
 \~\~\~\~\~\~\~\~\~\~\~\~ total\~\~\~\~\~\~ used\~\~\~\~\~\~ free\~\~\~\~ shared\~\~\~ buffers\~\~\~\~ cached\par
 Mem:\~\~\~\~\~\~\~\~\~ 1504\~\~\~\~\~\~ 1491\~\~\~\~\~\~\~\~ 13\~\~\~\~\~\~\~\~\~ 0\~\~\~\~ \~\~\~\~91\~\~\~\~\~\~\~ 764\par
--/+ buffers/cache:\~\~\~\~\~\~\~ 635\~\~\~\~\~\~\~ \cf2\b 869\cf1\b0\par
+-/+ buffers/cache:\~\~\~\~\~\~\~ 635\~\~\~\~\~\~\~ \cf2\b 869 <= actual free memory\cf1\b0\par
 Swap:\~\~\~\~\~\~\~\~ 2047\~\~\~\~\~\~\~\~\~ 6\~\~\~\~\~\~ 2041\par
 \pard\sa200\sl276\slmult1\cf0          \par
-Q:3 What does Sar provides and at which location Sar logs are stored ?\par
-sar (\ul system active report\ulnone  is part of the \ul sysstat\ulnone  package) collect, report, or save system activity information. The default version of the sar command (CPU utilization report) might be one of the first facilities the user runs to begin system activity investigation, because it monitors major system resources. If CPU utilization is near 100 percent (user + nice + system), the workload sampled is CPU-bound.  -20 highest vs 19 lowest priority\par
-By default log files of Sar command is located at /var/log/sysstat/saXX( date) file, where the dd parameter indicates the current day.\par
-Using sar you can monitor performance of various Linux subsystems (CPU, Memory, I/O..) in real time.\par
-Using sar, you can also collect all performance data on an on-going basis, store them, and do historical analysis to identify bottlenecks.\par
-$ sar 1 3              \tab\tab      <= system CPU statistics 3 times (with 1 second interval).\par
-$ strings  /var/log/sysstat/sa20   <= strings read binary to human readable \par
-\par
-Sar is part of the sysstat package.\par
-This article explains how to install and configure sysstat package (which contains sar utility) and explains how to monitor the following Linux performance statistics using sar.\par
-1.\tab Collective CPU usage\par
+\b Q:3 What does Sar provides and at which location Sar logs are stored ?\par
+\pard\li720\sa200\sl276\slmult1\b0 sar (\ul system active report\ulnone  is part of the \ul sysstat\ulnone  package) collect, report, or save system activity information. The default version of the sar command (CPU utilization report) might be one of the first facilities the user runs to begin system activity investigation, because it monitors major system resources. \par
+\pard\li720\sl276\slmult1 1.\tab Collective CPU usage\par
 2.\tab Individual CPU statistics\par
 3.\tab Memory used and available\par
 4.\tab Swap space used and available\par
@@ -37,104 +29,118 @@ This article explains how to install and configure sysstat package (which contai
 8.\tab Run queue and load average data\par
 9.\tab Network statistics\par
 10.\tab Report sar data from a specific time\par
-This is the only guide you\rquote ll need for sar utility. So, bookmark this for your future reference.\par
+\pard\li720\sa200\sl276\slmult1\par
+If CPU utilization is near 100 percent (user + nice + system), the workload sampled is CPU-bound.  -20 highest vs 19 lowest priority\par
+By default log files of Sar command is located at /var/log/sysstat/saXX( date) file, where the dd parameter indicates the current day.\par
+Using sar you can monitor performance of various Linux subsystems (CPU, Memory, I/O..) in real time.\par
+Using sar, you can also collect all performance data on an on-going basis, store them, and do historical analysis to identify bottlenecks.\par
+$ sar 1 3              \tab\tab      \tab <= system CPU statistics 3 times (with 1 second interval).\par
+$ strings  /var/log/sysstat/sa20   \tab\tab <= strings read binary to human readable \par
 \par
-Q:4 How to \ul increase\ulnone  the size of LVM partition ?\par
-\endash  Use the lvextend command (lvextend -L +100M /dev/<Name of the LVM Partition> ,\par
-\endash  resize2fs /dev/<Name of the LVM Partition>\par
-\endash  check the size of partition using \lquote df -h\rquote  command\par
 \par
-Q:5 How to \ul reduce\ulnone  the size of LVM partition ?\par
--Umount the filesystem using umount command,\par
--use resize2fs command , \par
-\pard\fi720\sa200\sl276\slmult1 e.g resiz2fs /dev/mapper/myvg-mylv 10G\par
-\pard\sa200\sl276\slmult1 -Now use the lvreduce command , \par
-\pard\fi720\sa200\sl276\slmult1 e.g lvreduce -L 10G /dev/mapper/myvg-mylv\par
+\pard\sa200\sl276\slmult1\par
+\b Q:4 How to \ul increase\ulnone  the size of LVM partition ?\b0\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1  Use the lvextend command (lvextend -L +100M /dev/<Name of the LVM Partition> ,\par
+{\pntext\f1\'B7\tab}resize2fs /dev/<Name of the LVM Partition>\par
+{\pntext\f1\'B7\tab}check the size of partition using \lquote df -h\rquote  command\par
+\pard\sa200\sl276\slmult1\par
+\b Q:5 How to \ul reduce\ulnone  the size of LVM partition ?\b0\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Umount the filesystem\par
+{\pntext\f1\'B7\tab}$ resiz2fs   /dev/mapper/target    10G\par
+{\pntext\f1\'B7\tab}$ lvreduce -L 10G    /dev/mapper/tartget\par
 \pard\sa200\sl276\slmult1 Above Command will shrink the size & will make the filesystem size 10GB.\par
  \par
 \b Q:6 How to create partition from the raw disk ?\par
-\b0 Using fdisk utility we can create partitions from the raw disk.\par
-\endash  fdisk  /dev/hd* (IDE) or /dev/sd* (SCSI)\par
-\endash  Type n to create a new partition\par
-\endash   After creating partition , type w command to write the changes to the partition table.\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1\b0 fdisk  /dev/hd* (IDE) or /dev/sd* (SCSI)\par
+{\pntext\f1\'B7\tab}Type n to create a new partition\par
+{\pntext\f1\'B7\tab}After creating partition, type w to write the changes to the partition table.\par
+\pard\sa200\sl276\slmult1\b\par
+ Q:7 Where the kernel modules(drivers) are located ?\par
+\pard\sl276\slmult1\b0 The \b\lquote /lib/modules/kernel-version\b0 /\rquote  directory stores all kernel modules or compiled drivers in Linux operating system. \par
+$ ls -l /lib/modules/$(uname -r)\par
+\pard\sa200\sl276\slmult1\par
+\pard\sl276\slmult1 Also with \lquote lsmod\rquote  command we can see all the installed kernel modules.\par
+\pard\cf3\b lsmod\b0\~prints the contents of the\~\cf0{\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Procfs" \\\\o "Procfs" }}{\fldrslt{\cf5\ul /proc/modules}}}\cf3\ulnone\f0\fs20\~file. It shows which\~\cf0{\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Loadable_kernel_module" \\\\o "Loadable kernel module" }}{\fldrslt{\cf5\ul loadable kernel modules}}}\cf3\ulnone\f0\fs20\~are currently loaded.\par
+lsmod shows the status of modules in the Linux Kernel:\cf0\par
 \par
- Q:7 Where the kernel modules are located ?\par
-The \lquote /lib/modules/kernel-version/\rquote  directory stores all kernel modules or compiled drivers in Linux operating system. Also with \lquote lsmod\rquote  command we can see all the installed kernel modules.\par
-\pard\cf3\b lsmod\b0\~prints the contents of the\~\cf0{\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Procfs" \\\\o "Procfs" }}{\fldrslt{\cf5\ul /proc/modules}}}\cf3\ulnone\f0\fs20\~file. It shows which\~\cf0{\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Loadable_kernel_module" \\\\o "Loadable kernel module" }}{\fldrslt{\cf5\ul loadable kernel modules}}}\cf3\ulnone\f0\fs20\~are currently loaded.\cf0\par
+\b Q:8 What is umask ?\b0\par
+Umask stands for \lquote\b User file creation mask\rquote\b0 , which determines the settings of a mask that controls which \ul file permissions are set for files and directories when they are create\ulnone d.\par
 \par
-Q:8 What is umask ?\par
-Umask stands for \lquote User file creation mask\rquote , which determines the settings of a mask that controls which file permissions are set for files and directories when they are created.\par
+\b Q:9 How to set the umask permanently for a user?\b0\par
+It has to be put in the appropriate \ul\b profile file \ulnone\b0 which depends on the default shell of the user.\par
 \par
-Q:9 How to set the umask permanently for a user?\par
-It has to be put in the appropriate profile file which depends on the default shell of the user.\par
+\b Q:10 How to change the default run level in linux ?\b0\par
+To change the run level we have to edit the file \b\ldblquote /etc/inittab\b0\rdblquote  and change initdefault entry ( id:5:initdefault:). \par
+Using \lquote init\rquote  command we change the run level temporary like \lquote init 3\rquote  , this command will move the system in runlevl 3.\par
 \par
-Q:10 How to change the default run level in linux ?\par
-To change the run level we have to edit the file \ldblquote /etc/inittab\rdblquote  and change initdefault entry ( id:5:initdefault:). Using \lquote init\rquote  command we change the run level temporary like \lquote init 3\rquote  , this command will move the system in runlevl 3.\par
-\par
-Q:11 How to share a directory using nfs ?\par
-To share a directory using nfs , first edit the configuration file \lquote /etc/exportfs\rquote  , add a entry like\par
+\b Q:11 How to share a directory using nfs ?\b0\par
+\pard\li720 To share a directory using nfs , first edit the configuration file \b\lquote /etc/exportfs\rquote  \b0 , add a entry like\par
 \lquote /<directory-name>  <ip or Network>(Options)\rquote  and then restart the nfs service.\par
-\par
-Q:12 How to check and mount nfs share ?\par
-Using \lquote showmount\rquote  command we can see what directories are shared via nfs e.g \lquote showmount -e <ip address of nfs server>\rquote .Using mount command we can mount the nfs share on linux machine.\par
-\par
-Q:13 What are the default ports used for SMTP,DNS,FTP,DHCP,SSH and squid ?\par
-Service      Port\par
-SMTP          25\par
-DNS            53\par
-FTP             20 (data transfer) , 21 ( Connection established)\par
-DHCP         67/UDP(dhcp server) , 68/UDP(dhcp client)\par
-SSH            22\par
-mysql        3306\par
-puppet\tab      8140\par
-Squid         3128\par
-\par
-Q:14 What is Network Bonding ?\par
-Network bonding is the aggregation of multiple Lan cards into a single bonded interface to provide fault tolerance and high performance. Network bonding is also known as NIC Teaming.\par
-\par
-Q:15 What  are the different modes of Network bonding in Linux ?\par
-Below are list of modes used in Network Bonding :\par
-balance-rr or 0 \endash  round-robin mode for fault tolerance and load balancing.\par
-active-backup or 1 \endash  Sets active-backup mode for fault tolerance.\par
-balance-xor or 2 \endash  Sets an XOR (exclusive-or) mode for fault tolerance and load balancing.\par
-broadcast or 3 \endash  Sets a broadcast mode for fault tolerance. All transmissions are sent on all slave interfaces.\par
-802.3ad or 4  \endash  Sets an IEEE 802.3ad dynamic link aggregation mode. Creates aggregation groups that share the same speed & duplex settings.\par
-balance-tlb or 5 \endash   Sets a Transmit Load Balancing (TLB) mode for fault tolerance & load balancing.\par
-balance-alb or 6 \endash   Sets an Active Load Balancing (ALB) mode for fault tolerance & load balancing.\par
-\par
-Q:16 How to check and verify the status the bond interface.\par
-Using the command \lquote cat /proc/net/bonding/bond0\rquote  , we can check which mode is enabled and what lan cards are used in this bond. In this example we have one only one bond interface but we can have multiple bond interface like bond1,bond2 and so on.\par
-\par
-Q:17 How to check default route and routing table ?\par
-netstat \endash rn    \tab <= r \endash  route, n - numerical\par
+\pard\par
+\b Q:12 How to check and mount nfs share ?\b0\par
+\pard\li720 Using \lquote showmount\rquote  command we can see what directories are shared via nfs e.g \lquote showmount -e <ip address of nfs server>\rquote .Using mount command we can mount the nfs share on linux machine.\par
+\pard\par
+\b Q:13 What are the default ports used for SMTP, DNS, FTP, DHCP, SSH and squid ?\b0\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720 Service      Port\par
+{\pntext\f1\'B7\tab}SMTP          25\par
+{\pntext\f1\'B7\tab}DNS            53\par
+{\pntext\f1\'B7\tab}FTP             20 (data transfer) , \par
+{\pntext\f1\'B7\tab}\tab       21 ( Connection established)\par
+{\pntext\f1\'B7\tab}DHCP         67 /UDP(dhcp server) , \par
+{\pntext\f1\'B7\tab}\tab       68 /UDP(dhcp client)\par
+{\pntext\f1\'B7\tab}SSH            22\par
+{\pntext\f1\'B7\tab}mysql         3306\par
+{\pntext\f1\'B7\tab}puppet\tab       8140\par
+{\pntext\f1\'B7\tab}Squid          3128\par
+\pard\par
+\b Q:14 What is Network Bonding?\b0\par
+\pard\li720 Network bonding is the aggregation of multiple NICs into a single bonded interface to provide fault tolerance and high performance. Network bonding is also known as NIC Teaming.\par
+\pard\par
+\b Q:15 What  are the different modes of Network bonding in Linux ?\b0\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li1440 balance-rr or 0 \endash  round-robin mode for fault tolerance and load balancing.\par
+{\pntext\f1\'B7\tab}active-backup or 1 \endash  Sets active-backup mode for fault tolerance.\par
+{\pntext\f1\'B7\tab}balance-xor or 2 \endash  Sets an XOR (exclusive-or) mode for fault tolerance and load balancing.\par
+{\pntext\f1\'B7\tab}broadcast or 3 \endash  Sets a broadcast mode for fault tolerance. All transmissions are sent on all slave interfaces.\par
+{\pntext\f1\'B7\tab}802.3ad or 4  \endash  Sets an IEEE 802.3ad dynamic link aggregation mode. Creates aggregation groups that share \tab\tab the same speed & duplex settings.\par
+{\pntext\f1\'B7\tab}balance-tlb or 5 \endash   Sets a Transmit Load Balancing (TLB) mode for fault tolerance & load balancing.\par
+{\pntext\f1\'B7\tab}balance-alb or 6 \endash   Sets an Active Load Balancing (ALB) mode for fault tolerance & load balancing.\par
+\pard\b\par
+Q:16 How to check and verify the status the bond interface.\b0\par
+\pard\li720 Using the command \lquote $ cat /proc/net/bonding/bond0\rquote , we can check which mode is enabled and what NICs are used in this bond. In this example we have one only one bond interface but we can have multiple bond interface like bond1, bond2 and so on.\par
+\pard\par
+\b Q:17 How to check default route and routing table ?\par
+\pard\li720\b0 netstat \endash rn    \tab <= r \endash  route, n - numerical\par
 route -n   \tab <= n - numerical (route and routing tables.)\par
 ip route\par
-\par
-Q:18 How to check which \ul ports are listening\ulnone  in my Linux Server ?\par
-Use the Command \lquote netstat \endash l\rquote  and \lquote lsof -i\rquote\par
-netstat \endash l  | grep LISTEN\par
-lsof \endash i | grep LISTEN\par
-lsof -i -a -p 2027    //       -i   Display a table of all network interfaces.\par
-\pard\fi720\li1440\sl276\slmult1 -a  Show both listening and non-listening sockets.\par
+\pard\par
+\b Q:18 How to check which \ul ports are listening\ulnone  in my Linux Server ?\b0\par
+        Use the Command \lquote netstat \endash l\rquote  and \lquote lsof -i\rquote\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li1440 netstat \endash l  | grep LISTEN\par
+{\pntext\f1\'B7\tab}netstat -plnt  | grep EST\par
+{\pntext\f1\'B7\tab}\par
+{\pntext\f1\'B7\tab}lsof \endash i | grep LISTEN\par
+{\pntext\f1\'B7\tab}lsof -i -a -p 2027    //       -i   Display a table of all network interfaces.\par
+\pard\fi720\li2160\sl276\slmult1 -a  Show both listening and non-listening sockets.\par
 -p, PID   \par
-\par
-\pard\sa200\sl276\slmult1 COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME\par
-ntpd    2027  ntp   16u  IPv4   3065      0t0  UDP *:ntp\par
-ntpd    2027  ntp   17u  IPv6   3066      0t0  UDP *:ntp\par
-ntpd    2027  ntp   18u  IPv4   3072      0t0  UDP localhost:ntp\par
+\pard\fi720\li1440\sl276\slmult1\par
+\pard\li720\sl276\slmult1 CMD  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME\par
+ntpd    2027  ntp   16u  IPv4   3065      0t0   UDP *:ntp\par
+ntpd    2027  ntp   17u  IPv6   3066      0t0   UDP *:ntp\par
+ntpd    2027  ntp   18u  IPv4   3072      0t0   UDP localhost:ntp\par
 ntpd    2027  ntp   19u  IPv4  14337      0t0  UDP 192.168.232.130:ntp\par
 ntpd    2027  ntp   20u  IPv6  14338      0t0  UDP localhost:ntp\par
 ntpd    2027  ntp   21u  IPv6  14339      0t0  UDP [fe80::20c:29ff:fee7:ff18]:ntp\par
+\pard\sa200\sl276\slmult1\par
+\b Q:19 List the services that are enabled at a particular run level in linux server ?\b0\par
+\pard\li720\sa200\sl276\slmult1 $ chkconfig \endash list | grep 5:on \par
+we can list all the service that are enabled in run level5. For other run levels just replace 5 with the respective run level.\par
+\pard\sa200\sl276\slmult1\par
+\b Q:20 How to enable a service at a particular run level ?\b0\par
+\tab $ chkconfig   <Service-Name>   on \endash level 3\par
 \par
-Q:19 List the services that are enabled at a particular run level in linux server ?\par
-With the help of command \lquote chkconfig \endash list | grep 5:on\rquote  we can list all the service that are enabled in run level5. For other run levels just replace 5 with the respective run level.\par
-\par
-Q:20 How to enable a service at a particular run level ?\par
-We can enable a service using the Command \lquote chkconfig <Service-Name> on \endash level 3\rquote\par
-\par
-Q:21 How to upgrade Kernel in Linux ?\par
-We should never upgrade Linux Kernel, always install the new kernel using rpm command because upgrading a kernel can make your linux box in a unbootable state.\par
-Q:21 How to recover Kernel from removed /vmlinuz folder?\par
+\b Q:21 How to upgrade Kernel in Linux ?\par
+\pard\li720\sa200\sl276\slmult1\b0 We should never upgrade Linux Kernel, always install the new kernel using rpm command because upgrading a kernel can make your linux box in a unbootable state.\par
+\pard\sa200\sl276\slmult1 Q:21 How to recover Kernel from removed /vmlinuz folder?\par
 \pard\li720\sa200\sl276\slmult1 ###  mistakenly deleted /boot folder and rebooted                ###\par
 1. Bootup with Live CD.\par
 2. Find the drive/partition where you have installed your root filesystem. \par

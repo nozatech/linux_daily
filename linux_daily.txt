@@ -228,8 +228,10 @@ IP address is 32bit
 	
 9. Utility to check real time processing
     A. top 
-        top -bn 1 | awk "/$1/ {tot =+ \$6; n++} END {print tot\" \"n}"        <= -b <=batch mode, n <=number, 1 <=count  
+       $  top -bn 1 | awk "/$1/ {tot =+ \$6; n++} END {print tot\" \"n}"        <= -b <=batch mode, n <=number, 1 <=count  
         # capture into single page file 
+		-b bache mode sending output from top to other programs or to a file. 
+		-n number of iteration 
 		
 	B. atop
 		Atop is an ASCII full-screen performance monitor which can log and report 
@@ -376,10 +378,17 @@ IP address is 32bit
 
 
 18. vmstat - report virtual memory statistics
-	  - vmstat reports information about processes, memory, paging, block IO, 
-	    traps, disks and cpu activity.
-
-
+	- vmstat reports information about processes, memory, paging, block IO, 
+	  traps, disks and cpu activity.
+	vmstat is a tool that collects and reports data about your system’s memory, 
+	swap, and processor resource utilization in real time. It can be used to 
+	determine the root cause of performance and issues related to memory use.
+	$ vmstat [interval] [count]
+	$ vmstat 1 20 	<= 1sec  20 times
+	$ vmstat -S k 1 10
+		In the default operation, vmstat displays memory statistics in kilobytes. 
+		vmstat considers a single kilobyte equal to 1024 bytes. To generate vmstat 
+		reports where 1 kilobyte is equal to 1000 bytes, use the following form:
 19. Alias
 	$ cd; vi .bash_profile
 	$ alias server1='ssh root@ip_address -p 3404'   <= add your alias in .bash_profile
@@ -1092,6 +1101,50 @@ B. CentOS 7(systemd)
 
 	d.
   
+List processes
+chkconfig:
+
+# chkconfig --list
+systemd:
+
+# systemctl list-units
+Enable a service
+chkconfig:
+
+# chkconfig <servicename> on
+systemd:
+
+# systemctl enable <servicename>.service
+Disable a service
+chkconfig:
+
+# chkconfig <servicename> off
+systemd:
+
+# systemctl disable <servicename>.service
+Start a service
+chkconfig:
+
+# service <servicename> start
+systemd:
+
+# systemctl start <servicename>.service
+Stop a service
+chkconfig:
+
+# service <servicename> stop
+systemd:
+
+# systemctl stop <servicename>.service
+Check the status of a service
+chkconfig:
+
+# service <servicename> status
+systemd:
+
+# systemctl status <servicename>.service
+
+
 
 	
 CentOS 6.5(sysV)     		   vs     	 CentOS 7 (systemd)
@@ -1128,6 +1181,14 @@ journalctl - Query the systemd journal
 	journalctl -f          <= just happened log check
 	journalctl -u sshd     <= -u unit, 
 
+	
+	
+	
+	
+	
+	
+	
+	
 46. List of package installed
 
     online <=    yum list *httpd
