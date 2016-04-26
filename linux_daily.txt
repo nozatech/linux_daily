@@ -365,13 +365,13 @@ IP address is 32bit
 	netstat -na | grep ESTA | wc -l				<== n no reverse lookup(quick), t tcp, a all, p program
 	netstat -na | grep ESTABLISHED.*sshd		<= sshd connection list
 	ps auxwww | grep sshd:						<= sshd connection list
-	netstat -plunt								<= which ports are open and which application is listening
-	netstat -punt								<= 
-	netstat -ntl <= LISTEN port
+	netstat -plunt								<= which ports are open and which program(application) is listening
+	netstat -punt								<= program, udp, no lookup, tcp
+	netstat -ntl								<= no lookuop, tcp, LISTEN port
 
-	watch -d -n1 "netstat -ntap | grep ESTA"  <= Print active connections n1 <= every 1sec
+	watch -d -n1 "netstat -ntap | grep ESTA"  		<= Print active connections n1 <= every 1sec
 	
-	watch -d -n5 'netstat -ntap | grep ESTA | wc -l'
+	watch -n5 'netstat -ntap | grep ESTA | wc -l'	<= Print active connections n1 <= every 1sec
 
 	
 	ss <= socket statistic
