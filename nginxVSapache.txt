@@ -1,4 +1,5 @@
 Top 18 Nginx interview question
+
 1) What is Nginx?
 Nginx is a web server, load balancer and a reverse proxy server for HTTP, HTTPS, SMTP, POP3 and IMAP protocols.
 2) Mention some special features of Nginx?
@@ -21,7 +22,7 @@ All request are handled by a single thread.
 Nginx avoids child processes idea.
 Nginx resembles speed
 Nginx is better when it comes to memory consumption and connection
-Nginx is better when you want loadbalancing
+Nginx is better when you want load-balancing
 For PHP, Nginx might be preferable as it supports PHP internally
 Nginx do not support O.S like IBMi and OpenVMS.
 Nginx comes only with core features

@@ -1,10 +1,10 @@
-{\rtf1\ansi\ansicpg949\deff0\deflang1033\deflangfe1042{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil\fcharset134 SimSun;}{\f2\fnil\fcharset2 Symbol;}}
+{\rtf1\ansi\ansicpg949\deff0\deflang1033\deflangfe1042{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil\fcharset129 \'b8\'bc\'c0\'ba \'b0\'ed\'b5\'f1;}{\f2\fnil\fcharset134 SimSun;}{\f3\fnil\fcharset2 Symbol;}}
 {\colortbl ;\red0\green0\blue0;\red0\green255\blue0;\red37\green37\blue37;\red0\green0\blue255;\red11\green0\blue128;\red255\green255\blue255;}
 {\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\b\fs20 Linux System Admin & DevOps Q & A\b0\par
 \b\par
  Q:1 Why LVM is required ?\b0\par
 LVM stands for Logical Volume Manager, to \ul resize filesystem\rquote s size \ulnone online we required LVM partition in Linux. Size of LVM partition can be extended and reduced using the lvextend & lvreduce commands respectively.\par
-\pard\sa200\sl240\slmult1{\pict\wmetafile8\picw16140\pich16404\picwgoal9150\pichgoal9300 
+\pard\sa200\sl240\slmult1\lang18\f1{\pict\wmetafile8\picw16140\pich16404\picwgoal9150\pichgoal9300 
 010009000003a8aa0800000092aa08000000050000000b0200000000050000000c0214400c3f92
 aa0800430f2000cc0000006c0262020000000014400c3f0000000028000000620200006c020000
 0100180000000000e0541100c40e0000c40e000000000000000000000000000000000000000000
@@ -29132,7 +29132,7 @@ ffe3d0ffe3d0ffe3d0ffe2cfffe3d0ffe2cfffe2cfffe2cfffe2cfffe2cfffe2cfffe2cfffe2cf
 ffe2cfffe2cfffe2cfffe2cfffe2cfffe2cfffe2cfffe2cfffe2ceffe2cfffe2ceffe2ceffe2ce
 ffe2ceffe2ceffe2ceffe2ceffe2ceffe1ceffe2ceffe1ceffe1ceffe1ceffe1ceffe1cdffe1ce
 ffe1cdffe1cdffe1cdffe1cdffe1cdffe1cdffe1cdffe1cdffe1cdffe1cd0000030000000000
-}\par
+}\lang1033\f0\par
 \pard\sa200\sl276\slmult1\b Q:2 How To check Memory stats and CPU stats ?\b0\par
  Using \lquote free \endash m \rquote  & \lquote vmstat\rquote  command we can display the physical and virtual memory statistics respectively. With the help of \lquote sar\rquote  command we see the CPU utilization & other stats.\par
 vmstat - report virtual memory statistics\par
@@ -29168,27 +29168,27 @@ $ strings  /var/log/sysstat/sa20   \tab\tab <= strings read binary to human read
 \par
 \pard\sa200\sl276\slmult1\par
 \b Q:4 How to \ul increase\ulnone  the size of LVM partition ?\b0\par
-\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1  Use the lvextend command (lvextend -L +100M /dev/<Name of the LVM Partition> ,\par
-{\pntext\f2\'B7\tab}resize2fs /dev/<Name of the LVM Partition>\par
-{\pntext\f2\'B7\tab}check the size of partition using \lquote df -h\rquote  command\par
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1  Use the lvextend command (lvextend -L +100M /dev/<Name of the LVM Partition> ,\par
+{\pntext\f3\'B7\tab}resize2fs /dev/<Name of the LVM Partition>\par
+{\pntext\f3\'B7\tab}check the size of partition using \lquote df -h\rquote  command\par
 \pard\sa200\sl276\slmult1\par
 \b Q:5 How to \ul reduce\ulnone  the size of LVM partition ?\b0\par
-\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Umount the filesystem\par
-{\pntext\f2\'B7\tab}$ resiz2fs   /dev/mapper/target    10G\par
-{\pntext\f2\'B7\tab}$ lvreduce -L 10G    /dev/mapper/tartget\par
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Umount the filesystem\par
+{\pntext\f3\'B7\tab}$ resiz2fs   /dev/mapper/target    10G\par
+{\pntext\f3\'B7\tab}$ lvreduce -L 10G    /dev/mapper/tartget\par
 \pard\sa200\sl276\slmult1 Above Command will shrink the size & will make the filesystem size 10GB.\par
  \par
 \b Q:6 How to create partition from the raw disk ?\par
-\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1\b0 fdisk  /dev/hd* (IDE) or /dev/sd* (SCSI)\par
-{\pntext\f2\'B7\tab}Type n to create a new partition\par
-{\pntext\f2\'B7\tab}After creating partition, type w to write the changes to the partition table.\par
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1\b0 fdisk  /dev/hd* (IDE) or /dev/sd* (SCSI)\par
+{\pntext\f3\'B7\tab}Type n to create a new partition\par
+{\pntext\f3\'B7\tab}After creating partition, type w to write the changes to the partition table.\par
 \pard\sa200\sl276\slmult1\b\par
  Q:7 Where the kernel modules(drivers) are located ?\par
 \pard\sl276\slmult1\b0 The \b\lquote /lib/modules/kernel-version\b0 /\rquote  directory stores all kernel modules or compiled drivers in Linux operating system. \par
 $ ls -l /lib/modules/$(uname -r)\par
 \pard\sa200\sl276\slmult1\par
 \pard\sl276\slmult1 Also with \lquote lsmod\rquote  command we can see all the installed kernel modules.\par
-\pard\cf3\b lsmod\b0\~prints the contents of the\~\cf0{\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Procfs" \\\\\\\\o "Procfs" }}{\fldrslt{\cf5\ul /proc/modules}}}\cf3\ulnone\f0\fs20\~file. It shows which\~\cf0{\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Loadable_kernel_module" \\\\\\\\o "Loadable kernel module" }}{\fldrslt{\cf5\ul loadable kernel modules}}}\cf3\ulnone\f0\fs20\~are currently loaded.\par
+\pard\cf3\b lsmod\b0\~prints the contents of the\~\cf0{\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Procfs" \\\\\\\\\\\\\\\\o "Procfs" }}{\fldrslt{\cf5\ul /proc/modules}}}\cf3\ulnone\f0\fs20\~file. It shows which\~\cf0{\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Loadable_kernel_module" \\\\\\\\\\\\\\\\o "Loadable kernel module" }}{\fldrslt{\cf5\ul loadable kernel modules}}}\cf3\ulnone\f0\fs20\~are currently loaded.\par
 lsmod shows the status of modules in the Linux Kernel:\cf0\par
 \par
 \b Q:8 What is umask ?\b0\par
@@ -29209,29 +29209,29 @@ Using \lquote init\rquote  command we change the run level temporary like \lquot
 \pard\li720 Using \lquote showmount\rquote  command we can see what directories are shared via nfs e.g \lquote showmount -e <ip address of nfs server>\rquote .Using mount command we can mount the nfs share on linux machine.\par
 \pard\par
 \b Q:13 What are the default ports used for SMTP, DNS, FTP, DHCP, SSH and squid ?\b0\par
-\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li720 Service      Port\par
-{\pntext\f2\'B7\tab}SMTP          25\par
-{\pntext\f2\'B7\tab}DNS            53\par
-{\pntext\f2\'B7\tab}FTP             20 (data transfer) , \par
-{\pntext\f2\'B7\tab}\tab       21 ( Connection established)\par
-{\pntext\f2\'B7\tab}DHCP         67 /UDP(dhcp server) , \par
-{\pntext\f2\'B7\tab}\tab       68 /UDP(dhcp client)\par
-{\pntext\f2\'B7\tab}SSH            22\par
-{\pntext\f2\'B7\tab}mysql         3306\par
-{\pntext\f2\'B7\tab}puppet\tab       8140\par
-{\pntext\f2\'B7\tab}Squid          3128\par
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent0{\pntxtb\'B7}}\fi-360\li720 Service      Port\par
+{\pntext\f3\'B7\tab}SMTP          25\par
+{\pntext\f3\'B7\tab}DNS            53\par
+{\pntext\f3\'B7\tab}FTP             20 (data transfer) , \par
+{\pntext\f3\'B7\tab}\tab       21 ( Connection established)\par
+{\pntext\f3\'B7\tab}DHCP         67 /UDP(dhcp server) , \par
+{\pntext\f3\'B7\tab}\tab       68 /UDP(dhcp client)\par
+{\pntext\f3\'B7\tab}SSH            22\par
+{\pntext\f3\'B7\tab}mysql         3306\par
+{\pntext\f3\'B7\tab}puppet\tab       8140\par
+{\pntext\f3\'B7\tab}Squid          3128\par
 \pard\par
 \b Q:14 What is Network Bonding?\b0\par
 \pard\li720 Network bonding is the aggregation of multiple NICs into a single bonded interface to provide fault tolerance and high performance. Network bonding is also known as NIC Teaming.\par
 \pard\par
 \b Q:15 What  are the different modes of Network bonding in Linux ?\b0\par
-\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li1440 balance-rr or 0 \endash  round-robin mode for fault tolerance and load balancing.\par
-{\pntext\f2\'B7\tab}active-backup or 1 \endash  Sets active-backup mode for fault tolerance.\par
-{\pntext\f2\'B7\tab}balance-xor or 2 \endash  Sets an XOR (exclusive-or) mode for fault tolerance and load balancing.\par
-{\pntext\f2\'B7\tab}broadcast or 3 \endash  Sets a broadcast mode for fault tolerance. All transmissions are sent on all slave interfaces.\par
-{\pntext\f2\'B7\tab}802.3ad or 4  \endash  Sets an IEEE 802.3ad dynamic link aggregation mode. Creates aggregation groups that share \tab\tab the same speed & duplex settings.\par
-{\pntext\f2\'B7\tab}balance-tlb or 5 \endash   Sets a Transmit Load Balancing (TLB) mode for fault tolerance & load balancing.\par
-{\pntext\f2\'B7\tab}balance-alb or 6 \endash   Sets an Active Load Balancing (ALB) mode for fault tolerance & load balancing.\par
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent0{\pntxtb\'B7}}\fi-360\li1440 balance-rr or 0 \endash  round-robin mode for fault tolerance and load balancing.\par
+{\pntext\f3\'B7\tab}active-backup or 1 \endash  Sets active-backup mode for fault tolerance.\par
+{\pntext\f3\'B7\tab}balance-xor or 2 \endash  Sets an XOR (exclusive-or) mode for fault tolerance and load balancing.\par
+{\pntext\f3\'B7\tab}broadcast or 3 \endash  Sets a broadcast mode for fault tolerance. All transmissions are sent on all slave interfaces.\par
+{\pntext\f3\'B7\tab}802.3ad or 4  \endash  Sets an IEEE 802.3ad dynamic link aggregation mode. Creates aggregation groups that share \tab\tab the same speed & duplex settings.\par
+{\pntext\f3\'B7\tab}balance-tlb or 5 \endash   Sets a Transmit Load Balancing (TLB) mode for fault tolerance & load balancing.\par
+{\pntext\f3\'B7\tab}balance-alb or 6 \endash   Sets an Active Load Balancing (ALB) mode for fault tolerance & load balancing.\par
 \pard\b\par
 Q:16 How to check and verify the status the bond interface.\b0\par
 \pard\li720 Using the command \lquote $ cat /proc/net/bonding/bond0\rquote , we can check which mode is enabled and what NICs are used in this bond. In this example we have one only one bond interface but we can have multiple bond interface like bond1, bond2 and so on.\par
@@ -29243,11 +29243,11 @@ ip route\par
 \pard\par
 \b Q:18 How to check which \ul ports are listening\ulnone  in my Linux Server ?\b0\par
         Use the Command \lquote netstat \endash l\rquote  and \lquote lsof -i\rquote\par
-\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li1440 netstat \endash l  | grep LISTEN\par
-{\pntext\f2\'B7\tab}netstat -plnt  | grep EST\par
-{\pntext\f2\'B7\tab}\par
-{\pntext\f2\'B7\tab}lsof \endash i | grep LISTEN\par
-{\pntext\f2\'B7\tab}lsof -i -a -p 2027    //       -i   Display a table of all network interfaces.\par
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent0{\pntxtb\'B7}}\fi-360\li1440 netstat \endash l  | grep LISTEN\par
+{\pntext\f3\'B7\tab}netstat -plnt  | grep EST\par
+{\pntext\f3\'B7\tab}\par
+{\pntext\f3\'B7\tab}lsof \endash i | grep LISTEN\par
+{\pntext\f3\'B7\tab}lsof -i -a -p 2027    //       -i   Display a table of all network interfaces.\par
 \pard\fi720\li2160\sl276\slmult1 -a  Show both listening and non-listening sockets.\par
 -p, PID   \par
 \pard\fi720\li1440\sl276\slmult1\par
@@ -29300,10 +29300,10 @@ we can list all the service that are enabled in run level5. For other run levels
 \tab One issue that I had the last time I did something similar was that Windows installs where not found by update-grub when run in the chroot due to a bug in os-prober. If this is an issue, just run sudo update-grub again in the repaired system.\par
 \pard\sa200\sl276\slmult1\tab\par
 \b Q:22 How To scan newly assigned luns on linux box without rebooting ?\b0\par
-\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Method:1 if sg3 rpm is installed , then run the command \lquote rescan-scsi-bus.sh\rquote\par
-{\pntext\f2\'B7\tab}Method:2 Run the Command ,  echo \rdblquote  \endash  \endash  \endash  \rdblquote  > /sys/class/scsi_host/hostX/scan\par
+\pard{\pntext\f3\'B7\tab}{\*\pn\pnlvlblt\pnf3\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Method:1 if sg3 rpm is installed , then run the command \lquote rescan-scsi-bus.sh\rquote\par
+{\pntext\f3\'B7\tab}Method:2 Run the Command ,  echo \rdblquote  \endash  \endash  \endash  \rdblquote  > /sys/class/scsi_host/hostX/scan\par
 \pard\sa200\sl276\slmult1\par
-\pard\sa200\sl276\slmult1\b Q:23 How  to find WWN numbers of HBA cards in Linux Server ?\b0\par
+\b Q:23 How  to find WWN numbers of HBA cards in Linux Server ?\b0\par
 \pard\li720\sa200\sl276\slmult1  We can find the WWN numbers of HBA cards using the command \lquote systool -c fc_host -v | grep port_name\rquote\par
 \pard\sa200\sl276\slmult1\par
 \b Q:24 How to add & change the Kernel parameters ?\b0\par
@@ -29331,9 +29331,31 @@ puppet cert list --all'\par
 Q:29 How to find all the regular files in a directory  ?\par
 Answer: using the command \lquote find /home/noza  -type f\rquote .\par
 \par
+\par
+####################################################################################################\par
+Scripting (questions here vary on rating and depend pretty much on telling the person to write a short script)\par
+What is your favorite scripting language? Why?\par
+What are design patterns?\par
+Describe some scripts you have written/automation you have done/ programs you have written. Justify your choice of scripting language and design patterns.\par
+Can you port the same script to another language? On another OS ?\par
+How long would it take you to learn another language?\par
+\par
 General Questions:\par
-\bullet\tab What did you learn yesterday/this week?\par
+1. What are some examples of how you might scale a write/read-heavy application? Why?\par
+2. Tell me about the worst-run/best-run outage you\rquote ve been a part of. What made it bad/well-run?\par
+3. How would you assess how \ldblquote deployable\rdblquote  a system is?\par
+How do you know when a deployment is ready? How would you manage that deployment?\par
+4. How would you prepare for a migration from one platform to another?8\par
+5. What is the purpose of a post-mortem meeting?\par
+Do you know how to learn from mistakes? How do you get the most value out of post-mortems?\par
+6. How would you make key aspects of a software system traceable?\par
+7. How do you handle interruptions?\par
+8. How would you deploy software to 5000 systems?\par
+9. What different types of testing need to be carried out on a software system, and what tools would you use to achieve this testing?\par
+\bullet\tab What did you learn yesterday/this week? \par
+\tab =>I have implement SSL cert on game HAproxy server.\par
 \bullet\tab Talk about your preferred development/administration environment. (OS, Editor, Browsers, Tools etc.)\par
+\tab =>\par
 \bullet\tab Tell me about the last major Linux project you finished.\par
 \bullet\tab Tell me about the biggest mistake you've made in [some recent time period] and how you would do it differently today. What did you learn from this experience?\par
 \bullet\tab Why we must choose you?\par
@@ -29345,7 +29367,7 @@ General Questions:\par
 \bullet\tab What is RAID? What is RAID0, RAID1, RAID5, RAID10?\par
 \bullet\tab What is a level 0 backup? What is an incremental backup?\par
 \bullet\tab Describe the general file system hierarchy of a Linux system.\par
-[\f1\u11014?\f0 ] Simple Linux Questions:\par
+[\f2\u11014?\f0 ] Simple Linux Questions:\par
 \bullet\tab What is the name and the UID of the administrator user?\par
 \bullet\tab How to list all files, including hidden one, in a directory?\par
 \bullet\tab What is the Unix/Linux command to remove a directory and its contents?\par
@@ -29368,10 +29390,9 @@ General Questions:\par
 \bullet\tab What does CTRL-c do?\par
 \bullet\tab What is in /etc/services?\par
 \bullet\tab How to redirect STDOUT and STDERR in bash? (> /dev/null 2>&1)\par
-\bullet\tab What is the difference between UNIX and Linux.\par
 \bullet\tab What is the difference between Telnet and SSH?\par
 \bullet\tab Explain the three load averages and what do they indicate.\par
-[\f1\u11014?\f0 ] Medium Linux Questions:\par
+[\f2\u11014?\f0 ] Medium Linux Questions:\par
 \bullet\tab What do the following commands do and how would you use them?\par
 o\tab tee\par
 o\tab awk\par
@@ -29403,9 +29424,12 @@ o\tab tail\par
 \bullet\tab What are the steps to add a user to a system without using useradd/adduser?\par
 \bullet\tab What is MAJOR and MINOR numbers of special files?\par
 \bullet\tab Describe a scenario when you get a "filesystem is full" error, but 'df' shows there is free space.\par
+\tab => inode is full $ df -i\par
 \bullet\tab Describe a scenario when deleting a file, but 'df' not showing the space being freed.\par
+\tab => process is still holding the file  $ ls-f -p PID \par
 \bullet\tab Describe how 'ps' works.\par
 \bullet\tab What happens to a child process that dies and has no parent process to wait for it and what\rquote s bad about this?\par
+\tab => Zombie process. Wait until Kernel Init Process 1 takes over the zomebie process then kill it.\par
 \bullet\tab Explain briefly each one of the process states.\par
 \bullet\tab How to know which process listens on a specific port?\par
 \bullet\tab What is a zombie process and what could be the cause of it?\par
@@ -29415,26 +29439,35 @@ o\tab tail\par
 \bullet\tab Can you have several HTTPS virtual hosts sharing the same IP?\par
 \bullet\tab What is a wildcard certificate?\par
 \bullet\tab Which Linux file types do you know?\par
-\bullet\tab What is the difference between a process and a thread? And parent and child processes after a fork system call?\par
+\pard{\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pndec{\pntxta.}}
+\fi-360\li1080\sl276\slmult1 Regular files\par
+{\pntext\f0 2.\tab}Directory files\par
+{\pntext\f0 3.\tab}Special files(This category is having 5 sub types in it.)\par
+\pard\li720\sl276\slmult1\par
+\pard\sa200\sl276\slmult1\bullet\tab What is the difference between a process and a thread? \par
+\tab => threads (of the same process) run in a shared memory space, while processes run in separate memory spaces.\par
+\tab And parent and child processes after a fork system call?\par
 \bullet\tab What is the difference between exec and fork?\par
 \bullet\tab What is "nohup" used for?\par
 \bullet\tab What is the difference between these two commands?\par
-o\tab myvar=hello\par
-o\tab export myvar=hello\par
+o\tab myvar=hello\tab\tab <=variable\par
+o\tab export myvar=hello\tab <= global variable\par
 \bullet\tab How many NTP servers would you configure in your local ntp.conf?\par
 \bullet\tab What does the column 'reach' mean in ntpq -p output?\par
 \bullet\tab You need to upgrade kernel at 100-1000 servers, how you would do this?\par
 \bullet\tab How can you get Host, Channel, ID, LUN of SCSI disk?\par
-\bullet\tab How can you limit process memory usage?\par
-[\f1\u11014?\f0 ] Hard Linux Questions:\par
+\bullet\tab How can you limit process memory usage?   <=ulimit \par
+[\f2\u11014?\f0 ] Hard Linux Questions:\par
 \bullet\tab What is a tunnel and how you can bypass a http proxy?\par
 \bullet\tab What is the difference between IDS and IPS?\par
 \bullet\tab What shortcuts do you use on a regular basis?\par
 \bullet\tab What is the Linux Standard Base?\par
 \bullet\tab What is an atomic operation?\par
 \bullet\tab Your freshly configured http server is not running after a restart, what can you do?\par
+\tab => check web server log msg\par
 \bullet\tab What kind of keys are in ~/.ssh/authorized_keys and what it is this file used for?\par
-\bullet\tab I've added my public ssh key into authorized_keys but I'm still getting a password prompt, what can be wrong?\par
+\bullet\tab I've added my public ssh key into authorized_keys but I'm still getting a password prompt, what can be wrong? \par
+\tab => pass phrase? Permission set 600 for .ssh\par
 \bullet\tab Did you ever create RPM's, DEB's or solaris pkg's?\par
 \bullet\tab What does :()\{ :|:& \};: do on your system?\par
 \bullet\tab How do you catch a Linux signal on a script?\par
@@ -29442,13 +29475,17 @@ o\tab export myvar=hello\par
 \bullet\tab What's happening when the Linux kernel is starting the OOM killer and how does it choose which process to kill first?\par
 \bullet\tab Describe the linux boot process with as much detail as possible, starting from when the system is powered on and ending when you get a prompt.\par
 \bullet\tab What's a chroot jail?\par
-\bullet\tab When trying to umount a directory it says it's busy, how to find out which PID holds the directory?\par
+\pard\li720\sa200\sl276\slmult1  is a way to isolate a process from the rest of the system. It should only be used for processes that don't run as root, as root users can break out of the jail very easily. The idea is that you create a directory tree where you copy or link in all the system files needed for a process to run.\par
+\pard\sa200\sl276\slmult1\bullet\tab When trying to umount a directory it says it's busy, how to find out which PID holds the directory?\par
+\tab fuser - identify processes using files or sockets.\par
 \bullet\tab What's LD_PRELOAD and when it's used?\par
 \bullet\tab You ran a binary and nothing happened. How would you debug this?\par
+\tab string binary.exe to see content/\tab dumpbin\par
 \bullet\tab What are cgroups? Can you specify a scenario where you could use them?\par
-[\f1\u11014?\f0 ] Expert Linux Questions:\par
+cgroups (abbreviated from control groups) is a Linux kernel feature that limits, accounts for, and isolates the resource usage (CPU, memory, disk I/O, network, etc.) of a collection of processes.\par
+[\f2\u11014?\f0 ] Expert Linux Questions:\par
 \bullet\tab A running process gets EAGAIN: Resource temporarily unavailable on reading a socket. How can you close this bad socket/file descriptor without killing the process?\par
-[\f1\u11014?\f0 ] Networking Questions:\par
+[\f2\u11014?\f0 ] Networking Questions:\par
 \bullet\tab What is localhost and why would ping localhost fail?\par
 \bullet\tab What is the similarity between "ping" & "traceroute" ? How is traceroute able to find the hops.\par
 \bullet\tab What is the command used to show all open ports and/or socket connections on a machine?\par
@@ -29467,7 +29504,7 @@ o\tab export myvar=hello\par
 \bullet\tab Explain how could you ssh login into a Linux system that DROPs all new incomming packets using a SSH tunnel.\par
 \bullet\tab How do you stop a DDoS?\par
 \bullet\tab How can you see content of ip packet?\par
-[\f1\u11014?\f0 ] MySQL questions:\par
+[\f2\u11014?\f0 ] MySQL questions:\par
 \bullet\tab How do you create a user?\par
 \bullet\tab How do you provide privileges to a user?\par
 \bullet\tab What is the difference between a "left" and a "right" join?\par
@@ -29475,7 +29512,7 @@ o\tab export myvar=hello\par
 \bullet\tab Describe briefly the steps you need to follow in order to create a simple master/slave cluster.\par
 \bullet\tab Why should you run "mysql_secure_installation" after installing MySQL?\par
 \bullet\tab How do you check which jobs are running?\par
-[\f1\u11014?\f0 ] DevOps Questions:\par
+[\f2\u11014?\f0 ] DevOps Questions:\par
 \bullet\tab Can you describe your workflow when you create a script?\par
 \bullet\tab What is GIT?\par
 \bullet\tab What is a dynamically/statically linked file?\par
@@ -29490,7 +29527,7 @@ o\tab export myvar=hello\par
 \bullet\tab What are the Advantages/disadvantages of script vs compiled program?\par
 \bullet\tab What's the relationship between continuous delivery and DevOps?\par
 \bullet\tab What are the important aspects of a system of continous integration and deployment?\par
-[\f1\u11014?\f0 ] Fun Questions:\par
+[\f2\u11014?\f0 ] Fun Questions:\par
 \bullet\tab A careless sysadmin executes the following command: chmod 444 /bin/chmod - what do you do to fix this?\par
 \bullet\tab I've lost my root password, what can I do?\par
 \bullet\tab I've rebooted a remote server but after 10 minutes I'm still not able to ssh into it, what can be wrong?\par
@@ -29498,7 +29535,7 @@ o\tab export myvar=hello\par
 \bullet\tab You come across a random computer and it appears to be a command console for the universe. What is the first thing you type?\par
 \bullet\tab Tell me about a creative way that you've used SSH?\par
 \bullet\tab You have deleted by error a running script, what could you do to restore it?\par
-[\f1\u11014?\f0 ] Demo Time:\par
+[\f2\u11014?\f0 ] Demo Time:\par
 \bullet\tab Unpack test.tar.gz without man pages or google.\par
 \bullet\tab Remove all "*.pyc" files from testdir recursively?\par
 \bullet\tab Search for "my konfu is the best" in all *.py files.\par
@@ -30145,8 +30182,8 @@ net-tools-1.60-110.el6_2.x86_64\par
 \par
 [root@rh413server package-restore-test]# tree\par
 .\par
-\f1\'a9\'b8\'a9\'a4\'a9\'a4\f0  sbin\par
-    \f1\'a9\'b8\'a9\'a4\'a9\'a4\f0  ifconfig\par
+\f2\'a9\'b8\'a9\'a4\'a9\'a4\f0  sbin\par
+    \f2\'a9\'b8\'a9\'a4\'a9\'a4\f0  ifconfig\par
 \par
 1 directory, 1 file\par
 \par
@@ -30719,11 +30756,11 @@ Now, lets check what does 0022 umask value indicates:\par
                Saying so, when a root user creates a file/directory this umask bit would be used to set the effective permissions. For a file it would be (666-022=644), rw-,r--,r-- (read&write,read,read) respectively for user, group and others (ugo). However, when a directory is created it would be (777-022=755) rwx,r-x,r-x for ugo. Same way the default umask value for other users is 0002.\par
 \par
 Linux admin interview questions\par
-1.\tab 1. Linux admin interview questions 1. How do you take a single line of input from the user in a shell script? 2. Write a script to convert all DOS style backslashes to UNIX style slashes in a list of files. 3. Write a regular expression (or sed script) to replace all occurrences of the letter \'84f\f1\u8223?\f0 , followed by any number of characters, followed by the letter \'84a\f1\u8223?\f0 , followed by one or more numeric characters, followed by the letter \'84n\f1\u8223?\f0 , and replace what\f1\u8223?\f0 s found with the string \ldblquote UNIX\rdblquote . 4. Write a script to list all the differences between two directories. 5. Write a program in any language you choose, to reverse a file. 6. What are the fields of the password file? 7. What does a plus at the beginning of a line in the password file signify? 8. Using the man pages, find the correct ioctl to send console output to an arbitrary pty. 9. What is an MX record? 10. What is the prom command on a Sun that shows the SCSI devices? 11. What is the factory default SCSI target for /dev/sd0? 12. Where is that value controlled? 13. What happens to a child process that dies and has no parent process to wait for it and what\f1\u8223?\f0 s bad about this? 14. What\f1\u8223?\f0 s wrong with sendmail? What would you fix? 15. What command do you run to check file system consistency? 16. What\f1\u8223?\f0 s wrong with running shutdown on a network? 17. What can be wrong with setuid scripts? 18. What value does spawn return? 19. Write a script to send mail from three other machines on the network to root at the machine you\f1\u8223?\f0 re on. Use a \'84here doc\f1\u8223?\f0 , but include in the mail message the name of the machine the mail is sent from and the disk utilization statistics on each machine? 20. Why can\f1\u8223?\f0 t root just cd to someone\f1\u8223?\f0 s home directory and run a program called a.out sitting there by typing \ldblquote a.out\rdblquote , and why is this good? 21. What is the difference between UDP and TCP? 22. What is DNS? 23. What does nslookup do? 24. How do you create a swapfile? 25. How would you check the route table on a workstation/server? 26. How do you find which ypmaster you are bound to? 27. How do you fix a problem where a printer will cutoff anything over 1MB? 28. What is the largest file system size in solaris? SunOS? 29. What are the different RAID levels? ^Back to Top Interview questions for Linux admin 1. Advantages/disadvantages of script vs compiled program.\par
-2.\tab 2. 2. Name a replacement for PHP/Perl/MySQL/Linux/Apache and show main differences. 3. Why have you choosen such a combination of products? 4. Differences between two last MySQL versions. Which one would you choose and when/why? 5. Main differences between Apache 1.x and 2.x. Why is 2.x not so popular? Which one would you choose and when/why? 6. Which Linux distros do you have experience with? 7. Which distro you prefer? Why? 8. Which tool would you use to update Debian / Slackware / RedHat / Mandrake / SuSE ? 9. You\f1\u8223?\f0 re asked to write an Apache module. What would you do? 10. Which tool do you prefer for Apache log reports? 11. Your portfolio. (even a PHP guest book may work well) 12. What does \'84route\f1\u8223?\f0  command do? 13. Differences between ipchains and iptables. 14. What\f1\u8223?\f0 s eth0, ppp0, wlan0, ttyS0, etc. 15. What are different directories in / for? 16. Partitioning scheme for new webserver. Why? ^Back to Top Read more at TechInterviews.com Unix/Linux programming interview questions Question 1: What is the major advantage of a hash table? (Asked by Silicon Magic Corp. people) Answer: The major advantage of a hash table is its speed. Because the hash function is to take a range of key values and transform them into index values in such a way that the key values are distributed randomly across all the indices of a hash table. Question 2: What are the techniques that you use to handle the collisions in hash tables?(Asked by Silicon Magic Corp. people) Answer: We can use two major techniques to handle the collisions. They are open addressing and separate chaining. In open addressing, data items that hash to a full array cell are placed in another cell in the array. In separate chaining, each array element consist of a linked list. All data items hashing to a given array index are inserted in that list. Question 3: In Unix OS, what is the file server? (Asked by Silicon Magic Corp. people) Answer: The file server is a machine that shares its disk storage and files with other machines on the network. Question 4: What is NFS? What is its job?(Asked by Silicon Magic Corp. people)\par
-3.\tab 3. Answer: NFS stands for Network File System. NFS enables filesystems physically residing on one computer system to be used by other computers in the network, appearing to users on the remote host as just another local disk. Question 5: What is CVS? List some useful CVS commands.(Asked by Silicon Magic Corp.people) Anser: CVS is Concurrent Version System. It is the front end to the RCS revision control system which extends the notion of revision control from a collection of files in a single directory to a hierarchical collection of directories consisting of revision controlled files. These directories and files can be combined together to form a software release. There are some useful commands that are being used very often. They are cvs checkout cvs update cvs add cvs remove cvs commit ^Back to Top Unix/Linux administration interview questions What is LILO? LILO stands for Linux boot loader. It will load the MBR, master boot record, into the memory, and tell the system which partition and hard drive to boot from. What is the main advantage of creating links to a file instead of copies of the file? A: The main advantage is not really that it saves disk space (though it does that too) but, rather, that a change of permissions on the file is applied to all the link access points. The link will show permissions of lrwxrwxrwx but that is for the link itself and not the access to the file to which the link points. Thus if you want to change the permissions for a command, such as su, you only have to do it on the original. With copies you have to find all of the copies and change permission on each of the copies. Write a command to find all of the files which have been accessed within the last 30 days. find / -type f -atime -30 > December.files This command will find all the files under root, which is \'84/\f1\u8223?\f0 , with file type is file. \'84-atime -30\f1\'a1\'e4\f0  will give all the files accessed less than 30 days ago. And the output will put into a file call December.files.\par
-4.\tab 4. What is the most graceful way to get to run level single user mode? A: The most graceful way is to use the command init s. If you want to shut everything down before going to single user mode then do init 0 first and from the ok prompt do a boot -s. What does the following command line produce? Explain each aspect of this line. $ (date ; ps -ef | awk \'84\{print $1\}\f1\u8223?\f0  | sort | uniq | wc -l ) >> Activity.log A: First let\f1\u8223?\f0 s dissect the line: The date gives the date and time as the first command of the line, this is followed by the a list of all running processes in long form with UIDs listed first, this is the ps -ef. These are fed into the awk which filters out all but the UIDs; these UIDs are piped into sort for no discernible reason and then onto uniq (now we see the reason for the sort - uniq only works on sorted data - if the list is A, B, A, then A, B, A will be the output of uniq, but if it\f1\u8223?\f0 s A, A, B then A, B is the output) which produces only one copy of each UID. These UIDs are fed into wc -l which counts the lines - in this case the number of distinct UIDs running processes on the system. Finally the results of these two commands, the date and the wc -l, are appended to the file "Activity.log". Now to answer the question as to what this command line produces. This writes the date and time into the file Activity.log together with the number of distinct users who have processes running on the system at that time. If the file already exists, then these items are appended to the file, otherwise the file is created. ^Back to Top Read more at TechInterviews.com Solaris interview questions 1. List the files in current directory sorted by size ? - ls -l | grep ^- | sort -nr 2. List the hidden files in current directory ? - ls -a1 | grep "^." 3. Delete blank lines in a file ? - cat sample.txt | grep -v \'84^$\f1\u8223?\f0  > new_sample.txt 4. Search for a sample string in particular files ? - grep .Debug. *.confHere grep uses the string .Debug. to search in all files with extension..conf. under current directory. 5. Display the last newly appending lines of a file during appendingdata to the same file by some processes ? - tail .f Debug.logHere tail shows the newly appended data into Debug.log by some processes/user. 6. Display the Disk Usage of file sizes under each directory in currentDirectory ? - du - k * | sort .nr (or) du .k . | sort -nr 7. Change to a directory, which is having very long name ? - cd CDMA_3X_GEN*Here original directory name is . .CDMA_3X_GENERATION_DATA.. 8. Display the all files recursively with path under current directory ? - find . -depth - print\par
-5.\tab 5. 9. Set the Display automatically for the current new user ? - export DISPLAY=`eval \'84who am i | cut -d"(" -f2 | cut -d")" -f1\f1\'a1\'e4\f0 `Here in above command, see single quote, double quote, grave ascent is used. Observe carefully. 10. Display the processes, which are running under yourusername ? - ps .aef | grep MaheshvjHere, Maheshvj is the username. 11. List some Hot Keys for bash shell ? - Ctrl+l . Clears the Screen. Ctrl+r . Does a search in previously given commands in shell. Ctrl+u - Clears the typing before the hotkey. Ctrl+a . Places cursor at the beginning of the command at shell. Ctrl+e . Places cursor at the end of the command at shell. Ctrl+d . Kills the shell. Ctrl+z . Places the currently running process into background. 12. Display the files in the directory by file size ? - ls .ltr | sort .nr .k 5 13. How to save man pages to a file ? - man <command> | col .b > <output-file>Example : man top | col .b > top_help.txt 14. How to know the date & time for . when script is executed ? - Add the following script line in shell script.eval echo "Script is executed at `date`" >> timeinfo.infHere, .timeinfo.inf. contains date & time details ie., when script is executed and history related to execution. 15. How do you find out drive statistics ? - iostat -E 16. Display disk usage in Kilobytes ? - du -k 17. Display top ten largest files/directories ? - du -sk * | sort -nr | head 18. How much space is used for users in kilobytes ? - quot -af 19. How to create null file ? - cat /dev/null > filename1 20. Access common commands quicker ? - ps -ef | grep -i $@ 21. Display the page size of memory ? - pagesize -a 22. Display Ethernet Address arp table ? - arp -a 23. Display the no.of active established connections to localhost ? - netstat -a | grep EST 24. Display the state of interfaces used for TCP/IP traffice ? - netstat -i 25. Display the parent/child tree of a process ? - ptree <pid> Example: ptree 1267 26. Show the working directory of a process ? - pwdx <pid> Example: pwdx 1267 27. Display the processes current open files ? - pfiles <pid> Example: pfiles 1267 28. Display the inter-process communication facility status ? - ipcs 29. Display the top most process utilizing most CPU ? - top .b 1 30. Alternative for top command ? - prstat -a\par
+1.\tab 1. Linux admin interview questions 1. How do you take a single line of input from the user in a shell script? 2. Write a script to convert all DOS style backslashes to UNIX style slashes in a list of files. 3. Write a regular expression (or sed script) to replace all occurrences of the letter \'84f\f2\u8223?\f0 , followed by any number of characters, followed by the letter \'84a\f2\u8223?\f0 , followed by one or more numeric characters, followed by the letter \'84n\f2\u8223?\f0 , and replace what\f2\u8223?\f0 s found with the string \ldblquote UNIX\rdblquote . 4. Write a script to list all the differences between two directories. 5. Write a program in any language you choose, to reverse a file. 6. What are the fields of the password file? 7. What does a plus at the beginning of a line in the password file signify? 8. Using the man pages, find the correct ioctl to send console output to an arbitrary pty. 9. What is an MX record? 10. What is the prom command on a Sun that shows the SCSI devices? 11. What is the factory default SCSI target for /dev/sd0? 12. Where is that value controlled? 13. What happens to a child process that dies and has no parent process to wait for it and what\f2\u8223?\f0 s bad about this? 14. What\f2\u8223?\f0 s wrong with sendmail? What would you fix? 15. What command do you run to check file system consistency? 16. What\f2\u8223?\f0 s wrong with running shutdown on a network? 17. What can be wrong with setuid scripts? 18. What value does spawn return? 19. Write a script to send mail from three other machines on the network to root at the machine you\f2\u8223?\f0 re on. Use a \'84here doc\f2\u8223?\f0 , but include in the mail message the name of the machine the mail is sent from and the disk utilization statistics on each machine? 20. Why can\f2\u8223?\f0 t root just cd to someone\f2\u8223?\f0 s home directory and run a program called a.out sitting there by typing \ldblquote a.out\rdblquote , and why is this good? 21. What is the difference between UDP and TCP? 22. What is DNS? 23. What does nslookup do? 24. How do you create a swapfile? 25. How would you check the route table on a workstation/server? 26. How do you find which ypmaster you are bound to? 27. How do you fix a problem where a printer will cutoff anything over 1MB? 28. What is the largest file system size in solaris? SunOS? 29. What are the different RAID levels? ^Back to Top Interview questions for Linux admin 1. Advantages/disadvantages of script vs compiled program.\par
+2.\tab 2. 2. Name a replacement for PHP/Perl/MySQL/Linux/Apache and show main differences. 3. Why have you choosen such a combination of products? 4. Differences between two last MySQL versions. Which one would you choose and when/why? 5. Main differences between Apache 1.x and 2.x. Why is 2.x not so popular? Which one would you choose and when/why? 6. Which Linux distros do you have experience with? 7. Which distro you prefer? Why? 8. Which tool would you use to update Debian / Slackware / RedHat / Mandrake / SuSE ? 9. You\f2\u8223?\f0 re asked to write an Apache module. What would you do? 10. Which tool do you prefer for Apache log reports? 11. Your portfolio. (even a PHP guest book may work well) 12. What does \'84route\f2\u8223?\f0  command do? 13. Differences between ipchains and iptables. 14. What\f2\u8223?\f0 s eth0, ppp0, wlan0, ttyS0, etc. 15. What are different directories in / for? 16. Partitioning scheme for new webserver. Why? ^Back to Top Read more at TechInterviews.com Unix/Linux programming interview questions Question 1: What is the major advantage of a hash table? (Asked by Silicon Magic Corp. people) Answer: The major advantage of a hash table is its speed. Because the hash function is to take a range of key values and transform them into index values in such a way that the key values are distributed randomly across all the indices of a hash table. Question 2: What are the techniques that you use to handle the collisions in hash tables?(Asked by Silicon Magic Corp. people) Answer: We can use two major techniques to handle the collisions. They are open addressing and separate chaining. In open addressing, data items that hash to a full array cell are placed in another cell in the array. In separate chaining, each array element consist of a linked list. All data items hashing to a given array index are inserted in that list. Question 3: In Unix OS, what is the file server? (Asked by Silicon Magic Corp. people) Answer: The file server is a machine that shares its disk storage and files with other machines on the network. Question 4: What is NFS? What is its job?(Asked by Silicon Magic Corp. people)\par
+3.\tab 3. Answer: NFS stands for Network File System. NFS enables filesystems physically residing on one computer system to be used by other computers in the network, appearing to users on the remote host as just another local disk. Question 5: What is CVS? List some useful CVS commands.(Asked by Silicon Magic Corp.people) Anser: CVS is Concurrent Version System. It is the front end to the RCS revision control system which extends the notion of revision control from a collection of files in a single directory to a hierarchical collection of directories consisting of revision controlled files. These directories and files can be combined together to form a software release. There are some useful commands that are being used very often. They are cvs checkout cvs update cvs add cvs remove cvs commit ^Back to Top Unix/Linux administration interview questions What is LILO? LILO stands for Linux boot loader. It will load the MBR, master boot record, into the memory, and tell the system which partition and hard drive to boot from. What is the main advantage of creating links to a file instead of copies of the file? A: The main advantage is not really that it saves disk space (though it does that too) but, rather, that a change of permissions on the file is applied to all the link access points. The link will show permissions of lrwxrwxrwx but that is for the link itself and not the access to the file to which the link points. Thus if you want to change the permissions for a command, such as su, you only have to do it on the original. With copies you have to find all of the copies and change permission on each of the copies. Write a command to find all of the files which have been accessed within the last 30 days. find / -type f -atime -30 > December.files This command will find all the files under root, which is \'84/\f2\u8223?\f0 , with file type is file. \'84-atime -30\f2\'a1\'e4\f0  will give all the files accessed less than 30 days ago. And the output will put into a file call December.files.\par
+4.\tab 4. What is the most graceful way to get to run level single user mode? A: The most graceful way is to use the command init s. If you want to shut everything down before going to single user mode then do init 0 first and from the ok prompt do a boot -s. What does the following command line produce? Explain each aspect of this line. $ (date ; ps -ef | awk \'84\{print $1\}\f2\u8223?\f0  | sort | uniq | wc -l ) >> Activity.log A: First let\f2\u8223?\f0 s dissect the line: The date gives the date and time as the first command of the line, this is followed by the a list of all running processes in long form with UIDs listed first, this is the ps -ef. These are fed into the awk which filters out all but the UIDs; these UIDs are piped into sort for no discernible reason and then onto uniq (now we see the reason for the sort - uniq only works on sorted data - if the list is A, B, A, then A, B, A will be the output of uniq, but if it\f2\u8223?\f0 s A, A, B then A, B is the output) which produces only one copy of each UID. These UIDs are fed into wc -l which counts the lines - in this case the number of distinct UIDs running processes on the system. Finally the results of these two commands, the date and the wc -l, are appended to the file "Activity.log". Now to answer the question as to what this command line produces. This writes the date and time into the file Activity.log together with the number of distinct users who have processes running on the system at that time. If the file already exists, then these items are appended to the file, otherwise the file is created. ^Back to Top Read more at TechInterviews.com Solaris interview questions 1. List the files in current directory sorted by size ? - ls -l | grep ^- | sort -nr 2. List the hidden files in current directory ? - ls -a1 | grep "^." 3. Delete blank lines in a file ? - cat sample.txt | grep -v \'84^$\f2\u8223?\f0  > new_sample.txt 4. Search for a sample string in particular files ? - grep .Debug. *.confHere grep uses the string .Debug. to search in all files with extension..conf. under current directory. 5. Display the last newly appending lines of a file during appendingdata to the same file by some processes ? - tail .f Debug.logHere tail shows the newly appended data into Debug.log by some processes/user. 6. Display the Disk Usage of file sizes under each directory in currentDirectory ? - du - k * | sort .nr (or) du .k . | sort -nr 7. Change to a directory, which is having very long name ? - cd CDMA_3X_GEN*Here original directory name is . .CDMA_3X_GENERATION_DATA.. 8. Display the all files recursively with path under current directory ? - find . -depth - print\par
+5.\tab 5. 9. Set the Display automatically for the current new user ? - export DISPLAY=`eval \'84who am i | cut -d"(" -f2 | cut -d")" -f1\f2\'a1\'e4\f0 `Here in above command, see single quote, double quote, grave ascent is used. Observe carefully. 10. Display the processes, which are running under yourusername ? - ps .aef | grep MaheshvjHere, Maheshvj is the username. 11. List some Hot Keys for bash shell ? - Ctrl+l . Clears the Screen. Ctrl+r . Does a search in previously given commands in shell. Ctrl+u - Clears the typing before the hotkey. Ctrl+a . Places cursor at the beginning of the command at shell. Ctrl+e . Places cursor at the end of the command at shell. Ctrl+d . Kills the shell. Ctrl+z . Places the currently running process into background. 12. Display the files in the directory by file size ? - ls .ltr | sort .nr .k 5 13. How to save man pages to a file ? - man <command> | col .b > <output-file>Example : man top | col .b > top_help.txt 14. How to know the date & time for . when script is executed ? - Add the following script line in shell script.eval echo "Script is executed at `date`" >> timeinfo.infHere, .timeinfo.inf. contains date & time details ie., when script is executed and history related to execution. 15. How do you find out drive statistics ? - iostat -E 16. Display disk usage in Kilobytes ? - du -k 17. Display top ten largest files/directories ? - du -sk * | sort -nr | head 18. How much space is used for users in kilobytes ? - quot -af 19. How to create null file ? - cat /dev/null > filename1 20. Access common commands quicker ? - ps -ef | grep -i $@ 21. Display the page size of memory ? - pagesize -a 22. Display Ethernet Address arp table ? - arp -a 23. Display the no.of active established connections to localhost ? - netstat -a | grep EST 24. Display the state of interfaces used for TCP/IP traffice ? - netstat -i 25. Display the parent/child tree of a process ? - ptree <pid> Example: ptree 1267 26. Show the working directory of a process ? - pwdx <pid> Example: pwdx 1267 27. Display the processes current open files ? - pfiles <pid> Example: pfiles 1267 28. Display the inter-process communication facility status ? - ipcs 29. Display the top most process utilizing most CPU ? - top .b 1 30. Alternative for top command ? - prstat -a\par
 6.\tab 6. Linux interview questions ------------------------------- * How to check all open ports on linux machine and block unsed ports? netstat -t #nmap -v localhost for tcp #nmap -sU localhost for udp #netstat -tulp or #netstat -tulpn to verfy the open ports ------------------------------- * how u use the iptable firewall to restrict ssh,telnet,ftp For SSH iptables -A INPUT -s -p tcp --dport <22> -j REJECT/DROP/DENY For Telnet iptables -A INPUT -s -p tcp --dport <23> -j REJECT/DROP/DENY For FTP iptables -A INPUT -s -p tcp --dport <21> -j REJECT/DROP/DENY ------------------------------------- * what is the difference between unix and linux graphics is the main difference extra more command are in linux userfriendly then unix the unix is the platform dependent the linux is platform independent. we cann't install unix in all machine we recquired a special machine to install unix, but linux is not like that it support all machines filesystem are different there diff lies in kernel linux is under gpl and unix proprietary\par
 7.\tab 7. Difference Between Linux and Unix 1)Linux default shell is /bin/bash, where Unix default shell is /bin/sh (other shell also supported) 2) Linux Store all their command history,but if the default shell is /bin/sh in Unix, then Unix not store Command history. 3) Linux support Tab key, but unix not support Tab key ------------------------------------- Who owns the data dictionary? The Oracle user SYS owns all base tables and user- accessible views of the data dictionary. Therefore, no Oracle user should ever alter (update, delete, or insert) any rows or schema objects contained in the SYS schema, because such activity can compromise data integrity. The security administrator should keep strict control of this central account. ------------------------------------- which file contains information about os wether it's 32 bit or 64 bit? ANSWER: /proc/cpuinfo or $uname -m or /usr/bin/file -------------------------------- what contains information about file and directory creating time or modification time? An inode is a data structure on a Unix / Linux file system. An inode stores basic information about a regular file, directory, or other file system object. You can use following two commands to display an inode: [a] ls command : list directory contents ----------------------------------- What are RPM?s, what do they offer? The full form of RPM is Redhat Package Manager.\par
 8.\tab 8. rpm is a powerful Package Manager, which can be used to build,install, query, verify, update, and erase individual software packages. A package consists of an archive of files and meta-data used to install and erase the archive files. [b] stat command : display file or file system status eg : # stat /etc/passwd Output: File: `/etc/group' Size: 566 Blocks: 16 IO Block: 4096 regular file Device: fd00h/64768d Inode: 2443679 Links: 1 Access: (0644/-rw-r--r--) Uid: ( 0/ root) Gid: ( 0/ root) Access: 2009-08-12 08:23:31.245032672 +0530 Modify: 2002-01-01 05:54:15.000000000 +0530 Change: 2002-01-01 05:54:15.000000000 +0530 -------------------------------------------------- *how to confirm from client end about nfs server sharing? with mount and showmount -e server IP ------------------------------------------------- How do i check which nfs version I am using ? rpcinfo -p localhost | grep -i nfs This cmd is used for nfs version rpm -qa | grep nfs rpm -qi nfs nfs-utils yum info nfs nfs-utils ------------------------------------------------ Through ssh whole directory structure from / is shared regardless the user we have connected with ....... how do i prevent sharing ?? vi /etc/ssh/sshd_config "in last line enter the folowing entry" AllowUsers "username"\par
