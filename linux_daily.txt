@@ -473,6 +473,13 @@ IP address is 32bit
 	$ lsof -u noza				<= list open files user name noza
 	$ lsof -p 1234	
 
+	Last Reboot
+	$ who -b
+	$ last reboot
+	$ last
+	$ last -x
+	$ last -x reboot
+	$ last -x shutdown
 
 
 15. Is .bash_profile is a file???? 
@@ -1430,7 +1437,7 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 	$ iptables -nL
   
     
-  ### Ubuntu 14 ###
+  ### Ubuntu 14.04 ###
 	$ sudo apt-get update
 	$ sudo apt-get install iptables-persistent
 	$ sudo vi /etc/iptables/rules.v4 
@@ -1438,6 +1445,9 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 	$ /etc/init.d/iptables-persistent {start|restart|reload|force-reload| save|flush}
 	$ service iptables-persistent start | stop | restart | reload
   
+  ### Check error restore test ###
+	$ iptables-restore -vv < /etc/iptables/rules.v4
+
   
 # Security Selinux
 vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
@@ -1777,6 +1787,10 @@ CentOS6.x file location =>
 	$ timedatectl list-timezones
 	$ sudo timedatectl set-timezone UTC
 	$ sudo timedatectl set-timezone America/New_York
+	
+Ubuntu timezone change
+	$ sudo dpkg-reconfigure tzdata	
+	
 	
 	
 	

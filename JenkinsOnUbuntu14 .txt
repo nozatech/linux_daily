@@ -1,0 +1,103 @@
+Jenkins on Ubuntu 14.04
+	
+### Web Server install	
+	apt-get -y install apache2
+
+### System update
+	apt-get update && apt-get upgrade
+
+### Java Installl
+	apt-get -y install openjdk-7-jdk
+	java -version
+	
+### Jenkins Setup
+	wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+	sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
+	apt-get update
+	apt-get -y install jenkins
+	
+	
+	
+Gitlab on Ubuntu 14.04
+Username: root
+Password: SgjQe5zmoZBm
+
+
+
+
+
+1. Puppet Agent install
+cd ~; wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+sudo dpkg -i puppetlabs-release-trusty.deb
+sudo apt-get update
+sudo apt-get install puppet -y
+
+sudo vi /etc/default/puppet
+START=yes		<= change from no to yes
+
+# Lock the version
+sudo vi /etc/apt/preferences.d/00-puppet.pref
+
+# /etc/apt/preferences.d/00-puppet.pref
+Package: puppet puppet-common
+Pin: version 3.8*
+Pin-Priority: 501
+
+
+sudo vi /etc/puppet/puppet.conf
+	* Remove templatedir lile
+	* Remove [master] section
+[agent]
+server = cdn-puppet.namcowireless.com
+
+echo "10.134.8.185 cdn-puppet.namcowireless.com" >> /etc/hosts
+
+$ sudo service puppet start
+
+
+###Change Timezone in PM to apply to rest of servers ###
+vi /etc/puppet/manifests/site.pp
+
+### PST ###
+class { 'timezone':
+    timezone => 'America/Los_Angeles'
+}
+### UTC ###
+class { 'timezone':
+    timezone => 'UTC'
+}
+
+
+### Multi port Iptables ###
+# 8140 Puppet/ 8142 Agent
+-A INPUT -m state --state NEW -m tcp -p tcp -s 178.62.132.100/32 -m multiport --dports 22,443,8140,8142 -j ACCEPT
+
+# private sector
+-A INPUT -m state -s 10.128.44.59/32 --state NEW -j ACCEPT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
