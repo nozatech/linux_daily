@@ -2077,13 +2077,23 @@ breaks $(foo) into words, and treats each word as a glob pattern. The default va
 	
 	
 3. Swap space swapon
+	swapon -s 		<= Summary
+		   -a 		<= All
 	
-  sudo dd if=/dev/zero of=/var/swapfile bs=1M count=2048
-  sudo chmod 600 /var/swapfile
-  sudo mkswap /var/swapfile
-  echo /var/swapfile none swap defaults 0 0 | sudo tee -a /etc/fstab
-  sudo swapon -a
+	sudo dd if=/dev/zero of=/var/swapfile bs=1M count=2048
+	sudo chmod 600 /var/swapfile
+	sudo mkswap /var/swapfile
+	echo /var/swapfile none swap defaults 0 0 | sudo tee -a /etc/fstab
+	sudo swapon -a
 
+  
+	sudo dd if=/dev/zero of=/mnt/{filename}.swap bs=1M count={swap_size}
+	sudo mkswap /mnt/{filename}.swap
+	sudo swapon /mnt/{filename}.swap
+	sudo vi /etc/fstab
+	Add the following text at the end of the file, 
+	/mnt/{filename}.swap  none  swap  sw  0 0
+  
   
   
 4. Start Up service for Ubuntu
@@ -2487,6 +2497,22 @@ root@puppetagent:~# cat << EOF >> /etc/puppet/puppet.conf
 [agent]
 server = puppetmaster.domain.tld
 EOF
+
+### Puppet ###
+sudo service puppet start
+sudo puppet cert list
+sudo puppet cert sign host1.nyc2.example.com
+sudo puppet cert sign --all
+# Remove
+sudo puppet cert clean hostname
+sudo puppet cert list --all
+
+puppet agent --test
+
+
+
+
+
 
 
 ####
