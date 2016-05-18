@@ -15,8 +15,11 @@ Jenkins on Ubuntu 14.04
 	sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
 	apt-get update
 	apt-get -y install jenkins
-	
-	
+
+### Check Reverse Proxy
+	curl -iL -e http://cdn-jenkins.namcowireless.com:8080/jenkins/manage\
+    http://cdn-jenkins.namcowireless.com:8080/jenkins/administrativeMonitor/hudson.diagnosis.ReverseProxySetupMonitor/test
+
 	
 Gitlab on Ubuntu 14.04
 Username: root
@@ -74,6 +77,7 @@ class { 'timezone':
 
 # private sector
 -A INPUT -m state -s 10.128.44.59/32 --state NEW -j ACCEPT
+
 
 
 

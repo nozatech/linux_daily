@@ -1523,6 +1523,12 @@ or  use NetCat
 
 62. Ubuntu Package Clean ### Package Clean ###
 
+# Installed package search
+  
+  apt-cache search mysql
+
+  
+  
   sudo apt-get update
 
 # Backing ups:
