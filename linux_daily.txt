@@ -51,6 +51,13 @@ IP address is 32bit
 	$_		last argument of previous command
 	$!		process ID(PID) of last job run in background
 	* Must be quoted, otherwise it defaults to $@
+
+# cd command
+Directory	/1/2/3/4/5
+	from /1/2/3/  =>  /1   			$ cd ../..
+	from /1/2/3   =>  /1/2-1/ 		$ cd ../2-1
+	
+	
 	
 	
 3. SSH login
@@ -101,7 +108,14 @@ IP address is 32bit
 	   $ curl -O http://www.gnu.org/software/gettext/manual/gettext.html or file_name		<= save the file to local 
 	   $ wget http://www.gnu.org/software/gettext/manual/gettext.html  or file_name	
 	
-
+	### text browser ###
+	$ sudo apt-get install -y links
+	$ links http://www.google.com
+	
+	
+	
+	
+	
 6. Environment variable
 	AWS Access Key/ Secret key
 	

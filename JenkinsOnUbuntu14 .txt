@@ -16,7 +16,7 @@ Jenkins on Ubuntu 14.04
 	apt-get update
 	apt-get -y install jenkins
 
-### Check Reverse Proxy
+###  	Check Reverse Proxy
 	curl -iL -e http://cdn-jenkins.namcowireless.com:8080/jenkins/manage\
     http://cdn-jenkins.namcowireless.com:8080/jenkins/administrativeMonitor/hudson.diagnosis.ReverseProxySetupMonitor/test
 
@@ -25,6 +25,13 @@ Gitlab on Ubuntu 14.04
 Username: root
 Password: SgjQe5zmoZBm
 
+################# Multi port Iptables ##########################################
+# 8140 Puppet/ 8142 Agent
+-A INPUT -m state --state NEW -m tcp -p tcp -s 178.62.132.100/32 -m multiport --dports 22,443,8140,8142 -j ACCEPT
+
+# private sector
+-A INPUT -m state -s 10.128.44.59/32 --state NEW -j ACCEPT
+###############################################################################
 
 
 
@@ -71,19 +78,23 @@ class { 'timezone':
 }
 
 
-### Multi port Iptables ###
-# 8140 Puppet/ 8142 Agent
--A INPUT -m state --state NEW -m tcp -p tcp -s 178.62.132.100/32 -m multiport --dports 22,443,8140,8142 -j ACCEPT
-
-# private sector
--A INPUT -m state -s 10.128.44.59/32 --state NEW -j ACCEPT
 
 
 
 
-
-
-
+	puppet cert list
+	puppet cert sign (--all)
+	puppet cert clean $hostname 
+	puppet cert list --all
+	
+# Resource
+	puppet resource -t (or --types)		<=
+# Manifest
+	Puppet programs that contains list of system stats (Resource declarations)
+# Classes
+	Code blocks that can be called in a code elsewhere.  Reuses the Puppet codes & manifest
+# Class Definition
+	
 
 
 
