@@ -19,12 +19,20 @@ IP address is 32bit
     #!/bin/bash -x      		<= -x to #! line for debug mode
     set -x              		<= End of file +x for TURN OFF
 	
-	#!/bin/bash +x    								<= +x for debuging mode in shell script
-    $ bash +x ./script.sh  ( same as 'bash script.sh') 
-    $ . script.sh      <= current login shell to run
-    $ exec ./script    <= after run, the login shell exit 
+ # Search and replace
+	:%s/foo/bar/g
+	:%s/foo/bar/gc				<= to confirm first
 	
-  # vi or VIM,  it won't save read only file
+ # Debug mode	
+    #!/bin/bash +x 					<= +x for debuging mode in shell script
+    $ bash +x ./script.sh  ( same as 'bash script.sh') 
+ 
+ # Run script    
+	$ . script.sh      <= current login shell to run
+    $ exec ./script    <= after run, the login shell exit 
+	$ sh script.sh
+	
+ # vi or VIM,  it won't save read only file
 	:w !sudo tee %                  	<= save as sudo privilege.  type (L) load at the prompt to reload.
 	:w !chmod 777 %    then    :wq!
 	
@@ -33,6 +41,16 @@ IP address is 32bit
 	
 	$ vi +101 filename					<= go to 101 line in filename
 	:12									<= Go to particular line number in vi editor 
+ 
+ # Move
+	shift+G		<= All the way down page
+	
+ # Check bash 
+	$ echo $SHELL
+	$ env | grep SHELL
+	$ ps					 
+	  1453 pts/1    00:00:00 bash  <= BASH
+	$ ps | grep `echo $$` | awk '{ print $4 }'
 
 
 ### Special Shell Variables ###
@@ -2366,6 +2384,12 @@ kill PID     # terminates process with specified PID
 
 ps           # prints a line of information about the current running login shell and any processes running under it
 ps -a        # selects all processes with a tty except session leaders
+
+
+ps -ef	vs ps aux
+ps aux 				<= BSDsystem
+ps -ef 				<= System V system
+
 
 ps aux | grep RRServer | grep -v grep | awk '{print $2}'
 
