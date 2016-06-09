@@ -78,10 +78,10 @@ Directory	/1/2/3/4/5
 	
 	
 	
-3. SSH login
+3. SSH connection login
 	$ ssh -v root@172.16.248.xx > result.txt					<= -v debugging mode
 	$ ssh -v root@172.16.248.xx 2>&1 > result.txt	
-   
+	$ ssh id@x.x.x.x -p 2222									<= different port
 	$ ssh -l ubuntu ip_address									<= -l login user name
 	$ ssh -l ubuntu hostname
 
@@ -120,6 +120,8 @@ Directory	/1/2/3/4/5
 	C. Save the cURL Output to a file
 		-o (lowercase o) the result will be saved in the file name provided in the command line
 		-O (uppercase O) the file name in the URL will be taken and it will be used as the file name to store the result
+		-l --list-only
+		-L --location
 	D. 
 	   $ curl -o mygettext.html http://www.gnu.org/text_info.html							<= save to mygettext.html
 	   
@@ -349,9 +351,10 @@ Directory	/1/2/3/4/5
 
 	B. Cron Jobs
 	$  rontab -e (first time ask a editor - choose vim)
-		min            hr          day of month       month            day of montn          command
-		0-59 mins 0-23 hrs   1-31days              1-12           0(sun)-6(sat)
-		30	   2     	 *	         *                           2(tuesday)
+		* * * * *
+		min         hr         day of month       month          day of month          command
+		0-59 mins   0-23 hrs   1-31days           1-12           0(sun)-6(sat)
+		30	        2     	   * 	              *              2(tuesday)
 
 
 15. List files by modified date 
@@ -366,8 +369,43 @@ Directory	/1/2/3/4/5
 		Filesystem              Type         Size  Used Avail Use% Mounted on
 		rootfs                  rootfs        18G  1.1G   17G   7% /
 
-	$ mount
-		/dev/mapper/U14--vg-root on / type ext4 (rw,errors=remount-ro)
+
+### Add new hard drive or partition
+	1. 	$ fdisk -l
+		$ ls /dev/sd*
+	2. 	$ fdisk /dev/sdb			<= Create new partitions
+		$ command(m for help): p
+			p	 print the partition table
+		   Device Boot      Start         End      Blocks   Id  System
+
+		$ command(m for help): n
+			n   add a new partition
+			Partition type:
+			p   primary (0 primary, 0 extended, 4 free)
+			e   extended
+			Select (default p): p
+			Partition number (1-4, default 1): 1
+		$ command(m for help): p
+			Device Boot      Start         End         Blocks   Id  System
+			/dev/sdb1        2048        10485759     5241856   83  Linux
+		
+		$ Expert command (m for help): w
+		The partition table has been altered!
+		$ fdisk -l
+	    Device Boot      Start         End      Blocks   Id  System
+		/dev/sdb1            2048    10485759     5241856   83  Linux
+	3. 	$ mkfs.ext3 /dev/sdb1
+	4. 	$ mount -t ext3 /dev/sdb1 /mnt/mysql -rw
+	# $ umount /mnt/mysql
+		$ cat /etc/fstab
+	5. 	$ echo '/dev/sdb1  /mnt/mysql  ext3  defaults 0 0' >> /etc/fstab
+	
+
+	
+	
+	/dev/mapper/U14--vg-root on / type ext4 (rw,errors=remount-ro)
+	
+	
 	$ cat /proc/mount
 	
 	What Kernel supports filesystem
@@ -377,19 +415,44 @@ Directory	/1/2/3/4/5
         ext2
         ext4
 
-	df    <= report file system disk space usage (Check Disk Free)
+	$ df -h    <= report file system disk space usage (Check Disk Free)
 	$ df -T   <= file system type
 	$ df -i   <= inodes
 		Filesystem                Inodes IUsed    IFree IUse% Mounted on
 		/dev/mapper/centos-root 18358272 26054 18332218    1% /
 
-	
 	df -h | xargs | awk '{ print $11 " / " $9 " are free" }'
 
 	df -h | grep /dev/mapper | awk '{print $4 "/" $2 "GB is free"}'
 
 	df -h | awk '{print $5}' | grep % | grep -v Use |  sort -n | tail -1 | cut -d "%" -f1 -
 
+ 
+  169  cat /proc/mounts
+  170  ls /mnt
+  171  mount -l
+  172  history | grep mount
+  173  ps aux | grep jarvis
+  174  ls -la /
+  175  ls -la /mnt/
+  176  history
+  177  lsblk
+  
+  178  sudo mount /dev/xvdf /mnt
+  179  ls -la /mnt/
+  180  sudo vim /etc/fstab
+  181  history | grep start
+  182  sudo start jarvis-01 && sudo start jarvis-02 && sudo start jarvis-03 && sudo start jarvis-04
+  183  less /mnt/log/jarvis-01/jarvis.log
+  184  sudo service mongos start
+  185  sudo stop jarvis-01 && sudo stop jarvis-02 && sudo stop jarvis-03 && sudo stop jarvis-04 && sudo start jarvis-01 && sudo start jarvis-02 && sudo start jarvis-03 && sudo start jarvis-04
+  186  less /mnt/log/jarvis-01/jarvis.log
+  187  ps aux | grep nginx
+  188  curl 'http://localhost:53213/tcg/api/1/status'
+  189  less /mnt/log/jarvis-01/jarvis.log
+  190  exit
+	
+	
 
 
 17. Count Active connections
@@ -405,7 +468,7 @@ Directory	/1/2/3/4/5
 	
 	watch -n5 'netstat -ntap | grep ESTA | wc -l'	<= Print active connections n1 <= every 1sec
 
-	
+	l1nuXc0nf
 	ss <= socket statistic
 
 
@@ -610,17 +673,17 @@ Directory	/1/2/3/4/5
 	$ ifconfig | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
 	 192.168.232.132
 
-	$ ip neighbor show			<= how your subnet's computers
+	$ ip neighbour show			<= how your subnet's computers
 
 23-1. tail
   tail -f *Slave.log
   tail -f *vSlave.log | grep "Info: Slave - Sending status"	
 
-24. Comparison operation for test [[ expresstion ]]     0:TRUE  1:FALSE 
+24. Comparison operation for test [[ expression ]]     0:TRUE  1:FALSE 
 	A. Comparing variables
 		Less than			        [[ $a < $b ]]
 		greater than			    [[ $a > $b ]]
-		less than or requal to 		[[ $a <= $b ]]
+		less than or equal to 		[[ $a <= $b ]]
 		greater than or equal to 	[[ $a >= $b ]]
 		equal				        [[ $a == $b ]]
 		not equal			        [[ $a != $b ]]
@@ -1459,6 +1522,45 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 	$ vi /etc/sysconfig/iptables
 	$ sudo systemctl start iptables
 
+	
+### Changing data directory on Centos 7 + MySQL 5.6	
+	$ wget http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+	$ yum localinstall mysql57-community-release-el7-7.noarch.rpm
+	
+	
+	$ systemctl mysqld stop
+	$ cp -rap /var/lib/mysql/ /target_dir/mysql/
+	$ chown mysql:mysql /target_dir/mysql
+	
+	# edit /etc/my.conf to redirect datadir & socket to new path
+	$ vi /etc/my.conf 
+	# change to new data, socket & client connection location
+	datadir=/target_dir/mysql
+	socket=/target_dir/mysql/mysql.sock
+	[client]
+	socket=/target_dir/mysql/mysql.sock
+	
+	
+	# manage SELinux => install semanage (In Centos 7 minimal is not installed)
+	$ getenforce
+	$ yum provides /usr/sbin/semanage
+	$ yum -y install policycoreutils-python
+
+
+	$ getenforce
+	$ semanage fcontext -a -t mysqld_db_t "/new_dir/mysql(/.*)?"
+	$ restorecon -Rv /new_dir/mysql
+	$ systemctl start mysqld
+	
+	# Check SELinux reports any error on MySQL
+	$ grep mysqld /var/log/audit/audit.log
+
+	
+
+	
+	
+	
+	
 58. # CentOS 6 Turn off firewall and SELINUX
 
 	chkconfig iptables off && chkconfig ip6tables off && 
@@ -2068,41 +2170,81 @@ breaks $(foo) into words, and treats each word as a glob pattern. The default va
 	$ lsb_release -a
    
   
-3. ulimit 			<= Increase "Open Files Limit"
-	If you are getting error “Too many open files (24)” then your application/command/script is hitting max open file limit 
-	allowed by linux. You need to increase open file limit as below:
+3. ulimit 								<= Increase "Max Open Files Limit"
+	There are two limits in play: 
+	1) the maximum number of open files the OS kernel allows (fs.file-max) and 
+	2) the per-user limit (ulimit -n). The former(Kernel) must be higher than the latter(user).
 	
-	Per-User Limit
+	If you are getting error “Too many open files (24)” then your application/command/script is hitting max 
+	open file limit allowed by linux. You need to increase open file limit as below:
+	
+	### Check
+	$ ulimit -a			<= All current limits
+	$ ulimit -n			<= maximum number of open file
+	$ ulimit -Sn		<= soft limit number
+	$ ulimit -Hn		<= hard limit number
+	
+	$ man bash  					then /ulimit  <= ulimit is built in shell
+	-S   Change and report the soft limit associated with a resource. 
+    -H   Change and report the hard limit associated with a resource. 
+    -a   All current limits are reported. 
+    -c   The maximum size of core files created. 
+    -d   The maximum size of a process's data segment. 
+    -f   The maximum size of files created by the shell(default option) 
+    -l   The maximum size that can be locked into memory. 
+    -m   The maximum resident set size. 
+    -n   The maximum number of open file descriptors. 
+    -p   The pipe buffer size. 
+    -s   The maximum stack size. 
+    -t   The maximum amount of cpu time in seconds. 
+    -u   The maximum number of processes available to a single user. 
+    -v   The maximum amount of virtual memory available to the process. 
+	###
+	
+	$ vi /etc/security/limits.conf		<= add this lines
+	###
+	*       soft     nproc          65535		<= * all users but no root
+	*       hard     nproc          65535
+	*       soft     nofile         65535
+	*       hard     nofile         65535
+	root    -        nofile         65535		<= root specific
+	###
+	
+		### Per-User Limit
 	$ cat /etc/security/limits.conf
 		#<domain>      <type>  <item>         <value>
 		#root            hard    core            100000		<=100k files to open
 		#@student        hard    nproc           20			<= only 20 files to open
 	
-	pam-limits
-	# cat /etc/pam.d/common-session 		<= session-related modules common to all services
+	### pam-limits							<= session-related modules common to all services
+	$ cat /etc/pam.d/common-session 		
 	
-	System-Wide Limit
+	### System-Wide Limit
 	$ echo 'fs.file-max = 2097152' >> /etc/sysctl.conf 			<= configure kernel parameters at runtime
 	$ sysctl -p 												<= -p Load in sysctl settings from the file specified or /etc/sysctl.conf 
 											
-	Verify New Limits
+	### Verify New Limits
 	$ cat /proc/sys/fs/file-max 			<= max limit of file descriptors:
 		2097152
-	$ ulimit -Sn
-	$ ulimit -Hn
+		
+
+	### Check limit for other user
+	$ su - www-data -c 'ulimit -aHS' -s '/bin/bash'
+	$ su - noza -c 'ulimit -aHS' -s '/bin/bash'
+	$ su - noza -c 'ulimit -aHS' -s '/bin/bash'
+		core file size          (blocks, -c) 0
+		data seg size           (kbytes, -d) unlimited
 	
-	Check limit for other user
-		$ su - www-data -c 'ulimit -aHS' -s '/bin/bash'
-		$ su - noza -c 'ulimit -aHS' -s '/bin/bash'
-		$ su - noza -c 'ulimit -aHS' -s '/bin/bash'
-			core file size          (blocks, -c) 0
-			data seg size           (kbytes, -d) unlimited
-	
-	Check limits of a running process:
+	### Check limits of a running process:
 	$ cat /proc/Process_ID/limits
 		Limit                     Soft Limit           Hard Limit           Units
 		Max cpu time              unlimited            unlimited            seconds
 	
+	
+	####
+	$ echo 'fs.inotify.max_user_watches=100000' | sudo tee -a /etc/sysctl.conf; 			<=tee -a(append)
+	$ sudo sysctl -p
+	####
 	
 	
 4. sysctl
@@ -2189,7 +2331,12 @@ breaks $(foo) into words, and treats each word as a glob pattern. The default va
 	One way to deal with this is by the way to change the UUID during creation or afterwards, 
 	another way is to mount with the nouuid option.
 
+### Package List
+	#Ubuntu
+	$ dpkg -l | grep mysql
 	
+	# CentOS
+	$ rpm -qa | grep mysql
 	
 ######################## 
 # Bash Shell Variables #
@@ -2496,7 +2643,8 @@ grep -o			#Show matched part of file only
 	
 	$ whereis 					<= Find binary /source / manual for command
 	$ locate file_name		 	<= DB based Find file 
-
+	
+	$ find /etc | grep -e ulimit -e 4096 -e nofile   		<= e <-pattern (multi pattern search )
 
 
 find /lib64 | grep mysql
@@ -2598,6 +2746,9 @@ CentOS
 	Update the IPTables
 	$ iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 2222 -j ACCEPT
 	
+	Access all 
+	-A INPUT -m state -s x.x.x.x --state NEW -j ACCEPT
+
 	
 	
 Webmin 

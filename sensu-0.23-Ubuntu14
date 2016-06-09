@@ -1,0 +1,445 @@
+Sensu(0.23) on Ubuntu 14.04 Installation guide for standalone
+
+1. Prerequisites
+	Redis(Data Store)
+	Redis is a key-value database, which describes itself as “an open source, BSD licensed, 
+	advanced key-value cache and store”. Sensu uses Redis for storing persistent(static) data. 
+	Two Sensu services, the server and API, require access to the same instance of Redis to 
+	function.
+	Install Redis using APT
+	Install Redis (>= 1.3.14) from the distribution repository:
+	$ sudo apt-get update
+	$ sudo apt-get -y install redis-server
+	
+	Managing the Redis 
+	Start and stop the Redis service using the redis-server init scripts:
+	$ sudo /etc/init.d/redis-server start
+	$ sudo /etc/init.d/redis-server stop
+	# sudo /etc/init.d/redis-sentinel start			<=Enterprise or Master/Salve model
+	# sudo /etc/init.d/redis-sentinel stop
+	
+	NOTE: redis-sentinel service scripts are not installed by default and should only be used with 
+	highly available Redis configurations.
+	Enable/disable Redis start on system boot
+	Enable/disable Redis start on system boot
+	Enable or disable the Redis service to start on system boot using the update-rc.d utility:
+	$ sudo update-rc.d redis-server defaults
+	# sudo update-rc.d redis-server disable
+	$ sudo update-rc.d redis-sentinel defaults
+	# sudo update-rc.d redis-sentinel disable
+
+	Verify that Redis is working
+	Once you have installed and started the Redis service, you should be able to confirm that 
+	Redis is ready to use by running the command: redis-cli ping. If you get a PONG response, 
+	you are ready to move on to the next step in the guide.
+	$ redis-cli ping
+	$ PONG
+
+
+
+Configure Sensu
+$vi /etc/sensu/conf.d/redis.json
+### Standalone ###
+{
+  "redis": {
+    "host": "127.0.0.1",
+    "port": 6379
+  }
+}
+###
+
+Using Redis as the Sensu Transport
+If you are planning to use Redis as your Sensu Transport, please copy the following contents 
+	$ vi /etc/sensu/conf.d/transport.json:
+###
+{
+  "transport": {
+    "name": "redis",
+    "reconnect_on_error": true
+  }
+}
+###
+	This will inform the Sensu services to use the defined Redis configuration as the Sensu Transport 
+	(instead of looking for the default transport, RabbitMQ).
+
+2. Install RabbitMQ
+	RabbitMQ is a message bus that [describes itself][rabbitmq-features] as “a messaging broker - 
+	an intermediary for messaging. It gives your applications a common platform to send and 
+	receive messages, and your messages a safe place to live until received”. 
+	RabbitMQ is also the default Sensu Transport. When using RabbitMQ as the Sensu Transport, 
+	all Sensu services require access to the same instance (or cluster) of RabbitMQ to function.
+
+	Install Erlang (the RabbitMQ runtime)
+	RabbitMQ runs on the Erlang runtime, so before you can install and run RabbitMQ, you’ll need to 
+	install Erlang.
+	Add the Erlang Solutions APT repository
+	$ sudo wget http://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
+	$ sudo dpkg -i erlang-solutions_1.0_all.deb
+	$ sudo apt-get update
+
+	Install Erlang
+	$ sudo apt-get -y install erlang-nox=1:18.2
+
+	
+Install RabbitMQ
+	Download and install RabbitMQ using dpkg
+	Download the official RabbitMQ 3.6.0 .deb installer package, as suggested in the official RabbitMQ installation guide:
+	$ sudo wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.0/rabbitmq-server_3.6.0-1_all.deb
+	
+	Install the package using dpkg
+	$ sudo dpkg -i rabbitmq-server_3.6.0-1_all.deb
+
+	Install RabbitMQ using APT
+
+	Managing the RabbitMQ service/process
+	To enable the RabbitMQ service, you’ll need to install its init scripts using the update-rc.d utility:
+	$ sudo update-rc.d rabbitmq-server defaults
+	
+	Start and stop the RabbitMQ service using the installed init scripts:
+	$ sudo /etc/init.d/rabbitmq-server start
+	$ sudo /etc/init.d/rabbitmq-server stop
+	
+	Alternatively, it is also possible to use the service command to start and stop the RabbitMQ service:
+	$ sudo service rabbitmq-server start
+	$ sudo service rabbitmq-server stop
+	
+	Configure RabbitMQ access controls
+	Access to RabbitMQ is restricted by access controls (e.g. username and password). For Sensu services 
+	to connect to RabbitMQ a RabbitMQ virtual host (vhost) and user credentials will need to be created.
+	Create a dedicated RabbitMQ vhost for Sensu
+	$ sudo rabbitmqctl add_vhost /sensu
+
+	Create a RabbitMQ user for Sensu
+	$ sudo rabbitmqctl add_user sensu Your_Passwd
+	$ sudo rabbitmqctl set_user_tags sensu administrator
+	$ sudo rabbitmqctl set_permissions -p /sensu sensu ".*" ".*" ".*"
+
+
+### Install RabbitMQ
+echo "deb http://www.rabbitmq.com/debian/ testing main"  | sudo tee  /etc/apt/sources.list.d/rabbitmq.list > /dev/null
+wget https://www.rabbitmq.com/rabbitmq-signing-key-public.asc
+sudo apt-key add rabbitmq-signing-key-public.asc
+sudo apt-get update
+sudo apt-get install rabbitmq-server -y
+sudo service rabbitmq-server start
+sudo rabbitmq-plugins enable rabbitmq_management
+sudo service rabbitmq-server restart
+sudo rabbitmqctl add_user user_name password_for_this_user
+sudo rabbitmqctl set_user_tags user_name administrator
+sudo rabbitmqctl set_permissions -p / user_name ".*" ".*" ".*"
+sudo rabbitmqctl delete_user guest
+###
+
+
+Configure Sensu
+	The following Sensu configuration files are provided as examples. Please review the RabbitMQ reference 
+	documentation for additional information on configuring Sensu to communicate with RabbitMQ, and the 
+	reference documentation on Sensu configuration for more information on how Sensu loads configuration.
+	### Standalone Configuration ###
+	Copy the following contents to a configuration file located at 
+	$ vi /etc/sensu/conf.d/rabbitmq.json:
+###
+{
+  "rabbitmq": {
+    "host": "127.0.0.1",
+    "port": 5672,
+    "vhost": "/sensu",
+    "user": "sensu",
+    "password": "secret"
+  }
+}
+###
+
+
+Install the Sensu Server and API
+
+	Install Sensu Core
+	Sensu Core is installed on Ubuntu and Debian systems via a native system installer package
+	(i.e. a .deb file), which is available for download from the Sensu Downloads page, and from 
+	APT package management repositories. The Sensu Core package installs several processes including 
+	sensu-server, sensu-api, and sensu-client.
+
+	Install Sensu using APT (recommended)
+	Install the GPG public key:
+	$ wget -q http://repositories.sensuapp.org/apt/pubkey.gpg -O- | sudo apt-key add -
+
+	Create an APT configuration file at /etc/apt/sources.list.d/sensu.list:
+	$ echo "deb http://repositories.sensuapp.org/apt sensu main" | sudo tee /etc/apt/sources.list.d/sensu.list
+
+	Update APT:
+	$ sudo apt-get update
+
+	Install Sensu:
+	$ sudo apt-get install sensu
+
+	NOTE: as mentioned above, the sensu package installs all of the Sensu Core processes, including sensu-client, sensu-server, and sensu-api.
+	
+	Configure Sensu. No “default” configuration is provided with Sensu, so none of the Sensu processes 
+	will run without the corresponding configuration. Please refer to the “Configure Sensu” section (below), 
+	for more information on configuring Sensu. At minimum, all of the Sensu processes will need a working 
+	transport definition. The Sensu client will need a client definition, and both the sensu-server and 
+	sensu-api will need a data-store (Redis) definition — all of which are explained below.
+	
+	Configure Sensu
+	By default, all of the Sensu services on Ubuntu and Debian systems will load configuration from the 
+	following locations:
+	/etc/sensu/config.json
+	/etc/sensu/conf.d/
+
+Sensu Config Documents
+https://sensuapp.org/docs/latest/reference/configuration.html
+
+Example client configuration
+Copy the following contents to a configuration file located at 
+	$ vi /etc/sensu/conf.d/client.json
+{
+  "client": {
+    "name": "ubuntu",
+    "address": "127.0.0.1",
+    "environment": "development",
+    "subscriptions": [
+      "dev",
+      "ubuntu"
+    ],
+    "socket": {
+      "bind": "127.0.0.1",
+      "port": 3030
+    }
+  }
+}
+Example transport configuration
+	At minimum, all of the Sensu processes require configuration to tell them how to connect to the 
+	configured Sensu Transport.
+Copy the following contents to a configuration file located at 
+	$ vi /etc/sensu/conf.d/transport.json
+###
+{
+  "transport": {
+    "name": "rabbitmq",
+    "reconnect_on_error": true
+  }
+}
+###
+NOTE: if you are using Redis as your transport, please use "name": "redis" for your transport configuration. 
+For more information, please visit the transport definition specification.
+
+Please refer to the configuration instructions for the corresponding transport for configuration file 
+examples (see Redis, or RabbitMQ reference documentation).
+
+Example data store configuration
+The Sensu Core server and API processes, and the Sensu Enterprise process all require configuration 
+to tell them how to connect to Redis (the Sensu data store). Please refer to the Redis reference 
+documentation for configuration file examples.
+
+Example API configurations
+Standalone configuration
+Copy the following contents to a configuration file located at 
+	$ vi /etc/sensu/conf.d/api.json
+###	
+{
+  "api": {
+    "host": "localhost",
+    "bind": "0.0.0.0",
+    "port": 4567
+  }
+}
+###
+
+### for Master/slave model ### 
+	Distributed configuration
+	Obtain the IP address of the system where the Sensu API is installed. For the purpose of this guide, 
+	we will use 10.0.1.7 as our example IP address.
+	Create a configuration file with the following contents at /etc/sensu/conf.d/api.json on the Sensu 
+	server and API system(s):
+{
+  "api": {
+    "host": "10.0.1.7",
+    "bind": "10.0.1.7",
+    "port": 4567
+  }
+}
+###
+
+Enable the Sensu services to start on boot
+	By default, the Sensu services are not configured to start automatically on system boot 
+	(we recommend managing the Sensu services with a process supervisor such as runit). To enable Sensu 
+	services on system boot, use the update-rc.d utility.
+
+	Enable the Sensu client on system boot
+	$ sudo update-rc.d sensu-client defaults
+	
+	Enable the Sensu server and API to start on system boot
+	For Sensu Core users (i.e. sensu-server and sensu-api)
+	$ sudo update-rc.d sensu-server defaults
+	$ sudo update-rc.d sensu-api defaults
+
+	For Sensu Enterprise users
+	$ sudo update-rc.d sensu-enterprise defaults
+	WARNING: the sensu-enterprise process is intended to be a drop-in replacement for the Sensu Core 
+	sensu-server and sensu-api processes. Please ensure that the Sensu Core processes are not configured 
+	to start on system boot before enabling Sensu Enterprise to start on system boot.
+
+Enable Sensu Enterprise Dashboard on system boot
+sudo update-rc.d sensu-enterprise-dashboard defaults
+WARNING: the sensu-enterprise-dashboard process is intended to be a drop-in replacement for the Uchiwa dashboard. Please ensure that the Uchiwa processes are not configured to start on system boot before enabling the Sensu Enterprise Dashboard to start on system boot.
+
+Disable the Sensu services on boot
+If you have enabled Sensu services on boot and now need to disable them, this can also be accomplished using the update-rc.d utility.
+Disable the Sensu client on system boot
+	$ sudo update-rc.d sensu-client disable
+Disable the Sensu Core server on system boot
+	$ sudo update-rc.d sensu-server disable
+Disable the Sensu Core API on system boot
+	$ sudo update-rc.d sensu-api disable
+Disable Sensu Enterprise on system boot
+	$ sudo update-rc.d sensu-enterprise disable
+Disable Sensu Enterprise Dashboard on system boot
+	$ sudo update-rc.d sensu-enterprise-dashboard disable
+Operating Sensu
+Managing the Sensu services/processes
+To manually start and stop the Sensu services, use the provided init scripts:
+Start or stop the Sensu client
+	$ sudo /etc/init.d/sensu-client start
+	$ sudo /etc/init.d/sensu-client stop
+Start or stop the Sensu Core server
+	$ sudo /etc/init.d/sensu-server start
+	$ sudo /etc/init.d/sensu-server stop
+Start or stop the Sensu Core API
+	$ sudo /etc/init.d/sensu-api start
+	$ sudo /etc/init.d/sensu-api stop
+Start or stop Sensu Enterprise
+	$ sudo /etc/init.d/sensu-enterprise start
+	$ sudo /etc/init.d/sensu-enterprise stop
+Start or stop the Sensu Enterprise Dashboard
+	$ sudo /etc/init.d/sensu-enterprise-dashboard start
+	$ sudo /etc/init.d/sensu-enterprise-dashboard stop
+
+	Verify the Sensu Enterprise Dashboard is running by visiting view the dashboard at http://localhost:3000 
+	(replace localhost with the hostname or IP address where the Sensu Enterprise Dashboard is running).
+
+	
+	
+	
+### Set file descriptor limits
+Ulimit - Configure system limits on Linux
+By default, most Linux operating systems will limit the maximum number of file handles a single process is 
+allowed to have open to 1024. RabbitMQ recommends adjusting this number to 65536 for production systems, 
+and at least 4096 for development environments.
+	
+	$vi /etc/default/redis-server
+	ULIMIT=65536				<= remove #
+	
+	### Check
+	$ ulimit -a			<= All current limits
+	$ ulimit -n			<= maximum number of open file
+	$ ulimit -Sn		<= soft limit number
+	$ ulimit -Hn		<= hard limit number
+	
+	$ vi /etc/security/limits.conf		<= add this lines
+	###
+	*       soft     nproc          65535		<= * all users but no root
+	*       hard     nproc          65535
+	*       soft     nofile         65535
+	*       hard     nofile         65535
+	root    -        nofile         65535		<= root specific
+	###
+	
+	
+RabbitMQ installations running production workloads may need system limits and kernel parameters tuning 
+in order to handle a decent number of concurrent connections and queues. The main setting that needs adjustment 
+is the max number of open files, also known as ulimit -n. The default value on many operating systems is too 
+low for a messaging broker (eg. 1024 on several Linux distributions). We recommend allowing for at least 65536 
+file descriptors for user rabbitmq in production environments. 4096 should be sufficient for most development workloads.
+There are two limits in play: the maximum number of open files the OS kernel allows (fs.file-max) and 
+the per-user limit (ulimit -n). The former must be higher than the latter.
+
+Set file descriptor limits
+NOTE: for the most part, Redis should “just work” without needing to tune linux file descriptor limits, 
+however this configuration may become necessary in cases where Redis is being used as the Sensu transport 
+or in other high performance environments.
+
+By default, most Linux operating systems will limit the maximum number of file handles a single process is 
+allowed to have open to 1024. We recommend adjusting this number to 65536 for running Redis in production 
+systems, and at least 4096 for development environments.
+According to the Redis documentation on client handling, regarding the maximum number of client connections 
+allowed:
+
+In Redis 2.4 there was an hard-coded limit about the maximum number of clients that was possible to handle 
+simultaneously. In Redis 2.6 this limit is dynamic: by ***default is set to 10000 clients***, unless otherwise 
+stated by the maxclients directive in /etc/redis/redis.conf. However Redis checks with the kernel what is 
+the maximum number of file descriptors that we are able to open (the soft limit is checked), if the limit 
+is smaller than the maximum number of clients we want to handle, plus 32 (that is the number of file 
+descriptors Redis reserves for internal uses), then the number of maximum clients is modified by Redis 
+to match the amount of clients we are really able to handle under the current operating system limit.
+When Redis is configured in order to handle a specific number of clients it is a good idea to make sure 
+that the operating system limit to the maximum number of file descriptors per process is also set accordingly.
+To adjust this limit, please edit the configuration file found at /etc/default/redis-server by uncommenting 
+the last line in the file, and adjusting the ulimit value accordingly.
+http://redis.io/topics/clients#maximum-number-of-clients
+
+
+
+
+
+
+### What is the Sensu Transport(communication tools <= RabbitMQ-SSL support)?
+Sensu services use a message bus (e.g. RabbitMQ) for communication. This message bus communication 
+is provided by the Sensu Transport, which is a library that makes it possible to leverage alternate 
+transport solutions in place of RabbitMQ (the default transport). Sensu services requires access to 
+the same instance of the defined transport (e.g. a RabbitMQ server or cluster) to function. Sensu 
+check requests and check results are published as “messages” to the Sensu Transport, and the 
+corresponding Sensu services receive these messages by subscribing to the appropriate subscriptions.
+
+The Sensu Transport library makes it possible to replace Sensu’s recommended and default transport 
+(RabbitMQ) with alternative solutions. There are currently two (2) transports provided with the 
+sensu-transport library: RabbitMQ and Redis — each presenting unique performance and functional 
+characteristics.
+
+### The RabbitMQ Transport (recommended)
+The RabbitMQ Transport is the original Sensu transport, and continues to be the recommended solution 
+for running Sensu in production environments.
+	
+	# Pros
+	Native SSL support
+	Pluggable authentication framework
+	Support for ACLs
+	# Cons
+	Adds Erlang as a runtime dependency to the Sensu architecture (only on systems where RabbitMQ is running)
+
+### The Redis Transport
+The Redis Transport was an obvious alternative to the original RabbitMQ Transport because Sensu already 
+depends on Redis as a data store. Using Redis as a transport greatly simplifies Sensu’s architecture by 
+removing the need to install/configure RabbitMQ and Erlang (RabbitMQ’s runtime).
+	
+	# Pros
+	Simplifies Sensu architecture by removing need for dedicated transport (by using Redis as the data store 
+	and transport)Comparable or better throughput/performance than RabbitMQ
+	# Cons
+	No native support for SSL
+	No support for transport “consumers” metrics (see Health & Info API)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -20,10 +20,60 @@ Jenkins on Ubuntu 14.04
 	curl -iL -e http://cdn-jenkins.namcowireless.com:8080/jenkins/manage\
     http://cdn-jenkins.namcowireless.com:8080/jenkins/administrativeMonitor/hudson.diagnosis.ReverseProxySetupMonitor/test
 
+
 	
+	
+	######################################################################	
 Gitlab on Ubuntu 14.04
 Username: root
-Password: SgjQe5zmoZBm
+Password: xxxxxxxx
+
+### Reset root passwd
+	$ sudo gitlab-rails console production
+	irb(main):001:0> u = User.where(id:1).first
+    irb(main):002:0> u.password = 'your_new_password'
+	irb(main):003:0> u.password_confirmation = 'your_new_password'
+	irb(main):004:0> u.save!
+	irb(main):005:0> exit
+
+###
+SSH:   git@cdn-gitlab:root/test.git
+	
+###	Git global setup
+	$ git config --global user.name "albert"
+	$ git config --global user.email "albertpark5@gmail.com"
+
+	$ git config -l (or --list)
+	user.email=albertpark5@gmail.com
+	user.name=albert
+
+
+### Create a new repository
+git clone http://cdn-gitlab.namcowireless.com/noza/apache.git
+cd apache
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+
+
+### Existing folder or Git repository
+cd existing_folder
+git init
+git remote add origin http://cdn-gitlab/noza/apache.git
+git add .
+git commit
+git push -u origin master
+	
+### Update Git 
+	$ git clone git://git.kernel.org/pub/scm/git/git.git
+
+
+
+
+
+
+
 
 ################# Multi port Iptables ##########################################
 # 8140 Puppet/ 8142 Agent

@@ -1,4 +1,0 @@
-1. cdn-puppet setup
-	https://cdn-puppet.namcowirelss.com
-	admin/Noza5571/apark@bnga.com
-	apark/Noza5571/apark@bnga
