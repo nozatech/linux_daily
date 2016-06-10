@@ -32,7 +32,7 @@ IP address is 32bit
     $ exec ./script    <= after run, the login shell exit 
 	$ sh script.sh
 	
- # vi or VIM,  it won't save read only file
+ # Save in read only file
 	:w !sudo tee %                  	<= save as sudo privilege.  type (L) load at the prompt to reload.
 	:w !chmod 777 %    then    :wq!
 	
@@ -350,13 +350,23 @@ Directory	/1/2/3/4/5
 	$ tar -xvpzf backup.tar.gz /home/nozatech	
 
 	B. Cron Jobs
-	$  rontab -e (first time ask a editor - choose vim)
+	$  crontab -e (first time ask a editor - choose vim)
 		* * * * *
 		min         hr         day of month       month          day of month          command
 		0-59 mins   0-23 hrs   1-31days           1-12           0(sun)-6(sat)
 		30	        2     	   * 	              *              2(tuesday)
+14. Zipping or archiving
+	$ bzip2 ls.txt &
+	 [1] 28072
+	$ jobs
+	 [1]+  Done                    bzip2 ls.txt
+	$ ll
+	 -rw-r--r--. 1 root root  932 Jun  9 14:42 ls.txt.bz2
 
 
+		
+		
+		
 15. List files by modified date 
     ls -atlh   			 	 <= -a all, -t modified time, -l per line 
     ls -atlhr   			 <= -r reverse
@@ -2111,6 +2121,8 @@ $_	The underscore variable is set at shell startup and contains the absolute fil
     rsync -av /etc/hosts sg-eu:/etc
     rsync -av /etc/sysconfig/iptables sg-eu:/etc/sysconfig
     
+	rsync -av lobby1:/root/ /root --exclude ".ssh"
+
 	ssh sg-eu "service iptables restart"
     
 	ssh sg-eu "cat .ssh/*.pub"
@@ -2273,6 +2285,17 @@ breaks $(foo) into words, and treats each word as a glob pattern. The default va
 	sudo vi /etc/fstab
 	Add the following text at the end of the file, 
 	/mnt/{filename}.swap  none  swap  sw  0 0
+  
+
+  ### Create a swap space script ### 
+	#!/bin/sh
+	# make swap space s
+	dd if=/dev/zero of=/swapfile bs=1024 count=8388608
+	mkswap /swapfile
+	echo '/swapfile         swap            swap    defaults 0 0' >> /etc/fstab
+	swapon -a
+	swapon -s
+	###
   
   
   
