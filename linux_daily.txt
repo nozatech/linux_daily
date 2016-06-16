@@ -51,6 +51,8 @@ IP address is 32bit
 	$ ps					 
 	  1453 pts/1    00:00:00 bash  <= BASH
 	$ ps | grep `echo $$` | awk '{ print $4 }'
+	
+	$ awk '/lemon/ && /rice/'	<= search two words
 
 
 ### Special Shell Variables ###
@@ -1367,7 +1369,10 @@ Images Path: /var/www/site/images/test_images
 
 
 -------------------------------------------------------------------------------------------
-diff -B <(sshpass -p 'pa$$word1' ssh ubuntu1@images.server1.com "find /home/www/images/test_images -type f | sed 's/\/home\/www\/images\/test_images\///g'" | sort -n) <(sshpass -p 'pa$$word2' ssh ubuntu2@images.server2.com "find /var/www/site/images/test_images -type f | sed 's/\/var\/www\/site\/images\/test_images\///g'" | sort -n) | grep ">" | awk '{print $2}'
+diff -B <(sshpass -p 'pa$$word1' ssh ubuntu1@images.server1.com "find /home/www/images/test_images -type f\ 
+| sed 's/\/home\/www\/images\/test_images\///g'" | sort -n) <(sshpass -p 'pa$$word2' ssh ubuntu2@images.server2.com\ 
+"find /var/www/site/images/test_images -type f | sed 's/\/var\/www\/site\/images\/test_images\///g'" | sort -n)\ 
+| grep ">" | awk '{print $2}'
 -------------------------------------------------------------------------------------------
 
 Explanation:
