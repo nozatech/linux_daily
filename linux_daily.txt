@@ -283,7 +283,8 @@ Directory	/1/2/3/4/5
 		Up/Down arrow keys to select a process, and then you can kill it with the F9 key
 
 10. Disk usage
-	
+	du -ah              <= all total size files & directories, -a all, -h human 
+	du -ah *   			<= No total size
 	du -sh /home/noza*  | sort -nr				<= Folder list usage, not files
 	
 ######################################################################################
@@ -496,6 +497,12 @@ Directory	/1/2/3/4/5
 		In the default operation, vmstat displays memory statistics in kilobytes. 
 		vmstat considers a single kilobyte equal to 1024 bytes. To generate vmstat 
 		reports where 1 kilobyte is equal to 1000 bytes, use the following form:
+	
+	
+	Most memory used by process
+	$ ps aux --sort=-%mem | awk 'NR<=10{print $0}'	
+	
+	
 19. Alias
 	$ cd; vi .bash_profile
 	$ alias server1='ssh root@ip_address -p 3404'   <= add your alias in .bash_profile
@@ -648,6 +655,17 @@ Directory	/1/2/3/4/5
     !!! Danger !!!
     rm -fr ./tmp/test/delme/ *   <=delete whole root folder(./tmp/test/delme)   
 
+	# Delete local backup folder older than 7 days
+	$ sudo find /data/backups/ -type f -mtime +7 -name 'rrs_us_db.sql.*' -delete   	<= mtime (days), mmin (mins)
+
+	$ find . -type f -name "*.bak" -exec rm -i {} \;
+	$ find . -type f -name "FILE-TO-FIND" -exec rm -f {} \;
+	
+		-name "FILE-TO-FIND" : File pattern.
+		-exec rm -rf {} \; : Delete all files matched by file pattern.
+		-type f : Only match files and do not include directory names.
+	
+	
 22. touch file_{1..100}    <= creating 100 files
     touch file_{01..100}   <= to resolve file format problem above logic
     touch {1,2,3,4,5}	   <= creating 1,2,3,4,5 files
@@ -1602,14 +1620,15 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 
 59. Prompt Color red
-
+	### only works on current shell
     export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]' 	 >> .bashrc		<= green, red for 31m 
 
     export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"  >> .bashrc		<= 2 colors
 
-	Add to .bashrc file
-	echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> .bashrc
-
+	Permanently add to .bashrc file
+	######															####
+	# echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> .bashrc #
+	######															####								
 	
 	########################	Vim color scheme enable   ######################
 	http://www.server-world.info/en/note?os=CentOS_7&p=initial_conf&f=7
@@ -1635,7 +1654,9 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	colorscheme desert
 
 	
-	
+59. network monitoring
+	$ iftop -n -i eth1        <= -n no name lookup -i interface eth1
+
 	
 	
 60. tcpdump
@@ -1717,7 +1738,9 @@ sudo apt-get update
 5. service mysqld start  <= recreate tables 
 6. /usr/bin/mysqladmin -u root password 'Your-New-Passwd'  <= Your mysql root's pw
 
-
+	mysql remote host login
+	$ mysql -u webadmin –h 65.55.55.2 –p
+	$ mysql -udbadmin -p'Test00!!'  -hlocalhost
 
 65. Swappiness
 
@@ -1781,9 +1804,9 @@ ty scanning and     auditing. However, nmap command comes with lots of options t
 	$ crontab -l				<= current user's list of cron jobs 
 	$ crontab -e				<= edit cron job
 
-	for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
+	$ for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
 
-	for user in $(cut -f1 -d: /etc/passwd); do echo $user; crontab -u $user -l; done
+	$ for user in $(cut -f1 -d: /etc/passwd); do echo $user; crontab -u $user -l; done
 
 	
 	a. Getting all user id info from /etc/passwd using 
@@ -2557,6 +2580,11 @@ fg %?string  # brings job whose command contains string
 kill -l      # returns a list of all signals on the system, by name and number
 kill PID     # terminates process with specified PID
 
+### kill all processes relate to same process
+	$ pkill -f s3cmd
+	$ ps -ef | grep myProcessName | grep -v grep | awk '{print $2}' | xargs kill -9
+
+
 ps           # prints a line of information about the current running login shell and any processes running under it
 ps -a        # selects all processes with a tty except session leaders
 
@@ -2653,15 +2681,30 @@ trap returntrap RETURN  # is executed each time a shell function or a script exe
 		
 
 
-1. Search Files
+1. Grep Search Files
 grep pattern files   #search for pattern in files
 grep -i			#Case insensitive search
 grep -r 		#Recursive
+	$ grep -r "port 80" /etc/httpd/*   <= search subdirectories with key words port 80.
+
+
 grep -v			#Inverted search
 grep -o			#Show matched part of file only
+grep -v grep    # don't match the grep word
 
+ps axu | grep some_PID => out puts grep word in list, and it counts the line as 1 + 1 actual process name some_PID
+To remove the grep in search word, use "grep -v grep" 2nd grep is a word to -v <= don't match word .
+#######################
+#!/bin/bash
+# Check and put ok status if the RRS game service is running for Lobby 7504 & 7505 services
 
-
+if (( $(ps aux | grep ./RRServer_0617_7504 | grep -v grep | wc -l) > 0  &&  \
+$(ps aux | grep ./RRServer_0617_7505 | wc -l) > 0 ));
+        then
+        echo OK > /var/www/html/status/index.html;
+else rm /var/www/html/status/index.html > /dev/null 2>&1;
+fi
+#################
 
 
 
@@ -2850,7 +2893,9 @@ DER The parent format of PEM. It's useful to think of it as a binary version of 
 	when run in the chroot due to a bug in os-prober. If this is an issue, just run sudo update-grub again in the repaired system.
 
 	
-	
+CentOS package update vs upgrade	
+yum upgrade and yum update will perform the same function that update to the latest current version of package.
 
+But the difference is Upgrade will delete obsolete packages, while update will preserve them.
 
 

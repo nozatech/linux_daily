@@ -2,15 +2,14 @@
 # MySQL CRUD Daily ###
 ######################
 
-	
-	
-	DB Location
+# MySQL history
+	$ less ~/.mysql_history
+# DB Location
 	/var/lib/mysql/
-  
-	MySQL config file
+#MySQL config file
 	$ /etc/my.cnf
   
-	User List
+# MyQLS User List
 	$ mysql -uroot -p 					<= login first
 	$ SELECT User FROM mysql.user;		<= run cmd to check
   
@@ -19,10 +18,9 @@
 1. Master/Slave replication status
 	# grep mysql /var/log/syslog
 	# grep error /var/log/mysql.log
-	# mysql> SHOW SLAVE STATUS\G
+	# mysql> SHOW SLAVE STATUS\G;
 			Slave_IO_Running: Yes
 			Slave_SQL_Running: Yes
-
 
 2. Create Accounts
 
@@ -33,9 +31,6 @@ master_user='dbadmin',
 master_password='xxxxx', 
 master_log_file='master-bin.000006', 
 master_log_pos=120;
-
-
-
 
 
 10.128.69.246 
