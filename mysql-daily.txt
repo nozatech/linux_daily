@@ -4,6 +4,27 @@
 
 # MySQL history
 	$ less ~/.mysql_history
+	
+# Check MySQL DB
+	$ mysqlcheck -u root -p --all-databases
+	
+	$ mysqlcheck --all-databases --check-upgrade --auto-repair
+    $ mysql < fix_priv_tables
+    $ mysqlcheck --all-databases --check-upgrade --fix-db-names --fix-table-names
+
+	$ mysql_upgrade -u root -p    <= 
+		mysql_upgrade examines all tables in all databases for incompatibilities with the current version 
+		of MySQL Server.  mysql_upgrade also upgrades the system tables so that you can take advantage of 
+		new privileges or capabilities that might have been added.
+
+       mysql_upgrade should be executed each time you upgrade MySQL. It supersedes the older 
+	   mysql_fix_privilege_tables script, which should no longer be used.
+
+       If mysql_upgrade finds that a table has a possible incompatibility, it performs a table check and, 
+	   if problems are found, attempts a table repair. If the table cannot be repaired, see Section 2.13.4, 
+	   “Rebuilding or Repairing Tables or Indexes” for manual table repair strategies.
+
+	
 # DB Location
 	/var/lib/mysql/
 #MySQL config file

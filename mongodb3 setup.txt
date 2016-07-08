@@ -1,0 +1,201 @@
+PMF
+
+Ubuntu 14.04
+$ service mongod status | stop | restart
+$ mongod --config /etc/mongodb.conf
+
+
+$vi /etc/hosts
+127.0.0.1   mongodb1  localhost
+
+$ mongo
+> use amdin
+> rs.initiate()
+{
+        "info2" : "no configuration explicitly specified -- making one",
+        "me" : "mongodb1:27017",
+        "ok" : 1
+}
+
+
+rs1:OTHER> rs.conf()
+{
+        "_id" : "rs1",
+        "version" : 1,
+        "members" : [
+                {
+                        "_id" : 0,
+                        "host" : "mongodb1:27017",
+                        "arbiterOnly" : false,
+                        "buildIndexes" : true,
+                        "hidden" : false,
+                        "priority" : 1,
+                        "tags" : {
+
+                        },
+                        "slaveDelay" : 0,
+                        "votes" : 1
+                }
+        ],
+        "settings" : {
+                "chainingAllowed" : true,
+                "heartbeatTimeoutSecs" : 10,
+                "getLastErrorModes" : {
+
+                },
+                "getLastErrorDefaults" : {
+                        "w" : 1,
+                        "wtimeout" : 0
+                }
+        }
+}
+rs1:PRIMARY>
+
+# Stop current process and start new 
+$ sudo service mongod stop
+$ sudo mongod
+
+# DB location
+
+$netstat -plunt | grep :27017 
+
+$grep "dbpath" /etc/mongodb.conf
+dbpath =/var/lib/mongodb
+
+$rm -r /var/lib/mongodb/mongod.lock
+$service mongod start
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@pm-friends-db-01 ~]# mongo
+pmf-rs:PRIMARY> rs.conf()
+{
+        "_id" : "pmf-rs",
+        "version" : 33,
+        "members" : [
+                {
+                        "_id" : 1,
+                        "host" : "_pm-friends-db-02:27017",
+                        "priority" : 4
+                },
+                {
+                        "_id" : 2,
+                        "host" : "_pm-friends-db-03:27017",
+                        "priority" : 4
+                },
+                {
+                        "_id" : 4,
+                        "host" : "_pm-friends-db-01:27017",
+                        "priority" : 8
+                }
+        ]
+}
+
+[root@pm-friends-db-02 ~]# mongo --host 10.128.109.134:27017
+pmf-rs:SECONDARY> rs.conf()
+{
+        "_id" : "pmf-rs",
+        "version" : 33,
+        "members" : [
+                {
+                        "_id" : 1,
+                        "host" : "_pm-friends-db-02:27017",
+                        "priority" : 4
+                },
+                {
+                        "_id" : 2,
+                        "host" : "_pm-friends-db-03:27017",
+                        "priority" : 4
+                },
+                {
+                        "_id" : 4,
+                        "host" : "_pm-friends-db-01:27017",
+                        "priority" : 8
+                }
+        ]
+}
+
+
+[root@pm-friends-db-03 apark]# mongo --host 10.128.109.135:27017
+pmf-rs:SECONDARY> rs.config()
+{
+        "_id" : "pmf-rs",
+        "version" : 33,
+        "members" : [
+                {
+                        "_id" : 1,
+                        "host" : "_pm-friends-db-02:27017",
+                        "priority" : 4
+                },
+                {
+                        "_id" : 2,
+                        "host" : "_pm-friends-db-03:27017",
+                        "priority" : 4
+                },
+                {
+                        "_id" : 4,
+                        "host" : "_pm-friends-db-01:27017",
+                        "priority" : 8
+                }
+        ]
+}
+
+
+
+
+
+Failed to connect to: 127.0.0.1:27017: Connection refused
+This is one of the common Mongo db error with error message:
+"Failed to connect to: 127.0.0.1:27017: Connection refused"
+
+Step 1: Remove lock file.
+sudo rm /var/lib/mongodb/mongod.lock
+
+Step 2: Repair mongodb.
+mongod --repair
+
+Step 3: start mongodb.
+sudo start mongodb
+or
+sudo service mongodb start
+
+Step 4: Check status of mongodb.
+sudo status mongodb
+or  
+sudo service mongodb status
+
+Step 5: Start mongo console.
+mongo

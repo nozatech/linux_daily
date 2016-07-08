@@ -130,6 +130,8 @@ Directory	/1/2/3/4/5
 	   $ curl -O http://www.gnu.org/software/gettext/manual/gettext.html or file_name		<= save the file to local 
 	   $ wget http://www.gnu.org/software/gettext/manual/gettext.html  or file_name	
 	
+	E. $ curl -X 
+	
 	### text browser ###
 	$ sudo apt-get install -y links
 	$ links http://www.google.com
@@ -268,6 +270,23 @@ Directory	/1/2/3/4/5
         # capture into single page file 
 		-b bache mode sending output from top to other programs or to a file. 
 		-n number of iteration 
+	
+		### Top commands short cuts:
+		l –To display or to hide load average line
+		t –To display or to hide task/cpu line
+		1 –To display or hide all other CPU’s
+		m –to display or to hide RAM and SWAP details
+		s –To change the time interval for updating top results(value is in sec’s)
+		R –To sort by PID number
+		u — Press u then username to get only that user process details
+		P –To sort by CPU utilization
+		M –To sort by RAM utilization
+		c –To display or hide command full path
+		r –To renice a process, press r then the PID no then the renice value to renice a process.
+		k –To kill a process, press k then PID number then enter to kill a process
+		w –To save the modified configuration permanently.
+		q –To quit the top command.
+		h –for getting help on top	
 		
 	B. atop
 		Atop is an ASCII full-screen performance monitor which can log and report 
@@ -303,6 +322,10 @@ Directory	/1/2/3/4/5
 	# 'free' + ('buffers' + 'cached')
 	Actual Free memory   336MB = 178+(51+137)
 ######################################################################################
+
+
+	$ iotop  				<=check I/O usage
+
 
 11. Date
 	$ date +%Y-%m-%d-%H-%M-%S
@@ -650,13 +673,15 @@ Directory	/1/2/3/4/5
 
 21. rm -rf ./tmp/test/delme/*    <=delete folder contents
     
+	## search all files bigger than 100MB
+	$find /  -type f -size +100M   		<= k-kilo, M-mega, G-giga
+
 	find /home/noza/ -name "*.txt" | xargs rm -rf				<= search all and delete them
 	find -name “*.txt” | xargs grep “Tecmint”					<= search and search string "Techmint"
     !!! Danger !!!
     rm -fr ./tmp/test/delme/ *   <=delete whole root folder(./tmp/test/delme)   
 
-	# Delete local backup folder older than 7 days
-	$ sudo find /data/backups/ -type f -mtime +7 -name 'rrs_us_db.sql.*' -delete   	<= mtime (days), mmin (mins)
+	
 
 	$ find . -type f -name "*.bak" -exec rm -i {} \;
 	$ find . -type f -name "FILE-TO-FIND" -exec rm -f {} \;
@@ -665,6 +690,30 @@ Directory	/1/2/3/4/5
 		-exec rm -rf {} \; : Delete all files matched by file pattern.
 		-type f : Only match files and do not include directory names.
 	
+	# Delete local backup folder older than 2 days
+	$ sudo find /data/backups/ -type f -mtime +0 -name 'rrs_us_db.sql.*' -delete   	<= mtime (days), mmin (mins)
+	
+	-mtime   
+		Day 0~1, 2, 3, 4, 5
+		+2 <= 3,4,5 older than 2days, -2 <= 1,2 less than 2days
+		
+	ctime
+		ctime is the inode or file change time. The ctime gets updated when the file attributes are changed, 
+		like changing the owner, changing the permission or moving the file to an other filesystem but will 
+		also be updated when you modify a file.
+
+	mtime
+		mtime is the file modify time. The mtime gets updated when you modify a file. Whenever you update 
+		content of a file or save a file the mtime gets updated. 
+		
+		Most of the times ctime and mtime will be the same, unless only the file attributes are updated. 
+		In that case only the ctime gets updated.
+
+	atime
+		atime is the file access time. The atime gets updated when you open a file but also when a file is 
+		used for other operations like grep, sort, cat, head, tail and so on.
+
+ 
 	
 22. touch file_{1..100}    <= creating 100 files
     touch file_{01..100}   <= to resolve file format problem above logic
@@ -1556,6 +1605,61 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 	$ sudo systemctl start iptables
 
 	
+	Writing a Simple Rule Set( https://wiki.centos.org/HowTos/Network/IPTables)
+
+
+IMPORTANT: At this point we are going to clear the default rule set. If you are connecting remotely to a server via SSH for this tutorial then there is a very real possibility that you could lock yourself out of your machine. You must set the default input policy to accept before flushing the current rules, and then add a rule at the start to explicitly allow yourself access to prevent against locking yourself out.
+We will use an example based approach to examine the various iptables commands. In this first example, we will create a very simple set of rules to set up a Stateful Packet Inspection (SPI) firewall that will allow all outgoing connections but block all unwanted incoming connections:
+
+
+# iptables -P INPUT ACCEPT
+# iptables -F
+# iptables -A INPUT -i lo -j ACCEPT
+# iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+# iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+# iptables -P INPUT DROP
+# iptables -P FORWARD DROP
+# iptables -P OUTPUT ACCEPT
+# iptables -L -v
+which should give the following output:
+
+
+Chain INPUT (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 ACCEPT     all  --  lo     any     anywhere             anywhere
+    0     0 ACCEPT     all  --  any    any     anywhere             anywhere            state RELATED,ESTABLISHED
+    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere            tcp dpt:ssh
+Chain FORWARD (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+Now lets look at each of the 8 commands above in turn and understand exactly what we've just done:
+
+iptables -P INPUT ACCEPT 
+	If connecting remotely we must first temporarily set the default policy on the INPUT chain to ACCEPT otherwise once we flush the current rules we will be locked out of our server.
+iptables -F 
+	We used the -F switch to flush all existing rules so we start with a clean state from which to add new rules.
+iptables -A INPUT -i lo -j ACCEPT 
+	Now it's time to start adding some rules. We use the -A switch to append (or add) a rule to a specific chain, the INPUT chain in this instance. Then we use the -i switch (for interface) to specify packets matching or destined for the lo (localhost, 127.0.0.1) interface and finally -j (jump) to the target action for packets matching the rule - in this case ACCEPT. So this rule will allow all incoming packets destined for the localhost interface to be accepted. This is generally required as many software applications expect to be able to communicate with the localhost adaptor.
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT 
+	This is the rule that does most of the work, and again we are adding (-A) it to the INPUT chain. Here we're using the -m switch to load a module (state). The state module is able to examine the state of a packet and determine if it is NEW, ESTABLISHED or RELATED. NEW refers to incoming packets that are new incoming connections that weren't initiated by the host system. ESTABLISHED and RELATED refers to incoming packets that are part of an already established connection or related to and already established connection.
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT 
+	Here we add a rule allowing SSH connections over tcp port 22. This is to prevent accidental lockouts when working on remote systems over an SSH connection. We will explain this rule in more detail later.
+iptables -P INPUT DROP 
+	The -P switch sets the default policy on the specified chain. So now we can set the default policy on the INPUT chain to DROP. This means that if an incoming packet does not match one of the following rules it will be dropped. If we were connecting remotely via SSH and had not added the rule above, we would have just locked ourself out of the system at this point.
+iptables -P FORWARD DROP 
+	Similarly, here we've set the default policy on the FORWARD chain to DROP as we're not using our computer as a router so there should not be any packets passing through our computer.
+iptables -P OUTPUT ACCEPT 
+	and finally, we've set the default policy on the OUTPUT chain to ACCEPT as we want to allow all outgoing traffic (as we trust our users).
+iptables -L -v 	
+	Finally, we can list (-L) the rules we've just added to check they've been loaded correctly.
+
+
+
+
+	
+	
+	
 ### Changing data directory on Centos 7 + MySQL 5.6	
 	$ wget http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
 	$ yum localinstall mysql57-community-release-el7-7.noarch.rpm
@@ -1620,15 +1724,18 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 
 59. Prompt Color red
+
+	Permanently add color scheme to .bashrc file
+	######															  ####
+	# echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> ~/.bashrc #
+	######															  ####
+
 	### only works on current shell
-    export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]' 	 >> .bashrc		<= green, red for 31m 
+    export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]' 	 >> ~/.bashrc		<= green, red for 31m 
 
-    export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"  >> .bashrc		<= 2 colors
+    export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"  >> ~/.bashrc		<= 2 colors
 
-	Permanently add to .bashrc file
-	######															####
-	# echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> .bashrc #
-	######															####								
+								
 	
 	########################	Vim color scheme enable   ######################
 	http://www.server-world.info/en/note?os=CentOS_7&p=initial_conf&f=7
@@ -1677,18 +1784,21 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	$ ping -c 1 www.google.com | gawk -F'[()]' '/PING/{print $2}'
   
   
-  dig, host, nslookup, 
-  yum install bind-utils
-  host $HOSTNAME | xargs | cut -f4 -d' '
+    dig, host, nslookup, 
+    yum install bind-utils
+    host $HOSTNAME | xargs | cut -f4 -d' '
   
   
 61. telnet ip_address port_number  <= check port is open for connection
-or  use NetCat
-###################################
-#  nc -v 192.168.110.220 10051 	  #  <= netcat  -v verbose / -z listening daemon
-###################################   
+	$ telnet ip_address 22
+	 to exit "ctrl+]" the type "close"
 
-  Connection to 192.168.110.220 10051 port [tcp/zabbix-trapper] succeeded!
+	NetCat
+	###################################
+	#  nc -v 192.168.110.220 10051 	  #  <= netcat  -v verbose / -z listening daemon
+	###################################   
+
+    Connection to 192.168.110.220 10051 port [tcp/zabbix-trapper] succeeded!
 
 
 62. Ubuntu Package Clean ### Package Clean ###
@@ -2177,6 +2287,28 @@ for x in $(foo); do …
 breaks $(foo) into words, and treats each word as a glob pattern. The default value of IFS isspace, tab and newline, so if foo prints out two lines hello world and howdy then the loop body is executed with x=hello, then x=world and x=howdy. If IFS is explicitly changed to contain a newline only, then the loop is executed for hello world and howdy. If IFS is changed to be o, then the loop is executed for hell,  w, rld␤h (where ␤ is a newline character) and wdy.
 
 	
+
+
+
+
+
+### SSH TUNNEL
+# orgin
+$ ssh -N -R 8822:localhost:22 remote.host.com
+The optional -N says "don't execute a command" (helpful to prevent accidents caused by leaving remote shells laying around.)
+
+Now from remote, you can SSH to host1 like this: (The remote port 8822 forwards to host1, but only on the loopback interface.)
+
+# remote
+$ ssh -p 8822 localhost
+For extra credit, you can export the forwarding to the whole world, allowing anyone get to host1 by hitting remote's port 8822. (Note the extra initial colon)
+
+# orgin
+$ ssh -N -R :8822:localhost:22 remote.host.com
+
+
+
+
 	
 	
 ############### 
@@ -2739,9 +2871,9 @@ ctrl-b c - new window
 
 #####
 Ubuntu Package Installed 
+$ dpkg -l | grep mongo
 
 root@puppet:~# dpkg --get-selections
-
 root@puppet:~# dpkg --get-selections | grep puppet
 puppet-common                                   install
 puppetlabs-release                              install
