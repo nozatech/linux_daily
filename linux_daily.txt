@@ -436,7 +436,17 @@ Directory	/1/2/3/4/5
 		$ cat /etc/fstab
 	5. 	$ echo '/dev/sdb1  /mnt/mysql  ext3  defaults 0 0' >> /etc/fstab
 	
+	
+# Mount recovery disk
+	$ fdisk -l
+	$ mount /dev/xvdf /mnt/dir or /tmp/dir
+# Unmount
+	$ umount /mnt/dir
+	 -l, --lazy              detach the filesystem now, and cleanup all later
 
+	check lsof and fuser
+	$ fuser -vm /mnt/dir
+	$ lsof /mnt/dir
 	
 	
 	/dev/mapper/U14--vg-root on / type ext4 (rw,errors=remount-ro)
@@ -2739,9 +2749,14 @@ ps aux | grep RRServer | grep -v grep | awk '{print $2}'
 		kill $(ps -A -ostat,ppid | awk '/[zZ]/{print $2}')
 
 			
-
-
-
+###	
+	Zombie processes (also show as <defunct>), aren't real processes at all. They are just entries in the kernel process table. 
+	This is the only resource they consume. They do not consume any CPU or RAM. The only danger of having zombies, is running 
+	out of space in process table.
+	$ cat /proc/sys/kernel/threads-max 
+	They appear only when their parent process (i.e. process which fork()'ed them) is alive, but did not yet call wait() 
+	system function. Once parent dies, the zombies are wait()'ed for by init and disappear.
+###
 
 
 trap cmd sig1 sig2  # executes a command when a signal is received by the script
