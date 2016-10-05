@@ -6,7 +6,7 @@ Jenkins on Ubuntu 14.04
 ### System update
 	apt-get update && apt-get upgrade
 
-### Java Installl
+### Java Install
 	apt-get -y install openjdk-7-jdk
 	java -version
 	
@@ -91,24 +91,29 @@ cd ~; wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
 sudo dpkg -i puppetlabs-release-trusty.deb
 sudo apt-get update
 sudo apt-get install puppet -y
+sudo /etc/init.d/apache2 stop
 
 sudo vi /etc/default/puppet
 START=yes		<= change from no to yes
 
 # Lock the version
 sudo vi /etc/apt/preferences.d/00-puppet.pref
-
+###
 # /etc/apt/preferences.d/00-puppet.pref
 Package: puppet puppet-common
 Pin: version 3.8*
 Pin-Priority: 501
-
+###
 
 sudo vi /etc/puppet/puppet.conf
+###
 	* Remove templatedir lile
 	* Remove [master] section
+	
 [agent]
 server = cdn-puppet.namcowireless.com
+###
+
 
 echo "10.134.8.185 cdn-puppet.namcowireless.com" >> /etc/hosts
 

@@ -396,7 +396,7 @@ mysql> SELECT DATE_FORMAT( NOW(), '%W, %D %M %Y, %T');
 
 
 ########################
-# Tiem zones in MySQL ##
+# Time zones in MySQL ##
 ########################
 
 mysql> CREATE TABLE tztest ( id INT AUTO_INCREMENT NOT NULL PRIMARY KEY, name VARCHAR(255), stamp TIMESTAMP );

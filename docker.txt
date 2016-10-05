@@ -1,0 +1,363 @@
+### Docker ####
+###############
+
+### Installation ###
+https://docs.docker.com/engine/installation/linux/centos/
+https://docs.docker.com/engine/installation/linux/ubuntulinux/
+
+Definition
+docker engine		<= Hypervisor
+docker image        <= vm image
+docker container    <= Running VM
+
+
+
+### CentOS7 ###
+
+Step 1 - setup
+$ systemctl start docker
+$ systemctl enable docker
+$ docker -v     			<= version
+$ docker info
+$ docker run hello-world
+
+
+Step 2 - Setup the MariaDB Container
+$ docker pull mariadb
+$ docker images
+
+$ docker run -e MYSQL_ROOT_PASSWORD=noza -e MYSQL_USER=noza -e MYSQL_PASSWORD=noza -e \
+  MYSQL_DATABASE=wordpress_db -v /root/wordpress/database:/var/lib/mysql --name wordpressdb -d mariadb
+
+$ docker inspect -f '{{ .NetworkSettings.IPAddress }}' wordpressdb
+ => 172.17.0.2
+
+$ yum install mysql  					<= client,  mysql-server is server
+$ mysql -u noza -h 172.17.0.2 -p
+
+$ docker pull wordpress:latest
+
+$ docker run -e WORDPRESS_DB_USER=noza -e WORDPRESS_DB_PASSWORD=noza -e \
+  WORDPRESS_DB_NAME=wordpress_db -p 8081:80 -v /root/wordpress/html:/var/www/html --link \
+  wordpressdb:mysql --name wpcontainer -d wordpress
+  
+$ http://192.168.232.148:8081   <=setup word press
+
+
+Step 4. Nginx reverse proxy install 
+	In this step, we will install the Nginx web server on the host system. 
+	We will configure Nginx as a reverse proxy for the Docker container 'wpcontainer' on the port 8081.
+	
+	
+###	Delete all containers ###
+#!/bin/bash
+# Delete all containers
+docker rm $(docker ps -a -q)
+# Delete all images
+docker rmi $(docker images -q)	
+###
+
+### Creating separate docker shell
+$ docker run -i -t  image_name /bin/bash
+$ docker run -t -i ubuntu:14.04 /bin/bash  <= specific version login
+$ docker inspect image_name
+$ ctrl-P+Q  to exit shell
+$ docker network ls
+
+
+
+
+
+###  Docker CMDs ###
+$ docker help
+$ docker port --help
+$ docker ps
+$
+
+
+
+
+
+
+
+
+
+
+### Ubuntu14 ###
+$ ls -l /var/run/
+  srw-rw---- 1 root       docker        0 Sep 19 16:03 docker.sock
+                            ^ group control local linux socket
+# add users to the Docker group
+$ grep docker /etc/group
+	docker:x:999
+$ sudo gpasswd -a noza docker			<= add to docker group
+
+$ noza@docker-u14:~$ docker run -it  ubuntu /bin/bash
+		v docker container as root
+	$ root@873cb622dd8d:/#             <= Docker container ID number
+	$ exit 
+
+	
+	
+### Instead of linux local socket by default on /var/run/docker, use NETWORK PORT
+$ service docker stop   <= stop docker first
+
+### run dockerD daemon 
+$ sudo dockerd -H tcp://192.168.232.147:2375       &
+          ^ host            ^port  ^ daemon mode   ^ background 
+
+### listen using the default unix socket, and on 2 specific IP addresses on this host.
+# $ sudo dockerd -H unix:///var/run/docker.sock -H tcp://192.168.59.106 -H tcp://10.10.10.2		  
+###
+		  
+$ netstat -plnt
+	tcp 0  0 192.168.232.147:2375    0.0.0.0:*     LISTEN      29082/dockerd
+$docker info  <= running on network, not the docker socket.
+Cannot connect to the Docker daemon. Is the docker daemon running on this host?
+	
+
+### ON CentOS7 
+
+$ export DOCKER_HOST="tcp://192.168.232.147:2375"
+
+$ [root@docker-c7 ~]$docker info
+Server Version: 1.12.1
+Storage Driver: aufs					          <=
+ Root Dir: /var/lib/docker/aufs
+.......
+Kernel Version: 4.2.0-27-generic
+Operating System: Ubuntu 14.04.4 LTS    <= UBUNTU running on CentOS7!!!!
+
+## Clean up or Disconnect the Ubuntu docker container from Ubuntu 
+[root@docker-c7 ~]$export DOCKER_HOST=
+[root@docker-c7 ~]$docker info
+Security Options: seccomp
+.......
+Kernel Version: 3.10.0-327.28.3.el7.x86_64
+Operating System: CentOS Linux 7 (Core)           <= 
+...........
+
+
+# On Ubuntu
+[root@docker-u14 ~]$service docker start
+docker start/running, process 29266
+[root@docker-u14 ~]$docker run -it centos /bin/bash
+[root@796dab5a1c1b /]# cat /etc/*rel*
+CentOS Linux release 7.2.1511 (Core)
+Derived from Red Hat Enterprise Linux 7.2 (Source)
+[root@796dab5a1c1b /]# cat /etc/hosts
+	172.17.0.2      796dab5a1c1b  <= matches with Host ip
+	
+	# ip a  or ip addr for IP info
+
+[root@796dab5a1c1b /]#exit  <= Kill docker and exit to host OS
+$ docker ps 			    <= check any docker container running
+$ docker ps  -a				<= all
+	CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
+	796dab5a1c1b        centos              "/bin/bash"         13 minutes ago      Exited (0) 2 minutes ago                       condescending_galileo
+     ^ ID                ^ OS
+
+$ ls -l /var/lib/docker/aufs/diff/
+drwxr-xr-x 10 root root 4096 Oct  4 14:44 fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c73f3675fb40c2e68d30
+drwxr-xr-x  8 root root 4096 Oct  4 14:33 fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c73f3675fb40c2e68d30-init
+
+$ ls -l /var/lib/docker/aufs/diff/fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c73f3675fb40c2e68d30
+drwxr-xr-x 23 root root 4096 Oct  4 14:44 etc
+dr-xr-x---  2 root root 4096 Oct  4 14:44 root
+drwxr-xr-x  2 root root 4096 Oct  4 14:44 run
+drwxrwxrwt  2 root root 4096 Oct  4 14:44 tmp
+drwxr-xr-x  8 root root 4096 Oct  4 14:35 usr
+drwxr-xr-x  6 root root 4096 Oct  4 14:35 var
+
+$ ls -l /var/lib/docker/aufs/diff/fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c73f3675fb40c2e68d30/root
+	-rw-r--r-- 1 root root 10 Oct  4 14:44 test.file  						<= created from container OS using VIM
+	-rw-r--r-- 1 root root  4 Oct  4 14:44 wow.txt							<= created from container OS using VIM
+[root@docker-u14 ~]$cat /var/lib/docker/aufs/diff/fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c73f3675fb40c2e68d30/root/test.file
+	test file			<= created from container OS using VIM
+
+
+$[root@docker-u14 ~]$docker start 796dab5a1c1b
+796dab5a1c1b
+[root@docker-u14 ~]$docker attach 796dab5a1c1b
+
+	[root@796dab5a1c1b /]#
+	[root@796dab5a1c1b ~]# cat wow.txt
+		wow
+
+### Container Name convention [a-zA-Z0-9_-]
+
+$ docker run -it fedora /bin/bash
+                  ^ vm image for latest if No specific version
+				  
+latest: Pulling from library/fedora
+2bf01635e2a0: Pull complete
+Digest: sha256:64a02df6aac27d1200c2572fe4b9949f1970d05f74d367ce4af994ba5dc3669e
+Status: Downloaded newer image for fedora:latest
+
+$ docker pull -a fedora			<= download all images
+
+				
+$ docker images					<= check all local images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              latest              45bc58500fa3        2 weeks ago         126.9 MB
+centos              latest              980e0e4c79ec        4 weeks ago         196.8 MB
+fedora              latest              11a5107645d4        7 weeks ago         204.4 MB
+hello-world         latest              c54a2cc56cbb        3 months ago        1.848 kB
+
+#######################################################################
+   <-cmd          <-image   <- app or process e.g. <= /usr/sbin/nginx 
+   v              v         v   
+$ docker run -it ubuntu   /bin/bash   		
+             ^
+			 i <- interactive(attach), t <- tty(login) 
+#######################################################################
+
+$ docker images
+
+$ docker run -it centos /bin/bash
+### keep running and exit ###
+### ctrl+p+q   ###      <= to exit
+##############################
+$ docker ps    <= RAN from OS HOST
+CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
+5730134bd446        centos              "/bin/bash"         About a minute ago   Up About a minute                       kickass_engelbart
+
+$ docker ps -a                <= show all running containers
+
+
+
+
+### Docker Layers ###
+top     config files
+middle  nginx
+base    OS image
+
+$ docker pull coreos/apache
+latest: Pulling from coreos/apache
+a3ed95caeb02: Pull complete 	 <= latest update layer
+5e160ca0bb5a: Pull complete	 	 <= update layer
+1f92e2761bfd: Pull complete 	 <= base image layer
+
+### base layer + dependency layers
+$ ls -lh /var/lib/docker/aufs/layers/
+
+
+### Move docker container to other hosts ###
+Ubutu => CentOS
+
+### Ubuntu
+$ docker images
+
+### only run echo then close the docker container
+$ docker run ubuntu /bin/bash -c "echo 'COOL CONTENT' > /root/COOL-FILE.txt"  
+$ docker run ubuntu /bin/bash -c "echo 'sudo apt-get install vim -y' "  
+
+$docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                         PORTS               NAMES
+659ddce81e1c        ubuntu              "/bin/bash -c 'echo '"   23 seconds ago      Exited (0) 22 seconds ago                          serene_meninsky
+da6956dc956e        ubuntu              "/bin/bash -c 'echo '"   36 seconds ago      Exited (1) 36 seconds ago                          happy_shirley
+25271cb8afc7        ubuntu              "/bin/bash -c 'echo '"   3 minutes ago       Exited (0) 3 minutes ago                           peaceful_khorana
+  
+$ docker commit 659ddce81e1c fridge					<= create new image "fridge" name from container
+sha256:3179ff2722de7e45e680e985b1f65b08ff520e01b43e7aee1f61462ccc150b66
+
+$docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
+fridge              latest              3179ff2722de        About a minute ago   126.9 MB
+  ^ <= new container image
+
+  
+$docker history fridge			<= image history
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+3179ff2722de        2 minutes ago       /bin/bash -c echo 'sudo apt-get install vim -   0 B
+45bc58500fa3        2 weeks ago         /bin/sh -c #(nop)  CMD ["/bin/bash"]            0 B
+<missing>           2 weeks ago         /bin/sh -c mkdir -p /run/systemd && echo 'doc   7 B
+<missing>           2 weeks ago         /bin/sh -c sed -i 's/^#\s*\(deb.*universe\)$/   1.895 kB
+<missing>           2 weeks ago         /bin/sh -c rm -rf /var/lib/apt/lists/*          0 B
+<missing>           2 weeks ago         /bin/sh -c set -xe   && echo '#!/bin/sh' > /u   745 B
+<missing>           2 weeks ago         /bin/sh -c #(nop) ADD file:7d01e28262e78b1d7f   126.9 MB
+
+
+$ docker save -o /tmp/fridge.tar fridge
+  
+$ scp -pv fridge.tar noza@192.168.232.148:/tmp/
+ 
+### On CentOS7 ###
+
+$ tar -tf /tmp/fridge.tar         <= list what is in the tar file
+      ^ -t <= list, -f <= format
+0ca87058da90257128ca83a1d0e1bd55236f43c75b915120c70498af6ad37625/
+0ca87058da90257128ca83a1d0e1bd55236f43c75b915120c70498af6ad37625/VERSION
+0ca87058da90257128ca83a1d0e1bd55236f43c75b915120c70498af6ad37625/json
+0ca87058da90257128ca83a1d0e1bd55236f43c75b915120c70498af6ad37625/layer.tar
+3179ff2722de7e45e680e985b1f65b08ff520e01b43e7aee1f61462ccc150b66.json
+32c9150163f303fb9ab7b3e7459b40805931201f557e70391a5930b4c1dfd889/
+32c9150163f303fb9ab7b3e7459b40805931201f557e70391a5930b4c1dfd889/VERSION
+32c9150163f303fb9ab7b3e7459b40805931201f557e70391a5930b4c1dfd889/json
+32c9150163f303fb9ab7b3e7459b40805931201f557e70391a5930b4c1dfd889/layer.tar
+3c9b387d94ad69ccf828db01d3e70da48ab74ba3bde226752340e54489c46be7/
+3c9b387d94ad69ccf828db01d3e70da48ab74ba3bde226752340e54489c46be7/VERSION
+3c9b387d94ad69ccf828db01d3e70da48ab74ba3bde226752340e54489c46be7/json
+3c9b387d94ad69ccf828db01d3e70da48ab74ba3bde226752340e54489c46be7/layer.tar
+5583220665a7d192f5cf180f16c2b4c114b76ac20f0fc4325fbdf11052fa8ba1/
+5583220665a7d192f5cf180f16c2b4c114b76ac20f0fc4325fbdf11052fa8ba1/VERSION
+5583220665a7d192f5cf180f16c2b4c114b76ac20f0fc4325fbdf11052fa8ba1/json
+5583220665a7d192f5cf180f16c2b4c114b76ac20f0fc4325fbdf11052fa8ba1/layer.tar
+d1abbb554de95d8b5bf8b414ae80c116237e5984fb80558e8f3e4a1b501e855f/
+d1abbb554de95d8b5bf8b414ae80c116237e5984fb80558e8f3e4a1b501e855f/VERSION
+d1abbb554de95d8b5bf8b414ae80c116237e5984fb80558e8f3e4a1b501e855f/json
+d1abbb554de95d8b5bf8b414ae80c116237e5984fb80558e8f3e4a1b501e855f/layer.tar
+manifest.json
+repositories
+
+### import
+$ docker load -i /tmp/fridge.tar
+
+c8305edc6321: Loading layer 132.5 MB/132.5 MB
+5c42a1311e7e: Loading layer 15.87 kB/15.87 kB
+c3c1fd75be70: Loading layer 9.728 kB/9.728 kB
+cc8df16ebbaf: Loading layer 4.608 kB/4.608 kB
+4f9d527ff23f: Loading layer 3.072 kB/3.072 kB
+Loaded image: fridge:latest
+
+
+$docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+fridge              latest              3179ff2722de        36 minutes ago      126.8 MB
+
+
+  
+$ docker run -it fridge /bin/bash
+
+$ cat /root/COOL-FILE.txt
+  COOL CONTENT 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,22 @@
+아무리 바빠도 해야할 일 - 책
+돈이 많아도 하지 말아야 할일 -도박 마약
+
+1.역사책 - 역사의식 책임
+2.문화책 - 감성
+3.경영책 - 논리
+4.철학책 - 생각에 방법
+5.사회학 인간학 - 인간 관계
+
 Daily Linux CMD List & Scripts
 
 32bit is 2^32 =~ 4.3 billion
 IP address is 32bit 
+
+### Enable color & history time stamp ###
+echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> ~/.bashrc
+echo 'export HISTTIMEFORMAT="%F "' >> ~/.bashrc
+###
+
 		
 1. Run Scripts
 	$ ./script.sh
@@ -19,6 +34,7 @@ IP address is 32bit
     #!/bin/bash -x      		<= -x to #! line for debug mode
     set -x              		<= End of file +x for TURN OFF
 	
+		
  # Search and replace
 	:%s/foo/bar/g
 	:%s/foo/bar/gc				<= to confirm first
@@ -32,7 +48,7 @@ IP address is 32bit
     $ exec ./script    <= after run, the login shell exit 
 	$ sh script.sh
 	
- # Save in read only file
+ ### Save in read only file ###
 	:w !sudo tee %                  	<= save as sudo privilege.  type (L) load at the prompt to reload.
 	:w !chmod 777 %    then    :wq!
 	
@@ -77,6 +93,8 @@ Directory	/1/2/3/4/5
 	from /1/2/3/  =>  /1   			$ cd ../..
 	from /1/2/3   =>  /1/2-1/ 		$ cd ../2-1
 	
+# number line	
+	$ cat txt | nl 
 	
 	
 	
@@ -155,7 +173,11 @@ Directory	/1/2/3/4/5
     $ sudo sh -c "cd /home ; du -s * | sort -rn > USAGE"
 
 	
-4. free  		  <= Check memory
+4. free  
+	### Most memory used by process
+	$ ps aux --sort=-%mem | awk 'NR<=10{print $0}'	
+
+		  <= Check memory
 	Displays the total amount of free and used physical and swap memory in the system, 
 	as well as the buffers used by the kernel. The shared memory column should be ignored; it is obsolete.
 		
@@ -169,7 +191,7 @@ Directory	/1/2/3/4/5
          -o switch disables the display of a "buffer adjusted" line.  If the -o
             option is not specified, free subtracts buffer memory from the  used
             memory and adds it to the free memory reported.
-
+	$ egrep --color 'Mem|Cache|Swap' /proc/meminfo
 
 5. vmstat   
 	virtual memory statistics 
@@ -213,11 +235,23 @@ Directory	/1/2/3/4/5
 	$ vnstat --dumpdb			<= export to Excel or 
 
 		
-6. Swap	
-	$ dd if=/dev/zero of=/swapfile bs=1024 count=512k
+6. Creating swap space in CentOS7
+	$ swapon -s
+	$ free -m
+	
+	$ dd if=/dev/zero of=/swapfile bs=2048 count=512k
+	$ sudo chmod 600 /swapfile
     $ mkswap /swapfile
 	$ swapon /swapfile
 
+### bug, not working	###
+#	$ sudo fallocate -l 2G /swapfile   <= 2GB space for swap
+#	$ sudo chmod 600 /swapfile
+#	$ ls -lh /swapfile
+#	$ sudo mkswap /swapfile
+#	$ sudo swapon /swapfile
+###	
+	
 7. sysstat	Linux Performance Monitoring package
 	Collective CPU usage
 	Individual CPU statistics
@@ -266,12 +300,15 @@ Directory	/1/2/3/4/5
 	
 9. Utility to check real time processing
     A. top 
-       $  top -bn 1 | awk "/$1/ {tot =+ \$6; n++} END {print tot\" \"n}"        <= -b <=batch mode, n <=number, 1 <=count  
-        # capture into single page file 
-		-b bache mode sending output from top to other programs or to a file. 
-		-n number of iteration 
-	
+        $ top -bn 1 			<= Top BatchNumber 1			    
+								<= capture into single page file  
+								<= -b <= batch mode, n <= number, 1 <= count 
+		
+		$ top -bn 1 | awk "/$1/ {tot =+ \$6; n++} END {print tot\" \"n}"      <=??
+		
 		### Top commands short cuts:
+		b -bache mode sending output from top to other programs or to a file. 
+		n -number of iteration 
 		l –To display or to hide load average line
 		t –To display or to hide task/cpu line
 		1 –To display or hide all other CPU’s
@@ -292,19 +329,24 @@ Directory	/1/2/3/4/5
 		Atop is an ASCII full-screen performance monitor which can log and report 
 		the activity of all server process up to 28days log.
 	
-		atop -a <= sort in order of most active resource.
-		atop -c <= revert to sorting by cpu consumption (default).
-		atop -d <= sort in order of disk activity.
-		atop -m <= sort in order of memory usage
-		atop -n <= sort in order of network activity
+		$ atop -a <= sort in order of most active resource.
+		$ atop -c <= revert to sorting by cpu consumption (default).
+		$ atop -d <= sort in order of disk activity.
+		$ atop -m <= sort in order of memory usage
+		$ atop -n <= sort in order of network activity
   
     C. htop
 		Up/Down arrow keys to select a process, and then you can kill it with the F9 key
 
-10. Disk usage
-	du -ah              <= all total size files & directories, -a all, -h human 
-	du -ah *   			<= No total size
-	du -sh /home/noza*  | sort -nr				<= Folder list usage, not files
+10. Disk usage / folder size 
+	$ du -hs * | sort -rh | head -5
+	$ find -type f -exec du -Sh {} + | sort -rh | head -n 5
+	
+	$ du -ah              					<= all total size files & directories, -a all, -h human 
+	$ du -ah *   							<= No total size
+	$ du -sh /home/noza*					<= total holder size including subfolders
+	$ du -sh /home/noza*  | sort -nr		<= Folder list usage, not files
+	$ du -sh /home/noza*  | sort -nr		<= Folder list usage, not files
 	
 ######################################################################################
 				total       used       free     shared    buffers     cached
@@ -312,7 +354,7 @@ Directory	/1/2/3/4/5
 	-/+ buffers/cache:        115      **367** <= Actual Free Memory
 
 
-	# free -m | awk 'NR==3 {print $4 " MB"}'
+	$ free -m | awk 'NR==3 {print $4 " MB"}'
 	#
 	# When thinking about 'how much memory is really being used' :
 	# 'used' - ('buffers' + 'cached')
@@ -328,6 +370,10 @@ Directory	/1/2/3/4/5
 
 
 11. Date
+	$ date +%F
+	  2016-08-11
+	$ timestamp=`date +%F`
+	
 	$ date +%Y-%m-%d-%H-%M-%S
 	
 	$DATE=`date +%Y-%m-%d-%H-%M-%S`   <= %Y is 2016, %y is 16
@@ -338,7 +384,9 @@ Directory	/1/2/3/4/5
 	$echo $DATE
 	 22:18:35
 
-	 
+	# milliseconds since 1-1-1970(Use %3N to truncate the nanoseconds to the 3 most significant digits)
+	$ date +%s%3N
+	1397392146866 
 	 
 12. Route or IP
 
@@ -363,24 +411,93 @@ Directory	/1/2/3/4/5
 13. tar (backup) and cron (schedule job) 
 
 	A. Creating tar file 
-	$ tar -c(create)v(verbose)p(preserve permission)z(compression)f(filename)
-	$ tar -czvf archive-name.tar.gz directory-name	
+	# tar -c(create)v(verbose)p(preserve permission)z(compression)f(filename)
+	# tar -czvf archive-name.tar.gz directory-name	
 	
 	$ tar -czvf  backup.tar.gz /home/nozatech
-	$ tar -cvpzf backup.tar.gz /(location) --exclude=/mnt /
+	$ tar -cvpzf backup.tar.gz /(root) --exclude=/mnt /
 	$ tar -cvpzf backup.tar.gz /home/nozatech
 	
 	Extract tar file
-		$ tar -x(extract)v(verbose)p(permission)z(uncompress)f(file name) backup.tar.gz -C(change to different directory) /recover
+	# tar -x(extract)v(verbose)p(permission)z(uncompress)f(file name) backup.tar.gz -C(change to different directory) /recover
 	$ tar -xvzf  backup.tar.gz /home/nozatech
 	$ tar -xvpzf backup.tar.gz /home/nozatech	
 
-	B. Cron Jobs
+	$ tar -zcvf  <= create tar zip file
+	$ tar -zxvf  <= extract tar zip file
+	$ tar -tf    <= extract tar file
+	
+	
+B. Cron Jobs
 	$  crontab -e (first time ask a editor - choose vim)
 		* * * * *
 		min         hr         day of month       month          day of month          command
 		0-59 mins   0-23 hrs   1-31days           1-12           0(sun)-6(sat)
 		30	        2     	   * 	              *              2(tuesday)
+		
+cron job search from command line
+* * * * * *
+| | | | | | 
+| | | | | +-- Year              (range: 1900-3000)         
+| | | | +---- Day of the Week   (range: 1(Monday)-7)
+| | | +------ Month of the Year (range: 1-12)
+| | +-------- Day of the Month  (range: 1-31)
+| +---------- Hour              (range: 0-23)
++------------ Minute            (range: 0-59)
+
+# examples 
+	0 0 * * 1,3,5   			   <= 12AM at every Mon, Wed, Fri
+	@reboot        				   <= Run once, at startup.  Put startup script!!!!
+	0 0 1 1 *		@yearly        <= Run once a year
+	@annually       @yearly 
+	0 0 1 * *		@monthly       <= Run once a month
+	0 0 * * 0		@weekly        <= Run once a week
+	0 0 * * *		@daily         <= Run once a day
+	@midnight       @daily 
+	0 * * * *		@hourly        <= Run once an hour
+	
+	* * * * * /sbin/ping -c 1 192.168.0.1 > /dev/null
+	0 0,12 1 */2 * 				   <= every 12am & 12pm on 1st day of every 2nd month
+	30 08 10 06 * 				   <= June 10th 8:30AM
+	00 09-18 * * 1-5 			   <= Everyday 9am to 6pm Mon~Fri
+	
+# Install crontab
+	$ crontab cron_jobs.txt
+	
+	###
+	$ cat cron_jobs.txt
+	* * * * *         /sbin/ping -c 1 192.168.0.1 > /dev/null
+	0 0,12 1 */2 *    /cmd				    # every 12am & 12pm on 1st day of every 2nd month
+	30 08 10 06 * 	  /cmd					# June 10th 8:30AM
+	00 09-18 * * 1-5  /cmd			   		# Everyday 9am to 6pm Mon~Fri
+	###
+	
+	$ crontab -l				<= current user's list of cron jobs 
+	$ crontab -e				<= edit cron job
+	
+	### Finding cron job list for specific user ### 	
+	$ crontab -u user_id -l					<= list jobs
+	$ crontab -u user_id -e					<= edit
+	
+	### Finding cron job list for all users ###
+	$ for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
+
+	$ for user in $(cut -f1 -d: /etc/passwd); do echo $user; crontab -u $user -l; done
+
+	
+	a. Getting all user id info from /etc/passwd using 
+	cut -f1 -d:  /etc/passwd
+    b. using crontab utility to check list of cron job list
+	crontab -u $user -l
+	##########################################
+	# #!/bin/bash
+	# for user in $(cut -f1 -d: /etc/passwd); 
+	# do 	
+	#    echo $user; crontab -u $user -l; 
+	# done
+    ##########################################
+
+	
 14. Zipping or archiving
 	$ bzip2 ls.txt &
 	 [1] 28072
@@ -405,10 +522,12 @@ Directory	/1/2/3/4/5
 		Filesystem              Type         Size  Used Avail Use% Mounted on
 		rootfs                  rootfs        18G  1.1G   17G   7% /
 
-
+###########################################
 ### Add new hard drive or partition
+###########################################
 	1. 	$ fdisk -l
-		$ ls /dev/sd*
+		$ ls /dev/sd*      (Ubuntu /dev/xvd*)
+		
 	2. 	$ fdisk /dev/sdb			<= Create new partitions
 		$ command(m for help): p
 			p	 print the partition table
@@ -421,28 +540,45 @@ Directory	/1/2/3/4/5
 			e   extended
 			Select (default p): p
 			Partition number (1-4, default 1): 1
+			
 		$ command(m for help): p
 			Device Boot      Start         End         Blocks   Id  System
 			/dev/sdb1        2048        10485759     5241856   83  Linux
 		
 		$ Expert command (m for help): w
 		The partition table has been altered!
+		
+		
 		$ fdisk -l
 	    Device Boot      Start         End      Blocks   Id  System
 		/dev/sdb1            2048    10485759     5241856   83  Linux
+		
+		$ file -sL /dev/xvd*
+		  /dev/xvda1: Linux rev 1.0 ext4 filesystem data  					<= ext4
+		
 	3. 	$ mkfs.ext3 /dev/sdb1
+	    $ mkfs.ext4 /dev/xvdb                                               <= ext4 
+
 	4. 	$ mount -t ext3 /dev/sdb1 /mnt/mysql -rw
-	# $ umount /mnt/mysql
-		$ cat /etc/fstab
+	    $ mount -t ext4 /dev/xvdb /puppet/ -rw
+		# $ umount /mnt/mysql
+
+	$ cat /etc/fstab					<= check hdd list
 	5. 	$ echo '/dev/sdb1  /mnt/mysql  ext3  defaults 0 0' >> /etc/fstab
 	
 	
-# Mount recovery disk
+	6. $ mount | column -t				<= Check mount list
+	   $ cat /proc/mounts
+	
+	# Mount recovery disk
 	$ fdisk -l
 	$ mount /dev/xvdf /mnt/dir or /tmp/dir
-# Unmount
+	
+	# Unmount
 	$ umount /mnt/dir
 	 -l, --lazy              detach the filesystem now, and cleanup all later
+
+
 
 	check lsof and fuser
 	$ fuser -vm /mnt/dir
@@ -452,7 +588,7 @@ Directory	/1/2/3/4/5
 	/dev/mapper/U14--vg-root on / type ext4 (rw,errors=remount-ro)
 	
 	
-	$ cat /proc/mount
+
 	
 	What Kernel supports filesystem
 	  $ cat /proc/filesystems
@@ -532,8 +668,7 @@ Directory	/1/2/3/4/5
 		reports where 1 kilobyte is equal to 1000 bytes, use the following form:
 	
 	
-	Most memory used by process
-	$ ps aux --sort=-%mem | awk 'NR<=10{print $0}'	
+
 	
 	
 19. Alias
@@ -611,16 +746,16 @@ Directory	/1/2/3/4/5
 														<= \\	backslash	insert a backslash
 	
 	
-25. $ last				<= show listing of last logged in users
+25. $ last						<= show listing of last logged in users
     $ who
-	$ who -r 			<= runlevel
+	$ who -r 					<= runlevel
 	
-	$ lastlog			<= reports the most recent login of all users 
+	$ lastlog					<= reports the most recent login of all users 
     
 	$ lsof -u noza				<= list open files user name noza
 	$ lsof -p 1234	
 
-	Last Reboot
+###	Last Reboot check ###
 	$ who -b
 	$ last reboot
 	$ last
@@ -642,10 +777,9 @@ Directory	/1/2/3/4/5
 
 
 17. if [ $id -u != "0" ] ;then
-	echo "You must be the supper user to run this script" >&2  		<= user id -u failure message
+	echo "You must be the supper user to run this script" >&2  		<= user id -u failure q
 	exit 1															<= exit status sets to 1(failure)
     fi
-
 
 
 
@@ -701,6 +835,7 @@ Directory	/1/2/3/4/5
 		-type f : Only match files and do not include directory names.
 	
 	# Delete local backup folder older than 2 days
+	$ sudo find /backup/ -mindepth 1 -mtime +2 -delete
 	$ sudo find /data/backups/ -type f -mtime +0 -name 'rrs_us_db.sql.*' -delete   	<= mtime (days), mmin (mins)
 	
 	-mtime   
@@ -984,14 +1119,8 @@ eval > file           Y(3,8) Y(3)   Y      Y(6)      Y      Y
 	done
 
 
+
 	
-   ** Finding cron job list for all users.**
-
-       Run as root and shell
-	   
-       $ for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
-
-
 
 35. file
 	i=1
@@ -1021,12 +1150,18 @@ Undo
 
 
 
-37.read -p "What year?[nnnn] " a
+37. read -p "What year?[nnnn] " a
    while [[ ! $a =~ [0-9]{4} ]]; do
        read -p "A year, pelase! [nnnn] " a
    done
    echo "Selected year: $a"
 
+	
+	
+	
+	
+	mkdir
+	$ mkdir -p production/{modules,manifests}  <= creating multi folders
 
 
 
@@ -1183,9 +1318,16 @@ $./my.sh apple orange kiwi lemon
 =======
 >>>>>>> Stashed changes
 
+### encryption and decryption
+	$ openssl passwd -1 your_password  
+	  $1$nd1lHN8J$ehlK62ZgzrZDBq6ZHPT.l/   <= hashed value
+
+
+
 	
 42. strace - trace system calls and signals	
 	$ strace foobar.sh  	<= debugging a command/script   
+	$ strace -p PID
 
 <<<<<<< Updated upstream
 43. stty 		 <= change and print terminal line settings
@@ -1240,6 +1382,39 @@ $./my.sh apple orange kiwi lemon
 44. lsmod = Show the status of modules in the Linux Kernel
 			same as  "cat /proc/modules"
 >>>>>>> Stashed changes
+
+45. Disabling User account
+	Change login passwd in /etc/passwd
+	apark:x:503:504::/home/apark:/bin/bash
+	apark:* or !:503:504::/home/apark:/bin/bash   <= X to * or !  
+		note: will require you to assign a new password to the user if you re-enable the account,
+	apark:x:503:504::/home/apark:/bin/bash/nologin    <= add /nologin at the end
+	apark:x:503:504::/home/apark:/bin/nologin
+	apark:x:503:504::/home/apark:/usr/sbin/nologin
+	e.g. $ ssh test@192.168.232.138
+			test@192.168.232.138's password:
+			Permission denied, please try again.
+	
+	$ usermod --lock --expiredate 1970-01-01 <username>
+	$ sudo usermod --lock --shell /bin/nologin username
+	$ sudo usermod -L -s /bin/nologin username
+
+	$ chage -E 0 user_ID                                       <= $chage -E -1 user_ID   
+	$ ssh test1@192.168.232.138
+	test1@192.168.232.138's password:
+	Your account has expired; please contact your system administrator
+	Connection closed by 192.168.232.138
+
+# Referece http://unix.stackexchange.com/questions/7690/how-do-i-completely-disable-an-account
+	$ passwd -l user_ID			<= -l lock
+Doesn't satisfy constraints because public key authentication bypasses PAM and still allows direct login.
+	$ usermod -s /sbin/nologin <user>
+Doesn't satisfy constraints because breaks the enterprise scheduler
+### $ usermod --lock --expiredate 1970-01-01 <user>  ###
+	$ usermod -l -e 1970-01-01 user_ID
+	This is our winner. Remote login disabled, yet root can still su <user>, as can other users via 
+	sudo so the scheduler functions properly and authorized end users can become the target service account as needed.
+
 
 45. Wall					<= messaging to users within system 				
 	$echo testing > wall.txt
@@ -1270,6 +1445,9 @@ $./my.sh apple orange kiwi lemon
 
 
 A. CentOS 6.5(sysV)
+
+	
+/sbin/chkconfig --list
 
 	a.List of all services for system
 	  chkconfig --list  | more
@@ -1306,38 +1484,38 @@ systemd:
 Enable a service
 chkconfig:
 
-# chkconfig <servicename> on
+# chkconfig <service_name> on
 systemd:
 
-# systemctl enable <servicename>.service
+# systemctl enable <service_name>.service
 Disable a service
 chkconfig:
 
-# chkconfig <servicename> off
+# chkconfig <service_name> off
 systemd:
 
-# systemctl disable <servicename>.service
+# systemctl disable <service_name>.service
 Start a service
 chkconfig:
 
-# service <servicename> start
+# service <service_name> start
 systemd:
 
-# systemctl start <servicename>.service
+# systemctl start <service_name>.service
 Stop a service
 chkconfig:
 
-# service <servicename> stop
+# service <service_name> stop
 systemd:
 
-# systemctl stop <servicename>.service
+# systemctl stop <service_name>.service
 Check the status of a service
 chkconfig:
 
-# service <servicename> status
+# service <service_name> status
 systemd:
 
-# systemctl status <servicename>.service
+# systemctl status <service_name>.service
 
 
 
@@ -1421,9 +1599,9 @@ e.g.
 	cal 	 		                  <= display calendar
 
 50.History with time stamp
- export into ~/.bash_profile as well as /root/.bash_profile
+	export into ~/.bash_profile as well as /root/.bash_profile
  
-export HISTTIMEFORMAT="%F %T "
+	export HISTTIMEFORMAT="%F %T "
 
 
 
@@ -1539,6 +1717,17 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 55. SElinux <= add port to security-enhanced linux 
   semange port -a -t http_port_t -p tcp 10051  
 
+	### set SELINUX Permissive mode
+    $ setenforce permissive
+	$ sed -i 's\=enforcing\=permissive\g' /etc/sysconfig/selinux
+	# To Check
+	$ getenforce
+	Permissive
+  
+  
+  
+  
+  
 56. Region and Time NTP
 
 #### Region - TIME ZONE ####
@@ -1606,13 +1795,15 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 	$ /etc/init.d/mysqld start
 
 	### CentOS7 ### 
-	$ sudo iptables -L
-	$ sudo yum -y install iptables-services
-	$ sudo systemctl enable iptables 		<= put into start up
-	$ sudo systemctl mask firewalld			<= disable??
-	$ sudo systemctl stop firewalld
-	$ vi /etc/sysconfig/iptables
-	$ sudo systemctl start iptables
+sudo iptables -L
+
+sudo yum -y install iptables-services
+sudo systemctl enable iptables 		
+sudo systemctl mask firewalld			
+sudo systemctl stop firewalld
+
+vi /etc/sysconfig/iptables
+sudo systemctl start iptables
 
 	
 	Writing a Simple Rule Set( https://wiki.centos.org/HowTos/Network/IPTables)
@@ -1733,6 +1924,15 @@ iptables -L -v
 # Security Selinux
 vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 
+58. Bash History with time stamp
+	###										###	
+	#  $ export HISTTIMEFORMAT='%F '          #		<= %F Equivalent to %Y - %m - %d
+	#  $ export HISTTIMEFORMAT='%F %T  ' 	  #		<= %F Equivalent to %Y - %m - %d,  %T Replaced by the time ( %H : %M : %S )
+	** Check the export list	
+	$ export -p | grep HIST*
+	$ env | sort | grep HIST
+
+
 59. Prompt Color red
 
 	Permanently add color scheme to .bashrc file
@@ -1789,6 +1989,9 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	$ tcpdump -n icmp and 'icmp[0] != 8 and icmp[0] != 0'
 	$ tcpdump -n icmp and icmp[icmptype] != icmp-echo and icmp[icmptype] != icmp-echoreply
 
+	### Capture any packets where the source host is 192.168.1.1. Display IP addresses and port numbers:
+	http://www.rationallyparanoid.com/articles/tcpdump.html
+	$ tcpdump -n src host 192.168.1.1
   
 	Ping and capture IP only
 	$ ping -c 1 www.google.com | gawk -F'[()]' '/PING/{print $2}'
@@ -1797,6 +2000,8 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
     dig, host, nslookup, 
     yum install bind-utils
     host $HOSTNAME | xargs | cut -f4 -d' '
+	
+	$ dig +short +trace www.name.com
   
   
 61. telnet ip_address port_number  <= check port is open for connection
@@ -1805,20 +2010,20 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 
 	NetCat
 	###################################
-	#  nc -v 192.168.110.220 10051 	  #  <= netcat  -v verbose / -z listening daemon
+	#  nc -v 192.168.110.220  22 	  #  <= netcat  -v verbose / -z listening daemon
 	###################################   
 
     Connection to 192.168.110.220 10051 port [tcp/zabbix-trapper] succeeded!
 
 
+
+	
 62. Ubuntu Package Clean ### Package Clean ###
 
 # Installed package search
   
   apt-cache search mysql
 
-  
-  
   sudo apt-get update
 
 # Backing ups:
@@ -1829,15 +2034,44 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
   sudo apt-get clean 
   sudo apt-get autoclean 
 
-# Fixing dependencies using apt's fix-broken mode
-  sudo apt-get -f install
 
-##
+  # Fixing dependencies using apt's fix-broken mode
+	sudo apt-get -f install
+	
+ E:Internal Error when using apt-get	
+	sudo apt-get update
+	sudo apt-get clean
+	sudo apt-get cehck                       <= 
+	sudo apt-get install -fy
+	sudo dpkg -i /var/cache/apt/archives/*.deb
+	sudo dpkg --configure -a
+	sudo apt-get install -fy
+	sudo apt-get dist-upgrade
+	
+####	Broken package fix ### 
+sudo dpkg --configure -a
+sudo apt-get install -f
+
+$ sudo vi /var/lib/dpkg/status 			<= remove whole trouble block
+$ cat /etc/apt/sources.list
+
+#####
 sudo sh -c "apt-get update;apt-get dist-upgrade;apt-get autoremove;apt-get autoclean"  
-
-## 
+####
 sudo sh -c "apt-get update;apt-get autoclean;apt-get clean;apt-get autoremove"
+####
 sudo dpkg --remove -force --force-remove-reinstreq package_name
+####
+
+
+
+### Clean APT Key
+
+$ apt-key list
+	pub   4096R/563278F6 2016-04-08 [expires: 2018-04-08]
+	uid                  Foreman Automatic Signing Key (2016) <packages@theforeman.org>
+
+$ apt-key del 563278F6  <= key_name
 
 
 
@@ -1920,50 +2154,43 @@ ty scanning and     auditing. However, nmap command comes with lots of options t
 69. rthunter(Root Kit Hunter)
 
 
-70. cron job search from com and line
-	$ crontab -l				<= current user's list of cron jobs 
-	$ crontab -e				<= edit cron job
-
-	$ for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
-
-	$ for user in $(cut -f1 -d: /etc/passwd); do echo $user; crontab -u $user -l; done
-
+70. 
 	
-	a. Getting all user id info from /etc/passwd using 
-	cut -f1 -d:  /etc/passwd
-        
-	b. using crontab utility to check list of cron job list
-	crontab -u $user -l
-	##########################################
-	# #!/bin/bash
-	# for user in $(cut -f1 -d: /etc/passwd); 
-	# do 	
-	#    echo $user; crontab -u $user -l; 
-	# done
-        ##########################################
-
 		
-	for i in db lobby s1 s2; do date; done
+		
+		
+		
+		
+		
+	$ for i in db lobby s1 s2; do date; done
     Sat Aug  8 10:46:21 PDT 2015
     Sat Aug  8 10:46:21 PDT 2015
     Sat Aug  8 10:46:21 PDT 2015
     Sat Aug  8 10:46:21 PDT 2015
 	
-	for i in db lobby s1 s2 s3; do ssh $i date; done
-ssh: Could not resolve hostname db: Name or service not known
-ssh: Could not resolve hostname lobby: Name or service not known
-ssh: Could not resolve hostname s1: Name or service not known
-ssh: Could not resolve hostname s2: Name or service not known
-ssh: Could not resolve hostname s3: Name or service not known
+	$ for i in db lobby s1 s2 s3; do ssh $i date; done
+		ssh: Could not resolve hostname db: Name or service not known
+		ssh: Could not resolve hostname lobby: Name or service not known
+		ssh: Could not resolve hostname s1: Name or service not known
+		ssh: Could not resolve hostname s2: Name or service not known
+		ssh: Could not resolve hostname s3: Name or service not known
 	
+		
+		
+		
+		
+		
+		
+		
+		
 		
 71. Transfer file using SCP + pem key
 
-	scp -i /path/to/key.pem /path/to/file.jpg user_id@ip_address:/path/to/place/file
+	$ scp -i /path/to/key.pem     /path/to/file.jpg    user_id@ip_address:/home/user_id/folder_name
 	## -i Identity_file such as pem key
-	$ scp -i /AWS-OC-Key/oc-prod.pem /AWS-OC-Key/oc-stage.pem ec2-user@54.191.102.80:/home/ec2-user/
+	$ scp -i /AWS-OC-Key/oc-prod.pem /AWS-OC-Key/oc-stage.pem ec2-user@54.191.102.80:/home/ec2-user/.cert
 
-	File Transfer
+	### copy a File to remote host Transfer
 	$ scp -pv student-files.zip nozatech@192.168.221.128:/home/nozatech/download
 	
 	$ scp -i .ssh/oc-stage.pem  ami.zip ubuntu@10.10.1.89:/home/ubuntu/
@@ -1971,10 +2198,10 @@ ssh: Could not resolve hostname s3: Name or service not known
 	unzip ami.zip -d /jarvis
     
 	# to copy a folder from your local computer to a remote one.
-	scp -r nameOfFolderToCopy username@ipaddress:/path/to/copy/
+	scp -r nameOfFolderToCopy user_id@ip_address:/path/to/copy/
 
 	# to copy a folder from a remote machine to your local one.
-	scp -r username@ipaddress:/path/of/folder/to/copy /target/local/directory
+	scp -r user_id@ip_address:/path/of/folder/to/copy /target/local/directory
 
 	
 72. Combine Xargs with Find command 
@@ -1988,12 +2215,24 @@ ssh: Could not resolve hostname s3: Name or service not known
 
 	Use fgrep in order to match for plain ., or escape the dots.
 
-	find . -type f | xargs fgrep '...'   <= or if you still want to use grep :
-
-	find . -type f | xargs grep '\.\.\.' <= And if you only want the current directory 	and not its subdirs :
-
-	find . -maxdepth 1 -type f | xargs fgrep '...'
-
+	$ find . -type f | xargs fgrep '...'   <= or if you still want to use grep :
+	$ find . -type f | xargs grep '\.\.\.' <= And if you only want the current directory 	and not its subdirs :
+	$ find . -maxdepth 1 -type f | xargs fgrep '...'
+	
+	Finding directory files with word
+	$ grep -Ril "finding_word" /target/dir  <= R-recursive, i-ignore case, l-show file name
+	
+	
+	Find the command location
+	$ locate   command_name
+	$ whereis  command_name
+	$ which    command_name
+	$ find     command_name
+	
+	Find string (word)
+	$ grep -i finding_word *
+	$ grep -i finding_word */*
+	$ grep -i finding_word */*/*    <= continue to sub directories
 
 73. 
 	iptables -L
@@ -2009,7 +2248,36 @@ ssh: Could not resolve hostname s3: Name or service not known
         redirection(> <) provided by your shell to read from a file
 	(< /etc/iptables/rules.v4)
 
+	
+73. Logrotate	
+	Configurations and default options 
+	$ /etc/logrotate.conf
+	
+	Application-specific log file information
+	$ /etc/logrotate.d/
+	
+	 /etc/logrotate.d/dpkg. One of the entries in this file would be:
 
+	/var/log/dpkg.log {
+			monthly						<= this on a monthly basis - this is the rotation interval.
+			rotate 12					<= 'rotate 12' signifies that 12 days worth of logs would be kept.
+			compress					<= logfiles can be compressed using the gzip format by specifying 'compress'
+			delaycompress				<= 'delaycompress' delays the compression process till the next log rotation. 'delaycompress' will work only if 'compress' option is specified.
+			missingok					<= 'missingok' avoids halting on any error and carries on with the next log file.
+			notifempty					<= 'notifempty' avoid log rotation if the logfile is empty.
+			create 644 root root		<= 'create <mode> <owner> <group>' creates a new empty file with the specified properties after log-rotation.
+	}
+
+	Though missing in the above example, 'size' is also an important setting if you want to control the sizing of the logs growing in the system.
+	A configuration setting of around 100MB would look like:
+	size 100M
+	
+	# Cron Job setup
+	0 0 * * * (or @daily)  /etc/cron.daily/logrotate
+	$ cat /var/lib/logrotate/status 
+	
+	
+	
 
 74.  Apache Log
 
@@ -2018,7 +2286,7 @@ ssh: Could not resolve hostname s3: Name or service not known
 
 	A. View Apache requests per minute
 
-grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{print $2":"$3}' | sort -nk1 -nk2 | uniq -c | awk '{ if ($1 > 10) print $0}'
+	$ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{print $2":"$3}' | sort -nk1 -nk2 | uniq -c | awk '{ if ($1 > 10) print $0}'
 
 	# grep "16/Mar/2015:06" example.com	
 	  <= Use the grep command to only show hits from today during the 06th hour 
@@ -2069,11 +2337,11 @@ CentOS6.x file location =>
 	$ hostname 
 	$ echo new_name > /etc/hostname 
 	
-	systemctl restart systemd-hostnamed
+	$ systemctl restart systemd-hostnamed
 	
-	cat /etc/sysconfig/network
+	$ cat /etc/sysconfig/network
 	
-	hostnamectl status
+	$ hostnamectl status
 	
 	
 ###########################################
@@ -2119,7 +2387,7 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	
 	
 ######################################################################################################################################
-Scripting
+# Bash Scripting
 ######################################################################################################################################
 These are positional arguments of the script. 
 position of arguments passed to the script on the command line, not line numbers
@@ -2256,7 +2524,13 @@ $_	The underscore variable is set at shell startup and contains the absolute fil
 	
 	uname -r 
 	2.6.32-431.1.2.0.1.el6.x86_64
-
+	
+	
+	# Result is all same	
+	$ cat /boot/config-$(uname -r)  
+	$ cat /boot/config-`uname -r`
+	$ cat /boot/config-4.2.0-27-generic 
+	
 
     sudo dpkg -l | grep linux-headers | grep ii
     sudo dpkg -l | grep linux-headers | grep ii | awk '{print $3}'
@@ -2332,14 +2606,15 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
    ssh-copy-id 	       user_id@IP_Address
 
 	$ sudo visudo   (old way   vi /etc/sudoers)
-		nozatech ALL=(ALL:ALL) NOPASSWD:ALL
-		%sudo   ALL=(ALL:ALL) NOPASSWD:ALL
+	  nozatech ALL=(ALL:ALL) NOPASSWD:ALL
+	  %sudo    ALL=(ALL:ALL) NOPASSWD:ALL
 
 		
 2 Processor
 	killall <process name>
     kill -9 
 	kill 15
+	pkill <process_id>  <= Kill all child processes, too.
 	
 	ps -u <user_id>		<= u (user)
 		
@@ -2353,8 +2628,11 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
    
   
 3. ulimit 								<= Increase "Max Open Files Limit"
+####	
+# echo "* soft nofile 102400" > /etc/security/limits.d/*_limits.conf && echo "* hard nofile 102400" >> /etc/security/limits.d/*_limits.conf 
+####	
 	There are two limits in play: 
-	1) the maximum number of open files the OS kernel allows (fs.file-max) and 
+	1) the maximum number of open files the OS kernel allows (fs.file-max) and
 	2) the per-user limit (ulimit -n). The former(Kernel) must be higher than the latter(user).
 	
 	If you are getting error “Too many open files (24)” then your application/command/script is hitting max 
@@ -2363,8 +2641,22 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	### Check
 	$ ulimit -a			<= All current limits
 	$ ulimit -n			<= maximum number of open file
+		=> 1024
+	$ cat /proc/sys/fs/file-max
+		=> 2097152	
 	$ ulimit -Sn		<= soft limit number
 	$ ulimit -Hn		<= hard limit number
+	### setting a new value in kernel variable /proc/sys/fs/file-max
+	$ sysctl -w fs.file-max=100000    <= -w write
+	$ echo "fs.file-max = 100000" >> /etc/sysctl.conf
+	$ sysctl -p		( or --load)				<= load 
+		=> fs.file-max = 100000
+	$ # cat /proc/sys/fs/file-max 	(or  $ sysctl fs.file-max )
+	
+	### Specific user limits
+	$ vi /etc/security/limits.conf
+	
+	
 	
 	$ man bash  					then /ulimit  <= ulimit is built in shell
 	-S   Change and report the soft limit associated with a resource. 
@@ -2467,7 +2759,14 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	swapon -s
 	###
   
-  
+  ### creating random data for 10MB # dd <= covert and copy a file
+    dd if=/dev/urandom of=foo bs=1000 count=10000     
+		^ if=FILEread from FILE instead of stdin
+		                ^ of=FILE, write to FILE instead of stdout
+							  ^ bs=bytes, read and write up to BYTES bytes at a time
+
+
+
   
 4. Start Up service for Ubuntu
   
@@ -2835,12 +3134,15 @@ grep -r 		#Recursive
 	$ grep -r "port 80" /etc/httpd/*   <= search subdirectories with key words port 80.
 
 
-grep -v			#Inverted search
-grep -o			#Show matched part of file only
-grep -v grep    # don't match the grep word
+	$ grep -v httpd			# Inverted search (everything but httpd)
+	$ grep -o				# Show matched part of file only
+	$ grep -v grep    		# don't match the grep word
 
-ps axu | grep some_PID => out puts grep word in list, and it counts the line as 1 + 1 actual process name some_PID
+	$ ps aux | grep some_PID => out puts grep word in list, and it counts the line as 1 + 1 actual process name some_PID
+	
 To remove the grep in search word, use "grep -v grep" 2nd grep is a word to -v <= don't match word .
+
+
 #######################
 #!/bin/bash
 # Check and put ok status if the RRS game service is running for Lobby 7504 & 7505 services
@@ -2853,8 +3155,24 @@ else rm /var/www/html/status/index.html > /dev/null 2>&1;
 fi
 #################
 
-
-
+### 
+#Find biggest file Sizes top 5 list Only
+###
+	### NCurses Disk Usage
+	$ ncdu
+	$ ncdu -x /    <= scan a full filesystem
+		# Since scanning a large directory may take a while, you can scan a directory and export the results for later viewing:
+	$ ncdu -1xo- / | gzip > ncdu-list.gz
+	# ...some time later:
+	$ zcat export.gz | ncdu -f-
+	
+	
+    $ find / -type f -exec du -Sh {} + | sort -rh | head -n 5
+	
+	$ find / -type f -exec du -Sh {} + | sort -rh | head -n 20  <= Top 20 list
+	
+	$ find /*/* -type f -exec du -Sh {} + | sort -rh | head -n 5
+	
 	$ find /dir/ -user user_ID			#Find files owned by name in dir
 	$ find /dir/ -name file_name
 	$ find /dir/ -iname fine_name
@@ -2908,6 +3226,67 @@ root@puppetagent:~# cat << EOF >> /etc/puppet/puppet.conf
 server = puppetmaster.domain.tld
 EOF
 
+
+The cat <<EOF Bash syntax is very useful when one needs to work with multiline strings in Bash, 
+	eg. when passing multiline string to a variable, file or a piped command.
+1. Passing multiline string to a variable:
+	$ sql=$(cat <<EOF
+	> SELECT foo, bar FROM db
+	> WHERE foo='baz'
+	> EOF
+	> )
+noza@fm:~$ echo $sql
+SELECT foo, bar FROM db WHERE foo='baz'
+noza@fm:~$ echo -e $sql
+SELECT foo, bar FROM db WHERE foo='baz'
+noza@fm:~$ echo -e "$sql"
+SELECT foo, bar FROM db
+WHERE foo='baz'
+The $sql variable now holds newlines as well, you can check it with echo -e "$sql" cmd.
+
+2. Passing multiline string to a file:
+
+$ cat <<EOF > print.sh
+#!/bin/bash
+echo \$PWD
+echo $PWD
+EOF
+The print.sh file now contains:
+
+#!/bin/bash
+echo $PWD
+echo /home/user
+3. Passing multiline string to a command/pipe:
+
+$ cat <<EOF | grep 'b' | tee b.txt | grep 'r'
+foo
+bar
+baz
+EOF
+This creates b.txt file with both bar and baz lines but prints only the bar.
+
+
+"EOF" is known as a "Here Tag". Basically << Here tells the shell that you are going to enter a multiline string until the "tag" Here. You can name this tag as you want, it's often EOF or STOP.
+	- The tag can be any string, uppercase or lowercase, though most people use uppercase by convention.
+	- The tag will not be considered as a Here tag if there are other words in that line. In this case, it will merely be considered part of the string. The tag should be by itself on a separate line, to be considered a tag.
+	- The tag should have no leading or trailing spaces in that line to be considered a tag. Otherwise it will be considered as part of the string.
+example:
+
+$ cat >> test <<HERE
+> Hello world HERE <--- Not the end of string
+> This is a test
+>  HERE <-- Leading space, so not end of string
+> and a new line
+> HERE <-- Now we have the end of the string
+More: http://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
+
+
+
+
+
+
+
+
 ### Puppet ###
 sudo service puppet start
 sudo puppet cert list
@@ -2954,6 +3333,9 @@ CentOS
 	netstat -anp | grep unknown_port     # -anp  <= All, no dns lookup(faster), program
 	
 	lsof -i | grep port_number
+	
+	lsof -p process_number
+	
 	
 	
 2. Changing SSH port from default #22 to 2222 
@@ -3044,5 +3426,110 @@ CentOS package update vs upgrade
 yum upgrade and yum update will perform the same function that update to the latest current version of package.
 
 But the difference is Upgrade will delete obsolete packages, while update will preserve them.
+
+
+### Byobu multi screen utility ###
+# CentOS 7
+$ sudo yum install --enablerepo=epel byobu
+
+	$ byobu
+
+	F2 <= New terminal   
+	Moving      F3 <=   => F$
+	
+	Shift+F2  <= Split 1/2 Vertically
+	Ctrl +F2  <= Split 1/2 Horizontally
+
+	# Make 4 Split screens with in 1 terminal
+	Shift+F2 => Ctrl+F2 => Shift+4 => Ctrl+F2
+	
+	# Moving around
+	Shift+F4
+	
+	# Too kill
+	Ctrl+d    <=Exit
+	
+# Ubuntu 14
+    $ byobu-enable/disable
+	$ ctrl+F2
+	
+DOS - Remove all files including subdirectory
+# Remove All directory with data and sub
+rmdir "c:/temp/1" /s/q  
+
+
+
+
+
+
+
+################################################################################################################
+### Memcache  ##################################################################################################
+################################################################################################################
+
+$ watch -n1 'memcached-tool localhost stats'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+################################################################################################################
+### Nginx  ##################################################################################################
+################################################################
+
+1. Nginx log rotate
+
+$ mv /path/to/access.log /path/to/access.log.0
+$ kill -USR1 `cat /var/run/nginx.pid`
+$ sleep 1
+[ post-rotation processing of old log file ]
+	# rotates the logs is "kill -USR1 /var/run/nginx.pid". This does not kill the Nginx process, 
+	# but instead sends it a signal causing it to reload its log files. This will cause new 
+	# requests to be logged to the refreshed log file.
+
+
+	
+	
+	
+###
+#  If the Nginx is running with PID, it copies to the /var/run/nginx.pid 	
+$ ps aux | grep nginx
+$ cat /var/run/nginx.pid
+
+
+
+
+#########   
+# Tools #
+#########   
+ 
+PSSH tool includes parallel versions of OpenSSH and related tools such as:
+
+pssh – is a program for running ssh in parallel on a multiple remote hosts.
+pscp – is a program for copying files in parallel to a number of hosts.
+Pscp – Copy/Transfer Files Two or More Remote Linux Servers
+prsync – is a program for efficiently copying files to multiple hosts in parallel.
+pnuke – kills processes on multiple remote hosts in parallel.
+pslurp – copies files from multiple remote hosts to a central host in parallel.
+
+$ yum install python-pip
+$ pip install pssh
+
+
+
+
+
+
 
 

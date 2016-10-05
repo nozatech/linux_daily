@@ -1,16 +1,16 @@
 #!/bin/bash
 # Poor man's MySQL Master/Slave replication monitoring script
 
-USERNAME=msandbox
-PASSWORD=msandbox
-EXPECTED_MASTER_HOST=127.0.0.1
-EXPECTED_MASTER_PORT=27371
+USERNAME=
+PASSWORD=
+MASTER_HOST=192.168.1.1
+MASTER_PORT=3306
 
-SLAVE_HOST=127.0.0.1
-SLAVE_PORT=27372
+SLAVE_HOST=192.168.1.2
+SLAVE_PORT=3306
 
 MYSQL="mysql -u $USERNAME -p$PASSWORD "
-MASTER="$MYSQL -h $EXPECTED_MASTER_HOST -P $EXPECTED_MASTER_PORT"
+MASTER="$MYSQL -h $MASTER_HOST -P $MASTER_PORT"
 SLAVE="$MYSQL -h $SLAVE_HOST -P $SLAVE_PORT"
 
 $MASTER -e 'SHOW MASTER STATUS\G' > mstatus
@@ -33,13 +33,13 @@ Slave_IO_Running=$(extract_value sstatus Slave_IO_Running)
 Slave_SQL_Running=$(extract_value sstatus Slave_SQL_Running)
 
 ERROR_COUNT=0
-if [ "$Master_Host" != "$EXPECTED_MASTER_HOST" ]
+if [ "$Master_Host" != "$MASTER_HOST" ]
 then
     ERRORS[$ERROR_COUNT]="the slave is not replicating from the host that it is supposed to"
     ERROR_COUNT=$(($ERROR_COUNT+1))
 fi
 
-if [ "$Master_Port" != "$EXPECTED_MASTER_PORT" ]
+if [ "$Master_Port" != "$MASTER_PORT" ]
 then
     ERRORS[$ERROR_COUNT]="the slave is not replicating from the host that it is supposed to"
     ERROR_COUNT=$(($ERROR_COUNT+1))
@@ -51,7 +51,7 @@ then
     ERROR_COUNT=$(($ERROR_COUNT+1))
 fi
 
-POS_DIFFERENCE=$(echo ${Master_Position}-$Read_Master_Log_Pos|bc)
+POS_DIFFERENCE=$(echo ${Master_Position}-$Read_Master_Log_Pos | bc)
 
 if [ $POS_DIFFERENCE -gt 1000 ]
 then
@@ -89,3 +89,4 @@ else
     echo "Replication OK"
     printf "file: %s at %'d\n" $Master_Log_File  $Read_Master_Log_Pos
 fi
+
