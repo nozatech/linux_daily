@@ -7,8 +7,21 @@ https://docs.docker.com/engine/installation/linux/ubuntulinux/
 
 Definition
 docker engine		<= Hypervisor
-docker image        <= vm image
+docker image        <= vm Template image
 docker container    <= Running VM
+
+
+### Docker log location
+Ubuntu      	 - /var/log/upstart/docker.log
+Boot2Docker 	 - /var/log/docker.log
+Debian GNU/Linux - /var/log/daemon.log
+CentOS 			 - /var/log/daemon.log | grep docker
+CentOS7	  		 - /var/log/messages
+Red Hat 		 - /var/log/messages | grep docker
+CoreOS 			 - journalctl -u docker.service
+Fedora 			 - journalctl -u docker.service
+OpenSuSE 		 - journalctl -u docker.service
+OSX 			 - ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/log/d‌​ocker.log
 
 
 
@@ -23,11 +36,12 @@ $ docker run hello-world
 
 
 Step 2 - Setup the MariaDB Container
+
 $ docker pull mariadb
 $ docker images
 
-$ docker run -e MYSQL_ROOT_PASSWORD=noza -e MYSQL_USER=noza -e MYSQL_PASSWORD=noza -e \
-  MYSQL_DATABASE=wordpress_db -v /root/wordpress/database:/var/lib/mysql --name wordpressdb -d mariadb
+$ docker run -e MYSQL_ROOT_PASSWORD=noza -e MYSQL_USER=noza -e MYSQL_PASSWORD=noza  \
+  -e MYSQL_DATABASE=wordpress_db -v /root/wordpress/database:/var/lib/mysql --name wordpressdb -d mariadb
 
 $ docker inspect -f '{{ .NetworkSettings.IPAddress }}' wordpressdb
  => 172.17.0.2
@@ -48,6 +62,8 @@ Step 4. Nginx reverse proxy install
 	In this step, we will install the Nginx web server on the host system. 
 	We will configure Nginx as a reverse proxy for the Docker container 'wpcontainer' on the port 8081.
 	
+
+
 	
 ###	Delete all containers ###
 #!/bin/bash
@@ -57,14 +73,14 @@ docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)	
 ###
 
+
+
 ### Creating separate docker shell
 $ docker run -i -t  image_name /bin/bash
 $ docker run -t -i ubuntu:14.04 /bin/bash  <= specific version login
 $ docker inspect image_name
 $ ctrl-P+Q  to exit shell
 $ docker network ls
-
-
 
 
 
@@ -82,7 +98,7 @@ $
 
 
 
-
+####################
 ### Ubuntu14 ###
 $ ls -l /var/run/
   srw-rw---- 1 root       docker        0 Sep 19 16:03 docker.sock
@@ -115,8 +131,10 @@ $ netstat -plnt
 $docker info  <= running on network, not the docker socket.
 Cannot connect to the Docker daemon. Is the docker daemon running on this host?
 	
-
-### ON CentOS7 
+	
+#############################
+### ON CentOS7 #######
+#######################
 
 $ export DOCKER_HOST="tcp://192.168.232.147:2375"
 
@@ -141,10 +159,13 @@ Operating System: CentOS Linux 7 (Core)           <=
 # On Ubuntu
 [root@docker-u14 ~]$service docker start
 docker start/running, process 29266
+
 [root@docker-u14 ~]$docker run -it centos /bin/bash
+
 [root@796dab5a1c1b /]# cat /etc/*rel*
 CentOS Linux release 7.2.1511 (Core)
 Derived from Red Hat Enterprise Linux 7.2 (Source)
+
 [root@796dab5a1c1b /]# cat /etc/hosts
 	172.17.0.2      796dab5a1c1b  <= matches with Host ip
 	
@@ -204,6 +225,7 @@ centos              latest              980e0e4c79ec        4 weeks ago         
 fedora              latest              11a5107645d4        7 weeks ago         204.4 MB
 hello-world         latest              c54a2cc56cbb        3 months ago        1.848 kB
 
+
 #######################################################################
    <-cmd          <-image   <- app or process e.g. <= /usr/sbin/nginx 
    v              v         v   
@@ -212,12 +234,17 @@ $ docker run -it ubuntu   /bin/bash
 			 i <- interactive(attach), t <- tty(login) 
 #######################################################################
 
+
 $ docker images
 
 $ docker run -it centos /bin/bash
+
+
 ### keep running and exit ###
-### ctrl+p+q   ###      <= to exit
+### ctrl+p+q   ###      <= <= back to Host OS prompt without killing container
 ##############################
+
+
 $ docker ps    <= RAN from OS HOST
 CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
 5730134bd446        centos              "/bin/bash"         About a minute ago   Up About a minute                       kickass_engelbart
@@ -233,10 +260,13 @@ middle  nginx
 base    OS image
 
 $ docker pull coreos/apache
+
 latest: Pulling from coreos/apache
 a3ed95caeb02: Pull complete 	 <= latest update layer
 5e160ca0bb5a: Pull complete	 	 <= update layer
 1f92e2761bfd: Pull complete 	 <= base image layer
+
+
 
 ### base layer + dependency layers
 $ ls -lh /var/lib/docker/aufs/layers/
@@ -286,6 +316,7 @@ $ scp -pv fridge.tar noza@192.168.232.148:/tmp/
 
 $ tar -tf /tmp/fridge.tar         <= list what is in the tar file
       ^ -t <= list, -f <= format
+	  
 0ca87058da90257128ca83a1d0e1bd55236f43c75b915120c70498af6ad37625/
 0ca87058da90257128ca83a1d0e1bd55236f43c75b915120c70498af6ad37625/VERSION
 0ca87058da90257128ca83a1d0e1bd55236f43c75b915120c70498af6ad37625/json
@@ -332,19 +363,849 @@ $ docker run -it fridge /bin/bash
 $ cat /root/COOL-FILE.txt
   COOL CONTENT 
   
+             -d <- detach running in background 
+$ docker run -d centos /bin/bash -c "ping 8.8.8.8 -c 30"
+b78d6099223a4550c5e5e69ec53945728b13e83e59f04f219570926d21a41601
+
+$docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+b78d6099223a        centos              "/bin/bash -c 'ping 8"   5 seconds ago       Up 4 seconds                            sick_kilby
+5730134bd446        centos              "/bin/bash"              20 hours ago        Up 20 hours                             kickass_engelbart
+ 
+ 
+$ docker ps
+ 
+$ docker top 5730134bd446
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+root                30408               30391               0                   Oct04               pts/3               00:00:00            /bin/bash
   
+ 
+$ docker run ubuntu:14.04
+$ docker run --cpu-shares=256
+$ docker run memory=1g
+ 
+ 
+ 
+ 
+$ docker run -d ubuntu:14.04 /bin/bash -c "ping 8.8.8.8"
+$ docker ps
+$ docker inspect 7ebd65f67264
+
+
+
+
+$docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+7ebd65f67264        ubuntu:14.04        "/bin/bash -c 'ping 8"   2 minutes ago       Up 2 minutes  
+
+$ docker attach romantic_mclean                          <= container NAMES
+
+64 bytes from 8.8.8.8: icmp_seq=165 ttl=127 time=2.13 ms
+64 bytes from 8.8.8.8: icmp_seq=166 ttl=127 time=2.12 ms
+64 bytes from 8.8.8.8: icmp_seq=167 ttl=127 time=2.12 ms
+64 bytes from 8.8.8.8: icmp_seq=168 ttl=127 time=2.12 ms
+
+
+
+
+### Start | Stop | restart containers ####
+
+$ docker run -it ubuntu:14.04 /bin/bash
+root@e9e7ae8a6abd:/#
+
+$ exit			<= exit out to host, not in container
+$ ctrl+c		<= exit out to host, not in container
+$ ctrl+d        <= exit out to host, not in container
+$ CTRL+P+Q      <= leave the container running and back to HOST OS prompt
+
+
+$ docker ps
+  CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+  e9e7ae8a6abd        ubuntu:14.04        "/bin/bash"         2 minutes ago       Up 2 minutes                            prickly_torvalds
+
+# to Kill container(ID) from Host OS shell
+$ docker stop e9e7ae8a6abd
+
+$ docker ps
+	CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+	^ <- NO Process running
+
+### Signal Kill
+
+$ docker ps -l  		<= list container info
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
+e9e7ae8a6abd        ubuntu:14.04        "/bin/bash"         6 minutes ago       Exited (0) 3 minutes ago                       prickly_torvalds
+
+
+$ docker start | stop | restart e9e7ae8a6abd
+$ docker attach e9e7ae8a6abd  		<=reconnect 
+
+$ docker ps
+$ docker restart e9e7ae8a6abd  
   
+$ docker start | stop | restart  container_name <= container to start, stop, restart (VM)
+$ docker attach  <= connection to container using PID 1(ssh to the container)  
+
+
   
+### PID ###
+Linux
+PID 1 = init  <= it manages and takes care of other processes
+
+Container <= "1 process per container" but Multi possible
+PID 1 = docker run ... <command>
+
+### Deleting containers
+$ docker rm container_name
+$ docker rm -f					<= -f force
+$ alias dps="docker ps"
+$ 
+
+### Inside container
+# check 
+$ docker run ubuntu /bin/bash
+$ ping google.com -c 60
+$ ctrl++p+q
+$ docker top 972a27e39f97
+UID                 PID             CMD
+root                33702           /bin/bash
+root                34052           ping google.com -c 60
+
+### Using Host PID 33702
+root     33702  0.0  0.3  18244  3292 pts/3    Ss+  13:36   0:00 /bin/bash
+
+
+## phusion/baseimage <= docker image from Docker hub
+
+### check what is going on with the container
+
+$ docker logs 972a27e39f97    -f <= follow log like linux tail cmd
+................
+root@972a27e39f97:/#
+root@972a27e39f97:/# ping google.com -c 60
+bash: ping: command not found
+root@972a27e39f97:/# apt-get install ping -y
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+E: Unable to locate package ping
+root@972a27e39f97:/# apt-get install network-util
+Reading package lists... Done
+...................
+
+# Low level info on container 
+$ docker ps
+$ docker inspect 972a27e39f97
+
+$ cat /var/lib/docker/containers/f84d...70/config.v2.json
+
+
+
+# docker nsenter  (ns <= namespace) run program with namespaces of other processes
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+972a27e39f97        ubuntu              "/bin/bash"         20 minutes ago      Up 20 minutes                           agitated_mahavira
+
+$ docker inspect 972a27e39f97 | grep -i pid
+            "Pid": 18141,
+            "PidMode": "",
+            "PidsLimit": 0,
+
+$ nsenter -m -u -n -p -i -t 18141 /bin/bash
+root@4eeaa3992e4e:/#
+
+## within running container only, pause will fail 
+$docker exec 972a27e39f97 ls
+
+### 
+$ docker exec -it 972a27e39f97 /bin/bash
+$ docker attach 972a27e39f97 
   
+################################## 
+### Dockerfile for build image ###
+##################################
+
+Dockerhub Ubuntu 14.04 image creating Docker file
+https://github.com/tianon/docker-brew-ubuntu-core/blob/50cfe3fd07327a05e449574f0ece07a6e0bb0c76/trusty/Dockerfile
+
+$ mkdir ~/Dockerfile
+$ vi ~/Dockerfile/Dockerfile
+
+#############
+# Ubuntu based Hello World container
+
+FROM ubuntu:14.04
+MAINTAINER apark@bnga.com
+RUN apt-get update
+RUN apt-get install -y nginx
+RUN apt-get install -y golang
+RUN apt-get install -y ncdu
+CMD ["echo","Hello World"]
+#############
+
+-rw-r--r-- 1 root root  218 Oct  5 14:50 Dockerfile
+
+$ docker build -t helloworld:0.1 .          <= . current directory
+...................
+Sending build context to Docker daemon 2.048 kB      <= daemon running build
+Step 1 : FROM ubuntu:14.04
+ ---> f2d8ce9fa988
+
+Step 2 : MAINTAINER apark@bnga.com
+ ---> Running in 5e9326650c3d
+ ---> 19041d274879
+Removing intermediate container 5e9326650c3d
+
+Step 3 : RUN apt-get update
+ ---> Running in 63264c205e70
+Ign http://archive.ubuntu.com trusty InRelease
+Reading package lists...
+ ---> b21ed8c8a4e6
+Removing intermediate container 63264c205e70
+
+Step 4 : RUN apt-get install -y nginx
+ ---> Running in d614050e0755
+  ---> 5b05e13fc816
+Removing intermediate container d614050e0755
+
+Step 5 : RUN apt-get install -y golang
+ ---> Running in 82e9199b3d7d
+ Setting up golang (2:1.2.1-2ubuntu1) ...
+ ---> 0314ac85ccbe
+Removing intermediate container 82e9199b3d7d
+
+
+Step 6 : RUN apt-get install -y ncdu
+ ---> Running in f1b3413b46da
+Setting up ncdu (1.10-1) ...
+ ---> 27f1cae8cf98
+Removing intermediate container f1b3413b46da
+
+
+Step 7 : CMD echo Hello World
+ ---> Running in 6f5dcaf4bb57
+ ---> 708ebc798c79
+Removing intermediate container 6f5dcaf4bb57
+
+Successfully built 708ebc798c79  <= Final Image
+                   ^^^^^^^^^^^^ 
+
+$ docker history 708ebc798c79
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+708ebc798c79        13 minutes ago      /bin/sh -c #(nop)  CMD ["echo" "Hello World"]   0 B
+27f1cae8cf98        13 minutes ago      /bin/sh -c apt-get install -y ncdu              1.155 MB
+0314ac85ccbe        13 minutes ago      /bin/sh -c apt-get install -y golang            174.5 MB
+5b05e13fc816        18 minutes ago      /bin/sh -c apt-get install -y nginx             18.15 MB
+b21ed8c8a4e6        18 minutes ago      /bin/sh -c apt-get update                       22.2 MB
+19041d274879        19 minutes ago      /bin/sh -c #(nop)  MAINTAINER apark@bnga.com    0 B
+f2d8ce9fa988        9 days ago          /bin/sh -c #(nop)  CMD ["/bin/bash"]            0 B
+<missing>           9 days ago          /bin/sh -c mkdir -p /run/systemd && echo 'doc   7 B
+<missing>           9 days ago          /bin/sh -c sed -i 's/^#\s*\(deb.*universe\)$/   1.895 kB
+<missing>           9 days ago          /bin/sh -c rm -rf /var/lib/apt/lists/*          0 B
+<missing>           9 days ago          /bin/sh -c set -xe   && echo '#!/bin/sh' > /u   194.6 kB
+<missing>           9 days ago          /bin/sh -c #(nop) ADD file:561625b38aa88058c3   187.7 MB
+
+
+$ docker run helloworld:0.1
+Hello World
+
+
+### Docker file ###
+
+$ vi ~/Dockerfile/dockerfile
+
+$ docker build -t="build2" .   <= . looking for local directory
+
+Sending build context to Docker daemon 2.048 kB
+Step 1 : FROM ubuntu:14.04
+ ---> f2d8ce9fa988
+Step 2 : MAINTAINER apark@bnga.com
+ ---> Using cache         		<= already have file
+ ---> 19041d274879
+Step 3 : RUN apt-get update
+ ---> Using cache				<= already have file
+ ---> b21ed8c8a4e6
+Step 4 : CMD echo Hello World
+ ---> Using cache				<= already have file
+ ---> abe14f2a6270
+Successfully built abe14f2a6270
+
+$ cd ~
+$ mkdir web
+$ cd web/
+
+
+$ vi Dockerfile
+# Simple web server
+###
+FROM ubuntu:15.04
+MAINTAINER apark@bnga.com
+RUN apt-get update
+RUN apt-get install -y apache2
+RUN apt-get install -y apache2-utils
+RUN apt-get install -y vim
+RUN apt-get install -y ncdu
+RUN apt-get clean
+EXPOSE 80
+CMD ["apache2ctl", "-D", "FOREGROUD"]
+###
+
+
+$ docker build -t="webserver" .
+
+Step 10 : CMD apache2ctl -D FOREGROUD   <= 10 layers
+ ---> Running in f3cd9d1e6c36
+ ---> f82f83036e59
+Removing intermediate container f3cd9d1e6c36
+Successfully built f82f83036e59
+
+
+### Reducing layers from 10 to 5
+
+$ vi Dockerfile
+##########
+# Simple web server
+FROM ubuntu:15.04
+MAINTAINER apark@bnga.com
+----------------- single command -------------------------
+RUN apt-get update && apt-get install -y \        <= put && front of each apt-get
+    apache2 \
+    apache2-utils \
+    vim \
+    ncdu \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+----------------------------------------------------------
+	EXPOSE 80
+CMD ["apache2ctl", "-D", "FOREGROUD"]
+###########
+
+$ docker build -t="webserver_small" .
+
+ Step 5 : CMD apache2ctl -D FOREGROUD
+ ---> Running in 30be3f6dcf4c
+ ---> 922d356602f6
+Removing intermediate container 30be3f6dcf4c
+Successfully built 922d356602f6
+ 
+$ docker run -d -p 80:80 webserver_small
+fefcdfab9feb8165750503f3fbc39d23a3931a104ad6342d5f4369872003b253
+
+$ docker ps
+
+# open localhost web page
+
+### CMD <= linux cmd executions for ONLY 1 
+RUN <= build-time, add layer, install apps
+
+In Docker file, build-time
+
+#CMD <= run-time, run cmd in container at launch time
+	 = docker run <args> <command>
+     = docker run <args> /bin/bash
+	 
+	#Shell form 
+	commands get prepened by "/bin/sh -c"
+	
+	CMD echo "Hello World"
+
+	#Exec form	
+	JSON array style ["command", "arg1"]
+	
+# ENTRYPOINT <= can't be overridden at run-time with normal commands
+	docker run ... <command>
+	
+	ENTRYPOINT ["echo"]
+
+$ vi Dockerfile
+
+FROM ubuntu:14.04
+RUN apt-get update && apt-get install -y iputils-ping
+ENTRYPOINT ["echo"]
+
+$ docker build -t="entrypoint" .
+
+$ docker run entrypoint hello there			<= 
+hello there								
+
+$ docker run -it entrypoint /bin/bash
+/bin/bash									<= echo /bin/bash as text instead of PID1 bash shell
+
+$ vi Dockerfile
+
+FROM ubuntu:14.04
+RUN apt-get update && apt-get install -y iputils-ping apache2
+ENTRYPOINT ["apache2ctl"]
+
+$ docker build -t="web2" .
+
+
+$ docker run -d -p 80:80 web2 -D FOREGROUND
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
+27bef11a61bf        web2                "apache2ctl -D FOREGR"   5 seconds ago       Up 5 seconds        0.0.0.0:80->80/tcp   happy_goldstine
+
+
+### ENV
+$ vi Dockerfile
+
+FROM ubuntu:14.04
+RUN apt-get update && apt-get install -y iputils-ping apache2
+ENV var1=albert var2=park
+#ENTRYPOINT ["apache2ctl"]
+
+
+$ docker run -it albertpark /bin/bash
+
+root@fd6ea2cacd99:/# env
+var1=albert
+var2=park
+HOSTNAME=fd6ea2cacd99
+
+
+### To ping 8.8.8.8
+$ vi Dockerfile
+
+FROM ubuntu:14.04
+RUN apt-get update && apt-get install -y iputils-ping apache2
+
+ENV var1=ping var2=8.8.8.8
+CMD $var1 $var2
+
+$ docker build -t="ping" .
+
+$docker run -it ping
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=127 time=2.45 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=127 time=2.15 ms
+
+$ docker run -d ping
+43feac3388952450732344fe78357768992b2cfcfc108f7135fca58a0d83f274
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
+43feac338895        ping                "/bin/sh -c '$var1 $v"   16 seconds ago      Up 16 seconds                            zen_chandrasekhar
+
+$ docker logs -f 43feac338895
+64 bytes from 8.8.8.8: icmp_seq=81 ttl=127 time=2.89 ms
+64 bytes from 8.8.8.8: icmp_seq=82 ttl=127 time=2.89 ms
+64 bytes from 8.8.8.8: icmp_seq=83 ttl=127 time=2.83 ms
+64 bytes from 8.8.8.8: icmp_seq=84 ttl=127 time=2.78 ms
+
+
+### Docker Volume
+# Docker container failed, but external volume saves the data
+# Decoupling data from containers and share
+
+                  -v volume /mount name  
+
+$ docker run -it -v /dockvol --name=ping ping /bin/bash
+
+# mount host dev folder into docker container web location
+$ docker run -p 80:80 -v /home/apark/web/:/var/www/html website
+
+
+root@c50b0860893f:/#ls -l
+
+drwxr-xr-x   2 root root 4096 Oct  6 02:13 dockvol <= created when cmd run
+
+
+
+
+### 11 Docker Network
+# Docker0 Bridge
+$ ifconfig
+$ ip a
+
+docker0   Link encap:Ethernet  HWaddr 02:42:61:12:d1:21				<= Bridge or virtual switch
+          inet addr:172.17.0.1  Bcast:0.0.0.0  Mask:255.255.0.0
+          ....
+          RX bytes:14902715 (14.9 MB)  TX bytes:356385122 (356.3 MB)
+		  
+# Bridge Utils
+$ apt-get install bridge-utils
+$ yum install bridge-utils
+
+$ brctl show docker0
+bridge name     bridge id               STP enabled     interfaces    <=STP spanning tree protocol
+docker0         8000.02426112d121       no              veth75c4468
+                                                        vethbc44ee3
+                                                        vethe7da331
+
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                NAMES
+5440c49fcfb8        ping                "/bin/bash"              42 hours ago        Up 42 hours                                              dockervolume
+43feac338895        ping                "/bin/sh -c '$var1 $v"   43 hours ago        Up 43 hours                                              zen_chandrasekhar
+27bef11a61bf        web2                "apache2ctl -D FOREGR"   44 hours ago        Up 44 hours         0.0.0.0:80->80/tcp   
+
+
+# Virtual Ethernet Interface
+$ cat Dockerfile
+FROM ubuntu:14.04
+RUN apt-get update && apt-get install -y iputils-ping traceroute
+
+#ENV var1=ping var2=8.8.8.8
+#CMD $var1 $var2
+ENTRYPOINT ["/bin/bash"]
+
+
+$ docker build -t="net-img" .
+
+$ docker run -it --name=net1 net-img
+$ docker run -it --name=net2 net-img
+
+$ brctl show
+bridge name     bridge id               STP enabled     interfaces
+docker0         8000.02426112d121       no              veth9e62a9f  <= net2 virtual adapter
+                                                        vethce50f72  <= net1 virtual adapter
+														
+$ docker attach net1
+
+root@c84c281b9621:/# ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+136: eth0@if137: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:05 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.5/16 scope global eth0             		 <= IPv4 Ip
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:acff:fe11:5/64 scope link
+       valid_lft forever preferred_lft forever
+
+root@c84c281b9621:/# route
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         172.17.0.1      0.0.0.0         UG    0      0        0 eth0
+172.17.0.0      *               255.255.0.0     U     0      0        0 eth0
+                                                        
+                                                        
+# On Docker Container resolve.conf  <= same as host resolve.conf
+$ cat /var/lib/docker/containers/08...7e/resolv.conf
+# Dynamic resolv.conf(5) file for glibc resolver(3) generated by resolvconf(8)
+#     DO NOT EDIT THIS FILE BY HAND -- YOUR CHANGES WILL BE OVERWRITTEN
+nameserver 192.168.232.2
+
+# hosts file
+$ cat /var/lib/docker/containers/08...e7e/hosts
+127.0.0.1       localhost
+::1     localhost ip6-localhost ip6-loopback
+
+
+
+# On Host resolve.conf
+$cat /etc/resolv.conf
+# Dynamic resolv.conf(5) file for glibc resolver(3) generated by resolvconf(8)
+#     DO NOT EDIT THIS FILE BY HAND -- YOUR CHANGES WILL BE OVERWRITTEN
+nameserver 192.168.232.2
+
+# Hosts file
+$cat /etc/hosts
+127.0.0.1       localhost
+127.0.1.1       u14lts
+
+
+$ docker run --dns=8.8.8.8 --name=dnstest net-img
+
+$ docker inspect net-img
+
+
+
+### Troubleshoot ###
+
+1. Docker Daemon Logging
+ debug		<= debug + info + error + fatal
+ info		<= info + error + fatal
+ error		<= error + fatal
+ fatal		<= fatal
+ 
+ 
+ $ service docker stop
   
-  
-  
-  
-  
-  
-  
-  
-  
+ Usage: docker [OPTIONS] COMMAND [arg...]
+ $ docker run --help
+ 
+$ docker daemon --debug & 		<= Docker 1.12 works
+$ docker -d -l debug & 			<= Docker 1.12 NOT working
+ 
+$ echo 'DOCKER_OPTS="--log-level=fatal"'  >> /etc/default/docker
+
+$ ps aux | grep docker
+root     53169  0.1  4.2 664360 43172 ?        Ssl  14:35   0:00 /usr/bin/dockerd --log-level=fatal --raw-logs
+
+
+2. Container Logging
+	User "volumes" to share and persist data
+
+3. Image troubleshooting
+	Check the requirement for each packages work orderly just like Puppet
+	
+	FROM: ubuntu:14.04
+	RUN: apt-get update && \
+		 apt-get install -y \
+		 iputils-ping
+	CMD ping 8.8.8.8
+	
+4. Intermediate Images troublshooting
+
+$ vim Dockerfile
+	
+FROM ubuntu:14.04
+RUN apt-get update && apt-get install -y ping
+CMD ping 8.8.8.8
+### Error Messages ###
+	Package ping is a virtual package provided by:
+		iputils-ping 3:20121221-4ubuntu1.1
+		inetutils-ping 2:1.9.2-1
+
+	E: Package 'ping' has no installation candidate   <= 
+	The command '/bin/sh -c apt-get update && apt-get install -y ping' 
+	returned a non-zero code: 100								 ^^^^							
+
+
+5. Network Troubleshooting
+# docker0 			<= Docker0 (zero) network bridge
+
+$ service docker stop
+
+$ ip a                    or  ifconfig
+$ ip link del docker0
+$ ip a
+$ vi /etc/default/docker
+	DOCKER_OPS=--bip=10.1.1.0/24
+
+	
+	
+# Iptables
+	--icc     			<= inter container  communication
+	
+	--iptables=			<= 
+	
+	
+	
+$ echo DOCKER_OPTS=--icc=true       <= ACCEPT
+
+$ echo DOCKER_OPTS=--icc=false      <= DROP	
+
+$ echo DOCKER_OPTS="--icc=true 	--iptables=false"
+	
+	
+$ iptables -nL   <= on host machine
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination
+DOCKER-ISOLATION  all  --  0.0.0.0/0            0.0.0.0/0
+DOCKER            all  --  0.0.0.0/0            0.0.0.0/0
+
+
+	
+	
+### Host OS ###	
+$ docker version
+$ docker info
+$ docker images	
+$ docker history <image_name>
+$ docker pull coreos/etcd
+
+### container ###
+$ docker ps			<= current running
+$ docker ps -a 		<= ever run
+$ docker start <image_name>
+$ vi Dockerfile
+	
+$ docker build -t="container_name" .
+$ docker run -d --name  container_name image_name
+
+	
+	
+	
+	
+#############   ####
+### SWARM based on Docker 1.12.x###	### SWARM KITS <= Orchestration
+#############	####
+
+1. CentOS7  VM1-Master, 
+			VM2-worker, VM3-worker, VM4-worker
+
+### Installation ###
+# Install Golang
+# Docker 1.12.x installed
+# Same subnet
+# Port 2377, 4789, 7986
+
+
+
+
+
+
+$ apt-get install golang -y && apt-get install git -y
+
+# Set $GOPATH on local directory
+$ export GOPATH=~/go
+
+# Get Swarm
+$ go get -u github.com/docker/swarm
+
+# Update $PATH
+$ export PATH=$PATH:~/go/bin
+
+#verify install
+$ swarm --version
+
+	
+	
+###################################
+### SWARM Mode based on Docker 1.12.x###	### SWARM KITS <= Orchestration
+###################################
+
+###docker-swarm-visualizer
+https://github.com/DovAmir/docker-swarm-visualizer/blob/master/README.md
+
+$ docker run -it -d -p 8080:8080 -e HOST=[host_name] -v /var/run/docker.sock:/var/run/docker.sock manomarks/visualizer
+
+
+
+
+### Swarm mode set up ###
+Swarm is built in the Docker 1.12
+
+Swarm mode
+	built in 
+		service discovery
+		consistent distributed store
+		consistency and resiliency of app
+		dynamic role promotion and demotion
+		zero downtime node management
+	
+Service Deployment API
+
+		  Declare           <= $docker service create declares the service name, network, port, image:tag and scale
+		  ^     v
+  Reconcile  < Schedule	    <= Managers break down service into tasks, schedules them and workers execute tasks
+  ^ 
+  Engines check to see what is running
+  and compared to what was declared
+  to "true up" the environment
+
+
+	Declare desired state
+	Desired/actual states reconciliation
+	rolling update
+	custom health checks
+	
+Routing Mesh
+
+
+End to end encryption
+
+
+out of the box
+
+
+
+
+#####################################################################
+1. CentOS7  VM1-Master (192.168.232.148)
+			VM2-worker, VM3-worker, VM4-worker	
+
+$ export GOPATH=~/go	
+$ export PATH=$PATH:~/go/bin
+
+###  Starting swarm 
+$ docker swarm init --listen-addr 192.168.232.148:2377
+	Swarm initialized: current node (ac323dzwhufy95rweitjtyhlk) is now a manager.
+
+	To add a worker to this swarm, run the following command:
+    
+	docker swarm join \
+    --token SWMTKN-1-5acifj5h5lhbt7xqkvkehw7d0gw5sylt9eycjxjmoiw6x7ak8k-1inhdzrmexr5a8fuf8xrzlx47 \
+    192.168.232.148:2377
+	
+	To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.	
+	
+$ docker node list   <= all list 	
+	ID                           HOSTNAME   STATUS  AVAILABILITY  MANAGER STATUS
+	ac323dzwhufy95rweitjtyhlk *  docker-c7  Ready   Active        Leader
+															  ^^^^^^^	
+
+# Workers to join Manager Swarm
+
+$ docker swarm join \
+  --token SWMTKN-1-5acifj5h5lhbt7xqkvkehw7d0gw5sylt9eycjxjmoiw6x7ak8k-1inhdzrmexr5a8fuf8xrzlx47 \
+  192.168.232.148:2377
+
+   This node joined a swarm as a worker.  <= worker node
+
+   
+# Check node list from Swarm Manager ONLY
+$ docker node ls	<= from worker gets error
+	Error response from daemon: This node is not a swarm manager. Worker nodes can't be used to view or modify cluster state. Please run this command on a manager node or promote the current node to a manager.
+
+# Run from Swarm Manager
+$ docker node ls
+	ID                           HOSTNAME   STATUS  AVAILABILITY  MANAGER STATUS
+	4hnzkhve783cp0tc6rmcu639s    docker-c7  Ready   Active
+	ac323dzwhufy95rweitjtyhlk *  docker-c7  Ready   Active        Leader
+
+# Run on worker2 and worker 3
+$ docker swarm join \
+  --token SWMTKN-1-5acifj5h5lhbt7xqkvkehw7d0gw5sylt9eycjxjmoiw6x7ak8k-1inhdzrmexr5a8fuf8xrzlx47 \
+  192.168.232.148:2377												
+	
+$ docker node ls
+	ID                           HOSTNAME   STATUS  AVAILABILITY  MANAGER STATUS
+	4hnzkhve783cp0tc6rmcu639s    docker-c7  Ready   Active
+	9gjy0oylo0nurwe8g80nixf97    docker-c7  Ready   Active
+	ac323dzwhufy95rweitjtyhlk *  docker-c7  Ready   Active        Leader
+	cqoj42p80fhlhq87hfl9v4dxb    docker-c7  Ready   Active
+
+################################################################################
+# 1 Container running
+$ Container run -d nginx
+	
+# Service running 5 containers
+$ docker service create --replicas 5 nginx
+
+
+$ docker service create --name ping00 alpine ping docker-swarm-00
+1a1nv1epnek59sseo32z8phnd
+
+$docker service list
+ID            NAME    REPLICAS  IMAGE   COMMAND
+1a1nv1epnek5  ping00  1/1       alpine  ping docker-swarm-00
+	
+	
+$ docker service ps ping00    <= List the tasks of a service
+
+ID                         NAME          IMAGE   NODE       DESIRED STATE  CURRENT STATE                 ERROR
+15efqwxojlu1vkqrcetjj8z28  ping00.1      alpine  docker-c7  Ready          Ready less than a second ago
+2dqiawktonrvk2idbc601329g   \_ ping00.1  alpine  docker-c7  Shutdown       Failed 2 seconds ago          "task: non-zero exit (1)"
+82za976yw29bqavhpvlqmh9g6   \_ ping00.1  alpine  docker-c7  Shutdown       Failed 12 seconds ago         "task: non-zero exit (1)"
+1aey30bdupujy02u4j1gr4h2r   \_ ping00.1  alpine  docker-c7  Shutdown       Failed 23 seconds ago         "task: non-zero exit (1)"
+6lziekqmgb6mvt8mwm4pbg7wg   \_ ping00.1  alpine  docker-c7  Shutdown       Failed 33 seconds ago         "task: non-zero exit (1)"
+	
+
+Docker Service command
+	
+	create      Create a new service
+	inspect     Display detailed information on one or more services
+	ps          List the tasks of a service
+	ls          List services
+	rm          Remove one or more services
+	scale       Scale one or multiple services
+	update      Update a service
+
+	
+	
+	
+	
 
 
 
@@ -357,7 +1218,363 @@ $ cat /root/COOL-FILE.txt
 
 
 
+##########################
+### Glossary ###
+################
+
+# aufs
+aufs (advanced multi layered unification filesystem) 
+	is a Linux filesystem that Docker supports as a storage backend. It implements the union mount for Linux file systems.
+
+# base image
+	An image that has no parent is a base image.
+
+# boot2docker
+	boot2docker is a lightweight Linux distribution made specifically to run Docker containers. 
+	The boot2docker management tool for Mac and Windows was deprecated and replaced by docker-machine 
+	which you can install with the Docker Toolbox.
+
+# btrfs
+	btrfs (B-tree file system) is a Linux filesystem that Docker supports as a storage backend. 
+	It is a copy-on-write filesystem.
+
+# build
+	build is the process of building Docker images using a Dockerfile. The build uses a Dockerfile 
+	and a “context”. The context is the set of files in the directory in which the image is built.
+
+# cgroups( control groups 0
+	cgroups is a Linux kernel feature that limits, accounts for, and isolates the resource usage 
+	CPU, memory, disk I/O, network, etc.) of a collection of processes. 
+	Docker relies on cgroups to control and isolate resource limits.
+	
+# Compose (Also known as : docker-compose, fig)
+	Compose is a tool for defining and running complex applications with Docker. With compose, 
+	you define a multi-container application in a single file, then spin your application up 
+	in a single command which does everything that needs to be done to get it running.
+
+# container (running VM)
+	A container is a runtime instance of a docker image.
+
+# A Docker container consists of
+	A Docker image
+	Execution environment
+	A standard set of instructions
+	Docker defines a standard to ship software.
+
+# data volume
+	A data volume is a specially-designated directory within one or more containers that bypasses 
+	the Union File System. Data volumes are designed to persist data, independent of the container’s life cycle. 
+	Docker therefore never automatically delete volumes when you remove a container, 
+	nor will it “garbage collect” volumes that are no longer referenced by a container.
+
+# Docker
+	The Docker project as a whole, which is a platform for developers and sysadmins to develop, ship, and run applications
+	The docker daemon process running on the host which manages images and containers
+
+# Docker Hub
+	The Docker Hub is a centralized resource for working with Docker and its components. It provides the following services:
+
+		Docker image hosting
+		User authentication
+		Automated image builds and work-flow tools such as build triggers and web hooks
+		Integration with GitHub and Bitbucket
+
+# Dockerfile
+	A Dockerfile is a text document that contains all the commands you would normally execute manually 
+	in order to build a Docker image. Docker can build images automatically by reading the instructions from a Dockerfile.
+
+# filesystem
+	A file system is the method an operating system uses to name files and assign them locations for efficient storage and retrieval.
+	Examples :
+		Linux : ext4, aufs, btrfs, zfs
+		Windows : NTFS
+		OS X : HFS+
+
+# image (VM images- fronzen)
+	Docker images are the basis of containers. An Image is an ordered collection of root filesystem changes 
+	and the corresponding execution parameters for use within a container runtime. An image typically contains 
+	a union of layered filesystems stacked on top of each other. An image does not have state and it never changes.
+
+# libcontainer
+	libcontainer provides a native Go implementation for creating containers with namespaces, cgroups, capabilities, 
+	and filesystem access controls. It allows you to manage the lifecycle of the container performing additional 
+	operations after the container is created.
+
+# libnetwork
+	libnetwork provides a native Go implementation for creating and managing container network namespaces and 
+	other network resources. It manage the networking lifecycle of the container performing additional 
+	operations after the container is created.
+
+# link
+	links provide a legacy interface to connect Docker containers running on the same host to each other 
+	without exposing the hosts’ network ports. Use the Docker networks feature instead.
+
+# Machine ( Also known as : docker-machine)
+	Machine is a Docker tool which makes it really easy to create Docker hosts on your computer, on 
+	cloud providers and inside your own data center. It creates servers, installs Docker on them, then 
+	configures the Docker client to talk to them.
+
+
+# node
+	A node is a physical or virtual machine running an instance of the Docker Engine in swarm mode.
+	Manager nodes perform swarm management and orchestration duties. By default manager nodes are also worker nodes.
+	Worker nodes execute tasks.
+
+# overlay network driver
+	Overlay network driver provides out of the box multi-host network connectivity for docker containers in a cluster.
+
+# overlay storage driver
+	OverlayFS is a filesystem service for Linux which implements a union mount for other file systems. 
+	It is supported by the Docker daemon as a storage driver.
+
+# registry
+	A Registry is a hosted service containing repositories of images which responds to the Registry API.
+	The default registry can be accessed using a browser at Docker Hub or using the docker search command.
+
+# repository
+	A repository is a set of Docker images. A repository can be shared by pushing it to a registry server. 
+	The different images in the repository can be labelled using tags.
+
+	Here is an example of the shared nginx repository and its tags
+	https://hub.docker.com/_/nginx/
+	
+# service
+	A service is the definition of how you want to run your application containers in a swarm. 
+	At the most basic level a service defines which container image to run in the swarm and which 
+	commands to run in the container. For orchestration purposes, the service defines the “desired state”, 
+	meaning how many containers to run as tasks and constraints for deploying the containers.
+
+	Frequently a service is a microservice within the context of some larger application. 
+	Examples of services might include an HTTP server, a database, or any other type of 
+	executable program that you wish to run in a distributed environment.
+
+# service discovery
+	Swarm mode service discovery is a DNS component internal to the swarm that automatically assigns each 
+	service on an overlay network in the swarm a VIP and DNS entry. Containers on the network share DNS 
+	mappings for the service via gossip so any container on the network can access the service via its service name.
+
+	You don’t need to expose service-specific ports to make the service available to other services on 
+	the same overlay network. The swarm’s internal load balancer automatically distributes requests to the service VIP among the active tasks.
+
+# swarm
+	A swarm is a cluster of one or more Docker Engines running in swarm mode.
+
+# Swarm
+	Do not confuse Docker Swarm with the swarm mode features in Docker Engine.
+
+	Docker Swarm is the name of a standalone native clustering tool for Docker. Docker Swarm pools 
+	together several Docker hosts and exposes them as a single virtual Docker host. It serves the 
+	standard Docker API, so any tool that already works with Docker can now transparently scale up to multiple hosts.
+
+	Also known as : docker-swarm
+
+# swarm mode
+	Swarm mode refers to cluster management and orchestration features embedded in Docker Engine. 
+	When you initialize a new swarm (cluster) or join nodes to a swarm, the Docker Engine runs in swarm mode.
+
+# tag
+	A tag is a label applied to a Docker image in a repository. tags are how various images in a repository are distinguished from each other.
+
+	Note : This label is not related to the key=value labels set for docker daemon
+
+# task
+	A task is the atomic unit of scheduling within a swarm. A task carries a Docker container and 
+	the commands to run inside the container. Manager nodes assign tasks to worker nodes according to the number of replicas set in the service scale.
+
+The diagram below illustrates the relationship of services to tasks and containers.
+
+	Service				  /-> NginX 1	nginx:latest  
+	3xNginx Replica     =>|-> Nginx 2	nginx:latest 
+	Swarm Manager         \-> Nginx 3	nginx:latest 
+                                ^Task        ^container
+services diagram
+
+# Toolbox
+	Docker Toolbox is the installer for Mac and Windows users.
+
+# Union file system
+	Union file systems, or UnionFS, are file systems that operate by creating layers, making them 
+	very lightweight and fast. Docker uses union file systems to provide the building blocks for containers.
+
+# virtual machine
+	A virtual machine is a program that emulates a complete computer and imitates dedicated hardware. 
+	It shares physical hardware resources with other users but isolates the operating system. The end user 
+	has the same experience on a Virtual Machine as they would have on dedicated hardware.
+
+Compared to to containers, a virtual machine is heavier to run, provides more isolation, gets its own set of resources and does minimal sharing.
 
 
 
 
+
+
+
+
+
+#####################################################################
+
+$ docker help
+
+Run 'docker COMMAND --help' for more information on a command.
+######################################################################
+Usage: docker [OPTIONS] COMMAND [arg...]
+       docker [ --help | -v | --version ]
+
+A self-sufficient runtime for containers.
+
+Options:
+
+  --config=~/.docker              Location of client config files
+  -D, --debug                     Enable debug mode
+  -H, --host=[]                   Daemon socket(s) to connect to
+  -h, --help                      Print usage
+  -l, --log-level=info            Set the logging level
+  --tls                           Use TLS; implied by --tlsverify
+  --tlscacert=~/.docker/ca.pem    Trust certs signed only by this CA
+  --tlscert=~/.docker/cert.pem    Path to TLS certificate file
+  --tlskey=~/.docker/key.pem      Path to TLS key file
+  --tlsverify                     Use TLS and verify the remote
+  -v, --version                   Print version information and quit
+
+Commands:
+    attach    Attach to a running container
+    build     Build an image from a Dockerfile
+    commit    Create a new image from a container's changes
+    cp        Copy files/folders between a container and the local filesystem
+    create    Create a new container
+    diff      Inspect changes on a container's filesystem
+    events    Get real time events from the server
+    exec      Run a command in a running container
+    export    Export a container's filesystem as a tar archive
+    history   Show the history of an image
+    images    List images
+    import    Import the contents from a tarball to create a filesystem image
+    info      Display system-wide information
+    inspect   Return low-level information on a container, image or task
+    kill      Kill one or more running containers
+    load      Load an image from a tar archive or STDIN
+    login     Log in to a Docker registry.
+    logout    Log out from a Docker registry.
+    logs      Fetch the logs of a container
+    network   Manage Docker networks
+    node      Manage Docker Swarm nodes
+    pause     Pause all processes within one or more containers
+    port      List port mappings or a specific mapping for the container
+    ps        List containers
+    pull      Pull an image or a repository from a registry
+    push      Push an image or a repository to a registry
+    rename    Rename a container
+    restart   Restart a container
+    rm        Remove one or more containers
+    rmi       Remove one or more images
+    run       Run a command in a new container
+    save      Save one or more images to a tar archive (streamed to STDOUT by default)
+    search    Search the Docker Hub for images
+    service   Manage Docker services
+    start     Start one or more stopped containers
+    stats     Display a live stream of container(s) resource usage statistics
+    stop      Stop one or more running containers
+    swarm     Manage Docker Swarm
+    tag       Tag an image into a repository
+    top       Display the running processes of a container
+    unpause   Unpause all processes within one or more containers
+    update    Update configuration of one or more containers
+    version   Show the Docker version information
+    volume    Manage Docker volumes
+    wait      Block until a container stops, then print its exit code
+
+
+
+
+##########################################################
+ 
+$ docker run --help
+
+##########################################################
+Options:
+      --add-host value              Add a custom host-to-IP mapping (host:ip) (default [])
+  -a, --attach value                Attach to STDIN, STDOUT or STDERR (default [])
+      --blkio-weight value          Block IO (relative weight), between 10 and 1000
+      --blkio-weight-device value   Block IO weight (relative device weight) (default [])
+      --cap-add value               Add Linux capabilities (default [])
+      --cap-drop value              Drop Linux capabilities (default [])
+      --cgroup-parent string        Optional parent cgroup for the container
+      --cidfile string              Write the container ID to the file
+      --cpu-percent int             CPU percent (Windows only)
+      --cpu-period int              Limit CPU CFS (Completely Fair Scheduler) period
+      --cpu-quota int               Limit CPU CFS (Completely Fair Scheduler) quota
+  -c, --cpu-shares int              CPU shares (relative weight)
+      --cpuset-cpus string          CPUs in which to allow execution (0-3, 0,1)
+      --cpuset-mems string          MEMs in which to allow execution (0-3, 0,1)
+  -d, --detach                      Run container in background and print container ID
+      --detach-keys string          Override the key sequence for detaching a container
+      --device value                Add a host device to the container (default [])
+      --device-read-bps value       Limit read rate (bytes per second) from a device (default [])
+      --device-read-iops value      Limit read rate (IO per second) from a device (default [])
+      --device-write-bps value      Limit write rate (bytes per second) to a device (default [])
+      --device-write-iops value     Limit write rate (IO per second) to a device (default [])
+      --disable-content-trust       Skip image verification (default true)
+      --dns value                   Set custom DNS servers (default [])
+      --dns-opt value               Set DNS options (default [])
+      --dns-search value            Set custom DNS search domains (default [])
+      --entrypoint string           Overwrite the default ENTRYPOINT of the image
+  -e, --env value                   Set environment variables (default [])
+      --env-file value              Read in a file of environment variables (default [])
+      --expose value                Expose a port or a range of ports (default [])
+      --group-add value             Add additional groups to join (default [])
+      --health-cmd string           Command to run to check health
+      --health-interval duration    Time between running the check
+      --health-retries int          Consecutive failures needed to report unhealthy
+      --health-timeout duration     Maximum time to allow one check to run
+      --help                        Print usage
+  -h, --hostname string             Container host name
+  -i, --interactive                 Keep STDIN open even if not attached
+      --io-maxbandwidth string      Maximum IO bandwidth limit for the system drive (Windows only)
+      --io-maxiops uint             Maximum IOps limit for the system drive (Windows only)
+      --ip string                   Container IPv4 address (e.g. 172.30.100.104)
+      --ip6 string                  Container IPv6 address (e.g. 2001:db8::33)
+      --ipc string                  IPC namespace to use
+      --isolation string            Container isolation technology
+      --kernel-memory string        Kernel memory limit
+  -l, --label value                 Set meta data on a container (default [])
+      --label-file value            Read in a line delimited file of labels (default [])
+      --link value                  Add link to another container (default [])
+      --link-local-ip value         Container IPv4/IPv6 link-local addresses (default [])
+      --log-driver string           Logging driver for the container
+      --log-opt value               Log driver options (default [])
+      --mac-address string          Container MAC address (e.g. 92:d0:c6:0a:29:33)
+  -m, --memory string               Memory limit
+      --memory-reservation string   Memory soft limit
+      --memory-swap string          Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      --memory-swappiness int       Tune container memory swappiness (0 to 100) (default -1)
+      --name string                 Assign a name to the container
+      --network string              Connect a container to a network (default "default")
+      --network-alias value         Add network-scoped alias for the container (default [])
+      --no-healthcheck              Disable any container-specified HEALTHCHECK
+      --oom-kill-disable            Disable OOM Killer
+      --oom-score-adj int           Tune host's OOM preferences (-1000 to 1000)
+      --pid string                  PID namespace to use
+      --pids-limit int              Tune container pids limit (set -1 for unlimited)
+      --privileged                  Give extended privileges to this container
+  -p, --publish value               Publish a container's port(s) to the host (default [])
+  -P, --publish-all                 Publish all exposed ports to random ports
+      --read-only                   Mount the container's root filesystem as read only
+      --restart string              Restart policy to apply when a container exits (default "no")
+      --rm                          Automatically remove the container when it exits
+      --runtime string              Runtime to use for this container
+      --security-opt value          Security Options (default [])
+      --shm-size string             Size of /dev/shm, default value is 64MB
+      --sig-proxy                   Proxy received signals to the process (default true)
+      --stop-signal string          Signal to stop a container, SIGTERM by default (default "SIGTERM")
+      --storage-opt value           Storage driver options for the container (default [])
+      --sysctl value                Sysctl options (default map[])
+      --tmpfs value                 Mount a tmpfs directory (default [])
+  -t, --tty                         Allocate a pseudo-TTY
+      --ulimit value                Ulimit options (default [])
+  -u, --user string                 Username or UID (format: <name|uid>[:<group|gid>])
+      --userns string               User namespace to use
+      --uts string                  UTS namespace to use
+  -v, --volume value                Bind mount a volume (default [])
+      --volume-driver string        Optional volume driver for the container
+      --volumes-from value          Mount volumes from the specified container(s) (default [])
+  -w, --workdir string              Working directory inside the container

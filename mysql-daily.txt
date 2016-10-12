@@ -992,9 +992,11 @@ Exit mysql
 
 # Backing up DB
 
-systemctl stop mysql    //    service mysqld stop   <= STOP FIRST
+$ systemctl stop mysql    //    service mysqld stop   <= STOP FIRST
 
-mysqldump -u root -p --all-databases --events --master-data > /tmp/master-dump.db
+$ mysqldump -u root -p --all-databases --events --master-data | pv --progress --size 100m > /tmp/master-dump.db
+
+[===>            ] 20%  <= pv --progress --size 100m option
 
 # Transfer dump.db file to slave server
 rsync -avpP -e ssh /tmp/master-dump.db root@slave:/tmp/
