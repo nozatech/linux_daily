@@ -1,0 +1,235 @@
+Cassandra
+
+$ docker run --name=n1 -d tobert/cassandra
+$ docker ps
+
+
+### cassandra command nodetool
+
+$ $docker  exec -it n1 nodetool status
+
+Datacenter: datacenter1
+=======================
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address     Load       Tokens  Owns (effective)  Host ID                               Rack
+UN  172.17.0.2  51.5 KB    256     100.0%            2931787d-900a-4357-9210-35e514f4f0cc  rack1
+^up ^normal state           ^V-node
+
+
+$ docker  exec -it n1 nodetool ring
+
+Datacenter: datacenter1
+==========
+Address     Rack        Status State   Load            Owns                Token                 
+                                                                           9195342066555537467   
+172.17.0.2  rack1       Up     Normal  51.5 KB         100.00%             -9167705071365824206  
+172.17.0.2  rack1       Up     Normal  51.5 KB         100.00%             -9128953997338167205 
+
+## Cassandra yml config file
+$ docker exec -it n1 /bin/bash
+$ vi /data/conf/cassandra.yml
+	num_tokens:256
+	
+# check IP on first node
+$ docker inspect -f '{{ .NetworkSettings.IPAddress}}' n1
+  172.17.0.2
+
+  
+ 
+### Launch 2nd Node and add to seeds node
+$ docker run --name n2 -d tobert/cassandra -seeds 172.17.0.2
+40cbe7031fd8b3441adccdb33af7fe4864a62523fc07fc3ca6dd08ee2a095b4f
+
+
+$docker ps    <= check 2 nodes running
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                               NAMES
+40cbe7031fd8        tobert/cassandra    "/bin/cassandra-docke"   34 seconds ago      Up 32 seconds       7000/tcp, 7199/tcp, 9042/tcp, 9160/tcp, 61621/tcp   n2
+1ce3a5d8175c        tobert/cassandra    "/bin/cassandra-docke"   14 minutes ago      Up 14 minutes       7000/tcp, 7199/tcp, 9042/tcp, 9160/tcp, 61621/tcp   n1
+
+
+$ docker exec -it n1 nodetool status
+Datacenter: datacenter1
+=======================
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address     Load       Tokens  Owns (effective)  Host ID                               Rack
+UN  172.17.0.3  65.95 KB   256     100.0%            3baf6d1f-0a91-4287-97bd-dc99a62f3545  rack1
+UN  172.17.0.2  51.5 KB    256     100.0%            2931787d-900a-4357-9210-35e514f4f0cc  rack1
+                            ^ 512 total virtual nodes to cluster
+
+
+$ docker  exec -it n1 nodetool ring
+172.17.0.2  rack1       Up     Normal  51.5 KB         100.00%             -9022653196445019704      
+172.17.0.3  rack1       Up     Normal  65.95 KB        100.00%             -8966004622668016931  
+.......
+ 
+512							
+
+# check cassandra.yml file on node2
+$ docker exec -it n2 /bin/bash
+root@40cbe7031fd8:/# grep seeds /data/conf/cassandra.yaml
+
+          # seeds is actually a comma-delimited list of addresses.
+          # Ex: "<ip1>,<ip2>,<ip3>"
+          - seeds: 172.17.0.2
+
+		  
+# add 3rd node
+$ docker run --name n3 -d tobert/cassandra -seeds 172.17.0.2
+
+$docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                               NAMES
+d37b90a03ca6        tobert/cassandra    "/bin/cassandra-docke"   25 seconds ago      Up 24 seconds       7000/tcp, 7199/tcp, 9042/tcp, 9160/tcp, 61621/tcp   n3
+40cbe7031fd8        tobert/cassandra    "/bin/cassandra-docke"   10 minutes ago      Up 10 minutes       7000/tcp, 7199/tcp, 9042/tcp, 9160/tcp, 61621/tcp   n2
+1ce3a5d8175c        tobert/cassandra    "/bin/cassandra-docke"   23 minutes ago      Up 23 minutes       7000/tcp, 7199/tcp, 9042/tcp, 9160/tcp, 61621/tcp   n1
+
+$ docker exec -it n1 nodetool status
+Datacenter: datacenter1
+=======================
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address     Load       Tokens  Owns (effective)  Host ID                               Rack
+UN  172.17.0.3  65.95 KB   256     63.5%             3baf6d1f-0a91-4287-97bd-dc99a62f3545  rack1
+UN  172.17.0.2  51.5 KB    256     68.8%             2931787d-900a-4357-9210-35e514f4f0cc  rack1
+UN  172.17.0.4  98.93 KB   256     67.8%             a8cae7e6-b55f-4036-887a-cdf6fd8efbb3  rack
+
+$ docker  exec -it n1 nodetool ring
+256*3=768
+
+
+### 
+$ docker exec -it n1 nodetool help
+
+# to stop nodes
+$ docker stop n1 n2 n3
+
+# clean up docker containers
+$ docker rm n1 n2 n3
+
+##############
+### Snitch ###
+##############
+
+SimpleSnitch  				    <= Single Datacenter
+
+GossipingPropertyFileSnitch     <= 
+
+PropertyFileSnitch
+
+EC2Snitch
+
+EC2MultiRegionSnitch
+
+# GossipingPropertyFileSnitch  for datacenter#1 & rack#1 
+$ docker run --name=n1 -d tobert/cassandra -dc DC1     -rack RAC1
+											^datacenter ^rack 
+
+$ docker exec -it n1 nodetool status
+Datacenter: DC1  <<<<===
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address     Load       Tokens  Owns (effective)  Host ID                               Rack
+UN  172.17.0.2  51.5 KB    256     100.0%            2eeb484c-b5e9-44b3-b9e9-6b732ede4f47  RAC1 <<<<<<===
+
+# creating datacenter#1 but Rack#2
+$ docker run --name=n2 -d tobert/cassandra -dc DC1 -rack RAC2 -seeds 172.17.0.2
+
+
+$ docker exec -it n1 nodetool status
+Datacenter: DC1
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address     Load       Tokens  Owns (effective)  Host ID                               Rack
+UN  172.17.0.3  72.02 KB   256     100.0%            527296be-8c76-4d98-9c09-a67fa334b73d  RAC2
+UN  172.17.0.2  51.5 KB    256     100.0%            2eeb484c-b5e9-44b3-b9e9-6b732ede4f47  RAC1
+
+
+
+$ docker exec -it n2 nodetool ring
+
+172.17.0.2  RAC1        Up     Normal  51.5 KB         100.00%             9197373546167393294       
+172.17.0.3  RAC2        Up     Normal  82.4 KB         100.00%             9200633003914806267 
+
+$ docker exec -it n2 /bin/bash
+
+# check from Node2 dc number and rack nubmer
+
+$ cat /data/conf/cassandra-rackdc.properties
+dc=DC1
+rack=RAC2
+
+
+# Add Node3 from DC2 
+$ docker run --name=n3 -d tobert/cassandra -dc DC2 -rack RAC1 -seeds 172.17.0.2
+
+# check all nodes running
+
+$docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                               NAMES
+4c722abba722        tobert/cassandra    "/bin/cassandra-docke"   42 seconds ago      Up 41 seconds       7000/tcp, 7199/tcp, 9042/tcp, 9160/tcp, 61621/tcp   n3
+98f13f53c699        tobert/cassandra    "/bin/cassandra-docke"   7 minutes ago       Up 7 minutes        7000/tcp, 7199/tcp, 9042/tcp, 9160/tcp, 61621/tcp   n2
+6a70ac1b5708        tobert/cassandra    "/bin/cassandra-docke"   13 minutes ago      Up 13 minutes       7000/tcp, 7199/tcp, 9042/tcp, 9160/tcp, 61621/tcp   n1
+
+# Multi Datacenter Cassandra Cluster
+
+$ docker exec -it n1 nodetool status
+Datacenter: DC2 <<<<<<<<<
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address     Load       Tokens  Owns (effective)  Host ID                               Rack
+UN  172.17.0.4  66.43 KB   256     69.9%             90845281-d8ab-4113-a446-13248f508f73  RAC1
+Datacenter: DC1 <<<<<<<<<<
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address     Load       Tokens  Owns (effective)  Host ID                               Rack
+UN  172.17.0.3  82.4 KB    256     61.8%             527296be-8c76-4d98-9c09-a67fa334b73d  RAC2
+UN  172.17.0.2  51.5 KB    256     68.3%             2eeb484c-b5e9-44b3-b9e9-6b732ede4f47  RAC1
+
+
+
+## Allocated by Datacenter v-node
+
+$ docker exec -it n1 nodetool ring
+
+Datacenter: DC2
+==========
+Address     Rack        Status State   Load            Owns                Token                     
+                                                                           9166411466180955389       
+172.17.0.4  RAC1        Up     Normal  66.43 KB        69.92%              -9144602006827446924      
+
+Datacenter: DC1
+==========
+Address     Rack        Status State   Load            Owns                Token                     
+                                                                           9200633003914806267  
+172.17.0.2  RAC1        Up     Normal  51.5 KB         68.29%              9197373546167393294       
+172.17.0.3  RAC2        Up     Normal  82.4 KB         61.79%              9200633003914806267 
+
+
+#####################################
+### 2 Replication and Consistency ###
+#####################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
