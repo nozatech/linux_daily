@@ -7,6 +7,23 @@
 4.철학책 - 생각에 방법
 5.사회학 인간학 - 인간 관계
 
+Windows CMD kill process(http://tweaks.com/windows/39559/kill-processes-from-command-prompt/)
+c:\tasklist
+c:\taskkill /IM pdflite.exe /F 
+
+
+SMACK Stack
+Spark - fast and general engine for distributed, large-scale data processing
+Mesos - cluster resource management system that provides efficient resource
+		isolation and sharing across distributed applications
+Akka -  a toolkit and runtime for building highly concurrent, distributed, 
+		and resilienct message-driven app on the JVM
+Cassandra - distributed, highly available DB designed to handle large amounts of data
+		across multiple datacenters
+Kafka - a high-throughput, low-latency distributed messaging system designed for
+		handling real-time data feeds
+		
+
 Daily Linux CMD List & Scripts
 
 32bit is 2^32 =~ 4.3 billion
@@ -17,77 +34,8 @@ echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> ~/.bashrc
 echo 'export HISTTIMEFORMAT="%F "' >> ~/.bashrc
 ###
 
+
 		
-1. Run Scripts
-	$ ./script.sh
-    $ sh ./script.sh   ( same as 'sh script.sh')
-    $ sh +x script.sh   			<= +x for debuging mode
- 
- # Run script within vim or vi
-    :w   	      					<= write first
-    :!sh %   (# :! sh %)     		<= :! =run, sh =shell, % =curren open file
-	:!!         					<= run same script again 
-    :!./script_name.sh
-    :! python %
-    :! perl %
-    :! sh -x %					<= -x is for DEBUG(verbose) mode
-    #!/bin/bash -x      		<= -x to #! line for debug mode
-    set -x              		<= End of file +x for TURN OFF
-	
-		
- # Search and replace
-	:%s/foo/bar/g
-	:%s/foo/bar/gc				<= to confirm first
-	
- # Debug mode	
-    #!/bin/bash +x 					<= +x for debuging mode in shell script
-    $ bash +x ./script.sh  ( same as 'bash script.sh') 
- 
- # Run script    
-	$ . script.sh      <= current login shell to run
-    $ exec ./script    <= after run, the login shell exit 
-	$ sh script.sh
-	
- ### Save in read only file ###
-	:w !sudo tee %                  	<= save as sudo privilege.  type (L) load at the prompt to reload.
-	:w !chmod 777 %    then    :wq!
-	
-	:h									<= vi, vim help 			
-	:q 									<= quit help page
-	
-	$ vi +101 filename					<= go to 101 line in filename
-	:12									<= Go to particular line number in vi editor 
- 
- # Move
-	shift+G		<= All the way down page
-	
- # Check bash 
-	$ echo $SHELL
-	$ env | grep SHELL
-	$ ps					 
-	  1453 pts/1    00:00:00 bash  <= BASH
-	$ ps | grep `echo $$` | awk '{ print $4 }'
-	
-	$ awk '/lemon/ && /rice/'	<= search two words
-
-
-### Special Shell Variables ###
-	$0 		file name of script
-	$1		positional parameter #1
-	$2-9	positional parameter #2-9
-	${10}	positional parameter #10
-	$#		number of positional parameter
-	"$*"	all the positional parameters(as separate word)*
-	"$@"	all the positional parameters(as separate strings)
-	${#*}	number of positional parameters
-	${#@}	number of positional parameters
-	$?		return value
-	$$	 	process ID(PID) of script
-	$-		flags passed to sript(using set)
-	$_		last argument of previous command
-	$!		process ID(PID) of last job run in background
-	* Must be quoted, otherwise it defaults to $@
-
 # cd command
 Directory	/1/2/3/4/5
 	from /1/2/3/  =>  /1   			$ cd ../..
@@ -95,8 +43,6 @@ Directory	/1/2/3/4/5
 	
 # number line	
 	$ cat txt | nl 
-	
-	
 	
 3. SSH connection login
 	$ ssh -v root@172.16.248.xx > result.txt					<= -v debugging mode
@@ -118,6 +64,24 @@ Directory	/1/2/3/4/5
     debug1: Connection established.
     debug1: identity file /home/apark/.ssh/id_rsa type 1
 
+	
+	PSSH tool includes parallel versions of OpenSSH and related tools such as:
+
+	pssh – is a program for running ssh in parallel on a multiple remote hosts.
+	
+	pscp – is a program for copying files in parallel to a number of hosts.
+		   Copy/Transfer Files Two or More Remote Linux Servers
+	
+	prsync – is a program for efficiently copying files to multiple hosts in parallel.
+	
+	pnuke – kills processes on multiple remote hosts in parallel.
+	
+	pslurp – copies files from multiple remote hosts to a central host in parallel.
+
+	
+$ yum install python-pip
+$ pip install pssh
+	
 
 4.  RSA KEY( 1024bit, 2k, 4k bit)
 	ssh-keygen -t rsa					<= Generate  id_rsa (Private Key ) & id_rsa.pub (Public Key)	
@@ -447,7 +411,7 @@ cron job search from command line
 
 # examples 
 	0 0 * * 1,3,5   			   <= 12AM at every Mon, Wed, Fri
-	@reboot        				   <= Run once, at startup.  Put startup script!!!!
+	@reboot        				   <= Run once, at start up.  Put start up script!!!!
 	0 0 1 1 *		@yearly        <= Run once a year
 	@annually       @yearly 
 	0 0 1 * *		@monthly       <= Run once a month
@@ -776,43 +740,7 @@ cron job search from command line
 	uid=0(root) gid=0(root) groups=0(root) 				context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
 
 
-17. if [ $id -u != "0" ] ;then
-	echo "You must be the supper user to run this script" >&2  		<= user id -u failure q
-	exit 1															<= exit status sets to 1(failure)
-    fi
 
-
-
-19. Arithmatic
-	echo $(( 1+2 ))
-	+, -, *, /, %, **,
-	
-	#!/bin/bash
-	number=0
-
-	echo -n "Enter a number >"
-	read number
-
-	echo "The number is $number"
-
-	if [ $(( number %2 )) -eq 0 ]; then
-        echo "The number is even"
-	else
-        echo "The number is odd"
-	fi
-
-
-20. Read
-# -t timing
-# -s security hidden
-
-	#!/bin/bash
-	echo -n  "Enter your SSN before expire within 3sec > "
-	if read -t 3  -s response; then
-	        echo "Great, you made it in time"
-	else
-        	echo "Sorry, you are too slow"
-	fi
 
 
 21. rm -rf ./tmp/test/delme/*    <=delete folder contents
@@ -885,7 +813,7 @@ cron job search from command line
 23. 
 	echo $BASH_VERSION
 	echo $MACHTYPE
-	echo $SECONDS 					<=Count script started 
+	echo $SECONDS 					<= Count script started 
 
 
 	d=$(pwd)
@@ -903,49 +831,7 @@ cron job search from command line
   tail -f *Slave.log
   tail -f *vSlave.log | grep "Info: Slave - Sending status"	
 
-24. Comparison operation for test [[ expression ]]     0:TRUE  1:FALSE 
-	A. Comparing variables
-		Less than			        [[ $a < $b ]]
-		greater than			    [[ $a > $b ]]
-		less than or equal to 		[[ $a <= $b ]]
-		greater than or equal to 	[[ $a >= $b ]]
-		equal				        [[ $a == $b ]]
-		not equal			        [[ $a != $b ]]
-	ex)     [[ "cat" == "cat" ]]
-		a=cat
-		b=dog
-		[[ $a == $b ]]
-		echo $?			<= 1:FALSE 0:TRUE
 
-	B. Logical Operations
-		AND     [[ $a && $b ]]
-		OR   	[[ $a || $b ]] 
-		NOT     [[ ! $a ]]
-
-	C. Number comparison operations
-		less than			         [[ $a -lt $b ]]
-		greater than			     [[ $a -gt $b ]]
-		less than or equal to 		 [[ $a -le $b ]]
-		greater than or equal to	 [[ $a -ge $b ]]
-		equal				         [[ $a -eq $b ]]
-		not equal			         [[ $a -ne $b ]]
-	Ex)	[[ 20 -gt 100 ]]
-		echo $?
-	
-	D. String null value
-		is null?			    [[ -z $a ]]
-		is not null?			[[ -n $a ]]
-
-	Ex)	a=""
-		b="cat"
-		[[ -z $a && -n $b ]]
-		echo $?
-
-		if [ $? == 0 ]; then
-			echo "TRUE"
-		else
-			echo "FALSE"
-		fi
 
 25. a="hello"
 	echo ${#a}   <= 5 number for character
@@ -963,15 +849,7 @@ cron job search from command line
 
 
 
-28. Array (can do from prompt)
-	
-	a=()
-	b=("apple" "banana" "cherry" "$today" "$time")
-	echo ${b[2]}
-	b[5]="kiwi"
-	b+=("mango")
-	echo ${b[@]}            # @ <= whole array
-	echo ${b[@]: -1}        # -1 <= last item in array
+
 
 
 29. Empty file contents or logs
@@ -989,145 +867,27 @@ eval > file           Y(3,8) Y(3)   Y      Y(6)      Y      Y
 
 	df -h / | grep -E "\/$" | awk '{print $4}'
 	df -h / | xargs | awk '{print $11}'       <= Same result
-
+	
 	fdisk -l
+	
 	sfdisk -l -uM
+	
 	cfdisk /dev/sda1  <= a linux partition editor with an 		
 			     interactive user interface based on ncurses
 	
 	parted -l  <= list out partitions 
+	
 	df -h | gep ^/dev
-	lsblk  <= Lists out all the storage blocks
+	
+	$ lsblk  				<= Lists out all the storage blocks
+		NAME  MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+		xvda1 202:1    0  12G  0 disk /
+
 	blkid  <= prints the block device(partitions and storage media) 
 		  attributes like uuid and file system type.
 	
 
-31. Comparisons: cmp vs diff
-	cmp -  compare files byte by byte
-	cmp -s $file1 $file2
-    
-    comm <= Compare two sorted files line by line   
 
-    diff - compare files line by line
-	diff $file1 $file2 > /dev/null
-
-	sdiff  <= side by side comparison
-	
-	
-32. if Condition statement
-
-	a. if condition ; then	<= if condition is true, commands run
-		commands
-   	   fi			<= if condition is false, do nothing!
-
-	b. if condition ; then  <= if condition is true, 1st commands run otherwise 
-	   	commands   
-	   else			<= if condition is false, 2nd commands run
-		commands
-	   fi
-
-	c. if condition ; then   <= if condition is true, 1st commands run
-	   	commands
-	   elif conditions; then <= if condition is false, and if the 2nd command is true
-	   	commands	 <= then 2nd set of commands run  	
-	   if
-	   
-	#!/bin/bash
-	if [ -f /etc/foo ]; then     # -f for file exit?
-        	cp /etc/foo .
-       		echo "copy done!"
-	else
-        	echo "This file does not exist"
-        	exit (1 ??)
-	fi
---------------------------------------------------
-
-	if cmp -s "$file1" "$file2"
-		then
-	   echo "The files match"
-	else
-	   echo "The files are different"
-	fi
-
-
-
-
-# Exit code
-	#!/bin/bash
-
-	touch /root/test 2> /dev/null
-
-	if [ $? -eq 0 ]
-	then
-  	  echo "Successfully created file"
-	  exit 0
-	else
-	  echo "Could not create file" >&2
-	  exit 1
-	fi
-	
-
-	## With the exit command in this script, we will exit with a successful message 
-	and 0 exit code if the touch command is successful. If the touch command fails 
-	however, we will print a failure message to stderr and exit with a 1 value 
-	which indicates failure. ##
-
-	
-	# Move or rename file from CMD
-	$ if [ -e .vimrc ]; then mv .vimrc .vimrc_bak; fi
-
-
-
-33. while and until statement  <= while & until true statement
-	i=0
-	while [ $i -le 10 ]; do
-        	echo i = $i
-        	((i++))
-	done			<= 0 ~ 10
-        ------------------------------------
-        j=0
-        until [$j -ge 10 ]; do
-              echo j = $j
-              ((j++))
-        done			<= 0 ~ 9
---------------------------------------------------
-
-	#!/bin/bash
-	x=0			<= initializing to 0
-	while [ $x -le 10 ] ; do 
-        	echo "Current value of X is $x."
-        	x=$(expr $x + 1 )  <= ((x++)
-        	sleep 1
-	done
---------------------------------------------------
-	x=0;
-
-	while [ $x -gt -10 ] ; do
-        	echo "X value is $x"
-	        ((x--))
-	done
-
-
-34. for loop
-	x="nozatech"
-	for i in /home/* ; do
-		echo $x is exist in home direcotry
-	done
---------------------------------------------------
-	for i in /home/*; do
-        	echo $x is exit
-	done
-
-
-
-	
-
-35. file
-	i=1
-	while read f; do
-		echo "Line $i: $f"
-		((i++))
-	done < ffile.txt
 
 
 36. vi/vim  set number
@@ -1150,142 +910,7 @@ Undo
 
 
 
-37. read -p "What year?[nnnn] " a
-   while [[ ! $a =~ [0-9]{4} ]]; do
-       read -p "A year, pelase! [nnnn] " a
-   done
-   echo "Selected year: $a"
 
-	
-	
-	
-	
-	mkdir
-	$ mkdir -p production/{modules,manifests}  <= creating multi folders
-
-
-
-38. && ( AND )   
-
-#T&&R    true  && echo runs		<= if cmd1 runs then cmd2 runs also 
-
-#F&&N    false && echo runs		<= if cmd2 fails then cmd2 No runs
-	
-e.g.	cd $directory && rm -rf *
-
-# Both run in cmd line and bash script
-	    *TRUE*	   *RUN!*
-	[ ! -d ~/tmp ] && mkdir ~/tmp
-	echo $? <= 0  Success
-
-	    *FALSE*	   *NO RUN*
-	[ ! -d ~/tmp ] && mkdir ~/tmp
-	echo $? <= 1  fail  Did not created!
-
-
-Coding
-### FIZZBUZZ  ###	
-	Prints out when there is a number divied by 3 == 0, then fizz
-	Prints out when there is a number divied by 5 == 0, then buzz
-	Prints out when there is a number divied by 3 == 0 && 5 == 0, then FizzBuzz
-
-	
-	#!/bin/bash  
-	for i in {1..100}; do
-        if (( i % 3 == 0 )) && (( i % 5 == 0)); then echo "fizzbuzz"
-                elif (( i % 3 == 0 )); then echo "fizz"
-                elif (( i % 5 == 0 )); then echo "buzz"
-        else
-                echo $i;
-        fi
-	done
-
-	
-	#!/bin/bash
-	for i in {1..100}; do
-		if (! ((i % 3)) ) && (! ((i % 5)) ); then echo "FizzBuzz"
-			elif (! ((i % 3)) ); then echo "fizz"
-			elif (! ((i % 5)) ); then echo "buzz"
-		else
-			echo $i;
-		fi
-	done
-
-	### check modulo value from terminal ###
-	# m=$(( 1 % 5 ))
-	# echo $m
-	# 1
-	# m=$(( 55 % 5 ))
-	# echo $m
-	# 0
-
-39. || ( OR )
-
-#T||N    true  || echo runs		<= if cmd1 runs then cmd2 NO runs
-
-#F||R    false || echo runs		<= if cmd1 fails then cmd2 RUNS!
-
-   	     *TRUE*	   *NO RUN*
-	[ -d ~/tmp ] || mkdir ~/tmp
-	echo $? <= 1  False
-
-	    *FALSE*	   *YES RUN*
-	[ -d ~/tmp ] || mkdir ~/tmp
-	echo $? <= 0  Created folder!
-
-
-
-
-
-e.g.    cd $directory || error_exit "No such dir and aborting!"
-
-
-
-
-39. Function
-
-#!/bin/bash
-function numberthings {		<= Declaring function name
-        i=1			<= 
-        for f in $@; do		<= $@ special array variable that represents all 
-				   of the arguments pass to a function
-
-                echo $i: $f
-                ((i+=1))	<= incrementing
-        done
-}
-
-numberthings $(ls)
-numberthings pine birch maple spruce
-
-
-
-
-40. Argument
-	#!/bin/bash
-	echo $1
-	echo $2
-
-    $./my.sh apple banana
-
-
-	#!/bin/bash
-	echo $1
-	echo $2
-    $./my.sh "apple Apple" "banana Banana"   <=use " " for when space in them
-
-###
-# Don't have to define the variables to saves a lot of time
-###
-
-	#!/bin/bash
-	for i in $@			<= array arugment $@
-	do
-		echo $i
-	done
-	echo "There were $# arugments." <= $# contains number of argument
-
-$./my.sh apple orange kiwi lemon
 
 
 
@@ -1405,10 +1030,13 @@ $./my.sh apple orange kiwi lemon
 	Your account has expired; please contact your system administrator
 	Connection closed by 192.168.232.138
 
-# Referece http://unix.stackexchange.com/questions/7690/how-do-i-completely-disable-an-account
+# Referece 
+http://unix.stackexchange.com/questions/7690/how-do-i-completely-disable-an-account
 	$ passwd -l user_ID			<= -l lock
+	
 Doesn't satisfy constraints because public key authentication bypasses PAM and still allows direct login.
 	$ usermod -s /sbin/nologin <user>
+	
 Doesn't satisfy constraints because breaks the enterprise scheduler
 ### $ usermod --lock --expiredate 1970-01-01 <user>  ###
 	$ usermod -l -e 1970-01-01 user_ID
@@ -1428,24 +1056,11 @@ Doesn't satisfy constraints because breaks the enterprise scheduler
 			(/dev/pts/1) at 19:47 ...
 		Please log out
 
-45. Wall					<= messaging to users within system 				
-	$echo testing > wall.txt
-	$wall wall.txt
-		Broadcast Message from noza@fm
-			(/dev/pts/1) at 19:46 ...
-		testing
-	
-	$ echo "Please log out" | wall 
-		Broadcast Message from noza@fm
-			(/dev/pts/1) at 19:47 ...
-		Please log out
 
-
+		
 45. CentOS 6.5(sysV) vs CentOS 7(systemd)
 
-
 A. CentOS 6.5(sysV)
-
 	
 /sbin/chkconfig --list
 
@@ -1528,8 +1143,8 @@ chkconfig --level 35 httopd  on			systemctl enable/disable httpd.service
 chkconfig --list | grep httpd			systemctl start httpd
 service httpd start/stop		     	systemctl stop httpd
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-target						systemctl list-unit-files
-cat /etc/inittab				systemctl list-units --type target  (--all for not active)					                        systemctl list-units --type services
+target					systemctl list-unit-files
+cat /etc/inittab		systemctl list-units --type target  (--all for not active)					                        systemctl list-units --type services
 						systemctl get-default
 						change to multi-user target
 						systemctl set-default multi-uiser.target
@@ -1553,40 +1168,25 @@ journalctl - Query the systemd journal
 	journalctl -b -1       <= previous boot
 	journalctl -f          <= just happened log check
 	journalctl -u sshd     <= -u unit, 
+	journalctl -xe
 
 	
-	
-	
-	
-	
-	
+		
 	
 	
 46. List of package installed
 
-    online <=    yum list *httpd
-    system <=    yum list installed (same as rpm -qa) | grep httpd
+    online 			<=    yum list *httpd
+    system 			<=    yum list installed (same as rpm -qa) | grep httpd
     yum info httpd  <=version and detail pkg info
 
 
 47. EPEL (Extra Packages for Enterprise Linux) 
+	CentOS 6 x64 EPEL 
+	wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+	rpm -ivh epel-release-6-8.noarch.rpm
 
-48. Test statement [ -n ]       -n <= string non zero
-				-z <= The length of the string is zero
-				-d <= directory
-				-f <= file
-				-e <= exist
 
-e.g.
-	if [ -f .bashrc ]; then	
-	    echo "you have the .bashrc."
-	else
-		echo "No .bashrc found!"
-	fi	
-
-	if [ $(id -u) = "0" ]; then
-		echo "supersuser"
-	fi
 	
 
 
@@ -1602,7 +1202,6 @@ e.g.
 	export into ~/.bash_profile as well as /root/.bash_profile
  
 	export HISTTIMEFORMAT="%F %T "
-
 
 
 
@@ -2094,16 +1693,16 @@ sudo apt-get update
 
 	mysql remote host login
 	$ mysql -u webadmin –h 65.55.55.2 –p
-	$ mysql -udbadmin -p'Test00!!'  -hlocalhost
+	$ mysql -ID_admin -p'password'  -hlocalhost
 
 65. Swappiness
 
-Swappiness is a Linux kernel parameter that controls the relative weight given to 
-swapping out runtime memory, as opposed to dropping pages from the system page cache. 
-Swappiness can be set to values between 0 and 100 inclusive. A low value causes the 
-kernel to avoid swapping, a higher value causes the kernel to try to use swap space. 
-The default value is 60, and for most desktop systems, setting it to 100 may affect 
-the overall performance, whereas setting it lower (even 0) may decrease response latency.
+	Swappiness is a Linux kernel parameter that controls the relative weight given to 
+	swapping out runtime memory, as opposed to dropping pages from the system page cache. 
+	Swappiness can be set to values between 0 and 100 inclusive. A low value causes the 
+	kernel to avoid swapping, a higher value causes the kernel to try to use swap space. 
+	The default value is 60, and for most desktop systems, setting it to 100 may affect 
+	the overall performance, whereas setting it lower (even 0) may decrease response latency.
 
 Value	Strategy
 vm.swappiness = 0	The kernel will swap only to avoid an out of memory condition.
@@ -2129,7 +1728,8 @@ cos7.localdomain
 # Alternatively, verify the change
   sysctl vm.swappiness
   vm.swappiness = 10
-  Permanent changes are made in /etc/sysctl.conf via the following configuration line     (inserted, if not present):
+  Permanent changes are made in /etc/sysctl.conf via the following configuration line     
+  inserted, if not present):
   vm.swappiness = 10
 
 66. rpm package install 
@@ -2145,11 +1745,14 @@ cos7.localdomain
 
   
 67. nmap  <= Short for Network Mapper 
-    It is an open source security tool for network exploration, securi
-ty scanning and     auditing. However, nmap command comes with lots of options that can make the utility     more robust and difficult to follow for new users.
-	$ nmap -sT ip_address  ( s-scan, T-TCP)
+    It is an open source security tool for network exploration, security scanning and     
+	auditing. However, nmap command comes with lots of options that can make the utility     
+	more robust and difficult to follow for new users.
+$ nmap -sT ip_address  ( s-scan, T-TCP)
+
 
 68. pgrep, pkill - look up or signal processes based on name and other attributes
+
 
 69. rthunter(Root Kit Hunter)
 
@@ -2162,33 +1765,22 @@ ty scanning and     auditing. However, nmap command comes with lots of options t
 		
 		
 		
-	$ for i in db lobby s1 s2; do date; done
+$ for i in db lobby s1 s2; do date; done
     Sat Aug  8 10:46:21 PDT 2015
-    Sat Aug  8 10:46:21 PDT 2015
-    Sat Aug  8 10:46:21 PDT 2015
+	...
     Sat Aug  8 10:46:21 PDT 2015
 	
-	$ for i in db lobby s1 s2 s3; do ssh $i date; done
-		ssh: Could not resolve hostname db: Name or service not known
-		ssh: Could not resolve hostname lobby: Name or service not known
-		ssh: Could not resolve hostname s1: Name or service not known
-		ssh: Could not resolve hostname s2: Name or service not known
-		ssh: Could not resolve hostname s3: Name or service not known
+$ for i in svr1 svr2 svr3; do ssh $i date; done
+	ssh: Could not resolve hostname svr1: Name or service not known
+	...
+	ssh: Could not resolve hostname svr3: Name or service not known
 	
-		
-		
-		
-		
-		
-		
-		
-		
 		
 71. Transfer file using SCP + pem key
 
 	$ scp -i /path/to/key.pem     /path/to/file.jpg    user_id@ip_address:/home/user_id/folder_name
 	## -i Identity_file such as pem key
-	$ scp -i /AWS-OC-Key/oc-prod.pem /AWS-OC-Key/oc-stage.pem ec2-user@54.191.102.80:/home/ec2-user/.cert
+	$ scp -i /AWS-OC-Key/oc-prod.pem /AWS-OC-Key/oc-stage.pem ec2-user@ip_address:/home/ec2-user/.cert
 
 	### copy a File to remote host Transfer
 	$ scp -pv student-files.zip nozatech@192.168.221.128:/home/nozatech/download
@@ -2198,7 +1790,7 @@ ty scanning and     auditing. However, nmap command comes with lots of options t
 	unzip ami.zip -d /jarvis
     
 	# to copy a folder from your local computer to a remote one.
-	scp -r nameOfFolderToCopy user_id@ip_address:/path/to/copy/
+	scp -r source_local_file user_id@ip_address:/path/to/copy/
 
 	# to copy a folder from a remote machine to your local one.
 	scp -r user_id@ip_address:/path/of/folder/to/copy /target/local/directory
@@ -2223,7 +1815,7 @@ ty scanning and     auditing. However, nmap command comes with lots of options t
 	$ grep -Ril "finding_word" /target/dir  <= R-recursive, i-ignore case, l-show file name
 	
 	
-	Find the command location
+72.	Find the command location
 	$ locate   command_name
 	$ whereis  command_name
 	$ which    command_name
@@ -2345,14 +1937,14 @@ CentOS6.x file location =>
 	
 	
 ###########################################
-#	$ hostnamectl set-hostname new_name 	  # 
+#	$ hostnamectl set-hostname new_name   # 
 ###########################################
 	
 	
 	$ timedatectl status 
 	$ timedatectl list-timezones
-	$ sudo timedatectl set-timezone UTC
-	$ sudo timedatectl set-timezone America/New_York
+	$ timedatectl set-timezone UTC
+	$ timedatectl set-timezone America/New_York
 	
 Ubuntu timezone change
 	$ sudo dpkg-reconfigure tzdata	
@@ -2385,124 +1977,6 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	network interface information again.
 	
 	
-	
-######################################################################################################################################
-# Bash Scripting
-######################################################################################################################################
-These are positional arguments of the script. 
-position of arguments passed to the script on the command line, not line numbers
-#!/bin/sh
-echo "$1"
-echo "$2"
-
-./script.sh Hello World
-$0 = script.sh             <- File name of the current script
-$1 = Hello
-$2 = World	
-	
-The $@ variable expands to all the parameters used when calling the function
-
-function foo()
-{
-    echo "$@"
-}
-
-foo 1 2 3
-
-It would display 1 2 3. If not used inside a function, it specifies all parameters 
-used when calling the script. See the bash manual page for more info.	
-	
-The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
-
-*
-($*) Print all the parameter.
-	 Expands to the positional parameters, starting from one. When the expansion is not within double quotes, 
-     each positional parameter expands to a separate word. In contexts where it is performed, those words are 
-	 subject to further word splitting and pathname expansion. When the expansion occurs within double quotes, 
-	 it expands to a single word with the value of each parameter separated by the first character of the IFS 
-	 special variable. That is, "$*" is equivalent to "$1c$2c…", where c is the first character of the value 
-	 of the IFS variable. If IFS is unset, the parameters are separated by spaces. If IFS is null, the parameters 
-	 are joined without intervening separators.
-
-@
-($@) Individually double quoted 
-	Expands to the positional parameters, starting from one. When the expansion occurs within double quotes, 
-	each parameter expands to a separate word. That is, "$@" is equivalent to "$1" "$2" …. If the double-quoted 
-	expansion occurs within a word, the expansion of the first parameter is joined with the beginning part of the 
-	original word, and the expansion of the last parameter is joined with the last part of the original word. 
-	When there are no positional parameters, "$@" and $@ expand to nothing (i.e., they are removed).
-
-#
-($#) Expands to the number of positional parameters in decimal(Counts number of parameters).	
- 
-($?) Exit status of the last command
-	0 - successful
-	1 - fail
-($$) Process ID under which order getting executed
-
-(?!) Process number of the last background command
- 
-#!/bin/bash
-echo "Hello, World. Calls $# of parameters"	
-echo "argument 0 is '$0'"
-.....	
-echo "argument 9 is '$9'"
-echo "argument 10 is '{$10}'"	 # from 10, use {} 
-
-./argument.sh a b ... y z
-		Hello, World. Calls 24 of parameters
-		argument 0 is './argument.sh'
-		argument 1 is 'a'
-		.....
-		argument 10 is 'j'
-
-
-
-
-
-
-
-
-	
-	
-79.Special parameters
-
-The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
-
-Table 3-3. Special bash variables
-
-Character	Definition
-$*	Expands to the positional parameters, starting from one. When the expansion 
-	occurs within double quotes, it expands to a single word with the value of each 
-	parameter separated by the first character of the IFS special variable.
-$@	Expands to the positional parameters, starting from one. When the expansion occurs 
-	within double quotes, each parameter expands to a separate word.
-$#	Expands to the number of positional parameters in decimal.
-$?	Expands to the exit status of the most recently executed foreground pipeline.
-$-	A hyphen expands to the current option flags as specified upon invocation, by the 
-	set built-in command, or those set by the shell itself (such as the -i).
-$$	Expands to the process ID of the shell.
-$!	Expands to the process ID of the most recently executed background (asynchronous)
-	 command.
-$0	Expands to the name of the shell or shell script.
-$_	The underscore variable is set at shell startup and contains the absolute file name 
-	of the shell or script being executed as passed in the argument list. Subsequently, 
-	it expands to the last argument to the previous command, after expansion. It is also
-	set to the full pathname of each command executed and placed in the environment 
-	exported to that command. When checking mail, this parameter holds the name of the 
-	mail file.
-
-
-	grep "echo" ./function1.sh
-        	echo "Hi $1! what a nice $2!!"
-		echo "And now, a greeting!"
-	echo $_
-	./function1.sh
-	echo $$
-	35810
-	echo $!
-
-
 
 
 80.  Ubuntu apt-get update fail some of packages.
@@ -2684,7 +2158,7 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	root    -        nofile         65535		<= root specific
 	###
 	
-		### Per-User Limit
+	### Per-User Limit
 	$ cat /etc/security/limits.conf
 		#<domain>      <type>  <item>         <value>
 		#root            hard    core            100000		<=100k files to open
@@ -2695,6 +2169,8 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	
 	### System-Wide Limit
 	$ echo 'fs.file-max = 2097152' >> /etc/sysctl.conf 			<= configure kernel parameters at runtime
+	
+	# configure kernel parameters at runtime
 	$ sysctl -p 												<= -p Load in sysctl settings from the file specified or /etc/sysctl.conf 
 											
 	### Verify New Limits
@@ -2773,6 +2249,9 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	sudo mv /filename /etc/init.d/
 	sudo chmod +x /etc/init.d/filename 
 	sudo update-rc.d filename defaults 
+	
+	
+	
   
 5. UUID  <= identifier for block devices. 
 	UUIDs are 128 bit long numbers represented by 32 hexadecimal digits and which are used in 
@@ -2793,7 +2272,7 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	
 	
 	$ cat /proc/sys/kernel/random/uuid
-	eaf3a162-d770-4ec9-a819-ec96d429ea9f
+		eaf3a162-d770-4ec9-a819-ec96d429ea9f
 	
 	# There is also the library libuuid which is used by uuidgen and especially 
 		by the ext2/3/4 tools E2fsprogs to generate UUIDs:
@@ -2807,6 +2286,7 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	lrwxrwxrwx. 1 root root 10 Apr 13 03:17 3479cc28-9e7d-4798-abef-a50bafef8761 -> ../../dm-0
 	lrwxrwxrwx. 1 root root 10 Apr 13 03:17 62f1fbbf-e39b-4140-90ed-3d88a7988fa5 -> ../../sda1
 
+	
 	$sudo blkid /dev/sda1
 	/dev/sda1: UUID="62f1fbbf-e39b-4140-90ed-3d88a7988fa5" TYPE="xfs"
 	
@@ -2829,175 +2309,6 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	
 	# CentOS
 	$ rpm -qa | grep mysql
-	
-######################## 
-# Bash Shell Variables #
-########################
-
-varname=value                # defines a variable
-varname=value command        # defines a variable to be in the environment of a particular subprocess
-echo $varname                # checks a variable's value
-echo $$                      # prints process ID of the current shell
-echo $!                      # prints process ID of the most recently invoked background job
-echo $?                      # displays the exit status of the last command
-export VARNAME=value         # defines an environment variable (will be available in subprocesses)
-
-array[0] = val               # several ways to define an array
-array[1] = val
-array[2] = val
-array=([2]=val [0]=val [1]=val)
-array(val val val)
-
-${array[i]}                  # displays array's value for this index. If no index is supplied, array element 0 is assumed
-${#array[i]}                 # to find out the length of any element in the array
-${#array[@]}                 # to find out how many values there are in the array
-
-declare -a                   # the variables are treaded as arrays
-declare -f                   # uses funtion names only
-declare -F                   # displays function names without definitions
-declare -i                   # the variables are treaded as integers
-declare -r                   # makes the variables read-only
-declare -x                   # marks the variables for export via the environment
-
-${varname:-word}             # if varname exists and isn't null, return its value; otherwise return word
-${varname:=word}             # if varname exists and isn't null, return its value; otherwise set it word and then return its value
-${varname:?message}          # if varname exists and isn't null, return its value; otherwise print varname, followed by message and abort the current command or script
-${varname:+word}             # if varname exists and isn't null, return word; otherwise return null
-${varname:offset:length}     # performs substring expansion. It returns the substring of $varname starting at offset and up to length characters
-
-${variable#pattern}          # if the pattern matches the beginning of the variable's value, delete the shortest part that matches and return the rest
-${variable##pattern}         # if the pattern matches the beginning of the variable's value, delete the longest part that matches and return the rest
-${variable%pattern}          # if the pattern matches the end of the variable's value, delete the shortest part that matches and return the rest
-${variable%%pattern}         # if the pattern matches the end of the variable's value, delete the longest part that matches and return the rest
-${variable/pattern/string}   # the longest match to pattern in variable is replaced by string. Only the first match is replaced
-${variable//pattern/string}  # the longest match to pattern in variable is replaced by string. All matches are replaced
-
-${#varname}                  # returns the length of the value of the variable as a character string
-
-*(patternlist)               # matches zero or more occurences of the given patterns
-+(patternlist)               # matches one or more occurences of the given patterns
-?(patternlist)               # matches zero or one occurence of the given patterns
-@(patternlist)               # matches exactly one of the given patterns
-!(patternlist)               # matches anything except one of the given patterns
-
-$(UNIX command)              # command substitution: runs the command and returns standard output
-
-  
-###############
-# FUNCTIONS   #
-###############
-The function refers to passed arguments by position (as if they were positional parameters), that is, $1, $2, and so forth. $@ is equal to "$1" "$2"... "$N", where N is the number of positional parameters. $# holds the number of positional parameters.
-functname() {
-  shell commands
-}
-
-unset -f functname  # deletes a function definition
-declare -f          # displays all defined functions in your login session
-2.3. FLOW CONTROL.
-
-statement1 && statement2  # and operator
-statement1 || statement2  # or operator
-
--a                        # and operator inside a test conditional expression
--o                        # or operator inside a test conditional expression
-
-str1=str2                 # str1 matches str2
-str1!=str2                # str1 does not match str2
-str1<str2                 # str1 is less than str2
-str1>str2                 # str1 is greater than str2
--n str1                   # str1 is not null (has length greater than 0)
--z str1                   # str1 is null (has length 0)
-
--a file                   # file exists
--d file                   # file exists and is a directory
--e file                   # file exists; same -a
--f file                   # file exists and is a regular file (i.e., not a directory or other special type of file)
--r file                   # you have read permission
--r file                   # file exists and is not empty
--w file                   # your have write permission
--x file                   # you have execute permission on file, or directory search permission if it is a directory
--N file                   # file was modified since it was last read
--O file                   # you own file
--G file                   # file's group ID matches yours (or one of yours, if you are in multiple groups)
-file1 -nt file2           # file1 is newer than file2
-file1 -ot file2           # file1 is older than file2
-
--lt                       # less than
--le                       # less than or equal
--eq                       # equal
--ge                       # greater than or equal
--gt                       # greater than
--ne                       # not equal
-
-if condition
-then
-  statements
-[elif condition
-  then statements...]
-[else
-  statements]
-fi
-
-for x := 1 to 10 do
-begin
-  statements
-end
-
-for name [in list]
-do
-  statements that can use $name
-done
-
-for (( initialisation ; ending condition ; update ))
-do
-  statements...
-done
-
-case expression in
-  pattern1 )
-    statements ;;
-  pattern2 )
-    statements ;;
-  ...
-esac
-
-select name [in list]
-do
-  statements that can use $name
-done
-
-while condition; do
-  statements
-done
-
-until condition; do
-  statements
-done
-
-##################################
-# 4. INPUT/OUTPUT REDIRECTORS.   #
-##################################
-cmd1|cmd2  # pipe; takes standard output of cmd1 as standard input to cmd2
-> file     # directs standard output to file
-< file     # takes standard input from file
->> file    # directs standard output to file; append to file if it already exists
->|file     # forces standard output to file even if noclobber is set
-n>|file    # forces output to file from file descriptor n even if noclobber is set
-<> file    # uses file as both standard input and standard output
-n<>file    # uses file as both input and output for file descriptor n
-<<label    # here-document
-n>file     # directs file descriptor n to file
-n<file     # takes file descriptor n from file
-n>>file    # directs file description n to file; append to file if it already exists
-n>&        # duplicates standard output to file descriptor n
-n<&        # duplicates standard input from file descriptor n
-n>&m       # file descriptor n is made to be a copy of the output file descriptor
-n<&m       # file descriptor n is made to be a copy of the input file descriptor
-&>file     # directs standard output and standard error to file
-<&-        # closes the standard input
->&-        # closes the standard output
-n>&-       # closes the ouput from file descriptor n
-n<&-       # closes the input from file descripor n
 
 
 #########################
@@ -3021,7 +2332,7 @@ fg %?string  # brings job whose command contains string
 kill -l      # returns a list of all signals on the system, by name and number
 kill PID     # terminates process with specified PID
 
-### kill all processes relate to same process
+### kill all processes relate to same process name
 	$ pkill -f s3cmd
 	$ ps -ef | grep myProcessName | grep -v grep | awk '{print $2}' | xargs kill -9
 
@@ -3040,9 +2351,9 @@ ps aux | grep RRServer | grep -v grep | awk '{print $2}'
 	1. How to kill zombie process
 		A zombie is already dead, so you cannot kill it. To clean up a zombie, it must be waited on by its parent, 
 		so killing the parent should work to eliminate the zombie. (After the parent dies, the zombie will be 
-		inherited by init (process ID 1), which will wait on it and clear its entry in the process table.) If your daemon is 
-		spawning children that become zombies, you have a bug. Your daemon should notice when its children die 
-		and wait on them to determine their exit status.
+		inherited by init (process ID 1), which will wait on it and clear its entry in the process table.) 
+		If your daemon is spawning children that become zombies, you have a bug. Your daemon should notice 
+		when its children die and wait on them to determine their exit status.
 
 		Example command:
 		kill $(ps -A -ostat,ppid | awk '/[zZ]/{print $2}')
@@ -3050,9 +2361,11 @@ ps aux | grep RRServer | grep -v grep | awk '{print $2}'
 			
 ###	
 	Zombie processes (also show as <defunct>), aren't real processes at all. They are just entries in the kernel process table. 
-	This is the only resource they consume. They do not consume any CPU or RAM. The only danger of having zombies, is running 
-	out of space in process table.
+	This is the only resource they consume. They do not consume any CPU or RAM. 
+	&&& The only danger of having zombies, is running out of space in process table.!!!***
+	
 	$ cat /proc/sys/kernel/threads-max 
+		30112
 	They appear only when their parent process (i.e. process which fork()'ed them) is alive, but did not yet call wait() 
 	system function. Once parent dies, the zombies are wait()'ed for by init and disappear.
 ###
@@ -3066,8 +2379,9 @@ disown <PID|JID>    # removes the process from the list of jobs
 
 wait                # waits until all background jobs have finished
 
-6. TIPS AND TRICKS.
 
+
+6. TIPS AND TRICKS.
 
 
 # to quickly go to a specific directory
@@ -3077,45 +2391,8 @@ cd; nano .bashrc
 
 source .bashrc
 cd websites
-
 cd *		<= if there is only one folder
 
-################################
-# 7. DEBUGGING SHELL PROGRAMS. #
-################################
-
-bash -n scriptname  # don't run commands; check for syntax errors only
-set -o noexec       # alternative (set option in script)
-
-bash -v scriptname  # echo commands before running them
-set -o verbose      # alternative (set option in script)
-
-bash -x scriptname  # echo commands after command-line processing
-set -o xtrace       # alternative (set option in script)
-
-trap 'echo $varname' EXIT  # useful when you want to print out the values of variables 
-			     at the point that your script exits
-
-function errtrap {
-  es=$?
-  echo "ERROR line $1: Command exited with status $es."
-}
-
-trap 'errtrap $LINENO' ERR  # is run whenever a command in the surrounding script or function exists with non-zero status 
-
-function dbgtrap {
-  echo "badvar is $badvar"
-}
-
-trap dbgtrap DEBUG  # causes the trap code to be executed before every statement in a function or script
-# ...section of code in which the problem occurs...
-trap - DEBUG  # turn off the DEBUG trap
-
-function returntrap {
-  echo "A return occured"
-}
-
-trap returntrap RETURN  # is executed each time a shell function or a script executed with the . or source commands finishes executing
 
 ############################################
 ###
@@ -3159,11 +2436,14 @@ fi
 #Find biggest file Sizes top 5 list Only
 ###
 	### NCurses Disk Usage
-	$ ncdu
+	$ ncdu /
+
 	$ ncdu -x /    <= scan a full filesystem
 		# Since scanning a large directory may take a while, you can scan a directory and export the results for later viewing:
+	
 	$ ncdu -1xo- / | gzip > ncdu-list.gz
 	# ...some time later:
+	
 	$ zcat export.gz | ncdu -f-
 	
 	
@@ -3221,7 +2501,7 @@ sed -i 's/START=no/START=yes/g' /etc/default/puppet
 sed -i '/extern int errno/{s/^/\/* /;s/$/ *\//;G;s/$/#include <errno.h>/;}' src/error.h
 		  
 ### Add some rows and text
-root@puppetagent:~# cat << EOF >> /etc/puppet/puppet.conf
+$ cat << EOF >> /etc/puppet/puppet.conf
 [agent]
 server = puppetmaster.domain.tld
 EOF
@@ -3235,10 +2515,13 @@ The cat <<EOF Bash syntax is very useful when one needs to work with multiline s
 	> WHERE foo='baz'
 	> EOF
 	> )
+	
 noza@fm:~$ echo $sql
 SELECT foo, bar FROM db WHERE foo='baz'
+
 noza@fm:~$ echo -e $sql
 SELECT foo, bar FROM db WHERE foo='baz'
+
 noza@fm:~$ echo -e "$sql"
 SELECT foo, bar FROM db
 WHERE foo='baz'
@@ -3256,6 +2539,7 @@ The print.sh file now contains:
 #!/bin/bash
 echo $PWD
 echo /home/user
+
 3. Passing multiline string to a command/pipe:
 
 $ cat <<EOF | grep 'b' | tee b.txt | grep 'r'
@@ -3283,27 +2567,6 @@ More: http://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
 
 
 
-
-
-
-
-### Puppet ###
-sudo service puppet start
-sudo puppet cert list
-sudo puppet cert sign host1.nyc2.example.com
-sudo puppet cert sign --all
-# Remove
-sudo puppet cert clean hostname
-sudo puppet cert list --all
-
-puppet agent --test
-
-
-
-
-
-
-
 ####
 Install Fabric, boto, yaml
 
@@ -3316,6 +2579,9 @@ Install Fabric, boto, yaml
          sudo pip install PyYaml
 
 		 
+
+
+
 		 
 #################	 
 ### Security  ###
@@ -3332,9 +2598,8 @@ CentOS
 	# check for information about the port	
 	netstat -anp | grep unknown_port     # -anp  <= All, no dns lookup(faster), program
 	
-	lsof -i | grep port_number
-	
-	lsof -p process_number
+	lsof -i | grep port_number		<= internet connecion open
+	lsof -p                      	<= process_number
 	
 	
 	
@@ -3355,7 +2620,9 @@ Webmin
 /etc/webmin/miniserv.conf
 
 
-
+###########
+### SSL ###
+###########
 
 SSL has been around for long enough you'd think that there would be agreed upon container formats. And you're right, there are. Too many standards as it happens. So this is what I know, and I'm sure others will chime in.
 
@@ -3382,6 +2649,7 @@ DER The parent format of PEM. It's useful to think of it as a binary version of 
 ###  mistakenly deleted /boot folder and rebooted ###
 #####################################################
 1. Bootup with Live CD.
+
 2. Find the drive/partition where you have installed your root filesystem. 
 	To do this you can open a terminal and run either 
 	$ sudo parted -l     # parted  is  a  disk  partitioning  and  partition resizing program.o
@@ -3426,6 +2694,7 @@ CentOS package update vs upgrade
 yum upgrade and yum update will perform the same function that update to the latest current version of package.
 
 But the difference is Upgrade will delete obsolete packages, while update will preserve them.
+
 
 
 ### Byobu multi screen utility ###
@@ -3510,21 +2779,6 @@ $ cat /var/run/nginx.pid
 
 
 
-#########   
-# Tools #
-#########   
- 
-PSSH tool includes parallel versions of OpenSSH and related tools such as:
-
-pssh – is a program for running ssh in parallel on a multiple remote hosts.
-pscp – is a program for copying files in parallel to a number of hosts.
-Pscp – Copy/Transfer Files Two or More Remote Linux Servers
-prsync – is a program for efficiently copying files to multiple hosts in parallel.
-pnuke – kills processes on multiple remote hosts in parallel.
-pslurp – copies files from multiple remote hosts to a central host in parallel.
-
-$ yum install python-pip
-$ pip install pssh
 
 
 
@@ -3533,3 +2787,228 @@ $ pip install pssh
 
 
 
+
+
+##################
+### Log rotate ###
+##################
+to check logrotate, run cmd
+
+$ logroate
+
+### Configurations and default options
+/etc/logrotate.conf
+
+### Application-specific log file information (to override the defaults) 
+$ ll /etc/logrotate.d/
+-rw-r--r-- 1 root root 185 Feb  4  2016 httpd
+-rw-r--r-- 1 root root 871 May 11 02:31 mysqld
+-rw-r--r-- 1 root root 136 May  5 01:27 newrelic-sysmond
+
+
+#### The logrotation for dpkg monitors the /var/log/dpkg.log file and does this on a 
+/var/log/dpkg.log {
+	monthly					# monthly basis - this is the rotation interval.
+	size 100M				#### <===logs are rotated once the file size reaches 100M and this need not wait for the monthly cycle.
+	rotate 12				# 12 days worth of logs would be kept.
+	compress				# logfiles can be compressed using the gzip format by specifying
+	delaycompress			# will work only if 'compress' option is specified.
+	missingok				# avoids halting on any error and carries on with the next log file.
+	notifempty				# avoid log rotation if the log file is empty.
+	create 644 root root	# create <mode> <owner> <group> creates a new empty file with the specified properties after log-rotation.
+}
+####
+	# Though missing in the above example, 'size' is also an important setting if you want to control the sizing of the logs growing in the system.
+
+### Example ###	
+$ cat /etc/logrotate.d/httpd
+####
+/var/log/httpd/*log {
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /sbin/service httpd reload > /dev/null 2>/dev/null || true
+    endscript
+}
+####
+
+
+
+### using Cron Job ###
+	You can also set the logrotation as a cron so that the manual process can be avoided and this is taken care of automatically. 
+	By specifying an entry in /etc/cron.daily/logrotate , the rotation is triggered daily.
+
+	$ /etc/cron.daily/logrotate
+###
+#!/bin/sh
+
+/usr/sbin/logrotate /etc/logrotate.conf
+EXITVALUE=$?
+if [ $EXITVALUE != 0 ]; then
+    /usr/bin/logger -t logrotate "ALERT exited abnormally with [$EXITVALUE]"
+fi
+exit 0
+###	
+	
+	
+
+##########################################
+### CUSTOM LOG FILE Rotation logrotate ###
+##########################################
+
+$ vi /etc/logrotate.d/rrserver
+
+#####
+/RRLinux/*log {
+    weekly
+    size 1G
+    rotate 10
+    missingok
+    notifempty
+    delaycompress
+    postrotate
+        /RRLinux/restart-eu-s1.sh > /dev/null		#switch to new log file
+    endscript
+}
+
+#####
+	
+
+### Check log 	
+$ cat /var/lib/logrotate.status
+
+"/RRLinux/run.log" 2016-10-24     <=== New logrotate creation for /etc/logrotate.d/rrserver
+
+
+
+
+### Testing logrotate.conf ###
+
+$ logrotate -vdf /etc/logrotate.conf
+		verbose flag, “-v”  
+		debug flag,   “-d” 
+		force flag,   "-f"
+
+		
+rotating pattern: /RRLinux/*log  forced from command line (10 rotations)
+empty log files are not rotated, old logs are removed
+considering log /RRLinux/error.log
+  log does not need rotating
+
+considering log /RRLinux/RidgerRacer_Server_vSlave.log
+  log needs rotating
+
+considering log /RRLinux/run.log
+  log needs rotating
+running postrotate script
+running script with arg /RRLinux/error.log: "
+        /RRLinux/restart-eu-s1.sh > /dev/null
+"
+rotating log /RRLinux/RidgerRacer_Server_vSlave.log, log->rotateCount is 10
+dateext suffix '-20161024'
+glob pattern '-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
+glob finding old rotated logs failed
+
+renaming /RRLinux/RidgerRacer_Server_vSlave.log to /RRLinux/RidgerRacer_Server_vSlave.log-20161024
+creating new /RRLinux/RidgerRacer_Server_vSlave.log mode = 0644 uid = 0 gid = 0
+
+running postrotate script
+running script with arg /RRLinux/RidgerRacer_Server_vSlave.log: "
+        /RRLinux/restart-eu-s1.sh > /dev/null
+"
+rotating log /RRLinux/run.log, log->rotateCount is 10
+dateext suffix '-20161024'
+glob pattern '-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
+glob finding old rotated logs failed
+
+renaming /RRLinux/run.log to /RRLinux/run.log-20161024
+creating new /RRLinux/run.log mode = 0644 uid = 0 gid = 0
+running postrotate script
+running script with arg /RRLinux/run.log: "
+        /RRLinux/restart-eu-s1.sh > /dev/null
+"
+
+	
+
+
+### httpd logrotate check ###
+
+$ logrotate -vdf /etc/logrotate.d/httpd
+
+##########
+reading config file /etc/logrotate.d/httpd
+reading config info for /var/log/httpd/*log
+
+Handling 1 logs
+
+rotating pattern: /var/log/httpd/*log  forced from command line (no old logs will be kept)
+empty log files are not rotated, old logs are removed
+considering log /var/log/httpd/access_log
+  log does not need rotating
+considering log /var/log/httpd/error_log
+  log does not need rotating
+not running postrotate script, since no logs were rotated
+########	
+	
+	
+	
+### specific logrotate run ###	
+
+$ logrotate -vdf /etc/logrotate.d/rrserver
+
+
+####	
+reading config file /etc/logrotate.d/rrserver
+reading config info for /RRLinux/*log
+Handling 1 logs
+
+#---------------------------------------------------------------------------------------
+rotating pattern: /RRLinux/*log  forced from command line (10 rotations)
+empty log files are not rotated, old logs are removed
+considering log /RRLinux/error.log
+  log does not need rotating
+considering log /RRLinux/RidgerRacer_Server_vSlave.log
+  log needs rotating
+considering log /RRLinux/run.log
+  log needs rotating
+running postrotate script
+running script with arg /RRLinux/error.log: "
+        /RRLinux/restart-eu-s1.sh > /dev/null
+"
+
+#---------------------------------------------------------------------------------------
+rotating log /RRLinux/RidgerRacer_Server_vSlave.log, log->rotateCount is 10
+dateext suffix '-20161024'
+glob pattern '-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
+renaming /RRLinux/RidgerRacer_Server_vSlave.log.10 to /RRLinux/RidgerRacer_Server_vSlave.log.11 (rotatecount 10, logstart 1, i 1                                                              0),
+.....                                                          
+renaming /RRLinux/RidgerRacer_Server_vSlave.log.0 to /RRLinux/RidgerRacer_Server_vSlave.log.1 (rotatecount 10, logstart 1, i 0),                                                              
+renaming /RRLinux/RidgerRacer_Server_vSlave.log to /RRLinux/RidgerRacer_Server_vSlave.log.1
+running postrotate script
+running script with arg /RRLinux/RidgerRacer_Server_vSlave.log: "
+        /RRLinux/restart-eu-s1.sh > /dev/null
+"
+removing old log /RRLinux/RidgerRacer_Server_vSlave.log.11
+error: error opening /RRLinux/RidgerRacer_Server_vSlave.log.11: No such file or directory
+
+#---------------------------------------------------------------------------------------
+rotating log /RRLinux/run.log, log->rotateCount is 10
+dateext suffix '-20161024'
+glob pattern '-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
+renaming /RRLinux/run.log.10 to /RRLinux/run.log.11 (rotatecount 10, logstart 1, i 10),
+....
+renaming /RRLinux/run.log.0 to /RRLinux/run.log.1 (rotatecount 10, logstart 1, i 0),
+renaming /RRLinux/run.log to /RRLinux/run.log.1
+running postrotate script
+running script with arg /RRLinux/run.log: "
+        /RRLinux/restart-eu-s1.sh > /dev/null
+"
+removing old log /RRLinux/run.log.11
+error: error opening /RRLinux/run.log.11: No such file or directory
+####	
+	
+	
+	
+	

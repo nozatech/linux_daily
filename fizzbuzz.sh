@@ -61,4 +61,17 @@ done
 
 
 
+Function
+#!/bin/bash
+
+# A function to print "Hello World"
+hello()
+    { 
+	  echo "Hello World"
+	}
+	
+# Call the function
+hello;
+	
+
 

@@ -1,0 +1,842 @@
+######################
+### 1. Run Scripts ###
+######################
+
+	$ ./script.sh
+    $ sh ./script.sh   ( same as 'sh script.sh')
+    $ sh +x script.sh   			<= +x for debuging mode
+ 
+ # Run script within vim or vi
+    :w   	      					<= write first
+    :!sh %   (# :! sh %)     		<= :! =run, sh =shell, % =curren open file
+	:!!         					<= run same script again 
+    :!./script_name.sh
+    :! python %
+    :! perl %
+    :! sh -x %					<= -x is for DEBUG(verbose) mode
+    #!/bin/bash -x      		<= -x to #! line for debug mode
+    set -x              		<= End of file +x for TURN OFF
+	
+		
+ # Search and replace
+	:%s/foo/bar/g
+	:%s/foo/bar/gc				<= to confirm first
+	
+ # Debug mode	
+    #!/bin/bash +x 					<= +x for debuging mode in shell script
+    $ bash +x ./script.sh  ( same as 'bash script.sh') 
+ 
+ # Run script    
+	$ . script.sh      <= current login shell to run
+    $ exec ./script    <= after run, the login shell exit 
+	$ sh script.sh
+	
+ ### Save in read only file ###
+	:w !sudo tee %                  	<= save as sudo privilege.  type (L) load at the prompt to reload.
+	:w !chmod 777 %    then    :wq!
+	
+	:h									<= vi, vim help 			
+	:q 									<= quit help page
+	
+	$ vi +101 filename					<= go to 101 line in filename
+	:12									<= Go to particular line number in vi editor 
+ 
+ # Move
+	shift+G		<= All the way down the page
+	
+ # Check bash 
+	$ echo $SHELL
+	$ env | grep SHELL
+	$ ps					 
+	  1453 pts/1    00:00:00 bash  <= BASH
+	$ ps | grep `echo $$` | awk '{ print $4 }'
+	
+	$ awk '/lemon/ && /rice/'	<= search two words
+
+
+### Special Shell Variables ###
+	$0 		file name of script
+	$1		positional parameter #1
+	$2-9	positional parameter #2-9
+	${10}	positional parameter #10
+	$#		number of positional parameter
+	"$*"	all the positional parameters(as separate word)*
+	"$@"	all the positional parameters(as separate strings)
+	${#*}	number of positional parameters
+	${#@}	number of positional parameters
+	$?		return value
+	$$	 	process ID(PID) of script
+	$-		flags passed to sript(using set)
+	$_		last argument of previous command
+	$!		process ID(PID) of last job run in background
+	* Must be quoted, otherwise it defaults to $@
+
+
+$ echo -n     do not output the trailing newline
+       -e     enable interpretation of backslash escapes
+       -E     disable interpretation of backslash escapes (default)
+
+
+
+	
+### for_loop1.sh		
+#!/bin/bash
+for i in *; do
+echo “$i”
+done
+
+$./for_loop1.sh 1 2 3 4
+
+### for_loop2.sh
+#!/bin/bash
+for i in $@; do
+echo “$i”			# zip archive "$i"
+done
+	
+$./for_loop1.sh 1 2 3 4	
+
+### * wild including current directory files
+#!/bin/sh
+for i in hello 1 * 2 goodbye 
+do
+  echo "Looping ... i is set to $i"
+done
+
+
+
+
+
+
+
+17. if [ $id -u != "0" ] ;then
+	echo "You must be the supper user to run this script" >&2  		<= user id -u failure q
+	exit 1															<= exit status sets to 1(failure)
+    fi
+
+
+
+19. Arithmatic
+	echo $(( 1+2 ))
+	+, -, *, /, %, **,
+	
+	#!/bin/bash
+	number=0
+
+	echo -n "Enter a number >"
+	read number
+
+	echo "The number is $number"
+
+	if [ $(( number %2 )) -eq 0 ]; then
+        echo "The number is even"
+	else
+        echo "The number is odd"
+	fi
+
+
+20. Read
+# -t timing
+# -s security hidden
+
+	#!/bin/bash
+	echo -n  "Enter your SSN before expire within 3sec > "
+	if read -t 3  -s response; then
+	        echo "Great, you made it in time"
+	else
+        	echo "Sorry, you are too slow"
+	fi
+
+
+
+24. Comparison operation for test [[ expression ]]     0:TRUE  1:FALSE 
+	A. Comparing variables
+		Less than			        [[ $a < $b ]]
+		greater than			    [[ $a > $b ]]
+		less than or equal to 		[[ $a <= $b ]]
+		greater than or equal to 	[[ $a >= $b ]]
+		equal				        [[ $a == $b ]]
+		not equal			        [[ $a != $b ]]
+	ex)     [[ "cat" == "cat" ]]
+		a=cat
+		b=dog
+		[[ $a == $b ]]
+		echo $?			<= 1:FALSE 0:TRUE
+
+	B. Logical Operations
+		AND     [[ $a && $b ]]
+		OR   	[[ $a || $b ]] 
+		NOT     [[ ! $a ]]
+
+	C. Number comparison operations
+		less than			         [[ $a -lt $b ]]
+		greater than			     [[ $a -gt $b ]]
+		less than or equal to 		 [[ $a -le $b ]]
+		greater than or equal to	 [[ $a -ge $b ]]
+		equal				         [[ $a -eq $b ]]
+		not equal			         [[ $a -ne $b ]]
+	Ex)	[[ 20 -gt 100 ]]
+		echo $?
+	
+	D. String null value
+		is null?			    [[ -z $a ]]
+		is not null?			[[ -n $a ]]
+
+	Ex)	a=""
+		b="cat"
+		[[ -z $a && -n $b ]]
+		echo $?
+
+		if [ $? == 0 ]; then
+			echo "TRUE"
+		else
+			echo "FALSE"
+		fi
+
+
+
+28. Array (can do from prompt)
+	
+	a=()
+	b=("apple" "banana" "cherry" "$today" "$time")
+	echo ${b[2]}
+	b[5]="kiwi"
+	b+=("mango")
+	echo ${b[@]}            # @ <= whole array
+	echo ${b[@]: -1}        # -1 <= last item in array
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+1. Comparisons: cmp vs diff
+	cmp -  compare files byte by byte
+	cmp -s $file1 $file2
+    
+    comm <= Compare two sorted files line by line   
+
+    diff - compare files line by line
+	diff $file1 $file2 > /dev/null
+
+	sdiff  <= side by side comparison
+	
+	
+32. if Condition statement
+
+	a. if condition ; then	<= if condition is true, commands run
+		commands
+   	   fi			<= if condition is false, do nothing!
+
+	b. if condition ; then  <= if condition is true, 1st commands run otherwise 
+	   	commands   
+	   else			<= if condition is false, 2nd commands run
+		commands
+	   fi
+
+	c. if condition ; then   <= if condition is true, 1st commands run
+	   	commands
+	   elif conditions; then <= if condition is false, and if the 2nd command is true
+	   	commands	 <= then 2nd set of commands run  	
+	   if
+	   
+	#!/bin/bash
+	if [ -f /etc/foo ]; then     # -f for file exit?
+        	cp /etc/foo .
+       		echo "copy done!"
+	else
+        	echo "This file does not exist"
+        	exit (1 ??)
+	fi
+--------------------------------------------------
+
+	if cmp -s "$file1" "$file2"
+		then
+	   echo "The files match"
+	else
+	   echo "The files are different"
+	fi
+
+
+
+
+# Exit code
+	#!/bin/bash
+
+	touch /root/test 2> /dev/null
+
+	if [ $? -eq 0 ]
+	then
+  	  echo "Successfully created file"
+	  exit 0
+	else
+	  echo "Could not create file" >&2
+	  exit 1
+	fi
+	
+
+	## With the exit command in this script, we will exit with a successful message 
+	and 0 exit code if the touch command is successful. If the touch command fails 
+	however, we will print a failure message to stderr and exit with a 1 value 
+	which indicates failure. ##
+
+	
+	# Move or rename file from CMD
+	$ if [ -e .vimrc ]; then mv .vimrc .vimrc_bak; fi
+
+
+
+33. while and until statement  <= while & until true statement
+	i=0
+	while [ $i -le 10 ]; do
+        	echo i = $i
+        	((i++))
+	done			<= 0 ~ 10
+        ------------------------------------
+        j=0
+        until [$j -ge 10 ]; do
+              echo j = $j
+              ((j++))
+        done			<= 0 ~ 9
+--------------------------------------------------
+
+	#!/bin/bash
+	x=0			<= initializing to 0
+	while [ $x -le 10 ] ; do 
+        	echo "Current value of X is $x."
+        	x=$(expr $x + 1 )  <= ((x++)
+        	sleep 1
+	done
+--------------------------------------------------
+	x=0;
+
+	while [ $x -gt -10 ] ; do
+        	echo "X value is $x"
+	        ((x--))
+	done
+
+
+#!/bin/sh
+INPUT_STRING=hello
+#INPUT_STRING=  		                <= works too
+while [ "$INPUT_STRING" != "bye" ]
+do
+  echo "Please type something in (bye to quit)"
+  read INPUT_STRING
+  echo "You typed: $INPUT_STRING"
+done
+	
+	
+	
+	
+34. for loop
+	x="nozatech"
+	for i in /home/* ; do
+		echo $x is exist in home direcotry
+	done
+--------------------------------------------------
+	for i in /home/*; do
+        	echo $x is exit
+	done
+
+
+
+	
+
+35. file
+	i=1
+	while read f; do
+		echo "Line $i: $f"
+		((i++))
+	done < ffile.txt	
+
+36. Test statement 
+	[ -n ]       
+				-n <= string non zero
+				-z <= The length of the string is zero
+				-d <= directory
+				-f <= file
+				-e <= exist
+
+e.g.
+	if [ -f .bashrc ]; then	
+	    echo "you have the .bashrc."
+	else
+		echo "No .bashrc found!"
+	fi	
+
+	if [ $(id -u) = "0" ]; then
+		echo "supersuser"
+	fi
+
+
+37. read -p "What year?[nnnn] " a
+   while [[ ! $a =~ [0-9]{4} ]]; do
+       read -p "A year, pelase! [nnnn] " a
+   done
+   echo "Selected year: $a"
+
+	
+	
+	
+	
+	mkdir
+	$ mkdir -p production/{modules,manifests}  <= creating multi folders
+	
+	mkdir and cd into directory
+	$ mkdir ~/docker-registry && cd $_
+
+
+38. && ( AND )   
+
+#T&&R    true  && echo runs		<= if cmd1 runs then cmd2 runs also 
+
+#F&&N    false && echo runs		<= if cmd2 fails then cmd2 No runs
+	
+e.g.	cd $directory && rm -rf *
+
+# Both run in cmd line and bash script
+	    *TRUE*	   *RUN!*
+	[ ! -d ~/tmp ] && mkdir ~/tmp
+	echo $? <= 0  Success
+
+	    *FALSE*	   *NO RUN*
+	[ ! -d ~/tmp ] && mkdir ~/tmp
+	echo $? <= 1  fail  Did not created!
+
+
+Coding
+### FIZZBUZZ  ###	
+	Prints out when there is a number divied by 3 == 0, then fizz
+	Prints out when there is a number divied by 5 == 0, then buzz
+	Prints out when there is a number divied by 3 == 0 && 5 == 0, then FizzBuzz
+
+	
+	#!/bin/bash  
+	for i in {1..100}; do
+        if (( i % 3 == 0 )) && (( i % 5 == 0)); then echo "fizzbuzz"
+                elif (( i % 3 == 0 )); then echo "fizz"
+                elif (( i % 5 == 0 )); then echo "buzz"
+        else
+                echo $i;
+        fi
+	done
+
+	
+	#!/bin/bash
+	for i in {1..100}; do
+		if (! ((i % 3)) ) && (! ((i % 5)) ); then echo "FizzBuzz"
+			elif (! ((i % 3)) ); then echo "fizz"
+			elif (! ((i % 5)) ); then echo "buzz"
+		else
+			echo $i;
+		fi
+	done
+
+	### check modulo value from terminal ###
+	# m=$(( 1 % 5 ))
+	# echo $m
+	# 1
+	# m=$(( 55 % 5 ))
+	# echo $m
+	# 0
+
+39. || ( OR )
+
+#T||N    true  || echo runs		<= if cmd1 runs then cmd2 NO runs
+
+#F||R    false || echo runs		<= if cmd1 fails then cmd2 RUNS!
+
+   	     *TRUE*	   *NO RUN*
+	[ -d ~/tmp ] || mkdir ~/tmp
+	echo $? <= 1  False
+
+	    *FALSE*	   *YES RUN*
+	[ -d ~/tmp ] || mkdir ~/tmp
+	echo $? <= 0  Created folder!
+
+
+
+
+
+e.g.    cd $directory || error_exit "No such dir and aborting!"
+
+
+
+
+39. Function
+
+#!/bin/bash
+function numberthings {		<= Declaring function name
+        i=1			<= 
+        for f in $@; do		<= $@ special array variable that represents all 
+				   of the arguments pass to a function
+
+                echo $i: $f
+                ((i+=1))	<= incrementing
+        done
+}
+
+numberthings $(ls)
+numberthings pine birch maple spruce
+
+
+
+
+40. Argument
+	#!/bin/bash
+	echo $1
+	echo $2
+
+    $./my.sh apple banana
+
+
+	#!/bin/bash
+	echo $1
+	echo $2
+    $./my.sh "apple Apple" "banana Banana"   <=use " " for when space in them
+
+###
+# Don't have to define the variables to saves a lot of time
+###
+
+	#!/bin/bash
+	for i in $@			<= array arugment $@
+	do
+		echo $i
+	done
+	echo "There were $# arugments." <= $# contains number of argument
+
+$./my.sh apple orange kiwi lemon
+
+
+	
+######################################################################################################################################
+# Bash Scripting
+######################################################################################################################################
+These are positional arguments of the script. 
+position of arguments passed to the script on the command line, not line numbers
+#!/bin/sh
+echo "$1"
+echo "$2"
+
+./script.sh Hello World
+$0 = script.sh             <- File name of the current script
+$1 = Hello
+$2 = World	
+	
+The $@ variable expands to all the parameters used when calling the function
+
+function foo()
+{
+    echo "$@"
+}
+
+foo 1 2 3
+
+It would display 1 2 3. If not used inside a function, it specifies all parameters 
+used when calling the script. See the bash manual page for more info.	
+	
+The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
+
+*
+($*) Print all the parameter.
+	 Expands to the positional parameters, starting from one. When the expansion is not within double quotes, 
+     each positional parameter expands to a separate word. In contexts where it is performed, those words are 
+	 subject to further word splitting and pathname expansion. When the expansion occurs within double quotes, 
+	 it expands to a single word with the value of each parameter separated by the first character of the IFS 
+	 special variable. That is, "$*" is equivalent to "$1c$2c…", where c is the first character of the value 
+	 of the IFS variable. If IFS is unset, the parameters are separated by spaces. If IFS is null, the parameters 
+	 are joined without intervening separators.
+
+@
+($@) Individually double quoted 
+	Expands to the positional parameters, starting from one. When the expansion occurs within double quotes, 
+	each parameter expands to a separate word. That is, "$@" is equivalent to "$1" "$2" …. If the double-quoted 
+	expansion occurs within a word, the expansion of the first parameter is joined with the beginning part of the 
+	original word, and the expansion of the last parameter is joined with the last part of the original word. 
+	When there are no positional parameters, "$@" and $@ expand to nothing (i.e., they are removed).
+
+#
+($#) Expands to the number of positional parameters in decimal(Counts number of parameters).	
+ 
+($?) Exit status of the last command
+	0 - successful
+	1 - fail
+($$) Process ID under which order getting executed
+
+(?!) Process number of the last background command
+ 
+#!/bin/bash
+echo "Hello, World. Calls $# of parameters"	
+echo "argument 0 is '$0'"
+.....	
+echo "argument 9 is '$9'"
+echo "argument 10 is '{$10}'"	 # from 10, use {} 
+
+./argument.sh a b ... y z
+		Hello, World. Calls 24 of parameters
+		argument 0 is './argument.sh'
+		argument 1 is 'a'
+		.....
+		argument 10 is 'j'
+
+
+
+
+
+
+
+
+	
+	
+79.Special parameters
+
+The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
+
+Table 3-3. Special bash variables
+
+Character	Definition
+$*	Expands to the positional parameters, starting from one. When the expansion 
+	occurs within double quotes, it expands to a single word with the value of each 
+	parameter separated by the first character of the IFS special variable.
+$@	Expands to the positional parameters, starting from one. When the expansion occurs 
+	within double quotes, each parameter expands to a separate word.
+$#	Expands to the number of positional parameters in decimal.
+$?	Expands to the exit status of the most recently executed foreground pipeline.
+$-	A hyphen expands to the current option flags as specified upon invocation, by the 
+	set built-in command, or those set by the shell itself (such as the -i).
+$$	Expands to the process ID of the shell.
+$!	Expands to the process ID of the most recently executed background (asynchronous)
+	 command.
+$0	Expands to the name of the shell or shell script.
+$_	The underscore variable is set at shell startup and contains the absolute file name 
+	of the shell or script being executed as passed in the argument list. Subsequently, 
+	it expands to the last argument to the previous command, after expansion. It is also
+	set to the full pathname of each command executed and placed in the environment 
+	exported to that command. When checking mail, this parameter holds the name of the 
+	mail file.
+
+
+	grep "echo" ./function1.sh
+        	echo "Hi $1! what a nice $2!!"
+		echo "And now, a greeting!"
+	echo $_
+	./function1.sh
+	echo $$
+	35810
+	echo $!
+
+
+	
+######################## 
+# Bash Shell Variables #
+########################
+
+varname=value                # defines a variable
+varname=value command        # defines a variable to be in the environment of a particular subprocess
+echo $varname                # checks a variable's value
+echo $$                      # prints process ID of the current shell
+echo $!                      # prints process ID of the most recently invoked background job
+echo $?                      # displays the exit status of the last command
+export VARNAME=value         # defines an environment variable (will be available in subprocesses)
+
+array[0] = val               # several ways to define an array
+array[1] = val
+array[2] = val
+array=([2]=val [0]=val [1]=val)
+array(val val val)
+
+${array[i]}                  # displays array's value for this index. If no index is supplied, array element 0 is assumed
+${#array[i]}                 # to find out the length of any element in the array
+${#array[@]}                 # to find out how many values there are in the array
+
+declare -a                   # the variables are treaded as arrays
+declare -f                   # uses funtion names only
+declare -F                   # displays function names without definitions
+declare -i                   # the variables are treaded as integers
+declare -r                   # makes the variables read-only
+declare -x                   # marks the variables for export via the environment
+
+${varname:-word}             # if varname exists and isn't null, return its value; otherwise return word
+${varname:=word}             # if varname exists and isn't null, return its value; otherwise set it word and then return its value
+${varname:?message}          # if varname exists and isn't null, return its value; otherwise print varname, followed by message and abort the current command or script
+${varname:+word}             # if varname exists and isn't null, return word; otherwise return null
+${varname:offset:length}     # performs substring expansion. It returns the substring of $varname starting at offset and up to length characters
+
+${variable#pattern}          # if the pattern matches the beginning of the variable's value, delete the shortest part that matches and return the rest
+${variable##pattern}         # if the pattern matches the beginning of the variable's value, delete the longest part that matches and return the rest
+${variable%pattern}          # if the pattern matches the end of the variable's value, delete the shortest part that matches and return the rest
+${variable%%pattern}         # if the pattern matches the end of the variable's value, delete the longest part that matches and return the rest
+${variable/pattern/string}   # the longest match to pattern in variable is replaced by string. Only the first match is replaced
+${variable//pattern/string}  # the longest match to pattern in variable is replaced by string. All matches are replaced
+
+${#varname}                  # returns the length of the value of the variable as a character string
+
+*(patternlist)               # matches zero or more occurences of the given patterns
++(patternlist)               # matches one or more occurences of the given patterns
+?(patternlist)               # matches zero or one occurence of the given patterns
+@(patternlist)               # matches exactly one of the given patterns
+!(patternlist)               # matches anything except one of the given patterns
+
+$(UNIX command)              # command substitution: runs the command and returns standard output
+
+  
+###############
+# FUNCTIONS   #
+###############
+The function refers to passed arguments by position (as if they were positional parameters), that is, $1, $2, and so forth. $@ is equal to "$1" "$2"... "$N", where N is the number of positional parameters. $# holds the number of positional parameters.
+functname() {
+  shell commands
+}
+
+unset -f functname  # deletes a function definition
+declare -f          # displays all defined functions in your login session
+2.3. FLOW CONTROL.
+
+statement1 && statement2  # and operator
+statement1 || statement2  # or operator
+
+-a                        # and operator inside a test conditional expression
+-o                        # or operator inside a test conditional expression
+
+str1=str2                 # str1 matches str2
+str1!=str2                # str1 does not match str2
+str1<str2                 # str1 is less than str2
+str1>str2                 # str1 is greater than str2
+-n str1                   # str1 is not null (has length greater than 0)
+-z str1                   # str1 is null (has length 0)
+
+-a file                   # file exists
+-d file                   # file exists and is a directory
+-e file                   # file exists; same -a
+-f file                   # file exists and is a regular file (i.e., not a directory or other special type of file)
+-r file                   # you have read permission
+-r file                   # file exists and is not empty
+-w file                   # your have write permission
+-x file                   # you have execute permission on file, or directory search permission if it is a directory
+-N file                   # file was modified since it was last read
+-O file                   # you own file
+-G file                   # file's group ID matches yours (or one of yours, if you are in multiple groups)
+file1 -nt file2           # file1 is newer than file2
+file1 -ot file2           # file1 is older than file2
+
+-lt                       # less than
+-le                       # less than or equal
+-eq                       # equal
+-ge                       # greater than or equal
+-gt                       # greater than
+-ne                       # not equal
+
+if condition
+then
+  statements
+[elif condition
+  then statements...]
+[else
+  statements]
+fi
+
+for x := 1 to 10 do
+begin
+  statements
+end
+
+for name [in list]
+do
+  statements that can use $name
+done
+
+for (( initialisation ; ending condition ; update ))
+do
+  statements...
+done
+
+case expression in
+  pattern1 )
+    statements ;;
+  pattern2 )
+    statements ;;
+  ...
+esac
+
+select name [in list]
+do
+  statements that can use $name
+done
+
+while condition; do
+  statements
+done
+
+until condition; do
+  statements
+done
+
+##################################
+# 4. INPUT/OUTPUT REDIRECTORS.   #
+##################################
+cmd1|cmd2  # pipe; takes standard output of cmd1 as standard input to cmd2
+> file     # directs standard output to file
+< file     # takes standard input from file
+>> file    # directs standard output to file; append to file if it already exists
+>|file     # forces standard output to file even if noclobber is set
+n>|file    # forces output to file from file descriptor n even if noclobber is set
+<> file    # uses file as both standard input and standard output
+n<>file    # uses file as both input and output for file descriptor n
+<<label    # here-document
+n>file     # directs file descriptor n to file
+n<file     # takes file descriptor n from file
+n>>file    # directs file description n to file; append to file if it already exists
+n>&        # duplicates standard output to file descriptor n
+n<&        # duplicates standard input from file descriptor n
+n>&m       # file descriptor n is made to be a copy of the output file descriptor
+n<&m       # file descriptor n is made to be a copy of the input file descriptor
+&>file     # directs standard output and standard error to file
+<&-        # closes the standard input
+>&-        # closes the standard output
+n>&-       # closes the ouput from file descriptor n
+n<&-       # closes the input from file descripor n
+
+
+################################
+# 7. DEBUGGING SHELL PROGRAMS. #
+################################
+
+bash -n scriptname  # don't run commands; check for syntax errors only
+set -o noexec       # alternative (set option in script)
+
+bash -v scriptname  # echo commands before running them
+set -o verbose      # alternative (set option in script)
+
+bash -x scriptname  # echo commands after command-line processing
+set -o xtrace       # alternative (set option in script)
+
+trap 'echo $varname' EXIT  # useful when you want to print out the values of variables 
+			     at the point that your script exits
+
+function errtrap {
+  es=$?
+  echo "ERROR line $1: Command exited with status $es."
+}
+
+trap 'errtrap $LINENO' ERR  # is run whenever a command in the surrounding script or function exists with non-zero status 
+
+function dbgtrap {
+  echo "badvar is $badvar"
+}
+
+trap dbgtrap DEBUG  # causes the trap code to be executed before every statement in a function or script
+# ...section of code in which the problem occurs...
+trap - DEBUG  # turn off the DEBUG trap
+
+function returntrap {
+  echo "A return occured"
+}
+
+trap returntrap RETURN  # is executed each time a shell function or a script executed with the . or source commands finishes executing

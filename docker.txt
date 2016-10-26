@@ -1,6 +1,9 @@
 ### Docker ####
 ###############
 
+docker-cheat-sheet
+https://github.com/wsargent/docker-cheat-sheet
+
 ### Installation ###
 https://docs.docker.com/engine/installation/linux/centos/
 https://docs.docker.com/engine/installation/linux/ubuntulinux/
@@ -67,8 +70,10 @@ Step 4. Nginx reverse proxy install
 	
 ###	Delete all containers ###
 #!/bin/bash
+
 # Delete all containers
 docker rm $(docker ps -a -q)
+
 # Delete all images
 docker rmi $(docker images -q)	
 ###
@@ -76,10 +81,10 @@ docker rmi $(docker images -q)
 
 
 ### Creating separate docker shell
-$ docker run -i -t  image_name /bin/bash
+$ docker run -i -t  image_name:version_no /bin/bash
 $ docker run -t -i ubuntu:14.04 /bin/bash  <= specific version login
 $ docker inspect image_name
-$ ctrl-P+Q  to exit shell
+$ ctrl+p+q  to exit shell without terminate the container
 $ docker network ls
 
 
@@ -108,7 +113,7 @@ $ grep docker /etc/group
 	docker:x:999
 $ sudo gpasswd -a noza docker			<= add to docker group
 
-$ noza@docker-u14:~$ docker run -it  ubuntu /bin/bash
+$ docker run -it  ubuntu /bin/bash
 		v docker container as root
 	$ root@873cb622dd8d:/#             <= Docker container ID number
 	$ exit 
@@ -118,9 +123,9 @@ $ noza@docker-u14:~$ docker run -it  ubuntu /bin/bash
 ### Instead of linux local socket by default on /var/run/docker, use NETWORK PORT
 $ service docker stop   <= stop docker first
 
-### run dockerD daemon 
-$ sudo dockerd -H tcp://192.168.232.147:2375       &
-          ^ host            ^port  ^ daemon mode   ^ background 
+### run dockerD daemon on network port
+$ sudo dockerd -H tcp://192.168.232.147:2375     &
+          ^ host            ^port  ^ daemon mode ^ background 
 
 ### listen using the default unix socket, and on 2 specific IP addresses on this host.
 # $ sudo dockerd -H unix:///var/run/docker.sock -H tcp://192.168.59.106 -H tcp://10.10.10.2		  
@@ -128,7 +133,8 @@ $ sudo dockerd -H tcp://192.168.232.147:2375       &
 		  
 $ netstat -plnt
 	tcp 0  0 192.168.232.147:2375    0.0.0.0:*     LISTEN      29082/dockerd
-$docker info  <= running on network, not the docker socket.
+
+$docker info                      <= running on network, not the docker socket.
 Cannot connect to the Docker daemon. Is the docker daemon running on this host?
 	
 	
@@ -156,15 +162,13 @@ Operating System: CentOS Linux 7 (Core)           <=
 ...........
 
 
-# On Ubuntu
-[root@docker-u14 ~]$service docker start
-docker start/running, process 29266
+#### On Ubuntu
 
-[root@docker-u14 ~]$docker run -it centos /bin/bash
+$service docker start
 
-[root@796dab5a1c1b /]# cat /etc/*rel*
-CentOS Linux release 7.2.1511 (Core)
-Derived from Red Hat Enterprise Linux 7.2 (Source)
+	docker start/running, process 29266
+
+$ docker run -it centos /bin/bash
 
 [root@796dab5a1c1b /]# cat /etc/hosts
 	172.17.0.2      796dab5a1c1b  <= matches with Host ip
@@ -172,34 +176,39 @@ Derived from Red Hat Enterprise Linux 7.2 (Source)
 	# ip a  or ip addr for IP info
 
 [root@796dab5a1c1b /]#exit  <= Kill docker and exit to host OS
+
 $ docker ps 			    <= check any docker container running
+
 $ docker ps  -a				<= all
 	CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
 	796dab5a1c1b        centos              "/bin/bash"         13 minutes ago      Exited (0) 2 minutes ago                       condescending_galileo
      ^ ID                ^ OS
 
+$ docker ps -q   <= ID only
+	 
+	 
 $ ls -l /var/lib/docker/aufs/diff/
 drwxr-xr-x 10 root root 4096 Oct  4 14:44 fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c73f3675fb40c2e68d30
 drwxr-xr-x  8 root root 4096 Oct  4 14:33 fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c73f3675fb40c2e68d30-init
 
+
 $ ls -l /var/lib/docker/aufs/diff/fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c73f3675fb40c2e68d30
 drwxr-xr-x 23 root root 4096 Oct  4 14:44 etc
 dr-xr-x---  2 root root 4096 Oct  4 14:44 root
-drwxr-xr-x  2 root root 4096 Oct  4 14:44 run
-drwxrwxrwt  2 root root 4096 Oct  4 14:44 tmp
-drwxr-xr-x  8 root root 4096 Oct  4 14:35 usr
-drwxr-xr-x  6 root root 4096 Oct  4 14:35 var
+
 
 $ ls -l /var/lib/docker/aufs/diff/fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c73f3675fb40c2e68d30/root
 	-rw-r--r-- 1 root root 10 Oct  4 14:44 test.file  						<= created from container OS using VIM
 	-rw-r--r-- 1 root root  4 Oct  4 14:44 wow.txt							<= created from container OS using VIM
-[root@docker-u14 ~]$cat /var/lib/docker/aufs/diff/fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c73f3675fb40c2e68d30/root/test.file
+
+$ cat /var/lib/docker/aufs/diff/fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c73f3675fb40c2e68d30/root/test.file
 	test file			<= created from container OS using VIM
 
 
-$[root@docker-u14 ~]$docker start 796dab5a1c1b
+$ docker start 796dab5a1c1b
 796dab5a1c1b
-[root@docker-u14 ~]$docker attach 796dab5a1c1b
+
+$ docker attach 796dab5a1c1b
 
 	[root@796dab5a1c1b /]#
 	[root@796dab5a1c1b ~]# cat wow.txt
@@ -222,8 +231,6 @@ $ docker images					<= check all local images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 ubuntu              latest              45bc58500fa3        2 weeks ago         126.9 MB
 centos              latest              980e0e4c79ec        4 weeks ago         196.8 MB
-fedora              latest              11a5107645d4        7 weeks ago         204.4 MB
-hello-world         latest              c54a2cc56cbb        3 months ago        1.848 kB
 
 
 #######################################################################
@@ -238,19 +245,6 @@ $ docker run -it ubuntu   /bin/bash
 $ docker images
 
 $ docker run -it centos /bin/bash
-
-
-### keep running and exit ###
-### ctrl+p+q   ###      <= <= back to Host OS prompt without killing container
-##############################
-
-
-$ docker ps    <= RAN from OS HOST
-CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
-5730134bd446        centos              "/bin/bash"         About a minute ago   Up About a minute                       kickass_engelbart
-
-$ docker ps -a                <= show all running containers
-
 
 
 
@@ -278,20 +272,21 @@ Ubutu => CentOS
 ### Ubuntu
 $ docker images
 
-### only run echo then close the docker container
+### only run 'echo' then close the docker container
 $ docker run ubuntu /bin/bash -c "echo 'COOL CONTENT' > /root/COOL-FILE.txt"  
 $ docker run ubuntu /bin/bash -c "echo 'sudo apt-get install vim -y' "  
 
 $docker ps -a
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                         PORTS               NAMES
-659ddce81e1c        ubuntu              "/bin/bash -c 'echo '"   23 seconds ago      Exited (0) 22 seconds ago                          serene_meninsky
-da6956dc956e        ubuntu              "/bin/bash -c 'echo '"   36 seconds ago      Exited (1) 36 seconds ago                          happy_shirley
-25271cb8afc7        ubuntu              "/bin/bash -c 'echo '"   3 minutes ago       Exited (0) 3 minutes ago                           peaceful_khorana
+CONTAINER ID        IMAGE               COMMAND                       CREATED             STATUS                         PORTS               NAMES
+659ddce81e1c        ubuntu              "/bin/bash -c 'echo 'COOL"   23 seconds ago      Exited (0) 22 seconds ago                          serene_meninsky
+da6956dc956e        ubuntu              "/bin/bash -c 'echo 'sudo"   36 seconds ago      Exited (1) 36 seconds ago                          happy_shirley
   
-$ docker commit 659ddce81e1c fridge					<= create new image "fridge" name from container
+
+### creating image ###  
+$ docker commit 659ddce81e1c       fridge			<= create new image "fridge" name from container
 sha256:3179ff2722de7e45e680e985b1f65b08ff520e01b43e7aee1f61462ccc150b66
 
-$docker images
+$ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
 fridge              latest              3179ff2722de        About a minute ago   126.9 MB
   ^ <= new container image
@@ -301,61 +296,36 @@ $docker history fridge			<= image history
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 3179ff2722de        2 minutes ago       /bin/bash -c echo 'sudo apt-get install vim -   0 B
 45bc58500fa3        2 weeks ago         /bin/sh -c #(nop)  CMD ["/bin/bash"]            0 B
-<missing>           2 weeks ago         /bin/sh -c mkdir -p /run/systemd && echo 'doc   7 B
-<missing>           2 weeks ago         /bin/sh -c sed -i 's/^#\s*\(deb.*universe\)$/   1.895 kB
-<missing>           2 weeks ago         /bin/sh -c rm -rf /var/lib/apt/lists/*          0 B
-<missing>           2 weeks ago         /bin/sh -c set -xe   && echo '#!/bin/sh' > /u   745 B
-<missing>           2 weeks ago         /bin/sh -c #(nop) ADD file:7d01e28262e78b1d7f   126.9 MB
 
 
-$ docker save -o /tmp/fridge.tar fridge
-  
+$ docker save -o /tmp/fridge.tar    fridge
+               ^ output    
+
+# transfer file from Ubuntu to CentOS  
 $ scp -pv fridge.tar noza@192.168.232.148:/tmp/
  
+  
 ### On CentOS7 ###
+# check file contents
 
-$ tar -tf /tmp/fridge.tar         <= list what is in the tar file
+$ tar -tf    /tmp/fridge.tar         <= list what is in the tar file
       ^ -t <= list, -f <= format
 	  
-0ca87058da90257128ca83a1d0e1bd55236f43c75b915120c70498af6ad37625/
 0ca87058da90257128ca83a1d0e1bd55236f43c75b915120c70498af6ad37625/VERSION
 0ca87058da90257128ca83a1d0e1bd55236f43c75b915120c70498af6ad37625/json
-0ca87058da90257128ca83a1d0e1bd55236f43c75b915120c70498af6ad37625/layer.tar
-3179ff2722de7e45e680e985b1f65b08ff520e01b43e7aee1f61462ccc150b66.json
-32c9150163f303fb9ab7b3e7459b40805931201f557e70391a5930b4c1dfd889/
-32c9150163f303fb9ab7b3e7459b40805931201f557e70391a5930b4c1dfd889/VERSION
-32c9150163f303fb9ab7b3e7459b40805931201f557e70391a5930b4c1dfd889/json
-32c9150163f303fb9ab7b3e7459b40805931201f557e70391a5930b4c1dfd889/layer.tar
-3c9b387d94ad69ccf828db01d3e70da48ab74ba3bde226752340e54489c46be7/
-3c9b387d94ad69ccf828db01d3e70da48ab74ba3bde226752340e54489c46be7/VERSION
-3c9b387d94ad69ccf828db01d3e70da48ab74ba3bde226752340e54489c46be7/json
-3c9b387d94ad69ccf828db01d3e70da48ab74ba3bde226752340e54489c46be7/layer.tar
-5583220665a7d192f5cf180f16c2b4c114b76ac20f0fc4325fbdf11052fa8ba1/
-5583220665a7d192f5cf180f16c2b4c114b76ac20f0fc4325fbdf11052fa8ba1/VERSION
-5583220665a7d192f5cf180f16c2b4c114b76ac20f0fc4325fbdf11052fa8ba1/json
-5583220665a7d192f5cf180f16c2b4c114b76ac20f0fc4325fbdf11052fa8ba1/layer.tar
-d1abbb554de95d8b5bf8b414ae80c116237e5984fb80558e8f3e4a1b501e855f/
-d1abbb554de95d8b5bf8b414ae80c116237e5984fb80558e8f3e4a1b501e855f/VERSION
-d1abbb554de95d8b5bf8b414ae80c116237e5984fb80558e8f3e4a1b501e855f/json
-d1abbb554de95d8b5bf8b414ae80c116237e5984fb80558e8f3e4a1b501e855f/layer.tar
-manifest.json
-repositories
+.......................
 
 ### import
 $ docker load -i /tmp/fridge.tar
 
 c8305edc6321: Loading layer 132.5 MB/132.5 MB
 5c42a1311e7e: Loading layer 15.87 kB/15.87 kB
-c3c1fd75be70: Loading layer 9.728 kB/9.728 kB
-cc8df16ebbaf: Loading layer 4.608 kB/4.608 kB
-4f9d527ff23f: Loading layer 3.072 kB/3.072 kB
 Loaded image: fridge:latest
 
 
 $docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 fridge              latest              3179ff2722de        36 minutes ago      126.8 MB
-
 
   
 $ docker run -it fridge /bin/bash
@@ -364,48 +334,36 @@ $ cat /root/COOL-FILE.txt
   COOL CONTENT 
   
              -d <- detach running in background 
-$ docker run -d centos /bin/bash -c "ping 8.8.8.8 -c 30"
+
+
+$ docker run -d centos /bin/bash -c "ping 8.8.8.8 -c 30" 			<=just run once and close the container
 b78d6099223a4550c5e5e69ec53945728b13e83e59f04f219570926d21a41601
 
-$docker ps
+$ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 b78d6099223a        centos              "/bin/bash -c 'ping 8"   5 seconds ago       Up 4 seconds                            sick_kilby
-5730134bd446        centos              "/bin/bash"              20 hours ago        Up 20 hours                             kickass_engelbart
  
- 
-$ docker ps
+
+# system monitoring tools run on container
  
 $ docker top 5730134bd446
 UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
 root                30408               30391               0                   Oct04               pts/3               00:00:00            /bin/bash
   
- 
+
+# Resource limit run  
 $ docker run ubuntu:14.04
+
 $ docker run --cpu-shares=256
+
 $ docker run memory=1g
  
- 
- 
- 
-$ docker run -d ubuntu:14.04 /bin/bash -c "ping 8.8.8.8"
-$ docker ps
-$ docker inspect 7ebd65f67264
-
-
-
-
-$docker ps
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
-7ebd65f67264        ubuntu:14.04        "/bin/bash -c 'ping 8"   2 minutes ago       Up 2 minutes  
 
 $ docker attach romantic_mclean                          <= container NAMES
-
-64 bytes from 8.8.8.8: icmp_seq=165 ttl=127 time=2.13 ms
+# Keep running
 64 bytes from 8.8.8.8: icmp_seq=166 ttl=127 time=2.12 ms
 64 bytes from 8.8.8.8: icmp_seq=167 ttl=127 time=2.12 ms
 64 bytes from 8.8.8.8: icmp_seq=168 ttl=127 time=2.12 ms
-
-
 
 
 ### Start | Stop | restart containers ####
@@ -418,10 +376,6 @@ $ ctrl+c		<= exit out to host, not in container
 $ ctrl+d        <= exit out to host, not in container
 $ CTRL+P+Q      <= leave the container running and back to HOST OS prompt
 
-
-$ docker ps
-  CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-  e9e7ae8a6abd        ubuntu:14.04        "/bin/bash"         2 minutes ago       Up 2 minutes                            prickly_torvalds
 
 # to Kill container(ID) from Host OS shell
 $ docker stop e9e7ae8a6abd
@@ -438,39 +392,34 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 e9e7ae8a6abd        ubuntu:14.04        "/bin/bash"         6 minutes ago       Exited (0) 3 minutes ago                       prickly_torvalds
 
 
-$ docker start | stop | restart e9e7ae8a6abd
-$ docker attach e9e7ae8a6abd  		<=reconnect 
-
-$ docker ps
-$ docker restart e9e7ae8a6abd  
-  
 $ docker start | stop | restart  container_name <= container to start, stop, restart (VM)
-$ docker attach  <= connection to container using PID 1(ssh to the container)  
+$ docker start | stop | restart e9e7ae8a6abd
 
+$ docker attach | restart e9e7ae8a6abd  		<=reconnect <= connection to container using PID 1(ssh to the container)  
 
   
 ### PID ###
 Linux
 PID 1 = init  <= it manages and takes care of other processes
 
-Container <= "1 process per container" but Multi possible
+Container     <= "1 process per container" but Multi possible
 PID 1 = docker run ... <command>
 
 ### Deleting containers
 $ docker rm container_name
 $ docker rm -f					<= -f force
-$ alias dps="docker ps"
-$ 
+$  
+
+
+
+
 
 ### Inside container
 # check 
 $ docker run ubuntu /bin/bash
 $ ping google.com -c 60
 $ ctrl++p+q
-$ docker top 972a27e39f97
-UID                 PID             CMD
-root                33702           /bin/bash
-root                34052           ping google.com -c 60
+
 
 ### Using Host PID 33702
 root     33702  0.0  0.3  18244  3292 pts/3    Ss+  13:36   0:00 /bin/bash
@@ -494,15 +443,19 @@ root@972a27e39f97:/# apt-get install network-util
 Reading package lists... Done
 ...................
 
+
 # Low level info on container 
+
 $ docker ps
+
 $ docker inspect 972a27e39f97
 
 $ cat /var/lib/docker/containers/f84d...70/config.v2.json
 
 
 
-# docker nsenter  (ns <= namespace) run program with namespaces of other processes
+###
+ docker nsenter  (ns <= namespace) run program with namespaces of other processes
 
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
@@ -517,11 +470,13 @@ $ nsenter -m -u -n -p -i -t 18141 /bin/bash
 root@4eeaa3992e4e:/#
 
 ## within running container only, pause will fail 
-$docker exec 972a27e39f97 ls
+$ docker exec 972a27e39f97 ls
 
 ### 
 $ docker exec -it 972a27e39f97 /bin/bash
 $ docker attach 972a27e39f97 
+
+
   
 ################################## 
 ### Dockerfile for build image ###
@@ -593,6 +548,7 @@ Successfully built 708ebc798c79  <= Final Image
                    ^^^^^^^^^^^^ 
 
 $ docker history 708ebc798c79
+
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 708ebc798c79        13 minutes ago      /bin/sh -c #(nop)  CMD ["echo" "Hello World"]   0 B
 27f1cae8cf98        13 minutes ago      /bin/sh -c apt-get install -y ncdu              1.155 MB
@@ -609,14 +565,16 @@ f2d8ce9fa988        9 days ago          /bin/sh -c #(nop)  CMD ["/bin/bash"]    
 
 
 $ docker run helloworld:0.1
+
 Hello World
+
 
 
 ### Docker file ###
 
-$ vi ~/Dockerfile/dockerfile
+$ vi ~/Dockerfile/Dockerfile
 
-$ docker build -t="build2" .   <= . looking for local directory
+$ docker build -t="build2" .                <= . looking for local directory
 
 Sending build context to Docker daemon 2.048 kB
 Step 1 : FROM ubuntu:14.04
@@ -632,13 +590,12 @@ Step 4 : CMD echo Hello World
  ---> abe14f2a6270
 Successfully built abe14f2a6270
 
-$ cd ~
-$ mkdir web
-$ cd web/
 
+### Creating Simple web server container
 
+$ mkdir ~/web && $_
 $ vi Dockerfile
-# Simple web server
+
 ###
 FROM ubuntu:15.04
 MAINTAINER apark@bnga.com
@@ -654,7 +611,7 @@ CMD ["apache2ctl", "-D", "FOREGROUD"]
 
 
 $ docker build -t="webserver" .
-
+...............
 Step 10 : CMD apache2ctl -D FOREGROUD   <= 10 layers
  ---> Running in f3cd9d1e6c36
  ---> f82f83036e59
@@ -670,7 +627,7 @@ $ vi Dockerfile
 FROM ubuntu:15.04
 MAINTAINER apark@bnga.com
 ----------------- single command -------------------------
-RUN apt-get update && apt-get install -y \        <= put && front of each apt-get
+RUN apt-get update && apt-get install -y \                   <= put && front of each apt-get
     apache2 \
     apache2-utils \
     vim \
@@ -693,14 +650,13 @@ Successfully built 922d356602f6
 $ docker run -d -p 80:80 webserver_small
 fefcdfab9feb8165750503f3fbc39d23a3931a104ad6342d5f4369872003b253
 
-$ docker ps
 
 # open localhost web page
 
 ### CMD <= linux cmd executions for ONLY 1 
-RUN <= build-time, add layer, install apps
+RUN           <= build-time, add layer, install apps
 
-In Docker file, build-time
+In the Dockerfile, build-time
 
 #CMD <= run-time, run cmd in container at launch time
 	 = docker run <args> <command>
@@ -714,33 +670,33 @@ In Docker file, build-time
 	#Exec form	
 	JSON array style ["command", "arg1"]
 	
-# ENTRYPOINT <= can't be overridden at run-time with normal commands
+# ENTRYPOINT                 <= can't be overridden at run-time with normal commands
 	docker run ... <command>
 	
 	ENTRYPOINT ["echo"]
 
 $ vi Dockerfile
-
+###
 FROM ubuntu:14.04
 RUN apt-get update && apt-get install -y iputils-ping
 ENTRYPOINT ["echo"]
+####
+
 
 $ docker build -t="entrypoint" .
 
-$ docker run entrypoint hello there			<= 
+$ docker run entrypoint hello there		<=stdin hello there to stdout echo
 hello there								
 
-$ docker run -it entrypoint /bin/bash
-/bin/bash									<= echo /bin/bash as text instead of PID1 bash shell
 
 $ vi Dockerfile
-
+###
 FROM ubuntu:14.04
 RUN apt-get update && apt-get install -y iputils-ping apache2
 ENTRYPOINT ["apache2ctl"]
+###
 
 $ docker build -t="web2" .
-
 
 $ docker run -d -p 80:80 web2 -D FOREGROUND
 
@@ -749,14 +705,14 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 27bef11a61bf        web2                "apache2ctl -D FOREGR"   5 seconds ago       Up 5 seconds        0.0.0.0:80->80/tcp   happy_goldstine
 
 
-### ENV
-$ vi Dockerfile
+### ENV  ### evironment variable
 
+$ vi Dockerfile
+###
 FROM ubuntu:14.04
 RUN apt-get update && apt-get install -y iputils-ping apache2
 ENV var1=albert var2=park
-#ENTRYPOINT ["apache2ctl"]
-
+###
 
 $ docker run -it albertpark /bin/bash
 
@@ -767,17 +723,18 @@ HOSTNAME=fd6ea2cacd99
 
 
 ### To ping 8.8.8.8
-$ vi Dockerfile
 
+$ vi Dockerfile
+###
 FROM ubuntu:14.04
 RUN apt-get update && apt-get install -y iputils-ping apache2
-
 ENV var1=ping var2=8.8.8.8
 CMD $var1 $var2
+####
 
 $ docker build -t="ping" .
 
-$docker run -it ping
+$ docker run -it ping
 PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 64 bytes from 8.8.8.8: icmp_seq=1 ttl=127 time=2.45 ms
 64 bytes from 8.8.8.8: icmp_seq=2 ttl=127 time=2.15 ms
@@ -789,11 +746,9 @@ $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
 43feac338895        ping                "/bin/sh -c '$var1 $v"   16 seconds ago      Up 16 seconds                            zen_chandrasekhar
 
-$ docker logs -f 43feac338895
+$ docker logs -f 43feac338895		<= -f is follow that runs from host
 64 bytes from 8.8.8.8: icmp_seq=81 ttl=127 time=2.89 ms
 64 bytes from 8.8.8.8: icmp_seq=82 ttl=127 time=2.89 ms
-64 bytes from 8.8.8.8: icmp_seq=83 ttl=127 time=2.83 ms
-64 bytes from 8.8.8.8: icmp_seq=84 ttl=127 time=2.78 ms
 
 
 ### Docker Volume
@@ -810,12 +765,11 @@ $ docker run -p 80:80 -v /home/apark/web/:/var/www/html website
 
 root@c50b0860893f:/#ls -l
 
-drwxr-xr-x   2 root root 4096 Oct  6 02:13 dockvol <= created when cmd run
-
-
+drwxr-xr-x   2 root root 4096 Oct  6 02:13 dockvol           <= created when cmd run
 
 
 ### 11 Docker Network
+
 # Docker0 Bridge
 $ ifconfig
 $ ip a
@@ -834,8 +788,6 @@ bridge name     bridge id               STP enabled     interfaces    <=STP span
 docker0         8000.02426112d121       no              veth75c4468
                                                         vethbc44ee3
                                                         vethe7da331
-
-
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                NAMES
 5440c49fcfb8        ping                "/bin/bash"              42 hours ago        Up 42 hours                                              dockervolume
@@ -844,18 +796,20 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 
 # Virtual Ethernet Interface
+
 $ cat Dockerfile
+###
 FROM ubuntu:14.04
 RUN apt-get update && apt-get install -y iputils-ping traceroute
-
 #ENV var1=ping var2=8.8.8.8
 #CMD $var1 $var2
 ENTRYPOINT ["/bin/bash"]
-
+###
 
 $ docker build -t="net-img" .
 
 $ docker run -it --name=net1 net-img
+
 $ docker run -it --name=net2 net-img
 
 $ brctl show
@@ -869,16 +823,10 @@ root@c84c281b9621:/# ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host
-       valid_lft forever preferred_lft forever
 136: eth0@if137: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
     link/ether 02:42:ac:11:00:05 brd ff:ff:ff:ff:ff:ff
     inet 172.17.0.5/16 scope global eth0             		 <= IPv4 Ip
 	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-       valid_lft forever preferred_lft forever
-    inet6 fe80::42:acff:fe11:5/64 scope link
-       valid_lft forever preferred_lft forever
 
 root@c84c281b9621:/# route
 Kernel IP routing table
@@ -886,9 +834,11 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 default         172.17.0.1      0.0.0.0         UG    0      0        0 eth0
 172.17.0.0      *               255.255.0.0     U     0      0        0 eth0
                                                         
-                                                        
+
 # On Docker Container resolve.conf  <= same as host resolve.conf
+
 $ cat /var/lib/docker/containers/08...7e/resolv.conf
+
 # Dynamic resolv.conf(5) file for glibc resolver(3) generated by resolvconf(8)
 #     DO NOT EDIT THIS FILE BY HAND -- YOUR CHANGES WILL BE OVERWRITTEN
 nameserver 192.168.232.2
@@ -901,7 +851,8 @@ $ cat /var/lib/docker/containers/08...e7e/hosts
 
 
 # On Host resolve.conf
-$cat /etc/resolv.conf
+
+$ cat /etc/resolv.conf
 # Dynamic resolv.conf(5) file for glibc resolver(3) generated by resolvconf(8)
 #     DO NOT EDIT THIS FILE BY HAND -- YOUR CHANGES WILL BE OVERWRITTEN
 nameserver 192.168.232.2
@@ -911,14 +862,13 @@ $cat /etc/hosts
 127.0.0.1       localhost
 127.0.1.1       u14lts
 
-
 $ docker run --dns=8.8.8.8 --name=dnstest net-img
 
 $ docker inspect net-img
 
-
-
+######################
 ### Troubleshoot ###
+#####################
 
 1. Docker Daemon Logging
  debug		<= debug + info + error + fatal
@@ -927,12 +877,14 @@ $ docker inspect net-img
  fatal		<= fatal
  
  
- $ service docker stop
+$ service docker stop
   
- Usage: docker [OPTIONS] COMMAND [arg...]
- $ docker run --help
+Usage: docker [OPTIONS] COMMAND [arg...]
+
+$ docker run --help
  
 $ docker daemon --debug & 		<= Docker 1.12 works
+
 $ docker -d -l debug & 			<= Docker 1.12 NOT working
  
 $ echo 'DOCKER_OPTS="--log-level=fatal"'  >> /etc/default/docker
@@ -1027,9 +979,11 @@ $ docker run -d --name  container_name image_name
 	
 	
 	
-#############   ####
+###################################
 ### SWARM based on Docker 1.12.x###	### SWARM KITS <= Orchestration
-#############	####
+###################################
+###docker-swarm-visualizer
+https://github.com/DovAmir/docker-swarm-visualizer/blob/master/README.md
 
 1. CentOS7  VM1-Master, 
 			VM2-worker, VM3-worker, VM4-worker
@@ -1042,15 +996,12 @@ $ docker run -d --name  container_name image_name
 
 
 
-
-
-
 $ apt-get install golang -y && apt-get install git -y
 
 # Set $GOPATH on local directory
 $ export GOPATH=~/go
 
-# Get Swarm
+# Get Swarm using Golang command
 $ go get -u github.com/docker/swarm
 
 # Update $PATH
@@ -1059,21 +1010,13 @@ $ export PATH=$PATH:~/go/bin
 #verify install
 $ swarm --version
 
-	
-	
-###################################
-### SWARM Mode based on Docker 1.12.x###	### SWARM KITS <= Orchestration
-###################################
-
-###docker-swarm-visualizer
-https://github.com/DovAmir/docker-swarm-visualizer/blob/master/README.md
 
 $ docker run -it -d -p 8080:8080 -e HOST=[host_name] -v /var/run/docker.sock:/var/run/docker.sock manomarks/visualizer
 
 
 
-
 ### Swarm mode set up ###
+
 Swarm is built in the Docker 1.12
 
 Swarm mode
@@ -1166,18 +1109,23 @@ $ docker node ls
 	ac323dzwhufy95rweitjtyhlk *  docker-c7  Ready   Active        Leader
 	cqoj42p80fhlhq87hfl9v4dxb    docker-c7  Ready   Active
 
+	
+	
 ################################################################################
 # 1 Container running
+
+
 $ Container run -d nginx
 	
 # Service running 5 containers
+
 $ docker service create --replicas 5 nginx
 
 
 $ docker service create --name ping00 alpine ping docker-swarm-00
 1a1nv1epnek59sseo32z8phnd
 
-$docker service list
+$ docker service list
 ID            NAME    REPLICAS  IMAGE   COMMAND
 1a1nv1epnek5  ping00  1/1       alpine  ping docker-swarm-00
 	
@@ -1206,19 +1154,110 @@ Docker Service command
 	
 	
 	
+####################################################
+##### Private Docker Registry & Docker Compose #####
+####################################################
+  
+
+### Docker Installation ###
+https://docs.docker.com/engine/installation/linux/centos/
+https://docs.docker.com/engine/installation/linux/ubuntulinux/
+
+### Docker Compose ###
+
+# $ wget -qO- https://get.docker.com/ | sh      <= -q quiet, O-   <=download and install their installation script
+  
+  
+$ sudo apt-get -y install python-pip
+$ sudo pip install docker-compose
+  
+$ mkdir ~/hello-world && $_
+$ vi docker-compose.yml
+###
+my-test:						# container name
+  image:hello-world				# specific image name
+###
+
+
+$ docker-compose up
+
+Pulling my-test (hello-world:latest)...
+....
+Creating helloworld_my-test_1
+Attaching to helloworld_my-test_1
+my-test_1  |
+......
+helloworld_my-test_1 exited with code 0
+
+
+##### Private Docker Registry
+
+
+$ sudo apt-get -y install apache2-utils
+$ mkdir ~/docker-registry && cd $_
+$ vi docker-compose.yml
+###
+registry:
+  image: registry:2
+  ports:
+    - 127.0.0.1:5000:5000
+  environment:												# environment variable in the Docker registry container with the path /data.
+    REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data        # The Docker registry app knows to check this environment variable when it starts up and to start saving its data to the /data folder as a result.
+  volumes:													# Only in this case, the volumes: - ./data:/data bit is telling Docker that the /data directory in that
+    - ./data:/data                  						# container should actually map out to /data on our host machine. So the end result is that the Docker registry's data all gets stored in ~/docker-registry/data on our local machine.
+###
+
+$ docker-compose up
 
 
 
 
 
+### Nginx & Registry Container ###
+
+###
+nginx:
+  image: "nginx:1.9"
+  ports:
+    - 5043:443
+  links:
+    - registry:registry
+  volumes:
+    - ./nginx/:/etc/nginx/conf.d
+###
+registry:
+  image: registry:2
+  ports:
+    - 127.0.0.1:5000:5000
+  environment:
+    REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data
+  volumes:
+    - ./data:/data
+###
 
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
 
 
-
-
-
-##########################
+ 
+ 
+ 
+################
 ### Glossary ###
 ################
 
@@ -1247,9 +1286,9 @@ aufs (advanced multi layered unification filesystem)
 	CPU, memory, disk I/O, network, etc.) of a collection of processes. 
 	Docker relies on cgroups to control and isolate resource limits.
 	
-# Compose (Also known as : docker-compose, fig)
+# Compose (Also known as : docker-compose, fig)  <= for dev environment
 	Compose is a tool for defining and running complex applications with Docker. With compose, 
-	you define a multi-container application in a single file, then spin your application up 
+	you define a multi-container application in a single file( yml ), then spin your application up 
 	in a single command which does everything that needs to be done to get it running.
 
 # container (running VM)
@@ -1309,7 +1348,7 @@ aufs (advanced multi layered unification filesystem)
 	links provide a legacy interface to connect Docker containers running on the same host to each other 
 	without exposing the hosts’ network ports. Use the Docker networks feature instead.
 
-# Machine ( Also known as : docker-machine)
+# Machine ( Also known as : docker machine)
 	Machine is a Docker tool which makes it really easy to create Docker hosts on your computer, on 
 	cloud providers and inside your own data center. It creates servers, installs Docker on them, then 
 	configures the Docker client to talk to them.
@@ -1578,3 +1617,15 @@ Options:
       --volume-driver string        Optional volume driver for the container
       --volumes-from value          Mount volumes from the specified container(s) (default [])
   -w, --workdir string              Working directory inside the container
+
+   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,180 @@
+Install the latest Mesos on CentOS 7.x
+
+Prerequisites: Clean CentOS 7.x minimal SVR installed (tested on 7.2) + docker
+
+Setup: single node (all-in-one), Mesosphere repo
+
+
+
+yum install -y http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm
+ 
+yum install docker mesosphere-zookeeper mesos marathon chronos  -y
+ 
+echo 'docker,mesos' > /etc/mesos-slave/containerizers
+ 
+for SERVICES in docker zookeeper mesos-master mesos-slave marathon chronos; do
+    systemctl enable $SERVICES
+    systemctl restart $SERVICES
+done
+ 
+firewall-cmd --permanent --zone=public --add-port=5050/tcp # mesos-master
+firewall-cmd --permanent --zone=public --add-port=5051/tcp # mesos-slave
+firewall-cmd --permanent --zone=public --add-port=8080/tcp # marathon
+firewall-cmd --permanent --zone=public --add-port=4400/tcp # chronos
+firewall-cmd --reload
+And then browse to http://IP_ADDRESS:8080/
+
+
+Single Master
+AWS 
+CloudFormation
+
+
+
+
+####################
+###   DCOS 1.8   ###
+####################
+https://dcos.io/docs/1.8/administration/installing/cloud/aws/
+
+Microservices & Containers
+Build microservices applications using Docker with Marathon: DC/OS’s production proven container orchestrator.
+
+Big Data & Analytics
+Build and integrate advanced big data, analytics and machine learning pipelines with Spark, Kafka, and Cassandra in your apps.
+
+Infrastructure Agnostic Apps
+DC/OS runs on top of any bare-metal, private or public clouds, allowing you to maintain maximum portability for all your apps.
+
+
+Admin Router
+The Admin Router runs on the DC/OS master servers to provide a proxy for the admin parts of the cluster.
+
+Agent node
+	A Mesos agent node runs a discrete Mesos task on behalf of a framework. It is an agent instance 
+	registered with the Mesos master. The synonym of agent node is worker or slave node. 
+	See also private and public agent nodes.
+
+Bootstrap node
+	The node where a custom DC/OS installation is run. For more information, see the system requirements.
+
+Cloud template
+	The cloud templates are optimized to run DC/OS. The templates are JSON-formatted text files that 
+	describe the resources and properties.
+
+Mesos Containerizer
+	The Mesos Containerizer provides lightweight containerization and resource isolation of 
+	executors using Linux-specific functionality such as cgroups and namespaces.
+
+Docker Containerizer
+The Docker Containerizer enables launching docker containers using DC/OS.
+
+Datacenter operating system
+	A new class of operating system that spans all of the machines in a datacenter or 
+	cloud and organizes them to act as one big computer.
+
+DC/OS
+The abbreviated form of the Datacenter Operating System.
+
+DC/OS Cluster
+A group of Mesos master and agent nodes.
+
+DC/OS Marathon
+The native Marathon instance that is the “init system” for DC/OS. It starts and monitors DC/OS applications and services.
+
+DC/OS service
+	DC/OS services are applications that are packaged and available from the public GitHub package repositories. 
+	Available DC/OS services include Mesos frameworks and other applications.
+
+Executor
+	A framework running on top of Mesos consists of two components: a scheduler that registers with the 
+	master to be offered resources, and an executor process that is launched on agent nodes to run the 
+	framework’s tasks. For more information about framework schedulers and executors, 
+	see the App/Framework development guide.
+
+Exhibitor for ZooKeeper
+	DC/OS uses ZooKeeper, a high-performance coordination service to manage the installed DC/OS services. 
+	Exhibitor automatically configures your ZooKeeper installation on the master nodes during your DC/OS installation.
+
+Framework
+	A Mesos framework is the combination of a Mesos scheduler and an optional custom executor. A framework receives 
+	resource offers describing CPU, RAM, etc. from the leading Mesos master, and allocates them for discrete tasks 
+	that can be launched on Mesos agent nodes. Mesosphere-certified Mesos frameworks, called DC/OS services, 
+	are packaged and available from public GitHub package repositories. DC/OS services include Mesosphere-certified 
+	Mesos frameworks and other applications.
+
+Master
+	A Mesos master aggregates resource offers from all agent nodes and provides them to registered frameworks. 
+	For more details about the Mesos master, read about Mesos Master Configuration.
+
+Mesos-DNS
+	Mesos-DNS is a DC/OS component that provides service discovery within the cluster. Mesos-DNS allows 
+	applications and services that are running on Mesos to find each other by using the domain name system (DNS), 
+	similar to how services discover each other throughout the Internet.
+
+Package repository
+	DC/OS services are applications that are packaged and available from the public DC/OS package 
+	repositories that are hosted on GitHub.
+
+Offer
+	An offer represents available resources (e.g. cpu, disk, memory) which an agent reports to the master 
+	and the master offers to the registered frameworks in some order.
+
+Private agent node
+	Private agent nodes run DC/OS apps and services through a non-routable network that is only accessible from the 
+	admin zone or through the edgerouter from the public zone. By default DC/OS launches apps on private agent nodes. 
+	DC/OS agent nodes can be designated as public or private during installation. For more information, 
+	see the Network Security documentation.
+
+Public agent node
+	Public agent nodes run DC/OS apps and services in a publicly accessible network. DC/OS agent nodes can be 
+	designated as public or private during installation. For more information see:
+
+Network Security
+	Creating a public agent node
+
+Slave
+	The synonym of slave node is worker or agent node. A Mesos agent node runs a discrete Mesos task on behalf of a framework. 
+	It is an agent instance registered with the Mesos master.
+
+State abstraction
+	Mesos provides an abstraction for accessing storage for schedulers for Java and C++ only. 
+	This is the preferred method to access ZooKeeper for DC/OS services.
+
+Task
+	A unit of work scheduled by a Mesos framework and executed on a Mesos agent. In Hadoop terminology, 
+	this is a “job”. In MySQL terminology, this is a “query” or “statement”. A task may simply be a Bash command, 
+	a Python script, or a complex AI application.
+
+Working directory
+	A Mesos master requires a directory on the local file system to write replica logs to.
+
+ZooKeeper
+	DC/OS uses ZooKeeper, a high-performance coordination service to manage the installed DC/OS services. 
+	Exhibitor automatically configures your ZooKeeper installation on the master nodes during your DC/OS installation.
+
+
+
+##################################
+### DCOS CLI Install on Linux #### 
+##################################
+
+curl -fLsS --retry 20 -Y 100000 -y 60 https://downloads.dcos.io/binaries/cli/linux/x86-64/dcos-1.8/dcos -o dcos && 
+
+ sudo mv dcos /usr/local/bin && 
+
+ sudo chmod +x /usr/local/bin/dcos && 
+
+ dcos config set core.dcos_url http://dcos-1-elasticload-1kng2isari1it-1005251933.us-west-1.elb.amazonaws.com && 
+
+ /usr/local/bin/dcos
+
+export PATH=$PATH:/usr/local/bin/
+
+
+
+
+
+
+
+

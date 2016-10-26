@@ -120,20 +120,23 @@ Pin-Priority: 501
 	$ yum install puppet -y
 	
 	$ export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/opt/puppetlabs/bin
-### $ /usr/bin/puppet -V						<= puppet file location
+
+	### $ /usr/bin/puppet -V						<= puppet file location
 ###	# Change the path
 ### $ export PATH=$PATH:/usr/bin                <= for Bash	
 	
-		$ puppet -V	
+	$ puppet -V	
 	
 	$ echo "[agent]" >> /etc/puppetlabs/puppet/puppet.conf
 	$ echo "server = wput-puppet.namcowireless.com" >> /etc/puppetlabs/puppet/puppet.conf
 
 ### 3.8.x
 ###	$ vi /etc/puppet/puppet.conf
+
 ### 4.7.x
 ###	$ vi /etc/puppetlabs/puppet/puppet.conf
 ###
+
 [agent]
 server = puppetmaster.x.com
 ###	
@@ -143,9 +146,9 @@ server = puppetmaster.x.com
 	
 
 
-	$ /etc/init.d/puppet restart
+	$ /etc/init.d/puppet start
 
-### sign from Puppet server
+### signing new hosts from Puppet server
 $ puppet cert list 
 $ puppet cert sign -a
 
@@ -158,8 +161,8 @@ $ puppet cert list -a | awk '{print $2}' | sed 's/\"//g'
 #  DF:93:3C:FA:87:1C:31:C7:5B:3C:22:E0:2D:C4:16:BC:BA:4E:DF:61:03:61:6C 
 #  (alt names: "DNS:puppet", "DNS:puppet.namcowireless.com
 
-# rerun from client
-$puppet agent -t
+# re-run from client to connect to master and update
+$ puppet agent -t
 	
 	
 	
@@ -176,7 +179,7 @@ $puppet agent -t
 		# Make correction!  export again with correct path!
 			$ export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/opt/puppetlabs/bin
 	$ puppet -V 
-		4.6.2
+		4.x
 	
 	$ systemctl status puppet 
 	$ puppet agent -t --debug --verbose
@@ -215,17 +218,14 @@ puppet server :  wput-puppet.namcowireless.com
 	certname = pm
 	dns_alt_names = pm,pm.localdomain
 	###
-		$ systemctl restart puppetserver 
+	
+	$ systemctl restart puppetserver 
 
 ### Revert changes on client CentOS7  ###
 $ puppet filebucket -l --bucket /opt/puppetlabs/puppet/cache/clientbucket/ restore /var/www/html/index.html 186c64b052c8fafdad721cb778a7bf4a
+
 ### REVIEW  using get ###
 $ puppet filebucket -l --bucket /opt/puppetlabs/puppet/cache/clientbucket/ get /var/www/html/index.html 186c64b052c8fafdad721cb778a7bf4a
-
-
-
-
-
 
 
 	
@@ -246,9 +246,7 @@ Notice: Removing file Puppet::SSL::CertificateRequest wput-puppet at '/var/lib/p
 
 	$ Ctrl+c to exit
 	  
-	 
-	  
-	  
+	   
 	  
 	$ sudo puppet cert list -all		<= Check ALL cert list!
 	+ "puppet" (SHA256) B2:....:38 (alt names: "DNS:puppet", "DNS:puppet.namcowireless.com")  <= Puppet Master HOST!!
@@ -260,13 +258,7 @@ Notice: Removing file Puppet::SSL::CertificateRequest wput-puppet at '/var/lib/p
         SSLCertificateKeyFile   /var/lib/puppet/ssl/private_keys/pm.pem					<= Correct the pem name
 
 
-		
-		
-		
-		
 	
-
-
 	
 ###### Manifests ######
 	- Node definitions

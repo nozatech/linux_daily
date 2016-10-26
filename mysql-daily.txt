@@ -2243,3 +2243,41 @@ mysql> update users
      -> set passwd=md5('XXXX')
      -> where alias="Admin";
 	 
+
+	 
+######################################	 
+####  Clean up mysql-bin.xxx files ###
+######################################
+
+http://dba.stackexchange.com/questions/41050/is-it-safe-to-delete-mysql-bin-files
+
+$ ll -h /var/lib/mysql
+
+$ vi /etc/my.cnf
+
+[mysqld]
+expire-logs-days=30
+
+$ /etc/init.d/mysqld restart 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 
+	 
