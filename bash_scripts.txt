@@ -66,7 +66,7 @@
 	:h									<= vi, vim help 			
 	:q 									<= quit help page
 	
-	$ vi +101 filename					<= go to 101 line in filename
+	$ vi +101 file.txt					<= go to 101 line in filename
 	:12									<= Go to particular line number in vi editor 
  
  # Move cursor to all the way down
@@ -79,8 +79,21 @@
 	  1453 pts/1    00:00:00 bash  <= BASH
 	$ ps | grep `echo $$` | awk '{ print $4 }'
 	
+### Quote in shell script ###
+
+	$greeting="hello"
+	### NO Quote	
+	echo $greeting, world \(planet\)!
+	   => hello, world (planet)!
 	
-	
+	### Single Quote
+	echo '$greeting, world (planet)!'
+	   => $greeting, world (planet)!
+
+	### Double Quote
+	echo "$greeting, world (planet)!"
+	    => hello, world (planet)!
+
 	
 	
 	$ awk '/lemon/ && /rice/'					<= search two words
@@ -122,7 +135,8 @@ fooThis is my environment variable!bar
 
 
 
-
+### for_loop### for_loop### for_loop### for_loop### for_loop ###
+### for_loop### for_loop### for_loop### for_loop### for_loop ###
 	
 ### for_loop1.sh		
 #!/bin/bash
@@ -155,6 +169,32 @@ for i in hello 1 * 2 goodbye
 do
   echo "Looping ... i is set to $i"
 done
+
+
+### Test statement ###### Test statement ###### Test statement ###### Test statement ###
+### Test statement ###### Test statement ###### Test statement ###### Test statement ###
+if test  == if [ ]
+[ expression ] 
+[[ expression ]]  		<= extended e.g. grep, egrep
+if (( integer comparison )); then
+
+###
+if expression
+then
+	echo "True"
+#elif
+else
+	echo "False"
+fi
+###
+
+#!/bin/bash
+a="This is my string!"
+if [[ $a =~ [0-9]+ ]]; then
+        echo "There are numbers in the string: $a"
+else
+        echo "There are No numbers in the string: $a"
+fi
 
 
     
@@ -253,15 +293,16 @@ done
 
 
 	
-24. Comparison operation for test [[ expression ]]     0:TRUE  1:FALSE 
-	A. Comparing variables
-		Less than			        [[ $a < $b ]]
+24. Test statement for Comparison operation [[ expression ]]     0:TRUE  1:FALSE 
+	A. Comparing variables									   For Integer
+		Less than			        [[ $a < $b ]]       ==== (( $a < $B )) 
 		greater than			    [[ $a > $b ]]
 		less than or equal to 		[[ $a <= $b ]]
 		greater than or equal to 	[[ $a >= $b ]]
-		equal				        [[ $a == $b ]]
-		not equal			        [[ $a != $b ]]
+		equal(same)			        [[ $a == $b ]]
+		not equal(same)		        [[ $a != $b ]]
 	
+	### String comparison
 	ex) [[ "cat" == "cat" ]]
 		a=cat
 		b=dog
@@ -273,7 +314,7 @@ done
 		OR   	[[ $a || $b ]] 
 		NOT     [[ ! $a ]]
 
-	C. Number comparison operations
+	C. Integer Number comparison operations
 		less than			         [[ $a -lt $b ]]
 		greater than			     [[ $a -gt $b ]]
 		less than or equal to 		 [[ $a -le $b ]]
@@ -389,6 +430,34 @@ done
 	
 	# Move or rename file from CMD
 	$ if [ -e .vimrc ]; then mv .vimrc .vimrc_bak; fi
+
+	
+	
+	
+	
+### While_loop ###### While_loop ###### While_loop ###### While_loop ###### While_loop ###
+### While_loop ###### While_loop ###### While_loop ###### While_loop ###### While_loop ###
+
+
+#!/bin/bash
+i=1
+while read file; do
+        echo "Line $1: $file"
+        ((i++))
+done < file.txt
+
+Line 1: apple
+Line 2: banaba
+.......
+
+
+
+
+
+
+
+
+
 
 
 
