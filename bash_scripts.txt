@@ -2,11 +2,17 @@
 ### 1. Run Scripts ###
 ######################
 
+# Run from bash shell
 	$ ./script.sh
-    $ sh ./script.sh   ( same as 'sh script.sh')
+    $ sh ./script.sh  				 ( same as 'sh script.sh')
     $ sh +x script.sh   			<= +x for debuging mode
- 
- # Run script within vim or vi
+	$ exec script.sh				<= run and exit shell
+	 # Run script    
+	$ . script.sh      <= current login shell to run
+    $ exec ./script    <= after run, the login shell exit 
+	$ sh script.sh
+	
+# Run script WITHIN vim or vi
     :w   	      					<= write first
     :!sh %   (# :! sh %)     		<= :! =run, sh =shell, % =curren open file
 	:!!         					<= run same script again 
@@ -17,19 +23,41 @@
     #!/bin/bash -x      		<= -x to #! line for debug mode
     set -x              		<= End of file +x for TURN OFF
 	
-		
- # Search and replace
+ # Vi Search and replace
 	:%s/foo/bar/g
 	:%s/foo/bar/gc				<= to confirm first
 	
  # Debug mode	
-    #!/bin/bash +x 					<= +x for debuging mode in shell script
-    $ bash +x ./script.sh  ( same as 'bash script.sh') 
- 
- # Run script    
-	$ . script.sh      <= current login shell to run
-    $ exec ./script    <= after run, the login shell exit 
-	$ sh script.sh
+    #!/bin/bash +x 					<= add +x for debuging mode in shell script
+
+    $ bash +x ./script.sh  			( same as 'bash script.sh') 
+
+	### Within Code
+	#!/bin/bash
+	### turn on debug mode
+	set -x
+	for f in *
+	do
+		file $f
+	done
+	#### turn OFF debug mode
+	set +x
+	----
+	$ bash -xv uuid.sh                    <= add -xv from shell 
+	#!/bin/bash
+	if [ $id -u = 0 ];then
+        echo "ur root" >&2
+        exit 0
+	fi
+	+ '[' -u = 0 ']'
+
+	
+	
+	
+	
+# more commands
+	set -x : Display commands and their arguments as they are executed.
+	set -v : Display shell input lines as they are read. 
 	
  ### Save in read only file ###
 	:w !sudo tee %                  	<= save as sudo privilege.  type (L) load at the prompt to reload.
@@ -41,7 +69,7 @@
 	$ vi +101 filename					<= go to 101 line in filename
 	:12									<= Go to particular line number in vi editor 
  
- # Move
+ # Move cursor to all the way down
 	shift+G		<= All the way down the page
 	
  # Check bash 
@@ -51,7 +79,11 @@
 	  1453 pts/1    00:00:00 bash  <= BASH
 	$ ps | grep `echo $$` | awk '{ print $4 }'
 	
-	$ awk '/lemon/ && /rice/'	<= search two words
+	
+	
+	
+	
+	$ awk '/lemon/ && /rice/'					<= search two words
 
 
 ### Special Shell Variables ###
@@ -66,7 +98,7 @@
 	${#@}	number of positional parameters
 	$?		return value
 	$$	 	process ID(PID) of script
-	$-		flags passed to sript(using set)
+	$-		flags passed to script(using set)
 	$_		last argument of previous command
 	$!		process ID(PID) of last job run in background
 	* Must be quoted, otherwise it defaults to $@
@@ -76,6 +108,19 @@ $ echo -n     do not output the trailing newline
        -e     enable interpretation of backslash escapes
        -E     disable interpretation of backslash escapes (default)
 
+### "2>&1" command:
+	Using "2>&1" , redirect the standard error(2) to standard output(1). The string "2>&1" indicates that any errors 
+	should be sent to the standard output(1), that is, the UNIX/Linux file id of 2 for standard error, and the file 
+	id of 1 for standard output. 
+	If you do not use this string, then you will be capturing only the good messages, and the error messages will not be captured.
+
+whitespace (spaces or tabs).
+
+$ myvar=This is my environment variable!	
+$ echo foo${myvar}bar							<= must use { }
+fooThis is my environment variable!bar
+
+
 
 
 	
@@ -84,16 +129,25 @@ $ echo -n     do not output the trailing newline
 for i in *; do
 echo “$i”
 done
+$./for_loop1.sh 
+=> local file list
 
-$./for_loop1.sh 1 2 3 4
+### for_loop2.sh
+#!/bin/bash
+for i in $#; do
+echo “$i”			# zip archive "$i"
+done
+$./for_loop1.sh 1 2 3 4	
+=> 4   <= total number of argument 1,2,3,4 is 4 total!
 
 ### for_loop2.sh
 #!/bin/bash
 for i in $@; do
 echo “$i”			# zip archive "$i"
 done
-	
 $./for_loop1.sh 1 2 3 4	
+=> 1 2 3 4
+
 
 ### * wild including current directory files
 #!/bin/sh
@@ -103,19 +157,46 @@ do
 done
 
 
+    
+if [ -z "$myvar" ]
+then
+    echo "myvar is not defined"
+fi
+
+Note: You must separate the square brackets from other text by a space.
+
+### Common Bash comparisons
+Operator	       Meaning									Example
+-------------------------------------------------------------------------------------
+-z			String is EMPTY 							[ -z "$myvar" ]
+-n			String is not EMPTY							[ -n "$myvar" ]
+-f			File is Exists								[ -f "$myfile" ]
+-d			Directory is Exists  						[ -d "$mydir" ]
+
+=			String are same								[ "abc" = "$myvar" ]
+!=			String are Not Same   						[ "abc" != "$myvar" ]
+
+-eq	  		Numeric equality							[ 3 -eq "$myinteger" ]
+-ne			Numeric inequality							[ 3 -ne "$myinteger" ]
+-lt			Numeric strict less than					[ 3 -lt "$myinteger" ]
+-le			Numeric less than or equals					[ 3 -le "$myinteger" ]
+-gt			Numeric strict greater than					[ 3 -gt "$myinteger" ]
+-ge			Numeric greater than or equals				[ 3 -ge "$myinteger" ]
+
+-nt			First file is newer than second one			[ "$myfile" -nt ~/.bashrc ]
+-ot			First file is older than second one			[ "$myfile" -ot ~/.bashrc ]
 
 
 
 
 
 17. if [ $id -u != "0" ] ;then
-	echo "You must be the supper user to run this script" >&2  		<= user id -u failure q
+	echo "You must be the supper user" >&2  						<= user id -u is 0
 	exit 1															<= exit status sets to 1(failure)
     fi
 
-
-
-19. Arithmatic
+	
+19. Arithmetic
 	echo $(( 1+2 ))
 	+, -, *, /, %, **,
 	
@@ -134,20 +215,44 @@ done
 	fi
 
 
-20. Read
+20. Read : within min time to input
 # -t timing
 # -s security hidden
 
 	#!/bin/bash
-	echo -n  "Enter your SSN before expire within 3sec > "
+	echo -n  "Enter your number before expire within 3sec: "
+	echo seq 3
+	
 	if read -t 3  -s response; then
 	        echo "Great, you made it in time"
 	else
         	echo "Sorry, you are too slow"
 	fi
 
+### Time counting 
+
+$ for i in {0..10}; do echo -ne "$i" '\r'; sleep 1; done; echo 
+
+	#\r is returning to begin of line (without new line - \n)
+	# -e escape, -n new line
 
 
+### Directory or file name
+
+#!/usr/bin/env bash
+for myfile in /etc/r*
+do
+    if [ -d "$myfile" ]
+    then
+      echo "$myfile is a directory!"
+    else
+      echo "$myfile is a file name"
+    fi
+done
+
+
+
+	
 24. Comparison operation for test [[ expression ]]     0:TRUE  1:FALSE 
 	A. Comparing variables
 		Less than			        [[ $a < $b ]]
@@ -156,7 +261,8 @@ done
 		greater than or equal to 	[[ $a >= $b ]]
 		equal				        [[ $a == $b ]]
 		not equal			        [[ $a != $b ]]
-	ex)     [[ "cat" == "cat" ]]
+	
+	ex) [[ "cat" == "cat" ]]
 		a=cat
 		b=dog
 		[[ $a == $b ]]
@@ -174,13 +280,15 @@ done
 		greater than or equal to	 [[ $a -ge $b ]]
 		equal				         [[ $a -eq $b ]]
 		not equal			         [[ $a -ne $b ]]
-	Ex)	[[ 20 -gt 100 ]]
+		
+	Eg)	[[ 20 -gt 100 ]]
 		echo $?
 	
 	D. String null value
-		is null?			    [[ -z $a ]]
-		is not null?			[[ -n $a ]]
+		is null(EMPTY)?			    [[ -z $a ]]   <= [[ !-z $a ]]
+		is not null(EMPTY)?			[[ -n $a ]]   <= [[ !-n $a ]]
 
+		
 	Ex)	a=""
 		b="cat"
 		[[ -z $a && -n $b ]]
@@ -203,13 +311,6 @@ done
 	b+=("mango")
 	echo ${b[@]}            # @ <= whole array
 	echo ${b[@]: -1}        # -1 <= last item in array
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -585,14 +686,6 @@ echo "argument 10 is '{$10}'"	 # from 10, use {}
 		argument 1 is 'a'
 		.....
 		argument 10 is 'j'
-
-
-
-
-
-
-
-
 	
 	
 79.Special parameters
@@ -678,11 +771,11 @@ ${variable//pattern/string}  # the longest match to pattern in variable is repla
 
 ${#varname}                  # returns the length of the value of the variable as a character string
 
-*(patternlist)               # matches zero or more occurences of the given patterns
-+(patternlist)               # matches one or more occurences of the given patterns
-?(patternlist)               # matches zero or one occurence of the given patterns
-@(patternlist)               # matches exactly one of the given patterns
-!(patternlist)               # matches anything except one of the given patterns
+*(pattern list)               # matches zero or more occurences of the given patterns
++(pattern list)               # matches one or more occurences of the given patterns
+?(pattern list)               # matches zero or one occurence of the given patterns
+@(pattern list)               # matches exactly one of the given patterns
+!(pattern list)               # matches anything except one of the given patterns
 
 $(UNIX command)              # command substitution: runs the command and returns standard output
 
@@ -781,27 +874,27 @@ done
 ##################################
 # 4. INPUT/OUTPUT REDIRECTORS.   #
 ##################################
-cmd1|cmd2  # pipe; takes standard output of cmd1 as standard input to cmd2
-> file     # directs standard output to file
-< file     # takes standard input from file
->> file    # directs standard output to file; append to file if it already exists
->|file     # forces standard output to file even if noclobber is set
-n>|file    # forces output to file from file descriptor n even if noclobber is set
-<> file    # uses file as both standard input and standard output
-n<>file    # uses file as both input and output for file descriptor n
-<<label    # here-document
-n>file     # directs file descriptor n to file
-n<file     # takes file descriptor n from file
-n>>file    # directs file description n to file; append to file if it already exists
-n>&        # duplicates standard output to file descriptor n
-n<&        # duplicates standard input from file descriptor n
-n>&m       # file descriptor n is made to be a copy of the output file descriptor
-n<&m       # file descriptor n is made to be a copy of the input file descriptor
-&>file     # directs standard output and standard error to file
-<&-        # closes the standard input
->&-        # closes the standard output
-n>&-       # closes the ouput from file descriptor n
-n<&-       # closes the input from file descripor n
+cmd1 | cmd2  # pipe; takes standard output of cmd1 as standard input to cmd2
+> file       # directs standard output to file
+< file       # takes standard input from file
+>> file      # directs standard output to file; append to file if it already exists
+>|file       #   forces standard output to file even if noclobber is set
+n>|file      # forces output to file from file descriptor n even if noclobber is set
+<> file      # uses file as both standard input and standard output
+n<>file      # uses file as both input and output for file descriptor n
+<<label      # here-document
+n>file       # directs file descriptor n to file
+n<file       # takes file descriptor n from file
+n>>file      # directs file description n to file; append to file if it already exists
+n>&          # duplicates standard output to file descriptor n
+n<&          # duplicates standard input from file descriptor n
+n>&m         # file descriptor n is made to be a copy of the output file descriptor
+n<&m         # file descriptor n is made to be a copy of the input file descriptor
+&>file       # directs standard output and standard error to file
+<&-          # closes the standard input
+>&-          # closes the standard output
+n>&-         # closes the ouput from file descriptor n
+n<&-         # closes the input from file descriptor n
 
 
 ################################
@@ -809,13 +902,13 @@ n<&-       # closes the input from file descripor n
 ################################
 
 bash -n scriptname  # don't run commands; check for syntax errors only
-set -o noexec       # alternative (set option in script)
+set -o noexec       # alternative (set option in script file)
 
 bash -v scriptname  # echo commands before running them
-set -o verbose      # alternative (set option in script)
+set -o verbose      # alternative (set option in script file)
 
 bash -x scriptname  # echo commands after command-line processing
-set -o xtrace       # alternative (set option in script)
+set -o xtrace       # alternative (set option in script file)
 
 trap 'echo $varname' EXIT  # useful when you want to print out the values of variables 
 			     at the point that your script exits
@@ -840,3 +933,277 @@ function returntrap {
 }
 
 trap returntrap RETURN  # is executed each time a shell function or a script executed with the . or source commands finishes executing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################
+### Questions ###
+#################
+
+1: What is a shell?
+	Shell is a interface between user and the kernel. Even though there can be  only one kernel ; 
+	a system can have many shell running simultaneously . Whenever  a user enters a command  through 
+	keyboard the shell communicates with the kernel  to execute it and then display the output to the user.
+
+4:What is the difference between soft and hard links?
+	Soft links are link to the file name and can reside on different filesytem as well; 
+	however hard links are link to the inode of the file and has to be on the 
+	same filesytem as that of the file. Deleting the orginal file makes the soft link inactive 
+	(broken link) but does not affect the hard link (Hard link will still access a copy of the file)
+	e.g. ln source dest_file
+		 ln -s source dest_file
+
+5: How will you pass and access arguments to a script in Linux?
+	scriptName “Arg1” “Arg2”….”Argn” and can be accessed inside the script as $1 , $2 .. $n
+
+6: What is the significance of $#?
+
+	$# shows the total counts of the arguments passed to the script.
+	e.g. $# out puts like wc -l 
+	
+	
+7: What is the difference between $* and $@?
+	$@ treats each quoted arguments as separate arguments  
+	$* will consider the entire set of positional parameters as a single string.
+
+8: Use sed command to replace the content of the file (emulate tac command)
+if cat file1
+ABCD
+EFGH
+
+Then O/p should be
+EFGH
+ABCD
+
+
+sed '1! G; h;$!d' file1
+
+Here G command appends to the pattern space,
+
+h command copies pattern buffer to hold buffer
+
+and d command deletes the current pattern  space.
+
+9: Given a file,  replace all occurrence of word “ABC” with “DEF” from 5th line till end in only those lines that contains word “MNO”
+
+
+sed –n ‘5,$p’ file1|sed ‘/MNO/s/ABC/DEF/’
+ 
+
+10: Given a file , write a command sequence to find the count of each word.
+
+
+tr –s  “(backslash)040” <file1|tr –s  “(backslash)011”|tr “(backslash)040 (backslash)011” “(backslash)012” |uniq –c
+
+where “(backslash)040” is octal equivalent of “space”
+1
+2
+3
+tr –s  “(backslash)040” <file1|tr –s  “(backslash)011”|tr “(backslash)040 (backslash)011” “(backslash)012” |uniq –c
+ 
+where “(backslash)040” is octal equivalent of “space”
+ 
+
+”(backslash)011” is octal equivalent of “tab character” and
+
+“(backslash)012” is octal equivalent of newline character.
+
+11: How will you find the 99th line of a file using only tail and head command?
+
+tail +99 file1|head -1
+
+
+12: Print the 10th line without using tail and head command.
+sed –n ‘10p’ file1
+
+
+13:In my bash shell I want my prompt to be of format  ‘$”Present working directory”:”hostname”>  and load a file containing a list of user defined functions as soon as I login , how will you automate this?
+
+	In bash shell we can create “.profile”  file which automatically gets invoked as soon as I login and write the following syntax into it.
+
+	export PS1=’$ `pwd`:`hostname`>’ .File1
+
+ 
+Here File1 is the file containing the user defined functions and “.” invokes this file in current shell.
+
+14: Explain about “s” permission bit in a file?
+
+“s” bit is called “set user id” (SUID) bit.
+
+“s” bit on a file causes the process to have the privileges of the owner of the file during the instance of the program.
+
+Eg: Executing “passwd” command to change current password causes the user to writes its new password to shadow file even though it has “root” as its owner.
+
+15: I want to create a directory such that anyone in the group can create a file and access any person’s file in it but none should be able to delete a file other than the one created by himself.
+
+We can create the directory giving read and execute access to everyone in the group and setting its sticky bit “t” on as follows:
+
+
+mkdir direc1
+
+chmod g+wx direc1
+
+chmod +t direc1
+1
+2
+3
+4
+5
+mkdir direc1
+ 
+chmod g+wx direc1
+ 
+chmod +t direc1
+ 
+
+16: How can you find out how long the system has been running?
+
+Command “uptime”
+
+17: How can any user find out all information about a specific user like his default shell, real life name, default directory,when and how long he has been using the sytem?
+
+finger  “loginName”                  …where loginName is the  login name of  the
+
+user whose  information is expected.
+
+18: What is the difference between $$ and $!?
+
+$$ gives the process id of the currently executing process whereas $! shows the process id of the process that recently went into background.
+
+19: What are zombie processes?
+
+These are the processes which have died but whose exit status is still not picked by the parent process. These processes even if not functional still have its process id entry in the process table.
+
+20: How will you copy file from one machine to other?
+	”scp” or “rsync” to copy file from one machine to other.
+
+
+26: What are the 3 standard streams in Linux?
+	0 – Standard Input
+	1 – Standard Output
+	2 – Standard Error
+
+27: I want to read all input to the command from file1 direct all output to file2 and error to file3?
+	command < file1   1 > file2    2 > file3
+
+28: What will happen to my current process when I execute a command using exec?
+	“exec” overlays the newly forked process on the current  process; so when I execute the command using exec, 
+	the command gets executed on the current shell without creating any new processes. 
+	### Then DISCONNECT SSH connection!!!
+
+	Eg: Executing “exec  ls”  on command prompt will execute ls and once ls exits, the process will shut down
+
+29: How will you emulate wc –l using awk?
+	awk ‘END {print NR} fileName’
+
+
+31: What is the difference between grep and egrep?
+	Extended grep that supports added grep features like “+” (1 or more occurrence of previous character),
+	”?”(0 or 1 occurrence of previous character) and “|” (alternate matching)
+
+32: How will you print the login names of all users on a system?
+	/etc/shadow file has all the users listed.
+	awk –F ‘:’ ‘{print $1} /etc/shadow’|uniq -u
+
+33: How to set an array in bash?
+	A=(element1 element2 element3 …. element)
+
+   
+
+37:What is the significance of "$?" ?
+	$? gives the exit status of the last command that was executed.
+
+38: How do we delete all blank lines in a file?
+
+	sed  ‘^ [\011\040]*$/d’ file1
+ 
+		011 is octal equivalent of space
+		040 is octal equivalent of tab
+
+39: How will I insert a line “ABCDEF” at every 100th line of a file?
+	sed ‘100i\ABCDEF’ file1
+
+40: Write a command sequence to find all the files modified in less than 2 days and print the record count of each.
+	find . –mtime -2 –exec wc –l {} \;
+
+41: How can I set the default rwx permission to all users on  every file which is created in the current shell?
+	umask 777
+
+42: How can we find the process name from its process id?
+	“ps –p ProcessId”
+
+43: What are the four fundamental components of every file system on linux?
+	bootblock, super block, inode block and  data block
+
+44: What is a boot block?
+	This block contains a small program called “Master Boot record”(MBR) which loads the kernel  during system boot up.
+
+45: What is a super block?
+	Super block contains all the information about the file system like size of file system, block size used by it,
+	number of free data blocks and list of free inodes and data blocks.
+
+46: What is an inode block?
+	This block contains the inode for every file of the file system along with all the file attributes except its name.
+
+49: What are “c” and “b” permission fields of a file?
+“c “ and “b” permission fields are generally associated with a device file. It specifies whether a file is a character special file or a block special file.
+
+
+
+
+
+Fibonacci Script
+Write a script to print the first 10 elements of Fibonacci series.
+
+
+
+$ a=1;b=1;for i in `seq 8`;do echo $((x=b,b=a+b,a=x));done
+
+$ echo $((b=1,a=0));for i in `seq 8`;do echo $((x=b,b=a+b,a=x));done
+
+#####################
+#!/bin/bash -x
+a=1
+b=1
+echo $a
+echo $b
+for i in 1 2 3 4 5 6 7 8
+do
+
+c=`expr $b + $a`
+b=$a
+a=$c
+
+echo $c
+done
+### 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

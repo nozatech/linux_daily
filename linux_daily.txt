@@ -95,22 +95,26 @@ $ pip install pssh
 
 5. WGET to download a file using user_id & PW
 	$ wget --user=user_id --password='my_passwd' http://download.com/foo.pdf
+	$ wget http://www.gnu.org/software/gettext/manual/gettext.html  or file_name	
+	$ time $ wget http://www.gnu.org/software/gettext/manual/gettext.html  			<= measuring download time
 
-	cURL
+### cURL
 	A. Content of the URL and display it in the STDOUT (i.e on your terminal)
 		$ curl http://www.centos.org
+	
 	B. To store the output in a file, you an redirect it.
 		$ curl http://www.centos.org > /tmp/centos-org.html  <= save to file
+	
 	C. Save the cURL Output to a file
-		-o (lowercase o) the result will be saved in the file name provided in the command line
+		-o (lowercase o) saved in the file name e
 		-O (uppercase O) the file name in the URL will be taken and it will be used as the file name to store the result
 		-l --list-only
 		-L --location
 	D. 
-	   $ curl -o mygettext.html http://www.gnu.org/text_info.html							<= save to mygettext.html
+	   $ curl -o saving_name.html http://www.gnu.org/text_info.html							
 	   
 	   $ curl -O http://www.gnu.org/software/gettext/manual/gettext.html or file_name		<= save the file to local 
-	   $ wget http://www.gnu.org/software/gettext/manual/gettext.html  or file_name	
+	   
 	
 	E. $ curl -X 
 	
