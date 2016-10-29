@@ -196,7 +196,7 @@ $ pip install pssh
 		io		<= input and output activity per second  in terms of blocks read and blocks written
 				   bi -block in, bo-block out
 		system	<= number of system operations per second
-		cpu		<= always add to 100 and reflect “percentage of available time”.	
+		cpu		<= always add to 100 and reflect “percenDATEe of available time”.	
 			
 	$ vmstat -s    <=-s switch displays summary of various event counters and memory statistics.
       1009992 K total memory
@@ -259,6 +259,7 @@ $ pip install pssh
 	$ sar -A > $(date +`hostname`-%d-%m-%y-%H%M.log)    <=save the statistics
 	
 
+	
 	iostat
 		displays CPU and I/O statistics of all partitions as shown below.
 	$iostat
@@ -371,6 +372,11 @@ $ pip install pssh
 	# milliseconds since 1-1-1970(Use %3N to truncate the nanoseconds to the 3 most significant digits)
 	$ date +%s%3N
 	1397392146866 
+	 
+	$ date +%Y-%m-%d-hour-%H:%M:%S
+	$ date +Name:`hostname`/Date:%Y-%m-%d/hour:%H:%M:%S 
+	  Name:PC_Name/Date:2016-10-28/hour:11:37:43
+
 	 
 12. Route or IP
 
@@ -1800,12 +1806,12 @@ $ for i in svr1 svr2 svr3; do ssh $i date; done
 
 	$ scp -i /path/to/key.pem     /path/to/file.jpg    user_id@ip_address:/home/user_id/folder_name
 	## -i Identity_file such as pem key
-	$ scp -i /AWS-OC-Key/oc-prod.pem /AWS-OC-Key/oc-stage.pem ec2-user@ip_address:/home/ec2-user/.cert
+	$ scp -i /AWS-OC-Key/oc-prod.pem /AWS-OC-Key/oc-sDATEe.pem ec2-user@ip_address:/home/ec2-user/.cert
 
 	### copy a File to remote host Transfer
 	$ scp -pv student-files.zip nozatech@192.168.221.128:/home/nozatech/download
 	
-	$ scp -i .ssh/oc-stage.pem  ami.zip ubuntu@10.10.1.89:/home/ubuntu/
+	$ scp -i .ssh/oc-sDATEe.pem  ami.zip ubuntu@10.10.1.89:/home/ubuntu/
 
 	unzip ami.zip -d /jarvis
     
@@ -1861,63 +1867,7 @@ $ for i in svr1 svr2 svr3; do ssh $i date; done
 	(< /etc/iptables/rules.v4)
 
 	
-73. Logrotate	
-	Configurations and default options 
-	$ /etc/logrotate.conf
-	
-	Application-specific log file information
-	$ /etc/logrotate.d/
-	
-	 /etc/logrotate.d/dpkg. One of the entries in this file would be:
 
-	/var/log/dpkg.log {
-			monthly						<= this on a monthly basis - this is the rotation interval.
-			rotate 12					<= 'rotate 12' signifies that 12 days worth of logs would be kept.
-			compress					<= logfiles can be compressed using the gzip format by specifying 'compress'
-			delaycompress				<= 'delaycompress' delays the compression process till the next log rotation. 'delaycompress' will work only if 'compress' option is specified.
-			missingok					<= 'missingok' avoids halting on any error and carries on with the next log file.
-			notifempty					<= 'notifempty' avoid log rotation if the logfile is empty.
-			create 644 root root		<= 'create <mode> <owner> <group>' creates a new empty file with the specified properties after log-rotation.
-	}
-
-	Though missing in the above example, 'size' is also an important setting if you want to control the sizing of the logs growing in the system.
-	A configuration setting of around 100MB would look like:
-	size 100M
-	
-	# Cron Job setup
-	0 0 * * * (or @daily)  /etc/cron.daily/logrotate
-	$ cat /var/lib/logrotate/status 
-	
-	
-	
-
-74.  Apache Log
-
-	while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; kill $! ; wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
-
-
-	A. View Apache requests per minute
-
-	$ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{print $2":"$3}' | sort -nk1 -nk2 | uniq -c | awk '{ if ($1 > 10) print $0}'
-
-	# grep "16/Mar/2015:06" example.com	
-	  <= Use the grep command to only show hits from today during the 06th hour 
-		from our Apache access log.
-	# cut -d[ -f2 | cut -d] -f1	
-	  <=Use the cut command with the -delimiter set to an opening bracket [ and print 
-		out the -field of data that shows up 2nd, then use the cut command again 
-		with the -delimter set to a closing bracket ] and print out the -field of 
-		data that shows up 1st which gives us just the time stamp.
-	# awk -F: '{print $2":"$3}'	
-	  <=Use the awk command with the -Field delimiter set to a colon :, then print out 
-		the $2nd column which is the hour, followed by the $3th column which is 
-		the minute.
-	# sort -nk1 -nk2 | uniq -c	
-	  <= Sort the hits numerically by the 1st column which is the hour, then by the 
-		2nd column which is the minute.
-	# awk '{ if ($1 > 10) print $0}'	
-	  <= Finally use the awk command with an if statement to only print out data when 
-		the $1st column which is the number of hits in a minute is greater than 10.
 
 
 
@@ -2278,7 +2228,7 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	software development to uniquely identify information with no further context. 
 	
 	#Linux implementation and generation
-	 In Linux UUIDs are generated in /drivers/char/random.c?id=refs/tags/v3.8, and you can generate new ones via proc:
+	 In Linux UUIDs are generated in /drivers/char/random.c?id=refs/DATEs/v3.8, and you can generate new ones via proc:
 	# Usage in fstab
 	As mentioned UUIDs are most often used in Linux to identify block devices. Imagine, you have a couple of hard disks 
 	attached via USBs, than there is no persistent, reliable naming of the devices: sometimes the first USB hard disk is 
@@ -2570,10 +2520,10 @@ EOF
 This creates b.txt file with both bar and baz lines but prints only the bar.
 
 
-"EOF" is known as a "Here Tag". Basically << Here tells the shell that you are going to enter a multiline string until the "tag" Here. You can name this tag as you want, it's often EOF or STOP.
-	- The tag can be any string, uppercase or lowercase, though most people use uppercase by convention.
-	- The tag will not be considered as a Here tag if there are other words in that line. In this case, it will merely be considered part of the string. The tag should be by itself on a separate line, to be considered a tag.
-	- The tag should have no leading or trailing spaces in that line to be considered a tag. Otherwise it will be considered as part of the string.
+"EOF" is known as a "Here DATE". Basically << Here tells the shell that you are going to enter a multiline string until the "DATE" Here. You can name this DATE as you want, it's often EOF or STOP.
+	- The DATE can be any string, uppercase or lowercase, though most people use uppercase by convention.
+	- The DATE will not be considered as a Here DATE if there are other words in that line. In this case, it will merely be considered part of the string. The DATE should be by itself on a separate line, to be considered a DATE.
+	- The DATE should have no leading or trailing spaces in that line to be considered a DATE. Otherwise it will be considered as part of the string.
 example:
 
 $ cat >> test <<HERE
@@ -3030,5 +2980,63 @@ error: error opening /RRLinux/run.log.11: No such file or directory
 ####	
 	
 	
+73. Logrotate	
+	Configurations and default options 
+	$ /etc/logrotate.conf
 	
+	Application-specific log file information
+	$ /etc/logrotate.d/
+	
+	 /etc/logrotate.d/dpkg. One of the entries in this file would be:
+
+	/var/log/dpkg.log {
+			monthly						<= this on a monthly basis - this is the rotation interval.
+			rotate 12					<= 'rotate 12' signifies that 12 days worth of logs would be kept.
+			compress					<= logfiles can be compressed using the gzip format by specifying 'compress'
+			delaycompress				<= 'delaycompress' delays the compression process till the next log rotation. 'delaycompress' will work only if 'compress' option is specified.
+			missingok					<= 'missingok' avoids halting on any error and carries on with the next log file.
+			notifempty					<= 'notifempty' avoid log rotation if the logfile is empty.
+			create 644 root root		<= 'create <mode> <owner> <group>' creates a new empty file with the specified properties after log-rotation.
+	}
+
+	Though missing in the above example, 'size' is also an important setting if you want to control the sizing of the logs growing in the system.
+	A configuration setting of around 100MB would look like:
+	size 100M
+	
+	# Cron Job setup
+	0 0 * * * (or @daily)  /etc/cron.daily/logrotate
+	$ cat /var/lib/logrotate/status 
+	
+
+
+	
+	
+
+74.  Apache Log
+
+$ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; kill $! ; wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
+
+
+	A. View Apache requests per minute
+
+$ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{print $2":"$3}' | sort -nk1 -nk2 | uniq -c | awk '{ if ($1 > 10) print $0}'
+
+	# grep "16/Mar/2015:06" example.com	
+	  <= Use the grep command to only show hits from today during the 06th hour 
+		from our Apache access log.
+	# cut -d[ -f2 | cut -d] -f1	
+	  <=Use the cut command with the -delimiter set to an opening bracket [ and print 
+		out the -field of data that shows up 2nd, then use the cut command again 
+		with the -delimter set to a closing bracket ] and print out the -field of 
+		data that shows up 1st which gives us just the time stamp.
+	# awk -F: '{print $2":"$3}'	
+	  <=Use the awk command with the -Field delimiter set to a colon :, then print out 
+		the $2nd column which is the hour, followed by the $3th column which is 
+		the minute.
+	# sort -nk1 -nk2 | uniq -c	
+	  <= Sort the hits numerically by the 1st column which is the hour, then by the 
+		2nd column which is the minute.
+	# awk '{ if ($1 > 10) print $0}'	
+	  <= Finally use the awk command with an if statement to only print out data when 
+		the $1st column which is the number of hits in a minute is greater than 10.	
 	
