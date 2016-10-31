@@ -2,54 +2,44 @@
 ### 1. Run Scripts ###
 ######################
 
-# Run from bash shell
+# How to run a script
 	$ ./script.sh
-    $ sh ./script.sh  				 ( same as 'sh script.sh')
-    $ sh +x script.sh   			<= +x for debuging mode
-	$ exec script.sh				<= run and exit shell
-	 # Run script    
-	$ . script.sh      <= current login shell to run
-    $ exec ./script    <= after run, the login shell exit 
-	$ sh script.sh
+    $ sh ./script.sh  				 <= same as 'sh script.sh')
+    $ sh +x script.sh   			 <= +x for debuging mode
+	$ . script.sh   			     <= current login shell to run
+    $ exec ./script   				 <= after run, the login shell exit 
 	
 # Run script WITHIN vim or vi
     :w   	      					<= write first
-    :!sh %   (# :! sh %)     		<= :! =run, sh =shell, % =curren open file
+    :!sh %   (# :! sh %)     		<= : <-cmd ! <-run, sh <-shell, % =currently open file
 	:!!         					<= run same script again 
     :!./script_name.sh
     :! python %
     :! perl %
-    :! sh -x %					<= -x is for DEBUG(verbose) mode
-    #!/bin/bash -x      		<= -x to #! line for debug mode
-    set -x              		<= End of file +x for TURN OFF
 	
- # Vi Search and replace
+ # VI Search and replace
 	:%s/foo/bar/g
-	:%s/foo/bar/gc				<= to confirm first
+	:%s/foo/bar/gc					<= to confirm first
 	
  # Debug mode	
-    #!/bin/bash +x 					<= add +x for debuging mode in shell script
+    #!/bin/bash -x 					<= add " -x " for debugging mode in #!/bin/bash script
+    $ bash -x ./script.sh  			( same as 'bash script.sh') 
+    $ bash -vx script.sh			<= add -xv from shell -v <-verbose -x <-debug
+	:! sh -x %						<= -x is for DEBUG(verbose) mode
+    set -x              			<= End of file +x for TURN OFF
 
-    $ bash +x ./script.sh  			( same as 'bash script.sh') 
-
-	### Within Code
+	
+### Within script Code
 	#!/bin/bash
 	### turn on debug mode
-	set -x
-	for f in *
+	set -x           <- Turn on/ Off " +x " debug mode
+	for i in $(ls)
 	do
-		file $f
+		file $i
 	done
-	#### turn OFF debug mode
-	set +x
-	----
-	$ bash -xv uuid.sh                    <= add -xv from shell 
-	#!/bin/bash
-	if [ $id -u = 0 ];then
-        echo "ur root" >&2
-        exit 0
-	fi
-	+ '[' -u = 0 ']'
+	
+------------------------------------
+
 
 
 ### /dev/null
@@ -126,35 +116,237 @@ $ echo -n     do not output the trailing newline
 ### "2>&1" command:
 	Using "2>&1" , redirect the standard error(2) to standard output(1). The string "2>&1" indicates that any errors 
 	should be sent to the standard output(1), that is, the Linux/Linux file id of 2 for standard error, and the file 
-	id of 1 for standard output. 
-	If you do not use this string, then you will be capturing only the good messages, and the error messages will not be captured.
+	id of 1 for standard output.  If you do not use this string, then you will be capturing only the good messages, 
+	and the error messages will not be captured.
+	
 	cmd 1>&2
 		stdout to same place as stderr
 	cmd 2>&1
 		stderr to same place as stdout
 	cmd &> file
 		Every output of cmd to file
+
+
+Note: You must separate the square brackets from other text by a space.
+e.g. [ ! -z $HOME ] 
+      ^ ^space   ^space 
+	  
+### Common Bash comparisons
+Operator	       Meaning									Example
+-------------------------------------------------------------------------------------
+-z			Length of String is (zero)EMPTY 					[ -z "$my_var" ]
+-n			Length of String is NOT (zero)EMPTY					[ -n "$my_var" ]
+-f			File is Exists & regular 							[ -f "$myfile" ]
+-d			Directory is Exists  								[ -d "$mydir" ]
+-e 			file exist
+=			Strings are same									[ "abc" = "$my_var" ]
+!=			Strings are Not Same   								[ "abc" != "$my_var" ]
 	
+-eq	  		Equal (Numeric equality)							[ 3 -eq 3 ("$my_integer") ]
+-ne			Not Equal(Numeric inequality)						[ 3 -ne 4 ("$my_integer") ]
+-lt			Less than (Numeric strict less than)				[ 3 -lt 4 ("$my_integer") ]
+-le			Less than or equals	(Numeric less than or equals)	[ 3 -le 4 ("$my_integer") ]
+-gt			Greater than (Numeric strict greater than)			[ 3 -gt 2 ("$my_integer") ]
+-ge			Greater than or equals(Numeric) 					[ 3 -ge 3 ("$my_integer") ]
+
+-nt			First file is newer than second one					[ "$myfile" -nt ~/.bashrc ]
+-ot			First file is older than second one					[ "$myfile" -ot ~/.bashrc ]
+
+
+### Test [ expression ] statement for Comparison operation [[ expression ]]     0:TRUE  1:FALSE 
+A. Comparing variables									           For Integer
+	Less than			        [[ $1 < $2 ]]                    = (( $a < $B )) 
+	greater than			    [[ $a > $b ]]
+	less than or equal to 		[[ $a <= $b ]]
+	greater than or equal to 	[[ $a >= $b ]]
+	equal(same)			        [[ $a == $b ]]
+	not equal(same)		        [[ $a != $b ]]
+		
+$ [ 9 -lt 10 ]; echo $?
+$ [ "awesome" = "awesome" ]; echo $?
+$ [ 10 == 10 ]; echo $?
+$ [[ 1 < 2 ]] ; echo $?
+$ (( 1 < 2 )) ; echo $?
+$ (( 1 == 2 )) ; echo $?
+1
+
+		
+
+The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
+
+Table 3-3. Special bash variables
+
+Character	Definition
+$*	Expands to the positional parameters, starting from one. When the expansion 
+	occurs within double quotes, it expands to a single word with the value of each 
+	parameter separated by the first character of the IFS special variable.
+$@	Expands to the positional parameters, starting from one. When the expansion occurs 
+	within double quotes, each parameter expands to a separate word.
+$#	Expands to the number of positional parameters in number(decimal).
+$?	Expands to the "exit status" of the Last(most recently) executed foreground pipeline.
+$-	A hyphen expands to the current option flags as specified upon invocation, by the 
+	set built-in command, or those set by the shell itself (such as the -i).
+$$	Expands to the process ID of the shell.
+$!	Expands to the process ID of the most recently executed background (asynchronous)
+	 command.
+$0	Expands to the name of the shell or shell script.
+$_	The underscore variable is set at shell startup and contains the absolute file name 
+	of the shell or script being executed as passed in the argument list. Subsequently, 
+	it expands to the last argument to the previous command, after expansion. It is also
+	set to the full pathname of each command executed and placed in the environment 
+	exported to that command. When checking mail, this parameter holds the name of the 
+	mail file.
+
+
+grep "echo" ./function1.sh
+   	echo "Hi $1! what a nice $2!!"
+	echo "And now, a greeting!"
+	echo $_
+	./function1.sh
+	echo $$
+	35810
+	echo $!
+
+
+	
+######################## 
+# Bash Shell Variables #
+########################
+
+varname=value                # defines a variable
+varname=value command        # defines a variable to be in the environment of a particular subprocess
+echo $varname                # checks a variable's value
+echo $$                      # prints process ID of the current shell
+echo $!                      # prints process ID of the most recently invoked background job
+echo $?                      # displays the exit status of the last command
+export VARNAME=value         # defines an environment variable (will be available in subprocesses)
+
+array[0] = val               # several ways to define an array
+array[1] = val
+array[2] = val
+array=([2]=val [0]=val [1]=val)
+array(val val val)
+
+${array[i]}                  # displays array's value for this index. If no index is supplied, array element 0 is assumed
+${#array[i]}                 # to find out the length of any element in the array
+${#array[@]}                 # to find out how many values there are in the array
+
+declare -a                   # the variables are treaded as arrays
+declare -f                   # uses funtion names only
+declare -F                   # displays function names without definitions
+declare -i                   # the variables are treaded as integers
+declare -r                   # makes the variables read-only
+declare -x                   # marks the variables for export via the environment
+
+${varname:-word}             # if varname exists and isn't null, return its value; otherwise return word
+${varname:=word}             # if varname exists and isn't null, return its value; otherwise set it word and then return its value
+${varname:?message}          # if varname exists and isn't null, return its value; otherwise print varname, followed by message and abort the current command or script
+${varname:+word}             # if varname exists and isn't null, return word; otherwise return null
+${varname:offset:length}     # performs substring expansion. It returns the substring of $varname starting at offset and up to length characters
+
+${variable#pattern}          # if the pattern matches the beginning of the variable's value, delete the shortest part that matches and return the rest
+${variable##pattern}         # if the pattern matches the beginning of the variable's value, delete the longest part that matches and return the rest
+${variable%pattern}          # if the pattern matches the end of the variable's value, delete the shortest part that matches and return the rest
+${variable%%pattern}         # if the pattern matches the end of the variable's value, delete the longest part that matches and return the rest
+${variable/pattern/string}   # the longest match to pattern in variable is replaced by string. Only the first match is replaced
+${variable//pattern/string}  # the longest match to pattern in variable is replaced by string. All matches are replaced
+
+${#varname}                  # returns the length of the value of the variable as a character string
+
+*(pattern list)               # matches zero or more occurences of the given patterns
++(pattern list)               # matches one or more occurences of the given patterns
+?(pattern list)               # matches zero or one occurence of the given patterns
+@(pattern list)               # matches exactly one of the given patterns
+!(pattern list)               # matches anything except one of the given patterns
+
+$(Linux command)              # command substitution: runs the command and returns standard output		
+		
+### White Sapce		
 whitespace (spaces or tabs).
 
-$ myvar=This is my environment variable!	
-$ echo foo${myvar}bar							<= must use { }
+
+
+$ my_var=This is my environment variable!	
+$ echo foo${my_var}bar							<= must use { }
 fooThis is my environment variable!bar
 
 
 
+### IF statement ###### IF statement ###### IF statement ###### IF statement ###
+### IF statement ###### IF statement ###### IF statement ###### IF statement ###
+
+$ test 100 -gt 99 && echo "Yes, that's true." || echo "No, that's false."
+	Yes, that's true.
+$ test 90 -gt 99 && echo "Yes, that's true." || echo "No, that's false."
+	No, that's false.
+
+	
+#!/bin/bash
+if [ $id -u = 0 ];then				# if (id -u) 0 = 0 are True
+    echo "You are root" >&2			# 	
+    exit 0
+fi
+
+---------------------------
+#!/bin/bash
+if [ $id -u = 0 ];then				# if (id -u) 0 = 0 are True
+    echo "You are root" 			# 	
+else
+	echo "You are not root"
+fi
+
+	
+### ! -z $HOME <= If home is NOT empty, echo $HOME
+$ if [ ! -z $HOME ]; then echo $HOME; else echo "No Home"; fi
+$ if [[ -n $HOME]]; then echo $HOME; else echo "No Home"; fi                     <= home is exist
+/home/noza                                                                     <= Same answer
+           
+### -z $HOME    <= $HOME is empty which is False, echo "No Home"
+$ if [ -z $HOME ]; then echo $HOME; else echo "no home"; fi
+$ if [[ ! -n $HOME ]]; then echo $HOME; else echo "no home"; fi
+no home  
+
+
+$ if [[ ! -z $HOME ]]; then echo $HOME; elif [[ -z $HOME ]]; then echo "No Home"; fi
+/home/noza
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### for_loop### for_loop### for_loop### for_loop### for_loop ###
 ### for_loop### for_loop### for_loop### for_loop### for_loop ###
 
+#!/bin/bash
+
+for i in $(ls)
+do
+    echo $i
+done
+------------------------------------
 
 ### for_loop1.sh		
 #!/bin/bash
-for i in *; do   # * is local direcotry
+for i in *; do   # * is local directory
 echo “$i”
 done
 $./for_loop1.sh 
 => local files list
-
+------------------------------------
 ### for_loop2.sh
 #!/bin/bash
 for i in $#; do
@@ -162,7 +354,7 @@ echo “$i”			# zip archive "$i"
 done
 $./for_loop1.sh 1 2 3 4	
 => 4   <= total number of argument 1,2,3,4 is 4 total!
-
+------------------------------------
 ### for_loop2.sh
 #!/bin/bash
 for i in $@; do
@@ -171,17 +363,19 @@ done
 $./for_loop1.sh 1 2 3 4	
 => 1 2 3 4
 
-
+------------------------------------
 $ for i in {1..100..2};do echo $i; done
-
 $ for (( i=1; i<=10; i++));do echo $i; done
 $ for (( i=1; i<=10; i++));do echo -n $i `sleep 1`" "; done
 
 ### Array ###### Array ###### Array ###### Array ###### Array ###### Array ###### Array ###
 ### Array ###### Array ###### Array ###### Array ###### Array ###### Array ###### Array ###
 
-### Associate Array only works on BASH 4 &< 
+ARRAY_NAME[index_number]=value
+The Index_Number is treated as an arithmetic expression that must evaluate to a + positive number.
 
+### Associate Array only works on BASH 4 &< 
+------------------------------------
 #!/bin/bash
 array_name=("apple" "banaba" "cherry")
 for i in ${array_name[@]}
@@ -189,24 +383,24 @@ do
     echo -n `sleep 1` $i " "
 done
 
-
+------------------------------------
 #!/bin/bash
 declare -a array_name
-array_name["name"]="Albert"
-array_name["id"]="1234"
-for i in "${!array_name[@]}"  # !<-access keys in array  ""<- if space is in array
+array_name["0"]="Albert"
+array_name["1"]="1234"
+
+for i in "${!array_name[@]}"  				### ! <-access keys in array  ""<- if space is in array
 do
-    echo "$i: ${array_name[$i]}"
+    echo "$i \= ${array_name[$i]}"
 done
 
-"declare -a" declares an array and all the elements in the parentheses are 
- the elements of an array.
+"declare -a" declares an array and all the elements in the parentheses are the elements of an array.
  
 $declare -a array_name=('Debian' 'Red hat' 'Red hat' 'Suse' 'Fedora');
 $echo ${array_name[@]}
   Debian Red hat Red hat Suse Fedora
 
-
+------------------------------------
 #!/bin/bash
 # Declaring an Array and Assigning values
 declare -a Linux
@@ -235,15 +429,34 @@ $ declare -a Linux=('Debian' 'Red hat' 'Suse' 'Fedora');
 # Number of elements in the array
 $ echo ${#Linux[@]} 
   4
-# Number of characters in the first element of the array.i.e Debian
-$ echo ${#Linux}  		
+# Number of "characters" in the first element of the array.i.e Debian
+$ echo ${#Linux}  		<- same as 0
   6
 $ declare -a Linux=('Debian' 'Red hat' 'Suse' 'Fedora');
 $ echo ${#Linux[3]}
-  7  <- cound SPACE, too
+  7  <- counting SPACE, too
 
+------------------------------------
+$ declare -a num=(1 22 333 4444 55555 666666)
+$ echo ${#num[2]}
+	3
+$ echo ${num[4]}
+	4  
+ ------------------------------------ 
+$ declare -a name=(albert sujin sumin)
+$ echo ${name}
+	albert
+$ echo ${name[1]}
+	sujin
+$ echo ${#name}
+	6
+$ echo ${name[@]}
+	albert sujin sumin
 
-### Replace
+	
+  
+  
+### Replace ###
 $ Unix=('Debian' 'Red hat' 'Ubuntu' 'Suse' 'Fedora' 'UTS' 'OpenLinux');
 $ echo ${Unix[@]/Debian/Linux}
 Linux
@@ -297,9 +510,7 @@ else
 	echo "False"
 fi
 ###
-
-
-
+------------------------------------
 #!/bin/bash
 # Integer comparison
 a=5
@@ -309,8 +520,7 @@ if [ $a -gt $b ]; then
 else
     echo "$a is less than $b."
 fi
-	
-
+------------------------------------	
 #!/bin/bash
 # String matches using REGEX   =~ [0-9]+
 a="This is my 1st string!"
@@ -319,13 +529,7 @@ if [[ $a =~ [0-9]+ ]]; then
 else
     echo "There are no numbers in the string: $a"
 fi
-
-
-
-
-
-
-
+------------------------------------
 #!/bin/bash
 # empty variable or not
 if [ -z "$my_var" ]
@@ -334,30 +538,6 @@ then
 fi
 
 
-
-
-Note: You must separate the square brackets from other text by a space.
-
-### Common Bash comparisons
-Operator	       Meaning									Example
--------------------------------------------------------------------------------------
--z			String is EMPTY 							[ -z "$myvar" ]
--n			String is not EMPTY							[ -n "$myvar" ]
--f			File is Exists								[ -f "$myfile" ]
--d			Directory is Exists  						[ -d "$mydir" ]
-
-=			String are same								[ "abc" = "$myvar" ]
-!=			String are Not Same   						[ "abc" != "$myvar" ]
-
--eq	  		Numeric equality							[ 3 -eq "$myinteger" ]
--ne			Numeric inequality							[ 3 -ne "$myinteger" ]
--lt			Numeric strict less than					[ 3 -lt "$myinteger" ]
--le			Numeric less than or equals					[ 3 -le "$myinteger" ]
--gt			Numeric strict greater than					[ 3 -gt "$myinteger" ]
--ge			Numeric greater than or equals				[ 3 -ge "$myinteger" ]
-
--nt			First file is newer than second one			[ "$myfile" -nt ~/.bashrc ]
--ot			First file is older than second one			[ "$myfile" -ot ~/.bashrc ]
 
 
 
@@ -372,22 +552,20 @@ Operator	       Meaning									Example
 19. Arithmetic
 	echo $(( 1+2 ))
 	+, -, *, /, %, **,
-	
-	#!/bin/bash
-	number=0
 
-	echo -n "Enter a number >"
-	read number
+------------------------------------	
+#!/bin/bash
+number=0
+echo -n "Enter a number >"
+read number
+echo "The number is $number"
+if [ $(( number %2 )) -eq 0 ]; then
+    echo "The number is even"
+else
+    echo "The number is odd"
+fi
 
-	echo "The number is $number"
-
-	if [ $(( number %2 )) -eq 0 ]; then
-        echo "The number is even"
-	else
-        echo "The number is odd"
-	fi
-
-
+------------------------------------
 20. Read : within min time to input
 # -t timing
 # -s security hidden
@@ -401,7 +579,7 @@ Operator	       Meaning									Example
 	else
         	echo "Sorry, you are too slow"
 	fi
-
+------------------------------------
 ### Time counting 
 
 $ for i in {0..10}; do echo -ne "$i" '\r'; sleep 1; done; echo 
@@ -571,12 +749,20 @@ done
 ### While loop ###### While loop ###### While loop ###### While_loop ###### While_loop ###
 ### While loop ###### While loop ###### While loop ###### While_loop ###### While_loop ###
 
+$while read i; do echo $i; done < while1.sh
+#!/bin/bash
+i=1
+while read file; do
+echo "Line $i: $file"
+((i++))
+done < echo.txt
+
 
 #!/bin/bash
 i=1
 while read file; do
-        echo "Line $1: $file"
-        ((i++))
+    echo "Line $1: $file"
+    (i++))
 done < file.txt
 
 Line 1: apple
@@ -587,16 +773,20 @@ Line 2: banaba
 # WHILE LOOP - i 가 10보다 적거나 같을때 까지
 i=0
 while [ $i -le 10 ]; do
-        echo i is $i
-#       ((i++))
-        ((i+=1))
-#       ((i=$i+1))
+    echo i is $i
+#   ((i++))
+    ((i+=1))
+#   ((i=$i+1))
 done
-# UNTIL LOOP - J 가 10보다 크거나 같을때 가지.
+
+### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###
+### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###
+
+- J 가 10보다 크거나 같을때 가지.
 j=0
 until [ $j -ge 10 ]; do
-        echo j is $j
-        ((j++))
+    echo j is $j
+    ((j++))
 done
 
 
@@ -618,33 +808,36 @@ done
 
 
 
-33. while and until statement  <= while & until true statement
+33. while and until statement                   <= while & until true statement
 	i=0
 	while [ $i -le 10 ]; do
         	echo i = $i
         	((i++))
 	done			<= 0 ~ 10
-        ------------------------------------
-        j=0
-        until [$j -ge 10 ]; do
-              echo j = $j
-              ((j++))
-        done			<= 0 ~ 9
+-------------------------------------------------
+    j=0
+    until [$j -ge 10 ]; do
+        echo j = $j
+       ((j++))
+    done			<= 0 ~ 9
 --------------------------------------------------
 
 	#!/bin/bash
 	x=0			<= initializing to 0
 	while [ $x -le 10 ] ; do 
-        	echo "Current value of X is $x."
-        	x=$(expr $x + 1 )  <= ((x++)
-        	sleep 1
+        echo "Current value of X is $x."
+        ((x++))
+		# x=$(($x + 1 ))
+		# x=$(expr $x + 1 )  <= ((x++)                   
+        sleep 1
 	done
+	prints 0 ~ 10
 --------------------------------------------------
 	x=0;
 
 	while [ $x -gt -10 ] ; do
-        	echo "X value is $x"
-	        ((x--))
+        echo "X value is $x"
+	    ((x--))
 	done
 
 
@@ -663,16 +856,9 @@ done
 	
 34. for loop
 	x="nozatech"
-	for i in /home/* ; do
-		echo $x is exist in home direcotry
-	done
---------------------------------------------------
 	for i in /home/*; do
-        	echo $x is exit
+		echo $x is exist in home directory
 	done
-
-
-
 	
 
 35. file
@@ -682,13 +868,6 @@ done
 		((i++))
 	done < ffile.txt	
 
-36. Test statement 
-	[ -n ]       
-				-n <= string non zero
-				-z <= The length of the string is zero
-				-d <= directory
-				-f <= file
-				-e <= exist
 
 e.g.
 	if [ -f .bashrc ]; then	
@@ -800,13 +979,12 @@ e.g.    cd $directory || error_exit "No such dir and aborting!"
 
 #!/bin/bash
 function numberthings {		<= Declaring function name
-        i=1			<= 
-        for f in $@; do		<= $@ special array variable that represents all 
-				   of the arguments pass to a function
-
-                echo $i: $f
-                ((i+=1))	<= incrementing
-        done
+    i=1			<= 
+    for f in $@; do		<= $@ special array variable that represents all 
+								of the arguments pass to a function
+        echo $i: $f
+        ((i+=1))			<= incrementing ((i++)) or ((i=i+1))
+    done
 }
 
 numberthings $(ls)
@@ -874,12 +1052,12 @@ done < myfile.txt
 ### Function statement ###### Function statement ###### Function statement ###### Function statement ###
 
 #!/bin/bash
-function geeting {
+function greeting {
 	echo "Hello There!"
 }
 echo "And now, a greeting!"
 greeting
-
+------------------------------------
 #!/bin/bash
 #A function to print "Hello World"
 hello()
@@ -887,24 +1065,43 @@ hello()
       echo "Hello World"
     }
 hello;
-
+------------------------------------
 #!/bin/bash
-function quit {
-    exit
+#function quit {
+#    exit
+#}
+quit() {
+	exit
 }
 function hello {
     echo Hello!
 }
 hello
 quit
-
+------------------------------------
 #!/bin/bash
 function quit { exit}
 function input { echo $1 }    # $1 <-first argument pass to the function, but $@ <- works too.      
 input hello
 input world
 quit  						  # exit
+------------------------------------
+#!/bin/bash
+#numberthings (){
+function numberthings {
+        i=1
+        for f in $@; do
+                echo $i: $f
+                ((i++))
+        done
+}
 
+echo "First function"
+numberthings $(ls)
+
+echo "Second function"
+numberthings pine birch maple spruce
+------------------------------------
 
 #!/bin/bash
 #function to display commands
@@ -913,7 +1110,7 @@ display() { echo "\$ $@" ; "$@" ; }
 			 echo "$@"  }
 display echo hello world
 
-
+------------------------------------
 #!/bin/bash
 function greet {
 	echo "Hi, $1! What a nice $2!"
@@ -964,8 +1161,8 @@ function foo()
 {
     echo "$@"
 }
-
 foo 1 2 3
+
 
 It would display 1 2 3. If not used inside a function, it specifies all parameters 
 used when calling the script. See the bash manual page for more info.	
@@ -996,9 +1193,12 @@ The shell treats several parameters specially. These parameters may only be refe
 ($?) Exit status of the last command
 	0 - successful
 	1 - fail
+	e.g. echo $?
 ($$) Process ID under which order getting executed
 
 (?!) Process number of the last background command
+ 
+ 
  
 #!/bin/bash
 echo "Hello, World. Calls $# of parameters"	
@@ -1017,94 +1217,6 @@ echo "argument 10 is '{$10}'"	 # from 10, use {}
 	
 79.Special parameters
 
-The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
-
-Table 3-3. Special bash variables
-
-Character	Definition
-$*	Expands to the positional parameters, starting from one. When the expansion 
-	occurs within double quotes, it expands to a single word with the value of each 
-	parameter separated by the first character of the IFS special variable.
-$@	Expands to the positional parameters, starting from one. When the expansion occurs 
-	within double quotes, each parameter expands to a separate word.
-$#	Expands to the number of positional parameters in decimal.
-$?	Expands to the exit status of the most recently executed foreground pipeline.
-$-	A hyphen expands to the current option flags as specified upon invocation, by the 
-	set built-in command, or those set by the shell itself (such as the -i).
-$$	Expands to the process ID of the shell.
-$!	Expands to the process ID of the most recently executed background (asynchronous)
-	 command.
-$0	Expands to the name of the shell or shell script.
-$_	The underscore variable is set at shell startup and contains the absolute file name 
-	of the shell or script being executed as passed in the argument list. Subsequently, 
-	it expands to the last argument to the previous command, after expansion. It is also
-	set to the full pathname of each command executed and placed in the environment 
-	exported to that command. When checking mail, this parameter holds the name of the 
-	mail file.
-
-
-	grep "echo" ./function1.sh
-        	echo "Hi $1! what a nice $2!!"
-		echo "And now, a greeting!"
-	echo $_
-	./function1.sh
-	echo $$
-	35810
-	echo $!
-
-
-	
-######################## 
-# Bash Shell Variables #
-########################
-
-varname=value                # defines a variable
-varname=value command        # defines a variable to be in the environment of a particular subprocess
-echo $varname                # checks a variable's value
-echo $$                      # prints process ID of the current shell
-echo $!                      # prints process ID of the most recently invoked background job
-echo $?                      # displays the exit status of the last command
-export VARNAME=value         # defines an environment variable (will be available in subprocesses)
-
-array[0] = val               # several ways to define an array
-array[1] = val
-array[2] = val
-array=([2]=val [0]=val [1]=val)
-array(val val val)
-
-${array[i]}                  # displays array's value for this index. If no index is supplied, array element 0 is assumed
-${#array[i]}                 # to find out the length of any element in the array
-${#array[@]}                 # to find out how many values there are in the array
-
-declare -a                   # the variables are treaded as arrays
-declare -f                   # uses funtion names only
-declare -F                   # displays function names without definitions
-declare -i                   # the variables are treaded as integers
-declare -r                   # makes the variables read-only
-declare -x                   # marks the variables for export via the environment
-
-${varname:-word}             # if varname exists and isn't null, return its value; otherwise return word
-${varname:=word}             # if varname exists and isn't null, return its value; otherwise set it word and then return its value
-${varname:?message}          # if varname exists and isn't null, return its value; otherwise print varname, followed by message and abort the current command or script
-${varname:+word}             # if varname exists and isn't null, return word; otherwise return null
-${varname:offset:length}     # performs substring expansion. It returns the substring of $varname starting at offset and up to length characters
-
-${variable#pattern}          # if the pattern matches the beginning of the variable's value, delete the shortest part that matches and return the rest
-${variable##pattern}         # if the pattern matches the beginning of the variable's value, delete the longest part that matches and return the rest
-${variable%pattern}          # if the pattern matches the end of the variable's value, delete the shortest part that matches and return the rest
-${variable%%pattern}         # if the pattern matches the end of the variable's value, delete the longest part that matches and return the rest
-${variable/pattern/string}   # the longest match to pattern in variable is replaced by string. Only the first match is replaced
-${variable//pattern/string}  # the longest match to pattern in variable is replaced by string. All matches are replaced
-
-${#varname}                  # returns the length of the value of the variable as a character string
-
-*(pattern list)               # matches zero or more occurences of the given patterns
-+(pattern list)               # matches one or more occurences of the given patterns
-?(pattern list)               # matches zero or one occurence of the given patterns
-@(pattern list)               # matches exactly one of the given patterns
-!(pattern list)               # matches anything except one of the given patterns
-
-$(Linux command)              # command substitution: runs the command and returns standard output
 
   
 ###############
@@ -1315,10 +1427,11 @@ trap returntrap RETURN  # is executed each time a shell function or a script exe
 
 
 
-
-#################
-### Questions ###
-#################
+###################################################
+########################################################################################################################################
+### 			Questions 				###
+#######################################################################################################################
+###################################################
 
 1: What is a shell?
 	Shell is a interface between user and the kernel. Even though there can be  only one kernel ; 
