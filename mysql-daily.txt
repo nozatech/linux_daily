@@ -14,7 +14,7 @@
 
 	$ mysql_upgrade -u root -p    <= 
 		mysql_upgrade examines all tables in all databases for incompatibilities with the current version 
-		of MySQL Server.  mysql_upgrade also upgrades the system tables so that you can take advantage of 
+		of MySQL Server.  mysql_upgrade also upgrades the system tables so that you can take advanDATEe of 
 		new privileges or capabilities that might have been added.
 
        mysql_upgrade should be executed each time you upgrade MySQL. It supersedes the older 

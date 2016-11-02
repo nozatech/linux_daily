@@ -144,7 +144,7 @@ Cannot connect to the Docker daemon. Is the docker daemon running on this host?
 
 $ export DOCKER_HOST="tcp://192.168.232.147:2375"
 
-$ [root@docker-c7 ~]$docker info
+$ docker info
 Server Version: 1.12.1
 Storage Driver: aufs					          <=
  Root Dir: /var/lib/docker/aufs
@@ -228,7 +228,7 @@ $ docker pull -a fedora			<= download all images
 
 				
 $ docker images					<= check all local images
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+REPOSITORY          DATE                 IMAGE ID            CREATED             SIZE
 ubuntu              latest              45bc58500fa3        2 weeks ago         126.9 MB
 centos              latest              980e0e4c79ec        4 weeks ago         196.8 MB
 
@@ -287,7 +287,7 @@ $ docker commit 659ddce81e1c       fridge			<= create new image "fridge" name fr
 sha256:3179ff2722de7e45e680e985b1f65b08ff520e01b43e7aee1f61462ccc150b66
 
 $ docker images
-REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
+REPOSITORY          DATE                 IMAGE ID            CREATED              SIZE
 fridge              latest              3179ff2722de        About a minute ago   126.9 MB
   ^ <= new container image
 
@@ -324,7 +324,7 @@ Loaded image: fridge:latest
 
 
 $docker images
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+REPOSITORY          DATE                 IMAGE ID            CREATED             SIZE
 fridge              latest              3179ff2722de        36 minutes ago      126.8 MB
 
   
@@ -1029,7 +1029,7 @@ Swarm mode
 	
 Service Deployment API
 
-		  Declare           <= $docker service create declares the service name, network, port, image:tag and scale
+		  Declare           <= $docker service create declares the service name, network, port, image:DATE and scale
 		  ^     v
   Reconcile  < Schedule	    <= Managers break down service into tasks, schedules them and workers execute tasks
   ^ 
@@ -1372,9 +1372,9 @@ aufs (advanced multi layered unification filesystem)
 
 # repository
 	A repository is a set of Docker images. A repository can be shared by pushing it to a registry server. 
-	The different images in the repository can be labelled using tags.
+	The different images in the repository can be labelled using DATEs.
 
-	Here is an example of the shared nginx repository and its tags
+	Here is an example of the shared nginx repository and its DATEs
 	https://hub.docker.com/_/nginx/
 	
 # service
@@ -1411,8 +1411,8 @@ aufs (advanced multi layered unification filesystem)
 	Swarm mode refers to cluster management and orchestration features embedded in Docker Engine. 
 	When you initialize a new swarm (cluster) or join nodes to a swarm, the Docker Engine runs in swarm mode.
 
-# tag
-	A tag is a label applied to a Docker image in a repository. tags are how various images in a repository are distinguished from each other.
+# DATE
+	A DATE is a label applied to a Docker image in a repository. DATEs are how various images in a repository are distinguished from each other.
 
 	Note : This label is not related to the key=value labels set for docker daemon
 
@@ -1441,6 +1441,40 @@ services diagram
 	has the same experience on a Virtual Machine as they would have on dedicated hardware.
 
 Compared to to containers, a virtual machine is heavier to run, provides more isolation, gets its own set of resources and does minimal sharing.
+
+
+
+
+
+
+
+
+
+
+
+
+####################
+Docker Graphana  ###
+####################
+
+https://github.com/grafana/grafana-docker
+$ docker run -d --name=grafana -p 3000:3000 grafana/grafana
+http://localhost:3000
+### default admin user is admin/admin.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1514,7 +1548,7 @@ Commands:
     stats     Display a live stream of container(s) resource usage statistics
     stop      Stop one or more running containers
     swarm     Manage Docker Swarm
-    tag       Tag an image into a repository
+    DATE       DATE an image into a repository
     top       Display the running processes of a container
     unpause   Unpause all processes within one or more containers
     update    Update configuration of one or more containers

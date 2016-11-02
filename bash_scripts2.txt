@@ -1,0 +1,353 @@
+Shell Scripting Tutorial
+
+https://www.youtube.com/watch?v=hwrnmQumtPw
+
+
+The classic test command
+http://wiki.bash-hackers.org/commands/classictest
+
+File tests
+This section probably holds the most tests, I'll list them in some logical order. Since Bash 4.1, all tests related to permissions respect ACLs, if the underlying filesystem/OS supports them.
+--------------------------------------------------------------------------------------------------------------
+Operator syntax	Description	
+--------------------------------------------------------------------------------------------------------------
+-a <FILE>				True if <FILE> exists. :!: (not recommended, may collide with -a for AND, see below)	
+-e <FILE>				True if <FILE> exists.	
+-f <FILE>				True, if <FILE> exists and is a regular file.	
+-d <FILE>				True, if <FILE> exists and is a directory.
+-c <FILE>				True, if <FILE> exists and is a character special file.	
+-b <FILE>				True, if <FILE> exists and is a block special file.	
+-p <FILE>				True, if <FILE> exists and is a named pipe (FIFO).	
+-S <FILE>				True, if <FILE> exists and is a socket file.	
+-L <FILE>				True, if <FILE> exists and is a symbolic link.	
+-h <FILE>				True, if <FILE> exists and is a symbolic link.	
+-g <FILE>				True, if <FILE> exists and has sgid bit set(group).	
+-u <FILE>				True, if <FILE> exists and has suid bit set(user).	
+-r <FILE>				True, if <FILE> exists and is readable.	
+-w <FILE>				True, if <FILE> exists and is writable.	
+-x <FILE>				True, if <FILE> exists and is executable.	
+-s <FILE>				True, if <FILE> exists and has size bigger than 0 (not empty).	
+-t <fd>					True, if file descriptor <fd> is open and refers to a terminal.	
+<FILE1> -nt <FILE2>		True, if <FILE1> is newer than <FILE2> (mtime). :!:	
+<FILE1> -ot <FILE2>		True, if <FILE1> is older than <FILE2> (mtime). :!:	
+<FILE1> -ef <FILE2>		True, if <FILE1> and <FILE2> refer to the same device and inode numbers. :!:
+--------------------------------------------------------------------------------------------------------------
+String tests
+Operator syntax	Description
+--------------------------------------------------------------------------------------------------------------
+-z <STRING>				True, if <STRING> is empty.
+-n <STRING>				True, if <STRING> is not empty (this is the default operation).
+<STRING1> = <STRING2>	True, if the strings are equal.
+<STRING1> != <STRING2>	True, if the strings are not equal.
+<STRING1> < <STRING2>	True if <STRING1> sorts before <STRING2> lexicographically (pure ASCII, not current locale!). Remember to escape! Use \<
+<STRING1> > <STRING2>	True if <STRING1> sorts after <STRING2> lexicographically (pure ASCII, not current locale!). Remember to escape! Use \>
+--------------------------------------------------------------------------------------------------------------
+Arithmetic tests
+Operator syntax	Description
+--------------------------------------------------------------------------------------------------------------
+<INTEGER1> -eq <INTEGER2>	True, if the integers are equal.
+<INTEGER1> -ne <INTEGER2>	True, if the integers are NOT equal.
+<INTEGER1> -le <INTEGER2>	True, if the first integer is less than or equal second one.
+<INTEGER1> -ge <INTEGER2>	True, if the first integer is greater than or equal second one.
+<INTEGER1> -lt <INTEGER2>	True, if the first integer is less than second one.
+<INTEGER1> -gt <INTEGER2>	True, if the first integer is greater than second one.
+--------------------------------------------------------------------------------------------------------------
+Misc syntax
+Operator syntax	Description
+--------------------------------------------------------------------------------------------------------------
+<TEST1> -a <TEST2>		True, if <TEST1> and <TEST2> are true (AND). Note that -a also may be used as a file test (see above)
+<TEST1> -o <TEST2>		True, if either <TEST1> or <TEST2> is true (OR).
+! <TEST>				True, if <TEST> is false (NOT).
+( <TEST> )				Group a test (for precedence). Attention: In normal shell-usage, the "(" and ")" must be escaped; use "\(" and "\)"!
+-o <OPTION_NAME>		True, if the shell option <OPTION_NAME> is set.
+-v <VARIABLENAME>		True if the variable <VARIABLENAME> has been set. Use var[n] for array elements.
+-R <VARIABLENAME>		True if the variable <VARIABLENAME> has been set and is a nameref variable (since 4.3-alpha)
+--------------------------------------------------------------------------------------------------------------
+Number of Arguments Rules
+--------------------------------------------------------------------------------------------------------------
+The test builtin, especially hidden under its [ name, may seem simple but is in fact causing a lot of trouble sometimes. One of the difficulty is that the behaviour of test not only depends on its arguments but also on the number of its arguments.
+Here are the rules taken from the manual (Note: This is for the command test, for [ the number of arguments is calculated without the final ], for example [ ] follows the "zero arguments" rule):
+
+0 arguments
+	The expression is false.
+1 argument
+	The expression is true if, and only if, the argument is not null
+2 arguments
+	If the first argument is ! (exclamation mark), the expression is true if, and only if, the second argument is null
+	If the first argument is one of the unary conditional operators listed above under the syntax rules, the expression is true if the unary test is true
+	If the first argument is not a valid unary conditional operator, the expression is false
+3 arguments
+	If the second argument is one of the binary conditional operators listed above under the syntax rules, the result of the expression is the result of the binary test using the first and third arguments as operands
+	If the first argument is !, the value is the negation of the two-argument test using the second and third arguments
+	If the first argument is exactly ( and the third argument is exactly ), the result is the one-argument test of the second argument. Otherwise, the expression is false. The -a and -o operators are considered binary operators in this case (Attention: This means the operator -a is not a file operator in this case!)
+4 arguments
+	If the first argument is !, the result is the negation of the three-argument expression composed of the remaining arguments. Otherwise, the expression is parsed and evaluated according to precedence using the rules listed above
+5 or more arguments
+	The expression is parsed and evaluated according to precedence using the rules listed above
+	These rules may seem complex, but it's not so bad in practice. Knowing them might help you to explain some of the "unexplicable" behaviours you might encounter:
+
+var=""
+if [ -n $var ]; then echo "var is not empty"; fi
+--------------------------------------------------------------------------------------------------------------
+#!/bin/bash
+myName="Albert"      <=declaring variable
+declare -r NUM1=5	<=constant
+num2=4
+num3=$((NUM1+num2))
+num4=$((NUM1-num2))
+num5=$((NUM1*num2))
+num6=$((NUM1/num2))
+
+echo "$NUM + $num2 =$num3"
+echo "$NUM - $num2 =$num4"
+echo "$NUM * $num2 =$num5"
+echo "$NUM / $num2 =$num6"
+
+echo $((5**2))
+echo $((5/4))
+
+## incremental
+((i+=1)) == ((i++)) == ((i=i+1))
+  -=   
+  *= 
+  /= 
+  %=
+
+  
+random=5
+((random++))
+echo $random
+
+random=5
+((random+=4))
+echo $random  or echo "$random"   NO '$random' will print out $random, not the value!
+
+--------------------------------------------------------------------------------------
+random=5
+echo "random++ = $(( random++ ))"  	<=5 print 5 then ++
+random is already 6 from ++
+echo "++random = $(( ++random ))"  	<=7 ++ (1) then print  6+1
+echo "random-- = $(( random-- ))"	<=7 print random then --
+random is already 6 from --
+echo "--random = $(( --random ))"	<=5 -- then print
+
+### Using Python for ***floating point value***
+#!/bin/bash
+num1=1.2
+num2=1.3
+sum=$(python -c "print $num1 + $num2")
+echo $sum
+
+### Here script
+cat <<EOF
+#!/bin/bash
+echo "test"
+EOF
+-------------------------------------------------------------------------------------------------------
+### Function ###
+-------------------------------------------------------------------------------------------------------
+#!/bin/bash
+getDate(){  		<= set a fucntion name getDate()
+    date
+    return 0
+}
+
+getDate				<= invoke function name getDate
+
+-------------------------------------------------------------------------------------------------------
+Global & Local Variables
+
+name="Albert"  				#Global
+
+nameLocal(){
+	local name="Kunsu"		# local name for function variable name
+	return 0
+}
+nameLocal
+echo $name
+-------------------------------------------------------------------------------------------------------
+#set up function
+getSum(){
+	local num3=$1				local num3=num1				local num3=num1
+	local num4=$2				local num4=num2				local num4=num2
+	local sum=$((num3+num4))  	local sum=$((num1+num2))	local sum=$((num3+num4))
+	echo $sum					# pass back $sum
+}
+## Actual code
+num1=5
+num2=6
+sum=$(getSum num1 num2)         		<= Put attribute to function. num1 is $1 and num2 is $2 in function getSum()
+              ^$1  ^$2					<= 1st & 2nd attributes pass to num1 & num2
+echo "The SUM is $sum"
+11	<= result
+
+
+-------------------------------------------------------------------------------------------------------
+#Conditions
+
+#!/bin/bash
+read -p "Type your name: " name             #-p prompt with STRING, -s is secrete
+echo "Hi $name"
+-------------------------------------------------------------------------------------------------------
+#!/bin/bash
+read -p "Enter your age: " age
+if [ $age -ge 16 ]						# (( $age >= 16 ))same  # greater than or equal (16 and up)
+then
+    echo "You can drive"			    # 16 and up, 15 next year, 14 under can't
+elif [ $age -eq 15 ]					# (( $age == 15 ))same  #equal 
+then
+    echo "Next year"
+else
+    echo "can't drive"
+fi
+-------------------------------------------------------------------------------------------------------
+#!/bin/bash
+read -p "Enter a number: " num
+if (( (( num % 2 )) == 0 )); then
+    echo "Number is even number"
+else
+    echo "odd number"
+fi
+-------------------------------------------------------------------------------------------------------
+num=10
+if (( ((num > 0 )) && ((num < 11)) ));then echo "$num is between 1 and 10"; fi
+
+touch file && vim file
+[ -d dir ] || mkdir dir
+ ^ false		^ make dir 
+ ^ true			^ do nothing
+if [ ! -d dir ]; then mkdir dir; fi
+if [ -d dir ]; then rmdir dir; fi
+-------------------------------------------------------------------------------------------------------
+Strings
+#!/bin/bash
+str1=""
+str2="poppy"
+str3="Maltese"
+
+if [ "$str1" ]; then					# False
+    echo "$str1 is not null"     		# No output
+fi
+if [ -z "$str1" ]; then					# True for empty string
+    echo "str1 has no value"			# Yes output
+fi
+
+if [ "$str1" == "$str3" ]; then  		$ False
+    echo "$str2 equals $str3"			$ 
+elif [ "$str2" != "$str3" ]; then		$ True
+    echo "$str2 is not equal to $str3"
+fi
+
+if [ "$str2" > "$str3" ]; then
+    echo "$str2 is greater than $str3"
+elif [ "$str2" < "$str3" ]; then
+    echo "$str2 is less than $str3"
+fi
+
+=> str1 has no value
+=> poppy is not equal to Maltese
+=> poppy is greater than Maltese
+
+-------------------------------------------------------------------------------------------------------
+File checks
+
+#!/bin/bash
+file1="./file1"
+file2="./file2"
+if [ -e "#file1" ]; then echo "$file1 is exist!"; fi
+if [ -f "#file1" ]; then echo "$file1 is NORMAL file!"; fi
+if [ -w "#file1" ]; then echo "$file1 is writeable file!"; fi
+
+
+-------------------------------------------------------------------------------------------------------
+Regular Expression   => Ext TEST
+#!/bin/bash
+read -p "Validate Date: " date
+pattern="^[0-9]{8}$"   					# ^ start with, 0-9, {8} digit, $ end of pattern
+if [[ $date =~ $pattern ]]; then
+	echo "$date is valid"
+else
+	echo "$date is invalid"
+fi
+=>Validate Date: 00000000
+=>00000000 is valid
+-------------------------------------------------------------------------------------------------------
+read -p "enter 2 numbers to sum: " num1 num2
+sum=$((num1+num2))
+echo "$num1 + $num2 = $sum"
+-------------------------------------------------------------------------------------------------------
+read -sp "Enter password: " password
+if [ $password = "xxx" ]; then
+    echo -n "You are allow to enter!!!"
+else
+    echo -n "S.T.O.P! You are NOT authorized"
+fi
+-------------------------------------------------------------------------------------------------------
+IFS (Internal Field Sperator)
+#!/bin/bash
+ORG_IFS="IFS"
+IFS=","
+read -p "Enter 2 numbers by comma(,):" num1 num2
+num1=${num1//[[:blank:]]/}    <= Change Num1 blanks to nothing
+num2=${num1//[[:blank:]]/} 
+sum=$((num1+num2))
+echo "$num1 + $num2 = $sum"
+IFS="$ORG_IFS"
+=> Enter 2 numbers by comma(,):10,               10
+=> 10 + 10 = 20
+
+-------------------------------------------------------------------------------------------------------
+Parameter Expansion
+name="poppy"
+echo "${name}'s toy"
+-----------------------------------------
+samp_string="dog"
+echo "${samp_string//dog/cat}"
+					^change^ to 		
+
+echo "I am ${name:-Poppy}"		
+echo "I am ${name:=Poppy}"		
+=>	I am poppy
+				
+-------------------------------------------------------------------------------------------------------
+CASE
+
+#!/bin/bash
+read -p "Enter your age: " age
+case $age in
+[0-4]) echo "too baby";;
+	5) echo "TK";;
+[6-9]|1[0-18]) 
+	grade=$((age-5))
+	echo "go to grade $grade";;
+	*) echo "Too old for school";;
+esac
+
+can_vote=0
+age=18
+(( age>=18?(can_vote=1):(can_vote=0) ))
+echo "Can vote: $can_vote"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

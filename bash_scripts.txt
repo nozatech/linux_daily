@@ -37,16 +37,11 @@
 	do
 		file $i
 	done
-	
 ------------------------------------
-
-
-
 ### /dev/null
 	> /dev/null 2>&1     <= redirect the output of your program to /dev/null. 
 							Include both the Standard Error and Standard Out	
-	
-	
+
 # more commands
 	set -x : Display commands and their arguments as they are executed.
 	set -v : Display shell input lines as they are read. 
@@ -86,8 +81,6 @@
 	echo "$greeting, world (planet)!"
 	    => hello, world (planet)!
 
-	
-	
 	$ awk '/lemon/ && /rice/'					<= search two words
 
 
@@ -95,7 +88,7 @@
 	$0 		file name of script
 	$1		positional parameter #1
 	$2-9	positional parameter #2-9
-	${10}	positional parameter #10
+	${10}	positional parameter #10 and up e.g. 11, 12, 13....
 	$#		number of positional parameter
 	"$*"	all the positional parameters(as separate word)*
 	"$@"	all the positional parameters(as separate strings)
@@ -134,14 +127,16 @@ e.g. [ ! -z $HOME ]
 ### Common Bash comparisons
 Operator	       Meaning									Example
 -------------------------------------------------------------------------------------
--z			Length of String is (zero)EMPTY 					[ -z "$my_var" ]
--n			Length of String is NOT (zero)EMPTY					[ -n "$my_var" ]
--f			File is Exists & regular 							[ -f "$myfile" ]
+-z			Length of String is (zero)EMPTY 					[ -z "$my_var" ]      		my_var=""
+-n			Length of String is NOT (zero)EMPTY					[ -n "$my_var" ]            my_var="num"
+-f			File is Exists & normal,regular 					[ -f "$myfile" ]
 -d			Directory is Exists  								[ -d "$mydir" ]
 -e 			file exist
+-w			Writeable
 =			Strings are same									[ "abc" = "$my_var" ]
 !=			Strings are Not Same   								[ "abc" != "$my_var" ]
-	
+
+
 -eq	  		Equal (Numeric equality)							[ 3 -eq 3 ("$my_integer") ]
 -ne			Not Equal(Numeric inequality)						[ 3 -ne 4 ("$my_integer") ]
 -lt			Less than (Numeric strict less than)				[ 3 -lt 4 ("$my_integer") ]
@@ -170,6 +165,42 @@ $ (( 1 < 2 )) ; echo $?
 $ (( 1 == 2 )) ; echo $?
 1
 
+
+---------------------------------------------------------------------------------------------------
+() <- Subshell
+( list )
+	Placing a list of commands between parentheses causes a "SUBSHELL" environment to be created, 
+	and each of the commands in list to be executed in that subshell. Since the list is executed 
+	in a subshell, variable assignments do not remain in effect after the subshell completes.
+$ ( a=A )
+$ echo $a
+A
+### e.g.
+$ cd ; unset files
+$ count_tmp() (cd /tmp; files=(*); echo "${#files[@]}")
+$ pwd; count_tmp; pwd
+/home/jackman
+11
+/home/jackman
+$ echo "${#files[@]}"
+0
+---------------------------------------------------------------------------------------------------
+{}   <- Current Shell
+{ list; }
+	Placing a list of commands between curly braces causes the list to be executed in the "Current 
+	shell" context. No subshell is created. The semicolon (or newline) following list is required.
+$ { a=A; }
+$ echo $a
+A
+### e.g.
+$ count_tmp() { cd /tmp; files=(*); echo "${#files[@]}"; }
+$ pwd; count_tmp; pwd
+/home/jackman
+11
+/tmp
+$ echo "${#files[@]}"
+11  
+---------------------------------------------------------------------------------------------------
 		
 
 The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
@@ -209,6 +240,17 @@ grep "echo" ./function1.sh
 
 
 	
+$IFS   <-Internal Field Seperator
+
+$ bash -c 'set w x y z; IFS=":-;"; echo "$*"'
+w:x:y:z
+
+Compare to:
+
+$ bash -c 'set w x y z; IFS="-:;"; echo "$*"'
+w-x-y-z	
+	
+	
 ######################## 
 # Bash Shell Variables #
 ########################
@@ -231,11 +273,12 @@ ${array[i]}                  # displays array's value for this index. If no inde
 ${#array[i]}                 # to find out the length of any element in the array
 ${#array[@]}                 # to find out how many values there are in the array
 
-declare -a                   # the variables are treaded as arrays
-declare -f                   # uses funtion names only
+declare -a                   # the variables are treated as arrays
+declare -f                   # uses function names only
 declare -F                   # displays function names without definitions
 declare -i                   # the variables are treaded as integers
-declare -r                   # makes the variables read-only
+declare -r                   # makes the variables read-only(Constant)
+	ex) declare -r NUM1=5
 declare -x                   # marks the variables for export via the environment
 
 ${varname:-word}             # if varname exists and isn't null, return its value; otherwise return word
@@ -378,7 +421,7 @@ The Index_Number is treated as an arithmetic expression that must evaluate to a 
 ------------------------------------
 #!/bin/bash
 array_name=("apple" "banaba" "cherry")
-for i in ${array_name[@]}
+for i in ${array_name[@]}             # @ or * <- both works 
 do
     echo -n `sleep 1` $i " "
 done

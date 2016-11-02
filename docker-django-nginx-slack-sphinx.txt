@@ -8,14 +8,14 @@ node {
 
     docker_creds_id = "c6fd2e0d-ca10-46dd-83cb-69b637968479"           // name of the Jenkins Credentials ID
 
-    build_tag = "testing"                                              // default tag to push for to the registry
+    build_DATE = "testing"                                              // default DATE to push for to the registry
 
     
-    stage 'Checking out GitHub Repo'
+    sDATEe 'Checking out GitHub Repo'
     git url: 'https://github.com/jay-johnson/docker-django-nginx-slack-sphinx.git'
 
 
-    stage 'Building Django Container for Docker Hub'
+    sDATEe 'Building Django Container for Docker Hub'
     docker.withRegistry("${registry_url}", "${docker_creds_id}") {
     
 
@@ -46,18 +46,18 @@ node {
 
         
 		//
-		stage "Building"
+		sDATEe "Building"
         
-		echo "Building Django with docker.build(${maintainer_name}/${container_name}:${build_tag})"
+		echo "Building Django with docker.build(${maintainer_name}/${container_name}:${build_DATE})"
         
-		container = docker.build("${maintainer_name}/${container_name}:${build_tag}", 'django')
+		container = docker.build("${maintainer_name}/${container_name}:${build_DATE}", 'django')
         try {
             
             // Start Testing
-            stage "Running Django container"
+            sDATEe "Running Django container"
             
             // Run the container with the env file, mounted volumes and the ports:
-            docker.image("${maintainer_name}/${container_name}:${build_tag}").withRun("--name=${container_name} --env-file ${docker_env_file} -e ENV_SERVER_MODE=DEV -v ${default_root_volume}:${default_root_volume} -v ${doc_source_dir}:${doc_source_dir} -v ${doc_output_dir}:${doc_output_dir} -v ${static_output_dir}:${static_output_dir} -v ${media_dir}:${media_dir} -p 82:80 -p 444:443")  { c ->
+            docker.image("${maintainer_name}/${container_name}:${build_DATE}").withRun("--name=${container_name} --env-file ${docker_env_file} -e ENV_SERVER_MODE=DEV -v ${default_root_volume}:${default_root_volume} -v ${doc_source_dir}:${doc_source_dir} -v ${doc_output_dir}:${doc_output_dir} -v ${static_output_dir}:${static_output_dir} -v ${media_dir}:${media_dir} -p 82:80 -p 444:443")  { c ->
                    
                 // wait for the django server to be ready for testing
                 // the 'waitUntil' block needs to return true to stop waiting
@@ -86,7 +86,7 @@ node {
                 echo "Docker Container is running"
                     
                 // this pipeline is using 3 tests 
-                // by setting it to more than 3 you can test the error handling and see the pipeline Stage View error message
+                // by setting it to more than 3 you can test the error handling and see the pipeline SDATEe View error message
                 MAX_TESTS = 3
                 for (test_num = 0; test_num < MAX_TESTS; test_num++) {     
                    
@@ -122,7 +122,7 @@ node {
                     }
                     
                     // Now validate the results match the expected results
-                    stage "Test(${test_num}) - Validate Results"
+                    sDATEe "Test(${test_num}) - Validate Results"
                     test_results = readFile '/tmp/test_results'
                     echo "Test(${test_num}) Results($test_results) == Expected(${expected_results})"
                     sh "if [ \"${test_results}\" != \"${expected_results}\" ]; then echo \" --------------------- Test(${test_num}) Failed--------------------\"; echo \" - Test(${test_num}) Failed\"; echo \" - Test(${test_num}) Failed\";exit 1; else echo \" - Test(${test_num}) Passed\"; exit 0; fi"
@@ -140,26 +140,26 @@ node {
             error "FAILED - Stopping build for Error(${err_msg})"
         }
         
-        stage "Pushing"
+        sDATEe "Pushing"
         container.push()
         
         currentBuild.result = 'SUCCESS'
     }
     
-    stage 'Building nginx Container for Docker Hub'
+    sDATEe 'Building nginx Container for Docker Hub'
     docker.withRegistry("${registry_url}", "${docker_creds_id}") {
         
         // Set up the container to build
         maintainer_name = "jayjohnson"
         container_name = "django-nginx"
      
-        stage "Building Container"
-        echo "Building nginx with docker.build(${maintainer_name}/${container_name}:${build_tag})"
-        container = docker.build("${maintainer_name}/${container_name}:${build_tag}", 'nginx')
+        sDATEe "Building Container"
+        echo "Building nginx with docker.build(${maintainer_name}/${container_name}:${build_DATE})"
+        container = docker.build("${maintainer_name}/${container_name}:${build_DATE}", 'nginx')
        
         // add more tests
         
-        stage "Pushing"
+        sDATEe "Pushing"
         container.push()
         
         currentBuild.result = 'SUCCESS'

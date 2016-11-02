@@ -38,17 +38,18 @@ CloudFormation
 https://dcos.io/docs/1.8/administration/installing/cloud/aws/
 
 Microservices & Containers
-Build microservices applications using Docker with Marathon: DC/OS’s production proven container orchestrator.
+	Build microservices applications using Docker with Marathon: 
+	DC/OS’s production proven container orchestrator.
 
 Big Data & Analytics
-Build and integrate advanced big data, analytics and machine learning pipelines with Spark, Kafka, and Cassandra in your apps.
+	Build and integrate advanced big data, analytic and machine learning pipelines with Spark, Kafka, and Cassandra in your apps.
 
 Infrastructure Agnostic Apps
-DC/OS runs on top of any bare-metal, private or public clouds, allowing you to maintain maximum portability for all your apps.
+	DC/OS runs on top of any bare-metal, private or public clouds, allowing you to maintain maximum portability for all your apps.
 
 
 Admin Router
-The Admin Router runs on the DC/OS master servers to provide a proxy for the admin parts of the cluster.
+	The Admin Router runs on the DC/OS master servers to provide a proxy for the admin parts of the cluster.
 
 Agent node
 	A Mesos agent node runs a discrete Mesos task on behalf of a framework. It is an agent instance 
@@ -165,13 +166,16 @@ curl -fLsS --retry 20 -Y 100000 -y 60 https://downloads.dcos.io/binaries/cli/lin
 
  sudo chmod +x /usr/local/bin/dcos && 
 
- dcos config set core.dcos_url http://dcos-1-elasticload-1kng2isari1it-1005251933.us-west-1.elb.amazonaws.com && 
+ #Point out to your DCOS cluster
+ dcos config set core.dcos_url http://dcos-1-elasticload-1kng2isari1it-1005251933.us-west-1.elb.amazonaws.com &&         
 
  /usr/local/bin/dcos
 
-export PATH=$PATH:/usr/local/bin/
 
+ $ export PATH=$PATH:/usr/local/bin/
 
+# Authenticate with master node and set the auth tocken
+$ dcos auth login
 
 
 

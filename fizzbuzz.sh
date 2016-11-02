@@ -17,6 +17,17 @@ for i in {1..30}; do
 done
 
 
+#!/bin/bash
+## C style
+for ((i=0; i<=30; i++)); do
+    if (( $i % 3 == 0 )) && (( $i % 5 == 0 )); then echo "for-loop"
+    elif (( $i % 3 == 0 )); then echo "for"
+    elif (( $i % 5 == 0 )); then echo "loop"
+    else echo $i;
+    fi
+done
+
+
 #
 echo
 sleep 2

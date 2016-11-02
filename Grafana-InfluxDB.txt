@@ -1,0 +1,57 @@
+InfluxDB 
+https://docs.influxdata.com/influxdb/v1.0/introduction/installation/
+
+How to Install and Config
+http://vmkdaily.ghost.io/influxdb-and-grafana-on-centos/
+
+RedHat & CentOS RedHat and CentOS users can install the latest stable version of InfluxDB using 
+the yum package manager:
+
+$ cat <<EOF | sudo tee /etc/yum.repos.d/influxdb.repo
+[influxdb]
+name = InfluxDB Repository - RHEL \$releasever
+baseurl = https://repos.influxdata.com/rhel/\$releasever/\$basearch/stable
+enabled = 1
+gpgcheck = 1
+gpgkey = https://repos.influxdata.com/influxdb.key
+EOF
+	
+### Once repository is added to the yum configuration, you can install and start the 
+	InfluxDB service by running:
+
+$ sudo yum install influxdb
+
+$ sudo systemctl start influxdb
+$ sudo systemctl enable influxd            
+				 
+$ls /usr/bin/ | grep influx
+influx
+influxd
+influx_inspect
+influx_stress
+influx_tsm
+
+Note***:   influx is the CLI tool to manage things.
+		   influxd is the actual binary that runs the program itself(No lib dependencies).
+
+### Config file	location	
+$ /etc/influxdb/influxdb.conf
+	
+	###regenerate the config file ###
+	$ /usr/bin/influx config > influxdb.generated.conf		
+		
+$/usr/bin/influx
+Visit https://enterprise.influxdata.com to register for updates, InfluxDB server management, and monitoring.
+Connected to http://localhost:8086 version 1.0.2
+InfluxDB shell version: 1.0.2
+>
+
+GUI interface
+http://192.168.232.155:8083/
+
+
+
+
+
+
+

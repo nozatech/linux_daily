@@ -35,6 +35,20 @@ echo 'export HISTTIMEFORMAT="%F "' >> ~/.bashrc
 ###
 
 
+### Vi environment setup (setting)
+Create a .vimrc file in home 
+$ vi .vimrc
+:set num
+:set tabstop=2
+:set autoindent
+
+esc high light
+shift+v to copy == yy
+shift+p to paste == pp
+
+
+
+
 		
 # cd command
 Directory	/1/2/3/4/5
@@ -323,9 +337,9 @@ $ pip install pssh
     C. htop
 		Up/Down arrow keys to select a process, and then you can kill it with the F9 key
 
-10. Disk usage / folder size 
+10. Disk usage / folder size / disk space
 	$ du -hs * | sort -rh | head -5
-	$ find -type f -exec du -Sh {} + | sort -rh | head -n 5
+	$ find / -type f -exec du -Sh {} + | sort -rh | head -n 5
 	
 	$ du -ah              					<= all total size files & directories, -a all, -h human 
 	$ du -ah *   							<= No total size
@@ -2584,10 +2598,12 @@ CentOS
 	Access all 
 	-A INPUT -m state -s x.x.x.x --state NEW -j ACCEPT
 
+###
+Allow everything from cmd	
+###
+$ iptables -A INPUT -m state -s 65.87.26.0/24 --state NEW -j ACCEPT
+###	
 	
-	
-Webmin 
-/etc/webmin/miniserv.conf
 
 
 ###########
