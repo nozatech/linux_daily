@@ -140,19 +140,36 @@ $ pip install pssh
 		-O (uppercase O) the file name in the URL will be taken and it will be used as the file name to store the result
 		-l --list-only
 		-L --location
-	D. 
 	   $ curl -o saving_name.html http://www.gnu.org/text_info.html							
-	   
 	   $ curl -O http://www.gnu.org/software/gettext/manual/gettext.html or file_name		<= save the file to local 
-	   
+	D.  Follow HTTP Location Headers with -L option  
+		$ curl -L http://google.com
+	E.	
+		$ curl --limit-rate 1000B -O http:
+	F. Proxy
+		$ curl -p 
 	
-	E. $ curl -X 
+	G.	$ curl -u username:password URL
+	
+	H.  Verbose
+		$ curl -v http://google.com
+	
+	I. $ curl dict://dict.org/d:bash
+	
+	
+	curl -X GET -H 
+	
 	
 	### text browser ###
 	$ sudo apt-get install -y links
 	$ links http://www.google.com
 	
 	
+### base64 - base64 encode/decode data and print to standard output
+http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
+
+	$ printf id:pw | base64
+	https://www.base64decode.org/	
 	
 	
 	

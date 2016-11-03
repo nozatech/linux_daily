@@ -6,15 +6,19 @@ https://www.youtube.com/watch?v=hwrnmQumtPw
 The classic test command
 http://wiki.bash-hackers.org/commands/classictest
 
-File tests
-This section probably holds the most tests, I'll list them in some logical order. Since Bash 4.1, all tests related to permissions respect ACLs, if the underlying filesystem/OS supports them.
+Operator syntax	Description
+
+		test  <EXPRESSION>
+		[  <EXPRESSION>  ]
 --------------------------------------------------------------------------------------------------------------
-Operator syntax	Description	
+### File ### tests
 --------------------------------------------------------------------------------------------------------------
--a <FILE>				True if <FILE> exists. :!: (not recommended, may collide with -a for AND, see below)	
--e <FILE>				True if <FILE> exists.	
--f <FILE>				True, if <FILE> exists and is a regular file.	
--d <FILE>				True, if <FILE> exists and is a directory.
+-a <FILE>				True, if <FILE> exists. :!: (not recommended, may collide with -a for AND, see below)	
+
+-e <FILE>**				True, if <FILE> exists.	
+-f <FILE>**				True, if <FILE> exists and is a regular file.	
+-d <FILE>**				True, if <FILE> exists and is a directory.
+
 -c <FILE>				True, if <FILE> exists and is a character special file.	
 -b <FILE>				True, if <FILE> exists and is a block special file.	
 -p <FILE>				True, if <FILE> exists and is a named pipe (FIFO).	
@@ -32,8 +36,7 @@ Operator syntax	Description
 <FILE1> -ot <FILE2>		True, if <FILE1> is older than <FILE2> (mtime). :!:	
 <FILE1> -ef <FILE2>		True, if <FILE1> and <FILE2> refer to the same device and inode numbers. :!:
 --------------------------------------------------------------------------------------------------------------
-String tests
-Operator syntax	Description
+### String ### tests
 --------------------------------------------------------------------------------------------------------------
 -z <STRING>				True, if <STRING> is empty.
 -n <STRING>				True, if <STRING> is not empty (this is the default operation).
@@ -42,8 +45,7 @@ Operator syntax	Description
 <STRING1> < <STRING2>	True if <STRING1> sorts before <STRING2> lexicographically (pure ASCII, not current locale!). Remember to escape! Use \<
 <STRING1> > <STRING2>	True if <STRING1> sorts after <STRING2> lexicographically (pure ASCII, not current locale!). Remember to escape! Use \>
 --------------------------------------------------------------------------------------------------------------
-Arithmetic tests
-Operator syntax	Description
+### Arithmetic ### tests
 --------------------------------------------------------------------------------------------------------------
 <INTEGER1> -eq <INTEGER2>	True, if the integers are equal.
 <INTEGER1> -ne <INTEGER2>	True, if the integers are NOT equal.
@@ -52,8 +54,7 @@ Operator syntax	Description
 <INTEGER1> -lt <INTEGER2>	True, if the first integer is less than second one.
 <INTEGER1> -gt <INTEGER2>	True, if the first integer is greater than second one.
 --------------------------------------------------------------------------------------------------------------
-Misc syntax
-Operator syntax	Description
+### Misc ### syntax
 --------------------------------------------------------------------------------------------------------------
 <TEST1> -a <TEST2>		True, if <TEST1> and <TEST2> are true (AND). Note that -a also may be used as a file test (see above)
 <TEST1> -o <TEST2>		True, if either <TEST1> or <TEST2> is true (OR).
@@ -65,16 +66,21 @@ Operator syntax	Description
 --------------------------------------------------------------------------------------------------------------
 Number of Arguments Rules
 --------------------------------------------------------------------------------------------------------------
-The test builtin, especially hidden under its [ name, may seem simple but is in fact causing a lot of trouble sometimes. One of the difficulty is that the behaviour of test not only depends on its arguments but also on the number of its arguments.
-Here are the rules taken from the manual (Note: This is for the command test, for [ the number of arguments is calculated without the final ], for example [ ] follows the "zero arguments" rule):
+The test builtin, especially hidden under its [ name, may seem simple but is in fact causing a lot of trouble 
+sometimes. One of the difficulty is that the behaviour of test not only depends on its arguments but also on 
+the number of its arguments.
+Here are the rules taken from the manual (Note: This is for the command test, for [ the number of arguments 
+is calculated without the final ], for example [ ] follows the "zero arguments" rule):
 
 0 arguments
-	The expression is false.
+	The expression is False.
 1 argument
-	The expression is true if, and only if, the argument is not null
+	The expression is True if, and only if, the argument is not Null
 2 arguments
-	If the first argument is ! (exclamation mark), the expression is true if, and only if, the second argument is null
-	If the first argument is one of the unary conditional operators listed above under the syntax rules, the expression is true if the unary test is true
+	If the first argument is '!' (exclamation mark), the expression is True if, and only if, the second argument 
+	is null
+	If the first argument is one of the unary conditional operators listed above under the syntax rules, 
+	the expression is true if the unary test is true
 	If the first argument is not a valid unary conditional operator, the expression is false
 3 arguments
 	If the second argument is one of the binary conditional operators listed above under the syntax rules, the result of the expression is the result of the binary test using the first and third arguments as operands
@@ -85,9 +91,10 @@ Here are the rules taken from the manual (Note: This is for the command test, fo
 5 or more arguments
 	The expression is parsed and evaluated according to precedence using the rules listed above
 	These rules may seem complex, but it's not so bad in practice. Knowing them might help you to explain some of the "unexplicable" behaviours you might encounter:
-
+--------------------------------------------------------------------------------------------------------------
 var=""
 if [ -n $var ]; then echo "var is not empty"; fi
+Still prints out "var is not empty"
 --------------------------------------------------------------------------------------------------------------
 #!/bin/bash
 myName="Albert"      <=declaring variable
