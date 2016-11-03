@@ -128,7 +128,8 @@ $ pip install pssh
 	$ wget http://www.gnu.org/software/gettext/manual/gettext.html  or file_name	
 	$ time $ wget http://www.gnu.org/software/gettext/manual/gettext.html  			<= measuring download time
 
-### cURL
+### cURL  
+testing on REST API
 	A. Content of the URL and display it in the STDOUT (i.e on your terminal)
 		$ curl http://www.centos.org
 	
@@ -155,9 +156,32 @@ $ pip install pssh
 		$ curl -v http://google.com
 	
 	I. $ curl dict://dict.org/d:bash
-	
-	
+
+	# to get the HEADER info	
+	$curl -i http:address:3000/json-test 
+  	
+	HTTP/1.1 403 Forbidden
+Date: Wed, 19 Oct 2016 02:07:18 GMT
+Server: Apache/2.4.6 (CentOS)
+...
+Content-Length: 4897
+Content-Type: text/html; charset=UTF-8
+
+*C*R*U*D*
+POST method
+	$ curl -d "first=Alber&last=park" http://address:port/method_name
+PUT methond
+	$ curl -X PUT -d "first=Alber&last=park" http://address:port/method_name
+Delete
+	$ curl -X DELETE  http://address:port/method_name
+
+$curl -u 
+
+
 	curl -X GET -H 
+	
+	
+	
 	
 	
 	### text browser ###
