@@ -1,15 +1,249 @@
+import random
+import sys
+import os
+
+'''
+Comments
+Data type: number, string, list, tuple, dictionary
+'''
+
+### Print ###
+print("Hello World")
+name = "Albert"
+print(name)
+
+print("5 + 2 =", 5+2)
+print("5 - 2 =", 5-2)
+print("5 * 2 =", 5*2)
+print("5 / 2 =", 5/2)
+print("5 % 2 =", 5%2)
+print("5 ** 2 =", 5**2)
+print("5 // 2 =", 5//2)  # floor division: discard remainder 1, 14.5 =14
+
+quote = " \"Always remember"   # \ is ignoring "
+print(quote)
+
+multi_string = quote + name
+print(multi_string)
+print('\n' * 1)             # 1 new lines
+
+print("%s %s %s" % ('new type quote', quote, name))
+print("I don't like ", end="")
+print("newlines")
+
+
+### List  ###
+import random
+import sys
+import os
+
+### List
+
+grocery_list = ['Juice', 'Tomatoes', 'Potatoes', 'Bananas']
+print(grocery_list)
+print('Frist Item', grocery_list[0])
+grocery_list[0] = "Orange Juice"        # Change to  Juice to Orange Juice
+print('First Item', grocery_list[0])
+print(grocery_list[1:3])
+other_events = ['Wash car', 'Pickup kids', 'Cash Check']
+to_do_list = [other_events, grocery_list]
+print (to_do_list)
+print((to_do_list[1][1]))    # 1st [] list is other_event which is 0, 2nd [] is grocery_list's 2nd item 1
+grocery_list.append('Onion')
+print(to_do_list)
+grocery_list.insert(1, "Pickle")
+print(to_do_list)
+grocery_list.remove("Pickle")
+print(to_do_list)
+grocery_list.sort()
+grocery_list.reverse()
+del grocery_list[1]
+print(to_do_list)
+to_do_list2 = other_events + grocery_list
+print(to_do_list2)
+print(len(to_do_list2))
+print(max(to_do_list2))
+print(min(to_do_list2))
+
+
+### TUPLE ###
+pi_tuple = (3,1,4,1,5,9)
+
+new_tuple = list(pi_tuple)
+new_list = tuple(new_tuple)
+len(tuple) min(tuple) max(tuple)
+
+### Dictionaries ###
+import random
+import sys
+import os
+
+super_villains = {'Fiddler'        : 'Isaac Bowin',
+                  'Captain Cold'   : 'Leonard Snart',
+                  'Weather Wizard' : 'Mark Mardon',
+                  'Mirror master'  : 'Sam Scudder',
+                  'Pied Piper'     : 'Thomas Peterson'}
+
+print(super_villains ['Captain Cold'])
+
+del super_villains['Fiddler']
+
+super_villains['Pied Piper'] = 'Hartly Rathway'
+
+print(super_villains ['Pied Piper'])
+
+print(super_villains.keys())
+
+print(super_villains.values())
+
+
+###################################################################################################
+### Conditional ###
+###################################################################################################
+
+
+# if else elif    ==    !=    >    >=    <=
+age =30
+if age >16:
+    print('You can drive')
+else:
+    print('You cant drive')
+print('----')
+if age >= 21 :
+    print('You can drive')
+elif age >= 16 :
+    print('drive')
+else :
+    print ('You can\'t')
+
+# Logical Operators: and, or, not
+if ((age >= 1 ) and (age <=18)):
+    print("you get a b-day")
+elif ((age >= 21 ) and (age <=65)):
+    print("you get a b-day")
+elif not(age ==30) :
+    print('No b-party')
+else :
+    print('B-Party')
 
 
 
+for x in range(0,10):
+    print(x, '', end="")
+# a new line
+print('\n')
 
+grocery_list = [ 'juice', 'tomato', 'potatos','banaba']
+for y in grocery_list:
+    print(y)
 
+for x in [2,4,6,8,10]:
+    print (x)
+#list in list
+print('\n')
 
+num_list = [[1,2,3],[10,20,30],[100,200,300]]
+for x in range(0,3):
+    for y in range(0,3):
+        print(num_list[x][y])	#<=?? why
+		
+### While Loop
 
+random_num = random.randrange(0,100)
+while(random_num != 15):
+    print(random_num)
+    random_num = random.randrange(0,100)	
+	
 
+i = 0;
+while(i <= 20):
+    if (i%2 == 0):
+        print(i)
+    elif (i == 21):
+        break
+    else:
+        i += 1    #<= Python doesn't support i++
+        continue
+    i += 1
+	
+###function
 
+def addNumber(firstNum, lastNum):
+    sumNum = firstNum + lastNum
+    return sumNum
+print(addNumber(1, 4))
+	
 
+### User Input ###	
+import random
+import sys
+import os
 
+print("What is your name?")
+name = sys.stdin.readline()
+print("Hello", name)
 
+import sys
+for line in sys.stdin:
+    print line	
+
+sys.stdin is a file-like object on which you can call functions read or readlines if you want to read everything or you want to read everything and split it by newline automatically. (You need to import sys for this to work.)
+If you want to prompt the user for input, you can use raw_input in Python 2.X, and just input in Python 3.	
+name = raw_input("Enter your name: ")   # Python 2.x	
+name = input("Enter your name: ")   	# Python 3	
+	
+import random
+import sys
+import os
+
+long_string = "I will change you if you fall = The Floor ok"
+print("1st-",long_string)
+	# 1st- I will change you if you fall = The Floor ok
+print(long_string[:])
+print(long_string[0:4]) #first 4 letters space don't count?
+	# I wi
+print(long_string[-5])
+	# o
+print(long_string[:-5])
+	# I will change you if you fall = The Flo
+print(long_string[:4] + " be there")
+	# I wi be there
+print("%c is my %s letter and my number %d number is %.5f" %
+      ('X', 'favorite', 1, .14))
+	# X is my favorite letter and my number 1 number is 0.14000	
+	
+###	
+print(long_string.capitalize())
+print(long_string.find("ok"))
+print(long_string.isalpha())
+print(long_string.isalnum())
+print(long_string.replace("Floor", "Ground"))
+print(long_string.strip())
+print(len(long_string))
+quote_list = long_string.split(" ")
+print(quote_list)
+###
+I will change you if you fall = the floor ok
+42
+False
+False
+I will change you if you fall = The Ground ok
+I will change you if you fall = The Floor ok
+44
+['I', 'will', 'change', 'you', 'if', 'you', 'fall', '=', 'The', 'Floor', 'ok']
+###
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 Question 1
