@@ -1,0 +1,180 @@
+OOP is a programming technique & SW design philosophy
+Model " objects" instaed of actions
+Objects are self sustainable
+	- Data
+	- Actions on the Data
+Data not global shared with rest of program
+Program seen as interaction objets
+Reusable objects with code reuse	
+	
+What is Class?	
+	- Class(classification or Template/Blueprint) describing a object
+	- Class describes a "thing"
+	- It has 
+			- Properties (attributes)
+			- Methods (Procedures)
+		
+		
+e.g. Class
+
+Person
+	Properties   <= Define data
+	-name
+	-gender
+	-age
+	-hair
+	-weight
+	
+	Methods      <= act on data
+	-dance
+	-walk
+	-talk
+	
+
+	Class   |           Properties              | methods      
+	Contact |  name, compnay name, phone number | Update(), Dial()	
+	Employee|  name, title, manager, salary,	| Hire(), Fire(), Sick()
+	player  |  name, score, energy, point		| Jump(), Shoot(), Move()
+	
+
+	###############  Class vs. Object #########################
+
+Class Person <= Object
+
+girlObject : Person
+--------------
+| Properties |						var girlObject = new Person()
+--------------						{
+Name: Nicci								Name ="Nicci",
+Gender: Female							Gender = Gender.Femaile,
+Age: 22									Age = 7,
+Hair: Brown								Hair = Color.Brown,
+Weight: Normal						}
+-------------						girlObject.Draw();
+| Methods	|
+-------------
+Walk()									
+Talk()
+Dance()		
+		
+		
+boyObject : Person
+--------------
+| Properties |							var boyObject = new person()  <=set to new person
+--------------							{
+Name: Tony									Name = "Tony",
+Gender: Male								Gender = Gener.Male,
+Age: 9										Hair = Color.Blonde,
+Hair: Brown									Age =7
+Weight: Normal							},
+-------------
+| Methods	|							# Call method
+-------------
+Walk()
+Talk()
+Dance()			
+		
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Object Oriented Programming
+------------------------------------------------------------------------------------------------------------------------------------------------------------		
+defined by: 
+1. abstraction 
+2. encapsulation 
+3. inheritance 
+4. polymorphism 
+
+An object is a container of data and functions that affect the data. 
+In an OOP, a "child" object can "extend" another object (making it more specific) by inheriting from a "parent" object. 
+Thus the child gets all the parents data and functionality "for free". 
+The idea of an "interface" is also key to OOPs. An interface is the allowed interactions between the outside world 
+(e.g., other programs) and the object itself.		.
+
+
+OOP vehicle hierarchy:
+
+               Vehicle
+            /          \ 
+         Car             SUV
+        /  \           /     \
+ 2-door    Sedan    2-Wheel  4-wheel
+		
+		
+### Encapsulation
+Encapsulation, is the idea that the "data" associated with an object should (mostly) only be available via functions, 
+and (possibly) that much of the data associated with an object will never be "visible" to the outside world.
+For example, most of use do not care how our car engines work. What we do care about is that when we turn the key, 
+the engine starts, when we press the gas, the car accelerates.
+See the OO topic on Interfaces for more on Encapsulation.		
+
+		
+		
+### Inheritance
+
+Inheritance is the idea that a "child class" gets all the functionality of its parent class. 1
+This works because child classes are more specific examples of the parent class. 
+	For example, if we had a "vehicle" class, we could have a "car" class as a more specific example. 
+	Then we could have a "sedan" class as an even more concrete example.
+
+public class Car extends Vehicle // CAR IS A Vehicle 
+    
+It should be strongly noted that the CLASS is where inheritance is used, not the object. 
+While we often say object car inherits from object vehicle, what we really mean is a single new class 
+has been created in which both the car code and the vehicle code have been combined to form the car class.		
+		
+### 	
+ISA vs. HASA
+### 
+
+When one class "extends" another class we say that the first class ISA (is a) second class. A car ISA vehicle. 
+Anywhere that a vehicle can be used, a car can be used. If you can "drive" a vehicle, then you can "drive" a car. 
+If you can "stop" a vehicle, then you can "stop" a car. This is not true in reverse! For example, you can drive a 
+car on the highway, but can you drive any vehicle on the highway. The answer is no.
+
+One of the key issues in Inheritance is when to "inherit" and when to use a data member variable. 
+	For example, should a 2-door sedan be a separate (child) class from a sedan, or should the number of doors 
+	be a member variable of sedan (or of car, or even of vehicle)! In this case, the number of doors is probably 
+	best left as a distinguishing detail of the sedan, not as a special sub-class in of its self.
+
+When trying to decide when to subclass, you should think: "Would a new 'class' really define a specific 'sub-species' 
+of the item, or would an extra member variable due to distinguish between two instances of the class.
+
+###         
+public class Two_Door_Sedan extends Sedan // Probably not a good idea 
+    ... 
+     public class Sedan extends Car //  Probably best to use a variable 
+      { 
+		var number_of_doors : int = 2; 
+        ... 
+      } 	
+###		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+

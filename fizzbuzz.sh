@@ -1,4 +1,4 @@
-FizzBuzz
+FizzBuzz in Bash
 
 
 ############
@@ -114,46 +114,70 @@ do
 done
 
 
+##################
+### Python ###
+##################
 
+### While Loop
 
-### Function ###
-# functions to group pieces of code in a more logical way or practice the divine art of recursion.
+#!/usr/bin/python3
+count = 0
+while count < 101:
+    if count % 5 == 0 and count % 3 == 0:
+        print "FizzBuzz"
+    elif count % 3 == 0:
+        print "Fizz"
+    elif count % 5 == 0:
+        print "Buzz"
+    else:
+        print count
 
-
-#!/bin/bash
-
-# A function to print "Hello World"
-hello()
-    { 
-	  echo "Hello World"
-	}
+    count = count + 1    # this will get executed every loop
 	
-# Call the function
-hello;
+### for loop
 
-###
+for num in xrange(1,101):
+    if num % 5 == 0 and num % 3 == 0:
+        print "FizzBuzz"
+    elif num % 3 == 0:
+        print "Fizz"
+    elif num % 5 == 0:
+        print "Buzz"
+    else:
+        print num
+		
 
-#!/bin/bash
+for num in xrange(1,101):
+    if num % 5 == 0 and num % 3 == 0:
+        msg = "FizzBuzz"
+    elif num % 3 == 0:
+        msg = "Fizz"
+    elif num % 5 == 0:
+        msg = "Buzz"
+    else:
+        msg = str(num)
+    print msg
 
-function quit {
-    exit
-}
-function hello {
-    echo Hello!
-}
-hello
-quit
-echo foo
+for num in xrange(1,101):
+    msg = ''
+    if num % 3 == 0:
+        msg += 'Fizz'
+    if num % 5 == 0:       # no more elif
+        msg += 'Buzz'
+    if not msg:      # check if msg is an empty string
+        msg += str(num)
+    print msg
 
+#!/usr/bin/python
+for num in xrange(1,101):
+    msg = ''
+    if num % 3 == 0:
+        msg += 'Fizz'
+    if num % 5 == 0:
+        msg += 'Buzz'
+    print msg or num
+$python fz.py
 
-# test.sh for $1, $2, $3
-#!/bin/bash
-
-echo "\$1 is now $1"
-echo "\$2 is now $2"
-echo "\$3 is now $3"
-
-# ./test.sh 1 2 3
 
 
 

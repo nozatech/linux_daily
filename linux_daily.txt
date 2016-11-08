@@ -792,21 +792,22 @@ cron job search from command line
 	
 	
 25. $ last						<= show listing of last logged in users
-    $ who
-	$ who -r 					<= runlevel
-	
-	$ lastlog					<= reports the most recent login of all users 
-    
-	$ lsof -u noza				<= list open files user name noza
-	$ lsof -p 1234	
-
-###	Last Reboot check ###
+###	$ Last Reboot ###
 	$ who -b
 	$ last reboot
+reboot system boot 3.2.13-grsec-xxx Tue Apr 3 07:34 - 09:17 (9+01:42) <= 9days 1hr 42mins after restart
 	$ last
 	$ last -x
 	$ last -x reboot
 	$ last -x shutdown
+	$ lastlog					<= reports the most recent login of all users 
+    
+	$ who
+	$ who -r 					<= runlevel
+	$ who -b
+
+    $ lsof -u noza				<= list open files user name noza
+	$ lsof -p 1234	
 
 
 15. Is .bash_profile is a file???? 
@@ -816,12 +817,9 @@ cron job search from command line
 		echo "You do not have it"
 	fi
 
-16. id -u        (-u <= short typing --user <= for script)   
+16. id -u        (-u <= --user for script)   
 	print real and effective user and group ID
 	uid=0(root) gid=0(root) groups=0(root) 				context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
-
-
-
 
 
 21. rm -rf ./tmp/test/delme/*    <=delete folder contents

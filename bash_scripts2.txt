@@ -153,14 +153,45 @@ EOF
 -------------------------------------------------------------------------------------------------------
 ### Function ###
 -------------------------------------------------------------------------------------------------------
+### Function ###
+# functions to group pieces of code in a more logical way or practice the divine art of recursion.
+
+
 #!/bin/bash
-getDate(){  		<= set a fucntion name getDate()
+
+# A function to print "Hello World"
+hello()
+    { 
+	  echo "Hello World"
+	}
+# Call the function
+hello;
+----------------------------
+#!/bin/bash
+function quit {
+    exit
+}
+function hello {
+    echo Hello!
+}
+hello
+quit
+echo foo
+----------------------------
+# test.sh for $1, $2, $3
+#!/bin/bash
+echo "\$1 is now $1"
+echo "\$2 is now $2"
+echo "\$3 is now $3"
+# ./test.sh 1 2 3
+----------------------------
+#!/bin/bash
+getDate(){  		<= set a function name getDate()
     date
     return 0
 }
 
 getDate				<= invoke function name getDate
-
 -------------------------------------------------------------------------------------------------------
 Global & Local Variables
 
@@ -270,20 +301,25 @@ if [ -w "#file1" ]; then echo "$file1 is writeable file!"; fi
 Regular Expression   => Ext TEST
 #!/bin/bash
 read -p "Validate Date: " date
+
 pattern="^[0-9]{8}$"   					# ^ start with, 0-9, {8} digit, $ end of pattern
+
 if [[ $date =~ $pattern ]]; then
 	echo "$date is valid"
 else
 	echo "$date is invalid"
 fi
+
 =>Validate Date: 00000000
 =>00000000 is valid
 -------------------------------------------------------------------------------------------------------
 read -p "enter 2 numbers to sum: " num1 num2
+
 sum=$((num1+num2))
 echo "$num1 + $num2 = $sum"
 -------------------------------------------------------------------------------------------------------
 read -sp "Enter password: " password
+
 if [ $password = "xxx" ]; then
     echo -n "You are allow to enter!!!"
 else
@@ -322,39 +358,140 @@ CASE
 #!/bin/bash
 read -p "Enter your age: " age
 case $age in
-[0-4]) echo "too baby";;
-	5) echo "TK";;
-[6-9]|1[0-18]) 
-	grade=$((age-5))
-	echo "go to grade $grade";;
-	*) echo "Too old for school";;
+		[0-4]) echo "too baby";;
+			5) echo "TK";;
+[6-9]|1[0-8])	
+			   grade=$((age-5))
+			   echo "go to grade $grade";;
+			*) echo "Too old for school";;
 esac
 
+-------------------------------------------------------------------------------------------------------
+# Ternary Operator <= It provides a way to shorten a simple "if else" block.
+-------------------------------------------------------------------------------------------------------
+#!/bin/bash
+read -p "Enter your age: " age
+
 can_vote=0
-age=18
+
 (( age>=18?(can_vote=1):(can_vote=0) ))
+          ? if        1 true :or     0false 
+# if age is greater or equal to 18,if it is true can_vote=1, if false can_vote=1 #
 echo "Can vote: $can_vote"
 
 
+-----------------------------------------------------------------------------------------
+Parameter Expansion
+-----------------------------------------------------------------------------------------
+
+#!/bin/bash
+
+rand_str="A random string"
+echo "String Length : ${#rand_str}"
+echo "${rand_str:0}"    #0 A random string, :2 random string :4 string
+echo "${rand_str:2:7}"
+echo "${rand_str:4:7}"
+echo "${rand_str#*A }"
+echo "${rand_str#*m }"
+
+> String Length : 15
+> A random string
+> random
+> ndom st
+> random string
+> string
 
 
 
+-----------------------------------------------------------------------------------------
+While Loop
+-----------------------------------------------------------------------------------------
+#!/bin/bash
+num=1
+while [ $num -le 10 ]; do
+        echo $num
+        num=$((num+1))
+#       ((num++)
+done
+
+num=1
+while [ $num -le 20 ]; do
+        if (( ((num % 2)) == 0 )); then
+           ((num++))
+           continue  # No even number out put
+        fi
+        if ((num >=15)); then
+           break
+        fi
+        echo $num
+        ((num++))
+done
+-----------------------------------------------------------------------------------------
+#!/bin/bash
+while read brand name model;
+do
+        printf "Brand: ${brand}\n
+                Name: ${name}\n
+                model: ${model}\n"
+done < list.txt
+cat<<-EOF >>list.txt
+bmw 
+x6 
+3.5i
+EOF
 
 
+-----------------------------------------------------------------------------------------
+Bash has only 1 dimensional ARRAY 
+-----------------------------------------------------------------------------------------
+#!/bin/bash
+fav_nums=(3.14 2.78 .5777 4.77)
+echo "Pi : ${fav_nums[0]}"
+# Pi : 3.14
 
+fav_nums[4]=1.618          <= add 5th value 1.618 to array
+echo "GR : ${fav_nums[4]}"
+#GR : 1.618
 
+fav_nums+=(1 7)				<= add 6 & 7th  1 & 7 to array
+for i in ${fav_nums[*]}; do
+        echo $i
+done
+#3.14
+#2.78
+#.5777
+#4.77
+#1.618
+#1
+#7
 
+for i in ${fav_numis[@]}; do
+        echo $i
+done
+#3.14
+#2.78
+#.5777
+#4.77
+#1.618
+#1
+#7
 
+echo "Array Length : ${#fav_nums[@]}"     # "#" -count    @-total array index count?
+# Array Length : 7
 
+echo "Index 3 Length : ${#fav_nums[3]}"   # "#" -count    3[4.77]
+# Index 3 Length : 4
 
+# Sorting Array
+sorted_nums=($(for i in "${fav_nums[@]}"; do
+echo $i;
+done | sort ))
 
+for i in ${sorted_nums[*]}; do
+        echo $i
+done
 
-
-
-
-
-
-
-
+unset 'sorted_nums[1]'   <= Delete 2nd 
+unset sorted_nums		 <= Delte whole array
 
 

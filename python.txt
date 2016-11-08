@@ -1,3 +1,163 @@
+Python 3.5.2 Install on CentOS7
+https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-centos-7
+
+$ yum install python-pip
+$ pip install pudb 	<=debug tool
+http://stackoverflow.com/questions/1623039/python-debugging-tips
+
+
+
+
+#!/usr/local/python3.5
+print("Hello World")
+def subr():
+        return 5+37
+x = subr
+print(x)
+
+$ python3.5 helloworld.py
+$ chmod +x helloworld.py
+$ ./helloworld.py
+
+----------------------------------
+x=1
+print(x)
+x='foo'
+print(x)
+x = x + "1"    <= Switch to string from integer
+print(x)
+y = input("Your name?")
+print(y)
+----------------------------------
+name = input("What is your name: ")
+
+# For Loop
+for i in range (1,10):
+    print("Welcome", name,"", i)
+----------------------------------
+# While Loop
+x=0
+while 1: # True:
+    print (x)
+    x = x + 1
+    if (x == 15):
+        break
+----------------------------------
+# For Loop using a list
+myCar = ['BMW', 'Lexus', 'Ferrari']
+for i in myCar:
+    print(i)
+----------------------------------
+# Scoping
+x = 0      # <=without x, error for initial value set
+for i in range(1,25):
+    x = i + x  
+print(x)
+
+----------------------------------
+# Function
+def sub(x,y):
+    z = x - y
+    print(z)
+
+def add( x, y ):
+    return x + y
+
+print(add(15,4))
+sub(4,3)
+----------------------------------
+x = int(input("Type a number:   "))
+if ( x < 1):
+    print ("Too small")
+elif (x >= 1) and ( x <= 10 ):  #ge , le
+    print("ok")
+else:
+    print("too high")
+----------------------------------
+####Call Linux host command
+
+#!/usr/bin/python3.5
+import os
+from subprocess import call
+
+print(os.getcwd())     		# same as PWD
+print(os.getuid())			# 0
+print(os.getenv("PATH"))	#/sbin:/bin:/usr/sbin:/usr/bin
+os.system("ls -al")			# system
+inp=input("Hit enter")
+
+call(["ls", "-la"])			# sub
+----------------------------------
+#!/usr/bin/python3.5
+import threading
+
+# v-Object
+class aThread(threading.Thread):
+    def __init__(self, num, val):
+        threading.Thread.__init__(self)
+        self.threadNum = num
+        self.loopCount = val
+
+    def run(self):
+        print("Starting run:  ", self.threadNum)
+        myfunc(self.threadNum, self.loopCount)
+
+def myfunc(num, val):
+    count = 0
+    while count < val:
+        print(num, " : ", val * count)
+        count = count + 1
+
+t1 = aThread(1, 15)
+t2 = aThread(2, 20)
+t3 = aThread(3, 25)
+t4 = aThread(4, 30)
+
+t1.start()
+t2.start()
+t3.start()
+t4.start()
+
+threads = []
+threads.append(t1)
+threads.append(t2)
+threads.append(t3)
+threads.append(t4)
+
+for t in threads:
+    t.join()
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import random
 import sys
 import os
