@@ -122,32 +122,41 @@ done
 
 #!/usr/bin/python3
 count = 0
-while count < 101:
-    if count % 5 == 0 and count % 3 == 0:
+while i < 101:
+    if i % 5 == 0 and i % 3 == 0:
         print "FizzBuzz"
-    elif count % 3 == 0:
+    elif i % 3 == 0:
         print "Fizz"
-    elif count % 5 == 0:
+    elif i % 5 == 0:
         print "Buzz"
     else:
-        print count
-
-    count = count + 1    # this will get executed every loop
+        print i
+	i = i+1
+#    count = count + 1    # this will get executed every loop
 	
 ### for loop
 
-for num in xrange(1,101):
-    if num % 5 == 0 and num % 3 == 0:
+for i in range(1,31):
+    if i % 5 == 0 and i % 3 == 0:
         print "FizzBuzz"
-    elif num % 3 == 0:
+    elif i % 3 == 0:
         print "Fizz"
-    elif num % 5 == 0:
+    elif i % 5 == 0:
         print "Buzz"
     else:
-        print num
-		
+        print i
+#Py3.5
+for i in range(1,31):
+    if i % 5 == 0 and i % 3 == 0:
+        print ("FizzBuzz")
+    elif i % 3 == 0:
+        print ("Fizz")
+    elif i % 5 == 0:
+        print ("Buzz")
+    else:
+        print (i)		
 
-for num in xrange(1,101):
+for num in xrange(1,31):
     if num % 5 == 0 and num % 3 == 0:
         msg = "FizzBuzz"
     elif num % 3 == 0:
@@ -158,7 +167,7 @@ for num in xrange(1,101):
         msg = str(num)
     print msg
 
-for num in xrange(1,101):
+for num in xrange(1,31):
     msg = ''
     if num % 3 == 0:
         msg += 'Fizz'
@@ -169,7 +178,7 @@ for num in xrange(1,101):
     print msg
 
 #!/usr/bin/python
-for num in xrange(1,101):
+for num in xrange(1,31):
     msg = ''
     if num % 3 == 0:
         msg += 'Fizz'

@@ -1,5 +1,27 @@
 OOP is a programming technique & SW design philosophy
-Model " objects" instaed of actions
+
+Procedural(Imperative-must) Programming (Top down language)
+
+
+Class	-----> car
+(factory)	 Object) -----> M3 --------> Drive
+						(property)		(method)					
+
+Properties		Methods(Action)  	Event						
+----------		-------				--------
+make			start				On_Start
+model			stop				On_Parked
+color			drive				On_Brake
+year			park
+price			
+
+
+
+
+
+
+
+Model " objects" instead of actions
 Objects are self sustainable
 	- Data
 	- Actions on the Data

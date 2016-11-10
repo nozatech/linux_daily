@@ -128,10 +128,33 @@ for t in threads:
     t.join()
 	
 
+### OOP ###
 
+class Car():
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year =year
+        self.fuel_capacity = 20
+        self.fuel_level = 0
+    def fill_tank(self):
+        self.fuel_level = self.fuel_capacity
+        print("Fuel tank is full.")
+    def drive(self):
+        print("Car is moving")
 
+my_car = Car('BMW', 'X6', 2011)
+my_old_car = Car('BMW', 'M3', 1997)
+my_new_car = Car('BMW', 'M6', 2020)
 
+print(my_car.make, my_old_car.make,my_new_car.make)
+print(my_car.model, my_old_car.model, my_new_car.model)
+print(my_car.year, my_old_car.year, my_new_car.year)
 
+### Output
+> BMW BMW BMW
+> X6 M3 M6
+> 2011 1997 2020
 
 
 
@@ -257,9 +280,9 @@ print(super_villains.keys())
 print(super_villains.values())
 
 
-###################################################################################################
+--------------------------------------------------------------------------------######
 ### Conditional ###
-###################################################################################################
+--------------------------------------------------------------------------------######
 
 
 # if else elif    ==    !=    >    >=    <=
@@ -1408,14 +1431,208 @@ This list of questions for Python interview questions and answers is not an exha
 	
 	
 	
+--------------------------------------------------------------------------------
+1. Calculator	
+--------------------------------------------------------------------------------
+#!/usr/bin/python3.5
+def add(x, y):
+    return x + y
+def sub(x, y):
+    return x - y
+def multi(x, y):
+    return x * y
+def div(x, y):
+    return x / y
+
+print("Select operation.")
+print("1. Addition")
+print("2. Subtract")
+print("3. Multiply")
+print("4. Divide")
+
+choice = input("Enter a choice from 1/2/3/4: ")
+
+num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+
+if   choice == '1':
+    print(num1,"+",num2,"=",add(num1,num2))
+elif choice == '2':
+    print(num1,"-",num2,"=",sub(num1,num2))
+elif choice == '3':
+    print(num1,"x",num2,"=",multi(num1,num2))
+elif choice == '4':
+    print(num1,"x",num2,"=",div(num1,num2))
+else:
+    print("You put the wrong input")
+--------------------------------------------------------------------------------	
+2. Find the Largest Among 3 Numbers
+--------------------------------------------------------------------------------
+#!/usr/bin/python3.5
+print("Please enter 3 numbers to find biggest number among them!")
+num1 = int(input("Enter first number: "))
+print("You entered: ", num1)
+num2 = int(input("Enter second number: "))
+print("You entered: ", num2)
+num3 = int(input("Enter second number: "))
+print("You entered: ", num3)
+
+if (num1 > num2) and (num1 > num3):
+    print(num1,"is the biggest")
+elif (num2 > num1) and (num2 > num3):
+    print(num2,"is the biggest")
+else:
+    print(num3, "is the biggest.")	
 	
+--------------------------------------------------------------------------------	
+3. Sqroot
+--------------------------------------------------------------------------------
+# Python Program to calculate the square root
+
+num = float(input('Enter a number: '))
+num_sqrt = num ** 0.5
+print('The square root of %0.3f is %0.3f'%(num ,num_sqrt))
+
+
+--------------------------------------------------------------------------------	
+4. # Python program to swap two variables
+--------------------------------------------------------------------------------
+#x = input('Enter value of x: ')
+#y = input('Enter value of y: ')
+x = 5
+y = 10
+
+# create a temporary variable and swap the values
+change = x
+x = y
+y = change
+
+# chgY = x
+# chgX = y
+# x = chgX
+# y = chgY
+
+print('The value of x after swapping: {}'.format(x))
+print('The value of y after swapping: {}'.format(y))
+
+
+--------------------------------------------------------------------------------	
+random
+--------------------------------------------------------------------------------
+import random
+
+print(random.randint(0,9))
+
+--------------------------------------------------------------------------------	
+check if a number is positive, negative or zero
+--------------------------------------------------------------------------------
+num = float(input("Enter a number"))
+# Using if...elif...else
+if num > 0:
+    print(num, " is Positive")
+elif num == 0:
+    print (num, " is Zero")
+else:
+    print(num, " is Negative Number")
+print("")
+
+# Using Nested if
+if num >= 0:
+    if num == 0:
+        print ("Zero")
+    else:
+        print("Positive")
+else:
+    print ("Negative")
+
+--------------------------------------------------------------------------------	
+Check if a Number is Odd or Even
+--------------------------------------------------------------------------------
+num = int(input("Enter a number: "))
+
+if (num % 2) == 0:
+    print("Even")
+else:
+    print("odd")
+''''------------------------------------'''
+if (num % 2) == 0:
+   print("{0} is Even".format(num))
+else:
+   print("{0} is Odd".format(num))
+
+--------------------------------------------------------------------------------	
+Check Prime Numbers( Can't divide except 1) 2, 3, 5, 7, 11, 13, 17, 19, 23, and 29
+http://www.programiz.com/python-programming/examples/prime-number
+--------------------------------------------------------------------------------
+num = int(input("Enter a number to check prime number: "))
+if num > 1:
+    for i in range(2, num):  	# e.g. 2..... 100(num)
+        if ( num % i ) == 0:   	# modulo
+            print(num, "is not a prime number")
+            print(i, "times", num//i, "is", num)  #??
+            break
+#   <- indent for line because of break  
+	else:
+        print(num, "is a prime number")
+else:
+    print(num, "can't be used as a prime number!")
+
+	#The break statement, like in C, breaks out of the smallest enclosing for or while loop.
 	
+for n in range(2, 10):
+    for x in range(2, n):
+        if n % x == 0:
+            print(n, 'equals', x, '*', n//x)
+            break
+#   |<- indent on for line, not if line 
+	else:
+        # loop fell through without finding a factor
+        print(n, 'is a prime number')	
 	
-	
-	
-	
-	
-	
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
 	
 	
 	

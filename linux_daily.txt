@@ -1573,8 +1573,9 @@ iptables -L -v
 
 	
 
-	
-	
+Iptables opens all	
+
+$ iptables -I INPUT -j ACCEPT
 	
 	
 58. # CentOS 6 Turn off firewall and SELINUX
@@ -1692,7 +1693,7 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	###################################   
 
     Connection to 192.168.110.220 10051 port [tcp/zabbix-trapper] succeeded!
-
+	nc -l 22 							<= listening mode	
 
 
 	
@@ -1751,8 +1752,16 @@ $ apt-key list
 
 $ apt-key del 563278F6  <= key_name
 
+# how to remove -file
+To remove a file whose name starts with a '-', for example '-foo',
+
+$ rm --help
+use one of these commands:
+	rm -- -foo
+	rm ./-foo
 
 
+  
 
 63. How do I fix a “Problem with MergeList” or “status file could not be parsed” error when trying to do an update?
 
@@ -1839,10 +1848,16 @@ $ nmap -sT ip_address  ( s-scan, T-TCP)
 70. 
 	
 		
-		
-		
-		
-		
+# hanging terminal during the SSH connection.	
+http://askubuntu.com/questions/344863/ssh-new-connection-begins-to-hang-not-reject-or-terminate-after-a-day-or-so-on	
+A problem can arise when you are trying to connect from behind a NAT router using OpenSSH. 
+During session setup, after the password has been given, OpenSSH sets the TOS (type of service) 
+field in the IP datagram. Some routers are known to choke on this. The effect is that your 
+session hangs indefinitely after you gave your password. Here is the example output from such 
+an ssh session:		
+$ ssh -vvv id@x.com	
+$ ssh -o 		"ProxyCommand nc %h %p" id@x.com
+	  ^option	
 		
 $ for i in db lobby s1 s2; do date; done
     Sat Aug  8 10:46:21 PDT 2015
