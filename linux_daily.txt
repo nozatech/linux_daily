@@ -1029,15 +1029,59 @@ Undo
 
 
 	
-42. strace - trace system calls and signals	
+42. strace - trace(monitor) system calls and signals of a program
 	$ strace foobar.sh  	<= debugging a command/script   
 	$ strace -p PID
+	
+	1. Trace the Execution of an Executable
+		$ strace ls
+		execve("/bin/ls", ["ls"], [/* 21 vars */]) = 0
+		................
+	2. Trace a Specific System Calls in an Executable Using Option -e
+		$strace -e open ls
+		open("/etc/ld.so.cache", O_RDONLY)      = 3
+		.............
+	#only the open system call of the ls command
+		$ strace -e trace=open,read ls /home
+	3. Save the Trace Execution to a File Using Option -o
+		$ strace -o output.txt ls
+	4. Execute Strace on a Running Linux Process Using Option -p
+		$ strace -p PID
+		
+	5. Print Timestamp for Each Trace Output Line Using Option -t
+		$ strace -t -e open ls /home
+		11:59:25 open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+		11:59:25 open("/lib64/libselinux.so.1", O_RDONLY|O_CLOEXEC) = 3
 
+	6. Print Relative Time for System Calls Using Option -r
+		$ strace -r ls 
+	7. Generate Statistics Report of System Calls Using Option -c
+		$ strace -c ls /home
+		noza  nozatech
+		% time     seconds  usecs/call     calls    errors syscall
+		------ ----------- ----------- --------- --------- ----------------
+		25.48    0.000859          29        30           mmap
+		14.12    0.000476          24        20           mprotect
+	8. 
+
+
+	traceroute and ping
+	mtr  - combines  the  functionality  of the traceroute and ping in a single network diagnostic tool.
+$ mtr --report google.com
+
+
+
+
+
+		
+
+	
+		
 <<<<<<< Updated upstream
-43. stty 		 <= change and print terminal line settings
+43. stty 		   <= change and print terminal line settings
 	$ stty -echo   <= hide(turn off) terminal typing(Can't see typing)
     $ stty echo    <= show(restore) terminal typing(able to see typing)
-    $ TTY  		 <= TeleTYpe
+    $ TTY  		   <= TeleTYpe
 
 
 
@@ -1859,7 +1903,8 @@ $ ssh -vvv id@x.com
 $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 	  ^option	
 		
-$ for i in db lobby s1 s2; do date; done
+		
+$ for i in db1, db2, db3, db4; do date; done
     Sat Aug  8 10:46:21 PDT 2015
 	...
     Sat Aug  8 10:46:21 PDT 2015
@@ -2120,8 +2165,10 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	$ sudo visudo   (old way   vi /etc/sudoers)
 	  nozatech ALL=(ALL:ALL) NOPASSWD:ALL
 	  %sudo    ALL=(ALL:ALL) NOPASSWD:ALL
+	
+	# Run without password promt! 
+	$ username  ALL=(ALL) NOPASSWD: /home/username/pydatertc.sh	
 
-		
 2 Processor
 	killall <process name>
     kill -9 

@@ -1192,8 +1192,6 @@ A unit testing framework in Python is known as unittest.  It supports sharing of
 
 A mechanism to select a range of items from sequence types like list, tuple, strings etc. is known as slicing.
 
-
- 
 19) What are generators in Python?
 
 The way of implementing iterators are known as generators.  It is a normal function except that it yields expression in the function.
