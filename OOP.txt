@@ -1,19 +1,119 @@
 OOP is a programming technique & SW design philosophy
 
+
+Class 	= Concept 	= Type
+Object 	= Instance of class 	= variable
+Attribute = Data       = member variables = state = field
+Behaviour = Operation  = member function  = Method
+
+Object = data = operation on data + Identity
+
+Encapsulation = Data + Operation on Data  => Absctraction
+
+Inheritance = 
+
+Polymorphism = 다양한 형태에 동일한 명령 사용 
+
+OOP 분석/설계
+1. 문제 영역에서 배우를 찾아내고
+2. 각 배우들의 역활과 책임을 정의하고
+3. 배우들 간의 관계를 지정하고
+4. 각 배우들에 대한 대본을 쓴다
+
+OOP 분석/설계 방법론
+식별하고 일반화하고(object, class),
+대상들 간의 관계( inheritance, embedded)를 설정하고
+상호작용 하도록(behaviour) 한다.
+
+
+
 Procedural(Imperative-must) Programming (Top down language)
 
 
 Class	-----> car
-(factory)	 Object) -----> M3 --------> Drive
+(factory)	 (Object) -----> M3 --------> Drive
 						(property)		(method)					
 
-Properties		Methods(Action)  	Event						
+Properties		Methods(Actions)  	Event						
 ----------		-------				--------
 make			start				On_Start
 model			stop				On_Parked
 color			drive				On_Brake
 year			park
 price			
+
+
+# Class
+class pet:
+    number_of_legs =0
+poppy = pet()
+poppy.number_of_legs =4
+print ("Poppy has %s legs" % poppy.number_of_legs)
+
+# Methods
+class pet:
+    number_of_legs =0
+    def sleep(self):
+        print("zzz")
+poppy = pet()
+poppy.sleep()
+
+ 
+# self 
+class pet:
+    number_of_legs =0
+    def sleep(self):
+        print("zzz")
+    def count_legs(self):
+        print("I have %s legs." % self.number_of_legs)
+								  #^ self
+poppy = pet()
+poppy.number_of_legs =4
+poppy.count_legs()
+poppy.sleep()
+
+nemo = pet()  #fish
+nemo.number_of_legs = 0
+nemo.count_legs()
+
+# Inheritance
+class pet:
+    number_of_legs =0
+    def sleep(self):
+        print("zzz")
+    def count_legs(self):
+        print("I have %s legs." % self.number_of_legs)
+
+class dog(pet):  # <= inherent
+    def bark(self):
+        print ("woof")
+
+poppy = dog()
+poppy.bark()
+poppy.sleep()
+
+poppy.number_of_legs =4
+poppy.count_legs()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

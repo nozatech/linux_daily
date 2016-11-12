@@ -275,15 +275,28 @@ http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
 
 		
 6. Creating swap space in CentOS7
-	$ swapon -s
+	http://www.cyberciti.biz/faq/linux-add-a-swap-file-howto/
+	
+	$ swapon -s   #summary
 	$ free -m
 	
-	$ dd if=/dev/zero of=/swapfile bs=2048 count=512k
+	#$ dd if=/dev/zero of=/swapfile bs=2048 count=512k
+	
+	$ dd if=/dev/zero of=/swapfile count=4096 bs=1MiB   #4GB with 1MB bitesize
 	$ sudo chmod 600 /swapfile
     $ mkswap /swapfile
 	$ swapon /swapfile
+	
+	To enable it at boot time, edit /etc/fstab 
+	/swapfile          swap            swap    defaults        0 0
+	How do I verify swap is activated or not?
+	$ free -h
+	$ less /proc/meminfo
+	$ top            #check in KiB Swap
 
-### bug, not working	###
+	
+	
+	### bug, not working	###
 #	$ sudo fallocate -l 2G /swapfile   <= 2GB space for swap
 #	$ sudo chmod 600 /swapfile
 #	$ ls -lh /swapfile
@@ -2166,8 +2179,11 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	  nozatech ALL=(ALL:ALL) NOPASSWD:ALL
 	  %sudo    ALL=(ALL:ALL) NOPASSWD:ALL
 	
-	# Run without password promt! 
+	# Run script without password prompt! 
 	$ username  ALL=(ALL) NOPASSWD: /home/username/pydatertc.sh	
+	
+	# Allowing/Denying User-Level Cron
+	$ /etc/cron.allow
 
 2 Processor
 	killall <process name>
@@ -2178,7 +2194,7 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	ps -u <user_id>		<= u (user)
 		
 		
-2. Linux CentOS or Ubuntu Version check	
+3. Linux CentOS or Ubuntu Version check	
     $ cat /etc/*rel*
     $ uname -a		<= all include kernel, processor(32/64bit), hostname, 
     $ uname -r 		<= kernel version
@@ -2186,7 +2202,7 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	$ lsb_release -a
    
   
-3. ulimit 								<= Increase "Max Open Files Limit"
+4. ulimit 								<= Increase "Max Open Files Limit"
 ####	
 # echo "* soft nofile 102400" > /etc/security/limits.d/*_limits.conf && echo "* hard nofile 102400" >> /etc/security/limits.d/*_limits.conf 
 ####	
@@ -2282,7 +2298,7 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	####
 	
 	
-4. sysctl
+5. sysctl
 	The ulimit and sysctl programs allow to limit system-wide resource use. 
 	This can help a lot in system administration, e.g. when a user starts too 
 	many processes and therefore makes the system unresponsive for other users.
@@ -2291,7 +2307,7 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	
 	
 	
-3. Swap space swapon
+6. Swap space swapon
 	swapon -s 		<= Summary
 		   -a 		<= All
 	
@@ -2329,7 +2345,7 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 
 
   
-4. Start Up service for Ubuntu
+7. Start Up service for Ubuntu
   
 	sudo mv /filename /etc/init.d/
 	sudo chmod +x /etc/init.d/filename 
@@ -2338,7 +2354,7 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	
 	
   
-5. UUID  <= identifier for block devices. 
+8. UUID  <= identifier for block devices. 
 	UUIDs are 128 bit long numbers represented by 32 hexadecimal digits and which are used in 
 	software development to uniquely identify information with no further context. 
 	
