@@ -140,11 +140,7 @@ Pin-Priority: 501
 [agent]
 server = puppetmaster.x.com
 ###	
-	
-	
 	$ puppet resource package puppet ensure=latest
-	
-
 
 	$ /etc/init.d/puppet start
 
@@ -163,10 +159,6 @@ $ puppet cert list -a | awk '{print $2}' | sed 's/\"//g'
 
 # re-run from client to connect to master and update
 $ puppet agent -t
-	
-	
-	
-	
 	
 	
 ###### CentOS 7 AGENT Install ######
@@ -200,16 +192,6 @@ puppet server :  wput-puppet.namcowireless.com
 
 
 
-
-
-
-
-
-
-
-
-
- 
 ### Puppet Agent -t error
 	# Error: Could not request certificate: Server hostname 'pm' did not match server certificate; 
 	# Edit on server
@@ -270,9 +252,6 @@ Notice: Removing file Puppet::SSL::CertificateRequest wput-puppet at '/var/lib/p
 	$ vi /etc/puppet/environments/production/manifests/node.pp
 
 	
-	
-	
-	
 ### node.pp contains each VM's names ###
 node 'wiki' {
   file { '/info.txt':
@@ -313,23 +292,11 @@ basemodulepath = $confdir/modules:/opt/puppet/share/modules
 	If failed, apr_sockaddr_info_get() failed for puppet, 
 	edit /etc/hosts file adding 127.0.0.1 localhost puppet    <=
 	
-	
-	
-	
-	
-	
 13. Install Puppet Agent
 	
 	$ puppet agent -t 						( or --test)<= polling from agent host
 	$ service puppet restart				<= Check log from /var/log/syslog
 		# Apr 11 09:58:40 u14lts puppet-agent[2708]: Reopening log files
-	
-	
-	
-	
-	
-	
-	
 	
 	### Add new host to Puppet Master
 	$ puppet cert list				 		<= check if there is new host to add

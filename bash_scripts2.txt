@@ -494,4 +494,48 @@ done
 unset 'sorted_nums[1]'   <= Delete 2nd 
 unset sorted_nums		 <= Delte whole array
 
+---------------------------------------------------------------
+# Output all linux commands
+#!/bin/bash
+echo $PATH  | tr : '\n' |
+
+while read exec; do
+    for i in $exec/*; do
+        if [[ -x "$i" && -f "$i" ]]; then     # x - executable, -f file exist & regular file
+            echo $i
+        fi
+    done
+done
+--------------------- <= Output of  echo $PATH  | tr : '\n' |
+#/usr/local/bin
+#/usr/bin
+#/usr/local/sbin
+#/usr/sbin
+---------------------
+
+
+---------------------------------------------------------------
+$ chmod +r cmd.sh  <=read only mode
+$ if [[ -x cmd.sh && -f cmd.sh ]]; then echo cmd.sh;    fi
+$ no output  <= cuz no -x exec.
+---------------------------------------------------------------
+echo '1 2 3 4 5 6' | while read a b c
+  do
+    echo '(iteration beginning)' a="$a" b="$b" c="$c" '(iteration ending)'
+  done
+=>(iteration beginning) a=1 b=2 c=3 4 5 6 (iteration ending)  
+---------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
 

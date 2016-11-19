@@ -5,7 +5,18 @@ $ yum install python-pip
 $ pip install pudb 	<=debug tool
 http://stackoverflow.com/questions/1623039/python-debugging-tips
 
+Python 
 
+1. Debugging Python Debuger
+python -m pdb myscript.py
+l <=list
+n <=next
+c <=conntinue
+s <=step
+w <=where
+u <=up
+d <=down
+locals()
 
 
 #!/usr/local/python3.5
@@ -1448,7 +1459,16 @@ print("2. Subtract")
 print("3. Multiply")
 print("4. Divide")
 
-choice = input("Enter a choice from 1/2/3/4: ")
+choice = int(input("Enter a choice from 1/2/3/4: "))
+# Verify choice
+choice = int(input("Ente a choice from 1,2,3,4: "))
+if choice == 0:
+    print ("0 no option for zero")
+elif choice > 4:
+    print(" No option choice")
+else:
+    print("you have entered: ", choice )
+
 
 num1 = int(input("Enter first number: "))
 num2 = int(input("Enter second number: "))
