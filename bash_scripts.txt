@@ -29,9 +29,10 @@
     set -x              			<= End of file +x for TURN OFF
 
 	
-### Script running
+### Script running remotely
 --- Run a script on remote and out to local file
 $ ssh-copy-id id@remote_ip             <= copy id_rsa.pub file into remote first
+
 $ ssh id@remote_ip 'bash -s' < /home/scrhipt.sh >> output.log
 
 
