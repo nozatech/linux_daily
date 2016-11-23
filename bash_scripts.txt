@@ -17,6 +17,11 @@
     :! python %
     :! perl %
 	
+# Move	
+	:15 <- go to 15th line
+	$ vi +15 script.sh
+	
+	
  # VI Search and replace
 	:%s/foo/bar/g
 	:%s/foo/bar/gc					<= to confirm first
@@ -29,13 +34,19 @@
     set -x              			<= End of file +x for TURN OFF
 
 	
+	
+	
+	
 ### Script running remotely
 --- Run a script on remote and out to local file
 $ ssh-copy-id id@remote_ip             <= copy id_rsa.pub file into remote first
 
 $ ssh id@remote_ip 'bash -s' < /home/scrhipt.sh >> output.log
 
-
+BASH ( https://linux.die.net/man/1/bash )
+	-c  <= read from string
+	-i  <= shell is interactive
+	-s  <= read from the standard input
 	
 	
 	
@@ -412,7 +423,7 @@ done
 ### for_loop1.sh		
 #!/bin/bash
 for i in *; do   # * is local directory
-echo “$i”
+	echo “$i”
 done
 $./for_loop1.sh 
 => local files list
@@ -420,7 +431,7 @@ $./for_loop1.sh
 ### for_loop2.sh
 #!/bin/bash
 for i in $#; do
-echo “$i”			# zip archive "$i"
+	echo “$i”			# zip archive "$i"
 done
 $./for_loop1.sh 1 2 3 4	
 => 4   <= total number of argument 1,2,3,4 is 4 total!
@@ -428,7 +439,7 @@ $./for_loop1.sh 1 2 3 4
 ### for_loop2.sh
 #!/bin/bash
 for i in $@; do
-echo “$i”			# zip archive "$i"
+	echo “$i”			# zip archive "$i"
 done
 $./for_loop1.sh 1 2 3 4	
 => 1 2 3 4
@@ -543,15 +554,6 @@ echo ${Unix[7]}
 Unix=('Debian' 'Red hat' 'Ubuntu' 'Suse' 'Fedora' 'UTS' 'OpenLinux');
 unset Unix[3]
 echo ${Unix[@]}
-
-
-
-
-
-
-
-
-
 
 
 ### * wild including current directory files
@@ -1497,220 +1499,6 @@ trap returntrap RETURN  # is executed each time a shell function or a script exe
 
 
 
-###################################################
-########################################################################################################################################
-### 			Questions 				###
-#######################################################################################################################
-###################################################
-
-1: What is a shell?
-	Shell is a interface between user and the kernel. Even though there can be  only one kernel ; 
-	a system can have many shell running simultaneously . Whenever  a user enters a command  through 
-	keyboard the shell communicates with the kernel  to execute it and then display the output to the user.
-
-4:What is the difference between soft and hard links?
-	Soft links are link to the file name and can reside on different filesytem as well; 
-	however hard links are link to the inode of the file and has to be on the 
-	same filesytem as that of the file. Deleting the orginal file makes the soft link inactive 
-	(broken link) but does not affect the hard link (Hard link will still access a copy of the file)
-	e.g. ln source dest_file
-		 ln -s source dest_file
-
-5: How will you pass and access arguments to a script in Linux?
-	scriptName “Arg1” “Arg2”….”Argn” and can be accessed inside the script as $1 , $2 .. $n
-
-6: What is the significance of $#?
-
-	$# shows the total counts of the arguments passed to the script.
-	e.g. $# out puts like wc -l 
-	
-	
-7: What is the difference between $* and $@?
-	$@ treats each quoted arguments as separate arguments  
-	$* will consider the entire set of positional parameters as a single string.
-
-8: Use sed command to replace the content of the file (emulate tac command)
-if cat file1
-ABCD
-EFGH
-
-Then O/p should be
-EFGH
-ABCD
-
-
-sed '1! G; h;$!d' file1
-
-Here G command appends to the pattern space,
-
-h command copies pattern buffer to hold buffer
-
-and d command deletes the current pattern  space.
-
-9: Given a file,  replace all occurrence of word “ABC” with “DEF” from 5th line till end in only those lines that contains word “MNO”
-
-
-sed –n ‘5,$p’ file1|sed ‘/MNO/s/ABC/DEF/’
- 
-
-10: Given a file , write a command sequence to find the count of each word.
-
-
-tr –s  “(backslash)040” <file1|tr –s  “(backslash)011”|tr “(backslash)040 (backslash)011” “(backslash)012” |uniq –c
-
-where “(backslash)040” is octal equivalent of “space”
-1
-2
-3
-tr –s  “(backslash)040” <file1|tr –s  “(backslash)011”|tr “(backslash)040 (backslash)011” “(backslash)012” |uniq –c
- 
-where “(backslash)040” is octal equivalent of “space”
- 
-
-”(backslash)011” is octal equivalent of “tab character” and
-
-“(backslash)012” is octal equivalent of newline character.
-
-11: How will you find the 99th line of a file using only tail and head command?
-
-tail +99 file1|head -1
-
-
-12: Print the 10th line without using tail and head command.
-sed –n ‘10p’ file1
-
-
-13:In my bash shell I want my prompt to be of format  ‘$”Present working directory”:”hostname”>  and load a file containing a list of user defined functions as soon as I login , how will you automate this?
-
-	In bash shell we can create “.profile”  file which automatically gets invoked as soon as I login and write the following syntax into it.
-
-	export PS1=’$ `pwd`:`hostname`>’ .File1
-
- 
-Here File1 is the file containing the user defined functions and “.” invokes this file in current shell.
-
-14: Explain about “s” permission bit in a file?
-
-“s” bit is called “set user id” (SUID) bit.
-
-“s” bit on a file causes the process to have the privileges of the owner of the file during the instance of the program.
-
-Eg: Executing “passwd” command to change current password causes the user to writes its new password to shadow file even though it has “root” as its owner.
-
-15: I want to create a directory such that anyone in the group can create a file and access any person’s file in it but none should be able to delete a file other than the one created by himself.
-
-We can create the directory giving read and execute access to everyone in the group and setting its sticky bit “t” on as follows:
-
-
-mkdir direc1
-
-chmod g+wx direc1
-
-chmod +t direc1
-1
-2
-3
-4
-5
-mkdir direc1
- 
-chmod g+wx direc1
- 
-chmod +t direc1
- 
-
-16: How can you find out how long the system has been running?
-
-Command “uptime”
-
-17: How can any user find out all information about a specific user like his default shell, real life name, default directory,when and how long he has been using the sytem?
-
-finger  “loginName”                  …where loginName is the  login name of  the
-
-user whose  information is expected.
-
-18: What is the difference between $$ and $!?
-
-$$ gives the process id of the currently executing process whereas $! shows the process id of the process that recently went into background.
-
-19: What are zombie processes?
-
-These are the processes which have died but whose exit status is still not picked by the parent process. These processes even if not functional still have its process id entry in the process table.
-
-20: How will you copy file from one machine to other?
-	”scp” or “rsync” to copy file from one machine to other.
-
-
-26: What are the 3 standard streams in Linux?
-	0 – Standard Input
-	1 – Standard Output
-	2 – Standard Error
-
-27: I want to read all input to the command from file1 direct all output to file2 and error to file3?
-	command < file1   1 > file2    2 > file3
-
-28: What will happen to my current process when I execute a command using exec?
-	“exec” overlays the newly forked process on the current  process; so when I execute the command using exec, 
-	the command gets executed on the current shell without creating any new processes. 
-	### Then DISCONNECT SSH connection!!!
-
-	Eg: Executing “exec  ls”  on command prompt will execute ls and once ls exits, the process will shut down
-
-29: How will you emulate wc –l using awk?
-	awk ‘END {print NR} fileName’
-
-
-31: What is the difference between grep and egrep?
-	Extended grep that supports added grep features like “+” (1 or more occurrence of previous character),
-	”?”(0 or 1 occurrence of previous character) and “|” (alternate matching)
-
-32: How will you print the login names of all users on a system?
-	/etc/shadow file has all the users listed.
-	awk –F ‘:’ ‘{print $1} /etc/shadow’|uniq -u
-
-33: How to set an array in bash?
-	array_name=(element1 element2 element3 …. elementn)
-
-   
-
-37:What is the significance of "$?" ?
-	$? gives the exit status of the last command that was executed.
-
-38: How do we delete all blank lines in a file?
-
-	sed  ‘^ [\011\040]*$/d’ file1
- 
-		011 is octal equivalent of space
-		040 is octal equivalent of tab
-
-39: How will I insert a line “ABCDEF” at every 100th line of a file?
-	sed ‘100i\ABCDEF’ file1
-
-40: Write a command sequence to find all the files modified in less than 2 days and print the record count of each.
-	find . –mtime -2 –exec wc –l {} \;
-
-41: How can I set the default rwx permission to all users on  every file which is created in the current shell?
-	umask 777
-
-42: How can we find the process name from its process id?
-	“ps –p ProcessId”
-
-43: What are the four fundamental components of every file system on linux?
-	bootblock, super block, inode block and  data block
-
-44: What is a boot block?
-	This block contains a small program called “Master Boot record”(MBR) which loads the kernel  during system boot up.
-
-45: What is a super block?
-	Super block contains all the information about the file system like size of file system, block size used by it,
-	number of free data blocks and list of free inodes and data blocks.
-
-46: What is an inode block?
-	This block contains the inode for every file of the file system along with all the file attributes except its name.
-
-49: What are “c” and “b” permission fields of a file?
-“c “ and “b” permission fields are generally associated with a device file. It specifies whether a file is a character special file or a block special file.
-
 
 
 
@@ -1744,13 +1532,69 @@ done
 
 
 
+#------------------------------------------------------
+#!/bin/bash
+# Copy file to remote servers, Chmod +x, Run script
 
+ids=noza  							#Source ID
+idd=noza  							#destination ID
 
+kcks="/home/$ids/rkchk.sh"      	# Source sh
+kckd="/home/$idd/rkchk.sh"      	# destin sh
 
+# list=$(cat "/home/$ids/slist")    #list of servers
+list='192.168.232.158'
 
+echo ------------------------------------
+echo SCP is copying over to remote server
+echo ------------------------------------
 
+for i in $list; do
+	echo ------------------------------------
+    echo $i >> log
+	echo ------------------------------------
 
+	scp $kcks $idd@$i:/home/$idd/
 
+		echo "changing perm to running mode"
+
+	ssh -t $idd@$i chmod +x $kckd
+
+		echo "kernel ver check and report to logs file"
+
+	ssh -t $idd@$i bash -c $kckd 2>&1 >> log
+
+		echo ------------------------------------
+		echo ------------------------------------
+done
+
+#------------------------------------------------------
+#
+#------------------------------------------------------
+#!/bin/bash
+
+hosts='host1 host2 host3'
+sup='sup!123'
+
+for i in $hosts; do
+   echo "***** We are: $i *******"
+
+    ssh -t $i <<EOCommand
+        for d in $hosts
+        do
+            echo "******** Logging in from $i to: \$d *********"
+            ssh \$d exit
+
+            if [ $? = 0 ]; then
+                echo "SSH login successful!"
+            else
+                echo "SSH login failed!"
+            fi
+        done
+EOCommand
+    echo "Finished block for $i"
+done
+#------------------------------------------------------
 
 
 

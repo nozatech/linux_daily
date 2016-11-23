@@ -4,7 +4,7 @@
 1.역사책 - 역사의식 책임
 2.문화책 - 감성
 3.경영책 - 논리
-4.철학책 - 생각에 방법
+4.철학책 - 생각에 방법 app-1061.dgh.namcowireless.com
 5.사회학 인간학 - 인간 관계
 
 Windows CMD kill process(http://tweaks.com/windows/39559/kill-processes-from-command-prompt/)
@@ -89,10 +89,7 @@ Directory	/1/2/3/4/5
 	$ echo {w..d..2}		<= backward + every 2nd letter
 	$ touch cherry_{01..100}{w..d}.txt
 
-	
-	ls -l  <= LONG listing format
-	ls -1  <= ONE file per line
-	
+
 # number line	
 	$ cat txt | nl 
 	
@@ -103,6 +100,7 @@ Directory	/1/2/3/4/5
 	$ ssh -l ubuntu ip_address									<= -l login user name
 	$ ssh -l ubuntu hostname
 
+	
 	Install SSH on Ubuntu(Debian)
 	$ apt-get install openssh-server openssh-client
 	$ update-rc.d ssh defaults			<= put it into start up
@@ -230,8 +228,8 @@ http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
 	
 	/home/ubuntu/jarvis/ami/tcg/production/
 	
-    $ sudo sh -c "export OC_AWS_ACCESS_KEY=AKIAI6FBDACL5LFOEACA;
-				export OC_AWS_SECRET_KEY=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; 
+    $ sudo sh -c "export OC_AWS_ACCESS_KEY=AKIAI6FBDACL5LFOEACA; \
+				export OC_AWS_SECRET_KEY=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; \
 				fab tcg.credit_gems:host=10.10.1.50,player_id="544053a5c66354d43f5f07d3",amount=50"
 		
 	To make a usage listing of the directories in the /home partition.  Note that this runs the commands in a
@@ -1353,7 +1351,8 @@ journalctl - Query the systemd journal
 	rpm -ivh epel-release-6-8.noarch.rpm
 
 
-	
+	CentOS7 
+	sudo yum install epel-release
 
 
 	
@@ -1389,10 +1388,13 @@ Images Path: /var/www/site/images/test_images
 
 
 -------------------------------------------------------------------------------------------
-diff -B <(sshpass -p 'pa$$word1' ssh ubuntu1@images.server1.com "find /home/www/images/test_images -type f\ 
-| sed 's/\/home\/www\/images\/test_images\///g'" | sort -n) <(sshpass -p 'pa$$word2' ssh ubuntu2@images.server2.com\ 
-"find /var/www/site/images/test_images -type f | sed 's/\/var\/www\/site\/images\/test_images\///g'" | sort -n)\ 
-| grep ">" | awk '{print $2}'
+diff -B <(sshpass -p 'pa$$word1' \
+	ssh ubuntu1@images.server1.com "find /home/www/images/test_images -type f\ 
+	| sed 's/\/home\/www\/images\/test_images\///g'" | sort -n) < \
+	(sshpass -p 'pa$$word2' ssh ubuntu2@images.server2.com \ 
+	"find /var/www/site/images/test_images -type f |  \ 
+	sed 's/\/var\/www\/site\/images\/test_images\///g'" | sort -n)\ 
+	| grep ">" | awk '{print $2}'
 -------------------------------------------------------------------------------------------
 
 Explanation:
@@ -1737,12 +1739,38 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	colorscheme desert
 
 	
-59. network monitoring
-	$ iftop -n -i eth1        <= -n no name lookup -i interface eth1
+59. network monitoring and troubleshooting
 
+	$ iftop -n -i eth1        <= -n no name lookup -i interface eth1
+	
+	traceroute TTL(time-to-live) value, also known as hop limit, option
+	$ traceroute -w 3 -q 1 -m 16 example.com
+
+	MTR - MTR represents an evolution of the traceroute command by providing a greater data sample, as if augmenting 
+	traceroute with ping output. This document provides an in depth overview of MTR, the data it generates, and how 
+	to properly interpret and draw conclusions based on the data provided by it.
+
+
+	For geographical AS TCP SYN probe trace route to a website:
+	$ astraceroute -d eth0 -N -S -H <host e.g., netsniff-ng.org>
+
+	For kernel networking statistics within promiscuous mode:
+	$ ifpps -d eth0 -p
+
+	For high-speed network packet traffic generation, trafgen.txf is the packet configuration:
+	$ trafgen -d eth0 -c trafgen.txf
+
+	For compiling a Berkeley Packet Filter fubar.bpf:
+	$ bpfc fubar.bpf
+
+	For live-tracking of current TCP connections (including protocol, application name, city and country of source and destination):
+	$ flowtop
+
+	For efficiently dumping network traffic in a pcap file:
+	$ netsniff-ng -i eth0 -o dump.pcap -s -b 0	
 	
 	
-60. tcpdump
+	tcpdump
 	####################################
 	# tcpdump -i any -n tcp port 10050 #    <= zabbix agent port
 	####################################
@@ -1768,19 +1796,21 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
     host $HOSTNAME | xargs | cut -f4 -d' '
 	
 	$ dig +short +trace www.name.com
+	
+  	NetCat
+	###################################
+	#  nc -v 192.168.110.220  22 	  #  <= netcat  -v verbose / -z listening daemon
+	###################################   
+
+    Connection to 192.168.110.220 10051 port [tcp/zabbix-trapper] succeeded!
+	nc -l 22 							<= listening mode
+  
   
   
 61. telnet ip_address port_number  <= check port is open for connection
 	$ telnet ip_address 22
 	 to exit "ctrl+]" the type "close"
 
-	NetCat
-	###################################
-	#  nc -v 192.168.110.220  22 	  #  <= netcat  -v verbose / -z listening daemon
-	###################################   
-
-    Connection to 192.168.110.220 10051 port [tcp/zabbix-trapper] succeeded!
-	nc -l 22 							<= listening mode	
 
 
 	
@@ -1948,15 +1978,8 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 		
 		
 $ for i in db1, db2, db3, db4; do date; done
-    Sat Aug  8 10:46:21 PDT 2015
-	...
-    Sat Aug  8 10:46:21 PDT 2015
 	
 $ for i in svr1 svr2 svr3; do ssh $i date; done
-	ssh: Could not resolve hostname svr1: Name or service not known
-	...
-	ssh: Could not resolve hostname svr3: Name or service not known
-	
 		
 71. Transfer file using SCP + pem key
 
