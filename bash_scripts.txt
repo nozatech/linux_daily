@@ -8,6 +8,8 @@
     $ sh +x script.sh   			 <= +x for debuging mode
 	$ . script.sh   			     <= current login shell to run
     $ exec ./script   				 <= after run, the login shell exit 
+	$ bash ./script.sh
+	
 	
 # Run script WITHIN vim or vi
     :w   	      					<= write first
@@ -16,16 +18,35 @@
     :!./script_name.sh
     :! python %
     :! perl %
+
+### Save in read only file ###
+	:w !sudo tee %                  	<= save as sudo privilege.  type (L) load at the prompt to reload.
+	:w !chmod 777 %    then    :wq!
+	
+	:h									<= vi, vim help 			
+	:q 									<= quit help page
+	
+	$ vi +101 file.txt					<= go to 101 line in filename
+	:12									<= Go to particular line number in vi editor 
 	
 # Move	
 	:15 <- go to 15th line
 	$ vi +15 script.sh
 	
+
+ # VI Search and replace 	( http://vim.wikia.com/wiki/Search_and_replace )
+	:s/foo/bar/g					<= current line only
+	:%s/foo/bar/gc					<= % all, c to confirm first but also INSENSITVE
+	#:%s/foo/bar/gci				<= i insensitive(save as above cmd)
 	
- # VI Search and replace
-	:%s/foo/bar/g
-	:%s/foo/bar/gc					<= to confirm first
+	:%s/\<foo\>/bar/gc				<= Change only whole words exactly matching 'foo' to 'bar'
 	
+	# blank line delete
+	:g/^$/d							<= :g will execute a command on lines which match a regex. 
+										The regex is 'blank line'  
+										:d (delete)
+										
+										
  # Debug mode	
     #!/bin/bash -x 					<= add " -x " for debugging mode in #!/bin/bash script
     $ bash -x ./script.sh  			( same as 'bash script.sh') 
@@ -39,6 +60,7 @@
 	
 ### Script running remotely
 --- Run a script on remote and out to local file
+
 $ ssh-copy-id id@remote_ip             <= copy id_rsa.pub file into remote first
 
 $ ssh id@remote_ip 'bash -s' < /home/scrhipt.sh >> output.log
@@ -84,15 +106,7 @@ BASH ( https://linux.die.net/man/1/bash )
 	set -x : Display commands and their arguments as they are executed.
 	set -v : Display shell input lines as they are read. 
 	
- ### Save in read only file ###
-	:w !sudo tee %                  	<= save as sudo privilege.  type (L) load at the prompt to reload.
-	:w !chmod 777 %    then    :wq!
-	
-	:h									<= vi, vim help 			
-	:q 									<= quit help page
-	
-	$ vi +101 file.txt					<= go to 101 line in filename
-	:12									<= Go to particular line number in vi editor 
+
  
  # Move cursor to all the way down
 	shift+G		<= All the way down the page
@@ -1595,6 +1609,199 @@ EOCommand
     echo "Finished block for $i"
 done
 #------------------------------------------------------
+
+#!/bin/bash
+
+ids=noza
+idd=apark
+
+kcks="/home/$ids/rkchk.sh"
+kckd="/home/$idd/rkchk.sh"
+
+list=$(cat "/home/$ids/rr")
+
+echo ------------------------------------
+echo SCP is copying over to remote server
+echo ------------------------------------
+
+for i in $list; do
+
+     echo $i >> logs
+
+ scp $kcks $idd@$i:/home/$idd/
+
+     echo $kcks is copied.
+
+     echo changing perm to running mode
+
+ ssh -t $idd@$i "chmod +x $kckd && $kckd 2>&1" >> logs
+
+     echo kernel ver check and report to logs file
+     echo ---------------------------------------
+
+done
+#------------------------------------------------------
+
+#!/bin/bash
+
+ids=noza
+idd=apark
+
+kcks="/home/$ids/rkchk.sh"
+kckd="/home/$idd/rkchk.sh"
+
+list=$(cat "/home/$ids/rr")
+
+for i in $list; do
+
+    echo $i >> logs
+
+    scp $kcks $idd@$i:/home/$idd/
+
+    if ssh $idd@$i stat $kckd; then
+
+        echo $kcks is copied.
+
+    else
+
+        echo $kcks is NOT copied!!!
+
+    fi
+
+    echo changing perm to runing mode
+
+    ssh -t $idd@$i "chmod +x $kckd && $kckd 2>&1" >> logs
+
+        echo kernel ver check and report to logs file
+
+        echo ---------------------------------------
+
+done
+
+#------------------------------------------------------
+#!/bin/bash
+
+ids=noza
+idd=apark
+
+kcks="/home/$ids/rkchk.sh"							<= file pointing
+kckd="/home/$idd/rkchk.sh"
+
+list=$(cat "/home/$ids/rr")							<= invoke file
+
+for i in $list; do											
+
+    echo $i >> logs
+
+    ssh -q $idd@$i "test -e $kckd"		
+
+        if [ $? -eq 0 ]; then
+
+        echo $kcks is already existed.
+
+        ssh -t $idd@$i "chmod +x $kckd && $kckd 2>&1" >> logs
+
+    else
+
+        scp $kcks $idd@$i:/home/$idd/
+
+        ssh -t $idd@$i "chmod +x $kckd && $kckd 2>&1" >> logs
+
+    fi
+
+done
+
+
+#------------------------------------------------------
+
+$ for i in $(cat ~/list); do ssh apark@$i [[ -f /home/apark/rkchk.sh ]] && echo "File exist" || echo "Not Exist";done                       ne
+$ for i in $(cat "/home/apark/nu"); do ssh apark@$i "hostname && ls -l"; done
+$ for i in $(cat "/home/apark/nu"); do ssh apark@$i "rm -f rkchk.sh"; done
+$ for i in $(cat "/home/apark/nu"); do ssh -t apark@$i "sudo yum update kernel -y"; done
+
+$ while true; do dmesg -c ; sleep 1 ; done
+
+
+
+#------------------------------------------------------
+
+
+### Color ###
+RED="\033[1;31m"
+YELLOW="\033[1;33m"
+GREEN="\033[1;32m"
+BOLD="\033[1m"
+RESET="\033[0m"
+
+echo -e "${RED}vulnerable kernels CentOS 5, 6 and 7.${RESET}"
+
+
+
+#--------------------------------------------------------------------------------
+#!/bin/bash
+
+ids=noza
+idd=apark
+
+kcks="/home/$ids/rkchk.sh"
+kckd="/home/$idd/rkchk.sh"
+
+list=$(cat "/home/$ids/i7")
+
+
+for i in $list; do
+
+    echo "------------------------------------------------" | tee -a logs
+    echo $i | tee -a logs
+    echo "------------------------------------------------" | tee -a logs
+
+
+    ssh -q $idd@$i "test -e $kckd"
+
+        if [ $? -eq 0 ]; then
+
+            echo "$kckd is already exit" | tee -a logs
+
+
+        else
+
+            echo "$kckd is copying and running"
+
+            scp $kcks $idd@$i:/home/$idd
+
+            ssh -t $idd@$i "bash -c $kckd" 2>&1 | tee -a logs
+
+        fi
+
+    echo "------------------------------------------------" | tee -a logs
+
+done
+#--------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

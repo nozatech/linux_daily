@@ -49,7 +49,7 @@ Kafka - a high-throughput, low-latency distributed messaging system designed for
 Daily Linux CMD List & Scripts
 
 32bit is 2^32 =~ 4.3 billion
-IP address is 32bit 
+IPv4 address is 32bit 
 
 ### Enable color & history time stamp ###
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> ~/.bashrc
@@ -64,22 +64,38 @@ $ vi .vimrc
 :set tabstop=4
 :set autoindent
 
-esc high light
+esc highlight
 shift+v to copy == yy
 shift+p to paste == pp
 
+vi / vim  set number
+	$ vi -V 			<= version check
+	:set nu / set nu!   <= set number on/off
+	:e file_name        <= open & create  file
+ 	:w new_name 	    <= save as to new_name
+	
+Cut and Paste(v/V-d/y-p/P)
+	 a. Position the cursor where you want to begin cutting.
+V    b. Press v to select characters (or V - whole lines).
+     c. Move the cursor to the end of what you want to cut.
+d    d. Press d to cut (or y to copy).
+     e. Move to where you would like to paste.
+p    f. Press P to paste before the cursor, or p to paste after.
 
-
-
+Undo
+	esc and u
+	
 		
-# cd command
-Directory	/1/2/3/4/5
+# CD command
+	mkdir -p /1/2/3/4/5
 	from /1/2/3/  =>  /1   			$ cd ../..
 	from /1/2/3   =>  /1/2-1/ 		$ cd ../2-1
 	
-	$ cd ~-				<= move to previous directory
+	$ cd -				<= move to previous directory
+	# cd ~-				<= same
 	$ echo ~-			<= out put previous directory
 	
+# Touch command
 	$ touch apple banana cherry			<= creating multiple files
 	$ touch file_{01..1000}
 	$ echo {1..10..2}
@@ -598,6 +614,20 @@ cron job search from command line
     ls -atlh   			 	 <= -a all, -t modified time, -l per line 
     ls -atlhr   			 <= -r reverse
 
+	$ ls -l
+-rwxrw-r--    10    root   root 2048    Jan 13 07:11 afile.exe
+	
+?UUUGGGOOOS   00  UUUUUU GGGGGG ####    ^-- date stamp and file name are obvious ;-)
+^ ^  ^  ^ ^    ^      ^      ^    ^
+| |  |  | |    |      |      |    \--- File Size
+| |  |  | |    |      |      \-------- Group Name (for example, Users, Administrators, etc)
+| |  |  | |    |      \--------------- Owner Acct
+| |  |  | |    \---------------------- Link count (what constitutes a "link" here varies)
+| |  |  | \--------------------------- Alternative Access (blank means none defined, anything else varies)
+| \--\--\----------------------------- Read, Write and Special access modes for [U]ser, [G]roup, and [O]thers (everyone else)
+\------------------------------------- File type flag
+	
+	
 	
 16. Filesystem type  
 	$ df -T						<= disk free
@@ -973,14 +1003,14 @@ reboot system boot 3.2.13-grsec-xxx Tue Apr 3 07:34 - 09:17 (9+01:42) <= 9days 1
 
 
 29. Empty file contents or logs
-                     Bourne POSIX  zsh    csh/tcsh  rc/es  fish
-> file                Y      Y      N(1)   N(1)      N      N
-: > file              N/Y(2) Y(3)   Y      Y(4)      N(5)   N(5)
-true > file           Y(5)   Y      Y      Y(5)      Y(5)   Y(5)
-cat /dev/null > file  Y(5)   Y      Y(5)   Y(5)      Y(5)   Y(5)
-cp /dev/null file (7) Y(5)   Y      Y(5)   Y(5)      Y(5)   Y(5)
-printf '' > file      Y(5)   Y      Y      Y(5)      Y(5)   Y
-eval > file           Y(3,8) Y(3)   Y      Y(6)      Y      Y
+						Bourne POSIX  zsh    csh/tcsh  rc/es  fish
+	> file                Y      Y      N(1)   N(1)      N      N
+	: > file              N/Y(2) Y(3)   Y      Y(4)      N(5)   N(5)
+	true > file           Y(5)   Y      Y      Y(5)      Y(5)   Y(5)
+	cat /dev/null > file  Y(5)   Y      Y(5)   Y(5)      Y(5)   Y(5)
+	cp /dev/null file (7) Y(5)   Y      Y(5)   Y(5)      Y(5)   Y(5)
+	printf '' > file      Y(5)   Y      Y      Y(5)      Y(5)   Y
+	eval > file           Y(3,8) Y(3)   Y      Y(6)      Y      Y
 
 
 30. df . and  df / are same result
@@ -988,12 +1018,11 @@ eval > file           Y(3,8) Y(3)   Y      Y(6)      Y      Y
 	df -h / | grep -E "\/$" | awk '{print $4}'
 	df -h / | xargs | awk '{print $11}'       <= Same result
 	
-	fdisk -l
+	fdisk -l				
 	
-	sfdisk -l -uM
+	sfdisk -l -uM				<=partition table manipulator for Linux
 	
-	cfdisk /dev/sda1  <= a linux partition editor with an 		
-			     interactive user interface based on ncurses
+	cfdisk /dev/sda1  			<= a linux partition editor with an interactive user interface based on ncurses
 	
 	parted -l  <= list out partitions 
 	
@@ -1003,30 +1032,14 @@ eval > file           Y(3,8) Y(3)   Y      Y(6)      Y      Y
 		NAME  MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
 		xvda1 202:1    0  12G  0 disk /
 
-	blkid  <= prints the block device(partitions and storage media) 
-		  attributes like uuid and file system type.
+	$ blkid 			 <= prints the block device(partitions and storage media) 
+							attributes like uuid and file system type.
 	
 
 
 
 
-36. vi/vim  set number
-	a. set nu / set nu!  <= set number on/off
-	b. :e file_name      <= open & create  file
- 	c. :w new_name 	     <= save as to new_name
-	
-    vi -V to		     <= check vi/vim version
-     
-Cut and Paste(v/V-d/y-p/P)
-	 a. Position the cursor where you want to begin cutting.
-V    b. Press v to select characters (or V - whole lines).
-     c. Move the cursor to the end of what you want to cut.
-d    d. Press d to cut (or y to copy).
-     e. Move to where you would like to paste.
-p    f. Press P to paste before the cursor, or p to paste after.
-
-Undo
-
+36. 
 
 
 
@@ -1107,11 +1120,18 @@ Undo
 
 
 	traceroute and ping
-	mtr  - combines  the  functionality  of the traceroute and ping in a single network diagnostic tool.
-$ mtr --report google.com
+	mtr(Mutli function TRracert) - combines  the  functionality  of the traceroute and ping in a single network diagnostic tool.
+	# Generating report
+	$ mtr google.com 				<= realtime
+	$ mtr -rw google.com			<= report
+    $ mtr -rw -c 5 google.com       <= -r report, -w wide report, -c count 5 instead of 10 by default
+	
+	Start: Thu Dec  1 13:55:32 2016
+	HOST: cos7    Loss%   Snt   Last   Avg  Best  Wrst StDev  <= standard deviation of the latencies to each host
+	1.|-- gateway  0.0%     5    0.1   0.1   0.1   0.2   0.0
+	2.|-- i7       0.0%     5    0.3   0.3   0.3   0.4   0.0
 
-
-
+	$ mtr --no-dns -rw -c 5 google.com
 
 
 		
@@ -1976,29 +1996,30 @@ $ ssh -vvv id@x.com
 $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 	  ^option	
 		
-		
-$ for i in db1, db2, db3, db4; do date; done
-	
-$ for i in svr1 svr2 svr3; do ssh $i date; done
-		
-71. Transfer file using SCP + pem key
 
-	$ scp -i /path/to/key.pem     /path/to/file.jpg    user_id@ip_address:/home/user_id/folder_name
+		
+71.  Transfer file using SCP + pem key
+
+	$ scp -i /path/to/key.pem     /path/to/file.jpg    user_id@ip_/home/id/folder
+	
 	## -i Identity_file such as pem key
 	$ scp -i /AWS-OC-Key/oc-prod.pem /AWS-OC-Key/oc-sDATEe.pem ec2-user@ip_address:/home/ec2-user/.cert
 
 	### copy a File to remote host Transfer
-	$ scp -pv student-files.zip nozatech@192.168.221.128:/home/nozatech/download
+	$ scp -pv file.zip noza@192.168.221.128:/home/noza/download
 	
-	$ scp -i .ssh/oc-sDATEe.pem  ami.zip ubuntu@10.10.1.89:/home/ubuntu/
+	$ scp -i .ssh/oc.pem  ami.zip ubuntu@10.10.1.89:/home/ubuntu/
 
 	unzip ami.zip -d /jarvis
     
-	# to copy a folder from your local computer to a remote one.
-	scp -r source_local_file user_id@ip_address:/path/to/copy/
+	### copy file / folder
+	
+	# Local to Remote copy folder
+	scp -r /home/id/.ssh id@ip:/home/id/
 
-	# to copy a folder from a remote machine to your local one.
-	scp -r user_id@ip_address:/path/of/folder/to/copy /target/local/directory
+	# Remote to Local copy folder one.
+	scp -r id@ip:/home/id/.ssh /home/id/.ssh2
+	
 
 	
 72. Combine Xargs with Find command 

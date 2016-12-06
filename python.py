@@ -1,9 +1,30 @@
 Python 3.5.2 Install on CentOS7
 https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-centos-7
+sudo yum -y install yum-utils
+sudo yum -y groupinstall development
+sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+sudo yum -y install python35u-3.5.2
+sudo yum -y install python35u-pip
+sudo yum -y install python35u-devel
+
+
 
 $ yum install python-pip
 $ pip install pudb 	<=debug tool
 http://stackoverflow.com/questions/1623039/python-debugging-tips
+
+#!/usr/local/python
+#!/usr/local/python3.5
+#!/bin/env python
+If you're prone to installing python in various and interesting places on your PATH (as in $PATH in 
+typical Unix shells, %PATH on typical Windows ones), using /usr/bin/env will accomodate your whim 
+(well, in Unix-like environments at least) while going directly to /usr/bin/python won't. But losing 
+control of what version of Python your scripts run under is no unalloyed bargain... if you look at 
+my code you're more likely to see it start with, e.g., #!/usr/local/bin/python2.5 rather than with 
+an open and accepting #!/usr/bin/env python -- assuming the script is important I like to ensure it's 
+run with the specific version I have tested and developed it with, NOT a semi-random one;-).
+
+
 
 Python 
 

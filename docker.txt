@@ -1654,6 +1654,18 @@ Options:
 
    
   
+### NIDS ###
+OpenVas 			<= Docker container setup
+https://github.com/mikesplain/openvas-docker  (Ubuntu 14.04)
+
+$ docker run -d -p 443:443 -p 9390:9390 -p 9391:9391 --name openvas mikesplain/openvas
+https://ip
+# admin : openvas
+$ docker top openvas
+$ docker exec -it openvas bash
+  
+  
+  
   
   
   
