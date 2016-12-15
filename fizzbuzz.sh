@@ -19,7 +19,7 @@ done
 
 #!/bin/bash
 ## C style
-for ((i=0; i<=30; i++)); do
+for (( i = 0; i <= 30; i++ )); do
     if (( $i % 3 == 0 )) && (( $i % 5 == 0 )); then echo "for-loop"
     elif (( $i % 3 == 0 )); then echo "for"
     elif (( $i % 5 == 0 )); then echo "loop"
@@ -46,7 +46,7 @@ do
         elif (( $i % 5 == 0 )); then echo "Loop"
         else echo "$i";
         fi
-((i++))
+(( i++ ))
 done
 
 #

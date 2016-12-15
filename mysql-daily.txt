@@ -4,7 +4,43 @@
 
 # MySQL history
 	$ less ~/.mysql_history
+
+CentOS7	
+	yum install mysql   <= client install	
 	
+	wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+	sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
+	yum update
+	sudo yum update
+	sudo yum install mysql-server -y
+	systemctl start mysql
+	systemctl enable mysql
+
+--------------------------------------------------------------------------------------------------------------
+### RUN FROM SHELL ###
+#-------------------------------------------------------------------------------------------------------------
+
+$ mysql -u root -p --execute="SELECT User, Host FROM mysql.user"
+$ mysql -u root -p -e "SELECT VERSION();SELECT NOW()"	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+#-------------------------------------------------------------------------------------------------------------
 # Check MySQL DB
 	$ mysqlcheck -u root -p --all-databases
 	
@@ -23,10 +59,11 @@
        If mysql_upgrade finds that a table has a possible incompatibility, it performs a table check and, 
 	   if problems are found, attempts a table repair. If the table cannot be repaired, see Section 2.13.4, 
 	   “Rebuilding or Repairing Tables or Indexes” for manual table repair strategies.
-
+#-------------------------------------------------------------------------------------------------------------
 	
 # DB Location
 	/var/lib/mysql/
+	
 #MySQL config file
 	$ /etc/my.cnf
   
@@ -34,8 +71,6 @@
 	$ mysql -uroot -p 					<= login first
 	$ SELECT User FROM mysql.user;		<= run cmd to check
   
-
-
 1. Master/Slave replication status
 	# grep mysql /var/log/syslog
 	# grep error /var/log/mysql.log
@@ -58,9 +93,9 @@ master_log_pos=120;
 10.128.69.203
 
 
-###
+#-------------------------------------------------------------------------------------------------------------
 # Create an user account and grant permission
-###
+#-------------------------------------------------------------------------------------------------------------
 
 CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';
 
@@ -78,9 +113,9 @@ GRANT ALL PRIVILEGES ON *.* To 'user'@'hostname' IDENTIFIED BY 'password';
  REVOKE [type of permission] ON [database name].[table name] FROM ‘[username]’@‘localhost’;
 
 
-#####################
+#-------------------------------------------------------------------------------------------------------------
 # MySQL DB backup ###
-#####################
+#-------------------------------------------------------------------------------------------------------------
 
 mysqldump -u dbadmin -p --all-databases --events --master-data > /tmp/master-dump.db
 
@@ -90,9 +125,9 @@ mysqldump -u dbadmin -p --all-databases --events --master-data > /tmp/master-dum
 #################
 scp -pv /tmp/master-dump.db apark@10.128.69.203:/tmp
 
-##############################
+#-------------------------------------------------------------------------------------------------------------
 ### MySQL root PW recovery ###
-##############################
+#-------------------------------------------------------------------------------------------------------------
 1. service mysqld stop 	// systemctl stop mysql
 2. mysqld_safe --skip-grant-tables
 3. update user set password=PASSWORD('xxxxx') where User='root';
@@ -113,10 +148,9 @@ scp -pv /tmp/master-dump.db apark@10.128.69.203:/tmp
 
 
 
-
-#################
+#--------------------------------------------------------------------------------------------------------------
 ### Create DB ###
-#################
+#--------------------------------------------------------------------------------------------------------------
 
 
 # mysql -u root -p
@@ -137,7 +171,7 @@ scp -pv /tmp/master-dump.db apark@10.128.69.203:/tmp
 		   );
 
 # INSERT INTO model (id, name, price) 
-	VALUES ( 'NULL', 'mega', '135000');
+	VALUES ( NULL, 'mega', '135000');
 
 # SELECT * FROM model;
 
@@ -145,19 +179,76 @@ scp -pv /tmp/master-dump.db apark@10.128.69.203:/tmp
 
 # CREATE TABLE spec (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, engine VARCHAR(25), speed INT(3));
 
-# INSERT INTO spec (id, engine, speed) VALUES ('NULL', 'V8', '155'), ('NULL', 'i6', '130');
+# INSERT INTO spec (id, engine, speed) VALUES (NULL, 'V8', '155'), (NULL, 'i6', '130');
 
 # SELECT * FROM spec;
 
+mysql> select * from spec;
++----+--------+-------+
+| id | engine | speed |
++----+--------+-------+
+|  1 | i4     |   155 |
 
-# CREATE TABLE model (
-		id int not null primary key auto_increment, 
-		name char(25), 
-		price INT(6),  
-		engine VARCHAR(3), 
-		speed INT(3)
-		);
+# Missing car name so Add colum to exiting table 'SEPC'
+mysql> alter table spec add name varchar(25) after id
 
+mysql> select * from spec;
++----+------+--------+-------+
+| id | name | engine | speed |
++----+------+--------+-------+
+|  1 | NULL | i4     |   155 |
+|  2 | NULL | i3     |   140 |
+|  3 | NULL | i2     |   130 |
++----+------+--------+-------+
+
+> update spec set name='gold' where id =1;
+> update spec set name='silver' where id=2;
+> update spec set name='bronz' where id =3;
+	
+mysql> select * from spec;
++----+--------+--------+-------+
+| id | name   | engine | speed |
++----+--------+--------+-------+
+|  1 | gold   | i4     |   155 |
+|  2 | silver | i3     |   140 |
+|  3 | bronz  | i2     |   130 |
++----+--------+--------+-------+
+
+
+# check table schema		
+mysql> SHOW CREATE TABLE spec;
++-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                                                                                                                                                      |
++-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| spec  | CREATE TABLE `spec` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(25) DEFAULT NULL,
+  `engine` varchar(25) DEFAULT NULL,
+  `speed` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 |
++-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 INSERT INTO model (id, name, price, engine, speed) 
 	    values('null','mega','135000','V8','153');
 INSERT INTO model (id, name, price, engine, speed) 

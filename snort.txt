@@ -1,0 +1,144 @@
+SECURITY
+
+https://nmap.org/
+
+
+# Nmap Security Scanner
+Intro
+Ref Guide
+Install Guide
+Download
+Changelog
+Book
+Docs
+# Security Lists
+Nmap Announce
+Nmap Dev
+Bugtraq
+Full Disclosure
+Pen Test
+Basics
+More
+# Security Tools
+Password audit
+Sniffers
+Vuln scanners
+Web scanners
+Wireless
+Exploitation
+Packet crafters
+More
+
+
+
+
+
+
+1. SNORT (NIDS: network-based intrusion detection system )
+※ snort 구조(Sniffer -> Preprocessor -> Detection Engine -> Alert/Logging)
+1. Sniffer
+네트워크를 도청하는데 쓰이는 하드웨어 또는 소프트웨어 장치
+어플리케이션 또는 하드웨어 장치에서 해당 네트워크의 트래픽을 도청할 수 있다.
+
+2. Preprocessor
+패킷 Sniffer 로 부터 전달받은 패킷을 특정한 플러그 인으로 전달하여 패킷에서 특정한 종류의 행위를 차는다.
+패킷에서 특정한 행위를 찾은 뒤에 Detection Engine 으로 전송하게 된다.
+
+3. Detection Engine
+Preprocessor 로 부터 패킷을 전달받아 패킷과 일치하는 Ruleset 이 있다면 해당 패킷은 Alert/Logging 으로 전달된다.
+
+4. Alert/Logging
+Detection Engine 과 일치하는 패킷이 있다면 경고가 발생하는데, 이 때 경고는 로그파일, SMB, SNMP 트랩 등으로 전달된다.
+
+Network IDS or NIDS performs as its name suggests, it monitors the package data sent and received through a specific network interface it was configured for. It aims to catch threats targeting your system vulnerabilities using signature-based detection and protocol analysis technologies. NIDS software when installed and configured properly can identify the latest attacks, malware infections, compromised systems, and network policy violations.
+
+
+
+https://www.unixmen.com/install-snort-nids-centos-7/
+
+###---- Prerequisite ----###
+$ sudo yum install -y gcc flex bison zlib libpcap pcre libdnet libdnet-devel tcpdump perl-libwww-perl openssl-devel
+$ sudo yum install -y perl-Crypt-SSLeay  perl-Sys-Syslog  perl-Thread-Queue perl-Time-HiRes   perl-Archive-Tar
+----------------------------------------------------------------------------------------------------------------
+#---- Data Acquisition Package ----#
+$ sudo yum install -y https://www.snort.org/downloads/snort/daq-2.0.6-1.centos7.x86_64.rpm
+$ sudo yum install -y https://www.snort.org/downloads/snort/snort-2.9.8.3-1.centos7.x86_64.rpm
+
+Install check
+    $ snort -V
+    $ snort --daq-list
+
+	
+wget https://www.snort.org/downloads/snort/daq-2.0.6.tar.gz
+wget https://www.snort.org/downloads/snort/snort-2.9.8.3.tar.gz
+
+
+
+
+###################################################
+# Step #4: Configure dynamic loaded libraries.
+# For more information, see Snort Manual, Configuring Snort - Dynamic Modules
+###################################################
+#-----------------------------------------------------------------------
+# path to dynamic preprocessor libraries
+dynamicpreprocessor directory /usr/lib64/snort-2.9.8.3_dynamicpreprocessor/
+
+# path to base preprocessor engine
+dynamicengine /usr/lib64/snort-2.9.8.3_dynamicengine/libsf_engine.so
+
+# path to dynamic rules libraries
+dynamicdetection directory /usr/local/lib/snort_dynamicrules
+
+$echo "include \$RULE_PATH/so_rules.rules"  >> /etc/snort/snort.conf
+$echo "include \$RULE_PATH/local.rules" 	>> /etc/snort/snort.conf
+$echo "include \$RULE_PATH/snort.rules" 	>> /etc/snort/snort.conf
+
+
+
+2. Port Scan attack
+---	PSAD ----
+https://www.digitalocean.com/community/tutorials/how-to-use-psad-to-detect-network-intrusion-attempts-on-an-ubuntu-vps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ (HISD: host-based intrusion detection system )
+1. TRIPWIRE
+2. OSSEC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

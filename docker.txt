@@ -204,9 +204,11 @@ $ ls -l /var/lib/docker/aufs/diff/fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c7
 $ cat /var/lib/docker/aufs/diff/fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c73f3675fb40c2e68d30/root/test.file
 	test file			<= created from container OS using VIM
 
+$ docker ps -q
 
 $ docker start 796dab5a1c1b
 796dab5a1c1b
+$ docker stop docker_id
 
 $ docker attach 796dab5a1c1b
 
@@ -225,13 +227,11 @@ Digest: sha256:64a02df6aac27d1200c2572fe4b9949f1970d05f74d367ce4af994ba5dc3669e
 Status: Downloaded newer image for fedora:latest
 
 $ docker pull -a fedora			<= download all images
-
 				
 $ docker images					<= check all local images
 REPOSITORY          DATE                 IMAGE ID            CREATED             SIZE
 ubuntu              latest              45bc58500fa3        2 weeks ago         126.9 MB
 centos              latest              980e0e4c79ec        4 weeks ago         196.8 MB
-
 
 #######################################################################
    <-cmd          <-image   <- app or process e.g. <= /usr/sbin/nginx 
@@ -241,12 +241,9 @@ $ docker run -it ubuntu   /bin/bash
 			 i <- interactive(attach), t <- tty(login) 
 #######################################################################
 
-
 $ docker images
 
 $ docker run -it centos /bin/bash
-
-
 
 ### Docker Layers ###
 top     config files
@@ -260,11 +257,8 @@ a3ed95caeb02: Pull complete 	 <= latest update layer
 5e160ca0bb5a: Pull complete	 	 <= update layer
 1f92e2761bfd: Pull complete 	 <= base image layer
 
-
-
 ### base layer + dependency layers
 $ ls -lh /var/lib/docker/aufs/layers/
-
 
 ### Move docker container to other hosts ###
 Ubutu => CentOS
@@ -292,11 +286,10 @@ fridge              latest              3179ff2722de        About a minute ago  
   ^ <= new container image
 
   
-$docker history fridge			<= image history
+$ docker history fridge			<= image history
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 3179ff2722de        2 minutes ago       /bin/bash -c echo 'sudo apt-get install vim -   0 B
 45bc58500fa3        2 weeks ago         /bin/sh -c #(nop)  CMD ["/bin/bash"]            0 B
-
 
 $ docker save -o /tmp/fridge.tar    fridge
                ^ output    
@@ -322,12 +315,10 @@ c8305edc6321: Loading layer 132.5 MB/132.5 MB
 5c42a1311e7e: Loading layer 15.87 kB/15.87 kB
 Loaded image: fridge:latest
 
-
 $docker images
 REPOSITORY          DATE                 IMAGE ID            CREATED             SIZE
 fridge              latest              3179ff2722de        36 minutes ago      126.8 MB
 
-  
 $ docker run -it fridge /bin/bash
 
 $ cat /root/COOL-FILE.txt
@@ -343,7 +334,6 @@ $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 b78d6099223a        centos              "/bin/bash -c 'ping 8"   5 seconds ago       Up 4 seconds                            sick_kilby
  
-
 # system monitoring tools run on container
  
 $ docker top 5730134bd446
@@ -358,7 +348,6 @@ $ docker run --cpu-shares=256
 
 $ docker run memory=1g
  
-
 $ docker attach romantic_mclean                          <= container NAMES
 # Keep running
 64 bytes from 8.8.8.8: icmp_seq=166 ttl=127 time=2.12 ms
@@ -377,7 +366,7 @@ $ ctrl+d        <= exit out to host, not in container
 $ CTRL+P+Q      <= leave the container running and back to HOST OS prompt
 
 
-# to Kill container(ID) from Host OS shell
+### Kill container(ID) from Host OS shell
 $ docker stop e9e7ae8a6abd
 
 $ docker ps
@@ -395,7 +384,7 @@ e9e7ae8a6abd        ubuntu:14.04        "/bin/bash"         6 minutes ago       
 $ docker start | stop | restart  container_name <= container to start, stop, restart (VM)
 $ docker start | stop | restart e9e7ae8a6abd
 
-$ docker attach | restart e9e7ae8a6abd  		<=reconnect <= connection to container using PID 1(ssh to the container)  
+$ docker attach | restart e9e7ae8a6abd  		<= reconnect <= connection to container using PID 1(ssh to the container)  
 
   
 ### PID ###
@@ -408,11 +397,6 @@ PID 1 = docker run ... <command>
 ### Deleting containers
 $ docker rm container_name
 $ docker rm -f					<= -f force
-$  
-
-
-
-
 
 ### Inside container
 # check 
@@ -420,10 +404,8 @@ $ docker run ubuntu /bin/bash
 $ ping google.com -c 60
 $ ctrl++p+q
 
-
 ### Using Host PID 33702
 root     33702  0.0  0.3  18244  3292 pts/3    Ss+  13:36   0:00 /bin/bash
-
 
 ## phusion/baseimage <= docker image from Docker hub
 
@@ -477,10 +459,9 @@ $ docker exec -it 972a27e39f97 /bin/bash
 $ docker attach 972a27e39f97 
 
 
-  
-################################## 
-### Dockerfile for build image ###
-##################################
+#------------------------------------------------------------------------------------------------------
+### Dockerfile for build image 
+#------------------------------------------------------------------------------------------------------  
 
 Dockerhub Ubuntu 14.04 image creating Docker file
 https://github.com/tianon/docker-brew-ubuntu-core/blob/50cfe3fd07327a05e449574f0ece07a6e0bb0c76/trusty/Dockerfile
@@ -488,8 +469,9 @@ https://github.com/tianon/docker-brew-ubuntu-core/blob/50cfe3fd07327a05e449574f0
 $ mkdir ~/Dockerfile
 $ vi ~/Dockerfile/Dockerfile
 
-#############
+###
 # Ubuntu based Hello World container
+###
 
 FROM ubuntu:14.04
 MAINTAINER apark@bnga.com
@@ -565,10 +547,7 @@ f2d8ce9fa988        9 days ago          /bin/sh -c #(nop)  CMD ["/bin/bash"]    
 
 
 $ docker run helloworld:0.1
-
 Hello World
-
-
 
 ### Docker file ###
 
@@ -750,8 +729,10 @@ $ docker logs -f 43feac338895		<= -f is follow that runs from host
 64 bytes from 8.8.8.8: icmp_seq=81 ttl=127 time=2.89 ms
 64 bytes from 8.8.8.8: icmp_seq=82 ttl=127 time=2.89 ms
 
-
+#------------------------------------------------------------------------------------------------------
 ### Docker Volume
+#------------------------------------------------------------------------------------------------------
+
 # Docker container failed, but external volume saves the data
 # Decoupling data from containers and share
 
@@ -866,9 +847,10 @@ $ docker run --dns=8.8.8.8 --name=dnstest net-img
 
 $ docker inspect net-img
 
-######################
-### Troubleshoot ###
-#####################
+
+#------------------------------------------------------------------------------------------------------
+### Troubleshoot
+#------------------------------------------------------------------------------------------------------
 
 1. Docker Daemon Logging
  debug		<= debug + info + error + fatal
@@ -876,8 +858,7 @@ $ docker inspect net-img
  error		<= error + fatal
  fatal		<= fatal
  
- 
-$ service docker stop
+ $ service docker stop
   
 Usage: docker [OPTIONS] COMMAND [arg...]
 
@@ -891,7 +872,6 @@ $ echo 'DOCKER_OPTS="--log-level=fatal"'  >> /etc/default/docker
 
 $ ps aux | grep docker
 root     53169  0.1  4.2 664360 43172 ?        Ssl  14:35   0:00 /usr/bin/dockerd --log-level=fatal --raw-logs
-
 
 2. Container Logging
 	User "volumes" to share and persist data
@@ -956,9 +936,6 @@ target     prot opt source               destination
 DOCKER-ISOLATION  all  --  0.0.0.0/0            0.0.0.0/0
 DOCKER            all  --  0.0.0.0/0            0.0.0.0/0
 
-
-	
-	
 ### Host OS ###	
 $ docker version
 $ docker info
@@ -974,14 +951,13 @@ $ vi Dockerfile
 	
 $ docker build -t="container_name" .
 $ docker run -d --name  container_name image_name
+	
+	
 
-	
-	
-	
-	
-###################################
+#------------------------------------------------------------------------------------------------------
 ### SWARM based on Docker 1.12.x###	### SWARM KITS <= Orchestration
-###################################
+#------------------------------------------------------------------------------------------------------	
+
 ###docker-swarm-visualizer
 https://github.com/DovAmir/docker-swarm-visualizer/blob/master/README.md
 
@@ -1154,9 +1130,9 @@ Docker Service command
 	
 	
 	
-####################################################
+#-------------------------------------------------------------------------------------
 ##### Private Docker Registry & Docker Compose #####
-####################################################
+#-------------------------------------------------------------------------------------
   
 
 ### Docker Installation ###
@@ -1257,9 +1233,9 @@ registry:
  
  
  
-################
+###-----------------------------------------------------------------------------------
 ### Glossary ###
-################
+###-----------------------------------------------------------------------------------
 
 # aufs
 aufs (advanced multi layered unification filesystem) 

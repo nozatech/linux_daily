@@ -18,9 +18,9 @@ Settings > Shortcut Mapper Menu.
 ctrl + l	Delete Current line
 
 2.Auto-completion
-Ctrl+Space	Function completion
-Ctrl+Enter	Word completion
-Ctrl+Shift+Space	Function parameter hint
+	Ctrl+Space			Function completion
+	Ctrl+Enter			Word completion
+	Ctrl+Shift+Space	Function parameter hint
 
 3. Basic File Management
 Ctrl+N		Create new document.
@@ -60,13 +60,13 @@ echo 'export HISTTIMEFORMAT="%F "' >> ~/.bashrc
 ### Vi environment setup (setting)
 Create a .vimrc file in home 
 $ vi .vimrc
-:set num
-:set tabstop=4
-:set autoindent
+	:set num
+	:set tabstop=4
+	:set autoindent
 
 esc highlight
-shift+v to copy == yy
-shift+p to paste == pp
+	shift+v to copy == yy
+	shift+p to paste == pp
 
 vi / vim  set number
 	$ vi -V 			<= version check
@@ -108,6 +108,9 @@ Undo
 
 # number line	
 	$ cat txt | nl 
+
+# long command using ' \'
+
 	
 3. SSH connection login
 	$ ssh -v root@172.16.248.xx > result.txt					<= -v debugging mode
@@ -156,11 +159,11 @@ $ pip install pssh
 	
 
 4.  RSA KEY( 1024bit, 2k, 4k bit)
-	$ ssh-keygen -t rsa					<= Generate  id_rsa (Private Key ) & id_rsa.pub (Public Key)	
+	$ ssh-keygen -t rsa							<= Generate  id_rsa (Private Key ) & id_rsa.pub (Public Key)	
 	
     $ ssh-copy-id user_id@remote_server			<= Transferring Public Key
 	
-	    $ cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+	$ cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 
 	$ ssh sg-eu "cat .ssh/*.pub"
 
@@ -212,7 +215,7 @@ Content-Type: text/html; charset=UTF-8
 *C*R*U*D*
 POST method
 	$ curl -d "first=Alber&last=park" http://address:port/method_name
-PUT methond
+PUT method
 	$ curl -X PUT -d "first=Alber&last=park" http://address:port/method_name
 Delete
 	$ curl -X DELETE  http://address:port/method_name
@@ -220,9 +223,10 @@ Delete
 $curl -u 
 
 
-	curl -X GET -H 
+	$ curl -X GET -H 
 	
-	
+
+
 	
 	
 	
@@ -236,6 +240,17 @@ http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
 
 	$ printf id:pw | base64
 	https://www.base64decode.org/	
+	
+	
+# Docker install script using curl	
+	$ curl -fsSL https://get.docker.com/ | sh   				<= docker install script
+		   -f  fail silently(no output at all)
+		   -s	--silent (Silent or quiet mode)
+		   -S	--show-error
+		   -L 	--location
+	
+	https://get.docker.com/
+	
 	
 	
 	
@@ -581,8 +596,9 @@ cron job search from command line
 	
 	### Finding cron job list for all users ###
 	$ for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
-
-	$ for user in $(cut -f1 -d: /etc/passwd); do echo $user; crontab -u $user -l; done
+	
+	# permission issue
+	$ sudo "for user in $(cut -f1 -d: /etc/passwd); do echo $user; crontab -u $user -l; done"
 
 	
 	a. Getting all user id info from /etc/passwd using 
@@ -764,8 +780,11 @@ cron job search from command line
 	watch -d -n1 "netstat -ntap | grep ESTA"  		<= Print active connections n1 <= every 1sec
 	
 	watch -n5 'netstat -ntap | grep ESTA | wc -l'	<= Print active connections n1 <= every 1sec
-
-	l1nuXc0nf
+	
+	watch -n 0.1 "dmesg | tail -n $((LINES-6))"
+	
+	while true; do dmesg -c ; sleep 1 ; done
+	
 	ss <= socket statistic
 
 
@@ -823,7 +842,9 @@ cron job search from command line
    
 21. uptime		<= uptime, number of users, CPU load 1, 5, 15 mins
 	09:35:45 up 10 days, 21:18,  2 users,  load average: 0.03, 0.03, 0.05
-			
+	
+	$ uptime | awk '{print $3}' | cut -f1 -d,
+	$ uptime | awk '{print $3,$4}' | cut -f1 -d,	
    
 22. Script 				<= Record commands in terminal session
 
@@ -1120,7 +1141,12 @@ reboot system boot 3.2.13-grsec-xxx Tue Apr 3 07:34 - 09:17 (9+01:42) <= 9days 1
 
 
 	traceroute and ping
-	mtr(Mutli function TRracert) - combines  the  functionality  of the traceroute and ping in a single network diagnostic tool.
+	
+	mtr(Mutli function TRracert) 
+	
+	https://www.linode.com/docs/networking/diagnostics/diagnosing-network-issues-with-mtr
+	combines  the  functionality  of the traceroute and ping in a single network diagnostic tool.
+	
 	# Generating report
 	$ mtr google.com 				<= realtime
 	$ mtr -rw google.com			<= report
@@ -1133,8 +1159,12 @@ reboot system boot 3.2.13-grsec-xxx Tue Apr 3 07:34 - 09:17 (9+01:42) <= 9days 1
 
 	$ mtr --no-dns -rw -c 5 google.com
 
-
-		
+	# traceroute
+	$ traceroute -n -w 3 -q 1 -N 32 -m 16 google.com
+		-n         : Disable DNS lookup to speed up queries.
+		-w seconds : Set the time (in seconds) to wait for a response to a probe (default 5.0 sec).
+		-q  NUMBER : Sets the number of probe packets per hop. The default is 3.
+		-m  max hop:
 
 	
 		
@@ -2005,7 +2035,7 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 	## -i Identity_file such as pem key
 	$ scp -i /AWS-OC-Key/oc-prod.pem /AWS-OC-Key/oc-sDATEe.pem ec2-user@ip_address:/home/ec2-user/.cert
 
-	### copy a File to remote host Transfer
+	### copy a File to Remote host 
 	$ scp -pv file.zip noza@192.168.221.128:/home/noza/download
 	
 	$ scp -i .ssh/oc.pem  ami.zip ubuntu@10.10.1.89:/home/ubuntu/
@@ -2273,9 +2303,15 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
     $ uname -a		<= all include kernel, processor(32/64bit), hostname, 
     $ uname -r 		<= kernel version
     $ cat /proc/version
+
+	###Install lsb_release on CentOS7
+	$ yum provides */lsb_release
+	$ yum install redhat-lsb 
 	$ lsb_release -a
    
-  
+
+
+   
 4. ulimit 								<= Increase "Max Open Files Limit"
 ####	
 # echo "* soft nofile 102400" > /etc/security/limits.d/*_limits.conf && echo "* hard nofile 102400" >> /etc/security/limits.d/*_limits.conf 
@@ -2892,6 +2928,18 @@ CentOS package update vs upgrade
 yum upgrade and yum update will perform the same function that update to the latest current version of package.
 
 But the difference is Upgrade will delete obsolete packages, while update will preserve them.
+
+
+### CHROOT
+	Using chroot cmd to switch different file systems
+	e.g. Host OS kernel, module, drivers on host file system1(Ubuntu /dev/sda1) can modify on file system2(Debina /dev/sda2) 
+
+Ubuntu 
+$nmap 			<- works
+$ cd /debian
+$ chroot . bash
+Debian 
+$nmap 			<- need to install
 
 
 
