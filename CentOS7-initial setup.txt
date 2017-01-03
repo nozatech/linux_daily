@@ -2,11 +2,12 @@ CentOS7 min setup
 
 1. dhclient
 2. yum -y update
-3. yum -y install net-tools 
-4. ifconfig
-5. yum install yum-utils
+3. yum -y install net-tools    
+4. yum -y isntall bind-utils
+5. ifconfig
+6. yum install yum-utils
 
-sudo yum install -y epel-release ncdu iftop mtr wget net-tools yum-utils iptables-services vim 
+sudo yum install -y epel-release ncdu iftop mtr wget net-tools yum-utils iptables-services vim bind-utils
 
 # Iptables install
 sudo yum -y install iptables-services
@@ -14,9 +15,6 @@ sudo systemctl enable iptables
 sudo systemctl mask firewalld
 sudo systemctl stop firewalld
 sudo systemctl start iptables
-
-
-
 
 
 
@@ -59,4 +57,27 @@ Restart your network service:
 $ service network restart
 Take a look at your network interfaces
 
-ifconfig
+
+
+
+# Static DNS
+$ cat /etc/resolv.conf
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+
+$ cat /etc/sysconfig/network-scripts/ifcfg-eth0
+DEVICE='eth0'
+TYPE=Ethernet
+BOOTPROTO=none
+ONBOOT='yes'
+HWADDR=86:d8:f3:f7:d1:a1
+IPADDR=162.243.102.23
+NETMASK=255.255.255.0
+GATEWAY=162.243.102.1
+NM_CONTROLLED='yes'
+IPADDR2=10.13.0.136
+PREFIX2=16
+DNS1=8.8.8.8
+DNS2=8.8.4.4
+
+

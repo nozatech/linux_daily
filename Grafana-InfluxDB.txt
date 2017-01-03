@@ -1,6 +1,37 @@
+Grafana - InfluxDB
+
+
+#------------------------------------------------------------------------------------
+Docker volumes & ENV config
+The Docker container exposes two volumes, the sqlite3 database in the folder /var/lib/grafana and c
+onfiguration files is in /etc/grafana/ folder. You can map these volumes to host folders when you 
+start the container:
+map the data folder and sets a configuration option via an ENV instruction.
+
+docker run -d -p 3000:3000 \
+    -v /var/lib/grafana:/var/lib/grafana \
+	-e "GF_SECURITY_ADMIN_PASSWORD=secret" \
+	grafana/grafana:develop
+	
+docker run -i -p 3000:3000 grafana/grafana
+
+ID:admin
+PW:secret
+http://docs.grafana.org/installation/configuration/
+#------------------------------------------------------------------------------------
+
 InfluxDB 
 https://docs.influxdata.com/influxdb/v1.0/introduction/installation/
 
+wget https://dl.influxdata.com/influxdb/releases/influxdb-1.1.1.x86_64.rpm
+sudo yum localinstall influxdb-1.1.1.x86_64.rpm
+
+
+
+
+
+
+#------------------------------------------------------------------------------------
 How to Install and Config
 http://vmkdaily.ghost.io/influxdb-and-grafana-on-centos/
 
@@ -25,14 +56,15 @@ $ sudo systemctl start influxdb
 $ sudo systemctl enable influxd            
 				 
 $ls /usr/bin/ | grep influx
-influx
-influxd
-influx_inspect
-influx_stress
-influx_tsm
+	influx
+	influxd
+	influx_inspect
+	influx_stress
+	influx_tsm
 
-Note***:   influx is the CLI tool to manage things.
-		   influxd is the actual binary that runs the program itself(No lib dependencies).
+*** Note ***   
+	influx 	<- the CLI tool to manage things.
+	influxd <- the actual binary that runs the program itself(No lib dependencies).
 
 ### Config file	location	
 $ /etc/influxdb/influxdb.conf

@@ -81,9 +81,16 @@ BASH ( https://linux.die.net/man/1/bash )
 	
 	
 	
-	
-	
-	
+Grouping Commands	
+https://www.gnu.org/software/bash/manual/bashref.html#Command-Grouping
+
+### ()   	<=  ( list )
+	Placing a list of commands between parentheses causes a subshell environment to be created, and each of 
+	the commands in list to be executed in that subshell. Since the list is executed in a subshell, variable 
+	assignments do not remain in effect after the subshell completes.
+### {} 		<=	{ list; }
+	Placing a list of commands between curly braces causes the list to be executed in the current shell context. 
+	No subshell is created. The semicolon (or newline) following list is required.	
 	
 	
 	
@@ -1722,10 +1729,22 @@ done
 
 #------------------------------------------------------
 
-$ for i in $(cat ~/list); do ssh apark@$i [[ -f /home/apark/rkchk.sh ]] && echo "File exist" || echo "Not Exist";done                       ne
+### Single line script from SHELL ###
+
+
+$ for i in $(cat ~/list); do ssh apark@$i [[ -f /home/apark/rkchk.sh ]] && echo "File exist" || echo "Not Exist";done                      
 $ for i in $(cat "/home/apark/nu"); do ssh apark@$i "hostname && ls -l"; done
 $ for i in $(cat "/home/apark/nu"); do ssh apark@$i "rm -f rkchk.sh"; done
 $ for i in $(cat "/home/apark/nu"); do ssh -t apark@$i "sudo yum update kernel -y"; done
+
+$ for i in us eu as; do echo sg-$i; ssh sg-$i "uptime"; done
+$ for i in sg-us sg-eu sg-as ; do echo $i; date; done
+$ for i in sg-eu sg-as ; do rsync -av authorized_keys $i:.ssh; done
+
+
+$ for i in $(cat pmtip); do echo $i && ssh -t apark@$i cat /var/log/newrelic/nrsysmond.log | tail; done  2>&1 > log
+
+
 
 $ while true; do dmesg -c ; sleep 1 ; done
 

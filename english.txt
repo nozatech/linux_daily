@@ -14,7 +14,7 @@ cling			<- (of a person or animal) hold on tightly to.
 clingy			<- kids are very clingy #(of a person or garment) liable to cling; clinging
 commercing 		<- starting
 condemnation	<- 심한비난
-
+contiguous		<- sharing a common border; touching. next or together in sequence.
 
 # D
 damping			<- 습기를 주는, 전기: 감폭
@@ -28,6 +28,12 @@ digress			<- off the subject
 
 # G
 gingivitises	<- 치은염
+
+#H
+
+
+# I
+ideation 		<- 관념화 the formation of ideas or concepts.
 
 # N
 no frill 		<- simple, plain, 
@@ -44,9 +50,11 @@ quirk			<- 변덕
 # R
 resonance		<- 울림, 공진
 retroactive  	<- effective from a particular date in time
+relator			<- 고발자, a person who brings a public lawsuit, typically in the name of the 
+				   attorney general, regarding the abuse of an office or franchise.
 
 # S
-setup VS set up <- setup is noun, set up is verb 
+setup VS set up <- setup is a noun, set up is a verb 
 squealing 		<- 빽뺵소리 스피커에서
 supersede 		<- replace
 

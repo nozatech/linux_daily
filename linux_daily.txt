@@ -46,6 +46,26 @@ Kafka - a high-throughput, low-latency distributed messaging system designed for
 		handling real-time data feeds
 -----------------------------------------------------------------------------------		
 
+### Chrome ###
+Alt + Home				Open your homepage.
+Alt + Tab				Toggle between browser windows
+Alt + Left Arrow		Back a page.
+Alt + Right Arrow		Forward a page.
+F11						Full screen
+Esc						Stop page or download from loading.
+Ctrl + Shift + I		Development Tools*** 
+Ctrl + Shift + O		Open the Bookmark manager.
+Ctrl + Shift + N		New Incognito Window
+
+Ctrl + H				Open history in a new tab
+Ctrl + K or Ctrl + E	Perform a Google search
+Ctrl + T				Opens a new tab.
+Ctrl + U				View a web page's source code
+
+
+
+
+
 Daily Linux CMD List & Scripts
 
 32bit is 2^32 =~ 4.3 billion
@@ -57,7 +77,7 @@ echo 'export HISTTIMEFORMAT="%F "' >> ~/.bashrc
 ###
 
 
-### Vi environment setup (setting)
+### Vi environment set-up (setting)
 Create a .vimrc file in home 
 $ vi .vimrc
 	:set num
@@ -157,7 +177,12 @@ Undo
 $ yum install python-pip
 $ pip install pssh
 	
-
+	### Remote command from shell
+$ ssh apark@192.241.190.57 'sudo iptables -nL'
+	
+	
+	
+	
 4.  RSA KEY( 1024bit, 2k, 4k bit)
 	$ ssh-keygen -t rsa							<= Generate  id_rsa (Private Key ) & id_rsa.pub (Public Key)	
 	
@@ -165,13 +190,13 @@ $ pip install pssh
 	
 	$ cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 
-	$ ssh sg-eu "cat .ssh/*.pub"
+	$ ssh remote_server "cat .ssh/*.pub"
 
 
 5. WGET to download a file using user_id & PW
 	$ wget --user=user_id --password='my_passwd' http://download.com/foo.pdf
 	$ wget http://www.gnu.org/software/gettext/manual/gettext.html  or file_name	
-	$ time $ wget http://www.gnu.org/software/gettext/manual/gettext.html  			<= measuring download time
+	$ time wget http://www.gnu.org/software/gettext/manual/gettext.html  			<= measuring download time
 
 ### cURL  
 testing on REST API
@@ -220,17 +245,48 @@ PUT method
 Delete
 	$ curl -X DELETE  http://address:port/method_name
 
-$curl -u 
-
+	$ curl -u 
 
 	$ curl -X GET -H 
 	
 
+### curl can download or upload through any protocol, http, ftp, sftp, scp, ldap, telnet
+
+curl www.yahoo.com -o output.html
+curl -O www.yahoo.com/index.html
+curl -# -u id:pw ftp://ftphost/fuzicast/sample.txt -o sample.txt # the -# adds progress bar
+curl -r 0-99 -u id:pw ftp://ftphost/fuzicast/sample.txt# get first 100 bytes
+curl -r -500 -u id:pw ftp://ftphost/fuzicast/sample.txt # get last 500 bytes
+echo "Hello World" | curl -T - -u id:pw ftp://ftphost/fuzicast/sample2.txt
+curl -T UNIX-1.14 -u id:pw ftp://ftphost/fuzicast/unix
+curl -T localfile1 servername/remotefile1 -T localfile2 servername/remotefile2
+curl -T UNIX-1.14 -u id:pw -a ftp://ftphost/fuzicast/unix # append to FTP file
+curl --ftp-create-dirs -T UNIX-1.14 -u id:pw ftp://ftphost/fuzicast/unix/test.txt
+curl --limit-rate 10240 -u id:pw ftp://ftphost/fuzicast/sample.txt # limit number of bytes per second
+.curlrc # curl configuration file
+curl -u id:pw -z sample.txt ftp://ftphost/fuzicast/sample.txt # download remotefile only if it's newer than localfile
+curl -z "Jan 12 2012" -u id:pw ftp://ftphost/fuzicast/sample.txt # download remote file only if it's newer than Jan 12 2012
+curl -B -u id:pw ftp://ftphost/fuzicast/sample.txt # enforces ASCII transfer during FTP download 
+curl -u id:pw ftp://ftphost/fuzicast/sample.txt --create-dirs -o sampledir/sample.txt# create directory if not exist
+curl --key id_rsa # use SSH key
+curl -u id:pw ftp://ftphost -Q 'RNFR /fuzicast/sample.txt' -Q 'RNTO /fuzicast/sampleyue.txt' # rename a remote file in FTP protocol
+curl -u id:pw ftp://ftphost -Q 'rename /fuzicast/sample.txt /fuzicast/sampleyue.txt' # rename in SFTP is different from FTP
+curl -R -u id:pw ftp://ftphost/fuzicast/sample.txt -o output.txt # reserve original file timestamp
+curl -l -u id:pw ftp://ftphost/fuzicast/ # list remote filenames
+curl -m 1800 -Y 3000 -y 60 servername/filename # speed must be greater than 3000 bytes per second for a minute and download process must be completed within 1800 seconds, otherwise the download will abort
+
+
+
+
+
+
+
+
+
+
 
 	
-	
-	
-	### text browser ###
+### text browser ###
 	$ sudo apt-get install -y links
 	$ links http://www.google.com
 	
@@ -242,14 +298,7 @@ http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
 	https://www.base64decode.org/	
 	
 	
-# Docker install script using curl	
-	$ curl -fsSL https://get.docker.com/ | sh   				<= docker install script
-		   -f  fail silently(no output at all)
-		   -s	--silent (Silent or quiet mode)
-		   -S	--show-error
-		   -L 	--location
-	
-	https://get.docker.com/
+
 	
 	
 	
@@ -338,19 +387,29 @@ http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
 	$ free -m
 	
 	#$ dd if=/dev/zero of=/swapfile bs=2048 count=512k
+
+#### Create swap space	#4GB with 1MB bitesize
+#--------------------------------------------------------------------------------
+
+dd if=/dev/zero of=/swapfile count=4096 bs=1MiB   
+sudo chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab
+
+#--------------------------------------------------------------------------------	
+
+# To enable it at boot time, edit /etc/fstab 
+	/swapfile  swap  swap  defaults  0 0
 	
-	$ dd if=/dev/zero of=/swapfile count=4096 bs=1MiB   #4GB with 1MB bitesize
-	$ sudo chmod 600 /swapfile
-    $ mkswap /swapfile
-	$ swapon /swapfile
-	
-	To enable it at boot time, edit /etc/fstab 
-	/swapfile          swap            swap    defaults        0 0
-	How do I verify swap is activated or not?
+echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab
+
+# How do I verify swap is activated or not?
 	$ free -h
 	$ less /proc/meminfo
 	$ top            #check in KiB Swap
-
+	$ cat /proc/swaps
+	$ cat /proc/meminfo | grep -i swap
 	
 	
 	### bug, not working	###
@@ -1303,6 +1362,9 @@ B. CentOS 7(systemd)
 
 	d.
   
+  
+  
+  
 List processes
 chkconfig:
 
@@ -1312,6 +1374,8 @@ systemd:
 # systemctl list-units
 Enable a service
 chkconfig:
+
+$ systemctl list-unit-files | grep 'influx\|grafana'
 
 # chkconfig <service_name> on
 systemd:
@@ -1384,14 +1448,26 @@ journalctl - Query the systemd journal
 	journalctl -u sshd     <= -u unit, 
 	journalctl -xe
 
-	
-		
+
+----------------------------------------------------------------
+Distribution			|	SystemD	 |	System V  |	 Upstart
+----------------------------------------------------------------
+Amazon Linux											V
+CentOS 6												V
+CentOS 7						V
+Debian 7 ("Wheezy")							V
+Debian 8 ("Jessie")				V
+RHEL 6													V
+RHEL 7							V
+Ubuntu, 14.04 or lower									V
+Ubuntu, 16.04 or higher			V	
+----------------------------------------------------------------		
 	
 	
 46. List of package installed
 
     online 			<=    yum list *httpd
-    system 			<=    yum list installed (same as rpm -qa) | grep httpd
+    system 			<=    yum list installed (same as 'rpm -qa') | grep httpd
     yum info httpd  <=version and detail pkg info
 
 
@@ -1753,15 +1829,19 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 
 59. Prompt Color red
 
-	Permanently add color scheme to .bashrc file
+	Permanently add Green color scheme to .bashrc file
 	######															  ####
-	# echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> ~/.bashrc #
+	# echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> ~/.bashrc #   <= GREEN Color
 	######															  ####
 
-	### only works on current shell
-    export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]' 	 >> ~/.bashrc		<= green, red for 31m 
-
-    export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"  >> ~/.bashrc		<= 2 colors
+	### Temp current shell
+	export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]' 		 >> ~/.bashrc		<= Green 
+	export PS1='\[\e[1;31m\][\u@\h \W]\$\[\e[0m\]' 		 >> ~/.bashrc		<= Red  
+    export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"  	 >> ~/.bashrc		<= Green|Red 
+    
+	### Permanent
+	echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" 	 >> ~/.bashrc		<= Green 
+    echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"'   >> ~/.bashrc		<= Green|Red 
 
 								
 	
@@ -1967,17 +2047,14 @@ To temporarily set the swappiness in Linux, write the desired value (e.g. 10) to
 
 
 # Set the swappiness value as root
-  echo 10 > /proc/sys/vm/swappiness
+  $ echo 10 > /proc/sys/vm/swappiness
  
 # Alternatively, run this 
-  sysctl -w vm.swappiness=10   # sysctl - configure kernel parameters at runtime
+  $ sysctl -w vm.swappiness=10   # sysctl - configure kernel parameters at runtime
  
 # Verify the change
-  cat /proc/sys/vm/swappiness
+  $ cat /proc/sys/vm/swappiness
   10
-# use cat to append  
-[root@cos7 ~]#cat >> /etc/resolv.conf
-cos7.localdomain
 
  
 # Alternatively, verify the change
@@ -1987,23 +2064,29 @@ cos7.localdomain
   inserted, if not present):
   vm.swappiness = 10
 
-66. rpm package install 
-  rpm -ivh foo-xxx.rpm <= install
-  rpm -Uvh foo-xxx.rpm <= upgrade
+  
+  
+  
+66. rpm package 
+	### install 
+    $ rpm -ivh foo-xxx.rpm <= install
+    $ rpm -Uvh foo-xxx.rpm <= upgrade
 
-  Remove
-  rpm -qa | grep -i webmin
-  rpm -e <package name>
+    ### Remove
+	$ rpm -qa | grep -i webmin
+	$ rpm -e <package name>
 
-  rpm -qa | grep mysql
-  /sbin/ldconfig -v | grep mysql
+	### Search installed sw
+	$ rpm -qa | grep mysql
+	$ /sbin/ldconfig -v | grep mysql
 
   
 67. nmap  <= Short for Network Mapper 
     It is an open source security tool for network exploration, security scanning and     
 	auditing. However, nmap command comes with lots of options that can make the utility     
 	more robust and difficult to follow for new users.
-$ nmap -sT ip_address  ( s-scan, T-TCP)
+	
+	$ nmap -sT ip_address  ( s-scan, T-TCP)
 
 
 68. pgrep, pkill - look up or signal processes based on name and other attributes
@@ -2081,6 +2164,10 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 	$ grep -i finding_word *
 	$ grep -i finding_word */*
 	$ grep -i finding_word */*/*    <= continue to sub directories
+	
+	
+	$ grep 'influx\|grafana'		<= grep 2
+	
 
 73. 
 	iptables -L
@@ -2109,11 +2196,11 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 	1>&2    <= STD output should go to the same place as STD error is going.
 
 76. Backtick
+	Command within backticks is evaluated (executed) by the shell before the main command (like chown in your examples), 
+	and the output of that execution is used by that command, just as if you'd type that output at that place in the command line.
 
-Command within backticks is evaluated (executed) by the shell before the main command (like chown in your examples), and the output of that execution is used by that command, just as if you'd type that output at that place in the command line.
-
-sudo chown `id -u` /somedir
-sudo chown 1000 /somedir
+	$ sudo chown `id -u` /somedir
+	$ sudo chown 1000 /somedir
 
 
 
@@ -2146,7 +2233,7 @@ CentOS6.x file location =>
 	$ timedatectl set-timezone UTC
 	$ timedatectl set-timezone America/New_York
 	
-Ubuntu timezone change
+	Ubuntu timezone change
 	$ sudo dpkg-reconfigure tzdata	
 	
 	
@@ -2190,13 +2277,13 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 
 81. Check Kernel Version
 
-	ls -al /etc/ld.so.conf.d
+	$ ls -al /etc/ld.so.conf.d
 
 	kernel-2.6.32-431.11.2.el6.x86_64.conf
 	
-	uname -a				<= all info 
+	$ uname -a				<= all info 
 	
-	uname -r 
+	$ uname -r 
 	2.6.32-431.1.2.0.1.el6.x86_64
 	
 	
@@ -2206,8 +2293,9 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	$ cat /boot/config-4.2.0-27-generic 
 	
 
-    sudo dpkg -l | grep linux-headers | grep ii
-    sudo dpkg -l | grep linux-headers | grep ii | awk '{print $3}'
+	# Ubuntu
+    $ sudo dpkg -l | grep linux-headers | grep ii
+    $ sudo dpkg -l | grep linux-headers | grep ii | awk '{print $3}'
 	
 
 82. rsync
@@ -2223,26 +2311,34 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
     
 	ssh sg-eu "cat .ssh/*.pub"
 
-	for i in us eu as; do echo sg-$i; ssh sg-$i "uptime"; done
-	
-	for i in sg-us sg-eu sg-as ; do echo $i; date; done
-	
-	for i in sg-eu sg-as ; do rsync -av authorized_keys $i:.ssh; done
+
 
 
 	
 	
 ### IFS (Internal Field Separator)###
 http://unix.stackexchange.com/questions/16192/what-is-ifs-in-context-of-for-looping
-IFS isn't directly related to looping, it's related to word splitting. IFS indirectly determines how the output from the command is broken up into pieces that the loop iterates over.
-When you have an unprotected variable substitution $foo or command substitution $(foo), there are two cases:
-•	If the context expects a single word, e.g. when the substitution is between double quotes "$foo", or in a variable assignment x=$foo, then the string resulting from the substitution is used as-is.
-•	If the context expects multiple words, which is the case most of the times, then two further expansions are performed on the resulting string:
-•	The string is split into words. Any character that appears in $IFS is considered a word separator. For example IFS=":"; foo="12:34::78"; echo $foo prints 12 34  78 (with two spaces between 34 and 78, since there's an empty word).
-•	Each word is treated as a glob pattern and expanded into a list of file names. For example, foo="*"; echo $foo prints the list of files in the current directory.
-For loops, like many other contexts, expect a list of words. So
-for x in $(foo); do …
-breaks $(foo) into words, and treats each word as a glob pattern. The default value of IFS isspace, tab and newline, so if foo prints out two lines hello world and howdy then the loop body is executed with x=hello, then x=world and x=howdy. If IFS is explicitly changed to contain a newline only, then the loop is executed for hello world and howdy. If IFS is changed to be o, then the loop is executed for hell,  w, rld␤h (where ␤ is a newline character) and wdy.
+IFS isn't directly related to looping, it's related to word splitting. IFS indirectly determines how 
+the output from the command is broken up into pieces that the loop iterates over.
+When you have an unprotected variable substitution $foo or command substitution $(foo), there are 
+two cases:
+•	If the context expects a single word, e.g. when the substitution is between double quotes "$foo", 
+	or in a variable assignment x=$foo, then the string resulting from the substitution is used as-is.
+•	If the context expects multiple words, which is the case most of the times, then two further .
+	expansions are performed on the resulting string:
+•	The string is split into words. Any character that appears in $IFS is considered a word separator. 
+	For example IFS=":"; foo="12:34::78"; echo $foo prints 12 34  78 (with two spaces between 34 and 
+	78, since there's an empty word).
+•	Each word is treated as a glob pattern and expanded into a list of file names. For example, 
+	foo="*"; echo $foo prints the list of files in the current directory.
+
+	For loops, like many other contexts, expect a list of words. So
+	for x in $(foo); do …
+	breaks $(foo) into words, and treats each word as a glob pattern. The default value of IFS isspace,
+	tab and newline, so if foo prints out two lines hello world and howdy then the loop body is 
+	executed with x=hello, then x=world and x=howdy. If IFS is explicitly changed to contain a newline 
+	only, then the loop is executed for hello world and howdy. If IFS is changed to be o, then the 
+	loop is executed for hell,  w, rld␤h (where ␤ is a newline character) and wdy.
 
 	
 
@@ -2252,17 +2348,20 @@ breaks $(foo) into words, and treats each word as a glob pattern. The default va
 
 ### SSH TUNNEL
 # orgin
-$ ssh -N -R 8822:localhost:22 remote.host.com
-The optional -N says "don't execute a command" (helpful to prevent accidents caused by leaving remote shells laying around.)
+	$ ssh -N -R 8822:localhost:22 remote.host.com
+	The optional -N says "don't execute a command" (helpful to prevent accidents caused by leaving 
+	remote shells laying around.)
 
-Now from remote, you can SSH to host1 like this: (The remote port 8822 forwards to host1, but only on the loopback interface.)
+	Now from remote, you can SSH to host1 like this: (The remote port 8822 forwards to host1, but 
+	only on the loopback interface.)
 
 # remote
-$ ssh -p 8822 localhost
-For extra credit, you can export the forwarding to the whole world, allowing anyone get to host1 by hitting remote's port 8822. (Note the extra initial colon)
+	$ ssh -p 8822 localhost
+	For extra credit, you can export the forwarding to the whole world, allowing anyone get to host1 
+	by hitting remote's port 8822. (Note the extra initial colon)
 
 # orgin
-$ ssh -N -R :8822:localhost:22 remote.host.com
+	$ ssh -N -R :8822:localhost:22 remote.host.com
 
 
 
@@ -2293,15 +2392,14 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	killall <process name>
     kill -9 
 	kill 15
-	pkill <process_id>  <= Kill all child processes, too.
-	
-	ps -u <user_id>		<= u (user)
+	pkill <pid>  		<		= Kill all child processes, too.
+	ps -u <user_id>				<= u (user)
 		
 		
 3. Linux CentOS or Ubuntu Version check	
     $ cat /etc/*rel*
-    $ uname -a		<= all include kernel, processor(32/64bit), hostname, 
-    $ uname -r 		<= kernel version
+    $ uname -a				<= all include kernel, processor(32/64bit), hostname, 
+    $ uname -r 				<= kernel version
     $ cat /proc/version
 
 	###Install lsb_release on CentOS7
@@ -2310,12 +2408,59 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	$ lsb_release -a
    
 
+    $ yum provides
+	When you install sw and got a message saying that "xxx requires xxx library and xxx are missing."
+	Then run 'yum provides "xxx"' to check dependencies.
+	
+	
 
    
-4. ulimit 								<= Increase "Max Open Files Limit"
-####	
-# echo "* soft nofile 102400" > /etc/security/limits.d/*_limits.conf && echo "* hard nofile 102400" >> /etc/security/limits.d/*_limits.conf 
-####	
+4. ulimit 		
+	system wide, user resource limits
+	
+	OS needs memory to manage each open file
+	$ ulimit -n 						<= Find open files limit per process
+	$ lsof | wc -l						<= Count all opened files by all process
+	$ cat /proc/sys/fs/file-max			<= Get maximum open files count allows
+	$ cat /proc/sys/fs/file-nr			<= to get the current number of open files from the Linux kernel's point of view
+	
+	Example: This server has 40096 out of max 65536 open files, although lsof reports a much larger number:
+	$ cat /proc/sys/fs/file-max
+		65536
+	$ cat /proc/sys/fs/file-nr 
+		40096   0       65536
+	$ lsof | wc -l
+		521504
+	
+	### System-wide File Descriptors (FD) Limits  ###
+	The Number Of Maximum Files Was Reached, How Do I Fix This Problem?????
+	$ cat /proc/sys/fs/file-max
+	  65536
+	$ sudo sysctl -w fs.file-max=800000             <= change from 65536 to 800000
+	# (or) $ echo 800000 > /proc/sys/fs/file-max
+	$ cat /proc/sys/fs/file-max
+	  800000
+	$ vi /etc/sysctl.conf 
+		fs.file-max=800000			<= append so that after reboot, still load 800000
+	#(or) $ echo 'fs.file-max=800000" >> /etc/sysctl.conf
+	#exit & relogin
+	$ sudo sysctl -p
+	$ cat /proc/sys/fs/file-max
+		800000
+	# (or)$ sysctl fs.file-max
+		fs.file-max = 800000
+	
+	### User Level FD Limits
+	$ cat /etc/security/limits.conf
+	# for user 
+	apark  -  nofile    64000
+	
+	# for all users
+	*    soft    nofile 8192
+	*    hard    nofile 8192
+	
+#--------------------------------------------------------------------------------------------------------------	
+
 	There are two limits in play: 
 	1) the maximum number of open files the OS kernel allows (fs.file-max) and
 	2) the per-user limit (ulimit -n). The former(Kernel) must be higher than the latter(user).
@@ -2326,24 +2471,84 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
 	### Check
 	$ ulimit -a			<= All current limits
 	$ ulimit -n			<= maximum number of open file
-		=> 1024
-	$ cat /proc/sys/fs/file-max
-		=> 2097152	
+	=> 1024
+	
 	$ ulimit -Sn		<= soft limit number
 	$ ulimit -Hn		<= hard limit number
+	
+	
+	$ cat /proc/sys/fs/file-max
+	 784694	
+	
 	### setting a new value in kernel variable /proc/sys/fs/file-max
-	$ sysctl -w fs.file-max=100000    <= -w write
-	$ echo "fs.file-max = 100000" >> /etc/sysctl.conf
-	$ sysctl -p		( or --load)				<= load 
-		=> fs.file-max = 100000
-	$ # cat /proc/sys/fs/file-max 	(or  $ sysctl fs.file-max )
+	$ sysctl -w fs.file-max=100000   					 <= -w write
 	
+	$ echo "fs.file-max = 100000"  >>  /etc/sysctl.conf
+	
+	$ sysctl -p		( or --load)						 <= load 
+	  fs.file-max = 100000
+	
+	$ # cat /proc/sys/fs/file-max 						 (or  $ sysctl fs.file-max )
+	
+
 	### Specific user limits
-	$ vi /etc/security/limits.conf
+	$ vi /etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf		<= add this lines
+	###
+	*       soft     nproc          65535		<= * all users but no root
+	*       hard     nproc          65535
+	*       soft     nofile         65535
+	*       hard     nofile         65535
+	apark    -       nofile         65535		<= apark specific
+	root     -       nofile         65535		<= root specific
+	###
+	
+	### Per-User Limit
+	$ cat /etc/security/limits.conf
+	#<domain>      <type>  <item>         <value>
+	#root            hard    core            100000		<=100k files to open
+	#@student        hard    nproc           20			<= only 20 files to open
+	
+	### pam-limits							<= session-related modules common to all services
+	$ cat /etc/pam.d/common-session 		
+	
+	### System-Wide Limit
+	$ echo 'fs.file-max = 2097152' >> /etc/sysctl.conf 			<= configure kernel parameters at runtime
+	
+	# configure kernel parameters at runtime
+	$ sysctl -p 												<= -p Load in sysctl settings from the file specified or /etc/sysctl.conf 
+											
+	### Verify New Limits
+	$ cat /proc/sys/fs/file-max 			<= max limit of file descriptors:
+	2097152
+		
+	### Check limit for other user
+	$ su - www-data -c 'ulimit -aHS' -s '/bin/bash'
+	$ su - noza -c 'ulimit -aHS' -s '/bin/bash'
+		core file size          (blocks, -c) 0
+		data seg size           (kbytes, -d) unlimited
 	
 	
+	### Check limits of a running process:
+	$ cat /proc/Process_ID/limits
+		Limit                     Soft Limit           Hard Limit           Units
+		Max cpu time              unlimited            unlimited            seconds
 	
-	$ man bash  					then /ulimit  <= ulimit is built in shell
+	
+	####
+	$ echo 'fs.inotify.max_user_watches=100000' | sudo tee -a /etc/sysctl.conf; 			<=tee -a(append)
+	$ sudo sysctl -p
+	####
+	
+		
+#### UBUNTU  ###	
+http://stackoverflow.com/questions/21515463/how-to-increase-maximum-file-open-limit-ulimit-in-ubuntu
+
+echo "* soft nofile 102400" > /etc/security/limits.d/*_limits.conf && \
+echo "* hard nofile 102400" >> /etc/security/limits.d/*_limits.conf 
+####	
+	
+	$ man bash  					
+	/ulimit  				<= ulimit is built in shell
 	-S   Change and report the soft limit associated with a resource. 
     -H   Change and report the hard limit associated with a resource. 
     -a   All current limits are reported. 
@@ -2360,55 +2565,10 @@ $ ssh -N -R :8822:localhost:22 remote.host.com
     -v   The maximum amount of virtual memory available to the process. 
 	###
 	
-	$ vi /etc/security/limits.conf		<= add this lines
-	###
-	*       soft     nproc          65535		<= * all users but no root
-	*       hard     nproc          65535
-	*       soft     nofile         65535
-	*       hard     nofile         65535
-	root    -        nofile         65535		<= root specific
-	###
-	
-	### Per-User Limit
-	$ cat /etc/security/limits.conf
-		#<domain>      <type>  <item>         <value>
-		#root            hard    core            100000		<=100k files to open
-		#@student        hard    nproc           20			<= only 20 files to open
-	
-	### pam-limits							<= session-related modules common to all services
-	$ cat /etc/pam.d/common-session 		
-	
-	### System-Wide Limit
-	$ echo 'fs.file-max = 2097152' >> /etc/sysctl.conf 			<= configure kernel parameters at runtime
-	
-	# configure kernel parameters at runtime
-	$ sysctl -p 												<= -p Load in sysctl settings from the file specified or /etc/sysctl.conf 
-											
-	### Verify New Limits
-	$ cat /proc/sys/fs/file-max 			<= max limit of file descriptors:
-		2097152
-		
-
-	### Check limit for other user
-	$ su - www-data -c 'ulimit -aHS' -s '/bin/bash'
-	$ su - noza -c 'ulimit -aHS' -s '/bin/bash'
-	$ su - noza -c 'ulimit -aHS' -s '/bin/bash'
-		core file size          (blocks, -c) 0
-		data seg size           (kbytes, -d) unlimited
-	
-	### Check limits of a running process:
-	$ cat /proc/Process_ID/limits
-		Limit                     Soft Limit           Hard Limit           Units
-		Max cpu time              unlimited            unlimited            seconds
+#-------------------------------------------------------------------------------------------------------------
 	
 	
-	####
-	$ echo 'fs.inotify.max_user_watches=100000' | sudo tee -a /etc/sysctl.conf; 			<=tee -a(append)
-	$ sudo sysctl -p
-	####
-	
-	
-5. sysctl
+5. sysctl  			<= Configure kernel parameters at runtime
 	The ulimit and sysctl programs allow to limit system-wide resource use. 
 	This can help a lot in system administration, e.g. when a user starts too 
 	many processes and therefore makes the system unresponsive for other users.
@@ -2938,9 +3098,9 @@ Ubuntu
 $nmap 			<- works
 $ cd /debian
 $ chroot . bash
-Debian 
-$nmap 			<- need to install
-
+Debian 			<- Using host kernel but running on Debian file system to modify
+$ nmap 			<- need to install
+$ exit
 
 
 ### Byobu multi screen utility ###
