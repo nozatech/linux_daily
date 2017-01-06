@@ -1,5 +1,5 @@
 아무리 바빠도 해야할 일 - 책
-돈이 많아도 하지 말아야 할일 -도박 마약
+돈이 많아도 하지 말아야 할일 -도박, 마약
 
 1.역사책 - 역사의식 책임
 2.문화책 - 감성
@@ -7,34 +7,39 @@
 4.철학책 - 생각에 방법 app-1061.dgh.namcowireless.com
 5.사회학 인간학 - 인간 관계
 
-Windows CMD kill process(http://tweaks.com/windows/39559/kill-processes-from-command-prompt/)
+-----------------------------------------------------------------------------------
+Windows CMD kill process
+http://tweaks.com/windows/39559/kill-processes-from-command-prompt
 c:\tasklist
 c:\taskkill /IM pdflite.exe /F 
 
 -----------------------------------------------------------------------------------
 Notepad++
-Settings > Shortcut Mapper Menu.
-1.
-ctrl + l	Delete Current line
 
-2.Auto-completion
+Settings > Shortcut Mapper Menu.
+1. 
+	Ctrl + L			Delete Current line
+	Ctrl + D			Duplicate(copy) line
+
+2. Auto-completion
 	Ctrl+Space			Function completion
 	Ctrl+Enter			Word completion
 	Ctrl+Shift+Space	Function parameter hint
 
-3. Basic File Management
-Ctrl+N		Create new document.
-Ctrl+P		Display Print... dialog box.
-Ctrl+O		Display Open File... dialog box.
-Ctrl+S		Save current document.
-Ctrl+Alt+S	Display Save As... dialog box.
-**
-Ctrl+Shift+S	Save all open documents.
-**
-Ctrl+W		Close current document.
-Alt+F4		Exit Notepad++
+4. Basic File Management
+	Ctrl+N				Create new document.
+	Ctrl+P				Display Print... dialog box.
+	Ctrl+O				Display Open File... dialog box.
+	Ctrl+S				Save current document.
+	Ctrl+Alt+S			Display Save As... dialog box.
+	**
+	Ctrl+Shift+S		Save all open documents.
+	**
+	Ctrl+W				Close current document.
+	Alt+F4				Exit Notepad++
 -----------------------------------------------------------------------------------
 SMACK Stack
+
 Spark - fast and general engine for distributed, large-scale data processing
 Mesos - cluster resource management system that provides efficient resource
 		isolation and sharing across distributed applications
@@ -45,7 +50,6 @@ Cassandra - distributed, highly available DB designed to handle large amounts of
 Kafka - a high-throughput, low-latency distributed messaging system designed for
 		handling real-time data feeds
 -----------------------------------------------------------------------------------		
-
 ### Chrome ###
 Alt + Home				Open your homepage.
 Alt + Tab				Toggle between browser windows
@@ -61,12 +65,9 @@ Ctrl + H				Open history in a new tab
 Ctrl + K or Ctrl + E	Perform a Google search
 Ctrl + T				Opens a new tab.
 Ctrl + U				View a web page's source code
-
-
-
-
-
+-----------------------------------------------------------------------------------	
 Daily Linux CMD List & Scripts
+-----------------------------------------------------------------------------------	
 
 32bit is 2^32 =~ 4.3 billion
 IPv4 address is 32bit 
@@ -81,20 +82,22 @@ echo 'export HISTTIMEFORMAT="%F "' >> ~/.bashrc
 Create a .vimrc file in home 
 $ vi .vimrc
 	:set num
-	:set tabstop=4
+	:set tabstop=4					<= most of useful
 	:set autoindent
 
 esc highlight
-	shift+v to copy == yy
+	shift+v to copy  == yy
 	shift+p to paste == pp
 
 vi / vim  set number
+	$ vi -V 			<= version check
 	$ vi -V 			<= version check
 	:set nu / set nu!   <= set number on/off
 	:e file_name        <= open & create  file
  	:w new_name 	    <= save as to new_name
 	
 Cut and Paste(v/V-d/y-p/P)
+
 	 a. Position the cursor where you want to begin cutting.
 V    b. Press v to select characters (or V - whole lines).
      c. Move the cursor to the end of what you want to cut.
@@ -116,7 +119,7 @@ Undo
 	$ echo ~-			<= out put previous directory
 	
 # Touch command
-	$ touch apple banana cherry			<= creating multiple files
+	$ touch apple banana cherry						<= creating multiple files
 	$ touch file_{01..1000}
 	$ echo {1..10..2}
 	  1 3 5 7 9
@@ -125,11 +128,10 @@ Undo
 	$ echo {w..d..2}		<= backward + every 2nd letter
 	$ touch cherry_{01..100}{w..d}.txt
 
-
 # number line	
-	$ cat txt | nl 
+	$ cat file | nl 
 
-# long command using ' \'
+# long command using ' \' for extent command
 
 	
 3. SSH connection login
@@ -140,7 +142,7 @@ Undo
 	$ ssh -l ubuntu hostname
 
 	
-	Install SSH on Ubuntu(Debian)
+  #	Install SSH on Ubuntu(Debian)
 	$ apt-get install openssh-server openssh-client
 	$ update-rc.d ssh defaults			<= put it into start up
 	$ update-rc.d ssh enable 			# sets the default runlevels to on 
@@ -177,10 +179,11 @@ Undo
 $ yum install python-pip
 $ pip install pssh
 	
-	### Remote command from shell
+### Remote command from shell
+
 $ ssh apark@192.241.190.57 'sudo iptables -nL'
-	
-	
+# Run a script using SUDO	
+$ ssh apark@192.241.190.57 < 'bash -s' script.sh	
 	
 	
 4.  RSA KEY( 1024bit, 2k, 4k bit)
@@ -199,7 +202,7 @@ $ ssh apark@192.241.190.57 'sudo iptables -nL'
 	$ time wget http://www.gnu.org/software/gettext/manual/gettext.html  			<= measuring download time
 
 ### cURL  
-testing on REST API
+	Testing on REST API
 	A. Content of the URL and display it in the STDOUT (i.e on your terminal)
 		$ curl http://www.centos.org
 	
@@ -211,12 +214,15 @@ testing on REST API
 		-O (uppercase O) the file name in the URL will be taken and it will be used as the file name to store the result
 		-l --list-only
 		-L --location
-	   $ curl -o saving_name.html http://www.gnu.org/text_info.html							
-	   $ curl -O http://www.gnu.org/software/gettext/manual/gettext.html or file_name		<= save the file to local 
+	  $ curl -o saving_name.html http://www.gnu.org/text_info.html							
+	  $ curl -O http://www.gnu.org/software/gettext/manual/gettext.html or file_name		<= save the file to local 
+	
 	D.  Follow HTTP Location Headers with -L option  
 		$ curl -L http://google.com
+	
 	E.	
 		$ curl --limit-rate 1000B -O http:
+	
 	F. Proxy
 		$ curl -p 
 	
@@ -228,20 +234,24 @@ testing on REST API
 	I. $ curl dict://dict.org/d:bash
 
 	# to get the HEADER info	
-	$curl -i http:address:3000/json-test 
+	$curl -i http://address:3000/json-test 
   	
 	HTTP/1.1 403 Forbidden
-Date: Wed, 19 Oct 2016 02:07:18 GMT
-Server: Apache/2.4.6 (CentOS)
-...
-Content-Length: 4897
-Content-Type: text/html; charset=UTF-8
+	Date: Wed, 19 Oct 2016 02:07:18 GMT
+	Server: Apache/2.4.6 (CentOS)
+	...
+	Content-Length: 4897
+	Content-Type: text/html; charset=UTF-8
+
 
 *C*R*U*D*
+
 POST method
 	$ curl -d "first=Alber&last=park" http://address:port/method_name
+
 PUT method
 	$ curl -X PUT -d "first=Alber&last=park" http://address:port/method_name
+
 Delete
 	$ curl -X DELETE  http://address:port/method_name
 
@@ -257,7 +267,7 @@ curl -O www.yahoo.com/index.html
 curl -# -u id:pw ftp://ftphost/fuzicast/sample.txt -o sample.txt # the -# adds progress bar
 curl -r 0-99 -u id:pw ftp://ftphost/fuzicast/sample.txt# get first 100 bytes
 curl -r -500 -u id:pw ftp://ftphost/fuzicast/sample.txt # get last 500 bytes
-echo "Hello World" | curl -T - -u id:pw ftp://ftphost/fuzicast/sample2.txt
+	echo "Hello World" | curl -T - -u id:pw ftp://ftphost/fuzicast/sample2.txt
 curl -T UNIX-1.14 -u id:pw ftp://ftphost/fuzicast/unix
 curl -T localfile1 servername/remotefile1 -T localfile2 servername/remotefile2
 curl -T UNIX-1.14 -u id:pw -a ftp://ftphost/fuzicast/unix # append to FTP file
@@ -275,32 +285,16 @@ curl -R -u id:pw ftp://ftphost/fuzicast/sample.txt -o output.txt # reserve origi
 curl -l -u id:pw ftp://ftphost/fuzicast/ # list remote filenames
 curl -m 1800 -Y 3000 -y 60 servername/filename # speed must be greater than 3000 bytes per second for a minute and download process must be completed within 1800 seconds, otherwise the download will abort
 
-
-
-
-
-
-
-
-
-
-
 	
 ### text browser ###
 	$ sudo apt-get install -y links
 	$ links http://www.google.com
-	
 	
 ### base64 - base64 encode/decode data and print to standard output
 http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
 
 	$ printf id:pw | base64
 	https://www.base64decode.org/	
-	
-	
-
-	
-	
 	
 	
 6. Environment variable
@@ -319,10 +313,13 @@ http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
 
 	
 4. free  
+	
 	### Most memory used by process
+	
 	$ ps aux --sort=-%mem | awk 'NR<=10{print $0}'	
 
 		  <= Check memory
+	
 	Displays the total amount of free and used physical and swap memory in the system, 
 	as well as the buffers used by the kernel. The shared memory column should be ignored; it is obsolete.
 		
@@ -386,28 +383,25 @@ http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
 	$ swapon -s   #summary
 	$ free -m
 	
-	#$ dd if=/dev/zero of=/swapfile bs=2048 count=512k
-
 #### Create swap space	#4GB with 1MB bitesize
 #--------------------------------------------------------------------------------
 
 dd if=/dev/zero of=/swapfile count=4096 bs=1MiB   
+#dd if=/dev/zero of=/swapfile bs=2048 count=512k
+
 sudo chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
-echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab
+
+echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab   <=	# To enable it at boot time, edit /etc/fstab 
 
 #--------------------------------------------------------------------------------	
 
-# To enable it at boot time, edit /etc/fstab 
-	/swapfile  swap  swap  defaults  0 0
-	
-echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab
 
 # How do I verify swap is activated or not?
 	$ free -h
 	$ less /proc/meminfo
-	$ top            #check in KiB Swap
+	$ top           									<= check in KiB Swap
 	$ cat /proc/swaps
 	$ cat /proc/meminfo | grep -i swap
 	
@@ -421,6 +415,7 @@ echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab
 ###	
 	
 7. sysstat	Linux Performance Monitoring package
+
 	Collective CPU usage
 	Individual CPU statistics
 	Memory used and available
@@ -432,21 +427,28 @@ echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab
 	Network statistics
 	Report sar data from a specific time
 	
-	#This runs every 10 minutes and collects sar data for historical reference.
-	/usr/lib/sysstat/sa1
-	$ vi /etc/cron.d/sysstat
-	5-55/10 * * * *  or 5,15,25,35,45,55 * * * *  ( */10 * * * * 10,20,30,40,50,60)
-	/usr/lib/sysstat/sa1
-	
-	$ vi /etc/default/sysstat   						<= change to true for data collection
-	$ service sysstat restart
-	$ sar -A > $(date +`hostname`-%d-%m-%y-%H%M.log)    <=save the statistics
-	
+https://www.server-world.info/en/note?os=CentOS_7&p=sysstat
+$ yum install -y sysstat
+$ systemctl start sysstat
+$ systemctl enable sysstat
 
+$ sudo cat /etc/cron.d/sysstat
+	# Run system activity accounting tool every 10 minutes
+	*/10 * * * * root /usr/lib64/sa/sa1 1 1
+	# 0 * * * * root /usr/lib64/sa/sa1 600 6 &
+	# Generate a daily summary of process accounting at 23:53
+	53 23 * * * root /usr/lib64/sa/sa2 -A
+	
+#	
+#	$ vi /etc/default/sysstat   						<= change to true for data collection
+# 	$ service sysstat restart
+#	$ sar -A > $(date +`hostname`-%d-%m-%y-%H%M.log)    <=save the statistics
+	
+http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	
 	iostat
 		displays CPU and I/O statistics of all partitions as shown below.
-	$iostat
+	$ iostat
 		Linux 3.16.0-23-generic (puppet.nozatech.com)   03/24/2016      _x86_64_        (8 CPU)
 		avg-cpu:  %user   %nice %system %iowait  %steal   %idle
 				0.01    0.01    0.08    0.05    0.00   99.86
@@ -459,6 +461,16 @@ echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab
 	$ iostat -p sda 		<= By default it displays statistics of all partitions, with -p and 
 								device name arguments displays only disks I/O statistics for specific device only as shown.
 	$ iostat -d				<= -d arguments displays only disks I/O statistics of all partitions as shown.
+		
+	$ mpstat -P ALL
+	
+	$ pidstat
+	
+	$ cifsiostat 
+		
+		
+		
+		
 		
 8.	slabinfo - kernel slab allocator statistics
 	cat /proc/slabinfo
@@ -474,26 +486,51 @@ echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab
 								<= -b <= batch mode, n <= number, 1 <= count 
 		
 		$ top -bn 1 | awk "/$1/ {tot =+ \$6; n++} END {print tot\" \"n}"      <=??
-		
+				
 		### Top commands short cuts:
-		b -bache mode sending output from top to other programs or to a file. 
-		n -number of iteration 
-		l –To display or to hide load average line
-		t –To display or to hide task/cpu line
-		1 –To display or hide all other CPU’s
-		m –to display or to hide RAM and SWAP details
-		s –To change the time interval for updating top results(value is in sec’s)
-		R –To sort by PID number
-		u — Press u then username to get only that user process details
-		P –To sort by CPU utilization
-		M –To sort by RAM utilization
-		c –To display or hide command full path
-		r –To renice a process, press r then the PID no then the renice value to renice a process.
-		k –To kill a process, press k then PID number then enter to kill a process
-		w –To save the modified configuration permanently.
-		q –To quit the top command.
-		h –for getting help on top	
+	***	1 – To display or hide all other CPU’s
+		A - Split into multiple CPU screen
+		b - bache mode sending output from top to other programs or to a file
+		c – To display or hide command full(absolute) path
+		d - display rate from 3sec to any sec
+		n - number of iteration 
+		l – To display or to hide load average line
+		t – To display or to hide task/cpu line
+		m – to display or to hide RAM and SWAP details
+		s – To change the time interval for updating top results(value is in sec’s)
+		R – To sort by PID number
+		u — Press u then user name to get only that user process details
+		P – To sort by CPU utilization
+		M – To sort by RAM utilization
+
+		r – To renice a process, press r then the PID no then the renice value to renice a process.
+	***	k – To kill a process, press k then PID number then enter to kill a process
+		w – To save the modified configuration permanently.
 		
+		q – To quit the top command.
+	***	h – for getting help on top	
+
+		
+	shift + m 		<= list process according to memory usage
+	shift + p		<= list the process according to cpu usage
+	shift + w		<= for saving the top output in a file(/root/.toprc.)
+	shfit + o		<= for sorting the process as per requirement
+		
+	# User process list	
+	$ top -u apark
+	
+	# quit after 1 iteration
+	$ top -n 1 	
+		
+	# Batch mode( capture as text file)
+	$ top -bn 1	 > top_process.txt
+	
+	$top -d300 -b > top_log.txt
+	
+	
+
+
+	
 	B. atop
 		Atop is an ASCII full-screen performance monitor which can log and report 
 		the activity of all server process up to 28days log.
@@ -770,8 +807,51 @@ cron job search from command line
 
 
 	check lsof and fuser
+	# fuser - identify processes using files or sockets
 	$ fuser -vm /mnt/dir
+
+	
+	File descriptor
+	https://en.wikipedia.org/wiki/File_descriptor
+	
+	### lsof ### 					<= list open files
 	$ lsof /mnt/dir
+	
+	# Which processes have this file open
+	$ lsof  /var/log/nginx/access.log
+		COMMAND   PID  USER    FD   TYPE DEVICE SIZE/OFF      NODE NAME
+		nginx   13786  root    5w   REG  253,0        0 135700508 /var/log/nginx/access.log
+
+	# Which files does PID have open?
+	$ ps aux | grep nginx
+	$ lsof -p nginx_PID
+
+	$ lsof -p 1									<= all files are opened with Init or SystemD
+	$ lsof -p `pgrep ABC`
+		
+	# Where is the Binary for this process?
+	$ lsof -p ABC | grep bin
+	
+	# Which shared Libraries is this program using? (manually upgrading software, i.e. openssl)
+	$ lsof -p PID | grep .so
+	
+	# Where is this thing logging to?
+	$ lsof -p ABC | grep log
+	
+	# Which processes still have this old library open?
+	$ lsof grep libname.so
+	
+	# Which files does user_id have open?
+	$ lsof -u user_id
+	$ lsof -u user_id -i 					<= network only
+	
+	# Which process is listening on Port X (or using Protocol Y)?
+	$ lsof -i :80
+	$ lsof -i tcp
+	
+	
+	
+	
 	
 	
 	/dev/mapper/U14--vg-root on / type ext4 (rw,errors=remount-ro)
@@ -888,8 +968,20 @@ cron job search from command line
 
 	To correct zone and time
 	$ systemctl restart  ntpd.service
+	
+	# TimeZone changes to PST 
+	https://www.cyberciti.biz/faq/centos-linux-6-7-changing-timezone-command-line/
+	$ date
+	$ ls -l /etc/localtime
+	$ timedatectl
+	$ timedatectl list-timezones
+	$ timedatectl list-timezones | grep -i los
+		America/Los_Angeles
+	$ timedatectl set-timezone America/Los_Angeles
 
-
+	
+	
+	
 20. cat and strings
 	$ cat /usr/bin/bash XXXX
     
@@ -956,8 +1048,7 @@ reboot system boot 3.2.13-grsec-xxx Tue Apr 3 07:34 - 09:17 (9+01:42) <= 9days 1
 	$ who -r 					<= runlevel
 	$ who -b
 
-    $ lsof -u noza				<= list open files user name noza
-	$ lsof -p 1234	
+
 
 
 15. Is .bash_profile is a file???? 
@@ -1198,8 +1289,8 @@ reboot system boot 3.2.13-grsec-xxx Tue Apr 3 07:34 - 09:17 (9+01:42) <= 9days 1
 		14.12    0.000476          24        20           mprotect
 	8. 
 
-
-	traceroute and ping
+# Network Troubleshooting
+Traceroute, Ping, and MTR
 	
 	mtr(Mutli function TRracert) 
 	
@@ -1224,9 +1315,38 @@ reboot system boot 3.2.13-grsec-xxx Tue Apr 3 07:34 - 09:17 (9+01:42) <= 9days 1
 		-w seconds : Set the time (in seconds) to wait for a response to a probe (default 5.0 sec).
 		-q  NUMBER : Sets the number of probe packets per hop. The default is 3.
 		-m  max hop:
-
 	
-		
+	* * *
+	The firewall to block ICMP packets. As such, you will sometimes see a series of asterisks indicating 
+	that trace route was not able to get information from a particular host.
+	
+	
+	# Ping
+	Windows Ping TTL is 128
+	Redhat	Ping TTL is 64
+	Other linux < 128
+	
+	$ ping -i 4 127.0.0.1    	<= send out ping packets every 4 sec
+	$ ping -i 0.1 127.0.0.1    	<= send out ping packets every 0.1 sec
+	
+	# ping localhost
+	$ ping loacalhost
+	$ ping 127.0.0.1
+	$ ping 127.0.0.2~254
+	$ ping 0.0.0.0
+	$ ping 0
+	
+	# flood network
+	$ ping -f 0
+	
+	# change the packet size which is by default 64 bytes
+	$ ping -s 200 0
+	
+	# how to sepcify timeout
+	$ ping -w 7 0 	
+	
+	
+	
 <<<<<<< Updated upstream
 43. stty 		   <= change and print terminal line settings
 	$ stty -echo   <= hide(turn off) terminal typing(Can't see typing)
@@ -1435,28 +1555,32 @@ cat /etc/inittab		systemctl list-units --type target  (--all for not active)				
   
 
 journalctl - Query the systemd journal
+
 	journalctl may be used to query the contents of the systemd(1)
     journal as written by systemd-journald.service(8).
 
+	$ journalctl | grep fail
+	$ journalctl -b          <= current boot
+	$ journalctl -b -1       <= previous boot
+	$ journalctl -f          <= follow
+	$ journalctl -xe		 <= -x  Augment log lines with explanation texts from the message catalog.
+							    -e  jump to the end of the journal 
+	
+	# Check program logs
+	$ journalctl -u nginx 		 <= -u unit
+	$ journalctl -u sshd    
 
-	journalctl | grep fail
-
-
-	journalctl -b          <= current boot
-	journalctl -b -1       <= previous boot
-	journalctl -f          <= just happened log check
-	journalctl -u sshd     <= -u unit, 
-	journalctl -xe
+	$ journalctl --since "10 min ago"
 
 
 ----------------------------------------------------------------
-Distribution			|	SystemD	 |	System V  |	 Upstart
+Distribution			|	SystemD	  |	System V  |	 Upstart
 ----------------------------------------------------------------
 Amazon Linux											V
 CentOS 6												V
 CentOS 7						V
 Debian 7 ("Wheezy")							V
-Debian 8 ("Jessie")				V
+Debian 8 ("Jessie")				V 
 RHEL 6													V
 RHEL 7							V
 Ubuntu, 14.04 or lower									V
@@ -1465,10 +1589,10 @@ Ubuntu, 16.04 or higher			V
 	
 	
 46. List of package installed
-
-    online 			<=    yum list *httpd
-    system 			<=    yum list installed (same as 'rpm -qa') | grep httpd
-    yum info httpd  <=version and detail pkg info
+# CentOS 'YUM'
+	$ yum list *httpd  											<= online
+    $ yum list installed (same as 'rpm -qa') | grep httpd		<= on system 
+    $ yum info httpd  											<= version and detail pkg info
 
 
 47. EPEL (Extra Packages for Enterprise Linux) 
@@ -1489,7 +1613,9 @@ Ubuntu, 16.04 or higher			V
 	echo "Today's date is $(date)."   <= $(date) will print date command
 	cal 	 		                  <= display calendar
 
-50.History with time stamp
+
+	50.History with time stamp
+
 	export into ~/.bash_profile as well as /root/.bash_profile
  
 	export HISTTIMEFORMAT="%F %T "
@@ -1505,6 +1631,7 @@ IP: images.server1.com
 User: ubuntu1
 Password: pa$$word1
 Images Path: /home/www/images/test_images
+
 Server 2
 
 IP: images.server2.com
@@ -1543,7 +1670,7 @@ sudo apt-get install sshpass
 	# chkconfig <script_name> on
 
 
-chkconfig  provides  a  simple  command-line  tool  d maintaining the
+chkconfig  provides  a  simple  command-line  tool to maintaining the
        /etc/rc[0-6].d directory hierarchy by relieving  system  administrators
        of  the  task  of  directly manipulating the numerous symbolic links in
        those directories.
@@ -1599,12 +1726,12 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 	systemctl start nagios.service
 	systemctl start httpd.service
 	systemctl enable httpd.service		<= Apache in startup
-	ln -s '/usr/lib/systemd/system/httpd.service'         '/etc/systemd/system/multi-user.target.wants/httpd.service'
+	ln -s '/usr/lib/systemd/system/httpd.service'  '/etc/systemd/system/multi-user.target.wants/httpd.service'
 
 54. List of groups
 	groups
 	/etc/group
- 	getent group | cut -d: -f1
+ 	$ getent group | cut -d: -f1
 
  
 55. SElinux <= add port to security-enhanced linux 
@@ -1687,9 +1814,13 @@ chkconfig  provides  a  simple  command-line  tool  d maintaining the
 	$ chkconfig mysqld on
 	$ /etc/init.d/mysqld start
 
-	### CentOS7 ### 
-sudo iptables -L
 
+	### CentOS7 ### 
+
+Iptables opens all	
+$ iptables -I INPUT -j ACCEPT
+	
+sudo iptables -L
 sudo yum -y install iptables-services
 sudo systemctl enable iptables 		
 sudo systemctl mask firewalld			
@@ -1750,9 +1881,6 @@ iptables -L -v
 
 
 
-
-	
-	
 	
 ### Changing data directory on Centos 7 + MySQL 5.6	
 	$ wget http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
@@ -1788,9 +1916,7 @@ iptables -L -v
 
 	
 
-Iptables opens all	
 
-$ iptables -I INPUT -j ACCEPT
 	
 	
 58. # CentOS 6 Turn off firewall and SELINUX
@@ -2019,6 +2145,7 @@ sudo apt-get update
 
 
 64.  AWS AMI MYSQL setup root pw issue 
+
 1. apt-get/yum install mysql-server
 2. /usr/bin/mysql_secure_installation
 3. service mysqld stop 
@@ -2433,18 +2560,24 @@ two cases:
 		521504
 	
 	### System-wide File Descriptors (FD) Limits  ###
+	
 	The Number Of Maximum Files Was Reached, How Do I Fix This Problem?????
 	$ cat /proc/sys/fs/file-max
 	  65536
+	
 	$ sudo sysctl -w fs.file-max=800000             <= change from 65536 to 800000
 	# (or) $ echo 800000 > /proc/sys/fs/file-max
+	
 	$ cat /proc/sys/fs/file-max
 	  800000
+	
 	$ vi /etc/sysctl.conf 
 		fs.file-max=800000			<= append so that after reboot, still load 800000
 	#(or) $ echo 'fs.file-max=800000" >> /etc/sysctl.conf
 	#exit & relogin
+	
 	$ sudo sysctl -p
+	
 	$ cat /proc/sys/fs/file-max
 		800000
 	# (or)$ sysctl fs.file-max
@@ -2459,11 +2592,12 @@ two cases:
 	*    soft    nofile 8192
 	*    hard    nofile 8192
 	
-#--------------------------------------------------------------------------------------------------------------	
-
+#---------------------------------------------------------------------------------------------------------	
 	There are two limits in play: 
+#-----------------------------------------------------------------------------------------------------
 	1) the maximum number of open files the OS kernel allows (fs.file-max) and
 	2) the per-user limit (ulimit -n). The former(Kernel) must be higher than the latter(user).
+	
 	
 	If you are getting error “Too many open files (24)” then your application/command/script is hitting max 
 	open file limit allowed by linux. You need to increase open file limit as below:
@@ -2700,8 +2834,25 @@ fg %N        # brings job number N
 fg %string   # brings job whose command begins with string
 fg %?string  # brings job whose command contains string
 
-kill -l      # returns a list of all signals on the system, by name and number
+kill -l      # Options, returns a list of all signals on the system, by name and number
 kill PID     # terminates process with specified PID
+killall
+pkill
+
+$ pgrep nginx		# pgrep, pkill - look up or signal processes based on name and other attributes
+$ pkill nginx		# kill all child process that spawned from nginx process id
+
+$ pgrep -u apark	# process grep all apark's process
+$ pkill -u apark	# kill all apark's process
+
+
+kill 	PID			# same as 'kill 15'
+kill 15 PID			# gracefully shutdown (terminate)
+kill 9	PID			# force to kill
+killall name 		#
+
+
+
 
 ### kill all processes relate to same process name
 	$ pkill -f s3cmd
@@ -2722,7 +2873,7 @@ ps aux | grep RRServer | grep -v grep | awk '{print $2}'
 	1. How to kill zombie process
 		A zombie is already dead, so you cannot kill it. To clean up a zombie, it must be waited on by its parent, 
 		so killing the parent should work to eliminate the zombie. (After the parent dies, the zombie will be 
-		inherited by init (process ID 1), which will wait on it and clear its entry in the process table.) 
+		inherited by init or systemD (process ID 1), which will wait on it and clear its entry in the process table.) 
 		If your daemon is spawning children that become zombies, you have a bug. Your daemon should notice 
 		when its children die and wait on them to determine their exit status.
 
@@ -2733,10 +2884,11 @@ ps aux | grep RRServer | grep -v grep | awk '{print $2}'
 ###	
 	Zombie processes (also show as <defunct>), aren't real processes at all. They are just entries in the kernel process table. 
 	This is the only resource they consume. They do not consume any CPU or RAM. 
-	&&& The only danger of having zombies, is running out of space in process table.!!!***
+	*** The only danger of having zombies, is running out of space in process table!!!***
 	
 	$ cat /proc/sys/kernel/threads-max 
 		30112
+		
 	They appear only when their parent process (i.e. process which fork()'ed them) is alive, but did not yet call wait() 
 	system function. Once parent dies, the zombies are wait()'ed for by init and disappear.
 ###
@@ -2969,7 +3121,7 @@ CentOS
 	# check for information about the port	
 	netstat -anp | grep unknown_port     # -anp  <= All, no dns lookup(faster), program
 	
-	lsof -i | grep port_number		<= internet connecion open
+	lsof -i | grep port_number		<= internet connection open
 	lsof -p                      	<= process_number
 	
 	

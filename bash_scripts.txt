@@ -63,21 +63,59 @@
     set -x              			<= End of file +x for TURN OFF
 
 	
+ # Stop and Exit running program
+	$ vi 1.sh
+	crtl + z 						<= exit to shell
+	$ vi 2.sh
+	$ jobs
+	[1] Stopped  vim
+	[2] Stopped  vim
+	$ fg %1							<= go back to 1.sh
+	ctrl + z
 	
-	
+	$ kill %2
+	$ kill -9 %2
+
+ # Run from background
+    $ ls -alR > /tmp/result.txt 2> /tmp/error.txt &
+	$ jobs
+	[1]+  Stopped                 vim
+	[2]-  Stopped                 vim
+	[3]   Done                    ls --color=auto -alR > /tmp/result.txt 2> /tmp/error.txt
+
 	
 ### Script running remotely
 --- Run a script on remote and out to local file
 
 $ ssh-copy-id id@remote_ip             <= copy id_rsa.pub file into remote first
 
-$ ssh id@remote_ip 'bash -s' < /home/scrhipt.sh >> output.log
+$ ssh id@remote_ip 'bash -s' < /home/scrhipt.sh >> output.log    		<= run as sudo mode
 
 BASH ( https://linux.die.net/man/1/bash )
 	-c  <= read from string
 	-i  <= shell is interactive
 	-s  <= read from the standard input
 	
+
+### Single command line script from SHELL ###
+
+$ for i in $(cat ~/list); do ssh apark@$i [[ -f /home/apark/rkchk.sh ]] && echo "File exist" || echo "Not Exist";done                      
+$ for i in $(cat "/home/apark/nu"); do ssh apark@$i "hostname && ls -l"; done
+$ for i in $(cat "/home/apark/nu"); do ssh apark@$i "rm -f rkchk.sh"; done
+$ for i in $(cat "/home/apark/nu"); do ssh -t apark@$i "sudo yum update kernel -y"; done
+
+$ for i in us eu as; do echo sg-$i; ssh sg-$i "uptime"; done
+$ for i in sg-us sg-eu sg-as ; do echo $i; date; done
+$ for i in sg-eu sg-as ; do rsync -av authorized_keys $i:.ssh; done
+
+
+$ for i in $(cat pmtip); do echo $i && ssh -t apark@$i cat /var/log/newrelic/nrsysmond.log | tail; done  2>&1 > log
+
+
+
+$ while true; do dmesg -c ; sleep 1 ; done
+
+
 	
 	
 	
@@ -1729,24 +1767,7 @@ done
 
 #------------------------------------------------------
 
-### Single line script from SHELL ###
 
-
-$ for i in $(cat ~/list); do ssh apark@$i [[ -f /home/apark/rkchk.sh ]] && echo "File exist" || echo "Not Exist";done                      
-$ for i in $(cat "/home/apark/nu"); do ssh apark@$i "hostname && ls -l"; done
-$ for i in $(cat "/home/apark/nu"); do ssh apark@$i "rm -f rkchk.sh"; done
-$ for i in $(cat "/home/apark/nu"); do ssh -t apark@$i "sudo yum update kernel -y"; done
-
-$ for i in us eu as; do echo sg-$i; ssh sg-$i "uptime"; done
-$ for i in sg-us sg-eu sg-as ; do echo $i; date; done
-$ for i in sg-eu sg-as ; do rsync -av authorized_keys $i:.ssh; done
-
-
-$ for i in $(cat pmtip); do echo $i && ssh -t apark@$i cat /var/log/newrelic/nrsysmond.log | tail; done  2>&1 > log
-
-
-
-$ while true; do dmesg -c ; sleep 1 ; done
 
 
 

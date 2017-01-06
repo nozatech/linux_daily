@@ -14,6 +14,7 @@ cling			<- (of a person or animal) hold on tightly to.
 clingy			<- kids are very clingy #(of a person or garment) liable to cling; clinging
 commercing 		<- starting
 condemnation	<- 심한비난
+conform			<- comply with rules, standards, or laws
 contiguous		<- sharing a common border; touching. next or together in sequence.
 
 # D
@@ -34,6 +35,7 @@ gingivitises	<- 치은염
 
 # I
 ideation 		<- 관념화 the formation of ideas or concepts.
+impose			<- force (something unwelcome or unfamiliar) to be accepted or put in place.
 
 # N
 no frill 		<- simple, plain, 
@@ -55,6 +57,7 @@ relator			<- 고발자, a person who brings a public lawsuit, typically in the n
 
 # S
 setup VS set up <- setup is a noun, set up is a verb 
+souvenir
 squealing 		<- 빽뺵소리 스피커에서
 supersede 		<- replace
 
