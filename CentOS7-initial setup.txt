@@ -7,7 +7,7 @@ CentOS7 min setup
 5. ifconfig
 6. yum install yum-utils
 
-sudo yum install -y epel-release ncdu iftop mtr wget net-tools yum-utils iptables-services vim bind-utils
+sudo yum install -y epel-release ncdu iftop mtr wget net-tools yum-utils iptables-services vim bind-utils tcpdump ntp
 
 # Iptables install
 sudo yum -y install iptables-services
@@ -79,5 +79,10 @@ IPADDR2=10.13.0.136
 PREFIX2=16
 DNS1=8.8.8.8
 DNS2=8.8.4.4
+
+# ntp
+$ systemctl enable ntpd
+$ ntpdate pool.ntp.org
+
 
 

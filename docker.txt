@@ -26,10 +26,17 @@ Fedora 			 - journalctl -u docker.service
 OpenSuSE 		 - journalctl -u docker.service
 OSX 			 - ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/log/d‌​ocker.log
 
+### Docker install script using curl	
+	$ curl -fsSL https://get.docker.com/ | sh   				<= docker install script
+		   -f  fail silently(no output at all)
+		   -s	--silent (Silent or quiet mode)
+		   -S	--show-error
+		   -L 	--location
+	
+	https://get.docker.com/
 
-
+	
 ### CentOS7 ###
-
 Step 1 - setup
 $ systemctl start docker
 $ systemctl enable docker
@@ -182,7 +189,7 @@ $ docker ps 			    <= check any docker container running
 $ docker ps  -a				<= all
 	CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
 	796dab5a1c1b        centos              "/bin/bash"         13 minutes ago      Exited (0) 2 minutes ago                       condescending_galileo
-     ^ ID                ^ OS
+
 
 $ docker ps -q   <= ID only
 	 
@@ -207,7 +214,7 @@ $ cat /var/lib/docker/aufs/diff/fbd9f4c4b5d5d95a1a7fdbbbdf8025bd313c46743703c73f
 $ docker ps -q
 
 $ docker start 796dab5a1c1b
-796dab5a1c1b
+	796dab5a1c1b
 $ docker stop docker_id
 
 $ docker attach 796dab5a1c1b

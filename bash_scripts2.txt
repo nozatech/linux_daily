@@ -83,14 +83,21 @@ is calculated without the final ], for example [ ] follows the "zero arguments" 
 	the expression is true if the unary test is true
 	If the first argument is not a valid unary conditional operator, the expression is false
 3 arguments
-	If the second argument is one of the binary conditional operators listed above under the syntax rules, the result of the expression is the result of the binary test using the first and third arguments as operands
-	If the first argument is !, the value is the negation of the two-argument test using the second and third arguments
-	If the first argument is exactly ( and the third argument is exactly ), the result is the one-argument test of the second argument. Otherwise, the expression is false. The -a and -o operators are considered binary operators in this case (Attention: This means the operator -a is not a file operator in this case!)
+	If the second argument is one of the binary conditional operators listed above under the syntax rules, 
+	the result of the expression is the result of the binary test using the first and third arguments as operands
+	If the first argument is !, the value is the negation of the two-argument test using the second and 
+	third arguments
+	If the first argument is exactly ( and the third argument is exactly ), the result is the one-argument 
+	test of the second argument. Otherwise, the expression is false. The -a and -o operators are considered 
+	binary operators in this case (Attention: This means the operator -a is not a file operator in this case!)
 4 arguments
-	If the first argument is !, the result is the negation of the three-argument expression composed of the remaining arguments. Otherwise, the expression is parsed and evaluated according to precedence using the rules listed above
+	If the first argument is !, the result is the negation of the three-argument expression composed of the 
+	remaining arguments. Otherwise, the expression is parsed and evaluated according to precedence using the 
+	rules listed above
 5 or more arguments
 	The expression is parsed and evaluated according to precedence using the rules listed above
-	These rules may seem complex, but it's not so bad in practice. Knowing them might help you to explain some of the "unexplicable" behaviours you might encounter:
+	These rules may seem complex, but it's not so bad in practice. Knowing them might help you to explain 
+	some of the "unexplicable" behaviours you might encounter:
 --------------------------------------------------------------------------------------------------------------
 var=""
 if [ -n $var ]; then echo "var is not empty"; fi
@@ -529,6 +536,58 @@ echo '1 2 3 4 5 6' | while read a b c
 
 
 
+
+#-------------------------------------------------------------------------------------
+### Create a Swap Space ###
+#-------------------------------------------------------------------------------------
+#!/bin/sh
+
+# size of swapfile in megabytes
+swapsize=2048
+
+# does the swap file already exist?
+grep -q "swapfile" /etc/fstab
+
+# if not then create it
+if [ $? -ne 0 ]; then
+	echo 'swapfile not found. Adding swapfile.'
+	fallocate -l ${swapsize}M /swapfile
+	chmod 600 /swapfile
+	mkswap /swapfile
+	swapon /swapfile
+	echo '/swapfile none swap defaults 0 0'                >> /etc/fstab
+else
+	echo 'swapfile found. No changes made.'
+fi
+
+# output results to terminal
+cat /proc/swaps
+cat /proc/meminfo | grep Swap
+
+
+
+#-------------------------------------------------------------------------------------
+### Delete a Swap Space ###
+#-------------------------------------------------------------------------------------
+#!/bin/sh
+
+# does the swap file exist?
+grep -q "swapfile" /etc/fstab
+
+# if it does then remove it
+if [ $? -eq 0 ]; then
+	echo 'swapfile found. Removing swapfile.'
+	sed -i '/swapfile/d' /etc/fstab
+	echo "3" > /proc/sys/vm/drop_caches
+	swapoff -a
+	rm -f /swapfile
+else
+	echo 'No swapfile found. No changes made.'
+fi
+
+# output results to terminal
+cat /proc/swaps
+cat /proc/meminfo | grep Swap
 
 
 

@@ -6,10 +6,15 @@ Tracking Statistics with Graphite, StatsD, and CollectD
 #Stats Gathering and Delivery		
 	2. Collectd <- a system statistics daemon that can collect near-realtime information about a running server
 	3. StatsD   <- a flexible statistics aggregator that can be used to collect and organize arbitrary data.
-
+				<- StatsD is a simple NodeJS daemon that listens for messages on a UDP port.
+				<- It parses the messages, extracts metrics data, and periodically flushes the data to graphite.
 	
 # Docker image
 	https://github.com/hopsoft/docker-graphite-statsd
+	
+$ docker -v
+	Docker version 1.12.3, build 6b644ec (12/2016)
+	
 #------------------------------------	
 docker run -d\
  --name graphite\
@@ -21,6 +26,9 @@ docker run -d\
  -p 8126:8126\
  hopsoft/graphite-statsd
 #------------------------------------
+root/root
+#------------------------------------
+
 Nginx 	 - reverse proxies the graphite dashboard
 Graphite - front-end dashboard
 Carbon   - back-end

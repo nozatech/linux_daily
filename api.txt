@@ -1,0 +1,121 @@
+API ( Application Programming Interface)
+
+1. 3-Way Design
+JSON is most used
+
+1. Apiary 	(alternative Swagger or YMAL)							
+     -----------------------     ---------------------------------------
+	|		Design 			|	| 			   Build					|
+	 -----------------------	 --------------------------------------
+	|Collaboration | Access |  	| API Stub | Traffic Inspector | Github |
+     -------------- --------     ---------- ------------------  --------
+	 
+	 
+1. Apiary Blueprint
+
+http://docs.nozatech.apiary.io/#
+albertpark5@gmail.com | login as Github
+
+	The Spider Log API
+	Task: Create SPider Log API Blueprint
+	Task: Draft GET  /spiders endpoint
+	
+	
+API Blueprint - A powerful high-level API description language for web APIs.#
+			  -	API Blueprint is simple and accessible to everybody involved in the API lifecycle.
+				Its syntax is concise yet expressive. With API Blueprint you can quickly design 
+				and prototype APIs to be created or document and test already deployed 
+				mission-critical APIs.	
+				https://apiblueprint.org/
+-----------------------------------------------------------------------------------------------	
+Prerequisite Node & NPM	
+http://tecadmin.net/install-latest-nodejs-and-npm-on-centos/	
+### Node.js(javascript) 
+	- JavaScript runtime built on Chrome's V8 JavaScript engine. 
+	- Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and 
+	  efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source 
+	  libraries in the world.
+	- Javascript platform for server-side programming. It allows users to easily create 
+	  etworked applications that require backend functionality. By using Javascript as both 
+	  the client and server language, development can be fast and consistent.	
+	
+###	NPM install
+	npm is the package manager for JavaScript. Find, share, and reuse packages of code 
+	from hundreds of thousands of developers — and assemble them in powerful new ways.
+	
+	$ yum install -y gcc-c++ make
+	$ curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash -
+	# Install Node.js and NPM
+	$ yum install nodejs
+	$ node -v
+	v6.9.4
+	$ npm -v
+	3.10.10	
+-----------------------------------------------------------------------------------------------	
+
+Dredd - HTTP API Testing Framework	
+	  -	Dredd is a language-agnostic command-line tool for validating API description document 
+		against backend implementation of the API.
+		https://github.com/apiaryio/dredd
+
+	1. Make sure you have Node and NPM installed.
+		$ npm install -g dredd
+	2. Initialize Dredd. Mind the privacy of API key.
+		$ dredd init -r apiary -j apiaryApiKey:96c1172c8630db360c68de0becd7414e -j apiaryApiName:nozatech
+	3. Run the test, reports appear here.
+		$ dredd
+
+-----------------------------------------------------------------------------------------------	
+
+Base64 
+
+Encode from Linux
+$ printf id:12345678 | base64
+	aWQ6MTIzNDU2Nzg=
+
+Decode 
+https://www.base64decode.org/
+id:12345678
+
+### alternative Swagger or YMAL ###
+
+
+
+2.  Testing REST APIs
+ 
+  REST 				Rest Client    <- Top level 1
+( HTTP )			Web Debugger   <- Transport level
+(( TCP/IP ))		Packet Sniffer <- Network level
+
+
+
+
+3. Postman
+
+     ---------------------------------------- 	 ----------------------------
+	|		Test 			                 |	| 			   Automate		 |
+	 ----------------------------------------	 ----------------------------
+	|Build Requests | Save and share | Proxy |  | Collection Runner | Newman |
+     --------------- ---------------- -------    ------------------  --------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

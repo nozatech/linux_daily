@@ -16,6 +16,8 @@ commercing 		<- starting
 condemnation	<- 심한비난
 conform			<- comply with rules, standards, or laws
 contiguous		<- sharing a common border; touching. next or together in sequence.
+culprit			<- cause of an issue or a person who is responsible for a crime or other misdeed.
+
 
 # D
 damping			<- 습기를 주는, 전기: 감폭
@@ -59,6 +61,7 @@ relator			<- 고발자, a person who brings a public lawsuit, typically in the n
 setup VS set up <- setup is a noun, set up is a verb 
 souvenir
 squealing 		<- 빽뺵소리 스피커에서
+stash			<- store (something) safely and secretly in a specified place
 supersede 		<- replace
 
 

@@ -1,0 +1,12 @@
+HTTP Methods
+
+1. HTTP GET
+	Fetch data and resources from a web server
+2. HTTP POST
+	Create a resource on a web server
+3. HTTP PUT
+	Change/update the state of a resource
+4. HTTP DELETE
+	Delete a resource
+	
+	

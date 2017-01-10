@@ -27,10 +27,6 @@ wget https://dl.influxdata.com/influxdb/releases/influxdb-1.1.1.x86_64.rpm
 sudo yum localinstall influxdb-1.1.1.x86_64.rpm
 
 
-
-
-
-
 #------------------------------------------------------------------------------------
 How to Install and Config
 http://vmkdaily.ghost.io/influxdb-and-grafana-on-centos/
@@ -53,7 +49,7 @@ EOF
 $ sudo yum install influxdb
 
 $ sudo systemctl start influxdb
-$ sudo systemctl enable influxd            
+$ sudo systemctl enable influxdb            
 				 
 $ls /usr/bin/ | grep influx
 	influx
@@ -63,23 +59,153 @@ $ls /usr/bin/ | grep influx
 	influx_tsm
 
 *** Note ***   
-	influx 	<- the CLI tool to manage things.
-	influxd <- the actual binary that runs the program itself(No lib dependencies).
+	influx 		<- the CLI tool to manage things.
+	influxd 	<- the actual binary that runs the program itself(No lib dependencies).
+
+	
+# Allow InfluxDB through Firewall
+firewall-cmd --permanent --zone=public --add-port=8086/tcp
+firewall-cmd --permanent --zone=public --add-port=8083/tcp
+firewall-cmd --reload
+
+tcp6       0      0 :::8086                 :::*                    LISTEN      63660/influxd
+tcp6       0      0 :::3000                 :::*                    LISTEN      63839/grafana-serve
+tcp6       0      0 :::8088                 :::*                    LISTEN      63660/influxd
+
 
 ### Config file	location	
 $ /etc/influxdb/influxdb.conf
 	
 	###regenerate the config file ###
 	$ /usr/bin/influx config > influxdb.generated.conf		
-		
-$/usr/bin/influx
-Visit https://enterprise.influxdata.com to register for updates, InfluxDB server management, and monitoring.
-Connected to http://localhost:8086 version 1.0.2
-InfluxDB shell version: 1.0.2
->
+	
+	To launch 
+	$ influxd -config influxdb.conf
 
-GUI interface
-http://192.168.232.155:8083/
+# Enabling admin web interface
+http://192.168.232.155:8083/	
+
+# [admin]
+  # Determines whether the admin service is enabled.
+   enabled = true
+
+  # The default bind address used by the admin service.
+  bind-address = ":8083"
+
+  # Whether the admin service should use HTTPS.
+  https-enabled = true
+
+  # The SSL certificate used when HTTPS is enabled.
+  # https-certificate = "/etc/ssl/influxdb.pem"
+
+
+# To check from CMD
+$ curl -X POST 'http://localhost:8086/db?u=noza&p=noza' -d '{"name": "stats"}'
+404 page not found
+
+		
+### DB Shell login
+$ influx ( or $/usr/bin/influx )
+InfluxDB shell version: 1.1.1
+> 
+
+	# create user in from the shell
+	> CREATE USER id WITH PASSWORD 'pw' WITH ALL PRIVILEGES
+	# Create DB
+	> create database iops
+	> create database compute
+	
+	
+# DB location by default
+  # The directory where the TSM storage engine stores TSM files.
+  dir = "/var/lib/influxdb/data"
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+#------------------------------------------------------------------------------------
+Installing Grafana on CentOS 7
+#------------------------------------------------------------------------------------
+ulimit -n 65536
+
+
+
+#Installing Grafana
+$ cat <<EOF | sudo tee /etc/yum.repos.d/grafana.repo
+[grafana]
+name=grafana
+baseurl=https://packagecloud.io/grafana/stable/el/6/$basearch
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://packagecloud.io/gpg.key https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+EOF
+
+$ sudo yum -y install grafana
+
+# Configure Grafana
+If desired, you can modify the Grafana config file at 
+/etc/grafana/grafana.ini
+
+# Configure Grafana for automatic start-up
+$ sudo systemctl enable grafana-server.service
+
+
+# Start Grafana
+
+$ systemctl daemon-reload
+$ systemctl start grafana-server
+$ systemctl status grafana-server
+
+# Allow Grafana through firewall
+
+$ firewall-cmd --permanent --zone=public --add-port=3000/tcp
+$ firewall-cmd --reload
+
+# Check Grafana Service Status
+
+$ systemctl status grafana-server
+
+# web interface
+http://192.168.232.155:3000
+
+
+
+systemctl list-unit-files | grep 'influx\|grafana'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

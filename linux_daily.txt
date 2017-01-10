@@ -31,10 +31,10 @@ Settings > Shortcut Mapper Menu.
 	Ctrl+P				Display Print... dialog box.
 	Ctrl+O				Display Open File... dialog box.
 	Ctrl+S				Save current document.
+	
 	Ctrl+Alt+S			Display Save As... dialog box.
-	**
 	Ctrl+Shift+S		Save all open documents.
-	**
+	
 	Ctrl+W				Close current document.
 	Alt+F4				Exit Notepad++
 -----------------------------------------------------------------------------------
@@ -638,7 +638,7 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	$ tar -zxvf  <= extract tar zip file
 	$ tar -tf    <= extract tar file
 	
-	
+#-----------------------------------------------------------------------------------------------	
 B. Cron Jobs
 	$  crontab -e (first time ask a editor - choose vim)
 		* * * * *
@@ -669,8 +669,8 @@ cron job search from command line
 	
 	* * * * * /sbin/ping -c 1 192.168.0.1 > /dev/null
 	0 0,12 1 */2 * 				   <= every 12am & 12pm on 1st day of every 2nd month
-	30 08 10 06 * 				   <= June 10th 8:30AM
-	00 09-18 * * 1-5 			   <= Everyday 9am to 6pm Mon~Fri
+	30 08 10 06 * 				   <= June 10th 8:30AM (every year)
+	00 09-18 * * 1-5 			   <= Everyday 9am to 6pm Mon ~ Fri
 	
 # Install crontab
 	$ crontab cron_jobs.txt
@@ -692,15 +692,17 @@ cron job search from command line
 	
 	### Finding cron job list for all users ###
 	$ for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
-	
+		
 	# permission issue
 	$ sudo "for user in $(cut -f1 -d: /etc/passwd); do echo $user; crontab -u $user -l; done"
 
 	
 	a. Getting all user id info from /etc/passwd using 
-	cut -f1 -d:  /etc/passwd
-    b. using crontab utility to check list of cron job list
-	crontab -u $user -l
+		#cut -f1 -d:  /etc/passwd
+    
+	b. using crontab utility to check list of cron job list
+		$ crontab -u $user -l
+
 	##########################################
 	# #!/bin/bash
 	# for user in $(cut -f1 -d: /etc/passwd); 
@@ -708,6 +710,7 @@ cron job search from command line
 	#    echo $user; crontab -u $user -l; 
 	# done
     ##########################################
+#-----------------------------------------------------------------------------------------------
 
 	
 14. Zipping or archiving
@@ -1037,7 +1040,9 @@ cron job search from command line
 ###	$ Last Reboot ###
 	$ who -b
 	$ last reboot
-reboot system boot 3.2.13-grsec-xxx Tue Apr 3 07:34 - 09:17 (9+01:42) <= 9days 1hr 42mins after restart
+	reboot system boot 3.2.13-grsec-xxx Tue Apr 3 07:34 - 09:17 (9+01:42) 
+																	^= 9days 1hr 42mins after restart
+	
 	$ last
 	$ last -x
 	$ last -x reboot
@@ -2173,6 +2178,29 @@ vm.swappiness = 100	The kernel will swap aggressively.
 To temporarily set the swappiness in Linux, write the desired value (e.g. 10) to /proc/sys/vm/swappiness using the following command, running as root user:
 
 
+	# Out of meory
+	$ grep oom /var/log/*
+	$ grep total_vm /var/log/*
+
+	http://unix.stackexchange.com/questions/128642/debug-out-of-memory-with-var-log-messages
+	http://unix.stackexchange.com/questions/92525/can-linux-run-out-of-ram/92544#92544
+	
+	$ grep oom /var/log/*
+	/var/log/messages:Jan  5 18:41:12 app-03 kernel: httpd invoked oom-killer: gfp_mask=0x200da, order=0, oom_score_adj=0
+	/var/log/messages:Jan  5 18:41:14 app-03 kernel: [<ffffffff8116d24e>] oom_kill_process+0x24e/0x3b0
+	/var/log/messages:Jan  5 18:41:17 app-03 kernel: [ pid ]   uid  tgid total_vm  rss nr_ptes swapents oom_score_adj name
+	
+	pid 			<= The process ID.
+	uid 			<= User ID.
+	tgid 			<= Thread group ID.
+	total_vm 		<= Virtual memory use (in 4 kB pages)
+	rss 			<= Resident memory use (in 4 kB pages)
+	nr_ptes			<= Page table entries
+	swapents 		<= Swap entries
+	oom_score_adj 	<= Usually 0; a lower number indicates the process will be less likely to die when the OOM killer is invoked.
+	
+	
+	
 # Set the swappiness value as root
   $ echo 10 > /proc/sys/vm/swappiness
  
@@ -3627,4 +3655,46 @@ $ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{prin
 	# awk '{ if ($1 > 10) print $0}'	
 	  <= Finally use the awk command with an if statement to only print out data when 
 		the $1st column which is the number of hits in a minute is greater than 10.	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
