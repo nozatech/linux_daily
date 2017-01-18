@@ -1,10 +1,12 @@
-Jenkins on Ubuntu 14.04
+CI/CD Setup
+
+1. Jenkins on Ubuntu 14.04
 	
 ### Web Server install	
 	apt-get -y install apache2
 
 ### System update
-	apt-get update && apt-get upgrade
+	apt-get update && apt-get upgrade -y
 
 ### Java Install
 	apt-get -y install openjdk-7-jdk
@@ -21,9 +23,23 @@ Jenkins on Ubuntu 14.04
     http://cdn-jenkins.namcowireless.com:8080/jenkins/administrativeMonitor/hudson.diagnosis.ReverseProxySetupMonitor/test
 
 
+2. Java Environment set
+	$ apt-get install -y maven git-core 
+	
+	$ javac -version									<= java compiler
+	$ mvn -version
+	$ git --version
+
+	$ readlink -f /usr/bin/javac						<= java compiler pointing 
+	/usr/lib/jvm/java-7-openjdk-amd64/bin/javac
 	
 	
-	######################################################################	
+	
+	
+	
+	
+######################################################################	
+
 Gitlab on Ubuntu 14.04
 Username: root
 Password: xxxxxxxx
@@ -82,6 +98,64 @@ git push -u origin master
 # private sector
 -A INPUT -m state -s 10.128.44.59/32 --state NEW -j ACCEPT
 ###############################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

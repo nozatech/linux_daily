@@ -7,7 +7,7 @@
 	127.0.0.1       localhost pm pm.localhost
 
 2. On Cloudflare, careste DNS Arecord  
-	puppetmaster.namcowireless.com
+	puppetmaster.namcowireless.com   IP_Address
 
 3. IPTables setup
 	allow port 8140 for Puppet
@@ -1100,10 +1100,10 @@ $ rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 
 $ yum -y install epel-release https://yum.theforeman.org/releases/1.12/el7/x86_64/foreman-release.rpm
 $ yum -y install foreman-installer
-$ foreman-installer
+$ foreman-installer -i
 
 
-### Output from foreman-installer $$$
+### Output from foreman-installer ###
 
  Systemd start for puppetserver failed!
  /Stage[main]/Puppet::Server::Service/Service[puppetserver]/ensure: change from stopped to running fai                led: Systemd start for puppetserver failed!
@@ -1179,4 +1179,37 @@ $ sudo puppet module install -i /etc/puppetlabs/code/environments/production/mod
 
 
 
+###############################################################
+###############################################################
+### Foreman 1.13 install on CentOS7 			1/12/2017	###
+https://www.theforeman.org/manuals/1.13/quickstart_guide.html
+###############################################################
+###############################################################
 
+
+$ yum -y install https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
+$ yum -y install http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+$ yum -y install https://yum.theforeman.org/releases/1.13/el7/x86_64/foreman-release.rpm
+$ yum -y install foreman-installer
+$ foreman-installer -i
+
+#------------------------------------------------------------
+  * Foreman is running at https://puppet.localhost   https://192.168.232.164/users/login
+      Initial credentials are admin / noza
+  * Foreman Proxy is running at https://puppet.localhost:8443
+  * Puppetmaster is running at port 8140
+  The full log is at /var/log/foreman-installer/foreman.log
+#------------------------------------------------------------
+
+1. Puppet > 3 and up has changed a few directories but cmd should still run on the prompt. 
+export PATH=$PATH:/opt/puppetlabs/bin
+
+2. "Or you can determine that your server's distribution is "CentOS", so you should run the apache2 service instead of httpd." Httpd instead of Apache2
+3. Getting error after agent restart, but adding [agent] into /etc/puppetlabs/puppet/puppet.conf resolved the issue like previous 3.x config. [agent] server = puppetmastername #edit the hosts file
+4. If you have different hostname than "puppet" e.g. "pm" edit the master config file.
+	$vi /etc/puppetlabs/puppet/puppet.conf
+	certname = pm
+	dnsaltnames = pm,pm.localdomain
+	$systemctl restart puppetserver
+5. "Here is my Public IP Address: ${ipaddress_eth0}" <= BLANK IP for CentOS7 because it uses "eno"
+Hope this helps someone like me.

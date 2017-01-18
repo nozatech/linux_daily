@@ -48,7 +48,7 @@ Akka -  a toolkit and runtime for building highly concurrent, distributed,
 Cassandra - distributed, highly available DB designed to handle large amounts of data
 		across multiple datacenters
 Kafka - a high-throughput, low-latency distributed messaging system designed for
-		handling real-time data feeds
+		handling real-time 'data feeds'
 -----------------------------------------------------------------------------------		
 ### Chrome ###
 Alt + Home				Open your homepage.
@@ -73,10 +73,12 @@ Daily Linux CMD List & Scripts
 IPv4 address is 32bit 
 
 ### Enable color & history time stamp ###
-echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> ~/.bashrc
-echo 'export HISTTIMEFORMAT="%F "' >> ~/.bashrc
+echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> ~/.bashrc			<= Green
 ###
-
+echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"'   >> ~/.bashrc		<= Green|Red 
+###
+echo 'export HISTTIMEFORMAT="%F "' >> ~/.bashrc								<= History time stamp
+###
 
 ### Vi environment set-up (setting)
 Create a .vimrc file in home 
@@ -370,11 +372,8 @@ http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
 		ram2       0      0       0       0      0      0       0       0      0      0
 
 		
-	# vnstat 					<= a console-based network traffic monitor
-	$ vnstat -l					<= real time network statistic
-	$ vnstat --testkernel		<= check the kernel is providing all the information
-	$ vnstat -d					<= -h hour, -d day, -w week, -w month,
-	$ vnstat --dumpdb			<= export to Excel or 
+
+
 
 		
 6. Creating swap space in CentOS7
@@ -481,12 +480,47 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	
 9. Utility to check real time processing
     A. top 
-        $ top -bn 1 			<= Top BatchNumber 1			    
+        $ top -bn 1 			<= Top Batch Number 1			    
 								<= capture into single page file  
 								<= -b <= batch mode, n <= number, 1 <= count 
 		
 		$ top -bn 1 | awk "/$1/ {tot =+ \$6; n++} END {print tot\" \"n}"      <=??
-				
+		
+		
+		### Top 5 CPU processes
+		
+		### Using head & tail
+		$ top -bn 1 | head -n 12 | tail -n 6  	<= head displays head of 12 lines 
+												   tail from bottom 6 lines ( Displays 7,8,9,10,11,12 lines)
+		  
+		  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+			1 root      20   0  193632   6760   3944 S   0.0  0.7   0:00.74 systemd
+			2 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kthreadd
+			3 root      20   0       0      0      0 S   0.0  0.0   0:00.01 ksoftirqd/0
+			5 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/0:0H
+			6 root      20   0       0      0      0 S   0.0  0.0   0:00.13 kworker/u128:0
+
+		### using sed
+		$ $top -bn 1 | sed -n '6,12p'
+
+			PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+			1 root      20   0  193632   6760   3944 S   0.0  0.7   0:00.74 systemd
+			2 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kthreadd
+			3 root      20   0       0      0      0 S   0.0  0.0   0:00.01 ksoftirqd/0
+			5 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/0:0H
+			6 root      20   0       0      0      0 S   0.0  0.0   0:00.14 kworker/u128:0
+		
+		### Using awk
+		$ top -bn 1 | awk '6 <=NR && NR <=12'
+
+			PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+			1 root      20   0  193632   6760   3944 S   0.0  0.7   0:00.76 systemd
+			2 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kthreadd
+			3 root      20   0       0      0      0 S   0.0  0.0   0:00.01 ksoftirqd/0
+			5 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/0:0H
+			6 root      20   0       0      0      0 S   0.0  0.0   0:00.15 kworker/u128:0
+
+						
 		### Top commands short cuts:
 	***	1 – To display or hide all other CPU’s
 		A - Split into multiple CPU screen
@@ -1404,6 +1438,23 @@ Traceroute, Ping, and MTR
 
 44. lsmod = Show the status of modules in the Linux Kernel
 			same as  "cat /proc/modules"
+			
+	
+	mrmod					 <= rmmod - Simple program to remove a module from the Linux Kernel
+	Error msg  "blk_update_request: I/O error, dev fd0, sector 0 errors"
+	http://unix.stackexchange.com/questions/282845/blk-update-request-i-o-error-dev-fd0-sector-0
+	$ rmmod floppy		
+	$ echo "blacklist floppy" | sudo tee /etc/modprobe.d/blacklist-floppy.conf
+	
+	
+	more info:
+	fstab(5), 
+	findfs(8), 
+	mount(8) 
+	blkid(8) 
+
+	
+	
 >>>>>>> Stashed changes
 
 45. Disabling User account
@@ -2001,22 +2052,39 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 
 	
 59. network monitoring and troubleshooting
-
+	
+	# iftop
 	$ iftop -n -i eth1        <= -n no name lookup -i interface eth1
 	
-	traceroute TTL(time-to-live) value, also known as hop limit, option
+	# vnstat	 					<= a console-based network traffic monitor
+		$ vnstat -l					<= real time network statistic
+		$ vnstat --testkernel		<= check the kernel is providing all the information
+		$ vnstat -d					<= -h hour, -d day, -w week, -w month,
+		$ vnstat --dumpdb			<= export to Excel or 
+	
+	# traceroute TTL(time-to-live) value, also known as hop limit, option
 	$ traceroute -w 3 -q 1 -m 16 example.com
 
-	MTR - MTR represents an evolution of the traceroute command by providing a greater data sample, as if augmenting 
-	traceroute with ping output. This document provides an in depth overview of MTR, the data it generates, and how 
-	to properly interpret and draw conclusions based on the data provided by it.
+	# MTR
+		MTR - MTR represents an evolution of the traceroute command by providing a greater data sample, as if augmenting 
+		traceroute with ping output. This document provides an in depth overview of MTR, the data it generates, and how 
+		to properly interpret and draw conclusions based on the data provided by it.
 
 
+		
+### netsniff-ng 								<- the packet sniffing beast
+	Its gain of performance is reached by zero-copy mechanisms, so that on packet reception and transmission 
+	the kernel does not need to copy packets from kernel space to user space and vice versa.
+	toolkit can be used for network development and analysis, debugging, auditing or network reconnaissance.
+
+	$ apt-get|yum install netsniff-ng 					
+	http://netsniff-ng.org/
+		
 	For geographical AS TCP SYN probe trace route to a website:
-	$ astraceroute -d eth0 -N -S -H <host e.g., netsniff-ng.org>
+	$ astraceroute -d eth0 -N -S -H netsniff-ng.org			<- autonomous system trace route utility
 
 	For kernel networking statistics within promiscuous mode:
-	$ ifpps -d eth0 -p
+	$ ifpps -d eth0 -p						<-fetch and format kernel network statistics
 
 	For high-speed network packet traffic generation, trafgen.txf is the packet configuration:
 	$ trafgen -d eth0 -c trafgen.txf
@@ -3044,12 +3112,21 @@ puppetlabs-release                              install
 puppetmaster-common                             install
 puppetmaster-passenger                          install
 
+
+
 ####
 sed (stream editor)
-sed -i 's/START=no/START=yes/g' /etc/default/puppet
-          ^exiting ^change to
+sed -i 's/START=no/START=yes/g'    /etc/default/puppet
+          ^exiting ^change to		^ location of file	
 
-sed -i '/extern int errno/{s/^/\/* /;s/$/ *\//;G;s/$/#include <errno.h>/;}' src/error.h
+	#hostname change from u14 to rieman in hosts file
+	$ sed -i 's/u14/rieman/g' /etc/hosts
+		  
+		  
+	$ sed -i '/extern int errno/{s/^/\/* /;s/$/ *\//;G;s/$/#include <errno.h>/;}' src/error.h
+	
+	
+	
 		  
 ### Add some rows and text
 $ cat << EOF >> /etc/puppet/puppet.conf
@@ -3579,6 +3656,7 @@ running script with arg /RRLinux/RidgerRacer_Server_vSlave.log: "
 removing old log /RRLinux/RidgerRacer_Server_vSlave.log.11
 error: error opening /RRLinux/RidgerRacer_Server_vSlave.log.11: No such file or directory
 
+
 #---------------------------------------------------------------------------------------
 rotating log /RRLinux/run.log, log->rotateCount is 10
 dateext suffix '-20161024'
@@ -3675,6 +3753,11 @@ $ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{prin
 	
 	
 	
+### Awk ### 
+	Built-in Variables – FS, OFS, RS, ORS, NR, NF, FILENAME, FNR
+	http://www.thegeekstuff.com/2010/01/8-powerful-awk-built-in-variables-fs-ofs-rs-ors-nr-nf-filename-fnr/?ref=binfind.com/web
+	
+	1. Awk FS Example: Input field separator variable.
 	
 	
 	
@@ -3685,6 +3768,16 @@ $ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{prin
 	
 	
 	
+### What is a .h file?
+Files that contain the .h file extension are normally header files used with the C or C++ programming languages. 
+.h files are commonly known by programmers as "header files". They may contain constants, function prototypes 
+and external variable definitions.
+
+The header files are included by source code files that need to use the constants or functions defined in 
+the header file. For example, if you define a text string with your company name in a header file, 
+this constant can be used everywhere you need to display or otherwise use the company name in your source code. 
+Should you later decide to change the name, you only have to do it in the header file and recompile to make the 
+change take effect everywhere.	
 	
 	
 	

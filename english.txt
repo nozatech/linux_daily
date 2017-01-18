@@ -2,7 +2,9 @@
 
 # A 
 adorn 			<- decorate
-
+abscess			<- 종기   Dental Abscess, discharge pus 고름 짜내다	
+aggravation		<- get worse
+anemometer		<- [ӕnəmάmitər] an instrument for measuring the speed of the wind, or of any current of gas.
 
 # B
 Bearer 			<- carrier or something carries something
@@ -24,10 +26,17 @@ damping			<- 습기를 주는, 전기: 감폭
 decapitate		<- cut off the head of (a person or animal).
 deceit 			<- fake or trick
 digress			<- off the subject
+discrete		<- individually separate and distinct(분리된, 결개의)
 
 # E
 
+
+
 # F
+full-fledged	<-	completely developed or established; of full status.
+
+
+
 
 # G
 gingivitises	<- 치은염
@@ -38,33 +47,60 @@ gingivitises	<- 치은염
 # I
 ideation 		<- 관념화 the formation of ideas or concepts.
 impose			<- force (something unwelcome or unfamiliar) to be accepted or put in place.
+irrigator		<- [írəgèitər]
 
+
+
+# M
+Marshalling 	<- arrange or assemble (a group of people, especially soldiers) in order.
+mock-up			<- a model or replica of a machine or structure, used for instructional or experimental purposes.
 # N
 no frill 		<- simple, plain, 
 
 # P
 palindrome 		<- a word that reads same forwards or backwards
 					e.g. madam, 12321  
+parche			<- dried 			e.g. parched reservoirs
+pertinent		<- relevant or applicable to a particular matter; apposite. synonyms:relevant
 periodontists	<- 치주염
+promiscuous		<- 
+prospective		<- (of a person) expected or expecting to be something particular in the future. 미래의, 장래의
+					vs Retrospective  <- 회고의,looking back on or dealing with past events or situations. 
+pus				<- 고름
 
-quirk			<- 변덕
-				e.g. by a quirk of fate 운명의 장난으로
+# Q
+quirk			<- 변덕 				e.g. by a quirk of fate 운명의 장난으로
 
+
+
+# P
+primitive		<- relating to, denoting, or preserving the character of an early stage in the 
+					evolutionary or historical development of something.
 				
 # R
+reconnaissance	<- military observation of a region to locate an enemy or ascertain strategic features.
 resonance		<- 울림, 공진
-retroactive  	<- effective from a particular date in time
-relator			<- 고발자, a person who brings a public lawsuit, typically in the name of the 
+relator			<-  a person who brings a public lawsuit, typically in the name of the 고발자,
 				   attorney general, regarding the abuse of an office or franchise.
+retroactive  	<- effective from a particular date in time
+Retrospective   <- looking back on or dealing with past events or situations. 회고의,
 
+
+				   
+				   
 # S
+saunter			<- walk in a slow, relaxed manner, without hurry or effort.
 setup VS set up <- setup is a noun, set up is a verb 
+scoot			<- go or leave somewhere quickly.
 souvenir
 squealing 		<- 빽뺵소리 스피커에서
 stash			<- store (something) safely and secretly in a specified place
+strata			<- a layer of material, naturally or artificially formed, often one of a number 
+					of parallel layers one upon another: 층
 supersede 		<- replace
 
-
+# W
+wane			<- weaker, (especially of a condition or feeling) decrease in vigor, power, or extent; become weaker.
 
 
 # U

@@ -1,8 +1,12 @@
 How to use GIT
 
+Clone from repository
+$ mkdir new_folder && cd new_folder
+$ git clone https://github.com/nozatech/daily_cmd.git
+
 1. Create a new repository on the command line
 
-	echo "$ touch README.md
+	echo "$ touch README.md"
 	git init
 	git add README.md
 	git commit -m "first commit"
@@ -16,6 +20,8 @@ How to use GIT
 	git push -u origin master
 
 
+	
+	
 3. GIT how-to between Client A and B
 
 	### Client A: #### 
@@ -113,7 +119,8 @@ How to use GIT
 	execute following commands one by one and add your github username/password they they prompt (In Last)
 
 	$ git init
-	$ touch test.php | echo "first file" >> test.php
+	$ echo "first file" > test.php
+	# $ touch test.php | echo "first file" >> test.php
 	$ git add test.php
 	$ git config --global user.name "nozatech"
 	$ git config --global user.pawsswd "password"

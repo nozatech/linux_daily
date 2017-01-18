@@ -1,0 +1,150 @@
+1. Tilde extension
+
+$ cd
+$ cd ~  	<= ~ (home)
+$ echo ~-	<= prints out last location
+$ cd ~-		<= go to last location
+
+2. Brace extension
+$ mkdir brace && cd brace
+$ touch {apple,banana,cherry}
+	$ ls
+	apple  banana  cherry
+$ touch file _{1..1000}
+$ ls
+	file_1     file_189  file_279  file_369  file_459  file_549  file_639  file_729  file_819  file_909
+
+$ touch file_{01..1000}			<= adding 0 fixes the file issue
+$ ls
+	file_0001  file_0113  file_0225  file_0337  file_0449  file_0561  file_0673  file_0785  file_0897
+
+$ echo {0..10..2}	
+	0 2 4 6 8 10
+$ echo {0..10..3}
+	0 3 6 9
+$ echo {a..z}
+	a b c d e f g h i j k l m n o p q r s t u v w x y z
+$ echo {A..Z}
+	A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+$ echo {A..z}				<= Capital first
+	A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [  ] ^ _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z
+$ echo {A..z..2}
+A C E G I K M O Q S U W Y [ ] _ a c e g i k m o q s u w y
+
+$ touch {apple,banana,cherry}_{01..100}{a..z}
+apple_001a  apple_038n  apple_076a   banana_013n  banana_051a  banana_088n  cherry_026a  cherry_063n
+
+3. Pipe and Redirect
+$ pwd  /home/apark/braces
+$ mkdir ../pipes
+$ ls ../
+	braces pipes
+$ touch {01..10}
+$ chmod 000 *
+$ cp -v * ../pipes
+$ ls -l ../pipes
+	----------. 1 apark apark 0 Jan 17 16:11 01
+	----------. 1 apark apark 0 Jan 17 16:11 02
+$ touch {01..100}
+$ chmod 000 *09*
+$ cp -v * ../pipe 1> ../success.txt 2> ../error.txt       	<= NO output because redirect
+$ cp -v * ../pipe &> ../log.txt					      		<= & redirect both STDOUT & STDERR 
+$ ls > /dev/null
+
+4. grep, awk and cut
+$ grep --color=auto apark /var/log/secure
+$ export GREP_OPTIONS='--color=auto'
+$ grep -i break-in auth.log | awk {'print $12'}
+$ ping -c 1 example.com | grep 'bytes from' | cut -d = -f 4
+	2.69 ms
+
+5. Bash Version
+$ bash -version
+$ echo $BASH_VERSION
+4.2.46(1)-release
+
+
+6. Echo
+$ echo no quote
+$ echo 'single quote'
+$ echo "double quote"
+
+# same result
+$ echo greeting, \(world\)!
+$ echo 'greeting (world)!'
+$ echo "greeting (world)!"
+	greeting (world)!
+
+7. Variables
+a=hello
+b="hello world"
+c=16
+	$echo $a $b $c
+	hello hello world 16
+Adding attributes to variables
+declare -i d=123		<= d is an integer
+declare -r e=456		<= e is read-only
+declare -l f="LOLCats"	<= f is lolcats  #lower case
+declare -u g="LOLCats"	<= f is LOLCATS  #Upper case
+
+# Built-in variables(RESERVED)
+$PWD
+$HOME
+$HOSTNAME
+$MACHTYPE
+$BASH_VERSION
+$SECONDS
+
+$ echo $0
+
+8. Command substitution
+pwd=$(pwd)						<= put the command in side parenthesis
+echo $pwd
+
+$ a=$(ping -c 1 example.com | grep 'bytes from' | cut -d = -f 4)
+$ echo $a
+
+9. Working with Numbers
+	# Arithmetic Operations
+	val=$(( expression ))
+
+	Operation			Operator
+	Exponentiation		$a ** $b
+	Multiplication		$a * $b
+	Division			$a / $b
+	Modulo				$a % $b
+	Addition			$a + $b
+	Subtraction			$a - $b
+	
+d=2
+e=$((d+3))
+echo $e
+$((e++))
+$ echo $e
+	7
+$((e--))
+	6
+((e+=5))
+	11
+((e-=3))
+	8
+((e*=3))
+((e/=3))
+
+# Bash only works with Integers, not decimals
+$a=$(echo 1/3 |bc -l)						<= user BC An arbitrary precision calculator language
+												-l, --mathlib
+												Define the standard math library.
+$ echo $a
+.33333333333333333333
+
+10. Comprison Operations
+	[[  expressions  ]]
+	0: True    1: False
+
+
+
+	
+
+
+

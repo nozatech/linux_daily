@@ -1,0 +1,57 @@
+Riemann			
+	<= monitors distributed systems.
+
+Install on CentOS7	
+$ yum install bzip2
+$ sudo yum install java-1.7.0-openjdk-devel
+
+# Install Ruby on Rails
+	Ruby on Rails is an extremely popular open-source web framework that provides 
+	a great way to write web applications with Ruby.
+
+$ yum install -y ruby	
+$ install riemann-client riemann-tools riemann-dash
+ 
+
+
+$ wget https://github.com/riemann/riemann/releases/download/0.2.12/riemann-0.2.12.tar.bz2
+$ tar -xvfj riemann-0.2.12.tar.bz2	
+
+# Starting the server
+$ bin/riemann    etc/riemann.config
+
+# Go to
+http://localhost:5555
+
+
+
+Install on Ubuntu 14LTS	
+https://kartar.net/2014/12/an-introduction-to-riemann/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

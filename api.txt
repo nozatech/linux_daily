@@ -91,28 +91,83 @@ id:12345678
 
 
 3. Postman
-
-     ---------------------------------------- 	 ----------------------------
+	A powerful GUI platform to make your API development faster & easier, from building
+	API requests through testing, documentation and sharing.
+    
+	---------------------------------------- 	 ----------------------------
 	|		Test 			                 |	| 			   Automate		 |
 	 ----------------------------------------	 ----------------------------
 	|Build Requests | Save and share | Proxy |  | Collection Runner | Newman |
      --------------- ---------------- -------    ------------------  --------
 
 
+Postman  | Firefox | cURL
+
+cURL
+	CLI
+	Custom HTTP stack
+	Built-in on Linux & Mac
+	Exe download for Windows
+	Powerful & script
+	
+$ curl -v http://address 														<= -v   verbose 
+$ curl -v -u userID:password http://address 									<= -u   user credentials 
+$ curl -v -u userID:password -H Accept:application/xml http://address 			<= -H header
+ 
+
+
+
+HTTP Debuggers
+
+
+				Headers
+	Accept 		  | application/json
+	x-api-version | 1.0
+	
+	GET http://host/path
+	
+1. BURP Proxy
+
+	200 OK		---> BURP --->			API server  
+				<--- BURP <---
+	
+				Headers
+	Content-type| application/json
+	Content-lenth | 582
+	
+			Body
+	<some>xml</some>
+
+		
+
+2. CHARLES
+
+
+
+3. Wiresharks
+Packet Sniffers
+				Headers
+	Accept 		  | application/json
+	x-api-version | 1.0
+	Body
+	
+	GET http://host/path
+		200 OK		---> Wireshark --->			API server  
+					<--- Wireshark <---
+	
 
 
 
 
 
 
+#--------------------------------------------------------------------------
+OAuth
+	An open protocol to allow secure authorization in a simple and standard 
+	method from web, mobile and desktop applications.
 
-
-
-
-
-
-
-
+	
+	
 
 
 
