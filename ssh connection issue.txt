@@ -1,0 +1,48 @@
+SSH connection error after power outage on 1/21/2017
+
+After the power outage over weekend, using SSH (port 22) to server is impossible due to connection errors as below.
+
+
+Symptoms:
+  1. Cgywin from Windows 7 using LAN 10.100.5.190 | GW 65.87.26.124
+	AWS Servers
+	$ ssh -i wput-puppt.pem centos@52.89.234.12
+	Connection reset by 52.89.234.12 port 22
+	
+	DO Servers
+	$ ssh apark@162.243.68.237
+	Connection reset by 162.243.68.237 port 22
+
+
+  2. CentOS7 Server Workstation using LAN LAN 10.100.5.155 | GW 65.87.26.125
+	DO Servers
+	$ssh apark@45.55.5.69
+	Read from socket failed: Connection reset by peer	
+
+  3. Macbook using WIFI NamCity 10.122.2.229 | GW 65.87.26.123
+	$ ssh apark@45.55.5.69
+	Connection reset by 45.55.5.69 port 22
+
+
+Troubleshoot
+  1. Check SSH version, id_rsa, id_rsa.pub, known_hosts integrety
+  2. Remove id* and try ssh in again, but same error.  It is not the id_rsa keys.
+  3. From Macbook connect to PacCity(visitor internet) and try connect server.  All servers are blocked IP.
+  4. Create a new server on DO and test with PacCity internet from Macbook.  It works fine without an issue.
+  5. Tracking down to network issue and check with IT if ISP equipment and Firewall reboot are possible.  Will be reboot on weekend but too long to wait.
+  6. Try with mRemoteNG and Putty and they connect without an issue.
+  7. SSH debug mode and change ssh port 2222 on Remote server 
+  8. Using tcpdump, WireShark, & Tshark to capture the packets for comparisons: CentOS7, Cygwin and Putty connections
+  9. Packets size are different Cygwin -Packet Length: 1428  vs Putty 
+  
+  
+Workaround Solution	
+	
+  # Change the Cipher options
+	$ ssh -c aes256-ctr apark@45.55.5.69  <= single cipher option to eliminate whole list send
+  # Add ssh config file		
+	$ vi .ssh/config
+	Host *
+	Ciphers aes256-ctr
+
+	

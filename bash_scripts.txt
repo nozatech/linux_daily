@@ -115,6 +115,8 @@ $ for i in $(cat pmtip); do echo $i && ssh -t apark@$i cat /var/log/newrelic/nrs
 
 $ while true; do dmesg -c ; sleep 1 ; done
 
+$ while [ 1 ] ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostname'; sleep 10; done
+$ while false ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostname'; sleep 10; done
 
 	
 	

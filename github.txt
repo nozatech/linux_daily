@@ -2,7 +2,8 @@ How to use GIT
 
 Clone from repository
 $ mkdir new_folder && cd new_folder
-$ git clone https://github.com/nozatech/daily_cmd.git
+$ git clone https://github.com/nozatech/linux_daily.git
+$ git clone https://nozatech:Noza5571@github.com/nozatech/linux_daily.git   <= ID &PW
 
 1. Create a new repository on the command line
 
@@ -25,7 +26,7 @@ $ git clone https://github.com/nozatech/daily_cmd.git
 3. GIT how-to between Client A and B
 
 	### Client A: #### 
-		a. git clone https://github.com/nozatech/daily_cmd.git     	<= first time
+		a. git clone https://github.com/nozatech/linux_daily.git    	<= first time
 		b. git status
 		c. edit files & save
 		d. git status	
@@ -42,7 +43,7 @@ $ git clone https://github.com/nozatech/daily_cmd.git
 		 
 			
 	### Client B: ###
-		a. git clone https://github.com/nozatech/daily_cmd.git  	<= first time
+		a. git clone https://github.com/nozatech/linux_daily.git 	<= first time
 		b. git pull				<= any updates
 		c. edit files & save
 		d. git status

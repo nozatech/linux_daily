@@ -142,7 +142,24 @@ Undo
 	$ ssh id@x.x.x.x -p 2222									<= different port
 	$ ssh -l ubuntu ip_address									<= -l login user name
 	$ ssh -l ubuntu hostname
+	
+	# Cipher options
+	$ ssh -c aes256-ctr apark@45.55.5.69
+	# Creating SSH config file
+	$ vi .ssh/config
+	----------------------
+	Host *
+	Ciphers aes256-ctr
+	----------------------
+	
+	# $ ssh -c 3des-cbc apark@45.55.5.69
 
+	
+	$ ssh -Q [cipher | cipher-auth | mac | kex | key]
+
+	
+
+	
 	
   #	Install SSH on Ubuntu(Debian)
 	$ apt-get install openssh-server openssh-client
@@ -1288,7 +1305,12 @@ cron job search from command line
 
 ### encryption and decryption
 	$ openssl passwd -1 your_password  
-	  $1$nd1lHN8J$ehlK62ZgzrZDBq6ZHPT.l/   <= hashed value
+	  $1$nd1lHN8J$ehlK62ZgzrZDBq6ZHPT/   <= hashed value
+	
+	
+	$ mkpasswd -l 15 -d 3 -C 5
+
+	$ pwgen -s -1
 
 
 

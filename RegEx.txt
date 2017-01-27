@@ -1,0 +1,5 @@
+Regular Expression
+	A pattern that strings can match
+	e.g.   	*.txt 
+	
+	
