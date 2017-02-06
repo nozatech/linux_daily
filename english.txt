@@ -29,7 +29,7 @@ digress			<- off the subject
 discrete		<- individually separate and distinct(분리된, 결개의)
 
 # E
-
+embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
 
 
 # F
@@ -47,6 +47,7 @@ gingivitises	<- 치은염
 # I
 ideation 		<- 관념화 the formation of ideas or concepts.
 impose			<- force (something unwelcome or unfamiliar) to be accepted or put in place.
+impaired		<- the state or fact of being impaired(weakened or damaged), especially in a specified faculty.
 irrigator		<- [írəgèitər]
 
 
@@ -90,8 +91,11 @@ Retrospective   <- looking back on or dealing with past events or situations. �
 				   
 # S
 saunter			<- walk in a slow, relaxed manner, without hurry or effort.
-setup VS set up <- setup is a noun, set up is a verb 
+sacred			<- [seikrid] connected with God (or the gods) or dedicated to a religious 
+					purpose and so deserving veneration.  종교적인
+setup VS set up <- setup [noun], set up [verb] 
 scoot			<- go or leave somewhere quickly.
+scrutiny		<- critical observation or examination:	examination, inspection, survey, study, perusal;
 souvenir
 squealing 		<- 빽뺵소리 스피커에서
 stash			<- store (something) safely and secretly in a specified place

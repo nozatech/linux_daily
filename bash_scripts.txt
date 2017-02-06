@@ -97,7 +97,7 @@ BASH ( https://linux.die.net/man/1/bash )
 	-s  <= read from the standard input
 	
 
-### Single command line script from SHELL ###
+### Single line command script from SHELL ###
 
 $ for i in $(cat ~/list); do ssh apark@$i [[ -f /home/apark/rkchk.sh ]] && echo "File exist" || echo "Not Exist";done                      
 $ for i in $(cat "/home/apark/nu"); do ssh apark@$i "hostname && ls -l"; done
@@ -117,7 +117,7 @@ $ while true; do dmesg -c ; sleep 1 ; done
 
 $ while [ 1 ] ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostname'; sleep 10; done
 $ while false ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostname'; sleep 10; done
-
+while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; kill $! ; wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
 	
 	
 	

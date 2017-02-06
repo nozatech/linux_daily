@@ -80,13 +80,39 @@ echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"'   >> ~/.bashrc		<= Green|
 echo 'export HISTTIMEFORMAT="%F "' >> ~/.bashrc								<= History time stamp
 ###
 
+http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 ### Vi environment set-up (setting)
+	Install VIM first 
+	$ alias vi='vim
+
 Create a .vimrc file in home 
 $ vi .vimrc
 	:set num
 	:set tabstop=4					<= most of useful
 	:set autoindent
+	---------------------------------------------------------------------------------------------------
+	####	Vim color scheme enable   ###
+	http://www.server-world.info/en/note?os=CentOS_7&p=initial_conf&f=7
 
+	1. Install vim-enhanced
+	yum -y install vim-enhanced 
+
+	2. Edit profile
+	vi /etc/profile
+	# add at the last line
+	alias vi='vim'
+
+	3. reload
+	source /etc/profile 
+
+	4.Configure vim. 
+	( Apply to a user below. If you applly to all users, Write the same settings in '/etc/vimrc',  
+	some settings are applied by default though. )
+
+	# Add following 
+	syntax on
+	colorscheme desert
+	---------------------------------------------------------------------------------------------------
 esc highlight
 	shift+v to copy  == yy
 	shift+p to paste == pp
@@ -145,6 +171,7 @@ Undo
 	
 	# Cipher options
 	$ ssh -c aes256-ctr apark@45.55.5.69
+	
 	# Creating SSH config file
 	$ vi .ssh/config
 	----------------------
@@ -153,12 +180,29 @@ Undo
 	----------------------
 	
 	# $ ssh -c 3des-cbc apark@45.55.5.69
-
 	
 	$ ssh -Q [cipher | cipher-auth | mac | kex | key]
 
+	### Set SSH debugging mode on server
+	https://en.wikibooks.org/wiki/OpenSSH/Logging_and_Troubleshooting
+	$ systemctl stop sshd 				<= your connection is still live
+	$ /usr/sbin/sshd -d					<= running debugging mode on screen	
 	
-
+	# MD5 (Message-Digest algorithm 5)
+	https://help.ubuntu.com/community/HowToMD5SUM
+	$ md5sum file_name
+	When one has downloaded an ISO file for installing or trying Ubuntu, it is recommended to test 
+	that the file is correct and safe to use. The MD5 calculation gives a checksum (called a hash value), 
+	which must equal the MD5 value of a correct ISO.
+	
+	
+	$ basename 					<= strip directory and suffix from filenames
+	$ basename $0
+	
+	### run script remotely
+	$ ssh apark@remote_server  'bash -s' < from_local_script.sh				<= run a script remotely from local using sudoer
+	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh
+	
 	
 	
   #	Install SSH on Ubuntu(Debian)
@@ -198,11 +242,27 @@ Undo
 $ yum install python-pip
 $ pip install pssh
 	
+	
+	
+	
+	
+	
+	
 ### Remote command from shell
 
-$ ssh apark@192.241.190.57 'sudo iptables -nL'
-# Run a script using SUDO	
+$ ssh -t apark@192.241.190.57 'sudo iptables -nL'
+	  -t      Force pseudo-tty allocation
+	  
+
+# Run a script from Client to Remote as Sudoer	
+
 $ ssh apark@192.241.190.57 < 'bash -s' script.sh	
+	
+	
+	
+	
+	
+	
 	
 	
 4.  RSA KEY( 1024bit, 2k, 4k bit)
@@ -1215,10 +1275,13 @@ cron job search from command line
 	
 
 
-26. Today's date & time
-	date +"%m-%d-%Y"   <= 12-17-2014
-	date +"%H:%M:%S"   <= 10:20:18
-	date +"Today's date is %m-%d-%Y and time is %H:%M:%S."
+26. date 
+	$ date +"%m-%d-%Y"   		<= 12-17-2014
+	$ date +"%H:%M:%S"   		<= 10:20:18
+	$ date +"Today's date is %m-%d-%Y and time is %H:%M:%S."
+	$ date +%T
+	$ date +%D
+	$ date +%F
 
 
 27. printf
@@ -1667,6 +1730,7 @@ Ubuntu, 16.04 or higher			V
 	
 	
 46. List of package installed
+	$ rpm -qa | grep ^httpd
 # CentOS 'YUM'
 	$ yum list *httpd  											<= online
     $ yum list installed (same as 'rpm -qa') | grep httpd		<= on system 
@@ -2049,28 +2113,7 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 
 								
 	
-	########################	Vim color scheme enable   ######################
-	http://www.server-world.info/en/note?os=CentOS_7&p=initial_conf&f=7
 
-	1. Install vim-enhanced
-	yum -y install vim-enhanced 
-
-
-	2. Edit profile
-	vi /etc/profile
-	# add at the last line
-	alias vi='vim'
-
-
-	3. reload
-	source /etc/profile 
-
-
-	4.Configure vim. ( Apply to a user below. If you applly to all users, Write the same settings in '/etc/vimrc',  some settings are applied by default though. )
-
-	# Add following 
-	syntax on
-	colorscheme desert
 
 	
 59. network monitoring and troubleshooting
@@ -2370,13 +2413,19 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 
 	unzip ami.zip -d /jarvis
     
+	
+	### Make a directory remotely
+	
+	$ ssh apark@remote_ip "mkdir /path/to/dir"
+
+	
 	### copy file / folder
 	
-	# Local to Remote copy folder
-	scp -r /home/id/.ssh id@ip:/home/id/
+	# Local to Remote copy
+	$ scp -r /home/id/.ssh     id@ip:/home/id/			<= -r recursive
 
-	# Remote to Local copy folder one.
-	scp -r id@ip:/home/id/.ssh /home/id/.ssh2
+	# Remote to Local copy 
+	$ scp -r id@ip:/home/id/.ssh    /home/id/.ssh2
 	
 
 	
@@ -2610,18 +2659,17 @@ two cases:
 
 
 
-
 	
 	
 ############### 
 # System Info #
 ###############
 
-1. ssh -i .ssh/pem_key user_id@IP_Address
+1. ssh -i .ssh/pem_key 		user_id@IP_Address
 
-   ssh -p <port>       user_id@IP_Address
+   ssh -p <port>       		user_id@IP_Address
 
-   ssh-copy-id 	       user_id@IP_Address
+   ssh-copy-id 	       		user_id@IP_Address
 
 	$ sudo visudo   (old way   vi /etc/sudoers)
 	  nozatech ALL=(ALL:ALL) NOPASSWD:ALL
@@ -3730,6 +3778,12 @@ error: error opening /RRLinux/run.log.11: No such file or directory
 
 74.  Apache Log
 
+Check config file
+
+	$ apachectl configtest
+	https://httpd.apache.org/docs/2.4/programs/apachectl.html
+	
+	
 $ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; kill $! ; wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
 
 
@@ -3804,12 +3858,158 @@ change take effect everywhere.
 	
 	
 	
+### Network Trobleshooting
+	# Wireshark Filter <= https://www.youtube.com/watch?v=68t07-KOH9Y
+	filters are here:
+	ip.addr == 10.0.0.1
+	tcp or dns
+	tcp.port == 443
+	tcp.analysis.flags
+	!(arp or icmp or dns)
+	follow tcp stream
+	tcp contains facebook
+	http.response.code == 200
+	http.request
+	tcp.flags.syn == 1
+	
+	### Tshark ### 
+	# Dump and analyze network traffic for CLI environment and READ from GUI WIRESHARK!!!! 
+	https://linuxsimba.com/tshark-examples
+	
+	$ yum install wireshark
+	$ tshark -D  				<= Print a list of the interfaces on which TShark can capture
+	
+	$ tshark -w /tmp/capture.log -f "port 22" -i eth0 -P     
+			# -w  <= Write raw packet data to outfile 
+			# -f  <= Set the capture filter expression.
+			# -i  <= Network interface 
+			# -P  <= Decode and display the packet summary
+			
+	# http://explainshell.com/explain?cmd=tshark+-w+%2Ftmp%2Fdhcp.pcap+-f+%22port+67+or+port+68%22+-i+eth1+-P
+	
+	$ tshark -r /tmp/capture.log
+	
+	$ tshark -D
+		1. eth0
+    $ tshark -i 1 -a duration:10 -w /tmp/10secs.pcap
+	$ tshark -r /tmp/10secs.pcap
+	
+			
+	##  ldd 
+		prints the shared objects (shared libraries) required by each program or shared object specified 
+		on the command line.  An example of its use and output is the following:
+	$ ldd /usr/sbin/sshd
+	
+	## Debug
+	$ yum groupinstall -y 'Development Tools'
+	$ debuginfo-install openssh-server-6.6.1p1-33.el7_3.x86_64
+	$ yum info openssl
+	
+	$rpm -q --changelog openssl | grep CVE-2015-319
+		- fix CVE-2015-3197 - SSLv2 ciphersuite enforcement
+		- fix CVE-2015-3194 - certificate verify crash with missing PSS parameter
+		- fix CVE-2015-3195 - X509_ATTRIBUTE memory leak
+		- fix CVE-2015-3196 - race condition when handling PSK identity hint
+	
+	# change MTU size
+	$ ifconfig eth0 mtu 1000
 	
 	
 	
+	### Ping
+	- Is the remote host alive?		=> Host reachability
+	- Is the network speed good? 	=> Network congestion
+	- Is the remote host far? 		=> Travel length
+	
+	# Ping MTU discovery
+	http://muzso.hu/2009/05/17/how-to-determine-the-proper-mtu-size-with-icmp-pings
+	
+	https://openmaniak.com/ping.php
+	
+	$ ping -M  do -s 1500 remote_host
+			-M pmtudisc_opt
+              Select  Path  MTU Discovery strategy.  pmtudisc_option may be either 
+				do   <-(prohibit fragmentation, even local one), 
+				want <-(do PMTU discovery, fragment locally when packet size is large),
+                dont <-(do not set DF flag).
+			-s packetsize
+              Specifies  the number of data bytes to be sent.  The default is 56, 
+			  which translates into 64 ICMP data bytes when combined with the 8 bytes 
+			  of ICMP header data.
+			1500 MTU size
+			
+			
+	$ ping -M do -s 1500 45.55.5.69
+	PING 45.55.5.69 (45.55.5.69) 1500(1528) bytes of data.
+	ping: local error: Message too long, mtu=1500
+
+	$ ping -M do -s 1400 45.55.5.69
+	PING 45.55.5.69 (45.55.5.69) 1400(1428) bytes of data.
+	1408 bytes from 45.55.5.69: icmp_seq=1 ttl=52 time=9.05 ms
+	
+	#------------------------------------------------------------------------------------
+	#### Works solution ###
+	$ vi /etc/ssh/ssh_config
+	# uncomment on Ciphers and MACs under 
+	#Host *
+	Ciphers aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-cbc,3des-cbc
+	MACs hmac-md5,hmac-sha1,umac-64@openssh.com,hmac-ripemd160
+	#------------------------------------------------------------------------------------
 	
 	
+	# TTL (Time TO LIVE)
+	CentOS 	 64 TTL
+	Windows 128 TTL
+	Ubuntu  192 TTL
 	
+	### ICMP Packet 
 	
+	<----------><---------><-----------><--------->
+	MAC Header 	 IP Header  ICMP Header  ICMP Data
+	14-bytes	  20-bytes	 8-bytes
+	<--------------------------------------------->     <= Ethernet Frame
+				<--------------------------------->		<= IP Packet
+				           <---------------------->		<= ICMP Packet
+						   
+						   
+						   
+						   
+						   
+						   
+						   
+						   
+### tput 
+		(http://linuxcommand.org/lc3_adv_tput.php)
+		# When we start a terminal session on our Linux system, the terminal emulator sets the TERM environment 
+		  variable with the name of a terminal type.	
+		https://en.wikipedia.org/wiki/Tput		  
+		# tput is a standard Unix operating system command which makes use of terminal capabilities.
+		  Depending on the system, tput uses the terminfo or termcap database, as well as looking into the environment for the terminal type.
+						   
+						   
+	### infocmp - compare or print out terminfo descriptions
+		infocmp  can  be used to compare a binary terminfo entry with other terminfo entries, rewrite a
+       terminfo description to take advantage of the use= terminfo field,  or  print  out  a  terminfo
+       description  from  the  binary  file (term) in a variety of formats.  In all cases, the boolean
+       fields will be printed first, followed by the numeric fields, followed by the string fields.				
+						   
+	$ echo $TERM
+	$ infocmp screen
+		#       Reconstructed via infocmp from file: /usr/share/terminfo/s/screen
+		screen|VT 100/ANSI X3.64 virtual terminal,
+
+	$ logname
+	$ whoami
 	
-	
+	The tput command can be used to test for a particular capability or to output the assigned value.
+	$ tput logname
+	xterm terminal emulator (X Window System)
+	"screen" used by terminal multiplexers such as screen and tmux.
+						   
+
+						   
+						   
+						   
+### ETL 
+	is short for extract, transform, load, three database functions that are combined into one tool to 
+	pull data out of one database and place it into another database. Extract is the process of reading data from a database.						   
