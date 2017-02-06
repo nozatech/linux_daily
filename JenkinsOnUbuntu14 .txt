@@ -107,13 +107,28 @@ CI/CD Setup
 	apachectl configtest
     systemctl restart apache2
 	
+	
+	
+	https://www.youtube.com/watch?v=0ZS2BL5R3Ow&t=2s
+	
 	"Manage Jenkins -> Global Tool Configuration"
 	apt-get install maven git-core
+	javac -version
+	mvn -version
+	git --version
 	
+	### Link to Javac
+	$ readlink -f /usr/bin/javac
+	/usr/lib/jvm/java-8-oracle/bin/javac    <= location of javac binary
+	/usr/lib/jvm/java-8-oracle 				<= actual Java home
 	
+	### Link to Maven
+	$readlink -f /usr/bin/mvn				
+	/usr/share/maven						<= actual Java home
 	
-	
-	
+	Gmail SMTP setup
+	https://forums.manning.com/posts/list/37845.page
+	https://support.google.com/mail/answer/7126229?visit_id=1-636219623955807379-3302631064&rd=2#cantsignin
 	
 	
 	

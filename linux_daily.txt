@@ -2087,7 +2087,7 @@ iptables -L -v
   ### Check error restore test ###
 	$ iptables-restore -vv < /etc/iptables/rules.v4
 
-  ### Ubuntu 16.04 ###
+  ### Ubuntu 16.04 Iptables setup ###
 	http://linux-sys-adm.com/ubuntu-16.04-lts-how-to-configure-firewall-iptables-fail2ban/
 	https://oitibs.com/easy-ubuntu-16-server-firewall/
 	
