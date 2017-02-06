@@ -35,7 +35,9 @@ CI/CD Setup
 
 ### Java Install
 	apt-get -y install openjdk-7-jdk
+
 	java -version
+	
 	
 ### Jenkins Setup
 	wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
@@ -43,7 +45,7 @@ CI/CD Setup
 	apt-get update
 	apt-get -y install jenkins
 
-###  	Check Reverse Proxy
+###  Check Reverse Proxy
 	curl -iL -e http://cdn-jenkins.namcowireless.com:8080/jenkins/manage\
     http://cdn-jenkins.namcowireless.com:8080/jenkins/administrativeMonitor/hudson.diagnosis.ReverseProxySetupMonitor/test
 
@@ -57,6 +59,90 @@ CI/CD Setup
 
 	$ readlink -f /usr/bin/javac						<= java compiler pointing 
 	/usr/lib/jvm/java-7-openjdk-amd64/bin/javac
+	
+	
+	
+
+  ### Ubuntu 16.04 Iptables setup ###
+	http://linux-sys-adm.com/ubuntu-16.04-lts-how-to-configure-firewall-iptables-fail2ban/
+	https://oitibs.com/easy-ubuntu-16-server-firewall/
+	
+	# Install IPTables Persistent Package 
+	$ apt-get install -y iptables-persistent
+
+	# Add netfilter-persistent Startup
+	$ invoke-rc.d netfilter-persistent save
+	
+	$ service netfilter-persistent stop
+	
+	### Edit IPtables ##
+	# Start netfilter-persistent Service
+	
+	$ service netfilter-persistent start
+	
+	$ iptables -nL	
+
+	Java 8 install
+	sudo add-apt-repository ppa:webupd8team/java
+	sudo apt update; sudo apt install oracle-java8-installer
+	javac -version	# java -version
+	
+	
+	#### Apache Proxy 80 to 8080 ###
+	sudo a2enmod proxy
+    sudo a2enmod proxy_http
+	vi /etc/apache2/sites-available/jenkins.conf
+	----------------------------------------------
+	<VirtualHost *:80>
+        ServerName 45.55.80.156
+        ProxyRequests Off
+        <Proxy *>
+                Order deny,allow
+                Allow from all
+        </Proxy>
+        ProxyPreserveHost on
+        ProxyPass / http://localhost:8080/
+	</VirtualHost>
+	----------------------------------------------
+	apachectl configtest
+    systemctl restart apache2
+	
+	"Manage Jenkins -> Global Tool Configuration"
+	apt-get install maven git-core
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

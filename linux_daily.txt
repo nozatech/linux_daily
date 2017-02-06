@@ -1975,8 +1975,13 @@ sudo systemctl start iptables
 	Writing a Simple Rule Set( https://wiki.centos.org/HowTos/Network/IPTables)
 
 
-IMPORTANT: At this point we are going to clear the default rule set. If you are connecting remotely to a server via SSH for this tutorial then there is a very real possibility that you could lock yourself out of your machine. You must set the default input policy to accept before flushing the current rules, and then add a rule at the start to explicitly allow yourself access to prevent against locking yourself out.
-We will use an example based approach to examine the various iptables commands. In this first example, we will create a very simple set of rules to set up a Stateful Packet Inspection (SPI) firewall that will allow all outgoing connections but block all unwanted incoming connections:
+IMPORTANT: At this point we are going to clear the default rule set. If you are connecting remotely 
+to a server via SSH for this tutorial then there is a very real possibility that you could lock yourself 
+out of your machine. You must set the default input policy to accept before flushing the current rules, 
+and then add a rule at the start to explicitly allow yourself access to prevent against locking yourself out.
+We will use an example based approach to examine the various iptables commands. In this first example, 
+we will create a very simple set of rules to set up a Stateful Packet Inspection (SPI) firewall that 
+will allow all outgoing connections but block all unwanted incoming connections:
 
 
 # iptables -P INPUT ACCEPT
@@ -2082,7 +2087,31 @@ iptables -L -v
   ### Check error restore test ###
 	$ iptables-restore -vv < /etc/iptables/rules.v4
 
-  
+  ### Ubuntu 16.04 ###
+	http://linux-sys-adm.com/ubuntu-16.04-lts-how-to-configure-firewall-iptables-fail2ban/
+	https://oitibs.com/easy-ubuntu-16-server-firewall/
+	
+	# Install IPTables Persistent Package 
+	$ apt-get install -y iptables-persistent
+
+	# Add netfilter-persistent Startup
+	$ invoke-rc.d netfilter-persistent save
+	
+	$ service netfilter-persistent stop
+	
+	### Edit IPtables ##
+	# Start netfilter-persistent Service
+	
+	$ service netfilter-persistent start
+	
+	$ iptables -nL
+
+
+
+
+
+
+
 # Security Selinux
 vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 
@@ -3313,9 +3342,11 @@ CentOS
 	-A INPUT -m state -s x.x.x.x --state NEW -j ACCEPT
 
 ###
-Allow everything from cmd	
+Allow everything from single IP using cmd	
 ###------------------------------------------------------------------
 $ iptables -A INPUT -m state -s 65.87.26.0/24 --state NEW -j ACCEPT
+
+$ iptables -A INPUT -m state -s 73.231.235.144/32 --state NEW -j ACCEPT
 ###	-----------------------------------------------------------------
 
 # iptables -t [filter|nat|mangle] [-A|-D|-L|-F] [INPUT|OUTPUT|FORWARD] -p [tcp|udp] -m [tcp|udp] -s [sourceip] -d [destip] --dport [port] -j [DROP|REJECT|ACCEPT] 
