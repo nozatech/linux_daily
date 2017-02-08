@@ -1,12 +1,5 @@
 How to use GIT
 
-
-Use HTTPS	https://github.com/nozatech/jenkins.git
-Use SSH     git@github.com:nozatech/jenkins.git
-
-
-
-
 Clone from repository
 $ mkdir new_folder && cd new_folder
 $ git clone https://github.com/nozatech/linux_daily.git

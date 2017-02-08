@@ -110,7 +110,6 @@ CI/CD Setup
 	
 	
 	https://www.youtube.com/watch?v=0ZS2BL5R3Ow&t=2s
-	https://gist.github.com/jsuwo/9038610
 	
 	"Manage Jenkins -> Global Tool Configuration"
 	apt-get install maven git-core
@@ -130,18 +129,12 @@ CI/CD Setup
 	Gmail SMTP setup
 	https://forums.manning.com/posts/list/37845.page
 	https://support.google.com/mail/answer/7126229?visit_id=1-636219623955807379-3302631064&rd=2#cantsignin
-	** Login to Gmail and set less security  turn on <- Stupidity!!  security on/off?
-	
-	Check settings in Jenkins
-	$ cat /var/lib/jenkins/hudson.tasks.Mailer.xml
-	
-	POM.XML
-	A Project Object Model is for Maven that contains project and configuration details.
-	https://maven.apache.org/guides/introduction/introduction-to-the-pom.html
 	
 	
-	Jenkins 
-	# Line Coverage for Jacoco plugin (Java Code Coverage)
+	
+	
+	
+	
 	
 	
 	
