@@ -2,11 +2,6 @@
 ### 1. Run Scripts ###
 ######################
 
-https://www.shellcheck.net/
-$ apt-get | yum install shellcheck	-y
-
-
-
 # How to run a script
 	$ ./script.sh
     $ sh ./script.sh  				 <= same as 'sh script.sh')

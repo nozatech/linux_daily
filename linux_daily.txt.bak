@@ -31,9 +31,9 @@ Settings > Short cut Mapper Menu.
 	Ctrl+P				Display Print... dialog box.
 	Ctrl+O				Display Open File... dialog box.
 	Ctrl+S				Save current document.
-	
+**	Ctrl+Shift+S		Save all open documents
+
 	Ctrl+Alt+S			Display Save As... dialog box.
-	Ctrl+Shift+S		Save all open documents.
 	
 	Ctrl+W				Close current document.
 	Alt+F4				Exit Notepad++
