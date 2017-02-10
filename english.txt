@@ -12,6 +12,10 @@ brag 			<- say in a boastful manner.
 
 
 # C
+Churn rate 		<=(sometimes called attrition rate), in its broadest sense, is a measure of the number 
+					of individuals or items moving out of a collective group over a specific period. ... 
+					The phrase is based on the English verb churn, meaning "to agitate or produce 
+					violent motion".
 chug alone		<- along the lines, without a hitch, take a back seat
 cling			<- (of a person or animal) hold on tightly to.
 clingy			<- kids are very clingy #(of a person or garment) liable to cling; clinging

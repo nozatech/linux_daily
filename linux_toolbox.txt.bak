@@ -1,21 +1,32 @@
+--------------------
+Linux Tools List
+--------------------
+
+
 1.	SYSTEM
 Hardware | Statistics | Users | Limits | Runlevels | root password | Compile kernel | Repair grub | Misc
+
 Running kernel and system information
-# uname -a      -r                    # Get the kernel version (and BSD version)
-# lsb_release -a                     # Full release info of any LSB distribution
-# cat /etc/SuSE-release              # Get SuSE version
-# cat /etc/debian_version            # Get Debian version
-Use /etc/DISTR-release with DISTR= lsb (Ubuntu), redhat, gentoo, mandrake, sun (Solaris), and so on. See also /etc/issue.
-# uptime                             # Show how long the system has been running + load
-# hostname                           # system's host name
-# hostname -i                        # Display the IP address of the host. (Linux only)
-# man hier                           # Description of the file system hierarchy
-# last reboot                        # Show system reboot history
+
+$ uname -r                           # -a for all, Get the kernel version (and BSD version)
+$ cat /etc/*rel*					 # Linux release version CentOS, Ubuntu,	
+	#$ lsb_release -a                     # Only works on Debian(ubuntu)
+	# cat /etc/SuSE-release              # Get SuSE version
+	# cat /etc/debian_version            # Get Debian version
+	Use /etc/DISTR-release with DISTR= lsb (Ubuntu), redhat, gentoo, mandrake, sun (Solaris), and so on. See also /etc/issue.
+
+$ uptime                             # Show how long the system has been running + load
+$ hostname                           # system's host name
+$ hostname -i                        # Display the IP address of the host. (Linux only)
+$ man hier                           # Description of the file system hierarchy
+$ last reboot                        # Show system reboot history
+
 Hardware Informations
 Kernel detected hardware
-# dmesg                              # Detected hardware and boot messages
-# lsdev                              # information about installed hardware
-# dd if=/dev/mem bs=1k skip=768 count=256 2>/dev/null | strings -n 8 # Read BIOS
+$ dmesg                              # Detected hardware and boot messages
+$ lsdev                              # information about installed hardware
+$ dd if=/dev/mem bs=1k skip=768 count=256 2>/dev/null | strings -n 8 				# Read BIOS
+
 Linux
 # cat /proc/cpuinfo                  # CPU model
 # cat /proc/meminfo                  # Hardware memory
@@ -130,6 +141,7 @@ The actual runlevel can be changed with init. For example to go from 3 to 5:
 •	3       Multi-user with network
 •	5       Multi-user with X
 •	6       Reboot
+
 Use chkconfig to configure the programs that will be started at boot in a runlevel.
 # chkconfig --list                   # List all init scripts
 # chkconfig --list sshd              # Report the status of sshd

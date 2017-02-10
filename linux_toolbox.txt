@@ -6,28 +6,33 @@ Linux Tools List
 1.	SYSTEM
 Hardware | Statistics | Users | Limits | Runlevels | root password | Compile kernel | Repair grub | Misc
 
-Running kernel and system information
+Running Kernel version and system information
 
-$ uname -r                           # -a for all, Get the kernel version (and BSD version)
-$ cat /etc/*rel*					 # Linux release version CentOS, Ubuntu,	
-	#$ lsb_release -a                     # Only works on Debian(ubuntu)
-	# cat /etc/SuSE-release              # Get SuSE version
-	# cat /etc/debian_version            # Get Debian version
+$ uname -r                           	# -a for all, Get the kernel version (and BSD version)
+$ cat /etc/*rel*					 	# Linux release version CentOS, Ubuntu,	
+	#$ lsb_release -a                   # Only works on Debian(ubuntu)
+	# cat /etc/SuSE-release             # Get SuSE version
+	# cat /etc/debian_version           # Get Debian version
 	Use /etc/DISTR-release with DISTR= lsb (Ubuntu), redhat, gentoo, mandrake, sun (Solaris), and so on. See also /etc/issue.
 
-$ uptime                             # Show how long the system has been running + load
-$ hostname                           # system's host name
-$ hostname -i                        # Display the IP address of the host. (Linux only)
-$ man hier                           # Description of the file system hierarchy
-$ last reboot                        # Show system reboot history
+$ uptime                             	# Show how long the system has been running + load
+$ hostname                           	# system's host name
+$ hostname -i                        	# Display the IP address of the host. (Linux only)
+$ man hier                           	# Description of the file system hierarchy
+$ last reboot                        	# Show system reboot history
 
 Hardware Informations
 Kernel detected hardware
 $ dmesg                              # Detected hardware and boot messages
-$ lsdev                              # information about installed hardware
-$ dd if=/dev/mem bs=1k skip=768 count=256 2>/dev/null | strings -n 8 				# Read BIOS
+$ lspci								 # information about installed hardware
+	#$ lsdev 
+	
+# Read BIOS
+	$ dd if=/dev/mem bs=1k skip=768 count=256 2>/dev/null | strings -n 8 				
 
-Linux
+
+Linux system info
+
 # cat /proc/cpuinfo                  # CPU model
 # cat /proc/meminfo                  # Hardware memory
 # grep MemTotal /proc/meminfo        # Display the physical memory
@@ -38,6 +43,7 @@ Linux
 # lsusb -tv                          # Show USB devices
 # lshal                              # Show a list of all devices with their properties
 # dmidecode                          # Show DMI/SMBIOS: hw info from the BIOS
+
 FreeBSD
 # sysctl hw.model                    # CPU model
 # sysctl hw                          # Gives a lot of hardware information
@@ -50,20 +56,25 @@ FreeBSD
 # usbdevs -v                         # Show USB devices
 # atacontrol list                    # Show ATA devices
 # camcontrol devlist -v              # Show SCSI devices
+
 Load, statistics and messages
 The following commands are useful to find out what is going on on the system.
 # top                                # display and update the top cpu processes
+	$ atop
+	$ htop
 # mpstat 1                           # display processors related statistics
 # vmstat 2                           # display virtual memory statistics
 # iostat 2                           # display I/O statistics (2 s intervals)
-# systat -vmstat 1                   # BSD summary of system statistics (1 s intervals)
-# systat -tcp 1                      # BSD tcp connections (try also -ip)
-# systat -netstat 1                  # BSD active network connections
-# systat -ifstat 1                   # BSD network traffic through active interfaces
-# systat -iostat 1                   # BSD CPU and and disk throughput
+
+	# systat -vmstat 1                   # BSD summary of system statistics (1 s intervals)
+	# systat -tcp 1                      # BSD tcp connections (try also -ip)
+	# systat -netstat 1                  # BSD active network connections
+	# systat -ifstat 1                   # BSD network traffic through active interfaces
+	# systat -iostat 1                   # BSD CPU and and disk throughput
 # ipcs -a                            # information on System V interprocess
-# tail -n 500 /var/log/messages      # Last 500 kernel/syslog messages
-# tail /var/log/warn                 # System warnings messages see syslog.conf
+# tail -n 50 /var/log/messages       # Last 50 kernel/syslog messages
+# tail /var/log/syslog.conf                 # System warnings messages see syslog.conf
+# tail /var/log/                     # System warnings messages see syslog.conf
 Users
 # id                                 # Show the active user id with login and group
 # last                               # Show last logins on the system

@@ -4,7 +4,7 @@
 1.역사책 - 역사의식 책임
 2.문화책 - 감성
 3.경영책 - 논리
-4.철학책 - 생각에 방법 app-1061.dgh.namcowireless.com
+4.철학책 - 생각에 방법 
 5.사회학 인간학 - 인간 관계
 
 -----------------------------------------------------------------------------------
@@ -136,7 +136,13 @@ p    f. Press P to paste before the cursor, or p to paste after.
 Undo
 	esc and u
 	
-		
+
+# Switch user
+	$ su user_id					<= just switch user but same current directory
+	$ su - user_id					<= go to user's HOME directory
+	$ 
+	
+	
 # CD command
 	mkdir -p /1/2/3/4/5
 	from /1/2/3/  =>  /1   			$ cd ../..
@@ -744,6 +750,8 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	# tar -x(extract)v(verbose)p(permission)z(uncompress)f(file name) backup.tar.gz -C(change to different directory) /recover
 	$ tar -xvzf  backup.tar.gz /home/nozatech
 	$ tar -xvpzf backup.tar.gz /home/nozatech	
+	$ tar -xzvf nexus-3.2.0-01-unix.tar.gz   -C   /opt
+
 
 	$ tar -zcvf  <= create tar zip file
 	$ tar -zxvf  <= extract tar zip file
@@ -4082,17 +4090,86 @@ change take effect everywhere.
 	The Unified Modeling Language (UML) is a general-purpose, developmental, modeling language in the field 
 	of software engineering, that is intended to provide a standard way to visualize the design of a system.
 	
+### RSS https://en.wikipedia.org/wiki/RSS
+	(Rich Site Summary; originally RDF Site Summary; often called Really Simple Syndication) uses a family of 
+	standard web feed formats[2] to publish frequently updated information: blog entries, news headlines, 
+	audio, video. An RSS document (called "feed", "web feed",[3] or "channel") includes full or summarized 
+	text, and metadata, like publishing date and author's name.
+	RSS feeds enable publishers to syndicate data automatically. A standard XML file format ensures 
+	compatibility with many different machines/programs. RSS feeds also benefit users who want to receive 
+	timely updates from favourite websites or to aggregate data from many sites
 	
 	
+### Nexus or Artifictory for a Maven Repo	
+	http://stackoverflow.com/questions/364775/should-we-use-nexus-or-artifactory-for-a-maven-repo
 	
 	
+### /dev diretory 
+	http://unix.stackexchange.com/questions/18239/understanding-dev-and-its-subdirs-and-files
+	crw-r-----. 1 root kmem 1, 1 Feb  2 17:50 /dev/mem
+	^ Character devices
+	There are two types of device files: block devices (indicated by b as the first character in the output of ls -l), 
+	and character devices (indicated by c).
+	- Block Devices (indicated by b as the first character in the output of ls -l), and character 
+	devices (indicated by c). The distinction between block and character devices is not 
+	completely universal. Block devices are things like disks, which behave like large, 
+	fixed-size files: if you write a byte at a certain offset, and later read from the device 
+	at that offset, you get that byte back. 
+	- Character devices are just about anything else, where writing a byte has some immediate 
+	effect (e.g. it's emitted on a serial line) and reading a byte also has some immediate 
+	effect (e.g. it's read from the serial port).	
 	
 	
-	
-	
-	
-	
-	
+### /var/log 
+	http://superuser.com/questions/565927/differences-in-var-log-syslog-dmesg-messages-log-files
+
+	Log files from the system and various programs/services, especially login (/var/log/wtmp, which logs all 
+	logins and logouts into the system) and syslog (/var/log/messages, where all kernel and system program 
+	message are usually stored). Files in /var/log can often grow indefinitely, and may require cleaning at 
+	regular intervals. Something that is now normally managed via log rotation utilities such as 'logrotate'. 
+	This utility also allows for the automatic rotation compression, removal and mailing of log files. 
+	Logrotate can be set to handle a log file daily, weekly, monthly or when the log file gets to a certain 
+	size. Normally, logrotate runs as a daily cron job. This is a good place to start troubleshooting general 
+	technical problems.
+
+/var/log/messages 	– Contains global system messages, including the messages that are logged during system startup. 
+					  There are several things that are logged in /var/log/messages including mail, cron, daemon, kern, auth, etc.
+/var/log/dmesg   	– Contains kernel ring buffer information. When the system boots up, it prints number of messages 
+					  on the screen that displays information about the hardware devices that the kernel 
+					  detects during boot process. These messages are available in kernel ring buffer and 
+					  whenever the new message comes the old message gets overwritten. You can also view the 
+					  content of this file using the dmesg command.
+/var/log/auth.log 	– Contains system authorization information, including user logins and authentication machinsm that were used.
+/var/log/secure
+
+/var/log/boot.log 	– Contains information that are logged when the system boots
+/var/log/daemon.log – Contains information logged by the various background daemons that runs on the system
+/var/log/dpkg.log   – Contains information that are logged when a package is installed or removed using dpkg command
+/var/log/kern.log   – Contains information logged by the kernel. Helpful for you to troubleshoot a custom-built kernel. */var/log/lastlog – Displays the recent login information for all the u sers. This is not an ascii file. You should use lastlog command to view the content of this file.
+/var/log/mail.log   – Contains the log information from the mail server that is running on the system. For example, sendmail logs information about all the sent items to this file
+/var/log/user.log   – Contains information about all user level logs
+/var/log/Xorg.x.log – Log messages from the X
+/var/log/alternatives.log – Information by the update-alternatives are logged into this log file. On Ubuntu, update-alternatives maintains symbolic links determining default commands.
+/var/log/btmp 		– This file contains information about failed login attemps. Use the last command to view the btmp file. For example, “last -f /var/log/btmp | more”
+/var/log/cups 		– All printer and printing related log messages
+/var/log/anaconda.log – When you install Linux, all installation related messages are stored in this log file
+/var/log/yum.log 	– Contains information that are logged when a package is installed using yum
+/var/log/cron 		– Whenever cron daemon (or anacron) starts a cron job, it logs the information about the cron job in this file
+/var/log/secure 	– Contains information related to authentication and authorization privileges. For example, sshd logs all the messages here, including unsuccessful login.
+/var/log/wtmp   	– Contains login records. Using wtmp you can find out who is logged into the system. 
+/var/log/utmp		  who command uses this file to display the information.
+/var/log/faillog 	– Contains user failed login attemps. Use faillog command to display the content of this file. Apart from the above log files, /var/log directory may also contain the following sub-directories depending on the application that is running on your system.
+/var/log/httpd/ 
+/var/log/apache2 	– Contains the apache web server access_log and error_log
+/var/log/lighttpd/ 	– Contains light HTTPD access_log and error_log
+/var/log/conman/ 	– Log files for ConMan client. conman connects remote consoles that are managed by conmand daemon.
+/var/log/mail/ 		– This subdirectory contains additional logs from your mail server. For example, sendmail stores the collected mail statistics in /var/log/mail/statistics file
+/var/log/prelink/ 	– prelink program modifies shared libraries and linked binaries to speed up the startup process. /var/log/prelink/prelink.log contains the information about the .so file that was modified by the prelink.
+/var/log/audit/ 	– Contains logs information stored by the Linux audit daemon (auditd).
+/var/log/setroubleshoot/ – SELinux uses setroubleshootd (SE Trouble Shoot Daemon) to notify about issues in the security context of files, and logs those information in this log file.
+/var/log/samba/ 	– Contains log information stored by samba, which is used to connect Windows to Linux.
+/var/log/sa/ 		– Contains the daily sar files that are collected by the sysstat package.
+/var/log/sssd/ 		– Use by system security services daemon that manage access to remote	
 	
 	
 	

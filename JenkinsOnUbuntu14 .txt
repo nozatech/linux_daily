@@ -1,6 +1,61 @@
 Jenkins vs Travis
 http://stackoverflow.com/questions/32422264/jenkins-vs-travis-ci-which-one-would-you-use-for-a-open-source-project
 
+
+https://dzone.com/articles/jenkins-operations-center-tutorial-cjoc
+# Jenkins Operation Center(Cloudbee)
+The CJOC is used for managing multiple Jenkins Masters. It makes it much easier to scale Jenkins 
+horizontally, as it makes it possible to share build nodes between masters. You can also enforce 
+security compliance, manage update centers, set up single sign on, and monitor everything all 
+from the CJOC.
+
+# Client Master
+	A client master is just a normal Jenkins master that we’ve joined to our Operations center 
+	cluster for management purposes.
+	These masters can then use normal slaves, shared slaves, or a shared cloud.
+
+# Shared slaves 
+	slave nodes that are available for any master to use.
+	
+# A shared cloud 
+	spin up temporary slaves when demand exceeds what’s available from the shared slaves.
+
+	
+AWS Jenkins HA setup using NFS(Shared Disk)
+https://www.youtube.com/watch?v=zHavme2iaFA
+
+
+
+Nexus Repository
+https://www.youtube.com/watch?v=XzJ2FnIapAE
+
+
+
+
+Jenkins installation list
+1. Apache2 + Jenkins + Java
+2. NginX + Apache2 + Jenkins + Java
+3. Java + Jenkins.war
+4. Tomcat + Jenkins + Java
+5. Dockers + Jenkins
+6. Windows install
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ------------------------------------------------------------------------------
 in-house 	→ Jenkins or gitlab-ci
 Github.com 	→ Travis-CI
@@ -75,22 +130,26 @@ CI/CD Setup
 	
 	$ service netfilter-persistent stop
 	
-	### Edit IPtables ##
+	### After Edit IPtables ##
 	# Start netfilter-persistent Service
 	
 	$ service netfilter-persistent start
 	
 	$ iptables -nL	
 
-	Java 8 install
+	
+	### Java 8 install
 	sudo add-apt-repository ppa:webupd8team/java
 	sudo apt update; sudo apt install oracle-java8-installer
 	javac -version	# java -version
 	
 	
-	#### Apache Proxy 80 to 8080 ###
+	#### Apache Proxy 80 to 8080 using Proxy modules ###
+	
 	sudo a2enmod proxy
     sudo a2enmod proxy_http
+	
+	
 	vi /etc/apache2/sites-available/jenkins.conf
 	----------------------------------------------
 	<VirtualHost *:80>
@@ -104,8 +163,8 @@ CI/CD Setup
         ProxyPass / http://localhost:8080/
 	</VirtualHost>
 	----------------------------------------------
-	apachectl configtest
-    systemctl restart apache2
+	$ apachectl configtest
+    $ systemctl restart apache2
 	
 	
 	
@@ -149,13 +208,17 @@ CI/CD Setup
 	
 	
 	
+######################################################################	
+WebGL https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
+	(Web Graphics Library) is a JavaScript API for rendering interactive 3D and 2D graphics 
+	within any compatible web browser without the use of plug-ins. WebGL does so by introducing 
+	an API that closely conforms to OpenGL ES 2.0 that can be used in HTML5 <canvas> elements.	
 	
 	
 	
 	
-	
-	
-	
+######################################################################	
+Unity
 	
 	
 	
