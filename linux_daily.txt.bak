@@ -136,7 +136,13 @@ p    f. Press P to paste before the cursor, or p to paste after.
 Undo
 	esc and u
 	
-		
+
+# Switch user
+	$ su user_id					<= just switch user but same current directory
+	$ su - user_id					<= go to user's HOME directory
+	$ 
+	
+	
 # CD command
 	mkdir -p /1/2/3/4/5
 	from /1/2/3/  =>  /1   			$ cd ../..

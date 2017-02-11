@@ -2201,7 +2201,9 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	$ netsniff-ng -i eth0 -o dump.pcap -s -b 0	
 	
 	
-	tcpdump
+###	tcpdump
+	
+	$ tcpdump -i eth1 -n tcp port 10050
 	####################################
 	# tcpdump -i any -n tcp port 10050 #    <= zabbix agent port
 	####################################
@@ -2218,6 +2220,16 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	http://www.rationallyparanoid.com/articles/tcpdump.html
 	$ tcpdump -n src host 192.168.1.1
   
+###	NetCat
+	###################################
+	#  nc -v 192.168.110.220  22 	  #  <= netcat  -v verbose / -z listening daemon
+	###################################   
+
+    Connection to 192.168.110.220 10051 port [tcp/zabbix-trapper] succeeded!
+	
+	nc -l 22 							<= listening mode
+  
+  
 	Ping and capture IP only
 	$ ping -c 1 www.google.com | gawk -F'[()]' '/PING/{print $2}'
   
@@ -2228,14 +2240,7 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	
 	$ dig +short +trace www.name.com
 	
-  	NetCat
-	###################################
-	#  nc -v 192.168.110.220  22 	  #  <= netcat  -v verbose / -z listening daemon
-	###################################   
 
-    Connection to 192.168.110.220 10051 port [tcp/zabbix-trapper] succeeded!
-	nc -l 22 							<= listening mode
-  
   
   
 61. telnet     ip_address    port_number  <= check port is open for connection

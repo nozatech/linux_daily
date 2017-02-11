@@ -204,6 +204,15 @@ CI/CD Setup
 	
 	
 	
+	# Jenkins Master/Slave setup
+	On Remote 
+	install JAVA and /var/jenkins folder
+	set permission own by ssh user account for /var/jenkins
+	
+	On Master
+	Manage Jenkins -> Manage Nodes  ->
+	
+	
 	
 	
 	

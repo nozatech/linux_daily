@@ -130,7 +130,7 @@ CI/CD Setup
 	
 	$ service netfilter-persistent stop
 	
-	### Edit IPtables ##
+	### After Edit IPtables ##
 	# Start netfilter-persistent Service
 	
 	$ service netfilter-persistent start
