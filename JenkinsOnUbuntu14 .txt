@@ -205,11 +205,11 @@ CI/CD Setup
 	
 	
 	# Jenkins Master/Slave setup
-	On Remote 
+	# On Remote 
 	install JAVA and /var/jenkins folder
 	set permission own by ssh user account for /var/jenkins
 	
-	On Master
+	# On Master
 	Manage Jenkins -> Manage Nodes  ->
 	
 	
@@ -286,7 +286,8 @@ git add .
 git commit
 git push -u origin master
 	
-### Update Git 
+### Update Git ??? 
+https://git-scm.com/docs/git-clone
 	$ git clone git://git.kernel.org/pub/scm/git/git.git
 
 
@@ -328,15 +329,60 @@ git push -u origin master
 
 
 
+### CentOS7 creating jenkins.service
+https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
+https://www.digitalocean.com/community/tutorials/how-to-set-up-jenkins-for-continuous-development-integration-on-centos-7
 
 
+$ vi /etc/systemd/system/jenkins.service
+-----------------------------------------------------------
+[Unit]
+Description=Jenkins Service
+After=network.target
 
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/java -jar /usr/local/bin/jenkins.war
+Restart=on-abort
 
+[Install]
+WantedBy=multi-user.target
+-----------------------------------------------------------
 
+[Unit] 	The bracketed text denotes a section heading. This means that, for instance, [Service] declares a section called 
+		"Service," and all the assignments below it contain relevant information that the system will then know how to 
+		find and relate to the section header.
 
+		A configuration file, this one included, is typically a text file – meaning it has no intrinsic meaning to the computer. 
+		Rather, the text file will be parsed by some process, and that process will use the headings and other information to 
+		find its way around. For this reason, it's technically irrelevant how a given configuration file is laid out – as long 
+		as the program which reads it can understand what everything means.
 
+		The first section, Unit, contains only two configuration directives. 
+Description=Jenkins Service  <= The first is simply a name. 
+After=network.target		 <= States what service, if any, is necessary for the current service to start.
 
+[Service]	the Type directive allows you to select what type of startup this service will use. 
+Type=simple  <= the process noted in the later directive ExecStart will be the primary 
+				process of the service being created. Really, type is unnecessary, as simple is assumed when type is 
+				unspecified, but we are leaving it in for clarity.
 
+User=root	<= User specifies which user has control over this process, and Restart is used to indicate that, 
+				in this case, if the process terminates but the exit code implies error, the service will be 
+				restarted. This is useful in maintaining the continuity of the service in case of unexpected crashes.
+ExecStart=/usr/bin/java -jar /usr/local/bin/jenkins.war
+			As mentioned, ExecStart is the directive where we indicate what process is to become the main action of the service. 
+			This directive represents the main wrapper for Jenkins – the service will run the WAR through Java rather 
+			than treating it a foreground process.
+
+[Install]	multi-user.target indicates a target, called a runlevel prior to CentOS 7. It provides for the system 
+			a sense of what resources to provide this service and what amount of intensity will be required by the user.
+
+Once your file is created and saved, you should be able to start up your new Jenkins service!
+$ sudo systemctl daemon-reload
+
+$ sudo systemctl start jenkins.service
 
 
 
@@ -437,6 +483,8 @@ class { 'timezone':
 
 
 
+
+### How to set up Jenkins CI on a Mac
 
 
 

@@ -167,18 +167,18 @@ Undo
 
 # long command using ' \' for extent command
 
+### Putty, mRemote, Cygwins, Shell, Terminal,
 	
 3. SSH connection login
 	$ ssh -v root@172.16.248.xx > result.txt					<= -v debugging mode
 	$ ssh -v root@172.16.248.xx 2>&1 > result.txt	
 	$ ssh id@x.x.x.x -p 2222									<= different port
-	$ ssh -l ubuntu ip_address									<= -l login user name
-	$ ssh -l ubuntu hostname
+	$ ssh -l ubuntu ip_address (or hostname)									<= -l login user name
 	
 	# Cipher options
 	$ ssh -c aes256-ctr apark@45.55.5.69
 	
-	# Creating SSH config file
+	# Creating SSH config file and single Ciphers option
 	$ vi .ssh/config
 	----------------------
 	Host *
@@ -207,9 +207,8 @@ Undo
 	
 	### run script remotely
 	$ ssh apark@remote_server  'bash -s' < from_local_script.sh				<= run a script remotely from local using sudoer
-	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh
-	
-	
+	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh                  <= installing as sudo
+		
 	
   #	Install SSH on Ubuntu(Debian)
 	$ apt-get install openssh-server openssh-client
@@ -508,6 +507,12 @@ echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab   <=	# To enable it 
 	Run queue and load average data
 	Network statistics
 	Report sar data from a specific time
+
+$ iperf
+	$ iperf -s
+	$ iperf -c remote_server     				<= -c host
+
+
 	
 https://www.server-world.info/en/note?os=CentOS_7&p=sysstat
 $ yum install -y sysstat
@@ -1965,7 +1970,31 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 	$ /etc/init.d/mysqld start
 
 
-	### CentOS7 ### 
+	
+	
+### Ubuntu 16.04 Iptables setup ###
+	http://linux-sys-adm.com/ubuntu-16.04-lts-how-to-configure-firewall-iptables-fail2ban/
+	https://oitibs.com/easy-ubuntu-16-server-firewall/
+	
+	# Install IPTables Persistent Package 
+	$ apt-get install -y iptables-persistent
+
+	# Add netfilter-persistent Startup
+	$ invoke-rc.d netfilter-persistent save
+	
+	$ service netfilter-persistent stop
+	
+	### After Edit IPtables ##
+	# Start netfilter-persistent Service
+	
+	$ service netfilter-persistent start
+	
+	$ iptables -nL	
+
+
+	
+	
+### CentOS7 ### 
 
 Iptables opens all	
 $ iptables -I INPUT -j ACCEPT
@@ -2201,7 +2230,9 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	$ netsniff-ng -i eth0 -o dump.pcap -s -b 0	
 	
 	
-	tcpdump
+###	tcpdump
+	
+	$ tcpdump -i eth1 -n tcp port 10050
 	####################################
 	# tcpdump -i any -n tcp port 10050 #    <= zabbix agent port
 	####################################
@@ -2218,6 +2249,16 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	http://www.rationallyparanoid.com/articles/tcpdump.html
 	$ tcpdump -n src host 192.168.1.1
   
+###	NetCat
+	###################################
+	#  nc -v 192.168.110.220  22 	  #  <= netcat  -v verbose / -z listening daemon
+	###################################   
+
+    Connection to 192.168.110.220 10051 port [tcp/zabbix-trapper] succeeded!
+	
+	nc -l 22 							<= listening mode
+  
+  
 	Ping and capture IP only
 	$ ping -c 1 www.google.com | gawk -F'[()]' '/PING/{print $2}'
   
@@ -2228,20 +2269,13 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	
 	$ dig +short +trace www.name.com
 	
-  	NetCat
-	###################################
-	#  nc -v 192.168.110.220  22 	  #  <= netcat  -v verbose / -z listening daemon
-	###################################   
 
-    Connection to 192.168.110.220 10051 port [tcp/zabbix-trapper] succeeded!
-	nc -l 22 							<= listening mode
-  
   
   
 61. telnet     ip_address    port_number  <= check port is open for connection
 	$ telnet ip_address 22
 	
-	to exit ' ctrl+] '  or ' ^] ' then type "close"
+	to exit ' ctrl + ] '  or ' ^] ' then type "close"
 
 
 
@@ -3352,7 +3386,7 @@ CentOS
 	Update the IPTables
 	$ iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
 	
-	Access all 
+	Allow all from x.x.x.x IP 
 	-A INPUT -m state -s x.x.x.x --state NEW -j ACCEPT
 
 ###
@@ -4169,9 +4203,19 @@ change take effect everywhere.
 /var/log/setroubleshoot/ – SELinux uses setroubleshootd (SE Trouble Shoot Daemon) to notify about issues in the security context of files, and logs those information in this log file.
 /var/log/samba/ 	– Contains log information stored by samba, which is used to connect Windows to Linux.
 /var/log/sa/ 		– Contains the daily sar files that are collected by the sysstat package.
-/var/log/sssd/ 		– Use by system security services daemon that manage access to remote	
-	
-	
+/var/log/sssd/ 		– Use by system security services daemon that manage access to remoA servlet is simply a class which responds to a particular type of network request - most commonly an HTTP request. Basically servlets are usually used to implement web applications - but there are also various frameworks which operate on top of servlets (e.g. Struts) to give a higher-level abstraction than the "here's an HTTP request, write to this HTTP response" level which servlets provide.
+
+
+
+
+### Servlets 
+	A servlet is simply a class which responds to a particular type of network request - most commonly an HTTP request. 
+	Basically servlets are usually used to implement web applications - but there are also various frameworks which 
+	operate on top of servlets (e.g. Struts) to give a higher-level abstraction than the "here's an HTTP request, 
+	write to this HTTP response" level which servlets provide.
+
+	Servlets run in a servlet container which handles the networking side (e.g. parsing an HTTP request, 
+	connection handling etc). One of the best-known open source servlet containers is Tomcat.	
 	
 	
 	

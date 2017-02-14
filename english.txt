@@ -4,6 +4,7 @@
 adorn 			<- decorate
 abscess			<- 종기   Dental Abscess, discharge pus 고름 짜내다	
 aggravation		<- get worse
+alleviate 		<- provide physical relief, as from painalliviate
 anemometer		<- [ӕnəmάmitər] an instrument for measuring the speed of the wind, or of any current of gas.
 
 # B
@@ -34,6 +35,8 @@ degradation		<- changing to a lower state
 digress			<- off the subject
 discrete		<- individually separate and distinct(분리된, 결개의)
 
+drench   		<- wet thoroughly; soak
+
 # E
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
 
@@ -62,6 +65,7 @@ irrigator		<- [írəgèitər]
 Marshalling 	<- arrange or assemble (a group of people, especially soldiers) in order.
 mock-up			<- a model or replica of a machine or structure, used for instructional or experimental purposes.
 # N
+nifty			<- very good
 no frill 		<- simple, plain, 
 
 # P
@@ -124,3 +128,20 @@ wane			<- weaker, (especially of a condition or feeling) decrease in vigor, powe
 
 # U
 unwieldy <- hard to handle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#########
+shoot yourself in the foot
