@@ -12,7 +12,7 @@ Windows CMD kill process
 http://tweaks.com/windows/39559/kill-processes-from-command-prompt
 c:\tasklist
 c:\taskkill /IM pdflite.exe /F 
-
+# Rename file name  'F2 key'
 -----------------------------------------------------------------------------------
 Notepad++
 
@@ -189,10 +189,23 @@ Undo
 	
 	$ ssh -Q [cipher | cipher-auth | mac | kex | key]
 
+	
 	### Set SSH debugging mode on server
 	https://en.wikibooks.org/wiki/OpenSSH/Logging_and_Troubleshooting
-	$ systemctl stop sshd 				<= your connection is still live
-	$ /usr/sbin/sshd -d					<= running debugging mode on screen	
+	$ systemctl stop sshd 					<= your connection is still live
+	$ /usr/sbin/sshd -ddd					<= running debugging mode on screen	
+
+	## Client can't connect
+	error msg: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+	Authentication refused: bad ownership or modes for directory .ssh
+	
+	# Resolution: change permission on user .ssh folder to 700
+	$ chown 700 -R .ssh
+	
+
+
+
+
 	
 	# MD5 (Message-Digest algorithm 5)
 	https://help.ubuntu.com/community/HowToMD5SUM
@@ -205,9 +218,7 @@ Undo
 	$ basename 					<= strip directory and suffix from filenames
 	$ basename $0
 	
-	### run script remotely
-	$ ssh apark@remote_server  'bash -s' < from_local_script.sh				<= run a script remotely from local using sudoer
-	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh                  <= installing as sudo
+
 		
 	
   #	Install SSH on Ubuntu(Debian)
@@ -253,17 +264,14 @@ $ pip install pssh
 	
 	
 	
-### Remote command from shell
-
-$ ssh -t apark@192.241.190.57 'sudo iptables -nL'
-	  -t      Force pseudo-tty allocation
+### Run command on remote shell
+	$ ssh apark@192.241.190.57 	  'sudo iptables -nL'					
+	$ ssh -t apark@192.241.190.57 'sudo iptables -nL'					<= -t      Force pseudo-tty allocation
 	  
-
-# Run a script from Client to Remote as Sudoer	
-
-$ ssh apark@192.241.190.57 < 'bash -s' script.sh	
+	### run script remotely
 	
-	
+	$ ssh apark@remote_server  'bash -s' < from_local_script.sh			<= run a script remotely from local using sudoer
+	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh                  <= installing as sudo	
 	
 	
 	
@@ -316,6 +324,7 @@ $ ssh apark@192.241.190.57 < 'bash -s' script.sh
 		$ curl -v http://google.com
 	
 	I. $ curl dict://dict.org/d:bash
+	
 
 	# to get the HEADER info	
 	$curl -i http://address:3000/json-test 
@@ -348,26 +357,27 @@ Delete
 
 curl www.yahoo.com -o output.html
 curl -O www.yahoo.com/index.html
-curl -# -u id:pw ftp://ftphost/fuzicast/sample.txt -o sample.txt # the -# adds progress bar
-curl -r 0-99 -u id:pw ftp://ftphost/fuzicast/sample.txt# get first 100 bytes
-curl -r -500 -u id:pw ftp://ftphost/fuzicast/sample.txt # get last 500 bytes
-	echo "Hello World" | curl -T - -u id:pw ftp://ftphost/fuzicast/sample2.txt
+curl -# -u id:pw ftp://ftphost/fuzicast/sample.txt -o sample.txt 				# the -# adds progress bar
+curl -r 0-99 -u id:pw ftp://ftphost/fuzicast/sample.txt							# get first 100 bytes
+curl -r -500 -u id:pw ftp://ftphost/fuzicast/sample.txt 						# get last 500 bytes
+echo "Hello World" | curl -T - -u id:pw ftp://ftphost/fuzicast/sample2.txt
 curl -T UNIX-1.14 -u id:pw ftp://ftphost/fuzicast/unix
 curl -T localfile1 servername/remotefile1 -T localfile2 servername/remotefile2
-curl -T UNIX-1.14 -u id:pw -a ftp://ftphost/fuzicast/unix # append to FTP file
+curl -T UNIX-1.14 -u id:pw -a ftp://ftphost/fuzicast/unix 						# append to FTP file
 curl --ftp-create-dirs -T UNIX-1.14 -u id:pw ftp://ftphost/fuzicast/unix/test.txt
-curl --limit-rate 10240 -u id:pw ftp://ftphost/fuzicast/sample.txt # limit number of bytes per second
-.curlrc # curl configuration file
-curl -u id:pw -z sample.txt ftp://ftphost/fuzicast/sample.txt # download remotefile only if it's newer than localfile
-curl -z "Jan 12 2012" -u id:pw ftp://ftphost/fuzicast/sample.txt # download remote file only if it's newer than Jan 12 2012
-curl -B -u id:pw ftp://ftphost/fuzicast/sample.txt # enforces ASCII transfer during FTP download 
-curl -u id:pw ftp://ftphost/fuzicast/sample.txt --create-dirs -o sampledir/sample.txt# create directory if not exist
+curl --limit-rate 10240 -u id:pw ftp://ftphost/fuzicast/sample.txt 				# limit number of bytes per second .curlrc # curl configuration file
+curl -u id:pw -z sample.txt ftp://ftphost/fuzicast/sample.txt 					# download remotefile only if it's newer than localfile
+curl -z "Jan 12 2012" -u id:pw ftp://ftphost/fuzicast/sample.txt 				# download remote file only if it's newer than Jan 12 2012
+curl -B -u id:pw ftp://ftphost/fuzicast/sample.txt 								# enforces ASCII transfer during FTP download 
+curl -u id:pw ftp://ftphost/fuzicast/sample.txt --create-dirs -o sampledir/sample.txt		# create directory if not exist
 curl --key id_rsa # use SSH key
-curl -u id:pw ftp://ftphost -Q 'RNFR /fuzicast/sample.txt' -Q 'RNTO /fuzicast/sampleyue.txt' # rename a remote file in FTP protocol
-curl -u id:pw ftp://ftphost -Q 'rename /fuzicast/sample.txt /fuzicast/sampleyue.txt' # rename in SFTP is different from FTP
+curl -u id:pw ftp://ftphost -Q 'RNFR /fuzicast/sample.txt' -Q 'RNTO /fuzicast/sampleyue.txt'	 # rename a remote file in FTP protocol
+curl -u id:pw ftp://ftphost -Q 'rename /fuzicast/sample.txt /fuzicast/sampleyue.txt' 			# rename in SFTP is different from FTP
 curl -R -u id:pw ftp://ftphost/fuzicast/sample.txt -o output.txt # reserve original file timestamp
-curl -l -u id:pw ftp://ftphost/fuzicast/ # list remote filenames
-curl -m 1800 -Y 3000 -y 60 servername/filename # speed must be greater than 3000 bytes per second for a minute and download process must be completed within 1800 seconds, otherwise the download will abort
+curl -l -u id:pw ftp://ftphost/fuzicast/ 										# list remote filenames
+curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater than 3000 bytes per second for a minute and 
+																				download process must be completed within 1800 seconds, otherwise the 
+																				download will abort
 
 	
 ### text browser ###
@@ -2753,12 +2763,28 @@ two cases:
 
    ssh-copy-id 	       		user_id@IP_Address
 
+   # CentOS sudo without passwd
+   
 	$ sudo visudo   (old way   vi /etc/sudoers)
 	  nozatech ALL=(ALL:ALL) NOPASSWD:ALL
 	  %sudo    ALL=(ALL:ALL) NOPASSWD:ALL
 	
-	# Run script without password prompt! 
+	# Run specific 'script' without password prompt! 
 	$ username  ALL=(ALL) NOPASSWD: /home/username/pydatertc.sh	
+	
+	# Ubuntu sudo without passwd
+	$ sudo visudo
+ 		# User privilege specification
+		root    ALL=(ALL:ALL) ALL
+		apark   ALL=(ALL:ALL) NOPASSWD:ALL									<= Add NOPASSWD
+		# Members of the admin group may gain root privileges
+		%admin ALL=(ALL) NOPASSWD:ALL										<= Add NOPASSWD
+		# Allow members of group sudo to execute any command
+		%sudo   ALL=(ALL:ALL) NOPASSWD:ALL									<= Add NOPASSWD
+
+	
+	
+	
 	
 	# Allowing/Denying User-Level Cron
 	$ /etc/cron.allow
@@ -2921,7 +2947,15 @@ two cases:
 	$ sudo sysctl -p
 	####
 	
-		
+	https://help.ubuntu.com/community/RootSudo
+	$ ls | sudo tee -a /root/somefile 
+	
+	# pass the whole command to a shell process run under sudo to have the file written to with root permissions
+	$ sudo sh -c "ls > /root/somefile"
+	
+
+
+	
 #### UBUNTU  ###	
 http://stackoverflow.com/questions/21515463/how-to-increase-maximum-file-open-limit-ulimit-in-ubuntu
 
@@ -4229,15 +4263,25 @@ change take effect everywhere.
 	
 	
 	
+### Binary releases - contain computer OS readable version of the application, meaning it is compiled. 
+### Source releases - contain human readable version(code) of the application, meaning it has to be compiled 
+					  before it can be used.	
 	
 	
+### primitive types are the basic types of data
+		byte, short, int, long, float, double, boolean, char
+		primitive variables store primitive values
+		
+### reference types are any instantiable class as well as arrays
+		String, Scanner, Random, Die, int[], String[], etc.
+		reference variables store addresses	
 	
 	
-	
-	
-	
-	
-	
-	
+### Directory . and .. means
+http://www.basicconfig.com/linux/linux_cd_command_tutorial	
+	. means the current directory.
+	.. means the parent directory.
+	e.g. when you type cd .. , you will move one level up. When you type cp /etc/resolv.conf  .  , 
+		 you will copy file /etc/resolv.conf in the current directory.	
 	
 	

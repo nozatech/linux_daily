@@ -31,6 +31,17 @@ https://www.youtube.com/watch?v=XzJ2FnIapAE
 
 
 
+					  |-> Artifacotry, Nexus, S3
+Dev -> Git -> JENKINS |-> Test
+					  |-> UAT(User acceptance Testing)
+					  |-> Production
+
+
+**UAT -> Unit Testing -> Integration -> System -> Acceptance testing					  
+					  
+					  
+					  
+					  
 
 Jenkins installation list
 1. Apache2 + Jenkins + Java
@@ -41,40 +52,25 @@ Jenkins installation list
 6. Windows install
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ------------------------------------------------------------------------------
 in-house 	→ Jenkins or gitlab-ci
 Github.com 	→ Travis-CI
 ------------------------------------------------------------------------------
 1. Setting up CI for a project:
-	Travis: comes in first place.. It's very easy to setup. Takes less than a minute to setup with github. -- Login to github - create web hook for Travis - back to Travis (https://travis-ci.org/) - login with github credentials and sync your github repo and enable Push and Pull requests. Very Easy Setup in Travis..
+	Travis : comes in first place.. It's very easy to setup. Takes less than a minute to setup with github. -- Login to github - create web hook for Travis - back to Travis (https://travis-ci.org/) - login with github credentials and sync your github repo and enable Push and Pull requests. Very Easy Setup in Travis..
 	Jenkins: Create an Environment (Master Jenkins) - create web hooks - configurations on each job (takes time compare to Travis)
 
 2. Re-run the builds:
-	Travis: Who ever is having write access on github they can re-run the build by clicking on restart build
+	Travis : Who ever is having write access on github they can re-run the build by clicking on restart build
 	Jenkins: re-run the build based on phrase: provide phrase text in PR/commit description like reverify jenkins
 
 3. Controlling environment:
-	Travis: Travis provides hosted environment, Travis installs required softwares for every build is a time consuming process.
+	Travis : Travis provides hosted environment, Travis installs required softwares for every build is a time consuming process.
 	Jenkins: It's a onetime setup, Install all the required softwares in node/slave machine and perform all the tests on pre-installed environment.
 
 4. Build Logs:
-	Travis: Supports build logs to place in Amazon S3.
-	Jenkins: Easy to setup with build artifacts plugin.
+	Travis : Supports build logs to place in Amazon S3.
+	Jenkins: Easy to setup with build artifacts plugin(Artifactory, Nexus, S3).
 
 ------------------------------------------------------------------------------
 
@@ -93,7 +89,6 @@ CI/CD Setup
 
 	java -version
 	
-	
 ### Jenkins Setup
 	wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
 	sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
@@ -103,7 +98,6 @@ CI/CD Setup
 ###  Check Reverse Proxy
 	curl -iL -e http://cdn-jenkins.namcowireless.com:8080/jenkins/manage\
     http://cdn-jenkins.namcowireless.com:8080/jenkins/administrativeMonitor/hudson.diagnosis.ReverseProxySetupMonitor/test
-
 
 2. Java Environment set
 	$ apt-get install -y maven git-core 
@@ -116,9 +110,8 @@ CI/CD Setup
 	/usr/lib/jvm/java-7-openjdk-amd64/bin/javac
 	
 	
-	
 
-  ### Ubuntu 16.04 Iptables setup ###
+### Ubuntu 16.04 Iptables setup ###
 	http://linux-sys-adm.com/ubuntu-16.04-lts-how-to-configure-firewall-iptables-fail2ban/
 	https://oitibs.com/easy-ubuntu-16-server-firewall/
 	
@@ -204,16 +197,24 @@ CI/CD Setup
 	
 	
 	
-	# Jenkins Master/Slave setup
+### Jenkins Master/Slave setup
 	# On Remote 
 	install JAVA and /var/jenkins folder
 	set permission own by ssh user account for /var/jenkins
 	
-	# On Master
+### On Jenkins Master
 	Manage Jenkins -> Manage Nodes  ->
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
 	
 	
 	
@@ -483,6 +484,8 @@ class { 'timezone':
 
 
 
+
+### How to set up Jenkins CI on a Mac
 
 
 

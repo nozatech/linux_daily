@@ -110,6 +110,7 @@ scrutiny		<- critical observation or examination:	examination, inspection, surve
 souvenir
 squealing 		<- 빽뺵소리 스피커에서
 stash			<- store (something) safely and secretly in a specified place
+Startle			<- excited by sudden surprise or alarm and making a quick involuntary movement
 strata			<- a layer of material, naturally or artificially formed, often one of a number 
 					of parallel layers one upon another: 층
 supersede 		<- replace

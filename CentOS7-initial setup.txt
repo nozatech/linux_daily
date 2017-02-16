@@ -2,12 +2,9 @@ CentOS7 min setup
 
 1. dhclient
 2. yum -y update
-3. yum -y install net-tools    
-4. yum -y isntall bind-utils
-5. ifconfig
-6. yum install yum-utils
 
-sudo yum install -y epel-release ncdu iftop mtr wget net-tools yum-utils iptables-services vim bind-utils tcpdump ntp
+sudo yum install -y net-tools bind-utils yum-utils epel-release ncdu iftop iotop mtr 
+sudo yum install -y wget net-tools iptables-services vim tcpdump ntp
 
 # Iptables install
 sudo yum -y install iptables-services
@@ -16,15 +13,23 @@ sudo systemctl mask firewalld
 sudo systemctl stop firewalld
 sudo systemctl start iptables
 
+# ntp
+$ systemctl enable ntpd
+$ ntpdate pool.ntp.org
+
+# Change timezone
+$ timedatectl set-timezone America/Los_Angeles
 
 
-# Change enoxxxxxx  to eth0
+# VMware CentOS VM Change enoxxxxxx  to eth0
 $ vi /etc/default/grub  
 	GRUB_CMDLINE_LINUX line, add  at end of the line
     net.ifnames=0 biosdevname=0 
 $ grub2-mkconfig -o /boot/grub2/grub.cfg
 $ mv /etc/sysconfig/network-scripts/ifcfg-eno* to  ifcfg-eth* 
 $ reboot
+
+
 
 # yum clean all  <-clean all cache
 
@@ -79,10 +84,6 @@ IPADDR2=10.13.0.136
 PREFIX2=16
 DNS1=8.8.8.8
 DNS2=8.8.4.4
-
-# ntp
-$ systemctl enable ntpd
-$ ntpdate pool.ntp.org
 
 
 
