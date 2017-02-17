@@ -1794,8 +1794,14 @@ Ubuntu, 16.04 or higher			V
 	export into ~/.bash_profile as well as /root/.bash_profile
  
 	export HISTTIMEFORMAT="%F %T "
-
-
+	
+	# Modify Path and Load
+	http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-linux.html#awscli-install-linux-path
+	$ export PATH=~/.local/bin:$PATH		<= export  - Modify
+	$ source ~/.bash_profile				<= source  - Load
+	
+	
+	
 
 51. Diff between two remote folders through SSH
 
@@ -4277,7 +4283,8 @@ change take effect everywhere.
 		reference variables store addresses	
 	
 	
-### Directory . and .. means	
+### Directory . and .. means
+http://www.basicconfig.com/linux/linux_cd_command_tutorial	
 	. means the current directory.
 	.. means the parent directory.
 	e.g. when you type cd .. , you will move one level up. When you type cp /etc/resolv.conf  .  , 

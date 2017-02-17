@@ -293,6 +293,12 @@ $ pip install pssh
 	$ wget http://www.gnu.org/software/gettext/manual/gettext.html  or file_name	
 	$ time wget http://www.gnu.org/software/gettext/manual/gettext.html  			<= measuring download time
 
+	
+# Finding my gateway IP
+	$ curl ifconfig.io	
+	
+	
+	
 ### cURL  
 	Testing on REST API
 	A. Content of the URL and display it in the STDOUT (i.e on your terminal)
@@ -1794,8 +1800,14 @@ Ubuntu, 16.04 or higher			V
 	export into ~/.bash_profile as well as /root/.bash_profile
  
 	export HISTTIMEFORMAT="%F %T "
-
-
+	
+	# Modify Path and Load
+	http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-linux.html#awscli-install-linux-path
+	$ export PATH=~/.local/bin:$PATH		<= export  - Modify
+	$ source ~/.bash_profile				<= source  - Load
+	
+	
+	
 
 51. Diff between two remote folders through SSH
 
