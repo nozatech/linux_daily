@@ -1220,9 +1220,14 @@ cron job search from command line
 
 21. rm -rf ./tmp/test/delme/*    <=delete folder contents
     
-	## search all files bigger than 100MB
+	# deleting . file(hidden file)
+	rm -rf .*
+	rm -rfi .*
 	
-	$find /  -type f -size +100M   		<= k-kilo, M-mega, G-giga
+	## search all files bigger than 100MB
+	# use ncdu utility
+	
+	$find /  -type f -size +100M   					<= k-kilo, M-mega, G-giga
 
 	find / -name "*.txt" | xargs rm -rf				<= search all and delete them
 	
@@ -2697,18 +2702,61 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	
 
 82. rsync
-	rsync -av iptables.vm5-sgas sg-rog:/etc/sysconfig
+	https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps
+	
+	
+	### LOCAL >>>> REMOTE ###
+	###			LOCAL file location  >>>>   REMOTE 'creating' remote folder
+	rsync -avn  /home/apark/rtest  			apark@45.55.5.69:/home/apark/      <= -a, -v verbose -n dry-run
+	rsync -av   ~/rtest          	 		apark@45.55.5.69:/home/apark/   
+		
+	###			Local files	  		 >>>>	Remote 'Copying' FILES in the remote folder 
+	rsync -av   /home/apark/rtest/ 	 		apark@45.55.5.69:/home/apark/         <= copy to apark    
+	rsync -av   ~/rtest/          	 		apark@45.55.5.69:/home/apark/rtest/   <= copy to rtest
+
+	
+	### REMOTE >>>> LOCAL ###
+	###			REMOTE file & folder location	>>>>    LOCAL location		
+	rsync -av   apark@45.55.5.69:/home/apark/			/home/apark/ 		   <= copy to apark    
+	rsync -av   apark@45.55.5.69:/home/apark/rtest/ 	~/rtest/       	       <= copy to rtest
+	rsync -av   apark@45.55.5.69:/home/apark/dir1    	~					   <= creating 'dir1' home folder
+	rsync -av   apark@45.55.5.69:/home/apark/dir1    	~/					   <= home folder
+	receiving incremental file list
+	
+	# Options	
+	rsync -az	source 		destination		<= -z Compression
+	rsync -azP	source 		destination	 	<= -P Progress
+	rsync -a --exclude=pattern 		source 		destination
+	rsync -a --exclude=pattern --include=pattern 	source 		destination
+	
+	
+	# Exclusion
+	# REMOTE >>>> LOCAL
+	$ rsync -azP  --exlude=dir* 	apark@45.55.5.69:/home/apark/     ~
+	$ rsync -azP  --exclude={dir1,dir2}  apark@45.55.5.69:/home/apark/   ~/
+
+	# LOCAL >>> REMOTE
+	$ rsync -azP  /home/apark/rtest/  			apark@45.55.5.69:/home/apark/rtest2 
+	
+	
+	
+	
+	---
+    rsync files in rtest folder
+	rsync -av      /home/apark/rtest/   apark@45.55.5.69:/home/apark/rtest
+
+	rsync -av iptables.vm5-sgas           remote_host:/etc/sysconfig
 	rsync -av rog sgas sg-rog:/home
 
-    rsync -av /etc/hosts sg-eu:/etc
-    rsync -av /etc/sysconfig/iptables sg-eu:/etc/sysconfig
+    rsync -av /etc/hosts                  remote_host:/etc
+    rsync -av /etc/sysconfig/iptables     remote_host:/etc/sysconfig
     
-	rsync -av lobby1:/root/ /root --exclude ".ssh"
+	rsync -av   lobby1:/root/       /root --exclude ".ssh"
 
 	ssh sg-eu "service iptables restart"
     
 	ssh sg-eu "cat .ssh/*.pub"
-
+	---
 
 
 
