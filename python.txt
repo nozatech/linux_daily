@@ -1686,6 +1686,12 @@ for n in range(2, 10):
 	
 	
 	
+# .pyc extension file	
+	Python automatically compiles your script to compiled code, so called "byte code", before running it. 
+	When a module is imported for the first time, or when the source is more recent than the current 
+	compiled file, a .pyc file containing the compiled code will usually be created in the same 
+	directory as the .py file.	
+	
 	
 	
 	

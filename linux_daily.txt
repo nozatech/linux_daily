@@ -2525,10 +2525,10 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 	
 	### copy file / folder
 	
-	# Local to Remote copy
-	$ scp -r /home/id/.ssh     id@ip:/home/id/			<= -r recursive
+	### Local to Remote copy
+	$ scp -r /home/id/.ssh           id@ip:/home/id/			<= -r recursive for sub directories
 
-	# Remote to Local copy 
+	### Remote to Local copy 
 	$ scp -r id@ip:/home/id/.ssh    /home/id/.ssh2
 	
 

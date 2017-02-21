@@ -3,6 +3,7 @@ CentOS7 min setup
 1. dhclient
 2. yum -y update
 
+
 sudo yum install -y net-tools bind-utils yum-utils epel-release ncdu iftop iotop mtr 
 sudo yum install -y wget net-tools iptables-services vim tcpdump ntp
 

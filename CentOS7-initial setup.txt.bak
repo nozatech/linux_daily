@@ -21,8 +21,6 @@ $ ntpdate pool.ntp.org
 $ timedatectl set-timezone America/Los_Angeles
 
 
-
-
 # VMware CentOS VM Change enoxxxxxx  to eth0
 $ vi /etc/default/grub  
 	GRUB_CMDLINE_LINUX line, add  at end of the line
