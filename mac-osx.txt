@@ -1,0 +1,50 @@
+MAC OS X
+
+OS X 10.5 Leopard (Chablis)
+OS X 10.6 Snow Leopard
+OS X 10.7 Lion (Barolo)
+OS X 10.8 Mountain Lion (Zinfandel)
+OS X 10.9 Mavericks (Cabernet)
+OS X 10.10: Yosemite (Syrah)
+OS X 10.11: El Capitan (Gala)
+OS X 10.12: Sierra (Fuji)
+
+
+
+BNEA Jenkins Signing Server
+
+### PROXY to HockeyApp using VM
+•	Jenkins-proxy (CentOS)
+•	10.10.100.130 mapped to 65.87.26.116
+•	User: jproxy (sudo) 
+•	Pw:  bnga1740
+
+
+### Maven Install
+http://stackoverflow.com/questions/8826881/maven-install-on-mac-os-x
+$ brew install maven
+
+### Xcode  IDE for IOS
+ 
+	#Checking if XCode is installed (using the command line)  
+	http://stackoverflow.com/questions/21272479/how-can-i-find-out-if-i-have-xcode-commandline-tools-installed
+  
+	$xcode-select -p
+	/Applications/Xcode.app/Contents/Developer
+	$gcc --version
+	Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+	Apple LLVM version 8.0.0 (clang-800.0.42.1)
+	Target: x86_64-apple-darwin16.4.0
+	Thread model: posix
+	InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+***	$/usr/bin/xcodebuild -version    <= check version
+	Xcode 8.2.1
+	Build version 8C1002
+	
+###	Re-sign the .IPA				<= is in Jenkins' Xcode Builder 
+http://dev.mlsdigital.net/posts/how-to-resign-an-ios-app-from-external-developers/	
+https://github.com/maciekish/iReSign
+	
+	
+  

@@ -174,6 +174,42 @@ Undo
 	$ ssh -v root@172.16.248.xx 2>&1 > result.txt	
 	$ ssh id@x.x.x.x -p 2222									<= different port
 	$ ssh -l ubuntu ip_address (or hostname)									<= -l login user name
+
+
+	### List of host in ~/.ssh/config file  
+	** using Alias is OLD way ***
+	https://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/
+	vi ~/.ssh/config
+	-------------------------------------------------------------------------------------------
+	Host netops
+		HostName 45.55.5.69
+		User apark
+		Port 22
+		IdentityFile ~/.ssh/id_rsa
+	Host puppet
+		HostName IP
+		User apark
+		Port 22
+		IdentityFile ~/.ssh/id_rsa
+		
+	## Login to internal lan server at 192.168.0.251 via our public uk office ssh based gateway using ##
+	## $ ssh uk.gw.lan ##
+	Host uk.gw.lan uk.lan
+		HostName 192.168.0.251
+		User nixcraft
+		ProxyCommand  ssh nixcraft@gateway.uk.cyberciti.biz nc %h %p 2> /dev/null
+	-------------------------------------------------------------------------------------------
+	
+	
+	 
+	ProxyCommand : Specifies the command to use to connect to the server. The command string extends to the end
+				   of the line, and is executed with the user’s shell. In the command string, any occurrence 
+				   of %h will be substituted by the host name to connect, %p by the port, and %r by the remote 
+				   user name. The command can be basically anything, and should read from its standard input 
+				   and write to its standard output. This directive is useful in conjunction with nc(1) and 
+				   its proxy support. For example, the following directive would connect via an HTTP proxy at 
+				   192.1.0.253:  ProxyCommand /usr/bin/nc -X connect -x 192.1.0.253:3128 %h %p
+
 	
 	# Cipher options
 	$ ssh -c aes256-ctr apark@45.55.5.69
@@ -265,7 +301,8 @@ $ pip install pssh
 	
 	
 ### Run command on remote shell
-	$ ssh apark@192.241.190.57 	  'sudo iptables -nL'					
+	$ ssh apark@192.241.190.57 	  'sudo iptables -nL'		
+	$ ssh puppet sudo  iptables -nL								<= using .ssh/config  file
 	$ ssh -t apark@192.241.190.57 'sudo iptables -nL'					<= -t      Force pseudo-tty allocation
 	  
 	### run script remotely
@@ -2723,6 +2760,15 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	rsync -av   apark@45.55.5.69:/home/apark/dir1    	~/					   <= home folder
 	receiving incremental file list
 	
+	### REMOTE >>>> REMOTE ###
+	http://unix.stackexchange.com/questions/183504/how-to-rsync-files-between-two-remotes
+	Cannot use rsync with a remote source and a remote destination. 
+	Assuming the two servers can't talk directly to each other, it is possible to use "ssh to tunnel" 
+	via your local machine.
+
+	$ ssh -R localhost:50000:host2:22   host1 'rsync -e "ssh -p 50000" -vuar /var/www localhost:/var/www'
+	
+	
 	# Options	
 	rsync -az	source 		destination		<= -z Compression
 	rsync -azP	source 		destination	 	<= -P Progress
@@ -4336,12 +4382,15 @@ change take effect everywhere.
 		String, Scanner, Random, Die, int[], String[], etc.
 		reference variables store addresses	
 	
-	
+	 
 ### Directory . and .. means
 http://www.basicconfig.com/linux/linux_cd_command_tutorial	
-	. means the current directory.
+	.  means the current directory.
 	.. means the parent directory.
-	e.g. when you type cd .. , you will move one level up. When you type cp /etc/resolv.conf  .  , 
-		 you will copy file /etc/resolv.conf in the current directory.	
+	e.g. when you type cd .. , you will move one level up. 
+		 When you type cp /etc/resolv.conf  .  , you will copy file /etc/resolv.conf in the current directory.	
 	
-	
+### Regression testing
+	is a type of software testing that verifies that software previously developed and tested still 
+	performs correctly even after it was changed or interfaced with other software. Changes may 
+	include software enhancements, patches, configuration changes, etc.	

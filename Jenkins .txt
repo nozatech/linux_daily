@@ -24,8 +24,6 @@ from the CJOC.
 AWS Jenkins HA setup using NFS(Shared Disk)
 https://www.youtube.com/watch?v=zHavme2iaFA
 
-
-
 Nexus Repository
 https://www.youtube.com/watch?v=XzJ2FnIapAE
 
@@ -41,22 +39,18 @@ Dev -> Git -> JENKINS |-> Test
 **GIT -> initial build -> code quality -> deploy to test -> deploy to UAT -> Deploy to Prod
 		
 					  
-
 ### Binary or Artifact management
 https://en.wikipedia.org/wiki/Binary_repository_manager
 
 					  
 
-Jenkins installation list
+### Jenkins installation method list
 1. Apache2 + Jenkins + Java
 2. NginX + Apache2 + Jenkins + Java
 3. Java + Jenkins.war
 4. Tomcat + Jenkins + Java
 5. Dockers + Jenkins
 6. Windows install
-
-
-
 
 
 ------------------------------------------------------------------------------
@@ -82,7 +76,8 @@ Github.com 	→ Travis-CI
 ------------------------------------------------------------------------------
 
 
-JENKINS_HOME
+### JENKINS_HOME directory structure
+
  +- config.xml     (jenkins root configuration)
  +- *.xml          (other site-wide configuration files)
  +- userContent    (files in this directory will be served under your http://server/userContent/)
@@ -98,10 +93,12 @@ JENKINS_HOME
              +- [BUILD_ID]     (for each build)
                  +- build.xml      (build result summary)
                  +- log            (log file)
- 
+
+				 
 ### Moving/copying/renaming jobs 
 https://wiki.jenkins-ci.org/display/JENKINS/Administering+Jenkins
 $ rename 's/\s/_/g' *
+
 
 
 ------------------------------------------------------------------------------
@@ -129,8 +126,8 @@ $ rename 's/\s/_/g' *
     http://cdn-jenkins.namcowireless.com:8080/jenkins/administrativeMonitor/hudson.diagnosis.ReverseProxySetupMonitor/test
 
 2. Java Environment set
+
 	$ apt-get install -y maven git-core 
-	
 	$ javac -version									<= java compiler
 	$ mvn -version
 	$ git --version
@@ -189,7 +186,6 @@ $ rename 's/\s/_/g' *
     $ systemctl restart apache2
 	
 	
-	
 	https://www.youtube.com/watch?v=0ZS2BL5R3Ow&t=2s
 	https://gist.github.com/jsuwo/9038610
 	
@@ -226,7 +222,7 @@ $ rename 's/\s/_/g' *
 	
 	
 	
-### Jenkins Master/Slave setup
+### Jenkins Master <-> Slave setup
 	# On Remote 
 	install JAVA and /var/jenkins folder
 	set permission own by ssh user account for /var/jenkins
@@ -237,15 +233,6 @@ $ rename 's/\s/_/g' *
 
 
 
-
-
-
-
-
-
-
-	
-	
 	
 ######################################################################	
 WebGL https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
@@ -259,66 +246,10 @@ WebGL https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
 ######################################################################	
 Unity
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+			
 ######################################################################	
 
-Gitlab on Ubuntu 14.04
-Username: root
-Password: xxxxxxxx
 
-### Reset root passwd
-	$ sudo gitlab-rails console production
-	irb(main):001:0> u = User.where(id:1).first
-    irb(main):002:0> u.password = 'your_new_password'
-	irb(main):003:0> u.password_confirmation = 'your_new_password'
-	irb(main):004:0> u.save!
-	irb(main):005:0> exit
-
-###
-SSH:   git@cdn-gitlab:root/test.git
-	
-###	Git global setup
-	$ git config --global user.name "albert"
-	$ git config --global user.email "albertpark5@gmail.com"
-
-	$ git config -l (or --list)
-	user.email=albertpark5@gmail.com
-	user.name=albert
-
-
-### Create a new repository
-git clone http://cdn-gitlab.namcowireless.com/noza/apache.git
-cd apache
-touch README.md
-git add README.md
-git commit -m "add README"
-git push -u origin master
-
-
-### Existing folder or Git repository
-cd existing_folder
-git init
-git remote add origin http://cdn-gitlab/noza/apache.git
-git add .
-git commit
-git push -u origin master
-	
-### Update Git ??? 
-https://git-scm.com/docs/git-clone
-	$ git clone git://git.kernel.org/pub/scm/git/git.git
 
 
 
@@ -519,12 +450,22 @@ class { 'timezone':
 
 
 
+### nvm (node version manager)
+	Simple bash script to manage multiple active node.js versions
+	https://github.com/creationix/nvm
+
+### npm (node package manager) 
+	the default package manager for the JavaScript runtime environment Node.js.
 
 
+### Check BOTO version	
+---------------------
+#!/usr/bin/python
+import boto
+print boto.Version
+---------------------
+$ python boto_version_check.py
 
 
-
-
-
-
-
+### Restart from Web
+	Jenkins_address/safeRestart

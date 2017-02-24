@@ -1,3 +1,7 @@
+### Python ###
+
+1. Installation
+
 Python 3.5.2 Install on CentOS7
 https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-centos-7
 sudo yum -y install yum-utils
@@ -28,9 +32,8 @@ run with the specific version I have tested and developed it with, NOT a semi-ra
 
 
 
-Python 
 
-1. Debugging Python Debuger
+2. Debugging Python Debuger
 python -m pdb myscript.py
 l <=list
 n <=next
@@ -108,8 +111,9 @@ elif (x >= 1) and ( x <= 10 ):  #ge , le
 else:
     print("too high")
 ----------------------------------
-####Call Linux host command
 
+### Call Linux host command
+----------------------------------
 #!/usr/bin/python3.5
 import os
 from subprocess import call
@@ -161,9 +165,9 @@ threads.append(t4)
 for t in threads:
     t.join()
 	
-
+----------------------------------
 ### OOP ###
-
+----------------------------------
 class Car():
     def __init__(self, make, model, year):
         self.make = make
@@ -214,7 +218,7 @@ print(my_car.year, my_old_car.year, my_new_car.year)
 
 
 
-
+----------------------------------
 import random
 import sys
 import os
