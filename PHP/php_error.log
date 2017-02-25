@@ -1,0 +1,5 @@
+[11-Mar-2015 16:58:16] PHP Parse error:  syntax error, unexpected '{' in E:\PHP\switch.php on line 35
+[11-Mar-2015 17:11:33] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting '(' in E:\PHP\switch.php on line 13
+[11-Mar-2015 17:41:03] PHP Parse error:  syntax error, unexpected T_VARIABLE in E:\PHP\switch.php on line 12
+[11-Mar-2015 17:42:44] PHP Parse error:  syntax error, unexpected T_VARIABLE in E:\PHP\switch.php on line 12
+[11-Mar-2015 17:46:57] PHP Parse error:  syntax error, unexpected T_VARIABLE in E:\PHP\switch.php on line 12

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+        <head>
+                <title>Floating Point Numbers</title>
+        </head>
+        <body>
+
+        <?php echo $float = 3.14; ?><br />
+        <?php echo $float + 7; ?><br />
+        <?php echo 4/3; ?><br />
+        <?php echo 4/0; ?><br />
+        <br />
+
+        Round:   <?php echo round($float, 1); ?><br />
+        Ceiling: <?php echo ceil($float);     ?><br />
+        Floort:  <?php echo floor($float);    ?><br />
+        <br />
+
+        <?php $integer = 3; ?><br />
+
+        <?php echo "Is {$integer} integer?" . is_int($integer); ?><br />
+        <?php echo "Is {$float}   integer?" . is_int($float);   ?><br />
+        <br />
+
+        <?php echo "Is {$integer} float? " . is_float($integer); ?><br />
+        <?php echo "Is {$float}   float?" . is_float($float);    ?><br />
+        <br />
+
+        <?php echo "Is {$integer} numeric? " . is_numeric($integer); ?><br />
+        <?php echo "Is {$float}   numeric?" . is_numeric($float);   ?><br />
+        <br />
+
+
+        </body>
+</html>
+
+<!--
+
+3.14
+10.14
+1.3333333333333
+4/0 is illegal operation and not displaying!!!
+
+
+Round: 3.1              <=
+Ceiling: 4              <=
+Floor:  3               <=
+
+
+
+
+Is 3 integer?1          <= 1 is TRUE
+Is 3.14 integer?        <=
+
+Is 3 float?
+Is 3.14 float?1         <= 1 is TURE
+
+Is 3 numeric? 1         <= true
+Is 3.14 numberic?1      <= true
+-->

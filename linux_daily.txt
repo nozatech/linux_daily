@@ -1,18 +1,26 @@
 아무리 바빠도 해야할 일 - 책
 돈이 많아도 하지 말아야 할일 -도박, 마약
-
 1.역사책 - 역사의식 책임
 2.문화책 - 감성
 3.경영책 - 논리
 4.철학책 - 생각에 방법 
 5.사회학 인간학 - 인간 관계
-
 -----------------------------------------------------------------------------------
 Windows CMD kill process
 http://tweaks.com/windows/39559/kill-processes-from-command-prompt
 c:\tasklist
 c:\taskkill /IM pdflite.exe /F 
 # Rename file name  'F2 key'
+
+bring up the Task Manager
+	Ctrl+Shift+Esc 
+Run dialogue
+	Windows + R 
+	Windows + E
+	Windows + D  <= Show Desktop
+	Windows +L   <= Lock
+	Windows +F   <= search
+	WIndows + shift +
 -----------------------------------------------------------------------------------
 Notepad++
 
