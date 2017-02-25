@@ -23,28 +23,23 @@ Run dialogue
 	WIndows + shift +
 -----------------------------------------------------------------------------------
 Notepad++
-
 Settings > Short cut Mapper Menu.
 1. 
 	Ctrl + L			Delete Current line
 	Ctrl + D			Duplicate(copy) line
-
 2. Auto-completion
 	Ctrl+Space			Function completion
 	Ctrl+Enter			Word completion
 	Ctrl+Shift+Space	Function parameter hint
-
 4. Basic File Management
 	Ctrl+N				Create new document.
 	Ctrl+P				Display Print... dialog box.
 	Ctrl+O				Display Open File... dialog box.
 	Ctrl+S				Save current document.
 **	Ctrl+Shift+S		Save all open documents
-
 	Ctrl+Alt+S			Display Save As... dialog box.
-	
 	Ctrl+W				Close current document.
-	Alt+F4				Exit Notepad++
+	Alt +F4				Exit Notepad++
 -----------------------------------------------------------------------------------
 SMACK Stack
 
