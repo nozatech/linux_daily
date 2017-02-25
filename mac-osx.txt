@@ -16,8 +16,7 @@ BNEA Jenkins Signing Server
 ### PROXY to HockeyApp using VM
 •	Jenkins-proxy (CentOS)
 •	10.10.100.130 mapped to 65.87.26.116
-•	User: jproxy (sudo) 
-•	Pw:  bnga1740
+
 
 
 ### Maven Install
