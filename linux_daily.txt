@@ -791,7 +791,14 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	$ date +Name:`hostname`/Date:%Y-%m-%d/hour:%H:%M:%S 
 	  Name:PC_Name/Date:2016-10-28/hour:11:37:43
 
-	 
+
+#	ls
+	http://unix.stackexchange.com/questions/21638/show-only-hidden-files-dot-files-in-ls-alias
+	$ ls -ld .*				<= list hidden .files only
+	$ ls -Ad .*
+	$ ls -al | grep "^\."   <=??
+
+	  
 12. Route or IP
 
 	$ route
