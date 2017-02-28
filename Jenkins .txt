@@ -102,7 +102,7 @@ $ rename 's/\s/_/g' *
 
 
 ------------------------------------------------------------------------------
-1. Jenkins install on Ubuntu 14.04
+1. Jenkins install 
 	
 ### Web Server install	
 	apt-get -y install apache2
@@ -111,9 +111,13 @@ $ rename 's/\s/_/g' *
 	apt-get update && apt-get upgrade -y
 
 ### Java Install
+	# Ubuntu
 	apt-get -y install openjdk-7-jdk
-
 	java -version
+	
+	# CentOS
+	$ sudo yum install java-1.7.0-openjdk-devel
+
 	
 ### Jenkins Setup
 	wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
@@ -458,14 +462,75 @@ class { 'timezone':
 	the default package manager for the JavaScript runtime environment Node.js.
 
 
-### Check BOTO version	
----------------------
-#!/usr/bin/python
-import boto
-print boto.Version
----------------------
-$ python boto_version_check.py
+
+	
+
+### Install AWS CLI
+$ aws configure
+AWS Access Key ID [****************3QNA]:
+AWS Secret Access Key [****************jnlW]:
+Default region name [us-west-1]:
+Default output format [None]:
+
+---------------------------------------------------------------------------------------------------------
+#!/usr/bin/env python
+
+MONOCLE_URGENT_TOPIC='arn:aws:sns:us-west-2:307472006364:MONOCLE_Urgent'
+MONOCLE_WARNING_TOPIC='arn:aws:sns:us-west-2:307472006364:MONOCLE_Warning'
+
+	# arn : amazon resource name
+	# aws : aws
+	# sns : aws simple notification service
+	# us-west-2 : region
+	# 307472006364 : account id
+	# MONOCLE_Warning : resource
+
+	# boto: A Python interface to Amazon Web Services
+	# http://boto.cloudhackers.com/en/latest/getting_started.html
+	# yum install -y python-pip  	 	# pip install --upgrade pip
+	# pip install boto  		    	# http://boto.cloudhackers.com/en/latest/getting_started.html
+
+	# Check boto version
+		$ vi boto_version_check.py
+		!/usr/bin/python
+		import boto
+		print boto.Version
+		--------------------
+		$ python boto_version_check.py
+		2.45.0
+		
+	# AWS Region Code Name http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
+	# us-east-1  <= US East (N. Virginia)
+	# us-east-2  <= US East (Ohio)
+	# us-west-1  <= US West (N. California)
+	# us-west-2	 <= US West (Oregon)
+
+	### CLI configuration
+	# http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
+	# https://www.linux.com/blog/introduction-aws-command-line-tool
+
+
+
+	
+import os, sys, boto
+from boto.ec2.cloudwatch 		import CloudWatchConnection
+from boto.ec2.cloudwatch.alarm 	import MetricAlarm
+
+# include file name common.py
+import common	
+---------------------------------------------------------------------------------------------------------
+
+
+	
 
 
 ### Restart from Web
 	Jenkins_address/safeRestart
+	
+### AWS CLI testing
+	$ aws iam apark
+	
+	
+	
+	
+	

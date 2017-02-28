@@ -52,9 +52,16 @@ def subr():
 x = subr
 print(x)
 
+From Python Shell
+>>> print "\t" ":"		<= "\t" tabl
+        :
+
 $ python3.5 helloworld.py
 $ chmod +x helloworld.py
 $ ./helloworld.py
+
+
+
 
 ----------------------------------
 x=1
@@ -125,6 +132,7 @@ os.system("ls -al")			# system
 inp=input("Hit enter")
 
 call(["ls", "-la"])			# sub
+
 ----------------------------------
 #!/usr/bin/python3.5
 import threading
@@ -195,29 +203,6 @@ print(my_car.year, my_old_car.year, my_new_car.year)
 > 2011 1997 2020
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ----------------------------------
 import random
 import sys
@@ -239,14 +224,14 @@ print("5 * 2 =", 5*2)
 print("5 / 2 =", 5/2)
 print("5 % 2 =", 5%2)
 print("5 ** 2 =", 5**2)
-print("5 // 2 =", 5//2)  # floor division: discard remainder 1, 14.5 =14
+print("5 // 2 =", 5//2)  						# floor division: discard remainder 1, 14.5 =14
 
-quote = " \"Always remember"   # \ is ignoring "
+quote = " \"Always remember"   					# \ is ignoring "
 print(quote)
 
 multi_string = quote + name
 print(multi_string)
-print('\n' * 1)             # 1 new lines
+print('\n' * 1)             					# 1 new lines
 
 print("%s %s %s" % ('new type quote', quote, name))
 print("I don't like ", end="")
@@ -354,6 +339,7 @@ for x in range(0,10):
 # a new line
 print('\n')
 
+
 grocery_list = [ 'juice', 'tomato', 'potatos','banaba']
 for y in grocery_list:
     print(y)
@@ -367,9 +353,10 @@ num_list = [[1,2,3],[10,20,30],[100,200,300]]
 for x in range(0,3):
     for y in range(0,3):
         print(num_list[x][y])	#<=?? why
-		
-### While Loop
 
+----------------------		
+### While Loop ###
+----------------------
 random_num = random.randrange(0,100)
 while(random_num != 15):
     print(random_num)
@@ -387,7 +374,10 @@ while(i <= 20):
         continue
     i += 1
 	
+
+----------------------	
 ###function
+----------------------
 
 def addNumber(firstNum, lastNum):
     sumNum = firstNum + lastNum
@@ -465,7 +455,7 @@ I will change you if you fall = The Floor ok
 	
 	
 	
-
+--------------------------------------------------------------------------------------------------------------
 
 Question 1
 

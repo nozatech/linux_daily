@@ -59,7 +59,9 @@ impose			<- force (something unwelcome or unfamiliar) to be accepted or put in p
 impaired		<- the state or fact of being impaired(weakened or damaged), especially in a specified faculty.
 irrigator		<- [írəgèitər]
 
-
+# J
+jump the shark	<- Informal (of a television series or movie) reach a point at which far-fetched events are included 
+					merely for the sake of novelty, indicative of a decline in quality.
 
 # M
 Marshalling 	<- arrange or assemble (a group of people, especially soldiers) in order.
