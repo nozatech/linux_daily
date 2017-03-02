@@ -14,7 +14,7 @@ from the CJOC.
 	cluster for management purposes.
 	These masters can then use normal slaves, shared slaves, or a shared cloud.
 
-# Shared slaves 
+# Shared slaves  
 	slave nodes that are available for any master to use.
 	
 # A shared cloud 
@@ -23,6 +23,8 @@ from the CJOC.
 	
 AWS Jenkins HA setup using NFS(Shared Disk)
 https://www.youtube.com/watch?v=zHavme2iaFA
+
+
 
 Nexus Repository
 https://www.youtube.com/watch?v=XzJ2FnIapAE
@@ -78,21 +80,21 @@ Github.com 	→ Travis-CI
 
 ### JENKINS_HOME directory structure
 
- +- config.xml     (jenkins root configuration)
- +- *.xml          (other site-wide configuration files)
- +- userContent    (files in this directory will be served under your http://server/userContent/)
- +- fingerprints   (stores fingerprint records)
- +- plugins        (stores plugins)
- +- workspace (working directory for the version control system)
-     +- [JOBNAME] (sub directory for each job)
+ +- config.xml     				(jenkins root configuration)
+ +- *.xml          				(other site-wide configuration files)
+ +- userContent    				(files in this directory will be served under your http://server/userContent/)
+ +- fingerprints   				(stores fingerprint records)
+ +- plugins        				(stores plugins)
+ +- workspace 					(working directory for the version control system)
+     +- [JOBNAME] 				(sub directory for each job)
  +- jobs
-     +- [JOBNAME]      (sub directory for each job)
-         +- config.xml     (job configuration file)
-         +- latest         (symbolic link to the last successful build)
+     +- [JOBNAME]      			(sub directory for each job)
+         +- config.xml     		(job configuration file)
+         +- latest         		(symbolic link to the last successful build)
          +- builds
-             +- [BUILD_ID]     (for each build)
-                 +- build.xml      (build result summary)
-                 +- log            (log file)
+             +- [BUILD_ID]      (for each build)
+                 +- build.xml   (build result summary)
+                 +- log         (log file)
 
 				 
 ### Moving/copying/renaming jobs 
@@ -245,22 +247,6 @@ WebGL https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
 	an API that closely conforms to OpenGL ES 2.0 that can be used in HTML5 <canvas> elements.	
 	
 	
-	
-	
-######################################################################	
-Unity
-	
-			
-######################################################################	
-
-
-
-
-
-
-
-
-
 
 ################# Multi port Iptables ##########################################
 # 8140 Puppet/ 8142 Agent
@@ -270,29 +256,7 @@ Unity
 -A INPUT -m state -s 10.128.44.59/32 --state NEW -j ACCEPT
 ###############################################################################
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-------------------------------------------------------------------------------------------------------------------------
 
 ### CentOS7 creating jenkins.service
 https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units

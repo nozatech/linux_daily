@@ -182,3 +182,19 @@ http://stackoverflow.com/questions/1628088/reset-local-repository-branch-to-be-j
 	from a unix system they will only have a LF.
 
 	$ git config core.autocrlf true   <= Disable warning
+	
+2. Updates were rejected because the remote contains work that you 
+http://stackoverflow.com/questions/18328800/github-updates-were-rejected-because-the-remote-contains-work-that-you-do-not-h
+
+	$ git push -f origin master
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

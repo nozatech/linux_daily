@@ -10,7 +10,7 @@ anemometer		<- [ӕnəmάmitər] an instrument for measuring the speed of the win
 # B
 Bearer 			<- carrier or something carries something
 brag 			<- say in a boastful manner.
-
+bedside manner 	<- a doctor's approach or attitude toward a patient.
 
 # C
 Churn rate 		<=(sometimes called attrition rate), in its broadest sense, is a measure of the number 

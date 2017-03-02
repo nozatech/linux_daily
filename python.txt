@@ -37,7 +37,7 @@ run with the specific version I have tested and developed it with, NOT a semi-ra
 python -m pdb myscript.py
 l <=list
 n <=next
-c <=conntinue
+c <=continue
 s <=step
 w <=where
 u <=up
@@ -75,24 +75,32 @@ print(y)
 ----------------------------------
 name = input("What is your name: ")
 
+----------------------------------
 # For Loop
+----------------------------------
 for i in range (1,10):
     print("Welcome", name,"", i)
+
 ----------------------------------
 # While Loop
+----------------------------------
 x=0
 while 1: # True:
     print (x)
     x = x + 1
     if (x == 15):
         break
+		
 ----------------------------------
 # For Loop using a list
+----------------------------------
 myCar = ['BMW', 'Lexus', 'Ferrari']
 for i in myCar:
     print(i)
+
 ----------------------------------
 # Scoping
+----------------------------------
 x = 0      # <=without x, error for initial value set
 for i in range(1,25):
     x = i + x  
@@ -100,6 +108,7 @@ print(x)
 
 ----------------------------------
 # Function
+----------------------------------
 def sub(x,y):
     z = x - y
     print(z)
@@ -1454,6 +1463,16 @@ This list of questions for Python interview questions and answers is not an exha
 
 
 	
+--------------------------------------------------------------------------------	
+$ vi python_leng.py   				<= run script without the parameter, print out usage
+import os, sys
+if len(sys.argv) != 4:				<= requires 4 parameters
+    print "USAGE: python_len.py    1st_arg    2nd_arg    3rd_arg"
+    print "\t" "e.g. python python_len.py  1st_arg  2nd_arg  3rd_arg"
+    sys.exit(1)
+$ python python_leg.py	
+--------------------------------------------------------------------------------	
+	
 	
 	
 	
@@ -1500,6 +1519,9 @@ elif choice == '4':
     print(num1,"x",num2,"=",div(num1,num2))
 else:
     print("You put the wrong input")
+	
+	
+	
 --------------------------------------------------------------------------------	
 2. Find the Largest Among 3 Numbers
 --------------------------------------------------------------------------------
@@ -1518,6 +1540,8 @@ elif (num2 > num1) and (num2 > num3):
     print(num2,"is the biggest")
 else:
     print(num3, "is the biggest.")	
+	
+	
 	
 --------------------------------------------------------------------------------	
 3. Sqroot
@@ -1552,14 +1576,14 @@ print('The value of y after swapping: {}'.format(y))
 
 
 --------------------------------------------------------------------------------	
-random
+# random
 --------------------------------------------------------------------------------
 import random
 
 print(random.randint(0,9))
 
 --------------------------------------------------------------------------------	
-check if a number is positive, negative or zero
+# check if a number is positive, negative or zero
 --------------------------------------------------------------------------------
 num = float(input("Enter a number"))
 # Using if...elif...else
@@ -1580,8 +1604,9 @@ if num >= 0:
 else:
     print ("Negative")
 
+	
 --------------------------------------------------------------------------------	
-Check if a Number is Odd or Even
+# Check if a Number is Odd or Even
 --------------------------------------------------------------------------------
 num = int(input("Enter a number: "))
 
@@ -1596,7 +1621,7 @@ else:
    print("{0} is Odd".format(num))
 
 --------------------------------------------------------------------------------	
-Check Prime Numbers( Can't divide except 1) 2, 3, 5, 7, 11, 13, 17, 19, 23, and 29
+# Check Prime Numbers( Can't divide except 1) 2, 3, 5, 7, 11, 13, 17, 19, 23, and 29
 http://www.programiz.com/python-programming/examples/prime-number
 --------------------------------------------------------------------------------
 num = int(input("Enter a number to check prime number: "))
