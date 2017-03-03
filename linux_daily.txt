@@ -4404,3 +4404,13 @@ http://www.basicconfig.com/linux/linux_cd_command_tutorial
 	is a type of software testing that verifies that software previously developed and tested still 
 	performs correctly even after it was changed or interfaced with other software. Changes may 
 	include software enhancements, patches, configuration changes, etc.	
+	
+	
+### Makefile - build 
+	Make is a build automation tool that automatically builds executable programs and libraries from 
+	source code by reading files called Makefiles which specify how to derive the target program. 
+	Though integrated development environments and language-specific compiler features can also be 
+	used to manage a build process, Make remains widely used, especially in Unix and Unix-like 
+	operating systems.
+	Besides building programs, Make can be used to manage any project where some files must be 
+	updated automatically from others whenever the others change.	

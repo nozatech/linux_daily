@@ -193,20 +193,21 @@ http://stackoverflow.com/questions/18328800/github-updates-were-rejected-because
 http://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me
 
 	1. Commit the change using
-    git commit -m "My message"
+		$ git commit -m "My message"
 
 	2. Stash it.
 	Stashing acts as a stack, where you can push changes, and you pop them in reverse order.
-	To stash type:
-	git stash
-	Do the merge, and then pull the stash:
-	git stash pop
+		#To stash type:
+		$ git stash
+		# Do the merge, and then pull the stash:
+		$ git stash pop
 
 	3. Discard the local changes
-	using git reset --hard     or    git checkout -t -f remote/branch
+		$ git reset --hard    
+		$ git checkout -t -f remote/branch
 
 	3. a) Discard local changes for a specific file
-	using git checkout filename
+		$ git checkout filename
 	
 	
 	
