@@ -306,7 +306,7 @@ $ pip install pssh
 ### Run command on remote shell
 	$ ssh apark@192.241.190.57 	  'sudo iptables -nL'		
 	$ ssh puppet sudo  iptables -nL								<= using .ssh/config  file
-	$ ssh -t apark@192.241.190.57 'sudo iptables -nL'			<= -t      Force pseudo-tty allocation
+	$ ssh -t apark@192.241.190.57 'sudo iptables -nL'					<= -t      Force pseudo-tty allocation
 	  
 	### run script remotely
 	
@@ -4414,11 +4414,3 @@ http://www.basicconfig.com/linux/linux_cd_command_tutorial
 	operating systems.
 	Besides building programs, Make can be used to manage any project where some files must be 
 	updated automatically from others whenever the others change.	
-	
-### Node.JS
-	It lets you write web apps that use Javascript on both the server and the client, so you 
-	don't need to know multiple programming languages to program your website. It's also 
-	really good at handling real-time concurrent web applications, which makes it a great 
-	choice for a lot of modern web apps.
-	
-	NVM - Node Version Manager
