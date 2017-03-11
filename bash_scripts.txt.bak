@@ -66,7 +66,7 @@ $ apt-get | yum install shellcheck	-y
     $ bash -vx script.sh			<= add -xv from shell -v <-verbose -x <-debug
 	:! sh -x %						<= -x is for DEBUG(verbose) mode
     set -x              			<= End of file +x for TURN OFF
-	$ bash -n ./script.sh 			<= checking syntax error
+
 	
  # Stop and Exit running program
 	$ vi 1.sh
@@ -1534,13 +1534,9 @@ set  -o verbose      # alternative (set option in script file)
 bash -x scriptname   # echo commands after command-line processing
 set  -o xtrace       # alternative (set option in script file)
 
-
-
-
 trap 'echo $varname' EXIT  # useful when you want to print out the values of variables 
 			     at the point that your script exits
-			 
-				 
+
 function errtrap {
   es=$?
   echo "ERROR line $1: Command exited with status $es."
@@ -1583,13 +1579,13 @@ trap returntrap RETURN  # is executed each time a shell function or a script exe
 
 Fibonacci Script
 Write a script to print the first 10 elements of Fibonacci series.
-http://www.bashguru.com/2010/12/shell-script-to-generate-fibonacci.html
 
-#-----------------------------------------------------------
+
+
 $ a=1;b=1;for i in `seq 8`;do echo $((x=b,b=a+b,a=x));done
-#-----------------------------------------------------------
+
 $ echo $((b=1,a=0));for i in `seq 8`;do echo $((x=b,b=a+b,a=x));done
-#-----------------------------------------------------------
+
 #####################
 #!/bin/bash -x
 a=1
@@ -1606,6 +1602,8 @@ a=$c
 echo $c
 done
 ### 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+
+
 
 
 #------------------------------------------------------
