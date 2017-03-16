@@ -306,7 +306,7 @@ $ pip install pssh
 ### Run command on remote shell
 	$ ssh apark@192.241.190.57 	  'sudo iptables -nL'		
 	$ ssh puppet sudo  iptables -nL								<= using .ssh/config  file
-	$ ssh -t apark@192.241.190.57 'sudo iptables -nL'					<= -t      Force pseudo-tty allocation
+	$ ssh -t apark@192.241.190.57 'sudo iptables -nL'			<= -t      Force pseudo-tty allocation
 	  
 	### run script remotely
 	
@@ -4414,3 +4414,144 @@ http://www.basicconfig.com/linux/linux_cd_command_tutorial
 	operating systems.
 	Besides building programs, Make can be used to manage any project where some files must be 
 	updated automatically from others whenever the others change.	
+	
+### Node.JS
+	It lets you write web apps that use Javascript on both the server and the client, so you 
+	don't need to know multiple programming languages to program your website. It's also 
+	really good at handling real-time concurrent web applications, which makes it a great 
+	choice for a lot of modern web apps.
+	
+	NVM - Node Version Manager
+	
+###	Paginators 
+	a feature of the SDK that act as an abstraction over this process to make it easier for developers 
+	to use paginated APIs. A Paginator is essentially an iterator of results. They are created via the 
+	getPaginator() method of the client.
+	https://docs.aws.amazon.com/aws-sdk-php/v3/guide/guide/paginators.html
+	
+	
+	
+A bastion host is a special purpose computer on a network specifically designed and configured to withstand attacks. The computer generally hosts a single application, for example a proxy server, and all other services are removed or limited to reduce the threat to the computer. It is hardened in this manner primarily due to its location and purpose, which is either on the outside of the firewall or in theDMZ and usually involves access from untrusted networks or computers.
+Internet Protocol Security (IPsec) is a protocol suite for securing Internet Protocol (IP) communications by authenticating and encrypting each IP packet of a communication session. IPsec includes protocols for establishing mutual authentication between agents at the beginning of the session and negotiation of cryptographic keys to be used during the session. IPsec can be used in protecting data flows between a pair of hosts (host-to-host), between a pair of security gateways (network-to-network), or between a security gateway and a host (network-to-host).[1]
+IPsec is an end-to-end security scheme operating in the Internet Layer of the Internet Protocol Suite, while some other Internet security systems in widespread use, such as Transport Layer Security (TLS) and Secure Shell (SSH), operate in the upper layers of the TCP/IP model. Hence, IPsec protects any application traffic across an IP network. Applications do not need to be specifically designed to use IPsec. Without IPsec, the use of TLS/SSL must be designed into an application to protect the application protocols.
+
+Hardware Virtualization Machine (HVM)
+Red Hat Enterprise Linux 6.4 (PV) - ami-6283a827 (64-bit) / ami-4a83a80f (32-bit)
+Red Hat Enterprise Linux version 6.4 (PV), EBS-backed
+Root device type: ebs Virtualization type: paravirtual
+Paravirtual
+A virtual machine (VM) mode in which operating systems do not require complete emulation of hardware devices. Paravirtual mode uses an API to interact with the host virtualization platform. Paravirtual mode doesn't require special virtualization technology hardware.
+
+Wildcard certificate
+ A wildcard certificate is a public key certificate which can be used with multiple subdomains of a domain.[1]
+Depending on the number of subdomains an advantage could be that it saves money and also could be more convenient. 
+Limitation[edit]
+Only a single level of subdomain matching is supported.[2]
+It is not possible to get a wildcard for an Extended Validation Certificate.[3]
+A workaround could be to add every virtual host name in the Subject Alternative Name (SAN) extension.[4][5][6] The major problem being that the certificate needs to be reissued whenever a new virtual server is added.[7]
+Wildcards can be added as domains in multi-domain certificates or Unified Communications Certificates (UCC).[8] In addition, wildcards themselves can have subjectAltName extensions, including other wildcards. For example: The wildcard certificate *.wikipedia.org has *.m.wikimedia.org as an Subject Alternative Name. Thus it secureshttps://www.wikipedia.org as well as the completely different website name https://meta.m.wikimedia.org.[9] *.company.com
+
+Generate SSL Certificate Signing Request (CSR)
+The first part of enrolling for your SSL Certificate is to generate a Certificate Signing Request (CSR). CSR generation is wholly dependent on the software you use on your webserver. Select your webserver software from the list after reading the following general points:
+General Points to remember before creating your CSR:
+•	The Common Name field should be the Fully Qualified Domain Name (FQDN) or the web address for which you plan to use your Certificate, e.g. the area of your site you wish customers to connect to using SSL. For example, an SSL Certificate issued forcomodogroup.com will not be valid for secure.comodogroup.com. If the web address to be used for SSL is secure.comodogroup.com, ensure that the common name submitted in the CSR is secure.comodogroup.com
+Our SSL Certificate are compatible with almost all popular webserver software. If your webserver software does not appear on the list, please contact support@comodo.com with full details of your webserver software and we will contact you with further instructions.
+
+Jscrambler
+
+JScrambler is an online JavaScript obfuscator and code optimization tool available as a Web application and Web API. First release was in 2010 [1] by Auditmark, a startup based on a Portuguese business incubator known as UPTEC.[2][3] JScrambler is on the third version since April 17.[4] Features like locking down code to a specific domain, setting the code to expire after a specific date, function outlining, changing the control flow of the program, code obfuscation, code optimization, debugging code and assert elimination, deadcode elimination, constant folding may be found at latest release of the software.[5][6]
+
+A colocation centre or colocation center (also spelled co-location, collocation, colo, or coloc) is a type of data centre where equipment, space, and bandwidth are available for rental to retail customers. Colocation facilities provide space, power, cooling, and physical security for the server, storage, and networking equipment of other firms—and connect them to a variety of telecommunications and network service providers—with a minimum of cost and complexity.
+
+OpenStack OpenStack is a global collaboration of developers and cloud computing technologists producing the ubiquitous open source cloud computing platform for public and private clouds. The project aims to deliver solutions for all types of clouds by being simple to implement, massively scalable, and feature rich. The technology consists of a series ofinterrelated projects delivering various components for a cloud infrastructure solution.
+
+Hash function
+Hash functions are primarily used to generate fixed-length output data that acts as a shortened reference to the original data. This is useful when the original data is too cumbersome to use in its entirety.
+One practical use is a data structure called a hash table where the data is stored associatively. Searching linearly for a person's name in a list becomes cumbersome as the length of the list increases, but the hashed value can be used to store a reference to the original data and retrieve constant time (barring collisions). Another use is in cryptography, the science of encoding and safeguarding data. It is easy to generate hash values from input data and easy to verify that the data matches the hash, but hard to 'fake' a hash value to hide malicious data. This is the principle behind the PGP algorithm for data validation.
+Hash functions are also frequently used to accelerate table lookup or data comparison tasks such as finding items in a database, detecting duplicated or similar records in a large file and finding similar stretches in DNA sequences.
+A hash function should be deterministic: when it is invoked twice on identical data (e.g. two strings containing exactly the same characters), the function should produce the same value. This is crucial to the correctness of virtually all algorithms based on hashing. In the case of a hash table, the lookup operation should look at the slot where the insertion algorithm actually stored the data that is being sought for, so it needs the same hash value.
+Hash functions are typically not invertible, meaning that it is not possible to reconstruct the input datum x from its hash value h(x) alone. In many applications, it is common that several values hash to the same value, a condition called a hash collision. Since collisions cause "confusion" of objects, which can make exact hash-based algorithm slower and approximate ones less precise, hash functions are designed to minimize the probability of collisions. For cryptographic uses, hash functions are engineered in such a way that is impossible to reconstruct any input from the hash alone without expending great amounts of computing time (see also One-way function).
+Hash functions are related to (and often confused with) checksums, check digits, fingerprints, randomization functions, error-correcting codes, and ciphers. Although these concepts overlap to some extent, each has its own uses and requirements and is designed and optimized differently. The Hash Keeper database maintained by the American National Drug Intelligence Center, for instance, is more aptly described as a catalog of file fingerprints than of hash values.
+
+Oplog
+The oplog (operations log) is a special capped collection that keeps a rolling record of all operations that modify the data stored in your databases. MongoDB applies database operations on the primary and then records the operations on the primary's oplog.
+
+Tableau
+Tableau Online is a hosted version of Tableau Server. It makes rapid-fire business analytics easier than ever. Share dashboards with your whole company and with customers and partners— in minutes. Provide live, interactive views of data that let people answer their own questions, right in a web browser or on a tablet. And do it in a secure, hosted environment.
+Get up and running in minutes. Add new users in a few clicks. Tableau Online can scale up as much as you need and you can use it wherever you need it. You don't need to purchase, set up or manage any infrastructure.
+
+GridFS
+1.	GridFS is a specification for storing and retrieving files that exceed the BSON-document size limit of 16MB. Instead of storing a file in a single document, GridFS divides a file into parts, or chunks, and stores each of those chunks as a separate document.
+  
+
+OLAP
+In computing, online analytical processing, or OLAP /ˈoʊlæp/, is an approach to answering multi-dimensional analytical (MDA) queries swiftly.[1] OLAP is part of the broader category of business intelligence, which also encompasses relational database, report writing and data mining.[2] Typical applications of OLAP include business reporting for sales, marketing, management reporting, business process management (BPM),[3] budgeting andforecasting, financial reporting and similar areas, with new applications coming up, such as agriculture.[4] The term OLAP was created as a slight modification of the traditional database term OLTP (Online Transaction Processing).[5]
+OLAP tools enable users to analyze multidimensional data interactively from multiple perspectives. OLAP consists of three basic analytical operations: consolidation (roll-up), drill-down, and slicing and dicing.[6] Consolidation involves the aggregation of data that can be accumulated and computed in one or more dimensions. For example, all sales offices are rolled up to the sales department or sales division to anticipate sales trends. By contrast, the drill-down is a technique that allows users to navigate through the details. For instance, users can view the sales by individual products that make up a region’s sales. Slicing and dicing is a feature whereby users can take out (slicing) a specific set of data of the OLAP cube and view (dicing) the slices from different viewpoints.
+Databases configured for OLAP use a multidimensional data model, allowing for complex analytical and ad hoc queries with a rapid execution time.[7] They borrow aspects of navigational databases, hierarchical databases andrelational databases.
+
+Underlying data
+
+When we do a survey or experiment over a period of time we usually plot the results and present the information to the reader in this condensed form. If the reader wants to check how we actually got the results they will want to examine the data that we used ... the data that underlies the results.
+
+MapReduce
+MapReduce is a programming model for processing large data sets with a parallel, distributed algorithm on a cluster.[1]
+A MapReduce program is composed of a Map() procedure that performs filtering and sorting (such as sorting students by first name into queues, one queue for each name) and a Reduce() procedure that performs a summary operation (such as counting the number of students in each queue, yielding name frequencies). The "MapReduce System" (also called "infrastructure" or "framework") orchestrates by marshalling the distributed servers, running the various tasks in parallel, managing all communications and data transfers between the various parts of the system, and providing for redundancy and fault tolerance.
+The model is inspired by the map and reduce functions commonly used in functional programming,[2] although their purpose in the MapReduce framework is not the same as in their original forms.[3] The key contributions of the MapReduce framework are not the actual map and reduce functions, but the scalability and fault-tolerance achieved for a variety of applications by optimizing the execution engine once. As such, a single-threaded implementation of MapReduce will usually not be faster than a traditional implementation. Only when the optimized distributed shuffle operation (which reduces network communication cost) and fault tolerance features of the MapReduce framework come into play, the use of this model is beneficial.
+MapReduce libraries have been written in many programming languages, with different levels of optimization. A popular open-source implementation is Apache Hadoop. The name MapReduce originally referred to the proprietaryGoogle technology but has since been genericized.
+
+Nginx
+
+Nginx (pronounced "engine-ex") is an open source reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols, as well as a load balancer, HTTP cache, and a web server (origin server). The nginx project started with a strong focus on high concurrency, high performance and low memory usage. It is licensed under the 2-clause BSD-like license and it runs on Linux, BSD variants, Mac OS X, Solaris, AIX, HP-UX, as well as on other *nix flavors. It also has a proof of concept port for Microsoft Windows.[6]
+
+Null (SQL)
+Null is a special marker used in Structured Query Language (SQL) to indicate that a data value does not exist in the database. Introduced by the creator of the relational database model, E. F. Codd, SQL Null serves to fulfill the requirement that all true relational database management systems (RDBMS) support a representation of "missing information and inapplicable information". Codd also introduced the use of the lowercase Greek omega (ω) symbol to represent Null in database theory. NULL is also an SQL reserved keyword used to identify the Null special marker.
+Null has been the focus of controversy and a source of debate because of its associatedthree-valued logic (3VL), special requirements for its use in SQL joins, and the special handling required by aggregate functions and SQL grouping operators. Computer science professor Ron van der Meyden summarized the various issues as: "The inconsistencies in the SQL standard mean that it is not possible to ascribe any intuitive logical semantics to the treatment of nulls in SQL."[1] Although various proposals have been made for resolving these issues, the complexity of the alternatives has prevented their widespread adoption.
+For people new to the subject, a good way to remember what null means is to remember that in terms of information, "lack of a value" is not the same thing as "a value of zero"; similarly, "lack of an answer" is not the same thing as "an answer of no". For example, consider the question "How many books does Juan own?" The answer may be "zero" (weknow that he owns none) or "null" (we do not know how many he owns, or doesn't own). In a database table, the column reporting this answer would start out with a value of null, and it would not be updated with "zero" until we have ascertained that Juan owns no books.
+SQL null is a state (unknown) and not a value. This usage is quite different from programming languages, where null means not assigned to a particular instance
+
+bject-oriented programming (OOP) is a programming paradigm that represents the concept of "objects" that have data fields (attributes that describe the object) and associated procedures known as methods. Objects, which are usually instances of classes, are used to interact with one another to design applications and computer programs.[1][2] C++,Objective-C, Smalltalk, Java, C#, Perl, Python, Ruby and PHP are examples of object-oriented programming languages.
+Object-oriented programming is an approach to designing modular, reusable software systems. Although discussions of object-oriented technology often get mired in the details of one language vs. the other, the real key to the object-oriented approach is that it is a modelling approach first.[3] Although often hyped as a revolutionary way to develop software by zealous proponents, the object-oriented approach is in reality a logical extension of good design practices that go back to the very beginning of computer programming. Object-orientation is simply the logical extension of older techniques such as structured programming andabstract data types. An object is an abstract data type with the addition ofpolymorphism and inheritance.
+Rather than structure programs as code and data, an object-oriented system integrates the two using the concept of an "object". An object has state (data) and behavior (code). Objects correspond to things found in the real world. So for example, a graphics program will have objects such as circle, square, menu. An online shopping system will have objects such as shopping cart, customer, product. The shopping system will support behaviors such as place order, make payment, and offer discount. The objects are designed as class hierarchies. So, for example, with the shopping system there might be high level classes such as electronics product, kitchen product, and book. There may be further refinements for example under electronic products: CD Player, DVD player, etc. These classes and subclasses correspond to sets and subsets in mathematical logic.
+The goals of object-oriented programming are:
+•	Increased understanding.
+•	Ease of maintenance.
+•	Ease of evolution.
+The overall understanding of the system is increased because the semantic gap—the distance between the language spoken by developers and that spoken by users—is lessened. Rather than talking about database tables and programming subroutines, the developer talks about things the user is familiar with: objects from their application domain.[4]
+Object orientation eases maintenance by the use of encapsulation and information hiding. One of the most common sources of errors in programs is when one part of the system accidentally interferes with another part. For example, in the very earliest days of programming, it was common for developers to use "go to" statements to jump to arbitrary locations within only a few routines and functions. Critics called this "spaghetti code" because it is disorganized. Structured programming addresses this by encouraging the use of procedures and subroutines. Appropriate usage sections off responsibility for individual blocks to implement separate functionality. So, for example, one would know that the square root function was separate from the launch missiles function, and a change to one could not affect the other.[5]
+Object-orientation takes this to the next step. It essentially merges abstract data types with structured programming and divides systems into modular objects which own their own data and are responsible for their own behavior. This feature is known as encapsulation. With encapsulation, not only can the "square root" and "launch missiles" functions not interfere with each other, but also the data for the two are divided up so that changes to one object cannot affect the other. Note that all this relies on the various languages being used appropriately, which, of course, is never certain. Object-orientation is not a software silver bullet, and it is not magic that makes all development problems go away.[6]
+In addition to providing ease of maintenance, encapsulation and information hiding provide ease of evolution as well. Defining software as modular components that support inheritance makes it easy both to re-use existing components and to extend components as needed by defining new subclasses with specialized behaviors. This goal of being easy to both maintain and reuse is known in the object-oriented paradigm as the "open closed principle". A module is open if it supports extension (e.g. can easily modify behavior, add new properties, provide default values, etc.). A module is closed if it has a well defined stable interface that all other modules must use and that limits the interaction and potential errors that can be introduced into one module by changes in another.[7]
+The object-oriented approach encourages the programmer to place data where it is not directly accessible by the rest of the system. Instead, the data is accessed by calling specially written functions, called methods, which are bundled with the data. These act as the intermediaries for retrieving or modifying the data they control. The programming construct that combines data with a set of methods for accessing and managing those data is called an object. The practice of using subroutines to examine or modify certain kinds of data was also used in non-OOP modular programming, well before the widespread use of object-oriented programming.
+An object-oriented program usually contains different types of objects, each corresponding to a real-world object or concept such as a bank account, a hockey player, or a bulldozer. A program might contain multiple copies of each type of object, one for each of the real-world objects the program deals with. For instance, there could be one bank account object for each real-world account at a particular bank. Each copy of the bank account object would be alike in the methods it offers for manipulating or reading its data, but the data inside each object would differ, reflecting the different history of each account.
+Objects can be thought of as encapsulating their data within a set of functions designed to ensure that the data are used appropriately, and to assist in that use. The object's methods typically include checks and safeguards specific to the data types the object contains. An object can also offer simple-to-use, standardized methods for performing particular operations on its data, while concealing the specifics of how those tasks are accomplished. In this way, alterations can be made to the internal structure or methods of an object without requiring that the rest of the program be modified. This approach can also be used to offer standardized methods across different types of objects. As an example, several different types of objects might offer print methods. Each type of object might implement that print method in a different way, reflecting the different kinds of data each contains, but all the different print methods might be called in the same standardized manner from elsewhere in the program. These features become especially useful when more than one programmer is contributing code to a project or when the goal is to reuse code between projects.
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

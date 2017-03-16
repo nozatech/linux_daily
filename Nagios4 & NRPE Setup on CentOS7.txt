@@ -1,0 +1,153 @@
+Nagios4 on CentOS7
+
+First of all we have to install some packages:
+
+apt-get install make gcc libssl-dev openssl
+Then add new user and group called nagios:
+
+groupadd -g 5001 nagios
+useradd  -g nagios -s /bin/bash -u 5001 nagios
+
+
+2.NRPE INSTALLATION
+
+Nrpe is a daemon installed on client machines used for system information retrieval. Use below script to download and configure nrpe on your client machine:
+----------------------------------------------------------------------------------------------
+#!/bin/bash
+NRPE_VERSION="2.12"
+NAGIOS_HOME="/usr/local/nagios"
+download="/tmp/download"
+
+if [ -d $download ]; then
+        echo "dir exists.........."
+else
+        echo "creating dir........"
+        mkdir -p $download
+fi
+
+if [ -e $download/nrpe-$NRPE_VERSION.tar.gz ]; then
+        echo "file exists........."
+else
+        echo "downloading file..."
+        cd $download
+        wget http://surfnet.dl.sourceforge.net/sourceforge/nagios/nrpe-$NRPE_VERSION.tar.gz
+fi
+
+tar xzf $download/nrpe-$NRPE_VERSION.tar.gz -C $download  <= tar to $download folder****
+cd $download/nrpe-$NRPE_VERSION
+./configure --prefix=$NAGIOS_HOME		<= configure to $NAGIOS_HOME directory
+make all
+make install-plugin
+make install-daemon
+make install-daemon-config
+rm -rf $download
+----------------------------------------------------------------------------------------------
+
+3.RUNNING NRPE
+Your nrpe daemon can run as inetd process or as standalone application. I'd rather prefer second solution. Below it is shown simple nrpe script with start,stop and restart behaviour. Copy that script into /etc/init.d/nrpe.sh file.
+
+----------------------------------------------------------------------------------------------
+#!/bin/bash
+not_working() {
+	echo "NRPE daemon isn't working ..."
+}
+working() {
+	echo "NRPE is working .. Not starting"
+}
+starting(){
+	echo "Starting NRPE daemon ..."
+}
+stopping(){
+	echo "Stopping NRPE daemon ..."
+}
+start() {
+	if [ -e  /var/run/nrpe.pid ]; then
+		working
+	else
+		starting
+		/usr/local/nagios/bin/nrpe -c /usr/local/nagios/etc/nrpe.cfg -d
+	fi
+}
+stop() {
+	if [ -e  /var/run/nrpe.pid ]; then
+		stopping
+		kill `cat /var/run/nrpe.pid`
+		rm /var/run/nrpe.pid
+	else
+		not_working
+	fi
+}
+restart() {
+	if [ -e  /var/run/nrpe.pid ]; then
+		stop
+	else
+		not_working
+	fi
+	start
+}
+usage(){
+	echo "$0 {start|stop|restart}"
+}
+case "$1" in
+	start)		start;;
+	stop)		stop;;
+	restart)	restart;;
+	*)		usage;;
+esac 
+----------------------------------------------------------------------------------------------
+
+Change rights to this script so it can be executed (+x) with command:
+
+chmod 755 /etc/init.d/nrpe.sh
+Before running nrpe we have to configure it. To do this edit file /usr/local/nagios/etc/nrpe.cfg and change or add information about:
+
+allowed_hosts - add IP address or hostnames that are allowed to exchange informations
+define commands which will be executed - examples shown below
+command[check_apt_nrpe]=/usr/local/nagios/libexec/check_apt
+command[check_load_nrpe]=/usr/local/nagios/libexec/check_load -w 15,10,5 -c 30,25,20
+
+So we need now to install or copy from another server nagios plugins to run it locally. 
+How to install nagios plugins was shown in previous tutorial with title Nagios administration with nagiosadmin. in point 3. 
+When we are ready with nagios plugins and we have got all commands configured in /usr/local/nagios/etc/nrpe.cfg we can run nrpe using:
+
+/etc/init.d/nrpe.sh start
+We should see in netstat output following line:
+
+netstat -nlp | grep 5666
+tcp        0      0 0.0.0.0:5666            0.0.0.0:*               LISTEN      3001/nrpe
+
+
+4.TESTING NRPE
+
+
+On server machine where nagios is installed go to /usr/local/nagios/libexec directory and run below command
+
+./check_nrpe -H IP_address_where_nrpe_is_installed -c check_apt_nrpe
+This command will run check_apt_nrpe command defined in nrpe.cfg file and return to console below shown status:
+
+APT OK: 0 packages available for upgrade (0 critical updates).
+Tip for apt: 
+put into /etc/cron.daily/apt-update file (if doesn't exist create with chmod 755) following lines:
+
+#!/bin/bash
+/usr/bin/apt-get update > /dev/null
+This will run every day apt-get update on the server so nrpe has got real information about apt status.
+
+
+5.CONFIGURE COMMANDS WITH NAGIOSADMIN
+I assume that you administer nagios with nagiosadmin, so go to Command Tab and create new command with:
+
+Name: check_nrpe
+Command: $USER1$/check_nrpe -H $HOSTNAME$ -c $ARG1$
+After saving, go to Services Tab and add new service:
+Name: apt - whatever you like, names and aliases are your choices
+Alias: apt - same as name
+Command: check_nrpe - choose from dropbox field
+Port: - don't fill it up
+Special: check_command check_nrpe!check_apt_nrpe
+Hosts - choose using checkboxes servers you want to monitor for apt status - all servers have nrpe deamon configured and running
+Save and go to Generator Tab and also click on Save. It will reload nagios with new configuration. 
+In nagios panel you will see new added services which firstly have pending status and after while status which nrpe returns.
+One last think is to add nrpe.sh to startup scripts
+update-rc.d nrpe.sh defaults
+That's all.

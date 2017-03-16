@@ -1735,9 +1735,7 @@ for n in range(2, 10):
 	Number of arguments in:  3
 	The arguments are:  ['sysargv.py', 'arg1', 'arg2']
 	
-### .rst file
-	reStructuredText (sometimes abbreviated as RST, ReST, or reST) is a file format for textual data used 
-	primarily in the Python programming language community for technical documentation.	
+	
 	
 	
 	
