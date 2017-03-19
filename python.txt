@@ -291,6 +291,21 @@ def main():
 if __name__ == "__main__":
 	main()
 
+	
+###	Object-Oriented Programming ###
+https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/
+The "CLASS" is a fundamental building block in Python(blueprints or TEMPLATE for creating objects).
+	Like its function-based cousin def, it concerns the definition of things
+def: define FUNCTION
+class: define CLASS functions (referred to as "methods" when defined within a class)
+	classes are based on objects in the real world (like Customer or Product)
+	classes are based on concepts in our system, like HTTPRequest or Owner.
+	
+	
+	
+	
+	
+	
 -----------------------------
 ### CLASSes OOP		<= Complete module to pass around
 
@@ -325,8 +340,8 @@ class myClass():
   def method_2(self, someString):
     print("myClass method_2: " + someString)
 
-class anotherClass(myClass):   #Inherent
-  def method2(self):
+class anotherClass(myClass):   					<=Inherent from myClass()
+  def method_2(self):
     print ("anotherClass method2")
   def method_1(self):
     myClass.method_1(self);
@@ -339,6 +354,7 @@ def main():
     print ("----------------------")
     c2=anotherClass()
     c2.method_1()
+    c2.method_2()
 
 if __name__ == "__main__":
     main()
@@ -349,6 +365,7 @@ myClass method_2: This is a string
 ----------------------
 myClass method_1
 anotherClass method1
+anotherClass method2
 >>>----------------------------------------------------------
 
 
