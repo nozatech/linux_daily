@@ -45,6 +45,360 @@ d <=down
 locals()
 
 
+
+	
+Comments
+#	
+	
+
+###	Print  ###
+
+Python 2.x  
+	print "Hello World"			<= NO  ()
+Python 3.x
+	print ("Hello WOrld")       <= YES ()
+
+### Variable ###
+Python 2.x
+	f = 0;					<= Declared,  number Don't need "" 
+	print f	
+# Re-declaring the variable works
+	f = "abc"				<= 	f = 0 becomes f = abc   letters needs "" 
+	print f
+	
+Python 2.x
+	f =0;
+	pinrt (f)
+	
+	
+print "string type" + 123   	<= ERROR  String + Number DO NOT WORK!	
+# Python 2.x
+print "string type" + str(123)	<= Convert 123 to String.
+# Python 3.x
+print ("string type" + str(123))
+	
+# Global vs Local Variables	in functions
+f = 0;					<= Global
+print (f)
+
+def someFunction():
+    #global f			
+    f = "def"		<= Local
+    print (f)		<= Python 3.x print ()
+
+someFunction()		<= Calling function
+print ("----------")
+print f
+>>> 0
+>>> def
+>>> ----------
+>>> 0
+----------------------------------------------------------------------
+f = 0;					<= Global
+print (f)
+
+def someFunction():
+    global f		<= Declare as Global variable f = def variable		
+    f = "def"		<= Local becoming Global variable from '0' to 'def'
+    print (f)		<= Python 3.x print ()
+
+someFunction()		<= Calling function
+print ("----------")
+print f				<= someFunction's f variable
+>>> 0
+>>> def
+>>> ----------
+>>> def				<= inside function's variable become Global variable
+----------------------------------------------------------------------
+
+Undefine the variable using 'del' function	
+
+f = 0;
+print (f)
+
+del f
+print (f)
+	
+>>> NameError: name 'f' is not defined
+	
+	
+	
+###	Function  ###
+# Define a function
+def func1():						<= defining "func1" function name
+	print ("I am a function")
+func1()								<= Invoke func1	
+print func1()						<= Python3 Doesn't Work!	
+print func1							<= Print func1's Object value
+
+>>> I am a function					<= func1() calling
+# print func1()
+>>> I am a function					<= func1() calling
+>>> None							<= No return value from func1 so 'print' 
+										out put default value 'None'
+>>> print func1
+<function func1 at 0x6ffffe688c0>   <= Print func1's Object value
+
+
+def func1():						<= defining "func1" function name
+	print ("I am a function")
+def func2(arg1, arg2):
+	print (arg1, " space ", arg2)
+	
+func2(10,20)
+print func2(10,20)					<= only code works on Python 2.x
+
+
+----------------------------------------------------------------------
+def func1():
+	print ("I am a function")
+def func2(arg1, arg2):
+	print (arg1, " space ", arg2)
+def cube(x):
+    return x*x*x
+
+print (cube(3))						<= Python 3.x
+	
+	
+	
+----------------------------------------------------------------------	
+	
+	
+# For function need to use RETURN instead of Print!!!	
+### Print vs Return
+https://www.codecademy.com/en/forum_questions/518ffbfeb3f05c44fe001395	
+	
+def print_a_number(num):
+    print num
+
+def return_a_number(num):
+    return num
+
+def add_three(num):
+    return num + 3
+
+f1 = print_a_number(7)
+f2 = return_a_number(2)
+
+print f1
+print f2
+f3 = add_three(f2)
+print f3
+f4 = add_three(f1)
+print f4
+>>>
+7
+None
+2
+5
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+>>>
+
+Notice that we got an error when we tried to pass f1 to add_three because f1 
+had a value of None, even though it had printed out the correct number. This 
+is why it is important to return values and not print them (except when we 
+want to know what the value is).
+	
+----------------------------------------------------------------------	
+
+### Conditional
+
+def main():
+    x, y = 10, 100
+    if (x < y):
+        st = "x is less than y"
+    elif(x == y):
+        st = "x is same as y"
+    else:
+        st = "x is greater than y"
+   
+	###Conditional statements let you use "a if C else b"  <= put into 1 line 
+	# st = "x is less than y" if (x <y) else "x is greater than or equal to y"
+	print (st)
+	
+if name == "__main__":				<= = x2 '=='
+    main()
+	
+	
+	
+### What does if __name__ == “__main__”: do?
+http://stackoverflow.com/questions/419163/what-does-if-name-main-do
+
+if __mame__ == "__main__":				<= invoking a main function in Python files.
+	main()
+	
+
+
+
+
+### Loops
+
+# While Loop
+def main():
+    x = 0								<= start 0
+    while (x < 5):						<= up to 4 because when x=5, look break!
+        print (x)
+        x = x + 1
+if __name__ == "__main__":				<= name == main
+    main()
+-----------------------------
+# For Loop
+def main():
+	for i in range(5,10):
+		print (i)
+if __name__ == "__main__":				<= name == main
+	main()
+-----------------------------	
+# For Loop using LIST
+def main():
+	x = 0
+	days = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
+	for day in days:
+		print (day)
+if __name__ == "__main__":
+	main()
+-----------------------------	
+	
+# For Loop using BREAK!
+def main():
+	x = 0
+	for x in range(5,10):
+		if (x == 7): break
+		print (x)
+if __name__ == "__main__":
+	main()
+-----------------------------
+# For Loop using Continue!
+def main():
+	#x = 0
+	for x in range(5,10):
+		if (x % 2 == 0): continue		# <= 5, 7, 9
+		#same as if (x % 2):
+		#if (x % 2): continue			# <= 6, 8
+		
+		print (x)
+		
+if __name__ == "__main__":
+	main()
+-----------------------------
+# For Loop using Index Enumerate function
+def main():
+	#x = 0
+	days = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
+	for i, d in enumerate(days):						<= returns two values
+		print (i, d)
+
+if __name__ == "__main__":
+	main()
+
+-----------------------------
+### CLASSes OOP		<= Complete module to pass around
+
+class myClass():									<= Super Class
+	def method1(self):								<= ALWAYS!!!  itself
+		print ("myClass method1")
+
+	def method2(self, someString):
+		print("myClass method2: " + someString)
+		
+class anotherClass(myClass):						<= Inherent ^Class 
+	def method2(self):
+		print "anotherClass method2"
+		
+	def method1(self):
+		myClass.method1(self);
+		print "anotherClass method1"
+
+def main():
+	c = myClass()
+	c.method1()
+	c.method2("This is a string")
+
+if __name__ == "__main__":
+	main()
+
+----------------------------------------------------------
+class myClass():
+  def method_1(self):
+    print("myClass method_1")
+
+  def method_2(self, someString):
+    print("myClass method_2: " + someString)
+
+class anotherClass(myClass):   #Inherent
+  def method2(self):
+    print ("anotherClass method2")
+  def method_1(self):
+    myClass.method_1(self);
+    print ("anotherClass method1")
+
+def main():
+    c = myClass()
+    c.method_1()
+    c.method_2("This is a string")
+    print ("----------------------")
+    c2=anotherClass()
+    c2.method_1()
+
+if __name__ == "__main__":
+    main()
+
+>>>----------------------------------------------------------
+myClass method_1
+myClass method_2: This is a string
+----------------------
+myClass method_1
+anotherClass method1
+>>>----------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+
 #!/usr/local/python3.5
 print("Hello World")
 def subr():
@@ -109,6 +463,12 @@ print(x)
 ----------------------------------
 # Function
 ----------------------------------
+def main():
+    print ("Hello World")
+if __name__ == "__main__":
+    main()
+	
+	
 def sub(x,y):
     z = x - y
     print(z)
@@ -1544,7 +1904,7 @@ else:
 	
 	
 --------------------------------------------------------------------------------	
-3. Sqroot
+3. Sq root
 --------------------------------------------------------------------------------
 # Python Program to calculate the square root
 
