@@ -11,6 +11,7 @@ http://tweaks.com/windows/39559/kill-processes-from-command-prompt
 c:\tasklist
 c:\taskkill /IM pdflite.exe /F 
 # Rename file name  'F2 key'
+# Pin to Taskbar  <= on program, right click, pin to taskbar
 
 bring up the Task Manager
 	Ctrl+Shift+Esc 

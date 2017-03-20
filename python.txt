@@ -1,23 +1,6 @@
 ### Python ###
 
-1. Installation
-
-Python 3.5.2 Install on CentOS7
-https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-centos-7
-sudo yum -y install yum-utils
-sudo yum -y groupinstall development
-sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
-sudo yum -y install python35u-3.5.2
-sudo yum -y install python35u-pip
-sudo yum -y install python35u-devel
-
-# Django version check
-python -c "import django; print(django.get_version())"
-
-
-$ yum install python-pip
-$ pip install pudb 	<=debug tool
-http://stackoverflow.com/questions/1623039/python-debugging-tips
+1. Environment PATH
 
 #!/usr/local/python
 #!/usr/local/python3.5
@@ -31,6 +14,8 @@ an open and accepting #!/usr/bin/env python -- assuming the script is important 
 run with the specific version I have tested and developed it with, NOT a semi-random one;-).
 
 
+Python Programming Built-in Functions
+https://www.programiz.com/python-programming/built-in-function
 
 
 2. Debugging Python Debuger
@@ -220,17 +205,36 @@ if name == "__main__":				<= = x2 '=='
     main()
 	
 	
-	
+----------------------------------------------------------------------	
 ### What does if __name__ == “__main__”: do?
 http://stackoverflow.com/questions/419163/what-does-if-name-main-do
+https://www.youtube.com/watch?v=sugvnHA7ElY
 
 if __mame__ == "__main__":				<= invoking a main function in Python files.
 	main()
+
+# Python3	
+	print("__name__")
+	>>> __main__
+	
+	print("First Module's Name: {}".format(__name__))
+	>>> First Module's Name: __main__
+	
+# Python2
+	print __name__	
+	>>> __main__	
+
+	print "First Module's Name: {}".format(__name__)	
+	>>> First Module's Name: __main__
+
+	
+	
+	
+	
 	
 
 
-
-
+----------------------------------------------------------------------
 ### Loops
 
 # While Loop
@@ -333,7 +337,9 @@ if __name__ == "__main__":
 	main()
 
 ----------------------------------------------------------
-class myClass():
+# Inherent from SUPER myClass
+
+class myClass():								<= SUPER myClass
   def method_1(self):
     print("myClass method_1")
 
@@ -369,20 +375,377 @@ anotherClass method2
 >>>----------------------------------------------------------
 
 
+class Car:                          <= Class uses Carmel Case convention
+    def __init__(self, name):		<= constructor method 
+        self.name = name			<= initiating object(instance)
+
+    def driving(self):				<= Method1 driving(function)
+        print(self.name + " is a nice car to drive.")
+
+    def looks(self):				<= Method2 looks(function)
+        print(self.name + " looks awesome nice.")
+
+def main():								<= Main function
+
+    bmw = Car("BMW X6")
+    bmw.driving()
+    bmw.looks()
+    print("")                           # print an empty line| print() works, too.
+    mb = Car("MB GLC300 Coupe")
+    mb.driving()
+    mb.looks()
+
+if __name__ == "__main__":				<= 
+    main()
+
+>>>----------------------------------------------------------
+BMW X6 is a nice car to drive.
+BMW X6 looks awesome nice.
+
+MB GLC300 Coupe is a nice car to drive.
+MB GLC300 Coupe looks awesome nice.
+>>>----------------------------------------------------------
+
+# Define function names()
+def function1():
+    # Set up name variable with input
+    name = str(input("Enter your name: "))
+
+    # checking vowels
+    if set('aeiou'). intersection(name.lower()):  			# set is built-in function
+        print("Your name contains a vowel.")
+    else:
+        print("Your name doesn't contain a vovwel.")
+
+    # Iterate over(review through) name
+    for letter in name:
+        print(letter)
+
+# Call function1 function()
+function1()
+----------------------------------------------------------
+
+def profileInfo(userName, followers=1):
+#def profileInfo(userName, followers=1):
+    print("User name: " + userName)
+    print("Followers: " + str(followers))         # when print(), converts int to string
+
+# Call function with parameters assigned as above
+# input values into function parameters userName as Albert Park, followers as 965
+profileInfo("Albert", 965)
+
+profileInfo("Sujin")				# No Followers, but it will use default value=1
+
+# Call function with keyword arguments
+# Input userName="Nozatech", followers=343) to
+profileInfo(userName="Nozatech", followers=343)
+
+>>>----------------------------------------------------------
+User name: Albert
+Followers: 965
+User name: Sujin
+Followers: 1			<= Using default value 'followers=1 '
+User name: Nozatech
+Followers: 343
+>>>----------------------------------------------------------
+
+### function Returning a Value using "RETURN'
+def sq(x):
+    y = x ** 2
+    return y
+answer = sq(3)			<= variable
+print(answer)			<= print funtion
+-------------------------------------------
+def sq(x):
+    y = x ** 2
+    return y
+result = sq(3)			<= variable
+print(result)
+-------------------------------------------
+def sq(x):
+    y = x ** 2
+    print(y)
+answer = sq(3)
+print(answer)
+>>>	9
+>>> None
+-------------------------------------------
+def sq(x):
+    y = x ** 2
+#    return y				<= Without 'return' 
+answer = sq(3)
+print(answer)
+
+>>> None
+-------------------------------------------
+
+def addNumbers(x, y, z):
+    a = x + y
+    b = x + z
+    c = y + z
+    print(a, b, c)			<= Values are PRINTED
+
+addNumbers(1, 2, 3)
+
+>>>3 4 5
+-------------------------------------------
+def addNumbers(x, y, z):
+    a = x + y
+    b = x + z
+    c = y + z
+    return a, b, c				<= Values are RETURNED as TUPLE a, b, c by "," comma
+
+sums = addNumbers(1, 2, 3)		
+print(sums)
+
+>>>(3, 4, 5)					<= TUPLE RETURN with , comma seperation
+-------------------------------------------
+def loopFive():
+    for i in range(0, 25):
+        print(i)
+        if i == 5:
+            # Stopping at i == 5
+            return
+    print("This will not execute.")
+loopFive()
+>>>-------------------------------------------	
+0
+1
+2
+3
+4
+5   <= RETURN breaks the for loop at 5
+-------------------------------------------		
+
+### Using main() as a Function
+# declare a global variable
+
+
+name = str(input("Enter your name: "))
+print(name)
+>>>Enter your name: Albert
+>>>Albert
+-------------------------------------------	
+# Declare global variable name for use in all functions
+name = str(input('Enter your name: '))
+
+
+# Define function to check if name contains a vowel
+def has_vowel():
+    if set('aeiou').intersection(name.lower()):
+        print('Your name contains a vowel.')
+    else:
+        print('Your name does not contain a vowel.')
+
+
+# Iterate over letters in name string
+def print_letters():
+    for letter in name:
+        print(letter)
+
+
+# Put has_vowel & print_letters into main functions
+def main():
+    has_vowel()
+    print_letters()
+
+
+# Execute main() function
+if __name__ == '__main__':
+    main()  
+
+
+-------------------------------------------	
+### Write Modules
+The Python Standard Library
+https://docs.python.org/3/library/
 
 
 
 
 
 
+# Import Modules 
+https://www.digitalocean.com/community/tutorials/how-to-import-modules-in-python-3#checking-for-and-installing-modules
+Modules can contain definitions of functions, classes, and variables that can 
+then be utilized in other Python programs
+e.g. 
+import name_of_module   <= importing from module.py file
 
+-------------------------------------------	
+1. vi hello_module.py
 
-
-
-
-
+def hello_world():
+	print("This is Hello World module you have imported.")
 	
+2. vi hello_module_import.py
+
+import hello_module						<= importing module py file from same dir
+hello_module.hello_world()				<= using same import_module name + 
+										   . (append) 
+										   hello_module function name "hello_world"
+--------------------------------------------------											   
+>>>This is Hello World module you have imported.
+--------------------------------------------------
+
+### Global and Local Variables
+
+#Create a global variable, outside of a function
+global_var = "Global variable i.e. outside of function"
+
+#Define a function
+def variable_function():
+    local_var = "Local variable i.e. only inside of var_function"
+    print(local_var)
+
+#Call function to print local variable
+variable_function()
+
+#Print global variable outside function
+print(global_var)
+
+--------------------------------------------------
+glb_var = "global"
+
+def var_function():
+    lcl_var = "local"
+    print(lcl_var)
+    print(glb_var)			 #Print glb_var within function
+
+var_function()
+print(glb_var)
+print(lcl_var)			<= NameError: name 'lcl_var' is not defined
+--------------------------------------------------
+num1 = 5  # Global variable
+
+def my_function():
+    num1 = 10    # Use the same variable name num1
+    num2 = 7     # Assign local variable
+	global num3 = 5
 	
+    print(num1)  # Print local variable num1
+    print(num2)  # Print local variable num2
+
+my_function()	 # Call my_function()
+print(num1)		 # Print global variable num1
+print(num3)		 #	
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+
+--------------------------------------------------
+--------------------------------------------------
+--------------------------------------------------
+--------------------------------------------------
+--------------------------------------------------
+--------------------------------------------------
+--------------------------------------------------
+--------------------------------------------------
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -424,7 +787,7 @@ x = subr
 print(x)
 
 From Python Shell
->>> print "\t" ":"		<= "\t" tabl
+>>> print "\t" ":"		<= "\t" tab
         :
 
 $ python3.5 helloworld.py
@@ -2118,8 +2481,95 @@ for n in range(2, 10):
 	
 	
 	
+1. Installation
+
+Python 3.5.2 Install on CentOS7
+https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-centos-7
+sudo yum -y install yum-utils
+sudo yum -y groupinstall development
+sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+sudo yum -y install python35u-3.5.2
+sudo yum -y install python35u-pip
+sudo yum -y install python35u-devel
+
+# Django version check
+python -c "import django; print(django.get_version())"
+
+
+$ yum install python-pip
+$ pip install pudb 	<=debug tool
+http://stackoverflow.com/questions/1623039/python-debugging-tips	
 	
 	
-	
-	
+Python built-in functions
+
+Built-in Function	Description
+abs()			Return the absolute value of a number.
+all()			Return True if all elements of the iterable are true (or if the iterable is empty).
+any()			Return True if any element of the iterable is true. If the iterable is empty, return False.
+ascii()			Return a string containing a printable representation of an object, but escape the non-ASCII characters.
+bin()			Convert an integer number to a binary string.
+bool()			Convert a value to a Boolean.
+bytearray()		Return a new array of bytes.
+bytes()			Return a new "bytes" object.
+callable()		Return True if the object argument appears callable, False if not.
+chr()			Return the string representing a character.
+classmethod()	Return a class method for the function.
+compile()		Compile the source into a code or AST object.
+complex()		Create a complex number or convert a string or number to a complex number.
+delattr()		Deletes the named attribute of an object.
+dict()			Create a new dictionary.
+dir()			Return the list of names in the current local scope.
+divmod()		Return a pair of numbers consisting of quotient and remainder when using integer division.
+enumerate()		Return an enumerate object.
+eval()			The argument is parsed and evaluated as a Python expression.
+exec()			Dynamic execution of Python code.
+filter()		Construct an iterator from elements of iterable for which function returns true.
+float()			Convert a string or a number to floating point.
+format()		Convert a value to a "formatted" representation.
+frozenset()		Return a new frozenset object.
+getattr()		Return the value of the named attribute of an object.
+globals()		Return a dictionary representing the current global symbol table.
+hasattr()		Return True if the name is one of the object's attributes.
+hash()			Return the hash value of the object.
+help()			Invoke the built-in help system.
+hex()			Convert an integer number to a hexadecimal string.
+id()			Return the "identity" of an object.
+input()			Reads a line from input, converts it to a string (stripping a trailing newline), and returns that.
+int()			Convert a number or string to an integer.
+isinstance()	Return True if the object argument is an instance.
+issubclass()	Return True if class is a subclass.
+iter()			Return an iterator object.
+len()			Return the length (the number of items) of an object.
+list()			Return a list.
+locals()		Update and return a dictionary representing the current local symbol table.
+map()			Return an iterator that applies function to every item of iterable, yielding the results.
+max()			Return the largest item in an iterable.
+memoryview()	Return a "memory view" object created from the given argument.
+min()			Return the smallest item in an iterable.
+next()			Retrieve the next item from the iterator.
+object()		Return a new featureless object.
+oct()			Convert an integer number to an octal string.
+open()			Open file and return a corresponding file object.
+ord()			Return an integer representing the Unicode.
+pow()			Return power raised to a number.
+print()			Print objects to the stream.
+property()		Return a property attribute.
+range()			Return an iterable sequence.
+repr()			Return a string containing a printable representation of an object.
+reversed()		Return a reverse iterator.
+round()			Return the rounded floating point value.
+set()			Return a new set object.
+setattr()		Assigns the value to the attribute.
+slice()			Return a slice object.
+sorted()		Return a new sorted list.
+staticmethod()	Return a static method for function.
+str()			Return a str version of object.
+sum()			Sums the items of an iterable from left to right and returns the total.
+super()	Return a proxy object that delegates method calls to a parent or sibling class.
+tuple()	Return a tuple
+type()	Return the type of an object.
+vars()	Return the __dict__ attribute for a module, class, instance, or any other object.
+zip()	Make an iterator that aggregates elements from each of the iterables.
+__import__()	This function is invoked by the import statement.	
 	
