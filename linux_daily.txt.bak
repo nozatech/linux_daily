@@ -11,6 +11,7 @@ http://tweaks.com/windows/39559/kill-processes-from-command-prompt
 c:\tasklist
 c:\taskkill /IM pdflite.exe /F 
 # Rename file name  'F2 key'
+# Pin to Taskbar  <= on program, right click, pin to taskbar
 
 bring up the Task Manager
 	Ctrl+Shift+Esc 
@@ -791,7 +792,8 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	http://unix.stackexchange.com/questions/21638/show-only-hidden-files-dot-files-in-ls-alias
 	$ ls -ld .*				<= list hidden .files only
 	$ ls -Ad .*
-	$ ls -al | grep "^\."   <=??
+	$ ls -a | grep "^\."    <= show hidden files start with . file
+	$ ls -1      <= number 1, showing names only  (1 column)
 
 	  
 12. Route or IP

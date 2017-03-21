@@ -31,18 +31,18 @@ locals()
 
 
 
-	
-Comments
-#	
-	
 
-###	Print  ###
+###	Python2 vs 3 differences ###
+http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html
 
 Python 2.x  
 	print "Hello World"			<= NO  ()
+	input()
 Python 3.x
-	print ("Hello WOrld")       <= YES ()
-
+	print ("Hello World")       <= YES ()
+	raw_input()
+	
+	
 ### Variable ###
 Python 2.x
 	f = 0;					<= Declared,  number Don't need "" 
@@ -51,16 +51,24 @@ Python 2.x
 	f = "abc"				<= 	f = 0 becomes f = abc   letters needs "" 
 	print f
 	
-Python 2.x
+Python 3.x
 	f =0;
 	pinrt (f)
 	
-	
+
 print "string type" + 123   	<= ERROR  String + Number DO NOT WORK!	
 # Python 2.x
 print "string type" + str(123)	<= Convert 123 to String.
 # Python 3.x
 print ("string type" + str(123))
+	
+	
+### Exit status  exit() vs sys.exit()
+	exit()		<- interactive shell 
+	sys.exit()  <- use in programs.	
+	
+	
+	
 	
 # Global vs Local Variables	in functions
 f = 0;					<= Global
@@ -96,7 +104,7 @@ print f				<= someFunction's f variable
 >>> def				<= inside function's variable become Global variable
 ----------------------------------------------------------------------
 
-Undefine the variable using 'del' function	
+Undefined the variable using 'del' function	
 
 f = 0;
 print (f)
@@ -2174,43 +2182,46 @@ print list [8:]
 
 The output for the above code will be an empty list []. Most of the people might confuse the answer with an index error because the code is attempting to access a member in the list whose index exceeds the total number of members in the list. The reason being the code is trying to access the slice of a list at a starting index which is greater than the number of members in the list.
 
-49)       What will be the output of the below code:
+49) What will be the output of the below code:
 
 def foo (i= []):
-
     i.append (1)
-
     return i
 
 >>> foo ()
-
 >>> foo ()
 
-The output for the above code will be-
-
+The output for the above code will be
 [1]
-
 [1, 1]
 
 Argument to the function foo is evaluated only once when the function is defined. However, since it is a list, on every all the list is modified by appending a 1 to it.
 
 50) Can the lambda forms in Python contain statements?
 
-No, as their syntax is restrcited to single expressions and they are used for creating function objects which are returned at runtime.
+	No, as their syntax is restricted to single expressions and they are used for creating function objects 
+	which are returned at runtime.
 
-This list of questions for Python interview questions and answers is not an exhaustive one and will continue to be a work in progress. Let us know in comments below if we missed out on any important question that needs to be up here.
+	This list of questions for Python interview questions and answers is not an exhaustive one and will 
+	continue to be a work in progress. Let us know in comments below if we missed out on any important 
+	question that needs to be up here.
 
 
 
-	
+# Checking argument using function "len(sys.argv)" count the number of arguments
+sys.argv[0] is the name of the script
+http://stackoverflow.com/questions/13263951/what-is-argv-and-what-does-it-do
 --------------------------------------------------------------------------------	
-$ vi python_leng.py   				<= run script without the parameter, print out usage
+$ vi python_len.py   				<= run script without the parameter, print out usage
+
 import os, sys
-if len(sys.argv) != 4:				<= requires 4 parameters
+if len(sys.argv) != 4:				<= requires 4 parameters(count the number of arguments)
     print "USAGE: python_len.py    1st_arg    2nd_arg    3rd_arg"
     print "\t" "e.g. python python_len.py  1st_arg  2nd_arg  3rd_arg"
+	print "You need 4 arguments to run this script!"
     sys.exit(1)
-$ python python_leg.py	
+
+$ python python_len.py	
 --------------------------------------------------------------------------------	
 	
 	
