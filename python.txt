@@ -1140,8 +1140,11 @@ import sys
 for line in sys.stdin:
     print line	
 
-sys.stdin is a file-like object on which you can call functions read or readlines if you want to read everything or you want to read everything and split it by newline automatically. (You need to import sys for this to work.)
-If you want to prompt the user for input, you can use raw_input in Python 2.X, and just input in Python 3.	
+sys.stdin is a file-like object on which you can call functions read or readlines if you want to read everything 
+or you want to read everything and split it by newline automatically. (You need to import sys for this to work.)
+
+If you want to prompt the user for input, you can use raw_input in Python 2.X, and just input in Python 3.
+	
 name = raw_input("Enter your name: ")   # Python 2.x	
 name = input("Enter your name: ")   	# Python 3	
 	
@@ -1197,6 +1200,680 @@ I will change you if you fall = The Floor ok
 	
 	
 	
+
+
+# Checking argument using function "len(sys.argv)" count the number of arguments
+
+sys.argv[0] is the name of the script( like Bash using variable $0 as script itself)
+http://stackoverflow.com/questions/13263951/what-is-argv-and-what-does-it-do
+--------------------------------------------------------------------------------	
+$ vi python_len.py   				<= run script without the parameter, print out usage
+
+import os, sys
+if len(sys.argv) != 4:				<= requires 4 parameters(count the number of arguments)
+    print "USAGE: python_len.py    1st_arg    2nd_arg    3rd_arg"
+    print "\t" "e.g. python python_len.py  1st_arg  2nd_arg  3rd_arg"
+	print "You need 4 arguments to run this script!"
+    sys.exit(1)
+
+$ python python_len.py				<= run
+--------------------------------------------------------------------------------	
+
+# sys.argv				<= command line arguments
+						<= get argument list using sys module
+http://stackoverflow.com/questions/4117530/sys-argv1-meaning-in-script
+For every invocation(call) of Python, sys.argv is automatically a list of strings representing 
+the arguments(as separated by spaces) on the command-line. The name "sys.argv" comes from the C programming 
+convention in which "argv" and "argc" represent the command line arguments.	
+
+e.g. create a script that prints the arguments as they're represented. 
+It also prints the number of arguments, using the len function on the list.
+
+	from __future__ import print_function
+	import sys
+	print(sys.argv, len(sys.argv))
+	
+--------------------------------------------------------------------------------	
+### Import 
+
+# import sys
+The sys module provides information about constants, functions and methods of the Python interpreter. 
+dir(system) gives a summary of the available constants, functions and methods. Another possibility 
+is the help() function. Using help(sys) provides valuable detail information. 	
+	
+# Exit code "sys.exit(1)"
+sys.exit() is the proper, defined, cross-platform way to exit from
+a program and return a value to the calling program
+
+http://stackoverflow.com/questions/19862438/python-sys-exit-with-a-number
+Exit code meanings are a convention; 0 means success, anything else usually means there was a problem. 
+Explicitly exiting the program with sys.exit(1) simply means the program adheres to that convention; 
+it is signalling something to whatever started the script, namely that things didn't work out.	 
+-------------------------------------	
+import sys
+
+def main(args):
+    if len(args) < 2:
+        sys.exit("I need arguments!")
+print("rest of program...")
+
+if __name__=='__main__':
+    main(sys.argv)	
+-------------------------------------	
+https://www.cyberciti.biz/faq/python-command-line-arguments-argv-example/
+-------------------------------------	
+#!/usr/bin/python
+# demo.py - CMD Args Demo By nixCraft
+import sys
+ 
+# Get the total number of args passed to the demo.py
+total = len(sys.argv)
+ 
+# Get the arguments list 
+cmdargs = str(sys.argv)
+ 
+# Print it
+print ("The total numbers of args passed to the script: %d " % total)
+print ("Args list: %s " % cmdargs)
+-------------------------------------
+http://ngee.tistory.com/159
+#systest.py
+
+import sys
+var1 = sys.argv[1]
+var2 = sys.argv[2]
+var3 = sys.argv[3]
+
+print "var1 = " + var1
+print "var2 = " + var2
+print "var3 = " + var3
+
+print sys.argv[0]
+--------------------------------------------------------------------------
+vi  sys.argv.py
+--------------------------------------------------------------------------
+import sys
+print sys.argv[0], 	 "<= name of this script" 
+print len(sys.argv), "<= Number of arguments" 				
+print str(sys.argv), "<= is the arguments" 				
+----------------------------------------------------------------
+>>>This is the name of the script:  sys.argv.py
+>>>Number of arguments:  1
+>>>The arguments are:  ['sys.argv.py']
+--------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+--------------------------------------------------------------------------------
+1. Calculator	
+--------------------------------------------------------------------------------
+#!/usr/bin/python3.5
+def add(x, y):
+    return x + y
+def sub(x, y):
+    return x - y
+def multi(x, y):
+    return x * y
+def div(x, y):
+    return x / y
+
+print("Select operation.")
+print("1. Addition")
+print("2. Subtract")
+print("3. Multiply")
+print("4. Divide")
+
+choice = int(input("Enter a choice from 1/2/3/4: "))
+# Verify choice
+choice = int(input("Ente a choice from 1,2,3,4: "))
+if choice == 0:
+    print ("0 no option for zero")
+elif choice > 4:
+    print(" No option choice")
+else:
+    print("you have entered: ", choice )
+
+
+num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+
+if   choice == '1':
+    print(num1,"+",num2,"=",add(num1,num2))
+elif choice == '2':
+    print(num1,"-",num2,"=",sub(num1,num2))
+elif choice == '3':
+    print(num1,"x",num2,"=",multi(num1,num2))
+elif choice == '4':
+    print(num1,"x",num2,"=",div(num1,num2))
+else:
+    print("You put the wrong input")
+	
+	
+	
+--------------------------------------------------------------------------------	
+2. Find the Largest Among 3 Numbers
+--------------------------------------------------------------------------------
+#!/usr/bin/python3.5
+print("Please enter 3 numbers to find biggest number among them!")
+num1 = int(input("Enter first number: "))
+print("You entered: ", num1)
+num2 = int(input("Enter second number: "))
+print("You entered: ", num2)
+num3 = int(input("Enter second number: "))
+print("You entered: ", num3)
+
+if (num1 > num2) and (num1 > num3):
+    print(num1,"is the biggest")
+elif (num2 > num1) and (num2 > num3):
+    print(num2,"is the biggest")
+else:
+    print(num3, "is the biggest.")	
+	
+	
+	
+--------------------------------------------------------------------------------	
+3. Sq root
+--------------------------------------------------------------------------------
+# Python Program to calculate the square root
+
+num = float(input('Enter a number: '))
+num_sqrt = num ** 0.5
+print('The square root of %0.3f is %0.3f'%(num ,num_sqrt))
+
+
+--------------------------------------------------------------------------------	
+4. # Python program to swap two variables
+--------------------------------------------------------------------------------
+#x = input('Enter value of x: ')
+#y = input('Enter value of y: ')
+x = 5
+y = 10
+
+# create a temporary variable and swap the values
+change = x
+x = y
+y = change
+
+# chgY = x
+# chgX = y
+# x = chgX
+# y = chgY
+
+print('The value of x after swapping: {}'.format(x))
+print('The value of y after swapping: {}'.format(y))
+
+
+--------------------------------------------------------------------------------	
+# random
+--------------------------------------------------------------------------------
+import random
+
+print(random.randint(0,9))
+
+--------------------------------------------------------------------------------	
+# check if a number is positive, negative or zero
+--------------------------------------------------------------------------------
+num = float(input("Enter a number"))
+# Using if...elif...else
+if num > 0:
+    print(num, " is Positive")
+elif num == 0:
+    print (num, " is Zero")
+else:
+    print(num, " is Negative Number")
+print("")
+
+# Using Nested if
+if num >= 0:
+    if num == 0:
+        print ("Zero")
+    else:
+        print("Positive")
+else:
+    print ("Negative")
+
+	
+--------------------------------------------------------------------------------	
+# Check if a Number is Odd or Even
+--------------------------------------------------------------------------------
+num = int(input("Enter a number: "))
+
+if (num % 2) == 0:
+    print("Even")
+else:
+    print("odd")
+''''------------------------------------'''
+if (num % 2) == 0:
+   print("{0} is Even".format(num))
+else:
+   print("{0} is Odd".format(num))
+
+--------------------------------------------------------------------------------	
+# Check Prime Numbers( Can't divide except 1) 2, 3, 5, 7, 11, 13, 17, 19, 23, and 29
+http://www.programiz.com/python-programming/examples/prime-number
+--------------------------------------------------------------------------------
+num = int(input("Enter a number to check prime number: "))
+if num > 1:
+    for i in range(2, num):  	# e.g. 2..... 100(num)
+        if ( num % i ) == 0:   	# modulo
+            print(num, "is not a prime number")
+            print(i, "times", num//i, "is", num)  #??
+            break
+#   <- indent for line because of break  
+	else:
+        print(num, "is a prime number")
+else:
+    print(num, "can't be used as a prime number!")
+
+	#The break statement, like in C, breaks out of the smallest enclosing for or while loop.
+	
+for n in range(2, 10):
+    for x in range(2, n):
+        if n % x == 0:
+            print(n, 'equals', x, '*', n//x)
+            break
+#   |<- indent on for line, not if line 
+	else:
+        # loop fell through without finding a factor
+        print(n, 'is a prime number')	
+	
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+Python3 Advance Topics(Pluralsight - Python Beyond The Basics)
+---------------------------------------------------------------------------------------------------
+Prerequisite
+Built-in types
+int, float, str, list, dict, set, tuple
+object model
+Rasing and handling exceptions
+Iterables and Iterators
+for loop
+Classes with methods
+Reading and writing text and binary files
+Unit-testing, Debugging, Deployment
+Terminologies: special methods
+__<method name>__    
+^^             ^^  	<= Dunder 던덜 (double underscore)
+__len__				<= dunder len
+
+---------------------------------------------------------------------------------------------------
+02-01 Packages
+---------------------------------------------------------------------------------------------------
+Python Module
+
+my_module.py				<= single file module
+
+>>> import my_module
+>>> type (my_module)
+<class 'module'>
+
+package 			<= a module which can contain other modules
+    |- module
+	|- package - module
+
+>>> import urllib
+>>> import urllib.request	
+	>>> type(urllib)
+	<class 'module'>
+>>> type(urllib.request)
+	<class 'module'>
+>>> urllib.__path__
+	['/usr/lib/python3.4/urllib']
+>>> urllib.request.__path__
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute '__path__'
+
+Packages 	<= are generally directories
+Module 		<= are generally files
+
+### How Python where to look packages and modules????
+sys.path		<= list of direcotries Python searches for modules
+
+>>> import sys
+>>> sys.path
+['', '/usr/lib/python34.zip', '/usr/lib/python3.4', '/usr/lib/python3.4/plat-cygwin', 
+'/usr/lib/python3.4/lib-dynload', '/usr/lib/python3.4/site-packages']
+
+>>> sys.path[0]				<= indexing and slicing
+''							<= empty string
+>>> sys.path[-5]
+'/usr/lib/python34.zip'
+
+
+--------------------------------------------------------------------------------	
+
+--------------------------------------------------------------------------------
+
+
+### *args and **kwargs? 
+The *args and **kwargs is a common idiom to allow arbitrary number of arguments to functions 
+http://stackoverflow.com/questions/36901/what-does-double-star-and-star-do-for-parameters?noredirect=1&lq=1
+
+http://stackoverflow.com/questions/3394835/args-and-kwargs
+*args 
+	when you're not sure how many arguments might be passed to your function, i.e. it allows you 
+	pass an arbitrary number of arguments to your function
+**kwargs 
+	allows you to handle named arguments that you have not defined in advance:
+	
+you can use * and ** when calling functions as well. This is a shortcut that allows you to pass 
+multiple arguments to a function directly using either a list/tuple or a dictionary. 
+	
+	
+	
+	
+	
+### return None	
+http://stackoverflow.com/questions/17778372/why-does-my-function-return-none
+It is returning None because when you recursively call it:	
+Often in Python, functions which return None are used like void functions in C -- Their purpose 
+is generally to operate on the input arguments in place (unless you're using global data (shudders)). 
+Returning None usually makes it more explicit that the arguments were mutated. This makes it a 
+little more clear why it makes sense to leave off the return statement from a "language conventions" 
+standpoint.	
+	
+### variable None	
+http://stackoverflow.com/questions/19473185/what-is-a-none-value
+Assigning a value of None to a variable is one way to reset it to its original, empty state.
+sns_topic = None	
+	
+	
+### .pyc extension file	
+	Python automatically compiles your script to compiled code, so called "byte code", before running it. 
+	When a module is imported for the first time, or when the source is more recent than the current 
+	compiled file, a .pyc file containing the compiled code will usually be created in the same 
+	directory as the .py file.	
+	
+	
+### sys.argv 
+	http://www.pythonforbeginners.com/system/python-sys-argv
+	a list in Python, which contains the command-line arguments passed to the script. 
+	With the len(sys.argv) function you can count the number of arguments. 
+	If you are gonna work with command line arguments, you probably want to use sys.argv. 
+	To use sys.argv, you will first have to import the sys module. 	
+	
+	import sys
+	print "This is the name of the script: ", sys.argv[0]    <= 1
+	print "Number of arguments: ", len(sys.argv)			 <=3
+	print "The arguments are: " , str(sys.argv)
+	
+	Output:
+	This is the name of the script:  sysargv.py
+	Number of arguments in:  1
+	The arguments are:  ['sysargv.py']
+
+	If I run it again with additional arguments, I will get this output:
+
+	This is the name of the script:  sysargv.py
+	Number of arguments in:  3
+	The arguments are:  ['sysargv.py', 'arg1', 'arg2']
+	
+### .rst file
+	reStructuredText (sometimes abbreviated as RST, ReST, or reST) is a file format for textual data used 
+	primarily in the Python programming language community for technical documentation.	
+	
+	
+	
+1. Installation
+
+Python 3.5.2 Install on CentOS7
+https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-centos-7
+sudo yum -y install yum-utils
+sudo yum -y groupinstall development
+sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+sudo yum -y install python35u-3.5.2
+sudo yum -y install python35u-pip
+sudo yum -y install python35u-devel
+
+# Boto install
+$ pip install boto
+
+
+# Django version check
+python -c "import django; print(django.get_version())"
+
+
+$ yum install python-pip
+$ pip install pudb 	<=debug tool
+http://stackoverflow.com/questions/1623039/python-debugging-tips	
+	
+###################################	
+### Python built-in functions   ###
+###################################
+Built-in Function	Description
+abs()			Return the absolute value of a number.
+all()			Return True if all elements of the iterable are true (or if the iterable is empty).
+any()			Return True if any element of the iterable is true. If the iterable is empty, return False.
+ascii()			Return a string containing a printable representation of an object, but escape the non-ASCII characters.
+bin()			Convert an integer number to a binary string.
+bool()			Convert a value to a Boolean.
+bytearray()		Return a new array of bytes.
+bytes()			Return a new "bytes" object.
+callable()		Return True if the object argument appears callable, False if not.
+chr()			Return the string representing a character.
+classmethod()	Return a class method for the function.
+compile()		Compile the source into a code or AST object.
+complex()		Create a complex number or convert a string or number to a complex number.
+delattr()		Deletes the named attribute of an object.
+dict()			Create a new dictionary.
+dir()			Return the list of names in the current local scope.
+divmod()		Return a pair of numbers consisting of quotient and remainder when using integer division.
+enumerate()		Return an enumerate object.
+eval()			The argument is parsed and evaluated as a Python expression.
+exec()			Dynamic execution of Python code.
+filter()		Construct an iterator from elements of iterable for which function returns true.
+float()			Convert a string or a number to floating point.
+format()		Convert a value to a "formatted" representation.
+frozenset()		Return a new frozenset object.
+getattr()		Return the value of the named attribute of an object.
+globals()		Return a dictionary representing the current global symbol table.
+hasattr()		Return True if the name is one of the object's attributes.
+hash()			Return the hash value of the object.
+help()			Invoke the built-in help system.
+hex()			Convert an integer number to a hexadecimal string.
+id()			Return the "identity" of an object.
+input()			Reads a line from input, converts it to a string (stripping a trailing newline), and returns that.
+int()			Convert a number or string to an integer.
+isinstance()	Return True if the object argument is an instance.
+issubclass()	Return True if class is a subclass.
+iter()			Return an iterator object.
+len()			Return the length (the number of items) of an object.
+list()			Return a list.
+locals()		Update and return a dictionary representing the current local symbol table.
+map()			Return an iterator that applies function to every item of iterable, yielding the results.
+max()			Return the largest item in an iterable.
+memoryview()	Return a "memory view" object created from the given argument.
+min()			Return the smallest item in an iterable.
+next()			Retrieve the next item from the iterator.
+object()		Return a new featureless object.
+oct()			Convert an integer number to an octal string.
+open()			Open file and return a corresponding file object.
+ord()			Return an integer representing the Unicode.
+pow()			Return power raised to a number.
+print()			Print objects to the stream.
+property()		Return a property attribute.
+range()			Return an iterable sequence.
+repr()			Return a string containing a printable representation of an object.
+reversed()		Return a reverse iterator.
+round()			Return the rounded floating point value.
+set()			Return a new set object.
+setattr()		Assigns the value to the attribute.
+slice()			Return a slice object.
+sorted()		Return a new sorted list.
+staticmethod()	Return a static method for function.
+str()			Return a str version of object.
+sum()			Sums the items of an iterable from left to right and returns the total.
+super()			Return a proxy object that delegates method calls to a parent or sibling class.
+tuple()			Return a tuple
+type()			Return the type of an object.
+vars()			Return the __dict__ attribute for a module, class, instance, or any other object.
+zip()			Make an iterator that aggregates elements from each of the iterables.
+__import__()	This function is invoked by the import statement.	
+	
+	
+	
+-----------------------------------------------
+-----------------------------------------------
+AWS CLOUDWATCH + Python + BOTO
+-----------------------------------------------
+-----------------------------------------------	
+
+AWS CLOUDWATCH
+
+# METRIC
+http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html
+ A metric represents a time-ordered set of data points that are published to CloudWatch. 
+ Think of a metric as a variable to monitor, and the data points represent the values of 
+ that variable over time. For example, the CPU usage of a particular EC2 instance is one 
+ metric provided by Amazon EC2. The data points themselves can come from any application 
+ or business activity from which you collect data.
+ 
+ 
+# Namespaces
+	A namespace is a container for CloudWatch metrics. Metrics in different namespaces are 
+	isolated from each other, so that metrics from different applications are not mistakenly 
+	aggregated into the same statistics.
+	
+# Dimensions
+	A dimension is a name/value pair that uniquely identifies a metric. You can assign up to 10 
+	dimensions to a metric.
+
+-----------------------------------------------		
+	alarm_templates = [
+    { 
+        'name': alarm_prefix + " - Latency Spike",
+        'description': "Latency Spike",
+        'namespace': 'AWS/ELB',
+        'metric': "Latency",
+        'statistic': "Average",
+        'comparison': '>=',
+        'threshold': 6.5,
+        'period': 60,
+        'evaluation_periods': 5,
+        'alarm_actions': [sns_topic],
+        'dimensions': alarm_dimensions
+    },
+-----------------------------------------------		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------
 
 Question 1
@@ -2212,304 +2889,6 @@ foo(4)
 	This list of questions for Python interview questions and answers is not an exhaustive one and will 
 	continue to be a work in progress. Let us know in comments below if we missed out on any important 
 	question that needs to be up here.
-
-
-
-# Checking argument using function "len(sys.argv)" count the number of arguments
-sys.argv[0] is the name of the script
-http://stackoverflow.com/questions/13263951/what-is-argv-and-what-does-it-do
---------------------------------------------------------------------------------	
-$ vi python_len.py   				<= run script without the parameter, print out usage
-
-import os, sys
-if len(sys.argv) != 4:				<= requires 4 parameters(count the number of arguments)
-    print "USAGE: python_len.py    1st_arg    2nd_arg    3rd_arg"
-    print "\t" "e.g. python python_len.py  1st_arg  2nd_arg  3rd_arg"
-	print "You need 4 arguments to run this script!"
-    sys.exit(1)
-
-$ python python_len.py				<= run
---------------------------------------------------------------------------------	
-	
-	
-	
-	
---------------------------------------------------------------------------------
-1. Calculator	
---------------------------------------------------------------------------------
-#!/usr/bin/python3.5
-def add(x, y):
-    return x + y
-def sub(x, y):
-    return x - y
-def multi(x, y):
-    return x * y
-def div(x, y):
-    return x / y
-
-print("Select operation.")
-print("1. Addition")
-print("2. Subtract")
-print("3. Multiply")
-print("4. Divide")
-
-choice = int(input("Enter a choice from 1/2/3/4: "))
-# Verify choice
-choice = int(input("Ente a choice from 1,2,3,4: "))
-if choice == 0:
-    print ("0 no option for zero")
-elif choice > 4:
-    print(" No option choice")
-else:
-    print("you have entered: ", choice )
-
-
-num1 = int(input("Enter first number: "))
-num2 = int(input("Enter second number: "))
-
-if   choice == '1':
-    print(num1,"+",num2,"=",add(num1,num2))
-elif choice == '2':
-    print(num1,"-",num2,"=",sub(num1,num2))
-elif choice == '3':
-    print(num1,"x",num2,"=",multi(num1,num2))
-elif choice == '4':
-    print(num1,"x",num2,"=",div(num1,num2))
-else:
-    print("You put the wrong input")
-	
-	
-	
---------------------------------------------------------------------------------	
-2. Find the Largest Among 3 Numbers
---------------------------------------------------------------------------------
-#!/usr/bin/python3.5
-print("Please enter 3 numbers to find biggest number among them!")
-num1 = int(input("Enter first number: "))
-print("You entered: ", num1)
-num2 = int(input("Enter second number: "))
-print("You entered: ", num2)
-num3 = int(input("Enter second number: "))
-print("You entered: ", num3)
-
-if (num1 > num2) and (num1 > num3):
-    print(num1,"is the biggest")
-elif (num2 > num1) and (num2 > num3):
-    print(num2,"is the biggest")
-else:
-    print(num3, "is the biggest.")	
-	
-	
-	
---------------------------------------------------------------------------------	
-3. Sq root
---------------------------------------------------------------------------------
-# Python Program to calculate the square root
-
-num = float(input('Enter a number: '))
-num_sqrt = num ** 0.5
-print('The square root of %0.3f is %0.3f'%(num ,num_sqrt))
-
-
---------------------------------------------------------------------------------	
-4. # Python program to swap two variables
---------------------------------------------------------------------------------
-#x = input('Enter value of x: ')
-#y = input('Enter value of y: ')
-x = 5
-y = 10
-
-# create a temporary variable and swap the values
-change = x
-x = y
-y = change
-
-# chgY = x
-# chgX = y
-# x = chgX
-# y = chgY
-
-print('The value of x after swapping: {}'.format(x))
-print('The value of y after swapping: {}'.format(y))
-
-
---------------------------------------------------------------------------------	
-# random
---------------------------------------------------------------------------------
-import random
-
-print(random.randint(0,9))
-
---------------------------------------------------------------------------------	
-# check if a number is positive, negative or zero
---------------------------------------------------------------------------------
-num = float(input("Enter a number"))
-# Using if...elif...else
-if num > 0:
-    print(num, " is Positive")
-elif num == 0:
-    print (num, " is Zero")
-else:
-    print(num, " is Negative Number")
-print("")
-
-# Using Nested if
-if num >= 0:
-    if num == 0:
-        print ("Zero")
-    else:
-        print("Positive")
-else:
-    print ("Negative")
-
-	
---------------------------------------------------------------------------------	
-# Check if a Number is Odd or Even
---------------------------------------------------------------------------------
-num = int(input("Enter a number: "))
-
-if (num % 2) == 0:
-    print("Even")
-else:
-    print("odd")
-''''------------------------------------'''
-if (num % 2) == 0:
-   print("{0} is Even".format(num))
-else:
-   print("{0} is Odd".format(num))
-
---------------------------------------------------------------------------------	
-# Check Prime Numbers( Can't divide except 1) 2, 3, 5, 7, 11, 13, 17, 19, 23, and 29
-http://www.programiz.com/python-programming/examples/prime-number
---------------------------------------------------------------------------------
-num = int(input("Enter a number to check prime number: "))
-if num > 1:
-    for i in range(2, num):  	# e.g. 2..... 100(num)
-        if ( num % i ) == 0:   	# modulo
-            print(num, "is not a prime number")
-            print(i, "times", num//i, "is", num)  #??
-            break
-#   <- indent for line because of break  
-	else:
-        print(num, "is a prime number")
-else:
-    print(num, "can't be used as a prime number!")
-
-	#The break statement, like in C, breaks out of the smallest enclosing for or while loop.
-	
-for n in range(2, 10):
-    for x in range(2, n):
-        if n % x == 0:
-            print(n, 'equals', x, '*', n//x)
-            break
-#   |<- indent on for line, not if line 
-	else:
-        # loop fell through without finding a factor
-        print(n, 'is a prime number')	
-	
---------------------------------------------------------------------------------	
-
---------------------------------------------------------------------------------
-
-
---------------------------------------------------------------------------------	
-
---------------------------------------------------------------------------------
-
-
---------------------------------------------------------------------------------	
-
---------------------------------------------------------------------------------
-
-
-
---------------------------------------------------------------------------------	
-
---------------------------------------------------------------------------------
-
-
---------------------------------------------------------------------------------	
-
---------------------------------------------------------------------------------
-
---------------------------------------------------------------------------------	
-
---------------------------------------------------------------------------------
-
-
---------------------------------------------------------------------------------	
-
---------------------------------------------------------------------------------
-
-
---------------------------------------------------------------------------------	
-
---------------------------------------------------------------------------------
-Python3 Advance Topics(Pluralsight - Python Beyond The Basics)
----------------------------------------------------------------------------------------------------
-Prerequisite
-Built-in types
-int, float, str, list, dict, set, tuple
-object model
-Rasing and handling exceptions
-Iterables and Iterators
-for loop
-Classes with methods
-Reading and writing text and binary files
-Unit-testing, Debugging, Deployment
-Terminologies: special methods
-__<method name>__    
-^^             ^^  	<= Dunder 던덜 (double underscore)
-__len__				<= dunder len
-
----------------------------------------------------------------------------------------------------
-02-01 Packages
----------------------------------------------------------------------------------------------------
-Python Module
-
-my_module.py				<= single file module
-
->>> import my_module
->>> type (my_module)
-<class 'module'>
-
-package 			<= a module which can contain other modules
-    |- module
-	|- package - module
-
->>> import urllib
->>> import urllib.request	
-	>>> type(urllib)
-	<class 'module'>
->>> type(urllib.request)
-	<class 'module'>
->>> urllib.__path__
-	['/usr/lib/python3.4/urllib']
->>> urllib.request.__path__
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-AttributeError: 'module' object has no attribute '__path__'
-
-Packages 	<= are generally directories
-Module 		<= are generally files
-
-### How Python where to look packages and modules????
-sys.path		<= list of direcotries Python searches for modules
-
->>> import sys
->>> sys.path
-['', '/usr/lib/python34.zip', '/usr/lib/python3.4', '/usr/lib/python3.4/plat-cygwin', 
-'/usr/lib/python3.4/lib-dynload', '/usr/lib/python3.4/site-packages']
-
->>> sys.path[0]				<= indexing and slicing
-''							<= empty string
->>> sys.path[-5]
-'/usr/lib/python34.zip'
-
-
---------------------------------------------------------------------------------	
-
---------------------------------------------------------------------------------
 	
 	
 	
@@ -2522,131 +2901,518 @@ sys.path		<= list of direcotries Python searches for modules
 	
 	
 	
-### .pyc extension file	
-	Python automatically compiles your script to compiled code, so called "byte code", before running it. 
-	When a module is imported for the first time, or when the source is more recent than the current 
-	compiled file, a .pyc file containing the compiled code will usually be created in the same 
-	directory as the .py file.	
-	
-	
-### sys.argv 
-	http://www.pythonforbeginners.com/system/python-sys-argv
-	a list in Python, which contains the command-line arguments passed to the script. 
-	With the len(sys.argv) function you can count the number of arguments. 
-	If you are gonna work with command line arguments, you probably want to use sys.argv. 
-	To use sys.argv, you will first have to import the sys module. 	
-	
-	import sys
-	print "This is the name of the script: ", sys.argv[0]    <= 1
-	print "Number of arguments: ", len(sys.argv)			 <=3
-	print "The arguments are: " , str(sys.argv)
-	
-	Output:
-	This is the name of the script:  sysargv.py
-	Number of arguments in:  1
-	The arguments are:  ['sysargv.py']
-
-	If I run it again with additional arguments, I will get this output:
-
-	This is the name of the script:  sysargv.py
-	Number of arguments in:  3
-	The arguments are:  ['sysargv.py', 'arg1', 'arg2']
-	
-### .rst file
-	reStructuredText (sometimes abbreviated as RST, ReST, or reST) is a file format for textual data used 
-	primarily in the Python programming language community for technical documentation.	
 	
 	
 	
-1. Installation
-
-Python 3.5.2 Install on CentOS7
-https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-centos-7
-sudo yum -y install yum-utils
-sudo yum -y groupinstall development
-sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
-sudo yum -y install python35u-3.5.2
-sudo yum -y install python35u-pip
-sudo yum -y install python35u-devel
-
-# Django version check
-python -c "import django; print(django.get_version())"
+	
+	
+	
+	
+	
+	
+	
 
 
-$ yum install python-pip
-$ pip install pudb 	<=debug tool
-http://stackoverflow.com/questions/1623039/python-debugging-tips	
-	
-###################################	
-### Python built-in functions   ###
-###################################
-Built-in Function	Description
-abs()			Return the absolute value of a number.
-all()			Return True if all elements of the iterable are true (or if the iterable is empty).
-any()			Return True if any element of the iterable is true. If the iterable is empty, return False.
-ascii()			Return a string containing a printable representation of an object, but escape the non-ASCII characters.
-bin()			Convert an integer number to a binary string.
-bool()			Convert a value to a Boolean.
-bytearray()		Return a new array of bytes.
-bytes()			Return a new "bytes" object.
-callable()		Return True if the object argument appears callable, False if not.
-chr()			Return the string representing a character.
-classmethod()	Return a class method for the function.
-compile()		Compile the source into a code or AST object.
-complex()		Create a complex number or convert a string or number to a complex number.
-delattr()		Deletes the named attribute of an object.
-dict()			Create a new dictionary.
-dir()			Return the list of names in the current local scope.
-divmod()		Return a pair of numbers consisting of quotient and remainder when using integer division.
-enumerate()		Return an enumerate object.
-eval()			The argument is parsed and evaluated as a Python expression.
-exec()			Dynamic execution of Python code.
-filter()		Construct an iterator from elements of iterable for which function returns true.
-float()			Convert a string or a number to floating point.
-format()		Convert a value to a "formatted" representation.
-frozenset()		Return a new frozenset object.
-getattr()		Return the value of the named attribute of an object.
-globals()		Return a dictionary representing the current global symbol table.
-hasattr()		Return True if the name is one of the object's attributes.
-hash()			Return the hash value of the object.
-help()			Invoke the built-in help system.
-hex()			Convert an integer number to a hexadecimal string.
-id()			Return the "identity" of an object.
-input()			Reads a line from input, converts it to a string (stripping a trailing newline), and returns that.
-int()			Convert a number or string to an integer.
-isinstance()	Return True if the object argument is an instance.
-issubclass()	Return True if class is a subclass.
-iter()			Return an iterator object.
-len()			Return the length (the number of items) of an object.
-list()			Return a list.
-locals()		Update and return a dictionary representing the current local symbol table.
-map()			Return an iterator that applies function to every item of iterable, yielding the results.
-max()			Return the largest item in an iterable.
-memoryview()	Return a "memory view" object created from the given argument.
-min()			Return the smallest item in an iterable.
-next()			Retrieve the next item from the iterator.
-object()		Return a new featureless object.
-oct()			Convert an integer number to an octal string.
-open()			Open file and return a corresponding file object.
-ord()			Return an integer representing the Unicode.
-pow()			Return power raised to a number.
-print()			Print objects to the stream.
-property()		Return a property attribute.
-range()			Return an iterable sequence.
-repr()			Return a string containing a printable representation of an object.
-reversed()		Return a reverse iterator.
-round()			Return the rounded floating point value.
-set()			Return a new set object.
-setattr()		Assigns the value to the attribute.
-slice()			Return a slice object.
-sorted()		Return a new sorted list.
-staticmethod()	Return a static method for function.
-str()			Return a str version of object.
-sum()			Sums the items of an iterable from left to right and returns the total.
-super()			Return a proxy object that delegates method calls to a parent or sibling class.
-tuple()			Return a tuple
-type()			Return the type of an object.
-vars()			Return the __dict__ attribute for a module, class, instance, or any other object.
-zip()			Make an iterator that aggregates elements from each of the iterables.
-__import__()	This function is invoked by the import statement.	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
