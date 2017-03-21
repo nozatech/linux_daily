@@ -1,18 +1,8 @@
 ### Python ###
 
 1. Environment PATH
-
-#!/usr/local/python
-#!/usr/local/python3.5
-#!/bin/env python
-If you're prone to installing python in various and interesting places on your PATH (as in $PATH in 
-typical Unix shells, %PATH on typical Windows ones), using /usr/bin/env will accomodate your whim 
-(well, in Unix-like environments at least) while going directly to /usr/bin/python won't. But losing 
-control of what version of Python your scripts run under is no unalloyed bargain... if you look at 
-my code you're more likely to see it start with, e.g., #!/usr/local/bin/python2.5 rather than with 
-an open and accepting #!/usr/bin/env python -- assuming the script is important I like to ensure it's 
-run with the specific version I have tested and developed it with, NOT a semi-random one;-).
-
+#!/usr/local/python3.5 or 2.7			<= specific version of Python3.5 
+#!/usr/bin/env python   	 			<= run almost every linux using env PATH 
 
 Python Programming Built-in Functions
 https://www.programiz.com/python-programming/built-in-function
@@ -28,9 +18,6 @@ w <=where
 u <=up
 d <=down
 locals()
-
-
-
 
 ###	Python2 vs 3 differences ###
 http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html
@@ -68,52 +55,50 @@ print ("string type" + str(123))
 	sys.exit()  <- use in programs.	
 	
 	
-	
-	
-# Global vs Local Variables	in functions
-f = 0;					<= Global
-print (f)
+### Global vs Local Variables(in side of function)
+f = 0;								<= Global
+print("Global var f is: ", f)				
 
 def someFunction():
     #global f			
-    f = "def"		<= Local
-    print (f)		<= Python 3.x print ()
+    f = "local var"					<= Local
+    print (f)						<= Python 3.x print ()
 
-someFunction()		<= Calling function
-print ("----------")
-print f
->>> 0
->>> def
+someFunction()						<= Calling function
+print("----------")
+print(f)
+
+>>> Global var f is: 0
+>>> local var
 >>> ----------
->>> 0
+>>> Global var f is: 0
 ----------------------------------------------------------------------
 f = 0;					<= Global
-print (f)
+print(f)
 
 def someFunction():
-    global f		<= Declare as Global variable f = def variable		
-    f = "def"		<= Local becoming Global variable from '0' to 'def'
-    print (f)		<= Python 3.x print ()
+    global f			<= Declare as Global variable f = def variable		
+    f = "local var"		<= Local becoming Global variable from '0' to 'def'
+    print(f)			<= Python 3.x print ()
 
-someFunction()		<= Calling function
-print ("----------")
-print f				<= someFunction's f variable
+someFunction()			<= Calling function
+print("----------")
+print(f)				<= print global var f, but print local var f cuz global
+
 >>> 0
->>> def
+>>> local var
 >>> ----------
->>> def				<= inside function's variable become Global variable
+>>> local var				    <= inside function's variable become Global variable
 ----------------------------------------------------------------------
 
-Undefined the variable using 'del' function	
-
+# Undefined the variable using 'del' function	
 f = 0;
 print (f)
 
 del f
 print (f)
-	
+
 >>> NameError: name 'f' is not defined
-	
 	
 	
 ###	Function  ###
@@ -2180,27 +2165,49 @@ In string slicing when the indices of both the slices collide and a “+” oper
 
 print list [8:]
 
-The output for the above code will be an empty list []. Most of the people might confuse the answer with an index error because the code is attempting to access a member in the list whose index exceeds the total number of members in the list. The reason being the code is trying to access the slice of a list at a starting index which is greater than the number of members in the list.
+The output for the above code will be an empty list []. Most of the people might confuse the answer with an 
+index error because the code is attempting to access a member in the list whose index exceeds the total number 
+of members in the list. The reason being the code is trying to access the slice of a list at a starting index 
+which is greater than the number of members in the list.
 
 49) What will be the output of the below code:
 
-def foo (i= []):
+def foo(i= []):
+	#print(i)		<=hint
     i.append (1)
     return i
 
->>> foo ()
->>> foo ()
-
+foo()
+foo()
+foo() 
 The output for the above code will be
 [1]
 [1, 1]
+[1, 1, 1]
+Argument to the function foo is evaluated only once when the function is defined. 
+However, since it is a list, on every all the list is modified by appending a 1 to it.
+-----------------------------------------------
+# How and why get 24???
+def foo(i):
+	#print(i)					<=Hint
+    if i == 1:
+        return 1
+    else:
+        return i * foo(i - 1)
 
-Argument to the function foo is evaluated only once when the function is defined. However, since it is a list, on every all the list is modified by appending a 1 to it.
+foo(4)
+>>>-----------------------------------------------
+4
+3
+2
+1
+-----------------------------------------------
+
 
 50) Can the lambda forms in Python contain statements?
 
-	No, as their syntax is restricted to single expressions and they are used for creating function objects 
-	which are returned at runtime.
+	No, as their syntax is restricted to single expressions and they are used for creating 
+	function objects which are returned at runtime.
 
 	This list of questions for Python interview questions and answers is not an exhaustive one and will 
 	continue to be a work in progress. Let us know in comments below if we missed out on any important 
@@ -2221,7 +2228,7 @@ if len(sys.argv) != 4:				<= requires 4 parameters(count the number of arguments
 	print "You need 4 arguments to run this script!"
     sys.exit(1)
 
-$ python python_len.py	
+$ python python_len.py				<= run
 --------------------------------------------------------------------------------	
 	
 	
@@ -2438,7 +2445,66 @@ for n in range(2, 10):
 --------------------------------------------------------------------------------	
 
 --------------------------------------------------------------------------------
+Python3 Advance Topics(Pluralsight - Python Beyond The Basics)
+---------------------------------------------------------------------------------------------------
+Prerequisite
+Built-in types
+int, float, str, list, dict, set, tuple
+object model
+Rasing and handling exceptions
+Iterables and Iterators
+for loop
+Classes with methods
+Reading and writing text and binary files
+Unit-testing, Debugging, Deployment
+Terminologies: special methods
+__<method name>__    
+^^             ^^  	<= Dunder 던덜 (double underscore)
+__len__				<= dunder len
 
+---------------------------------------------------------------------------------------------------
+02-01 Packages
+---------------------------------------------------------------------------------------------------
+Python Module
+
+my_module.py				<= single file module
+
+>>> import my_module
+>>> type (my_module)
+<class 'module'>
+
+package 			<= a module which can contain other modules
+    |- module
+	|- package - module
+
+>>> import urllib
+>>> import urllib.request	
+	>>> type(urllib)
+	<class 'module'>
+>>> type(urllib.request)
+	<class 'module'>
+>>> urllib.__path__
+	['/usr/lib/python3.4/urllib']
+>>> urllib.request.__path__
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute '__path__'
+
+Packages 	<= are generally directories
+Module 		<= are generally files
+
+### How Python where to look packages and modules????
+sys.path		<= list of direcotries Python searches for modules
+
+>>> import sys
+>>> sys.path
+['', '/usr/lib/python34.zip', '/usr/lib/python3.4', '/usr/lib/python3.4/plat-cygwin', 
+'/usr/lib/python3.4/lib-dynload', '/usr/lib/python3.4/site-packages']
+
+>>> sys.path[0]				<= indexing and slicing
+''							<= empty string
+>>> sys.path[-5]
+'/usr/lib/python34.zip'
 
 
 --------------------------------------------------------------------------------	
@@ -2511,9 +2577,9 @@ $ yum install python-pip
 $ pip install pudb 	<=debug tool
 http://stackoverflow.com/questions/1623039/python-debugging-tips	
 	
-	
-Python built-in functions
-
+###################################	
+### Python built-in functions   ###
+###################################
 Built-in Function	Description
 abs()			Return the absolute value of a number.
 all()			Return True if all elements of the iterable are true (or if the iterable is empty).
@@ -2577,10 +2643,10 @@ sorted()		Return a new sorted list.
 staticmethod()	Return a static method for function.
 str()			Return a str version of object.
 sum()			Sums the items of an iterable from left to right and returns the total.
-super()	Return a proxy object that delegates method calls to a parent or sibling class.
-tuple()	Return a tuple
-type()	Return the type of an object.
-vars()	Return the __dict__ attribute for a module, class, instance, or any other object.
-zip()	Make an iterator that aggregates elements from each of the iterables.
+super()			Return a proxy object that delegates method calls to a parent or sibling class.
+tuple()			Return a tuple
+type()			Return the type of an object.
+vars()			Return the __dict__ attribute for a module, class, instance, or any other object.
+zip()			Make an iterator that aggregates elements from each of the iterables.
 __import__()	This function is invoked by the import statement.	
 	
