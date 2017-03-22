@@ -2572,295 +2572,270 @@ For completion's sake, here is what the above profile outputs:
 
 
 1) What is Python? What are the benefits of using Python?
-
-Python is a programming language with objects, modules, threads, exceptions and automatic memory management. The benefits of pythons are that it is simple and easy, portable, extensible, build-in data structure and it is an open source.
+	Python is a programming language with objects, modules, threads, exceptions and automatic memory 
+	management. The benefits of pythons are that it is simple and easy, portable, extensible, 
+	build-in data structure and it is an open source.
 
 2)  What is PEP 8?
-
-PEP 8 is a coding convention, a set of recommendation, about how to write your Python code more readable.
+	PEP 8 is a coding convention, a set of recommendation, about how to write your Python code more readable.
 
 3) What is pickling and unpickling?
-
-Pickle module accepts any Python object and converts it into a string representation and dumps it into a file by using dump function, this process is called pickling.  While the process of retrieving original Python objects from the stored string representation is called unpickling.
+	Pickle module accepts any Python object and converts it into a string representation and dumps 
+	it into a file by using dump function, this process is called pickling.  While the process 
+	of retrieving original Python objects from the stored string representation is called unpickling.
 
 4) How Python is interpreted?
-
-Python language is an interpreted language. Python program runs directly from the source code. It converts the source code that is written by the programmer into an intermediate language, which is again translated into machine language that has to be executed.
+	Python language is an interpreted language. Python program runs directly from the source code. 
+	It converts the source code that is written by the programmer into an intermediate language, 
+	which is again translated into machine language that has to be executed.
 
 5) How memory is managed in Python?
-
-Python memory is managed by Python private heap space. All Python objects and data structures are located in a private heap. The programmer does not have an access to this private heap and interpreter takes care of this Python private heap.
-The allocation of Python heap space for Python objects is done by Python memory manager.  The core API gives access to some tools for the programmer to code.
-Python also have an inbuilt garbage collector, which recycle all the unused memory and frees the memory and makes it available to the heap space.
-python
+	Python memory is managed by Python private heap space. All Python objects and data structures are 
+	located in a private heap. The programmer does not have an access to this private heap and interpreter 
+	takes care of this Python private heap.
+	The allocation of Python heap space for Python objects is done by Python memory manager.  The core API 
+	gives access to some tools for the programmer to code.
+	Python also have an inbuilt garbage collector, which recycle all the unused memory and frees the 
+	memory and makes it available to the heap space. 
 
 6) What are the tools that help to find bugs or perform static analysis?
-
-PyChecker is a static analysis tool that detects the bugs in Python source code and warns about the style and complexity of the bug. Pylint is another tool that verifies whether the module meets the coding standard.
+	PyChecker is a static analysis tool that detects the bugs in Python source code and warns about 
+	the style and complexity of the bug. Pylint is another tool that verifies whether the module meets 
+	the coding standard.
 
 7) What are Python decorators?
-
-A Python decorator is a specific change that we make in Python syntax to alter functions easily.
+	A Python decorator is a specific change that we make in Python syntax to alter functions easily.
 
 8) What is the difference between list and tuple?
-
-The difference between list and tuple is that list is mutable while tuple is not. Tuple can be hashed for e.g as a key for dictionaries.
+	The difference between list and tuple is that list is mutable while tuple is not. Tuple can be 
+	hashed for e.g as a key for dictionaries.
 
 9) How are arguments passed by value or by reference?
-
-Everything in Python is an object and all variables hold references to the objects. The references values are according to the functions; as a result you cannot change the value of the references. However, you can change the objects if it is mutable.
+	Everything in Python is an object and all variables hold references to the objects. 
+	The references values are according to the functions; as a result you cannot change the value 
+	of the references. However, you can change the objects if it is mutable.
 
 10) What is Dict and List comprehensions are?
-
-They are syntax constructions to ease the creation of a Dictionary or List based on existing iterable.
+	They are syntax constructions to ease the creation of a Dictionary or List based on existing iterable.
 
 11) What are the built-in type does python provides?
+	There are Mutable and Immutable types of Pythons built in types 
+	Mutable built-in types	- List, Sets, Dictionaries, 
+	Immutable built-in types - Strings, Tuples, Numbers
 
-There are mutable and Immutable types of Pythons built in types Mutable built-in types
-
-List
-Sets
-Dictionaries
-Immutable built-in types
-
-Strings
-Tuples
-Numbers
 12) What is namespace in Python?
-
-In Python, every name introduced has a place where it lives and can be hooked for. This is known as namespace. It is like a box where a variable name is mapped to the object placed.  Whenever the variable is searched out, this box will be searched, to get corresponding object.
+	In Python, every name introduced has a place where it lives and can be hooked for. 
+	This is known as namespace. It is like a box where a variable name is mapped to the object placed.  
+	Whenever the variable is searched out, this box will be searched, to get corresponding object.
 
 13) What is lambda in Python?
-
-It is a single expression anonymous function often used as inline function.
+	It is a single expression anonymous function often used as inline function.
 
 14) Why lambda forms in python does not have statements?
-
-A lambda form in python does not have statements as it is used to make new function object and then return them at runtime.
+	A lambda form in python does not have statements as it is used to make new function object and 
+	then return them at runtime.
 
 15) What is pass in Python?
-
-Pass means, no-operation Python statement, or in other words it is a place holder in compound statement, where there should be a blank left and nothing has to be written there.
+	Pass means, no-operation Python statement, or in other words it is a place holder in compound 
+	statement, where there should be a blank left and nothing has to be written there.
 
 16) In Python what are iterators?
-
-In Python, iterators are used to iterate a group of elements, containers like list.
+	In Python, iterators are used to iterate a group of elements, containers like list.
 
 17) What is unittest in Python?
-
-A unit testing framework in Python is known as unittest.  It supports sharing of setups, automation testing, shutdown code for tests, aggregation of tests into collections etc.
+	A unit testing framework in Python is known as unittest.  It supports sharing of setups, 
+	automation testing, shutdown code for tests, aggregation of tests into collections etc.
 
 18) In Python what is slicing?
-
-A mechanism to select a range of items from sequence types like list, tuple, strings etc. is known as slicing.
+	A mechanism to select a range of items from sequence types like list, tuple, strings etc. is known as slicing.
 
 19) What are generators in Python?
-
-The way of implementing iterators are known as generators.  It is a normal function except that it yields expression in the function.
+	The way of implementing iterators are known as generators.  It is a normal function except 
+	that it yields expression in the function.
 
 20) What is docstring in Python?
-
-A Python documentation string is known as docstring, it is a way of documenting Python functions, modules and classes.
+	A Python documentation string is known as docstring, it is a way of documenting Python functions, 
+	modules and classes.
 
 21)  How can you copy an object in Python?
-
-To copy an object in Python, you can try copy.copy () or copy.deepcopy() for the general case. You cannot copy all objects but most of them.
+	To copy an object in Python, you can try copy.copy () or copy.deepcopy() for the general case. 
+	You cannot copy all objects but most of them.
 
 22) What is negative index in Python?
-
-Python sequences can be index in positive and negative numbers.   For positive index, 0 is the first index, 1 is the second index and so forth.  For negative index, (-1) is the last index and (-2) is the second last index and so forth.
+	Python sequences can be index in positive and negative numbers.   For positive index, 0 is the first index, 
+	1 is the second index and so forth.  For negative index, (-1) is the last index and (-2) is the second last 
+	index and so forth.
 
 23) How you can convert a number to a string?
-
-In order to convert a number into a string, use the inbuilt function str().  If you want a octal or hexadecimal representation, use the inbuilt function oct() or hex().
+	In order to convert a number into a string, use the inbuilt function str(). 
+	If you want a octal or hexadecimal representation, use the inbuilt function oct() or hex().
 
 24) What is the difference between Xrange and range?
-
-Xrange returns the xrange object while range returns the list, and uses the same memory and no matter what the range size is.
+	Xrange returns the xrange object while range returns the list, and uses the same memory and 
+	no matter what the range size is.
 
 25) What is module and package in Python?
-
-In Python, module is the way to structure program. Each Python program file is a module, which imports other modules like objects and attributes.
-
-The folder of Python program is a package of modules.  A package can have modules or subfolders.
+	The module is the way to structure program. Each Python program file is a module, which 
+	imports other modules like objects and attributes.
+	The folder of Python program is a package of modules.  A package can have modules or subfolders.
 
 26) Mention what are the rules for local and global variables in Python?
-
-Local variables: If a variable is assigned a new value anywhere within the function’s body, it’s assumed to be local.
-
-Global variables: Those variables that are only referenced inside a function are implicitly global.
+	local variables: If a variable is assigned a new value anywhere within the function’s body, 
+	it’s assumed to be local.
+	Global variables: Those variables that are only referenced inside a function are implicitly global.
 
 27) How can you share global variables across modules?
-
-To share global variables across modules within a single program, create a special module. Import the config module in all modules of your application. The module will be available as a global variable across modules.
+	To share global variables across modules within a single program, create a special module. 
+	Import the config module in all modules of your application. The module will be available as a 
+	global variable across modules.
 
 28) Explain how can you make a Python Script executable on Unix?
+	To make a Python Script executable on Unix, you need to do two things, Script file’s mode must be 
+	executable and the first line must begin with (#!/usr/bin/env python)
 
-To make a Python Script executable on Unix, you need to do two things,
-
-Script file’s mode must be executable and
-the first line must begin with # ( #!/usr/local/bin/python)
 29) Explain how to delete a file in Python?
-
-By using a command os.remove (filename) or os.unlink(filename)
+	By using a command os.remove (filename) or os.unlink(filename)
 
 30) Explain how can you generate random numbers in Python?
-
-To generate random numbers in Python, you need to import command as
-
-import random
-
-random.random()
-
-This returns a random floating point number in the range [0,1)
+	To generate random numbers in Python, you need to import command as
+	import random
+	random.random()
+	This returns a random floating point number in the range [0,1)
 
 31) Explain how can you access a module written in Python from C?
-
-You can access a module written in Python from C by following method,
-
-Module =  =PyImport_ImportModule(“<modulename>”);
+	You can access a module written in Python from C by following method,
+	Module =  =PyImport_ImportModule(“<modulename>”);
 
 32) Mention the use of // operator in Python?
-
-It is a Floor Divisionoperator , which is used for dividing two operands with the result as quotient showing only digits before the decimal point. For instance, 10//5 = 2 and 10.0//5.0 = 2.0.
+	It is a Floor Division operator, which is used for dividing two operands with the result as quotient 
+	showing only digits before the decimal point. For instance, 10//3 = 3 and 10.0//3.0 = 3.0.
 
 33) Mention five benefits of using Python?
-
-Python comprises of a huge standard library for most Internet platforms like Email, HTML, etc.
-Python does not require explicit memory management as the interpreter itself allocates the memory to new variables and free them automatically
-Provide easy readability due to use of square brackets
-Easy-to-learn for beginners
-Having the built-in data types saves programming time and effort from declaring variables
+	1.Python comprises of a huge standard library for most Internet platforms like Email, HTML, etc.
+	2.Python does not require explicit memory management as the interpreter itself allocates 
+		the memory to new variables and free them automatically
+	3.Provide easy readability due to use of square brackets
+	4.Easy-to-learn for beginners
+	4.Having the built-in data types saves programming time and effort from declaring variables.
+	
 34) Mention the use of the split function in Python?
-
-The use of the split function in Python is that it breaks a string into shorter strings using the defined separator. It gives a list of all words present in the string.	
+	The use of the split() function in Python is that it breaks a string into shorter strings using the 
+	defined separator. It gives a list of all words present in the string.	
+	x = ‘blue,red,green’
+	x.split(“,”)
+	[‘blue’, ‘red’, ‘green’]
 	
+	>>> s = 'AGGCATGCATGCAT'
+	>>> s[0:3]
+	'AGG'
+	>>> [s[i:i+3] for i in range(0,len(s),3)]   <<<***
+	['AGG', 'CAT', 'GCA', 'TGC', 'AT']
 	
-	
-Basic Python Programming  Interview Questions 
 
 27) How can you copy objects in Python?
+	The functions used to copy objects in Python are-
+	1) Copy.copy () for shallow copy
+	2) Copy.deepcopy () for deep copy
 
-The functions used to copy objects in Python are-
-
-1)         Copy.copy () for shallow copy
-
-2)         Copy.deepcopy () for deep copy
-
-However, it is not possible to copy all objects in Python using these functions.  For instance, dictionaries have a separate copy method whereas sequences in Python have to be copied by ‘Slicing’.
-
-28) What is the difference between tuples and lists in Python?
-
-Tuples can be used as keys for dictionaries i.e. they can be hashed. Lists are mutable whereas tuples are immutable - they cannot be changed. Tuples should be used when the order of elements in a sequence matters. For example, set of actions that need to be executed in sequence, geographic locations or list of points on a specific route.
-
-29) What is PEP8?
-
-PEP8 consists of coding guidelines for Python language so that programmers can write readable code making it easy to use for any other person, later on.
+	However, it is not possible to copy all objects in Python using these functions.  
+	For instance, dictionaries have a separate copy method whereas sequences in Python have to be copied by ‘Slicing’.
 
 30) Is all the memory freed when Python exits?
-
-No it is not, because the objects that are referenced from global namespaces of Python modules are not always de-allocated when Python exits.
+	No it is not, because the objects that are referenced from global namespaces of Python modules are 
+	not always de-allocated when Python exits.
 
 31) What does _init_.py do?
-
-_init_.py is an empty py file used for importing a module in a directory. _init_.py provides an easy way to organize the files. If there is a module maindir/subdir/module.py,_init_.py is placed in all the directories so that the module can be imported using the following command-
-
-import  maindir.subdir.module
+	_init_.py is an empty py file used for importing a module in a directory. 
+	_init_.py provides an easy way to organize the files. If there is a module 
+	maindir/subdir/module.py,_init_.py is placed in all the directories so that the 
+	module can be imported using the following command-
+	import  maindir.subdir.module
 
 32) What is the different between range () and xrange () functions in Python?
-
-range () returns a list whereas xrange () returns an object that acts like an iterator for generating numbers on demand.
+	range() returns a "list" whereas 
+	xrange() returns an "object" that acts like an iterator for generating numbers on demand.
 
 33) How can you randomize the items of a list in place in Python?
-
-Shuffle (lst) can be used for randomizing the items of a list in Python
+	Shuffle (lst) can be used for randomizing the items of a list in Python
 
 34) What is a pass in Python?
-
-Pass in Python signifies a no operation statement indicating that nothing is to be done.
+	Pass in Python signifies a no operation statement indicating that nothing is to be done.
 
 35) If you are gives the first and last names of employees, which data type in Python will you use to store them?
-
-You can use a list that has first name and last name included in an element or use Dictionary.
+	You can use a list that has first name and last name included in an element or use Dictionary.
 
 36) What happens when you execute the statement mango=banana in Python?
-
-A name error will occur when this statement is executed in Python.
+	A name error will occur when this statement is executed in Python.
 
 37) Write a sorting algorithm for a numerical dataset in Python. 
 
 38) Optimize the below python code-
-
-word = 'word'
-
-print word.__len__ ()
-
-Answer: print ‘word’._len_ ()
+	word = 'word'
+	print word.__len__()
+	
+	Answer: print ‘word’._len_()
 
 39) What is monkey patching in Python?
-
-Monkey patching is a technique that helps the programmer to modify or extend other code at runtime. Monkey patching comes handy in testing but it is not a good practice to use it in production environment as debugging the code could become difficult.
+	Monkey patching is a technique that helps the programmer to modify or extend other code at runtime. 
+	Monkey patching comes handy in testing but it is not a good practice to use it in production environment 
+	as debugging the code could become difficult.
 
 40) Which tool in Python will you use to find bugs if any?
-
-Pylint and Pychecker. Pylint verifies that a module satisfies all the coding standards or not. Pychecker is a static analysis tool that helps find out bugs in the course code.
+	Pylint verifies that a module satisfies all the coding standards or not. 
+	Pychecker is a static analysis tool that helps find out bugs in the course code.
 
  41) How are arguments passed in Python- by reference or by value?
+	The answer to this question is neither of these because passing semantics in Python are completely different. 
+	In all cases, Python passes arguments by value where all values are references to objects.
 
-The answer to this question is neither of these because passing semantics in Python are completely different. In all cases, Python passes arguments by value where all values are references to objects.
+42) You are given a list of N numbers. Create a single list comprehension in Python to create a new list that 
+	contains only those values which have even numbers from elements of the list at even indices. 
+	For instance if list[4] has an even value the it has be included in the new output list because 
+	it has an even index but if list[5] has an even value it should not be included in the list because 
+	it is not at an even index.
+	[x for x in list [: 2] if x%2 == 0]
 
-42) You are given a list of N numbers. Create a single list comprehension in Python to create a new list that contains only those values which have even numbers from elements of the list at even indices. For instance if list[4] has an even value the it has be included in the new output list because it has an even index but if list[5] has an even value it should not be included in the list because it is not at an even index.
-
-[x for x in list [: 2] if x%2 == 0]
-
-The above code will take all the numbers present at even indices and then discard the odd numbers.
+	The above code will take all the numbers present at even indices and then discard the odd numbers.
 
 43) Explain the usage of decorators.
-
-Decorators in Python are used to modify or inject code in functions or classes. Using decorators, you can wrap a class or function method call so that a piece of code can be executed before or after the execution of the original code. Decorators can be used to check for permissions, modify or track the arguments passed to a method, logging the calls to a specific method, etc.
+	Decorators in Python are used to modify or inject code in functions or classes. Using decorators, 
+	you can wrap a class or function method call so that a piece of code can be executed before or after 
+	the execution of the original code. Decorators can be used to check for permissions, modify or track 
+	the arguments passed to a method, logging the calls to a specific method, etc.
 
 44) How can you check whether a pandas data frame is empty or not?
-
-The attribute df.empty is used to check whether a data frame is empty or not.
+	The attribute df.empty is used to check whether a data frame is empty or not.
 
 45) What will be the output of the below Python code –
-
-def multipliers ():
-
+	def multipliers ():
     return [lambda x: i * x for i in range (4)]
-
     print [m (2) for m in multipliers ()]
 
-The output for the above code will be [6, 6,6,6]. The reason for this is that because of late binding the value of the variable i is looked up when any of the functions returned by multipliers are called.
+	The output for the above code will be [6, 6,6,6]. The reason for this is that because of late binding 
+	the value of the variable i is looked up when any of the functions returned by multipliers are called.
 
 46) What do you mean by list comprehension?
+	The process of creating a list while performing some operation on the data so that it can be accessed using an iterator is referred to as List Comprehension.
+	Example:
+	[ord (j) for j in string.ascii_uppercase]
+    [65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90]
 
-The process of creating a list while performing some operation on the data so that it can be accessed using an iterator is referred to as List Comprehension.
+47) What will be the output of the below code
 
-Example:
+	word = ‘aeioubcdfg'
+	print word [:3] + word [3:]
 
-[ord (j) for j in string.ascii_uppercase]
+	The output for the above code will be: ‘aeioubcdfg'.
+	In string slicing when the indices of both the slices collide and a “+” operator is applied on the string 
+	it concatenates them.
 
-     [65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90]
+48) list= [‘a’,’e’,’i’,’o’,’u’]
+	print list [8:]
 
-47)       What will be the output of the below code
-
-word = ‘aeioubcdfg'
-
-print word [:3] + word [3:]
-
-The output for the above code will be: ‘aeioubcdfg'.
-
-In string slicing when the indices of both the slices collide and a “+” operator is applied on the string it concatenates them.
-
-48)       list= [‘a’,’e’,’i’,’o’,’u’]
-
-print list [8:]
-
-The output for the above code will be an empty list []. Most of the people might confuse the answer with an 
-index error because the code is attempting to access a member in the list whose index exceeds the total number 
-of members in the list. The reason being the code is trying to access the slice of a list at a starting index 
-which is greater than the number of members in the list.
+	The output for the above code will be an empty list []. Most of the people might confuse the answer with an 
+	index error because the code is attempting to access a member in the list whose index exceeds the total number 
+	of members in the list. The reason being the code is trying to access the slice of a list at a starting index 
+	which is greater than the number of members in the list.
 
 49) What will be the output of the below code:
 
@@ -2876,8 +2851,8 @@ The output for the above code will be
 [1]
 [1, 1]
 [1, 1, 1]
-Argument to the function foo is evaluated only once when the function is defined. 
-However, since it is a list, on every all the list is modified by appending a 1 to it.
+	Argument to the function foo is evaluated only once when the function is defined. 
+	However, since it is a list, on every all the list is modified by appending a 1 to it.
 -----------------------------------------------
 # How and why get 24???
 def foo(i):
