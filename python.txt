@@ -1301,21 +1301,36 @@ print str(sys.argv), "<= is the arguments"
 >>>Number of arguments:  1
 >>>The arguments are:  ['sys.argv.py']
 --------------------------------------------------------------------------
+
+http://stackoverflow.com/questions/997797/what-does-s-mean-in-python
+	
+if len(sys.argv) < 2:
+    sys.exit('Usage: %s database-name' % sys.argv[0])
+
+if not os.path.exists(sys.argv[1]):
+    sys.exit('ERROR: Database %s was not found!' % sys.argv[1])	
 	
 	
+%s	<=It is a string formatting syntax (which it borrows from C).
+----------------------------------------------------------------	
+name = raw_input("who are you?")
+print "hello %s" % (name,)	
+----------------------------------------------------------------	
+The %s token allows me to insert (and potentially format) a string. Notice that the %s token is 
+replaced by whatever I pass to the string after the % symbol. Notice also that I am using a tuple 
+here as well (when you only have one string using a tuple is optional) to illustrate that multiple 
+strings can be inserted and formatted in one statement.	
 	
 	
+"Hello %s, my name is %s" % ('john', 'mike') # Hello john, my name is mike".
+If you are using ints instead of string, use %d instead of %s.
+
+"My name is %s and i'm %d" % ('john', 12) #My name is john and i'm 12	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+'%s' indicates a conversion type of 'string' when using python's string formatting capabilities. 
+More specifically, '%s' converts a specified value to a string using the str() function. Compare 
+this with the '%r' conversion type that uses the repr() function for value conversion.	
 	
 	
 	
