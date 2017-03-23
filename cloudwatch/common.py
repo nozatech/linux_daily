@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 # Common 
-
 import os, sys, boto, time, urllib
 from boto.ec2.elb import ELBConnection
 from boto.ec2.elb import InstanceState
 from boto.s3.connection import S3Connection
-
 
 def init_ec2():
     access_key, secret_key = get_keys_from_env()
@@ -23,6 +21,7 @@ def init_s3():
     access_key, secret_key = get_keys_from_env()
     return S3Connection(access_key, secret_key)
 
+	
 def deregister_instance(instance, from_elb):
     print "De-registering instance", instance.instance_id, "from load balancer", from_elb.name
     from_elb.deregister_instances([instance.instance_id])
@@ -35,10 +34,12 @@ def move_instance(instance, from_elb, to_elb):
     deregister_instance(instance, from_elb)
     register_instance(instance, to_elb)
 
+	
+# Getting AWS access and secret keys	
 def get_keys_from_env():
-#    access_key = "AKIAI24P4WR"
+#   access_key = "AKIAI24P4WR"
     access_key = os.environ.get("MONOCLE_AWS_ACCESS_KEY")
-#    secret_key = "EDUnpsadm4z7a3T8feLF"
+#   secret_key = "EDUnpsadm4z7a3T8feLF"
     secret_key = os.environ.get("MONOCLE_AWS_SECRET_KEY")
     
     if access_key == None or secret_key == None:

@@ -1708,6 +1708,8 @@ $ pip install boto
 $ pip install --target c:/python27/Lib/site-packages boto
 $ pip install --target c:/python34/Lib/site-packages boto  <= if boto is keep installing on python27 folder
 
+Win7 Cygwin "ImportError: No module named boto"
+http://stackoverflow.com/questions/5599872/python-windows-importerror-no-module-named-site
 
 $ vi boboCheck.py
 #!/usr/bin/env python

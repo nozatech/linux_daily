@@ -15,7 +15,7 @@ MONOCLE_Warning : resource
 
 import os, sys, boto
 # /python3x/Lib/site-packages/boto
-# 'sys' module provides information about constants, functions and methods of the Python interpreter
+# 'sys' module provides Python interpreter's constants, functions and methods
 
 from boto.ec2.cloudwatch 		import CloudWatchConn ection
 from boto.ec2.cloudwatch.alarm 	import MetricAlarm
@@ -24,13 +24,12 @@ from boto.ec2.cloudwatch.alarm 	import MetricAlarm
 import common				
 # include common.py file for 
 
-# Synopsis (how to run)
+# Usage
 if len(sys.argv) != 4:
     print "USAGE: updateCloudWatch.py    ALARM_PREFIX    LB_NAME    SEVERITY(urgent|warn)"
 	print "\t"	"e.g. python   updateCloudWatch.py 	http  elb-01    warn"
     sys.exit(1)			#return 1 as error code?
 
-	
 # variables set	
 alarm_prefix   = sys.argv[1]
 target_lb_name = sys.argv[2]
@@ -39,11 +38,11 @@ sns_topic      = None                  	# Reset original value
 
 # 
 if severity == 'urgent':
-    sns_topic = MONOCLE_URGENT_TOPIC #'arn:aws:sns:us-west-2:688595016292:MONOCLE_Urgent'
+    sns_topic = MONOCLE_URGENT_TOPIC    #'arn:aws:sns:us-west-2:688595016292:MONOCLE_Urgent'
 elif severity == 'warn':
-    sns_topic = MONOCLE_WARNING_TOPIC #'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning'
+    sns_topic = MONOCLE_WARNING_TOPIC   #'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning'
 else:
-    print "FATAL invalid severity", severity
+    print "FATAL! invalid severity", severity   #sys.argv[3].lower()
     sys.exit(2)		#return 2 as error code?
 
 	
