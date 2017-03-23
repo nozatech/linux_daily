@@ -73,8 +73,7 @@ Ctrl + U				View a web page's source code
 Daily Linux CMD List & Scripts
 -----------------------------------------------------------------------------------	
 
-32bit is 2^32 =~ 4.3 billion
-IPv4 address is 32bit 
+32bit is 2^32 =~ 4.3 billion    <=  IPv4 address is 32bit 
 
 ### Enable color & history time stamp ###
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> ~/.bashrc			<= Green
@@ -4332,15 +4331,28 @@ change take effect everywhere.
 	size. Normally, logrotate runs as a daily cron job. This is a good place to start troubleshooting general 
 	technical problems.
 
-/var/log/messages 	– Contains global system messages, including the messages that are logged during system startup. 
-					  There are several things that are logged in /var/log/messages including mail, cron, daemon, kern, auth, etc.
-/var/log/dmesg   	– Contains kernel ring buffer information. When the system boots up, it prints number of messages 
+/var/log/messages 	– Contains global system messages, including the messages that are logged during system "START-UP". 
+(up to start up)	  There are several things that are logged in /var/log/messages including mail, cron, daemon, kern, auth, etc.
+
+
+# dmesg vs /var/log/dmesg
+
+dmesg				- Run from Prompt ( Realtime Kernel Log)
+					  Current content of the kernel syslog ring buffer messages
+					  
+/var/log/dmesg   	– Contains what was in that ring buffer when the boot process last completed
+					  Contains kernel ring buffer information up till START-UP. 
+					  When the system boots up, it prints number of messages 
 					  on the screen that displays information about the hardware devices that the kernel 
 					  detects during boot process. These messages are available in kernel ring buffer and 
 					  whenever the new message comes the old message gets overwritten. You can also view the 
-					  content of this file using the dmesg command.
+					  content of this file using the dmesg command.	  
+
+					  
+/var/log/secure		- security login
+
 /var/log/auth.log 	– Contains system authorization information, including user logins and authentication machinsm that were used.
-/var/log/secure
+
 
 /var/log/boot.log 	– Contains information that are logged when the system boots
 /var/log/daemon.log – Contains information logged by the various background daemons that runs on the system

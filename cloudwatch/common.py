@@ -4,7 +4,6 @@
 import os, sys, boto, time, urllib
 from boto.ec2.elb import ELBConnection
 from boto.ec2.elb import InstanceState
-
 from boto.s3.connection import S3Connection
 
 

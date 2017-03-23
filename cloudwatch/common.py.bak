@@ -37,10 +37,10 @@ def move_instance(instance, from_elb, to_elb):
     register_instance(instance, to_elb)
 
 def get_keys_from_env():
-    access_key = "AKIAI24P4WR"
-#    access_key = os.environ.get("MONOCLE_AWS_ACCESS_KEY")
-    secret_key = "EDUnpsadm4z7a3T8feLF"
-#    secret_key = os.environ.get("MONOCLE_AWS_SECRET_KEY")
+#    access_key = "AKIAI24P4WR"
+    access_key = os.environ.get("MONOCLE_AWS_ACCESS_KEY")
+#    secret_key = "EDUnpsadm4z7a3T8feLF"
+    secret_key = os.environ.get("MONOCLE_AWS_SECRET_KEY")
     
     if access_key == None or secret_key == None:
         print "FAILED! You must have MONOCLE_AWS_ACCESS_KEY and MONOCLE_AWS_SECRET_KEY in OS environment."

@@ -17,7 +17,7 @@ import os, sys, boto
 # /python3x/Lib/site-packages/boto
 # 'sys' module provides information about constants, functions and methods of the Python interpreter
 
-from boto.ec2.cloudwatch 		import CloudWatchConnection
+from boto.ec2.cloudwatch 		import CloudWatchConn ection
 from boto.ec2.cloudwatch.alarm 	import MetricAlarm
 #from /python3x/Lib/site-packages/boto/ec2/cloudwatch/alarm.py  import 'MetricAlarm' function
 
@@ -28,23 +28,25 @@ import common
 if len(sys.argv) != 4:
     print "USAGE: updateCloudWatch.py    ALARM_PREFIX    LB_NAME    SEVERITY(urgent|warn)"
 	print "\t"	"e.g. python   updateCloudWatch.py 	http  elb-01    warn"
-    sys.exit(1)			#return 1 as error code
+    sys.exit(1)			#return 1 as error code?
 
+	
 # variables set	
 alarm_prefix   = sys.argv[1]
 target_lb_name = sys.argv[2]
-severity       = sys.argv[3].lower()
-sns_topic      = None              # Reset original value
+severity       = sys.argv[3].lower()	# lower letters
+sns_topic      = None                  	# Reset original value
 
 # 
 if severity == 'urgent':
-    sns_topic = MONOCLE_URGENT_TOPIC
+    sns_topic = MONOCLE_URGENT_TOPIC #'arn:aws:sns:us-west-2:688595016292:MONOCLE_Urgent'
 elif severity == 'warn':
-    sns_topic = MONOCLE_WARNING_TOPIC
+    sns_topic = MONOCLE_WARNING_TOPIC #'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning'
 else:
     print "FATAL invalid severity", severity
-    sys.exit(2)		#return 2 as error code
+    sys.exit(2)		#return 2 as error code?
 
+	
 # Assigning a new metric    
 alarm_dimensions = {
     'LoadBalancerName': target_lb_name
@@ -108,7 +110,14 @@ alarm_templates = [
 # 
 def get_alarms(alarm_prefix):
     existing_alarms = cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix)
+	
+    # /Python34/Lib/site-packages/boto/ec2/cloudwatch/__init__
+	# def describe_alarms(self, action_prefix=None, alarm_name_prefix=None,
+    #	                  alarm_names=None, max_records=None, state_value=None,
+    #                    next_token=None):
+	#					 ............
 
+	
     print "Found", len(existing_alarms), "existing alarms with prefix", alarm_prefix
 	
     for alarm in cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix):
@@ -163,7 +172,7 @@ get_alarms(alarm_prefix)
 
 
 
-
+#################################################################################################################
 """
 Output of this script
 

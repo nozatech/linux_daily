@@ -30,11 +30,12 @@ if len(sys.argv) != 4:
 	print "\t"	"e.g. python   updateCloudWatch.py 	http  elb-01    warn"
     sys.exit(1)			#return 1 as error code
 
+	
 # variables set	
 alarm_prefix   = sys.argv[1]
 target_lb_name = sys.argv[2]
-severity       = sys.argv[3].lower()
-sns_topic      = None
+severity       = sys.argv[3].lower()	# lower letters
+sns_topic      = None                  	# Reset original value
 
 # 
 if severity == 'urgent':
@@ -45,7 +46,8 @@ else:
     print "FATAL invalid severity", severity
     sys.exit(2)		#return 2 as error code
 
-#     
+	
+# Assigning a new metric    
 alarm_dimensions = {
     'LoadBalancerName': target_lb_name
 }
@@ -108,8 +110,15 @@ alarm_templates = [
 # 
 def get_alarms(alarm_prefix):
     existing_alarms = cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix)
+    # /Python34/Lib/site-packages/boto/ec2/cloudwatch/__init__
+	# def describe_alarms(self, action_prefix=None, alarm_name_prefix=None,
+    #	                  alarm_names=None, max_records=None, state_value=None,
+    #                    next_token=None):
+	#					 ............
 
+	
     print "Found", len(existing_alarms), "existing alarms with prefix", alarm_prefix
+	
     for alarm in cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix):
         print "\t", alarm.name, ":", alarm.dimensions, alarm.alarm_actions
         
@@ -118,7 +127,7 @@ def get_alarms(alarm_prefix):
 	
 cloudwatch = common.init_cloudwatch()
 	# invoke from common.py's 'init_cloudwatch()' function
-	#def init_cloudwatch():
+	# def init_cloudwatch():
 	#	access_key, secret_key = get_keys_from_env()
 	#	return boto.ec2.cloudwatch.connect_to_region("us-west-2", aws_access_key_id=access_key, aws_secret_access_key=secret_key)
 
@@ -162,7 +171,7 @@ get_alarms(alarm_prefix)
 
 
 
-
+#################################################################################################################
 """
 Output of this script
 
