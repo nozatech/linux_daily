@@ -1,17 +1,16 @@
 #!/usr/bin/env python
-# Creating ELB metric warning for CloudWatch
+# Creating EC2 system Alarm metric warning for CloudWatch
 
+# for SNS message VAR
 MONOCLE_URGENT_TOPIC='arn:aws:sns:us-west-2:688595016292:MONOCLE_Urgent'
 MONOCLE_WARNING_TOPIC='arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning'
+# arn : amazon resource name
+# aws : aws
+# sns : aws simple notification service
+# us-west-2 : region
+# 688595016292 : aws-mobiletools account id
+# MONOCLE_Warning : resource
 
-""" 
-arn : amazon resource name
-aws : aws
-sns : aws simple notification service
-us-west-2 : region
-688595016292 : aws-mobiletools account id
-MONOCLE_Warning : resource
-"""
 #------------------------------------------------------------------------------------------------
 import os, sys, boto
 # /python3x/Lib/site-packages/boto
@@ -19,24 +18,27 @@ import os, sys, boto
 
 from boto.ec2.cloudwatch 		import CloudWatchConn ection
 from boto.ec2.cloudwatch.alarm 	import MetricAlarm
-#from /python3x/Lib/site-packages/boto/ec2/cloudwatch/alarm.py  import 'MetricAlarm' function
+# from /python2x/Lib/site-packages/boto/ec2/cloudwatch/alarm.py  import 'MetricAlarm' function
 
 import common				
 # include common.py file for create, delete, and AWS connection
+
 #------------------------------------------------------------------------------------------------
 # Usage
 if len(sys.argv) != 4:
     print "USAGE: updateCloudWatch.py    ALARM_PREFIX    LB_NAME    SEVERITY(urgent|warn)"
 	print "\t"	"e.g. python   updateCloudWatch.py 	http  elb-01    warn"
-    sys.exit(1)			#return 1 as error code
+    sys.exit(1)			#return error code 1
+
 #------------------------------------------------------------------------------------------------
 # variables set from cmd line input arguments
 alarm_prefix   = sys.argv[1]			# http 	 <- 1st argument as alarm_prefix
 target_lb_name = sys.argv[2]			# elb-01 <- 2nd argument as target_lb_name
 severity       = sys.argv[3].lower()	# warn   <- 3rd and lower letter method for "==" comparison 
 sns_topic      = None                  	# 'None' <- Reset original value
+
 #------------------------------------------------------------------------------------------------
-# SNS var set
+# SNS var and message set
 if severity == 'urgent':
     sns_topic = MONOCLE_URGENT_TOPIC    #'arn:aws:sns:us-west-2:688595016292:MONOCLE_Urgent'
 elif severity == 'warn':
@@ -47,13 +49,14 @@ else:
 	# System exit 2 as error code
 	# python updateCloudWatch.py http elb-01 test
 	# echo $?  outputs  2   <- error code
+
 #------------------------------------------------------------------------------------------------	
 # Assigning a new alarm metric using Dictionary{key:value}
 alarm_dimensions = {
     'LoadBalancerName': target_lb_name
 }
 
-# Alarm templates LIST[Dictionaries {key:value}]   
+# Alarm templates LIST [{key:value}]   
 alarm_templates = [
     { 
         'name': alarm_prefix + " - Latency Spike",  # Description
@@ -108,6 +111,9 @@ alarm_templates = [
         'dimensions': alarm_dimensions
     }
 ]
+
+#------------------------------------------------------------------------------------------------
+# *** Real Program Starts here ***
 #------------------------------------------------------------------------------------------------
 # Check existing alarms 
 def get_alarms(alarm_prefix):			# 'http' from command line input argument value
