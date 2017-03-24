@@ -181,7 +181,7 @@ for template in alarm_templates:
         evaluation_periods=template['evaluation_periods'],
         alarm_actions=template['alarm_actions'],
         dimensions=template['dimensions']
-    )
+    ) 
     
     print "\t", alarm
     cloudwatch.create_alarm(alarm)
