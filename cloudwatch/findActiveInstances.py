@@ -18,3 +18,9 @@ instances = ec2_conn.get_only_instances(instance_ids)
 
 for instance in instances:
     print instance.tags['Name']
+	
+	
+	
+
+
+

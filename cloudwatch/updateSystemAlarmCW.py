@@ -16,29 +16,35 @@ import os, sys, boto
 # /python3x/Lib/site-packages/boto
 # 'sys' module provides Python interpreter's constants, functions and methods
 
-from boto.ec2.cloudwatch 		import CloudWatchConn ection
+from boto.ec2.cloudwatch 		import CloudWatchConnection
 from boto.ec2.cloudwatch.alarm 	import MetricAlarm
 # from /python2x/Lib/site-packages/boto/ec2/cloudwatch/alarm.py  import 'MetricAlarm' function
 
 import common				
 # include common.py file for create, delete, and AWS connection
 
+
+# EC2 instance list using aws cli tool from BASH
+#------------------------------------------------------------------------------------------------
+import subprocess
+subprocess.Popen("aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId]' --filters Name=instance-state-name,Values=running --output text ~/instanceId.txt")
+
 #------------------------------------------------------------------------------------------------
 # Usage
 if len(sys.argv) != 4:
-    print "USAGE: updateCloudWatch.py    ALARM_PREFIX    LB_NAME    SEVERITY(urgent|warn)"
-	print "\t"	"e.g. python   updateCloudWatch.py 	http  elb-01    warn"
+    print "USAGE: updateSystemAlarmCW.py          	ALARM_PREFIX   INSTANCE_ID    SEVERITY(urgent|warn)"
+    print "\t"	"e.g. python   updateCloudWatch.py 	CPUUtilization i-0bd698cc040d9a2d9   		warn"
     sys.exit(1)			#return error code 1
 
 #------------------------------------------------------------------------------------------------
 # variables set from cmd line input arguments
-alarm_prefix   = sys.argv[1]			# http 	 <- 1st argument as alarm_prefix
-target_lb_name = sys.argv[2]			# elb-01 <- 2nd argument as target_lb_name
+alarm_prefix   = sys.argv[1]			# CPU 	 <- 1st argument as alarm_prefix
+target_lb_name = sys.argv[2]			# i-xxxx <- 2nd argument as target_lb_name
 severity       = sys.argv[3].lower()	# warn   <- 3rd and lower letter method for "==" comparison 
 sns_topic      = None                  	# 'None' <- Reset original value
 
 #------------------------------------------------------------------------------------------------
-# SNS var and message set
+# sns_topic VAR and message set
 if severity == 'urgent':
     sns_topic = MONOCLE_URGENT_TOPIC    #'arn:aws:sns:us-west-2:688595016292:MONOCLE_Urgent'
 elif severity == 'warn':
@@ -53,11 +59,26 @@ else:
 #------------------------------------------------------------------------------------------------	
 # Assigning a new alarm metric using Dictionary{key:value}
 alarm_dimensions = {
-    'LoadBalancerName': target_lb_name
+    'InstanceName': target_instace_id
 }
 
-# Alarm templates LIST [{key:value}]   
+# Alarm templates LIST [{key:value}]
+# CPU over 60 alarm and notification
 alarm_templates = [
+    { 
+		'name': alarm_prefix + " - CPU Utilization spike over 40%",
+		'description' : "CPU usage triggers above 40% for 5 mins",
+		'namespace': "AWS/EC2",
+		'metric': "CPUUtilization",
+		'statistic':"Average",
+		'comparison': ">=",
+		'threshold': 4.0,
+		'period': 300,
+		'evaluation_periods': 2,
+		'alarm_actions': [sns_topic]
+		'unit': "Percent",
+		'dimensions': alarm_dimensions
+	},
     { 
         'name': alarm_prefix + " - Latency Spike",  # Description
         'description': "Latency Spike",

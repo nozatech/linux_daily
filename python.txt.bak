@@ -1,4 +1,6 @@
 ### Python ###
+//depot/mobile/OO/buildScripts/trafficSplit/
+
 
 1. Environment PATH
 #!/usr/local/python3.5 or 2.7			<= specific version of Python3.5 
