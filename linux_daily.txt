@@ -257,7 +257,8 @@ Undo
 	$ basename 					<= strip directory and suffix from filenames
 	$ basename $0
 	
-
+	# 5 mins count down from Shell
+	# for i in {1..300}; do echo -ne $i '\r'; sleep 1; done; echo
 		
 	
   #	Install SSH on Ubuntu(Debian)
@@ -304,6 +305,8 @@ $ pip install pssh
 	
 	
 ### Run command on remote shell
+http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ssh-on-many-servers
+
 	$ ssh apark@192.241.190.57 	  'sudo iptables -nL'		
 	$ ssh puppet sudo  iptables -nL								<= using .ssh/config  file
 	$ ssh -t apark@192.241.190.57 'sudo iptables -nL'			<= -t      Force pseudo-tty allocation
@@ -314,6 +317,11 @@ $ pip install pssh
 	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh                  <= installing as sudo	
 	
 	
+	
+	$ for host in $(cat host_list.txt); do ssh "$host" "$command" > "output.$host"; done
+	Authenticating with name/password is really no good idea. 
+	You should set up a private key for this:
+	$ ssh-keygen && for host in $(cat hosts.txt); do ssh-copy-id $host; done
 	
 	
 	
@@ -879,7 +887,9 @@ cron job search from command line
 	
 	###
 	$ cat cron_jobs.txt
-	* * * * *         /sbin/ping -c 1 192.168.0.1 > /dev/null
+	* * * * *         /sbin/ping -c 1 192.168.0.1  > /dev/null
+	* * * * *         /sbin/ping -c 1 192.168.0.1  2>&1 >> /tmp/log   <= save to log file
+	
 	0 0,12 1 */2 *    /cmd				    # every 12am & 12pm on 1st day of every 2nd month
 	30 08 10 06 * 	  /cmd					# June 10th 8:30AM
 	00 09-18 * * 1-5  /cmd			   		# Everyday 9am to 6pm Mon~Fri
@@ -1671,7 +1681,8 @@ Doesn't satisfy constraints because breaks the enterprise scheduler
 ### $ usermod --lock --expiredate 1970-01-01 <user>  ###
 	$ usermod -l -e 1970-01-01 user_ID
 	This is our winner. Remote login disabled, yet root can still su <user>, as can other users via 
-	sudo so the scheduler functions properly and authorized end users can become the target service account as needed.
+	sudo so the scheduler functions properly and authorized end users can become the target 
+	service account as needed.
 
 
 45. Wall					<= messaging to users within system 				
@@ -2101,13 +2112,15 @@ sudo systemctl start iptables
 	Writing a Simple Rule Set( https://wiki.centos.org/HowTos/Network/IPTables)
 
 
-IMPORTANT: At this point we are going to clear the default rule set. If you are connecting remotely 
-to a server via SSH for this tutorial then there is a very real possibility that you could lock yourself 
-out of your machine. You must set the default input policy to accept before flushing the current rules, 
-and then add a rule at the start to explicitly allow yourself access to prevent against locking yourself out.
-We will use an example based approach to examine the various iptables commands. In this first example, 
-we will create a very simple set of rules to set up a Stateful Packet Inspection (SPI) firewall that 
-will allow all outgoing connections but block all unwanted incoming connections:
+IMPORTANT: At this point we are going to clear the default rule set. If you are connecting 
+remotely to a server via SSH for this tutorial then there is a very real possibility that 
+you could lock yourself out of your machine. You must set the default input policy to 
+accept before flushing the current rules, and then add a rule at the start to explicitly 
+allow yourself access to prevent against locking yourself out.
+We will use an example based approach to examine the various iptables commands. In this 
+first example, we will create a very simple set of rules to set up a Stateful Packet 
+Inspection (SPI) firewall that will allow all outgoing connections but block all 
+unwanted incoming connections:
 
 
 # iptables -P INPUT ACCEPT
@@ -3370,7 +3383,8 @@ fi
 	$ ncdu /
 
 	$ ncdu -x /    <= scan a full filesystem
-		# Since scanning a large directory may take a while, you can scan a directory and export the results for later viewing:
+		# Since scanning a large directory may take a while, you can scan a directory and 
+			export the results for later viewing:
 	
 	$ ncdu -1xo- / | gzip > ncdu-list.gz
 	# ...some time later:

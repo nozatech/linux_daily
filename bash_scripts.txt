@@ -726,14 +726,15 @@ fi
         	echo "Sorry, you are too slow"
 	fi
 ------------------------------------
-### Time counting 
+### 5 mins Time counting  (count down) 
 
-$ for i in {0..10}; do echo -ne "$i" '\r'; sleep 1; done; echo 
+$ for i in {0..300}; do echo -ne "$i" '\r'; sleep 1; done; echo 
 
 	#\r is returning to begin of line (without new line - \n)
-	# -e escape, -n new line
+	# -n new line
+	# -e escape
 
-
+------------------------------------
 ### Directory or file name
 
 #!/usr/bin/env bash
@@ -903,7 +904,7 @@ echo "Line $i: $file"
 ((i++))
 done < echo.txt
 
-
+------------------------------------
 #!/bin/bash
 i=1
 while read file; do
@@ -914,7 +915,7 @@ done < file.txt
 Line 1: apple
 Line 2: banaba
 .......
-
+------------------------------------
 #!/bin/bash
 # WHILE LOOP - i 가 10보다 적거나 같을때 까지
 i=0
@@ -925,8 +926,8 @@ while [ $i -le 10 ]; do
 #   ((i=$i+1))
 done
 
-### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###
-### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###
+### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### 
+### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ######
 
 - J 가 10보다 크거나 같을때 가지.
 j=0
@@ -934,7 +935,7 @@ until [ $j -ge 10 ]; do
     echo j is $j
     ((j++))
 done
-
+------------------------------------
 
 
 #!/bin/bash
@@ -1178,7 +1179,7 @@ case $a in
     *)         echo "No match!";;
 esac
 
-
+------------------------------------
 #!/bin/bash
 while read i
 do
@@ -1345,7 +1346,7 @@ The shell treats several parameters specially. These parameters may only be refe
 (?!) Process number of the last background command
  
  
- 
+------------------------------------
 #!/bin/bash
 echo "Hello, World. Calls $# of parameters"	
 echo "argument 0 is '$0'"
@@ -1491,14 +1492,14 @@ Operator	Effect
 .			Matches any single character.
 ?			The preceding item is optional and will be matched, at most, once.
 *			The preceding item will be matched zero or more times.
+^			Start with(Matches the empty string at the beginning of a line; 
+					  also represents the characters not in the range of a list.)
+$			Matches the empty string at the end of a line.
 +			The preceding item will be matched one or more times.
 {N}			The preceding item is matched exactly N times.
 {N,}		The preceding item is matched N or more times.
 {N,M}		The preceding item is matched at least N times, but not more than M times.
 -			represents the range if it's not first or last in a list or the ending point of a range in a list.
-^			Start with(Matches the empty string at the beginning of a line; 
-					  also represents the characters not in the range of a list.)
-$			Matches the empty string at the end of a line.
 \b			Matches the empty string at the edge of a word.
 \B			Matches the empty string provided it's not at the edge of a word.
 \<			Match the empty string at the beginning of word.

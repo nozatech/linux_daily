@@ -10,7 +10,12 @@ fi
 
 
 
-#$ crontab -l
+# $ crontab -l
+
 # NR collector 239 nslookup resolve issue
 # to restart the NR service
-# */5 * * * * /home/apark/newrelic/nr_restart.sh 2>&1  >> /home/apark/newrelic/log
+*/5 * * * * /home/apark/newrelic/nr_restart.sh  2>&1  >> /home/apark/newrelic/log 
+
+
+# 5 mins count down from Shell
+for i in {1..300}; do echo -ne $i '\r'; sleep 1; done; echo
