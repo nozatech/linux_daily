@@ -305,7 +305,8 @@ $ pip install pssh
 	
 ### Run command on remote shell
 	$ ssh apark@192.241.190.57 	  'sudo iptables -nL'		
-	$ ssh puppet sudo  iptables -nL								<= using .ssh/config  file
+	$ ssh 192.241.190.57 	      'sudo iptables -nL'			<= w/o apark user id
+	$ ssh puppet sudo              iptables -nL					<= using .ssh/config  file
 	$ ssh -t apark@192.241.190.57 'sudo iptables -nL'			<= -t      Force pseudo-tty allocation
 	  
 	### run script remotely
@@ -313,7 +314,10 @@ $ pip install pssh
 	$ ssh apark@remote_server  'bash -s' < from_local_script.sh			<= run a script remotely from local using sudoer
 	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh                  <= installing as sudo	
 	
-	
+	# Create a server list and a update script first
+	$ for r in $(cat nrErrorServers.txt); do ssh -v $r 'sudo su && bash -s' < updateHosts.sh ; done
+
+	http://unix.stackexchange.com/questions/87405/how-can-i-execute-local-script-on-remote-machine-and-include-arguments
 	
 	
 	
@@ -1519,7 +1523,7 @@ Traceroute, Ping, and MTR
 	
 	# Generating report
 	$ mtr google.com 				<= realtime
-	$ mtr -rw google.com			<= report
+	$ mtr -rw google.com			<= report <- default 10 report
     $ mtr -rw -c 5 google.com       <= -r report, -w wide report, -c count 5 instead of 10 by default
 	
 	Start: Thu Dec  1 13:55:32 2016
@@ -2261,6 +2265,7 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]' 		 >> ~/.bashrc		<= Green 
 	export PS1='\[\e[1;31m\][\u@\h \W]\$\[\e[0m\]' 		 >> ~/.bashrc		<= Red  
     export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"  	 >> ~/.bashrc		<= Green|Red 
+    export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[1;32m\w$"  	 >> ~/.bashrc		<= Green|Red 
     
 	### Permanent
 	echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" 	 >> ~/.bashrc		<= Green 
@@ -2567,25 +2572,19 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 	## -i Identity_file such as pem key
 	$ scp -i /AWS-OC-Key/oc-prod.pem /AWS-OC-Key/oc-sDATEe.pem ec2-user@ip_address:/home/ec2-user/.cert
 
-	### copy a File to Remote host 
+	### Local ===> Remote 
 	$ scp -pv file.zip noza@192.168.221.128:/home/noza/download
-	
+	$ scp -r /home/id/.ssh  id@ip:/home/id/			<= -r recursive for sub directories
 	$ scp -i .ssh/oc.pem  ami.zip ubuntu@10.10.1.89:/home/ubuntu/
 
 	### install unzip
 	$ unzip file.zip -d /tmp/name			<= -d destin directory
     
 	### Make a directory remotely
-	
 	$ ssh apark@remote_ip "mkdir /path/to/dir"
 
-	
-	### copy file / folder
-	
-	### Local to Remote copy
-	$ scp -r /home/id/.ssh           id@ip:/home/id/			<= -r recursive for sub directories
 
-	### Remote to Local copy 
+	### Remote ===> Local 
 	$ scp -r id@ip:/home/id/.ssh    /home/id/.ssh2
 	
 
@@ -4548,10 +4547,22 @@ Objects can be thought of as encapsulating their data within a set of functions 
 	
 	
 	
-	
-	
-	
-	
+###### Print usage	######
+#------------------------------------------------------------------------------------	
+#!/bin/sh
+print_usage() {
+        echo -e "`basename $0` ssh_connexion local_script"
+        echo -e "Remote executes local_script on ssh server"
+        echo -e "For convinient use, use ssh public key for remote connexion"
+        exit 0
+}
+
+[ $# -eq "2" ] && [ $1 != "-h" ] && [ $1 != "--help" ] || print_usage
+
+INTERPRETER=$(head -n 1 $2 | sed -e 's/#!//')
+
+cat $2 | grep -v "#" | ssh -t $1 $INTERPRETER	
+#------------------------------------------------------------------------------------	
 	
 	
 	

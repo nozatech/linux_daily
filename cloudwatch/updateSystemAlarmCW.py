@@ -27,9 +27,16 @@ import common
 # EC2 instance list using aws cli tool from BASH
 #------------------------------------------------------------------------------------------------
 import subprocess
-subprocess.Popen("aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId]' --filters Name=instance-state-name,Values=running --output text ~/instanceId.txt")
+subprocess.Popen("aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId]' --filters Name=instance-state-name,Values=running --output text > ~/instanceId.txt")
 
 #------------------------------------------------------------------------------------------------
+
+
+for instance in instanceId.txt
+	print instance
+	
+	
+	
 # Usage
 if len(sys.argv) != 4:
     print "USAGE: updateSystemAlarmCW.py          	ALARM_PREFIX   INSTANCE_ID    SEVERITY(urgent|warn)"

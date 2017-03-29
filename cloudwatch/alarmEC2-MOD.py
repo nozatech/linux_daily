@@ -12,7 +12,7 @@ import common
  
 sns_topic = 'arn:aws:sns:eu-west-1:<acct_num>:cloudwatch-alarms'
  
-# CPU over 60 alarm and notification
+# CPU over 60% usage alarm and notification
 metric_alarm = MetricAlarm(
  name="CPU above 60%",
  metric="CPUUtilization",
