@@ -166,16 +166,16 @@ def get_alarms(alarm_prefix):			# 'http' from command line input argument value
 	
 	# Number of existing alarms found 
     print "Found", len(existing_alarms), "existing alarms with prefix", alarm_prefix
-		''' 
-		Found 4 existing alarms with prefix http_spike
-		'''
+    ''' 
+	Found 4 existing alarms with prefix http_spike
+    '''
 	# List of alarms and prints out
     for alarm in cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix):
         print "\t", alarm.name, ":", alarm.dimensions, alarm.alarm_actions
         '''
 		http_spike - HTTP 4xx Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
 		...  #'alarm_actions': [sns_topic]
-		'''
+        '''
     return existing_alarms
 #------------------------------------------------------------------------------------------------
 # connect to AWS 	
@@ -194,9 +194,9 @@ Found 4 existing alarms with prefix http_spike
 #------------------------------------------------------------------------------------------------
 for alarm in cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix):
     print "\t", alarm.name, ":", alarm.dimensions, alarm.alarm_actions
-	'''
+    '''
 	http_spike - HTTP 4xx Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
-	'''
+    '''
 #------------------------------------------------------------------------------------------------
 # Declare to deleting existing alarms
 print "Deleting existing alarms..."
@@ -205,7 +205,7 @@ print "Deleting existing alarms..."
 if len(existing_alarms) > 0:
     cloudwatch.delete_alarms(existing_alarms)
 
-	print "Existing alarms have been removed!"
+    print "Existing alarms have been removed!"
 #------------------------------------------------------------------------------------------------
 	
 # Declare to creating new alarms    
