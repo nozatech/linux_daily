@@ -229,6 +229,7 @@ $ echo -n     do not output the trailing newline
 	cmd 2>&1
 		stderr to same place as stdout
 	cmd &> file
+	./script.sh  &>  ~/log/log_file
 		Every output of cmd to file
 
 

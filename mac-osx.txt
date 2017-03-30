@@ -1,5 +1,5 @@
 MAC OS X
-
+MAC MAC MAC MAC MAC MAC MAC MAC MAC MAC MAC MAC MAC MAC MAC MAC MAC MAC MAC MAC 
 OS X 10.5 Leopard (Chablis)
 OS X 10.6 Snow Leopard
 OS X 10.7 Lion (Barolo)
@@ -9,6 +9,20 @@ OS X 10.10: Yosemite (Syrah)
 OS X 10.11: El Capitan (Gala)
 OS X 10.12: Sierra (Fuji)
 
+launchctl
+
+New Jenkins' setup on Mac Mini
+
+Jenkins Master ===> Jenkins-resign server migration	
+# install jenkins-2.32.3.pkg from web from GUI
+# install JDK-8u121-macosx-x64.dmg	
+sudo rsync -azP jenkins@10.100.200.41:/Users/Shared/Jenkins/Home/jobs/     /Users/Shared/Jenkins/Home/jobs/
+sudo rsync -azP jenkins@10.100.200.41:/Users/Shared/Jenkins/Home/plugins/  /Users/Shared/Jenkins/Home/plugins/
+# jenkins account is in masters' account
+
+
+$ sudo visudo
+	apark ALL=(ALL) NOPASSWD: ALL
 
 
 BNEA Jenkins Signing Server
@@ -16,6 +30,33 @@ BNEA Jenkins Signing Server
 ### PROXY to HockeyApp using VM
 •	Jenkins-proxy (CentOS)
 •	10.10.100.130 mapped to 65.87.26.116
+
+
+### Install Homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+### Install Java 
+$ brew update
+$ brew cask install java
+
+Jenkins on Sierra < - Java SDK works/ no JRE
+Manage your Java environment
+http://www.jenv.be/
+	Mac OS X via Homebrew
+	$ git clone https://github.com/gcuisinier/jenv.git ~/.jenv
+	$ brew install jenv
+	Bash
+	$ echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.bash_profile
+	$ echo 'eval "$(jenv init -)"' >> ~/.bash_profile
+
+
+### Install Jenkins
+$ brew install jenkins
+
+
+
+
+
 
 
 
@@ -45,5 +86,6 @@ $ brew install maven
 http://dev.mlsdigital.net/posts/how-to-resign-an-ios-app-from-external-developers/	
 https://github.com/maciekish/iReSign
 	
+
 	
   

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# Find active instances
 
 import os, sys, boto, time, urllib
 from boto.ec2.elb import ELBConnection

@@ -1,4 +1,6 @@
 ### Python ###
+//depot/mobile/OO/buildScripts/trafficSplit/
+
 
 1. Environment PATH
 #!/usr/local/python3.5 or 2.7			<= specific version of Python3.5 
@@ -1202,12 +1204,13 @@ I will change you if you fall = The Floor ok
 	
 
 
-# Checking argument using function "len(sys.argv)" count the number of arguments
+# Checking argument using function "len(sys.argv)" count the number of arguments(command line arguments)
 argv is "argument value" from C program 
 
 sys.argv[0] is the name of the script( like Bash using variable $0 as script itself)
 http://stackoverflow.com/questions/13263951/what-is-argv-and-what-does-it-do
-
+# sys.argv				<= command line arguments to passed in to next argument
+						<= get argument list using sys module
 
 
 --------------------------------------------------------------------------------	
@@ -1223,8 +1226,6 @@ if len(sys.argv) != 4:				<= requires 4 parameters(count the number of arguments
 $ python python_len.py				<= run
 --------------------------------------------------------------------------------	
 
-# sys.argv				<= command line arguments to passed in to next argument
-						<= get argument list using sys module
 http://stackoverflow.com/questions/4117530/sys-argv1-meaning-in-script
 For every invocation(call) of Python, sys.argv is automatically a list of strings representing 
 the arguments(as separated by spaces) on the command-line. The name "sys.argv" comes from the C programming 
@@ -1236,7 +1237,16 @@ It also prints the number of arguments, using the len function on the list.
 	from __future__ import print_function
 	import sys
 	print(sys.argv, len(sys.argv))
-	
+
+>>> [''] 1
+
+
+
+user_args = sys.argv[1:] 		<= get everything after the script name
+
+
+
+
 --------------------------------------------------------------------------------	
 ### Import 
 
@@ -1705,6 +1715,11 @@ sudo yum -y install python35u-devel
 
 # Boto install
 $ pip install boto
+$ pip install --target c:/python27/Lib/site-packages boto
+$ pip install --target c:/python34/Lib/site-packages boto  <= if boto is keep installing on python27 folder
+
+Win7 Cygwin "ImportError: No module named boto"
+http://stackoverflow.com/questions/5599872/python-windows-importerror-no-module-named-site
 
 $ vi boboCheck.py
 #!/usr/bin/env python
