@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # Creating EC2 system Alarm metric warning for CloudWatch
+# Install AWS CLI and configure 
+# Install Boto
 
 # for SNS message VAR
 MONOCLE_URGENT_TOPIC='arn:aws:sns:us-west-2:688595016292:MONOCLE_Urgent'
@@ -24,7 +26,7 @@ import common
 # include common.py file for create, delete, and AWS connection
 
 
-# EC2 instance list using  AWS cli tool from BASH
+# Creating EC2 instance list txt file using AWS cli tool run from BASH 
 #------------------------------------------------------------------------------------------------
 import subprocess
 getInstance = "aws ec2 describe-instances \
@@ -32,7 +34,6 @@ getInstance = "aws ec2 describe-instances \
                 --filters Name=instance-state-name,Values=running \
                 --output text > \
                 `pwd`/awsInstance.txt"
-
 output = subprocess.check_output(['bash','-c', getInstance])
 
 #------------------------------------------------------------------------------------------------
@@ -42,10 +43,7 @@ print "---------------------------"
 
 for i in open('awsInstance.txt', 'r').readlines():
     print i
-
 #------------------------------------------------------------------------------------------------
-	
-	
 	
 # Usage
 if len(sys.argv) != 4:
@@ -91,63 +89,53 @@ alarm_templates = [
 		'comparison': ">=",
 		'threshold': 4.0,
 		'period': 300,
-		'evaluation_periods': 2,
+		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
 	},
     { 
-        'name': alarm_prefix + " - Latency Spike",  # Description
-        'description': "Latency Spike",
-        'namespace': 'AWS/ELB',
-        'metric': "Latency",
-        'statistic': "Average",
-        'comparison': '>=',
-        'threshold': 6.5,
-        'period': 60,
-        'evaluation_periods': 5,
-        'alarm_actions': [sns_topic],
-        'dimensions': alarm_dimensions
-    },
-    { 
-        'name': alarm_prefix + " - HTTP 4xx Spike",	# Description
-        'description': "HTTP 4xx Spike",
-        'namespace': 'AWS/ELB',
-        'metric': "HTTPCode_Backend_4XX",
-        'statistic': "Sum",
-        'comparison': '>=',
-        'threshold': 100,
-        'period': 300,
-        'evaluation_periods': 3,
-        'alarm_actions': [sns_topic],
-        'dimensions': alarm_dimensions
-    },
-    { 
-        'name': alarm_prefix + " - HTTP 5xx Spike", # Description
-        'description': "HTTP 5xx Spike",
-        'namespace': 'AWS/ELB',
-        'metric': "HTTPCode_Backend_5XX",
-        'statistic': "Sum",
-        'comparison': '>=',
-        'threshold': 500,
-        'period': 300,
-        'evaluation_periods': 2,
-        'alarm_actions': [sns_topic],
-        'dimensions': alarm_dimensions
-    },
-    { 
-        'name': alarm_prefix + " - Healthy Host Count", # Description
-        'description': "Healthy Host Count",
-        'namespace': 'AWS/ELB',
-        'metric': "HealthyHostCount",
-        'statistic': "Minimum",
-        'comparison': '<',
-        'threshold': 1,
-        'period': 60,
-        'evaluation_periods': 1,
-        'alarm_actions': [sns_topic],
-        'dimensions': alarm_dimensions
-    }
+		'name': alarm_prefix + " - Disk Reads over 40%",
+		'description' : "Disk Read triggers above 40% for 5 mins",
+		'namespace': "AWS/EC2",
+		'metric': "DiskReadBytes",
+		'statistic':"Average",
+		'comparison': ">=",
+		'threshold': 4.0,
+		'period': 300,
+		'evaluation_periods': 5,
+		'alarm_actions': [sns_topic],
+		'unit': "Percent",
+		'dimensions': alarm_dimensions
+	},
+	    { 
+		'name': alarm_prefix + " - Disk Writes over 40%",
+		'description' : "Disk Write triggers above 40% for 5 mins",
+		'namespace': "AWS/EC2",
+		'metric': "DiskWriteBytes",
+		'statistic':"Average",
+		'comparison': ">=",
+		'threshold': 4.0,
+		'period': 300,
+		'evaluation_periods': 2,
+		'alarm_actions': [sns_topic],
+		'unit': "Percent",
+		'dimensions': alarm_dimensions
+	},
+	    { 
+		'name': alarm_prefix + " - CPU Utilization spike over 40%",
+		'description' : "CPU usage triggers above 40% for 5 mins",
+		'namespace': "AWS/EC2",
+		'metric': "CPUUtilization",
+		'statistic':"Average",
+		'comparison': ">=",
+		'threshold': 4.0,
+		'period': 300,
+		'evaluation_periods': 2,
+		'alarm_actions': [sns_topic],
+		'unit': "Percent",
+		'dimensions': alarm_dimensions
+	}
 ]
 
 #------------------------------------------------------------------------------------------------
