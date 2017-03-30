@@ -54,7 +54,7 @@ if len(sys.argv) != 4:
 #------------------------------------------------------------------------------------------------
 # variables set from cmd line input arguments
 alarm_prefix   = sys.argv[1]			# CPU 	 <- 1st argument as alarm_prefix
-target_lb_name = sys.argv[2]			# i-xxxx <- 2nd argument as target_lb_name
+target_instance_id = sys.argv[2]			# i-xxxx <- 2nd argument as target_lb_name
 severity       = sys.argv[3].lower()	# warn   <- 3rd and lower letter method for "==" comparison 
 sns_topic      = None                  	# 'None' <- Reset original value
 
