@@ -24,16 +24,26 @@ import common
 # include common.py file for create, delete, and AWS connection
 
 
-# EC2 instance list using aws cli tool from BASH
+# EC2 instance list using  AWS cli tool from BASH
 #------------------------------------------------------------------------------------------------
 import subprocess
-subprocess.Popen("aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId]' --filters Name=instance-state-name,Values=running --output text > ~/instanceId.txt")
+getInstance = "aws ec2 describe-instances \
+                --query 'Reservations[*].Instances[*].[InstanceId]' \
+                --filters Name=instance-state-name,Values=running \
+                --output text > \
+                `pwd`/awsInstance.txt"
+
+output = subprocess.check_output(['bash','-c', getInstance])
 
 #------------------------------------------------------------------------------------------------
+# Prints out AWS Instance IDs
+print "Here are the list of EC2..."
+print "---------------------------"
 
+for i in open('awsInstance.txt', 'r').readlines():
+    print i
 
-for instance in instanceId.txt
-	print instance
+#------------------------------------------------------------------------------------------------
 	
 	
 	
@@ -82,7 +92,7 @@ alarm_templates = [
 		'threshold': 4.0,
 		'period': 300,
 		'evaluation_periods': 2,
-		'alarm_actions': [sns_topic]
+		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
 	},
@@ -155,7 +165,7 @@ def get_alarms(alarm_prefix):			# 'http' from command line input argument value
 	# if exiting_alarms > 0:   			<= missing?
 	
 	# Number of existing alarms found 
-	print "Found", len(existing_alarms), "existing alarms with prefix", alarm_prefix
+    print "Found", len(existing_alarms), "existing alarms with prefix", alarm_prefix
 		''' 
 		Found 4 existing alarms with prefix http_spike
 		'''

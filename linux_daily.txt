@@ -91,6 +91,7 @@ http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 Create a .vimrc file in home 
 $ vi .vimrc
 	:set num
+	#set nonumber					<= disable number
 	:set tabstop=4					<= most of useful
 	:set autoindent
 	---------------------------------------------------------------------------------------------------
