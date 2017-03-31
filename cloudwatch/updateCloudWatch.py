@@ -52,6 +52,17 @@ else:
 alarm_dimensions = {
     'LoadBalancerName': target_lb_name
 }
+'''
+	MetricAlarm
+    Statistics = ['Minimum', 'Maximum', 'Sum', 'Average', 'SampleCount']
+    Units = ['Seconds', 'Microseconds', 'Milliseconds', 'Bytes', 'Kilobytes',
+             'Megabytes', 'Gigabytes', 'Terabytes', 'Bits', 'Kilobits',
+             'Megabits', 'Gigabits', 'Terabits', 'Percent', 'Count',
+             'Bytes/Second', 'Kilobytes/Second', 'Megabytes/Second',
+             'Gigabytes/Second', 'Terabytes/Second', 'Bits/Second',
+             'Kilobits/Second', 'Megabits/Second', 'Gigabits/Second',
+             'Terabits/Second', 'Count/Second', None]
+'''
 
 # Alarm templates LIST[Dictionaries {key:value}]   
 alarm_templates = [

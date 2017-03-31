@@ -15,7 +15,7 @@ MONOCLE_WARNING_TOPIC='arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning'
 
 #------------------------------------------------------------------------------------------------
 import os, sys, boto
-# /python3x/Lib/site-packages/boto
+# /python2x/Lib/site-packages/boto
 # 'sys' module provides Python interpreter's constants, functions and methods
 
 from boto.ec2.cloudwatch 		import CloudWatchConnection
@@ -98,7 +98,7 @@ alarm_templates = [
 	},
     { 
 		'name': alarm_prefix + " - Disk Reads Bytes spike over 50MB",
-		'description' : "Disk Reads Byte triggers above 40% for 5 mins",
+		'description' : "Disk Reads Byte triggers above 50MB for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskReadBytes",
 		'statistic':"Average",
@@ -112,7 +112,7 @@ alarm_templates = [
 	},
 	    { 
 		'name': alarm_prefix + " - Disk Reads Ops spike over 50MB",
-		'description' : "Disk Reads Ops above 40% for 5 mins",
+		'description' : "Disk Reads Ops above 50MB for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskReadOps",
 		'statistic':"Average",
@@ -125,13 +125,13 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 	    { 
-		'name': alarm_prefix + " - Disk Writes Byptes over 40%",
-		'description' : "Disk Writes Byptes triggers above 40% for 5 mins",
+		'name': alarm_prefix + " - Disk Writes Byptes over 50Mb",
+		'description' : "Disk Writes Byptes triggers above 50MB for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskWriteBytes",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 4.0,
+		'threshold': 50000000,
 		'period': 300,
 		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
@@ -139,13 +139,13 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 	    { 
-		'name': alarm_prefix + " - Disk Writes Ops spike over 40%",
-		'description' : "Disk Writes Ops triggers above 40% for 5 mins",
+		'name': alarm_prefix + " - Disk Writes Ops spike over 50MB",
+		'description' : "Disk Writes Ops triggers above 50MB for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskWriteOps",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 50000000
+		'threshold': 5000000
 		'period': 300,
 		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
@@ -153,13 +153,13 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 		{ 
-		'name': alarm_prefix + " - Network In spikes over 40%",
-		'description' : "Network In triggers above 40% for 5 mins",
+		'name': alarm_prefix + " - Network In spikes over 50MB",
+		'description' : "Network In triggers above 50MB for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "NetworkIn",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 10000000,
+		'threshold': 5000000,
 		'period': 300,
 		'evaluation_periods': 5
 		'alarm_actions': [sns_topic],
@@ -167,13 +167,13 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 		{ 
-		'name': alarm_prefix + " - Network Out spikes over 40%",
-		'description' : "Network Out triggers above 40% for 5 mins",
+		'name': alarm_prefix + " - Network Out spikes over 50MB",
+		'description' : "Network Out triggers above 50MB for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "NetworkOut",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 10000000,
+		'threshold': 5000000,
 		'period': 300,
 		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
@@ -189,7 +189,7 @@ alarm_templates = [
 def get_alarms(alarm_prefix):			# 'http' from command line input argument value
     existing_alarms = cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix)
 																	# None to 'http'
-    # /Python34/Lib/site-packages/boto/ec2/cloudwatch/__init__
+    # /Python27/Lib/site-packages/boto/ec2/cloudwatch/__init__
 	# def describe_alarms(self, action_prefix=None, alarm_name_prefix=None,
     #	                  alarm_names=None, max_records=None, state_value=None,
     #                     next_token=None):
