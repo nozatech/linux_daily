@@ -90,7 +90,7 @@ alarm_templates = [
 		'comparison': ">=",
 		'threshold': 40,
 		'period': 300,
-		'evaluation_periods': 5,
+		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
@@ -104,7 +104,7 @@ alarm_templates = [
 		'comparison': ">=",
 		'threshold': 50000000,
 		'period': 300,
-		'evaluation_periods': 5,
+		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
@@ -118,7 +118,7 @@ alarm_templates = [
 		'comparison': ">=",
 		'threshold': 50000000,
 		'period': 300,
-		'evaluation_periods': 5,
+		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
@@ -132,7 +132,7 @@ alarm_templates = [
 		'comparison': ">=",
 		'threshold': 50000000,
 		'period': 300,
-		'evaluation_periods': 5,
+		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
@@ -144,9 +144,9 @@ alarm_templates = [
 		'metric': "DiskWriteOps",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 5000000,
+		'threshold': 50000000,
 		'period': 300,
-		'evaluation_periods': 5,
+		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
@@ -158,9 +158,9 @@ alarm_templates = [
 		'metric': "NetworkIn",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 5000000,
+		'threshold': 50000000,
 		'period': 300,
-		'evaluation_periods': 5,
+		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
@@ -172,9 +172,9 @@ alarm_templates = [
 		'metric': "NetworkOut",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 5000000,
+		'threshold': 50000000,
 		'period': 300,
-		'evaluation_periods': 5,
+		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
@@ -187,7 +187,7 @@ alarm_templates = [
 # Check existing alarms 
 def get_alarms(alarm_prefix):			# 'ALARM_PREFIX' from command line input argument value
     existing_alarms = cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix)
-																	# None to 'ALARM_PREFIX'
+	# None to 'ALARM_PREFIX'
     # /Python27/Lib/site-packages/boto/ec2/cloudwatch/__init__
 	# def describe_alarms(self, action_prefix=None, alarm_name_prefix=None,
     #	                  alarm_names=None, max_records=None, state_value=None,
@@ -197,10 +197,10 @@ def get_alarms(alarm_prefix):			# 'ALARM_PREFIX' from command line input argumen
 	
 	# Number of existing alarms found 
     print "Found", len(existing_alarms), "existing alarms with prefix", alarm_prefix
-    ''' 
+    '''
 	Found 7 existing alarms with ALARM_PREFIX
     '''
-	# List of alarms and prints out
+    # List of alarms and prints out
     for alarm in cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix):
         print "\t", alarm.name, ":", alarm.dimensions, alarm.alarm_actions
         '''
@@ -212,7 +212,7 @@ def get_alarms(alarm_prefix):			# 'ALARM_PREFIX' from command line input argumen
 #------------------------------------------------------------------------------------------------
 # connect to AWS 	
 cloudwatch = common.init_cloudwatch()
-	# invoke from common.py's 'init_cloudwatch()' function
+    # invoke from common.py's 'init_cloudwatch()' function
 	# def init_cloudwatch():
 	#	access_key, secret_key = get_keys_from_env()
 	#	return boto.ec2.cloudwatch.connect_to_region("us-west-2", aws_access_key_id=access_key, aws_secret_access_key=secret_key)
