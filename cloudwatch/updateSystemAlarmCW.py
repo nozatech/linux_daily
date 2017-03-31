@@ -89,7 +89,7 @@ alarm_templates = [
 		'metric': "CPUUtilization",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 4.0,
+		'threshold': 40,
 		'period': 300,
 		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
@@ -97,13 +97,13 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
     { 
-		'name': alarm_prefix + " - Disk Reads Byptes spike over 40%",
-		'description' : "Disk Reads Bypte triggers above 40% for 5 mins",
+		'name': alarm_prefix + " - Disk Reads Bytes spike over 50MB",
+		'description' : "Disk Reads Byte triggers above 40% for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskReadBytes",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 4.0,
+		'threshold': 50000000
 		'period': 300,
 		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
@@ -111,13 +111,13 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 	    { 
-		'name': alarm_prefix + " - Disk Reads Ops spike over 40%",
+		'name': alarm_prefix + " - Disk Reads Ops spike over 50MB",
 		'description' : "Disk Reads Ops above 40% for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskReadOps",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 4.0,
+		'threshold': 50000000
 		'period': 300,
 		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
@@ -133,7 +133,7 @@ alarm_templates = [
 		'comparison': ">=",
 		'threshold': 4.0,
 		'period': 300,
-		'evaluation_periods': 2,
+		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
@@ -145,9 +145,9 @@ alarm_templates = [
 		'metric': "DiskWriteOps",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 4.0,
+		'threshold': 50000000
 		'period': 300,
-		'evaluation_periods': 2,
+		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
@@ -159,9 +159,9 @@ alarm_templates = [
 		'metric': "NetworkIn",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 4.0,
+		'threshold': 10000000,
 		'period': 300,
-		'evaluation_periods': 2,
+		'evaluation_periods': 5
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
@@ -173,9 +173,9 @@ alarm_templates = [
 		'metric': "NetworkOut",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 20000000
+		'threshold': 10000000,
 		'period': 300,
-		'evaluation_periods': 5
+		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
@@ -268,38 +268,20 @@ print "Checking alarm state after creation..."
 # Check existing alarms same as 1st time checking existing alarm
 get_alarms(alarm_prefix)
 
-#################################################################################################################
+
 """
 Found 4 existing alarms with prefix http_spike
 
-        http_spike - HTTP 4xx Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
-        http_spike - HTTP 5xx Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
-        http_spike - Healthy Host Count : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
-        http_spike - Latency Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
 		
 Found 4 existing alarms with prefix http_spike
 
-        http_spike - HTTP 4xx Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
-        http_spike - HTTP 5xx Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
-        http_spike - Healthy Host Count : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
-        http_spike - Latency Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
-		
 Clearing existing alarms...
 
 Creating new alarms...
 
-        MetricAlarm:http_spike - Latency Spike[Latency(Average) GreaterThanOrEqualToThreshold 6.5]
-        MetricAlarm:http_spike - HTTP 4xx Spike[HTTPCode_Backend_4XX(Sum) GreaterThanOrEqualToThreshold 100.0]
-        MetricAlarm:http_spike - HTTP 5xx Spike[HTTPCode_Backend_5XX(Sum) GreaterThanOrEqualToThreshold 500.0]
-        MetricAlarm:http_spike - Healthy Host Count[HealthyHostCount(Minimum) LessThanThreshold 1.0]
 		
 Checking alarm state after creation...
 
 Found 4 existing alarms with prefix http_spike
-
-        http_spike - HTTP 4xx Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
-        http_spike - HTTP 5xx Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
-        http_spike - Healthy Host Count : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
-        http_spike - Latency Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
 
 """

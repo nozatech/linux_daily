@@ -17,7 +17,7 @@ import os, sys, boto
 # /python3x/Lib/site-packages/boto
 # 'sys' module provides Python interpreter's constants, functions and methods
 
-from boto.ec2.cloudwatch 		import CloudWatchConn ection
+from boto.ec2.cloudwatch 		import CloudWatchConnection
 from boto.ec2.cloudwatch.alarm 	import MetricAlarm
 #from /python3x/Lib/site-packages/boto/ec2/cloudwatch/alarm.py  import 'MetricAlarm' function
 
@@ -56,7 +56,7 @@ alarm_dimensions = {
 # Alarm templates LIST[Dictionaries {key:value}]   
 alarm_templates = [
     { 
-        'name': alarm_prefix + " - Latency Spike",  # Description
+        'name': alarm_prefix + " - Latency Spike",  # http + -Latency Spike
         'description': "Latency Spike",
         'namespace': 'AWS/ELB',
         'metric': "Latency",
