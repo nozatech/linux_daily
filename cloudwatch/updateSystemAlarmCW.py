@@ -106,7 +106,7 @@ alarm_templates = [
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
-		'unit': "Percent",
+		'unit': "Bytes",
 		'dimensions': alarm_dimensions
 	},
 	    { 
@@ -120,7 +120,7 @@ alarm_templates = [
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
-		'unit': "Percent",
+		'unit': "Bytes",
 		'dimensions': alarm_dimensions
 	},
 	    { 
@@ -134,7 +134,7 @@ alarm_templates = [
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
-		'unit': "Percent",
+		'unit': "Bytes",
 		'dimensions': alarm_dimensions
 	},
 	    { 
@@ -148,7 +148,7 @@ alarm_templates = [
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
-		'unit': "Percent",
+		'unit': "Ops",
 		'dimensions': alarm_dimensions
 	},
 		{ 
@@ -176,7 +176,21 @@ alarm_templates = [
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
-		'unit': "Percent",
+		'unit': "Ops",
+		'dimensions': alarm_dimensions
+	},
+	    {
+		'name': alarm_prefix + " - Sytem Check Failed",
+		'description': "Sytem Check Failed",
+		'namespace': "AWS/EC2",
+		'metric': "SystemCheckFailed",
+		'statistic': "Average",
+		'comparison': ">=",
+		'threshold': 0,
+		'period': 60,
+		'evaluation_periods': 1,
+		'alarm_actions': [sns_topic],
+		'unit': "Count",
 		'dimensions': alarm_dimensions
 	}
 ]
@@ -271,9 +285,9 @@ get_alarms(alarm_prefix)
 
 
 """
-Found 7 existing alarms with ALARM_PREFIX
+Found 8 existing alarms with ALARM_PREFIX
 		
-Found 7 existing alarms with ALARM_PREFIX
+Found 8 existing alarms with ALARM_PREFIX
 
 Clearing existing alarms...
 
@@ -281,6 +295,6 @@ Creating new alarms...
 
 Checking alarm state after creation...
 
-Found 7 existing alarms with ALARM_PREFIX
+Found 8 existing alarms with ALARM_PREFIX
 
 """
