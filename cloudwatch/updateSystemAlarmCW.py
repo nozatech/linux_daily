@@ -80,7 +80,6 @@ alarm_dimensions = {
 }
 
 # Alarm templates LIST [{key:value}]
-# CPU over 60 alarm and notification
 alarm_templates = [
     { 
 		'name': alarm_prefix + " - CPU Utilization spike over 40%",
@@ -103,7 +102,7 @@ alarm_templates = [
 		'metric': "DiskReadBytes",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 50000000
+		'threshold': 50000000,
 		'period': 300,
 		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
@@ -117,7 +116,7 @@ alarm_templates = [
 		'metric': "DiskReadOps",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 50000000
+		'threshold': 50000000,
 		'period': 300,
 		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
@@ -145,7 +144,7 @@ alarm_templates = [
 		'metric': "DiskWriteOps",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 5000000
+		'threshold': 5000000,
 		'period': 300,
 		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
@@ -161,7 +160,7 @@ alarm_templates = [
 		'comparison': ">=",
 		'threshold': 5000000,
 		'period': 300,
-		'evaluation_periods': 5
+		'evaluation_periods': 5,
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions
@@ -186,9 +185,9 @@ alarm_templates = [
 # *** Real Program Starts here ***
 #------------------------------------------------------------------------------------------------
 # Check existing alarms 
-def get_alarms(alarm_prefix):			# 'http' from command line input argument value
+def get_alarms(alarm_prefix):			# 'ALARM_PREFIX' from command line input argument value
     existing_alarms = cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix)
-																	# None to 'http'
+																	# None to 'ALARM_PREFIX'
     # /Python27/Lib/site-packages/boto/ec2/cloudwatch/__init__
 	# def describe_alarms(self, action_prefix=None, alarm_name_prefix=None,
     #	                  alarm_names=None, max_records=None, state_value=None,
@@ -199,13 +198,14 @@ def get_alarms(alarm_prefix):			# 'http' from command line input argument value
 	# Number of existing alarms found 
     print "Found", len(existing_alarms), "existing alarms with prefix", alarm_prefix
     ''' 
-	Found 4 existing alarms with prefix http_spike
+	Found 7 existing alarms with ALARM_PREFIX
     '''
 	# List of alarms and prints out
     for alarm in cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix):
         print "\t", alarm.name, ":", alarm.dimensions, alarm.alarm_actions
         '''
-		http_spike - HTTP 4xx Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
+		Live:i-0bd698cc040d9a2d9 - CPU Utilization spike over 40% : {u'InstanceName': [u'i-0bd698cc040d9a2d9']} 
+									[u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Urgent']
 		...  #'alarm_actions': [sns_topic]
         '''
     return existing_alarms
@@ -221,13 +221,14 @@ cloudwatch = common.init_cloudwatch()
 existing_alarms = get_alarms(alarm_prefix)
 print "Found", len(existing_alarms), "existing alarms with prefix", alarm_prefix
 '''
-Found 4 existing alarms with prefix http_spike
+Found 7 existing alarms with ALARM_PREFIX
 '''
 #------------------------------------------------------------------------------------------------
 for alarm in cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix):
     print "\t", alarm.name, ":", alarm.dimensions, alarm.alarm_actions
     '''
-	http_spike - HTTP 4xx Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
+	Live:i-0bd698cc040d9a2d9 - CPU Utilization spike over 40% : {u'InstanceName': [u'i-0bd698cc040d9a2d9']} 
+								[u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Urgent']
     '''
 #------------------------------------------------------------------------------------------------
 # Declare to deleting existing alarms
@@ -243,7 +244,7 @@ if len(existing_alarms) > 0:
 # Declare to creating new alarms    
 print "Now creating new alarms..."
 
-# Creating new alarms from 4 templates
+# Creating new alarms from 7 templates
 for template in alarm_templates:
     alarm = MetricAlarm(
         name=template['name'],
@@ -270,18 +271,16 @@ get_alarms(alarm_prefix)
 
 
 """
-Found 4 existing alarms with prefix http_spike
-
+Found 7 existing alarms with ALARM_PREFIX
 		
-Found 4 existing alarms with prefix http_spike
+Found 7 existing alarms with ALARM_PREFIX
 
 Clearing existing alarms...
 
 Creating new alarms...
 
-		
 Checking alarm state after creation...
 
-Found 4 existing alarms with prefix http_spike
+Found 7 existing alarms with ALARM_PREFIX
 
 """
