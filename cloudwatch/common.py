@@ -42,7 +42,7 @@ def get_keys_from_env():
     
     if access_key == None or secret_key == None:
         print "FAILED! You must have MONOCLE_AWS_ACCESS_KEY and MONOCLE_AWS_SECRET_KEY in OS environment."
-		print "\t"   "e.g. export access_key=x and export secret_key=x"
+        print "\t"   "e.g. export access_key=x and export secret_key=x"
         sys.exit(1)
         
     return (access_key, secret_key)

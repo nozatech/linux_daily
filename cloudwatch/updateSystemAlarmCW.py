@@ -48,9 +48,9 @@ for i in open('awsInstance.txt', 'r').readlines():
 # Usage
 if len(sys.argv) != 4:
     print "USAGE: updateSystemAlarmCW.py        ALARM_PREFIX   			INSTANCE_ID    SEVERITY(urgent|warn)"
-	print "e.g. python updateCloudWatch.py 	Dev:i-0bd698cc040d9a2d9    i-0bd698cc040d9a2d9   warn"
+    print "e.g. python updateCloudWatch.py 	Dev:i-0bd698cc040d9a2d9    i-0bd698cc040d9a2d9   warn"
     print "e.g. python updateCloudWatch.py 	Sttag:i-0bd698cc040d9a2d9  i-0bd698cc040d9a2d9   warn"
-	print "e.g. python updateCloudWatch.py 	Live:i-0bd698cc040d9a2d9   i-0bd698cc040d9a2d9   urgent"
+    print "e.g. python updateCloudWatch.py 	Live:i-0bd698cc040d9a2d9   i-0bd698cc040d9a2d9   urgent"
     sys.exit(1)			#return error code 1
 
 #------------------------------------------------------------------------------------------------
