@@ -28,8 +28,7 @@ def easy_alarm(instance_id,
                     about.  Valid values are:
                     DiskReadBytes|DiskWriteBytes|
                     DiskReadOps|DiskWriteOps|
-                    NetworkIn|NetworkOut|
-                    CPUUtilization
+                    NetworkIn|NetworkOut|CPUUtilization
 
     comparison      The comparison operator.  Valid values are:
                     >= | > | < | <=
@@ -56,6 +55,7 @@ def easy_alarm(instance_id,
     # Make sure the instance in question exists and
     # is being monitored with CloudWatch.
     rs = ec2.get_all_instances(filters={'instance-id', instance_id})
+	
     if len(rs) != 1:
         raise ValueError('Unable to find instance: %s' % instance_id)
 
@@ -65,6 +65,7 @@ def easy_alarm(instance_id,
     # Create the SNS Topic
     topic_name = 'CWAlarm-%s' % alarm_name
     print 'Creating SNS topic: %s' % topic_name
+	
     response = sns.create_topic(topic_name)
     topic_arn = response['CreateTopicResponse']['CreateTopicResult']['TopicArn']
     print 'Topic ARN: %s' % topic_arn

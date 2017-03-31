@@ -47,14 +47,16 @@ for i in open('awsInstance.txt', 'r').readlines():
 	
 # Usage
 if len(sys.argv) != 4:
-    print "USAGE: updateSystemAlarmCW.py          	ALARM_PREFIX   INSTANCE_ID    SEVERITY(urgent|warn)"
-    print "\t"	"e.g. python   updateCloudWatch.py 	CPUUtilization i-0bd698cc040d9a2d9   		warn"
+    print "USAGE: updateSystemAlarmCW.py        ALARM_PREFIX   			INSTANCE_ID    SEVERITY(urgent|warn)"
+	print "e.g. python updateCloudWatch.py 	Dev:i-0bd698cc040d9a2d9    i-0bd698cc040d9a2d9   warn"
+    print "e.g. python updateCloudWatch.py 	Sttag:i-0bd698cc040d9a2d9  i-0bd698cc040d9a2d9   warn"
+	print "e.g. python updateCloudWatch.py 	Live:i-0bd698cc040d9a2d9   i-0bd698cc040d9a2d9   urgent"
     sys.exit(1)			#return error code 1
 
 #------------------------------------------------------------------------------------------------
 # variables set from cmd line input arguments
 alarm_prefix   = sys.argv[1]			# CPU 	 <- 1st argument as alarm_prefix
-target_instance_id = sys.argv[2]			# i-xxxx <- 2nd argument as target_lb_name
+target_instance_id = sys.argv[2]		# i-xxxx <- 2nd argument as target_lb_name
 severity       = sys.argv[3].lower()	# warn   <- 3rd and lower letter method for "==" comparison 
 sns_topic      = None                  	# 'None' <- Reset original value
 
@@ -65,7 +67,7 @@ if severity == 'urgent':
 elif severity == 'warn':
     sns_topic = MONOCLE_WARNING_TOPIC   #'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning'
 else:
-    print "FATAL! invalid entry value(urgent|wan)", severity   # 'urgent|warn' only
+    print "FATAL! invalid entry value(urgent|warn)", severity   # 'urgent|warn' only
     sys.exit(2)		
 	# System exit 2 as error code
 	# python updateCloudWatch.py http elb-01 test
@@ -74,7 +76,7 @@ else:
 #------------------------------------------------------------------------------------------------	
 # Assigning a new alarm metric using Dictionary{key:value}
 alarm_dimensions = {
-    'InstanceName': target_instace_id
+    'InstanceName': target_instance_id
 }
 
 # Alarm templates LIST [{key:value}]
@@ -95,8 +97,8 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
     { 
-		'name': alarm_prefix + " - Disk Reads over 40%",
-		'description' : "Disk Read triggers above 40% for 5 mins",
+		'name': alarm_prefix + " - Disk Reads Byptes spike over 40%",
+		'description' : "Disk Reads Bypte triggers above 40% for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskReadBytes",
 		'statistic':"Average",
@@ -109,8 +111,22 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 	    { 
-		'name': alarm_prefix + " - Disk Writes over 40%",
-		'description' : "Disk Write triggers above 40% for 5 mins",
+		'name': alarm_prefix + " - Disk Reads Ops spike over 40%",
+		'description' : "Disk Reads Ops above 40% for 5 mins",
+		'namespace': "AWS/EC2",
+		'metric': "DiskReadOps",
+		'statistic':"Average",
+		'comparison': ">=",
+		'threshold': 4.0,
+		'period': 300,
+		'evaluation_periods': 5,
+		'alarm_actions': [sns_topic],
+		'unit': "Percent",
+		'dimensions': alarm_dimensions
+	},
+	    { 
+		'name': alarm_prefix + " - Disk Writes Byptes over 40%",
+		'description' : "Disk Writes Byptes triggers above 40% for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskWriteBytes",
 		'statistic':"Average",
@@ -123,15 +139,43 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 	    { 
-		'name': alarm_prefix + " - CPU Utilization spike over 40%",
-		'description' : "CPU usage triggers above 40% for 5 mins",
+		'name': alarm_prefix + " - Disk Writes Ops spike over 40%",
+		'description' : "Disk Writes Ops triggers above 40% for 5 mins",
 		'namespace': "AWS/EC2",
-		'metric': "CPUUtilization",
+		'metric': "DiskWriteOps",
 		'statistic':"Average",
 		'comparison': ">=",
 		'threshold': 4.0,
 		'period': 300,
 		'evaluation_periods': 2,
+		'alarm_actions': [sns_topic],
+		'unit': "Percent",
+		'dimensions': alarm_dimensions
+	},
+		{ 
+		'name': alarm_prefix + " - Network In spikes over 40%",
+		'description' : "Network In triggers above 40% for 5 mins",
+		'namespace': "AWS/EC2",
+		'metric': "NetworkIn",
+		'statistic':"Average",
+		'comparison': ">=",
+		'threshold': 4.0,
+		'period': 300,
+		'evaluation_periods': 2,
+		'alarm_actions': [sns_topic],
+		'unit': "Percent",
+		'dimensions': alarm_dimensions
+	},
+		{ 
+		'name': alarm_prefix + " - Network Out spikes over 40%",
+		'description' : "Network Out triggers above 40% for 5 mins",
+		'namespace': "AWS/EC2",
+		'metric': "NetworkOut",
+		'statistic':"Average",
+		'comparison': ">=",
+		'threshold': 20000000
+		'period': 300,
+		'evaluation_periods': 5
 		'alarm_actions': [sns_topic],
 		'unit': "Percent",
 		'dimensions': alarm_dimensions

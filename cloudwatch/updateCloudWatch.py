@@ -27,7 +27,7 @@ import common
 # Usage
 if len(sys.argv) != 4:
     print "USAGE: updateCloudWatch.py    ALARM_PREFIX    LB_NAME    SEVERITY(urgent|warn)"
-	print "\t"	"e.g. python   updateCloudWatch.py 	http  elb-01    warn"
+	print "e.g. python updateCloudWatch.py 	http          elb-01    warn"
     sys.exit(1)			#return 1 as error code
 #------------------------------------------------------------------------------------------------
 # variables set from cmd line input arguments
