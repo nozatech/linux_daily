@@ -29,7 +29,7 @@ BNEA Jenkins Signing Server
 
 ### PROXY to HockeyApp using VM
 •	Jenkins-proxy (CentOS)
-•	10.10.100.130 mapped to 65.87.26.116	
+•	10.10.100.130 mapped to 65.87.26.116
 
 
 ### Install Homebrew
@@ -54,8 +54,6 @@ http://www.jenv.be/
 $ brew install jenkins
 
 
-### MAC Hostname change
-sudo scutil --set HostName [NewHostNameHere]
 
 
 

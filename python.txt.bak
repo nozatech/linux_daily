@@ -1,4 +1,20 @@
 ### Python ###
+
+### IDE
+# PyCharm
+Ctrl+Y 		<= Remove a Line
+Shift+Enter	<= add a line
+
+
+
+
+
+
+
+
+
+
+
 //depot/mobile/OO/buildScripts/trafficSplit/
 
 
@@ -20,6 +36,27 @@ w <=where
 u <=up
 d <=down
 locals()
+
+3. Reading file
+http://www.afterhoursprogramming.com/tutorial/Python/Reading-Files/
+
+
+f = open("test.txt","r") #opens file with name of "test.txt"
+
+myList = []
+
+for line in f:
+
+    myList.append(line)
+
+print(myList)
+
+
+4. Run BASH cmd
+http://stackoverflow.com/questions/26236126/how-to-run-bash-command-inside-python-script
+import subprocess
+subprocess.Popen("aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId]' --filters Name=instance-state-name,Values=running --output text > ~/instanceId.txt")
+
 
 ###	Python2 vs 3 differences ###
 http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html

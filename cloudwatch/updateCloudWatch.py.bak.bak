@@ -97,14 +97,14 @@ alarm_templates = [
     },
     { 
         'name': alarm_prefix + " - Healthy Host Count", # Description
-        'description': "Healthy Host Count",			#
+        'description': "Healthy Host Count",
         'namespace': 'AWS/ELB',
-        'metric': "HealthyHostCount",					# How many instances service
-        'statistic': "Minimum",							#
-        'comparison': '<',								# 
-        'threshold': 1,									# less than 1, when No server at all
-        'period': 60,									# 60 sec
-        'evaluation_periods': 1,						# 1x60 =1 min
+        'metric': "HealthyHostCount",
+        'statistic': "Minimum",
+        'comparison': '<',
+        'threshold': 1,
+        'period': 60,
+        'evaluation_periods': 1,
         'alarm_actions': [sns_topic],
         'dimensions': alarm_dimensions
     }

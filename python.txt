@@ -1,4 +1,22 @@
 ### Python ###
+
+### IDE
+# PyCharm
+Ctrl+Y 		<= Remove a Line
+Shift+Enter	<= add a line
+
+
+
+
+
+
+
+
+
+
+
+
+
 //depot/mobile/OO/buildScripts/trafficSplit/
 
 
