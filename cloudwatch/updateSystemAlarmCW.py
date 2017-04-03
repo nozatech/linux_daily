@@ -86,13 +86,13 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
     { 
-		'name': alarm_prefix + " - Disk Reads Bytes spike over 50MB",
-		'description' : "Disk Reads Byte triggers above 50MB for 5 mins",
+		'name': alarm_prefix + " - Disk Reads Bytes spike over 15MB",
+		'description' : "Disk Reads Byte triggers above 15MB for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskReadBytes",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 50000000,
+		'threshold': 15000000,
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
@@ -100,13 +100,13 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 	    { 
-		'name': alarm_prefix + " - Disk Reads Ops spike over 50MB",
-		'description' : "Disk Reads Ops above 50MB for 5 mins",
+		'name': alarm_prefix + " - Disk Reads Ops spike over 2000 IOPS",
+		'description' : "Disk Reads Ops above 2000 for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskReadOps",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 50000000,
+		'threshold': 2000,
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
@@ -114,13 +114,13 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 	    { 
-		'name': alarm_prefix + " - Disk Writes Bytes over 50Mb",
-		'description' : "Disk Writes Byptes triggers above 50MB for 5 mins",
+		'name': alarm_prefix + " - Disk Writes Bytes over 15Mb",
+		'description' : "Disk Writes Byptes triggers above 15MB for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskWriteBytes",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 50000000,
+		'threshold': 15000000,
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
@@ -128,13 +128,13 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 	    { 
-		'name': alarm_prefix + " - Disk Writes Ops spike over 50MB",
-		'description' : "Disk Writes Ops triggers above 50MB for 5 mins",
+		'name': alarm_prefix + " - Disk Writes Ops spike over 2000 IOPS",
+		'description' : "Disk Writes Ops triggers above 2000 IOPS for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskWriteOps",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 50000000,
+		'threshold': 2000,
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
@@ -142,8 +142,8 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 		{ 
-		'name': alarm_prefix + " - Network In spikes over 50MB",
-		'description' : "Network In triggers above 50MB for 5 mins",
+		'name': alarm_prefix + " - Network In spikes over 15MB",
+		'description' : "Network In triggers above 15MB/ for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "NetworkIn",
 		'statistic':"Average",

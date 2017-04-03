@@ -27,7 +27,7 @@ import common
 # Usage
 if len(sys.argv) != 4:
     print "USAGE: updateCloudWatch.py    ALARM_PREFIX    LB_NAME    SEVERITY(urgent|warn)"
-	print "e.g. python updateCloudWatch.py 	http          elb-01    warn"
+    print "e.g. python updateCloudWatch.py 	http          elb-01    warn"
     sys.exit(1)			#return 1 as error code
 #------------------------------------------------------------------------------------------------
 # variables set from cmd line input arguments
@@ -44,7 +44,7 @@ elif severity == 'warn':
 else:
     print "FATAL! invalid entry value(urgent|wan)", severity   # 'urgent|warn' only
     sys.exit(2)		
-	# System exit 2 as error code
+    # System exit 2 as error code
 	# python updateCloudWatch.py http elb-01 test
 	# echo $?  outputs  2   <- error code
 #------------------------------------------------------------------------------------------------	
@@ -132,10 +132,10 @@ def get_alarms(alarm_prefix):			# 'http' from command line input argument value
 	# if exiting_alarms > 0:   			<= missing?
 	
 	# Number of existing alarms found 
-	print "Found", len(existing_alarms), "existing alarms with prefix", alarm_prefix
-		''' 
-		Found 4 existing alarms with prefix http_spike
-		'''
+    print "Found", len(existing_alarms), "existing alarms with prefix", alarm_prefix
+    '''
+    Found 4 existing alarms with prefix http_spike
+    '''
 	# List of alarms and prints out
     for alarm in cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix):
         print "\t", alarm.name, ":", alarm.dimensions, alarm.alarm_actions
@@ -161,9 +161,9 @@ Found 4 existing alarms with prefix http_spike
 #------------------------------------------------------------------------------------------------
 for alarm in cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix):
     print "\t", alarm.name, ":", alarm.dimensions, alarm.alarm_actions
-	'''
-	http_spike - HTTP 4xx Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
-	'''
+'''
+http_spike - HTTP 4xx Spike : {u'LoadBalancerName': [u'elb1']} [u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning']
+'''
 #------------------------------------------------------------------------------------------------
 # Declare to deleting existing alarms
 print "Deleting existing alarms..."
@@ -172,7 +172,7 @@ print "Deleting existing alarms..."
 if len(existing_alarms) > 0:
     cloudwatch.delete_alarms(existing_alarms)
 
-	print "Existing alarms have been removed!"
+    print "Existing alarms have been removed!"
 #------------------------------------------------------------------------------------------------
 	
 # Declare to creating new alarms    
