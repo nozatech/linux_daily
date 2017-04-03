@@ -5,6 +5,11 @@ Use HTTPS	https://github.com/nozatech/jenkins.git
 Use SSH     git@github.com:nozatech/jenkins.git
 
 
+$ git config credential.helper store
+$ git push http://example.com/repo.git
+Username: <type your username>
+Password: <type your password>
+$ git help credentials
 
 
 Clone from repository
@@ -185,9 +190,10 @@ http://stackoverflow.com/questions/1628088/reset-local-repository-branch-to-be-j
 	
 2. Updates were rejected because the remote contains work that you 
 http://stackoverflow.com/questions/18328800/github-updates-were-rejected-because-the-remote-contains-work-that-you-do-not-h
+http://stackoverflow.com/questions/16103810/force-my-local-master-to-be-origin-master
 
 	$ git push -f origin master
-	
+	$ git push -f origin master:master
 	
 3. error: Your local changes to the following files would be overwritten by merge:
 http://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me
