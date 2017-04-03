@@ -6,28 +6,21 @@
 # for SNS message VAR
 MONOCLE_URGENT_TOPIC='arn:aws:sns:us-west-2:688595016292:MONOCLE_Urgent'
 MONOCLE_WARNING_TOPIC='arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning'
-# arn : amazon resource name
-# aws : aws
-# sns : aws simple notification service
-# us-west-2 : region
-# 688595016292 : aws-mobiletools account id
-# MONOCLE_Warning : resource
 
-#------------------------------------------------------------------------------------------------
+
+# Import modules and libraries
 import os, sys, boto
-# /python2x/Lib/site-packages/boto
-# 'sys' module provides Python interpreter's constants, functions and methods
+
 
 from boto.ec2.cloudwatch 		import CloudWatchConnection
 from boto.ec2.cloudwatch.alarm 	import MetricAlarm
-# from /python2x/Lib/site-packages/boto/ec2/cloudwatch/alarm.py  import 'MetricAlarm' function
 
-import common				
 # include common.py file for create, delete, and AWS connection
+import common				
 
 
-# Creating EC2 instance list txt file using AWS cli tool run from BASH 
-#------------------------------------------------------------------------------------------------
+
+# Creating EC2 instance list txt file using AWS CLI tool run from BASH
 import subprocess
 getInstance = "aws ec2 describe-instances \
                 --query 'Reservations[*].Instances[*].[InstanceId]' \
@@ -36,14 +29,14 @@ getInstance = "aws ec2 describe-instances \
                 `pwd`/awsInstance.txt"
 output = subprocess.check_output(['bash','-c', getInstance])
 
-#------------------------------------------------------------------------------------------------
+
 # Prints out AWS Instance IDs
 print "Here are the list of EC2..."
 print "---------------------------"
 
 for i in open('awsInstance.txt', 'r').readlines():
     print i
-#------------------------------------------------------------------------------------------------
+
 	
 # Usage
 if len(sys.argv) != 4:
@@ -51,16 +44,16 @@ if len(sys.argv) != 4:
     print "e.g. python updateCloudWatch.py 	Dev:i-0bd698cc040d9a2d9    i-0bd698cc040d9a2d9   warn"
     print "e.g. python updateCloudWatch.py 	Sttag:i-0bd698cc040d9a2d9  i-0bd698cc040d9a2d9   warn"
     print "e.g. python updateCloudWatch.py 	Live:i-0bd698cc040d9a2d9   i-0bd698cc040d9a2d9   urgent"
-    sys.exit(1)			#return error code 1
+    sys.exit(1)			# error code 1
 
-#------------------------------------------------------------------------------------------------
+
 # variables set from cmd line input arguments
-alarm_prefix   = sys.argv[1]			# CPU 	 <- 1st argument as alarm_prefix
-target_instance_id = sys.argv[2]		# i-xxxx <- 2nd argument as target_lb_name
-severity       = sys.argv[3].lower()	# warn   <- 3rd and lower letter method for "==" comparison 
-sns_topic      = None                  	# 'None' <- Reset original value
+alarm_prefix   = sys.argv[1]			#  1st argument as alarm_prefix
+target_instance_id = sys.argv[2]		#  2nd argument as target_lb_name
+severity       = sys.argv[3].lower()	#  3rd and lower letter method for "==" comparison
+sns_topic      = None                  	#  Reset original value
 
-#------------------------------------------------------------------------------------------------
+
 # sns_topic VAR and message set
 if severity == 'urgent':
     sns_topic = MONOCLE_URGENT_TOPIC    #'arn:aws:sns:us-west-2:688595016292:MONOCLE_Urgent'
@@ -68,18 +61,15 @@ elif severity == 'warn':
     sns_topic = MONOCLE_WARNING_TOPIC   #'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning'
 else:
     print "FATAL! invalid entry value(urgent|warn)", severity   # 'urgent|warn' only
-    sys.exit(2)		
-	# System exit 2 as error code
-	# python updateCloudWatch.py http elb-01 test
-	# echo $?  outputs  2   <- error code
+    sys.exit(2)		# error code 2
+    # echo $?  outputs  2   <- error code
 
-#------------------------------------------------------------------------------------------------	
-# Assigning a new alarm metric using Dictionary{key:value}
+# Assigning a new alarm metric
 alarm_dimensions = {
     'InstanceName': target_instance_id
 }
 
-# Alarm templates LIST [{key:value}]
+# Alarm templates
 alarm_templates = [
     { 
 		'name': alarm_prefix + " - CPU Utilization spike over 40%",
@@ -120,11 +110,11 @@ alarm_templates = [
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
-		'unit': "Bytes",
+		'unit': "Count",
 		'dimensions': alarm_dimensions
 	},
 	    { 
-		'name': alarm_prefix + " - Disk Writes Byptes over 50Mb",
+		'name': alarm_prefix + " - Disk Writes Bytes over 50Mb",
 		'description' : "Disk Writes Byptes triggers above 50MB for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskWriteBytes",
@@ -148,7 +138,7 @@ alarm_templates = [
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
-		'unit': "Ops",
+		'unit': "Count",
 		'dimensions': alarm_dimensions
 	},
 		{ 
@@ -162,7 +152,7 @@ alarm_templates = [
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
-		'unit': "Percent",
+		'unit': "Bytes",
 		'dimensions': alarm_dimensions
 	},
 		{ 
@@ -176,7 +166,7 @@ alarm_templates = [
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
-		'unit': "Ops",
+		'unit': "Bytes",
 		'dimensions': alarm_dimensions
 	},
 	    {
@@ -201,51 +191,29 @@ alarm_templates = [
 # Check existing alarms 
 def get_alarms(alarm_prefix):			# 'ALARM_PREFIX' from command line input argument value
     existing_alarms = cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix)
-	# None to 'ALARM_PREFIX'
-    # /Python27/Lib/site-packages/boto/ec2/cloudwatch/__init__
-	# def describe_alarms(self, action_prefix=None, alarm_name_prefix=None,
-    #	                  alarm_names=None, max_records=None, state_value=None,
-    #                     next_token=None):
 
-	# if exiting_alarms > 0:   			<= missing?
+    # if exiting_alarms > 0:   			<= missing?
 	
 	# Number of existing alarms found 
     print "Found", len(existing_alarms), "existing alarms with prefix", alarm_prefix
-    '''
-	Found 7 existing alarms with ALARM_PREFIX
-    '''
+
     # List of alarms and prints out
     for alarm in cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix):
         print "\t", alarm.name, ":", alarm.dimensions, alarm.alarm_actions
-        '''
-		Live:i-0bd698cc040d9a2d9 - CPU Utilization spike over 40% : {u'InstanceName': [u'i-0bd698cc040d9a2d9']} 
-									[u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Urgent']
-		...  #'alarm_actions': [sns_topic]
-        '''
+
     return existing_alarms
-#------------------------------------------------------------------------------------------------
+
 # connect to AWS 	
 cloudwatch = common.init_cloudwatch()
-    # invoke from common.py's 'init_cloudwatch()' function
-	# def init_cloudwatch():
-	#	access_key, secret_key = get_keys_from_env()
-	#	return boto.ec2.cloudwatch.connect_to_region("us-west-2", aws_access_key_id=access_key, aws_secret_access_key=secret_key)
-#------------------------------------------------------------------------------------------------
+
 # Invoking def get_alarms() using Global var alarm_prefix	
 existing_alarms = get_alarms(alarm_prefix)
 print "Found", len(existing_alarms), "existing alarms with prefix", alarm_prefix
-'''
-Found 7 existing alarms with ALARM_PREFIX
-'''
-#------------------------------------------------------------------------------------------------
+
 for alarm in cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix):
     print "\t", alarm.name, ":", alarm.dimensions, alarm.alarm_actions
-    '''
-	Live:i-0bd698cc040d9a2d9 - CPU Utilization spike over 40% : {u'InstanceName': [u'i-0bd698cc040d9a2d9']} 
-								[u'arn:aws:sns:us-west-2:688595016292:MONOCLE_Urgent']
-    '''
-#------------------------------------------------------------------------------------------------
-# Declare to deleting existing alarms
+
+
 print "Deleting existing alarms..."
 
 # If there are more than 0, delete them all
