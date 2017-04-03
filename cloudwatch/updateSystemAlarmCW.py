@@ -11,7 +11,6 @@ MONOCLE_WARNING_TOPIC='arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning'
 # Import modules and libraries
 import os, sys, boto
 
-
 from boto.ec2.cloudwatch 		import CloudWatchConnection
 from boto.ec2.cloudwatch.alarm 	import MetricAlarm
 
@@ -44,14 +43,14 @@ if len(sys.argv) != 4:
     print "e.g. python updateCloudWatch.py 	Dev:i-0bd698cc040d9a2d9    i-0bd698cc040d9a2d9   warn"
     print "e.g. python updateCloudWatch.py 	Sttag:i-0bd698cc040d9a2d9  i-0bd698cc040d9a2d9   warn"
     print "e.g. python updateCloudWatch.py 	Live:i-0bd698cc040d9a2d9   i-0bd698cc040d9a2d9   urgent"
-    sys.exit(1)			# error code 1
+    sys.exit(1)
 
 
 # variables set from cmd line input arguments
-alarm_prefix   = sys.argv[1]			#  1st argument as alarm_prefix
-target_instance_id = sys.argv[2]		#  2nd argument as target_lb_name
-severity       = sys.argv[3].lower()	#  3rd and lower letter method for "==" comparison
-sns_topic      = None                  	#  Reset original value
+alarm_prefix = sys.argv[1]			#  1st argument as alarm_prefix
+target_instance_id = sys.argv[2]	#  2nd argument as target_lb_name
+severity = sys.argv[3].lower()		#  3rd argument and lower() for "==" comparison
+sns_topic = None                  	#  Reset original value
 
 
 # sns_topic VAR and message set
@@ -61,8 +60,8 @@ elif severity == 'warn':
     sns_topic = MONOCLE_WARNING_TOPIC   #'arn:aws:sns:us-west-2:688595016292:MONOCLE_Warning'
 else:
     print "FATAL! invalid entry value(urgent|warn)", severity   # 'urgent|warn' only
-    sys.exit(2)		# error code 2
-    # echo $?  outputs  2   <- error code
+    sys.exit(2)
+
 
 # Assigning a new alarm metric
 alarm_dimensions = {
@@ -72,8 +71,8 @@ alarm_dimensions = {
 # Alarm templates
 alarm_templates = [
     { 
-		'name': alarm_prefix + " - CPU Utilization spike over 40%",
-		'description' : "CPU usage triggers above 40% for 5 mins",
+		'name': alarm_prefix + " - CPU Utilization spikes over 40%",
+		'description' : "CPU usage spikes above 40% for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "CPUUtilization",
 		'statistic':"Average",
@@ -87,7 +86,7 @@ alarm_templates = [
 	},
     { 
 		'name': alarm_prefix + " - Disk Reads Bytes spike over 15MB",
-		'description' : "Disk Reads Byte triggers above 15MB for 5 mins",
+		'description' : "Disk Reads Byte spikess above 15MB for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskReadBytes",
 		'statistic':"Average",
@@ -100,8 +99,8 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 	    { 
-		'name': alarm_prefix + " - Disk Reads Ops spike over 2000 IOPS",
-		'description' : "Disk Reads Ops above 2000 for 5 mins",
+		'name': alarm_prefix + " - Disk Reads Ops spikes over 2000 IOPS",
+		'description' : "Disk Reads Ops spikes above 2000 for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskReadOps",
 		'statistic':"Average",
@@ -114,8 +113,8 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 	    { 
-		'name': alarm_prefix + " - Disk Writes Bytes over 15Mb",
-		'description' : "Disk Writes Byptes triggers above 15MB for 5 mins",
+		'name': alarm_prefix + " - Disk Writes Bytes spikes over 15Mb",
+		'description' : "Disk Writes Byptes spikes above 15MB for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskWriteBytes",
 		'statistic':"Average",
@@ -128,8 +127,8 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 	    { 
-		'name': alarm_prefix + " - Disk Writes Ops spike over 2000 IOPS",
-		'description' : "Disk Writes Ops triggers above 2000 IOPS for 5 mins",
+		'name': alarm_prefix + " - Disk Writes Ops spikes over 2000 IOPS",
+		'description' : "Disk Writes Ops spikes above 2000 IOPS for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "DiskWriteOps",
 		'statistic':"Average",
@@ -143,12 +142,12 @@ alarm_templates = [
 	},
 		{ 
 		'name': alarm_prefix + " - Network In spikes over 15MB",
-		'description' : "Network In triggers above 15MB/ for 5 mins",
+		'description' : "Network In triggers above 15MB/sec for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "NetworkIn",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 50000000,
+		'threshold': 15000000,
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
@@ -156,13 +155,13 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 		{ 
-		'name': alarm_prefix + " - Network Out spikes over 50MB",
-		'description' : "Network Out triggers above 50MB for 5 mins",
+		'name': alarm_prefix + " - Network Out spikes over 15MB",
+		'description' : "Network Out spikes above 15MB/sec for 5 mins",
 		'namespace': "AWS/EC2",
 		'metric': "NetworkOut",
 		'statistic':"Average",
 		'comparison': ">=",
-		'threshold': 50000000,
+		'threshold': 15000000,
 		'period': 300,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
@@ -170,13 +169,13 @@ alarm_templates = [
 		'dimensions': alarm_dimensions
 	},
 	    {
-		'name': alarm_prefix + " - Sytem Check Failed",
-		'description': "Sytem Check Failed",
+		'name': alarm_prefix + " - System Check Failed",
+		'description': "System Check Failed",
 		'namespace': "AWS/EC2",
 		'metric': "SystemCheckFailed",
 		'statistic': "Average",
 		'comparison': ">=",
-		'threshold': 0,
+		'threshold': 0,					# 0 passed, 1 failed
 		'period': 60,
 		'evaluation_periods': 1,
 		'alarm_actions': [sns_topic],
@@ -189,7 +188,7 @@ alarm_templates = [
 # *** Real Program Starts here ***
 #------------------------------------------------------------------------------------------------
 # Check existing alarms 
-def get_alarms(alarm_prefix):			# 'ALARM_PREFIX' from command line input argument value
+def get_alarms(alarm_prefix):
     existing_alarms = cloudwatch.describe_alarms(alarm_name_prefix=alarm_prefix)
 
     # if exiting_alarms > 0:   			<= missing?
