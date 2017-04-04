@@ -1752,6 +1752,9 @@ sudo yum -y install python35u-3.5.2
 sudo yum -y install python35u-pip
 sudo yum -y install python35u-devel
 
+### For MAC
+$ brew install python
+
 # Boto install
 $ pip install boto
 $ pip install --target c:/python27/Lib/site-packages boto

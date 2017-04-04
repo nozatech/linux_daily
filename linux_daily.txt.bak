@@ -91,6 +91,7 @@ http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 Create a .vimrc file in home 
 $ vi .vimrc
 	:set num
+	#set nonumber					<= disable number
 	:set tabstop=4					<= most of useful
 	:set autoindent
 	---------------------------------------------------------------------------------------------------
@@ -257,7 +258,8 @@ Undo
 	$ basename 					<= strip directory and suffix from filenames
 	$ basename $0
 	
-
+	# 5 mins count down from Shell
+	# for i in {1..300}; do echo -ne $i '\r'; sleep 1; done; echo
 		
 	
   #	Install SSH on Ubuntu(Debian)
@@ -304,6 +306,8 @@ $ pip install pssh
 	
 	
 ### Run command on remote shell
+http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ssh-on-many-servers
+
 	$ ssh apark@192.241.190.57 	  'sudo iptables -nL'		
 	$ ssh 192.241.190.57 	      'sudo iptables -nL'			<= w/o apark user id
 	$ ssh puppet sudo              iptables -nL					<= using .ssh/config  file
@@ -318,6 +322,11 @@ $ pip install pssh
 	$ for r in $(cat nrErrorServers.txt); do ssh -v $r 'sudo su && bash -s' < updateHosts.sh ; done
 
 	http://unix.stackexchange.com/questions/87405/how-can-i-execute-local-script-on-remote-machine-and-include-arguments
+	
+	$ for host in $(cat host_list.txt); do ssh "$host" "$command" > "output.$host"; done
+	Authenticating with name/password is really no good idea. 
+	You should set up a private key for this:
+	$ ssh-keygen && for host in $(cat hosts.txt); do ssh-copy-id $host; done
 	
 	
 	
@@ -342,7 +351,7 @@ $ pip install pssh
 	
 	
 	
-# Finding my gateway IP
+# Find my ip gateway IP
 	$ curl ifconfig.io	
 	
 	
@@ -853,9 +862,9 @@ B. Cron Jobs
 		30	        2     	   * 	              *              2(tuesday)
 		
 cron job search from command line
-* * * * * *
-| | | | | | 
-| | | | | +-- Year              (range: 1900-3000)         
+* * * * *  (*)<-Not used
+| | | | | 	| 
+| | | | | 	+-- Year            (range: 1900-3000)         
 | | | | +---- Day of the Week   (range: 1(Monday)-7)
 | | | +------ Month of the Year (range: 1-12)
 | | +-------- Day of the Month  (range: 1-31)
@@ -878,22 +887,58 @@ cron job search from command line
 	30 08 10 06 * 				   <= June 10th 8:30AM (every year)
 	00 09-18 * * 1-5 			   <= Everyday 9am to 6pm Mon ~ Fri
 	
+https://en.wikipedia.org/wiki/Cron
+Entry	Description	Equivalent to
+@yearly (or @annually)	Run once a year at midnight of 1 January		0 0 1 1 *
+@monthly	Run once a month at midnight of the first day of the month	0 0 1 * *
+@weekly		Run once a week at midnight on Sunday morning				0 0 * * 0
+@daily		Run once a day at midnight									0 0 * * *
+@hourly		Run once an hour at the beginning of the hour				0 * * * *
+@reboot		Run at startup	N/A	
+	
+
+### Jenkins Cron jobs	
+http://stackoverflow.com/questions/12472645/how-to-schedule-jobs-in-jenkins
+15  13  *    *    *    				<= run 15th minute of the 13th hour of the day
+min hr day month week
+
+0 0 * * * for a dozen daily jobs will cause a large spike at midnight.
+| |
+H H * * * would still execute each job once a day, but not all at the same time, 
+		  better using limited resources.
+		The "H" symbol can be thought of as a random value over a range, but it actually is 
+		a hash of the job name, not a random function, so that the value remains stable for 
+		any given project.
+H 8 * * *				<= run every 8AM
+H 8 * * 0				<= run on Sunday 8AM
+H/15 * * * * 			<= every fifteen minutes
+H(0-29)/10 * * * *		<= every ten minutes in the first half of every hour 
+							(three times, perhaps at :04, :14, :24)
+H 9-16/2 * * 1-5 		<= once every two hours every weekday 
+							(perhaps at 10:38 AM, 12:38 PM, 2:38 PM, 4:38 PM)
+H H 1,15 1-11 * 		<= once a day on the 1st and 15th of every month except December	
+	
 # Install crontab
 	$ crontab cron_jobs.txt
 	
 	###
 	$ cat cron_jobs.txt
-	* * * * *         /sbin/ping -c 1 192.168.0.1 > /dev/null
+	* * * * *         /sbin/ping -c 1 192.168.0.1  > /dev/null
+	* * * * *         /sbin/ping -c 1 192.168.0.1  2>&1 >> /tmp/log   <= save to log file
+	
 	0 0,12 1 */2 *    /cmd				    # every 12am & 12pm on 1st day of every 2nd month
 	30 08 10 06 * 	  /cmd					# June 10th 8:30AM
 	00 09-18 * * 1-5  /cmd			   		# Everyday 9am to 6pm Mon~Fri
+	5 * * * *								# every 5th min each hour
+	*/5 * * * *								# every 5 mins
+	
 	###
 	
 	$ crontab -l				<= current user's list of cron jobs 
 	$ crontab -e				<= edit cron job
 	
 	### Finding cron job list for specific user ### 	
-	$ crontab -u user_id -l					<= list jobs
+	$ crontab -u user_id -l					<= list jobs 
 	$ crontab -u user_id -e					<= edit
 	
 	### Finding cron job list for all users ###
@@ -1675,7 +1720,8 @@ Doesn't satisfy constraints because breaks the enterprise scheduler
 ### $ usermod --lock --expiredate 1970-01-01 <user>  ###
 	$ usermod -l -e 1970-01-01 user_ID
 	This is our winner. Remote login disabled, yet root can still su <user>, as can other users via 
-	sudo so the scheduler functions properly and authorized end users can become the target service account as needed.
+	sudo so the scheduler functions properly and authorized end users can become the target 
+	service account as needed.
 
 
 45. Wall					<= messaging to users within system 				
@@ -2105,13 +2151,15 @@ sudo systemctl start iptables
 	Writing a Simple Rule Set( https://wiki.centos.org/HowTos/Network/IPTables)
 
 
-IMPORTANT: At this point we are going to clear the default rule set. If you are connecting remotely 
-to a server via SSH for this tutorial then there is a very real possibility that you could lock yourself 
-out of your machine. You must set the default input policy to accept before flushing the current rules, 
-and then add a rule at the start to explicitly allow yourself access to prevent against locking yourself out.
-We will use an example based approach to examine the various iptables commands. In this first example, 
-we will create a very simple set of rules to set up a Stateful Packet Inspection (SPI) firewall that 
-will allow all outgoing connections but block all unwanted incoming connections:
+IMPORTANT: At this point we are going to clear the default rule set. If you are connecting 
+remotely to a server via SSH for this tutorial then there is a very real possibility that 
+you could lock yourself out of your machine. You must set the default input policy to 
+accept before flushing the current rules, and then add a rule at the start to explicitly 
+allow yourself access to prevent against locking yourself out.
+We will use an example based approach to examine the various iptables commands. In this 
+first example, we will create a very simple set of rules to set up a Stateful Packet 
+Inspection (SPI) firewall that will allow all outgoing connections but block all 
+unwanted incoming connections:
 
 
 # iptables -P INPUT ACCEPT
@@ -3369,7 +3417,8 @@ fi
 	$ ncdu /
 
 	$ ncdu -x /    <= scan a full filesystem
-		# Since scanning a large directory may take a while, you can scan a directory and export the results for later viewing:
+		# Since scanning a large directory may take a while, you can scan a directory and 
+			export the results for later viewing:
 	
 	$ ncdu -1xo- / | gzip > ncdu-list.gz
 	# ...some time later:

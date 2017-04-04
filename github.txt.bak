@@ -1,0 +1,217 @@
+How to use GIT
+
+
+Use HTTPS	https://github.com/nozatech/jenkins.git
+Use SSH     git@github.com:nozatech/jenkins.git
+
+
+
+
+Clone from repository
+$ mkdir new_folder && cd new_folder
+$ git clone https://github.com/nozatech/linux_daily.git
+$ git clone https://nozatech:Noza5571@github.com/nozatech/linux_daily.git   <= ID &PW
+
+1. Create a new repository on the command line
+
+	echo "$ touch README.md"
+	git init
+	git add README.md
+	git commit -m "first commit"
+	git remote add origin https://github.com/nozatech/new_project.git
+	git push -u origin master
+
+
+2. push an existing repository from the command line
+
+	git remote add origin https://github.com/nozatech/jenkins.git
+	git push -u origin master
+
+
+	
+	
+3. GIT how-to between Client A and B
+
+	### Client A: #### 
+		a. git clone https://github.com/nozatech/linux_daily.git    	<= first time
+		b. git status
+		c. edit files & save
+		d. git status	
+		e. git add . ('-A' all, or a new file_name)
+		f. git commit -m "message"
+		g. git push
+		------------------------------------------------------
+		h. git pull <= every morning gets updated codes
+		i. edit files & save
+		j. git status
+		k. git add . ('-A' all, or file_name)
+		j. git commit -m "more changes"
+		l. git push
+		 
+			
+	### Client B: ###
+		a. git clone https://github.com/nozatech/linux_daily.git 	<= first time
+		b. git pull				<= any updates
+		c. edit files & save
+		d. git status
+		e. git add . ( or -A or any new file_name )
+		f. git commit -m " updated & add new file"
+		g. git push
+
+
+
+4. GIT BRANCHING
+		a. $ git pull
+		b. $ git branch
+		* master
+		c. $ git branch function01 				<= creating new 'function01' branch from Master
+		d. $ git branch
+			function01							<= complete copy of MASTER
+			* master
+		e. $ git checkout 'function01'
+			Switched to branch 'function01'     <= SWITCHED TO FUNCTION01 ****
+			<<... EDIT OR ADD NEW FILES ... >>	
+		f. $ git status
+			On branch function01
+			Changes not staged for commit:
+			(use "git add <file>..." to update what will be committed)
+			(use "git checkout -- <file>..." to discard changes in working directory)
+			modified:   linux_daily.txt
+			no changes added to commit (use "git add" and/or "git commit -a")
+		h. $ git add . ('-A' all, or a new file_name)
+		i. $ git commit -m "added branches "
+			[function01 def7db3] added branches
+			1 file changed, 22 insertions(+), 15 deletions(-)
+		-------------------------------------------------------------------
+		j. $ git branch							<= checking which branch you are in 'function01'
+			* function01
+			master
+		k. $ git checkout master				<= switch back to master if others has some updates one the same file while editing
+			Switched to branch 'master'
+			Your branch is up-to-date with 'origin/master'.
+		l. $ git pull   <= check if MASTER has been modified by others
+		-------------------------------------------------------------------
+		m. 	$ git checkout function01
+		n.	$ git merge master
+			
+		o.  $ git checkout master
+
+		p.	$ git status
+				On branch function01
+				Your branch is up-to-date with 'origin/function01'.
+				nothing to commit, working directory clean
+
+				
+				
+		'git pull' does two operations; first it does a 'git fetch' to get up to date with the 'commits' 
+		in the remote repo (which updates the origin/master ref in your local repo), then it does 
+		a 'git merge' to merge those commits into the current branch.
+
+		Until you do the fetch step (either on its own or via 'git pull') your local repo has no way 
+		to know that there are additional 'commits upstream', and 'git status' only looks at your local 
+		repo (in this case it looks at the origin/master ref, which is just a commit ID stored on 
+		your local file system).
+
+		When 'git status' says up to date, it means "up to date with the upstream status that was 
+		retrieved last time we did a fetch" which is not the same as "up to date with the latest 
+		live status of the upstream".	
+		
+
+#################################################################################################	
+
+1. Add a file in github through console(First Time)
+	Open "Git Bash"
+	Go to folder/directory where you want to keep your files @local system using "cd" command.
+	Create a folder and go inside that folder
+	add a sample file in that folder from UI
+	execute following commands one by one and add your github username/password they they prompt (In Last)
+
+	$ git init
+	$ echo "first file" > test.php
+	# $ touch test.php | echo "first file" >> test.php
+	$ git add test.php
+	$ git config --global user.name "nozatech"
+	$ git config --global user.pawsswd "password"
+	$ git commit -m "test file"
+	$ git remote add origin  https://github.com/nozatech/new_project.git
+	$ git push -u origin master
+
+
+2. Add a new file in github
+	add a new file in folder (suppose file name is "arun1.php")
+	Execute following commands one by one
+	$ git add filename
+	$ git commit -m "test file filename"
+	$ git push -u origin master
+
+3. Update a file in the github
+	Change one file and save
+	Execute the following commands one by one
+	$ git add * (. or -A)
+	$ git commit -m "updated file"
+	$ git push -u origin master
+
+
+4. Delete a file
+	$ git rm filename
+	$ git commit -m "deleted file"
+	$ git push -u origin master
+	
+	
+
+
+### Please, commit your changes or stash them before you can merge.
+$ git stash
+$ git pull <remote name> <remote branch name> (or) switch branch
+$ git stash apply --index
+
+	First command store your changes temporarily and discard those changes from working directory 
+	Second command you can pull / switch branches 
+	Third command to restore the important changes which you have discarded temporarily. 
+		(--index option is useful for those files are not staged are being upstaged) 	
+
+Git Reset
+http://stackoverflow.com/questions/1628088/reset-local-repository-branch-to-be-just-like-remote-repository-head		
+
+
+
+#### Troubleshooting ###
+1. LF will be replaced by CRLF in git message
+	In Unix systems the end of a line is represented with a line feed (LF). In windows a line is represented 
+	with a carriage return (CR) and a line feed (LF) thus (CRLF). when you get code from git that was uploaded 
+	from a unix system they will only have a LF.
+
+	$ git config core.autocrlf true   <= Disable warning
+	
+2. Updates were rejected because the remote contains work that you 
+http://stackoverflow.com/questions/18328800/github-updates-were-rejected-because-the-remote-contains-work-that-you-do-not-h
+
+	$ git push -f origin master
+	
+	
+3. error: Your local changes to the following files would be overwritten by merge:
+http://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me
+
+	1. Commit the change using
+		$ git commit -m "My message"
+
+	2. Stash it.
+	Stashing acts as a stack, where you can push changes, and you pop them in reverse order.
+		#To stash type:
+		$ git stash
+		# Do the merge, and then pull the stash:
+		$ git stash pop
+
+	3. Discard the local changes
+		$ git reset --hard    
+		$ git checkout -t -f remote/branch
+
+	3. a) Discard local changes for a specific file
+		$ git checkout filename
+	
+	
+	
+	
+	
+	
+	

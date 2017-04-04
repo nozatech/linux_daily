@@ -494,24 +494,7 @@ import common
 ### AWS CLI testing
 	$ aws iam apark
 	
-
-
-Backup using thinbackup and S3cmd
 	
-0 6 * * * bash -l -c 's3cmd sync Backup/ s3://outcast-dev/jenkins_backup/' >> /U                                                 sers/Shared/Jenkins/backup_log
 	
-
-### On Jenkins thinbackup setup	
-Backup settings
-Backup directory	 						${HOME}/Backup ('/Users/Shared/Jenkins/Backup'0
-Backup schedule for full backups			H 2 * * *
-Backup schedule for differential backups	H/15 * * * *
-Max number of backup sets					10
-Files excluded from backup (regular expression)	
-'check' Wait until Jenkins/Hudson is idle to perform a backup	
-Force Jenkins to quiet mode after specified minutes		180
-'check' Backup build results	
-'check' Backup next build number file	Help for feature: Backup next build number file
-'check' Clean up differential backups	Help for feature: Clean up differential backups
-'check' Move old backups to ZIP files	
+	
 	
