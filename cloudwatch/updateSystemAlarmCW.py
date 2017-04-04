@@ -251,17 +251,4 @@ print "Checking alarm state after creation..."
 get_alarms(alarm_prefix)
 
 
-"""
-Found 8 existing alarms with ALARM_PREFIX
-		
-Found 8 existing alarms with ALARM_PREFIX
 
-Clearing existing alarms...
-
-Creating new alarms...
-
-Checking alarm state after creation...
-
-Found 8 existing alarms with ALARM_PREFIX
-
-"""
