@@ -2,9 +2,11 @@
 ### 1. Run Scripts ###
 ######################
 
+
+https://explainshell.com/
+
 https://www.shellcheck.net/
 $ apt-get | yum install shellcheck	-y
-
 
 
 # How to run a script
@@ -87,6 +89,108 @@ $ apt-get | yum install shellcheck	-y
 	[1]+  Stopped                 vim
 	[2]-  Stopped                 vim
 	[3]   Done                    ls --color=auto -alR > /tmp/result.txt 2> /tmp/error.txt
+
+	
+set -e          #Exit as soon as any line in the bash script fails
+set -x          #Prints each command executed (prefix with ++)
+set -ex         #Do both (for good practice)	
+	
+!     # not
+-a    # and
+-o    # or	
+----------------------------------------------	
+if [ $num -lt 10 -o $num -gt 100 ]
+then
+    echo "Number $num is out of range"
+elif [ ! -w $filename ]
+then
+    echo "Cannot write to $filename"
+fi	
+----------------------------------------------		
+	
+I/O Redirection:
+
+pgm > file     #Output of pgm is redirected to file.
+pgm < file     #Program pgm reads its input from file.
+pgm >> file    #Output of pgm is appended to file.
+pgm1 | pgm2    #Output of pgm1 is piped into pgm2 as the input to pgm2.
+n > file       #Output from stream with descriptor n redirected to file.
+n >> file      #Output from stream with descriptor n appended to file.
+n >& m         #Merge output from stream n with stream m.
+n <& m         #Merge input from stream n with stream m.
+<< tag         #Standard input comes from here through next tag at start of line.	
+	
+	
+Shell Built-in Variables:
+
+$0             #Name of this shell script itself.
+$1             #Value of first command line parameter (similarly $2, $3, etc)
+$#             #In a shell script, the number of command line parameters.
+$*             #All of the command line parameters.
+$-             #Options given to the shell.
+$?             #Return the exit status of the last command.
+$$             #Process id of script (really id of the shell running the script)	
+	
+Pattern Matching:
+
+*              #Matches 0 or more characters.
+?              #Matches 1 character.
+[AaBbCc]       #Example: matches any 1 char from the list.
+[^RGB]         #Example: matches any 1 char not in the list.
+[a-g]          #Example: matches any 1 char from this range.	
+	
+Quoting:
+
+\c             #Take character c literally.
+`cmd`          #Run cmd and replace it in the line of code with its output.
+"whatever"     #Take whatever literally, after first interpreting $, `...`, \
+'whatever'     #Take whatever absolutely literally.	
+
+Example:
+match=`ls *.bak`        #Puts names of .bak files into shell variable match.
+echo \*                 #Echos * to screen, not all filename as in:  echo *
+echo '$1$2hello'        #Writes literally $1$2hello on screen.
+echo "$1$2hello"        #Writes value of parameters 1 and 2 and string hello.
+	
+
+Shell Arithmetic: In the original Bourne shell arithmetic is done using the expr command as in:
+
+result=`expr $1 + 2`
+result2=`expr $2 + $1 / 2`
+result=`expr $2 \* 5`               #note the \ on the * symbol
+
+brace expansion         (see a reference book)
+~ expansion             (for login ids)
+parameters              (such as $1)
+variables               (such as $var)
+command substitution    (Example:  match=`grep DNS *` )
+arithmetic              (from left to right)
+word splitting
+pathname expansion      (using *, ?, and [abc] )
+
+$var           #Value of shell variable var.
+${var}abc      #Example: value of shell variable var with string abc appended.
+#              #At start of line, indicates a comment.
+var=value      #Assign the string value to shell variable var.
+cmd1 && cmd2   #Run cmd1, then if cmd1 successful run cmd2, otherwise skip.
+cmd1 || cmd2   #Run cmd1, then if cmd1 not successful run cmd2, otherwise skip.
+cmd1; cmd2     #Do cmd1 and then cmd2.
+cmd1 & cmd2    #Do cmd1, start cmd2 without waiting for cmd1 to finish.
+(cmds)         #Run cmds (commands) in a subshell.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
 ### Script running remotely
@@ -213,10 +317,34 @@ https://www.gnu.org/software/bash/manual/bashref.html#Command-Grouping
 	$!		process ID(PID) of last job run in background
 	* Must be quoted, otherwise it defaults to $@
 
+https://coderwall.com/p/85jnpq/bash-built-in-variables
+file:test.sh
+#! /bin/sh
+echo '$#' $#
+echo '$@' $@
+echo '$?' $?
 
+*If you run the above script as*
+
+> ./test.sh 1 2 3
+
+You get output:
+$#  3
+$@  1 2 3
+$?  0
+
+*You passed 3 parameters to your script.*
+
+$# = number of arguments. Answer is 3
+$@ = what parameters were passed. Answer is 1 2 3
+$? = was last command successful. Answer is 0 which means 'yes'
+	
+	
+	
 $ echo -n     do not output the trailing newline
        -e     enable interpretation of backslash escapes
        -E     disable interpretation of backslash escapes (default)
+	   
 
 ### "2>&1" command:
 	Using "2>&1" , redirect the standard error(2) to standard output(1). The string "2>&1" indicates that any errors 
@@ -1626,6 +1754,7 @@ list='192.168.232.158'
 echo ------------------------------------
 echo SCP is copying over to remote server
 echo ------------------------------------
+# bash -c  
 
 for i in $list; do
 	echo ------------------------------------

@@ -917,6 +917,13 @@ H(0-29)/10 * * * *		<= every ten minutes in the first half of every hour
 H 9-16/2 * * 1-5 		<= once every two hours every weekday 
 							(perhaps at 10:38 AM, 12:38 PM, 2:38 PM, 4:38 PM)
 H H 1,15 1-11 * 		<= once a day on the 1st and 15th of every month except December	
+
+
+0 12 * * 1-5			<= 12:00 every weekday (Mo-Fr)
+H 2 * * *				<= Every 2am
+
+
+
 	
 # Install crontab
 	$ crontab cron_jobs.txt
@@ -979,6 +986,14 @@ H H 1,15 1-11 * 		<= once a day on the 1st and 15th of every month except Decemb
 15. List files by modified date 
     ls -atlh   			 	 <= -a all, -t modified time, -l per line 
     ls -atlhr   			 <= -r reverse
+	
+	list directory only
+	$ echo */ 
+	$ ls -d */
+	$ ls -dl */
+	$ ls -l | grep "^d"
+	$ for i in $(ls -d */); do echo ${i%%/}; done
+	$ for i in $(ls -d */); do echo ${i}; done
 
 	$ ls -l
 -rwxrw-r--    10    root   root 2048    Jan 13 07:11 afile.exe
@@ -4613,22 +4628,52 @@ INTERPRETER=$(head -n 1 $2 | sed -e 's/#!//')
 cat $2 | grep -v "#" | ssh -t $1 $INTERPRETER	
 #------------------------------------------------------------------------------------	
 	
+https://coderwall.com/p/85jnpq/bash-built-in-variables
+$#, $@ & $? bash built-in variable
+
+file:test.sh
+#! /bin/sh
+echo '$#' $#
+echo '$@' $@
+echo '$?' $?
+
+*If you run the above script as*
+
+> ./test.sh 1 2 3
+
+You get output:
+$#  3
+$@  1 2 3
+$?  0
+
+*You passed 3 parameters to your script.*
+
+$# = number of arguments. Answer is 3
+$@ = what parameters were passed. Answer is 1 2 3
+$? = was last command successful. Answer is 0 which means 'yes'	
 	
 	
 	
 	
 	
+### Stress test using 'stress'
+http://www.tecmint.com/linux-cpu-load-stress-test-with-stress-ng-tool/
+
+# Install
+$ wget ftp://fr2.rpmfind.net/linux/dag/redhat/el7/en/x86_64/dag/RPMS/stress-1.0.2-1.el7.rf.x86_64.rpm 
+$ yum localinstall stress-1.0.2-1.el7.rf.x86_64.rpm
 	
 	
+
+# Internet speed test
+http://askubuntu.com/questions/104755/how-to-check-internet-speed-via-terminal
+
+$ curl -s  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -	
+$ wget --output-document=/dev/null http://speedtest.wdc01.softlayer.com/downloads/test500.zip	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+# Ubuntu 16.04x	
+$ sudo apt install speedtest-cli
+$ speedtest-cli	
 	
 	
 	

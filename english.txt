@@ -109,6 +109,8 @@ sacred			<- [seikrid] connected with God (or the gods) or dedicated to a religio
 setup VS set up <- setup [noun], set up [verb] 
 scoot			<- go or leave somewhere quickly.
 scrutiny		<- critical observation or examination:	examination, inspection, survey, study, perusal;
+snoop			<- investigate or look around furtively in an attempt to find out something, 
+					especially information about someone's private affairs.
 souvenir
 squealing 		<- 빽뺵소리 스피커에서
 stash			<- store (something) safely and secretly in a specified place

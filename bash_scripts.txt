@@ -855,7 +855,7 @@ fi
         	echo "Sorry, you are too slow"
 	fi
 ------------------------------------
-### 5 mins Time counting  (count down) 
+### 5 mins Time counting  ( count down | counting 300 sec ) 
 
 $ for i in {0..300}; do echo -ne "$i" '\r'; sleep 1; done; echo 
 

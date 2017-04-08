@@ -1,0 +1,14 @@
+Zabbix 
+
+# Installation
+https://www.digitalocean.com/community/tutorials/how-to-install-zabbix-on-ubuntu-configure-it-to-monitor-multiple-vps-servers
+$ zabbix_server --version
+$ http
+
+
+CDNs
+162.243.69.139 	cdn-lobby
+162.243.235.73	cdn-us-lb
+162.243.0.106	cdn-us-pool-01
+162.243.12.104	cdn-us-pool-02
+162.243.30.137	cdn-us-pool-03
