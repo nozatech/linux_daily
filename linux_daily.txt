@@ -2821,7 +2821,8 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	
 	### LOCAL >>>> REMOTE ###
 	###			LOCAL file location  >>>>   REMOTE 'creating' remote folder
-	rsync -avn  /home/apark/rtest  			apark@45.55.5.69:/home/apark/      <= -a, -v verbose -n dry-run
+	rsync -avn  /home/apark/rtest  			apark@45.55.5.69:/home/apark/      
+		<= -a, -v verbose -n dry-run
 	rsync -av   ~/rtest          	 		apark@45.55.5.69:/home/apark/   
 		
 	###			Local files	  		 >>>>	Remote 'Copying' FILES in the remote folder 
@@ -2849,17 +2850,23 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	# Options	
 	rsync -az	source 		destination		<= -z Compression
 	rsync -azP	source 		destination	 	<= -P Progress
-	rsync -a --exclude=pattern 		source 		destination
-	rsync -a --exclude=pattern --include=pattern 	source 		destination
+
 	
 	
 	# Exclusion
 	# REMOTE >>>> LOCAL
 	$ rsync -azP  --exlude=dir* 	apark@45.55.5.69:/home/apark/     ~
 	$ rsync -azP  --exclude={dir1,dir2}  apark@45.55.5.69:/home/apark/   ~/
-
+	*** $ rsync -az -e ssh /cdn/data/  apark@10.128.34.80:/cdn/data/
+		# -e option is used to run a different remote shell
+		http://unix.stackexchange.com/questions/232041/rsync-permission-denied-13-while-executing-rsync-as-a-root
+	$ rsync -a --exclude=pattern 		source 		destination
+	$ rsync -a --exclude=pattern --include=pattern 	source 		destination
+	$ rsync -az -e(--ignore-existing) sour ce destination 
+	
+	
 	# LOCAL >>> REMOTE
-	$ rsync -azP  /home/apark/rtest/  			apark@45.55.5.69:/home/apark/rtest2 
+	$ rsync -azP  /home/apark/rtest/  	apark@45.55.5.69:/home/apark/rtest2 
 	
 	
 	

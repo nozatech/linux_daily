@@ -487,7 +487,7 @@ class { 'timezone':
 
 
 
- 
+
 
 
 	puppet cert list

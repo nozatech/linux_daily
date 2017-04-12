@@ -1,0 +1,92 @@
+# Perl Script that make Nginx Stateless  instaed of REVERSE PROXY
+# /etc/nginx/loadbalancer.pm
+
+package loadbalancer;
+
+use nginx;
+use IO::Socket;
+
+## CDN US Available Pool servers
+%servers = (
+  "162.243.0.106" => 0,                 #cdn-us-pool-001
+#  "162.243.111.114" => 0               #cdn-us-pool-002
+                                        #cdn-us-pool-003
+                                        #cdn-us-pool-004
+                                        #cdn-us-pool-005
+                                        #cdn-us-pool-
+);
+
+## Request load balancer
+sub load_balance {
+  # Get the request variable
+  my $r = shift;
+
+  # Initialize retry counter
+  my $retry = 0;
+
+  while($retry < 10) {
+    # Get a random number
+    my $rand = int(rand(1000000));
+
+        # Get keys from the map
+    my @keys = keys(%servers);
+
+        # Calculate index based on
+        # random number and selected server
+    my $index = $rand % scalar(@keys);
+    my $selected_server = @keys[$index];
+
+        # If server is activated by healthcheck
+        # we can return it to nginx
+    my $active = $servers{$selected_server};
+    if ($active) {
+      return "http://".@keys[$index];
+    }
+
+        # Retry with another one
+    $retry++;
+  }
+  # No server seems available
+  return "No Server Available";
+}
+
+## Connects to the given servers one by one
+## and checks availability
+sub healthcheck {
+  # Update variable
+  my %update;
+
+  # Loop through servers
+  foreach $server (keys %servers) {
+    $key = $server;
+
+    # Select port, defaults to 80
+    my $port = 80;
+    if (index($server, ':') != -1) {
+      @tokens = split(/:/, $server);
+      $server = @tokens[0];
+      $port = int(@tokens[1]);
+    }
+
+    # Connect to server
+    my $socket = $socket = IO::Socket::INET->new(PeerAddr => $server, PeerPort => $port);
+
+        # Is server connectable
+    if (defined $socket) {
+      $update{$key} = 1;
+      $socket->close();
+    } else {
+      $update{$key} = 0;
+    }
+  }
+
+  # Update servers variable with availabilities
+  %servers = %update;
+  return OK;
+}
+
+# Initiate immediate health check on server start
+healthcheck();
+
+1;
+__END__
