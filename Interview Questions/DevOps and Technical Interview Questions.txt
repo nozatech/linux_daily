@@ -1,0 +1,90 @@
+Apple 
+DevOps and Technical Interview Questions
+
+Why do you want to work for Apple 
+When did you fail to communicate with your team?  
+What are your pet peeves?  something that a particular person finds especially annoying.
+Describe a time when you got to improve a product through testing?
+
+
+
+
+Given a list of strings, provide the number of strings that are unique within the list.  	
+
+This is the solution in python:
+l = ['a','a','b','c','a',]
+
+uniq = set()
+dupes = set()
+
+for i in l:
+  if i not in uniq:
+    uniq.add(i)
+  else:
+    dupes.add(i)
+
+print len(uniq) - len(dupes)
+
+
+
+REST - PUT vs POST
+http://stackoverflow.com/questions/630453/put-vs-post-in-rest
+
+
+
+
+HTTP - PUT vs POST
+http://stackoverflow.com/questions/107390/whats-the-difference-between-a-post-and-a-put-http-request
+POST - To create document or any other resource
+PUT - To update the created document or any other resource.
+
+1) GET		<- Used when the client is requesting a resource on the Web server.
+2) HEAD		<- Used when the client is requesting some information about a 
+				resource but not requesting the resource itself.
+3) POST		<- Used when the client is sending information or data to the server—for example, 
+				filling out an online form (i.e. Sends a large amount of complex data to the Web Server).
+4) PUT		<- Used when the client is sending a replacement document or uploading a new document 
+				to the Web server under the request URL.
+5) DELETE	<- Used when the client is trying to delete a document from the Web server, 
+				identified by the request URL.
+6) TRACE	<- Used when the client is asking the available proxies or intermediate servers 
+				changing the request to announce themselves.
+7) OPTIONS	<- Used when the client wants to determine other available methods to retrieve 
+				or process a document on the Web server.
+8) CONNECT	<- Used when the client wants to establish a transparent connection to a remote host, 
+				usually to facilitate SSL-encrypted communication (HTTPS) through an HTTP proxy.
+
+
+# start up service 
+	Check list
+	$ ls /etc/init.d/
+	### CentOS 6
+		$ chkconfig ssh on/off
+	# Ubuntu 14 Upstar(Debian)
+		$ update-rc.d ssh defaults | enable | disable			<= put it into start up
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
