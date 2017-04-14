@@ -2269,7 +2269,7 @@ iptables -L -v
 	$ iptables -nL
   
     
-  ### Ubuntu 14.04 ###
+  ### Ubuntu 14.04 IPtables setup ###
 	$ sudo apt-get update
 	$ sudo apt-get install iptables-persistent
 	$ sudo vi /etc/iptables/rules.v4 
@@ -2280,6 +2280,8 @@ iptables -L -v
   ### Check error restore test ###
 	$ iptables-restore -vv < /etc/iptables/rules.v4
 
+	
+	
   ### Ubuntu 16.04 Iptables setup ###
 	http://linux-sys-adm.com/ubuntu-16.04-lts-how-to-configure-firewall-iptables-fail2ban/
 	https://oitibs.com/easy-ubuntu-16-server-firewall/
