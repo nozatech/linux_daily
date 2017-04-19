@@ -1102,7 +1102,8 @@ H 2 * * *				<= Every 2am
 
 	# Which files does PID have open?
 	$ ps aux | grep nginx
-	$ lsof -p nginx_PID
+	
+	$ lsof -p nginx_PID			<= Process ID (PID)
 
 	$ lsof -p 1									<= all files are opened with Init or SystemD
 	$ lsof -p `pgrep ABC`
@@ -1128,6 +1129,12 @@ H 2 * * *				<= Every 2am
 	$ lsof -i tcp
 	
 	
+	
+	# Internet PORT
+	$ lsof -i :5044   <= finding which port is using for internet
+	COMMAND PID     USER            FD   TYPE DEVICE SIZE/OFF NODE NAME
+	java    477   """logstash"""   79u  IPv6  22585      0t0  TCP *:lxi-evntsvc (LISTEN)
+
 	
 	
 	
@@ -1279,8 +1286,12 @@ H 2 * * *				<= Every 2am
 
 
 23. List of services running
-	/usr/sbin/service --status-all
-  
+	$ /usr/sbin/service --status-all
+	$ /sbin/service --status-all
+	$ service --status-all
+	
+	
+	
 
 24. Echo 
 
@@ -1883,6 +1894,10 @@ journalctl - Query the systemd journal
 
 	$ journalctl --since "10 min ago"
 
+#
+$ sytemctl daemon-reload          	<= Apache httpd.conf file reload 
+$ systemctl reload httpd			<= httpd service reload
+	
 
 ----------------------------------------------------------------
 Distribution			|	SystemD	  |	System V  |	 Upstart
@@ -2154,8 +2169,8 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 	
 	$ iptables -nL	
 
-
-	
+### Preroute rediect
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000	
 	
 ### CentOS7 ### 
 
@@ -4528,6 +4543,14 @@ http://www.basicconfig.com/linux/linux_cd_command_tutorial
 	getPaginator() method of the client.
 	https://docs.aws.amazon.com/aws-sdk-php/v3/guide/guide/paginators.html
 	
+
+### SSL cert lcoation
+public root certificates:
+
+"/etc/ssl/certs/ca-certificates.crt", // Debian/Ubuntu/Gentoo etc.
+"/etc/pki/tls/certs/ca-bundle.crt",   // Fedora/RHEL
+
+
 	
 	
 A bastion host is a special purpose computer on a network specifically designed and configured to withstand attacks. The computer generally hosts a single application, for example a proxy server, and all other services are removed or limited to reduce the threat to the computer. It is hardened in this manner primarily due to its location and purpose, which is either on the outside of the firewall or in theDMZ and usually involves access from untrusted networks or computers.

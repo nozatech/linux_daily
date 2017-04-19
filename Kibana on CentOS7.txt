@@ -1,0 +1,365 @@
+Kibana on CentOS7
+# Update OS
+yum update -y 
+
+# Install JAVA
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u73-b02/jdk-8u73-linux-x64.rpm"
+sudo yum -y localinstall jdk-8u73-linux-x64.rpm
+
+#Elasticsearch.repo
+#Download and install the public signing key:
+rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+vi /etc/yum.repos.d/elasticsearch.repo
+---------------------------------------------------------------	
+[elasticsearch-5.x]
+name=Elasticsearch repository for 5.x packages
+baseurl=https://artifacts.elastic.co/packages/5.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+---------------------------------------------------------------	
+sudo yum install -y elasticsearch
+
+
+sudo vi /etc/elasticsearch/elasticsearch.yml
+
+---------------------------------------------------------------	
+# ---------------------------------- Network -----------------------------------
+#
+# Set the bind address to a specific IP (IPv4 or IPv6):
+#
+network.host: localhost
+#
+# Set a custom port for HTTP:
+#
+http.port: 9200
+---------------------------------------------------------------	
+
+sudo systemctl start elasticsearch
+sudo systemctl enable elasticsearch
+
+### Install Kibana
+rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+vi /etc/yum.repos.d/kibana.repo
+
+---------------------------------------------------------------	
+[kibana-5.x]
+name=Kibana repository for 5.x packages
+baseurl=https://artifacts.elastic.co/packages/5.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+---------------------------------------------------------------	
+
+sudo yum install -y kibana
+
+sudo vi /etc/kibana/kibana.yml
+
+server.host: "localhost"
+
+sudo systemctl start kibana
+sudo systemctl enable kibana
+
+### Install Nginx
+sudo yum -y install epel-release
+sudo yum -y install nginx httpd-tools
+sudo htpasswd -c /etc/nginx/htpasswd.users cdnadmin
+New password: cdnadmin/cdnadmin
+
+sudo vi /etc/nginx/nginx.conf
+---------------------------------------------------------------	
+    server {
+#        listen       80 default_server;
+#        listen       [::]:80 default_server;
+#        server_name  _;
+#        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+#        location / {
+#        }
+
+#        error_page 404 /404.html;
+#            location = /40x.html {
+#        }
+
+#        error_page 500 502 503 504 /50x.html;
+#            location = /50x.html {
+#        }
+    }
+---------------------------------------------------------------	
+	
+#check nginx config 
+sudo nginx -t 
+
+# creating reverse proxy 5601 to 80 
+sudo vi /etc/nginx/conf.d/kibana.conf
+---------------------------------------------------------------	
+server {
+    listen 80;
+
+    server_name example.com;
+
+    auth_basic "Restricted Access";
+    auth_basic_user_file /etc/nginx/htpasswd.users;
+
+    location / {
+        proxy_pass http://localhost:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;        
+    }
+}
+---------------------------------------------------------------	
+
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+
+# Install Logstash
+rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+vi /etc/yum.repos.d/logstash.repo
+
+---------------------------------------------------------------	
+[logstash-5.x]
+name=Elastic repository for 5.x packages
+baseurl=https://artifacts.elastic.co/packages/5.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+---------------------------------------------------------------	
+
+sudo yum install logstash
+
+cd /etc/pki/tls
+sudo openssl req -subj '/CN=cdn-kibana.namcowireless.com/' -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt
+
+Generating a 2048 bit RSA private key
+..+++
+...................................+++
+writing new private key to 'private/logstash-forwarder.key'
+-----
+
+
+### Configure Logstash
+sudo vi /etc/logstash/conf.d/02-beats-input.conf
+
+---------------------------------------------------------------	
+input {
+  beats {
+    port => 5044
+    ssl => true
+    ssl_certificate => "/etc/pki/tls/certs/logstash-forwarder.crt"
+    ssl_key => "/etc/pki/tls/private/logstash-forwarder.key"
+  }
+}
+---------------------------------------------------------------	
+
+sudo vi /etc/logstash/conf.d/10-syslog-filter.conf
+
+---------------------------------------------------------------	
+filter {
+  if [type] == "syslog" {
+    grok {
+      match => { "message" => "%{SYSLOGTIMESTAMP:syslog_timestamp} %{SYSLOGHOST:syslog_hostname} %{DATA:syslog_program}(?:\[%{POSINT:syslog_pid}\])?: %{GREEDYDATA:syslog_message}" }
+      add_field => [ "received_at", "%{@timestamp}" ]
+      add_field => [ "received_from", "%{host}" ]
+    }
+    syslog_pri { }
+    date {
+      match => [ "syslog_timestamp", "MMM  d HH:mm:ss", "MMM dd HH:mm:ss" ]
+    }
+  }
+}
+---------------------------------------------------------------	
+
+
+sudo vi /etc/logstash/conf.d/30-elasticsearch-output.conf
+
+---------------------------------------------------------------	
+output {
+  elasticsearch {
+    hosts => ["localhost:9200"]
+    sniffing => true
+    manage_template => false
+    index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}"
+    document_type => "%{[@metadata][type]}"
+  }
+}
+---------------------------------------------------------------	
+
+
+
+### Load Kibana Dashboards
+curl -L -O https://download.elastic.co/beats/dashboards/beats-dashboards-1.1.0.zip
+
+sudo yum -y install unzip
+unzip beats-dashboards-*.zip
+
+cd beats-dashboards-*
+./load.sh
+
+These are the index patterns that we just loaded:
+
+[packetbeat-]YYYY.MM.DD
+[topbeat-]YYYY.MM.DD
+[filebeat-]YYYY.MM.DD
+[winlogbeat-]YYYY.MM.DD
+
+
+### Load Filebeat Index Template in Elasticsearch
+cd ~
+curl -O https://gist.githubusercontent.com/thisismitch/3429023e8438cc25b86c/raw/d8c479e2a1adcea8b1fe86570e42abab0f10f364/filebeat-index-template.json
+
+
+curl -XPUT 'http://localhost:9200/_template/filebeat?pretty' -d@filebeat-index-template.json
+
+---------------------------------------------------------------	
+{
+  "acknowledged" : true
+}
+---------------------------------------------------------------	
+
+
+### Set Up Filebeat on Clients to Servers)
+# Kibana to Clients
+scp    /etc/pki/tls/certs/logstash-forwarder.crt     apark@162.243.0.106:/tmp
+
+
+# login to clients
+sudo mkdir -p /etc/pki/tls/certs
+sudo cp /tmp/logstash-forwarder.crt /etc/pki/tls/certs/
+
+
+
+### Ubuntu Client
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo apt-get install apt-transport-https
+echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+sudo apt-get update && sudo apt-get install filebeat
+sudo update-rc.d filebeat defaults 95 10
+
+# Configure Filebeat
+sudo vi /etc/filebeat/filebeat.yml
+---------------------------------------------------------------	
+#=========================== Filebeat prospectors =============================
+
+filebeat.prospectors:
+
+# Each - is a prospector. Most options can be set at the prospector level, so
+# you can use different prospectors for various configurations.
+# Below are the prospector specific configurations.
+
+- input_type: log
+
+  # Paths that should be crawled and fetched. Glob based paths.
+  paths:
+    - /var/log/nginx/*.log
+    #- c:\programdata\elasticsearch\logs\*
+
+
+#----------------------------- Logstash output --------------------------------
+output.logstash:
+  # The Logstash hosts
+  hosts: ["192.241.167.233:5044"]
+
+  # Optional SSL. By default is off.
+  # List of root certificates for HTTPS server verifications
+  ssl.certificate_authorities: ["/etc/pki/tls/certs/logstash-forwarder.crt"]
+---------------------------------------------------------------	
+
+/etc/init.d/filebeat restart
+
+
+
+### CentOS Client
+sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
+vi /etc/yum.repos.d/elastic.repo
+---------------------------------------------------------------	
+[elastic-5.x]
+name=Elastic repository for 5.x packages
+baseurl=https://artifacts.elastic.co/packages/5.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+---------------------------------------------------------------	
+sudo yum install filebeat
+sudo chkconfig --add filebeat
+
+
+$/etc/init.d/filebeat restart
+---------------------------------------------------------------	
+ * Restarting Filebeat sends log files to Logstash or directly to Elasticsearch. filebeat              2017/04/18 20:17:26.801194 beat.go:285: INFO Home path: [/usr/share/filebeat] Config path: [/etc/filebeat] Data path: [/var/lib/filebeat] Logs path: [/var/log/filebeat]
+2017/04/18 20:17:26.801639 beat.go:186: INFO Setup Beat: filebeat; Version: 5.3.0
+2017/04/18 20:17:26.803315 logstash.go:90: INFO Max Retries set to: 3
+2017/04/18 20:17:26.803889 outputs.go:108: INFO Activated logstash as output plugin.
+2017/04/18 20:17:26.804264 publish.go:295: INFO Publisher name: cdn-us-pool-01
+2017/04/18 20:17:26.804879 async.go:63: INFO Flush Interval set to: 1s
+2017/04/18 20:17:26.805013 async.go:64: INFO Max Bulk Size set to: 2048
+Config OK
+---------------------------------------------------------------	
+
+
+# Kibana server checking tcp traffic
+tcpdump -i any -p tcp port 5044
+---------------------------------------------------------------
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on any, link-type LINUX_SLL (Linux cooked), capture size 65535 bytes
+20:24:34.794376 IP 162.243.0.106.52065 > cdn-kibana.lxi-evntsvc: Flags [S], seq 3271962983, win 29200, options [mss 1460,sackOK,TS val 261715608 ecr 0,nop,wscale 8], length 0
+20:24:34.794520 IP cdn-kibana.lxi-evntsvc > 162.243.0.106.52065: Flags [R.], seq 0, ack 3271962984, win 0, length 0
+---------------------------------------------------------------
+
+
+
+### Test Filebeat Installation TEST on ELK Server
+
+# CentOS
+$/usr/share/logstash/bin/logstash   <= file location
+
+# Run logstash CMD and type hello world
+$/usr/share/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
+
+hello world
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

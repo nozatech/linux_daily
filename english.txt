@@ -36,6 +36,9 @@ digress			<- off the subject
 discrete		<- individually separate and distinct(분리된, 결개의)
 
 drench   		<- wet thoroughly; soak
+duck out		<- Leave hurriedly or secretly
+
+
 
 # E
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.

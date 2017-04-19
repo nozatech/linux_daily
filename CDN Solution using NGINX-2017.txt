@@ -1,4 +1,4 @@
-### In-House CDN Solution ### 
+### In-House CDN Solution 2017### 
 Using NGINX, Apache2 Webdav, Geo_IP DB, Load Balancer, Rsync and Cron Setup 
 
 # DO VM's Internet Speed Test
@@ -9,13 +9,12 @@ Download: 1551.09 Mbit/s
 Testing upload speed....................................................................................................
 *** Upload: 463.42 Mbit/s		<=
 
-40BM video Play time is 29sec
-Set 1500k/sec for 21sec download time.
+33BM video Play time is 29sec
+Set 2000k/sec for 21sec download time.
 2MB x 8 bits = 16 Mbit/s
 463Mbit / 16Mbit = 29 CCU per Server
 
-
-
+5MB Max speed then reduce to 2mb/sec to reduce the buffering
 
 
 

@@ -116,11 +116,13 @@ Pin-Priority: 501
 	
 	### 4.7.x
 	$ rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
+	
 	$ yum install puppet -y
+	
 	$ export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/opt/puppetlabs/bin
 
 	### $ /usr/bin/puppet -V						<= puppet file location
-### Change the path
+###	# Change the path
 ### $ export PATH=$PATH:/usr/bin                <= for Bash	
 	
 	$ puppet -V	

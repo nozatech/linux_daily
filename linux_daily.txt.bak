@@ -261,13 +261,22 @@ Undo
 	# 5 mins count down from Shell
 	# for i in {1..300}; do echo -ne $i '\r'; sleep 1; done; echo
 		
+# start up  
+	Check list
+	$ ls /etc/init.d/
 	
-  #	Install SSH on Ubuntu(Debian)
+	# Modify
+	### CentOS 6
+	$ chkconfig ssh on
+	$ chkconfig ssh off
+	
+	# Ubuntu Upstar(Debian)
 	$ apt-get install openssh-server openssh-client
 	$ update-rc.d ssh defaults			<= put it into start up
 	$ update-rc.d ssh enable 			# sets the default runlevels to on 
 	$ update-rc.d ssh disable 			# sets all to off
 
+	
   # login ec2-user
 	$ su apark
 	$ chmod 700 .ssh
@@ -1118,7 +1127,10 @@ H 2 * * *				<= Every 2am
 	$ lsof -i :80
 	$ lsof -i tcp
 	
-	
+	$lsof -i :5044   <= finding which port is using for internet
+	COMMAND PID     USER            FD   TYPE DEVICE SIZE/OFF NODE NAME
+	java    477   """logstash"""   79u  IPv6  22585      0t0  TCP *:lxi-evntsvc (LISTEN)
+
 	
 	
 	
@@ -1270,8 +1282,12 @@ H 2 * * *				<= Every 2am
 
 
 23. List of services running
-	/usr/sbin/service --status-all
-  
+	$ /usr/sbin/service --status-all
+	$ /sbin/service --status-all
+	$ service --status-all
+	
+	
+	
 
 24. Echo 
 
@@ -1874,6 +1890,10 @@ journalctl - Query the systemd journal
 
 	$ journalctl --since "10 min ago"
 
+#
+$ sytemctl daemon-reload          	<= Apache httpd.conf file reload 
+$ systemctl reload httpd			<= httpd service reload
+	
 
 ----------------------------------------------------------------
 Distribution			|	SystemD	  |	System V  |	 Upstart
@@ -2145,8 +2165,8 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 	
 	$ iptables -nL	
 
-
-	
+### Preroute rediect
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000	
 	
 ### CentOS7 ### 
 
@@ -2269,7 +2289,7 @@ iptables -L -v
 	$ iptables -nL
   
     
-  ### Ubuntu 14.04 ###
+  ### Ubuntu 14.04 IPtables setup ###
 	$ sudo apt-get update
 	$ sudo apt-get install iptables-persistent
 	$ sudo vi /etc/iptables/rules.v4 
@@ -2280,6 +2300,8 @@ iptables -L -v
   ### Check error restore test ###
 	$ iptables-restore -vv < /etc/iptables/rules.v4
 
+	
+	
   ### Ubuntu 16.04 Iptables setup ###
 	http://linux-sys-adm.com/ubuntu-16.04-lts-how-to-configure-firewall-iptables-fail2ban/
 	https://oitibs.com/easy-ubuntu-16-server-firewall/
@@ -4517,6 +4539,14 @@ http://www.basicconfig.com/linux/linux_cd_command_tutorial
 	getPaginator() method of the client.
 	https://docs.aws.amazon.com/aws-sdk-php/v3/guide/guide/paginators.html
 	
+
+### SSL cert lcoation
+public root certificates:
+
+"/etc/ssl/certs/ca-certificates.crt", // Debian/Ubuntu/Gentoo etc.
+"/etc/pki/tls/certs/ca-bundle.crt",   // Fedora/RHEL
+
+
 	
 	
 A bastion host is a special purpose computer on a network specifically designed and configured to withstand attacks. The computer generally hosts a single application, for example a proxy server, and all other services are removed or limited to reduce the threat to the computer. It is hardened in this manner primarily due to its location and purpose, which is either on the outside of the firewall or in theDMZ and usually involves access from untrusted networks or computers.
