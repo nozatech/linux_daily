@@ -1,0 +1,44 @@
+﻿### FQDN 
+107.170.28.163     cdn-puppet.namcowireless.com
+
+### IPTables
+# CDN-Puppet
+-A INPUT -m state -s 107.170.28.163/32 --state NEW -j ACCEPT
+
+### Ubuntu14 Puppet Agent ###
+wget https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb
+sudo dpkg -i puppetlabs-release-pc1-trusty.deb
+sudo apt-get update
+sudo apt-get install puppet-agent -y
+
+### Ubuntu 14 Puppet Agent unstall
+apt-get purge puppet-agent -y
+rm -rf   /opt/puppetlabs/puppet/cache
+rm -rf   /var/run/puppetlabs
+rm -rf   /etc/puppetlabs/puppet
+
+
+### CentOS7 Puppet Agent ###
+rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
+sudo yum -y install puppet-agent
+sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
+
+
+### Puppet Agent configure for PuppetServer
+vi /etc/puppetlabs/puppet/puppet.conf
+
+[agent]
+server = cdn-puppet.namcowireless.com
+environment = production
+
+
+### Puppet Agent add to start up(Upstar, SysV, Systemctl)
+sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
+
+
+
+
+ 
+
+
+

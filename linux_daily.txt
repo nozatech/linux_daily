@@ -2414,6 +2414,7 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	
 	
 ###	tcpdump
+	http://www.rationallyparanoid.com/articles/tcpdump.html
 	
 	$ tcpdump -i eth1 -n tcp port 10050
 	####################################
@@ -2431,6 +2432,13 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	### Capture any packets where the source host is 192.168.1.1. Display IP addresses and port numbers:
 	http://www.rationallyparanoid.com/articles/tcpdump.html
 	$ tcpdump -n src host 192.168.1.1
+	
+	### Exclude  https://danielmiessler.com/study/tcpdump/
+	$ tcpdump -i any -n tcp port not 22 and host 1.2.3.4
+	 
+	
+	
+	
   
 ###	NetCat
 	###################################
@@ -2845,10 +2853,10 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps
 	
 	
-	### LOCAL >>>> REMOTE ###
+	### LOCAL >>>> REMOTE ###  **PUSH to Remote**
 	###			LOCAL file location  >>>>   REMOTE 'creating' remote folder
 	rsync -avn  /home/apark/rtest  			apark@45.55.5.69:/home/apark/      
-		<= -a, -v verbose -n dry-run
+			<= -a, -v verbose -n dry-run
 	rsync -av   ~/rtest          	 		apark@45.55.5.69:/home/apark/   
 		
 	###			Local files	  		 >>>>	Remote 'Copying' FILES in the remote folder 
@@ -2856,7 +2864,7 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	rsync -av   ~/rtest/          	 		apark@45.55.5.69:/home/apark/rtest/   <= copy to rtest
 
 	
-	### REMOTE >>>> LOCAL ###
+	### REMOTE >>>> LOCAL ###   **PULL to Local**
 	###			REMOTE file & folder location	>>>>    LOCAL location		
 	rsync -av   apark@45.55.5.69:/home/apark/			/home/apark/ 		   <= copy to apark    
 	rsync -av   apark@45.55.5.69:/home/apark/rtest/ 	~/rtest/       	       <= copy to rtest
@@ -2864,31 +2872,33 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	rsync -av   apark@45.55.5.69:/home/apark/dir1    	~/					   <= home folder
 	receiving incremental file list
 	
-	### REMOTE >>>> REMOTE ###
-	http://unix.stackexchange.com/questions/183504/how-to-rsync-files-between-two-remotes
-	Cannot use rsync with a remote source and a remote destination. 
-	Assuming the two servers can't talk directly to each other, it is possible to use "ssh to tunnel" 
-	via your local machine.
+	### CAN NOT do REMOTE >>>> REMOTE ###
+		http://unix.stackexchange.com/questions/183504/how-to-rsync-files-between-two-remotes
+		Cannot use rsync with a remote source and a remote destination. 
+		Assuming the two servers can't talk directly to each other, it is possible to use "ssh to tunnel" 
+		via your local machine.
 
 	$ ssh -R localhost:50000:host2:22   host1 'rsync -e "ssh -p 50000" -vuar /var/www localhost:/var/www'
 	
 	
 	# Options	
-	rsync -az	source 		destination		<= -z Compression
-	rsync -azP	source 		destination	 	<= -P Progress
+	rsync -avz	source 		destination		<= -z Compression
+	rsync -avzP	source 		destination	 	<= -P Progress
 
 	
+	# REMOTE  ===>>>>  LOCAL			  <Remote location>						<Local location>
+	$ rsync -azP  --exlude=dir* 	     apark@45.55.5.69:/home/apark/     	 	~   	
+	$ rsync -azP  --exclude={dir1,dir2}  apark@45.55.5.69:/home/apark/       	~/		
+	$rsync  -avzp jenkins@10.100.200.41:/Users/Shared/Jenkins/Home/jobs/Chroma* 	/tmp
+
 	
-	# Exclusion
-	# REMOTE >>>> LOCAL
-	$ rsync -azP  --exlude=dir* 	apark@45.55.5.69:/home/apark/     ~
-	$ rsync -azP  --exclude={dir1,dir2}  apark@45.55.5.69:/home/apark/   ~/
 	*** $ rsync -az -e ssh /cdn/data/  apark@10.128.34.80:/cdn/data/
 		# -e option is used to run a different remote shell
 		http://unix.stackexchange.com/questions/232041/rsync-permission-denied-13-while-executing-rsync-as-a-root
-	$ rsync -a --exclude=pattern 		source 		destination
+	
+	$ rsync -a --exclude=pattern 					source 		destination
 	$ rsync -a --exclude=pattern --include=pattern 	source 		destination
-	$ rsync -az -e(--ignore-existing) sour ce destination 
+	$ rsync -az -e(--ignore-existing) 				source		destination 
 	
 	
 	# LOCAL >>> REMOTE
@@ -4718,5 +4728,14 @@ $ speedtest-cli
 
 $ pip install speedtest-cli	
 	
-	
-	
+
+
+### SONAR
+	Open Source Project and Code Quality Monitoring
+	https://www.sonarsource.com/
+	http://www.methodsandtools.com/tools/tools.php?sonar
+
+### Anemometer[ӕnəmάmitər 애너마미털]
+	https://github.com/box/Anemometer
+	The MySQL Slow Query Monitor. This tool is used to analyze slow query logs collected 
+	from MySQL instances to identify problematic queries.	

@@ -30,7 +30,11 @@ print len(uniq) - len(dupes)
 REST - PUT vs POST
 http://stackoverflow.com/questions/630453/put-vs-post-in-rest
 
-
+3 Way hand shake
+Client			Server
+syn 		-> 	request
+syn, ack 	<- 	reply
+ack 		-> 	confirm
 
 
 HTTP - PUT vs POST
@@ -53,6 +57,18 @@ PUT - To update the created document or any other resource.
 				or process a document on the Web server.
 8) CONNECT	<- Used when the client wants to establish a transparent connection to a remote host, 
 				usually to facilitate SSL-encrypted communication (HTTPS) through an HTTP proxy.
+HTTP
+200 ok
+300 redirect
+400 client error
+500 server error
+
+
+SOAP(Simple Object Access Protocol  <= Old XML )
+REST(REpresentational State Transfer)
+Light rely on URL(HTTP required)
+GET
+
 
 
 # start up service 
@@ -68,23 +84,2051 @@ PUT - To update the created document or any other resource.
 
 
 
+###  Linux File Systems
+1. What is the filesystem used in Rhel 5 and Rhel 6?
+	Ans: ext3 for RHEL 5 and ext4 for RHEL 6
+
+2. What is the difference between ext3 and ext4 filesystem?
+	Ext3
+	Maximum individual file size can be from 16 GB to 2 TB
+	Overall ext3 file system size can be from 2 TB to 32 TB
+
+	Ext4
+	Maximum individual file size can be from 16 GB to 16 TB
+	Overall maximum ext4 file system size is 1 EB (exabyte). 
+	1 EB = 1024 PB (petabyte). 1 PB = 1024 TB (terabyte).
+
+3. What is the command used to check any hardware changes made on the system in Linux?
+	kudzu
+
+4. Is it possible to increase swap partition? If yes then how?
+	How to increase size of swap partition
+
+5. What is a swap partition ? What is the recommended swap partition for 8 GB RAM?
+	Ans: Swap partition is a feature used in Linux which uses the space allocated to it from the physical hard drive and is utilized by te system when RAM memory goes full.
+	e.g. 4GB of RAM or less  a minimum of 2GB of swap space
+
+6. What is the procedure you follow to extend a LVM partition?
+	lvextend -L +1G /dev/VolGroup/LogVol1
+	This will extend the partition size by +1 GB
+	resize2fs /dev/VolGroup/LogVol1
+
+7. What is the command to view all the available partitions on the system?
+	fdisk -l
+
+8. What is the command to view all the mounted partitions on the system?
+	mount
+
+9. What is the use of mtab directory?
+	Ans: It contains a list of all the mounted directories or partitions on the system
+
+10. How do you make permanent changes to any file inside /proc directory?
+	sysctl -p
+
+11. What is the default mode when you enter single user mode?
+	Ans: read only for the first time but once you change it to read write then from next time onward it will be read write
+
+12. Explain the procedure to fix a case when a system is unable to boot due to improper entry in fstab
+	Ans: Boot into single user mode and make the necessary corrections inside fstab
+
+13. What does the last two sections define in fstab file?
+	Ans: The 5th column tells the dump information if whether the partition has to be backed up. It it is "0" the
+	filesystem will be ignored The 6th column tells the order in which fsck command would check the filesystem on boot. If it is "0" then fsck won't check the filesystem
+
+14. What is the command to display all the logical volume available in the system?
+	lvdisplay
+
+15. How do you mount a windows share on Linux? Is it possible?
+
+16. What is the difference between NFS share and a Samba share?
+	Ans: NFS sharing is done between linux to Linux where Samba sharing can be done between Linux-Linux and Linux-windows
+
+17. What is the default permission applied on the user when you mount a NFS permission on any local directory in your system?
+	Ans: no user permission which is a system account in all the machines having normal user level privileges unless no_root_squash or any other permission specification is not provided on the share
+
+18. What is the command to view all the kernel parameters?
+	sysctl -a
+
+19. What is . and .. in very directory of Linux system?
+	What is . and .. inside each directory path in Linux?
+
+20. What is the command to view all the variables in your system?
+	set
+
+21. How can you make a custom environment variable permanent so that it works even after reboot?
+	How to set environment variable path permanently
+
+http://linoxide.com/linux-how-to/linux-interview-questions-answers/
+-----------------------------------------------------------------------------------------------
+22. What is initrd image and what is its function in the linux booting process?
+	The initial RAM disk (initrd) is an initial root file system that is mounted prior to when 
+	the real root file system is available.The initrd is bound to the kernel and loaded as part 
+	of the kernel boot procedure. The kernel then mounts this initrd as part of the two-stage 
+	boot process to load the modules to make the real file systems available and get at the 
+	real root file system. Thus initrd image plays a vital role in linux booting process.
+
+23. 2. Explain the terms suid, sgid and sticky bit?
+	In addition to the basic file permissions in Linux, there are few special permissions that 
+	are available for executable files and directories.
+	SUID : If setuid bit is set, when the file is executed by a user, the process will have the 
+			same rights as the owner of the file being executed.
+
+	SGID : Same as above, but inherits group privileges of the file on execution, not user 
+			privileges. Similar way when you create a file within the directory, it will 
+			inherit the group ownership of the directories.
+
+	Sticky bit : Sticky bit was used on executables in linux so that they would remain in the 
+				memory more time after the initial execution, hoping they would be needed in 
+				the near future. But mainly it is on folders, to imply that a file or folder 
+				created inside a stickybit enabled folder could only be deleted by the owner. 
+				A very good implementation of sticky bit is /tmp , where every user has write 
+				permission but only users who own a file can delete them.
+				
+24. List out few of the differences between Softlink and Hardlink?
+	a) Hardlink cannot be created for directories. Hard link can only be created for a file.
+	b) Symbolic links or symlinks can link to a directory.
+	c) Removing the original file that your hard link points to does not remove the hardlink 
+		itself; the hardlink still provides the content of the underlying file.
+	d) If you remove the hard link or the symlink itself, the original file will stay intact.
+	e) Removing the original file does not remove the attached symbolic link or symlink, but 
+		without the original file, the symlink is useless
+
+25. How do you sent a mail attachment via bash console?
+	"mutt" is an opensource tool for sending emails with attachments from the linux bash 
+	command line. We can install "mutt" from the binary rpm or via package manager.
+	$ mutt -s "Subject of Mail" -a "path of attachment file" "email address of recipient" \
+		< "message text containing body of the message"
+	$ mutt -s "Backup Data" -a /home/backup.tar.gz admin@mywebsite.com < /tmp/message.txt	
+
+26. What is the difference between umask and ulimit ?
+	umask stands for ‘User file creation mask’, 
+		which determines the settings of a mask that controls which file permissions are set 
+		for files and directories when they are created. 
+	While ulimit is a linux built in command which provides control over the resources available 
+		to the shell and/or to processes started by it.
+
+	You can limit user to specific range by editing /etc/security/limits.conf at the same time 
+	system wide settings can be updated in /etc/sysctl.conf	
+
+27. What are the run levels in linux and how to change them?
+	A run level is a state of init and the whole system that defines what system services are operating and they are identified by numbers.There are 7 different run levels present (run level 0-6) in Linux system for the different purpose. The descriptions are given below.
+	0: Halt System (To shutdown the system)
+	1: Single user mode
+	2: Basic multi user mode without NFS
+	3: Full multi user mode (text based)
+	4: unused
+	5: Multi user mode with Graphical User Interface
+	6: Reboot System
+	To change the run level, edit the file “/etc/inittab” and change initdefault entry 
+	( id:5:initdefault:). If we want to change the run level on the fly, it can be done using 
+	‘init’ command.
+	e.g. ‘init 3' in the command line , this will move the system from current runlevel to 
+		runlevl 3. Current level can be listed by typing the command 'who -r'	
+
+28. What is SeLinux?
+	Security-enhanced Linux. It is an access control implementation 
+	and security feature for the Linux kernel. It is designed to protect the server against 
+	misconfigurations and/or compromised daemons. It put limits and instructs server daemons 
+	or programs what files they can access and what actions they can take by defining a 
+	security policy.
+	
+29. What are inodes in Linux ? How to find the inode associated with a file ?
+	$ df -i /root
+	An inode is a data structure on a filesystem on Linux and other Unix-like operating systems 
+	that stores all the information about a file except its name and its actual data. When a file 
+	is created, it is assigned both a name and an inode number, which is an integer that is 
+	unique within the filesystem. Both the file names and their corresponding inode numbers 
+	are stored as entries in the directory that appears to the user to contain the files. The 
+	concept of inodes is particularly important to the recovery of damaged filesystems. When 
+	parts of the inode are lost, they appear in the lost+found directory within the partition 
+	in which they once existed.
+
+	The inode entries store metadata about each file, directory or object, but only points to 
+	these structures rather than storing the data. Each entry is 128 bytes in size. The metadata 
+	contained about each structure can include the following:
+
+	Inode number
+	Access Control List (ACL)
+	Extended attribute
+	Direct/indirect disk blocks
+	Number of blocks
+	File access, change and modification time
+	File deletion time
+	File generation number
+	File size
+	File type
+	Group
+	Number of links
+	Owner
+	Permissions
+	Status flags
+	
+	$ ls -i
+	Inode structure of a directory consists of a name to inode mapping of files and directories 
+	in that directory.In a directory, You can find the inode number corresponding to the files 
+	using the command ls -i
+	
+30. What is IO Block 4096	
+	how big byte chunks is the data handled on the disk
+	https://unix.stackexchange.com/questions/345984/understanding-io-block-size/345990
+	Spindle hard disk drives, with small capacity:
+		logical sector = physical sector = IO block = 512 bytes
+	fast hard/SSD disk drives, with high capacity:
+		logical sector = physical sector = 512 bytes, IO block = 4096	
+
+31. Why should I use DAS either NAS or SAN
+	DAS - direct attached storage e.g. /dev/sda1
+	NAS - Network Attached Storage
+	SAN - block level storage solution that NAS doesn’t provide.
+		Network attached /dev/sda1 using Fiber channel
+
+32. A) rsync command
+		$ rsync -aH sourcedir targetdir
+	B) sed command
+		$ sed '/regex/{x;p;x;}'
+	# change "scarlet" or "ruby" or "puce" to "red"
+		$ sed 's/scarlet/red/g;s/ruby/red/g;s/puce/red/g'
+	C) awk command
+		$ awk -F':' '{ print $1 }' /etc/group
+		$ date | awk '{print $2 " " $6}'
+	D) lsof command
+		# List processes which opened a specific file
+			$ lsof /var/log/syslog
+		# lists all open files belonging to processes owned by the user
+			$ lsof -u username
+		# Kill all process that belongs to a particular user
+			$kill -9 `lsof -t -u username
+		# List all network connections
+			$ lsof -i
+		# List all network files in use by a specific process
+			$ lsof -i -a -c ssh
+		# List processes which are listening on a particular port
+			$ lsof -i :25
+	E) grep command	
+		$ netstat -plunt | grep firefox
+		
+32. How to set linux file/directory permissions ?
+
+33. How to set ownership for files/directories ?
+
+34. How to create user/group and how to modify it ?
+
+35. How to find kernel / OS version and its supported bit (32/64) version ?
+
+36. How to set / find interface ip address ?
+
+37. How to find linux mount points and disk usage ?
+
+38. What command to find memory and swap usage ?
+
+39. Have a look on ps, top, grep, find, awk and dmesg commands ?		
+		
+	
+40. Explain the procedure for re-installing Grub in Linux ?
+	1) Boot up with live cd
+	2) Mount your Linux root partition
+		$ sudo mount /dev/sda1   /mnt 
+	3) Install / reinstall grub
+		$ sudo grub-install --root-directory=/mnt/ /dev/sda1
+	4) Reboot w/o Live CD
+	
+		
+41. What is the difference between Name based virtual hosting and IP based virtual hosting? 	
+		
+		
+		
+		
+42. What is network bonding in Linux and where the important configuration files involved? 
+	What is the advantage of Network Bonding?
+	Network Bonding is a Linux kernel feature that allows to aggregate multiple network 
+	interfaces into a single virtual link. This is a great way to achieve redundant links, 
+	fault tolerance or load balancing networks in production system. If one of the physical 
+	NIC is down or unplugged, it will automatically move traffic to the other NIC card. 
+	Similar way the bonding will increase the interface throughput to handle the traffic 
+	it it is configured in active-active mode.	
+		
+		/etc/sysconfig/network-scripts/ifcfg-bond0
+		/etc/modprobe.d/bonding.conf
+		/etc/sysconfig/network-scripts/ifcfg-eth[0-4]
+		/proc/net/bonding/bond0
+		
+		
+		
+43. What is drop cache in Linux and how do you clear it ?
+	To free pagecache:
+		$ echo 1 > /proc/sys/vm/drop_caches
+	To free dentries and inodes:
+		$ echo 2 > /proc/sys/vm/drop_caches
+	
+	To free pagecache, dentries and inodes:
+		$echo 3 > /proc/sys/vm/drop_caches
+	
+	This is a non-destructive operation in normal scenarios and will only free things that are 
+	completely unused. Dirty objects will continue to be in use until written out to disk and 
+	are not freeable. However it is always preferred to run "sync" first to flush useful things 
+	out to disk.		
+		
+44. Explain the different Scenarios involved in TCP 3 way handshake?
+	The TCP three way handshake is the process for establishing a TCP connection.  
+	We can explain 3 way handshake with a simple scenario where we assume a client 
+	computer is contacting a server to send it some information.
+
+	a) A client sends a packet SYN bit set and a sequence number of N ==>  SERVER.
+	b) SERVER reply an ACK number of N+1, the SYN bit set and a sequence number of X ==> CLIENT.
+	c) The client sends a packet with an ACK number of X+1 and the connection is established.
+	d) The client sends the data.
+		
+		
+45. What is swappiness in Linux Memory Management and how do we configure that?
+	The swappiness parameter controls the tendency of the kernel to move processes out of 
+	physical memory and onto the swap disk.
+	swappiness = 0(no use swap) and 100(use 100% of swap sapce)
+	Ubuntu's default is 60
+	$cat /proc/sys/vm/swappiness
+	$sysctl vm.swappiness
+		vm.swappiness = 60
+	Change
+	$ vi /etc/sysctl.conf
+		vm.swappiness = 50  	
+	$ sysctl vm.swappiness=50
+
+44. As the disk space utilization was so high in the server, the Administrator has removed few 
+	files from the server but still the disk utilization is showing as high. What would be the reason?
+
+	In Linux even if we remove a file from the mounted file system, that will still be in use by some 
+	application and for this application, it remains available. Its because file descriptor in 
+	/proc/filesystem is held open.. So if there are such open descriptors to files already removed, 
+	space occupied by them considered as used. You find this difference by checking them using the 
+	"df" and "du" commands. While df is to show the file system usage, du is to report the file 
+	space usage. du works from files while df works at filesystem level, reporting what the kernel 
+	says it has available.
+
+	You can find all unlinked but held open files with:
+	$ lsof | grep '(deleted)'
+	
+	This will list the filename which is open with the pid in which it is running. We can kill those 
+	PIDs and which will stop these process and will recover the disk space responsible for this file.
+	
+	
+	
+	
+	
+####################
+Top 30 Linux System Admin & DevOps Q & A
+
+45. Why LVM is required ?
+	Answer: LVM stands for Logical Volume Manager, to resize filesystem’s size online we required LVM partition 
+	in Linux. Size of LVM partition can be extended and reduced using the lvextend & lvreduce commands respectively.
+
+46. How To check Memory stats and CPU stats ?
+	Answer:  Using ‘free –m ’ & ‘vmstat’ command we can display the physical and virtual memory statistics respectively. 
+		With the help of ‘sar’ command we see the CPU utilization & other stats.
+	vmstat - report virtual memory statistics
+	       - vmstat reports information about processes, memory, paging, block IO, traps, disks and cpu activity.
+
+47. What does Sar provides and at which location Sar logs are stored ?
+	Answer: sar (system active report is part of the sysstat package) collect, report, or save system activity information. 
+	The default version of the sar command (CPU utilization report) might be one of the first facilities the user runs 
+	to begin system activity investigation, because it monitors major system resources. If CPU utilization is near 100 percent 
+	(user + nice + system), the workload sampled is CPU-bound.  -20 highest vs 19 lowest priority
+	Log =>  /var/log/sysstat/saXX( date) file, where the dd parameter indicates the current day.
+	Using sar you can monitor performance of various Linux subsystems (CPU, Memory, I/O..) in real time.
+	Using sar, you can also collect all performance data on an on-going basis, store them, 
+	and do historical analysis to identify bottlenecks.
+	# sar 1 3     		               <= system CPU statistics 3 times (with 1 second interval).
+	# strings  /var/log/sysstat/sa20   <= strings read binary to human readable 
+
+	Sar is part of the sysstat package.
+	1.	Collective CPU usage
+	2.	Individual CPU statistics
+	3.	Memory used and available
+	4.	Swap space used and available
+	5.	Overall I/O activities of the system
+	6.	Individual device I/O activities
+	7.	Context switch statistics
+	8.	Run queue and load average data
+	9.	Network statistics
+	10.	Report sar data from a specific time
+
+
+48. How to increase the size of LVM partition ?
+	– Use the lvextend command (lvextend -L +100M /dev/<Name of the LVM Partition>
+	– resize2fs /dev/<Name of the LVM Partition>
+	– check the size of partition using ‘df -h’ command
+
+49. How to reduce the size of LVM partition ?
+	-Umount the filesystem using umount command,
+	-use resize2fs command
+	 $ resiz2fs /dev/mapper/myvg-mylv 10G
+	-Now use the lvreduce command  
+	 $ lvreduce -L 10G /dev/mapper/myvg-mylv		<=shrink the size 10GB
+ 
+	
+50. How to create partition from the raw disk ?
+	Answer: Using fdisk utility we can create partitions from the raw disk.
+	– fdisk  /dev/hd* (IDE) or /dev/sd* (SCSI)
+	– Type n to create a new partition
+	– After creating partition, type w command to write the changes to the partition table.
+
+51. Where the kernel modules are located ?
+	Answer: The ‘/lib/modules/kernel-version/’ directory stores all kernel modules or compiled drivers in Linux 
+	operating system. Also with ‘lsmod’ command we can see all the installed kernel modules.
+	lsmod prints the contents of the /proc/modules file. It shows which loadable kernel modules are currently loaded.
+
+52. What is umask ?
+	Umask stands for ‘User file creation mask’, which determines the settings of a mask that controls 
+	which file permissions are set for files and directories when they are created.
+
+53. How to set the umask permanently for a user?
+	It has to be put in the appropriate profile file which depends on the default shell of the user.
+
+54. How to change the default run level in linux ?
+	Edit '/etc/inittab' and change initdefault entry ( id:5:initdefault:). 
+	Using ‘init’ command we change the run level temporary like ‘init 3’ , this command will move the 
+	system in runlevl 3.
+
+55. How to share a directory using nfs ?
+	To share a directory using nfs , first edit the configuration file ‘/etc/exportfs’ , add a entry like
+	‘/<directory-name>  <ip or Network>(Options)’ and then restart the nfs service.
+
+56. How to check and mount nfs share ?
+	Using ‘showmount’ command we can see what directories are shared via nfs e.g ‘showmount -e <ip address of nfs server>’.
+	Using 'mount' command we can mount the nfs share on linux machine.
+
+57. What are the default ports used for SMTP,DNS,FTP,DHCP,SSH and squid ?
+	SMTP        25
+	DNS         53
+	FTP         20 (data transfer) , 21 ( Connection established)
+	DHCP        67/UDP(dhcp server) , 68/UDP(dhcp client)
+	SSH         22
+	Squid       3128
+
+58. What is Network Bonding ?
+	Network bonding is the aggregation of multiple Lan cards into a single bonded interface to provide fault tolerance 
+	and high performance. Network bonding is also known as NIC Teaming.
+
+59. What  are the different modes of Network bonding in Linux ?
+	balance-rr or 0 – round-robin mode for fault tolerance and load balancing.
+	active-backup or 1 – Sets active-backup mode for fault tolerance.
+	balance-xor or 2 – Sets an XOR (exclusive-or) mode for fault tolerance and load balancing.
+	broadcast or 3 – Sets a broadcast mode for fault tolerance. All transmissions are sent on all slave interfaces.
+	802.3ad or 4  – Sets an IEEE 802.3ad dynamic link aggregation mode. Creates aggregation groups that share the same speed & duplex settings.
+	balance-tlb or 5 –  Sets a Transmit Load Balancing (TLB) mode for fault tolerance & load balancing.
+	balance-alb or 6 –  Sets an Active Load Balancing (ALB) mode for fault tolerance & load balancing.
+
+60. How to check and verify the status the bond interface.
+	$cat /proc/net/bonding/bond0’ , we can check which mode is enabled and what lan cards are used in this bond. 
+	In this example we have one only one bond interface but we can have multiple bond interface like bond1, bond2 
+	and so on.
+
+61. How to check default route and routing table ?
+	$ netstat –rn    	<= r – route, n - numerical
+    $ route -n   		<= n - numerical (route and routing tables.)
+
+62. How to check which ports are listening in my Linux Server ?
+	$ netstat –l  | grep LISTEN
+	$ lsof –i | grep LISTEN
+	$ lsof -i -a -p 2027    //   -i   Display a table of all network interfaces.
+			-a  Show both listening and non-listening sockets.
+				-p, PID   
+
+63. List the services that are enabled at a particular run level in linux server ?
+	$ chkconfig –-list | grep 5:on			<= All list that enabled in run level5. 
+
+	
+64. How to enable a service at a particular run level ?
+	$ chkconfig <Service-Name> on –level 3
+
+65. How to upgrade Kernel in Linux ?
+	$yum update kernel  and reboot system
+
+66. How to recover Kernel from removed /vmlinuz folder?
+
+
+
+67. How To scan newly assigned LUNs on linux box without rebooting ?
+	Method:1 if sg3 rpm is installed, then run the command ‘rescan-scsi-bus.sh’
+	Method:2 Run the Command , echo ” – – – ” > /sys/class/scsi_host/hostX/scan
+
+68. How  to find WWN numbers of HBA cards in Linux Server ?
+Answer: We can find the WWN numbers of HBA cards using the command ‘systool -c fc_host -v | grep port_name’
+
+69. How to add & change the Kernel parameters ?
+	edit the file ‘/etc/sysctl.conf’
+	Save and run  ‘sysctl -p’  
+	this command will make the changes permanently without rebooting the machine.
+
+70. What is load average in a linux ?
+	average sum of the number of process waiting in the run queue and number of process currently executing 
+	over the period of 1, 5 and 15  minutes. Using the ‘top’ and ‘uptime’ command we find the load average 
+	of a linux sever.
+
+71. How to find all the regular files in a directory?
+	$ find / -type f			
+		f	<= regular file
+		s 	<= socket
+		l	<= symbolic link
+	
+######### Puppet Questions
+
+Q:25 What is Puppet Server ?
+Answer: Puppet is an open-source & enterprise software for configuration management toll in UNIX like operating system.  Puppet is a  IT automation software used to push configuration to its clients (puppet agents) using code. Puppet code can do a variety of tasks from installing new software, to check file permissions, or updating user accounts & lots of other tasks.
+
+Q:26 What are manifests in Puppet ?
+Answer: Manifests in Puppet are the files in which the client configuration is specified.
+
+Q:27 Which Command is used to sign requested certificates in Puppet Server ?
+Answer: ‘puppetca  –sign hostname-of-agent’ in (2.X)  & ‘puppet ca  sign hostname-of-agent’ in  (3.X)
+
+Q:28  At which location  Puppet Master Stores Certificates ?
+Answer:  /var/lib/puppet/ssl/ca/signed
+
+
+
+General Questions:
+•	What did you learn yesterday/this week?
+•	Talk about your preferred development/administration environment. (OS, Editor, Browsers, Tools etc.)
+•	Tell me about the last major Linux project you finished.
+•	Tell me about the biggest mistake you've made in [some recent time period] and how you would do it differently today. What did you learn from this experience?
+•	Why we must choose you?
+•	What function does DNS play on a network?
+•	What is HTTP?
+•	What is an HTTP proxy and how does it work?
+•	Describe briefly how HTTPS works.
+•	What is SMTP? Give the basic scenario of how a mail message is delivered via SMTP.
+•	What is RAID? What is RAID0, RAID1, RAID5, RAID10?
+•	What is a level 0 backup? What is an incremental backup?
+•	Describe the general file system hierarchy of a Linux system.
+[⬆] Simple Linux Questions:
+•	What is the name and the UID of the administrator user?
+•	How to list all files, including hidden one, in a directory?
+•	What is the Unix/Linux command to remove a directory and its contents?
+•	Which command will show you free/used memory? Does free memory exist on Linux?
+•	How to search for the string "my konfi is the best" in files of a directory recursively?
+•	How to connect to a remote server or what is SSH?
+•	How to get all environment variables and how can you use them?
+•	I get "command not found" when I run ifconfig -a. What can be wrong?
+•	What happens if I type TAB-TAB?
+•	What command will show the available disk space on the Unix/Linux system?
+•	What commands do you know that can be used to check DNS records?
+•	What Unix/Linux commands will alter a files ownership, files permissions?
+•	What does chmod +x FILENAMEdo?
+•	What does the permission 0750 on a file mean?
+•	What does the permission 0750 on a directory mean?
+•	How to add a new system user without login permissions?
+•	How to add/remove a group from a user?
+•	What is a bash alias?
+•	How do you set the mail address of the root/a user?
+•	What does CTRL-c do?
+•	What is in /etc/services?
+•	How to redirect STDOUT and STDERR in bash? (> /dev/null 2>&1)
+•	What is the difference between UNIX and Linux.
+•	What is the difference between Telnet and SSH?
+•	Explain the three load averages and what do they indicate.
+[⬆]
+
+
+ Medium Linux Questions:
+•	What do the following commands do and how would you use them?
+o	tee
+o	awk
+o	tr
+o	cut
+o	tac
+o	curl
+o	wget
+o	watch
+o	head
+o	tail
+
+•	What does a & after a command do?
+•	What does & disown after a command do?
+•	What is a packet filter and how does it work?
+•	What is Virtual Memory?
+•	What is swap and what is it used for?
+•	What is an A record, an NS record, a PTR record, a CNAME record, an MX record?
+•	Are there any other RRs and what are they used for?
+•	What is a Split-Horizon DNS?
+•	What is the sticky bit?
+•	What does the immutable bit to a file?
+•	What is the difference between hardlinks and symlinks? What happens when you remove the source to a symlink/hardlink?
+•	What is an inode and what fields are stored in an inode?
+•	Howto force/trigger a file system check on next reboot?
+•	What is SNMP and what is it used for?
+•	What is a runlevel and how to get the current runlevel?
+•	What is SSH port forwarding?
+•	What is the difference between local and remote port forwarding?
+•	What are the steps to add a user to a system without using useradd/adduser?
+•	What is MAJOR and MINOR numbers of special files?
+•	Describe a scenario when you get a "filesystem is full" error, but 'df' shows there is free space.
+•	Describe a scenario when deleting a file, but 'df' not showing the space being freed.
+•	Describe how 'ps' works.
+•	What happens to a child process that dies and has no parent process to wait for it and what’s bad about this?
+•	Explain briefly each one of the process states.
+•	How to know which process listens on a specific port?
+•	What is a zombie process and what could be the cause of it?
+•	You run a bash script and you want to see its output on your terminal and save it to a file at the same time. How could you do it?
+•	Explain what echo "1" > /proc/sys/net/ipv4/ip_forward does.
+•	Describe briefly the steps you need to take in order to create and install a valid certificate for the sitehttps://foo.example.com.
+•	Can you have several HTTPS virtual hosts sharing the same IP?
+•	What is a wildcard certificate?
+•	Which Linux file types do you know?
+•	What is the difference between a process and a thread? And parent and child processes after a fork system call?
+•	What is the difference between exec and fork?
+•	What is "nohup" used for?
+•	What is the difference between these two commands?
+o	myvar=hello
+o	export myvar=hello
+•	How many NTP servers would you configure in your local ntp.conf?
+•	What does the column 'reach' mean in ntpq -p output?
+•	You need to upgrade kernel at 1000 servers, how you would do this?
+•	How can you get Host, Channel, ID, LUN of SCSI disk?
+•	How can you limit process memory usage?
+[⬆] Hard Linux Questions:
+•	What is a tunnel and how you can bypass a http proxy?
+•	What is the difference between IDS and IPS?
+•	What shortcuts do you use on a regular basis?
+•	What is the Linux Standard Base?
+•	What is an atomic operation?
+•	Your freshly configured http server is not running after a restart, what can you do?
+•	What kind of keys are in ~/.ssh/authorized_keys and what it is this file used for?
+•	I've added my public ssh key into authorized_keys but I'm still getting a password prompt, what can be wrong?
+•	Did you ever create RPM's, DEB's or solaris pkg's?
+•	What does :(){ :|:& };: do on your system?
+•	How do you catch a Linux signal on a script?
+•	Can you catch a SIGKILL?
+•	What's happening when the Linux kernel is starting the OOM killer and how does it choose which process to kill first?
+•	Describe the linux boot process with as much detail as possible, starting from when the system is powered on and ending when you get a prompt.
+•	What's a chroot jail?
+•	When trying to umount a directory it says it's busy, how to find out which PID holds the directory?
+•	What's LD_PRELOAD and when it's used?
+•	You ran a binary and nothing happened. How would you debug this?
+•	What are cgroups? Can you specify a scenario where you could use them?
+[⬆] Expert Linux Questions:
+•	A running process gets EAGAIN: Resource temporarily unavailable on reading a socket. How can you close this bad socket/file descriptor without killing the process?
+[⬆] Networking Questions:
+•	What is localhost and why would ping localhost fail?
+•	What is the similarity between "ping" & "traceroute" ? How is traceroute able to find the hops.
+•	What is the command used to show all open ports and/or socket connections on a machine?
+•	Is 300.168.0.123 a valid IPv4 address?
+•	Which IP ranges/subnets are "private" or "non-routable" (RFC 1918)?
+•	What is a VLAN?
+•	What is ARP and what is it used for?
+•	What is the difference between TCP and UDP?
+•	What is the purpose of a default gateway?
+•	What is command used to show the routing table on a Linux box?
+•	A TCP connection on a network can be uniquely defined by 4 things. What are those things?
+•	When a client running a web browser connects to a web server, what is the source port and what is the destination port of the connection?
+•	How do you add an IPv6 address to a specific interface?
+•	You have added an IPv4 and IPv6 address to interface eth0. A ping to the v4 address is working but a ping to the v6 address gives yout the response sendmsg: operation not permitted. What could be wrong?
+•	What is SNAT and when should be used?
+•	Explain how could you ssh login into a Linux system that DROPs all new incomming packets using a SSH tunnel.
+•	How do you stop a DDoS?
+•	How can you see content of ip packet?
+[⬆] MySQL questions:
+•	How do you create a user?
+•	How do you provide privileges to a user?
+•	What is the difference between a "left" and a "right" join?
+•	Explain briefly the differences between InnoDB and MyISAM.
+•	Describe briefly the steps you need to follow in order to create a simple master/slave cluster.
+•	Why should you run "mysql_secure_installation" after installing MySQL?
+•	How do you check which jobs are running?
+[⬆] DevOps Questions:
+•	Can you describe your workflow when you create a script?
+•	What is GIT?
+•	What is a dynamically/statically linked file?
+•	What does "configure && make && make install" do?
+•	What is puppet/chef/ansible used for?
+•	How do you create a new postgres user?
+•	What is a virtual IP address? What is a cluster?
+•	How do you print all strings of printable characters present in a file?
+•	How do you find shared library dependencies?
+•	What is Automake and Autoconf?
+•	./configure shows an error that libfoobar is missing on your system, how could you fix this, what could be wrong?
+•	What are the Advantages/disadvantages of script vs compiled program?
+•	What's the relationship between continuous delivery and DevOps?
+•	What are the important aspects of a system of continous integration and deployment?
+[⬆] Fun Questions:
+•	A careless sysadmin executes the following command: chmod 444 /bin/chmod - what do you do to fix this?
+•	I've lost my root password, what can I do?
+•	I've rebooted a remote server but after 10 minutes I'm still not able to ssh into it, what can be wrong?
+•	If you were stuck on a desert island with only 5 command-line utilities, which would you choose?
+•	You come across a random computer and it appears to be a command console for the universe. What is the first thing you type?
+•	Tell me about a creative way that you've used SSH?
+•	You have deleted by error a running script, what could you do to restore it?
+[⬆] Demo Time:
+•	Unpack test.tar.gz without man pages or google.
+•	Remove all "*.pyc" files from testdir recursively?
+•	Search for "my konfu is the best" in all *.py files.
+•	Replace the occurrence of "my konfu is the best" with "I'm a linux jedi master" in all *.txt files.
+•	Test if port 443 on a machine with IP address X.X.X.X is reachable.
+•	Get http://myinternal.webserver.local/test.html via telnet.
+•	How to send an email without a mail client, just on the command line?
+•	Write a get_prim method in python/perl/bash/pseudo.
+•	Find all files which have been accessed within the last 30 days.
+•	Explain the following command (date ; ps -ef | awk ‘{print $1}’ | sort | uniq | wc -l ) >> Activity.log
+•	Write a script to list all the differences between two directories.
+•	In a log file with contents as <TIME> : [MESSAGE] : [ERROR_NO] - Human readable text display summary/count of specific error numbers that occured every hour or a specific hour.
+•	Using the OSI model, which layer has the responsibility of making sure that the packet gets where it is supposed to go?
+•	What is the subnet mask, network address and broadcast address for the following address: 123.65.47.62/22?
+•	What command is used to show all open ports and/or socket connections on a machine?
+•	What is NAT? What is it used for?
+•	Which IP ranges/subnets are "private" or "non-routable" (RFC 1918)?
+•	What is a packet filter and how does it work?
+•	What is a proxy and how does it work?
+•	What is ARP and what is it used for?
+•	What is the difference between TCP and UDP?
+•	What command is used to show the route table for a machine?
+•	Explain asynchronous routing?
+•	What is the purpose of a default gateway?
+•	A TCP connection on a network can be uniquely defined by 4 things. What are those things?
+•	When a client running a web browser connects to a web server, what is the source port of the connection?
+•	What is the destination port of the connection?
+•	What is SMTP?
+•	What is an SMTP relay?
+•	Give the basic scenario of how a mail message is delivered via SMTP
+•	What function does DNS play on a network?
+•	What is an A record?
+•	What is an NS record?
+•	What is an MX record?
+•	What is a PTR record?
+•	What is a DNS forwarder?
+•	What command is used to lookup DNS records?
+•	What is meant by "Reverse Lookup"?
+•	What is LDAP and what is it used for?
+•	What is a DN in LDAP?
+•	What is SSH?
+•	What is SSL?
+•	What is IDS?
+•	What is IPS?
+•	What is the difference between IDS and IPS?
+•	What is meant by the term "DOS Attack"?
+•	What is RAID?
+•	What is swap and what is it used for?
+•	What command will show the available disk space on the Unix/Linux system?
+•	How do you determine the public and prive IP addresses, if applicable, of a Unix/Linux system from the command line?
+•	What Unix/Linux command will alter a file's ownership?
+•	What Unix/Linux command will alter a file's permissions?
+•	What Unix/Linux command will show all processes running on a system?
+•	What Unix/Linux command will show the details of a file(permissions, size, timestamp)?
+•	What Unix/Linux command would you use to list all currently loaded kernel modules?
+•	What command would you use to telnet to port 7777 on a machine with IP address 10.10.10.128?
+•	What Unix/Linux command(s) will show a system's current resource allocations?
+•	What is the Unix/Linux command to remove a directory and its contents?
+•	What is the name and location of the system log on a Unix or Linux system?
+•	What would you do to recover a lost the root password to a Unix/Linux system?
+•	What is the difference between hardlink and symlink?
+•	What happens when you remove the source to a symlink?
+•	What are some of the security risks of symlinks?
+•	Explain a hardlink
+•	Where is a filename stored?
+•	What happens when a hardlink is removed
+•	how do you know when a file is removed
+•	Write a locking function in bash
+•	What is a pre-emptive kernel, what does that mean to you?
+•	What is an atomic operation?
+•	How does a switch get a mac address?
+•	What type of packet to discover a router?
+•	How does traceroute work?
+•	A careless sysadmin executes the following command: chmod 444 chmod - what do you do to fix this?
 
 
 
 
+Scripts
+•	Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and"fizzbuzz" at multiples of 3 and 5
 
 
 
 
+  =======User Management Related=======
+
+1) Which files stores the user min UID, max UID, password expiration settings, password encryption method being used etc.,?
+
+ANS : /etc/login.defs
+
+
+2) How do you make a file copied to a new user account automatically upon user account creation?
+
+ANS : Store the file in /etc/skel directory.
+
+ 
+3) Fields in /etc/passwd:
+
+ANS : - UserName  Password UserID GroupID Comments HomeDir LoginShell
+
+<Couple of lines from /etc/passwd file are pasted below for reference>
+
+redhat:x:500:500:Redhat User:/home/redhat:/bin/bash
+mssm:x:501:501:another user:/home/mssm:/bin/bash
+
+- "x" in the password column indicates that the encrypted password is stored in /etc/shadow file.
+
+
+4) Command to lock an user account:
+
+ANSWER: This can be done by using either "usermod -L <UserName>" or "passwd -l <UserName>" commands.
+
+  Example:-
+#usermod -L mango
+
+Once an account gets locked, there would be an exclamation mark before the encrypted password files in /etc/shadow
+mango:!$1$O5zV5Rj/$XhuRe8Og.AiXMXDGSIsae/:16266:0:99999:7:::
+
+To un-lock an account:- 
+#usermod -U mango
+
+
+5) How to disable user login via terminals?
+
+ANSWER: Add /sbin/nologin field instead of /bin/bash in /etc/passwd file.
+
+
+6) Command normally recommended to edit /etc/passwd, /etc/shadow, /etc/group and /etc/gshadow files:
+
+ANSWER: vipw > edit the user password file (/etc/passwd)
+            vigr > edit the user group file(/etc/group)
+            vipw -s > to edit shadow password file (/etc/shadow)
+            vigr -s > to edit shadow group file (/etc/gshadow)
+
+These commands would normally lock the file while editing to avoid corruption.
+
+
+7) When an user tries to login via terminal, system would throw up the error "The account is currently not available" how could this be fixed? OR via GUI when he enters the password, it looks to be logging in, however, comes back to the login prompt?
+
+ANSWER: This is because of the shell filed set as /sbin/nologin in /etc/passwd file, so change this back to /bin/bash and user would be able to login successfully.
+
+If the shell filed is set as /bin/false then whenever user tries to login he would not get any error or messages, it just comes back to the prompt. Same happens in GUI mode. Can also use "system-config-users" in GUI.
+
+
+8) How do you make a new user to reset his password upon his first login?
+
+{ The prompt should come up like below }
+
+[redhat@localhost ~]$ su - mango
+Password:
+You are required to change your password immediately (root enforced)
+Changing password for mango.
+(current) UNIX password:
+
+{ The prompt should come up like above }
+
+ANSWER: Use chage command and set the expiration date as given below
+
+[root@localhost skel]# chage -d 0 mango
+
+<< To view password aging details >>
+
+[root@localhost skel]# chage -l mango
+Last password change : password must be changed
+Password expires : password must be changed
+Password inactive : password must be changed
+Account expires : never
+Minimum number of days between password change : 0
+Maximum number of days between password change : 99999
+Number of days of warning before password expires : 7
+
+
+9) Create users home directory in /home1 directory instead of default /home directory. This gets applicable to any new users who gets created i.e the home directory of that user should be /home1/<UserName>/
+
+ANSWER: - Edit /etc/default/useradd
+- Change the line : HOME=/home1
+- Save the changes and exit. After this any new users home directory would be under /home1
+
+- You could check the useradd defaults using the command :#useradd -D
+
+OR
+
+#cat /etc/default/useradd
+
+After this you can add users with the command "useradd <UserName>". This would create the users home directory with the name of the user under the specified HOME directory as defined in /etc/default/useradd.
+
+
+EXAMPLE:- adding user with "-d"
+
+[root@Redhat5Lvm ~]# useradd -d /root/doctor alldoctors
+[root@Redhat5Lvm ~]# grep alldoctors /etc/passwd
+alldoctors:x:912:913::/root/doctor:/bin/bash
+[root@Redhat5Lvm ~]# ls -ali /root/doctor/
+total 28
+607780 drwx------ 3 alldoctors alldoctors 4096 Aug 3 00:31 .
+543457 drwxr-x--- 18 root root 4096 Aug 3 00:31 ..
+608253 -rw-r--r-- 1 alldoctors alldoctors 33 Aug 3 00:31 .bash_logout
+608252 -rw-r--r-- 1 alldoctors alldoctors 176 Aug 3 00:31 .bash_profile
+608251 -rw-r--r-- 1 alldoctors alldoctors 124 Aug 3 00:31 .bashrc
+608248 drwxr-xr-x 4 alldoctors alldoctors 4096 Aug 3 00:31 .mozilla
+
+
+10) How do you make/grant complete access (rwx) on files created for a user and deny any level of access to others including group?
+
+ANS : - Need to define the umask value for the required user.
+- This can be done by editing .bash_profile file.
+
+For example, if we need to define this for a user "mmurthy" then we need to edit this file "/home/mmurthy/.bash_profile" and define umask as given below (assuming that the default home directory location is not changed):
+
+umask 0077
+
+- Save and exit the file.
+- Next time this user logs in, files/directories would get exclusive permissions only for this user as masked by umask parameter.
+- For root user the umask is defined in "/etc/init.d/functions" file. Otherwise, in /etc/profile (login shell) or /etc/bashrc  (non-login shell) file.
+
+
+11) How to check if an user account has been locked?
+
+ANSWER:-  Run the command "passwd -S <UserName>", this would show if the password has been locked or not. Otherwise, grep for the username from /etc/shadow file and you could see "!" mark prefixed to the encrypted password field. 
+
+[root@server6 ~]# passwd -S smurthy
+smurthy LK 1970-01-01 0 99999 7 -1 (Password locked.)
+
+[root@server6 ~]# grep smurthy /etc/shadow
+smurthy:!!$6$jZqvS4ju$k.o6o7OoL7EZ1Bn52uPKeI2gqA76A7qyTl2PM8192jF2mz4ssVTz/u8DfbY2zJ7xCjFymh5FuATWxW5RxFugM1:0:0:99999:7:::
+
+If you notice a double exclamation mark here ("!!") this indicates that the account got locked-up by running the command "passwd -l <UserName>" command (available only for root user). Otherwise, a single exclamation mark indicates that the account got locked with the command "usermod -L <UserName>". Accounts locked with usermod command would record it in /var/log/secure file by default. 
+
+To "unlock" an user account, run this command "passwd -u <UserName">. Otherwise, run "usermod -U <UserName" command twice to get rid off double exclamation marks in the encrypted password field. 
+
+Otherwise, "usermod -U <UserName" would unlock an account locked by the "usermod -L <UserName>" command.
+
+EXAMPLE:-
+
+[root@server6 ~]# grep smurthy /etc/shadow
+smurthy:!!$6$jZqvS4ju$k.o6o7OoL7EZ1Bn52uPKeI2gqA76A7qyTl2PM8192jF2mz4ssVTz/u8DfbY2zJ7xCjFymh5FuATWxW5RxFugM1:0:0:99999:7:::
+ 
+[root@server6 ~]# passwd -S smurthy
+smurthy LK 1970-01-01 0 99999 7 -1 (Password locked.)
+
+[root@server6 ~]# passwd -u smurthy
+Unlocking password for user smurthy.
+passwd: Success
+ 
+[root@server6 ~]# grep smurthy /etc/shadow
+smurthy:$6$jZqvS4ju$k.o6o7OoL7EZ1Bn52uPKeI2gqA76A7qyTl2PM8192jF2mz4ssVTz/u8DfbY2zJ7xCjFymh5FuATWxW5RxFugM1:0:0:99999:7:::
+ 
+[root@server6 ~]# passwd -S smurthy
+smurthy PS 1970-01-01 0 99999 7 -1 (Password set, SHA512 crypt.)
+
+
+12) How to find out the shadow password encryption method being used in linux? How could this be changed (example : from md5 to sha512)?
+
+ ANSWER:-  We can find out the password encryption method being used for shadow passwords as shown below:
+
+- Check in /etc/login.defs
+    [root@server8 ~]# grep -i crypt /etc/login.defs
+    # Use SHA512 to encrypt password.
+    ENCRYPT_METHOD MD5
+    MD5_CRYPT_ENAB yes
+
+OR
+
+- Check using "authconfig" command:
+    [root@server8 ~]# authconfig --test|grep hashing
+    password hashing algorithm is md5
+
+OR
+
+- Check the password beginning character in the second field of /etc/shadow file:
+
+If it begins with = $6 > indicates sha512
+                                    $5 > sha256
+                                    $1 > md5    
+Examples:
+
+ty2:$6$EyoeIHFK$L2PAXcXRo.Q5Y7zUweYkste8PtiL/CqYJ9Z/ydBvRIOqvsegpVtOU1hDfkFdUpTcmjEou4kzL/Ej5MF2HdAB7.:16378:3:100:7::16489:
+
+ty3:$5$Bsv43yG6$/Oa4fhlKF65XW8ROohKnJaSxVIIEhUKFUEdiIcOEfY4:16378:0:99999:7:::
+
+ty5:$1$5J4jzULD$dKGfhSIzXp50Y4mwZxcqB/:16379:0:99999:7:::
+
+To Change Password Encryption Method to sha512:
+
+#authconfig --passalgo=sha512 --update {this would change the password encryption method to sha512}
+
+Verify if it got changed successfully:
+
+[root@server8 ~]# grep -i crypt /etc/login.defs
+# Use SHA512 to encrypt password.
+ENCRYPT_METHOD SHA512
+MD5_CRYPT_ENAB no
+
+[root@server8 ~]# authconfig --test|grep hashing
+ password hashing algorithm is sha512 
+
+
+13) What are the possible causes when an user failed to login into a linux system (physical/remote console); despite providing proper credentials? 
+
+ANSWER:-  Here are the possible reasons why an user fails to login into console:
+
+- Account Locked.
+ 
+When user tries to login via GUI receive an error "authentication failure" after entering password and it goes back to the user list prompt. 
+
+In CLI mode, after entering user password, it would fail with an error "incorrect password". However, if user tries "su" from root account, access would get granted. 
+
+- Account Expired.
+  
+When account expired, an error notifying about the same would be shown up.
+  
+- Shell Disabled
+ 
+After entering password in GUI, system shows a progress, however, could come back the login prompt. When this user attempts login via CLI, would receive an error "This account is currently not available".  For example, do disable shell of an user "test" : #usermod -s /sbin/nologin test (this only locks only terminal login, however, GUI login would work)
+ 
+- Only Non-root Users Failed To Login.
+ 
+  If all non-root users are unable to login via GUI/CLI, however, root could login then this could be because of the file "/etc/nologin" presence on the system.
+ 
+- Only Non-root Users Failed To Login in CLI.
+ 
+If all non-root users are unable to login via CLI, however, can login via GUI then it would be because of /tmp space limitations. Need to check if /tmp is configured and mounted separately and check free space under /tmp.
+
+- User login failed from GUI or from text console, however, could do su.
+
+If an user fails to login from GUI/Console, however, could login from other user accounts by running 'su' then it could be due to pam restrictions. One could use "pam_access" module to restrict login. Need to add :
+
+account      required     pam _access.so
+
+to files : /etc/pam.d/login & /etc/pam.d/gdm-*
+
+After this add " - : <UserName> : ALL " to /etc/security/access.conf file. For example to limit user "test", we could add below line to access.conf file;
+
+- : test : ALL
+
+{{ there would an error "permission denied" in GUI  when user is restricted to login via pam}}
+ 
+- Only root user login failed from console, however, works in GUI.
+
+This could be because of no terminals available or defined in /etc/securetty file. 
+
+If an user failed to login remotely via ssh then the reasons could be different. Here are the reasons: 
+
+
+- User Restricted.
+  
+If "AllowUsers" parameter is configured in /etc/ssh/sshd_config then need to add required user to this list to get access. 
+  
+- Max Logins Set.
+ 
+If "maxlogins" parameter is set in /etc/security/limits.conf then user would be allowed up to the parameter set and further connections would be denied. There could be "maxsyslogins" configured as well to limit concurrent access to a system.
+
+
+
+14) How to manually add user without using "useradd/adduser" or "system-config-user" utilities? 
+
+ANSWER: Create required directory under /home (default home directory for all local users) and set permissions.
+
+#mkdir /home/user1
+#chmod 700 /home/user1
+
+[root@host1 mail]# ls -ld /home/user1
+drwx------. 4 user1 user1 4096 Jan 24 07:19 /home/user1
+
+
+<> Now, edit /etc/passwd file to manually set required parameters for the new user "user1":
+
+#vipw (this command would block multiple edits of /etc/passwd file)
+
+user1:x:2000:2000:local user:/home/user1:/bin/bash
+
+[root@host1 ~]# grep user1 /etc/passwd
+
+user1:x:2000:2000:local user:/home/user1:/bin/bash
+
+<> Create required group by editing /etc/group file using command 'vigr':
+
+#vigr
+user1:x:2000:
+
+<> Next step is to create the local profile files for the new user by copying from /etc/skel. 
+
+[root@host1 ~]# cp -arv /etc/skel/. /home/user1
+`/etc/skel/./.bash_profile' -> `/home/user1/./.bash_profile'
+`/etc/skel/./.bash_logout' -> `/home/user1/./.bash_logout'
+`/etc/skel/./.mozilla' -> `/home/user1/./.mozilla'
+`/etc/skel/./.mozilla/extensions' -> `/home/user1/./.mozilla/extensions'
+`/etc/skel/./.mozilla/plugins' -> `/home/user1/./.mozilla/plugins'
+`/etc/skel/./.gnome2' -> `/home/user1/./.gnome2'
+`/etc/skel/./.bashrc' -> `/home/user1/./.bashrc'
+
+
+<> Change permissions of all the files under /home/user1 to be owned by new user:
+#chown -R user1:user1 /home/user1
+
+- Try logging in as new user and test.
+
+For user mail requirement, need to create a proper file under /var/spool/mail (default mail box location) with username and permissions:
+#cd /var/spool/mail
+#touch user1
+#chown user1:mail user1
+#chmod 660 user1
 
 
 
 
+  =======Shell Scripting Related=======
+
+1) How to create simple shell scripts in Linux?
+
+ANSWER: Make sure that the file begins with "#!/bin/bash" before any command lines. Make it executable : chmod +x <filename>. Executed by running "sh <filename.sh>" OR <./filename.sh>".
+
+
+2) Which command to be used to check the shell being used?
+
+ANSWER: echo $SHELL
 
 
 
 
+  =======Log File Related=======
+
+1) Where are the log files stored usually in linux?
+
+ANSWER: under /var/log
+
+ 
+2) How to check if the syslog service is running in RHEL6?
+
+ANSWER: /etc/init.d/rsyslog status OR service rsyslog status
+
+ 
+3) By default log files are set to get rotated on weekly basis, how to make this gets rotated on monthly basis?
+
+ANSWER: Edit /etc/logrotate.conf and change below lines
+
+# rotate log files monthly
+monthly
+
+Save changes and if you want to rotate the log files immediately then run the command:
+
+#logrotate -f /etc/logrotate.conf
+
+ 
+4) How do you check the boot messages (kernel ring buffer)?
+
+ANSWER:- Using "dmesg" or #cat /var/log/dmesg
+
+
+5) How to increase size of 'kernel ring buffer' file (dmesg)?
+
+ANSWER:- By default the kernel ring buffer size is 512 bytes. So, to increase this space add "log_buf_len=4M" to the kernel stanza in grub.conf file.  
+
+6) What does /var/log/wtmp and /var/log/btmp files indicates and what do they store? 
+
+ANSWER:- These files are used to store user login/logout details since from the date of creation. 
+
+The user login, logout, terminal type etc are stored in /var/log/wtmp and this is not a user-readable file, so "last" command reads data from this file (or the file designated by the -f flag). 
+
+All un-successful(bad) login attempts are recorded in /var/log/btmp which could be displayed using the command "lastb". All these login/logout events would also get recorded in /var/log/secure file (this file usually stores all authentication/authorization events).
+
+Like-wise, there is /var/log/lastlog which records most previous successful login event of users. In earlier RHEL versions (RHEL 5.x) there used to be a file /var/log/faillog to hold failed login events which had become obsolete since RHEL6.1 and is no longer available.
+
+
+
+  =======Package/Yum Related=======
+
+1) What does 'ivh' represents in rpm -ivh <PackageName> command?
+
+ANSWER: i - install
+v - verbose mode
+h - hash mode where it would print ## characters as the installation progresses
+
+ 
+2) What is the difference between rpm -F <PackageName> and rpm -U <PackageName>?
+
+ANSWER: rpm -F = Basically freshens a package which in turn upgrades an existing package, otherwise doesn't install it if an earlier version not found.
+rpm -U = Upgrades an existing package if exists otherwise install it.
+
+ 
+3) How to find to which package the "ls" commands belongs to (to find out package responsible for this command)?
+
+ANS : #rpm -qf /bin/ls {this would tell about the package to which this command belongs to if installed by that package}
+
+
+4) How to find out the configuration files installed by a package (take into consideration of the "coreutils" package)?
+
+ANS : # rpm -qc coreutils
+
+To list out only the document files installed by coreutils package:-
+ # rpm -qd coreutils 
+
+To list out all the files installed by this package:-
+   #rpm -ql coreutils 
+   OR
+   #rpm -q --filesbypkg coreutils
+
+To list out the dependent packages:-
+   #rpm -qR coreutils
+
+To find out more information of this package:-
+  #rpm -qi coreutils
+
+
+To find out any scripts executed by this package:-
+  #rpm -q --scripts coreutils
+
+
+Similarly, to find details of package which is not yet installed:
+
+List Files In Package:  
+   #rpm -qpl <PathOfPackageNotYetInstalled>
+
+{The list would show up files which would get added to system after installing package} 
+
+List Only Config Files:
+   #rpm -qpc <PathOfPackageNotYetInstalled>
+
+List Only Document Files:
+   #rpm -qpd <PathOfPackageNotYetInstalled>
+
+List Out Dependancies For This Package:
+   #rpm -qpR <PathOfPackageNotYetInstalled>
+
+List Details For This Package:
+   #rpm -qpi <PathOfPackageNotYetInstalled>
+
+
+5) How do you find out all the packages installed on a RHEL system(server)? 
+
+ANS : - /root/install.log > this would only lists packages installed during deployment of the system. Packages installed later would not be listed here.
+- Otherwise, run the command #rpm -qa > this would query all packages and prints out names respectively.
+
+- In RHEL 5 we can check the file : /var/log/rpmpkgs to find out all packages on the system. However, this file is deprecated in RHEL6.
+
+- Note: In Red Hat Enterprise Linux 6, the daily cron file to create /var/log/rpmpkgs is provided by the rpm-cron package, available in the optional repository, not the main 'rpm' package. So, if you do not install the package, /var/log/rpmpkgs is not available on Red Hat Enterprise Linux 6. (Ref - https://access.redhat.com/solutions/23743)
+
+- In RHEL 6 > yumdb info | grep -v ^\ | grep -v '^$' | sort > /root/yumdblist.out (grep -v '^$' > this deletes empty lines). The file "/root/yumdblist.out" would provide with all the packages installed on the system.
+
+Otherwise,,
+
+One could query the rpm database to list out all package installed:
+     #rpm -qa|sort ------ this would show up list of packages installed alphabetically. 
+
+
+6) How to create a local yum repository which would make use of the mounted linux ISO image under /media ?
+
+ANS : Create files ending with .repo extension under /etc/yum.repos.d directory with proper syntax:
+
+[root@localhost yum.repos.d]# cat local.repo
+[local]
+name=RHEL6.5
+baseurl=file:///media
+enabled=1
+gpgcheck=1
+gpgkey=file:///media/RPM-GPG-KEY-redhat-release
+
+
+7) Different ways that can be used to verify that a package got installed successfully via yum:
+
+ANS : ==Method 1==
+
+- Immediately after running yum command, check exit status, if it shows "0" (numeral) then command executed successfully.
+
+[root@localhost yum.repos.d]# echo $?
+0
+
+==Method 2==
+- Run rpm -qa and test.
+
+[root@localhost yum.repos.d]# rpm -qa | grep certmonger
+certmonger-0.61-3.el6.x86_64
+
+==Method 3==
+- Verify with rpm command:
+
+[root@localhost yum.repos.d]# rpm -V certmonger
+
+==Method 4==
+- Check the yum log to see the successful log entry about the same package.
+
+[root@localhost yum.repos.d]# grep certmonger /var/log/yum.log
+Jul 15 10:33:22 Installed: certmonger-0.61-3.el6.x86_64 
+
+
+8)How to view the installed date of a package (consider the package sg3_utils)? 
+
+ANSWER:- Check in /var/log/yum.log file (provided the package is installed by yum):- 
+
+[root@server8 ~]# grep sg3_utils /var/log/yum.log
+Oct 22 12:11:38 Installed: sg3_utils-1.28-4.el6.x86_64
+
+OR
+
+Use the command "rpm -q <PackageName> --last" 
+
+ [root@server8 ~]# rpm -q sg3_utils --last
+sg3_utils-1.28-4.el6.x86_64                   Wed 22 Oct 2014 12:11:37 PM PDT
+
+OR
+
+Using the "rpm -qi <PackageName> | grep "Install Date" command
+
+[root@server8 ~]# rpm -qi sg3_utils|grep "Install Date"
+Install Date: Wed 22 Oct 2014 12:11:37 PM PDT      Build Host: x86-004.build.bos.redhat.com
+
+In RHEL 5.x, one could use /var/log/rpmpkgs file to check this. To get a list of all the packages installed date: #rpm -qa --last
+
+
+9) If for some reasons, a binary file gets corrupted or missing from the system, then how could this be recovered with minimal downtime?
+
+ANSWER:- In first attempt, one could try to copy the missing binary (executable) file from a similar working system usingscp command.
+
+In next attempt, if the above attempt not possible or doesn't work then we could extract this file from respective package and move it to the system. 
+
+Consider the situation wherein the binary command file /sbin/ifconfig is missing or corrupted, hence, unable to run this command. So, we'd need to extract this from package and install it. 
+
+ Steps
+----------
+
+- Identify which package this command belongs to. 
+
+- On a working system, run the command 'rpm -qf /sbin/ifconfig'. This would tell which package has installed this executable file:
+
+[root@rh413server sbin]# rpm -qf /sbin/ifconfig 
+net-tools-1.60-110.el6_2.x86_64
+
+- Mount an iso which holds this package and then run "rpm2cpio" command with "cpio" to extract required file.
+
+- Check if the required file is available in the package before extracting it.
+
+[root@rh413server rpm]# rpm2cpio /media/Packages/net-tools-1.60-110.el6_2.x86_64.rpm |cpio --extract --list --verbose "*ifconfig"
+-rwxr-xr-x   1 root     root        69440 Apr 26  2012 ./sbin/ifconfig
+1542 blocks
+
+- Now, we know that this binary is available with this package, so we'd need to extract this file. Create a directory where to extract.
+
+[root@rh413server package-restore-test]# rpm2cpio /media/Packages/net-tools-1.60-110.el6_2.x86_64.rpm |cpio --extract --make-directories --verbose "*ifconfig"
+./sbin/ifconfig
+1542 blocks
+
+
+- The binary would be found under "sbin" directory within current directory.
+
+[root@rh413server package-restore-test]# tree
+.
+└── sbin
+    └── ifconfig
+
+1 directory, 1 file
+
+- Later, move this binary file to /sbin folder and make sure proper permissions are set as required.
+
+
+
+  =======File System/LVM Related=======
+
+1) How to check what file systems are mounted and their read/write status?
+
+ANS : #cat /etc/mtab
+#cat /proc/mounts
+#mount
+#df -Th > this would not tell the read/write status
+
+
+2) Where is grub.conf file stored in RHEL6/RHEL5 systems?
+
+ANS : In /boot/grub/ directory.
+
+
+3) How do you remount a file system read only on the fly?
+
+ANS : #mount -o remount,ro <Mountpoint>
+- To make a file system gets mounted read only during boot ,need to edit fstab.
+
+
+4) Command used to convert ext2 file system into ext3.
+
+ANS : tune2fs -j <device or file system name>
+
+
+5) How to run file system check on a logical volume in rescue mode?
+
+ANS : - Boot into rescue mode ("linux rescue nomount")
+- Don't mount any file systems, so "Skip" mounting.
+- First make the logical volumes available by running these commands:
+- lvm pvscan
+- lvm vgscan
+- lvm lvscan
+- lvm lvchange -ay
+- Next, run the file system check on the respective lvm.
+- #e2fsck -fy /dev/vgname/lvname
+
+
+6) How to reduce/extend a root LVM?
+
+ANS : To Reduce - boot into rescue mode without mounting file system (linux rescue nomount).
+- activate the lvms if required as explained in previous answer.
+- run file system check on respective lvm.
+- reduce file system : #resize2fs /dev/vg1/rootlv 5G
+- Next, reduce the corresponding lvm : #lvreduce -L 5G /dev/vg1/rootlv (reducing the LV to 5GB)
+- Run fsck again.
+- Verify the lvm is reflecting the correct size.
+
+To extend - no need to boot into rescue, this could be done online.
+- unmount the respective file system first (this is not absolutely necessary, size can be extended online, but always recommended to unmount respective file system)
+- Extend the lv : #lvextend -L +1G /dev/vg1/rootlv (extending the size to 1GB plus)
+- Extend the file system : #resize2fs /dev/vg1/rootlv
+- Run fsck if necessary.
+
+
+7) How to verify if the filesystem state is marked as clean by fsck/e2fsck or by kernel?
+
+ANS : [root@redhat Desktop]# dumpe2fs -h /dev/sda1 |grep -i state
+dumpe2fs 1.41.12 (17-May-2010)
+Filesystem state: clean
+
+OR
+
+[root@server8 Desktop]# tune2fs -l /dev/sda1|grep -i state
+Filesystem state:         clean
+
+
+8) How to find out backup superblocks for a logical volume?
+
+$ dumpe2fs /dev/vg1/rootlv | grep -i "backup superblock"
+dumpe2fs 1.41.12 (17-May-2010)
+Backup superblock at 32768, Group descriptors at 32769-32769
+Backup superblock at 98304, Group descriptors at 98305-98305
+Backup superblock at 163840, Group descriptors at 163841-163841
+Backup superblock at 229376, Group descriptors at 229377-229377
+Backup superblock at 294912, Group descriptors at 294913-294913
+Backup superblock at 819200, Group descriptors at 819201-819201
+Backup superblock at 884736, Group descriptors at 884737-884737
+
+                       OR
+If the file system is un-mounted then could use mke2fs : #mke2fs -n /dev/vg1/rootlv | grep -i -A1 "superblock backup"
+
+
+9) Find out list of actual devices associated with a logical volume using lvs command?
+
+$ lvs -o +segtype,devices
+
+LV VG Attr LSize Pool Origin Data% Move Log Cpy%Sync Convert Type Devices
+homelv vg1 -wi-ao---- 1000.00m linear /dev/sda2(0)
+rootlv vg1 -wi-ao---- 5.49g linear /dev/sda2(1000)
+swaplv vg1 -wi-ao---- 1000.00m linear /dev/sda2(2500)
+tmplv vg1 -wi-ao---- 1000.00m linear /dev/sda2(4000)
+usrlv vg1 -wi-ao---- 6.37g linear /dev/sda2(2750)
+usrlv vg1 -wi-ao---- 6.37g linear /dev/sda2(4250)
+varlv vg1 -wi-ao---- 2.93g linear /dev/sda2(250)
+testlv vg2 -wi-ao---- 52.00m linear /dev/sdb(0)
+
+OR
+
+- Using vgdisplay : #vgdisplay -v <vgname> {this would list out all the details of the VG including corresponding lvs and pvs within the VG}
+
+--- Physical volumes ---
+PV Name /dev/sdb
+PV UUID nFwUZd-F4Cm-tbeq-y75d-OUzX-S2ze-rEeR8x
+PV Status allocatable
+Total PE / Free PE 25 / 0
+
+PV Name /dev/sdc
+PV UUID KWfeHu-cP6u-Qpdz-XzDD-iomY-uSKd-2d6V6G
+PV Status allocatable
+Total PE / Free PE 25 / 24
+
+OR
+
+- Check the latest lvm archive under /etc/lvm/archive/<archivename>:
+[root@redhat Desktop]# grep device /etc/lvm/archive/vg2_00003-697546303.vg
+device = "/dev/sdb" # Hint only
+device = "/dev/sdc" # Hint only
+
+
+10) How to set "rw" permissions on file for a user and disable for other users except root user (exclusive permissions)? 
+
+ANS : Use "setfacl -m u:<UserName>:<PermissionBits> <File/FolderPath>
+
+ #setfacl -m u:redhat:rw /testfile {redhat is an user here}. 
+
+To read use "getfacl" command: #getfacl /testfile
+
+
+11) Different fields in /etc/fstab.
+
+ANS : - DeviceName      MountPoint     FilesystemType     MountOptions DumpFrequency     FsckCheckOrder
+ 
+     
+12) How do you skip the initial fsck(file system check) on a file system while booting up? 
+
+ ANS : - Edit /etc/fstab and make the last column of the respective file system as 0 (number). This would skip the file system check process.
+
+
+13) How to list all the files with SUID (Set User ID) bit set under the top level root directory and ignore any errors/warnings in the process, and list the output in long list format? 
+
+ANSWER:- find / -type f -perm -4000 2>/dev/null | xargs ls -l
+
+
+14) How to list all the files/folders with SUID/SGID/Sticky Bit (Set Group ID) bit set under the top level root directory and ignore any errors/warnings in the process, and list the output in long list format?
+
+ANSWER:- find / -type f -perm /7000 2>/dev/null | xargs ls -l
+
+
+15) How to force file system check to run after random/maximum mount counts? 
+
+
+ANSWER:- One option is to use "tune2fs" command to set this. There are two options "Maximum mount count:" & "Mount count:" which could be used to control after how-many mounts the file system check should be run. By default the "Maximum mount count:" option would be set "-1" when file system gets created which mask this feature. So, to get a fsck on system reboot/reset this has to be set and which in turn depends on "Mount count". These mount counts would get incremented after each system reset/restart.
+
+
+Default option:
+
+$ tune2fs -l /dev/sda2 |grep -i "mount count"
+Mount count: 9
+Maximum mount count: -1
+
+So, to force fsck on count reach of 10, we can tune-up the file system as shown below:
+
+[root@rh413server yum.repos.d]# tune2fs -c 10 /dev/sda2
+tune2fs 1.41.12 (17-May-2010)
+Setting maximal mount count to 10
+[root@rh413server yum.repos.d]# tune2fs -l /dev/sda2 |grep -i "mount count"
+Mount count: 9
+Maximum mount count: 10
+
+Now, after the 10th mount of the file system, it would force a file system check and mount counter would be reset to 1. 
+
+Otherwise, there is another global option which could be used to make file system check after 180 days or after random number of mounts using "enable_periodic_fsck" in /etc/mk2fs.conf file as shown below:
+
+[root@rh413server yum.repos.d]# grep -i enable_periodic_fsck /etc/mke2fs.conf
+enable_periodic_fsck = 1
+
+NOTE: To get this the e2fsprogs package should be at least "e2fsprogs-1.41.12-20.el6". Hence, need to update older package. This has been added from RHEL 6.6 on-wards. 
+
+Ref: https://access.redhat.com/solutions/428583 
+
+
+
+  =======Boot/Kernel Related=======
+
+1) I've installed the latest kernel on the system successfully, however, my server still boots from the old kernel. How do you make the system to boot from the newly installed kernel?
+
+ANS : - Verify if the new kernel packages are installed successfully.
+- Verify if the kernel stanza is added in grub.conf file.
+- Make the new kernel as the default kernel to boot in grub.conf file. Either move the kernel stanza to be the first or change "default" entry according to the  kernel stanza to boot.
+
+
+2) There is an error during the boot stating "cannot resolve label for a file system" and system is dropping into single user mode. System would show up  Ctrl+D error. How could this be fixed?
+
+ANS : - Make a note of the file system for which the label failed to resolve.
+- Boot into single user mode.
+- remount root file system in rw mode = #mount -o remount,rw /
+- use "blkid" or "e2label" or "findfs" or "lsblk -f" OR "check in /dev/disk/by-uuid/ or /dev/disk/by-label/" to find out the labels/UUIDs assigned to each mounted devices. If the label is not correct in fstab then edit it.
+- Exit and reboot. this would fix the label error.
+
+
+3) Which command is to be used to create GRUB password to avoid normal user in editing GRUB interface while booting?
+
+ANS :- Using the command "grub-crypt" (in RHEL 6.x). This generates an encrypted password using "sha512" algorithm. You could also use "grub-md5-crypt" which generates "md5" encrypted password.
+
+- paste the generated encrypted password into grub.conf file wherever needed as shown below (only a part of grub.conf file is pasted below):
+
+default=0
+timeout=5
+splashimage=(hd0,0)/grub/splash.xpm.gz
+hiddenmenu
+password --encrypted $1$EgrNz1$MbdclVToRCCsOF7OuBEgb/
+title Red Hat Enterprise Linux (2.6.32-431.el6.x86_64)
+
+So, with the grub password added anyone who wants to pass arguments to kernel while booting has to enter the password by pressing "P" and then proceed. RHEL 5.x, uses "grub-md5-crypt" command by default to generate one and could use "password --md5 <password-hash>" format in grub.conf file.
+
+
+4) How do you disable the "NetworkManager" service on runlevel 5?
+
+ANS :- [root@redhat Desktop]# chkconfig --level 5 NetworkManager off
+
+[root@redhat Desktop]# chkconfig --list NetworkManager
+NetworkManager 0:off 1:off 2:on 3:on 4:on 5:off 6:off
+
+
+5) Which is the parameter that you would add to grub.conf while configuring kdump?
+
+ANS :- crashkernel=128M (for 128MB crash memory) {crashkernel=0M-2G:128M,2G-6G:256M,6G-8G:512M,8G-:768M}
 
 
 
 
+  =======System/Hardware Related=======
+
+1) Commands:
+
+- To check memory availability #free -m Or #cat /proc/meminfo OR top or #vmstat
+- To check CPU details #cat /proc/cpuinfo Or lscpu (RHEL6) or check in dmesg
+- To check the loaded modules #lsmod
+- To load a module #modprobe
+- To check all (active/inactive) network interfaces #ifconfig -a Or ip a Or #cat /proc/net/dev
+- To scan bus so that all newly added devices/luns would come up: #rescan-scsi-bus.sh or #echo "- - -" > /sys/class/scsi_host/host<ID>/scan {to get the rescan-scsi-bus.sh command, need to install sg3_utils package}
+- To check most recent system reboot :#last reboot | head -1 {last command reads from /var/log/wtmp, lastb reads from /var/log/btmp}
+
+[root@redhat Desktop]# last reboot|head -1
+reboot system boot 2.6.32-431.el6.x Thu Jul 17 15:43 - 17:09 (01:25)
+
+- To check the most recent system shutdown time :#last -x|grep shutdown|head -1
+
+[root@redhat Desktop]# last -x | grep shutdown|head -1
+shutdown system down 2.6.32-431.el6.x Thu Jul 17 15:43 - 15:43 (00:00)
+
+- To check processor statistics : #mpstat or #iostat {these commands belongs to sysstat package}
+
+
+2) Common Standard Ports Used :
+
+ANSWER: = 22 ssh
+= 21/20 ftp
+= 23 telnet
+= 25 smtp
+= 53 DNS (tcp/udp)
+= 68 DHCP
+= 69 TFTP
+= 80/443 http/https (tcp)
+= 88/464 Kerberos (tcp/udp)
+= 110 pop3
+= 123 NTP(udp)
+= 137 nmbd
+= 138,139,445 smbd
+= 143 IMAP
+= 161 SNMP
+= 389/636 LDAP/LDAPS (tcp)
+= 514 (udp) syslogd
+= 2049 NFS 
+
+
+3) How to find out the system hardware details such as "manufacture, product name" etc,.? 
+
+ANSWER: Using "dmidecode" 
+
+#dmidecode --type system |egrep -i "Manufacturer|Product Name|Serial Number|Family"
+OR
+#dmidecode --type system |grep "System Information" -A 8
+
+- To find out BIOS details : 
+                 #dmidecode --type bios |grep "BIOS Information" -A 6
+
+Please visit my recent blog post for more details and easier way to get the information:
+
+View System Hardware Info
+
+
+4) The option "Open in Terminal" is missing when user right clicks on terminal in GUI. How to fix this? 
+
+ANS : This is basically because of missing package "nautilus-open-terminal". Once this is installed, the right click option would show up. 
+
+
+5) How to change the default display manager or desktop from Gnome Display Manager (gdm) to kde?
+
+ANSWER: You would need to install the KDE related packages first. Run command "yum groupinstall "KDE Desktop" to get all the KDE related packages to be installed (provided yum is configured). Once this is done, create the file "/etc/sysconfig/desktop" and add the below lines:
+
+DISPLAYMANAGER="KDE"
+DESKTOP="KDE" 
+
+ After this change, restart the X window session.
+
+In RHEL 5.x, you could use "switchdesk" command to switch to different display managers. So, to switch to KDE, you could use the command "switchdesk kde". This may prompt to install "KDE Software Development" group if not installed.  
+
+6) How to run 'free' command to print output of 2 instances with 2 seconds interval and store that output in a file (skipping any errors/warnings), and run this in background?
+
+
+ANSWER:
+
+[root@localhost ~]# free -s 2 -c 2 1> /tmp/free.out 2> /dev/null &
+[1] 4836
+[root@localhost ~]# cat /tmp/free.out 
+             total       used       free     shared    buffers     cached
+Mem:        461456     349112     112344          0      12768      47780
+-/+ buffers/cache:     288564     172892
+Swap:      2031608      26712    2004896
+
+             total       used       free     shared    buffers     cached
+Mem:        461456     349120     112336          0      12768      47780
+-/+ buffers/cache:     288572     172884
+Swap:      2031608      26712    2004896
+
+[1]+  Done                    free -s 2 -c 2 > /tmp/free.out 2> /dev/null
+
+
+7) How to find out when was the last time a service got restarted? 
+
+ANSWER:- One way is to check in respective configured logs, otherwise, we could find the process start time using "ps" command.
+
+For example, if you wish to find out the restart occurrence of "sshd" then check in /var/log/secure, you would see something similar to below lines:
+
+Jun 18 05:29:18 nagios sshd[5413]: Received signal 15; terminating.
+Jun 18 05:29:18 nagios sshd[5612]: Server listening on 0.0.0.0 port 22.
+Jun 18 05:29:18 nagios sshd[5612]: Server listening on :: port 22.
+
+
+Using ps command:
+
+[root@nagios Desktop]# ps -p `ps -C sshd -o pid=|head -1` -o lstart
+                 STARTED
+Thu Jun 18 05:29:18 2015
+
+
+Replace the service name with respective service you wish to check far. To find out the most recent 'httpd' service restart time : 
+
+[root@nagios Desktop]# ps -p `ps -C httpd -o pid=|head -1` -o lstart
+                 STARTED
+Thu Jun 18 05:34:35 2015
+
+Otherwise, check in httpd log files, you would similar lines like below:
+
+[Thu Jun 18 05:34:35 2015] [notice] caught SIGTERM, shutting down
+[Thu Jun 18 05:34:36 2015] [notice] Apache/2.2.15 (Unix) DAV/2 PHP/5.3.3 configured -- resuming normal operations
+
+
+
+
+  =======Networking Related=======
+
+1) How do you change the network speed of an interface to 100Mbps with auto-negotiation off and duplex in full mode(example for interface eth0)?
+
+ANS : - #ethtool -s eth0 speed 100 autoneg off duplex full {changing the speed on the fly}
+- To make this changes persistent need to add the below line to /etc/sysconfig/network-scripts/ifcfg-eth0 file:
+ETHTOOL_OPTS="speed 100 autoneg off duplex full"
+
+
+2) Every time the system reboots the network interface doesn't come up. However, if you restart network service or execute "ifup eth0" command which would bring up the network fine? How could this be fixed?
+
+ANS : Make sure that "ONBOOT=Yes" is set in the respective configuration file (example in ifcfg-eth0 for eth0). In this case the "ONBOOT" parameter would be set to "NO".
+
+- If the above step doesn't help then check /etc/sysconfig/network file and make sure "NETWORKING" is set to "Yes". {These are the most likely reasons in this case}
+
+
+3) How do you check the network routing table using commands?
+
+ANS : -  #route -n
+OR
+#netstat -nr
+
+4) After changing the network card on a system the network interface name got changed from eth0 to eth1. This shows when you run the command "ifconfig -a". Running "service network restart", shows this error "Device eth0 doesn't seem to be present". But when you run the command "ifconfig -a" you would notice eth1 is listed there instead of eth0. So, running "ifup eth1" shows error as "configuration for eth1 not found". How to make sure that the network interface becomes eth0 here and up along with the server?
+
+ANS : - Make a note of the HW/MAC address of the second network interface here. {ifconfig eth1}
+- Enter this MAC into the field "HWADDR" in ifcfg-eth0 file.
+- Now, edit "/etc/udev/rules.d/70-persistent-net.rules file.
+- You comment out the line of eth0 here and change the name of eth1 to eth0. Save and exit.
+- Reboot the system. {this should fix the issue, tested on RHEL6.5 system}
+
+5) How to fix/troubleshoot "no network" or "network down" or "unable to ping remote host" or "localhost doesn't ping" problems? 
+
+ANS :- When network is down or unable to ping remote (another) host system, we'd need to start checking the following things sequentially:
+
+    <> Check if local network interface is working properly.
+
+        - Ping localhost to confirm that local network interface is up and required network modules are loaded. If unable to ping localhost check for following things:
+        
+        <> Check if lo interface is up (ifconfig lo)
+
+            - You should see "UP LOOPBACK RUNNING" line in the output. If not then bring up the loopback interface : #ifup lo
+
+        <>Check if 127.0.0.1 address is mapped with localhost in /etc/hosts file. If there is no such entry then pinging 0 would work, however, pining localhost would fail. So, add the entry as:
+
+            = 127.0.0.1    localhost
+
+    <>  Check if at least one network interface is up on system. 
+
+            #ifconfig eth0 (it could be any interface)
+
+            - This should show up a valid IP address and also would indicate if network is active (UP). If network is down then bring it up:
+
+            #ifup eth0 
+
+        - If unable to get a valid IP address here, then need to check how is IP address being provisioned, it could be static or dynamic. If static then check in
+        /etc/sysconfig/network-scripts/ifcfg-eth0 (i've taken eth0 as an example here) and look for valid entries as shown below:
+                    
+            DEVICE="eth0"
+            BOOTPROTO="static"
+            HWADDR="00:0C:29:98:64:4C"
+            ONBOOT="yes"
+            TYPE="Ethernet"
+            UUID="99b3f47f-5a68-4ffd-992a-aaa24ad12139"
+            IPADDR="192.168.1.211"
+            NETMASK="255.255.255.0"
+
+        - Bring up the interface if it is down :#ifup eth0
+        - Still unable to bring up network interface then restart the network service             : 
+                #service network restart 
+                  OR 
+                #service NetworkManager restart
+
+        - If it is dynamic mode of IP address then check if there is any problem on the DHCP server. Try to set a test (static) IP address and check if that works.
+
+
+    <> Next step is to ping the hostname to confirm that name resolution works good.
+        
+         #ping `hostname` OR ping <IPAddressOfeth0>
+
+        - If the above ping fails then ping the ipaddress directly and test if that works then problem with name resolution (DNS), so it should be either addressed at DNS level or fixing /etc/hosts file.  
+
+    <> Ping another host/node OR Gateway address.
+    
+      - Now, ping another host/node on the same network group. If ping success then we'd say routing is working, otherwise, check if gateway is configured properly. Ping the gateway address and check.
+      
+      - Unable to ping another remote host then problem could be at the router end or routing problem. So, run traceroute at this stage and check where network is dropping connections.
+      
+    <> Unable to ping anything either localhost or remote host or loopback address.
+
+        - This could be a problem either with firewall (iptables rules are set), otherwise, with sysctl settings configured on the system. Check if 
+        "net.ipv4.icmp_echo_ignore_all" has been set in /etc/sysctl.con file, if so, please un-set this.
+        
+        - If firewall problem, then make sure "icmp" protocol and "lo" interface is allowed for communication. 
+
+            = iptables -A INPUT -i lo -j ACCEPT {A - Append OR I - Input}
+
+              iptables -A INPUT -p icmp -j ACCEPT
+
+
+  =======Security Related=======
+
+1) How do you backup and restore iptables (configurations)?
+
+ANS : #iptables-save > /tmp/iptables.out
+#iptables-restore < /tmp/iptables.out
+
+
+2) What does the character "S" or "s" in the execute bit location of user permission indicates?
+ 
+ANS : # "S" indicates that the SUID has been set, however, execute permission is not set. "s" indicates SUID has been set with execute permission.
+
+
+3) How do you provide an user exclusive permissions to shutdown or reboot a system?
+
+ANS : # Make the user sudo with appropriate permissions on the commands required.
+- Edit the file /etc/sudoers using the command "visudo".
+- Add the below lines to /etc/sudoers file: (example to make user "raj" to execute shutdown/reboot commands)
+
+{format
+   <username>                             <host>=<commands>  }
+
+raj      ALL=/sbin/shutdown,/sbin/reboot,/sbin/poweroff
+
+- The next user logins and executes the command "sudo /sbin/shutdown" the user would be prompted to enter password and upon successful authentication the command gets executed.
+
+
+4) How to disable password-less login for root user in single user mode? 
+
+ANSWER:- Change the line that reads "SINGLE=/sbin/sushell" to "SINGLE=/sbin/sulogin" in "/etc/sysconfig/init" file. 
+
+This prompts for user (root) to enter a valid password to authenticate.  However, if "init=/bin/sh" is passed as grub parameter then system would boot without prompting for password.
+
+
+       
+5) How to temporarily disable all user log-in except root user (either via SSH or terminal or in GUI)?
+
+ANSWER:- This could be achieved by creating /etc/nologin file (as root user). If this file exists then any user who tries to log-in would gets rejected and only root user would be allowed (the root user may not be allowed to login via ssh if "PermitRootLogin" is set to "no" in /etc/ssh/sshd_config).
+
+
+6) How to disable "Restart" & "Shut Down" buttons on the GUI Login screen? 
+
+ ANSWER: In RHEL 6.x, you would need to use gconftool-2 or gconf-editor commands for this purpose. 
+
+Using gconftool-2 command:
+
+To disable "Restart" & "Shut Down" buttons on the GUI log-in screen, run the below command as root user:
+
+#gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --type bool --set /apps/gdm/simple-greeter/disable_restart_buttons true
+
+These are defined as schemas in "/etc/gconf/schemas/gdm-simple-greeter.schemas" file. 
+
+Same way, if you wish to disable user list, run the below command as root user:
+
+#gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defautls --type bool --set /apps/gdm/simple-greeter/disable_user_list true
+
+
+Using gconf-editor command:
+
+Run "gconf-editor" command, expand "apps" and then "gdm", click on "simple-greeter" and then check "disable_restart_buttons", then right click on "disable_restart_buttons" and choose "Set as Default". 
+
+In RHEL 5.x
+
+The simplest way to achieve this in RHEL 5.x is to run the command "gdmsetup" in GUI as root user, un-check "Show Actions Menu" under "Menu Bar" in "local" tab. This would remove "Restart" & "Shut Down" buttons on the GUI log-in screen.
+
+In RHEL 7.x 
+
+Edit (as root user) "/etc/dconf/db/gdm.d/01-custom-gdm-settings" file and the following lines:
+
+[org/gnome/login-screen]
+disable-user-list=true
+
+Then update "dconf" database using the command "dconf update", finally restart gdm service "systemctl restart gdm"
+
+
+7) What does the umask value of 0022 indicates for a root user? 
+
+ ANSWER:Before understanding this, one must understand the numerical values being used to represent permission bits in Unix environment. It is as shown below:
+
+      r - "read" permission - numerical equivalent value "4"
+      w - "write" permission - numerical equivalent value "2"
+      x - "execute" permission - numerical equivalent value "1"
+      s - "special" permission bit - numerical equivalent "4" for SUID (SetUserID), "2" for SGID(SetGroupID "1" for Sticky-bit.
+   
+      u - "user"  
+      g - "group" 
+      o - "others"       
+     
+      Set/Unset Permissions: Using chmod command. Say for example you wish to set only "read & write (rw)" permission for owner, no permissions for group and others then this could be done like below:
+     
+      $chmod 600 <filename> OR $chmod u+rw,go-rwx <filename>
+     
+     
+Now, lets check what does 0022 umask value indicates:
+   
+      0 - Indicates special character bit, not masked.
+      0 - Indicates mask nothing, all permission bits are set for "Owner".
+      2 - Indicates mask 2 for "Group" (for files it is "x4x" meaning both read & write bits are set likewise for directories it is "x5x" meaning both read & execute bits are set)
+      2 - Indicates mask 2 for others ( as explained above)
+     
+               Saying so, when a root user creates a file/directory this umask bit would be used to set the effective permissions. For a file it would be (666-022=644), rw-,r--,r-- (read&write,read,read) respectively for user, group and others (ugo). However, when a directory is created it would be (777-022=755) rwx,r-x,r-x for ugo. Same way the default umask value for other users is 0002.
+
+Linux admin interview questions
+1.	1. Linux admin interview questions 1. How do you take a single line of input from the user in a shell script? 2. Write a script to convert all DOS style backslashes to UNIX style slashes in a list of files. 3. Write a regular expression (or sed script) to replace all occurrences of the letter „f‟, followed by any number of characters, followed by the letter „a‟, followed by one or more numeric characters, followed by the letter „n‟, and replace what‟s found with the string “UNIX”. 4. Write a script to list all the differences between two directories. 5. Write a program in any language you choose, to reverse a file. 6. What are the fields of the password file? 7. What does a plus at the beginning of a line in the password file signify? 8. Using the man pages, find the correct ioctl to send console output to an arbitrary pty. 9. What is an MX record? 10. What is the prom command on a Sun that shows the SCSI devices? 11. What is the factory default SCSI target for /dev/sd0? 12. Where is that value controlled? 13. What happens to a child process that dies and has no parent process to wait for it and what‟s bad about this? 14. What‟s wrong with sendmail? What would you fix? 15. What command do you run to check file system consistency? 16. What‟s wrong with running shutdown on a network? 17. What can be wrong with setuid scripts? 18. What value does spawn return? 19. Write a script to send mail from three other machines on the network to root at the machine you‟re on. Use a „here doc‟, but include in the mail message the name of the machine the mail is sent from and the disk utilization statistics on each machine? 20. Why can‟t root just cd to someone‟s home directory and run a program called a.out sitting there by typing “a.out”, and why is this good? 21. What is the difference between UDP and TCP? 22. What is DNS? 23. What does nslookup do? 24. How do you create a swapfile? 25. How would you check the route table on a workstation/server? 26. How do you find which ypmaster you are bound to? 27. How do you fix a problem where a printer will cutoff anything over 1MB? 28. What is the largest file system size in solaris? SunOS? 29. What are the different RAID levels? ^Back to Top Interview questions for Linux admin 1. Advantages/disadvantages of script vs compiled program.
+2.	2. 2. Name a replacement for PHP/Perl/MySQL/Linux/Apache and show main differences. 3. Why have you choosen such a combination of products? 4. Differences between two last MySQL versions. Which one would you choose and when/why? 5. Main differences between Apache 1.x and 2.x. Why is 2.x not so popular? Which one would you choose and when/why? 6. Which Linux distros do you have experience with? 7. Which distro you prefer? Why? 8. Which tool would you use to update Debian / Slackware / RedHat / Mandrake / SuSE ? 9. You‟re asked to write an Apache module. What would you do? 10. Which tool do you prefer for Apache log reports? 11. Your portfolio. (even a PHP guest book may work well) 12. What does „route‟ command do? 13. Differences between ipchains and iptables. 14. What‟s eth0, ppp0, wlan0, ttyS0, etc. 15. What are different directories in / for? 16. Partitioning scheme for new webserver. Why? ^Back to Top Read more at TechInterviews.com Unix/Linux programming interview questions Question 1: What is the major advantage of a hash table? (Asked by Silicon Magic Corp. people) Answer: The major advantage of a hash table is its speed. Because the hash function is to take a range of key values and transform them into index values in such a way that the key values are distributed randomly across all the indices of a hash table. Question 2: What are the techniques that you use to handle the collisions in hash tables?(Asked by Silicon Magic Corp. people) Answer: We can use two major techniques to handle the collisions. They are open addressing and separate chaining. In open addressing, data items that hash to a full array cell are placed in another cell in the array. In separate chaining, each array element consist of a linked list. All data items hashing to a given array index are inserted in that list. Question 3: In Unix OS, what is the file server? (Asked by Silicon Magic Corp. people) Answer: The file server is a machine that shares its disk storage and files with other machines on the network. Question 4: What is NFS? What is its job?(Asked by Silicon Magic Corp. people)
+3.	3. Answer: NFS stands for Network File System. NFS enables filesystems physically residing on one computer system to be used by other computers in the network, appearing to users on the remote host as just another local disk. Question 5: What is CVS? List some useful CVS commands.(Asked by Silicon Magic Corp.people) Anser: CVS is Concurrent Version System. It is the front end to the RCS revision control system which extends the notion of revision control from a collection of files in a single directory to a hierarchical collection of directories consisting of revision controlled files. These directories and files can be combined together to form a software release. There are some useful commands that are being used very often. They are cvs checkout cvs update cvs add cvs remove cvs commit ^Back to Top Unix/Linux administration interview questions What is LILO? LILO stands for Linux boot loader. It will load the MBR, master boot record, into the memory, and tell the system which partition and hard drive to boot from. What is the main advantage of creating links to a file instead of copies of the file? A: The main advantage is not really that it saves disk space (though it does that too) but, rather, that a change of permissions on the file is applied to all the link access points. The link will show permissions of lrwxrwxrwx but that is for the link itself and not the access to the file to which the link points. Thus if you want to change the permissions for a command, such as su, you only have to do it on the original. With copies you have to find all of the copies and change permission on each of the copies. Write a command to find all of the files which have been accessed within the last 30 days. find / -type f -atime -30 > December.files This command will find all the files under root, which is „/‟, with file type is file. „-atime -30′ will give all the files accessed less than 30 days ago. And the output will put into a file call December.files.
+4.	4. What is the most graceful way to get to run level single user mode? A: The most graceful way is to use the command init s. If you want to shut everything down before going to single user mode then do init 0 first and from the ok prompt do a boot -s. What does the following command line produce? Explain each aspect of this line. $ (date ; ps -ef | awk „{print $1}‟ | sort | uniq | wc -l ) >> Activity.log A: First let‟s dissect the line: The date gives the date and time as the first command of the line, this is followed by the a list of all running processes in long form with UIDs listed first, this is the ps -ef. These are fed into the awk which filters out all but the UIDs; these UIDs are piped into sort for no discernible reason and then onto uniq (now we see the reason for the sort - uniq only works on sorted data - if the list is A, B, A, then A, B, A will be the output of uniq, but if it‟s A, A, B then A, B is the output) which produces only one copy of each UID. These UIDs are fed into wc -l which counts the lines - in this case the number of distinct UIDs running processes on the system. Finally the results of these two commands, the date and the wc -l, are appended to the file "Activity.log". Now to answer the question as to what this command line produces. This writes the date and time into the file Activity.log together with the number of distinct users who have processes running on the system at that time. If the file already exists, then these items are appended to the file, otherwise the file is created. ^Back to Top Read more at TechInterviews.com Solaris interview questions 1. List the files in current directory sorted by size ? - ls -l | grep ^- | sort -nr 2. List the hidden files in current directory ? - ls -a1 | grep "^." 3. Delete blank lines in a file ? - cat sample.txt | grep -v „^$‟ > new_sample.txt 4. Search for a sample string in particular files ? - grep .Debug. *.confHere grep uses the string .Debug. to search in all files with extension..conf. under current directory. 5. Display the last newly appending lines of a file during appendingdata to the same file by some processes ? - tail .f Debug.logHere tail shows the newly appended data into Debug.log by some processes/user. 6. Display the Disk Usage of file sizes under each directory in currentDirectory ? - du - k * | sort .nr (or) du .k . | sort -nr 7. Change to a directory, which is having very long name ? - cd CDMA_3X_GEN*Here original directory name is . .CDMA_3X_GENERATION_DATA.. 8. Display the all files recursively with path under current directory ? - find . -depth - print
+5.	5. 9. Set the Display automatically for the current new user ? - export DISPLAY=`eval „who am i | cut -d"(" -f2 | cut -d")" -f1′`Here in above command, see single quote, double quote, grave ascent is used. Observe carefully. 10. Display the processes, which are running under yourusername ? - ps .aef | grep MaheshvjHere, Maheshvj is the username. 11. List some Hot Keys for bash shell ? - Ctrl+l . Clears the Screen. Ctrl+r . Does a search in previously given commands in shell. Ctrl+u - Clears the typing before the hotkey. Ctrl+a . Places cursor at the beginning of the command at shell. Ctrl+e . Places cursor at the end of the command at shell. Ctrl+d . Kills the shell. Ctrl+z . Places the currently running process into background. 12. Display the files in the directory by file size ? - ls .ltr | sort .nr .k 5 13. How to save man pages to a file ? - man <command> | col .b > <output-file>Example : man top | col .b > top_help.txt 14. How to know the date & time for . when script is executed ? - Add the following script line in shell script.eval echo "Script is executed at `date`" >> timeinfo.infHere, .timeinfo.inf. contains date & time details ie., when script is executed and history related to execution. 15. How do you find out drive statistics ? - iostat -E 16. Display disk usage in Kilobytes ? - du -k 17. Display top ten largest files/directories ? - du -sk * | sort -nr | head 18. How much space is used for users in kilobytes ? - quot -af 19. How to create null file ? - cat /dev/null > filename1 20. Access common commands quicker ? - ps -ef | grep -i $@ 21. Display the page size of memory ? - pagesize -a 22. Display Ethernet Address arp table ? - arp -a 23. Display the no.of active established connections to localhost ? - netstat -a | grep EST 24. Display the state of interfaces used for TCP/IP traffice ? - netstat -i 25. Display the parent/child tree of a process ? - ptree <pid> Example: ptree 1267 26. Show the working directory of a process ? - pwdx <pid> Example: pwdx 1267 27. Display the processes current open files ? - pfiles <pid> Example: pfiles 1267 28. Display the inter-process communication facility status ? - ipcs 29. Display the top most process utilizing most CPU ? - top .b 1 30. Alternative for top command ? - prstat -a
+6.	6. Linux interview questions ------------------------------- * How to check all open ports on linux machine and block unsed ports? netstat -t #nmap -v localhost for tcp #nmap -sU localhost for udp #netstat -tulp or #netstat -tulpn to verfy the open ports ------------------------------- * how u use the iptable firewall to restrict ssh,telnet,ftp For SSH iptables -A INPUT -s -p tcp --dport <22> -j REJECT/DROP/DENY For Telnet iptables -A INPUT -s -p tcp --dport <23> -j REJECT/DROP/DENY For FTP iptables -A INPUT -s -p tcp --dport <21> -j REJECT/DROP/DENY ------------------------------------- * what is the difference between unix and linux graphics is the main difference extra more command are in linux userfriendly then unix the unix is the platform dependent the linux is platform independent. we cann't install unix in all machine we recquired a special machine to install unix, but linux is not like that it support all machines filesystem are different there diff lies in kernel linux is under gpl and unix proprietary
+7.	7. Difference Between Linux and Unix 1)Linux default shell is /bin/bash, where Unix default shell is /bin/sh (other shell also supported) 2) Linux Store all their command history,but if the default shell is /bin/sh in Unix, then Unix not store Command history. 3) Linux support Tab key, but unix not support Tab key ------------------------------------- Who owns the data dictionary? The Oracle user SYS owns all base tables and user- accessible views of the data dictionary. Therefore, no Oracle user should ever alter (update, delete, or insert) any rows or schema objects contained in the SYS schema, because such activity can compromise data integrity. The security administrator should keep strict control of this central account. ------------------------------------- which file contains information about os wether it's 32 bit or 64 bit? ANSWER: /proc/cpuinfo or $uname -m or /usr/bin/file -------------------------------- what contains information about file and directory creating time or modification time? An inode is a data structure on a Unix / Linux file system. An inode stores basic information about a regular file, directory, or other file system object. You can use following two commands to display an inode: [a] ls command : list directory contents ----------------------------------- What are RPM?s, what do they offer? The full form of RPM is Redhat Package Manager.
+8.	8. rpm is a powerful Package Manager, which can be used to build,install, query, verify, update, and erase individual software packages. A package consists of an archive of files and meta-data used to install and erase the archive files. [b] stat command : display file or file system status eg : # stat /etc/passwd Output: File: `/etc/group' Size: 566 Blocks: 16 IO Block: 4096 regular file Device: fd00h/64768d Inode: 2443679 Links: 1 Access: (0644/-rw-r--r--) Uid: ( 0/ root) Gid: ( 0/ root) Access: 2009-08-12 08:23:31.245032672 +0530 Modify: 2002-01-01 05:54:15.000000000 +0530 Change: 2002-01-01 05:54:15.000000000 +0530 -------------------------------------------------- *how to confirm from client end about nfs server sharing? with mount and showmount -e server IP ------------------------------------------------- How do i check which nfs version I am using ? rpcinfo -p localhost | grep -i nfs This cmd is used for nfs version rpm -qa | grep nfs rpm -qi nfs nfs-utils yum info nfs nfs-utils ------------------------------------------------ Through ssh whole directory structure from / is shared regardless the user we have connected with ....... how do i prevent sharing ?? vi /etc/ssh/sshd_config "in last line enter the folowing entry" AllowUsers "username"
+9.	9. And vi /etc/hosts.deny "in last line enter the folowing entry" sshd: ALL EXCEPT "DOMAIN-NAME" its benefitial to use setfacl command for secure your stuff.. ------------------------------------------------------- * what restrict telnet for root itself but allow for other user Root can login through telnet session, but by default it is disabled. You can enable by appending /etc/securetty file open /etc/securetty using vi #vi /etc/securetty pts/0 pts/1 don't remove anything from this /etc/securetty , just append your entry vi /etc/pam.d/login auth required pam_securetty.so== 1st line should be placed as required.if we change the option as sufficient instead of required telnet can login as "root". ----------------------------------------------------------- How to send automated email to a set of people at fixed time ? 1)just create a alias of people and create a command file and create a crond entry 2)configure sendmail & postfix to configure procmail.. Or configure Q-mail / Squirrel mail & use contab ---------------------------------------------------- how do i check which package has installed some command suppose ls , mkdir or whatever ??? rpm -qa | grep "pakage name" rpm -qa | grep
+10.	10. yum install it will show already installed or not if not then it will install Pirut same as yum rpm -qa /usr/bin/ls gives you from which rpm the "ls" command is installed. ----------------------------------------------------- What is the difference between Telnet and SSH? ssh is a secured shell, where telnet is not a secured one.when you ssh to trasnfer data between a system, the data will be send in the encrypted form, where the hacker cannot encode or decode it. While you telnet,the data send between the system is alphabetical format(ASCII), where every one can understand. More over as per network security, telnet and ftp are prohibited. Always, trust SSL based data transfer. Telnet -> Its just getting (Telenet) a connection to the server. Its not more secure. Anybody can use it. It can be easly hacked.It can be easily read by anybody in that network SSH -> secured shocket shell Its more secure than Telnet . This has an encrption and decrption of the data /usr/pwd None can hack this. It is the good way to transfer the data --------------------------------------------------- What is the difference between home directory and working directory? home directory is one over which user have complete control and it is its default working directory when its logs in. while the working directory is the users current directory which may or may not be his home directory. ------------------------------------------ How can you see all mounted drives? with df -hT command and with the mount command. #vi /etc/fstab contains perminant mounts
+11.	11. --------------------------------------------- When you install RedHat what is the kernel mode ? What is kernel compilation / upgrade ? Kernel mode, also referred to as system mode, is one of the two distinct modes of operation of the CPU in Linux. The other is user mode, a non-privileged mode for user programs, that is, for everything other than the kernel. When the CPU is in kernel mode, it is assumed to be executing trusted software, and thus it can execute any instructions and reference any memory addresses. The kernel is trusted software, but all other programs are considered untrusted software. Thus, all user mode software must request use of the kernel by means of a system call in order to perform privileged instructions, such as process creation or input/output. Kernel compilation is installing a new kernel or adding custom modules to the same kernel. Kernel upgradation is upgrading it to a different version altogether. ------------------------------ what is the difference between fork and thread ? and parent and child process in fork system call? fork() system call in UNIX causes creation of a new process the new process (child process) which is an exact copy of the calling process(parent process).return value from fork () is used to distinguish the parent from the child; the parent receives the child's process id, but the child receives zero. A thread is a stream of instructions that can be scheduled as an independent unit. A thread is a stream of instructions that can be scheduled as an independent unit. It is important to understand the difference between a thread and a process. A process contains two kinds of information: resources that are available to the entire process such as program instructions, global data and working directory, and schedulable entities, which include program counters and stacks. A thread is an entity within a process that consists of the schedulable part of the process.
+12.	12. A fork() duplicates all the threads of a process. The problem with this is that fork() in a process where threads work with external resources may corrupt those resources (e.g., writing duplicate records to a file) because neither thread may know that the fork() has occurred. When a new perl thread is created, all the data associated with the current thread is copied to the new thread, and is subsequently private to that new thread! This is similar in feel to what happens when a UNIX process forks, except that in this case, the data is just copied to a different part of memory within the same process rather than a real fork taking place. A fork() induces a parent-child relationship between two processes. Thread creation induces a peer relationship between all the threads of a process. -------------------------------------------------------- You want to create a compressed backup of the users' home directories. What utility should you use? Tar -czf kk.tar.gz /home/username If we want to extract the the command is tar -xzf kk.tar.gz -------------------------------------------------------- What is the difference between an argument and an option/switch? A linux/unix syntax format is as follows command option arguement example: ls -a /boot here ls command, -a is option,/boot is arguement option specifies the command how to run arguement specifies the command on what to run --------------------------------------------------------- How does the boot process[init levels] work on Linux? How is it different from Solaris? When an x86 computer is booted, the processor looks at the end of the system memory for the BIOS (Basic Input/Output System) and runs it. The BIOS program is written into
+13.	13. permanent read-only memory and is always available for use. The BIOS provides the lowest level interface to peripheral devices and controls the first step of the boot process. The BIOS tests the system, looks for and checks peripherals, and then looks for a drive to use to boot the system. Usually it checks the floppy drive (or CD-ROM drive on many newer systems) for bootable media, if present, and then it looks to the hard drive. The order of the drives used for booting is usually controlled by a particular BIOS setting on the system. Once Linux is installed on the hard drive of a system, the BIOS looks for a Master Boot Record (MBR) starting at the first sector on the first hard drive, loads its contents into memory, then passes control to it. This MBR contains instructions on how to load the GRUB (or LILO) boot-loader, using a pre-selected operating system. The MBR then loads the boot-loader, which takes over the process (if the boot-loader is installed in the MBR). In the default Red Hat Linux configuration, GRUB uses the settings in the MBR to display boot options in a menu. Once GRUB has received the correct instructions for the operating system to start, either from its command line or configuration file, it finds the necessary boot file and hands off control of the machine to that operating system. 1. The system BIOS checks the system and launches the first stage boot loader on the MBR of the primary hard disk. 2. The Frist stage boot loader loads itself into memory and launches the second stage boot loader from the /boot/ partition. 3. The second stage boot loader loads the kernel into memory, which in turn loads any necessary modules and mounts the root partition read-only. 4. The kernel transfers control of the boot process to the / sbin/init program. 5. The /sbin/init program loads all services and user-space
+14.	14. tools, and mounts all partitions listed in /etc/fstab. 6. The user is presented with a login screen for the freshly booted Linux system. ------------------------------------------------------------- What are the main differences between RHEL4 & RHEL5? XEN, YUM and improved SELinux all the features updated with better options Better GUI support then RHEL4 YUM over RPM package management IPTables and SELinux for more secure environment ext2 & ext3 file system In RHEL 4 SELinux Block only 13 services, But on RHEL 5 SElinux Block 80 services ------------------------------------------------------- What text filter can you use to display a binary file in octal numbers? hexdump file1 > file2 -------------------------------------------------------- tell me some of the Linux HotKeys do you know? alt+f1 for application menu ctl+l to clear screen alt+f2 to open run application window alt+f3 for find alt+f4 to close application alt+f9 to minimise window Ctrl-Alt-D Show desktop Crtl-Alt-Backspace Restart XWindows ------------------------------------------------- What file should you examine to determine the defined runlevels for your system? /etc/inittab id:X:initdefault where X=runlevel (ex.0 to 6) 0 =system poweroff 1 = single user mode
+15.	15. 2 = multiuser mode without network and X window 3 = multiuser mode with network without X window 4 = unused 5 = X11 (multiuser mode with network and X window 6 = reboot -------------------------------------- What is the name and path of the main system log? /var/log/messages system log messages can be seen here /var/log/dmesg Kernel boot log messages can view There are Three centralized loggin demons 1)syslogd 2)klogd 3)auditd klogd:- collect log file created by the Kernel syslogd:- Collect log file created by the system auditd:- Collect log file created by the SELinux After collecting the log system store logs on different location /var/log/dmesg:- Created at boot time, by kernel /var/log/messages:- standard system error message, /var/log/secure:- authentication related log /var/log/maillog:- Mail related log /var/log/audit/audit.log:-Selinux related log We can redirect the log by configuring /etc/sysconfig/syslog /etc/syslog.conf ------------------------------------------------- what is the difference between semaphore, mutex & spinlock? Kernel Locking Techniques Semaphores in Linux are sleeping locks. Because they cause a task to sleep on contention, instead of spin, they are used in situations where the lock-held time may be long. Conversely, since they have the overhead of putting a task to sleep and subsequently waking it up, they should not be used where the lock-held time is short. Since they sleep, however, they can be used to synchronize user contexts
+16.	16. whereas spinlocks cannot. In other words, it is safe to block while holding a semaphore. A "mutex" (or "mutual exclusion lock") is a signal that two or more asynchronous processes can use to reserve a shared resource for exclusive use. The first process that obtains ownership of the "mutex" also obtains ownership of the shared resource. Other processes must wait for for the first process to release it's ownership of the "mutex" before they may attempt to obtain it. The most common locking primitive in the kernel is the spinlock. The spinlock is a very simple single-holder lock. If a process attempts to acquire a spinlock and it is unavailable, the process will keep trying (spinning) until it can acquire the lock. This simplicity creates a small and fast lock. --------------------------------------------------- What are seven fields in the /etc/passwd file. 1. Username: It is used when user logs in. It should be between 1 and 32 characters in length. 2. Password: An x character indicates that encrypted password is stored in /etc/shadow file. 3. User ID (UID): Each user must be assigned a user ID (UID). UID 0 (zero) is reserved for root and UIDs 1- 99 are reserved for other predefined accounts. Further UID 100-999 are reserved by system for administrative and system accounts/groups. 4. Group ID (GID): The primary group ID (stored in /etc/group file) 5. User ID Info: The comment field. It allow you to add extra information about the users such as user's full name, phone number etc. This field use by finger command. 6. Home directory: The absolute path to the directory the user will be in when they log in. If this directory does not exists then users directory becomes / 7. Command/shell: The absolute path of a command or shell (/bin/bash). Typically, this is a shell. Please note that it does not have to be a shell. ------------------------------------------------------ 1. Q. How do you list files in a directory? A. ls - list directory contents ls -l (-l use a long listing format) 2. Q. How do you list all files in a directory, including the hidden files? A. ls -a (-a, do not hide entries starting with .)
+17.	17. 3. Q. How do you find out all processes that are currently running? A. ps -f (-f does full-format listing.) 4. Q. How do you find out the processes that are currently running or a particular user? A. ps -au Myname (-u by effective user ID (supports names)) (a - all users) 5. Q. How do you kill a process? A. kill -9 8 (process_id 8) or kill -9 %7 (job number 7) kill -9 -1 (Kill all processes you can kill.) killall - kill processes by name most (useful - killall java) 6. Q. What would you use to view contents of the file? A. less filename cat filename pg filename pr filename more filename most useful is command: tail file_name - you can see the end of the log file. 7. Q. What would you use to edit contents of the file? A. vi screen editor or jedit, nedit or ex line editor 8. Q. What would you use to view contents of a large error log file? A. tail -10 file_name ( last 10 rows) 9. Q. How do you log in to a remote Unix box? A. Using telnet server_name or ssh -l ( ssh - OpenSSH SSH client (remote login program)) 10.Q. How do you get help on a UNIX terminal? A. man command_name info command_name (more information) 11.Q. How do you list contents of a directory including all of its subdirectories, providing full details and sorted by modification time? A. ls -lac -a all entries -c by time 12.Q. How do you create a symbolic link to a file (give some reasons of doing so)? A. ln /../file1 Link_name Links create pointers to the actual files, without duplicating the contents of
+18.	18. the files. That is, a link is a way of providing another name to the same file. There are two types of links to a file:Hard link, Symbolic (or soft) link; 13.Q. What is a filesystem? A. Sum of all directories called file system. A file system is the primary means of file storage in UNIX. File systems are made of inodes and superblocks. 14.Q. How do you get its usage (a filesystem)? A. By storing and manipulate files. 15.Q. How do you check the sizes of all users home directories (one command)? A. du -s df The du command summarizes disk usage by directory. It recurses through all subdirectories and shows disk usage by each subdirectory with a final total at the end. More interview questions click here # Mary has recently gotten married and wants to change her username from mstone to mknight. Which of the following commands should you run to accomplish this? Choose one: a. usermod -l mknight mstone b. usermod -l mstone mknight c. usermod -u mknight mstone d. usermod -u mstone mknight # After bob leaves the company you issue the command userdel bob. Although his entry in the /etc/passwd file has been deleted, his home directory is still there. What command could you have used to make sure that his home directory was also deleted? Choose one: a. userdel -m bob b. userdel -u bob c. userdel -l bob d. userdel -r bob # All groups are defined in the /etc/group file. Each entry contains four fields in the following order. Choose one: a. groupname, password, GID, member list b. GID, groupname, password, member list c. groupname, GID, password, member list d. GID, member list, groupname, password # You need to create a new group called sales with Bob, Mary and Joe as members. Which of the following would accomplish this? Choose one: a. Add the following line to the /etc/group file: sales:44:bob,mary,joe b. Issue the command groupadd sales. c. Issue the command groupadd -a sales bob,mary,joe d. Add the following line to the /etc/group file: sales::44:bob,mary,joe # What command is used to remove the password assigned to a group?
+19.	19. # You changed the GID of the sales group by editing the /etc/group file. All of the members can change to the group without any problem except for Joe. He cannot even login to the system. What is the problem? Choose one: a. Joe forgot the password for the group. b. You need to add Joe to the group again. c. Joe had the original GID specified as his default group in the /etc/passwd file. d. You need to delete Joe’s account and recreate it. # You need to delete the group dataproject. Which two of the following tasks should you do first before deleting the group? A. Check the /etc/passwd file to make sure no one has this group as his default group. B. Change the members of the dataproject group to another group besides users. C. Make sure that the members listed in the /etc/group file are given new login names. D. Verify that no file or directory has this group listed as its owner. Choose one: a. A and C b. A and D c. B and C d. B and D # When you look at the /etc/group file you see the group kmem listed. Since it does not own any files and no one is using it as a default group, can you delete this group? # When looking at the /etc/passwd file, you notice that all the password fields contain ‘x’. What does this mean? Choose one: a. That the password is encrypted. b. That you are using shadow passwords. c. That all passwords are blank. d. That all passwords have expired. # In order to improve your system’s security you decide to implement shadow passwords. What command should you use? # What file contains the default environment variables when using the bash shell? Choose one: a. ~/.profile b. /bash c. /etc/profile d. ~/bash # You have created a subdirectory of your home directory containing your scripts. Since you use the bash shell, what file would you edit to put this directory on your path? Choose one: a. ~/.profile b. /etc/profile c. /etc/bash d. ~/.bash # Which of the following interprets your actions when typing at the command line for the operating system? Choose One a. Utility b. Application c. Shell d. Command # What can you type at a command line to determine which shell you are using? # You want to enter a series of commands from the command-line. What would be the quickest way to do this? Choose One a. Press enter after entering each command and its arguments b. Put them in a script and execute the script c. Separate each command with a semi-colon (;) and press enter after the last command d. Separate each command with a / and press enter after the last command # You are entering a long, complex command line and you reach the right side of your screen before you have finished typing. You want to finish typing the necessary commands but have the display wrap around to the left. Which of the following key combinations would achieve this? Choose One a. Esc, /, Enter b. /, Enter c. ctrl-d, enter d. esc, /, ctrl-d # After typing in a new command and pressing enter, you receive an error message indicating incorrect syntax. This error message originated from.. Choose one a. The shell b. The operating system c. The command d. The kernel # When typing at the command line, the default editor is the _____________ library. # You typed the following at the command line ls -al /home/ hadden. What key strokes would you enter to remove the space between the ‘/’ and ‘hadden’ without having to retype the entire line? Choose one a. Ctrl-B, Del b. Esc-b, Del c. Esc-Del, Del d. Ctrl-b, Del # You would like to temporarily change your command line editor to be vi. What command should you type to change it?
+20.	20. # After experimenting with vi as your command line editor, you decide that you want to have vi your default editor every time you log in. What would be the appropriate way to do this? Choose one a. Change the /etc/inputrc file b. Change the /etc/profile file c. Change the ~/.inputrc file d. Change the ~/.profile file # You have to type your name and title frequently throughout the day and would like to decrease the number of key strokes you use to type this. Which one of your configuration files would you edit to bind this information to one of the function keys? # In your present working directory, you have the files maryletter memo1 MyTelephoneandAddressBook What is the fewest number of keys you can type to open the file MyTelephoneandAddressBook with vi? Choose one a. 6 b. 28 c. 25 d. 4 # A variable that you can name and assign a value to is called a _____________ variable. # You have installed a new application but when you type in the command to start it you get the error message Command not found. What do you need to do to fix this problem? Choose one a. Add the directory containing the application to your path b. Specify the directory’s name whenever you run the application c. Verify that the execute permission has been applied to the command. d. Give everyone read, write and execute permission to the application’s directory. # You telnet into several of your servers simultaneously. During the day, you sometimes get confused as to which telnet session is connected to which server. Which of the following commands in your .profile file would make it obvious to which server you are attached? Choose one a. PS1=’h: w>’ b. PS1=’s: W>’ c. PS1=’!: t>’ d. PS1=’a: n>’ # Which of the following environment variables determines your working directory at the completion of a successful login? Choose one a. HOME b. BASH_ENV c. PWD d. BLENDERDIR # Every time you attempt to delete a file using the rm utility, the operating system prompts you for confirmation. You know that this is not the customary behavior for the rm command. What is wrong? Choose one a. rm has been aliased as rm -i b. The version of rm installed on your system is incorrect. c. This is the normal behavior of the newest version of rm. d. There is an incorrect link on your system. # You are running out of space in your home directory. While looking for files to delete or compress you find a large file called .bash_history and delete it. A few days later, it is back and as large as before. What do you need to do to ensure that its size is smaller? Choose one a. Set the HISTFILESIZE variable to a smaller number. b. Set the HISTSIZE to a smaller number. c. Set the NOHISTFILE variable to true. d. Set the HISTAPPEND variable to true. # In order to display the last five commands you have entered using the history command, you would type ___________. # In order to display the last five commands you have entered using the fc command, you would type ___________. # You previously ran the find command to locate a particular file. You want to run that command again. What would be the quickest way to do this? Choose one a. fc -l find fc n b. history -l find history n c. Retype the command d. fc -n find # Using command substitution, how would you display the value of the present working directory? Choose one a. echo $(pwd) b. echo pwd c. $pwd d. pwd | echo # You need to search the entire directory structure to locate a specific file. How could you do this and still be able to run other commands while the find command is still searching for your file? Choose one
+21.	21. a. find / -name filename & b. find / -name filename c. bg find / -name filename d. &find / -name filename & # In order to create a file called DirContents containing the contents of the /etc directory you would type ____________. # What would be displayed as the result of issuing the command ps ef? Choose one a. A listing of the user’s running processes formatted as a tree. b. A listing of the stopped processes c. A listing of all the running processes formatted as a tree. d. A listing of all system processes formatted as a tree. # What utility can you use to show a dynamic listing of running processes? __________ # The top utility can be used to change the priority of a running process? Another utility that can also be used to change priority is ___________? # What key combination can you press to suspend a running job and place it in the background? # You issue the command jobs and receive the following output: [1]- Stopped (tty output) pine [2]+ Stopped (tty output) MyScript How would you bring the MyScript process to the foreground? Choose one: a. fg %2 b. ctrl-c c. fg MyScript d. ctrl-z # You enter the command cat MyFile | sort > DirList & and the operating system displays [4] 3499 What does this mean? Choose one a. This is job number 4 and the PID of the sort command is 3499. b. This is job number 4 and the PID of the job is 3499. c. This is job number 3499 and the PID of the cat command is 4. d. This is job number 4 and the PID of the cat command is 3499. # You attempt to log out but receive an error message that you cannot. When you issue the jobs command, you see a process that is running in the background. How can you fix this so that you can logout? Choose one a. Issue the kill command with the PID of each running command of the pipeline as an argument. b. Issue the kill command with the job number as an argument. c. Issue the kill command with the PID of the last command as an argument. d. Issue the kill command without any arguments. # You have been given the job of administering a new server. It houses a database used by the sales people. This information is changed frequently and is not duplicated anywhere else. What should you do to ensure that this information is not lost? Choose one a. Create a backup strategy that includes backing up this information at least daily. b. Prepare a proposal to purchase a backup server c. Recommend that the server be made part of a cluster. d. Install an additional hard drive in the server. # When planning your backup strategy you need to consider how often you will perform a backup, how much time the backup takes and what media you will use. What other factor must you consider when planning your backup strategy? _________ # Many factors are taken into account when planning a backup strategy. The one most important one is how often does the file ____________. # Which one of the following factors does not play a role in choosing the type of backup media to use? Choose one: a. How frequently a file changes b. How long you need to retain the backup c. How much data needs to be backed up d. How frequently the backed up data needs to be accessed # When you only back up one partition, this is called a ______ backup. Choose one a. Differential b. Full c. Partial d. Copy # When you back up only the files that have changed since the last backup, this is called a ______ backup. Choose one a. Partial b. Differential c. Full d. Copy # The easiest, most basic form of backing up a file is to _____ it to another location. # When is the most important time to restore a file from your backup? Choose one a. On a regular
+22.	22. scheduled basis to verify that the data is available. b. When the system crashes. c. When a user inadvertently loses a file. d. When your boss asks to see how restoring a file works. # As a system administrator , you are instructed to backup all the users’ home directories. Which of the following commands would accomplish this? Choose one a. tar rf usersbkup home/* b. tar cf usersbkup home/* c. tar cbf usersbkup home/* d. tar rvf usersbkup home/* # What is wrong with the following command? tar cvfb / /dev/tape 20 Choose one a. You cannot use the c option with the b option. b. The correct line should be tar -cvfb / /dev/tape20. c. The arguments are not in the same order as the corresponding modifiers. d. The files to be backed up have not been specified. # You need to view the contents of the tarfile called MyBackup.tar. What command would you use? __________ # After creating a backup of the users’ home directories called backup.cpio you are asked to restore a file called memo.ben. What command should you type? # You want to create a compressed backup of the users’ home directories so you issue the command gzip /home/* backup.gz but it fails. The reason that it failed is that gzip will only compress one _______ at a time. # You want to create a compressed backup of the users’ home directories. What utility should you use? # You routinely compress old log files. You now need to examine a log from two months ago. In order to view its contents without first having to decompress it, use the _________ utility. # Which two utilities can you use to set up a job to run at a specified time? Choose one: a. at and crond b. atrun and crontab c. at and crontab d. atd and crond # You have written a script called usrs to parse the passwd file and create a list of usernames. You want to have this run at 5 am tomorrow so you can see the results when you get to work. Which of the following commands will work? Choose one: a. at 5:00 wed usrs b. at 5:00 wed -b usrs c. at 5:00 wed -l usrs d. at 5:00 wed -d usrs # Several of your users have been scheduling large at jobs to run during peak load times. How can you prevent anyone from scheduling an at job? Choose one: a. delete the file /etc/at.deny b. create an empty file called /etc/at.deny c. create two empty files: /etc/at.deny and /etc/at.allow file d. create an empty file called /etc/at.allow # How can you determine who has scheduled at jobs? Choose one: a. at -l b. at -q c. at -d d. atwho # When defining a cronjob, there are five fields used to specify when the job will run. What are these fields and what is the correct order? Choose one: a. minute, hour, day of week, day of month, month b. minute, hour, month, day of month, day of week c. minute, hour, day of month, month, day of week d. hour, minute, day of month, month, day of week # You have entered the following cronjob. When will it run? 15 * * * 1,3,5 myscript Choose one: a. at 15 minutes after every hour on the 1st, 3rd and 5th of each month. b. at 1:15 am, 3:15 am, and 5:15 am every day c. at 3:00 pm on the 1st, 3rd, and 5th of each month d. at 15 minutes after every hour every Monday, Wednesday, and Friday # As the system administrator you need to review Bob’s cronjobs. What command would you use? Choose one: a. crontab -lu bob b. crontab -u bob c. crontab -l d. cronq -lu bob # In order to schedule a cronjob, the first task is to create a text file containing the jobs to be run along
+23.	23. with the time they are to run. Which of the following commands will run the script MyScript every day at 11:45 pm? Choose one: a. * 23 45 * * MyScript b. 23 45 * * * MyScript c. 45 23 * * * MyScript d. * * * 23 45 MyScript # Which daemon must be running in order to have any scheduled jobs run as scheduled? Choose one: a. crond b. atd c. atrun d. crontab # You want to ensure that your system is not overloaded with users running multiple scheduled jobs. A policy has been established that only the system administrators can create any scheduled jobs. It is your job to implement this policy. How are you going to do this? Choose one: a. create an empty file called /etc/cron.deny b. create a file called /etc/cron.allow which contains the names of those allowed to schedule jobs. c. create a file called /etc/cron.deny containing all regular usernames. d. create two empty files called /etc/cron.allow and /etc/cron.deny # You notice that your server load is exceptionally high during the hours of 10 am to 2 noon. When investigating the cause, you suspect that it may be a cron job scheduled by one of your users. What command can you use to determine if your suspicions are correct? Choose one: a. crontab -u b. crond -u c. crontab -l d. crond -l # One of your users, Bob, has created a script to reindex his database. Now he has it scheduled to run every day at 10:30 am. What command should you use to delete this job. Choose one: a. crontab -ru bob b. crontab -u bob c. crontab -du bob d. crontab -lu bob # What daemon is responsible for tracking events on your system? # What is the name and path of the default configuration file used by the syslogd daemon? # You have made changes to the /etc/syslog.conf file. Which of the following commands will cause these changes to be implemented without having to reboot your computer? Choose one: a. kill SIGHINT `cat /var/run/syslogd.pid` b. kill SIGHUP `cat /var/run/syslogd.pid` c. kill SIGHUP syslogd d. kill SIGHINT syslogd # Which of the following lines in your /etc/syslog.conf file will cause all critical messages to be logged to the file /var/log/critmessages? Choose one: a. *.=crit /var/log/critmessages b. *crit /var/log/critmessages c. *=crit /var/log/critmessages d. *.crit /var/log/critmessages # You wish to have all mail messages except those of type info to the /var/log/mailmessages file. Which of the following lines in your /etc/syslogd.conf file would accomplish this? Choose one: a. mail.*;mail!=info /var/log/mailmessages b. mail.*;mail.=info /var/log/mailmessages c. mail.*;mail.info /var/log/mailmessages d. mail.*;mail.!=info /var/log/mailmessages # What is the name and path of the main system log? # Which log contains information on currently logged in users? Choose one: a. /var/log/utmp b. /var/log/wtmp c. /var/log/lastlog d. /var/log/messages # You have been assigned the task of determining if there are any user accounts defined on your system that have not been used during the last three months. Which log file should you examine to determine this information? Choose one: a. /var/log/wtmp b. /var/log/lastlog c. /var/log/utmp d. /var/log/messages # You have been told to configure a method of rotating log files on your system. Which of the following factors do you not need to consider? Choose one: a. date and time of messages b. log size c. frequency of rotation d. amount of available disk space # What utility can you use to automate rotation of logs?
+24.	24. # You wish to rotate all your logs weekly except for the /var/log/wtmp log which you wish to rotate monthly. How could you accomplish this. Choose one: a. Assign a global option to rotate all logs weekly and a local option to rotate the /var/log/wtmp log monthly. b. Assign a local option to rotate all logs weekly and a global option to rotate the /var/log/wtmp log monthly. c. Move the /var/log/wtmp log to a different directory. Run logrotate against the new location. d. Configure logrotate to not rotate the /var/log/wtmp log. Rotate it manually every month. # You have configured logrotate to rotate your logs weekly and keep them for eight weeks. You are running our of disk space. What should you do? Choose one: a. Quit using logrotate and manually save old logs to another location. b. Reconfigure logrotate to only save logs for four weeks. c. Configure logrotate to save old files to another location. d. Use the prerotate command to run a script to move the older logs to another location. # What command can you use to review boot messages? # What file defines the levels of messages written to system log files? # What account is created when you install Linux? # While logged on as a regular user, your boss calls up and wants you to create a new user account immediately. How can you do this without first having to close your work, log off and logon as root? Choose one: a. Issue the command rootlog. b. Issue the command su and type exit when finished. c. Issue the command su and type logoff when finished. d. Issue the command logon root and type exit when finished. # Which file defines all users on your system? Choose one: a. /etc/passwd b. /etc/users c. /etc/password d. /etc/user.conf # There are seven fields in the /etc/passwd file. Which of the following lists all the fields in the correct order? Choose one: a. username, UID, GID, home directory, command, comment b. username, UID, GID, comment, home directory, command c. UID, username, GID, home directory, comment, command d. username, UID, group name, GID, home directory, comment # Which of the following user names is invalid? Choose one: a. Theresa Hadden b. thadden c. TheresaH d. T.H. # In order to prevent a user from logging in, you can add a(n) ________at the beginning of the password field. # The beginning user identifier is defined in the _________ file. # Which field is used to define the user’s default shell? # Bob Armstrong, who has a username of boba, calls to tell you he forgot his password. What command should you use to reset his command? # Your company has implemented a policy that users’ passwords must be reset every ninety days. Since you have over 100 users you created a file with each username and the new password. How are you going to change the old passwords to the new ones? Choose one: a. Use the chpasswd command along with the name of the file containing the new passwords. b. Use the passwd command with the -f option and the name of the file containing the new passwords. c. Open the /etc/passwd file in a text editor and manually change each password. d. Use the passwd command with the -u option.
+25.	25. Top Linux Admin Interview Questions asked in TOP IT industries Hey Guys, AFRAID of interviews DONT Worry prepare the following questions before Interview. I have managed to prepare some questions sets. Practice this and i'm sure you would crack a L1/L2/L3 Linux Administrator Job Easily. All the questions are taken from the top IT brands interviews. Linux Admin Interview Questions and Answers, Linux Administration questions, Linux Networking questions, MYSQL questions, bash, postfix questions, sendmail questions, ftp server questions Questions BANK 01 # You attempt to use shadow passwords but are unsuccessful. What characteristic of the /etc/passwd file may cause this? Choose one: a. The login command is missing. b. The username is too long. c. The password field is blank. d. The password field is prefaced by an asterick. # You create a new user account by adding the following line to your /etc/passwd file. bobm:baddog:501:501:Bob Morris:/home/bobm:/bin/bash Bob calls you and tells you that he cannot logon. You verify that he is using the correct username and password. What is the problem? Choose one: a. The UID and GID cannot be identical. b. You cannot have spaces in the line unless they are surrounded with double quotes. c. You cannot directly enter the password; rather you have to use the passwd command to assign a password to the user. d. The username is too short, it must be at least six characters long. # Which of the following tasks is not necessary when creating a new user by editing the /etc/passwd file? Choose one: a. Create a link from the user’s home directory to the shell the user will use. b. Create the user’s home directory c. Use the passwd command to assign a password to the account. d. Add the user to the specified group. # You create a new user by adding the following line to the /etc/passwd file bobm::501:501:Bob Morris:/home/bobm:/bin/bash You then create the user’s home directory and use the passwd command to set his password. However, the user calls you and says that he cannot log on. What is the problem? Choose one: a. The user did not change his password. b. bobm does not have permission to /home/bobm.
+26.	26. c. The user did not type his username in all caps. d. You cannot leave the password field blank when creating a new user. # When using useradd to create a new user account, which of the following tasks is not done automatically. Choose one: a. Assign a UID. b. Assign a default shell. c. Create the user’s home directory. d. Define the user’s home directory. # You issue the following command useradd -m bobm But the user cannot logon. What is the problem? Choose one: a. You need to assign a password to bobm’s account using the passwd command. b. You need to create bobm’s home directory and set the appropriate permissions. c. You need to edit the /etc/passwd file and assign a shell for bobm’s account. d. The username must be at least five characters long. # You have created special configuration files that you want copied to each user’s home directories when creating new user accounts. You copy the files to /etc/skel. Which of the following commands will make this happen? Choose one: a. useradd -m username b. useradd -mk username c. useradd -k username d. useradd -Dk username # Mary has recently gotten married and wants to change her username from mstone to mknight. Which of the following commands should you run to accomplish this? Choose one: a. usermod -l mknight mstone b. usermod -l mstone mknight c. usermod -u mknight mstone d. usermod -u mstone mknight # After bob leaves the company you issue the command userdel bob. Although his entry in the /etc/passwd file has been deleted, his home directory is still there. What command could you have used to make sure that his home directory was also deleted? Choose one: a. userdel -m bob b. userdel -u bob c. userdel -l bob d. userdel -r bob # All groups are defined in the /etc/group file. Each entry contains four fields in the following order. Choose one:
+27.	27. a. groupname, password, GID, member list b. GID, groupname, password, member list c. groupname, GID, password, member list d. GID, member list, groupname, password # You need to create a new group called sales with Bob, Mary and Joe as members. Which of the following would accomplish this? Choose one: a. Add the following line to the /etc/group file: sales:44:bob,mary,joe b. Issue the command groupadd sales. c. Issue the command groupadd -a sales bob,mary,joe d. Add the following line to the /etc/group file: sales::44:bob,mary,joe
+28.	28. Linux Admin Interview Questions and Answers Questions consists of Linux Admin Interview Questions and Answers, Linux Administration questions, Linux Networking questions, MYSQL questions, bash, postfix questions, sendmail questions, ftp server questions Questions BANK 06 # What command can you use to review boot messages? # What file defines the levels of messages written to system log files? # What account is created when you install Linux? # While logged on as a regular user, your boss calls up and wants you to create a new user account immediately. How can you do this without first having to close your work, log off and logon as root? Choose one: a. Issue the command rootlog. b. Issue the command su and type exit when finished. c. Issue the command su and type logoff when finished. d. Issue the command logon root and type exit when finished. # Which file defines all users on your system? Choose one: a. /etc/passwd b. /etc/users c. /etc/password d. /etc/user.conf # There are seven fields in the /etc/passwd file. Which of the following lists all the fields in the correct order? Choose one: a. username, UID, GID, home directory, command, comment b. username, UID, GID, comment, home directory, command c. UID, username, GID, home directory, comment, command d. username, UID, group name, GID, home directory, comment # Which of the following user names is invalid? Choose one: a. Theresa Hadden b. thadden c. TheresaH d. T.H. # In order to prevent a user from logging in, you can add a(n) ________at the beginning of the password field. # The beginning user identifier is defined in the _________ file. # Which field is used to define the user’s default shell? # Bob Armstrong, who has a username of boba, calls to tell you he forgot his password. What command should you use to reset his command? # Your company has implemented a policy that users’ passwords must be reset every ninety days. Since you have over 100 users you created a file with each username and the new password. How are
+29.	29. you going to change the old passwords to the new ones? Choose one: a. Use the chpasswd command along with the name of the file containing the new passwords. b. Use the passwd command with the -f option and the name of the file containing the new passwords. c. Open the /etc/passwd file in a text editor and manually change each password. d. Use the passwd command with the -u option. Under : Linux Interviews FAQ + Top Linux Admin Interview Questions and answers asked in TOP IT industries : Question Bank 05 By Ashwin 06 March 2010 at 1:00 am and have No Comments Linux Admin Interview Questions and Answers Questions consists of Linux Admin Interview Questions and Answers, Linux Administration questions, Linux Networking questions, MYSQL questions, bash, postfix questions, sendmail questions, ftp server questions Questions BANK 05 # As the system administrator you need to review Bob’s cronjobs. What command would you use? Choose one: a. crontab -lu bob b. crontab -u bob c. crontab -l d. cronq -lu bob # In order to schedule a cronjob, the first task is to create a text file containing the jobs to be run along with the time they are to run. Which of the following commands will run the script MyScript every day at 11:45 pm? Choose one: a. * 23 45 * * MyScript b. 23 45 * * * MyScript c. 45 23 * * * MyScript d. * * * 23 45 MyScript # Which daemon must be running in order to have any scheduled jobs run as scheduled? Choose one: a. crond b. atd c. atrun d. crontab # You want to ensure that your system is not overloaded with users running multiple scheduled jobs. A policy has been established that only the system administrators can create any scheduled jobs. It is your job to implement this policy. How are you going to do this? Choose one:
+30.	30. a. create an empty file called /etc/cron.deny b. create a file called /etc/cron.allow which contains the names of those allowed to schedule jobs. c. create a file called /etc/cron.deny containing all regular usernames. d. create two empty files called /etc/cron.allow and /etc/cron.deny # You notice that your server load is exceptionally high during the hours of 10 am to 2 noon. When investigating the cause, you suspect that it may be a cron job scheduled by one of your users. What command can you use to determine if your suspicions are correct? Choose one: a. crontab -u b. crond -u c. crontab -l d. crond -l # One of your users, Bob, has created a script to reindex his database. Now he has it scheduled to run every day at 10:30 am. What command should you use to delete this job. Choose one: a. crontab -ru bob b. crontab -u bob c. crontab -du bob d. crontab -lu bob # What daemon is responsible for tracking events on your system? # What is the name and path of the default configuration file used by the syslogd daemon? # You have made changes to the /etc/syslog.conf file. Which of the following commands will cause these changes to be implemented without having to reboot your computer? Choose one: a. kill SIGHINT `cat /var/run/syslogd.pid` b. kill SIGHUP `cat /var/run/syslogd.pid` c. kill SIGHUP syslogd d. kill SIGHINT syslogd # Which of the following lines in your /etc/syslog.conf file will cause all critical messages to be logged to the file /var/log/critmessages? Choose one: a. *.=crit /var/log/critmessages b. *crit /var/log/critmessages c. *=crit /var/log/critmessages d. *.crit /var/log/critmessages # You wish to have all mail messages except those of type info to the /var/log/mailmessages file. Which of the following lines in your /etc/syslogd.conf file would accomplish this? Choose one: a. mail.*;mail!=info /var/log/mailmessages b. mail.*;mail.=info /var/log/mailmessages c. mail.*;mail.info /var/log/mailmessages d. mail.*;mail.!=info /var/log/mailmessages # What is the name and path of the main system log? # Which log contains information on currently logged in users? Choose one: a. /var/log/utmp b. /var/log/wtmp c. /var/log/lastlog
+31.	31. d. /var/log/messages # You have been assigned the task of determining if there are any user accounts defined on your system that have not been used during the last three months. Which log file should you examine to determine this information? Choose one: a. /var/log/wtmp b. /var/log/lastlog c. /var/log/utmp d. /var/log/messages # You have been told to configure a method of rotating log files on your system. Which of the following factors do you not need to consider? Choose one: a. date and time of messages b. log size c. frequency of rotation d. amount of available disk space # What utility can you use to automate rotation of logs? # You wish to rotate all your logs weekly except for the /var/log/wtmp log which you wish to rotate monthly. How could you accomplish this. Choose one: a. Assign a global option to rotate all logs weekly and a local option to rotate the /var/log/wtmp log monthly. b. Assign a local option to rotate all logs weekly and a global option to rotate the /var/log/wtmp log monthly. c. Move the /var/log/wtmp log to a different directory. Run logrotate against the new location. d. Configure logrotate to not rotate the /var/log/wtmp log. Rotate it manually every month. # You have configured logrotate to rotate your logs weekly and keep them for eight weeks. You are running our of disk space. What should you do? Choose one: a. Quit using logrotate and manually save old logs to another location. b. Reconfigure logrotate to only save logs for four weeks. c. Configure logrotate to save old files to another location. d. Use the prerotate command to run a script to move the older logs to another location. + Top Linux Admin Interview Questions and answers asked in TOP IT industries : Question Bank 04 By Ashwin 05 March 2010 at 6:15 pm and have 4 Comments Linux Admin Interview Questions and Answers All Linux Administration questions, Linux Networking questions, MYSQL questions, bash, postfix questions, sendmail questions, ftp server questions Questions BANK 04 # You enter the command cat MyFile | sort > DirList & and the operating system displays [4] 3499 What does this mean? Choose one a. This is job number 4 and the PID of the sort command is 3499.
+32.	32. b. This is job number 4 and the PID of the job is 3499. c. This is job number 3499 and the PID of the cat command is 4. d. This is job number 4 and the PID of the cat command is 3499. # You attempt to log out but receive an error message that you cannot. When you issue the jobs command, you see a process that is running in the background. How can you fix this so that you can logout? Choose one a. Issue the kill command with the PID of each running command of the pipeline as an argument. b. Issue the kill command with the job number as an argument. c. Issue the kill command with the PID of the last command as an argument. d. Issue the kill command without any arguments. # You have been given the job of administering a new server. It houses a database used by the sales people. This information is changed frequently and is not duplicated anywhere else. What should you do to ensure that this information is not lost? Choose one a. Create a backup strategy that includes backing up this information at least daily. b. Prepare a proposal to purchase a backup server c. Recommend that the server be made part of a cluster. d. Install an additional hard drive in the server. # When planning your backup strategy you need to consider how often you will perform a backup, how much time the backup takes and what media you will use. What other factor must you consider when planning your backup strategy? _________ # Many factors are taken into account when planning a backup strategy. The one most important one is how often does the file ____________. # Which one of the following factors does not play a role in choosing the type of backup media to use? Choose one: a. How frequently a file changes b. How long you need to retain the backup c. How much data needs to be backed up d. How frequently the backed up data needs to be accessed # When you only back up one partition, this is called a ______ backup. Choose one a. Differential b. Full c. Partial d. Copy # When you back up only the files that have changed since the last backup, this is called a ______ backup. Choose one a. Partial b. Differential c. Full d. Copy # The easiest, most basic form of backing up a file is to _____ it to another location. # When is the most important time to restore a file from your backup? Choose one a. On a regular scheduled basis to verify that the data is available.
+33.	33. b. When the system crashes. c. When a user inadvertently loses a file. d. When your boss asks to see how restoring a file works. # As a system administrator, you are instructed to backup all the users’ home directories. Which of the following commands would accomplish this? Choose one a. tar rf usersbkup home/* b. tar cf usersbkup home/* c. tar cbf usersbkup home/* d. tar rvf usersbkup home/* # What is wrong with the following command? tar cvfb / /dev/tape 20 Choose one a. You cannot use the c option with the b option. b. The correct line should be tar -cvfb / /dev/tape20. c. The arguments are not in the same order as the corresponding modifiers. d. The files to be backed up have not been specified. # You need to view the contents of the tarfile called MyBackup.tar. What command would you use? __________ # After creating a backup of the users’ home directories called backup.cpio you are asked to restore a file called memo.ben. What command should you type? # You want to create a compressed backup of the users’ home directories so you issue the command gzip /home/* backup.gz but it fails. The reason that it failed is that gzip will only compress one _______ at a time. # You want to create a compressed backup of the users’ home directories. What utility should you use? # You routinely compress old log files. You now need to examine a log from two months ago. In order to view its contents without first having to decompress it, use the _________ utility. + Top Linux Admin Interview Questions asked in TOP IT industries : Question Bank 3 By Ashwin 05 March 2010 at 3:20 pm and have No Comments Linux Admin Interview Questions and Answers Questions consists of Linux Admin Interview Questions and Answers, Linux Administration questions, Linux Networking questions, MYSQL questions, bash, postfix questions, sendmail questions, ftp server questions Questions BANK 03 # When typing at the command line, the default editor is the _____________ library. # You typed the following at the command line ls -al /home/ hadden. What key strokes would you enter to remove the space between the ‘/’ and ‘hadden’ without having to retype the entire line? Choose one
+34.	34. a. Ctrl-B, Del b. Esc-b, Del c. Esc-Del, Del d. Ctrl-b, Del # You would like to temporarily change your command line editor to be vi. What command should you type to change it? # After experimenting with vi as your command line editor, you decide that you want to have vi your default editor every time you log in. What would be the appropriate way to do this? Choose one a. Change the /etc/inputrc file b. Change the /etc/profile file c. Change the ~/.inputrc file d. Change the ~/.profile file # You have to type your name and title frequently throughout the day and would like to decrease the number of key strokes you use to type this. Which one of your configuration files would you edit to bind this information to one of the function keys? # In your present working directory, you have the files maryletter memo1 MyTelephoneandAddressBook What is the fewest number of keys you can type to open the file MyTelephoneandAddressBook with vi? Choose one a. 6 b. 28 c. 25 d. 4 # A variable that you can name and assign a value to is called a _____________ variable. # You have installed a new application but when you type in the command to start it you get the error message Command not found. What do you need to do to fix this problem? Choose one a. Add the directory containing the application to your path b. Specify the directory’s name whenever you run the application c. Verify that the execute permission has been applied to the command. d. Give everyone read, write and execute permission to the application’s directory. # You telnet into several of your servers simultaneously. During the day, you sometimes get confused as to which telnet session is connected to which server. Which of the following commands in your .profile file would make it obvious to which server you are attached? Choose one a. PS1=’h: w>’ b. PS1=’s: W>’ c. PS1=’!: t>’ d. PS1=’a: n>’ # Which of the following environment variables determines your working directory at the completion of a successful login? Choose one a. HOME b. BASH_ENV c. PWD d. BLENDERDIR
+35.	35. # Every time you attempt to delete a file using the rm utility, the operating system prompts you for confirmation. You know that this is not the customary behavior for the rm command. What is wrong? Choose one a. rm has been aliased as rm -i b. The version of rm installed on your system is incorrect. c. This is the normal behavior of the newest version of rm. d. There is an incorrect link on your system. # You are running out of space in your home directory. While looking for files to delete or compress you find a large file called .bash_history and delete it. A few days later, it is back and as large as before. What do you need to do to ensure that its size is smaller? Choose one a. Set the HISTFILESIZE variable to a smaller number. b. Set the HISTSIZE to a smaller number. c. Set the NOHISTFILE variable to true. d. Set the HISTAPPEND variable to true. # In order to display the last five commands you have entered using the history command, you would type ___________. # In order to display the last five commands you have entered using the fc command, you would type ___________. # You previously ran the find command to locate a particular file. You want to run that command again. What would be the quickest way to do this? Choose one a. fc -l find fc n b. history -l find history n c. Retype the command d. fc -n find # Using command substitution, how would you display the value of the present working directory? Choose one a. echo $(pwd) b. echo pwd c. $pwd d. pwd | echo # You need to search the entire directory structure to locate a specific file. How could you do this and still be able to run other commands while the find command is still searching for your file? Choose one a. find / -name filename & b. find / -name filename c. bg find / -name filename d. &find / -name filename & # In order to create a file called DirContents containing the contents of the /etc directory you would type ____________. # What would be displayed as the result of issuing the command ps ef? Choose one a. A listing of the user’s running processes formatted as a tree. b. A listing of the stopped processes
+36.	36. c. A listing of all the running processes formatted as a tree. d. A listing of all system processes formatted as a tree. # What utility can you use to show a dynamic listing of running processes? __________ # The top utility can be used to change the priority of a running process? Another utility that can also be used to change priority is ___________? # What key combination can you press to suspend a running job and place it in the background? # You issue the command jobs and receive the following output: [1]- Stopped (tty output) pine [2]+ Stopped (tty output) MyScript How would you bring the MyScript process to the foreground? Choose one: a. fg %2 b. ctrl-c c. fg MyScript d. ctrl-z + Top Linux Admin Interview Questions asked in TOP IT industries By Ashwin 05 March 2010 at 2:54 pm and have 3 Comments Hey Guys, AFRAID of interviews DONT Worry prepare the following questions before Interview. I have managed to prepare some questions sets. Practice this and i'm sure you would crack a L1/L2/L3 Linux Administrator Job Easily. All the questions are taken from the top IT brands interviews. Linux Admin Interview Questions and Answers, Linux Administration questions, Linux Networking questions, MYSQL questions, bash, postfix questions, sendmail questions, ftp server questions Questions BANK 01 # You attempt to use shadow passwords but are unsuccessful. What characteristic of the /etc/passwd file may cause this? Choose one: a. The login command is missing. b. The username is too long. c. The password field is blank. d. The password field is prefaced by an asterick. # You create a new user account by adding the following line to your /etc/passwd file. bobm:baddog:501:501:Bob Morris:/home/bobm:/bin/bash Bob calls you and tells you that he cannot logon. You verify that he is using the correct username and password. What is the problem? Choose one: a. The UID and GID cannot be identical. b. You cannot have spaces in the line unless they are surrounded with double quotes. c. You cannot directly enter the password; rather you have to use the passwd command to assign a password to the user. d. The username is too short, it must be at least six characters long. # Which of the following tasks is not necessary when creating a new user by editing the /etc/passwd file? Choose one:
+37.	37. a. Create a link from the user’s home directory to the shell the user will use. b. Create the user’s home directory c. Use the passwd command to assign a password to the account. d. Add the user to the specified group. # You create a new user by adding the following line to the /etc/passwd file bobm::501:501:Bob Morris:/home/bobm:/bin/bash You then create the user’s home directory and use the passwd command to set his password. However, the user calls you and says that he cannot log on. What is the problem? Choose one: a. The user did not change his password. b. bobm does not have permission to /home/bobm. c. The user did not type his username in all caps. d. You cannot leave the password field blank when creating a new user. # When using useradd to create a new user account, which of the following tasks is not done automatically. Choose one:a. Assign a UID. b. Assign a default shell. c. Create the user’s home directory. d. Define the user’s home directory. # You issue the following command useradd -m bobm But the user cannot logon. What is the problem? Choose one: a. You need to assign a password to bobm’s account using the passwd command. b. You need to create bobm’s home directory and set the appropriate permissions. c. You need to edit the /etc/passwd file and assign a shell for bobm’s account. d. The username must be at least five characters long. # You have created special configuration files that you want copied to each user’s home directories when creating new user accounts. You copy the files to /etc/skel. Which of the following commands will make this happen? Choose one: a. useradd -m username b. useradd -mk username c. useradd -k username d. useradd -Dk username # Mary has recently gotten married and wants to change her username from mstone to mknight. Which of the following commands should you run to accomplish this? Choose one: a. usermod -l mknight mstone b. usermod -l mstone mknight c. usermod -u mknight mstone d. usermod -u mstone mknight # After bob leaves the company you issue the command userdel bob. Although his entry in the /etc/passwd file has been deleted, his home directory is still there. What command could you have used to make sure that his home directory was also deleted? Choose one: a. userdel -m bob b. userdel -u bob c. userdel -l bob
+38.	38. d. userdel -r bob # All groups are defined in the /etc/group file. Each entry contains four fields in the following order. Choose one: a. groupname, password, GID, member list b. GID, groupname, password, member list c. groupname, GID, password, member list d. GID, member list, groupname, password # You need to create a new group called sales with Bob, Mary and Joe as members. Which of the following would accomplish this? Choose one: a. Add the following line to the /etc/group file: sales:44:bob,mary,joe b. Issue the command groupadd sales. c. Issue the command groupadd -a sales bob,mary,joe d. Add the following line to the /etc/group file: sales::44:bob,mary,joe
+39.	39. Linux admin interview questions By admin | March 4, 2005 1. How do you take a single line of input from the user in a shell script? 2. Write a script to convert all DOS style backslashes to UNIX style slashes in a list of files. 3. Write a regular expression (or sed script) to replace all occurrences of the letter ‘f’, followed by any number of characters, followed by the letter ‘a’, followed by one or more numeric characters, followed by the letter ‘n’, and replace what’s found with the string “UNIX”. 4. Write a script to list all the differences between two directories. 5. Write a program in any language you choose, to reverse a file. 6. What are the fields of the password file? 7. What does a plus at the beginning of a line in the password file signify? 8. Using the man pages, find the correct ioctl to send console output to an arbitrary pty. 9. What is an MX record? 10. What is the prom command on a Sun that shows the SCSI devices? 11. What is the factory default SCSI target for /dev/sd0? 12. Where is that value controlled? 13. What happens to a child process that dies and has no parent process to wait for it and what’s bad about this? 14. What’s wrong with sendmail? What would you fix? 15. What command do you run to check file system consistency? 16. What’s wrong with running shutdown on a network? 17. What can be wrong with setuid scripts? 18. What value does spawn return? 19. Write a script to send mail from three other machines on the network to root at the machine you’re on. Use a ‘here doc’, but include in the mail message the name of the machine the mail is sent from and the disk utilization statistics on each machine? 20. Why can’t root just cd to someone’s home directory and run a program called a.out sitting there by typing “a.out”, and why is this good? 21. What is the difference between UDP and TCP? 22. What is DNS? 23. What does nslookup do? 24. How do you create a swapfile? 25. How would you check the route table on a workstation/server? 26. How do you find which ypmaster you are bound to? 27. How do you fix a problem where a printer will cutoff anything over 1MB? 28. What is the largest file system size in solaris? SunOS? 29. What are the different RAID levels?
+Interview Questions
+
+
+What problem did you solve in your career that you are most proud of.  
+
+What is the most rewarding problem that you've overcome in your work?  
+
+	
+
+fork, http, process priority, 
+
+
+
+
+Fizz buzz question. Modifications: 4 and 6 instead of 3 and 5.
+
+Linked, in and LinkedIn instead of Fizz, buz and fizzbuzz.  
+
+
+Log parsing  
+
+
+Recursive call of LinkedIn api using REST.  
+
+Parse a log except, providing a csv of the count of each proc per DTTM (SQL???).  
+
+data structure, API, and file system I/O)
+
+  
+
+
+Print all statistics of every process name and its log for every minute of a piece of system log.
+In other word, use minute as row title, print all statistics in the corresponding minutes.  
+
+
+First was a fizz buzz type question. Second and third were both log parsing.… 
+
+
+
+The second round was a technical phone screen with an actual engineer- simple questions: fizz buzz, export to CSV, pull some stuff out of logs… 
+
+How do you write a regular expression for some silly pattern in Python  
+
+
+
+
+Regex it out, add it to a string, call it a day, more or less.
+
+
+
+ The second round was a technical phone screen with an actual engineer- simple questions: fizz buzz, export to CSV, pull some stuff out of logs and count it. Not a whole lot of data structures. Like, you had to know dictionaries and stuff for it, but no software engineering style questions. I emailed my recruiter some feedback about the interview, and she emailed me back to put me through to the last (onsite) round. This was scheduled, and they sent a car to pick me up because I don't drive. I met the coordinator, who introduced me to the first engineer I met with, who basically did a deep dive into all the stuff I knew about networking, UNIX, operating systems, parallelism, security, and other relevant stuff. The next engineer presented a case study, focusing on scalability of a simple system. Both engineers were really good at presenting the problems in a clear way.
+
+
+
+Question about shell, tcp/ip and Linux internal( fork, etc.)  
+
+
+I interviewed with an engineer who did a very high-level asking of questions related to web architecture and how I would go about scaling X or Y. It was not very technical, although you were encouraged to speak your mind about technical topics.
+Based on the feedback received by that interview we moved on the another phone interview that was a programming interview. You were allowed to pick a language (I picked python) and they asked you 4 questions.
+
+Each question built on the other questions and it was a timed interview (60 minutes). The questions you were asked were taken straight out of CS 101 text books; given input, if input is divisible by 2 do X, if divisible by 6 do Y, if divisible by both do Z, else print something.
+
+Interestingly, because I haven't done any of these "simple" coding problems for upwards of 10 years, I found this portion of the interview the most difficult. For me it was difficult because these questions just are not what you come across in the real world. The majority of the code things I do today involve fixing bugs here and there and monkey patching code to make it work. Also, you typically have some context and foresight into a problem before you start coding. Being dropped a simple 1 + 2 question is nothing you'd ever encounter working in the real world; it's all academic as far as I'm concerned.
+
+I felt like I failed the programming interview, but surprisingly, I got a call back saying they wanted to do an on-site interview.
+
+They flew me out to Mountain View and I spent a full day with a number of their engineers going through what they called "modules". This is where it got interesting.
+
+I took special care to look at their culture. I noticed that the building is very quiet, there is not a lot of personal "schwag" hanging around people's areas. Not a lot of smiling engineers...curious.
+
+The modules included you having semi-technical one-on-one interviews with an engineer. There were some engineers that were VERY technical and weren't much interested in the chitchat that can happen where you talk about what you might currently be working on.
+
+The easiest module was the "lunch" module where you ...well...ate lunch, haha. I was expecting this to be a group thing though and instead it was just a you + 1 engineer who ate at the cafeteria. The engineer was the only one that I really "liked" after meeting them all, but still it was a one-to-one interaction. I was really hoping for a group effort.
+
+Throughout the WHOLE on-site interview process I got the sinking feeling that individuality trumps groups at LinkedIn. This bums me out because I currently operate in a fairly strong group position and if I am moving to a new position where I am more isolated, I really don't want that.
+
+Also, its so quiet. Creepy quiet. Like none of the engineers talk to each other. My current position there is ALWAYS something going on and a lot more background noise to remind you that "you're around people". I didn't get that feeling from LinkedIn.
+
+After the interview I just went back and cooled off in the hotel before my flight left the next day. Because of the 2 hour time difference, it was a good idea to plan for staying 3-ish days; 1 to get there, 1 to interview and 1 to leave.
+Show Less
+
+Interview Questions
+There were two and they both happened during the live-debugging portion of the interview.
+
+All of the live debugging questions revolved around a simple website that had something broken in it. You were to fix the brokenness to be able to move on to the next page. In total there were 4 questions, each getting progressively more difficult to debug.
+
+The first question was a simple permissions problem on a file being… 
+Show More
+1 Answer
+There was a paper presented to you with a number of nagios alerts and you had to rate them in the order you would approach fixing them.
+
+For example, one of them was a production host being 100% offline.
+
+Another was an environment alert about an entire cab that was overheating. Another was the tablet vip being down, another was a load average for the main website being really high.
+
+There were also… 
+
+
+
+Asked me how the kernel new to connect to a remote machine. Wasn't too sure if they were asking the lower level c calls, general OS theory, or just basic files / networking components (routing table).
+basic monitoring questions like how to monitor query times
+Should have said to embed query metric data collection in code but could only think of querying the datastore directly....
+
+I didn't find it too hard, but I do have a problem with writing code / think in front of people in pressure settings such as an interview. The experience was positive, minus one minor thing for one of the questions where I felt the interviewer was confused as to what was expected and did not clarify. Instead, he simplified the problem, which made me insecure as to what result that would have. The coding exercise was done on a collabedit instance while on the phone with the Senior SRE. Both people I spoke to had a nice positive and friendly tone. I would like to try again in the future. 
+standard fizzbuzz algorithm. I answered in python.
+
+How Garbage collector in java works internally?  
+ DNS lookup question, linux questions about what system calls related to listing files and what tool you can use to check I/O load. I passed this part. As I am a sys admin so this was easy for me.
+
+The second interview was conducted by a junior technical staff in the team. The recruiter has sent me exactly what would be asked. HTTP browser request, how to monitor a website, to distribute loads of files fast and accurrately.
+
+The interviewer did ask all these questions and a bit more. unfortunately I don't have experience with websites. I am more a sys admin. so i was just really guessing what i would have done. like detect via load balancer, error logs in apache etc.
+
+I didn't get to the next stage.
+	
+	

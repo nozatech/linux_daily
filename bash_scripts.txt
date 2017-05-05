@@ -8,6 +8,15 @@ https://explainshell.com/
 https://www.shellcheck.net/
 $ apt-get | yum install shellcheck	-y
 
+Overview of set debugging options
+	set -f	(set -o noglob)		Disable file name generation using metacharacters (globbing).
+	set -v	(set -o verbose)	Prints shell input lines as they are read.
+	set -x	(set -o xtrace)		Print command traces before executing command.
+
+	set -e          # Exit as soon as any line in the bash script fails
+	set -x          # Prints each command executed (prefix with ++)
+	set -ex         # Do both (for good practice)	
+
 
 # How to run a script
 	$ ./script.sh
@@ -91,9 +100,7 @@ $ apt-get | yum install shellcheck	-y
 	[3]   Done                    ls --color=auto -alR > /tmp/result.txt 2> /tmp/error.txt
 
 	
-set -e          #Exit as soon as any line in the bash script fails
-set -x          #Prints each command executed (prefix with ++)
-set -ex         #Do both (for good practice)	
+
 	
 !     # not
 -a    # and
@@ -596,9 +603,17 @@ $ if [[ ! -z $HOME ]]; then echo $HOME; elif [[ -z $HOME ]]; then echo "No Home"
 
 
 
+----------------------------------------------------------------------------------------------------
+### RR server process check
+#!/bin/bash
+# Check and put ok status if the RRS game service is running for Lobby 7504 & 7505 services
 
-
-
+if (( $(ps aux | grep ./RRServer_0402_7504 | grep -v grep | wc -l) > 0  &&  $(ps aux | grep ./RRServer_0617_7505 | grep -v grep | wc -l) > 0 )) ;
+        then
+        echo OK > /var/www/html/status/index.html;
+else rm /var/www/html/status/index.html > /dev/null 2>&1;
+fi
+----------------------------------------------------------------------------------------------------
 
 
 
@@ -1982,7 +1997,39 @@ http://stackoverflow.com/questions/12628327/how-to-show-and-update-echo-on-same-
 #--------------------------------------------------------------------------------
 
 
+#--------------------------------------------------------------------------------
+#!/bin/bash
+#
+### Comparing two directories ###
+#
 
+set +x
+
+usage="Usage: $0 DIR1_Name DIR2_Name"
+# Usage: compare2dirs.sh DIR1_Name DIR2_Name
+
+
+if [ $# -gt 2 ]; then                   # $# <=the number of command line parameters.
+    echo $usage;
+    echo 1
+fi
+
+if [ $# -lt 2 ]; then                   # $# <=the number of command line parameters.
+    echo $usage;
+    echo 
+fi
+
+if [ -z "$1" ]; then                    # -z <= length of '$1' parameter is empty
+    echo $usage;
+fi
+
+if [ -d "$1" -a -d "$2" ]; then         # -d "$1" <= file exists and is a directory
+                                        # -a      <= 'and' both dirs are exist
+                                        # -d "$2" <= file exists and is a directory
+    echo "Comparing $1 with $2 ....";
+    diff -r $1 $2                       # -r <= recursively compare any subdirectories found
+fi
+#--------------------------------------------------------------------------------
 
 
 
