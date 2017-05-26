@@ -347,11 +347,13 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	### Ignoring 'adding remote host (yes/no)'
 	$ for i in $(cat doUpdateList.txt); do ssh -t -o "StrictHostkeyChecking no" apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
 
+	
 ### PSSH ###
 #	$ pssh -O StrictHostKeyChecking=no -h HostList.txt -l apark -A -i   -x '-t -t'    "sudo /etc/init.d/newrelic-sysmond restart"
 ### 
-	
-	
+### PRSYNC ###	
+# 	$ prsync -h /cdn/usEdgeServers.txt -l apark -v -x '-avz --delete' /cdn/data/ /cdn/data/
+###	
 	
 	http://unix.stackexchange.com/questions/87405/how-can-i-execute-local-script-on-remote-machine-and-include-arguments
 	
