@@ -514,4 +514,60 @@ Force Jenkins to quiet mode after specified minutes		180
 'check' Backup next build number file	Help for feature: Backup next build number file
 'check' Clean up differential backups	Help for feature: Clean up differential backups
 'check' Move old backups to ZIP files	
-	
+
+##########
+### P4 ###   Binary needs to be installed 
+##########
+
+$ 
+$ export P4PORT=ssl:10.10.100.80:1666
+# Install
+$ p4 trust -i 38:E7:8C:AE:8F:5C:FE:97:D0:B9:F2:35:42:71:B7:FC:59:4D:22:F8
+# Installed List
+$ p4 trust -l
+$ p4 info
+$ p4 -p ssl:10.10.100.80:1666 info
+
+User name: apark
+Client name: jenkins-resign
+Client host: jenkins-resign.local
+Client unknown.
+Current directory: /Users/apark
+Peer address: 10.100.200.43:49197
+Client address: 10.100.200.43
+Server address: BNEA-Perforce.namco.local:1666
+Server root: /home/perforce
+Server date: 2017/05/08 10:03:15 -0700 PDT
+Server uptime: 3159:29:00
+Server version: P4D/LINUX26X86_64/2015.1/1240625 (2015/09/29)
+Server encryption: encrypted
+Server cert expires: Oct 17 22:03:00 2017 GMT
+Server license: BANDAI NAMCO Entertainment America Inc. 51 users (support expired 2017/03/30)
+Server license-ip: 10.10.100.80:1666
+Case Handling: sensitive
+
+
+### Login test
+$ p4 -u jenkins login -a	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

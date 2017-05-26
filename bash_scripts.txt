@@ -1632,7 +1632,7 @@ n<&-         # closes the input from file descriptor n
 ### 5. Regular Expression  ###
 ##############################
 Basic Regular Expression
-Operator	Effect
+<Operator>	<Effect>
 .			Matches any single character.
 ?			The preceding item is optional and will be matched, at most, once.
 *			The preceding item will be matched zero or more times.
@@ -1657,8 +1657,188 @@ $			Matches the empty string at the end of a line.
 e.g.
 $ grep ^root /etc/passwd
 	root:x:0:0:root:/root:/bin/bash
+	
+https://regexone.com/problem/matching_decimal_numbers	
+Lesson Notes
+abc…	Letters
+123…	Digits
+\d	Any Digit
+\D	Any Non-digit character
+.	Any Character
+\.	Period
+[abc]	Only a, b, or c
+[^abc]	Not a, b, nor c
+[a-z]	Characters a to z
+[0-9]	Numbers 0 to 9
+\w	Any Alphanumeric character
+\W	Any Non-alphanumeric character
+{m}	m Repetitions
+{m,n}	m to n Repetitions
+*	Zero or more repetitions
++	One or more repetitions
+?	Optional character
+\s	Any Whitespace
+\S	Any Non-whitespace character
+^…$	Starts and ends
+(…)	Capture Group
+(a(bc))	Capture Sub-group
+(.*)	Capture all
+(abc|def)	Matches abc or def
 
-$
+Exercise 1: Matching Characters
+Task	Text	 
+Match	abcdefg	Success
+Match	abcde	Success
+Match	abc
+=> ^abc
+
+Exercise 1½: Matching Digits
+Task	Text	 
+Match	abc123xyz	
+Match	define "123"	
+Match	var g = 123;
+
+=>123 
+
+
+Exercise 2: Matching With Wildcards
+Task	Text	 
+Match	cat.	Success
+Match	896.	Success
+Match	?=+.	Success
+Skip	abc1
+
+=> ...\.
+
+Exercise 3: Matching Characters
+Task	Text	 
+Match	can	Success
+Match	man	Success
+Match	fan	Success
+Skip	dan	To be completed
+Skip	ran	To be completed
+Skip	pan
+
+=> [cmf]an   or [^drp]an
+
+Exercise 4: Excluding Characters
+Task	Text	 
+Match	hog	Success
+Match	dog	Success
+Skip	bog
+
+=> [^b]og   <= not
+
+Exercise 5: Matching Character Ranges
+Task	Text	 
+Match	Ana	Success
+Match	Bob	Success
+Match	Cpc	Success
+Skip	aax	To be completed
+Skip	bby	To be completed
+Skip	ccz
+
+=> [A-C][n-p][a-c]
+
+
+Exercise 6: Matching Repeated Characters
+Task	Text	 
+Match	wazzzzzup	Success
+Match	wazzzup	Success
+Skip	wazup
+
+=> waz{3,5}up
+
+Exercise 7: Matching Repeated Characters
+Task	Text	 
+Match	aaaabcc	Success
+Match	aabbbbc	Success
+Match	aacc	Success
+Skip	a
+
+=> ^aa  || aa+b*c+  || a{2,4}b{0,4,}c{1,2}
+
+
+Exercise 8: Matching Optional Characters
+Task	Text	 
+Match	1 file found?	Success
+Match	2 files found?	Success
+Match	24 files found?	Success
+Skip	No files found.
+
+=> \d+ files? found\?
+
+Exercise 9: Matching Whitespaces  '\s' any whitespace
+Task	Text	 
+Match	1.   abc	Success
+Match	2.	abc	Success
+Match	3.           abc	Success
+Skip	4.abc
+
+=> \d\.\s+abc			. any char
+
+Exercise 10: Matching Lines
+Task	Text	 
+Match	Mission: successful	To be completed
+Skip	Last Mission: unsuccessful	To be completed
+Skip	Next Mission: successful upon capture of target
+
+=> ^M  ||    ^Mission: successful$
+
+
+Exercise 11: Matching Groups
+Task	Text	Capture Groups	 
+Capture	file_record_transcript.pdf	
+Capture	file_07241999.pdf	
+Skip	testfile_fake.pdf.tmp
+
+=>  ^(file.+)\.pdf$
+
+
+Exercise 12: Matching Nested Groups
+Task	Text	Capture Groups	 
+Capture	Jan 1987	
+Capture	May 1969	
+Capture	Aug 2011
+
+=> (\w+ (\d+))
+
+
+Exercise 13: Matching Nested Groups
+Task	Text	
+Capture	1280x720	
+Capture	1920x1600	
+Capture	1024x768
+
+=> (\d+)x(\d+)
+
+
+Exercise 14: Matching Conditional Text
+Task	Text	 
+Match	I love cats	Success
+Match	I love dogs	Success
+Skip	I love logs	To be completed
+Skip	I love cogs
+
+=> I love (cats|dogs)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2032,9 +2212,10 @@ fi
 #--------------------------------------------------------------------------------
 
 
+# 5 mins count down from Shell
+# for i in {1..300}; do echo -ne $i '\r'; sleep 1; done; echo
 
-
-
+#--------------------------------------------------------------------------------
 
 
 

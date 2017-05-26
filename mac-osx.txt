@@ -8,6 +8,12 @@ OS X 10.9 Mavericks (Cabernet)
 OS X 10.10: Yosemite (Syrah)
 OS X 10.11: El Capitan (Gala)
 OS X 10.12: Sierra (Fuji)
+	HFS+  <= Hierarchical File System Plus for Apple File System (Mac OS file system)
+		https://en.wikipedia.org/wiki/HFS_Plus
+	
+	
+
+
 
 launchctl
 
@@ -89,5 +95,24 @@ http://dev.mlsdigital.net/posts/how-to-resign-an-ios-app-from-external-developer
 https://github.com/maciekish/iReSign
 	
 
+	
+###	Keychain
+	$ security		<= Command line interface to keychains and Security framework
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
   

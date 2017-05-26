@@ -42,6 +42,7 @@ duck out		<- Leave hurriedly or secretly
 
 # E
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
+entitlements	<- the amount to which a person has a right.
 eye stye		<- 눈다락지
 
 # F
