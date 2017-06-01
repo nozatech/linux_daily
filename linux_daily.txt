@@ -83,6 +83,9 @@ echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"'   >> ~/.bashrc		<= Green|
 echo 'export HISTTIMEFORMAT="%F "' >> ~/.bashrc								<= History time stamp
 ###
 
+d
+
+
 http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 ### Vi environment set-up (setting)
 	Install VIM first 
@@ -160,6 +163,38 @@ Undo
 	$ cd ~-				<= same
 	$ echo ~-			<= out put previous directory
 	
+	
+# History	
+	$ ls /var/log
+	$ cd !*				<= cd into last command directory
+		$ cd /var/log
+	$ !!   or		UP arrow key
+	$cat /etc/shadow
+		cat: /etc/shadow: Permission denied
+	$ sudo !!
+	
+	$ crtl+r 			<= Reverse i search  
+	
+	# Not recrod if there is a sapce at front
+	$ export HISTCONTROL=ignorespace
+	$ <space> clear						<= not record in history
+	$ export HISTCONTROL=ignoredups
+	$ export HISTCONTROL=erasedups 		<= delete all duplicated 
+	
+	*** add all in one line
+	$ export HISTCONTROL="ignorespace:erasedups:ingreodups"
+	$ echo 'export HISTCONTROL="ignorespace:erasedups:ingreodups"' >> ~/.bashrc
+	
+	$ export HISTIGNORE="history*:ll*:ls*" 
+	$ echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc
+	*** History Time stamp
+	$ export HISTTIMEFOREMAT="%F>"
+	$ echo 'export HISTTIMEFOREMAT="%F>"' >> ~/.bashrc
+	*** History size
+	$ export HISTSIZE=10000
+	$ echo "export HISTSIZE=10000" >> ~/.bashrc
+	
+	
 # Touch command
 	$ touch apple banana cherry			<= creating multiple files
 	$ touch file_{01..1000}
@@ -200,7 +235,9 @@ Undo
 		User apark
 		Port 22
 		IdentityFile ~/.ssh/id_rsa
-		
+	
+	$ ssh apark@netops
+	
 	## Login to internal lan server at 192.168.0.251 via our public uk office ssh based gateway using ##
 	## $ ssh uk.gw.lan ##
 	Host uk.gw.lan uk.lan
@@ -503,6 +540,46 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 
     $ sudo sh -c "cd /home ; du -s * | sort -rn > USAGE"
 
+7. File Globs
+	1) * Asterist
+		$ file.*			<= matches any number of any characters
+		$ file*.txt
+		$ *.jpg
+	2) ? Matches one(1) of any character
+		$ file?.txt
+		$ ?.jpg
+	3) [ ] Character Sets
+		$ file[0-9].txt
+		$ file[a-z].txt
+		$ file[abc123].jpg		<= e.g. a.jpg, b.jpg, 3.jpg
+	4) [- ] Maches a hyphen
+		$ file[-9-0].txt		<= file-.txt, file1.txt
+	5) [! ] Negate(NOT) a match
+		$ file[!0-9].txt		<= filea.txt, fileb.txt
+	6) [::] Matches on character of a certain type
+		[:digit:]	Numbers
+		[:uppper:]	Upper case characters
+		[:lower:]	lower case characters
+		[:alpha:]	Upper and lower case
+		[:alnum:]	Upper and lower case plus numbers
+		[:space:]	Space, tabs, and newlines
+		[:graph:]	Printable characters, not including spaces
+		[:print:]	Printable characters, including spaces
+		[:punct:]	Punctuation
+		[:cntrl:]	Non-printable control characters
+		[:xdigit:]	Hexadecimal characters
+		
+	$ ls file[0-9].txt
+	$ ls file[[:digit:]].txt
+	$ ls file[[:digit:][:space:].txt
+	$ ls file[![:digit:]].txt
+	$ ls file[![:digit:][:space:].txt 
+		
+	$ ls {*.jpg,*.gif,*.png}
+	
+	
+	
+	
 	
 4. free  
 	
@@ -1203,7 +1280,24 @@ H 2 * * *				<= Every 2am
   173  ps aux | grep jarvis
   174  ls -la /
   175  ls -la /mnt/
+  
   176  history
+		$ 
+		$ !ls
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   177  lsblk
   
   178  sudo mount /dev/xvdf /mnt
