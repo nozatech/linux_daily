@@ -2,14 +2,12 @@
 ### 1. Run Scripts ###
 ######################
 
-
 https://explainshell.com/
-
 https://www.shellcheck.net/
 $ apt-get | yum install shellcheck	-y
 
 Overview of set debugging options
-	set -f	(set -o noglob)		Disable file name generation using metacharacters (globbing).
+	set -f	(set -o noglob)		Disable file name generation using metacharacters(globbing).
 	set -v	(set -o verbose)	Prints shell input lines as they are read.
 	set -x	(set -o xtrace)		Print command traces before executing command.
 
@@ -19,13 +17,22 @@ Overview of set debugging options
 
 
 # How to run a script
-	$ ./script.sh
+	$ ./script.sh					<= run in seperate shell
+	$ . ./script.sh   			     <= current login shell to run
     $ sh ./script.sh  				 <= same as 'sh script.sh')
     $ sh +x script.sh   			 <= +x for debuging mode
-	$ . script.sh   			     <= current login shell to run
+    $ sh -x script.sh   			 <= +x for debuging mode
+    $ sh -v script.sh   			 <= -v for debuging mode
+    $ sh +v script.sh   			 <= +v for debuging mode
+
     $ exec ./script   				 <= after run, the login shell exit 
 	$ bash ./script.sh
+	$ bash -x 
+	$ bash -v 
 	
+
+	*** $ source .bashrc						<= reload .bashrc
+
 	# run script as a different user from root
 	$ wget http://tecmint.com/wp-content/scripts/tecmint_monitor.sh
 	$ [apark@i7 ~]$ su -c "/home/apark/tecmint_monitor.sh" - root

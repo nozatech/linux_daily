@@ -1,19 +1,14 @@
-아무리 바빠도 해야할 일 - 책
-돈이 많아도 하지 말아야 할일 -도박, 마약
-1.역사책 - 역사의식 책임
-2.문화책 - 감성
-3.경영책 - 논리
-4.철학책 - 생각에 방법 
-5.사회학 인간학 - 인간 관계
+아무리 바빠도 해야할 일 - 책, && 돈이 많아도 하지 말아야 할일 -도박, 마약
+1.역사-역사의식 책임, 2.문화-감성, 3.경영-논리, 4.철학-생각에 방법, 5.사회학 인간학-인간 관계
+
 -----------------------------------------------------------------------------------
 Windows CMD kill process
 http://tweaks.com/windows/39559/kill-processes-from-command-prompt
-c:\tasklist
 c:\taskkill /IM pdflite.exe /F 
 # Rename file name  'F2 key'
 # Pin to Taskbar  <= on program, right click, pin to taskbar
 
-bring up the Task Manager
+bring up the Task Manager 
 	Ctrl+Shift+Esc 
 Run dialogue
 	Windows + R 
@@ -25,8 +20,7 @@ Run dialogue
 -----------------------------------------------------------------------------------
 Notepad++
 Settings > Short cut Mapper Menu.
-1. 
-	Ctrl + L			Delete Current line
+1. 	Ctrl + L			Delete Current line
 	Ctrl + D			Duplicate(copy) line
 2. Auto-completion
 	Ctrl+Space			Function completion
@@ -43,7 +37,6 @@ Settings > Short cut Mapper Menu.
 	Alt +F4				Exit Notepad++
 -----------------------------------------------------------------------------------
 SMACK Stack
-
 Spark - fast and general engine for distributed, large-scale data processing
 Mesos - cluster resource management system that provides efficient resource
 		isolation and sharing across distributed applications
@@ -64,7 +57,6 @@ Esc						Stop page or download from loading.
 Ctrl + Shift + I		Development Tools*** 
 Ctrl + Shift + O		Open the Bookmark manager.
 Ctrl + Shift + N		New Incognito Window
-
 Ctrl + H				Open history in a new tab
 Ctrl + K or Ctrl + E	Perform a Google search
 Ctrl + T				Opens a new tab.
@@ -75,29 +67,40 @@ Daily Linux CMD List & Scripts
 
 32bit is 2^32 =~ 4.3 billion    <=  IPv4 address is 32bit 
 
-### Enable color & history time stamp ###
-echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'" >> ~/.bashrc			<= Green
+### Shell's Color, History, Time stamp, Size ###
+echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"'   >> ~/.bashrc		<= Green|Red
+echo 'export HISTCONTROL="ignorespace:erasedups:ignoredups"' >> ~/.bashrc	<= Ignore Duplication
+echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc					<= Ignore list
+echo 'export HISTTIMEFORMAT="%F > "' >> ~/.bashrc							<= History time stamp(man date)
+echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
 ###
-echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"'   >> ~/.bashrc		<= Green|Red 
-###
-echo 'export HISTTIMEFORMAT="%F "' >> ~/.bashrc								<= History time stamp
-###
+---Copy & Paste or create a 'shellenv.sh' script and PSSH to all servers ----------
+cat << EOF >> ~/.bashrc
+	export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"
+	export HISTCONTROL="ignorespace:erasedups:ignoredups"
+	export HISTIGNORE="history*:ll*:ls*:"
+	export HISTTIMEFORMAT="%F > "
+	export HISTSIZE=10000
+EOF
 
-d
-
+# Reload .bashrc 
+	$ source .bashrc 
+# 
+	$ pssh -O StrictHostKeyChecking=no -h ipList.txt -l apark -A -I < ./shellenv.sh
+----------------------------------------------------------------------
 
 http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 ### Vi environment set-up (setting)
-	Install VIM first 
-	$ alias vi='vim
-
-Create a .vimrc file in home 
-$ vi .vimrc
+	Create a .vimrc file in home directory
+	
+	$ vi .vimrc
+	----------------------------------------------------
 	:set num
 	#set nonumber					<= disable number
 	:set tabstop=4					<= most of useful
 	:set autoindent
-	---------------------------------------------------------------------------------------------------
+	-------------------------------------------------------
+	
 	####	Vim color scheme enable   ###
 	http://www.server-world.info/en/note?os=CentOS_7&p=initial_conf&f=7
 
@@ -145,7 +148,22 @@ pp	<=	shift+p to paste
 
 
 Undo
-	esc and u
+	esc and uu
+	
+	### Change String like "SED" stream editor
+	http://vim.wikia.com/wiki/Search_and_replace
+	
+		:%s/foo/bar/g				<=
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 # Switch user
@@ -208,7 +226,31 @@ Undo
 # number line	
 	$ cat file | nl 
 
-# long command using ' \' for extent command
+
+	$ grep tcp /etc/services | awk '{print $1}' | sort | less
+
+	
+	### mkfifo - make FIFOs (named pipes)
+	From 1st shell
+	$ mkfifo named_pipe 
+	$ echo "hi" > named_pipe
+	From 2nd shell
+	$cat named_pipe
+	# meta data
+	prw-rw-r--. 1 apark apark 0 Jun  1 15:10 named_pipe
+
+	
+# STDIN, STDOUT, STDERR
+	$ sort < unsorted.txt > sorted.txt
+	$ ls | tee ls.txt
+	$ ls | tee -a ls.txt 			<= -a append
+	$ find /etc |sort|tee etcSort.txt|wc -l
+	$ find /etc 2> etcErr.txt |sort|tee etcSort.txt|wc -l
+	$ find /etc &> /dev/null   			<= NO OUT PUT
+	
+
+# long command using  \  for extent command
+# escape character \
 
 ### Putty, mRemote, Cygwins, Shell, Terminal
 	
@@ -296,9 +338,23 @@ Undo
 	which must equal the MD5 value of a correct ISO.
 	
 	
-	$ basename 					<= strip directory and suffix from filenames
-	$ basename $0
+###  basename 					
+	strip directory and suffix from filenames
+	basename prints filename NAME with any leading directory components removed. It can optionally also remove any trailing suffix.
 	
+	EXAMPLES
+       basename /usr/bin/sort
+              -> "sort"
+
+       basename include/stdio.h .h
+              -> "stdio"
+
+       basename -s .h include/stdio.h
+              -> "stdio"
+
+       basename -a any/str1 any/str2
+              -> "str1" followed by "str2"
+
 
 		
 # start up  
@@ -371,8 +427,8 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	$ ssh -t apark@192.241.190.57 'sudo iptables -nL'			<= -t  Force pseudo-tty allocation
 	  
 	### run script remotely
-	
-	$ ssh apark@remote_server  'bash -s' < from_local_sc ript.sh			<= run a script remotely from local using sudoer
+
+	$ ssh apark@remote_server  'bash -s' < from_local_sc ript.sh		<= run a script remotely from local using sudoer
 	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh                  <= installing as sudo	
 	
 	# Create a server list text file and a update script first
@@ -527,6 +583,22 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	
 	
 6. Environment variable
+	# set -o 						<= Inherite from BASH or other Shells
+	
+	# shopt							<= specific options for BASH Shell
+		$ shopt						<= list of Shell Option
+		$ shopt -s extglob			<= turn on extended glob
+	
+	
+	
+	# env
+	
+
+
+
+
+
+
 	AWS Access Key/ Secret key
 	
 	/home/ubuntu/jarvis/ami/tcg/production/
@@ -578,11 +650,268 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	$ ls {*.jpg,*.gif,*.png}
 	
 	
+	### Extended Globs
+	$ shopt
+	$ shopt -s extglob
+	1) +(match)
+		$ file+(abd).txt			<= fileabc.txt, fileabcabc.txt
+
+	2) +(match|match)
+		$ ls +(photo|Photo)*+(.jpg|.gif)		<= photo.jpg, Photo.jpg, photo.gif, Photo.gif
+		
+	3) *(match)
+		$ ls test*(1).*				<= test1.jpg, test1.png, test1.txt
+		$ ls test*1.*				<= test1.jpg, test1.png, test1.txt
+	4) !(match)						<= Don't match 
+		ls -l !(*.jpg|*.png)
+			
+	5) !(+(match)*+(match))			<= group match
+		$ ls !(+(photo|file)*+(.jpg|.gif)) 	<= All files that do not have photo or file, and don't
+												end with jpg or gif.
+			
+### Shell Meta-Characters			
+	< >, $, *, {}, [], +, '', ^, ., ?, |, (), \, ""
+	$ echo $USER
+	$ echo My name is $USER
+	$ echo "My name is $USER"     	<= apark
+	$ echo 'My name is $USER'		<= $USER
+	
+	
+	### /etc/services http://www.penguintutor.com/linux/network-services-ports
+	maps port numbers to named services(SSH 22/tcp).
+	a simple database that associates a human friendly name to a machine friendly service port.
+
+	$ grep '*./tcp' /etc/services | grep ssh
+		ssh  22/tcp      # The Secure Shell (SSH) Protocol
+	$ 
+	
+	# Socket(IPP) is the combination of IP address, port and protocol.
+	
+	
+7. System services
+	Sys v init process tree( from ATT Linux 80's)
+	init --> abrtd
+		  |-> agetty
+		  |--> auditd --{gdbud}
+		  
+	Runlevel 3	  
+		cups, httpd, iptables  
+	
+	Cons
+		slow startup
+		No service dependencies
+		No persistent network
+	to => Launchd & Upstart but ==> SystemD
 	
 	
 	
+	### SystemD ###
+	https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
+	https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files	
+	# Units(service name) <= target of most of actions which are resources, defined by unit files
+ 	
+	$ systemctl						<=
+	
+	$ systemctl list-units			<= only active units
+		UNIT: The systemd unit name
+		LOAD: Whether the unit's configuration has been parsed by systemd. 
+				The configuration of loaded units is kept in memory.
+		ACTIVE: A summary state about whether the unit is active. 
+				This is usually a fairly basic way to tell if the unit has started 
+				successfully or not.
+		SUB: This is a lower-level state that indicates more detailed information 
+			about the unit. This often varies by unit type, state, and the actual 
+			method in which the unit runs.
+		DESCRIPTION: A short textual description of what the unit is/does.
+	$ systemctl list-units	--all
+	
+	**$ systemctl list-unit-files  <= displaces all 
+	
+	$ systemctl list-unit-files -at service
+		UNIT FILE                             STATE
+		arp-ethers.service                    disabled
+		atd.service                           enabled
+
+	$ systemctl list-units -at service
+		UNIT                                LOAD      ACTIVE   SUB     DESCRIPTION
+		atd.service                         loaded    active   running Job spooling tools
+		auditd.service                      loaded    active   running Security Auditing Service
+	
+	$ systemctl list-units -t service --state running
+		UNIT                     LOAD   ACTIVE SUB     DESCRIPTION
+		atd.service              loaded active running Job spooling tools
+		auditd.service           loaded active running Security Auditing Service
+	
+	$ systemctl enable | disable | status iptables
+		# /etc/systemd/system/basic.target.wants/iptables.service
+	
+	$ systemctl cat sshd		<= cat Unit file for sshd.service 
+		# /usr/lib/systemd/system/sshd.service
+		[Unit]
+		Description=OpenSSH server daemon
+			$ systemctl is-enabled nginginx 
+		disabled
+	$ sudo systemctl enable nginx
+		Created symlink from '/etc/systemd/system/multi-user.target.wants/nginx.service' to 
+			'/usr/lib/systemd/system/nginx.service.'
+	$ cat /etc/systemd/system/mucat lti-user.target.wants/nginx.service
+		[Unit]
+		Description=The nginx HTTP and reverse proxy server
+		After=network.target remote-fs.target nss-lookup.target
+
+		[Service]
+		Type=forking
+		PIDFile=/run/nginx.pid
+	
+	$ systemctl is-enabled sshd	
+	$ systemctl is-active sshd 
+	$ systemctl is-failed sshd 
+	$ systemctl reload-or-restart sshd.service
+	
+	$ systemctl list-dependencies sshd.service
+	
+	
+	$ ls -l /etc/systemd/system/multi-user.target.wants
+		lrwxrwxrwx. 1 root root 36 Jan 25 10:14 sshd.service -> /usr/lib/systemd/system/sshd.service
+
+
+
+	$ systemctl list-units --all --state=active
+	$ systemctl list-units --all --state=inactive
+	$ systemctl list-units --type=service
+	
+	# low level
+	$ systemctl show sshd.service
+	
+	# Masking and unmasking units( making disable from start up by linking to /dev/null)
+	$ systemctl mask | unmask sshd.service  		<= start will fail due to masked
+
+	# Edit Unit file
+	$ systemctl edit sshd.service
+			
+	$ sudo systemctl edit nginx
+	Editing "/etc/systemd/system/nginx.service.d/override.conf" <= precedence over nginx.conf
+	
+	$ sudo systemctl edit --full nginx
+	# to Remove
+	$ sudo rm -r /etc/systemd/system/nginx.service.d	<= snippet
+	$ sudo rm /etc/systemd/system/nginx.service			<= full
+	# Restore default
+**  $ sudo systemctl daemon-reload						<= Restore to system default
+	
+	
+	### Journald ###
+	$ journalctl			<= log information from applications and the kernel
+		$ vi /etc/systemd/journald.conf
+	
+	$ journalctl -b					<= current boot
+	$ journalctl -k	  <=> dmesg     <= Kernal
+	$ journalctl -xe				<= 
+	
+	
+	
+	
+	
+	
+	
+8.	PROCESS
+	$ ps 				<= Unix, BSD, GNU types
+		1 UNIX 		<= ps -ef (Unix/POSIX)    which may be grouped and must be preceded by a dash.
+		2 BSD 		<= ps aux (Ubuntu/Debian) which may be grouped and must not be used with a dash.
+		3 GNU 		<= ps -ef (CentOS)		  long options, which are preceded by two dashes.
+	$ ps -e			<= everything
+	$ ps -eH		<= Hierachical 
+	$ ps -ef 		<= every process (GNU e.g. CentOS)
+	$ ps aux		<= every process (BSD e.g. Ubuntu)
+	$ ps -elF		<= Long, 15 columes of options	
+	
+	$ ps -e --format uid,pid,ppid,%cpu,cmd  <= use '--format' for custom option
+	
+	$ ps -G group_name
+
+	$ ps -C nginx --format pid,ppid,%cpu,cmd --sort %cpu
+		PID  PPID %CPU CMD
+		23976 23968  0.0 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
+		23984 23976  0.0 nginx: worker process
+
+	$ ps -e --format uid,pid,ppid,tty,%cpu,cmd --sort %cpu
+	$ ps -e --format uid,pid,tty,rss,cmd --sort rss   <= memory usage, cmd sorted
+	$ ps -U root				<= -u & -U same
+	$ ps -U apark --format %mem | awk '{memory +=$1};END {print memory}'  	 <= user memory usage
+	
+
+	
+9. Process Niceness/Priority
+	$ nice -2 top			<= if only 1 '-' +2,  '--' -2
+	$ ps -C top --format pid,nice,cmd,%cpu		<= -C  command name
+		PID  	NI CMD
+		21112   2  top
+	$ sudo nice --2 top		<= If no sudo, it will set to nice value '0'<- max permission
+	$ sudo renice -5 top	<= sudo requires
+	
+10. Manage Process Jobs
+	$ watch ps -C dd --format pid,cmd,%cpu		<= Term1    
+	
+	$ dd if=/dev/zero of=/dev/null				<= Term2    
+	
+	$ Ctrl+z									<= Term2 "Stopping process"    
+		$ jobs
+			[1]+  Stopped                 dd if=/dev/zero of=/dev/null
+		$ bg 1
+			[1]+ dd if=/dev/zero of=/dev/null &
+		$ jobs
+			[1]+  Running                 dd if=/dev/zero of=/dev/null &
+		$ fg
+			dd if=/dev/zero of=/dev/null
+		$ Ctrl+z
+		$ bg
+		$ Ctrl+c
+		$ dd if=/dev/zero of=/dev/null &
+			[1] 24933
+		$ killall dd
+
+	
+	
+10. Kill Signal( kill -l <=list)
+	kill, killall, pkill
+	http://www.thegeekstuff.com/2009/12/4-ways-to-kill-a-process-kill-killall-pkill-xkill/
+	https://unix.stackexchange.com/questions/317492/list-of-kill-signals
+	$ pidof sleep
+	$ pgrep sleep
+	$ kill 15558 15559 15560		<= same as kill -15
+	$ kill -9 15558 15559 15560	
+	$ pkill sleep
+	$ killall sleep
+	# Kill all related to user
+	$ sudo killall -u user_name
+	
+	
+9. Monitoring TOP
+	$ top
+			l 	<= load avg & Uptime
+			1 	<= All CPU usage
+			t 	<= toggle CPU states
+			m	<= toggle betwen memory states
+			f	<= FIELD management
+				select and spacebar to enable
+			c	<= toggle between cmd name & cmdline
+			u	<= user name
+			k	<= kill task
+			r	<= renice,  choose PID, and value
+			
+		shift + m	<= Memory usage
+		shift + p	<= Process usage
+		shift + t	<= Time usage
+		shift + n	<=(PID Number)
+	
+
+
+
+
+	
+		
 4. free  
-	
+	 
 	### Most memory used by process
 	
 	$ ps aux --sort=-%mem | awk 'NR<=10{print $0}'	
@@ -679,6 +1008,12 @@ echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab   <=	# To enable it 
 #	$ sudo mkswap /swapfile
 #	$ sudo swapon /swapfile
 ###	
+
+### fallocate - preallocate space to a file
+
+	$ fallocate -l 1G   1gb_file		<= 1078 size ??
+	$ fallocate -l 1GB  1gb_file		<= 1000 size ??
+	
 	
 7. sysstat	Linux Performance Monitoring package
 
@@ -1200,24 +1535,30 @@ H 2 * * *				<= Every 2am
 	
 	
 	
-	### lsof ###				<= list open files
-	$ lsof /mnt/dir
-	
+	### lsof ###				<= list open files using by PID or Program
+	http://www.thegeekstuff.com/2012/08/lsof-command-examples
+	$ lsof 					<= list all opened files start 'Init 1'
+
 	# Which processes have this file open
 	$ lsof  /var/log/nginx/access.log
 		COMMAND   PID  USER    FD   TYPE DEVICE SIZE/OFF      NODE NAME
 		nginx   13786  root    5w   REG  253,0        0 135700508 /var/log/nginx/access.log
-
-	# Which files does PID have open?
-	$ ps aux | grep nginx
 	
-	$ lsof -p nginx_PID			<= Process ID (PID)
+	# list opened files under a directory
+	$ lsof +D  /var/log  ==   $ lsof /var/log/
+	
+	# List opened files based on process names starting with
+	$ lsof -c ssh
+	
+	# Which files does PID have open?
+	$ ps aux | grep nginx |
+	$ lsof -p nginx_PID							<= Process ID (PID)
 
 	$ lsof -p 1									<= all files are opened with Init or SystemD
-	$ lsof -p `pgrep ABC`
+	$ lsof -p `pgrep systemd`
 		
 	# Where is the Binary for this process?
-	$ lsof -p ABC | grep bin
+	$ lsof -p `pgrep ngnix` | grep bin
 	
 	# Which shared Libraries is this program using? (manually upgrading software, i.e. openssl)
 	$ lsof -p PID | grep .so
@@ -1232,10 +1573,13 @@ H 2 * * *				<= Every 2am
 	$ lsof -u user_id
 	$ lsof -u user_id -i 					<= network only
 	
-	# Which process is listening on Port X (or using Protocol Y)?
+	** # Kill all process that belongs to a particular user
+	$ kill -9 `lsof -t -u user_name`
+	
+	# Network connection - Which process is listening on Port/Protocol
 	$ lsof -i :80
 	$ lsof -i tcp
-	
+	$ lsof -i tcp; lsof -i udp;
 	
 	
 	# Internet PORT
@@ -1243,9 +1587,7 @@ H 2 * * *				<= Every 2am
 	COMMAND PID     USER            FD   TYPE DEVICE SIZE/OFF NODE NAME
 	java    477   """logstash"""   79u  IPv6  22585      0t0  TCP *:lxi-evntsvc (LISTEN)
 
-	
-	
-	
+	$ lsof -Pni :3306
 	
 	/dev/mapper/U14--vg-root on / type ext4 (rw,errors=remount-ro)
 	
@@ -1258,7 +1600,8 @@ H 2 * * *				<= Every 2am
         ext3
         ext2
         ext4
-	$ cat $(which sys-unconfig)
+		
+	$ cat $(which sys-unconfig) 	== cat `which sys-unconfig`
 	
 	$ df -h    <= report file system disk space usage (Check Disk Free)
 	$ df -T   <= file system type
@@ -1416,10 +1759,39 @@ H 2 * * *				<= Every 2am
 	$ service --status-all
 	
 	
+
+	
 	
 
 24. Echo 
+	$ echo ~
+	$ echo ~root				<= user home directory
+	$ echo ~+  == pwd
+	$ echo ~-  == cd -
+	$ echo s{pe,pi}ll			<= don't use quote ""
+		spell spill
+	
+	$ echo "My name is $USER"			<= apark
+	$ echo 'My name is $USER'			<= $USER
+	
+	$ pdir="/tmp/files/today"
+	$ fname="report"
+	$ mkdir -p $pdir/$fname
+	$ ls $pdir
+		report
+	$ touch $pdir/$fname_jan		<= Not working
+	$ touch $pdir/${fname}_jan		<= user {} to protect the variable $fname
+	$ ls $pdir/$	/tmp/files/today/report_jan
 
+	$ echo "My name is $(whoami)"
+	$ echo "My name is `whoami`
+	
+	### Nested command substitution
+	$ echo " Permissions for find are $(ls -l $(which find))"
+		4th			3rd					2nd			1st(/bin/find)
+		Permissions for find are -rwxr-xr-x. 1 root root 199200 Nov 20  2015 /usr/bin/find
+
+	
 	$ HOSTNAME=hostname						<=variable HOSTNAME into command hostname
 	$ echo "PC name is $HOSTNAME." 			<= PC name is PC.
 
@@ -1445,6 +1817,37 @@ H 2 * * *				<= Every 2am
 	
 	$ echo -e "\aMy computer \\went \"beep\"." 			<= \a  alert	makes your terminal beep										
 														<= \\	backslash	insert a backslash
+	
+	
+	
+	
+	
+	
+	
+	# Pushd						<= add directory
+	# dirs						<= list directories
+	# popd						<= remove a directory
+	are shell builtins which allow you manipulate the directory stack. 
+	This can be used to change directories but return to the directory from which you came.
+	https://unix.stackexchange.com/questions/77077/how-do-i-use-pushd-and-popd-commands
+	
+	$ pushd /var/log/httpd
+	$ pushd /var/www/html
+	$ dirs
+	  /var/log/httpd  /var/www/html
+	$ echo ~0
+	  /var/log/httpd
+	$ echo ~1
+	  /var/www/html
+	$ popd +1
+	$ dirs
+	  /var/log/httpd
+	
+	
+	
+	
+	
+	
 	
 	
 25. $ last						<= show listing of last logged in users
@@ -1932,74 +2335,42 @@ B. CentOS 7(systemd)
   
   
   
-List processes
-chkconfig:
+### List processes
 
-# chkconfig --list
-systemd:
-
-# systemctl list-units
-Enable a service
-chkconfig:
-
-$ systemctl list-unit-files | grep 'influx\|grafana'
-
-# chkconfig <service_name> on
-systemd:
-
-# systemctl enable <service_name>.service
-Disable a service
-chkconfig:
-
-# chkconfig <service_name> off
-systemd:
-
-# systemctl disable <service_name>.service
-Start a service
-chkconfig:
-
-# service <service_name> start
-systemd:
-
-# systemctl start <service_name>.service
-Stop a service
-chkconfig:
-
-# service <service_name> stop
-systemd:
-
-# systemctl stop <service_name>.service
-Check the status of a service
-chkconfig:
-
-# service <service_name> status
-systemd:
-
-# systemctl status <service_name>.service
-
-
-
+	## chkconfig ##					## systemd ##
+	chkconfig --list				systemctl list-unit-files
+	chkconfig nginx on				systemctl enable  nginx
+	chkconfig nginx off				systemctl disable nginx
+	chkconfig nginx on				systemctl enable  nginx
+	service   nginx start			systemctl start   nginx
+	service   nginx stop			systemctl stop 	  nginx
+	service   nginx status			systemctl status  nginx
 	
+	$ systemctl list-unit-files | grep 'influx\|grafana'
+
+
 CentOS 6.5(sysV)     		   vs     	 CentOS 7 (systemd)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 service httpd status				    systemctl -l(full) status httpd
- 
-chkconfig --level 35 httopd  on			systemctl enable/disable httpd.service
+chkconfig --level 35 httpd  on			systemctl enable/disable httpd.service
 chkconfig --list | grep httpd			systemctl start httpd
-service httpd start/stop		     	systemctl stop httpd
+service httpd start|stop		     	systemctl stop httpd
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-target					systemctl list-unit-files
-cat /etc/inittab		systemctl list-units --type target  (--all for not active)					                        systemctl list-units --type services
-						systemctl get-default
-						change to multi-user target
-						systemctl set-default multi-uiser.target
-						systemctl reboot
-						startx <= Windows environment 
-						systemctl set-default graphical.target
-						systemctl reboot
-						systemctl start/stop sshd.service
-						systemctl enable/disalbe sshd.service  (constant run)					systemctl is-enabled sshd  <= check for sshd
-  
+target							systemctl list-unit-files
+cat /etc/inittab				systemctl list-units --type target  (--all for not active)					                        
+								systemctl list-units --type services
+								systemctl get-default
+								change to multi-user target
+								systemctl set-default multi-uiser.target
+								systemctl reboot
+								startx <= Windows environment 
+								systemctl set-default graphical.target
+								systemctl reboot
+								systemctl start/stop sshd.service
+								systemctl enable/disalbe sshd.service  (constant run)		
+								systemctl is-enabled sshd 			 <= check for sshd
+								sytemctl daemon-reload          <= Revert httpd.conf orginal file reload 
+								systemctl reload httpd			<= httpd service reload
 
 journalctl - Query the systemd journal
 
@@ -2020,8 +2391,7 @@ journalctl - Query the systemd journal
 	$ journalctl --since "10 min ago"
 
 #
-$ sytemctl daemon-reload          	<= Apache httpd.conf file reload 
-$ systemctl reload httpd			<= httpd service reload
+
 	
 
 ----------------------------------------------------------------
@@ -2041,6 +2411,7 @@ Ubuntu, 16.04 or higher			V
 	
 46. List of package installed
 	$ rpm -qa | grep ^httpd
+	
 # CentOS 'YUM'
 	$ yum list *httpd  											<= online
     $ yum list installed (same as 'rpm -qa') | grep httpd		<= on system 
@@ -2072,16 +2443,24 @@ Ubuntu, 16.04 or higher			V
  
 	export HISTTIMEFORMAT="%F %T "
 	
-	# Modify Path and Load
+	# Modify .bashrc Path and reload
 	http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-linux.html#awscli-install-linux-path
 	$ export PATH=~/.local/bin:$PATH		<= export  - Modify
-	$ source ~/.bash_profile				<= source  - Load
+	$ source ~/.bash_profile				<= source  - reLoad
+	$ . ~/.bash_profile				<= source  - reLoad
+*** $ source .bashrc						<= reload .bashrc
 	
 	
 	
 
-51. Diff between two remote folders through SSH
+51. diff & sdiff
+	https://www.lifewire.com/compare-two-text-files-linux-3861434
+     
+	$ colordiff file1 file2
+    $ diff -u file1 file2 | colordiff
 
+
+	# Diff between two remote folders through SSH
 
 Server 1
 
@@ -2278,26 +2657,34 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 ### Ubuntu 16.04 Iptables setup ###
 	http://linux-sys-adm.com/ubuntu-16.04-lts-how-to-configure-firewall-iptables-fail2ban/
 	https://oitibs.com/easy-ubuntu-16-server-firewall/
+	http://dev-notes.eu/2016/08/persistent-iptables-rules-in-ubuntu-16-04-xenial-xerus/
 	
 	# Install IPTables Persistent Package 
 	$ apt-get install -y iptables-persistent
 
-	# Add netfilter-persistent Startup
-	$ invoke-rc.d netfilter-persistent save
+	# Add netfilter-persistent Start-up
+	$ invoke-rc.d netfilter-persistent save		<= enable for start up
 	
 	$ service netfilter-persistent stop
-	
-	### After Edit IPtables ##
-	# Start netfilter-persistent Service
-	
-	$ service netfilter-persistent start
-	
-	$ iptables -nL	
 
-### Preroute rediect
-sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000	
+	# Start netfilter-persistent Service		<=	### After Edit IPtables ##
 	
-### CentOS7 ### 
+	$ service netfilter-persistent start | stop | status
+	$ /etc/init.d/netfilter-persistent start | stop | status
+	
+	$ iptables -nL			<= List  all rules in the selected chain. '-n' NO DNS lookup (Faster)
+	$ iptables -S			<= Print all rules in the selected chain. 	
+	
+	### Restore
+	sudo iptables-restore < ~/serenity-iptables-rules/ruleset-v4
+	sudo ip6tables-restore < ~/serenity-iptables-rules/ruleset-v6
+
+	### Preroute rediect
+	$ sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000	
+	
+
+	
+	### CentOS7 ### 
 
 Iptables opens all	
 $ iptables -I INPUT -j ACCEPT
@@ -2413,9 +2800,11 @@ iptables -L -v
 	chkconfig iptables off && chkconfig ip6tables off && 
 	service iptables stop &&  service ip6tables stop && setenforce 0
 	$ vi /etc/sysconfig/iptables
-	$ iptables -L
+	$ iptables -L		<= List
 	$ iptables -L -n   <= NO DNS lookup (Faster)
 	$ iptables -nL
+	$ iptables -S
+  
   
     
   ### Ubuntu 14.04 IPtables setup ###
@@ -2446,7 +2835,9 @@ iptables -L -v
 	### Edit IPtables ##
 	# Start netfilter-persistent Service
 	
+	$ service netfilter-persistent enable
 	$ service netfilter-persistent start
+	$ service netfilter-persistent status
 	
 	$ iptables -nL
 
@@ -2558,7 +2949,7 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	http://www.rationallyparanoid.com/articles/tcpdump.html
 	$ tcpdump -n src host 192.168.1.1
 	
-	### Exclude  https://danielmiessler.com/study/tcpdump/
+	### Exclude port 22 https://danielmiessler.com/study/tcpdump/
 	$ tcpdump -i any -n tcp port not 22 and host 1.2.3.4
 	 
 	
@@ -3055,8 +3446,13 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 
 	ssh sg-eu "service iptables restart"
     
-	
-	
+	### rsync failed due to remote host doesn't have the program installed.
+	$rsync -av /RRServerLinux/ apark@10.128.8.174:/home/apark/RRServerSlave/
+		apark@10.128.8.174's password:
+		bash: rsync: command not found
+		rsync: connection unexpectedly closed (0 bytes received so far) [sender]
+		rsync error: remote command not found (code 127) at io.c(600) [sender=3.0.6]
+		### FIX, Install rsync on REMOTE ###
 
 	### S3CMD  
 	# https://tecadmin.net/s3cmd-file-sync-with-s3bucket/
@@ -3196,9 +3592,13 @@ two cases:
    
 4. ulimit 		
 	system wide, user resource limits
-	
+	 Provides control over the resources available to the shell and to processes
+     started by it, on systems that allow such control.  The -H and  -S  options
+     specify  that the hard or soft limit is set for the given resource. 
+			  
 	OS needs memory to manage each open file
-	$ ulimit -n 						<= Find open files limit per process
+	$ ulimit -a							<= All current limits are reported
+	$ ulimit -n 						<= *** The maximum number of open file *****
 	$ lsof | wc -l						<= Count all opened files by all process
 	$ cat /proc/sys/fs/file-max			<= Get maximum open files count allows
 	$ cat /proc/sys/fs/file-nr			<= to get the current number of open files from the Linux kernel's point of view
@@ -3245,7 +3645,7 @@ two cases:
 	*    hard    nofile 8192
 	
 #---------------------------------------------------------------------------------------------------------	
-	There are two limits in play: 
+	### Ulimit ### There are two limits in play: 
 #-----------------------------------------------------------------------------------------------------
 	1) the maximum number of open files the OS kernel allows (fs.file-max) and
 	2) the per-user limit (ulimit -n). The former(Kernel) must be higher than the latter(user).
@@ -3257,10 +3657,12 @@ two cases:
 	### Check
 	$ ulimit -a			<= All current limits
 	$ ulimit -n			<= maximum number of open file
-	=> 1024
-	
 	$ ulimit -Sn		<= soft limit number
 	$ ulimit -Hn		<= hard limit number
+	
+	### Current shell
+	$ ulimit -n 1000		<= change
+	$ ulimit -n 			<= check
 	
 	
 	$ cat /proc/sys/fs/file-max
@@ -3269,26 +3671,32 @@ two cases:
 	### setting a new value in kernel variable /proc/sys/fs/file-max
 	$ sysctl -w fs.file-max=100000   					 <= -w write
 	
-	$ echo "fs.file-max = 100000"  >>  /etc/sysctl.conf
+	$ vi /etc/sysctl.conf		
+		fs.file-max = 100000			<= add
+		## $ echo "fs.file-max = 100000"  >>  /etc/sysctl.conf
 	
 	$ sysctl -p		( or --load)						 <= load 
 	  fs.file-max = 100000
 	
-	$ # cat /proc/sys/fs/file-max 						 (or  $ sysctl fs.file-max )
+	$ cat /proc/sys/fs/file-max 						 (or  $ sysctl fs.file-max )
 	
 
-	### Specific user limits
-	$ vi /etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf/etc/security/limits.conf		<= add this lines
-	###
-	*       soft     nproc          65535		<= * all users but no root
-	*       hard     nproc          65535
-	*       soft     nofile         65535
-	*       hard     nofile         65535
-	apark    -       nofile         65535		<= apark specific
-	root     -       nofile         65535		<= root specific
-	###
 	
+	### Specific user limits ### 
+	
+	$ vi /etc/security/limits.conf		<= add this lines
+		*       soft     nproc          65535		<= * all users but no root
+		*       hard     nproc          65535
+		*       soft     nofile         65535
+		*       hard     nofile         65535
+		apark    -       nofile         65535		<= apark specific
+		root     -       nofile         65535		<= root specific
+		
+		*** Relog-in to apply changes ***
+	
+		
 	### Per-User Limit
+	
 	$ cat /etc/security/limits.conf
 	#<domain>      <type>  <item>         <value>
 	#root            hard    core            100000		<=100k files to open
@@ -3330,7 +3738,7 @@ two cases:
 	
 	# pass the whole command to a shell process run under sudo to have the file written to with root permissions
 	$ sudo sh -c "ls > /root/somefile"
-	
+	#-----------------------------------------------------------------------------------------------------
 
 
 	
@@ -3696,6 +4104,21 @@ sed -i 's/START=no/START=yes/g'    /etc/default/puppet
 	$ sed -i '/extern int errno/{s/^/\/* /;s/$/ *\//;G;s/$/#include <errno.h>/;}' src/error.h
 	
 	
+	$ sed -i 's/original/new/g' file.txt
+			-i = in-place (i.e. save back to the original file)
+			The command string:
+				s = the substitute command
+				original = a regular expression describing the word to replace (or just the word itself)
+				new = the text to replace it with
+				g = global (i.e. replace all and not just the first occurrence)
+				file.txt = the file name
+	
+	IP change (change ip) using sed
+	$ sed -i -r     "s/10.1 28.232.181\b/10.130.244.212/g"     start-us-lobby-7505.sh
+
+	
+	
+	
 	
 		  
 ### Add some rows and text
@@ -3705,14 +4128,15 @@ server = puppetmaster.domain.tld
 EOF
 
 
-The cat <<EOF Bash syntax is very useful when one needs to work with multiline strings in Bash, 
+The 'cat << EOF' Bash syntax is very useful when one needs to work with multiline strings in Bash, 
 	eg. when passing multiline string to a variable, file or a piped command.
 1. Passing multiline string to a variable:
 	$ sql=$(cat <<EOF
-	> SELECT foo, bar FROM db
-	> WHERE foo='baz'
-	> EOF
-	> )
+	  SELECT foo, bar FROM db
+	  WHERE foo='baz'
+	  EOF
+	  )
+	
 	
 noza@fm:~$ echo $sql
 SELECT foo, bar FROM db WHERE foo='baz'
@@ -3727,7 +4151,7 @@ The $sql variable now holds newlines as well, you can check it with echo -e "$sq
 
 2. Passing multiline string to a file:
 
-$ cat <<EOF > print.sh
+$ cat << EOF > print.sh
 #!/bin/bash
 echo \$PWD
 echo $PWD
@@ -4442,6 +4866,10 @@ change take effect everywhere.
 	# change MTU size
 	$ ifconfig eth0 mtu 1000
 	
+	### check network RX size
+	$ ifconfig eth0 | grep "RX " | awk '{print $2}' | cut -d: -f2
+	$ RX=`ifconfig eth0 | grep "RX " | awk '{print $2}' | cut -d: -f2`; echo $RX
+
 	
 	
 	### Ping
@@ -4891,3 +5319,21 @@ $ pip install speedtest-cli
 	https://github.com/box/Anemometer
 	The MySQL Slow Query Monitor. This tool is used to analyze slow query logs collected 
 	from MySQL instances to identify problematic queries.	
+
+	
+### OSI Layers - Quick Summary
+	Application 	<- Responsible for determining when access to the network is required
+	Presentation	<- Ensures data is received in a useable format.
+						Data encryption is done here!
+	Session			<- Establishing & maintaing connections
+						Responsible for ports and ensure queries for services.
+	Transport		<- Breaks data into frames & assigns sequence numbers. Checks errors in data received.
+						UPD and SPX
+	Network			<- How systems on different network segments find each other.
+						Source-Destination addresses, Subnets, Path determination.  
+						IP & IPX
+	DataLink		<- Frames.  Handles flow control.  MAC
+	Physical		<- Transmissionof the raw bit stream. Electrical signalling.
+	
+	
+	

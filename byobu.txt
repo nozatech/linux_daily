@@ -4,6 +4,20 @@ Byobu Commands
         byobu                              Screen manager
 
 
+		
+--- Shift-F2: Split the screen horizontally
+|
+|	Ctrl-F2: Split the screen vertically
+
+
+Shift-F3: Move to the next split
+
+Shift-F4: Move to the previous split
+
+
+Shift-F5: Collapse all splits		
+		
+		
 Level 0 Commands (Quick Start)
 ------------------------------
 
@@ -74,9 +88,11 @@ F Key Commands
 
 F2: Create a new window
 
+
 F3: Move to the previous window
 
 F4: Move to the next window
+
 
 F5: Refresh all status notifications
 
@@ -96,15 +112,8 @@ Alt-Pageup: Scroll back through this window's history
 
 Alt-Pagedown: Scroll forward through this window's history
 
-Shift-F2: Split the screen horizontally
 
-Ctrl-F2: Split the screen vertically
 
-Shift-F3: Move focus to the next split
-
-Shift-F4: Move focus to the previous split
-
-Shift-F5: Collapse all splits
 
 Ctrl-F5: Reconnect any SSH/GPG sockets or agents
 

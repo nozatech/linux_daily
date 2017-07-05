@@ -30,6 +30,7 @@ ssh apark@ip  mysql -u android_installer -pPuTuChu -D android_installer --execut
 
 	
 	
+watch -n 1 "mysql -p\`sudo cat /root/.mysql_shadow\` -uroot -e \"show slave status\G\" 2>/dev/null"
 	
 	
 	
@@ -65,10 +66,10 @@ ssh apark@ip  mysql -u android_installer -pPuTuChu -D android_installer --execut
 # DB Location
 	/var/lib/mysql/
 	
-#MySQL config file
+# MySQL config file
 	$ /etc/my.cnf
   
-# MyQLS User List
+# MySQL User List
 	$ mysql -uroot -p 					<= login first
 	$ SELECT User FROM mysql.user;		<= run cmd to check
   
@@ -636,6 +637,10 @@ Since no mysql server running under /usr/bin/mysql, connect through ip
 
 $ mysql -u root -p -h 127.0.0.1			<= -h host, remote MySQL connection using IP
 
+What is the Difference Between 127.0.0.1 and 0.0.0.0?
+https://www.howtogeek.com/225487/what-is-the-difference-between-127.0.0.1-and-0.0.0.0/
+
+
 
 ##############
 #  Ubuntu 14 #
@@ -650,13 +655,14 @@ $ mysql -u root -p -h 127.0.0.1			<= -h host, remote MySQL connection using IP
    
    ERROR 2002 (HY000): Can't connect to local MySQL server 
    through socket    '/var/run/mysqld/mysqld.sock' (2)
+   
 ** Because of incompleted packages installed.
 ** use sudo apt-get install lamp-server^  **
 
 4. Try reinstall
   apt-get install mysql-server-5.5
 
-5. check MySQL my.cnf file
+5. check MySQL /etc/my.cnf file
   vi /var/lib/mysql/mysql.sock
 
 6. check mysql status
@@ -664,16 +670,14 @@ $ mysql -u root -p -h 127.0.0.1			<= -h host, remote MySQL connection using IP
 	Uptime: 916  Threads: 1  Questions: 579  Slow queries: 0  Opens: 189  Flush tables: 1  Open tables: 41  Queries per second avg: 0.632
 
   
-
 7. To find all socket files on your system run:
   sudo find / -type s  	<= socket type files
 
 8. Once you find where the socket is being opened, add or 
    edit the line to your /etc/my.cnf file with the path to the socket file:
-  U14 
+  
   socket /run/mysqld/mysqld.sock
-
-  # socket=/var/lib/mysql/mysql.sock
+  #socket=/var/lib/mysql/mysql.sock
   
 9. Setup MySQL admin password
   /usr/bin/mysqladmin -u root password 'new-password'
