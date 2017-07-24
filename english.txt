@@ -126,7 +126,10 @@ supersede 		<- replace
 # T
 turnkey			<- (car turn key to start & drive) | ~of or involving the provision of a complete product 
 														 or service that is ready for immediate use.
-
+tongue in cheek <-without really meaning what one is saying or writing.
+														 
+														 
+														 
 # V
 vanquish		<- come out better in a competition, race, or conflict
 

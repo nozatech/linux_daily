@@ -400,7 +400,7 @@ if __name__ == "__main__":
     main()
 
 >>>----------------------------------------------------------
-myClass method_1
+myClass method_1 
 myClass method_2: This is a string
 ----------------------
 myClass method_1

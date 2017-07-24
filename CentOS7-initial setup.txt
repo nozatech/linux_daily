@@ -4,7 +4,7 @@ CentOS7 min setup
 2. yum -y update
 
 
-sudo yum install -y net-tools bind-utils yum-utils epel-release ncdu iftop iotop mtr wget net-tools iptables-services vim tcpdump ntp
+sudo yum install -y net-tools bind-utils yum-utils epel-release ncdu iftop iotop mtr wget net-tools lsof nc vim tcpdump ntp
 
 
 # Iptables install

@@ -1,0 +1,23 @@
+## tcp LB  and SSL passthrough for backend ##
+
+stream {
+    upstream rr-us-db-galera-cluster {
+        server 10.128.16.187:3306   max_fails=3   fail_timeout=10s;
+        server 10.128.16.23:3306    max_fails=3   fail_timeout=10s;
+        server 10.128.16.139:3306   max_fails=3   fail_timeout=10s;
+    }
+
+#log_format basic '$remote_addr [$time_local] '
+#                 '$protocol $status $bytes_sent $bytes_received '
+#                 '$session_time "$upstream_addr" '
+#                 '"$upstream_bytes_sent" "$upstream_bytes_received" "$upstream_connect_time"';
+
+#   access_log /var/log/nginx/galera-cluster_access.log basic;
+#   error_log  /var/log/nginx/galera-cluster_error.log;
+
+    server {
+        listen 7506;
+        proxy_pass rr-us-db-galera-cluster;
+        proxy_next_upstream on;
+    }
+}

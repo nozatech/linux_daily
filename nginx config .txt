@@ -1,0 +1,53 @@
+bnea-mobile-jenkins-01:~ jenkins$ cat ./Home/jobs/DoctorWho_iOS_ChangeEnvironment/workspace/Tools/change_ipa_env.sh
+#!/bin/bash
+set -e
+
+new_env="$1"
+ipa_original_path="$2"
+ipa_rebuilt_path="$3"
+#-------------------------------------------------------------------------------------------
+if [[ ! -f "$ipa_original_path" ]]
+then
+    echo "FATAL no IPA at path $ipa_original_path"
+    exit 1
+fi
+#-------------------------------------------------------------------------------------------
+if [[ -z "$ipa_rebuilt_path" ]]
+then
+    echo "FATAL no rebuild path given"
+    exit 1
+fi
+#-------------------------------------------------------------------------------------------
+
+ipa_name=`basename "$ipa_original_path"`
+
+echo "Creating temp dir..."
+mkdir exploded
+cp "$ipa_original_path" exploded/
+cd exploded
+
+echo "Exploding IPA..."
+unzip "$ipa_name"
+
+app_name=`ls -1 Payload/`
+env_file_name="Payload/$app_name/Data/Raw/GS_Settings.json"
+
+#-------------------------------------------------------------------------------------------
+
+if [[ ! -f "$env_file_name" ]]
+then
+    echo "FATAL didn't find the environment file in the given IPA"
+    exit 1
+fi
+#-------------------------------------------------------------------------------------------
+
+echo "Writing new environment setting ($new_env)..."
+sed -i .bak "s/\"ServerMode\" : \".*\"/\"ServerMode\" : \"${new_env}\"/g" "${env_file_name}"
+rm "${env_file_name}.bak"
+
+echo "Repackaging IPA to ${ipa_rebuilt_path}..."
+zip -r "$ipa_rebuilt_path" Payload/
+
+echo "Cleaning up..."
+cd ..
+rm -rf exploded

@@ -19,8 +19,11 @@ CentOS7
 --------------------------------------------------------------------------------------------------------------
 ### RUN FROM SHELL ###
 #-------------------------------------------------------------------------------------------------------------
+# List users, host, password
 
-$ mysql -u root -p --execute="SELECT User, Host FROM mysql.user"
+$ mysql -u root -p --execute="SELECT User, Host, Password FROM mysql.user"
+$ mysql -u root -p -e        "SELECT User, Host, Password FROM mysql.user"
+
 $ mysql -u root -p -e "SELECT VERSION();SELECT NOW()"	
 	
 	
@@ -31,10 +34,14 @@ ssh apark@ip  mysql -u android_installer -pPuTuChu -D android_installer --execut
 	
 	
 watch -n 1 "mysql -p\`sudo cat /root/.mysql_shadow\` -uroot -e \"show slave status\G\" 2>/dev/null"
+
+### show all the open connections	
+$ watch -n 5 'mysql -uroot -p`cat ~/.mysql_shadow` -e "show status;" | tail'
 	
-	
-	
-	
+$ watch -n 5 "mysql -uroot -p`cat ~/.mysql_shadow` -e 'show status;' | grep -wi 'threads_connected\|threads_running'"
+
+	$ grep -w, --word-regexp
+              Select only those lines containing matches that form whole words.
 	
 	
 	
@@ -2362,18 +2369,158 @@ $ /etc/init.d/mysqld restart
 
 
 
+mysql> select user,host from mysql.user;
++--------------+------------------------+
+| user         | host                   |
++--------------+------------------------+
+|              | %                      |
+| replica      | %                      |
+| root         | %                      |
+| rrserveruser | %                      |
+| newrelic     | 127.0.0.1              |
+| root         | 127.0.0.1              |
+| dbadmin      | localhost              |
+|              | rr-raknet-us-db1-faotw |
+| root         | rr-raknet-us-db1-faotw |
 
 
 
 
+### slow query ###
+1. Create log file
+$ touch /var/log/mysql-slow.log && chown  mysql: /var/log/mysql-slow.log
+
+2. Run in Mysql shell until restart!!!
+
+
+mysql> 
+## Check 
+SHOW VARIABLES LIKE 'slow_query_log';
++----------------+-------+
+| Variable_name  | Value |
++----------------+-------+
+| slow_query_log | OFF   |
++----------------+-------+
+
+# To Enable 
+set global slow_query_log = 1;
+set global slow_query_log_file = '/var/log/mysql-slow.log';
+
+
+
+3. Put into startup my.cnf
+# Slow Query Log
+slow-query-log=1
+slow-query-log-file=/var/log/mysql-slow.log
 
 
 
 
-
-
-
+$ mysql -uroot -ppasswd   -e "SHOW VARIABLES LIKE 'performance_schema';"
+$ mysql -uroot -ppasswd   -e "SELECT * FROM information_schema.ENGINES WHERE support = 'YES';"
 
 
 	 
 	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+####################################
+### Galera Cluster on CentOS7  ###
+#####################################
+
+https://www.unixmen.com/setup-mariadb-galera-cluster-10-0-centos/
+# min requirement: DB-R1, DB-R2, DB-R3
+
+yum update -y
+
+### Add MariaDB official repository for CentOS
+
+cat <<EOF > /etc/yum.repos.d/MariaDB.repo
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.1/centos7-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+EOF
+
+### Install MariaDB:
+yum install -y MariaDB-server MariaDB-client MariaDB-compat galera socat jemalloc
+### 
+
+## rr-us-db-r1
+sudo cat >> /etc/my.cnf.d/server.cnf << EOF
+[mysqld]
+wsrep_on=ON
+wsrep_provider=/usr/lib64/galera/libgalera_smm.so
+wsrep_cluster_address='gcomm://10.128.27.94,10.128.26.172,10.128.27.21'
+wsrep_cluster_name='rr-us-db-cluster'
+wsrep_node_address='10.128.27.94'
+wsrep_node_name='rr-us-db-r1'
+wsrep_sst_method=rsync
+binlog_format=row
+default_storage_engine=InnoDB
+innodb_autoinc_lock_mode=2
+EOF
+
+
+$  sudo cat >> /etc/my.cnf.d/server.cnf << EOF
+binlog_format=ROW
+default-storage-engine=innodb
+innodb_autoinc_lock_mode=2
+innodb_locks_unsafe_for_binlog=1
+query_cache_size=0
+query_cache_type=0
+bind-address=0.0.0.0
+datadir=/var/lib/mysql
+innodb_log_file_size=100M
+innodb_file_per_table
+innodb_flush_log_at_trx_commit=2
+wsrep_provider=/usr/lib64/galera/libgalera_smm.so
+wsrep_cluster_address="gcomm://10.128.16.187,10.128.16.23,10.128.16.139"
+wsrep_cluster_name='rr-us-db-cluster'
+wsrep_node_address='10.128.16.139'
+wsrep_node_name='rr-us-db-r3'
+wsrep_sst_method=rsync
+wsrep_sst_auth=root:Test00!!
+
+EOF
+
+mysql -uroot -p -e "show status like 'wsrep%'"
+
+10.128.16.187,10.128.16.23,10.128.16.139
+
+	
+
+
+
+### Galera failed to start after shutdown inorderly ###
+http://galeracluster.com/2016/11/introducing-the-safe-to-bootstrap-feature-in-galera-cluster/
+
+"It may not be safe to bootstrap the cluster from this node. It was not the last one to leave the cluster and may not contain all the updates.
+To force cluster bootstrap with this node, edit the grastate.dat file manually and set safe_to_bootstrap to 1."
+
+
+
+
+
+### TROUBLESHOOTING ###
+
+### Configuring MariaDB for Remote Client Access
+https://mariadb.com/kb/en/mariadb/configuring-mariadb-for-remote-client-access/
+
+
+
+

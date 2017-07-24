@@ -84,7 +84,7 @@ cat << EOF >> ~/.bashrc
 EOF
 
 # Reload .bashrc 
-	$ source .bashrc 
+	$ source ~/.bashrc 
 # 
 	$ pssh -O StrictHostKeyChecking=no -h ipList.txt -l apark -A -I < ./shellenv.sh
 ----------------------------------------------------------------------
@@ -583,6 +583,17 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	
 	
 6. Environment variable
+	$ printenv
+	$ env
+	$ printenv SHELL	  
+	$ echo $SHELL			
+	
+	set <= is a shell command to set the value of a shell attribute variable; these are internal variables used by the shell.
+	env <= is a program that runs another program with modified environment variables
+	
+	### to see the SHELL variables
+	$ set
+	
 	# set -o 						<= Inherite from BASH or other Shells
 	
 	# shopt							<= specific options for BASH Shell
@@ -918,8 +929,8 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 
 		  <= Check memory
 	
-	Displays the total amount of free and used physical and swap memory in the system, 
-	as well as the buffers used by the kernel. The shared memory column should be ignored; it is obsolete.
+	### Displays the total amount of free and used physical and swap memory in the system, 
+		as well as the buffers used by the kernel. The shared memory column should be ignored; it is obsolete.
 		
 	$ free -m | xargs | awk '{ print "Free/Total memory " $10 "/" $8 "MB" }'
 
@@ -1533,6 +1544,7 @@ H 2 * * *				<= Every 2am
 	$ sudo fuser -vm / 2>&1 | awk '$3 ~ /f|F/' | less can show all processes having open files on the filesystem mounted on /
 
 	
+
 	
 	
 	### lsof ###				<= list open files using by PID or Program
@@ -1661,7 +1673,14 @@ H 2 * * *				<= Every 2am
 
 
 17. Count Active connections
-
+	$ ss  		<= is  used to dump "Socket Statistics"(replacement of NETSTAT.)
+				http://www.binarytides.com/linux-ss-command/
+	$ ss -t 	<= tcp("established = connected)  
+	$ ss -tna 	<= n <- not to resolve hostname, -a <- all
+	$ ss -u 	<= udp
+	$ ss -ltn
+	
+				
 	netstat -na | grep ESTA | wc -l				<== n no reverse lookup(quick), t tcp, a all, p program
 	netstat -na | grep ESTABLISHED.*sshd		<= sshd connection list
 	ps auxwww | grep sshd:						<= sshd connection list
@@ -2669,7 +2688,7 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 
 	# Start netfilter-persistent Service		<=	### After Edit IPtables ##
 	
-	$ service netfilter-persistent start | stop | status
+	$ service netfilter-persistent     start | stop | status
 	$ /etc/init.d/netfilter-persistent start | stop | status
 	
 	$ iptables -nL			<= List  all rules in the selected chain. '-n' NO DNS lookup (Faster)
@@ -2885,6 +2904,11 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	
 	# iftop
 	$ iftop -n -i eth1        <= -n no name lookup -i interface eth1
+		### batch mode ###
+		$ iftop -t 					<= t text mode 
+		$ iftop -t > iftop.log		<= save to iftop.log file 
+		$ iftop -t -s 60 > log.txt	  <= 60 sec  
+		$ iftop -t -s 60 > log.txt &  <= running in background
 	
 	# vnstat	 					<= a console-based network traffic monitor
 		$ vnstat -l					<= real time network statistic
@@ -2899,9 +2923,26 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 		MTR - MTR represents an evolution of the traceroute command by providing a greater data sample, as if augmenting 
 		traceroute with ping output. This document provides an in depth overview of MTR, the data it generates, and how 
 		to properly interpret and draw conclusions based on the data provided by it.
+	
+	### GUI tool
+	$ iptraf
+	
+	
+	$ iperf 	<= is a tool for active measurements of the maximum achievable bandwidth on IP networks.
+	https://iperf.fr/
+	
+	$ vnstat
+	http://www.happyapps.io/blog/2015-08-15-track-and-log-a-linux-server-s-bandwidth-use
 
-
-		
+	$ nload
+	
+	$ nethogs
+	
+	
+	
+	
+	
+	
 ### netsniff-ng 								<- the packet sniffing beast
 	Its gain of performance is reached by zero-copy mechanisms, so that on packet reception and transmission 
 	the kernel does not need to copy packets from kernel space to user space and vice versa.
@@ -3068,12 +3109,21 @@ sudo apt-get update
 3. service mysqld stop 
 4. rm -rf /var/lib/mysql/*
 5. service mysqld start  <= recreate tables 
+
+
 6. /usr/bin/mysqladmin -u root password 'Your-New-Passwd'  <= Your mysql root's pw
 
 	mysql remote host login
 	$ mysql -u webadmin –h 65.55.55.2 –p
 	$ mysql -ID_admin -p'password'  -hlocalhost
 
+	### MySQL remote login with different port ###
+	$ mysql -uroot -p`cat ~/.mysql_shadow` -h localhost -P 7506
+
+	
+	
+	
+	
 65. Swappiness
 
 	Swappiness is a Linux kernel parameter that controls the relative weight given to 
@@ -3154,8 +3204,25 @@ To temporarily set the swappiness in Linux, write the desired value (e.g. 10) to
 	more robust and difficult to follow for new users.
 	
 	$ nmap -sT ip_address  ( s-scan, T-TCP)
+	$
+	nmap -v -A scanme.nmap.org
 
+	$ nmap -T4 -A -v localhost
+		-T<0-5>: Set timing template (higher is faster)
+		-A: OS & version detection, script scanning, and traceroute
+		-v: Increase verbosity level (use -vvvv)
 
+	$ nmap -v -sn 192.168.0.0/16 10.0.0.0/8
+		-sn: Ping Scan - disable port scan
+	
+	$ nmap -v -iR 10000 -Pn -p 80
+		-iR <num hosts>: Choose random targets
+		-Pn: Treat all hosts as online -- skip host discovery
+		-p <port ranges>: Only scan specified ports
+
+	
+	
+	
 68. pgrep, pkill - look up or signal processes based on name and other attributes
 
 
@@ -4223,6 +4290,8 @@ CentOS
 	lsof -i | grep port_number		<= internet connection open
 	lsof -p                      	<= process_number
 	
+	https://www.cyberciti.biz/faq/what-process-has-open-linux-port/
+	fuser -k 80/tcp  <- kill port?
 	
 	
 2. Changing SSH port from default #22 to 2222 
@@ -4239,9 +4308,9 @@ CentOS
 ###
 Allow everything from single IP using cmd	
 ###------------------------------------------------------------------
-$ iptables -A INPUT -m state -s 65.87.26.0/24 --state NEW -j ACCEPT			<= BNEA Corp IP
+$ iptables -A INPUT -m state -s 65.87.26.0/24     --state NEW -j ACCEPT		<= BNEA Corp IP
 
-$ iptables -A INPUT -m state -s 64.95.137.0/24 --state NEW -j ACCEPT		<= BNEA PacCity WIFI Comcast IP
+$ iptables -A INPUT -m state -s 64.95.137.0/24    --state NEW -j ACCEPT		<= BNEA PacCity WIFI Comcast IP
 
 $ iptables -A INPUT -m state -s 73.231.235.144/32 --state NEW -j ACCEPT   	<= Apark Home
 ###	-----------------------------------------------------------------

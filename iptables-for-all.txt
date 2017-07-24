@@ -12,8 +12,8 @@
 -A INPUT -i lo -j ACCEPT
 ###
 ### BNGA office ###
--A INPUT -m state -s 65.87.26.0/24 --state -NEW -j ACCEPT
--A INPUT -m state -s 64.95.137.172/32 --state -NEW -j ACCEPT
+-A INPUT -m state -s 65.87.26.0/24    --state NEW -j ACCEPT
+-A INPUT -m state -s 64.95.137.172/32 --state NEW -j ACCEPT
 #
 ###
 ### Apark Home ###
@@ -22,12 +22,11 @@
 #
 ### BNER ###
 -A INPUT -m state -s 87.243.5.176/28   --state NEW -j ACCEPT
--A INPUT -m state -s 89.37.122.128/29 --state NEW -j ACCEPT
--A INPUT -m state -s 89.37.124.86/29  --state NEW -j ACCEPT
+-A INPUT -m state -s 89.37.122.128/29  --state NEW -j ACCEPT
+-A INPUT -m state -s 89.37.124.86/29   --state NEW -j ACCEPT
+-A INPUT -m state -s 162.243.3.59/32   --state NEW -j ACCEPT
 #
-### RR-US-LB ###
-#bnea-mjenkis
--A INPUT -m state -s 0.0.0.0 --state NEW -j ACCEPT
+### RR-US-Lobby ###
 ##
 #
 ###
@@ -36,3 +35,12 @@
 ###
 COMMIT
 
+
+
+
+# CentOS7 Iptables install
+sudo yum -y install iptables-services
+sudo systemctl enable iptables 
+sudo systemctl mask firewalld
+sudo systemctl stop firewalld
+sudo systemctl start iptables
