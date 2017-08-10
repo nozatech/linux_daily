@@ -1,6 +1,19 @@
 ######################
 # MySQL CRUD Daily ###
 ######################
+### auto CMD completion 
+/etc/my.cnf
+	[mysql]
+	auto-rehash		<= add
+In SQL Shell
+	mysql> \#		
+From Shell	
+	mysql --auto-rehash -u root -p
+
+
+# Benchmark CPU, File IO, MySQL) With sysbench
+https://www.howtoforge.com/how-to-benchmark-your-system-cpu-file-io-mysql-with-sysbench
+
 
 # MySQL history
 	$ less ~/.mysql_history
@@ -28,35 +41,29 @@ $ mysql -u root -p -e "SELECT VERSION();SELECT NOW()"
 	
 	
 	
-# Run remotely	
-ssh apark@ip  mysql -u android_installer -pPuTuChu -D android_installer --execute="SELECT User, Host FROM mysql.user"
+### Run remotely	
+ssh apark@DB_ip  mysql -u android_installer -p'PuTuChu' -D android_installer --execute="SELECT User, Host FROM mysql.user"
 
-	
-	
-watch -n 1 "mysql -p\`sudo cat /root/.mysql_shadow\` -uroot -e \"show slave status\G\" 2>/dev/null"
+	$ watch -n 1 "mysql  -uroot -p\`sudo cat /root/.mysql_shadow\` -e \"show slave status\G;" 2>/dev/null"
 
 ### show all the open connections	
 $ watch -n 5 'mysql -uroot -p`cat ~/.mysql_shadow` -e "show status;" | tail'
-	
-$ watch -n 5 "mysql -uroot -p`cat ~/.mysql_shadow` -e 'show status;' | grep -wi 'threads_connected\|threads_running'"
+$ watch -n 5 "mysql -uroot -p`cat ~/.mysql_shadow` -e 'show status;' | grep -wi 'threads_connected\|threads_running'
 
-	$ grep -w, --word-regexp
-              Select only those lines containing matches that form whole words.
-	
-	
-	
-	
-	
+	$ grep -w, --word-regexp	<= Select only those lines containing matches that form whole words.
 	
 	
 #-------------------------------------------------------------------------------------------------------------
-# Check MySQL DB
+# Check and Repair MySQL DB
 	$ mysqlcheck -u root -p --all-databases
 	
 	$ mysqlcheck --all-databases --check-upgrade --auto-repair
-    $ mysql < fix_priv_tables
-    $ mysqlcheck --all-databases --check-upgrade --fix-db-names --fix-table-names
+	
+    $ mysql 			< fix_priv_tables
+    
+	$ mysqlcheck --all-databases --check-upgrade --fix-db-names --fix-table-names
 
+	### Upgrade
 	$ mysql_upgrade -u root -p    <= 
 		mysql_upgrade examines all tables in all databases for incompatibilities with the current version 
 		of MySQL Server.  mysql_upgrade also upgrades the system tables so that you can take advanDATEe of 
@@ -77,8 +84,8 @@ $ watch -n 5 "mysql -uroot -p`cat ~/.mysql_shadow` -e 'show status;' | grep -wi 
 	$ /etc/my.cnf
   
 # MySQL User List
-	$ mysql -uroot -p 					<= login first
-	$ SELECT User FROM mysql.user;		<= run cmd to check
+	$ mysql -u root -p 						<= login first
+		mysql> SELECT User FROM mysql.user;		<= run cmd to check
   
 1. Master/Slave replication status
 	# grep mysql /var/log/syslog
@@ -102,6 +109,13 @@ master_log_pos=120;
 10.128.69.203
 
 
+## password change
+
+
+
+
+
+
 #-------------------------------------------------------------------------------------------------------------
 # Create an user account and grant permission
 #-------------------------------------------------------------------------------------------------------------
@@ -111,6 +125,9 @@ CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON db1.* To 'user'@'localhost' IDENTIFIED BY 'password';
 
 GRANT ALL PRIVILEGES ON *.* To 'user'@'hostname' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* To 'dbadmin'@'10.134.24.129' IDENTIFIED BY 'Test00!!';
+
+mysql> CREATE USER 'repl'@'%' IDENTIFIED BY 'welcome1' ; mysql> GRANT all ON <database name>.* TO 'repl'@'%'; mysql> GRANT SUPER,REPLICATION CLIENT ON *.* TO 'repl'@'%';
 
 
 ### To provide a specific user with a permission, you can use this framework:
@@ -238,25 +255,6 @@ mysql> SHOW CREATE TABLE spec;
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 |
 +-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 INSERT INTO model (id, name, price, engine, speed) 
 	    values('null','mega','135000','V8','153');
@@ -692,7 +690,7 @@ https://www.howtogeek.com/225487/what-is-the-difference-between-127.0.0.1-and-0.
 
   
   
- Install PHP
+### Install PHP
 
 apt-get install php5 libapache2-mod-php5 php5-mcrypt
 
@@ -718,35 +716,39 @@ Your PHP installation is working fine.
 #############################################################################
 1. 
 
-SHOW DATABASES;
+mysql> SHOW DATABASES;
 
-CREATE DATABASE db_name;    <=Creating DB
+mysql> REATE DATABASE db_name;    <=Creating DB
 
-USE db_name;				
+mysql> USE db_name;				
 
-DROP DATABASE db_name;		<= **Warning**Delete & Empty DB at same time
+mysql> DROP DATABASE db_name;		<= **Warning**Delete & Empty DB at same time
 
 ###
 # mysql> SHOW WARNINGS\G
 ###
 
-2.Creating a user account
+2.Creating a user account and reset password
 	Admin=>	
-	GRANT ALL ON *.* TO admin@localhost WITH GRANT OPTION;
+	mysql> GRANT ALL ON *.* TO admin@localhost WITH GRANT OPTION;
 	
 	Specific DB admin =>
-	GRANT ALL PRIVILEGES ON db_name.* TO 'db_admin'@'localhost' IDENTIFIED BY 'dbadmin';
+	mysql> GRANT ALL PRIVILEGES ON db_name.* TO 'db_admin'@'localhost' IDENTIFIED BY 'dbadmin';
+	
+	### All DBs
+	mysql> grant all privileges on *.* to 'dbadmin'@'localhost' identified by 'Test00!!' with grant option;
 	
 	To apply new user's privileges =>
-	FLUSH RPIVILEGES;
+	mysql> FLUSH RPIVILEGES;
 	
 	check new ID privileges =>
-	SHOW GRANTS FOR 'user_id'@'localhost';
+	mysql> SHOW GRANTS FOR 'user_id'@'localhost';
 
-	PW set
-	UPDATE mysql.user SET PASSWORD = PASSWORD('test!!') WHERE User = 'dbadmin';
+	### Password  reset
+	mysql> UPDATE mysql.user SET PASSWORD = PASSWORD('test00!!') WHERE User = 'dbadmin';
 	
 	
+
 	
 3. Login specific database but same by permission
 	mysql -u dbadmin -p
@@ -1077,7 +1079,7 @@ systemctl restart mysql    //    service mysqld restart
 
 
 # Login to mysql
-mysql -u root -p
+mysql -u root -p 
 
 
 # Creating a Slave-DB-ID account to access Master DB
@@ -1143,6 +1145,7 @@ mysql> exit
 # Restore master db to slave db from SHELL Prompt
 
 mysql -u root -p < /tmp/master-dump.db
+mysql -u root -p db_name < /tmp/db_name.db
 
 
 # Login to mysql
@@ -2214,9 +2217,9 @@ systemctl start mysql     //     service mysqld start
 vi /etc/my.cnf
 
 # add following two lines
-[mysqld]
-server-id = 1
-log-bin = master-bin.log
+	[mysqld]
+	server-id = 1
+	log-bin = master-bin.log
 
 
 # Restart mysql
@@ -2229,26 +2232,21 @@ mysql -u root -p
 
 # Creating a Slave-DB-ID account to access Master DB
 
-mysql> grant replication slave on *.* to 'slave_db_ID'@'x.x.x.x' identified by 'db_pw';
-
-mysql> flush privileges;
-
-mysql> flush tables with read lock;
-
-mysql> show master status;   // show master status\G
-
-Exit mysql
+	mysql> grant replication slave on *.* to 'slave_db_ID'@'x.x.x.x' identified by 'db_pw';
+	mysql> flush privileges;
+	mysql> flush tables with read lock;
+	mysql> show master status;   // show master status\G
+	
+	Exit mysql
 
 
 # Backing up DB
 
-systemctl stop mysql    //    service mysqld stop
-
-mysqldump -u root -p --all-databases --events --master-data > /tmp/master-dump.db
+	$ systemctl stop mysql    //    service mysqld stop
+	$ mysqldump -u root -p --all-databases --events --master-data > /tmp/master-dump.db
 
 # Transfer dump.db file to slave server
-rsync -avpP -e ssh /tmp/master-dump.db root@slave:/tmp/
-
+	$ rsync -avpP -e ssh /tmp/master-dump.db     root@slave:/tmp/
 
 
 #########################
@@ -2290,11 +2288,15 @@ mysql> exit
 mysql -u root -p < /tmp/master-dump.db
 
 
+PV ("Pipe Viewer") is a tool for monitoring the progress of data through a pipeline. It can be inserted into any normal pipeline between two processes to give a visual indication of how quickly data is passing through, how long it has taken, how near to completion it is, and an estimate of how long it will be until completion.
+Assuming the expect size of the resulting dumpfile.sql file is 100m (100 megabytes), the use of pv would be as follows:
+
+mysqldump <parameters> | pv --progress --size 100m > dumpfile.sql
+
+
 # Login to mysql
 
 mysql> start slave;        
-
-
 mysql> show slave status;     //    show slave status\G;
 
 
@@ -2330,7 +2332,7 @@ mysql -u root -p
 
 user PW change
 
-mysql -u root -p
+$ mysql -u root -p
 mysql> show databases;
 mysql> use db_name;
 mysql> show tables;
@@ -2395,12 +2397,16 @@ $ touch /var/log/mysql-slow.log && chown  mysql: /var/log/mysql-slow.log
 
 mysql> 
 ## Check 
+
 SHOW VARIABLES LIKE 'slow_query_log';
 +----------------+-------+
 | Variable_name  | Value |
 +----------------+-------+
 | slow_query_log | OFF   |
 +----------------+-------+
+SHOW VARIABLES LIKE 'slow_query_log_file';
+
+
 
 # To Enable 
 set global slow_query_log = 1;
@@ -2461,19 +2467,6 @@ yum install -y MariaDB-server MariaDB-client MariaDB-compat galera socat jemallo
 ### 
 
 ## rr-us-db-r1
-sudo cat >> /etc/my.cnf.d/server.cnf << EOF
-[mysqld]
-wsrep_on=ON
-wsrep_provider=/usr/lib64/galera/libgalera_smm.so
-wsrep_cluster_address='gcomm://10.128.27.94,10.128.26.172,10.128.27.21'
-wsrep_cluster_name='rr-us-db-cluster'
-wsrep_node_address='10.128.27.94'
-wsrep_node_name='rr-us-db-r1'
-wsrep_sst_method=rsync
-binlog_format=row
-default_storage_engine=InnoDB
-innodb_autoinc_lock_mode=2
-EOF
 
 
 $  sudo cat >> /etc/my.cnf.d/server.cnf << EOF
@@ -2494,13 +2487,13 @@ wsrep_cluster_name='rr-us-db-cluster'
 wsrep_node_address='10.128.16.139'
 wsrep_node_name='rr-us-db-r3'
 wsrep_sst_method=rsync
-wsrep_sst_auth=root:Test00!!
+wsrep_sst_auth=root:sd61nU7%36mg
 
 EOF
 
 mysql -uroot -p -e "show status like 'wsrep%'"
 
-10.128.16.187,10.128.16.23,10.128.16.139
+10.128.2.149,10.128.3.213,10.128.4.151
 
 	
 
@@ -2514,6 +2507,32 @@ To force cluster bootstrap with this node, edit the grastate.dat file manually a
 
 
 
+#### Galera Cluster on CentOS6.9 + MySQL 5.1.73
+
+
+
+ mysql -uroot -psd61nU7%36mg			<= https://lastpass.com/generatepassword.php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### TROUBLESHOOTING ###
@@ -2521,6 +2540,9 @@ To force cluster bootstrap with this node, edit the grastate.dat file manually a
 ### Configuring MariaDB for Remote Client Access
 https://mariadb.com/kb/en/mariadb/configuring-mariadb-for-remote-client-access/
 
+
+### MySQL Terminology
+	.frm stands for FoRMat used by MySQL
 
 
 

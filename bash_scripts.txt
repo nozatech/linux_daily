@@ -2225,7 +2225,17 @@ fi
 #--------------------------------------------------------------------------------
 
 
+Function 
+## get pid
 
+get_ntopng_pid() {
+if [ -f "/etc/ntopng/ntopng.conf" ]; then
+PID_FILE=$(cat /etc/ntopng/ntopng.conf | grep -E '-G=|--pid'|cut -d '=' -f 2)
+else
+PID_FILE="/var/tmp/ntopng.pid"
+fi
+
+#--------------------------------------------------------------------------------
 
 
 

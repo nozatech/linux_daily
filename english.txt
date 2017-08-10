@@ -121,6 +121,7 @@ stash			<- store (something) safely and secretly in a specified place
 Startle			<- excited by sudden surprise or alarm and making a quick involuntary movement
 strata			<- a layer of material, naturally or artificially formed, often one of a number 
 					of parallel layers one upon another: 층
+subtle			<- (especially of a change or distinction) so delicate or precise as to be difficult to analyze or describe.
 supersede 		<- replace
 
 # T

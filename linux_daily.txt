@@ -61,11 +61,15 @@ Ctrl + H				Open history in a new tab
 Ctrl + K or Ctrl + E	Perform a Google search
 Ctrl + T				Opens a new tab.
 Ctrl + U				View a web page's source code
+
+32bit is 2^32 =~ 4.3 billion    <=  IPv4 address is 32bit 
+
 -----------------------------------------------------------------------------------	
 Daily Linux CMD List & Scripts
 -----------------------------------------------------------------------------------	
-
-32bit is 2^32 =~ 4.3 billion    <=  IPv4 address is 32bit 
+###############
+1. SHELL	  #
+###############
 
 ### Shell's Color, History, Time stamp, Size ###
 echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"'   >> ~/.bashrc		<= Green|Red
@@ -107,12 +111,12 @@ http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 	1. Install vim-enhanced
 	yum -y install vim-enhanced 
 
-	2. Edit profile
+	2. Edit profile(global profile configuration for all users)
 	vi /etc/profile
 	# add at the last line
 	alias vi='vim'
 
-	3. reload
+	3. reload without relogin
 	source /etc/profile 
 
 	4.Configure vim. 
@@ -136,50 +140,38 @@ vi && vim  set number
 	
 Cut and Paste(v/V-d/y-p/P)
 
-	 a. Position the cursor where you want to begin cutting.
-V    b. Press v to select characters (or V - whole lines).
-     c. Move the cursor to the end of what you want to cut.
-d    d. Press d to cut (or y to copy).
-     e. Move to where you would like to paste.
-p    f. Press P to paste before the cursor, or p to paste after.
+		 a. Position the cursor where you want to begin cutting.
+	V    b. Press v to select characters (or V - whole lines).
+		 c. Move the cursor to the end of what you want to cut.
+	d    d. Press d to cut (or y to copy).
+		 e. Move to where you would like to paste.
+	p    f. Press P to paste before the cursor, or p to paste after.
 
-yy 	<=	shift+v to copy 
-pp	<=	shift+p to paste
+	yy 	<=	shift+v to copy 
+	pp	<=	shift+p to paste
 
 
-Undo
-	esc and uu
+	Undo
+	esc then uu
 	
 	### Change String like "SED" stream editor
 	http://vim.wikia.com/wiki/Search_and_replace
 	
-		:%s/foo/bar/g				<=
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	# within VI, change foo to bar
+	:%s/foo/bar/g				<=
 	
 
 # Switch user
 	$ su   user_id					<= just switch user but same current directory
 	$ su - user_id					<= go to user's HOME directory
-	$ 
-	
 	
 # CD command
-	mkdir -p /1/2/3/4/5
-	from /1/2/3/  =>  /1   		$ cd ../..
-	from /1/2/3   =>  /1/2 		$ cd ../2
-	
-	$ cd -				<= move to previous directory
-	$ cd ~-				<= same
-	$ echo ~-			<= out put previous directory
+	$ mkdir -p /1/2/3/4/5			<= creating parent directories(sub dirs)
+	$ cd ../..						<= from /1/2/3/  =>  /1   		
+	$ cd ../2						<= from /1/2/3   =>  /1/2 		
+	$ cd -							<= move to previous directory
+	$ cd ~-							<= same
+	$ echo ~-						<= out put previous directory
 	
 	
 # History	
@@ -226,14 +218,14 @@ Undo
 # number line	
 	$ cat file | nl 
 
-
-	$ grep tcp /etc/services | awk '{print $1}' | sort | less
+	$ grep -i 'tcp' /etc/services | awk '{print $1}' | sort | less
 
 	
 	### mkfifo - make FIFOs (named pipes)
 	From 1st shell
 	$ mkfifo named_pipe 
 	$ echo "hi" > named_pipe
+	
 	From 2nd shell
 	$cat named_pipe
 	# meta data
@@ -250,19 +242,19 @@ Undo
 	
 
 # long command using  \  for extent command
-# escape character \
+	# escape character \
 
 ### Putty, mRemote, Cygwins, Shell, Terminal
 	
 3. SSH connection login
 	$ ssh -v root@172.16.248.xx > result.txt					<= -v debugging mode
 	$ ssh -v root@172.16.248.xx 2>&1 > result.txt	
-	$ ssh id@x.x.x.x -p 2222									<= different port
-	$ ssh -l ubuntu ip_address (or hostname)									<= -l login user name
+	$ ssh id@x.x.x.x -p 2222									<= different port 2222
+	$ ssh -l ubuntu ip_address (or hostname)					<= -l login user name
 
 
 	### List of host in ~/.ssh/config file  
-	** using Alias is OLD way ***
+											** using Alias is OLD way ***
 	https://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/
 	
 	$ vi ~/.ssh/config
@@ -280,7 +272,7 @@ Undo
 	
 	$ ssh apark@netops
 	
-	## Login to internal lan server at 192.168.0.251 via our public uk office ssh based gateway using ##
+	## Login to internal lan server at 192.168.0.251 via our public UK office ssh based gateway using ##
 	## $ ssh uk.gw.lan ##
 	Host uk.gw.lan uk.lan
 		HostName 192.168.0.251
@@ -301,7 +293,7 @@ Undo
 	
 	# Creating SSH config file and single Ciphers option
 	$ ssh -c aes256-ctr apark@45.55.5.69
-	$ ssh -c 3des-cbc apark@45.55.5.69
+	$ ssh -c 3des-cbc   apark@45.55.5.69
 	$ ssh -Q [cipher | cipher-auth | mac | kex | key]
 	
 	$ vi .ssh/config
@@ -319,15 +311,12 @@ Undo
 	$ /usr/sbin/sshd -ddd					<= running debugging mode on screen	
 
 	## Client can't connect
-	error msg: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
-	Authentication refused: bad ownership or modes for directory .ssh
+		error msg: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+		Authentication refused: bad ownership or modes for directory .ssh
 	
 	# Resolution: change permission on user .ssh folder to 700
 	$ chown 700 -R .ssh
 	
-
-
-
 
 	
 	# MD5 (Message-Digest algorithm 5)
@@ -338,33 +327,33 @@ Undo
 	which must equal the MD5 value of a correct ISO.
 	
 	
-###  basename 					
-	strip directory and suffix from filenames
-	basename prints filename NAME with any leading directory components removed. It can optionally also remove any trailing suffix.
+###  basename 		<= 	strip directory and suffix from filenames
+	basename prints filename NAME with any leading directory components removed. 
+	It can optionally also remove any trailing suffix.
 	
 	EXAMPLES
        basename /usr/bin/sort
-              -> "sort"
+              => "sort"
 
        basename include/stdio.h .h
-              -> "stdio"
+              => "stdio"
 
        basename -s .h include/stdio.h
-              -> "stdio"
+              => "stdio"
 
        basename -a any/str1 any/str2
-              -> "str1" followed by "str2"
+              => "str1" followed by "str2"
 
-
-		
-# start up  
+### start up  
 	Check list
-	$ ls /etc/init.d/
+	$ ls -l  /etc/init.d/
 	
 	# Modify
 	### CentOS 6
+	$ chkconfig --list
 	$ chkconfig ssh on
 	$ chkconfig ssh off
+	
 	
 	# Ubuntu Upstar(Debian)
 	$ apt-get install openssh-server openssh-client
@@ -393,7 +382,7 @@ Undo
 	addduser / deluser 			<= Perl script that creates /home/user & ssh in shell
 								   add user with full profile and info (pass, quota, permission, etc.)
 	
-	useradd / userdel /usermod 	<= low level utilities at add user name Only, No Shell,
+	useradd / userdel /usermod 	<= low level utilities at add user name Only, No Shell, 
 		# https://www.tecmint.com/add-users-in-linux/
 	
 	
@@ -629,12 +618,12 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 		$ file*.txt
 		$ *.jpg
 	2) ? Matches one(1) of any character
-		$ file?.txt
-		$ ?.jpg
+		$ ls -l file?.txt
+		$ ls -l ?.jpg
 	3) [ ] Character Sets
-		$ file[0-9].txt
-		$ file[a-z].txt
-		$ file[abc123].jpg		<= e.g. a.jpg, b.jpg, 3.jpg
+		$ ls -l file[0-9].txt			<= file1.txt
+		$ ls -l file[a-z].txt
+		$ ls -l file[abc123].jpg		<= e.g. a.jpg, b.jpg, 3.jpg
 	4) [- ] Maches a hyphen
 		$ file[-9-0].txt		<= file-.txt, file1.txt
 	5) [! ] Negate(NOT) a match
@@ -656,10 +645,13 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	$ ls file[[:digit:]].txt
 	$ ls file[[:digit:][:space:].txt
 	$ ls file[![:digit:]].txt
-	$ ls file[![:digit:][:space:].txt 
+	$ ls file[![:digit:][:space:]].txt 
 		
-	$ ls {*.jpg,*.gif,*.png}
-	
+	$ ls {*.jpg,*.gif,*.png}		<=works on 2 or more
+	$ ls -l {b*,c*}
+	$ rm *[^1].txt					<= delete all but *1.txt
+	$ rm *[!1].txt					<= range, delete all but *1.txt
+	$ cat myfile | grep '^s.*n$'	<= end of the line
 	
 	### Extended Globs
 	$ shopt
@@ -682,8 +674,9 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 			
 ### Shell Meta-Characters			
 	< >, $, *, {}, [], +, '', ^, ., ?, |, (), \, ""
-	$ echo $USER
-	$ echo My name is $USER
+	$ USER=apark
+	$ echo  $USER
+	$ echo  My name is $USER
 	$ echo "My name is $USER"     	<= apark
 	$ echo 'My name is $USER'		<= $USER
 	
@@ -694,13 +687,12 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 
 	$ grep '*./tcp' /etc/services | grep ssh
 		ssh  22/tcp      # The Secure Shell (SSH) Protocol
-	$ 
 	
 	# Socket(IPP) is the combination of IP address, port and protocol.
 	
 	
 7. System services
-	Sys v init process tree( from ATT Linux 80's)
+	SysV init process tree( from ATT Linux 80's)
 	init --> abrtd
 		  |-> agetty
 		  |--> auditd --{gdbud}
@@ -734,6 +726,7 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 			about the unit. This often varies by unit type, state, and the actual 
 			method in which the unit runs.
 		DESCRIPTION: A short textual description of what the unit is/does.
+		
 	$ systemctl list-units	--all
 	
 	**$ systemctl list-unit-files  <= displaces all 
@@ -762,9 +755,11 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 		Description=OpenSSH server daemon
 			$ systemctl is-enabled nginginx 
 		disabled
+	
 	$ sudo systemctl enable nginx
 		Created symlink from '/etc/systemd/system/multi-user.target.wants/nginx.service' to 
 			'/usr/lib/systemd/system/nginx.service.'
+	
 	$ cat /etc/systemd/system/mucat lti-user.target.wants/nginx.service
 		[Unit]
 		Description=The nginx HTTP and reverse proxy server
@@ -775,17 +770,14 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 		PIDFile=/run/nginx.pid
 	
 	$ systemctl is-enabled sshd	
-	$ systemctl is-active sshd 
-	$ systemctl is-failed sshd 
+	$ systemctl is-active  sshd 
+	$ systemctl is-failed  sshd 
 	$ systemctl reload-or-restart sshd.service
 	
 	$ systemctl list-dependencies sshd.service
 	
-	
 	$ ls -l /etc/systemd/system/multi-user.target.wants
 		lrwxrwxrwx. 1 root root 36 Jan 25 10:14 sshd.service -> /usr/lib/systemd/system/sshd.service
-
-
 
 	$ systemctl list-units --all --state=active
 	$ systemctl list-units --all --state=inactive
@@ -817,7 +809,8 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	
 	$ journalctl -b					<= current boot
 	$ journalctl -k	  <=> dmesg     <= Kernal
-	$ journalctl -xe				<= 
+	$ journalctl -xe				<= -x  Augment log lines with explanation texts from the message catalog.
+									<= -e  jump to the end of the journal 
 	
 	
 	
@@ -829,7 +822,7 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	$ ps 				<= Unix, BSD, GNU types
 		1 UNIX 		<= ps -ef (Unix/POSIX)    which may be grouped and must be preceded by a dash.
 		2 BSD 		<= ps aux (Ubuntu/Debian) which may be grouped and must not be used with a dash.
-		3 GNU 		<= ps -ef (CentOS)		  long options, which are preceded by two dashes.
+		3 GNU 		<= ps -ef (CentOS)		  Standard, long options, which are preceded by two dashes.
 	$ ps -e			<= everything
 	$ ps -eH		<= Hierachical 
 	$ ps -ef 		<= every process (GNU e.g. CentOS)
@@ -837,9 +830,7 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	$ ps -elF		<= Long, 15 columes of options	
 	
 	$ ps -e --format uid,pid,ppid,%cpu,cmd  <= use '--format' for custom option
-	
 	$ ps -G group_name
-
 	$ ps -C nginx --format pid,ppid,%cpu,cmd --sort %cpu
 		PID  PPID %CPU CMD
 		23976 23968  0.0 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
@@ -847,9 +838,11 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 
 	$ ps -e --format uid,pid,ppid,tty,%cpu,cmd --sort %cpu
 	$ ps -e --format uid,pid,tty,rss,cmd --sort rss   <= memory usage, cmd sorted
-	$ ps -U root				<= -u & -U same
+	$ ps -U root				<= -u & -U same(user)
 	$ ps -U apark --format %mem | awk '{memory +=$1};END {print memory}'  	 <= user memory usage
 	
+	$ ps axjf  		<= BSD PS tree format
+	$ ps axf		<= ofr 
 
 	
 9. Process Niceness/Priority
@@ -2167,6 +2160,41 @@ Traceroute, Ping, and MTR
 		-q  NUMBER : Sets the number of probe packets per hop. The default is 3.
 		-m  max hop:
 	
+       -o fields order
+       --order fields order
+              Use this option to specify the fields and their order when loading mtr.
+                                                     ┌──┬─────────────────────┐
+                                                     │L │ Loss ratio          │
+                                                     ├──┼─────────────────────┤
+                                                     │D │ Dropped packets     │
+                                                     ├──┼─────────────────────┤
+                                                     │R │ Received packets    │
+                                                     ├──┼─────────────────────┤
+                                                     │S │ Sent Packets        │
+                                                     ├──┼─────────────────────┤
+                                                     │N │ Newest RTT(ms)      │
+                                                     ├──┼─────────────────────┤
+                                                     │B │ Min/Best RTT(ms)    │
+                                                     ├──┼─────────────────────┤
+                                                     │A │ Average RTT(ms)     │
+                                                     ├──┼─────────────────────┤
+                                                     │W │ Max/Worst RTT(ms)   │
+                                                     ├──┼─────────────────────┤
+                                                     │V │ Standard Deviation  │
+                                                     ├──┼─────────────────────┤
+                                                     │G │ Geometric Mean      │
+                                                     ├──┼─────────────────────┤
+                                                     │J │ Current Jitter      │
+                                                     ├──┼─────────────────────┤
+                                                     │M │ Jitter Mean/Avg.    │
+                                                     ├──┼─────────────────────┤
+                                                     │X │ Worst Jitter        │
+                                                     ├──┼─────────────────────┤
+                                                     │I │ Interarrival Jitter │
+                                                     └──┴─────────────────────┘
+    $ mtr -o "LSD NBAW" 	google.com
+
+	
 	* * *
 	The firewall to block ICMP packets. As such, you will sometimes see a series of asterisks indicating 
 	that trace route was not able to get information from a particular host.
@@ -2177,7 +2205,7 @@ Traceroute, Ping, and MTR
 	Redhat	Ping TTL is 64
 	Other linux < 128
 	
-	$ ping -i 4 127.0.0.1    	<= send out ping packets every 4 sec
+	$ ping -i 4   127.0.0.1    	<= send out ping packets every 4 sec
 	$ ping -i 0.1 127.0.0.1    	<= send out ping packets every 0.1 sec
 	
 	# ping localhost
@@ -2185,16 +2213,16 @@ Traceroute, Ping, and MTR
 	$ ping 127.0.0.1
 	$ ping 127.0.0.2~254
 	$ ping 0.0.0.0
-	$ ping 0
+	$ ping 0					<= 
 	
-	# flood network
+	# flood localhost network
 	$ ping -f 0
 	
 	# change the packet size which is by default 64 bytes
-	$ ping -s 200 0
+	$ ping -s 200   0			<= 0 localhost
 	
 	# how to sepcify timeout
-	$ ping -w 7 0 	
+	$ ping -w 7     0			<= 0 localhost 	
 	
 	
 	
@@ -2441,7 +2469,7 @@ Ubuntu, 16.04 or higher			V
 	CentOS 6 x64 EPEL 
 	wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 	rpm -ivh epel-release-6-8.noarch.rpm
-
+rpm -ivh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
 	CentOS7 
 	sudo yum install epel-release
@@ -3477,7 +3505,7 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	$ rsync -azP  --exclude={dir1,dir2}  apark@45.55.5.69:/home/apark/       	~/		
 	$ rsync -avzp jenkins@10.100.200.41:/Users/Shared/Jenkins/Home/jobs/Chroma* 	/tmp
 
-	# Delete Dest folder has different than Source folder
+	# Delete Destination folder has different than Source folder
 	$ rsync -az -e --delete ssh /cdn/data/  apark@10.128.34.80:/cdn/data/
 		
 		# -e option is used to run a different remote shell
@@ -3996,19 +4024,59 @@ killall name 		#
 	$ ps -ef | grep myProcessName | grep -v grep | awk '{print $2}' | xargs kill -9
 
 
-ps           # prints a line of information about the current running login shell and any processes running under it
-ps -a        # selects all processes with a tty except session leaders
+	ps           # prints a line of information about the current running login shell and any processes running under it
+	ps -a        # selects all processes with a tty except session leaders
+
+	### ps -ef	vs ps aux
+		ps aux 				<= BSD system		(Ubuntu, Debian)
+		ps -ef 				<= System V system	(Redhat, CentOS)
 
 
-ps -ef	vs ps aux
-ps aux 				<= BSDsystem
-ps -ef 				<= System V system
+	$ ps aux | grep RRServer | grep -v grep | awk '{print $2}'
 
+	$ ps  **options
+	********* simple selection *********  ********* selection by list *********
+	-A all processes                      -C by command name
+	-N negate selection                   -G by real group ID (supports names)
+	-a all w/ tty except session leaders  -U by real user ID (supports names)
+	-d all except session leaders         -g by session OR by effective group name
+	-e all processes                      -p by process ID
+	T  all processes on this terminal     -s processes in the sessions given
+	a  all w/ tty, including other users  -t by tty
+	g  OBSOLETE -- DO NOT USE             -u by effective user ID (supports names)
+	r  only running processes             U  processes for specified users
+	x  processes w/o controlling ttys     t  by tty
+	*********** output format **********  *********** long options ***********
+	-o,o user-defined  -f full            --Group --User --pid --cols --ppid
+	-j,j job control   s  signal          --group --user --sid --rows --info
+	-O,O preloaded -o  v  virtual memory  --cumulative --format --deselect
+	-l,l long          u  user-oriented   --sort --tty --forest --version
+	-F   extra full    X  registers       --heading --no-heading --context
+                    ********* misc options *********
+	-V,V  show version      L  list format codes  f  ASCII art forest
+	-m,m,-L,-T,H  threads   S  children in sum    -y change -l format
+	-M,Z  security data     c  true command name  -c scheduling class
+	-w,w  wide output       n  numeric WCHAN,UID  -H process hierarchy
 
-ps aux | grep RRServer | grep -v grep | awk '{print $2}'
+	
+## kill pts (pseudo terminal device  e.g. xterm, screen, ssh)
+	A tty is a Regular Terminal Device (the console on your server).
+	A pts is a Psuedo  Terminal Slave  (ssh, xterm, screen connection).
+	
+	$ who
+		apark    pts/1        2017-08-01 18:32 (65.87.26.124)
+		apark    pts/0        2017-08-01 16:25 (65.87.26.124)   <= need to kill!!!
+		
+	$ ps -ft pts/0				<= -f <-full-format listing,  -t <- by tty
+								
+		UID        PID  PPID  C STIME TTY          TIME CMD
+		apark    28110 28109  0 16:25 pts/0    00:00:00 -bash
+		root     28129 28110  0 16:25 pts/0    00:00:00 sudo su
+	$ kill -9  28110 28129 
+	$ who
+		apark    pts/1        2017-08-01 18:32 (65.87.26.124)
 
-
-
+		
 ###  How to kill zombie process
 		A zombie is already dead, so you cannot kill it. To clean up a zombie, it must be waited on by its parent, 
 		so killing the parent should work to eliminate the zombie. (After the parent dies, the zombie will be 
@@ -4033,27 +4101,26 @@ ps aux | grep RRServer | grep -v grep | awk '{print $2}'
 ###
 
 
-trap cmd sig1 sig2  # executes a command when a signal is received by the script
-trap "" sig1 sig2   # ignores that signals
-trap - sig1 sig2    # resets the action taken when the signal is received to the default
+trap cmd sig1 sig2    # executes a command when a signal is received by the script
+trap ""  sig1 sig2    # ignores that signals
+trap -   sig1 sig2    # resets the action taken when the signal is received to the default
 
-disown <PID|JID>    # removes the process from the list of jobs
+disown <PID|JID>      # removes the process from the list of jobs
 
-wait                # waits until all background jobs have finished
+wait                  # waits until all background jobs have finished
 
 
 
 6. TIPS AND TRICKS.
 
-
 # to quickly go to a specific directory
-cd; nano .bashrc
-> shopt -s cdable_vars
-> export websites="/Users/mac/Documents/websites"
+	$ cd; nano .bashrc
+	> shopt -s cdable_vars
+	> export websites="/Users/mac/Documents/websites"
 
-source .bashrc
-cd websites
-cd *		<= if there is only one folder
+	$ source .bashrc
+	$ cd websites
+	$ cd *		<= if there is only one folder
 
 
 ############################################
@@ -4067,19 +4134,17 @@ cd *		<= if there is only one folder
 
 
 1. Grep 
-grep  pattern  file_name   #search for pattern in files
-grep -i			# Case insensitive search
-grep -r 		# Recursive
+	# grep  pattern  file_name   #search for pattern in files
+	$ grep -i			# Case insensitive search
+	$ grep -r 		# Recursive
 	$ grep -r "port 80" /etc/httpd/*   <= search subdirectories with key words port 80.
-
-
 	$ grep -v httpd			# Inverted search (everything but httpd)
 	$ grep -o				# Show matched part of file only
 	$ grep -v grep    		# don't match the grep word
     To remove the grep in search word, use "grep -v grep" 2nd grep is a word to -v <= don't match word .
 	
 	$ ps aux | grep some_PID => out puts grep word in list, and it counts the line as 1 + 1 actual process name some_PID
-	
+	$ pgrep PID				<= short
 
 
 
@@ -4094,6 +4159,11 @@ $(ps aux | grep ./RRServer_0617_7505 | wc -l) > 0 ));
 else rm /var/www/html/status/index.html > /dev/null 2>&1;
 fi
 #################
+
+
+	Note:
+	" > /dev/null 2>&1" is redirect the output of your program to /dev/null. 
+		Include both the Standard Error and Standard Out.
 
 ### 
 #Find biggest file Sizes top 5 list Only
@@ -4117,8 +4187,8 @@ fi
 	
 	$ find /*/* -type f -exec du -Sh {} + | sort -rh | head -n 5
 	
-	$ find /dir/ -user user_ID			#Find files owned by name in dir
-	$ find /dir/ -name file_name
+	$ find /dir/ -user 	user_ID			#Find files owned by name in dir
+	$ find /dir/ -name 	file_name
 	$ find /dir/ -iname fine_name
 	
 	$ whereis 					<= Find binary /source / manual for command
@@ -4127,17 +4197,9 @@ fi
 	$ find /etc | grep -e ulimit -e 4096 -e nofile   		<= e <-pattern (multi pattern search )
 
 
-find /lib64 | grep mysql
-/lib64/libmysqlcppconn.so
-/lib64/libmysqlcppconn.so.7.1.1.3
-/lib64/libmysqlclient.so.18.2.0
-/lib64/libmysqlcppconn.so.7
-/lib64/libmysqlclient.so.18
-
-
-
-
-
+	$ find /lib64 | grep mysql
+		/lib64/libmysqlcppconn.so
+		/lib64/libmysqlcppconn.so.7.1.1.3
 
 ####
 Tmux  Terminal Multiplexer
@@ -4148,43 +4210,49 @@ ctrl-b c - new window
 
 #####
 Ubuntu Package Installed 
-$ dpkg -l | grep mongo
 
-root@puppet:~# dpkg --get-selections
-root@puppet:~# dpkg --get-selections | grep puppet
-puppet-common                                   install
-puppetlabs-release                              install
-puppetmaster-common                             install
-puppetmaster-passenger                          install
+	$ dpkg -l | grep mongo
 
+	$ root@puppet:~# dpkg --get-selections
+	$ root@puppet:~# dpkg --get-selections | grep puppet
+		puppet-common                                   install
+		puppetlabs-release                              install
 
 
-####
-sed (stream editor)
-sed -i 's/START=no/START=yes/g'    /etc/default/puppet
-          ^exiting ^change to		^ location of file	
+### sed (stream editor) https://linuxconfig.org/learning-linux-commands-sed
 
+	$ sed -i 's/START=no/START=yes/g'    /etc/default/puppet		
+			i 	<= in place
+			s/regexp/replacement/
+			g 	<= Copy/append hold space to pattern space.
+	# sed(stream edit) -i(in place) '(gate open) s(substitute)/(from)/(to)/g(gate) '(close)  file_name.txt
+	$ sed -i 's/START=no/START=yes/'     /etc/default/puppet	<= 1st line
+	$ sed -i 's/START=no/START=yes/4'    /etc/default/puppet	<= 4th line
+	
+	$ cat report.txt | sed 's/PAK/PARK/g' > report_new.txt
+	$ sed 's/PAK/PARK/g' report.txt
+	$ sed '/Name/s/PAK/PARK/g' report.txt						<= only contain 'Name' lines
+	
+		
 	#hostname change from u14 to rieman in hosts file
 	$ sed -i 's/u14/rieman/g' /etc/hosts
-		  
-		  
-	$ sed -i '/extern int errno/{s/^/\/* /;s/$/ *\//;G;s/$/#include <errno.h>/;}' src/error.h
-	
-	
-	$ sed -i 's/original/new/g' file.txt
-			-i = in-place (i.e. save back to the original file)
-			The command string:
-				s = the substitute command
-				original = a regular expression describing the word to replace (or just the word itself)
-				new = the text to replace it with
-				g = global (i.e. replace all and not just the first occurrence)
-				file.txt = the file name
-	
-	IP change (change ip) using sed
-	$ sed -i -r     "s/10.1 28.232.181\b/10.130.244.212/g"     start-us-lobby-7505.sh
 
+	$ sed -i 's/original/new/g' file.txt
+			-i 		 <= in-place (i.e. save back to the original file)
+			s 		 <= the substitute command
+			original <= a regular expression describing the word to replace (or just the word itself)
+			new 	 <= the text to replace it with
+			g 		 <= global (i.e. replace all and not just the first occurrence)
+			file.txt <= the file name
 	
-	
+	# IP change (change ip) using sed
+	$ sed -i -r  "s/10.1 28.232.181\b/10.130.244.212/g"     start-us-lobby-7505.sh
+	$ sed -i 	 's/10.10.10.10/1.1.1.1/g'    ip.txt		<= works too
+	$ sed 's/^/ /' ip.txt    > ip_new.txt					<= add a space in front
+	$ sed 's/^/    /' ip.txt > ip_new.txt					<= add 4 space in front
+		(space)1.1.1.1
+	$ sed -n 1p ip.txt										<= display one 1st line
+		1.1.1.1
 	
 	
 		  
