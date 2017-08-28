@@ -1,13 +1,11 @@
 아무리 바빠도 해야할 일 - 책, && 돈이 많아도 하지 말아야 할일 -도박, 마약
 1.역사-역사의식 책임, 2.문화-감성, 3.경영-논리, 4.철학-생각에 방법, 5.사회학 인간학-인간 관계
-
 -----------------------------------------------------------------------------------
 Windows CMD kill process
 http://tweaks.com/windows/39559/kill-processes-from-command-prompt
 c:\taskkill /IM pdflite.exe /F 
-# Rename file name  'F2 key'
+# Rename file 'F2'
 # Pin to Taskbar  <= on program, right click, pin to taskbar
-
 bring up the Task Manager 
 	Ctrl+Shift+Esc 
 Run dialogue
@@ -72,7 +70,8 @@ Daily Linux CMD List & Scripts
 ###############
 
 ### Shell's Color, History, Time stamp, Size ###
-echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"'   >> ~/.bashrc		<= Green|Red
+echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && source ~/.bashrc  <= GREEN Color
+echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"' >> ~/.bashrc	&& source ~/.bashrc	 <= Green & Red
 echo 'export HISTCONTROL="ignorespace:erasedups:ignoredups"' >> ~/.bashrc	<= Ignore Duplication
 echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc					<= Ignore list
 echo 'export HISTTIMEFORMAT="%F > "' >> ~/.bashrc							<= History time stamp(man date)
@@ -80,11 +79,11 @@ echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
 ###
 ---Copy & Paste or create a 'shellenv.sh' script and PSSH to all servers ----------
 cat << EOF >> ~/.bashrc
-	export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"
-	export HISTCONTROL="ignorespace:erasedups:ignoredups"
-	export HISTIGNORE="history*:ll*:ls*:"
-	export HISTTIMEFORMAT="%F > "
-	export HISTSIZE=10000
+export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"
+export HISTCONTROL="ignorespace:erasedups:ignoredups"
+export HISTIGNORE="history*:ll*:ls*:"
+export HISTTIMEFORMAT="%F > " 
+export HISTSIZE=10000
 EOF
 
 # Reload .bashrc 
@@ -425,6 +424,7 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	$ for r in $(cat nrErrorServers.txt); do ssh -v $r 'sudo su && bash -s' < updateHosts.sh ; done
 	
 	$ for i in $(cat doUpdateList.txt); do ssh -t apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
+	$ for i in `cat doUpdateList.txt` ; do ssh -t apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
 	
 	### Ignoring 'adding remote host (yes/no)'
 	$ for i in $(cat doUpdateList.txt); do ssh -t -o "StrictHostkeyChecking no" apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
@@ -515,6 +515,10 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	...
 	Content-Length: 4897
 	Content-Type: text/html; charset=UTF-8
+	
+	
+	### Check multiple site
+	$ curl -sSF http://site.{one,two,three}.com
 
 
 *C*R*U*D*
@@ -825,12 +829,12 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 		3 GNU 		<= ps -ef (CentOS)		  Standard, long options, which are preceded by two dashes.
 	$ ps -e			<= everything
 	$ ps -eH		<= Hierachical 
-	$ ps -ef 		<= every process (GNU e.g. CentOS)
-	$ ps aux		<= every process (BSD e.g. Ubuntu)
+	$ ps ax | ps -ef 		<= BSD|Unix for every process (GNU e.g. CentOS)
+	$ ps aux		<= every process + -u user (BSD e.g. Ubuntu)
 	$ ps -elF		<= Long, 15 columes of options	
 	
 	$ ps -e --format uid,pid,ppid,%cpu,cmd  <= use '--format' for custom option
-	$ ps -G group_name
+	$ ps -G  group_name
 	$ ps -C nginx --format pid,ppid,%cpu,cmd --sort %cpu
 		PID  PPID %CPU CMD
 		23976 23968  0.0 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
@@ -841,8 +845,9 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	$ ps -U root				<= -u & -U same(user)
 	$ ps -U apark --format %mem | awk '{memory +=$1};END {print memory}'  	 <= user memory usage
 	
+	### Process tree format
 	$ ps axjf  		<= BSD PS tree format
-	$ ps axf		<= ofr 
+	$ ps -ejH		<= CentOS 
 
 	
 9. Process Niceness/Priority
@@ -854,11 +859,11 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	$ sudo renice -5 top	<= sudo requires
 	
 10. Manage Process Jobs
-	$ watch ps -C dd --format pid,cmd,%cpu		<= Term1    
+	$ watch -n 5 'ps -C dd --format pid,cmd,%cpu'		<= Term1    
 	
-	$ dd if=/dev/zero of=/dev/null				<= Term2    
+	$ dd if=/dev/zero of=/dev/null						<= Term2    
 	
-	$ Ctrl+z									<= Term2 "Stopping process"    
+	$ Ctrl+z											<= Term2 "Stopping process"    
 		$ jobs
 			[1]+  Stopped                 dd if=/dev/zero of=/dev/null
 		$ bg 1
@@ -880,14 +885,13 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	kill, killall, pkill
 	http://www.thegeekstuff.com/2009/12/4-ways-to-kill-a-process-kill-killall-pkill-xkill/
 	https://unix.stackexchange.com/questions/317492/list-of-kill-signals
-	$ pidof sleep
-	$ pgrep sleep
-	$ kill 15558 15559 15560		<= same as kill -15
-	$ kill -9 15558 15559 15560	
-	$ pkill sleep
-	$ killall sleep
-	# Kill all related to user
-	$ sudo killall -u user_name
+	$ pidof    sleep
+	$ pgrep    sleep
+	$ kill     15558 15559 15560		<= same as kill -15(greacefull)
+	$ kill -9  15558 15559 15560		
+	$ pkill   sleep
+	$ killall sleep					
+	$ killall -u user_name				<= Kill all related to user
 	
 	
 9. Monitoring TOP
@@ -1283,7 +1287,7 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	$ ip route add 192.168.1.0/24 via 192.168.1.254
 	
 	
-13. tar (backup) and cron (schedule job) 
+13. tar (compression for backup)
 
 	A. Creating tar file 
 	# tar -c(create)v(verbose)p(preserve permission)z(compression)f(filename)
@@ -1291,7 +1295,7 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	# tar -czvf archive-name.tar.gz directory-name	
 	
 	$ tar -czvf  backup.tar.gz /home/nozatech
-	$ tar -cvpzf backup.tar.gz /(root) --exclude=/mnt /
+	$ tar -cvpzf backup.tar.gz /(root)        --exclude=/mnt /
 	$ tar -cvpzf backup.tar.gz /home/nozatech
 	
 	Extract tar file
@@ -1305,13 +1309,20 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	$ tar -zxvf  <= extract tar zip file
 	$ tar -tf    <= extract tar file
 	
+	
+14. Compression 	
+	
+	
 #-----------------------------------------------------------------------------------------------	
 B. Cron Jobs
-	$  crontab -e (first time ask a editor - choose vim)
+	$ crontab -l (check teh crontab list)
+	$ crontab -e (first time ask a editor - choose vim)
 		* * * * *
 		min         hr         day of month       month          day of month          command
 		0-59 mins   0-23 hrs   1-31days           1-12           0(sun)-6(sat)
 		30	        2     	   * 	              *              2(tuesday)
+		
+		
 		
 cron job search from command line
 * * * * *  (*)<-Not used
@@ -1526,20 +1537,46 @@ H 2 * * *				<= Every 2am
 	 -l, --lazy              detach the filesystem now, and cleanup all later
 
 
+	# tmpfs    /dev/shm 		<=Shared Memory, it is a file system, which keeps all files in virtual memory
+	https://www.cyberciti.biz/tips/what-is-devshm-and-its-practical-usage.html
+	/dev/shm (filesystem-level shared memory) also known as 'tmpfs'
 	
+	$ df -h
+	tmpfs           246M     0  246M   0% /dev/shm
+	
+	
+	$ mount -t tmpfs -o size=5G,nr_inodes=5k,mode=700 tmpfs /disk2/tmpfs
+
+	-o opt1,opt2 	   : Pass various options with a -o flag followed by a comma separated string of options. 
+	remount 		   : Attempt to remount an already-mounted filesystem. In this example, remount the system and increase its size.
+	size=8G or size=5G : Override default maximum size of the /dev/shm filesystem. he size is given in bytes, 
+						and rounded up to entire pages. The default is half of the memory. The size parameter 
+						also accepts a suffix % to limit this tmpfs instance to that percentage of your pysical RAM: 
+						the default, when neither size nor nr_blocks is specified, is size=50%. In this example 
+						it is set to 8GiB or 5GiB. The tmpfs mount options for sizing ( size, nr_blocks, and nr_inodes) 
+						accept a suffix k, m or g for Ki, Mi, Gi (binary kilo, mega and giga) and can be changed on remount.
+	nr_inodes=5k 	   : The maximum number of inodes for this instance. The default is half of the number of your physical 
+						 RAM pages, or (on a machine with highmem) the number of lowmem RAM pages, whichever is the lower.
+	mode=700 	       : Set initial permissions of the root directory.
+	tmpfs 			   : Tmpfs is a file system which keeps all files in virtual memory.
+	
+	# Permanent
+	$ vi /etc/fstab
+	none      /dev/shm        tmpfs   defaults,size=8G        0 0
+	 
+	 
+	 
+	 
 	File descriptor
 	https://en.wikipedia.org/wiki/File_descriptor
 	
 	
-	### check lsof and fuser
+	### lsof and fuser
 	# fuser - identify processes using files or sockets
 	$ fuser -vm /mnt/dir
 	$ sudo fuser -vm / 2>&1 | awk '$3 ~ /f|F/' | less can show all processes having open files on the filesystem mounted on /
 
-	
-
-	
-	
+		
 	### lsof ###				<= list open files using by PID or Program
 	http://www.thegeekstuff.com/2012/08/lsof-command-examples
 	$ lsof 					<= list all opened files start 'Init 1'
@@ -2004,7 +2041,15 @@ H 2 * * *				<= Every 2am
 	$ date +%F
 
 
-27. printf
+27. Printf vs echo (https://unix.stackexchange.com/questions/65803/why-is-printf-better-than-echo)
+					(http://wiki.bash-hackers.org/commands/builtin/printf)
+	
+	$ printf '%s\n' "$var"
+	
+	$ echo "\n\t"
+		-n     do not output the trailing newline
+		-t     do not output the trailing horizontal
+		 
 	
 
 
@@ -2451,8 +2496,8 @@ Debian 7 ("Wheezy")							V
 Debian 8 ("Jessie")				V 
 RHEL 6													V
 RHEL 7							V
-Ubuntu, 14.04 or lower									V
-Ubuntu, 16.04 or higher			V	
+Ubuntu 14.04 or lower									V
+Ubuntu 16.04 or higher			V	
 ----------------------------------------------------------------		
 	
 	
@@ -2467,12 +2512,10 @@ Ubuntu, 16.04 or higher			V
 
 47. EPEL (Extra Packages for Enterprise Linux) 
 	CentOS 6 x64 EPEL 
-	wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-	rpm -ivh epel-release-6-8.noarch.rpm
-rpm -ivh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+	$ rpm -ivh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
 	CentOS7 
-	sudo yum install epel-release
+	$ sudo yum install epel-release
 
 
 	
@@ -3016,14 +3059,14 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 
 	### Capture any packets where the source host is 192.168.1.1. Display IP addresses and port numbers:
 	http://www.rationallyparanoid.com/articles/tcpdump.html
-	$ tcpdump -n src host 192.168.1.1
+	
+	$ tcpdump 		  -n src host 192.168.1.1
+	$ tcpdump -i eth1 -n src host 192.168.1.1
 	
 	### Exclude port 22 https://danielmiessler.com/study/tcpdump/
+	
 	$ tcpdump -i any -n tcp port not 22 and host 1.2.3.4
-	 
-	
-	
-	
+		
   
 ###	NetCat
 	###################################
@@ -3743,7 +3786,7 @@ two cases:
 	### Ulimit ### There are two limits in play: 
 #-----------------------------------------------------------------------------------------------------
 	1) the maximum number of open files the OS kernel allows (fs.file-max) and
-	2) the per-user limit (ulimit -n). The former(Kernel) must be higher than the latter(user).
+	2) the per-user limit (ulimit -n). The former(Kernel) must be higher than the latter(User).
 	
 	
 	If you are getting error “Too many open files (24)” then your application/command/script is hitting max 
@@ -3776,10 +3819,9 @@ two cases:
 	$ cat /proc/sys/fs/file-max 						 (or  $ sysctl fs.file-max )
 	
 
-	
 	### Specific user limits ### 
-	
 	$ vi /etc/security/limits.conf		<= add this lines
+	#<domain>   <type>  <item>         <value>
 		*       soft     nproc          65535		<= * all users but no root
 		*       hard     nproc          65535
 		*       soft     nofile         65535
@@ -3812,7 +3854,7 @@ two cases:
 		
 	### Check limit for other user
 	$ su - www-data -c 'ulimit -aHS' -s '/bin/bash'
-	$ su - noza -c 'ulimit -aHS' -s '/bin/bash'
+	$ su - user_ID -c 'ulimit -aHS' -s '/bin/bash'
 		core file size          (blocks, -c) 0
 		data seg size           (kbytes, -d) unlimited
 	
@@ -4033,6 +4075,7 @@ killall name 		#
 
 
 	$ ps aux | grep RRServer | grep -v grep | awk '{print $2}'
+	
 
 	$ ps  **options
 	********* simple selection *********  ********* selection by list *********
@@ -4052,7 +4095,7 @@ killall name 		#
 	-O,O preloaded -o  v  virtual memory  --cumulative --format --deselect
 	-l,l long          u  user-oriented   --sort --tty --forest --version
 	-F   extra full    X  registers       --heading --no-heading --context
-                    ********* misc options *********
+    ********* misc options *********
 	-V,V  show version      L  list format codes  f  ASCII art forest
 	-m,m,-L,-T,H  threads   S  children in sum    -y change -l format
 	-M,Z  security data     c  true command name  -c scheduling class
@@ -4148,7 +4191,9 @@ wait                  # waits until all background jobs have finished
 
 
 
-#######################
+#####################################################################
+mkdir /var/www/html/status && chown apark: /var/www/html/status
+#####################################################################
 #!/bin/bash
 # Check and put ok status if the RRS game service is running for Lobby 7504 & 7505 services
 
@@ -4158,7 +4203,7 @@ $(ps aux | grep ./RRServer_0617_7505 | wc -l) > 0 ));
         echo OK > /var/www/html/status/index.html;
 else rm /var/www/html/status/index.html > /dev/null 2>&1;
 fi
-#################
+###############################################################
 
 
 	Note:
@@ -5474,3 +5519,6 @@ $ pip install speedtest-cli
 	
 	
 	
+***Troubleshoot***
+CentOs 7 YUM update not working
+	$echo "http_caching=packages" >>   /etc/yum.conf file

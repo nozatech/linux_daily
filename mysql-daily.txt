@@ -1,14 +1,17 @@
 ######################
 # MySQL CRUD Daily ###
 ######################
-### auto CMD completion 
-/etc/my.cnf
+
+### auto command completion 
+$ vi /etc/my.cnf
 	[mysql]
 	auto-rehash		<= add
-In SQL Shell
+	
+	#In SQL Shell
 	mysql> \#		
-From Shell	
-	mysql --auto-rehash -u root -p
+	
+	#From Shell	
+	$ mysql --auto-rehash -u root -p
 
 
 # Benchmark CPU, File IO, MySQL) With sysbench
@@ -36,31 +39,24 @@ CentOS7
 
 $ mysql -u root -p --execute="SELECT User, Host, Password FROM mysql.user"
 $ mysql -u root -p -e        "SELECT User, Host, Password FROM mysql.user"
-
 $ mysql -u root -p -e "SELECT VERSION();SELECT NOW()"	
 	
 	
 	
 ### Run remotely	
-ssh apark@DB_ip  mysql -u android_installer -p'PuTuChu' -D android_installer --execute="SELECT User, Host FROM mysql.user"
-
+	$ ssh apark@DB_ip  mysql -u android_installer -p'PuTuChu' -D android_installer --execute="SELECT User, Host FROM mysql.user"
 	$ watch -n 1 "mysql  -uroot -p\`sudo cat /root/.mysql_shadow\` -e \"show slave status\G;" 2>/dev/null"
 
 ### show all the open connections	
-$ watch -n 5 'mysql -uroot -p`cat ~/.mysql_shadow` -e "show status;" | tail'
-$ watch -n 5 "mysql -uroot -p`cat ~/.mysql_shadow` -e 'show status;' | grep -wi 'threads_connected\|threads_running'
-
-	$ grep -w, --word-regexp	<= Select only those lines containing matches that form whole words.
+	$ watch -n 5 'mysql -uroot -p`cat ~/.mysql_shadow` -e "show status;" | tail'
+	$ watch -n 5 "mysql -uroot -p`cat ~/.mysql_shadow` -e 'show status;' | grep -wi 'threads_connected\|threads_running'
+		<= grep -w, --word-regexp	<= Select only those lines containing matches that form whole words.
 	
 	
 #-------------------------------------------------------------------------------------------------------------
 # Check and Repair MySQL DB
 	$ mysqlcheck -u root -p --all-databases
-	
 	$ mysqlcheck --all-databases --check-upgrade --auto-repair
-	
-    $ mysql 			< fix_priv_tables
-    
 	$ mysqlcheck --all-databases --check-upgrade --fix-db-names --fix-table-names
 
 	### Upgrade
@@ -84,7 +80,7 @@ $ watch -n 5 "mysql -uroot -p`cat ~/.mysql_shadow` -e 'show status;' | grep -wi 
 	$ /etc/my.cnf
   
 # MySQL User List
-	$ mysql -u root -p 						<= login first
+	$ mysql -u root -p 							<= login first
 		mysql> SELECT User FROM mysql.user;		<= run cmd to check
   
 1. Master/Slave replication status
@@ -1095,11 +1091,11 @@ mysql> show master status;   // show master status\G
 Exit mysql
 
 
-# Backing up DB
+### Backing up DB
 
 $ systemctl stop mysql    //    service mysqld stop   <= STOP FIRST
 
-$ mysqldump -u root -p --all-databases --events --master-data | pv --progress --size 100m > /tmp/master-dump.db
+$ mysqldump -u root -p --all-databases --events --master-data | pv --progress --size 100m >   /tmp/master-dump.db
 
 [===>            ] 20%  <= pv --progress --size 100m option
 
@@ -1142,20 +1138,15 @@ mysql> stop slave;
 mysql> exit
 
 
-# Restore master db to slave db from SHELL Prompt
-
-mysql -u root -p < /tmp/master-dump.db
-mysql -u root -p db_name < /tmp/db_name.db
+### Restore master db to slave db from SHELL Prompt
+	1. Create DB name in MySQL
+	$ mysql -u root -p -e 'create db_name;'
+	$ mysql -u root -p db_name < /tmp/db_name.db
 
 
 # Login to mysql
-
-mysql> start slave;        
-
-
-mysql> show slave status;     //    show slave status\G;
-
-
+	mysql> start slave;        
+	mysql> show slave status;     //    show slave status\G;
 
 Example:
 
@@ -1257,7 +1248,8 @@ GRANT ALL PRIVILEGES ON *.* To 'user'@'hostname' IDENTIFIED BY 'password';
 # MySQL DB backup
 ###
 
-mysqldump -u dbadmin -p --all-databases --events --master-data > /tmp/master-dump.db
+mysqldump -u dbadmin -p --all-databases --events --master-data > /tmp/master-dump.db  
+						   ^- including IDs & root's password
 
 
 ###
@@ -2291,7 +2283,13 @@ mysql -u root -p < /tmp/master-dump.db
 PV ("Pipe Viewer") is a tool for monitoring the progress of data through a pipeline. It can be inserted into any normal pipeline between two processes to give a visual indication of how quickly data is passing through, how long it has taken, how near to completion it is, and an estimate of how long it will be until completion.
 Assuming the expect size of the resulting dumpfile.sql file is 100m (100 megabytes), the use of pv would be as follows:
 
-mysqldump <parameters> | pv --progress --size 100m > dumpfile.sql
+### Backup
+$ mysqldump <parameters> | pv --progress --size 100m > dumpfile.sql
+	#pv dumps the sqlfile.sql and passes them to mysql (because of the pipe operator). While it is dumping, it shows the progress.
+
+### Restore
+$ pv dumpfile.sql | mysql -uroot -pxxxx
+	719MB 0:01:03 [12.2MB/s] [==>  ] 11% ETA 0:07:55
 
 
 # Login to mysql
@@ -2367,25 +2365,53 @@ $ /etc/init.d/mysqld restart
 
 
 
-
-
-
-
+### ERROR 1130 (HY000): Host '' is not allowed to connect to this MySQL server
+https://stackoverflow.com/questions/19101243/error-1130-hy000-host-is-not-allowed-to-connect-to-this-mysql-server
+### Check ALL user 
 mysql> select user,host from mysql.user;
 +--------------+------------------------+
 | user         | host                   |
 +--------------+------------------------+
-|              | %                      |
-| replica      | %                      |
 | root         | %                      |
 | rrserveruser | %                      |
-| newrelic     | 127.0.0.1              |
 | root         | 127.0.0.1              |
 | dbadmin      | localhost              |
-|              | rr-raknet-us-db1-faotw |
 | root         | rr-raknet-us-db1-faotw |
 
 
+### Check user 
+	mysql> SELECT host FROM mysql.user WHERE User = 'root';
++---------------+
+| host          |
++---------------+
+| 127.0.0.1     |
+| 65.87.26.0/24 |
+| localhost     |
+| rr-test-db1   |
++---------------+
+	Your root account, and this statement applies to any account, may only have been added with localhost access (which is recommended).
+	If you only see results with localhost and 127.0.0.1, you cannot connect from an external source. If you see other IP addresses, 
+	but not the one you're connecting from - that's also an indication.
+	You will need to add the IP address of each system that you want to grant access to, and then grant privileges:
+
+mysql> CREATE USER 'root'@'ip_address' IDENTIFIED BY 'some_pass';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'ip_address';
+	
+	If you see %, well then, there's another problem altogether as that is "any remote source". 
+	If however you do want any/all systems to connect via root, use the % wildcard to grant access:
+
+mysql> CREATE USER 'root'@'%' IDENTIFIED BY 'some_pass';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
+mysql> FLUSH PRIVILEGES;
+ 
+ 
+ 
+
+https://stackoverflow.com/questions/33973713/whats-the-difference-between-slow-query-log-vs-long-query-time
+slow-query-log = 1            <= enables the slow query log, it logs the SQL statements that took more 
+								 than long_query_time seconds to execute.
+log-queries-not-using-indexes <= tells MySQL to log any queries that do not use indexes regardless 
+								 of the setting in long_query_time.
 
 
 ### slow query ###
@@ -2426,20 +2452,6 @@ $ mysql -uroot -ppasswd   -e "SHOW VARIABLES LIKE 'performance_schema';"
 $ mysql -uroot -ppasswd   -e "SELECT * FROM information_schema.ENGINES WHERE support = 'YES';"
 
 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
 	 
 	 
 	 
