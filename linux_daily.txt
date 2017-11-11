@@ -44,11 +44,15 @@ Cassandra - distributed, highly available DB designed to handle large amounts of
 		across multiple datacenters
 Kafka - a high-throughput, low-latency distributed messaging system designed for
 		handling real-time 'data feeds'
+MEAN stack <= MongoDB, Express.js, AngularJS, and Node.js.
 -----------------------------------------------------------------------------------		
 ### Chrome ###
+Plugin - 
+	Revolver <- Rotate Tabs
+	AdBlock
 Alt + Home				Open your homepage.
 Alt + Tab				Toggle between browser windows
-Alt + Left Arrow		Back a page.
+Alt + Left 0Arrow		Back a page.
 Alt + Right Arrow		Forward a page.
 F11						Full screen
 Esc						Stop page or download from loading.
@@ -62,6 +66,8 @@ Ctrl + U				View a web page's source code
 
 32bit is 2^32 =~ 4.3 billion    <=  IPv4 address is 32bit 
 
+just without the prefix(e.g. www) as 'something.com' is a 'naked domain.'
+
 -----------------------------------------------------------------------------------	
 Daily Linux CMD List & Scripts
 -----------------------------------------------------------------------------------	
@@ -70,8 +76,12 @@ Daily Linux CMD List & Scripts
 ###############
 
 ### Shell's Color, History, Time stamp, Size ###
-echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && source ~/.bashrc  <= GREEN Color
-echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"' >> ~/.bashrc	&& source ~/.bashrc	 <= Green & Red
+### GREEN Color
+echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && source ~/.bashrc 
+echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && 		. ~/.bashrc 
+### Green & Red
+echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"' >> ~/.bashrc	&& source ~/.bashrc	 
+### 
 echo 'export HISTCONTROL="ignorespace:erasedups:ignoredups"' >> ~/.bashrc	<= Ignore Duplication
 echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc					<= Ignore list
 echo 'export HISTTIMEFORMAT="%F > "' >> ~/.bashrc							<= History time stamp(man date)
@@ -175,14 +185,19 @@ Cut and Paste(v/V-d/y-p/P)
 	
 # History	
 	$ ls /var/log
-	$ cd !*				<= cd into last command directory
+	$ cd  !*				<= cd into last command directory
 		$ cd /var/log
+	
 	$ !!   or		UP arrow key
+	
 	$cat /etc/shadow
 		cat: /etc/shadow: Permission denied
+		
 	$ sudo !!
 	
 	$ crtl+r 			<= Reverse i search  
+	
+	
 	
 	# Not recrod if there is a sapce at front
 	$ export HISTCONTROL=ignorespace
@@ -385,6 +400,10 @@ Cut and Paste(v/V-d/y-p/P)
 		# https://www.tecmint.com/add-users-in-linux/
 	
 	
+	# Create these two users, and use the --no-create-home and --shell /bin/false options 
+		so that these users can't log into the server.
+	$ useradd --no-create-home --shell /bin/false prometheus
+	$ useradd --no-create-home --shell /bin/false node_exporter
 	
 ### PSSH tool includes parallel versions of OpenSSH and related tools such as:
 
@@ -471,7 +490,8 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 # Find my ip gateway IP
 	$ curl ifconfig.io	
 	
-	
+### jq - Command-line JSON processor
+	curl -s http://127.0.0.1:4567/clients | jq .   	<= -s slient 
 	
 ### cURL  
 	Testing on REST API
@@ -694,6 +714,9 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	
 	# Socket(IPP) is the combination of IP address, port and protocol.
 	
+
+### socat - Multipurpose relay (SOcket CAT)
+
 	
 7. System services
 	SysV init process tree( from ATT Linux 80's)
@@ -848,7 +871,8 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	### Process tree format
 	$ ps axjf  		<= BSD PS tree format
 	$ ps -ejH		<= CentOS 
-
+	
+	$ps auxf
 	
 9. Process Niceness/Priority
 	$ nice -2 top			<= if only 1 '-' +2,  '--' -2
@@ -1541,6 +1565,9 @@ H 2 * * *				<= Every 2am
 	https://www.cyberciti.biz/tips/what-is-devshm-and-its-practical-usage.html
 	/dev/shm (filesystem-level shared memory) also known as 'tmpfs'
 	
+	
+	
+	
 	$ df -h
 	tmpfs           246M     0  246M   0% /dev/shm
 	
@@ -1564,7 +1591,10 @@ H 2 * * *				<= Every 2am
 	$ vi /etc/fstab
 	none      /dev/shm        tmpfs   defaults,size=8G        0 0
 	 
-	 
+	$ man mount 
+	nodev 	<= Do not interpret character or block special devices on the file system. 
+	noexec 	<= Do not allow execution of any binaries on the mounted file system.
+	nosuid 	<= Do not allow set-user-identifier or set-group-identifier bits to take effect. 
 	 
 	 
 	File descriptor
@@ -1903,8 +1933,8 @@ H 2 * * *				<= Every 2am
 ###	$ Last Reboot ###
 	$ who -b
 	$ last reboot
-	reboot system boot 3.2.13-grsec-xxx Tue Apr 3 07:34 - 09:17 (9+01:42) 
-																	^= 9days 1hr 42mins after restart
+	reboot system boot 3.2.13-grsec-xxx Tue Apr 3 07:34 - 09:17 (9     + 01 : 42) 
+																 ^9days 1hr 42mins after restart
 	
 	$ last
 	$ last -x
@@ -2424,16 +2454,17 @@ B. CentOS 7(systemd)
 
 	d.
   
-  
+   
   
   
 ### List processes
 
 	## chkconfig ##					## systemd ##
+	
 	chkconfig --list				systemctl list-unit-files
+	
 	chkconfig nginx on				systemctl enable  nginx
 	chkconfig nginx off				systemctl disable nginx
-	chkconfig nginx on				systemctl enable  nginx
 	service   nginx start			systemctl start   nginx
 	service   nginx stop			systemctl stop 	  nginx
 	service   nginx status			systemctl status  nginx
@@ -2656,11 +2687,39 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 	ln -s '/usr/lib/systemd/system/httpd.service'  '/etc/systemd/system/multi-user.target.wants/httpd.service'
 
 54. List of groups
+	
+	# Check who owns folder?
+	$ stat -c %U /var/www/html			<= %U User
+		www-data
+	$ stat -c %U /var/www/html			<= %G Group
+		www-data	
+	
 	groups
-	/etc/group
- 	$ getent group | cut -d: -f1
+	$ getent - get entries from Name Service Switch libraries
 
- 
+	$ cat /etc/group  <= Group List
+ 	$ getent group | cut -d: -f1
+	
+	# Who(users list) is in the group
+	$ getent group www-data
+		www-data:x:33:
+	
+	# Add an User to Group
+	$ sudo usermod -G www-data -a apark
+	
+	$ getent group www-data
+		www-data:x:33:apark  <= apark added
+	
+	
+	### gpasswd
+	
+	$  adduser apark
+    $  gpasswd -a apark wheel
+    $  gpasswd -a apark root
+    $  vi /etc/sudoers
+
+	
+	
 55. SElinux <= add port to security-enhanced linux 
   semange port -a -t http_port_t -p tcp 10051  
 
@@ -2779,18 +2838,17 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 Iptables opens all	
 $ iptables -I INPUT -j ACCEPT
 	
-sudo iptables -L
-sudo yum -y install iptables-services
-sudo systemctl enable iptables 		
-sudo systemctl mask firewalld			
-sudo systemctl stop firewalld
+	$ sudo iptables -L
+	
+	$ sudo yum -y install iptables-services
+	$ sudo systemctl enable iptables 		
+	$ sudo systemctl mask firewalld			
+	$ sudo systemctl stop firewalld
 
-vi /etc/sysconfig/iptables
-sudo systemctl start iptables
-
+	$ vi /etc/sysconfig/iptables
+	$ sudo systemctl start iptables
 	
 	Writing a Simple Rule Set( https://wiki.centos.org/HowTos/Network/IPTables)
-
 
 IMPORTANT: At this point we are going to clear the default rule set. If you are connecting 
 remotely to a server via SSH for this tutorial then there is a very real possibility that 
@@ -2846,6 +2904,9 @@ iptables -L -v
 	Finally, we can list (-L) the rules we've just added to check they've been loaded correctly.
 
 
+### 	 -j REJECT --reject-with icmp-host-prohibited
+	https://unix.stackexchange.com/questions/124624/what-a-input-j-reject-reject-with-icmp-host-prohibited-iptables-line-does-ex
+	
 
 	
 ### Changing data directory on Centos 7 + MySQL 5.6	
@@ -2879,9 +2940,6 @@ iptables -L -v
 	
 	# Check SELinux reports any error on MySQL
 	$ grep mysqld /var/log/audit/audit.log
-
-	
-
 
 	
 	
@@ -3077,6 +3135,7 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	
 	nc -l 22 							<= listening mode
   
+  https://www.digitalocean.com/community/tutorials/how-to-use-netcat-to-establish-and-test-tcp-and-udp-connections-on-a-vps
   
 	Ping and capture IP only
 	$ ping -c 1 www.google.com | gawk -F'[()]' '/PING/{print $2}'
@@ -3413,6 +3472,25 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 	
 	
 	Hostname Change
+
+	
+78. DNS lookup utility
+https://nilminus.wordpress.com/penetration-testing/enumeration/dns/using-nslookup-dig-and-host/
+https://www.quora.com/Bash-shell-What-are-the-differences-between-host-dig-and-nslookup-and-when-should-I-use-each
+
+	$ nslookup	<= was the first tool for querying the DNS
+
+	$ dig		<= probing the DNS
+	
+	$ host 		<= Best for BASH scripting
+					output has one value per line and is easily scriptable using awk to extract IP
+	$ host google.com  
+	
+	google.com has address 216.58.194.174
+	google.com has IPv6 address 2607:f8b0:4005:804::200e
+	google.com mail is handled by 40 alt3.aspmx.l.google.com.
+	...
+
 
 Ubuntu
 /etc/hosts
@@ -3846,7 +3924,7 @@ two cases:
 	$ echo 'fs.file-max = 2097152' >> /etc/sysctl.conf 			<= configure kernel parameters at runtime
 	
 	# configure kernel parameters at runtime
-	$ sysctl -p 												<= -p Load in sysctl settings from the file specified or /etc/sysctl.conf 
+	$ sysctl -p 						sys						<= -p Load in sysctl settings from the file specified or /etc/sysctl.conf 
 											
 	### Verify New Limits
 	$ cat /proc/sys/fs/file-max 			<= max limit of file descriptors:
@@ -3854,7 +3932,7 @@ two cases:
 		
 	### Check limit for other user
 	$ su - www-data -c 'ulimit -aHS' -s '/bin/bash'
-	$ su - user_ID -c 'ulimit -aHS' -s '/bin/bash'
+	$ su - user_ID  -c 'ulimit -aHS' -s '/bin/bash'
 		core file size          (blocks, -c) 0
 		data seg size           (kbytes, -d) unlimited
 	
@@ -4465,7 +4543,11 @@ $ iptables -A INPUT -p ICMP --icmp-type 8 -j DROP
 
 
 
-
+### email send out from SHELL
+	echo "hello" | mailx -s 'test' apark@bnga.com
+	echo "hello" | mail  -s 'test' apark@bnga.com
+	
+	https://www.digitalocean.com/community/tutorials/how-to-send-e-mail-alerts-on-a-centos-vps-for-system-monitoring
 
 
 
@@ -5387,15 +5469,19 @@ Underlying data
 
 When we do a survey or experiment over a period of time we usually plot the results and present the information to the reader in this condensed form. If the reader wants to check how we actually got the results they will want to examine the data that we used ... the data that underlies the results.
 
-MapReduce
+### MapReduce ###
 MapReduce is a programming model for processing large data sets with a parallel, distributed algorithm on a cluster.[1]
 A MapReduce program is composed of a Map() procedure that performs filtering and sorting (such as sorting students by first name into queues, one queue for each name) and a Reduce() procedure that performs a summary operation (such as counting the number of students in each queue, yielding name frequencies). The "MapReduce System" (also called "infrastructure" or "framework") orchestrates by marshalling the distributed servers, running the various tasks in parallel, managing all communications and data transfers between the various parts of the system, and providing for redundancy and fault tolerance.
 The model is inspired by the map and reduce functions commonly used in functional programming,[2] although their purpose in the MapReduce framework is not the same as in their original forms.[3] The key contributions of the MapReduce framework are not the actual map and reduce functions, but the scalability and fault-tolerance achieved for a variety of applications by optimizing the execution engine once. As such, a single-threaded implementation of MapReduce will usually not be faster than a traditional implementation. Only when the optimized distributed shuffle operation (which reduces network communication cost) and fault tolerance features of the MapReduce framework come into play, the use of this model is beneficial.
 MapReduce libraries have been written in many programming languages, with different levels of optimization. A popular open-source implementation is Apache Hadoop. The name MapReduce originally referred to the proprietaryGoogle technology but has since been genericized.
 
-Nginx
+### Nginx ###
 
-Nginx (pronounced "engine-ex") is an open source reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols, as well as a load balancer, HTTP cache, and a web server (origin server). The nginx project started with a strong focus on high concurrency, high performance and low memory usage. It is licensed under the 2-clause BSD-like license and it runs on Linux, BSD variants, Mac OS X, Solaris, AIX, HP-UX, as well as on other *nix flavors. It also has a proof of concept port for Microsoft Windows.[6]
+Nginx (pronounced "engine-ex") is an open source reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols, 
+as well as a load balancer, HTTP cache, and a web server (origin server). The nginx project started with a strong focus 
+on high concurrency, high performance and low memory usage. It is licensed under the 2-clause BSD-like license and 
+it runs on Linux, BSD variants, Mac OS X, Solaris, AIX, HP-UX, as well as on other *nix flavors. It also has a proof 
+of concept port for Microsoft Windows.[6]
 
 Null (SQL)
 Null is a special marker used in Structured Query Language (SQL) to indicate that a data value does not exist in the database. Introduced by the creator of the relational database model, E. F. Codd, SQL Null serves to fulfill the requirement that all true relational database management systems (RDBMS) support a representation of "missing information and inapplicable information". Codd also introduced the use of the lowercase Greek omega (ω) symbol to represent Null in database theory. NULL is also an SQL reserved keyword used to identify the Null special marker.
@@ -5403,14 +5489,36 @@ Null has been the focus of controversy and a source of debate because of its ass
 For people new to the subject, a good way to remember what null means is to remember that in terms of information, "lack of a value" is not the same thing as "a value of zero"; similarly, "lack of an answer" is not the same thing as "an answer of no". For example, consider the question "How many books does Juan own?" The answer may be "zero" (weknow that he owns none) or "null" (we do not know how many he owns, or doesn't own). In a database table, the column reporting this answer would start out with a value of null, and it would not be updated with "zero" until we have ascertained that Juan owns no books.
 SQL null is a state (unknown) and not a value. This usage is quite different from programming languages, where null means not assigned to a particular instance
 
-bject-oriented programming (OOP) is a programming paradigm that represents the concept of "objects" that have data fields (attributes that describe the object) and associated procedures known as methods. Objects, which are usually instances of classes, are used to interact with one another to design applications and computer programs.[1][2] C++,Objective-C, Smalltalk, Java, C#, Perl, Python, Ruby and PHP are examples of object-oriented programming languages.
-Object-oriented programming is an approach to designing modular, reusable software systems. Although discussions of object-oriented technology often get mired in the details of one language vs. the other, the real key to the object-oriented approach is that it is a modelling approach first.[3] Although often hyped as a revolutionary way to develop software by zealous proponents, the object-oriented approach is in reality a logical extension of good design practices that go back to the very beginning of computer programming. Object-orientation is simply the logical extension of older techniques such as structured programming andabstract data types. An object is an abstract data type with the addition ofpolymorphism and inheritance.
-Rather than structure programs as code and data, an object-oriented system integrates the two using the concept of an "object". An object has state (data) and behavior (code). Objects correspond to things found in the real world. So for example, a graphics program will have objects such as circle, square, menu. An online shopping system will have objects such as shopping cart, customer, product. The shopping system will support behaviors such as place order, make payment, and offer discount. The objects are designed as class hierarchies. So, for example, with the shopping system there might be high level classes such as electronics product, kitchen product, and book. There may be further refinements for example under electronic products: CD Player, DVD player, etc. These classes and subclasses correspond to sets and subsets in mathematical logic.
-The goals of object-oriented programming are:
-•	Increased understanding.
-•	Ease of maintenance.
-•	Ease of evolution.
-The overall understanding of the system is increased because the semantic gap—the distance between the language spoken by developers and that spoken by users—is lessened. Rather than talking about database tables and programming subroutines, the developer talks about things the user is familiar with: objects from their application domain.[4]
+bject-oriented programming (OOP) 
+	is a programming paradigm that represents the concept of "objects" that have data fields 
+	(attributes that describe the object) and associated procedures known as methods. Objects, 
+	which are usually instances of classes, are used to interact with one another to design applications 
+	and computer programs.[1][2] C++,Objective-C, Smalltalk, Java, C#, Perl, Python, Ruby and PHP are 
+	examples of object-oriented programming languages.
+
+	Object-oriented programming is an approach to designing modular, reusable software systems. Although 
+	discussions of object-oriented technology often get mired in the details of one language vs. the other, 
+	the real key to the object-oriented approach is that it is a modelling approach first.[3] Although often 
+	hyped as a revolutionary way to develop software by zealous proponents, the object-oriented approach is 
+	in reality a logical extension of good design practices that go back to the very beginning of computer 
+	programming. Object-orientation is simply the logical extension of older techniques such as structured 
+	programming andabstract data types. An object is an abstract data type with the addition ofpolymorphism and inheritance.
+
+	Rather than structure programs as code and data, an object-oriented system integrates the two using the 
+	concept of an "object". An object has state (data) and behavior (code). Objects correspond to things 
+	found in the real world. So for example, a graphics program will have objects such as circle, square, menu. 
+	An online shopping system will have objects such as shopping cart, customer, product. The shopping system 
+	will support behaviors such as place order, make payment, and offer discount. The objects are designed as 
+	class hierarchies. So, for example, with the shopping system there might be high level classes such as 
+	electronics product, kitchen product, and book. There may be further refinements for example under electronic 
+	products: CD Player, DVD player, etc. These classes and subclasses correspond to sets and subsets in mathematical logic.
+
+	The goals of object-oriented programming are:
+	•	Increased understanding.
+	•	Ease of maintenance.
+	•	Ease of evolution.
+
+	The overall understanding of the system is increased because the semantic gap—the distance between the language spoken by developers and that spoken by users—is lessened. Rather than talking about database tables and programming subroutines, the developer talks about things the user is familiar with: objects from their application domain.[4]
 Object orientation eases maintenance by the use of encapsulation and information hiding. One of the most common sources of errors in programs is when one part of the system accidentally interferes with another part. For example, in the very earliest days of programming, it was common for developers to use "go to" statements to jump to arbitrary locations within only a few routines and functions. Critics called this "spaghetti code" because it is disorganized. Structured programming addresses this by encouraging the use of procedures and subroutines. Appropriate usage sections off responsibility for individual blocks to implement separate functionality. So, for example, one would know that the square root function was separate from the launch missiles function, and a change to one could not affect the other.[5]
 Object-orientation takes this to the next step. It essentially merges abstract data types with structured programming and divides systems into modular objects which own their own data and are responsible for their own behavior. This feature is known as encapsulation. With encapsulation, not only can the "square root" and "launch missiles" functions not interfere with each other, but also the data for the two are divided up so that changes to one object cannot affect the other. Note that all this relies on the various languages being used appropriately, which, of course, is never certain. Object-orientation is not a software silver bullet, and it is not magic that makes all development problems go away.[6]
 In addition to providing ease of maintenance, encapsulation and information hiding provide ease of evolution as well. Defining software as modular components that support inheritance makes it easy both to re-use existing components and to extend components as needed by defining new subclasses with specialized behaviors. This goal of being easy to both maintain and reuse is known in the object-oriented paradigm as the "open closed principle". A module is open if it supports extension (e.g. can easily modify behavior, add new properties, provide default values, etc.). A module is closed if it has a well defined stable interface that all other modules must use and that limits the interaction and potential errors that can be introduced into one module by changes in another.[7]

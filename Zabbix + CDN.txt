@@ -1,4 +1,7 @@
-Zabbix 
+Zabbix 3.x on CentOS7
+
+admin/Noza5571~~
+ 
 
 # Installation
 https://www.digitalocean.com/community/tutorials/how-to-install-zabbix-on-ubuntu-configure-it-to-monitor-multiple-vps-servers

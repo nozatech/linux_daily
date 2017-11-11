@@ -740,7 +740,7 @@ mysql> DROP DATABASE db_name;		<= **Warning**Delete & Empty DB at same time
 	check new ID privileges =>
 	mysql> SHOW GRANTS FOR 'user_id'@'localhost';
 
-	### Password  reset
+	### Password  reset ###
 	mysql> UPDATE mysql.user SET PASSWORD = PASSWORD('test00!!') WHERE User = 'dbadmin';
 	
 	
@@ -2405,16 +2405,17 @@ mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
 mysql> FLUSH PRIVILEGES;
  
  
- 
-
+# 
+### slow query ###
+#
 https://stackoverflow.com/questions/33973713/whats-the-difference-between-slow-query-log-vs-long-query-time
+https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html
 slow-query-log = 1            <= enables the slow query log, it logs the SQL statements that took more 
 								 than long_query_time seconds to execute.
 log-queries-not-using-indexes <= tells MySQL to log any queries that do not use indexes regardless 
 								 of the setting in long_query_time.
 
-
-### slow query ###
+### Enabling slow query ###
 1. Create log file
 $ touch /var/log/mysql-slow.log && chown  mysql: /var/log/mysql-slow.log
 

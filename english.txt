@@ -3,10 +3,14 @@
 # A 
 adorn 			<- decorate
 abscess			<- 종기   Dental Abscess, discharge pus 고름 짜내다	
+AFAIK 			<- "As Far As I Know" 
+adverse effect	<- an undesired harmful effect resulting(역효과) 
 aggravation		<- get worse
 alleviate 		<- provide physical relief, as from painalliviate
+All in all		<- everything considered; on the whole. mostly?
+analogy			<- 비유법
 anemometer		<- [ӕnəmάmitər] an instrument for measuring the speed of the wind, or of any current of gas.
-
+as such			<- in the exact sense of the word(이를테면 '예를 들면')
 # B
 Bearer 			<- carrier or something carries something
 brag 			<- say in a boastful manner.
@@ -33,6 +37,7 @@ decapitate		<- cut off the head of (a person or animal).
 deceit 			<- fake or trick
 degradation		<- changing to a lower state
 digress			<- off the subject
+defeat the purpose of 	<- to make (something) pointless
 discrete		<- individually separate and distinct(분리된, 결개의)
 
 drench   		<- wet thoroughly; soak
@@ -42,10 +47,12 @@ duck out		<- Leave hurriedly or secretly
 
 # E
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
+embezzle		<- 횡령
 entitlements	<- the amount to which a person has a right.
 eye stye		<- 눈다락지
 
 # F
+fall through 	<- your plans didn't work out for some reaso, didn't work out
 full-fledged	<-	completely developed or established; of full status.
 
 
@@ -96,6 +103,7 @@ primitive		<- relating to, denoting, or preserving the character of an early sta
 				
 # R
 reconnaissance	<- military observation of a region to locate an enemy or ascertain strategic features.
+remuneration 	<- pay
 resonance		<- 울림, 공진
 relator			<-  a person who brings a public lawsuit, typically in the name of the 고발자,
 				   attorney general, regarding the abuse of an office or franchise.
@@ -111,6 +119,7 @@ saunter			<- walk in a slow, relaxed manner, without hurry or effort.
 sacred			<- [seikrid] connected with God (or the gods) or dedicated to a religious 
 					purpose and so deserving veneration.  종교적인
 setup VS set up <- setup [noun], set up [verb] 
+serpentine		<= winding curve(구불한) e.g. serpentine belt(fan belt) for car
 scoot			<- go or leave somewhere quickly.
 scrutiny		<- critical observation or examination:	examination, inspection, survey, study, perusal;
 snoop			<- investigate or look around furtively in an attempt to find out something, 
@@ -121,7 +130,8 @@ stash			<- store (something) safely and secretly in a specified place
 Startle			<- excited by sudden surprise or alarm and making a quick involuntary movement
 strata			<- a layer of material, naturally or artificially formed, often one of a number 
 					of parallel layers one upon another: 층
-subtle			<- (especially of a change or distinction) so delicate or precise as to be difficult to analyze or describe.
+subtle			<- (especially of a change or distinction) so delicate or 
+					precise as to be difficult to analyze or describe.
 supersede 		<- replace
 
 # T
@@ -146,8 +156,14 @@ unwieldy <- hard to handle
 
 
 
-####
+
+
+
+
+
+### Time Tense 
 People can't ride in a 5th wheeler while it is being towed.
+Something you submitted it last time, it has been approved now.
 
 
 
@@ -157,6 +173,5 @@ People can't ride in a 5th wheeler while it is being towed.
 
 
 
-
-#########
+### Old saying
 shoot yourself in the foot
