@@ -6,6 +6,7 @@ abscess			<- 종기   Dental Abscess, discharge pus 고름 짜내다
 AFAIK 			<- "As Far As I Know" 
 adverse effect	<- an undesired harmful effect resulting(역효과) 
 aggravation		<- get worse
+agnostic		<- 인지불능, e.g. user accounts would be agnostic 
 alleviate 		<- provide physical relief, as from painalliviate
 All in all		<- everything considered; on the whole. mostly?
 analogy			<- 비유법
