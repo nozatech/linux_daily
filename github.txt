@@ -215,6 +215,12 @@ http://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-y
 	3. a) Discard local changes for a specific file
 		$ git checkout filename
 	
+4. Pull is not possible because you have unmerged files
+https://stackoverflow.com/questions/26376832/why-does-git-say-pull-is-not-possible-because-you-have-unmerged-files/27187110
+
+	$ git fetch origin
+	$ git reset --hard origin/master
+	$ git pull
 	
 	
 	

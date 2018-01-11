@@ -9,9 +9,19 @@ aggravation		<- get worse
 alleviate 		<- provide physical relief, as from painalliviate
 All in all		<- everything considered; on the whole. mostly?
 analogy			<- 비유법
+anemia			<- 빈혈(Noun)
+					 is a condition in which you don't have enough healthy red blood cells to carry 
+					 adequate oxygen to the body's tissues
+anemic			<- 빈혈의(Ajetive)
 anemometer		<- [ӕnəmάmitər] an instrument for measuring the speed of the wind, or of any current of gas.
+anticoagulation	<-> coagulation  <= blood thinner
 as such			<- in the exact sense of the word(이를테면 '예를 들면')
-# B
+attest			<- (V)provide or serve as clear evidence of
+Avenge 			<- a word broadly concerned with inflicting a punishment or penalty in the pursuit of 'justice'.
+					Avenge means the Achievement of justice
+Revenge 		<- a word broadly concerned with inflicting harm or punishment for personal retaliation.
+					Revenge means Retaliation.
+# B 
 Bearer 			<- carrier or something carries something
 brag 			<- say in a boastful manner.
 bedside manner 	<- a doctor's approach or attitude toward a patient.
@@ -22,12 +32,15 @@ Churn rate 		<=(sometimes called attrition rate), in its broadest sense, is a me
 					The phrase is based on the English verb churn, meaning "to agitate or produce 
 					violent motion".
 chug alone		<- along the lines, without a hitch, take a back seat
+cliche			<- a phrase or opinion that is 'overused' and betrays a lack of original thought. 진부한
 cling			<- (of a person or animal) hold on tightly to.
 clingy			<- kids are very clingy #(of a person or garment) liable to cling; clinging
 commercing 		<- starting
 condemnation	<- 심한비난
 conform			<- comply with rules, standards, or laws
 contiguous		<- sharing a common border; touching. next or together in sequence.
+crouch			<- adopt a position where the knees are bent and the upper body is brought forward and down, 
+					sometimes to avoid detection or to defend oneself.
 culprit			<- cause of an issue or a person who is responsible for a crime or other misdeed.
 
 
@@ -48,12 +61,14 @@ duck out		<- Leave hurriedly or secretly
 # E
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
 embezzle		<- 횡령
+encompasses 	<- surround and have or hold within
 entitlements	<- the amount to which a person has a right.
 eye stye		<- 눈다락지
 
 # F
 fall through 	<- your plans didn't work out for some reaso, didn't work out
-full-fledged	<-	completely developed or established; of full status.
+fatigue			<- 피로
+full-fledged	<- completely developed or established; of full status.
 
 
 
@@ -62,10 +77,18 @@ full-fledged	<-	completely developed or established; of full status.
 gingivitises	<- 치은염
 
 #H
-
+hard-nosed		<- realistic and determined; tough-minded. 
+hypoxia			<- 저산소증	
+hospice			<- a type of care and philosophy of care that focuses on the palliation(make 
+(nursing home)		(a disease or its symptoms) less severe or unpleasant without removing the cause) 
+					of a chronically ill, terminally ill or seriously ill patient's pain and symptoms, 
+					and attending to their emotional and spiritual needs.
+					숙박소, 숙사(호스피스)
 
 # I
 ideation 		<- 관념화 the formation of ideas or concepts.
+inflict			<- cause (something unpleasant or painful) to be suffered by someone or something. 가하다
+inhibition		<- the action of inhibiting(금지), restricting, or hindering a process.
 impose			<- force (something unwelcome or unfamiliar) to be accepted or put in place.
 impaired		<- the state or fact of being impaired(weakened or damaged), especially in a specified faculty.
 irrigator		<- [írəgèitər]
@@ -79,6 +102,7 @@ Marshalling 	<- arrange or assemble (a group of people, especially soldiers) in 
 mock-up			<- a model or replica of a machine or structure, used for instructional or experimental purposes.
 # N
 nifty			<- very good
+nitty-gritty	<- what is essential and basic :specific practical details get down to the nitty-gritty of the problem
 no frill 		<- simple, plain, 
 
 # P
@@ -98,6 +122,7 @@ quirk			<- 변덕 				e.g. by a quirk of fate 운명의 장난으로
 
 
 # P
+poised			<- be ready
 primitive		<- relating to, denoting, or preserving the character of an early stage in the 
 					evolutionary or historical development of something.
 				
@@ -110,7 +135,7 @@ relator			<-  a person who brings a public lawsuit, typically in the name of the
 relinquish 		<- give up
 retroactive  	<- effective from a particular date in time
 Retrospective   <- looking back on or dealing with past events or situations. 회고의,
-
+rudimentray		<- involving or limited to basic principles.
 
 				   
 				   
@@ -124,17 +149,24 @@ scoot			<- go or leave somewhere quickly.
 scrutiny		<- critical observation or examination:	examination, inspection, survey, study, perusal;
 snoop			<- investigate or look around furtively in an attempt to find out something, 
 					especially information about someone's private affairs.
-souvenir
+					souvenir
+softy			<- a softhearted, weak, or sentimental person.
+Spectre			<- 
 squealing 		<- 빽뺵소리 스피커에서
+
 stash			<- store (something) safely and secretly in a specified place
 Startle			<- excited by sudden surprise or alarm and making a quick involuntary movement
 strata			<- a layer of material, naturally or artificially formed, often one of a number 
 					of parallel layers one upon another: 층
+streak			<- [striːk] Noun: a long, thin line or mark of a different substance or color from its surroundings.
+					Verb: move very fast in a specified direction.
 subtle			<- (especially of a change or distinction) so delicate or 
 					precise as to be difficult to analyze or describe.
 supersede 		<- replace
 
-# T
+# T 
+thin-skinned	<- sesitive to criticism or insults
+thick-skinned
 turnkey			<- (car turn key to start & drive) | ~of or involving the provision of a complete product 
 														 or service that is ready for immediate use.
 tongue in cheek <-without really meaning what one is saying or writing.
@@ -147,7 +179,7 @@ vanquish		<- come out better in a competition, race, or conflict
 
 # W
 wane			<- weaker, (especially of a condition or feeling) decrease in vigor, power, or extent; become weaker.
-
+whimsical		<- 변덕스러운
 
 # U
 unwieldy <- hard to handle

@@ -1,0 +1,14 @@
+OpsGenie Heartbeat configuration using API call
+
+1. On OpsGenie, setup a Team name and add members
+2. Create a Integration name for a API(e.g. BNEA-NetOps  Only one per a team)    
+3. create multiple hearbeat names(max 100) e.g. RidgeRacer, RidgeRacer-DB, RidgeRacer-lobby, etc.
+4. Each host will send a API call to OpsGenie for Heartbeat report every 9mins.  
+	10 mins is the shortest time for this account at the moment.
+$ curl -X PUT 'https://api.opsgenie.com/v2/heartbeats/RidgeRacer/ping' --header 'Authorization: GenieKey 70607cf0-b356-4624-8322-5fa89aa616cd'
+5. If the host server does not report after past 10mins, the OpsGenie will trigger the alert
+
+1. Client send heartbeat to OpsGenie API server to report the status
+https://github.com/opsgenie/opsgenie-heartbeat/releases/tag/2.0.2
+
+$wget https://github.com/opsgenie/opsgenie-heartbeat/releases/download/2.0.2/oghb-linux-amd64-v2.0.2.tar.gz
