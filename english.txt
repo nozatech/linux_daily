@@ -126,7 +126,10 @@ quirk			<- 변덕 				e.g. by a quirk of fate 운명의 장난으로
 poised			<- be ready
 primitive		<- relating to, denoting, or preserving the character of an early stage in the 
 					evolutionary or historical development of something.
-				
+profoundly		<- synonyms: extremely, very, deeply, exceedingly, greatly, immensely, enormously, 
+					tremendously, intensely, heartily, keenly, acutely, painfully, 
+					from the bottom of one's heart, downright, thoroughly, sincerely, so; More
+					
 # R
 reconnaissance	<- military observation of a region to locate an enemy or ascertain strategic features.
 remuneration 	<- pay

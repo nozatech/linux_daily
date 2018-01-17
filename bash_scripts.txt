@@ -1,3 +1,5 @@
+"한 줄의 코딩을 하더라도 실제로 사용할 수 있는 것을 만들자!"
+
 ######################
 ### 1. Run Scripts ###
 ######################
@@ -25,28 +27,33 @@ $ apt-get | yum install shellcheck	-y
 ---------------------------------------------------
 	$ ./script.sh					 <= run in seperate shell
 	$ . ./script.sh   			     <= current login shell to run
+
     $ sh ./script.sh  				 <= same as 'sh script.sh')
     $ sh +x script.sh   			 <= +x for debuging mode
     $ sh -x script.sh   			 <= +x for debuging mode
     $ sh -v script.sh   			 <= -v for debuging mode
-	
     $ sh +v script.sh   			 <= +v for debuging mode
 
     $ exec ./script   				 <= after run, the login shell exit 
+
+	$ bash script.sh
 	$ bash ./script.sh
 	$ bash -x  script.sh			 <= debug mode
 	$ bash -v 
+	
+	$ source script.sh
 	
 
 	*** $ source .bashrc						<= reload .bashrc
 
 	# run script as a different user from root
 	$ wget http://tecmint.com/wp-content/scripts/tecmint_monitor.sh
-	$ [apark@i7 ~]$ su -c "/home/apark/tecmint_monitor.sh" - root
+	$ su -c "/home/apark/tecmint_monitor.sh" - root
 	$ ./tecmint_monitor.sh -i    <- install
 	$ monitor
+
 ---------------------------------------------------	
-# Run script WITHIN vim or vi
+# VI: Run script WITHIN vim or vi
 ---------------------------------------------------
     :w   	      					<= write first
     :!sh %   (# :! sh %)     		<= : <-cmd ! <-run, sh <-shell, % =currently open file
@@ -54,8 +61,9 @@ $ apt-get | yum install shellcheck	-y
     :!./script_name.sh
     :! python %
     :! perl %
+
 ---------------------------------------------------
-### Save in read only file ###
+# VI: Save in read only file ###
 ---------------------------------------------------
 	:w !sudo tee %                  	<= save as sudo privilege.  type (L) load at the prompt to reload.
 	:w !chmod 777 %    then    :wq!
@@ -74,7 +82,7 @@ $ apt-get | yum install shellcheck	-y
 	o					<= insert underneath line
 	
 ---------------------------------------------------	
- # VI Search and replace 	( http://vim.wikia.com/wiki/Search_and_replace )
+# VI: Search and replace 	( http://vim.wikia.com/wiki/Search_and_replace )
 ---------------------------------------------------
     :s/foo/bar/g					<= current line only
 	:%s/foo/bar/gc					<= % all, c to confirm first but also INSENSITVE
@@ -88,7 +96,7 @@ $ apt-get | yum install shellcheck	-y
 										:d (delete)
 										
 ---------------------------------------------------								
- # Debug mode	
+# Debug mode	
 ---------------------------------------------------
     #!/bin/bash -x 					<= add " -x " for debugging mode in #!/bin/bash script
     $ bash -x ./script.sh  			( same as 'bash script.sh') 
@@ -99,16 +107,16 @@ $ apt-get | yum install shellcheck	-y
 	
  # Stop and Exit running program
 	$ vi 1.sh
-	crtl + z 						<= exit to shell
+      crtl + z 						<= exit to shell
 	$ vi 2.sh
 	$ jobs
 	[1] Stopped  vim
 	[2] Stopped  vim
 	$ fg %1							<= go back to 1.sh
 	ctrl + z
-	
 	$ kill %2
 	$ kill -9 %2
+
 ---------------------------------------------------
 # Run from background
 ---------------------------------------------------
@@ -120,7 +128,7 @@ $ apt-get | yum install shellcheck	-y
 
 	
 ---------------------------------------------------
-##### Bash Environment Variable  ####
+### Environment Variable  ####
 ---------------------------------------------------
 $ var	        	   #Value of shell variable var.
 $ var=value		       #Assign the string value to shell variable var.
@@ -134,16 +142,120 @@ $ var=value		       #Assign the string value to shell variable var.
 	$ echo $length
 	  5
 	  
+---------------------------------------------------
+### Local Variable  ####
+---------------------------------------------------	  
+	- variables can be created in a function that will not be available outside of it
+	- variables only set within a function
 	  
-	  
-	  
-	  
-	  
-	  
-	  
+	- The typeset cmd makes variables local, can provide a type, or can provide formatting.
+	$ typeset -i x		<= x must be an integer
+		-Arithmatic is faster
+		- Let allows for convenient arithmetic:
+		  let x++; let y=x**2; let x=x*3; let x*=5, ...
+--------------------------	  
+#!/bin/bash
+function f1 {
+	typeset x
+	x=7
+	x=8
+}
+x=1
+y=2
+echo x is $x
+echo y is $y
+f1
+echo x is $x
+echo y is $y
+--------------------------
+x is 1
+y is 2
+x is 1
+y is 8		  
+		  
+		  
+---------------------------------------------------
+### Declare  ####
+---------------------------------------------------	
+https://unix.stackexchange.com/questions/254367
+When used in a function, declare makes NAMEs local, as with the local command. 
+The -g option suppresses this behavior.
+
+abc=ok assigns a value to the variable abc. declare abc declares a variable called abc. 
+The two can be combined as declare abc=ok.
+
+In bash, like other shells, string and array variables don't need to be declared, so declare 
+isn't necessary unless you want to pass options, e.g. declare -A abc to make abc an associative 
+array or declare -r to make a variable read-only. However, inside a function, declare does 
+make a difference: it causes the variable to be local to the function, meaning that the value 
+of the variable outside the function (if any) is preserved. (Unless you use declare -g, which 
+makes the variable not local; this is useful when combined with other options, e.g. declare -gA 
+to create a global associative array in a function.) 
+
+Example:
+---------------------------------------------------	
+f () {
+  declare a
+  a='a in f'
+  b='b in f'
+  echo "From f: a is $a"
+  echo "From f: b is $b"
+}
+a='Initial a'
+b='Initial b'
+f
+echo "After f: a is $a"
+echo "After f: b is $b"
+
+Output=>
+From f: a is a in f
+From f: b is b in f
+After f: a is Initial a
+After f: b is b in f
+
+
+The declare builtin is unique to bash. It's strongly inspired and very close to ksh's 
+typeset builtin, and bash provides typeset as a synonym of declare for compatibility. 
+There's a third synonym, local. 
+There's also export, which is the same as declare -x, again for compatibility 
+(with every Bourne-style shell).
+
+----------------------------------------------------	  
+	 $ declare -l uppercase values in the variable are converted to lowercase
+	 $ declare -u lowercase values in the variable are converted to uppercase
+	 $ declare -r variable is made read-only
+	 $ declare -a MyArray will make MyArray an indexed array.
+	 $ declare -A MyArray2 will make MyArray2 an Associative array.
+----------------------------------------------------
+#!/bin/bash
+declare -l lowerString="ABCdef"
+declare -u upperString="ABCdef"
+declare -r readOnly="A Value"
+declare -a MyArray
+declare -A MyArray2
+
+echo lowerString = $lowerString
+echo upperString = $upperString
+echo readOnly = $readOnly
+
+readOnly="New Value"
+
+MyArray[2]="Second Vlaue"
+echo 'MyArray[2] = '${MyArray[2]}
+
+MyArray2["hotdog"]="baseball"
+echo 'MyArray2[hotdog]= ' ${MyArray2["hotdog"]}
+----------------------------------------------------
+
+ 	 
+	 
+	 
+	 
+	 
+	 
 
 ---------------------------------------------------
-# Combine 2 or more commands
+# Combines 2 or more commands
 ---------------------------------------------------
 cmd1; cmd2     #Do cmd1 and then cmd2.
 cmd1 & cmd2    #Do cmd1, start cmd2 without waiting for cmd1 to finis
@@ -160,13 +272,10 @@ cmd1 || cmd2 || cmd3  #Run cmd1, then if cmd1 not successful run cmd2, not cmd2 
 -a    # and
 -o    # or	
 
-
-
-
-----------------------------------------------	
 	
-
+---------------------------------
 # File Descriptor and Redirection
+---------------------------------
 https://en.wikipedia.org/wiki/File_descriptor
 File Desciptor 0,1, and 2 reservered as:
 	0 - stdin (Standard input)
@@ -174,8 +283,9 @@ File Desciptor 0,1, and 2 reservered as:
 	2 - stderr (Standard Error)
 
 
----------------------------------------------------	
+----------------------------------------------
 # I/O Redirection:
+----------------------------------------------	
 
 pgm > file     #Output of pgm is redirected to file.
 pgm < file     #Program pgm reads its input from file.
@@ -206,17 +316,50 @@ n <& m         #Merge input from stream n with stream m.
 	
 ---------------------------------------------------	
 # Shell Built-in Variables:
+----------------------------------------------	
+$0             # Name of this shell script itself.
+$1             # Value of first command line parameter (similarly $2, $3, etc)
+$@			   # 
+$#             # In a shell script, the number of command line parameters.
+$*             # All of the command line parameters.
+$-             # Options given to the shell.
+$?             # Return the exit status of the last command. 0 - Successful, 1 -fail
+$$             # Process id of script (really id of the shell running the script)	
 
-$0             #Name of this shell script itself.
-$1             #Value of first command line parameter (similarly $2, $3, etc)
-$#             #In a shell script, the number of command line parameters.
-$*             #All of the command line parameters.
-$-             #Options given to the shell.
-$?             #Return the exit status of the last command.
-$$             #Process id of script (really id of the shell running the script)	
+The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
+
+*
+($*) Print all the parameter.
+	 Expands to the positional parameters, starting from one. When the expansion is not within double quotes, 
+     each positional parameter expands to a separate word. In contexts where it is performed, those words are 
+	 subject to further word splitting and pathname expansion. When the expansion occurs within double quotes, 
+	 it expands to a single word with the value of each parameter separated by the first character of the IFS 
+	 special variable. That is, "$*" is equivalent to "$1c$2c…", where c is the first character of the value 
+	 of the IFS variable. If IFS is unset, the parameters are separated by spaces. If IFS is null, the parameters 
+	 are joined without intervening separators.
+
+@
+($@) Individually double quoted 
+	Expands to the positional parameters, starting from one. When the expansion occurs within double quotes, 
+	each parameter expands to a separate word. That is, "$@" is equivalent to "$1" "$2" …. If the double-quoted 
+	expansion occurs within a word, the expansion of the first parameter is joined with the beginning part of the 
+	original word, and the expansion of the last parameter is joined with the last part of the original word. 
+	When there are no positional parameters, "$@" and $@ expand to nothing (i.e., they are removed).
+
+#
+($#) Expands to the number of positional parameters in decimal(Counts number of parameters).	
+ 
+($?) Exit status of the last command
+	0 - successful
+	1 - fail
+	e.g. echo $?
+($$) Process ID under which order getting executed
+
+(?!) Process number of the last background command
 
 ---------------------------------------------------  	
 # Pattern Matching:
+----------------------------------------------	
 
 *              #Matches 0 or more characters.
 ?              #Matches 1 character.
@@ -237,10 +380,10 @@ echo \*                 #Echos * to screen, not all filename as in:  echo *
 echo '$1$2hello'        #Writes literally $1$2hello on screen.
 echo "$1$2hello"        #Writes value of parameters 1 and 2 and string hello.
 	
----------------------------------------------------
+-------------------------------------------------------------------
 # Arithmetic: BASH arithmetic is done using the expr command as in:
-
-result=`expr $1 + 2`
+-------------------------------------------------------------------			
+result=`expr $1 + 2`   				<= ` back tic
 result2=`expr $2 + $1 / 2`
 result=`expr $2 \* 5`               #note the \ on the * symbol
 
@@ -257,7 +400,8 @@ pathname expansion      (using *, ?, and [abc] )
 
 ---------------------------------------------------	
 ### Script running remotely
---- Run a script on remote and out to local file
+---------------------------------------------------
+# Run a script on remote and out to local file
 
 $ ssh-copy-id id@remote_ip             <= copy id_rsa.pub file into remote first
 
@@ -281,12 +425,13 @@ $ for i in sg-us sg-eu sg-as ; do echo $i; date; done
 $ for i in sg-eu sg-as ; do rsync -av authorized_keys $i:.ssh; done
 
 
-$ for i in $(cat pmtip); do echo $i && ssh -t apark@$i cat /var/log/newrelic/nrsysmond.log | tail; done  2>&1 > log
+$ for i in $(cat pmtip); do echo $i && ssh -t apark@$i "cat /var/log/newrelic/nrsysmond.log" | tail; done  2>&1 > log
 
 $ while true; do dmesg -c ; sleep 1 ; done
 
 $ while [ 1 ] ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostname'; sleep 10; done
 $ while false ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostname'; sleep 10; done
+
 $ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; kill $! ; wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
 	
 	
@@ -360,14 +505,84 @@ fi
 	$ ps					 
 	  1453 pts/1    00:00:00 bash  <= BASH
 	$ ps | grep `echo $$` | awk '{ print $4 }'
+
+
+---------------------------------------------------
+### Special Shell Variables ###
+https://coderwall.com/p/85jnpq/bash-built-in-variables
+
+	$0 		file name of script
+	$1		positional parameter #1
+	$2-9	positional parameter #2-9
+	${10}	positional parameter #10 and up e.g. 11, 12, 13....
+	$#		number of positional parameter
+	"$*"	all the positional parameters(as separate word)*
+	"$@"	all the positional parameters(as separate strings)
+	${#*}	number of positional parameters
+	${#@}	number of positional parameters
+	$?		return value
+	$$	 	process ID(PID) of script
+	$-		flags passed to script(using set)
+	$_		last argument of previous command
+	$!		process ID(PID) of last job run in background
+	* Must be quoted, otherwise it defaults to $@
 	
-	$$ <= the PID of the current process.
-	$? <= the return code of the last executed command.	
-	$# <= the number of arguments in $*
-	$* <= the list of arguments passed to the current process
-	$@ <= 
+echo $$ <= the PID of the current process.
+echo $? <= the return code of the last executed command.	
+echo $# <= the number of arguments in $*
+echo $* <= the list of arguments passed to the current process
+echo $@ <= 
 	
----------------------------------------------------	
+--------------------------------------------------------------------------------------------------
+$* - Expands to the positional parameters, starting from one. When the expansion occurs within 
+	double quotes, it expands to a single word with the value of each parameter separated by 
+	the first character of the IFS special variable.
+
+$@ - Expands to the positional parameters, starting from one. When the expansion occurs within 
+	" "(double quotes), each parameter expands to a separate word.
+
+------------------------------------------
+#!/bin/bash
+echo "With *:"
+for arg in "$*"; do echo "< $arg >"; done
+echo
+echo "With @:"
+for arg in "$@"; do echo "< $arg >"; done
+------------------------------------------
+$ /tmp/test.sh 1  2 "3 4"
+With *:
+<1 2 3 4>
+
+With @:
+<1>
+<2>
+<3 4>
+
+https://coderwall.com/p/85jnpq/bash-built-in-variables
+$ vi test.sh
+
+#! /bin/sh
+echo '$#' $#
+echo '$@' $@
+echo '$?' $?
+
+$ bash test.sh 1 2 3
+output:
+$#  3
+$@  1 2 3
+$?  0
+
+*You passed 3 parameters to your script.*
+
+$# = number of arguments. Answer is 3
+$@ = what parameters were passed. Answer is 1 2 3
+$? = was last command successful. Answer is 0 which means 'yes'
+	
+$ echo -n     do not output the trailing newline
+       -e     enable interpretation of backslash escapes
+       -E     disable interpretation of backslash escapes (default)
+	   
+---------------------------------------------------
 ### Quote in shell script ###
 
 	$greeting="hello"
@@ -384,53 +599,6 @@ fi
 	    => hello, world (planet)!
 
 	$ awk '/lemon/ && /rice/'					<= search two words
-
----------------------------------------------------
-### Special Shell Variables ###
-	$0 		file name of script
-	$1		positional parameter #1
-	$2-9	positional parameter #2-9
-	${10}	positional parameter #10 and up e.g. 11, 12, 13....
-	$#		number of positional parameter
-	"$*"	all the positional parameters(as separate word)*
-	"$@"	all the positional parameters(as separate strings)
-	${#*}	number of positional parameters
-	${#@}	number of positional parameters
-	$?		return value
-	$$	 	process ID(PID) of script
-	$-		flags passed to script(using set)
-	$_		last argument of previous command
-	$!		process ID(PID) of last job run in background
-	* Must be quoted, otherwise it defaults to $@
-
-https://coderwall.com/p/85jnpq/bash-built-in-variables
-file:test.sh
-#! /bin/sh
-echo '$#' $#
-echo '$@' $@
-echo '$?' $?
-
-*If you run the above script as*
-
-> ./test.sh 1 2 3
-
-You get output:
-$#  3
-$@  1 2 3
-$?  0
-
-*You passed 3 parameters to your script.*
-
-$# = number of arguments. Answer is 3
-$@ = what parameters were passed. Answer is 1 2 3
-$? = was last command successful. Answer is 0 which means 'yes'
-	
-	
-	
-$ echo -n     do not output the trailing newline
-       -e     enable interpretation of backslash escapes
-       -E     disable interpretation of backslash escapes (default)
-	   
 ---------------------------------------------------
 ### "2>&1" command:
 	Using "2>&1" , redirect the standard error(2) to standard output(1). The string "2>&1" indicates that any errors 
@@ -475,7 +643,8 @@ Operator	       Meaning									Example
 -ot			First file is older than second one					[ "$myfile" -ot ~/.bashrc ]
 
 
-### Test [ expression ] statement for Comparison operation [[ expression ]]     0:TRUE  1:FALSE 
+### Test [ expression ] statement for Comparison operation [[ expression ]]     
+	0:TRUE  1:FALSE 
 A. Comparing variables									           For Integer
 	Less than			        [[ $1 < $2 ]]                    = (( $a < $B )) 
 	greater than			    [[ $a > $b ]]
@@ -490,7 +659,8 @@ $ [ 10 == 10 ]; echo $?
 $ [[ 1 < 2 ]] ; echo $?
 $ (( 1 < 2 )) ; echo $?
 $ (( 1 == 2 )) ; echo $?
-1
+
+or use 'expr'
 
 
 ------------------------------------------------
@@ -605,6 +775,13 @@ export varName=value         # defines an environment variable (will be availabl
 	e.g.  using 'export' to env variable for current SHELL to execute 
 	$ HTTP_PROXY=192.168.2.2:3128
 	$ export HTTP_PROXY
+	
+	$ echo A is $A
+	$ export A=1
+	$ echo A is $A
+	  A is 1
+	$ unset A
+	
 
 
 # Arrays adn Associative Arrays
@@ -622,13 +799,13 @@ ${#array[i]}                 # to find out the length of any element in the arra
 ${#array[@]}                 # to find out how many values there are in the array
 
 
-
-declare -a                   # the variables are treated as arrays
+declare -A					 # Associative Array
+declare -a                   # Indexed array variables
 declare -f                   # uses function names only
 declare -F                   # displays function names without definitions
 declare -i                   # the variables are treaded as integers
 declare -r                   # makes the variables read-only(Constant)
-	ex) declare -r NUM1=5
+								ex) declare -r NUM1=5
 declare -x                   # marks the variables for export via the environment
 
 ${varname:-word}             # if varname exists and isn't null, return its value; otherwise return word
@@ -830,8 +1007,8 @@ done
 
 "declare -a" declares an array and all the elements in the parentheses are the elements of an array.
  
-$declare -a array_name=('Debian' 'Red hat' 'Red hat' 'Suse' 'Fedora');
-$echo ${array_name[@]}
+$ declare -a array_name=('Debian' 'Red hat' 'Red hat' 'Suse' 'Fedora');
+$ echo ${array_name[@]}
   Debian Red hat Red hat Suse Fedora
 
 ------------------------------------
@@ -1185,8 +1362,30 @@ done
 ----------------------------------------------------------------------------------
 ### While loop ###
 ----------------------------------------------------------------------------------
+#!/bin/bash
+x=1
+while
+    ((x<10))
+do
+    echo loop $x; date > data.$x
+    ((x=x+1))
+done
+--------------------------------------------
+#!/bin/bash
+ls -l /etc | while
+        read a b c d
+do
+        echo "The owner name is  $c."
+done
+--------------------------------------------
+$ ls -l /etc/ | head -n 2
+total 1364
+-rw-r--r--.  1(No of link to file)  'root'   root       16 Dec  5  2016 adjtime
+     $a     $b   					 $c       $d
 
+--------------------------------------------
 $while read i; do echo $i; done < while1.sh
+--------------------------------------------
 #!/bin/bash
 i=1
 while read file; do
@@ -1290,20 +1489,67 @@ done
 --------------------------------------------------	
 	
 	
-	
-34. for loop
-	x="nozatech"
-	for i in /home/*; do
-		echo $x is exist in home directory
-	done
-	
+--------------------------------------------------		
+34. for loops
+# goes over per word, not line
+--------------------------------------------------	
+for i in $(<dataFile.txt)
+for i in *.txt
+for i in $(find . -name *.txt)
 
+--------------------------------------------------
+#!/bin/bash
+export a=first
+export b=second
+export c=thrid
+echo a is '['$a']' b is '['$b']' c is '['$c']'
+read a b < dataFile.txt
+echo a is '['$a']' b is '['$b']' c is '['$c']'
+--------------------------------------------------
+$ cat dataFile.txt
+dog cat rooster
+--------------------------------------------------
+x="nozatech"
+for i in /home/*; do
+	echo $x is exist in home directory
+done
+
+--------------------------------------------------
+#!/bin/bash
+for i in dog cat hotdog
+do
+    echo i is $i
+done
+#--------------------------------------------------
+for i in `seq 3 5`
+do
+    echo i in seq is $i
+done
+#--------------------------------------------------
+for i in {A..z}
+do
+    echo i in letter list is $i
+done
+#--------------------------------------------------
+for i in $(<dataFile.txt)					# Per word
+do
+    echo i in the dataFile.txt is $i
+done
+#--------------------------------------------------
+for i in $(find /etc 2> /dev/null | grep grub)
+do
+    echo The Grub named things are $i
+done
+--------------------------------------------------
+
+	
+	
 35. file
 	i=1
 	while read f; do
 		echo "Line $i: $f"
 		((i++))
-	done < ffile.txt	
+	done < file.txt	
 
 
 e.g.
@@ -1328,11 +1574,7 @@ e.g.
 	
 	
 	
-	mkdir
-	$ mkdir -p production/{modules,manifests}  <= creating multi folders
-	
-	mkdir and cd into directory
-	$ mkdir ~/docker-registry && cd $_
+
 
 ----------------------------------------------------------------------------------
 38. && ( AND )   
@@ -1416,6 +1658,18 @@ e.g.    cd $directory || error_exit "No such dir and aborting!"
 ----------------------------------------------------------------------------------
 ### Function ###
 ----------------------------------------------------------------------------------
+Shell memorizeds the function like it's a new command
+$ function helloworld {
+	echo "Hello World!"
+  }
+$ helloworld
+	Hello World!
+------------------------------------------------------
+# hidden file listing function from shell
+$ hidden() { ls -a "$@" | grep '^\.'; }			<= $@  
+$ hidden .
+
+
 
 #!/bin/bash
 function numberthings {		<= Declaring function name
@@ -1531,11 +1785,11 @@ quit  						  # exit
 #!/bin/bash
 #numberthings (){
 function numberthings {
-        i=1
-        for f in $@; do
-                echo $i: $f
-                ((i++))
-        done
+    i=1
+    for f in $@; do
+        echo $i: $f
+        ((i++))
+    done
 }
 
 echo "First function"
@@ -1609,36 +1863,7 @@ foo 1 2 3
 It would display 1 2 3. If not used inside a function, it specifies all parameters 
 used when calling the script. See the bash manual page for more info.	
 	
-The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
 
-*
-($*) Print all the parameter.
-	 Expands to the positional parameters, starting from one. When the expansion is not within double quotes, 
-     each positional parameter expands to a separate word. In contexts where it is performed, those words are 
-	 subject to further word splitting and pathname expansion. When the expansion occurs within double quotes, 
-	 it expands to a single word with the value of each parameter separated by the first character of the IFS 
-	 special variable. That is, "$*" is equivalent to "$1c$2c…", where c is the first character of the value 
-	 of the IFS variable. If IFS is unset, the parameters are separated by spaces. If IFS is null, the parameters 
-	 are joined without intervening separators.
-
-@
-($@) Individually double quoted 
-	Expands to the positional parameters, starting from one. When the expansion occurs within double quotes, 
-	each parameter expands to a separate word. That is, "$@" is equivalent to "$1" "$2" …. If the double-quoted 
-	expansion occurs within a word, the expansion of the first parameter is joined with the beginning part of the 
-	original word, and the expansion of the last parameter is joined with the last part of the original word. 
-	When there are no positional parameters, "$@" and $@ expand to nothing (i.e., they are removed).
-
-#
-($#) Expands to the number of positional parameters in decimal(Counts number of parameters).	
- 
-($?) Exit status of the last command
-	0 - successful
-	1 - fail
-	e.g. echo $?
-($$) Process ID under which order getting executed
-
-(?!) Process number of the last background command
  
  
 ------------------------------------
@@ -1673,8 +1898,8 @@ unset -f functname  # deletes a function definition
 declare -f          # displays all defined functions in your login session
 2.3. FLOW CONTROL.
 
-statement1 && statement2  # and operator
-statement1 || statement2  # or operator
+statement1 && statement2  # 'and' operator
+statement1 || statement2  # 'or' operator
 
 -a                        # and operator inside a test conditional expression
 -o                        # or operator inside a test conditional expression
@@ -2330,26 +2555,24 @@ http://stackoverflow.com/questions/12628327/how-to-show-and-update-echo-on-same-
 
 #--------------------------------------------------------------------------------
 #!/bin/bash
-#
 ### Comparing two directories ###
-#
 #set -x 		# Debug mode  +x is disable mode
-### echo this script usage if argument is missing or over  ###
+#
+# Usage: compare2dirs.sh DIR1_Name DIR2_Name #
 usage="Usage: $0 DIR1_Name DIR2_Name"
-
-# Usage: compare2dirs.sh DIR1_Name DIR2_Name
+ 
 #------------
-if [ $# -gt 2 ]; then                   # $# <=the number of command line parameters.
-    echo $usage;						# if args are more than 2 dirs, echo $usage
+if [ $# -gt 2 ]; then                   # number of command line parameters.
+    echo $usage;						# if args are more than 2, echo $usage
     echo 1
 fi
 
-if [ $# -lt 2 ]; then                   # $# <=the number of command line parameters.
-    echo $usage;						# if args are less than 2 dirs, echo $usage
+if [ $# -lt 2 ]; then                   # number of command line parameters.
+    echo $usage;						# if args are less than 2, echo $usage
     echo 
 fi
 
-if [ -z "$1" ]; then                    # -z <= length of '$1' parameter is empty(zero string)
+if [ -z "$1" ]; then                    # length of '$1' parameter is empty(zero string)
     echo $usage;
 fi
 #------------ Actual Code ------------#
@@ -2372,15 +2595,13 @@ diff dir1.txt dir2.txt
 git diff --no-index dir1/ dir2/
 
 #--------------------------------------------------------------------------------
+### 5 mins count down from Shell ###
 
-
-### 5 mins count down from Shell
 $ for i in {1..300}; do echo -ne $i '\r'; sleep 1; done; echo
+
 #--------------------------------------------------------------------------------
-
-
 Function 
-## get pid
+## get pid ###
 
 get_ntopng_pid() {
 if [ -f "/etc/ntopng/ntopng.conf" ]; then
@@ -2390,6 +2611,18 @@ PID_FILE="/var/tmp/ntopng.pid"
 fi
 
 #--------------------------------------------------------------------------------
+### fork bomb ###
+https://www.cyberciti.biz/faq/understanding-bash-fork-bomb/
+$ :(){ :|:& };:
+denial-of-service (DoS) attack against a Linux based system
+is nothing but a bash function. This function get executed recursively. It is often used 
+by sys admin to test user process limitations. Linux process limits can be configured via 
+/etc/security/limits.conf and PAM
+
+:(){
+ :|:&
+};:
+#--------------------------------------------------------------------------------
 
 
 
@@ -2397,7 +2630,102 @@ fi
 
 
 
+#--------------------------------------------------------------------------------
+### Object-oriented programming (OOP) ###
+#--------------------------------------------------------------------------------
+	is a programming paradigm that represents the concept of "objects" that have data fields 
+	(attributes that describe the object) and associated procedures known as methods. Objects, 
+	which are usually instances of classes, are used to interact with one another to design applications 
+	and computer programs.[1][2] C++,Objective-C, Smalltalk, Java, C#, Perl, Python, Ruby and PHP are 
+	examples of object-oriented programming languages.
 
+	Object-oriented programming is an approach to designing modular, reusable software systems. Although 
+	discussions of object-oriented technology often get mired in the details of one language vs. the other, 
+	the real key to the object-oriented approach is that it is a modelling approach first.[3] Although often 
+	hyped as a revolutionary way to develop software by zealous proponents, the object-oriented approach is 
+	in reality a logical extension of good design practices that go back to the very beginning of computer 
+	programming. Object-orientation is simply the logical extension of older techniques such as structured 
+	programming andabstract data types. An object is an abstract data type with the addition 
+	of polymorphism and inheritance.
 
+	Rather than structure programs as code and data, an object-oriented system integrates the two using the 
+	concept of an "object". An object has state (data) and behavior (code). Objects correspond to things 
+	found in the real world. So for example, a graphics program will have objects such as circle, square, menu. 
+	An online shopping system will have objects such as shopping cart, customer, product. The shopping system 
+	will support behaviors such as place order, make payment, and offer discount. The objects are designed as 
+	class hierarchies. So, for example, with the shopping system there might be high level classes such as 
+	electronics product, kitchen product, and book. There may be further refinements for example under electronic 
+	products: CD Player, DVD player, etc. These classes and subclasses correspond to sets and subsets 
+	in mathematical logic.
 
+	The goals of object-oriented programming are:
+	•	Increased understanding.
+	•	Ease of maintenance.
+	•	Ease of evolution.
 
+	The overall understanding of the system is increased because the semantic gap—the distance between the 
+	language spoken by developers and that spoken by users—is lessened. Rather than talking about database 
+	tables and programming subroutines, the developer talks about things the user is familiar with: 
+	objects from their application domain.[4]
+	
+Object orientation eases maintenance by the use of encapsulation and information hiding. One of the 
+most common sources of errors in programs is when one part of the system accidentally interferes with 
+another part. For example, in the very earliest days of programming, it was common for developers to 
+use "go to" statements to jump to arbitrary locations within only a few routines and functions. 
+Critics called this "spaghetti code" because it is disorganized. Structured programming addresses 
+this by encouraging the use of procedures and subroutines. Appropriate usage sections off 
+responsibility for individual blocks to implement separate functionality. So, for example, one 
+would know that the square root function was separate from the launch missiles function, and a 
+change to one could not affect the other.[5]
+
+Object-orientation takes this to the next step. It essentially merges abstract data types with 
+structured programming and divides systems into modular objects which own their own data and are 
+responsible for their own behavior. This feature is known as encapsulation. With encapsulation, 
+not only can the "square root" and "launch missiles" functions not interfere with each other, 
+but also the data for the two are divided up so that changes to one object cannot affect the other. 
+Note that all this relies on the various languages being used appropriately, which, of course, 
+is never certain. Object-orientation is not a software silver bullet, and it is not magic that 
+makes all development problems go away.[6]
+
+In addition to providing ease of maintenance, encapsulation and information hiding provide ease 
+of evolution as well. Defining software as modular components that support inheritance makes it 
+easy both to re-use existing components and to extend components as needed by defining new 
+subclasses with specialized behaviors. This goal of being easy to both maintain and reuse is 
+known in the object-oriented paradigm as the "open closed principle". A module is open if it 
+supports extension (e.g. can easily modify behavior, add new properties, provide default values, etc.). 
+A module is closed if it has a well defined stable interface that all other modules must use 
+and that limits the interaction and potential errors that can be introduced into one module 
+by changes in another.[7]
+
+The object-oriented approach encourages the programmer to place data where it is not directly 
+accessible by the rest of the system. Instead, the data is accessed by calling specially 
+written functions, called methods, which are bundled with the data. These act as the 
+intermediaries for retrieving or modifying the data they control. The programming construct 
+that combines data with a set of methods for accessing and managing those data is called 
+an object. The practice of using subroutines to examine or modify certain kinds of data 
+was also used in non-OOP modular programming, well before the widespread use of object-oriented programming.
+An object-oriented program usually contains different types of objects, each corresponding 
+to a real-world object or concept such as a bank account, a hockey player, or a bulldozer. 
+A program might contain multiple copies of each type of object, one for each of the real-world 
+objects the program deals with. For instance, there could be one bank account object for 
+each real-world account at a particular bank. Each copy of the bank account object would 
+be alike in the methods it offers for manipulating or reading its data, but the data inside 
+each object would differ, reflecting the different history of each account.
+Objects can be thought of as encapsulating their data within a set of functions designed 
+to ensure that the data are used appropriately, and to assist in that use. The object's 
+methods typically include checks and safeguards specific to the data types the object 
+contains. An object can also offer simple-to-use, standardized methods for performing 
+particular operations on its data, while concealing the specifics of how those tasks 
+are accomplished. In this way, alterations can be made to the internal structure or 
+methods of an object without requiring that the rest of the program be modified. 
+This approach can also be used to offer standardized methods across different types 
+of objects. As an example, several different types of objects might offer print methods. 
+Each type of object might implement that print method in a different way, reflecting 
+the different kinds of data each contains, but all the different print methods might 
+be called in the same standardized manner from elsewhere in the program. These features 
+become especially useful when more than one programmer is contributing code to a project 
+or when the goal is to reuse code between projects.
+
+#--------------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------------

@@ -1,22 +1,23 @@
 아무리 바빠도 해야할 일 - 책, && 돈이 많아도 하지 말아야 할일 -도박, 마약
 1.역사-역사의식 책임, 2.문화-감성, 3.경영-논리, 4.철학-생각에 방법, 5.사회학 인간학-인간 관계
------------------------------------------------------------------------------------
-Windows CMD kill process
+---------------------------------------
+### Windows CMD kill process
+---------------------------------------
 http://tweaks.com/windows/39559/kill-processes-from-command-prompt
 c:\taskkill /IM pdflite.exe /F 
+
 # Rename file 'F2'
 # Pin to Taskbar  <= on program, right click, pin to taskbar
 bring up the Task Manager 
 	Ctrl+Shift+Esc 
-Run dialogue
-	Windows + R 
-	Windows + E
-	Windows + D  <= Show Desktop
-	Windows +L   <= Lock
-	Windows +F   <= search
-	WIndows + shift +
------------------------------------------------------------------------------------
-Notepad++
+	Windows + R   <= run
+	Windows + E	  <= Explorer
+	Windows + D   <= Show Desktop
+	Windows + L   <= Lock
+	Windows + F   <= search
+---------------------------------------
+### Notepad++
+---------------------------------------
 Settings > Short cut Mapper Menu.
 1. 	Ctrl + L			Delete Current line
 	Ctrl + D			Duplicate(copy) line
@@ -34,23 +35,8 @@ Settings > Short cut Mapper Menu.
 	Ctrl+W				Close current document.
 	Alt +F4				Exit Notepad++
 -----------------------------------------------------------------------------------
-SMACK Stack
-Spark - fast and general engine for distributed, large-scale data processing
-Mesos - cluster resource management system that provides efficient resource
-		isolation and sharing across distributed applications
-Akka -  a toolkit and runtime for building highly concurrent, distributed, 
-		and resilience message-driven app on the JVM
-Cassandra - distributed, highly available DB designed to handle large amounts of data
-		across multiple datacenters
-Kafka - a high-throughput, low-latency distributed messaging system designed for
-		handling real-time 'data feeds'
-MEAN stack <= MongoDB, Express.js, AngularJS, and Node.js.
------------------------------------------------------------------------------------		
-IFTTT	<= IF This Then That
------------------------------------------------------------------------------------		
-
-
 ### Chrome ###
+---------------------------------------
 Plugin - 
 	Revolver <- Rotate Tabs
 	AdBlock
@@ -73,12 +59,40 @@ Ctrl + U				View a web page's source code
 just without the prefix(e.g. www) as 'something.com' is a 'naked domain.'
 
 -----------------------------------------------------------------------------------	
-Daily Linux CMD List & Scripts
+### Terminology
+-----------------------------------------------------------------------------------	
+
+### I
+IFTTT	<= IF This Then That
+
+### M
+MEAN stack <= MongoDB, Express.js, AngularJS, and Node.js
+
+### S
+SSL 	<= Secure Sockets Layer
+SMACK Stack
+	Spark - fast and general engine for distributed, large-scale data processing
+	Mesos - cluster resource management system that provides efficient resource
+			isolation and sharing across distributed applications
+	Akka -  a toolkit and runtime for building highly concurrent, distributed, 
+			and resilience message-driven app on the JVM
+	Cassandra - distributed, highly available DB designed to handle large amounts of data
+			across multiple datacenters
+	Kafka - a high-throughput, low-latency distributed messaging system designed for
+			handling real-time 'data feeds'
+
+### T ###
+TLS 	<= Transport Layer Security (TLS) – and its predecessor, Secure Sockets Layer (SSL)
+
+
+-----------------------------------------------------------------------------------	
+Daily Linux CMD List
 -----------------------------------------------------------------------------------	
 ###############
 1. SHELL	  #
 ###############
-Font Type <= Lucia Console, 12pt
+
+### Font Type <= Lucia Console, 12pt
 
 ### Shell's Color, History, Time stamp, Size ###
 ### GREEN Color
@@ -92,19 +106,34 @@ echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc					<= Ignore list
 echo 'export HISTTIMEFORMAT="%F > "' >> ~/.bashrc							<= History time stamp(man date)
 echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
 ###
----Copy & Paste or create a 'shellenv.sh' script and PSSH to all servers ----------
+
+### History with time stamp
+	export into ~/.bash_profile as well as /root/.bash_profile
+	export HISTTIMEFORMAT="%F %T "
+	
+	# Modify .bashrc Path and reload
+	http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-linux.html#awscli-install-linux-path
+	$ export PATH=~/.local/bin:$PATH		<= export  - Modify
+	$ source ~/.bash_profile				<= source  - reLoad
+	$ . ~/.bash_profile						<= source  - reLoad
+	$ source .bashrc						<= reload .bashrc
+	
+-----------------------------------------------------------------------------------
+### Copy & Paste or create a 'shellenv.sh' script and PSSH to all servers ###
+-----------------------------------------------------------------------------------
 cat << EOF >> ~/.bashrc
-export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"
-export HISTCONTROL="ignorespace:erasedups:ignoredups"
-export HISTIGNORE="history*:ll*:ls*:"
-export HISTTIMEFORMAT="%F > " 
+export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"				# Color
+export HISTCONTROL="ignorespace:erasedups:ignoredups"		# Ignore space, dups, 
+export HISTIGNORE="history*:ll*:ls*:"						# Ignore ls ll
+export HISTTIMEFORMAT="%F > " 								# Date format
 export HISTSIZE=10000
 EOF
 
 # Reload .bashrc 
 	$ source ~/.bashrc 
-# 
-	$ pssh -O StrictHostKeyChecking=no -h ipList.txt -l apark -A -I < ./shellenv.sh
+# Copy to servers  
+	$ pssh -O StrictHostKeyChecking=no -h serverList.txt -l apark -A -I < ./shellenv.sh
+-----------------------------------------------------------------------------------
 	
 ### Color Codes	for Fonts
 	Reset   = 0
@@ -121,9 +150,9 @@ EOF
 		This is red text.									<- \e[0m reset
 
 ### Color Codes	for Colored Background
-	# Background Color Changes 		
+	
 	$echo -e "\e[1;42m This is green background! \e[0m"
-	 This is green background!
+	    This is green background!
 	
 	Reset   = 0
 	Black   = 40
@@ -134,8 +163,22 @@ EOF
 	Magenta = 45
 	Cyan    = 46
 	White   = 47
-----------------------------------------------------------------------
+--------------------
+### BASH Startup ###
+--------------------
+$ /home/apark/.bash_profile  <= settings, environment profile
+$ /home/apark/.bashrc		 <= current & new vars  e.g. alias
 
+.bash_profile is read when bash is invoked as login shell.
+.bashrc is executed when a new shell is started.
+
+PATH=$PATH:/usr/local/bin
+
+
+
+
+
+-----------------------------------------------------------------------------------
 http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 ### Vi environment set-up (setting)
 	Create a .vimrc file in home directory
@@ -154,7 +197,7 @@ http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 	1. Install vim-enhanced
 	$ yum -y install vim-enhanced 
 
-	2. Edit profile(global profile configuration for all users)
+	2. E dit profile(global profile configuration for all users)
 	$ vi /etc/profile
 	# add at the last line
 	$ alias vi='vim'
@@ -173,11 +216,10 @@ http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 esc highlight
 
 
-
-vi && vim  set number
+# set number
 	$ vi -V 			<= version check
-	$ vi -V 			<= version check
-	:set nu / set nu!   <= set number on/off
+	:set nu 			<= set number On
+	:set nu!   			<= set number Off
 	:e file_name        <= open & create  file
  	:w new_name 	    <= save as to new_name
 	
@@ -215,8 +257,14 @@ Cut and Paste(v/V-d/y-p/P)
 	$ cd -							<= move to previous directory
 	$ cd ~-							<= same
 	$ echo ~-						<= out put previous directory
-	
-	
+# ls	
+$ ls -l /etc/ | head -n 2
+total 1364
+-rw-r--r--.  1(No of link to file)  'root'   root       16 Dec  5  2016 adjtime
+
+
+
+
 # History	
 	$ ls /var/log
 	$ cd  !*						<= cd into last command directory
@@ -265,8 +313,9 @@ Cut and Paste(v/V-d/y-p/P)
 	$ echo {w..d..2}					<= backward + every 2nd letter
 	$ touch cherry_{01..100}{w..d}.txt
 
-# number line	
-	$ cat file | nl 
+# number line	'nl'
+	$ nl file.txt
+	$ cat file.txt | nl 
 
 	$ grep -i 'tcp' /etc/services | awk '{print $1}' | sort | less
 
@@ -765,7 +814,7 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
     $ sudo sh -c "cd /home ; du -s * | sort -rn > diskUsage"   <= diskUsage file located in /home
 
 7. File Globs
-	1) * Asterist
+	1) * (asterist)
 		$ file.*			<= matches any number of any characters
 		$ file*.txt
 		$ *.jpg
@@ -776,10 +825,14 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 		$ ls -l file[0-9].txt			<= file1.txt
 		$ ls -l file[a-z].txt
 		$ ls -l file[abc123].jpg		<= e.g. a.jpg, b.jpg, 3.jpg
-	4) [- ] Maches a hyphen
-		$ file[-9-0].txt		<= file-.txt, file1.txt
+	4) [- ] Matches a - (hyphen)
+		$ file[-9-0].txt		
+		  file-.txt 
+		  file1.txt
 	5) [! ] Negate(NOT) a match
-		$ file[!0-9].txt		<= filea.txt, fileb.txt
+		$ file[!0-9].txt		
+		  filea.txt
+		  fileb.txt
 	6) [::] Matches on character of a certain type
 		[:digit:]	Numbers
 		[:uppper:]	Upper case characters
@@ -843,7 +896,7 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	# Socket(IPP) is the combination of IP address, port and protocol.
 	
 
-### socat - Multipurpose relay (SOcket CAT)
+### socat - Multipurpose relay (Socket CAT)
 
 	
 7. System services
@@ -1094,9 +1147,38 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	$ egrep --color 'Mem|Cache|Swap' /proc/meminfo
 
 5. vmstat   
-	virtual memory statistics 
-	#reports information about processes, memory, paging, block IO, traps, and cpu activity.	
+	# virtual memory statistics 
+	# reports information about processes, memory, paging, block IO, traps, and cpu activity.	
 	
+	# Check memroy size first
+	$ free -m		<=MB
+					total        used        free      shared  buff/cache   available
+		Mem:         7756         439        3244         148        4072        6744
+		Swap:        7935           0        7935
+	
+	# check in real time
+	$ top
+	  # 1   <= show list all CPUs
+		top - 11:39:06 up 91 days,  1:23,  1 user,  load average: 0.60, 0.29, 0.25
+		Tasks: 197 total,   2 running, 195 sleeping,   0 stopped,   0 zombie
+		%Cpu0  :  0.3 us,  0.7 sy,  0.0 ni, 99.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+		%Cpu1  :  0.0 us,  1.0 sy,  0.3 ni, 98.7 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+					user	system	nice	idle	wait time(i/o) 	
+		KiB Mem :  7942812 total,  3318900 free,   453520 used,  4170392 buff/cache
+		KiB Swap:  8126460 total,  8126460 free,        0 used.  6903032 avail Mem
+	  
+	  # shift + .  <= ( > ) top memory usage
+	  # shift + ,  <= ( < ) top CPU usage	
+
+	# Stress Testing CPU 1
+	$ stress --help
+		Example: stress --cpu 8 --io 4 --vm 2 --vm-bytes 128M --timeout 10s
+
+	$ stress -c 1
+	$ top
+		1
+	$ stress -m 3   <= 3GB  
+	  
 	$ vmstat 1 20 		<= one (1) second twenty (20) times:
 	$ vmstat 30 		<= ongoing report for intervals of 30 seconds
 	$ vmstat -S k 1 10  <= S-switch unit (k kilobyte, K, m, M)
@@ -1115,9 +1197,9 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 		cpu		<= always add to 100 and reflect “percenDATEe of available time”.	
 			
 	$ vmstat -s    <=-s switch displays summary of various event counters and memory statistics.
-      1009992 K total memory
-       410888 K used memory
-       176468 K active memory
+      1009992 K total 	 memory
+       410888 K used 	 memory
+       176468 K active 	 memory
        140376 K inactive memory
 
 	$ vmstat -d  		<=  -d option display all disks statistics.
@@ -1434,10 +1516,11 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 
 #	ls
 	http://unix.stackexchange.com/questions/21638/show-only-hidden-files-dot-files-in-ls-alias
-	$ ls -ld .*				<= list hidden .files only
+	$ ls -ld .*	  				<= list hidden .files only
+	$ ls -l  .*?				<= list hidden .files only
 	$ ls -Ad .*
-	$ ls -a | grep "^\."    <= show hidden files start with . file
-	$ ls -1      <= number 1, showing names only  (1 column)
+	$ ls -a | grep "^\."    	<= show hidden files start with . file
+	$ ls -1      				<= number 1, showing names only  (single column -1)
 
 	  
 12. Route or IP
@@ -1872,7 +1955,8 @@ H 2 * * *				<= Every 2am
   182  sudo start jarvis-01 && sudo start jarvis-02 && sudo start jarvis-03 && sudo start jarvis-04
   183  less /mnt/log/jarvis-01/jarvis.log
   184  sudo service mongos start
-  185  sudo stop jarvis-01 && sudo stop jarvis-02 && sudo stop jarvis-03 && sudo stop jarvis-04 && sudo start jarvis-01 && sudo start jarvis-02 && sudo start jarvis-03 && sudo start jarvis-04
+  185  sudo stop jarvis-01 && sudo stop jarvis-02 && sudo stop jarvis-03 && sudo stop jarvis-04 && \ 
+	   sudo start jarvis-01 && sudo start jarvis-02 && sudo start jarvis-03 && sudo start jarvis-04
   186  less /mnt/log/jarvis-01/jarvis.log
   187  ps aux | grep nginx
   188  curl 'http://localhost:53213/tcg/api/1/status'
@@ -1973,28 +2057,57 @@ H 2 * * *				<= Every 2am
  
 
    
-21. uptime		<= uptime, number of users, CPU load 1, 5, 15 mins
+21. uptime		<= uptime, number of users,        CPU load 1,   5,  15 mins
 	09:35:45 up 10 days, 21:18,  2 users,  load average: 0.03, 0.03, 0.05
 	
-	$ uptime | awk '{print $3}' | cut -f1 -d,
-	$ uptime | awk '{print $3,$4}' | cut -f1 -d,	
+	### How many days it has been running
+	$ uptime | awk '{print $3}'    | cut -f1 -d,
+		10  <= 10days
+		
+	$ uptime | awk '{print $3,$4}' | cut -f1 -d,
+		10 days	
    
-22. Script 				<= Record commands in terminal session
-
-
+22. Script 	<= to TEXT file		
+	# Record and Replay Linux Terminal Sessions
+	https://www.tecmint.com/record-and-replay-linux-terminal-session-commands-using-script/ 
+	$ script userInfo.log
+		$ w
+		$ whoami
+		$ exit		<= when the recording is done
+	
+	$ cat userInfo.log				<= view
+	$ vi  userInfo.log				<= edit
+	
+	# Append(adding more session)
+	$ script -a userInfo.log		<= -a append
+	
+	### Scriptreplay  <= Movie file ###
+	$ script 	   --timing=timeline.txt movieRecording.log
+	$ scriptreplay --timing=timeline.txt movieRecording.log
+	
 23. List of services running
 	$ /usr/sbin/service --status-all
 	$ /sbin/service --status-all
 	$ service --status-all
 	
+### mkdir
+	$ mkdir -p production/{modules,manifests}      <= creating multi SUB folders
 	
+	mkdir and cd into directory
+	$ mkdir ~/docker-registry && cd $_	
 
 	
 	
 
 24. Echo 
-	$ echo ~
-	$ echo ~root				<= user home directory
+	$ echo -n "Hello World\n\n"
+		Hello World\n\napark@i7~$   <= NO return line
+	$ echo -e "Hello World\n\n"
+		Hello World
+		#new line	
+		#new line	
+	$ echo ~					<= user home directory
+	$ echo ~root				<= root home directory
 	$ echo ~+  == pwd
 	$ echo ~-  == cd -
 	$ echo s{pe,pi}ll			<= don't use quote ""
@@ -2788,19 +2901,7 @@ Ubuntu 16.04 or higher			V
 	cal 	 		                  <= display calendar
 
 
-	50.History with time stamp
-
-	export into ~/.bash_profile as well as /root/.bash_profile
- 
-	export HISTTIMEFORMAT="%F %T "
-	
-	# Modify .bashrc Path and reload
-	http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-linux.html#awscli-install-linux-path
-	$ export PATH=~/.local/bin:$PATH		<= export  - Modify
-	$ source ~/.bash_profile				<= source  - reLoad
-	$ . ~/.bash_profile				<= source  - reLoad
-*** $ source .bashrc						<= reload .bashrc
-	
+50.
 	
 	
 
@@ -5666,8 +5767,8 @@ change take effect everywhere.
 
 # dmesg vs /var/log/dmesg
 
-dmesg				- Run from Prompt ( Realtime Kernel Log)
-					  Current content of the kernel syslog ring buffer messages
+dmesg				- Realtime Kernel Log  <= Run from Prompt 
+ 					  Current content of the kernel syslog ring buffer messages
 					  
 /var/log/dmesg   	– Contains what was in that ring buffer when the boot process last completed
 					  Contains kernel ring buffer information up till START-UP. 
@@ -5678,10 +5779,9 @@ dmesg				- Run from Prompt ( Realtime Kernel Log)
 					  content of this file using the dmesg command.	  
 
 					  
-/var/log/secure		- security login
-
-/var/log/auth.log 	– Contains system authorization information, including user logins and authentication machinsm that were used.
-
+/var/log/secure		- CentOS: security login
+/var/log/auth.log 	– Ubuntu: Contains system authorization information, including user logins and 
+							  authentication machinsm that were used.
 
 /var/log/boot.log 	– Contains information that are logged when the system boots
 /var/log/daemon.log – Contains information logged by the various background daemons that runs on the system
@@ -5748,13 +5848,13 @@ dmesg				- Run from Prompt ( Realtime Kernel Log)
 					  before it can be used.	
 	
 	
-### primitive types are the basic types of data
-		byte, short, int, long, float, double, boolean, char
-		primitive variables store primitive values
+### primitive types <= basic types of data
+					   byte, short, int, long, float, double, boolean, char
+					   primitive variables store primitive values
 		
-### reference types are any instantiable class as well as arrays
-		String, Scanner, Random, Die, int[], String[], etc.
-		reference variables store addresses	
+### reference types <= any instantiable class as well as arrays
+						String, Scanner, Random, Die, int[], String[], etc.
+						reference variables store addresses	
 	
 	 
 ### Directory . and .. means
@@ -5794,7 +5894,7 @@ http://www.basicconfig.com/linux/linux_cd_command_tutorial
 	https://docs.aws.amazon.com/aws-sdk-php/v3/guide/guide/paginators.html
 	
 
-### SSL cert lcoation
+### SSL cert location
 public root certificates:
 
 "/etc/ssl/certs/ca-certificates.crt", // Debian/Ubuntu/Gentoo etc.
@@ -5803,7 +5903,8 @@ public root certificates:
 
 	
 	
-A bastion host is a special purpose computer on a network specifically designed and configured to withstand attacks. 
+###A bastion host 
+is a special purpose computer on a network specifically designed and configured to withstand attacks. 
 The computer generally hosts a single application, for example a proxy server, and all other services are removed or 
 limited to reduce the threat to the computer. It is hardened in this manner primarily due to its location and purpose, 
 which is either on the outside of the firewall or in theDMZ and usually involves access from untrusted networks or computers.
@@ -5826,6 +5927,8 @@ Root device type: ebs Virtualization type: paravirtual
 A virtual machine(VM) mode in which operating systems do not require complete emulation of hardware devices. 
 Paravirtual mode uses an API to interact with the host virtualization platform. Paravirtual mode doesn't require 
 special virtualization technology hardware.
+
+
 
 ### Wildcard certificate
  A wildcard certificate is a public key certificate which can be used with multiple subdomains of a domain.[1]
@@ -6015,99 +6118,6 @@ and it would not be updated with "zero" until we have ascertained that Juan owns
 SQL null is a state (unknown) and not a value. This usage is quite different from 
 programming languages, where null means not assigned to a particular instance
 
-### Object-oriented programming (OOP) 
-	is a programming paradigm that represents the concept of "objects" that have data fields 
-	(attributes that describe the object) and associated procedures known as methods. Objects, 
-	which are usually instances of classes, are used to interact with one another to design applications 
-	and computer programs.[1][2] C++,Objective-C, Smalltalk, Java, C#, Perl, Python, Ruby and PHP are 
-	examples of object-oriented programming languages.
-
-	Object-oriented programming is an approach to designing modular, reusable software systems. Although 
-	discussions of object-oriented technology often get mired in the details of one language vs. the other, 
-	the real key to the object-oriented approach is that it is a modelling approach first.[3] Although often 
-	hyped as a revolutionary way to develop software by zealous proponents, the object-oriented approach is 
-	in reality a logical extension of good design practices that go back to the very beginning of computer 
-	programming. Object-orientation is simply the logical extension of older techniques such as structured 
-	programming andabstract data types. An object is an abstract data type with the addition 
-	of polymorphism and inheritance.
-
-	Rather than structure programs as code and data, an object-oriented system integrates the two using the 
-	concept of an "object". An object has state (data) and behavior (code). Objects correspond to things 
-	found in the real world. So for example, a graphics program will have objects such as circle, square, menu. 
-	An online shopping system will have objects such as shopping cart, customer, product. The shopping system 
-	will support behaviors such as place order, make payment, and offer discount. The objects are designed as 
-	class hierarchies. So, for example, with the shopping system there might be high level classes such as 
-	electronics product, kitchen product, and book. There may be further refinements for example under electronic 
-	products: CD Player, DVD player, etc. These classes and subclasses correspond to sets and subsets 
-	in mathematical logic.
-
-	The goals of object-oriented programming are:
-	•	Increased understanding.
-	•	Ease of maintenance.
-	•	Ease of evolution.
-
-	The overall understanding of the system is increased because the semantic gap—the distance between the 
-	language spoken by developers and that spoken by users—is lessened. Rather than talking about database 
-	tables and programming subroutines, the developer talks about things the user is familiar with: 
-	objects from their application domain.[4]
-	
-Object orientation eases maintenance by the use of encapsulation and information hiding. One of the 
-most common sources of errors in programs is when one part of the system accidentally interferes with 
-another part. For example, in the very earliest days of programming, it was common for developers to 
-use "go to" statements to jump to arbitrary locations within only a few routines and functions. 
-Critics called this "spaghetti code" because it is disorganized. Structured programming addresses 
-this by encouraging the use of procedures and subroutines. Appropriate usage sections off 
-responsibility for individual blocks to implement separate functionality. So, for example, one 
-would know that the square root function was separate from the launch missiles function, and a 
-change to one could not affect the other.[5]
-
-Object-orientation takes this to the next step. It essentially merges abstract data types with 
-structured programming and divides systems into modular objects which own their own data and are 
-responsible for their own behavior. This feature is known as encapsulation. With encapsulation, 
-not only can the "square root" and "launch missiles" functions not interfere with each other, 
-but also the data for the two are divided up so that changes to one object cannot affect the other. 
-Note that all this relies on the various languages being used appropriately, which, of course, 
-is never certain. Object-orientation is not a software silver bullet, and it is not magic that 
-makes all development problems go away.[6]
-
-In addition to providing ease of maintenance, encapsulation and information hiding provide ease 
-of evolution as well. Defining software as modular components that support inheritance makes it 
-easy both to re-use existing components and to extend components as needed by defining new 
-subclasses with specialized behaviors. This goal of being easy to both maintain and reuse is 
-known in the object-oriented paradigm as the "open closed principle". A module is open if it 
-supports extension (e.g. can easily modify behavior, add new properties, provide default values, etc.). 
-A module is closed if it has a well defined stable interface that all other modules must use 
-and that limits the interaction and potential errors that can be introduced into one module 
-by changes in another.[7]
-
-The object-oriented approach encourages the programmer to place data where it is not directly 
-accessible by the rest of the system. Instead, the data is accessed by calling specially 
-written functions, called methods, which are bundled with the data. These act as the 
-intermediaries for retrieving or modifying the data they control. The programming construct 
-that combines data with a set of methods for accessing and managing those data is called 
-an object. The practice of using subroutines to examine or modify certain kinds of data 
-was also used in non-OOP modular programming, well before the widespread use of object-oriented programming.
-An object-oriented program usually contains different types of objects, each corresponding 
-to a real-world object or concept such as a bank account, a hockey player, or a bulldozer. 
-A program might contain multiple copies of each type of object, one for each of the real-world 
-objects the program deals with. For instance, there could be one bank account object for 
-each real-world account at a particular bank. Each copy of the bank account object would 
-be alike in the methods it offers for manipulating or reading its data, but the data inside 
-each object would differ, reflecting the different history of each account.
-Objects can be thought of as encapsulating their data within a set of functions designed 
-to ensure that the data are used appropriately, and to assist in that use. The object's 
-methods typically include checks and safeguards specific to the data types the object 
-contains. An object can also offer simple-to-use, standardized methods for performing 
-particular operations on its data, while concealing the specifics of how those tasks 
-are accomplished. In this way, alterations can be made to the internal structure or 
-methods of an object without requiring that the rest of the program be modified. 
-This approach can also be used to offer standardized methods across different types 
-of objects. As an example, several different types of objects might offer print methods. 
-Each type of object might implement that print method in a different way, reflecting 
-the different kinds of data each contains, but all the different print methods might 
-be called in the same standardized manner from elsewhere in the program. These features 
-become especially useful when more than one programmer is contributing code to a project 
-or when the goal is to reuse code between projects.
 
 	
 	
@@ -6135,27 +6145,25 @@ cat $2 | grep -v "#" | ssh -t $1 $INTERPRETER
 https://coderwall.com/p/85jnpq/bash-built-in-variables
 $#, $@ & $? bash built-in variable
 
-file:test.sh
-#! /bin/sh
+$ vi test.sh
+---------------
+#!/bin/sh
 echo '$#' $#
 echo '$@' $@
 echo '$?' $?
-
-*If you run the above script as*
-
-> ./test.sh 1 2 3
-
-You get output:
+---------------
+$ bash ./test.sh 1 2 3
+output:
 $#  3
 $@  1 2 3
 $?  0
 
 *You passed 3 parameters to your script.*
 
-$# = number of arguments. Answer is 3
+$# = number of total arguments. <= 'Usage' error report if any arg missing
 $@ = what parameters were passed. Answer is 1 2 3
-$? = was last command successful. Answer is 0 which means 'yes'	
-	
+$? = was last command successful. Answer is 0 which means 'True'	
+#------------------------------------------------------------------------------------	
 	
 	
 	
@@ -6188,7 +6196,7 @@ $ pip install speedtest-cli
 	https://www.sonarsource.com/
 	http://www.methodsandtools.com/tools/tools.php?sonar
 
-### Anemometer[ӕnəmάmitər 애너마미털]
+### Anemometer[ӕnəmάmitər 애너마미털] 풍향게
 	https://github.com/box/Anemometer
 	The MySQL Slow Query Monitor. This tool is used to analyze slow query logs collected 
 	from MySQL instances to identify problematic queries.	
