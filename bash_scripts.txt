@@ -274,15 +274,49 @@ cmd1 || cmd2 || cmd3  #Run cmd1, then if cmd1 not successful run cmd2, not cmd2 
 
 	
 ---------------------------------
-# File Descriptor and Redirection
+# File Descriptor,  Redirection, Pipes
 ---------------------------------
 https://en.wikipedia.org/wiki/File_descriptor
-File Desciptor 0,1, and 2 reservered as:
-	0 - stdin (Standard input)
+File Desciptor 0, 1, and 2 reservered as:
+	0 - stdin  (Standard input)
 	1 - stdout (Standard output)
 	2 - stderr (Standard Error)
 
+Command > stdout-here 2> stderr-here < stdin-from-here
 
+command 2>&1| command2		<= same
+command |&    command2		<= same(variable by different shell
+
+command &> file			
+
+command <<  				<= Here is a document
+$ sort << EOF
+	orange
+	apple
+	banana
+	EOF
+	
+# Open and Close File Descriptors ????????????????
+- exec N< myfile  <= opens file descriptor N for 'reading' from file 'myfile'
+- exec N> myfile  <= opens file descriptor N for 'writing' from file 'myfile'
+- exec N<> myfile  <= opens file descriptor N for 'reading & writing' from file 'myfile'
+- exec N<> myfile  <= opens file descriptor N for 'writing' from file 'myfile'
+	
+	
+	
+	
+- lsof	<= use 'lsof' to what fil desriptors for a proces are open
+	$ lsof -p $$		<= $$ Processor ID
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 ----------------------------------------------
 # I/O Redirection:
 ----------------------------------------------	
@@ -296,6 +330,7 @@ n >> file      #Output from stream with descriptor n appended to file.
 n >& m         #Merge output from stream n with stream m.
 n <& m         #Merge input from stream n with stream m.
 << tag         #Standard input comes from here through next tag at start of line.	
+cmd << 		   # here document
 
 	# stderr
 		$ ls +
@@ -306,13 +341,30 @@ n <& m         #Merge input from stream n with stream m.
 	$ cmd 2&>1	> output.txt 
 	$ cmd &> 	> output.txt ( &> is same as 2&>1 )
 	$ cmd > /dev/null
-	$ cmd > /dev/null 2&>1
+	$ cmd > /dev/null 2&>1
 	
 	$ cmd | tee file1 file2
 	$ cmd | tee -a file1 		
 	
 	$ cmd < file.txt
+	$ cmd &>> output.txt
 	
+---------------------------------------------------	
+#!/bin/bash
+echo Redirect the out put to grub.out using '>'
+find /etc -name grub > grub.out
+echo "The result of grub.out file"
+cat grub.out
+echo ------------------------------------------
+
+echo Sending error to errs.out using '2>'
+find /etc   -name grub 2> errs.out
+cat errs.out
+echo ------------------------------------------
+
+echo "Redirect both STDOUT & STDERR using '&>'"
+find /etc -name grub &> both.out
+cat both.out
 	
 ---------------------------------------------------	
 # Shell Built-in Variables:
@@ -324,7 +376,7 @@ $#             # In a shell script, the number of command line parameters.
 $*             # All of the command line parameters.
 $-             # Options given to the shell.
 $?             # Return the exit status of the last command. 0 - Successful, 1 -fail
-$$             # Process id of script (really id of the shell running the script)	
+$$             # Process id of script (id of the shell running the script)	
 
 The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
 
@@ -355,7 +407,7 @@ The shell treats several parameters specially. These parameters may only be refe
 	e.g. echo $?
 ($$) Process ID under which order getting executed
 
-(?!) Process number of the last background command
+(?!) Process ID of the last background command
 
 ---------------------------------------------------  	
 # Pattern Matching:
@@ -384,7 +436,7 @@ echo "$1$2hello"        #Writes value of parameters 1 and 2 and string hello.
 # Arithmetic: BASH arithmetic is done using the expr command as in:
 -------------------------------------------------------------------			
 result=`expr $1 + 2`   				<= ` back tic
-result2=`expr $2 + $1 / 2`
+result=`expr $2 + $1 / 2`
 result=`expr $2 \* 5`               #note the \ on the * symbol
 
 brace expansion         (see a reference book)
@@ -457,7 +509,7 @@ https://www.gnu.org/software/bash/manual/bashref.html#Command-Grouping
 ### If memory usage over 80%, restart HTTPD ###
 
 # Check top % memory usage app value
-memUsage=`top -o %MEM -bn 1 |  awk '8 <=NR && NR <=8' | awk '{print $10}'`
+memUsage=`top -o %MEM -bn 1 | awk '8 <=NR && NR <=8' | awk '{print $10}'`
 memUsage=$( printf "%.0f" $memUsage )
 
 if (( $memUsage > 80));
@@ -465,8 +517,10 @@ then
     apachectl restart
 fi
 ----------------------------------------------------------------------------------------	
-	
-	
+#or#	??  
+if [ $memUsage -gt 80 ];
+    apachectl restart
+fi
 	
 	
 	
@@ -509,13 +563,15 @@ fi
 
 ---------------------------------------------------
 ### Special Shell Variables ###
+---------------------------------------------------
 https://coderwall.com/p/85jnpq/bash-built-in-variables
 
 	$0 		file name of script
 	$1		positional parameter #1
 	$2-9	positional parameter #2-9
 	${10}	positional parameter #10 and up e.g. 11, 12, 13....
-	$#		number of positional parameter
+	$#		number of positional parameters(Total Numbers)
+	$@		what parameters were passed
 	"$*"	all the positional parameters(as separate word)*
 	"$@"	all the positional parameters(as separate strings)
 	${#*}	number of positional parameters
@@ -553,7 +609,7 @@ $ /tmp/test.sh 1  2 "3 4"
 With *:
 <1 2 3 4>
 
-With @:
+With @:				<= per line
 <1>
 <2>
 <3 4>
@@ -569,7 +625,7 @@ echo '$?' $?
 $ bash test.sh 1 2 3
 output:
 $#  3
-$@  1 2 3
+$@  1 2 3			<= single line
 $?  0
 
 *You passed 3 parameters to your script.*
@@ -645,8 +701,8 @@ Operator	       Meaning									Example
 
 ### Test [ expression ] statement for Comparison operation [[ expression ]]     
 	0:TRUE  1:FALSE 
-A. Comparing variables									           For Integer
-	Less than			        [[ $1 < $2 ]]                    = (( $a < $B )) 
+A. Comparing variables									           For Arithmatic with Integer
+ 	Less than			        [[ $1 < $2 ]]                    = (( $a < $B )) 
 	greater than			    [[ $a > $b ]]
 	less than or equal to 		[[ $a <= $b ]]
 	greater than or equal to 	[[ $a >= $b ]]
@@ -1664,6 +1720,85 @@ $ function helloworld {
   }
 $ helloworld
 	Hello World!
+------------------------------------------------------
+# 'return'  <= functions return when there are no more statements
+				or when a return statement is executed.
+$ function helloworld {
+	echo "Hello World!"
+	return
+	echo "This will not be executed!"
+  }
+$ helloworld
+	Hello World!	
+# Functions produce results by writing 'output' like commands do.
+	resultVar=$(printhello)
+	
+# 'Exit'	
+	- exit <VALUE> sets the exit status, represented by '$?' to <VALUE>
+		0 - success, 1 - failed, 2 - custom error ...
+	- Exit terminates the shell process
+	- Exit in a function terminates the whole shell program, not just the function.
+------------------------------------------------------
+# function that exports to a new shell
+------------------------------------------
+	$function helloWorld {
+	> echo "Hello World!"
+	echo "Hello World"
+	> return
+	> }
+------------------------------------------	
+	$helloWorld						<= execute function 'helloWorld'
+	Hello World
+------------------------------------------	
+	$export -f helloWorld			<= 'export -f' helloWorld function to new SHELL
+	$bash							<= a new Shell
+------------------------------------------	
+	$ps								<= Check number of shells
+	PID TTY          TIME CMD
+	10233 pts/3    00:00:00 bash	<= exiting shell
+	26462 pts/3    00:00:00 bash	<= New Shell
+	26477 pts/3    00:00:00 ps
+------------------------------------------	
+	$ps -p $$						<= Checking which shell I am on
+	PID TTY          TIME CMD
+	26462 pts/3    00:00:00 bash
+------------------------------------------	
+	$helloWorld						<= Execute a new 'helloWorld' from new shell
+	Hello World
+------------------------------------------
+#!/bin/bash
+function myFunc {
+	echo "Starting myFunc"
+	return
+	echo "This will not be exectured!"
+}
+
+myFunc
+n=$(myFunc)								<= put myFunc to 'n' variable
+echo "n is $n"
+------------------------------------------
+#!/bin/bash
+# func2.sh
+
+function f2 {
+	echo "in f2"
+	exit 2						<= TERMINATE Program after exit code 2
+	echo "more in f2"
+}
+
+echo "Starting"					<= Just echo "Starting"
+f2								<= execute f2 function will stop the program!!!!
+echo "after f2"					<= After f2 with exit code 2, it will not execute 
+------------------------------------------
+$ bash func2.sh
+Starting
+in f2
+$ echo $?						<= checking exit code
+2
+
+
+	
+	
 ------------------------------------------------------
 # hidden file listing function from shell
 $ hidden() { ls -a "$@" | grep '^\.'; }			<= $@  

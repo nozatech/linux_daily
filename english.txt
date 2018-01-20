@@ -16,6 +16,7 @@ anemia			<- 빈혈(Noun)
 anemic			<- 빈혈의(Ajetive)
 anemometer		<- [ӕnəmάmitər] an instrument for measuring the speed of the wind, or of any current of gas.
 anticoagulation	<-> coagulation  <= blood thinner
+apropos			<- [ӕprəpóu] with reference to; concerning.
 as such			<- in the exact sense of the word(이를테면 '예를 들면')
 attest			<- (V)provide or serve as clear evidence of
 Avenge 			<- a word broadly concerned with inflicting a punishment or penalty in the pursuit of 'justice'.
@@ -92,12 +93,19 @@ inflict			<- cause (something unpleasant or painful) to be suffered by someone o
 inhibition		<- the action of inhibiting(금지), restricting, or hindering a process.
 impose			<- force (something unwelcome or unfamiliar) to be accepted or put in place.
 impaired		<- the state or fact of being impaired(weakened or damaged), especially in a specified faculty.
+in place of 	<- instead of
 irrigator		<- [írəgèitər]
+
+
 
 # J
 jump the shark	<- Informal (of a television series or movie) reach a point at which far-fetched events are included 
 					merely for the sake of novelty, indicative of a decline in quality.
 
+# L	
+lieu			<- place; stead
+					in lieu of, in place of; instead of  
+				e.g. In lieu of the below mail, 
 # M
 Marshalling 	<- arrange or assemble (a group of people, especially soldiers) in order.
 mock-up			<- a model or replica of a machine or structure, used for instructional or experimental purposes.

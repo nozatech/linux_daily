@@ -84,6 +84,23 @@ SMACK Stack
 ### T ###
 TLS 	<= Transport Layer Security (TLS) – and its predecessor, Secure Sockets Layer (SSL)
 
+-------------------
+### HELP ###
+-------------------
+$ apropos 			<= Search the manual page names and descriptions
+	$ apropos grep
+	$ apropos -r REGEXofUNIXCOMMAND or Description
+
+$ whatis 			<= Searches a set of database files containing short descriptions
+	$ whatis grep
+
+$ help
+	$ man --help
+	
+$ man -k REGEX or UNIXCOMMAND
+
+$ info				<= Longer document
+	$ info grep
 
 -----------------------------------------------------------------------------------	
 Daily Linux CMD List
@@ -91,6 +108,7 @@ Daily Linux CMD List
 ###############
 1. SHELL	  #
 ###############
+
 
 ### Font Type <= Lucia Console, 12pt
 
@@ -723,6 +741,11 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 		3179 pts/0    00:00:00 bash
 	$ ps -ef | grep $$
 
+	# checking which shell
+	$ ps 		<= All shells PID
+	$ ps -p $$  <= Current shell PID
+ 
+
 	### install tcsh and login
 	$ yum install tcsh -y
 	$ tcsh
@@ -813,6 +836,9 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 
     $ sudo sh -c "cd /home ; du -s * | sort -rn > diskUsage"   <= diskUsage file located in /home
 
+### rm 
+	$ rm -rf data.{1..9}				<= delete data.1 ~ data.9
+	
 7. File Globs
 	1) * (asterist)
 		$ file.*			<= matches any number of any characters
@@ -1156,7 +1182,7 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 		Mem:         7756         439        3244         148        4072        6744
 		Swap:        7935           0        7935
 	
-	# check in real time
+	# top <- real time system monitoring
 	$ top
 	  # 1   <= show list all CPUs
 		top - 11:39:06 up 91 days,  1:23,  1 user,  load average: 0.60, 0.29, 0.25
@@ -1490,6 +1516,52 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	$ iotop  				<=check I/O usage
 
 
+### exec
+	https://askubuntu.com/questions/525767/what-does-an-exec-command-do
+	exec serves to also replace current shell process with a command, 
+	so that parent goes a way and child owns pid
+
+	### Exectute and exit
+	$ ps -p $$
+	PID TTY          TIME CMD
+	2441 pts/1    00:00:00 bash			<= current shell
+	
+	$ exec ps -p $$
+	PID TTY          TIME CMD
+	2441 pts/1    00:00:00 bash			
+	Connection to 10.100.5.155 closed.	<= Exit right after execute from the current shell
+	
+	### Exec and Fork
+	$ ps
+		PID TTY          TIME CMD
+		8386 pts/1    00:00:00 bash				<= only current shell
+	$ bash										<= launch a new bash shell	
+	$ ps -p $$
+		PID TTY          TIME CMD
+		8414 pts/1    00:00:00 bash				<= newly lauched bash shell
+	
+	$ exec > newShell.log						<= STDOUT redirected to newShell.log file, not on screen
+	$ date										<= NO STDOUT
+	$ exit
+	$ ps
+		2441 pts/1    00:00:00 bash				<= current shell
+	$ cat newShell.log
+	
+### fork
+	Normal programs are system commands that exist in compiled form on your system. When such a 
+	program is executed, a new process is created. This child process has the same environment 
+	as its parent, only the process ID number is different. This procedure is called forking.
+	
+	It provides a way for an existing process to start a new one. But there may be situation that 
+	child process is not the part of same program as parent process is. In this case exec is used. 
+	exec will replace the contents of the currently running process with the information from a 
+	program binary.
+	
+	After the forking process, the address space of the child process is overwritten with the new 
+	process data. This is done through an exec call to the system.
+	
+	
+	
 11. Date format 
 	$ date +%F
 	  2016-08-11
@@ -1833,15 +1905,68 @@ H 2 * * *				<= Every 2am
 	File descriptor
 	https://en.wikipedia.org/wiki/File_descriptor
 	
-	
-	### lsof and fuser
-	# fuser - identify processes using files or sockets
-	$ fuser -vm /mnt/dir
-	$ sudo fuser -vm / 2>&1 | awk '$3 ~ /f|F/' | less can show all processes having open files on the filesystem mounted on /
+#---------------------------------------------------------------------	
+### lsof and fuser
+#---------------------------------------------------------------------
 
-		
+	# fuser - which processes using files or sockets
+			- user owning the process and the type of access
+			- displays the process id(PID) of every process using the specified files or file systems.
+	https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-fuser-command
+	
+	$ fuser -l
+	
+	$ fuser -v .	(current dir)<= gives information about the USER, PID, ACCESS and COMMAND
+        USER        PID ACCESS COMMAND
+	/home/apark/localVariable:
+        apark     10233 ..c.. bash
+        apark     26462 ..c.. bash
+	
+	$ fuser -v    /  (root dir)
+		USER        PID ACCESS COMMAND
+	/:  root     kernel mount /
+        apark     10028 .r... bash
+			............
+        apark     26462 .r... bash
+
+	$ fuser -vm   /								<= -v verbose, -m mount
+	
+	# show all processes having open files on the filesystem mounted on / (root directory)
+	$ fuser -vm / 2>&1 | awk '$3 ~ /f|F/' | less 		<=?????
+
+	### Network
+	$ nc -l -p 80
+	$ fuser -v -n tcp 80							<= -n name space
+					USER        PID ACCESS COMMAND
+		80/tcp:   	apark     20168 F.... nc
+
+	### Kill
+	$ fuser -k -i 80/tcp			<= -i ask before kill
+	
+	### Find The Process Accessing A File System
+	$ fuser -v -m /var/log/dmesg						<= -v verbose, -m mount
+	
+					USER        PID ACCESS COMMAND
+	/var/log/dmesg: root     kernel mount /                
+                    root          1 .rce. systemd
+                    root          2 .rc.. kthreadd
+                    root          3 .rc.. ksoftirqd/0
+					............
+					nginx     19176 Frce. nginx
+                    root      19295 .rce. sshd
+                    apark     19310 .rce. sshd
+					icinga    26921 Frce. icinga2
+                    root      27046 F.... python
+                    root      27784 .rc.. kworker/u8:1
+
+	
+	
+	
+	
+------------------------------------- ------------------------------------- 		
 	### lsof ###				<= list open files using by PID or Program
 	http://www.thegeekstuff.com/2012/08/lsof-command-examples
+	
 	$ lsof 					<= list all opened files start 'Init 1'
 
 	# Which processes have this file open
@@ -1887,8 +2012,8 @@ H 2 * * *				<= Every 2am
 	$ lsof -i tcp; lsof -i udp;
 	
 	
-	# Internet PORT
-	$ lsof -i :5044   <= finding which port is using for internet
+	# Finding which Process uses port 80
+	$ lsof -i :80  
 	COMMAND PID     USER            FD   TYPE DEVICE SIZE/OFF NODE NAME
 	java    477   """logstash"""   79u  IPv6  22585      0t0  TCP *:lxi-evntsvc (LISTEN)
 
