@@ -11,17 +11,44 @@ $ apt-get | yum install shellcheck	-y
 ---------------------------------------------------
 # Overview of set debugging options
 ---------------------------------------------------
+	'Set' or 'unset' values of shell options and positional parameters.
+	$ help set
+	
 	set -f	(set -o noglob)		Disable file name generation using metacharacters(globbing).
 	set -v	(set -o verbose)	Prints shell input lines as they are read.
 	set -x	(set -o xtrace)		Print command traces before executing command.
 	set -e          # Exit as soon as any line in the bash script fails
 	set -x          # Prints each command executed (prefix with ++)
 	set -ex         # Do both (for good practice)	
-
-	e.g. in script, add 'set -x' line
-	#!/bin/bash
-	set -x			<= debug mode
+	set -u 			<= checks undefine variables
 	
+	e.g. in a script, add 'set -x' for each line output
+	#!/bin/bash
+	set -x			<= debug mode tracing
+	set -u 			<= checks undefine variables
+	$ cmd | tee -a output.file | ...		<= 'tee -a' append
+	
+	$ bash -n debug.sh					<= prints out Syntex error only
+	
+	e.g. embedded in a script
+	------------------------------------------
+	#!/bin/bash
+	set -u 
+	set -x						# Turn on
+	a=1
+	echo my PID is $$
+	set +x						# Turn off the tracing
+	b=2							# no out put for variable 'b'
+	set -x						# Turn on
+	echo a is $a b is $b c is $c
+	------------------------------------------
+	$ ./debug.sh
+	+ a=1
+	+ echo my PID is 1316
+	my PID is 1316
+	+ set +x
+	debug.sh: line 9: c: unbound variable   <= set -u report
+
 ---------------------------------------------------
 # How to run a script
 ---------------------------------------------------
@@ -34,7 +61,7 @@ $ apt-get | yum install shellcheck	-y
     $ sh -v script.sh   			 <= -v for debuging mode
     $ sh +v script.sh   			 <= +v for debuging mode
 
-    $ exec ./script   				 <= after run, the login shell exit 
+    $ exec ./script   				 <= after it runs, exits from current shell 
 
 	$ bash script.sh
 	$ bash ./script.sh
@@ -42,9 +69,7 @@ $ apt-get | yum install shellcheck	-y
 	$ bash -v 
 	
 	$ source script.sh
-	
-
-	*** $ source .bashrc						<= reload .bashrc
+		e.g. $ source .bashrc		 <= reload .bashrc
 
 	# run script as a different user from root
 	$ wget http://tecmint.com/wp-content/scripts/tecmint_monitor.sh
@@ -138,40 +163,46 @@ $ var=value		       #Assign the string value to shell variable var.
 	  52222
 	$ echo ${var}5    # appending '2' to $var.
 	  522225  				
-	$ length=${#var}	<- length of variable
+	$ length=${#var}	<- length of variable using '#'
+							https://stackoverflow.com/questions/17368067/length-of-string-in-bash
 	$ echo $length
 	  5
 	  
 ---------------------------------------------------
-### Local Variable  ####
+### Local Variable (within function) ####
 ---------------------------------------------------	  
-	- variables can be created in a function that will not be available outside of it
+	- variables can be created in a function that will not be available outside(Global) of it
 	- variables only set within a function
-	  
-	- The typeset cmd makes variables local, can provide a type, or can provide formatting.
-	$ typeset -i x		<= x must be an integer
-		-Arithmatic is faster
+	
+	- The 'typeset' cmd makes variables local, can provide a type, or can provide formatting.
+	$ typeset -i x							<= x must be an integer
+		- Arithmatic is faster
 		- Let allows for convenient arithmetic:
 		  let x++; let y=x**2; let x=x*3; let x*=5, ...
---------------------------	  
+		  
+------------------------------------	  
 #!/bin/bash
-function f1 {
-	typeset x
+function invoke_f1 {
+	typeset x			# make x Var as within function local
 	x=7
-	x=8
+	y=8					# y becomes global var
 }
+#--------------
 x=1
 y=2
 echo x is $x
 echo y is $y
-f1
+#--------------
+invoke_f1						# Invoking function like command
+#--------------
 echo x is $x
 echo y is $y
---------------------------
+------------------------------------
+# Output:
 x is 1
 y is 2
-x is 1
-y is 8		  
+x is 1				<= still using x=1 variable
+y is 8				<= y=8 variable from the function	  
 		  
 		  
 ---------------------------------------------------
@@ -185,15 +216,16 @@ abc=ok assigns a value to the variable abc. declare abc declares a variable call
 The two can be combined as declare abc=ok.
 
 In bash, like other shells, string and array variables don't need to be declared, so declare 
-isn't necessary unless you want to pass options, e.g. declare -A abc to make abc an associative 
+isn't necessary unless you want to pass options, e.g. 'declare -A abc' to make abc an associative 
 array or declare -r to make a variable read-only. However, inside a function, declare does 
 make a difference: it causes the variable to be local to the function, meaning that the value 
 of the variable outside the function (if any) is preserved. (Unless you use declare -g, which 
-makes the variable not local; this is useful when combined with other options, e.g. declare -gA 
-to create a global associative array in a function.) 
+makes the variable not local; this is useful when combined with other options, 
+e.g. 'declare -gA' to create a global associative array in a function.) 
 
 Example:
----------------------------------------------------	
+------------------------
+#!/bin/bash
 f () {
   declare a
   a='a in f'
@@ -203,10 +235,10 @@ f () {
 }
 a='Initial a'
 b='Initial b'
-f
+f								#Invoking the function like command
 echo "After f: a is $a"
 echo "After f: b is $b"
-
+------------------------
 Output=>
 From f: a is a in f
 From f: b is b in f
@@ -350,6 +382,32 @@ cmd << 		   # here document
 	$ cmd &>> output.txt
 	
 ---------------------------------------------------	
+### Arithmatic Operators
+---------------------------------------------------	
+	Use in (( )) or with let
+	i++, i--, ++i, --i
+	!  ~  **  *  /  %  +  -
+	<<  >>  <=  >=  <  >
+	== !=  &  ^  |  &&  ||
+	expr?expr:expr
+	
+	n=5
+	((n++)
+	if
+	((n>4 || n == 0))
+	
+	((n=2**3 + 5))
+	((y=n^4))
+	echo y = $y
+	
+	
+	
+	
+	
+	
+	
+	
+---------------------------------------------------	
 #!/bin/bash
 echo Redirect the out put to grub.out using '>'
 find /etc -name grub > grub.out
@@ -465,8 +523,9 @@ BASH ( https://linux.die.net/man/1/bash )
 	-s  <= read from the standard input
 	
 ---------------------------------------------------
-### Single line command script from SHELL ###
+### Single Line Command script from SHELL ###
 ---------------------------------------------------
+#### For Loop ####
 $ for i in $(cat ~/list); do ssh apark@$i [[ -f /home/apark/rkchk.sh ]] && echo "File exist" || echo "Not Exist";done                      
 $ for i in $(cat "/home/apark/nu"); do ssh apark@$i "hostname && ls -l"; done
 $ for i in $(cat "/home/apark/nu"); do ssh apark@$i "rm -f rkchk.sh"; done
@@ -476,16 +535,18 @@ $ for i in us eu as; do echo sg-$i; ssh sg-$i "uptime"; done
 $ for i in sg-us sg-eu sg-as ; do echo $i; date; done
 $ for i in sg-eu sg-as ; do rsync -av authorized_keys $i:.ssh; done
 
-
 $ for i in $(cat pmtip); do echo $i && ssh -t apark@$i "cat /var/log/newrelic/nrsysmond.log" | tail; done  2>&1 > log
 
-$ while true; do dmesg -c ; sleep 1 ; done
-
+#### While Loop ####
+$ while true; do dmesg -c ; sleep 1 ; done				<= -c clear, need subo 
+$ while    :; do dmesg -c ; sleep 1 ; done				<= -c clear, need subo 
+	# while : is same as "while true"
+	
 $ while [ 1 ] ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostname'; sleep 10; done
 $ while false ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostname'; sleep 10; done
 
 $ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; kill $! ; wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
-	
+
 	
 ---------------------------------------------------	
 Grouping Commands	
@@ -500,28 +561,7 @@ https://www.gnu.org/software/bash/manual/bashref.html#Command-Grouping
 	No subshell is created. The semicolon (or newline) following list is required.	
 	
 	
-	
-----------------------------------------------------------------------------------------	
-### High memory usage 	
-*/30 * * * * /home/apark/checkMemUsage.sh > /dev/null 2>&1
-----------------------------------------------------------------------------------------
-#!/bin/bash
-### If memory usage over 80%, restart HTTPD ###
 
-# Check top % memory usage app value
-memUsage=`top -o %MEM -bn 1 | awk '8 <=NR && NR <=8' | awk '{print $10}'`
-memUsage=$( printf "%.0f" $memUsage )
-
-if (( $memUsage > 80));
-then
-    apachectl restart
-fi
-----------------------------------------------------------------------------------------	
-#or#	??  
-if [ $memUsage -gt 80 ];
-    apachectl restart
-fi
-	
 	
 	
 	
@@ -569,17 +609,20 @@ https://coderwall.com/p/85jnpq/bash-built-in-variables
 	$0 		file name of script
 	$1		positional parameter #1
 	$2-9	positional parameter #2-9
-	${10}	positional parameter #10 and up e.g. 11, 12, 13....
-	$#		number of positional parameters(Total Numbers)
-	$@		what parameters were passed
+	${10}	positional parameter #10 and up         e.g. ${10}, ${11}, ${12}....
+	$#		Total number of positional parameters   e.g. 4
+	$@		what parameters were passed 			e.g. 1 2 3 4
 	"$*"	all the positional parameters(as separate word)*
 	"$@"	all the positional parameters(as separate strings)
 	${#*}	number of positional parameters
 	${#@}	number of positional parameters
 	$?		return value
 	$$	 	process ID(PID) of script
+	
 	$-		flags passed to script(using set)
 	$_		last argument of previous command
+		e.g. $ bash test.txt
+			 $ cat $_			<= $_ is test.txt
 	$!		process ID(PID) of last job run in background
 	* Must be quoted, otherwise it defaults to $@
 	
@@ -587,7 +630,7 @@ echo $$ <= the PID of the current process.
 echo $? <= the return code of the last executed command.	
 echo $# <= the number of arguments in $*
 echo $* <= the list of arguments passed to the current process
-echo $@ <= 
+echo $@ <= List of arguments
 	
 --------------------------------------------------------------------------------------------------
 $* - Expands to the positional parameters, starting from one. When the expansion occurs within 
@@ -603,29 +646,31 @@ echo "With *:"
 for arg in "$*"; do echo "< $arg >"; done
 echo
 echo "With @:"
-for arg in "$@"; do echo "< $arg >"; done
+for arg in "$@"; do echo "< $arg >"; done   			
 ------------------------------------------
+
 $ /tmp/test.sh 1  2 "3 4"
 With *:
 <1 2 3 4>
 
-With @:				<= per line
+With @:				<= per line	due to 'For Loop'
 <1>
 <2>
 <3 4>
 
 https://coderwall.com/p/85jnpq/bash-built-in-variables
+-----------------------
 $ vi test.sh
-
 #! /bin/sh
 echo '$#' $#
 echo '$@' $@
 echo '$?' $?
+-----------------------
 
 $ bash test.sh 1 2 3
 output:
 $#  3
-$@  1 2 3			<= single line
+$@  1 2 3			<= all the arg values in the single line(No for loop)
 $?  0
 
 *You passed 3 parameters to your script.*
@@ -702,7 +747,7 @@ Operator	       Meaning									Example
 ### Test [ expression ] statement for Comparison operation [[ expression ]]     
 	0:TRUE  1:FALSE 
 A. Comparing variables									           For Arithmatic with Integer
- 	Less than			        [[ $1 < $2 ]]                    = (( $a < $B )) 
+ 	Less than			        [[ $1 < $2 ]]                    = (( $a < $B ))   , a=1, b=2
 	greater than			    [[ $a > $b ]]
 	less than or equal to 		[[ $a <= $b ]]
 	greater than or equal to 	[[ $a >= $b ]]
@@ -1231,24 +1276,26 @@ fi
 
 ------------------------------------
 # Read : within min time to input
-----------------------------------------------------------------------------------
-
+------------------------------------
 # -t timing
 # -s security hidden
 
-	#!/bin/bash
-	echo -n  "Enter your number before expire within 3sec: "
-	echo seq 3
+#!/bin/bash
+echo -n  "Enter your number before expire within 3sec: "
+echo seq 3
 	
-	if read -t 3  -s response; then
-	        echo "Great, you made it in time"
-	else
-        	echo "Sorry, you are too slow"
-	fi
+if read -t 3  -s response; then
+    echo "Great, you made it in time"
+else
+   	echo "Sorry, you are too slow"
+fi
+
 ----------------------------------------------------------------------------------
 ### 5 mins (Time counting  ( count down | counting 300 sec ) 
 ----------------------------------------------------------------------------------
-$ for i in {0..300}; do echo -ne "$i" '\r'; sleep 1; done; echo 
+$ for i in `seq 1 30`; do echo -ne "$i" '\r'; sleep 1; done;
+$ for i in   {0..300}; do echo -ne "$i" '\r'; sleep 1; done; 
+$ for i in   {0..300}; do echo -ne "$i" '\r'; sleep 1; done; echo 
 
 	# \r 	<= returning to begin of line (without new line - \n)
 	# -n 	<= new line(do not output the trailing newline)
@@ -2371,7 +2418,78 @@ bash -x scriptname   # echo commands after command-line processing
 set  -o xtrace       # alternative (set option in script file)
 
 
+### Trap : using signals
+		to catch the listed SIGNALS, which may be signal names with or without 
+		the SIG prefix, or signal numbers
+http://redsymbol.net/articles/bash-exit-traps/
+	The Bash 'trap' command is for signal handling
+		- Change behavior of signals within a script
+		- Ignore signals during critical sections in a script
+		- Allow the script to die gracefully
+		- Perform some operations when a signal is received
 
+# List of Singals
+	$ kill -l		
+# Number	SIG	Meaning
+0	0	On exit from shell
+1	SIGHUP	Clean tidyup
+2	SIGINt	Interrupt
+3	SIGQUIT	Quit
+6	SIGABRT	Abort
+9	SIGKILL	Die Now (cannot be trap'ped)
+14	SIGALRM	Alarm Clock
+15	SIGTERM	Terminate
+		
+---------------------------------------		
+Trap is a simple, but very useful utility. If your script creates temporary files, such as 
+this simple script which replaces FOO for BAR in all files in the current directory, /tmp is 
+clean when the script exits. If it gets interrupted partway through, though, there could be 
+a file lying around in /tmp:
+---------------------------------------	
+#!/bin/bash
+trap cleanup 1 2 3 6
+### Function ###
+cleanup()
+{
+	echo "Caught Signal ... cleaning up."
+	rm -rf /tmp/tmp_*.$$
+	echo "Done cleaningup ... quitting."
+	exit 1
+}
+### Main Script ###
+for i in *
+do
+	sed 's/FOO/BAR/g' $i > /tmp/temp_${i}/$$ && mv /tmp/temp_${i}.$$   $i
+done
+		
+		
+		
+http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_12_02.html
+---------------------------------------
+#!/bin/bash
+# traptest.sh
+trap "echo Booh!' SIGINT SIGTERM
+echo "pid is $$"
+while :					# This is the same as "while true"
+do
+	for i in {1..5}; do echo -ne $i '\r'; sleep 1; done; echo
+done
+---------------------------------------		
+CTRL+C 
+	^CBooh!				<= out put
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 trap 'echo $varname' EXIT  # useful when you want to print out the values of variables 
 			     at the point that your script exits
@@ -2416,8 +2534,9 @@ trap returntrap RETURN  # is executed each time a shell function or a script exe
 
 
 
-
-Fibonacci Script
+###---------------------###
+### Fibonacci Script	###
+###---------------------###
 Write a script to print the first 10 elements of Fibonacci series.
 http://www.bashguru.com/2010/12/shell-script-to-generate-fibonacci.html
 
@@ -2706,7 +2825,7 @@ if [ $# -lt 2 ]; then                   # number of command line parameters.
     echo $usage;						# if args are less than 2, echo $usage
     echo 
 fi
-
+ 
 if [ -z "$1" ]; then                    # length of '$1' parameter is empty(zero string)
     echo $usage;
 fi
@@ -2723,8 +2842,8 @@ fi
 #--------------------------------------------------------------------------------
 # Alternative using find and git diff 
 https://stackoverflow.com/questions/16787916/difference-between-two-directories-in-linux
-find /dir1/ -type f -exec md5sum {} \; > dir1.txt
-find /dir2/ -type f -exec md5sum {} \; > dir2.txt
+find /dir1/ -type f -exec md5sum {} \;    >    dir1.txt
+find /dir2/ -type f -exec md5sum {} \;    >    dir2.txt
 diff dir1.txt dir2.txt
 
 git diff --no-index dir1/ dir2/
@@ -2758,6 +2877,54 @@ by sys admin to test user process limitations. Linux process limits can be confi
  :|:&
 };:
 #--------------------------------------------------------------------------------
+
+
+	
+----------------------------------------------------------------------------------------	
+### High memory usage 	
+*/30 * * * * /home/apark/checkMemUsage.sh > /dev/null 2>&1
+----------------------------------------------------------------------------------------
+#!/bin/bash
+### If memory usage over 80%, restart HTTPD ###
+
+# Check top % memory usage app value
+memUsage=`top -o %MEM -bn 1 | awk '8 <=NR && NR <=8' | awk '{print $10}'`
+memUsage=$( printf "%.0f" $memUsage )
+
+if (( $memUsage > 80));
+then
+    apachectl restart
+fi
+----------------------------------------------------------------------------------------	
+#or#	??  
+if [ $memUsage -gt 80 ];
+    apachectl restart
+fi
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

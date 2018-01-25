@@ -2489,8 +2489,7 @@ H 2 * * *				<= Every 2am
 	$ date +%F   				<= 2018-01-09
 
 
-27. Printf vs echo (https://unix.stackexchange.com/questions/65803/why-is-printf-better-than-echo)
-					(http://wiki.bash-hackers.org/commands/builtin/printf)
+27. Printf vs echo ((http://wiki.bash-hackers.org/commands/builtin/printf)
 	
 	$ printf '%s\n' "$var"
 	
@@ -2514,12 +2513,16 @@ H 2 * * *				<= Every 2am
 	cp /dev/null file (7) Y(5)   Y      Y(5)   Y(5)      Y(5)   Y(5)
 	printf '' > file      Y(5)   Y      Y      Y(5)      Y(5)   Y
 	eval > file           Y(3,8) Y(3)   Y      Y(6)      Y      Y
+------------------------------
+### Eval  
+------------------------------
+	is part of POSIX. Its an interface which can be a shell built-in.
 
-	### Eval  <= is part of POSIX. Its an interface which can be a shell built-in.
 	https://unix.stackexchange.com/questions/23111/what-is-the-eval-command-in-bash
 	Man Page: The args are read and concatenated together into a single command.   This  command  is
     then  read  and executed by the shell, and its exit status is returned as the value of
     eval.  If there are no args, or only null arguments, eval returns 0.
+	
 	Example-1
 	1) foo=10 x=foo		<= define $foo with the value '10' and $x with the value 'foo'.
 	2) y='$'$x			<= define $y, which consists of the string '$foo' / ecapted with '$'
@@ -2534,9 +2537,13 @@ H 2 * * *				<= Every 2am
 	  -bash: ls|less: command not found
 	$ eval $A			<= use eval to execute the variable $a
 
-	
-	### let   
-		$ let arg [arg ...]  same as (( )) <- ARITHMETIC EVALUATION
+------------------------------	
+### let   
+------------------------------	
+	let, expr, $[],  (( ))
+	https://askubuntu.com/questions/939294/difference-between-let-expr-and
+
+	$ let arg [arg ...]  same as (( )) <- ARITHMETIC EVALUATION
         Each  arg  is an arithmetic expression let == (( )) to be evaluated.
         If the last arg evaluates to 0, let returns 1; 0 is returned otherwise.
 	$ no1=4 no2=5
@@ -2546,7 +2553,7 @@ H 2 * * *				<= Every 2am
 	$ let no1++ 
 	$ let no2-- 
 	
-	$ result=no1+no2`````````````````````````````````````````````````````````````````````````````````````
+	$ result=no1+no2
 	$ result=$[ no1 + no2 ]
 	$ result=(( no1 + no2 ))
 	$ echo $result
@@ -4850,31 +4857,42 @@ Ubuntu Package Installed
 		puppetlabs-release                              install
 
 
-### sed (stream editor) https://linuxconfig.org/learning-linux-commands-sed
+### sed (stream editor) 
+	https://linuxconfig.org/learning-linux-commands-sed
+	http://www.grymoire.com/Unix/Sed.html
 
 	$ sed -i 's/START=no/START=yes/g'    /etc/default/puppet		
-			i 	<= in place
-			s/regexp/replacement/
-			g 	<= Copy/append hold space to pattern space.
-	# sed(stream edit) -i(in place) '(gate open) s(substitute)/(from)/(to)/g(gate) '(close)  file_name.txt
+			i 	<= in place(INSERT MODE for Same file)
+			g 	<= global (replace all)
+	
+	$ sed -i 's/original/new/g' file.txt
+			-i 		 <= in-place (Insert mode to original file)
+			'		 <= gate open
+			s 		 <= the substitute command
+			original <= a regex describing the word to replace(or just the word itself)
+			new 	 <= the text to be replaced with
+			g 		 <= global (replace all)
+			'		 <= gate close
+			file.txt <= target file name
+
 	$ sed -i 's/START=no/START=yes/'     /etc/default/puppet	<= 1st line
 	$ sed -i 's/START=no/START=yes/4'    /etc/default/puppet	<= 4th line
 	
-	$ cat report.txt | sed 's/PAK/PARK/g' > report_new.txt
-	$ sed 's/PAK/PARK/g' report.txt
+	$ sed 's/yes/no/g' < yesNo.txt								<= feed file 
+	
 	$ sed '/Name/s/PAK/PARK/g' report.txt						<= only contain 'Name' lines
 	
-		
-	#hostname change from u14 to rieman in hosts file
+	# sed => a New file
+	$ sed 's/PAK/PARK/g' reportNew.txt	 > new.txt
+	
+	# cat => sed => a New file
+	$ cat report.txt | sed 's/PAK/PARK/g' > reportNew.txt
+
+	
+	#hostname change from Ubuntu14
 	$ sed -i 's/u14/rieman/g' /etc/hosts
 
-	$ sed -i 's/original/new/g' file.txt
-			-i 		 <= in-place (i.e. save back to the original file)
-			s 		 <= the substitute command
-			original <= a regular expression describing the word to replace (or just the word itself)
-			new 	 <= the text to replace it with
-			g 		 <= global (i.e. replace all and not just the first occurrence)
-			file.txt <= the file name
+
 	
 	# IP change (change ip) using sed
 	$ sed -i -r  "s/10.1 28.232.181\b/10.130.244.212/g"     start-us-lobby-7505.sh
@@ -4885,6 +4903,17 @@ Ubuntu Package Installed
 	$ sed -n 1p ip.txt										<= display one 1st line
 		1.1.1.1
 	
+	
+	### CMD Input Mode
+	$ sed 's/the/THE/'
+		the
+		THE
+	$ Ctrl +D  <= exit
+	$ nl file.txt | sed 's/the/THE'
+	
+	# from CMD using echo & sed
+	$ echo day | sed 's/day/night/'			
+		night
 	
 		  
 ### Add some rows and text

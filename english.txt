@@ -70,6 +70,7 @@ eye stye		<- 눈다락지
 # F
 fall through 	<- your plans didn't work out for some reaso, didn't work out
 fatigue			<- 피로
+feasible		<- possible to do easily or conveniently.
 full-fledged	<- completely developed or established; of full status.
 
 
@@ -194,7 +195,8 @@ wane			<- weaker, (especially of a condition or feeling) decrease in vigor, powe
 whimsical		<- 변덕스러운
 
 # U
-unwieldy <- hard to handle
+unbound			<- not bound or tied up.
+unwieldy 		<- hard to handle
 
 
 
