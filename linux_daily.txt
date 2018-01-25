@@ -34,12 +34,12 @@ Settings > Short cut Mapper Menu.
 	Ctrl+Alt+S			Display Save As... dialog box.
 	Ctrl+W				Close current document.
 	Alt +F4				Exit Notepad++
------------------------------------------------------------------------------------
+---------------------------------------
 ### Chrome ###
 ---------------------------------------
-Plugin - 
-	Revolver <- Rotate Tabs
-	AdBlock
+Plugins install
+	# Revolver <- Rotate Tabs
+	# AdBlock
 Alt + Home				Open your homepage.
 Alt + Tab				Toggle between browser windows
 Alt + Left 0Arrow		Back a page.
@@ -54,8 +54,9 @@ Ctrl + K or Ctrl + E	Perform a Google search
 Ctrl + T				Opens a new tab.
 Ctrl + U				View a web page's source code
 
+---------------------------------------------------------------------------------
 32bit is 2^32 =~ 4.3 billion    <=  IPv4 address is 32bit 
-
+---------------------------------------------------------------------------------
 just without the prefix(e.g. www) as 'something.com' is a 'naked domain.'
 
 -----------------------------------------------------------------------------------	
@@ -109,16 +110,16 @@ Daily Linux CMD List
 1. SHELL	  #
 ###############
 
-
 ### Font Type <= Lucia Console, 12pt
 
 ### Shell's Color, History, Time stamp, Size ###
-### GREEN Color
+
+### Green prompt
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && source ~/.bashrc 
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && 		. ~/.bashrc 
-### Green & Red
+### Green & Red promt
 echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"' >> ~/.bashrc	&& source ~/.bashrc	 
-### 
+### History Control Options
 echo 'export HISTCONTROL="ignorespace:erasedups:ignoredups"' >> ~/.bashrc	<= Ignore Duplication
 echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc					<= Ignore list
 echo 'export HISTTIMEFORMAT="%F > "' >> ~/.bashrc							<= History time stamp(man date)
@@ -127,7 +128,7 @@ echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
 
 ### History with time stamp
 	export into ~/.bash_profile as well as /root/.bash_profile
-	export HISTTIMEFORMAT="%F %T "
+	$ export HISTTIMEFORMAT="%F %T "
 	
 	# Modify .bashrc Path and reload
 	http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-linux.html#awscli-install-linux-path
@@ -1566,6 +1567,7 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	$ date +%F
 	  2016-08-11
 	$ timestamp=`date +%F`
+
 	
 	$ date +%Y-%m-%d-%H-%M-%S
 	
@@ -1576,7 +1578,10 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	$DATE=`date +%H:%M:%S`
 	$echo $DATE
 	 22:18:35
-
+	 
+	# time stamp for script
+	$ date +%s                 <= %s     seconds since 1970-01-01 00:00:00 UTC
+	
 	# milliseconds since 1-1-1970(Use %3N to truncate the nanoseconds to the 3 most significant digits)
 	$ date +%s%3N
 	1397392146866 
