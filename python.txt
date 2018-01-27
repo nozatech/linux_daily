@@ -5,15 +5,105 @@
 Ctrl+Y 		<= Remove a Line
 Shift+Enter	<= add a line
 
+#--------------------------------------------------------------------------------
+### Object-oriented programming (OOP) ###
+#--------------------------------------------------------------------------------
+	is a programming paradigm that represents the concept of "objects" that have data fields 
+	(attributes that describe the object) and associated procedures known as methods. Objects, 
+	which are usually instances of classes, are used to interact with one another to design applications 
+	and computer programs.[1][2] C++,Objective-C, Smalltalk, Java, C#, Perl, Python, Ruby and PHP are 
+	examples of object-oriented programming languages.
 
+	Object-oriented programming is an approach to designing modular, reusable software systems. Although 
+	discussions of object-oriented technology often get mired in the details of one language vs. the other, 
+	the real key to the object-oriented approach is that it is a modelling approach first.[3] Although often 
+	hyped as a revolutionary way to develop software by zealous proponents, the object-oriented approach is 
+	in reality a logical extension of good design practices that go back to the very beginning of computer 
+	programming. Object-orientation is simply the logical extension of older techniques such as structured 
+	programming andabstract data types. An object is an abstract data type with the addition 
+	of polymorphism and inheritance.
 
+	Rather than structure programs as code and data, an object-oriented system integrates the two using the 
+	concept of an "object". An object has state (data) and behavior (code). Objects correspond to things 
+	found in the real world. So for example, a graphics program will have objects such as circle, square, menu. 
+	An online shopping system will have objects such as shopping cart, customer, product. The shopping system 
+	will support behaviors such as place order, make payment, and offer discount. The objects are designed as 
+	class hierarchies. So, for example, with the shopping system there might be high level classes such as 
+	electronics product, kitchen product, and book. There may be further refinements for example under electronic 
+	products: CD Player, DVD player, etc. These classes and subclasses correspond to sets and subsets 
+	in mathematical logic.
 
+	The goals of object-oriented programming are:
+	•	Increased understanding.
+	•	Ease of maintenance.
+	•	Ease of evolution.
 
+	The overall understanding of the system is increased because the semantic gap—the distance between the 
+	language spoken by developers and that spoken by users—is lessened. Rather than talking about database 
+	tables and programming subroutines, the developer talks about things the user is familiar with: 
+	objects from their application domain.[4]
+	
+Object orientation eases maintenance by the use of encapsulation and information hiding. One of the 
+most common sources of errors in programs is when one part of the system accidentally interferes with 
+another part. For example, in the very earliest days of programming, it was common for developers to 
+use "go to" statements to jump to arbitrary locations within only a few routines and functions. 
+Critics called this "spaghetti code" because it is disorganized. Structured programming addresses 
+this by encouraging the use of procedures and subroutines. Appropriate usage sections off 
+responsibility for individual blocks to implement separate functionality. So, for example, one 
+would know that the square root function was separate from the launch missiles function, and a 
+change to one could not affect the other.[5]
 
+Object-orientation takes this to the next step. It essentially merges abstract data types with 
+structured programming and divides systems into modular objects which own their own data and are 
+responsible for their own behavior. This feature is known as encapsulation. With encapsulation, 
+not only can the "square root" and "launch missiles" functions not interfere with each other, 
+but also the data for the two are divided up so that changes to one object cannot affect the other. 
+Note that all this relies on the various languages being used appropriately, which, of course, 
+is never certain. Object-orientation is not a software silver bullet, and it is not magic that 
+makes all development problems go away.[6]
 
+In addition to providing ease of maintenance, encapsulation and information hiding provide ease 
+of evolution as well. Defining software as modular components that support inheritance makes it 
+easy both to re-use existing components and to extend components as needed by defining new 
+subclasses with specialized behaviors. This goal of being easy to both maintain and reuse is 
+known in the object-oriented paradigm as the "open closed principle". A module is open if it 
+supports extension (e.g. can easily modify behavior, add new properties, provide default values, etc.). 
+A module is closed if it has a well defined stable interface that all other modules must use 
+and that limits the interaction and potential errors that can be introduced into one module 
+by changes in another.[7]
 
+The object-oriented approach encourages the programmer to place data where it is not directly 
+accessible by the rest of the system. Instead, the data is accessed by calling specially 
+written functions, called methods, which are bundled with the data. These act as the 
+intermediaries for retrieving or modifying the data they control. The programming construct 
+that combines data with a set of methods for accessing and managing those data is called 
+an object. The practice of using subroutines to examine or modify certain kinds of data 
+was also used in non-OOP modular programming, well before the widespread use of object-oriented programming.
+An object-oriented program usually contains different types of objects, each corresponding 
+to a real-world object or concept such as a bank account, a hockey player, or a bulldozer. 
+A program might contain multiple copies of each type of object, one for each of the real-world 
+objects the program deals with. For instance, there could be one bank account object for 
+each real-world account at a particular bank. Each copy of the bank account object would 
+be alike in the methods it offers for manipulating or reading its data, but the data inside 
+each object would differ, reflecting the different history of each account.
+Objects can be thought of as encapsulating their data within a set of functions designed 
+to ensure that the data are used appropriately, and to assist in that use. The object's 
+methods typically include checks and safeguards specific to the data types the object 
+contains. An object can also offer simple-to-use, standardized methods for performing 
+particular operations on its data, while concealing the specifics of how those tasks 
+are accomplished. In this way, alterations can be made to the internal structure or 
+methods of an object without requiring that the rest of the program be modified. 
+This approach can also be used to offer standardized methods across different types 
+of objects. As an example, several different types of objects might offer print methods. 
+Each type of object might implement that print method in a different way, reflecting 
+the different kinds of data each contains, but all the different print methods might 
+be called in the same standardized manner from elsewhere in the program. These features 
+become especially useful when more than one programmer is contributing code to a project 
+or when the goal is to reuse code between projects.
 
-
+#--------------------------------------------------------------------------------
+# 
+#--------------------------------------------------------------------------------
 
 
 
@@ -34,7 +124,7 @@ l <=list
 n <=next
 c <=continue
 s <=step
-w <=where
+w <=where 
 u <=up
 d <=down
 locals()

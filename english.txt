@@ -182,6 +182,9 @@ thin-skinned	<- sesitive to criticism or insults
 thick-skinned
 turnkey			<- (car turn key to start & drive) | ~of or involving the provision of a complete product 
 														 or service that is ready for immediate use.
+toggle			<- a short rod of wood or plastic sewn to one side of a coat or other garment, pushed through 
+					a hole or loop on the other side and twisted so as to act as a fastener.
+					e.g. Toggle line numbers
 tongue in cheek <-without really meaning what one is saying or writing.
 														 
 														 

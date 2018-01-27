@@ -289,13 +289,16 @@ echo 'MyArray2[hotdog]= ' ${MyArray2["hotdog"]}
 ---------------------------------------------------
 # Combines 2 or more commands
 ---------------------------------------------------
-cmd1; cmd2     #Do cmd1 and then cmd2.
-cmd1 & cmd2    #Do cmd1, start cmd2 without waiting for cmd1 to finis
+cmd1; cmd2     #Do cmd1 first, then cmd2(cmd1 has failed or not)
+	$ sleep 5 ; ls -l
+cmd1 & cmd2    #Do cmd1 and cmd2 without waiting for cmd1 to finish
+	$ sleep 4 & ls -l
 
-cmd1 && cmd2   		  #Run cmd1, then if cmd1 successful run cmd2, otherwise skip.
-cmd1 && cmd2 && cmd3  #Run cmd1, then if cmd1 successful run cmd2, otherwise skip.
-cmd1 || cmd2   		  #Run cmd1, then if cmd1 not successful run cmd2, otherwise skip.
-cmd1 || cmd2 || cmd3  #Run cmd1, then if cmd1 not successful run cmd2, not cmd2 runs cmd3 otherwise skip.
+cmd1 && cmd2   		  # If cmd1 successful, run cmd2, otherwise skip.
+cmd1 && cmd2 && cmd3  # If cmd1 successful, run cmd2, run cmd3,  otherwise skip.
+
+cmd1 || cmd2   		  # If cmd1 failed, run cmd2, otherwise skip.
+cmd1 || cmd2 || cmd3  # If cmd1 failed, run cmd2, otherwise runs cmd3, otherwise skip.
 
 
 
@@ -551,13 +554,17 @@ $ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 
 ---------------------------------------------------	
 Grouping Commands	
 https://www.gnu.org/software/bash/manual/bashref.html#Command-Grouping
+Current Shell vs Non-effect Shell
+https://askubuntu.com/questions/606378/when-to-use-vs-in-bash
 
 ### ()   	<=  ( list )
-	Placing a list of commands between parentheses causes a subshell environment to be created, and each of 
-	the commands in list to be executed in that subshell. Since the list is executed in a subshell, variable 
-	assignments do not remain in effect after the subshell completes.
+	Placing a list of 'commands' between parentheses causes a 'subshell' environment to be created, 
+	and each of the commands in list to be executed in that subshell. Since the list is executed 
+	in a subshell, variable assignments do not remain in effect after the subshell completes.
+
 ### {} 		<=	{ list; }
-	Placing a list of commands between curly braces causes the list to be executed in the current shell context. 
+	Placing a list of commands between curly braces causes the list to be executed in the 
+	current shell context. 
 	No subshell is created. The semicolon (or newline) following list is required.	
 	
 	
@@ -719,16 +726,19 @@ $ echo -n     do not output the trailing newline
 Note: You must separate the square brackets from other text by a space.
 e.g. [ ! -z $HOME ] 
       ^ ^space   ^space 
-	  
+	# if $HOME is exist[true], echo $HOME
+	$ if [ ! -z $HOME ]; then echo "$HOME"; fi 
+
 ### Common Bash comparisons
 Operator	       Meaning									Example
 -------------------------------------------------------------------------------------
--z			Length of String is (zero)EMPTY 					[ -z "$my_var" ]      		my_var=""
--n			Length of String is NOT (zero)EMPTY					[ -n "$my_var" ]            my_var="num"
+-z			Length of String is (zero)EMPTY 					[ -z "$my_var" ]     my_var=""
+! -z		Length of String is NOT (zero)EMPTY 					[ -z "$my_var" ]     my_var=""
+-n			Length of String is NOT (zero)EMPTY					[ -n "$my_var" ]     my_var="num"
 -f			File is Exists & normal,regular 					[ -f "$myfile" ]
 -d			Directory is Exists  								[ -d "$mydir" ]
 -e 			file exist
--w			Writeable
+-w			Writeable 
 =			Strings are same									[ "abc" = "$my_var" ]
 !=			Strings are Not Same   								[ "abc" != "$my_var" ]
 
@@ -881,8 +891,13 @@ export varName=value         # defines an environment variable (will be availabl
 	$ export A=1
 	$ echo A is $A
 	  A is 1
-	$ unset A
-	
+#unset	  
+	$ unset A					
+		# Unset values and attributes of shell variables and functions.
+		    -f        treat each NAME as a shell function
+			-v        treat each NAME as a shell variable
+		# Without options, unset first tries to unset a variable, and if that fails,
+			tries to unset a function.
 
 
 # Arrays adn Associative Arrays
@@ -947,17 +962,20 @@ fooThis is my environment variable!bar
 ### IF statement ###### 
 ----------------------------------------------------------------------------------
 
-$ test 100 -gt 99 && echo "Yes, that's true." || echo "No, that's false."
+$ test 100 -gt 99  && echo "Yes, that's true." || echo "No, that's false."
+$ [ 100 -gt 99 ]   && echo "Yes, that's true." || echo "No, that's false."
+$ [[ 100 -gt 99 ]] && echo "Yes, that's true." || echo "No, that's false."
 	Yes, that's true.
 
 $ test 90 -gt 99 && echo "Yes, that's true." || echo "No, that's false."
 	No, that's false.
 	
 ----------------------------------------------
-if [ $num -lt 10 -o $num -gt 100 ]
+#!/bin/bash
+if [ $num -lt 10 -o $num -gt 100 ]				# -o  or
 	then
     echo "Number $num is out of range"
-elif [ ! -w $filename ]
+elif [ ! -w $filename ]							# -w writeable
 	then
     echo "Cannot write to $filename"
 fi	
@@ -978,12 +996,12 @@ else
 fi
 
 	
-### ! -z $HOME <= If home is NOT empty, echo $HOME
+### ! -z $HOME 		<= If home is NOT empty, echo $HOME
 $ if [ ! -z $HOME ]; then echo $HOME; else echo "No Home"; fi
-$ if [[ -n $HOME]]; then echo $HOME; else echo "No Home"; fi                     <= home is exist
-/home/noza                                                                     <= Same answer
+$ if [[ -n $HOME]];  then echo $HOME; else echo "No Home"; fi       <= if home is exist
+/home/noza                                                          <= Same answer
            
-### -z $HOME    <= $HOME is empty which is False, echo "No Home"
+### -z $HOME    	<= $HOME is empty which is False, echo "No Home"
 $ if [ -z $HOME ]; then echo $HOME; else echo "no home"; fi
 $ if [[ ! -n $HOME ]]; then echo $HOME; else echo "no home"; fi
 no home  
@@ -1055,7 +1073,7 @@ $./for_loop1.sh 1 2 3 4
 => 1 2 3 4
 
 ------------------------------------
-$ for i in {1..100..2};do echo $i; done
+$ for i in {1..10..2}; do echo $i; done
 $ for (( i=1; i<=10; i++));do echo $i; done
 $ for (( i=1; i<=10; i++));do echo -n $i `sleep 1`" "; done
 
@@ -1203,12 +1221,10 @@ done
 ----------------------------------------------------------------------------------
 ### Test statement ###
 ----------------------------------------------------------------------------------
-
-
 if test  == if [ ]
 [ expression ] 
-[[ expression ]]  		<= extended e.g. grep, egrep
-if (( integer comparison )); then
+[[ expression ]]  						<= [[ ]] extended e.g. grep, egrep
+if (( integer comparison )); then		<= arithmatic
 
 ###
 if expression
@@ -2901,6 +2917,124 @@ if [ $memUsage -gt 80 ];
     apachectl restart
 fi
 	
+----------------------------------------------------------------------------------------
+### 116 Bash Scripts  ###
+https://mywiki.wooledge.org/BashFAQ/
+----------------------------------------------------------------------------------------
+1. How can I read a file (data stream, variable) line-by-line (and/or field-by-field)?
+https://mywiki.wooledge.org/BashFAQ/001
+----------------------------------------------
+#!/bin/bash
+while IFS= read -r line; do			# -r option to read prevents backslash interpretation
+	printf '%s\n' "$line"			# %s string, \n new line
+	#echo $line
+done < "$file"
+----------------------------------------------
+### Get GECOS 
+/etc/passwd
+user :pw:uid:gid: gecos: home             : shell
+icinga:x:992:987:icinga:/var/spool/icinga2:/sbin/nologin
+
+https://superuser.com/questions/1031615/the-other-finger-gecos-fields-at-etc-passwd
+$ awk -F ":" '{print $5}' /etc/passwd
+
+### Grep User & Shell from /etc/passwd file ##
+--------------------------------------------------------------
+#!/bin/bash
+while IFS=: read -r user pass uid pid gecos home shell; do
+        printf '%s: %s\n' "$user" "$shell"
+done < /etc/passwd
+--------------------------------------------------------------
+# This reads one filename at a time from the find command and renames the file, 
+# replacing spaces with underscores.
+--------------------------------------------------------------
+#!/bin/bash
+find . -type f -print0 | while IFS= read -r -d '' file; do
+	mv "$file" "${file// /_}"									#??? Not Working
+done
+--------------------------------------------------------------
+
+----------------------------------------------------------------------------------------
+2. How can I store the return value and/or output of a command in a variable?
+https://mywiki.wooledge.org/BashFAQ/002
+----------------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------------------------
+3. How can I sort or compare files based on some metadata attribute (newest / oldest 
+	modification time, size, etc)?
+https://mywiki.wooledge.org/BashFAQ/003
+----------------------------------------------------------------------------------------
+#!/bin/bash
+# Newest(Latest) files in a directory
+# same as $ls -lt | head -n 2 | tail -n 1 
+unset -v lastest
+for f in "$dir"/*; do
+	[[ $f -nt $lastest ]] && lastest=$f  		# -nt First file is newer than second one	
+done												# &&  If 1st ok, then run 2nd
+printf '%s\n' $lastest
+-------------------------------------------------------------
+#!/bin/bash
+# Oldest
+unset -v oldest
+for file in "$dir"/*; do
+	[[ -z $oldest || $file -ot $oldest ]] && oldest=$file  # -ot Older than
+done
+-------------------------------------------------------------
+#Using find & sort
+#!/bin/bash
+IFS= read -r -d '' lastest \
+	< <(find "$dir" -type f -printf '%T@ %p\0' | sort -znr)
+lastest=${lastest#* }
+
+#!/bin/bash
+while IFS= read -rd '' time; do
+	IFS= read -rd '' 'lastest[time]'
+done < < (find "$dir" -type f -printf '%Ts\0%p\)'
+lastest=[{latest[-1]}
+-------------------------------------------------------------
+#Using find & sort
+#!/bin/bash
+unset -v latest time
+while IFS= read -r -d '' line; do
+  t=${line%% *} t=${t%.*}   # truncate fractional seconds
+  ((t > time)) && { latest=${line#* } time=$t; }
+done < <(find "$dir" -type f -printf '%T@ %p\0')
+-------------------------------------------------------------
+$ find "$dir" -type f -printf '%T@ %p\0\n'
+
+
+----------------------------------------------------------------------------------------
+4. How can I check whether a directory is empty or not? 
+   How do I check for any *.mpg files, or count how many there are?
+https://mywiki.wooledge.org/BashFAQ/004
+----------------------------------------------------------------------------------------
+$ mkdir ../004 && cd ../004
+In Bash, you can do this safely and easily with the nullglob and dotglob options 
+(which change the behaviour of globbing), and an array:
+----------------------------------------------
+#!/bin/bash
+shopt -s nullglob dotglob				
+file=(*)
+(( ${#file[*]} )) || echo "Dictory is empty"
+shopt -u nullglob dotglob
+----------------------------------------------
+
+#!/bin/bash
+if (shopt -s nullglob dotglob; f=(*); ((! ${#f[@]}))); then
+    echo "The current directory is empty!"
+fi
+
+----------------------------------------------
+#!/bin/bash
+# -L FILE exists and is a symbolic link (same as -h)
+shopt -s dotglob
+file=(*)
+if [[ -e ${files[0]} || -L ${files[0]} ]]; then
+	echo "Not empty. It contains: "
+	printf '%s\n' "${files[@]}"
+fi
 
 
 
@@ -2932,102 +3066,14 @@ fi
 
 
 
-#--------------------------------------------------------------------------------
-### Object-oriented programming (OOP) ###
-#--------------------------------------------------------------------------------
-	is a programming paradigm that represents the concept of "objects" that have data fields 
-	(attributes that describe the object) and associated procedures known as methods. Objects, 
-	which are usually instances of classes, are used to interact with one another to design applications 
-	and computer programs.[1][2] C++,Objective-C, Smalltalk, Java, C#, Perl, Python, Ruby and PHP are 
-	examples of object-oriented programming languages.
 
-	Object-oriented programming is an approach to designing modular, reusable software systems. Although 
-	discussions of object-oriented technology often get mired in the details of one language vs. the other, 
-	the real key to the object-oriented approach is that it is a modelling approach first.[3] Although often 
-	hyped as a revolutionary way to develop software by zealous proponents, the object-oriented approach is 
-	in reality a logical extension of good design practices that go back to the very beginning of computer 
-	programming. Object-orientation is simply the logical extension of older techniques such as structured 
-	programming andabstract data types. An object is an abstract data type with the addition 
-	of polymorphism and inheritance.
 
-	Rather than structure programs as code and data, an object-oriented system integrates the two using the 
-	concept of an "object". An object has state (data) and behavior (code). Objects correspond to things 
-	found in the real world. So for example, a graphics program will have objects such as circle, square, menu. 
-	An online shopping system will have objects such as shopping cart, customer, product. The shopping system 
-	will support behaviors such as place order, make payment, and offer discount. The objects are designed as 
-	class hierarchies. So, for example, with the shopping system there might be high level classes such as 
-	electronics product, kitchen product, and book. There may be further refinements for example under electronic 
-	products: CD Player, DVD player, etc. These classes and subclasses correspond to sets and subsets 
-	in mathematical logic.
 
-	The goals of object-oriented programming are:
-	•	Increased understanding.
-	•	Ease of maintenance.
-	•	Ease of evolution.
 
-	The overall understanding of the system is increased because the semantic gap—the distance between the 
-	language spoken by developers and that spoken by users—is lessened. Rather than talking about database 
-	tables and programming subroutines, the developer talks about things the user is familiar with: 
-	objects from their application domain.[4]
-	
-Object orientation eases maintenance by the use of encapsulation and information hiding. One of the 
-most common sources of errors in programs is when one part of the system accidentally interferes with 
-another part. For example, in the very earliest days of programming, it was common for developers to 
-use "go to" statements to jump to arbitrary locations within only a few routines and functions. 
-Critics called this "spaghetti code" because it is disorganized. Structured programming addresses 
-this by encouraging the use of procedures and subroutines. Appropriate usage sections off 
-responsibility for individual blocks to implement separate functionality. So, for example, one 
-would know that the square root function was separate from the launch missiles function, and a 
-change to one could not affect the other.[5]
 
-Object-orientation takes this to the next step. It essentially merges abstract data types with 
-structured programming and divides systems into modular objects which own their own data and are 
-responsible for their own behavior. This feature is known as encapsulation. With encapsulation, 
-not only can the "square root" and "launch missiles" functions not interfere with each other, 
-but also the data for the two are divided up so that changes to one object cannot affect the other. 
-Note that all this relies on the various languages being used appropriately, which, of course, 
-is never certain. Object-orientation is not a software silver bullet, and it is not magic that 
-makes all development problems go away.[6]
 
-In addition to providing ease of maintenance, encapsulation and information hiding provide ease 
-of evolution as well. Defining software as modular components that support inheritance makes it 
-easy both to re-use existing components and to extend components as needed by defining new 
-subclasses with specialized behaviors. This goal of being easy to both maintain and reuse is 
-known in the object-oriented paradigm as the "open closed principle". A module is open if it 
-supports extension (e.g. can easily modify behavior, add new properties, provide default values, etc.). 
-A module is closed if it has a well defined stable interface that all other modules must use 
-and that limits the interaction and potential errors that can be introduced into one module 
-by changes in another.[7]
 
-The object-oriented approach encourages the programmer to place data where it is not directly 
-accessible by the rest of the system. Instead, the data is accessed by calling specially 
-written functions, called methods, which are bundled with the data. These act as the 
-intermediaries for retrieving or modifying the data they control. The programming construct 
-that combines data with a set of methods for accessing and managing those data is called 
-an object. The practice of using subroutines to examine or modify certain kinds of data 
-was also used in non-OOP modular programming, well before the widespread use of object-oriented programming.
-An object-oriented program usually contains different types of objects, each corresponding 
-to a real-world object or concept such as a bank account, a hockey player, or a bulldozer. 
-A program might contain multiple copies of each type of object, one for each of the real-world 
-objects the program deals with. For instance, there could be one bank account object for 
-each real-world account at a particular bank. Each copy of the bank account object would 
-be alike in the methods it offers for manipulating or reading its data, but the data inside 
-each object would differ, reflecting the different history of each account.
-Objects can be thought of as encapsulating their data within a set of functions designed 
-to ensure that the data are used appropriately, and to assist in that use. The object's 
-methods typically include checks and safeguards specific to the data types the object 
-contains. An object can also offer simple-to-use, standardized methods for performing 
-particular operations on its data, while concealing the specifics of how those tasks 
-are accomplished. In this way, alterations can be made to the internal structure or 
-methods of an object without requiring that the rest of the program be modified. 
-This approach can also be used to offer standardized methods across different types 
-of objects. As an example, several different types of objects might offer print methods. 
-Each type of object might implement that print method in a different way, reflecting 
-the different kinds of data each contains, but all the different print methods might 
-be called in the same standardized manner from elsewhere in the program. These features 
-become especially useful when more than one programmer is contributing code to a project 
-or when the goal is to reuse code between projects.
 
-#--------------------------------------------------------------------------------
-# 
-#--------------------------------------------------------------------------------
+
+
+

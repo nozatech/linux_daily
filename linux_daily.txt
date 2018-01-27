@@ -15,7 +15,7 @@ bring up the Task Manager
 	Windows + D   <= Show Desktop
 	Windows + L   <= Lock
 	Windows + F   <= search
----------------------------------------
+--------------------------------------- 
 ### Notepad++
 ---------------------------------------
 Settings > Short cut Mapper Menu.
@@ -371,7 +371,7 @@ total 1364
 	$ ssh -l ubuntu ip_address (or hostname)					<= -l login user name
 
 
-	### List of host in ~/.ssh/config file  
+### List of host in ~/.ssh/config file  
 											** using Alias is OLD way ***
 	https://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/
 	
@@ -390,7 +390,7 @@ total 1364
 	
 	$ ssh apark@netops
 	
-	## Login to internal lan server at 192.168.0.251 via our public UK office ssh based gateway using ##
+### Login to internal lan server at 192.168.0.251 via our public UK office ssh based gateway using ##
 	## $ ssh uk.gw.lan ##
 	Host uk.gw.lan uk.lan
 		HostName 192.168.0.251
@@ -522,9 +522,15 @@ total 1364
 	
 	$ ln -s    /home/newname   /home/oldname   
 	
+### /etc/passwd	
+
+	userID:pw:uid:gid:gecos:home             : shell
+	icinga:x:992:987:icinga:/var/spool/icinga2:/sbin/nologin
 	
-	
-	
+	# Get GECOS 
+	:FullName,RomAddress,WorkPhone,HomePhone,Others:
+	https://superuser.com/questions/1031615/the-other-finger-gecos-fields-at-etc-passwd
+	$ awk -F ":" '{print $5}' /etc/passwd	
 	
 	
 	
@@ -694,21 +700,22 @@ Delete
 
 ### curl can download or upload through any protocol, http, ftp, sftp, scp, ldap, telnet
 
-curl www.yahoo.com -o output.html
-curl -O www.yahoo.com/index.html
-curl -# -u id:pw ftp://ftphost/fuzicast/sample.txt -o sample.txt 				# the -# adds progress bar
-curl -r 0-99 -u id:pw ftp://ftphost/fuzicast/sample.txt							# get first 100 bytes
-curl -r -500 -u id:pw ftp://ftphost/fuzicast/sample.txt 						# get last 500 bytes
-echo "Hello World" | curl -T - -u id:pw ftp://ftphost/fuzicast/sample2.txt
+curl 					www.yahoo.com -o output.html
+curl -O 				www.yahoo.com/index.html
+curl -# -u id:pw 		ftp://ftphost/fuzicast/sample.txt -o sample.txt 		# the -# adds progress bar
+curl -r 0-99 -u id:pw 	ftp://ftphost/fuzicast/sample.txt						# get first 100 bytes
+curl -r -500 -u id:pw   ftp://ftphost/fuzicast/sample.txt 						# get last 500 bytes
+echo "Hello World" | curl -T - -u id:pw \
+						ftp://ftphost/fuzicast/sample2.txt
 curl -T UNIX-1.14 -u id:pw ftp://ftphost/fuzicast/unix
 curl -T localfile1 servername/remotefile1 -T localfile2 servername/remotefile2
 curl -T UNIX-1.14 -u id:pw -a ftp://ftphost/fuzicast/unix 						# append to FTP file
 curl --ftp-create-dirs -T UNIX-1.14 -u id:pw ftp://ftphost/fuzicast/unix/test.txt
 curl --limit-rate 10240 -u id:pw ftp://ftphost/fuzicast/sample.txt 				# limit number of bytes per second .curlrc # curl configuration file
 curl -u id:pw -z sample.txt ftp://ftphost/fuzicast/sample.txt 					# download remotefile only if it's newer than localfile
-curl -z "Jan 12 2012" -u id:pw ftp://ftphost/fuzicast/sample.txt 				# download remote file only if it's newer than Jan 12 2012
-curl -B -u id:pw ftp://ftphost/fuzicast/sample.txt 								# enforces ASCII transfer during FTP download 
-curl -u id:pw ftp://ftphost/fuzicast/sample.txt --create-dirs -o sampledir/sample.txt		# create directory if not exist
+curl -z "Jan 12 2012" -u id:pw  ftp://ftphost/fuzicast/sample.txt 				# download remote file only if it's newer than Jan 12 2012
+curl -B -u id:pw 				ftp://ftphost/fuzicast/sample.txt 								# enforces ASCII transfer during FTP download 
+curl -u id:pw 					ftp://ftphost/fuzicast/sample.txt --create-dirs -o sampledir/sample.txt		# create directory if not exist
 curl --key id_rsa # use SSH key
 curl -u id:pw ftp://ftphost -Q 'RNFR /fuzicast/sample.txt' -Q 'RNTO /fuzicast/sampleyue.txt'	 # rename a remote file in FTP protocol
 curl -u id:pw ftp://ftphost -Q 'rename /fuzicast/sample.txt /fuzicast/sampleyue.txt' 			# rename in SFTP is different from FTP
@@ -723,13 +730,21 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	$ sudo apt-get install -y links
 	$ links http://www.google.com
 	
+
 ### base64 - base64 encode/decode data and print to standard output
 	http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
-
+	
+	# Encode
 	$ printf id:pw | base64
+		$ base64 data.txt > data.b64
+	# Decode using -d option
+	$ base64 -d 
+		$ base64 -d data.b64 						<= on to SCREEN(STDOUT)
+		$ base64 -d data.b64 > data.txt				<= on to Files
 	https://www.base64decode.org/	
 
-# How to check SHELL type
+
+### How to check SHELL type
 	$ echo $SHELL
 		/bin/bash
 	$ echo $0
@@ -770,9 +785,11 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	
 	# set -o 						<= Inherite from BASH or other Shells
 	
-	# shopt							<= specific options for BASH Shell
-		$ shopt						<= list of Shell Option
-		$ shopt -s extglob			<= turn on extended glob
+### shopt						<= specific options for BASH Shell
+	$ shopt						<= list of Shell Option
+	$ shopt -s extglob			<= turn set  (on) extended glob
+	$ shopt -u extglob			<= turn unset(off) extended glob
+	$ shopt | grep extglob
 	
 	
 	
@@ -837,6 +854,31 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 
     $ sudo sh -c "cd /home ; du -s * | sort -rn > diskUsage"   <= diskUsage file located in /home
 
+### Copy, Move, Rename
+# cp
+
+
+
+
+
+
+# mv 
+	https://superuser.com/questions/901183/who-deals-with-the-star-in-echo
+	e.g. test.txt test1(dir) test2(dir) test3(dir)
+	$ mv *
+	$ ls
+		test3(dir)   <= cuz 'mv' test.txt test1(dir) test2(dir) => test3(dir)
+	
+	
+
+# rename	
+	
+
+
+
+
+
+	
 ### rm 
 	$ rm -rf data.{1..9}				<= delete data.1 ~ data.9
 	
@@ -1293,7 +1335,26 @@ $ echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab
 	$ fallocate -l 1GB  1gb_file		<= 1000 size ??
 	
 	
+### stat			<=display file or file system status
+
+	$ stat file.name
+	File: ‘file.name’
+	Size: 80              Blocks: 8          IO Block: 4096   regular file
+	Device: fd02h/64770d    Inode: 1074617621  Links: 1
+	Access: (0664/-rw-rw-r--)  Uid: ( 1000/   apark)   Gid: ( 1000/   apark)
+	Context: unconfined_u:object_r:user_home_t:s0
+	Access: 2018-01-25 14:37:35.037545396 -0800
+	Modify: 2018-01-25 14:37:32.473485310 -0800
+	Change: 2018-01-25 14:37:32.483485544 -0800
+	Birth: -
 	
+	$stat -f /
+	File: "/"
+    ID: fd0000000000 Namelen: 255     Type: xfs
+	Block size: 4096       Fundamental block size: 4096
+	Blocks: Total: 13100800   Free: 9197614    Available: 9197614
+	Inodes: Total: 52428800   Free: 52251919
+
 	
 	
 7. sysstat	Linux Performance Monitoring package
@@ -1805,7 +1866,13 @@ H 2 * * *				<= Every 2am
 | \--\--\----------------------------- Read, Write and Special access modes for [U]ser, [G]roup, and [O]thers (everyone else)
 \------------------------------------- File type flag
 	
-	
+	type_descriptor types:-
+	-rw-rw-r--.    	<= f: regular file
+	drw-rw-r--. 	<= d: directory
+	lrw-rw-r--. 	<= l: symbolic link
+	crw-rw-r--. 	<= c: character devices
+	brw-rw-r--. 	<= b: block devices	
+
 	
 16. Filesystem type  
 	$ df -T						<= disk free
@@ -2230,21 +2297,32 @@ H 2 * * *				<= Every 2am
 	
 
 24. Echo 
+# echo -n opntion
+	$ echo -n Hello World\$			<= -n no return line
+		Hello World$apark@i7~$		<= \$ ignore special char   
+	
 	$ echo -n "Hello World\n\n"
-		Hello World\n\napark@i7~$   <= NO return line
-	$ echo -e "Hello World\n\n"
+		Hello World\n\napark@i7~$   <= -n NO return line
+									<= \n\n prints as string
+# echo -e option	
+	$ echo -e "Hello World\n\n"		<= -e enable interpretation of backslash escapes
 		Hello World
-		#new line	
-		#new line	
-	$ echo ~					<= user home directory
-	$ echo ~root				<= root home directory
+		empty line					<= \n prints a new empty line 
+		empty line					<= \n prints a new empty line 
+
+	$ echo ~						<= prints user home directory
+	$ echo ~root					<= prints root home directory
 	$ echo ~+  == pwd
 	$ echo ~-  == cd -
-	$ echo s{pe,pi}ll			<= don't use quote ""
+	$ echo s{pe,pi}ll				<= don't use quote ""
 		spell spill
-	
-	$ echo "My name is $USER"			<= apark
-	$ echo 'My name is $USER'			<= $USER
+
+# double & single quotes	
+    $ echo 'Single quotes "protects" the double quotes.'
+        Single quotes "protect" double quotes.
+		  
+	$ echo "My name is $USER"			<= apark  variable
+	$ echo 'My name is $USER'			<= $USER  same
 	
 	$ pdir="/tmp/files/today"
 	$ fname="report"
@@ -2255,33 +2333,37 @@ H 2 * * *				<= Every 2am
 	$ touch $pdir/${fname}_jan		<= user {} to protect the variable $fname
 	$ ls $pdir/$	/tmp/files/today/report_jan
 
+	$ echo  My name is $(whoami)	
 	$ echo "My name is $(whoami)"
-	$ echo "My name is `whoami`
+	$ echo  My name is `whoami`
+	$ echo "My name is `whoami`"
 	
-	### Nested command substitution
+### Nested command substitution
 	$ echo " Permissions for find are $(ls -l $(which find))"
 		4th			3rd					2nd			1st(/bin/find)
 		Permissions for find are -rwxr-xr-x. 1 root root 199200 Nov 20  2015 /usr/bin/find
-
 	
-	$ HOSTNAME=hostname						<=variable HOSTNAME into command hostname
-	$ echo "PC name is $HOSTNAME." 			<= PC name is PC.
+	$ HOSTNAME=hostname							<=variable HOSTNAME into command hostname
+	$ echo "PC name is $HOSTNAME." 				<= PC name is PC.
+	$ echo "PC name is $(hostname)."			<= PC name is PC.
+	$ echo "PC name is $(HOSTNAME)."			<= PC name is PC.
 
-    $ echo "PC name is \"$HOSTNAME\"."		<=  
+# \ ingnore special character
+    $ echo "PC name is \"($HOSTNAME)\"."		<= \ ignores " as a string 
     
-    $ echo 'Single quotes "protect" double quotes'
-          Single quotes "protect" double quotes
+
 
     $ echo "Well, isn’t that \"special\"?"
     $ Well, isn’t that "special"?
 
     $ echo "You have `ls | wc -l` files in `pwd`"
-    $ You have 43 files in /home/bob
+		You have 43 files in /home/bob
  
     $ x=100
 	$ echo "The value of \$x is $x"
-          The value of $x is 100
+        The value of $x is 100
 
+###
 	# echo -e    						 <= Enables interpretation of backslash escapes
 	$ echo -e "Inserting blank\n\n\n" 					<= \n  adding blank newline lines to text
 		
@@ -2390,14 +2472,14 @@ H 2 * * *				<= Every 2am
 	## search all files bigger than 100MB
 	# use ncdu utility
 	
-	$find /  -type f -size +100M   					<= k-kilo, M-mega, G-giga
+	$ find /  -type f -size +100M   					<= k-kilo, M-mega, G-giga
 
-	find / -name "*.txt" | xargs rm -rf				<= search all and delete them
+	$ find / -name "*.txt" | xargs rm -rf				<= search all and delete them
 	
-	find / -name “*.txt” | xargs grep “Tecmint”		<= search and search string "Techmint"
+	$ find / -name “*.txt” | xargs grep “Tecmint”		<= search and search string "Techmint"
 	
-    !!! Danger !!!
-    rm -fr ./tmp/test/delme/ *   <=delete whole root folder(./tmp/test/delme)   
+    ###!!! Danger !!!###
+    rm -fr ./tmp/test/delme/ *                <=delete whole root folder(./tmp/test/delme)   
 
 	$ find . -type f -name "*.bak" -exec rm -i {} \;
 	
@@ -2407,7 +2489,7 @@ H 2 * * *				<= Every 2am
 		-exec rm -rf {} \; : Delete all files matched by file pattern.
 		-type f : Only match files and do not include directory names.
 	
-	# Delete local backup folder older than 2 days
+#### Delete local backup folder older than 2 days	####
 	$ sudo find /backup/ -mindepth 1 -mtime +2 -delete
 
 	$ sudo find /data/backups/ -type f -mtime +0 -name 'rrs_us_db.sql.*' -delete   	<= mtime (days), mmin (mins)
@@ -2434,8 +2516,8 @@ H 2 * * *				<= Every 2am
 
  
 	
-22. touch file_{1..100}    <= creating 100 files
-    touch file_{01..100}   <= to resolve file format problem above logic
+22. touch file_{1..100}    <= creating 100 files e.g. 1,2..100
+    touch file_{01..100}   <= to resolve file format problem above logic e.g. 001, 002..100
     touch {1,2,3,4,5}	   <= creating 1,2,3,4,5 files
     touch ./ls/{1..100}    <= creating files under ./ls/ folder
     touch ./tmp/test/delme/file_{01..100}
@@ -2494,10 +2576,15 @@ H 2 * * *				<= Every 2am
 	$ date +%F   				<= 2018-01-09
 
 
-27. Printf vs echo ((http://wiki.bash-hackers.org/commands/builtin/printf)
+27. Printf vs echo (http://wiki.bash-hackers.org/commands/builtin/printf)
+	$ printf Hello World			Hello					<= Prints only first argument
+	$ printf "Hello World"			Hello World				<= Prints both, but No New Line
+		hello worldapark@i7~/
+	$ printf '%s\n' "Hello World"							<= Prints both, % New Line
+		Hello World											
 	
-	$ printf '%s\n' "$var"
-	
+	$ printf '%s\n' "$var"				<= %s	Interprets the associated argument literally as String
+										<= %n	a new line
 	$ echo "\n\t"
 		-n     do not output the trailing newline
 		-t     do not output the trailing horizontal
@@ -5694,6 +5781,12 @@ $ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{prin
 	
 	
 	
+# Remove a space in string
+	https://stackoverflow.com/questions/13659318/how-to-remove-space-from-string
+	sed 's/ //g'
+	tr -d ' '
+	$ echo "   3918912k " | sed 's/ //g'
+		3918912k 
 	
 	
 	
