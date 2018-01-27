@@ -1,4 +1,5 @@
 "한 줄의 코딩을 하더라도 실제로 사용할 수 있는 것을 만들자!"
+https://mywiki.wooledge.org/BashGuide/Parameters
 
 ######################
 ### 1. Run Scripts ###
@@ -754,8 +755,27 @@ Operator	       Meaning									Example
 -ot			First file is older than second one					[ "$myfile" -ot ~/.bashrc ]
 
 
-### Test [ expression ] statement for Comparison operation [[ expression ]]     
-	0:TRUE  1:FALSE 
+### Test [  ] [[  ]] satement
+	[ expression ]   statement for Comparison operation   0:TRUE  1:FALSE(Success)   
+	[[ expression ]] statement for Comparison operation   0:TRUE  1:FALSE(Success)
+	 
+	
+	Keywords
+Keywords are like builtins, with the main difference being that special parsing rules apply 
+to them. For example, [ is a Bash builtin, while [[ is a Bash keyword. They are both used for 
+testing stuff. [[ is a keyword rather than a builtin and is therefore able to offer an 
+extended test:
+
+	$ [ a < b ]								<= echo $?  1 <- false
+		-bash: b: No such file or directory
+		
+	$ [[ a < b ]]							<= echo $?  0 <- true
+	
+	The first example returns an error because Bash tries to 'redirect' the file b to the command [ a ]. 
+	The second example actually does what we expect it to, alphabetical comparison. The character
+	< no longer has its typical meaning of a File Redirection operator when it's used with the extended 
+	test [[ keyword.
+
 A. Comparing variables									           For Arithmatic with Integer
  	Less than			        [[ $1 < $2 ]]                    = (( $a < $B ))   , a=1, b=2
 	greater than			    [[ $a > $b ]]
@@ -3036,8 +3056,8 @@ if [[ -e ${files[0]} || -L ${files[0]} ]]; then
 	printf '%s\n' "${files[@]}"
 fi
 
-
-
+----------------------------------------------------------------------------------------
+5. 
 
 
 

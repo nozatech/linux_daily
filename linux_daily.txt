@@ -193,8 +193,24 @@ $ /home/apark/.bashrc		 <= current & new vars  e.g. alias
 
 PATH=$PATH:/usr/local/bin
 
+-----------------------------------------------------------------------------------
+https://mywiki.wooledge.org/BashGuide/CommandsAndArguments
+# Alias  
+	a word that is mapped to a string. Whenever that word is used as a command, 
+	it is replaced by the string it has mapped.
 
+# Function 
+	a name that is mapped to a set of commands. Whenever the function is used as a 
+	command, it is called with the arguments following it. Functions are the basic 
+	method of making new commands.
 
+# Builtin
+	certain commands have been built into Bash. These are handled directly by the 
+	Bash executable and do not create a new process.
+
+# Executable 
+	a program that can be executed by referring to its file path (e.g. /bin/ls), 
+	or simply by its name if its location is in the PATH variable.
 
 
 -----------------------------------------------------------------------------------
@@ -881,6 +897,11 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	
 ### rm 
 	$ rm -rf data.{1..9}				<= delete data.1 ~ data.9
+	$ rm "the file name.mp3"			<= if there are spaces in file name
+	
+
+
+
 	
 7. File Globs
 	1) * (asterist)
@@ -1155,7 +1176,8 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 
 	
 	
-10. Kill Signal( kill -l <=list)
+10. Kill Signal
+	$ kill -l 			<=list of singals
 	kill, killall, pkill
 	http://www.thegeekstuff.com/2009/12/4-ways-to-kill-a-process-kill-killall-pkill-xkill/
 	https://unix.stackexchange.com/questions/317492/list-of-kill-signals
@@ -1311,7 +1333,7 @@ $ echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab
 
 
 
-# How do I verify swap is activated or not?
+### How do I verify swap is activated or not?
 	$ free -h
 	$ swapon
 	$ swapon --show
@@ -1338,6 +1360,7 @@ $ echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab
 ### stat			<=display file or file system status
 
 	$ stat file.name
+	
 	File: ‘file.name’
 	Size: 80              Blocks: 8          IO Block: 4096   regular file
 	Device: fd02h/64770d    Inode: 1074617621  Links: 1
@@ -1355,6 +1378,13 @@ $ echo "/swapfile  swap  swap  defaults  0 0"  >>  /etc/fstab
 	Blocks: Total: 13100800   Free: 9197614    Available: 9197614
 	Inodes: Total: 52428800   Free: 52251919
 
+### Type command
+	The type command can be used to get a description of the command type:
+
+	$ type rm
+		rm is hashed (/bin/rm)
+	$ type cd
+		cd is a shell builtin
 	
 	
 7. sysstat	Linux Performance Monitoring package
@@ -2208,6 +2238,14 @@ H 2 * * *				<= Every 2am
 	
 	
 19. Alias
+	#only used in interactive shells and not in scripts!!
+	https://mywiki.wooledge.org/BashGuide/CommandsAndArguments
+	
+	$ nmap -Pn -A --osscan-limit 192.168.0.1  	<= from shell
+	
+	$ alias nmapp="nmap -Pn -A --osscan-limit"	<= alias
+	$ nmapp 192.168.0.1							<= usage
+	
 	$ cd; vi .bash_profile
 	$ alias server1='ssh root@ip_address -p 3404'   <= add your alias in .bash_profile
 	$ alias lp='ls -al ../'							<= ls -al parent directory  
