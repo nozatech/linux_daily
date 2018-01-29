@@ -23,13 +23,13 @@ $ echo {0..10..2}
 $ echo {0..10..3}
 	0 3 6 9
 $ echo {a..z}
-	a b c d e f g h i j k l m n o p q r s t u v w x y z
+	a b c ... x y z
 $ echo {A..Z}
-	A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+	A B C ... X Y Z
 $ echo {A..z}				<= Capital first
-	A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [  ] ^ _ ` a b c d e f g h i j k l m n o p q r s t u v w x y z
+	A B C ... X Y Z [  ] ^ _ ` a b c ... x y z
 $ echo {A..z..2}
-A C E G I K M O Q S U W Y [ ] _ a c e g i k m o q s u w y
+A C E ... U W Y [ ] _ a c e ... u w y
 
 $ touch {apple,banana,cherry}_{01..100}{a..z}
 apple_001a  apple_038n  apple_076a   banana_013n  banana_051a  banana_088n  cherry_026a  cherry_063n

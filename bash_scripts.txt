@@ -990,7 +990,9 @@ export varName=value         # defines an environment variable (will be availabl
 			tries to unset a function.
 
 
-# Arrays adn Associative Arrays
+# Arrays and Associative Arrays
+	BASH provides 3 types of parameters: Strings, Integers and Arrays
+	
 	Arrays 			   <= Stores a collection of data separate entities using indexes
 	Associative Arrays <= Take a string as their array index (Bash V4 or higher)
 	

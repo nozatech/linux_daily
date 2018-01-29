@@ -1,11 +1,11 @@
 Flash Card
 ### Bash ###
 1. ParameterS
-echo $0 <= shell itself
-echo $@ <= list of arguments
-echo $#	<= total arguments
-echo $?	<= shell exit code
-echo $$	<= Current shell PID
+echo $0			<= shell itself
+echo $@ 		<= listing the arguments
+echo $#			<= total No. of arguments
+echo $?			<= shell exit code
+echo $$			<= Current shell PID
 
 2. Back tic vs $()
 `command`		<= legacy
@@ -31,6 +31,7 @@ cmd1 && cmd2 && cmd3    <= If cmd1 successful, run cmd2, run cmd3,  otherwise sk
 cmd1 || cmd2   		    <= If cmd1 failed, run cmd2, otherwise skip.
 cmd1 || cmd2 || cmd3    <= If cmd1 failed, run cmd2, otherwise runs cmd3, otherwise skip.
 
+5. BASH provides 3 types of parameters: Strings, Integers and Arrays
 
 
 

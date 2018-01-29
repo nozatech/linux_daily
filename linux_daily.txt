@@ -117,15 +117,10 @@ $ info				<= Longer document
          /usr/bin/ls
 		
 	$ find / -name  cmd
-		$ sudo find / -name ls	<= SUDO requires scan all /(root) directories
+		$ sudo find / -name ls	<= SUDO requires to scan all /(root) subdirectories
 	$ locate   		cmd			<= CentOS7 $yum install mlocate then $updatedb
 		$ locate ls
 		  scan all files with 'ls' 
-
-
-
-
-
 
 
 -----------------------------------------------------------------------------------	
@@ -299,13 +294,29 @@ Cut and Paste(v/V-d/y-p/P)
 	Undo
 	esc then uu
 	
-	### Change String like "SED" stream editor
+	# Change String like "SED" stream editor
 	http://vim.wikia.com/wiki/Search_and_replace
 	
 	# within VI, change foo to bar
 	:%s/foo/bar/g				<=
 	
 
+### Invocation Modes
+https://mywiki.wooledge.org/bash/invocation/mode
+	
+MODE				BASH								POSIX Shell
+Login Shell			-bash[options]						-sh
+					bash -l[options]					sh -l
+					bash --login[options]				sh --login
+	
+Command String		bash -c 'command'[Options]			sh [options] -c 'command
+	
+Interactive Shell	bash -i								sh -i	
+Shell Script		#!/bin/bash [option]				#!/bin/sh [option]
+Command File		bash [options] file [args]			sh [options] file [args]
+Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]	
+	
+	
 # Switch user
 	$ su   user_id					<= just switch user but same current directory
 	$ su - user_id					<= go to user's HOME directory
@@ -520,11 +531,6 @@ total 1364
 	$ update-rc.d ssh enable 			# sets the default runlevels to on 
 	$ update-rc.d ssh disable 			# sets all to off
 
-	
-  # login ec2-user
-	$ su apark
-	$ chmod 700 .ssh
-
   # Verbose mode using -v
 	$ ssh -vvvv nozatech@192.168.221.129						<= Max verbose debugging mode
     
@@ -538,8 +544,8 @@ total 1364
 	SSL is the old name. It is called TLS these days.
 	https://curl.haxx.se/docs/sslcerts.html
 	
-	
-### useradd vs adduser
+### User management	
+# useradd vs adduser
 	# https://askubuntu.com/questions/345974/what-is-the-difference-between-adduser-and-useradd
 	
 	addduser / deluser 			<= Perl script that creates /home/user & ssh in shell
@@ -554,7 +560,7 @@ total 1364
 	$ useradd --no-create-home --shell /bin/false prometheus
 	$ useradd --no-create-home --shell /bin/false node_exporter
 	
-### Change user name
+# Change user name
 	https://askubuntu.com/questions/34074/how-do-i-change-my-username
 	
 	$ sudo usermod -l newUsername oldUsername
@@ -562,6 +568,11 @@ total 1364
 	$ sudo usermod -d /home/newHomeDir -m newUsername
 	
 	$ ln -s    /home/newname   /home/oldname   
+	
+
+	
+	
+	
 	
 ### /etc/passwd	
 
@@ -574,13 +585,9 @@ total 1364
 	$ awk -F ":" '{print $5}' /etc/passwd	
 	
 	
-	
-	
-	
-	
-	
-	
-	
+
+
+
 	
 	
 	
@@ -600,7 +607,8 @@ total 1364
 	
 	$ yum install python-pip
 	$ pip install pssh
-	
+
+
 	
 		
 	

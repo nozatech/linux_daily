@@ -96,7 +96,7 @@ impose			<- force (something unwelcome or unfamiliar) to be accepted or put in p
 impaired		<- the state or fact of being impaired(weakened or damaged), especially in a specified faculty.
 in place of 	<- instead of
 irrigator		<- [írəgèitər]
-
+invocation		<- the action of invoking something or someone for assistance or as an authority.
 
 
 # J
