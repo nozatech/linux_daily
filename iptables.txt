@@ -1,33 +1,25 @@
-############
-# IPTables #
-############
+###################################
+# IPTables for BNEA Initial Setup #
+###################################
+
 *filter
 :INPUT ACCEPT [91:15645]
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [132:28522]
-#
+###
 -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 -A INPUT -p icmp -j ACCEPT
 -A INPUT -i lo -j ACCEPT
-#
+###
 ### BNGA office ###
 -A INPUT -m state --state NEW -m tcp -p tcp -s 65.87.26.0/24    -m multiport --dports 22,80,443 -j ACCEPT
 -A INPUT -m state --state NEW -m tcp -p tcp -s 64.95.137.172/32 -m multiport --dports 22,80,443 -j ACCEPT
 #
-### BNER ###
+### BNER SSH Server###
 -A INPUT -m state -s 162.243.3.59/32  --state NEW -j ACCEPT
--A INPUT -m state --state NEW -m tcp -p tcp -s 87.243.5.176/28  -m multiport --dports 22,80,443 -j ACCEPT
--A INPUT -m state --state NEW -m tcp -p tcp -s 89.37.122.128/29 -m multiport --dports 22,80,443 -j ACCEPT
--A INPUT -m state --state NEW -m tcp -p tcp -s 89.37.124.86/29  -m multiport --dports 22,80,443 -j ACCEPT
+#
 ### Apark Home ###
--A INPUT -m state -s 67.174.242.83/32  --state NEW -j ACCEPT
-#
-###  Jenkins ###
-#
--A INPUT -m state -s 10.17.0.6/32    --state NEW -j ACCEPT
--A INPUT -m state -s 45.55.80.156/32 --state NEW -j ACCEPT
-##
-###
+-A INPUT -m state -s 67.161.23.77 /32  --state NEW -j ACCEPT
 #
 ###
 -A INPUT   -j REJECT --reject-with icmp-host-prohibited

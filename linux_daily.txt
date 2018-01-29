@@ -71,6 +71,7 @@ MEAN stack <= MongoDB, Express.js, AngularJS, and Node.js
 
 ### S
 SSL 	<= Secure Sockets Layer
+
 SMACK Stack
 	Spark - fast and general engine for distributed, large-scale data processing
 	Mesos - cluster resource management system that provides efficient resource
@@ -102,6 +103,30 @@ $ man -k REGEX or UNIXCOMMAND
 
 $ info				<= Longer document
 	$ info grep
+-------------------------
+### Command Locations ###
+-------------------------
+# Find the command location
+	$ whereis  cmd				<= locate the binary, source, and manual page files for a CMD
+		$ whereis ls
+		ls: /usr/bin/ls /usr/share/man/man1/ls.1.gz
+
+	$ which    cmd				<= shows the full path of (shell) commands.
+		$ which ls
+         alias ls='ls --color=auto'
+         /usr/bin/ls
+		
+	$ find / -name  cmd
+		$ sudo find / -name ls	<= SUDO requires scan all /(root) directories
+	$ locate   		cmd			<= CentOS7 $yum install mlocate then $updatedb
+		$ locate ls
+		  scan all files with 'ls' 
+
+
+
+
+
+
 
 -----------------------------------------------------------------------------------	
 Daily Linux CMD List
@@ -112,7 +137,7 @@ Daily Linux CMD List
 
 ### Font Type <= Lucia Console, 12pt
 
-### Shell's Color, History, Time stamp, Size ###
+### Shell's Color, History, Time stamp, Size ### 
 
 ### Green prompt
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && source ~/.bashrc 
@@ -338,7 +363,7 @@ total 1364
 	$ echo "export HISTSIZE=10000" >> ~/.bashrc
 	
 	
-# Touch command
+# Touch 
 	$ touch apple banana cherry			<= creating multiple files
 	$ touch file_{01..1000}
 	$ echo {1..10..2}
@@ -529,7 +554,7 @@ total 1364
 	$ useradd --no-create-home --shell /bin/false prometheus
 	$ useradd --no-create-home --shell /bin/false node_exporter
 	
-### Chnage user name
+### Change user name
 	https://askubuntu.com/questions/34074/how-do-i-change-my-username
 	
 	$ sudo usermod -l newUsername oldUsername
@@ -641,7 +666,7 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	
 	
 	
-# Finding my ip (gateway IP)
+### Finding my ip (gateway IP)
 	$ curl ifconfig.io	
 	$ curl icanhazip.com
 	
@@ -900,7 +925,13 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	$ rm "the file name.mp3"			<= if there are spaces in file name
 	
 
+	
+### grep
 
+	# Finding a string word using grep
+	$ grep -i word *		<= current dir
+	$ grep -i word */*		<= sub dirs
+	$ grep -i word */*/*    <= sub sub dirs
 
 	
 7. File Globs
@@ -1047,7 +1078,7 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	$ systemctl enable | disable | status iptables
 		# /etc/systemd/system/basic.target.wants/iptables.service
 	
-	$ systemctl cat sshd		<= cat Unit file for sshd.service 
+	$ systemctl cat sshd				<= 'cat' concatenate the Unit file for 'sshd.service'
 		# /usr/lib/systemd/system/sshd.service
 		[Unit]
 		Description=OpenSSH server daemon
@@ -1107,7 +1138,8 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	
 	$ journalctl -b					<= current boot
 	$ journalctl -k	  <=> dmesg     <= Kernal
-	$ journalctl -xe				<= -x  Augment log lines with explanation texts from the message catalog.
+	$ journalctl -xe				<= -x  Augment log lines with explanation texts from the message 
+										   catalog.
 									<= -e  jump to the end of the journal 
 	
 	
@@ -1143,7 +1175,28 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	$ ps axjf  		<= BSD PS tree format
 	$ ps -ejH		<= CentOS 
 	
-	$ps auxf
+	$ ps auxf
+
+# pstree
+	https://www.cyberciti.biz/faq/unix-linux-pstree-command-examples-shows-running-processestree/
+	$ yum -y install psmisc
+	$ pstree
+	$ pstree pid
+	$ pstree user
+	
+	$ pstree -p					<= show PIDS for each process name
+		systemd(1) ─┬─agetty(1166)
+					├─agetty(1167)
+					├─auditd(435)───{auditd}(436)
+
+	$ pstree -n				<= To sort processes with the same ancestor by PID instead of by name 
+	$ pstree -np				i.e. numeric sort, pass the -n options as follows:
+		systemd(1) ─┬─systemd-journal(357)
+					├─auditd(435)───{auditd}(436)
+					├─systemd-logind(552)
+					├─dbus-daemon(553)───{dbus-daemon}(554)
+
+	
 	
 9. Process Niceness/Priority
 	$ nice -2 top			<= if only 1 '-' +2,  '--' -2
@@ -1209,7 +1262,28 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 		shift + n	<=(PID Number)
 	
 
+### wait: wait [id]
+    Wait for job completion and return exit status.
+	https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/121391#121391
+	$ wait $!
 
+#!/bin/bash
+# The script uses trap to catch ctrl-c (or SIGTERM), kills off the command 
+# (I've used sleep here as a test) and exits.
+
+cleanup (){
+kill -s SIGTERM $!
+exit 0
+}
+
+trap cleanup SIGINT SIGTERM
+
+while [ 1 ]
+do
+    sleep 60 &
+    wait $!
+done
+	
 
 
 	
@@ -1662,13 +1736,18 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	
 	$ date +%Y-%m-%d-%H-%M-%S
 	
-	$DATE=`date +%Y-%m-%d-%H-%M-%S`   <= %Y is 2016, %y is 16
+	$DATE=`date +%Y-%m-%d-%H-%M-%S`  	 <= %Y is 2016, %y is 16
 	$echo $DATE
 	2016-03-24-22-15-39
 
-	$DATE=`date +%H:%M:%S`
-	$echo $DATE
-	 22:18:35
+	$ DATE=`date +%H:%M:%S`				 <= `command.....`      <- Legacy way
+	$ DATE=$(date +%H:%M:%S)			 <= $(command....)
+	$ DATE="$(date +%H:%M:%S)"			 <= $(command....)
+	$ echo $DATE
+		22:18:35
+	$DATE='$(date +%H:%M:%S)'			<= NO Single Quote XXX
+		$(date +%H:%M:%S)				<= Literal with Single Quotes
+
 	 
 	# time stamp for script
 	$ date +%s                 <= %s     seconds since 1970-01-01 00:00:00 UTC
@@ -2099,7 +2178,7 @@ H 2 * * *				<= Every 2am
 	$ lsof -p ABC | grep log
 	
 	# Which processes still have this old library open?
-	$ lsof grep libname.so
+	$ lsof | grep libname.so
 	
 	# Which files does user_id have open?
 	$ lsof -u user_id
@@ -2209,16 +2288,29 @@ H 2 * * *				<= Every 2am
 	netstat -punt								<= program, udp, no lookup, tcp
 	netstat -ntl								<= no lookuop, tcp, LISTEN port
 
-	watch -d -n1 "netstat -ntap | grep ESTA"  		<= Print active connections n1 <= every 1sec
+	$ watch -d -n1 "netstat -ntap | grep ESTA"  		<= Print active connections n1 <= every 1sec
 	
-	watch -n5 'netstat -ntap | grep ESTA | wc -l'	<= Print active connections n1 <= every 1sec
+	$ watch -n5 'netstat -ntap | grep ESTA | wc -l'	<= Print active connections n1 <= every 1sec
 	
-	watch -n 0.1 "dmesg | tail -n $((LINES-6))"
+	$ watch -n 0.1 "dmesg | tail -n $((LINES-6))"
 	
-	while true; do dmesg -c ; sleep 1 ; done
-	
-	ss <= socket statistic
+	$ while true; do dmesg -c ; sleep 1 ; done
 
+### Infinite loop - while loop
+https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/121391#121391
+>>>	$ while true; do ping google.com; done  	
+	
+	
+	$ Ctrl +c 			<= hold down UNTIL '^C'
+	$ Ctrl +z 			<= stop the job
+	$ jobs
+		[1]+  Stopped                 ping google.com
+	$ kill %!
+		[1]+  Terminated              ping google.com
+	
+	$ while [ 1 ]; do COMMAND || break; done;
+	
+	
 
 18. vmstat - report virtual memory statistics
 	- vmstat reports information about processes, memory, paging, block IO, 
@@ -4051,18 +4143,7 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 	$ grep -Ril "finding_word" /target/dir  <= R-recursive, i-ignore case, l-show file name
 	
 	
-72.	Find the command location
-	$ whereis  		command_name
-	$ which    		command_name
-	$ find / -name  command_name
-	
-	$ locate   		command_name		<= CentOS7 $yum install mlocate , $updatedb
 
-	
-	Find string (word)
-	$ grep -i finding_word *		<= current dir
-	$ grep -i finding_word */*		<= sub dirs
-	$ grep -i finding_word */*/*    <= sub sub dirs
 	
 
 73. 

@@ -184,7 +184,7 @@ $ var=value		       #Assign the string value to shell variable var.
 ------------------------------------	  
 #!/bin/bash
 function invoke_f1 {
-	typeset x			# make x Var as within function local
+	typeset x			# make x as a var within function(inside of function as local var)
 	x=7
 	y=8					# y becomes global var
 }
@@ -290,16 +290,16 @@ echo 'MyArray2[hotdog]= ' ${MyArray2["hotdog"]}
 ---------------------------------------------------
 # Combines 2 or more commands
 ---------------------------------------------------
-cmd1; cmd2     #Do cmd1 first, then cmd2(cmd1 has failed or not)
+cmd1; cmd2     			<= Do cmd1 first, then cmd2(cmd1 has failed or not)
 	$ sleep 5 ; ls -l
-cmd1 & cmd2    #Do cmd1 and cmd2 without waiting for cmd1 to finish
+cmd1 & cmd2    			<= Do cmd1 and cmd2 without waiting for cmd1 to finish
 	$ sleep 4 & ls -l
 
-cmd1 && cmd2   		  # If cmd1 successful, run cmd2, otherwise skip.
-cmd1 && cmd2 && cmd3  # If cmd1 successful, run cmd2, run cmd3,  otherwise skip.
+cmd1 && cmd2   		    <= If cmd1 successful, run cmd2, otherwise skip.
+cmd1 && cmd2 && cmd3    <= If cmd1 successful, run cmd2, run cmd3,  otherwise skip.
 
-cmd1 || cmd2   		  # If cmd1 failed, run cmd2, otherwise skip.
-cmd1 || cmd2 || cmd3  # If cmd1 failed, run cmd2, otherwise runs cmd3, otherwise skip.
+cmd1 || cmd2   		    <= If cmd1 failed, run cmd2, otherwise skip.
+cmd1 || cmd2 || cmd3    <= If cmd1 failed, run cmd2, otherwise runs cmd3, otherwise skip.
 
 
 
@@ -309,9 +309,9 @@ cmd1 || cmd2 || cmd3  # If cmd1 failed, run cmd2, otherwise runs cmd3, otherwise
 -o    # or	
 
 	
----------------------------------
-# File Descriptor,  Redirection, Pipes
----------------------------------
+-----------------------------------------------
+### File Descriptor,  Redirection, Pipes ###
+-----------------------------------------------
 https://en.wikipedia.org/wiki/File_descriptor
 File Desciptor 0, 1, and 2 reservered as:
 	0 - stdin  (Standard input)
@@ -427,18 +427,40 @@ echo ------------------------------------------
 echo "Redirect both STDOUT & STDERR using '&>'"
 find /etc -name grub &> both.out
 cat both.out
-	
+---------------------------------------------------	
+### Parameters ###
+https://mywiki.wooledge.org/BashGuide/Parameters
+---------------------------------------------------	
+Parameters are a sort of named space in memory you can use to retrieve or store information. 
+Generally speaking, they will store string data, but can also be used to store integers, 
+indexed and associative arrays.
+
+# Parameters 
+	It come in two flavors: variables and special parameters. Special parameters are read-only, 
+	pre-set by BASH, and used to communicate some type of 	internal status. 
+# Variables 
+	They are parameters that you can create and update yourself. Variable names are bound by 
+	the following rule:
+	Name: A word consisting only of letters, digits and underscores, and beginning with a letter 
+		or an underscore. Also referred to as an identifier.	
+		
 ---------------------------------------------------	
 # Shell Built-in Variables:
+# Special Parameters and Variables
 ----------------------------------------------	
-$0             # Name of this shell script itself.
-$1             # Value of first command line parameter (similarly $2, $3, etc)
-$@			   # 
-$#             # In a shell script, the number of command line parameters.
-$*             # All of the command line parameters.
-$-             # Options given to the shell.
-$?             # Return the exit status of the last command. 0 - Successful, 1 -fail
-$$             # Process id of script (id of the shell running the script)	
+$0      # Name of this shell script itself.
+$1      # Positional Parameters contain the arguments that were passed to the current script or function.
+		  Value of first command line parameter (similarly $2, $3, etc)
+$@		# Expands to all the words of all the positional parameters. Double quoted, 
+		  it expands to a list of them all as individual words.
+$#      # In a shell script, the number of command line parameters.
+		  the number of positional parameters that are currently set
+$*      # All of the command line positional parameters.
+$-      # Options given to the shell.
+$_		# Expands to the last argument of the last command that was executed.
+$?      # Return the exit status of the last command. 0 - Successful, 1 -fail
+$$      # Process id of script (id of the shell running the script)	
+		  the PID (process ID) of the current shell.
 
 The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
 
@@ -493,7 +515,27 @@ match=`ls *.bak`        #Puts names of .bak files into shell variable match.
 echo \*                 #Echos * to screen, not all filename as in:  echo *
 echo '$1$2hello'        #Writes literally $1$2hello on screen.
 echo "$1$2hello"        #Writes value of parameters 1 and 2 and string hello.
+
+-------------------------------------------------------------------	
+### ${}  expression is used for variable substitution
+-------------------------------------------------------------------
 	
+	
+	
+-------------------------------------------------------------------
+### Back Tic `...` legacy VS Parenthesis $(...) - Command substitution
+-------------------------------------------------------------------
+Forgot about the Back Tic `...` It isn't consistent with the syntax of Expansion and 
+is terribly hard to nest. Use  $(...)  instead.
+http://mywiki.wooledge.org/BashFAQ/082
+
+$ echo "`echo \\a`" "$(echo \\a)"
+
+
+
+
+
+
 -------------------------------------------------------------------
 # Arithmetic: BASH arithmetic is done using the expr command as in:
 -------------------------------------------------------------------			
@@ -541,17 +583,45 @@ $ for i in sg-eu sg-as ; do rsync -av authorized_keys $i:.ssh; done
 
 $ for i in $(cat pmtip); do echo $i && ssh -t apark@$i "cat /var/log/newrelic/nrsysmond.log" | tail; done  2>&1 > log
 
+
+# This writes the name of all files ended with ".jpg" in the folder "img":
+$ for f in *; do if [ "${f#*.}" == 'jpg' ]; then echo $f; fi; done
+
+# This deletes them:
+$ for f in *; do if [ "${f#*.}" == 'jpg' ]; then rm -r $f; fi; done
+
+
+
+
+
 #### While Loop ####
-$ while true; do dmesg -c ; sleep 1 ; done				<= -c clear, need subo 
-$ while    :; do dmesg -c ; sleep 1 ; done				<= -c clear, need subo 
-	# while : is same as "while true"
+$ while  true; do dmesg -c ; sleep 1 ; done				<= -c clear, need subo 
+$ while [ 0 ]; do dmesg -c ; sleep 1 ; done				<= -c clear, need subo 
+$ while     :; do dmesg -c ; sleep 1 ; done				<= : is same as "while true"
+	The : (colon) is a built-in command that does nothing, but returns 0 (success). Thus, it's shorter 
+	(and faster) than calling an actual command to do the same thing.
+
+
 	
 $ while [ 1 ] ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostname'; sleep 10; done
 $ while false ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostname'; sleep 10; done
 
 $ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; kill $! ; wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
 
-	
+https://stackoverflow.com/questions/1289026/syntax-for-a-single-line-bash-infinite-while-loop
+$ while sleep 2; do echo "Thinking"; done	
+$ while       :; do echo "Thinking"; sleep 2; done			<= run echo then sleep cmd
+$ while [ 1 ]  ; do echo "Thinking" && sleep 2 || break; done
+
+
+$ until  ((0)); do echo "Thinking"; sleep 2; done
+$ while read i; do echo "Thinking"; sleep 2; done < /dev/urandom
+$ for   ((;;)); do echo "Thinking"; sleep 2; done
+$ until    [ ]; do echo "Thinking"; sleep 2; done
+
+
+
+
 ---------------------------------------------------	
 Grouping Commands	
 https://www.gnu.org/software/bash/manual/bashref.html#Command-Grouping
@@ -575,7 +645,8 @@ https://askubuntu.com/questions/606378/when-to-use-vs-in-bash
 	
 ---------------------------------------------------	
 ### Within script Code
-	#!/bin/bash
+
+	#!/bin/bash  # or '#!/bin/bash -x'
 	### turn on debug mode
 	set -x           <- Turn on/ Off " +x " debug mode
 	for i in $(ls)
@@ -627,7 +698,7 @@ https://coderwall.com/p/85jnpq/bash-built-in-variables
 	$?		return value
 	$$	 	process ID(PID) of script
 	
-	$-		flags passed to script(using set)
+	$-		flags passed to script( set's opntion 'himBHs', $help set)
 	$_		last argument of previous command
 		e.g. $ bash test.txt
 			 $ cat $_			<= $_ is test.txt
@@ -635,7 +706,7 @@ https://coderwall.com/p/85jnpq/bash-built-in-variables
 	* Must be quoted, otherwise it defaults to $@
 	
 echo $$ <= the PID of the current process.
-echo $? <= the return code of the last executed command.	
+echo $? <= the return code of the last executed command. 0:True, 1:False	
 echo $# <= the number of arguments in $*
 echo $* <= the list of arguments passed to the current process
 echo $@ <= List of arguments
@@ -669,16 +740,16 @@ With @:				<= per line	due to 'For Loop'
 https://coderwall.com/p/85jnpq/bash-built-in-variables
 -----------------------
 $ vi test.sh
-#! /bin/sh
-echo '$#' $#
-echo '$@' $@
-echo '$?' $?
+#!/bin/sh
+echo 'The number of positional parameters are $#' $#
+echo 'All positional parameters are $@' $@
+echo 'The exit code of fg command is $?' $?
 -----------------------
 
 $ bash test.sh 1 2 3
 output:
 $#  3
-$@  1 2 3			<= all the arg values in the single line(No for loop)
+$@  1 2 3			<= all the arg values in the single line(use for loop for colum)
 $?  0
 
 *You passed 3 parameters to your script.*
@@ -694,7 +765,7 @@ $ echo -n     do not output the trailing newline
 ---------------------------------------------------
 ### Quote in shell script ###
 
-	$greeting="hello"
+	$ greeting="hello"
 	### NO Quote	
 	echo $greeting, world \(planet\)!
 	   => hello, world (planet)!
@@ -754,10 +825,10 @@ Operator	       Meaning									Example
 -nt			First file is newer than second one					[ "$myfile" -nt ~/.bashrc ]
 -ot			First file is older than second one					[ "$myfile" -ot ~/.bashrc ]
 
-
+-------------------------------------------------------------------------------------
 ### Test [  ] [[  ]] satement
-	[ expression ]   statement for Comparison operation   0:TRUE  1:FALSE(Success)   
-	[[ expression ]] statement for Comparison operation   0:TRUE  1:FALSE(Success)
+	[ expression ]   statement for Comparison operation   0:TRUE  1:FALSE(Success)   <= Legacy
+	[[ expression ]] statement for Comparison operation   0:TRUE  1:FALSE(Success)	 <= Newer
 	 
 	
 	Keywords
@@ -766,15 +837,14 @@ to them. For example, [ is a Bash builtin, while [[ is a Bash keyword. They are 
 testing stuff. [[ is a keyword rather than a builtin and is therefore able to offer an 
 extended test:
 
-	$ [ a < b ]								<= echo $?  1 <- false
+	$ [ A < B ]								<= echo $?  1 <- false, (B value is feeding into A command) 
 		-bash: b: No such file or directory
-		
-	$ [[ a < b ]]							<= echo $?  0 <- true
+			Explanation: The first example returns an error because Bash tries to 'redirect' 
+						 the file B to the command [ A ].
 	
-	The first example returns an error because Bash tries to 'redirect' the file b to the command [ a ]. 
-	The second example actually does what we expect it to, alphabetical comparison. The character
-	< no longer has its typical meaning of a File Redirection operator when it's used with the extended 
-	test [[ keyword.
+	$ [[ a < b ]]							<= echo $?  0 <- true
+		    	Explanation: Alphabetical comparison. The character '<' no longer has its typical meaning 
+				of a File Redirection operator when it's used with the extended 
 
 A. Comparing variables									           For Arithmatic with Integer
  	Less than			        [[ $1 < $2 ]]                    = (( $a < $B ))   , a=1, b=2
@@ -784,14 +854,14 @@ A. Comparing variables									           For Arithmatic with Integer
 	equal(same)			        [[ $a == $b ]]
 	not equal(same)		        [[ $a != $b ]]
 		
-$ [ 9 -lt 10 ]; echo $?
+$ [ 9 -lt 10 ] ; echo $?
 $ [ "awesome" = "awesome" ]; echo $?
-$ [ 10 == 10 ]; echo $?
-$ [[ 1 < 2 ]] ; echo $?
-$ (( 1 < 2 )) ; echo $?
+$ [ 10 == 10 ] ; echo $?
+$ [[ 1 < 2 ]]  ; echo $?
+$ (( 1 < 2 ))  ; echo $?
 $ (( 1 == 2 )) ; echo $?
 
-or use 'expr'
+or use 'expr' for arithmatic 
 
 
 ------------------------------------------------
@@ -1240,6 +1310,12 @@ done
 
 ----------------------------------------------------------------------------------
 ### Test statement ###
+test, [  ], [[  ]]
+----------------------------------------------------------------------------------
+When writing Bash scripts, do not use the [ command. Bash has a far better alternative: 
+[[. Bash's [[ is more reliable in many ways and there are no advantages whatsoever to 
+sticking with the old relic. You'll also miss out on a lot of features provided by [[ 
+that [ does not have (like pattern matching).
 ----------------------------------------------------------------------------------
 if test  == if [ ]
 [ expression ] 
@@ -1804,6 +1880,30 @@ $ function helloworld {
 $ helloworld
 	Hello World!
 ------------------------------------------------------
+# Single input multiple outputs using function
+------------------------------------------------------
+#!/bin/bash
+string_test() {									# use () instead of 'function' key word
+        echo "string test"
+}
+
+function string_test2 {
+        echo "1. string test2"
+        echo "2. list of arguments is ${@}"			#use double quote for parameters "..."
+        echo "3. Nunmber of toal arguments is ${#}"
+        echo '4. Exit code with Single quote "$?" <-should be 0'  #Don't use ' ' for $var
+        echo "5. All of positional parameters  $*"
+}
+echo "Running functions 1 & 2"
+string_test
+echo "-------Func without arguments--------"
+string_test2
+echo "------Func with 'Hello' 'world' arguments--------"
+string_test2 "hello" "world"
+
+
+------------------------------------------------------
+
 # 'return'  <= functions return when there are no more statements
 				or when a return statement is executed.
 $ function helloworld {
