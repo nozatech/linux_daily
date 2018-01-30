@@ -5,6 +5,17 @@ https://mywiki.wooledge.org/BashGuide/Parameters
 ### 1. Run Scripts ###
 ######################
 
+special characters Names
+https://www.owasp.org/index.php/Password_special_characters
+(	<= parenthesis
+{ 	<= brace
+| 	<= vertical bar
+[	<= bracket
+_	<= undercore
+:	<= colon
+;	<= semicolon
+*	<= asterisk
+
 https://explainshell.com/
 https://www.shellcheck.net/
 $ apt-get | yum install shellcheck	-y
@@ -181,6 +192,15 @@ $ var=value		       #Assign the string value to shell variable var.
 		- Let allows for convenient arithmetic:
 		  let x++; let y=x**2; let x=x*3; let x*=5, ...
 		  
+------------------------------------	  
+https://askubuntu.com/questions/606378/when-to-use-vs-in-bash
+
+$ f() { echo this is a function; }  			<= space between { echo ...  ; }
+													executes in current shell
+$ f() (echo this is a function)					<= No effect on space nor ; to close
+
+
+
 ------------------------------------	  
 #!/bin/bash
 function invoke_f1 {
@@ -798,7 +818,7 @@ $ echo -n     do not output the trailing newline
 Note: You must separate the square brackets from other text by a space.
 e.g. [ ! -z $HOME ] 
       ^ ^space   ^space 
-	# if $HOME is exist[true], echo $HOME
+	# if $HOME is exist[true], echo $HOME; fi
 	$ if [ ! -z $HOME ]; then echo "$HOME"; fi 
 
 ### Common Bash comparisons
@@ -951,7 +971,7 @@ grep "echo" ./function1.sh
 
 
 	
-$IFS   <-Internal Field Seperator
+### IFS   <-Internal Field Seperator
 
 $ bash -c 'set w x y z; IFS=":-;"; echo "$*"'
 w:x:y:z
@@ -990,56 +1010,6 @@ export varName=value         # defines an environment variable (will be availabl
 			tries to unset a function.
 
 
-# Arrays and Associative Arrays
-	BASH provides 3 types of parameters: Strings, Integers and Arrays
-	
-	Arrays 			   <= Stores a collection of data separate entities using indexes
-	Associative Arrays <= Take a string as their array index (Bash V4 or higher)
-	
-array[0] = val               # several ways to define an array
-array[1] = val
-array[2] = val
-array=([2]=val [0]=val [1]=val)
-array(val val val)
-
-${array[i]}                  # displays array's value for this index. If no index is supplied, array element 0 is assumed
-${#array[i]}                 # to find out the length of any element in the array
-${#array[@]}                 # to find out how many values there are in the array
-
-
-declare -A					 # Associative Array
-declare -a                   # Indexed array variables
-declare -f                   # uses function names only
-declare -F                   # displays function names without definitions
-declare -i                   # the variables are treaded as integers
-declare -r                   # makes the variables read-only(Constant)
-								ex) declare -r NUM1=5
-declare -x                   # marks the variables for export via the environment
-
-${varname:-word}             # if varname exists and isn't null, return its value; otherwise return word
-${varname:=word}             # if varname exists and isn't null, return its value; otherwise set it word and then return its value
-${varname:?message}          # if varname exists and isn't null, return its value; otherwise print varname, followed by message and abort the current command or script
-${varname:+word}             # if varname exists and isn't null, return word; otherwise return null
-${varname:offset:length}     # performs substring expansion. It returns the substring of $varname starting at offset and up to length characters
-
-${variable#pattern}          # if the pattern matches the beginning of the variable's value, delete the shortest part that matches and return the rest
-${variable##pattern}         # if the pattern matches the beginning of the variable's value, delete the longest part that matches and return the rest
-${variable%pattern}          # if the pattern matches the end of the variable's value, delete the shortest part that matches and return the rest
-${variable%%pattern}         # if the pattern matches the end of the variable's value, delete the longest part that matches and return the rest
-${variable/pattern/string}   # the longest match to pattern in variable is replaced by string. Only the first match is replaced
-${variable//pattern/string}  # the longest match to pattern in variable is replaced by string. All matches are replaced
-
-${#varname}                  # returns the length of the value of the variable as a character string
-
-*(pattern list)               # matches zero or more occurences of the given patterns
-+(pattern list)               # matches one or more occurences of the given patterns
-?(pattern list)               # matches zero or one occurence of the given patterns
-@(pattern list)               # matches exactly one of the given patterns
-!(pattern list)               # matches anything except one of the given patterns
-
-$(Linux command)              # command substitution: runs the command and returns standard output		
-		
----------------------------------------------------
 ### White Sapce		
 	whitespace (spaces or tabs).
 
@@ -1048,6 +1018,23 @@ $(Linux command)              # command substitution: runs the command and retur
 $ my_var=This is my environment variable!	
 $ echo foo${my_var}bar							<= must use { }
 fooThis is my environment variable!bar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ----------------------------------------------------------------------------------
@@ -1172,19 +1159,87 @@ $ for (( i=1; i<=10; i++));do echo -n $i `sleep 1`" "; done
 ----------------------------------------------------------------------------------
 ### Array ###
 ----------------------------------------------------------------------------------
+# Arrays and Associative Arrays
+	BASH provides 3 types of parameters: Strings, Integers and Arrays
+	
+	Arrays 			   <= Stores a collection of data separate entities using indexes
+	Associative Arrays <= Take a string as their array index (Bash V4 or higher)
+	
 ARRAY_NAME[index_number]=value
 The Index_Number is treated as an arithmetic expression that must evaluate to a + positive number.
-### Associate Array only works on BASH 4 or higher 
 
+# Indexed Array
+https://mywiki.wooledge.org/BashFAQ/005
+Basic syntax summary (for bash, math indexed arrays):
+----------------------------------------------------------------------------------
+1. One-dimensional integer-indexed arrays are implemented by Bash
+a=(word1 word2 "$word3" ...)	<= Initialize an array from a word list, indexed starting 
+									with 0 unless otherwise specified.
+a=(*.png *.jpg)					<= Initialize an array with filenames.
+a[i]=word						<= Set one element to word, evaluating the value of i in a 
+									math context to determine the index.
+a[i+1]=word						<= Set one element, demonstrating that the index is also a math context.
+a[i]+=suffix					<= Append suffix to the previous value of a[i] (bash 3.1).
+a+=(word ...) # append			<= Modify an existing array without unsetting it, indexed 
+								   starting at one greater than the highest indexed 
+								   element unless otherwise specified (bash 3.1).
+	e.g. a+=([3]=word3 word4 [i]+=word_i_suffix)	
+
+unset 'a[i]'					<= Unset one element. 
+								   Note the mandatory quotes (a[i] is a valid glob).
+"${a[i]}"						<= Reference one element.
+"$(( a[i] + 5 ))"				<= Reference one element, in a math context. 															
+"${a[@]}"						<= Expand all elements as a list of words.
+"${!a[@]}						<= Expand all indices as a list of words (bash 3.0)
+"${a[*]}"						<= Expand all elements as a single word, with the first char of IFS as separator.
+"${#a[@]}"						<= Number of elements (size, length).
+"${a[@]:start:len}"				<= Expand a range of elements as a list of words, cf. string range.
+
+"${a[@]#trimstart}" 			<= Expand all elements as a list of words, with modifications applied to each element separately.
+"${a[@]%trimend}"
+"${a[@]//search/repl}"		
+					
+declare -p a					<= Show/dump the array, in a bash-reusable form.
+mapfile   -t a < stream			<= Initialize an array from a stream (bash 4.0).
+readarray -t a < stream			<= Same as mapfile.
+----------------------------------------------------------------------------------
+
+#!/bin/bash
+# Assign the values "mickey", "minnie", and "goofy" to sequential indexes starting with 0(zero).
+
+host=(mickey minnie goofy)			
+# host="mickey minnie goofy"
+# host='mickey minnie goofy'
+
+# Iterate over the indexes of "host".
+for i in "${!host[@]}"; do
+    printf 'Host number %d is %s\n' "$i" "${host[i]}"
+done
+
+ 
+
+
+ 
+
+
+
+
+
+
+---------------------------------------------------------
+# From Bash Shell
+ex) Set array 1, 2, 3
 	$ array_var=(1 2 3)
 	$ array_var[0]="test1"
 	$ array_var[1]="test2"
 	$ array_var[2]="test3"
+
 	$ echo ${array_var[0]}
 	  test1
 	$ echo ${array_var[$#]}
 	  test1
-	$ index=2
+
+    $ index=2
 	$ echo ${array_var[$index]}
 	  test3
 	$ echo ${array_var[*]}
@@ -1195,8 +1250,76 @@ The Index_Number is treated as an arithmetic expression that must evaluate to a 
 		3
 
 
+	array[0] = val               # several ways to define an array
+	array[1] = val
+	array[2] = val
+	array=([2]=val [0]=val [1]=val)
+	array(val val val)
+
+	
+${array[i]}                  # displays array's value for this index. If no index is supplied, array element 0 is assumed
+${#array[i]}                 # to find out the length of any element in the array
+${#array[@]}                 # to find out how many values there are in the array
 
 
+declare -A					 # Associative Array
+declare -a                   # Indexed array variables
+declare -f                   # uses function names only
+declare -F                   # displays function names without definitions
+declare -i                   # the variables are treaded as integers
+declare -r                   # makes the variables read-only(Constant)
+								ex) declare -r NUM1=5
+declare -x                   # marks the variables for export via the environment
+
+${varname:-word}             # if varname exists and isn't null, return its value; 
+								otherwise return word
+${varname:=word}             # if varname exists and isn't null, return its value; 
+								otherwise set it word and then return its value
+${varname:?message}          # if varname exists and isn't null, return its value; 
+								otherwise print varname, followed by message and abort the current command or script
+${varname:+word}             # if varname exists and isn't null, return word; 
+								otherwise return null
+${varname:offset:length}     # performs substring expansion. It returns the substring of $varname 
+								starting at offset and up to length characters
+
+${variable#pattern}          # if the pattern matches the beginning of the variable's value, 
+								delete the shortest part that matches and return the rest
+${variable##pattern}         # if the pattern matches the beginning of the variable's value, 
+								delete the longest part that matches and return the rest
+${variable%pattern}          # if the pattern matches the end of the variable's value, 
+								delete the shortest part that matches and return the rest
+${variable%%pattern}         # if the pattern matches the end of the variable's value, 
+								delete the longest part that matches and return the rest
+${variable/pattern/string}   # the longest match to pattern in variable is replaced by string. 
+								Only the first match is replaced
+${variable//pattern/string}  # the longest match to pattern in variable is replaced by string. 
+								All matches are replaced
+${#varname}                  # returns the length of the value of the variable as a character string
+
+*(pattern list)               # matches zero or more occurences of the given patterns
++(pattern list)               # matches one or more occurences of the given patterns
+?(pattern list)               # matches zero or one occurence of the given patterns
+@(pattern list)               # matches exactly one of the given patterns
+!(pattern list)               # matches anything except one of the given patterns
+
+$(Linux command)              # command substitution: runs the command and returns standard output		
+		
+------------------------------------------------------------------------
+2. Loading values into an array
+
+Assigning one element at a time is simple, and portable:
+#!/bin/bash
+arr[0]=0
+arr[42]='the answer'
+array=(zero one two three four)  <= When initializing in this way, the first index will be 0
+
+	2.1. Loading lines from a file or stream
+	$ mapfile -t lines <myfile
+	$ mapfile -t lines < <(some command)	
+		
+$help mapfile 	<= Read lines from the standard input into an indexed array variable.	
+		
+		
 ------------------------------------
 #!/bin/bash
 array_name=("apple" "banaba" "cherry")
@@ -1225,8 +1348,8 @@ $ echo ${array_name[@]}
 ------------------------------------
 #!/bin/bash
 # Declaring an Array and Assigning values
-	-a     Each name is an indexed     array variable (see Arrays above).
-    -A     Each name is an associative array variable (see Arrays above).
+#	-a     Each name is an indexed     array variable (see Arrays above).
+#   -A     Each name is an associative array variable (see Arrays above).
 
 declare -a Linux
 
@@ -1235,7 +1358,7 @@ Linux[1]="Redhat"
 Linux[2]="Ubuntu"
 Linux[3]="Suse"
 
-for i in "${!Linux[@]}"   # whole elements of the array
+for i in "${!Linux[@]}"   # listing elements of the array
 do
   echo "$i: ${Linux[$i]}"
 done
@@ -1308,6 +1431,45 @@ for i in hello 1 * 2 goodbye
 do
   echo "Looping ... i is set to $i"
 done
+
+----------------------------------------------------------------------------------
+https://mywiki.wooledge.org/BashFAQ/006
+### How can I use variable variables (indirect variables, pointers, references) or associative arrays?
+three parts: associative arrays, evaluating indirect variables, and assigning indirect variables. 
+----------------------------------------------------------------------------------
+### Associative Array 
+	Python: Dictionary Key:Value Pair
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ----------------------------------------------------------------------------------
@@ -2007,18 +2169,12 @@ numberthings pine birch maple spruce
 
 
 
-40. Argument
-	#!/bin/bash
-	echo $1
-	echo $2
+40. Arguments
+------------------
+#!/bin/bash
+echo $1 $2
 
-    $./my.sh apple banana
-
-
-	#!/bin/bash
-	echo $1
-	echo $2
-    $./my.sh "apple Apple" "banana Banana"   <=use " " for when space in them
+$./my.sh "apple Apple" "banana Banana"   <=use " " for when a space in arguments
 
 ###
 # Don't have to define the variables to saves a lot of time
@@ -2059,9 +2215,6 @@ done < myfile.txt
 	myfile.txt
 	hello
 	howdy
-
-	
-
 
 ---------------------------------------------------------------------------------
 ### Function statement ###
@@ -2993,6 +3146,9 @@ $ for i in {1..300}; do echo -ne $i '\r'; sleep 1; done; echo
 
 #--------------------------------------------------------------------------------
 Function 
+
+
+
 ## get pid ###
 
 get_ntopng_pid() {
@@ -3178,10 +3334,55 @@ fi
 
 
 
+# ---------------------------------------------------------------------------
+# Usage of an infinite loop and the break statement:
+# ---------------------------------------------------------------------------
+#!/bin/bash
+# Purpose: Display various options to operator using menus
+# Author: Vivek Gite < vivek @ nixcraft . com > under GPL v2.0+
+# https://www.cyberciti.biz/faq/bash-infinite-loop/
+# ---------------------------------------------------------------------------
+# capture CTRL+C, CTRL+Z and quit singles using the trap
+trap '' SIGINT
+trap '' SIGQUIT
+trap '' SIGTSTP
+ 
+# display message and pause 
+pause(){
+	local m="$@"
+	echo "$m"
+	read -p "Press [Enter] key to continue..." key
+}
+ 
+# set an 
+while :
+do
+	# show menu
+	clear
+	echo "---------------------------------"
+	echo "	     M A I N - M E N U"
+	echo "---------------------------------"
+	echo "1. Show current date/time"
+	echo "2. Show what users are doing"
+	echo "3. Show top memory & cpu eating process"
+	echo "4. Show network stats"
+	echo "5. Exit"
+	echo "---------------------------------"
+	read -r -p "Enter your choice [1-5] : " c
+	# take action
+	case $c in
+		1) pause "$(date)";;
+		2) w| less;;
+		3) echo '*** Top 10 Memory eating process:'; ps -auxf | sort -nr -k 4 | head -10; 
+		   echo; echo '*** Top 10 CPU eating process:';ps -auxf | sort -nr -k 3 | head -10; 
+		   echo;  pause;;
+		4) netstat -s | less;;
+		5) break;;
+		*) Pause "Select between 1 to 5 only"
+	esac
+done
 
-
-
-
+# ---------------------------------------------------------------------------
 
 
 

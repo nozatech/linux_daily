@@ -1,28 +1,40 @@
 Flash Card
 ### Bash ###
-1. ParameterS
+1. special characters
+(	<= parenthesis
+{ 	<= brace
+| 	<= vertical bar
+[	<= bracket
+_	<= undercore
+:	<= colon
+;	<= semicolon
+*	<= asterisk
+~ 	<= tilde
+
+
+2. ParameterS
 echo $0			<= shell itself
 echo $@ 		<= listing the arguments
 echo $#			<= total No. of arguments
 echo $?			<= shell exit code
 echo $$			<= Current shell PID
 
-2. Back tic vs $()
+3. Back tic vs $()
 `command`		<= legacy
 $(command)		<= Easier for nesting
 	$ echo echo 
 
 
-3. Single and Duoble Quotes
+4. Single and Duoble Quotes
 x=1
 $ echo "$x"     => 1	<= outputs variable
 $ echo '$x'		=> $x   <= prints literally
 
-4. Combines 2 or more commands
+5. Combines 2 or more commands
 ---------------------------------------------------
-cmd1; cmd2     			<= Do cmd1 first, then cmd2(cmd1 has failed or not)
+cmd1; cmd2     			<= Do cmd1 first, then(;) cmd2(cmd1 has failed or not)
 	$ sleep 5 ; ls -l
-cmd1 & cmd2    			<= Do cmd1 and cmd2 without waiting for cmd1 to finish
+cmd1 & cmd2    			<= Do cmd1 and(&) cmd2 without waiting for cmd1 to finish
 	$ sleep 4 & ls -l
 
 cmd1 && cmd2   		    <= If cmd1 successful, run cmd2, otherwise skip.
@@ -31,7 +43,22 @@ cmd1 && cmd2 && cmd3    <= If cmd1 successful, run cmd2, run cmd3,  otherwise sk
 cmd1 || cmd2   		    <= If cmd1 failed, run cmd2, otherwise skip.
 cmd1 || cmd2 || cmd3    <= If cmd1 failed, run cmd2, otherwise runs cmd3, otherwise skip.
 
-5. BASH provides 3 types of parameters: Strings, Integers and Arrays
+6. BASH provides 3 types of parameters: Strings, Integers and Arrays
+
+7. set -e  Exit immediately if a command exits with a non-zero status.
+
+8. whereis everthing located at? location and manual
+   which cmd is located at?      location
+
+ 9.
+cat << EOF >> fileName.txt			<= Here document
+read -a octets <<< "$ipAddr"		<= Here string
+
+
+
+
+
+
 
 
 

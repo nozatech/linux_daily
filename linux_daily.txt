@@ -2306,6 +2306,7 @@ H 2 * * *				<= Every 2am
 
 ### Infinite loop - while loop
 https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/121391#121391
+
 >>>	$ while true; do ping google.com; done  	
 	
 	
@@ -5853,7 +5854,8 @@ Check config file
 	https://httpd.apache.org/docs/2.4/programs/apachectl.html
 	
 	
-$ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; kill $! ; wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
+$ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; \ #continue
+  kill $! ; wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
 
 
 	A. View Apache requests per minute

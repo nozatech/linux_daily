@@ -2774,7 +2774,8 @@ For completion's sake, here is what the above profile outputs:
 	of the references. However, you can change the objects if it is mutable.
 
 10) What is Dict and List comprehensions are?
-	They are syntax constructions to ease the creation of a Dictionary or List based on existing iterable.
+	They are syntax constructions to ease the creation of a Dictionary {key:value}
+	or List [...]based on existing iterable.
 
 11) What are the built-in type does python provides?
 	There are Mutable and Immutable types of Pythons built in types 
