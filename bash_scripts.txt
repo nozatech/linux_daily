@@ -1569,9 +1569,10 @@ fi
 ----------------------------------------------------------------------------------
 ### 5 mins (Time counting  ( count down | counting 300 sec ) 
 ----------------------------------------------------------------------------------
-$ for i in `seq 1 30`; do echo -ne "$i" '\r'; sleep 1; done;
-$ for i in   {0..300}; do echo -ne "$i" '\r'; sleep 1; done; 
-$ for i in   {0..300}; do echo -ne "$i" '\r'; sleep 1; done; echo 
+$ for i in $(seq 1 30); do echo -ne "$i" '\r'; sleep 1; done;
+$ for i in  `seq 1 30`; do echo -ne "$i" '\r'; sleep 1; done;
+$ for i in    {0..300}; do echo -ne "$i" '\r'; sleep 1; done; 
+$ for i in    {0..300}; do echo -ne "$i" '\r'; sleep 1; done; echo 
 
 	# \r 	<= returning to begin of line (without new line - \n)
 	# -n 	<= new line(do not output the trailing newline)
@@ -2147,9 +2148,12 @@ $ echo $?						<= checking exit code
 	
 	
 ------------------------------------------------------
-# hidden file listing function from shell
+# hidden file listing function that runs from shell
+------------------------------------------------------
 $ hidden() { ls -a "$@" | grep '^\.'; }			<= $@  
-$ hidden .
+$ hidden() (ls -a "$@" | grep '^\.')			<= using () works too without ; and a space { ls
+
+$ hidden .	 or hidden /home/apark				<= run  and . is current directory	
 
 
 
@@ -2724,7 +2728,7 @@ http://redsymbol.net/articles/bash-exit-traps/
 # Number	SIG	Meaning
 0	0	On exit from shell
 1	SIGHUP	Clean tidyup
-2	SIGINt	Interrupt
+2	SIGINT	Interrupt  		<= CTRL+C
 3	SIGQUIT	Quit
 6	SIGABRT	Abort
 9	SIGKILL	Die Now (cannot be trap'ped)
@@ -2782,7 +2786,7 @@ CTRL+C
 		
 		
 
-trap 'echo $varname' EXIT  # useful when you want to print out the values of variables 
+trap 'echo $varName' EXIT  # useful when you want to print out the values of variables 
 			     at the point that your script exits
 			 
 				 
@@ -3052,33 +3056,19 @@ kckd="/home/$idd/rkchk.sh"
 
 list=$(cat "/home/$ids/i7")
 
-
 for i in $list; do
-
     echo "------------------------------------------------" | tee -a logs
     echo $i | tee -a logs
     echo "------------------------------------------------" | tee -a logs
-
-
     ssh -q $idd@$i "test -e $kckd"
-
         if [ $? -eq 0 ]; then
-
             echo "$kckd is already exit" | tee -a logs
-
-
         else
-
             echo "$kckd is copying and running"
-
             scp $kcks $idd@$i:/home/$idd
-
             ssh -t $idd@$i "bash -c $kckd" 2>&1 | tee -a logs
-
         fi
-
     echo "------------------------------------------------" | tee -a logs
-
 done
 #--------------------------------------------------------------------------------
 
@@ -3141,15 +3131,15 @@ git diff --no-index dir1/ dir2/
 
 #--------------------------------------------------------------------------------
 ### 5 mins count down from Shell ###
-
 $ for i in {1..300}; do echo -ne $i '\r'; sleep 1; done; echo
-
 #--------------------------------------------------------------------------------
+
+
 Function 
 
 
 
-## get pid ###
+## Get PID ###
 
 get_ntopng_pid() {
 if [ -f "/etc/ntopng/ntopng.conf" ]; then
@@ -3177,9 +3167,9 @@ by sys admin to test user process limitations. Linux process limits can be confi
 ----------------------------------------------------------------------------------------	
 ### High memory usage 	
 */30 * * * * /home/apark/checkMemUsage.sh > /dev/null 2>&1
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------
 #!/bin/bash
-### If memory usage over 80%, restart HTTPD ###
+# Purpose: If memory usage over 80%, restart HTTPD #
 
 # Check top % memory usage app value
 memUsage=`top -o %MEM -bn 1 | awk '8 <=NR && NR <=8' | awk '{print $10}'`
@@ -3189,16 +3179,16 @@ if (( $memUsage > 80));
 then
     apachectl restart
 fi
-----------------------------------------------------------------------------------------	
+--------------------------------------------------------------------------	
 #or#	??  
 if [ $memUsage -gt 80 ];
     apachectl restart
 fi
 	
-----------------------------------------------------------------------------------------
+###---------------------------------------
 ### 116 Bash Scripts  ###
-https://mywiki.wooledge.org/BashFAQ/
-----------------------------------------------------------------------------------------
+### https://mywiki.wooledge.org/BashFAQ/
+###---------------------------------------
 1. How can I read a file (data stream, variable) line-by-line (and/or field-by-field)?
 https://mywiki.wooledge.org/BashFAQ/001
 ----------------------------------------------
@@ -3208,10 +3198,11 @@ while IFS= read -r line; do			# -r option to read prevents backslash interpretat
 	#echo $line
 done < "$file"
 ----------------------------------------------
+
 ### Get GECOS 
 /etc/passwd
-user :pw:uid:gid: gecos: home             : shell
-icinga:x:992:987:icinga:/var/spool/icinga2:/sbin/nologin
+user  :pw:uid:gid:gecos : home             : shell
+icinga:x :992:987:icinga:/var/spool/icinga2:/sbin/nologin
 
 https://superuser.com/questions/1031615/the-other-finger-gecos-fields-at-etc-passwd
 $ awk -F ":" '{print $5}' /etc/passwd
@@ -3335,17 +3326,17 @@ fi
 
 
 # ---------------------------------------------------------------------------
-# Usage of an infinite loop and the break statement:
+### Usage of an infinite loop and the break statement: ### 
 # ---------------------------------------------------------------------------
 #!/bin/bash
 # Purpose: Display various options to operator using menus
 # Author: Vivek Gite < vivek @ nixcraft . com > under GPL v2.0+
 # https://www.cyberciti.biz/faq/bash-infinite-loop/
 # ---------------------------------------------------------------------------
-# capture CTRL+C, CTRL+Z and quit singles using the trap
-trap '' SIGINT
-trap '' SIGQUIT
-trap '' SIGTSTP
+# Capture CTRL+C, CTRL+Z and QUIT singles using the trap
+trap '' SIGINT   #2  same as CTRL+C
+trap '' SIGQUIT  #3  
+trap '' SIGTSTP  #20 same as CTRL+Z
  
 # display message and pause 
 pause(){
@@ -3355,7 +3346,7 @@ pause(){
 }
  
 # set an 
-while :
+while :   # same as 'while true'
 do
 	# show menu
 	clear
@@ -3373,8 +3364,8 @@ do
 	case $c in
 		1) pause "$(date)";;
 		2) w| less;;
-		3) echo '*** Top 10 Memory eating process:'; ps -auxf | sort -nr -k 4 | head -10; 
-		   echo; echo '*** Top 10 CPU eating process:';ps -auxf | sort -nr -k 3 | head -10; 
+		3) echo       '*** Top 10 Memory eating process:'; ps -auxf | sort -nr -k 4 | head -10; 
+		   echo; echo '*** Top 10 CPU eating process:';    ps -auxf | sort -nr -k 3 | head -10; 
 		   echo;  pause;;
 		4) netstat -s | less;;
 		5) break;;

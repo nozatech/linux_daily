@@ -98,6 +98,7 @@ impaired		<- the state or fact of being impaired(weakened or damaged), especiall
 in place of 	<- instead of
 irrigator		<- [írəgèitər]
 invocation		<- the action of invoking something or someone for assistance or as an authority.
+					ex) application process invocation(호출	)
 
 
 ### J

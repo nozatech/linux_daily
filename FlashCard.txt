@@ -50,11 +50,50 @@ cmd1 || cmd2 || cmd3    <= If cmd1 failed, run cmd2, otherwise runs cmd3, otherw
 8. whereis everthing located at? location and manual
    which cmd is located at?      location
 
- 9.
-cat << EOF >> fileName.txt			<= Here document
-read -a octets <<< "$ipAddr"		<= Here string
+9. cat << EOF >> fileName.txt			<= Here document
+   read -a octets <<< "$ipAddr"		<= Here string
 
+10. for i in {21..30}; do echo "$i".; echo; done
 
+11.
+
+12.
+
+13.
+
+14.
+
+15.
+
+16.
+
+17.
+
+18.
+
+19.
+
+20.
+
+21.
+
+22.
+
+23.
+
+24.
+
+25.
+
+26.
+
+27.
+
+28.
+
+29.
+
+30.
 
 
 
