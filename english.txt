@@ -1,14 +1,25 @@
-
+적자생존
 
 ######### A 
 adorn 			<- decorate
 abscess			<- 종기   Dental Abscess, discharge pus 고름 짜내다	
 AFAIK 			<- "As Far As I Know" 
+adverse			<- preventing success or development; harmful; unfavorable.
+					synonyms:	unfavorable, disadvantageous, inauspicious, unpropitious, 
+								unfortunate, unlucky, untimely, untoward More
+					antonyms:	favorable, auspicious, beneficial, positive, friendly
+
 adverse effect	<- an undesired harmful effect resulting(역효과) 
+adorn			<- make more beautiful or attractive.
 aggravation		<- get worse
 agnostic		<- 인지불능, e.g. user accounts would be agnostic 
 alleviate 		<- provide physical relief, as from painalliviate
 All in all		<- everything considered; on the whole. mostly?
+amass			<- gather together or accumulate (a large amount or number of valuable material or things) 
+					over a period of time.
+					synonyms:	gather, collect, assemble; More
+					antonyms:	dissipate
+					
 analogy			<- 비유법
 anemia			<- 빈혈(Noun)
 					 is a condition in which you don't have enough healthy red blood cells to carry 
@@ -24,12 +35,29 @@ Avenge 			<- a word broadly concerned with inflicting a punishment or penalty in
 Revenge 		<- a word broadly concerned with inflicting harm or punishment for personal retaliation.
 					Revenge means Retaliation.
 ### B 
-Bearer 			<- carrier or something carries something
+bar				<- fasten (something, especially a door or window) with a bar or bars.
+					synonyms:	bolt, lock, fasten, secure, block, barricade, obstruct
+								"they have barred the door"
+					antonyms:	open, unlock
+
+
+
+barring			<- except for; if not for.
+					synonyms:	except for, with the exception of, excepting, in the absence of, 
+					if there is/are no, discounting, short of, apart from, but for, other than, 
+					aside from, excluding, omitting, leaving out, save for, saving; informaloutside 
+					of "the facility is scheduled to open next year, barring any legal challenges"
+bearer 			<- carrier or something carries something
 brag 			<- say in a boastful manner.
-brace			<- a device that clamps things tightly together or that gives support, in particular.
+brace	{}		<- a device that clamps things tightly together or that gives support, in particular.
+bracket []
 bedside manner 	<- a doctor's approach or attitude toward a patient.
 
 ### C
+cadence			<- 억양, 음율, 리듬
+					synonyms:	intonation, modulation, lilt, accent, inflection; More
+
+call out		<- To announce something. 
 Churn rate 		<=(sometimes called attrition rate), in its broadest sense, is a measure of the number 
 					of individuals or items moving out of a collective group over a specific period. ... 
 					The phrase is based on the English verb churn, meaning "to agitate or produce 
@@ -42,6 +70,11 @@ commercing 		<- starting
 condemnation	<- 심한비난
 conform			<- comply with rules, standards, or laws
 contiguous		<- sharing a common border; touching. next or together in sequence.
+convoluted		<- (especially of an argument, story, or sentence) extremely complex and difficult to follow.
+					synonyms: complicated, complex, involved, elaborate, serpentine, labyrinthine,
+							  tortuous, tangled, Byzantine; 
+					antonyms: straightforward
+
 crouch			<- adopt a position where the knees are bent and the upper body is brought forward and down, 
 					sometimes to avoid detection or to defend oneself.
 culprit			<- cause of an issue or a person who is responsible for a crime or other misdeed.
@@ -54,6 +87,9 @@ deceit 			<- fake or trick
 degradation		<- changing to a lower state
 digress			<- off the subject
 defeat the purpose of 	<- to make (something) pointless
+disband			<- (of an organized group) break up or cause to break up and stop functioning.
+					synonyms:	break up, disperse, demobilize, dissolve, scatter, separate, 
+								go separate ways, part company
 discrete		<- individually separate and distinct(분리된, 결개의)
 
 drench   		<- wet thoroughly; soak
@@ -67,11 +103,20 @@ embezzle		<- 횡령
 encompasses 	<- surround and have or hold within
 entitlements	<- the amount to which a person has a right.
 eye stye		<- 눈다락지
+exalt			<- hold (someone or something) in very high regard; think or speak very highly of.
+					"the party will continue to exalt its hero"
+					synonyms:	extol, praise, acclaim, esteem; More
+					antonyms:	disparage, despise
 
 ### F
 fall through 	<- your plans didn't work out for some reaso, didn't work out
 fatigue			<- 피로
 feasible		<- possible to do easily or conveniently.
+finicky			<-	fussy about one's needs or requirements.
+					[음식·옷 등에] 지나치게 까다로운, 몹시 신경을 쓰는, 집착이 강한
+					synonyms:	fussy, fastidious, punctilious, overparticular, difficult, 
+								exacting, demanding; More
+
 full-fledged	<- completely developed or established; of full status.
 
 
@@ -79,6 +124,14 @@ full-fledged	<- completely developed or established; of full status.
 
 ### G
 gingivitises	<- 치은염
+grime			<- dirt ingrained on the surface of something, especially clothing, a building, or the skin.
+					synonyms:	dirt, filth, grunge, mud, mire, smut, soot, dust; More
+gripe			<- express a complaint or grumble about something, especially something trivial.
+					"they gripe about the busywork"
+					synonyms:	complain, grumble, grouse, protest, whine, bleat; More
+
+
+
 
 ###H
 hard-nosed		<- realistic and determined; tough-minded. 
@@ -91,15 +144,23 @@ hospice			<- a type of care and philosophy of care that focuses on the palliatio
 
 ### I
 ideation 		<- 관념화 the formation of ideas or concepts.
+
 inflict			<- cause (something unpleasant or painful) to be suffered by someone or something. 가하다
+ingenious		<- (of a person) clever, original, and inventive.
+					synonyms:	inventive, creative, imaginative, original, innovative, pioneering, 
+								resourceful, enterprising, inspired; More
 inhibition		<- the action of inhibiting(금지), restricting, or hindering a process.
+
 impose			<- force (something unwelcome or unfamiliar) to be accepted or put in place.
 impaired		<- the state or fact of being impaired(weakened or damaged), especially in a specified faculty.
 in place of 	<- instead of
+intimidate		<- frighten or overawe (someone), especially in order to make them do what one wants.
+					synonyms:	frighten, menace, terrify, scare, terrorize, cow, dragoon, subdue;
 irrigator		<- [írəgèitər]
 invocation		<- the action of invoking something or someone for assistance or as an authority.
 					ex) application process invocation(호출	)
 invert			<- [v] put upside down or in the opposite position, order, or arrangement.
+intricacy		<- complicated, details, especially of an involved or perplexing subject.
 
 ### J
 jump the shark	<- Informal (of a television series or movie) reach a point at which far-fetched events are included 
@@ -112,19 +173,36 @@ lieu			<- place; stead
 loot			<- steal goods from (a place), typically during a war or riot.			
 				
 ### M
+marauder		<- a person who marauds; a raider.
+					synonyms:	raider, plunderer, pillager, looter, robber, pirate, freebooter, 
+								bandit, bandito, highwayman, rustler
 Marshalling 	<- arrange or assemble (a group of people, especially soldiers) in order.
+misnomer		<- a wrong or inaccurate name or designation, a wrong or inaccurate use of a name or term.
 mock-up			<- a model or replica of a machine or structure, used for instructional or experimental purposes.
 
 
 ### N
 nifty			<- very good
 nitty-gritty	<- what is essential and basic :specific practical details get down to the nitty-gritty of the problem
+					synonyms:	basics, essentials, fundamentals, substance, quintessence, heart of the matter; More
+
 no frill 		<- simple, plain, 
+
+### O
+obscurity		<- the state of being unknown, inconspicuous, or unimportant.
+					"he is too good a player to slide into obscurity"
+					synonyms:	insignificance, inconspicuousness, unimportance, anonymity; More
+					antonyms:	fame
+
 
 ### P
 palindrome 		<- a word that reads same forwards or backwards
 					e.g. madam, 12321  
 parche			<- dried 			e.g. parched reservoirs
+pastime			<- an activity that someone does regularly for enjoyment rather than work; a hobby.
+					"his favorite pastimes were shooting and golf"
+					synonyms:	hobby, leisure activity/pursuit, sport, game, recreation, 
+								amusement, diversion, avocation, entertainment, interest, sideline
 pertinent		<- relevant or applicable to a particular matter; apposite. synonyms:relevant
 periodontists	<- 치주염
 promiscuous		<- 
@@ -138,12 +216,26 @@ quirk			<- 변덕 				e.g. by a quirk of fate 운명의 장난으로
 
 
 ### P
+palindrome		<- a word, phrase, or sequence that reads the same backward as forward, e.g., madam 
+perplex			<- [v]complicate or confuse (a matter)
+periodontitis	<- [페리오단타이티스] 치주염
 poised			<- be ready
 primitive		<- relating to, denoting, or preserving the character of an early stage in the 
 					evolutionary or historical development of something.
 profoundly		<- synonyms: extremely, very, deeply, exceedingly, greatly, immensely, enormously, 
 					tremendously, intensely, heartily, keenly, acutely, painfully, 
 					from the bottom of one's heart, downright, thoroughly, sincerely, so; More
+promiscuous		<- having or characterized by many transient sexual relationships(난교).
+					"promiscuous teenagers"
+					synonyms:	licentious, sexually indiscriminate, wanton, immoral, fast; More
+					antonyms:	chaste, virtuous
+
+promiscuity		<- the fact or state of being promiscuous.
+					"some fear this will lead to greater sexual promiscuity among teens"
+					synonyms:	licentiousness, wantonness, immorality; More
+					antonyms:	chastity, virtue
+
+
 					
 ### R
 reconnaissance	<- military observation of a region to locate an enemy or ascertain strategic features.
@@ -152,10 +244,12 @@ resonance		<- 울림, 공진
 relator			<-  a person who brings a public lawsuit, typically in the name of the 고발자,
 				   attorney general, regarding the abuse of an office or franchise.
 relinquish 		<- give up
-retroactive  	<- effective from a particular date in time
-Retrospective   <- looking back on or dealing with past events or situations. 회고의,
+retroactive  	<- (especially of legislation) taking effect from a particular date in time
+					소급이란 현재 생겨난 규정을 그 규정이 없었던 과거 시절의 사실에도 적용시킴.
+retrospective   <- looking back on or dealing with past events or situations. 회고의,
 rudimentray		<- involving or limited to basic principles.
-
+revelation		<- a surprising and previously unknown fact, especially one that is made known in a dramatic way
+					폭로, 적발, synonyms:	disclosure, surprising fact, announcement, report;
 				   
 				   
 ### S
@@ -182,6 +276,10 @@ stash			<- store (something) safely and secretly in a specified place
 Startle			<- excited by sudden surprise or alarm and making a quick involuntary movement
 strata			<- a layer of material, naturally or artificially formed, often one of a number 
 					of parallel layers one upon another: 층
+strife			<- angry or bitter disagreement over fundamental issues; conflict.
+					synonyms:	conflict, friction, discord, disagreement, dissension, dispute, argument, 
+								quarreling, wrangling, bickering, controversy;
+
 streak			<- [striːk] Noun: a long, thin line or mark of a different substance or color from its surroundings.
 					Verb: move very fast in a specified direction.
 subtle			<- (especially of a change or distinction) so delicate or 
@@ -191,13 +289,20 @@ supersede 		<- replace
 ### T 
 thin-skinned	<- sesitive to criticism or insults
 thick-skinned
+triage			<- (in medical use) the assignment of degrees of urgency to wounds or illnesses to decide the order of 
+					treatment of a large number of patients or casualties.
 turnkey			<- (car turn key to start & drive) | ~of or involving the provision of a complete product 
 														 or service that is ready for immediate use.
 toggle			<- a short rod of wood or plastic sewn to one side of a coat or other garment, pushed through 
 					a hole or loop on the other side and twisted so as to act as a fastener.
 					e.g. Toggle line numbers
-tongue in cheek <-without really meaning what one is saying or writing.
-														 
+tongue in cheek <- without really meaning what one is saying or writing.
+trivial 		<- 	of little value or importance.
+					"huge fines were imposed for trivial offenses"
+					synonyms:	unimportant, banal, trite, commonplace, insignificant, 
+								inconsequential, minor, of no account, of no consequence, of no importance; More
+					antonyms:	important, significant, life-and-death
+													 
 														 
 														 
 ### V
@@ -211,7 +316,7 @@ whimsical		<- 변덕스러운
 ### U
 unbound			<- not bound or tied up.
 unwieldy 		<- hard to handle
-
+uphostery		<- [어포울스터리] soft, padded textile covering that is fixed to furniture.
 
 
 

@@ -168,6 +168,7 @@ echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
 	
 -----------------------------------------------------------------------------------
 ### Copy & Paste or create a 'shellenv.sh' script and PSSH to all servers ###
+	<< EOF here document method  << STDIN, >> STDOUT 
 -----------------------------------------------------------------------------------
 cat << EOF >> ~/.bashrc
 export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"				# Color
@@ -194,8 +195,8 @@ EOF
 	Cyan    = 36
 	White   = 37
 	
-	$ echo -e "\e[1;31m This is red text. \e[0m"			<- \e[1;31m escape string sets color
-		This is red text.									<- \e[0m reset
+	$ echo -e "\e[1;31m This is red text. \e[0m"	<- \e[1;31m (\)escape string sets(-e ON) color
+		This is red text.							<- \e[0m reset
 
 ### Color Codes	for Colored Background
 	
@@ -211,6 +212,7 @@ EOF
 	Magenta = 45
 	Cyan    = 46
 	White   = 47
+	
 --------------------
 ### BASH Startup ###
 --------------------
@@ -247,13 +249,13 @@ http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 ### Vi environment set-up (setting)
 	Create a .vimrc file in home directory
 	
-	$ vi .vimrc
-	----------------------------------------------------
-	:set num
-	#set nonumber					<= disable number
-	:set tabstop=4					<= most of useful
-	:set autoindent
-	-------------------------------------------------------
+$ vi .vimrc
+----------------------------------------------------
+:set nu
+:set tabstop=4
+syntax on
+colorscheme desert
+-------------------------------------------------------
 	
 	####	Vim color scheme enable   ###
 	http://www.server-world.info/en/note?os=CentOS_7&p=initial_conf&f=7
@@ -1244,6 +1246,12 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 			[1] 24933
 		$ killall dd
 
+### pidof
+	pidof -- find the process ID of a running program.
+	$ pidof nginx
+		19177 19176 19175 19174 19173 6535 6534 6533 6531 6315
+
+	
 	
 	
 10. Kill Signal
