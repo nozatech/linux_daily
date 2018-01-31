@@ -99,7 +99,7 @@ in place of 	<- instead of
 irrigator		<- [írəgèitər]
 invocation		<- the action of invoking something or someone for assistance or as an authority.
 					ex) application process invocation(호출	)
-
+invert			<- [v] put upside down or in the opposite position, order, or arrangement.
 
 ### J
 jump the shark	<- Informal (of a television series or movie) reach a point at which far-fetched events are included 
@@ -108,10 +108,14 @@ jump the shark	<- Informal (of a television series or movie) reach a point at wh
 ### L	
 lieu			<- place; stead
 					in lieu of, in place of; instead of  
-				e.g. In lieu of the below mail, 
+					e.g. In lieu of the below mail, 
+loot			<- steal goods from (a place), typically during a war or riot.			
+				
 ### M
 Marshalling 	<- arrange or assemble (a group of people, especially soldiers) in order.
 mock-up			<- a model or replica of a machine or structure, used for instructional or experimental purposes.
+
+
 ### N
 nifty			<- very good
 nitty-gritty	<- what is essential and basic :specific practical details get down to the nitty-gritty of the problem
@@ -233,10 +237,31 @@ Something you submitted it last time, it has been approved now.
 kick the can down the road
 shoot yourself in the foot
 
-
-
-
-
+###---------------------------------------------------
+### Shorten names ###
+###---------------------------------------------------
+https://english.stackexchange.com/questions/69059
+William 	<- Bill, while another could be Willy. Or Billy. Or Will.
+Michael 	<- Mike, or Mikey, or Micky, or Mick.
+Charles 	<- Charlie, or he might be a Chuck, or he might be a Chaz.
+Richard 	<- Rich, or a Richie, or a Rick, or a Ricky — or he might be a Dick.
+John 		<- John and not short for Jonathan. 
+Jonathan 	<- John or Jon, Johnny, Jack, Or a Jackie.
+James 		<- Jim or Jimmy, or Jamie or Jaime, Jay.
+Jason 		<- Jay or Jakob. Or Jeremiah. And not all Jakes are Jacobs.
+Jacob 		<- Jay or Jakob. Or Jeremiah. And not all Jakes are Jacobs.
+Alexander 	<- Alex, or a Lex, or an Al, or a Sasha.
+Gaylord 	<- Gay, but he might not.
+Forest 		<- Fay.
+Albert 		<- Al, or a Bert, or a Bertie.
+Gertrude 	<- Trudy, but she might not.
+Thomas 		<- Thom or a Tom, or even a Tommy.
+Nicholas 	<- Nick, or a Nicky, or a Nico.
+Neil 		<- Nick.
+Margaret	<- Peg
+Diego 		<- Jaime
+*** you really have to ask the person. There just is no other way to know 
+	what they prefer to be called.
 
 
 

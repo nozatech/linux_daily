@@ -5,6 +5,47 @@
 Ctrl+Y 		<= Remove a Line
 Shift+Enter	<= add a line
 
+
+1. Installation
+
+### CentOS7  <- Python 3.5.2 Install on
+https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-centos-7
+sudo yum -y install yum-utils
+sudo yum -y groupinstall development
+sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+sudo yum -y install python35u-3.5.2
+sudo yum -y install python35u-pip
+sudo yum -y install python35u-devel
+
+### For MAC
+$ brew install python
+
+### Boto install
+$ pip install boto
+$ pip install --target c:/python27/Lib/site-packages boto
+$ pip install --target c:/python34/Lib/site-packages boto  <= if boto is keep installing on python27 folder
+
+### Win7 	<- Cygwin "ImportError: No module named boto"
+http://stackoverflow.com/questions/5599872/python-windows-importerror-no-module-named-site
+
+$ vi boboCheck.py
+#!/usr/bin/env python
+import boto
+print boto.Version
+>>> 2.45.0
+
+
+# Django version check
+python -c "import django; print(django.get_version())"
+
+
+$ yum install python-pip
+$ pip install pudb 	<=debug tool
+http://stackoverflow.com/questions/1623039/python-debugging-tips	
+
+
+
+
 #--------------------------------------------------------------------------------
 ### Object-oriented programming (OOP) ###
 #--------------------------------------------------------------------------------
@@ -101,6 +142,14 @@ be called in the same standardized manner from elsewhere in the program. These f
 become especially useful when more than one programmer is contributing code to a project 
 or when the goal is to reuse code between projects.
 
+###	Object-Oriented Programming ###
+https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/
+The "CLASS" is a fundamental building block in Python(blueprints or TEMPLATE for creating objects).
+	Like its function-based cousin def, it concerns the definition of things
+def: define FUNCTION
+class: define CLASS functions (referred to as "methods" when defined within a class)
+	classes are based on objects in the real world (like Customer or Product)
+	classes are based on concepts in our system, like HTTPRequest or Owner.
 #--------------------------------------------------------------------------------
 # 
 #--------------------------------------------------------------------------------
@@ -231,8 +280,9 @@ print (f)
 
 >>> NameError: name 'f' is not defined
 	
-	
+----------------------------------------------------------------------	
 ###	Function  ###
+----------------------------------------------------------------------
 # Define a function
 def func1():						<= defining "func1" function name
 	print ("I am a function")
@@ -358,10 +408,11 @@ if __mame__ == "__main__":				<= invoking a main function in Python files.
 	
 
 
-----------------------------------------------------------------------
-### Loops
 
+----------------------------------------------------------------------
 # While Loop
+----------------------------------------------------------------------
+
 def main():
     x = 0								<= start 0
     while (x < 5):						<= up to 4 because when x=5, look break!
@@ -420,14 +471,7 @@ if __name__ == "__main__":
 	main()
 
 	
-###	Object-Oriented Programming ###
-https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/
-The "CLASS" is a fundamental building block in Python(blueprints or TEMPLATE for creating objects).
-	Like its function-based cousin def, it concerns the definition of things
-def: define FUNCTION
-class: define CLASS functions (referred to as "methods" when defined within a class)
-	classes are based on objects in the real world (like Customer or Product)
-	classes are based on concepts in our system, like HTTPRequest or Owner.
+
 	
 	
 	
@@ -688,8 +732,9 @@ https://docs.python.org/3/library/
 
 
 
-
-# Import Modules 
+-------------------------------------------
+### Import Modules 
+-------------------------------------------
 https://www.digitalocean.com/community/tutorials/how-to-import-modules-in-python-3#checking-for-and-installing-modules
 Modules can contain definitions of functions, classes, and variables that can 
 then be utilized in other Python programs
@@ -1592,9 +1637,10 @@ print(random.randint(0,9))
 
 --------------------------------------------------------------------------------	
 # check if a number is positive, negative or zero
+# Using if...elif...else
 --------------------------------------------------------------------------------
 num = float(input("Enter a number"))
-# Using if...elif...else
+
 if num > 0:
     print(num, " is Positive")
 elif num == 0:
@@ -1831,42 +1877,7 @@ sns_topic = None
 	
 	
 	
-1. Installation
 
-Python 3.5.2 Install on CentOS7
-https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-centos-7
-sudo yum -y install yum-utils
-sudo yum -y groupinstall development
-sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
-sudo yum -y install python35u-3.5.2
-sudo yum -y install python35u-pip
-sudo yum -y install python35u-devel
-
-### For MAC
-$ brew install python
-
-# Boto install
-$ pip install boto
-$ pip install --target c:/python27/Lib/site-packages boto
-$ pip install --target c:/python34/Lib/site-packages boto  <= if boto is keep installing on python27 folder
-
-Win7 Cygwin "ImportError: No module named boto"
-http://stackoverflow.com/questions/5599872/python-windows-importerror-no-module-named-site
-
-$ vi boboCheck.py
-#!/usr/bin/env python
-import boto
-print boto.Version
->>> 2.45.0
-
-
-# Django version check
-python -c "import django; print(django.get_version())"
-
-
-$ yum install python-pip
-$ pip install pudb 	<=debug tool
-http://stackoverflow.com/questions/1623039/python-debugging-tips	
 	
 ###################################	
 ### Python built-in functions   ###

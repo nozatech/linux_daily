@@ -104,13 +104,15 @@ $ man -k REGEX or UNIXCOMMAND
 $ info				<= Longer document
 	$ info grep
 -------------------------
-### Command Locations ###
+### Command and file Locations ###
 -------------------------
 # Find the command location
-	$ whereis  cmd				<= locate the binary, source, and manual page files for a CMD
+	$ whereis  cmd				<= <= Find binary /source / manual for commandD
 		$ whereis ls
-		ls: /usr/bin/ls /usr/share/man/man1/ls.1.gz
-
+			ls: /usr/bin/ls /usr/share/man/man1/ls.1.gz
+		$ whereis ssh_config
+			ssh_config: /usr/share/man/man5/ssh_config.5.gz
+		
 	$ which    cmd				<= shows the full path of (shell) commands.
 		$ which ls
          alias ls='ls --color=auto'
@@ -118,9 +120,16 @@ $ info				<= Longer document
 		
 	$ find / -name  cmd
 		$ sudo find / -name ls	<= SUDO requires to scan all /(root) subdirectories
-	$ locate   		cmd			<= CentOS7 $yum install mlocate then $updatedb
+		
+	$ locate  cmd				<= CentOS7 $yum install mlocate then $updatedb
+		$ updatedb
 		$ locate ls
 		  scan all files with 'ls' 
+	
+		$ locate ssh_config		 				<= DB based Find file 
+		  /etc/ssh/ssh_config
+		  /etc/ssh/ssh_config.rpmnew
+		  /usr/share/man/man5/ssh_config.5.gz
 
 
 -----------------------------------------------------------------------------------	
@@ -1717,7 +1726,7 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	$ exec > newShell.log						<= STDOUT redirected to newShell.log file, not on screen
 	$ date										<= NO STDOUT
 	$ exit
-	$ ps
+	$ ps -p $$
 		2441 pts/1    00:00:00 bash				<= current shell
 	$ cat newShell.log
 	
@@ -4879,10 +4888,49 @@ killall name 		#
 	ps           # prints a line of information about the current running login shell and any processes running under it
 	ps -a        # selects all processes with a tty except session leaders
 
-	### ps -ef	vs ps aux
-		ps aux 				<= BSD system		(Ubuntu, Debian)
-		ps -ef 				<= System V system	(Redhat, CentOS)
+### ps -ef	vs ps aux
+		Unix, BSD and Debian
+		ps aux 				<= BSD system		(Ubuntu, Debian) 	
+		ps -ef 				<= System V system	(Redhat, CentOS) <= Unix family
+EXAMPLES
+       To see every process on the system using standard syntax: <= Unix family
+          ps -e
+          ps -ef
+          ps -eF
+          ps -ely
 
+       To see every process on the system using BSD syntax:
+          ps ax
+          ps axu
+
+       To print a process tree:
+          ps -ejH
+          ps axjf
+
+       To get info about threads:
+          ps -eLf
+          ps axms
+
+       To get security info:
+          ps -eo euser,ruser,suser,fuser,f,comm,label
+          ps axZ
+          ps -eM
+
+       To see every process running as root (real & effective ID) in user format:
+          ps -U root -u root u
+
+       To see every process with a user-defined format:
+          ps -eo pid,tid,class,rtprio,ni,pri,psr,pcpu,stat,wchan:14,comm
+          ps axo stat,euid,ruid,tty,tpgid,sess,pgrp,ppid,pid,pcpu,comm
+          ps -Ao pid,tt,user,fname,tmout,f,wchan
+
+       Print only the process IDs of syslogd:
+          ps -C syslogd -o pid=
+
+       Print only the name of PID 42:
+          ps -q 42 -o comm=
+
+		
 
 	$ ps aux | grep RRServer | grep -v grep | awk '{print $2}'
 	
@@ -4930,7 +4978,7 @@ killall name 		#
 		apark    pts/1        2017-08-01 18:32 (65.87.26.124)
 
 		
-###  How to kill zombie process
+###  How to kill zombie processTo suppress error message
 		A zombie is already dead, so you cannot kill it. To clean up a zombie, it must be waited on by its parent, 
 		so killing the parent should work to eliminate the zombie. (After the parent dies, the zombie will be 
 		inherited by init or systemD (process ID 1), which will wait on it and clear its entry in the process table.) 
@@ -4950,7 +4998,7 @@ killall name 		#
 		30112
 		
 	They appear only when their parent process (i.e. process which fork()'ed them) is alive, but did not yet call wait() 
-	system function. Once parent dies, the zombies are wait()'ed for by init and disappear.
+	system function. Once parent dies, the zombies are wait()'ed for by INIT(1st process) and disappear.
 ###
 
 
@@ -4973,7 +5021,7 @@ wait                  # waits until all background jobs have finished
 
 	$ source .bashrc
 	$ cd websites
-	$ cd *		<= if there is only one folder
+	$ cd *				<= if there is only one folder
 
 
 ############################################
@@ -4990,13 +5038,13 @@ wait                  # waits until all background jobs have finished
 
 
 1. Grep 
-	# grep  pattern  file_name   #search for pattern in files
-	$ grep -i			# Case insensitive search
-	$ grep -r 		# Recursive
+	# grep  pattern  file_name  #search for pattern in files
+	$ grep -i					# Case insensitive search
+	$ grep -r 					# Recursive
 	$ grep -r "port 80" /etc/httpd/*   <= search subdirectories with key words port 80.
-	$ grep -v httpd			# Inverted search (everything but httpd)
-	$ grep -o				# Show matched part of file only
-	$ grep -v grep    		# don't match the grep word
+	$ grep -v httpd				# Inverted search (everything but httpd)
+	$ grep -o					# Show matched part of file only
+	$ grep -v grep    			# don't match the grep word
     To remove the grep in search word, use "grep -v grep" 2nd grep is a word to -v <= don't match word .
 	
 	$ ps aux | grep some_PID => out puts grep word in list, and it counts the line as 1 + 1 actual process name some_PID
@@ -5014,17 +5062,14 @@ if (( $(ps aux | grep ./RRServer_0617_7504 | grep -v grep | wc -l) > 0  &&  \
 $(ps aux | grep ./RRServer_0617_7505 | wc -l) > 0 ));
         then
         echo OK > /var/www/html/status/index.html;
-else rm /var/www/html/status/index.html > /dev/null 2>&1;
+else rm /var/www/html/status/index.html 2>&1 /dev/null;
 fi
 ###############################################################
 
 
-	Note:
-	" > /dev/null 2>&1" is redirect the output of your program to /dev/null. 
-		Include both the Standard Error and Standard Out.
 
 ### 
-#Find biggest file Sizes top 5 list Only
+#Find biggest | largest files top 5 list Only
 ###
 	### NCurses Disk Usage
 	$ ncdu /
@@ -5035,23 +5080,31 @@ fi
 	
 	$ ncdu -1xo- / | gzip > ncdu-list.gz
 	# ...some time later:
-	
 	$ zcat export.gz | ncdu -f-
 	
 	
-    $ find / -type f -exec du -Sh {} + | sort -rh | head -n 5
-	
-	$ find / -type f -exec du -Sh {} + | sort -rh | head -n 20  <= Top 20 list
-	
+	$ find    / -type f -exec du -Sh {} + | sort -rh | head -n 10  				<= Top 10 list
 	$ find /*/* -type f -exec du -Sh {} + | sort -rh | head -n 5
+
+	### Top largest files (>100M) on your filesystem
+	$ find / -xdev -type f -size +100M -exec du -sh {} ';' | sort -rh | head -n10 
+			# -xdev  Don't descend directories on other filesystems.
+	
+	$ find / -xdev -type f -size +100M -exec ls -la {} \; | sort -nk 5
+	
+	$ find / -xdev -type f -size +100M
+	
+	
+	$ du -ahx / | sort -rh | head -10		<= -ahx <-all, human, skip dirs on diff file systems
+											<= -rh 	<- reverse, human
+	
 	
 	$ find /dir/ -user 	user_ID			#Find files owned by name in dir
 	$ find /dir/ -name 	file_name
 	$ find /dir/ -iname fine_name
 	
-	$ whereis 					<= Find binary /source / manual for command
-	$ locate file_name		 	<= DB based Find file 
-	
+
+
 	$ find /etc | grep -e ulimit -e 4096 -e nofile   		<= e <-pattern (multi pattern search )
 
 

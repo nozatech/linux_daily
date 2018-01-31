@@ -1437,8 +1437,28 @@ https://mywiki.wooledge.org/BashFAQ/006
 ### How can I use variable variables (indirect variables, pointers, references) or associative arrays?
 three parts: associative arrays, evaluating indirect variables, and assigning indirect variables. 
 ----------------------------------------------------------------------------------
-### Associative Array 
-	Python: Dictionary Key:Value Pair
+### Associative Array  (bash 4 higher)
+	Python: Dictionary {Key:Value} Pair
+
+#!/bin/bash
+typeset -A nickName    		# Declare associative array
+nickName=(             		# Compound assignment
+    [jonathan]=jon			# name=nickName
+    [james]=jim
+    [alexander]=alex
+    [william]=will
+    [rebecca]=becky
+    [tommy]=tom
+    [jack]=john
+    [robert]=bob
+	
+)
+
+nickName[candace]=candy 	# Ordinary assignment adds another single element
+
+for user in "${!nickName[@]}"; do   # Enumerate all indices (user names)
+    printf 'Shorten name of user %s is: %q\n' "$user" "${nickName[$user]}"
+done
 
 
 
@@ -2314,9 +2334,9 @@ greet Everyone Evening
 
 
 	
-######################################################################################################################################
+###############################################
 # Bash Scripting
-######################################################################################################################################
+###############################################
 These are positional arguments of the script. 
 position of arguments passed to the script on the command line, not line numbers
 #!/bin/sh
@@ -2366,6 +2386,10 @@ echo "argument 10 is '{$10}'"	 # from 10, use {}
 ###############
 # FUNCTIONS   #
 ###############
+http://wiki.bash-hackers.org/commands/builtin/local
+declare, local, typeset
+
+
 The function refers to passed arguments by position (as if they were positional parameters), that is, $1, $2, and so forth. $@ is equal to "$1" "$2"... "$N", where N is the number of positional parameters. $# holds the number of positional parameters.
 functname() {
   shell commands
@@ -2373,7 +2397,10 @@ functname() {
 
 unset -f functname  # deletes a function definition
 declare -f          # displays all defined functions in your login session
-2.3. FLOW CONTROL.
+
+---------------------------------------------------------------
+# 2.3. FLOW CONTROL.
+---------------------------------------------------------------
 
 statement1 && statement2  # 'and' operator
 statement1 || statement2  # 'or' operator
@@ -2408,6 +2435,7 @@ file1 -ot file2           # file1 is older than file2
 -ge                       # greater than or equal
 -gt                       # greater than
 -ne                       # not equal
+---------------------------------------------------------------
 
 if condition
 then
@@ -2417,22 +2445,22 @@ then
 [else
   statements]
 fi
-
+---------------------------------------------------------------
 for x := 1 to 10 do
 begin
   statements
 end
-
+---------------------------------------------------------------
 for name [in list]
 do
   statements that can use $name
 done
-
+---------------------------------------------------------------
 for (( initialisation ; ending condition ; update ))
 do
   statements...
 done
-
+---------------------------------------------------------------
 case expression in
   pattern1 )
     statements ;;
@@ -2440,16 +2468,16 @@ case expression in
     statements ;;
   ...
 esac
-
+---------------------------------------------------------------
 select name [in list]
 do
   statements that can use $name
 done
-
+---------------------------------------------------------------
 while condition; do
   statements
 done
-
+---------------------------------------------------------------
 until condition; do
   statements
 done
@@ -3092,11 +3120,10 @@ http://stackoverflow.com/questions/12628327/how-to-show-and-update-echo-on-same-
 #!/bin/bash
 ### Comparing two directories ###
 #set -x 		# Debug mode  +x is disable mode
-#
 # Usage: compare2dirs.sh DIR1_Name DIR2_Name #
 usage="Usage: $0 DIR1_Name DIR2_Name"
  
-#------------
+#------------------------------------------------------------------------------------
 if [ $# -gt 2 ]; then                   # number of command line parameters.
     echo $usage;						# if args are more than 2, echo $usage
     echo 1
@@ -3284,10 +3311,10 @@ In Bash, you can do this safely and easily with the nullglob and dotglob options
 (which change the behaviour of globbing), and an array:
 ----------------------------------------------
 #!/bin/bash
-shopt -s nullglob dotglob				
+shopt -s nullglob dotglob		# -s set(on)		
 file=(*)
 (( ${#file[*]} )) || echo "Dictory is empty"
-shopt -u nullglob dotglob
+shopt -u nullglob dotglob		# -s unset(off)
 ----------------------------------------------
 
 #!/bin/bash
@@ -3334,15 +3361,17 @@ fi
 # https://www.cyberciti.biz/faq/bash-infinite-loop/
 # ---------------------------------------------------------------------------
 # Capture CTRL+C, CTRL+Z and QUIT singles using the trap
-trap '' SIGINT   #2  same as CTRL+C
+trap '' SIGINT   #2  Signal Interupt as CTRL+C
 trap '' SIGQUIT  #3  
-trap '' SIGTSTP  #20 same as CTRL+Z
+trap '' SIGTSTP  #20 Signal Stop as CTRL+Z
  
 # display message and pause 
 pause(){
-	local m="$@"
-	echo "$m"
-	read -p "Press [Enter] key to continue..." key
+	local mesg="$@"						# pause() function
+	echo "$mesg"				 		# local makes within function variable
+	read -p "Press [Enter] key to continue..."   key			# key <-input value 
+			# -p prompt output the string PROMPT without a trailing 
+			#    newline before attempting to read
 }
  
 # set an 
@@ -3360,7 +3389,7 @@ do
 	echo "5. Exit"
 	echo "---------------------------------"
 	read -r -p "Enter your choice [1-5] : " c
-	# take action
+	# take actions
 	case $c in
 		1) pause "$(date)";;
 		2) w| less;;
