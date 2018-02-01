@@ -55,7 +55,7 @@ cmd1 || cmd2 || cmd3    <= If cmd1 failed, run cmd2, otherwise runs cmd3, otherw
 
 10. for i in {21..30}; do echo "$i".; echo; done
 
-11.
+11. sed -i 's/A/B/g' file		<='i'nsert 'g'lobal
 
 12.
 

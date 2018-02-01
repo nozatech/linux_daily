@@ -25,6 +25,9 @@ Settings > Short cut Mapper Menu.
 	Ctrl+Space			Function completion
 	Ctrl+Enter			Word completion
 	Ctrl+Shift+Space	Function parameter hint
+3. Move
+	Ctrl+End			Bottom of page
+	Ctrl+Home			Top of page
 4. Basic File Management
 	Ctrl+N				Create new document.
 	Ctrl+P				Display Print... dialog box.
@@ -5077,18 +5080,18 @@ fi
 
 
 ### 
-#Find biggest | largest files top 5 list Only
+# Find biggest | largest files top 5 list Only
 ###
-	### NCurses Disk Usage
-	$ ncdu /
 
+# NCurses Disk Usage	<= Utility
+	$ ncdu /
 	$ ncdu -x /    <= scan a full filesystem
 		# Since scanning a large directory may take a while, you can scan a directory and 
 			export the results for later viewing:
 	
 	$ ncdu -1xo- / | gzip > ncdu-list.gz
-	# ...some time later:
-	$ zcat export.gz | ncdu -f-
+	 ...some time later...
+	$ zcat ncdu-list.gz | ncdu -f-				<= read scanned list as a file
 	
 	
 	$ find    / -type f -exec du -Sh {} + | sort -rh | head -n 10  				<= Top 10 list
