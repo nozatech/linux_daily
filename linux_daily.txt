@@ -227,6 +227,22 @@ $ /home/apark/.bashrc		 <= current & new vars  e.g. alias
 
 PATH=$PATH:/usr/local/bin
 
+Keyboard => Terminal => SHELL	=> |Kernel|
+screen 	 <= Terminal => SHELL	<= |Kernel|
+
+1. Shell checks if it's a built-in command.
+2. Shell checks if it's an alias of a command.
+3. Shell checks if the command is on the hard disk.
+sh(Bourne Shell)
+	- basic shell
+	- POSIX-compliant shell
+	- Expose array indices
+	- RegEx 
+	- Increment assignment operator
+	
+Other shells
+zsh, ksh, csh
+
 -----------------------------------------------------------------------------------
 https://mywiki.wooledge.org/BashGuide/CommandsAndArguments
 # Alias  
@@ -285,7 +301,7 @@ colorscheme desert
 esc highlight
 
 
-# set number
+# VI - number line
 	$ vi -V 			<= version check
 	:set nu 			<= set number On
 	:set nu!   			<= set number Off
@@ -313,540 +329,74 @@ Cut and Paste(v/V-d/y-p/P)
 	
 	# within VI, change foo to bar
 	:%s/foo/bar/g				<=
-	
-
-### Invocation Modes
-https://mywiki.wooledge.org/bash/invocation/mode
-	
-MODE				BASH								POSIX Shell
-Login Shell			-bash[options]						-sh
-					bash -l[options]					sh -l
-					bash --login[options]				sh --login
-	
-Command String		bash -c 'command'[Options]			sh [options] -c 'command
-	
-Interactive Shell	bash -i								sh -i	
-Shell Script		#!/bin/bash [option]				#!/bin/sh [option]
-Command File		bash [options] file [args]			sh [options] file [args]
-Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]	
-	
-	
-# Switch user
-	$ su   user_id					<= just switch user but same current directory
-	$ su - user_id					<= go to user's HOME directory
-	
-# CD command
-	$ mkdir -p /1/2/3/4/5			<= creating parent directories(sub dirs)
-	$ cd ../..						<= from /1/2/3/  =>  /1   		
-	$ cd ../2						<= from /1/2/3   =>  /1/2 		
-	$ cd -							<= move to previous directory
-	$ cd ~-							<= same
-	$ echo ~-						<= out put previous directory
-# ls	
-$ ls -l /etc/ | head -n 2
-total 1364
--rw-r--r--.  1(No of link to file)  'root'   root       16 Dec  5  2016 adjtime
 
 
-
-
-# History	
-	$ ls /var/log
-	$ cd  !*						<= cd into last command directory
-		$ cd /var/log
-	
-	$ !!   or	UP arrow key 		<= Previous command
-	
-	$cat /etc/shadow
-		cat: /etc/shadow: Permission denied
+----------------------------------------------------------------------------------------------------	
+6. Environment variable check
+	### to check the SHELL variables
+	$ printenv     			<= same as env
+	$ env					<= same as printenv
+	### env == printenv ### they are same
 		
-	$ sudo !!
-	
-	$ crtl+r 			<= Reverse i search  
-	
-	$ cat vs tac
-	$ tac <= concatenate and print files in reverse
-		
-	
-	# Not recrod if there is a sapce at front
-	$ export HISTCONTROL=ignorespace
-	$ <space> clear						<= not record in history
-	$ export HISTCONTROL=ignoredups
-	$ export HISTCONTROL=erasedups 		<= delete all duplicated 
-	
-	*** add all in one line
-	$ export HISTCONTROL="ignorespace:erasedups:ingreodups"
-	$ echo 'export HISTCONTROL="ignorespace:erasedups:ingreodups"' >> ~/.bashrc
-	
-	$ export HISTIGNORE="history*:ll*:ls*" 
-	$ echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc
-	*** History Time stamp
-	$ export HISTTIMEFOREMAT="%F>"
-	$ echo 'export HISTTIMEFOREMAT="%F>"' >> ~/.bashrc
-	*** History size
-	$ export HISTSIZE=10000
-	$ echo "export HISTSIZE=10000" >> ~/.bashrc
-	
-	
-# Touch 
-	$ touch apple banana cherry			<= creating multiple files
-	$ touch file_{01..1000}
-	$ echo {1..10..2}
-	  1 3 5 7 9
-	$ echo {A..Z}
-	$ echo {A..z}						<= Capital 1st
-	$ echo {w..d..2}					<= backward + every 2nd letter
-	$ touch cherry_{01..100}{w..d}.txt
+	$ printenv SHELL	  	<= they are same
+	$ echo $SHELL		  	<= they are same
+	### printenv SHELL == echo $SHELL ###	     <= they are same
 
-# number line	'nl'
-	$ nl file.txt
-	$ cat file.txt | nl 
-
-	$ grep -i 'tcp' /etc/services | awk '{print $1}' | sort | less
-
-	
-	### mkfifo - make FIFOs (named pipes)
-	From 1st shell
-	$ mkfifo named_pipe 
-	$ echo "hi" > named_pipe
-	
-	From 2nd shell
-	$cat named_pipe
-	# meta data
-	prw-rw-r--. 1 apark apark 0 Jun  1 15:10 named_pipe
-
-	
-# STDIN, STDOUT, STDERR
-	$ sort < unsorted.txt > sorted.txt
-	$ ls | tee ls.txt
-	$ ls | tee -a ls.txt 			<= -a append
-	$ find /etc |sort|tee etcSort.txt|wc -l
-	$ find /etc 2> etcErr.txt |sort|tee etcSort.txt|wc -l
-	$ find /etc &> /dev/null   			<= NO OUT PUT
-	
-
-# long command using  \  for extent command
-	# escape character \
-
-### Putty, mRemote, Cygwins, Shell, Terminal
-	
-3. SSH connection login
-	$ ssh -v root@172.16.248.xx > result.txt					<= -v debugging mode
-	$ ssh -v root@172.16.248.xx 2>&1 > result.txt	
-	$ ssh id@x.x.x.x -p 2222									<= different port 2222
-	$ ssh -l ubuntu ip_address (or hostname)					<= -l login user name
-
-
-### List of host in ~/.ssh/config file  
-											** using Alias is OLD way ***
-	https://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/
-	
-	$ vi ~/.ssh/config
-	-------------------------------------------------------------------------------------------
-	Host netops
-		HostName 45.55.5.69
-		User apark
-		Port 22
-		IdentityFile ~/.ssh/id_rsa
-	Host puppet
-		HostName IP
-		User apark
-		Port 22
-		IdentityFile ~/.ssh/id_rsa
-	
-	$ ssh apark@netops
-	
-### Login to internal lan server at 192.168.0.251 via our public UK office ssh based gateway using ##
-	## $ ssh uk.gw.lan ##
-	Host uk.gw.lan uk.lan
-		HostName 192.168.0.251
-		User nixcraft
-		ProxyCommand  ssh nixcraft@gateway.uk.cyberciti.biz nc %h %p 2> /dev/null
-	-------------------------------------------------------------------------------------------
-	
-	
-	 
-	ProxyCommand : Specifies the command to use to connect to the server. The command string extends to the end
-				   of the line, and is executed with the user’s shell. In the command string, any occurrence 
-				   of %h will be substituted by the host name to connect, %p by the port, and %r by the remote 
-				   user name. The command can be basically anything, and should read from its standard input 
-				   and write to its standard output. This directive is useful in conjunction with nc(1) and 
-				   its proxy support. For example, the following directive would connect via an HTTP proxy at 
-				   192.1.0.253:  ProxyCommand /usr/bin/nc -X connect -x 192.1.0.253:3128 %h %p
-
-	
-	# Creating SSH config file and single Ciphers option
-	$ ssh -c aes256-ctr apark@45.55.5.69
-	$ ssh -c 3des-cbc   apark@45.55.5.69
-	$ ssh -Q [cipher | cipher-auth | mac | kex | key]
-	
-	$ vi .ssh/config
-	----------------------
-	Host *
-	Ciphers aes256-ctr
-	----------------------
-	
-
-
-	
-	### Set SSH debugging mode on server
-	https://en.wikibooks.org/wiki/OpenSSH/Logging_and_Troubleshooting
-	$ systemctl stop sshd 					<= your connection is still live
-	$ /usr/sbin/sshd -ddd					<= running debugging mode on screen	
-
-	## Client can't connect
-		error msg: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
-		Authentication refused: bad ownership or modes for directory .ssh
-	
-	# Resolution: change permission on user .ssh folder to 700
-	$ chown 700 -R .ssh
-	
-
-	
-	# MD5 (Message-Digest algorithm 5)
-	https://help.ubuntu.com/community/HowToMD5SUM
-	$ md5sum file_name
-	When one has downloaded an ISO file for installing or trying Ubuntu, it is recommended to test 
-	that the file is correct and safe to use. The MD5 calculation gives a checksum (called a hash value), 
-	which must equal the MD5 value of a correct ISO.
-	
-	
-###  basename 		<= 	strip directory and suffix from filenames
-	basename prints filename NAME with any leading directory components removed. 
-	It can optionally also remove any trailing suffix.
-	
-	EXAMPLES
-       basename /usr/bin/sort
-              => "sort"
-
-       basename include/stdio.h .h
-              => "stdio"
-
-       basename -s .h include/stdio.h
-              => "stdio"
-
-       basename -a any/str1 any/str2
-              => "str1" followed by "str2"
-
-### start up  
-	Check list
-	$ ls -l  /etc/init.d/
-	
-	# Modify
-	### CentOS 6
-	$ chkconfig --list
-	$ chkconfig ssh on
-	$ chkconfig ssh off
-	
-	
-	# Ubuntu Upstar(Debian)
-	$ apt-get install openssh-server openssh-client
-	$ update-rc.d ssh defaults			<= put it into start up
-	$ update-rc.d ssh enable 			# sets the default runlevels to on 
-	$ update-rc.d ssh disable 			# sets all to off
-
-  # Verbose mode using -v
-	$ ssh -vvvv nozatech@192.168.221.129						<= Max verbose debugging mode
-    
-	OpenSSH_6.7p1, OpenSSL 1.0.1k 8 Jan 2015
-    debug1: Reading configuration data /etc/ssh_config
-    debug1: Connecting to 192.168.221.129 [192.168.221.129] port 22.
-    debug1: Connection established.
-    debug1: identity file /home/apark/.ssh/id_rsa type 1
-
-	### SSL is TLS ###
-	SSL is the old name. It is called TLS these days.
-	https://curl.haxx.se/docs/sslcerts.html
-	
-### User management	
-# useradd vs adduser
-	# https://askubuntu.com/questions/345974/what-is-the-difference-between-adduser-and-useradd
-	
-	addduser / deluser 			<= Perl script that creates /home/user & ssh in shell
-								   add user with full profile and info (pass, quota, permission, etc.)
-	
-	useradd / userdel /usermod 	<= low level utilities at add user name Only, No Shell, 
-		# https://www.tecmint.com/add-users-in-linux/
-	
-	
-	# Create these two users, and use the --no-create-home and --shell /bin/false options 
-		so that these users can't log into the server.
-	$ useradd --no-create-home --shell /bin/false prometheus
-	$ useradd --no-create-home --shell /bin/false node_exporter
-	
-# Change user name
-	https://askubuntu.com/questions/34074/how-do-i-change-my-username
-	
-	$ sudo usermod -l newUsername oldUsername
-	
-	$ sudo usermod -d /home/newHomeDir -m newUsername
-	
-	$ ln -s    /home/newname   /home/oldname   
-	
-
-	
-	
-	
-	
-### /etc/passwd	
-
-	userID:pw:uid:gid:gecos:home             : shell
-	icinga:x:992:987:icinga:/var/spool/icinga2:/sbin/nologin
-	
-	# Get GECOS 
-	:FullName,RomAddress,WorkPhone,HomePhone,Others:
-	https://superuser.com/questions/1031615/the-other-finger-gecos-fields-at-etc-passwd
-	$ awk -F ":" '{print $5}' /etc/passwd	
-	
-	
-
-
-
-	
-	
-	
-### PSSH tool includes parallel versions of OpenSSH and related tools such as:
-
-	pssh – is a program for running ssh in parallel on a multiple remote hosts.
-	
-	pscp – is a program for copying files in parallel to a number of hosts.
-		   Copy/Transfer Files Two or More Remote Linux Servers
-	
-	prsync – is a program for efficiently copying files to multiple hosts in parallel.
-	
-	pnuke – kills processes on multiple remote hosts in parallel.
-	
-	pslurp – copies files from multiple remote hosts to a central host in parallel.
-
-	
-	$ yum install python-pip
-	$ pip install pssh
-
-
-	
-		
-	
-### Run command on remote shell
-http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ssh-on-many-servers
-
-	$ ssh apark@192.241.190.57 	  'sudo iptables -nL'		
-	$ ssh 192.241.190.57 	      'sudo iptables -nL'			<= w/o apark user id
-	$ ssh puppet sudo              iptables -nL					<= using .ssh/config  file
-	$ ssh -t apark@192.241.190.57 'sudo iptables -nL'			<= -t  Force pseudo-tty allocation
-	  
-	### run script remotely
-
-	$ ssh apark@remote_server  'bash -s' < from_local_script.sh		<= run a script remotely from local using sudoer
-	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh                  <= installing as sudo	
-	
-	# Create a server list text file and a update script first
-	
-	$ for r in $(cat nrErrorServers.txt); do ssh -v $r 'sudo su && bash -s' < updateHosts.sh ; done
-	
-	$ for i in $(cat doUpdateList.txt); do ssh -t apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
-	$ for i in `cat doUpdateList.txt` ; do ssh -t apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
-	
-	### Ignoring 'adding remote host (yes/no)'
-	$ for i in $(cat doUpdateList.txt); do ssh -t -o "StrictHostkeyChecking no" apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
-
-	
-### PSSH ###
-#	$ pssh -O StrictHostKeyChecking=no -h HostList.txt -l apark -A -i   -x '-t -t'    "sudo /etc/init.d/newrelic-sysmond restart"
-### 
-### PRSYNC ###	
-# 	$ prsync -h /cdn/usEdgeServers.txt -l apark -v -x '-avz --delete' /cdn/data/ /cdn/data/
-###	
-	
-	http://unix.stackexchange.com/questions/87405/how-can-i-execute-local-script-on-remote-machine-and-include-arguments
-	
-	$ for host in $(cat host_list.txt); do ssh "$host" "$command" > "output.$host"; done
-	Authenticating with name/password is really no good idea. 
-	You should set up a private key for this:
-	
-	$ ssh-keygen && for host in $(cat hosts.txt); do ssh-copy-id $host; done
-	
-	
-	
-	
-4.  RSA KEY( 1024bit, 2k, 4k bit)
-	$ ssh-keygen -t rsa							<= Generate  id_rsa (Private Key ) & id_rsa.pub (Public Key)	
-	
-    $ ssh-copy-id user_id@remote_server			<= Transferring Public Key
-	
-	$ cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
-
-	$ ssh remote_server "cat .ssh/*.pub"
-
-
-5. WGET to download a file using user_id & PW
-	$ wget --user=user_id --password='my_passwd' http://download.com/foo.pdf
-	$ wget http://www.gnu.org/software/gettext/manual/gettext.html  or file_name	
-	$ time wget http://www.gnu.org/software/gettext/manual/gettext.html  			<= measuring download time
-
-	# download web folder files
-	$ wget -r --no-parent http://www.download.com/folder_name/
-	
-	
-	
-### Finding my ip (gateway IP)
-	$ curl ifconfig.io	
-	$ curl icanhazip.com
-	
-	
-	
-### jq - Command-line JSON processor
-	curl -s http://127.0.0.1:4567/clients | jq .   	<= -s slient 
-	
-### cURL  
-	Testing on REST API
-	A. Content of the URL and display it in the STDOUT (i.e on your terminal)
-		$ curl http://www.centos.org
-	
-	B. To store the output in a file, you an redirect it.
-		$ curl http://www.centos.org > /tmp/centos-org.html  <= save to file
-	
-	C. Save the cURL Output to a file
-		-o (lowercase o) saved in the file name e
-		-O (uppercase O) the file name in the URL will be taken and it will be used as the file name to store the result
-		-l --list-only
-		-L --location
-	  $ curl -o saving_name.html http://www.gnu.org/text_info.html							
-	  $ curl -O http://www.gnu.org/software/gettext/manual/gettext.html or file_name		<= save the file to local 
-	
-	D.  Follow HTTP Location Headers with -L option  
-		$ curl -L http://google.com
-	
-	E.	
-		$ curl --limit-rate 1000B -O http:
-	
-	F. Proxy
-		$ curl -p 
-	
-	G.	$ curl -u username:password URL
-	
-	H.  Verbose
-		$ curl -v http://google.com
-	
-	I. $ curl dict://dict.org/d:bash
-	
-
-	# to get the HEADER info	
-	$curl -i http://address:3000/json-test 
-  	
-	HTTP/1.1 403 Forbidden
-	Date: Wed, 19 Oct 2016 02:07:18 GMT
-	Server: Apache/2.4.6 (CentOS)
-	...
-	Content-Length: 4897
-	Content-Type: text/html; charset=UTF-8
-	
-	
-	### Check multiple site
-	$ curl -sSF http://site.{one,two,three}.com
-
-
-*C*R*U*D*
-
-POST method
-	$ curl -d "first=Alber&last=park" http://address:port/method_name
-
-PUT method
-	$ curl -X PUT -d "first=Alber&last=park" http://address:port/method_name
-
-Delete
-	$ curl -X DELETE  http://address:port/method_name
-
-	$ curl -u 
-
-	$ curl -X GET -H 
-	
-
-### curl can download or upload through any protocol, http, ftp, sftp, scp, ldap, telnet
-
-curl 					www.yahoo.com -o output.html
-curl -O 				www.yahoo.com/index.html
-curl -# -u id:pw 		ftp://ftphost/fuzicast/sample.txt -o sample.txt 		# the -# adds progress bar
-curl -r 0-99 -u id:pw 	ftp://ftphost/fuzicast/sample.txt						# get first 100 bytes
-curl -r -500 -u id:pw   ftp://ftphost/fuzicast/sample.txt 						# get last 500 bytes
-echo "Hello World" | curl -T - -u id:pw \
-						ftp://ftphost/fuzicast/sample2.txt
-curl -T UNIX-1.14 -u id:pw ftp://ftphost/fuzicast/unix
-curl -T localfile1 servername/remotefile1 -T localfile2 servername/remotefile2
-curl -T UNIX-1.14 -u id:pw -a ftp://ftphost/fuzicast/unix 						# append to FTP file
-curl --ftp-create-dirs -T UNIX-1.14 -u id:pw ftp://ftphost/fuzicast/unix/test.txt
-curl --limit-rate 10240 -u id:pw ftp://ftphost/fuzicast/sample.txt 				# limit number of bytes per second .curlrc # curl configuration file
-curl -u id:pw -z sample.txt ftp://ftphost/fuzicast/sample.txt 					# download remotefile only if it's newer than localfile
-curl -z "Jan 12 2012" -u id:pw  ftp://ftphost/fuzicast/sample.txt 				# download remote file only if it's newer than Jan 12 2012
-curl -B -u id:pw 				ftp://ftphost/fuzicast/sample.txt 								# enforces ASCII transfer during FTP download 
-curl -u id:pw 					ftp://ftphost/fuzicast/sample.txt --create-dirs -o sampledir/sample.txt		# create directory if not exist
-curl --key id_rsa # use SSH key
-curl -u id:pw ftp://ftphost -Q 'RNFR /fuzicast/sample.txt' -Q 'RNTO /fuzicast/sampleyue.txt'	 # rename a remote file in FTP protocol
-curl -u id:pw ftp://ftphost -Q 'rename /fuzicast/sample.txt /fuzicast/sampleyue.txt' 			# rename in SFTP is different from FTP
-curl -R -u id:pw ftp://ftphost/fuzicast/sample.txt -o output.txt # reserve original file timestamp
-curl -l -u id:pw ftp://ftphost/fuzicast/ 										# list remote filenames
-curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater than 3000 bytes per second for a minute and 
-																				download process must be completed within 1800 seconds, otherwise the 
-																				download will abort
-
-	
-### text browser ###
-	$ sudo apt-get install -y links
-	$ links http://www.google.com
-	
-
-### base64 - base64 encode/decode data and print to standard output
-	http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
-	
-	# Encode
-	$ printf id:pw | base64
-		$ base64 data.txt > data.b64
-	# Decode using -d option
-	$ base64 -d 
-		$ base64 -d data.b64 						<= on to SCREEN(STDOUT)
-		$ base64 -d data.b64 > data.txt				<= on to Files
-	https://www.base64decode.org/	
-
-
-### How to check SHELL type
-	$ echo $SHELL
-		/bin/bash
-	$ echo $0
-		-bash
-	$ env | grep SHELL
-		SHELL=/bin/bash
-	$ set | grep SHELL
-		SHELL=/bin/bash
-	$ ps | grep $$
-		3179 pts/0    00:00:00 bash
-	$ ps -ef | grep $$
-
-	# checking which shell
-	$ ps 		<= All shells PID
-	$ ps -p $$  <= Current shell PID
- 
-
-	### install tcsh and login
-	$ yum install tcsh -y
-	$ tcsh
-	$ echo $0
-		tcsh
-		
-	
-6. Environment variable
-	$ printenv
-	$ env
-	$ printenv SHELL	  
-	$ echo $SHELL			
-	
-	set <= is a shell command to set the value of a shell attribute variable; these are internal variables used by the shell.
-	env <= is a program that runs another program with modified environment variables
-	
-	
-	
-	### to see the SHELL variables
 	$ set
+	$ env
+	$ printenv
 	
-	# set -o 						<= Inherite from BASH or other Shells
+# env <= is a program that runs another program with modified environment variables
+		-  Set each NAME to VALUE in the environment and run COMMAND.
+	
+# set <= is a shell command to set the value of a shell attribute variable; 
+			these are internal variables used by the shell.
+		- 'Set' or 'unset' values of shell options and positional parameters.
+		- Change the value of shell attributes and positional parameters, or
+			display the names and values of shell variables.
+
+# printenv <= print all or part of environment
+	
+	$ set -o 				<= -o Options,  Inherite from BASH or other Shells
+	$ set -o posix			<= Turn on POSIX, see shell variables, remove all shell functions
+	$ set +o posix			<= +o removes POSIX mode
+
+	
+# Environment VS SHELL Variables 	
+	1. Environment Variables
+		Variables that are defined for the current shell and are inherited by any 
+	2. SHELL Variables 
+# export 	<= (default same as '-p')Set export attribute for shell variables.
+			Marks each NAME for automatic export to the environment of subsequently
+			executed commands.  If VALUE is supplied, assign VALUE before exporting.
+			Options:
+			-f   shell functions
+			-n   remove the export property from each NAME
+			-p   display a list of all exported variables and functions
+
+	$ VAR=TEST				<= creating variable 'VAR'
+	$ set | grep VAR		
+		VAR=TEST
+	$ unset VAR				<= Removing 'VAR'
+	
+	$ env | grep VAR
+	** No Result
+	$ printenv | grep VAR
+	** No Result 			<= VAR is not part of environment
+# To put it into Env variables, use 'export'
+	$ export VAR			
+	$ env | grep VAR		
+	  VAR=TEST
+	$ export -n VAR			<= 	
+
+### Assign values to shell variables	
+	https://bash.cyberciti.biz/guide/Assign_values_to_shell_variables
+	
+	
+	
+	
+	
+	
 	
 ### shopt						<= specific options for BASH Shell
 	$ shopt						<= list of Shell Option
@@ -904,18 +454,527 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	$ export PATH
 	$ echo $PATH
 
-	AWS Access Key/ Secret key
-	
-	/home/ubuntu/jarvis/ami/tcg/production/
-	
-    $ sudo sh -c "export OC_AWS_ACCESS_KEY=AKIAI6FBDACL5LFOEACA; \
-				  export OC_AWS_SECRET_KEY=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; \
-				  fab tcg.credit_gems:host=10.10.1.50,player_id="544053a5c66354d43f5f07d3",amount=50"
-		
-	To make a usage listing of the directories in the /home partition.  Note that this runs the commands in a
-    sub-shell to make the cd and file redirection work.
 
-    $ sudo sh -c "cd /home ; du -s * | sort -rn > diskUsage"   <= diskUsage file located in /home
+--------------------------------------------------------------------------
+### Invocation Modes
+https://mywiki.wooledge.org/bash/invocation/mode
+--------------------------------------------------------------------------	
+MODE				BASH								POSIX Shell
+Login Shell			-bash[options]						-sh
+					bash -l[options]					sh -l
+					bash --login[options]				sh --login
+	
+Command String		bash -c 'command'[Options]			sh [options] -c 'command
+	
+Interactive Shell	bash -i								sh -i	
+Shell Script		#!/bin/bash [option]				#!/bin/sh [option]
+Command File		bash [options] file [args]			sh [options] file [args]
+Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]	
+	
+--------------------------------------------------------------------------	
+# Switch user
+	$ su   user_id					<= just switch user but same current directory
+	$ su - user_id					<= go to user's HOME directory
+--------------------------------------------------------------------------	
+# CD command
+	$ mkdir -p /1/2/3/4/5			<= creating parent directories(sub dirs)
+	$ cd ../..						<= from /1/2/3/  =>  /1   		
+	$ cd ../2						<= from /1/2/3   =>  /1/2 		
+	$ cd -							<= move to previous directory
+	$ cd ~-							<= same
+	$ echo ~-						<= out put previous directory
+	
+
+--------------------------------------------------------------------------
+# History	
+	$ ls /var/log
+	$ cd  !*						<= cd into last command directory
+		$ cd /var/log
+	
+	$ !!   or	UP arrow key 		<= Previous command
+	
+	$cat /etc/shadow
+		cat: /etc/shadow: Permission denied
+		
+	$ sudo !!
+	
+	$ crtl+r 			<= Reverse i search  
+	
+	$ cat vs tac
+	$ tac <= concatenate and print files in reverse
+		
+	
+	# Not recrod if there is a sapce at front
+	$ export HISTCONTROL=ignorespace
+	$ <space> clear						<= not record in history
+	$ export HISTCONTROL=ignoredups
+	$ export HISTCONTROL=erasedups 		<= delete all duplicated 
+	
+	*** add all in one line
+	$ export HISTCONTROL="ignorespace:erasedups:ingreodups"
+	$ echo 'export HISTCONTROL="ignorespace:erasedups:ingreodups"' >> ~/.bashrc
+	
+	$ export HISTIGNORE="history*:ll*:ls*" 
+	$ echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc
+	*** History Time stamp
+	$ export HISTTIMEFOREMAT="%F>"
+	$ echo 'export HISTTIMEFOREMAT="%F>"' >> ~/.bashrc
+	*** History size
+	$ export HISTSIZE=10000
+	$ echo "export HISTSIZE=10000" >> ~/.bashrc
+	
+--------------------------------------------------------------------------	
+# Touch 
+	$ touch apple banana cherry			<= creating multiple files
+	$ touch file_{01..1000}
+	$ echo {1..10..2}
+	  1 3 5 7 9
+	$ echo {A..Z}
+	$ echo {A..z}						<= Capital 1st
+	$ echo {w..d..2}					<= backward + every 2nd letter
+	$ touch cherry_{01..100}{w..d}.txt
+--------------------------------------------------------------------------
+# number line	'nl'
+	$ nl file.txt
+	$ cat file.txt | nl 
+
+	$ grep -i 'tcp' /etc/services | awk '{print $1}' | sort | less
+
+	
+	### mkfifo - make FIFOs (named pipes)
+	From 1st shell
+	$ mkfifo named_pipe 
+	$ echo "hi" > named_pipe
+	
+	From 2nd shell
+	$cat named_pipe
+	# meta data
+	prw-rw-r--. 1 apark apark 0 Jun  1 15:10 named_pipe
+
+--------------------------------------------------------------------------	
+# STDIN, STDOUT, STDERR
+	$ sort < unsorted.txt > sorted.txt
+	$ ls | tee ls.txt
+	$ ls | tee -a ls.txt 			<= -a append
+	$ find /etc |sort|tee etcSort.txt|wc -l
+	$ find /etc 2> etcErr.txt |sort|tee etcSort.txt|wc -l
+	$ find /etc &> /dev/null   			<= NO OUT PUT
+	
+--------------------------------------------------------------------------
+# long command using  \  for extent command
+	# escape character \
+	
+--------------------------------------------------------------------------
+### Putty, mRemote, Cygwins, Shell, Terminal
+	
+3. SSH connection login
+	$ ssh -v root@172.16.248.xx > result.txt					<= -v debugging mode
+	$ ssh -v root@172.16.248.xx 2>&1 > result.txt	
+	$ ssh id@x.x.x.x -p 2222									<= different port 2222
+	$ ssh -l ubuntu ip_address (or hostname)					<= -l login user name
+
+--------------------------------------------------------------------------
+### List of host in ~/.ssh/config file  
+											** using Alias is OLD way ***
+	https://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/
+	
+	$ vi ~/.ssh/config
+	-------------------------------------------------------------------------------------------
+	Host netops
+		HostName 45.55.5.69
+		User apark
+		Port 22
+		IdentityFile ~/.ssh/id_rsa
+	Host puppet
+		HostName IP
+		User apark
+		Port 22
+		IdentityFile ~/.ssh/id_rsa
+	
+	$ ssh apark@netops
+--------------------------------------------------------------------------	
+### Login to internal lan server at 192.168.0.251 via our public UK office ssh based gateway using ##
+	## $ ssh uk.gw.lan ##
+	Host uk.gw.lan uk.lan
+		HostName 192.168.0.251
+		User nixcraft
+		ProxyCommand  ssh nixcraft@gateway.uk.cyberciti.biz nc %h %p 2> /dev/null
+	-------------------------------------------------------------------------------------------
+	
+	
+	 
+	ProxyCommand : Specifies the command to use to connect to the server. The command string extends to the end
+				   of the line, and is executed with the user’s shell. In the command string, any occurrence 
+				   of %h will be substituted by the host name to connect, %p by the port, and %r by the remote 
+				   user name. The command can be basically anything, and should read from its standard input 
+				   and write to its standard output. This directive is useful in conjunction with nc(1) and 
+				   its proxy support. For example, the following directive would connect via an HTTP proxy at 
+				   192.1.0.253:  ProxyCommand /usr/bin/nc -X connect -x 192.1.0.253:3128 %h %p
+
+--------------------------------------------------------------------------	
+	# Creating SSH config file and single Ciphers option
+	$ ssh -c aes256-ctr apark@45.55.5.69
+	$ ssh -c 3des-cbc   apark@45.55.5.69
+	$ ssh -Q [cipher | cipher-auth | mac | kex | key]
+	
+	$ vi .ssh/config
+	----------------------
+	Host *
+	Ciphers aes256-ctr
+	----------------------
+	
+
+
+--------------------------------------------------------------------------	
+	### Set SSH debugging mode on server
+	https://en.wikibooks.org/wiki/OpenSSH/Logging_and_Troubleshooting
+	$ systemctl stop sshd 					<= your connection is still live
+	$ /usr/sbin/sshd -ddd					<= running debugging mode on screen	
+
+	## Client can't connect
+		error msg: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+		Authentication refused: bad ownership or modes for directory .ssh
+	
+	# Resolution: change permission on user .ssh folder to 700
+	$ chown 700 -R .ssh
+	
+
+	
+	# MD5 (Message-Digest algorithm 5)
+	https://help.ubuntu.com/community/HowToMD5SUM
+	$ md5sum file_name
+	When one has downloaded an ISO file for installing or trying Ubuntu, it is recommended to test 
+	that the file is correct and safe to use. The MD5 calculation gives a checksum (called a hash value), 
+	which must equal the MD5 value of a correct ISO.
+	
+--------------------------------------------------------------------------	
+###  basename 		<= 	strip directory and suffix from filenames
+	basename prints filename NAME with any leading directory components removed. 
+	It can optionally also remove any trailing suffix.
+	
+	EXAMPLES
+       basename /usr/bin/sort
+              => "sort"
+
+       basename include/stdio.h .h
+              => "stdio"
+
+       basename -s .h include/stdio.h
+              => "stdio"
+
+       basename -a any/str1 any/str2
+              => "str1" followed by "str2"
+			  
+--------------------------------------------------------------------------
+### System OS start up  
+--------------------------------------------------------------------------
+	Check list
+	$ ls -l  /etc/init.d/
+	
+	# Modify
+	### CentOS 6
+	$ chkconfig --list
+	$ chkconfig ssh on
+	$ chkconfig ssh off
+	
+	
+	# Ubuntu Upstar(Debian)
+	$ apt-get install openssh-server openssh-client
+	$ update-rc.d ssh defaults			<= put it into start up
+	$ update-rc.d ssh enable 			# sets the default runlevels to on 
+	$ update-rc.d ssh disable 			# sets all to off
+
+  # Verbose mode using -v
+	$ ssh -vvvv nozatech@192.168.221.129						<= Max verbose debugging mode
+    
+	OpenSSH_6.7p1, OpenSSL 1.0.1k 8 Jan 2015
+    debug1: Reading configuration data /etc/ssh_config
+    debug1: Connecting to 192.168.221.129 [192.168.221.129] port 22.
+    debug1: Connection established.
+    debug1: identity file /home/apark/.ssh/id_rsa type 1
+
+	### SSL is TLS ###
+	SSL is the old name. It is called TLS these days.
+	https://curl.haxx.se/docs/sslcerts.html
+
+--------------------------------------------------------------------------	
+### User management	
+--------------------------------------------------------------------------
+# useradd vs adduser
+	# https://askubuntu.com/questions/345974/what-is-the-difference-between-adduser-and-useradd
+	
+	addduser / deluser 			<= Perl script that creates /home/user & ssh in shell
+								   add user with full profile and info (pass, quota, permission, etc.)
+	
+	useradd / userdel /usermod 	<= low level utilities at add user name Only, No Shell, 
+		# https://www.tecmint.com/add-users-in-linux/
+	
+	
+	# Create these two users, and use the --no-create-home and --shell /bin/false options 
+		so that these users can't log into the server.
+	$ useradd --no-create-home --shell /bin/false prometheus
+	$ useradd --no-create-home --shell /bin/false node_exporter
+	
+# Change user name
+	https://askubuntu.com/questions/34074/how-do-i-change-my-username
+	
+	$ sudo usermod -l newUsername oldUsername
+	
+	$ sudo usermod -d /home/newHomeDir -m newUsername
+	
+	$ ln -s    /home/newname   /home/oldname   
+	
+
+	
+	
+	
+--------------------------------------------------------------------------	
+### /etc/passwd	
+
+	userID:pw:uid:gid:gecos:home             : shell
+	icinga:x:992:987:icinga:/var/spool/icinga2:/sbin/nologin
+	
+	# Get GECOS 
+	:FullName,RomAddress,WorkPhone,HomePhone,Others:
+	https://superuser.com/questions/1031615/the-other-finger-gecos-fields-at-etc-passwd
+	$ awk -F ":" '{print $5}' /etc/passwd	
+	
+	
+
+
+
+	
+	
+--------------------------------------------------------------------------	
+### PSSH tool includes parallel versions of OpenSSH and related tools such as:
+
+	pssh – is a program for running ssh in parallel on a multiple remote hosts.
+	
+	pscp – is a program for copying files in parallel to a number of hosts.
+		   Copy/Transfer Files Two or More Remote Linux Servers
+	
+	prsync – is a program for efficiently copying files to multiple hosts in parallel.
+	
+	pnuke – kills processes on multiple remote hosts in parallel.
+	
+	pslurp – copies files from multiple remote hosts to a central host in parallel.
+
+	
+	$ yum install python-pip
+	$ pip install pssh
+
+
+	
+		
+----------------------------------------------------------------------------------------------------
+### Run command on remote shell
+http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ssh-on-many-servers
+----------------------------------------------------------------------------------------------------
+
+	$ ssh apark@192.241.190.57 	  'sudo iptables -nL'		
+	$ ssh 192.241.190.57 	      'sudo iptables -nL'			<= w/o apark user id
+	$ ssh puppet sudo              iptables -nL					<= using .ssh/config  file
+	$ ssh -t apark@192.241.190.57 'sudo iptables -nL'			<= -t  Force pseudo-tty allocation
+	  
+	### run script remotely
+
+	$ ssh apark@remote_server  'bash -s' < from_local_script.sh		<= run a script remotely from local using sudoer
+	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh                  <= installing as sudo	
+	
+	# Create a server list text file and a update script first
+	
+	$ for r in $(cat nrErrorServers.txt); do ssh -v $r 'sudo su && bash -s' < updateHosts.sh ; done
+	
+	$ for i in $(cat doUpdateList.txt); do ssh -t apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
+	$ for i in `cat doUpdateList.txt` ; do ssh -t apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
+	
+	### Ignoring 'adding remote host (yes/no)'
+	$ for i in $(cat doUpdateList.txt); do ssh -t -o "StrictHostkeyChecking no" apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
+
+	
+### PSSH ###
+#	$ pssh -O StrictHostKeyChecking=no -h HostList.txt -l apark -A -i   -x '-t -t'    "sudo /etc/init.d/newrelic-sysmond restart"
+### 
+### PRSYNC ###	
+# 	$ prsync -h /cdn/usEdgeServers.txt -l apark -v -x '-avz --delete' /cdn/data/ /cdn/data/
+###	
+	
+	http://unix.stackexchange.com/questions/87405/how-can-i-execute-local-script-on-remote-machine-and-include-arguments
+	
+	$ for host in $(cat host_list.txt); do ssh "$host" "$command" > "output.$host"; done
+	Authenticating with name/password is really no good idea. 
+	You should set up a private key for this:
+	
+	$ ssh-keygen && for host in $(cat hosts.txt); do ssh-copy-id $host; done
+	
+	
+	
+----------------------------------------------------------------------------------------------------	
+4.  RSA KEY( 1024bit, 2k, 4k bit)
+	$ ssh-keygen -t rsa							<= Generate  id_rsa (Private Key ) & id_rsa.pub (Public Key)	
+	
+    $ ssh-copy-id user_id@remote_server			<= Transferring Public Key
+	
+	$ cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+
+	$ ssh remote_server "cat .ssh/*.pub"
+
+----------------------------------------------------------------------------------------------------
+5. WGET to download a file using user_id & PW
+	$ wget --user=user_id --password='my_passwd' http://download.com/foo.pdf
+	$ wget http://www.gnu.org/software/gettext/manual/gettext.html  or file_name	
+	$ time wget http://www.gnu.org/software/gettext/manual/gettext.html  			<= measuring download time
+
+	# download web folder files
+	$ wget -r --no-parent http://www.download.com/folder_name/
+	
+	
+----------------------------------------------------------------------------------------------------	
+### Finding my ip (gateway IP)
+	$ curl ifconfig.io	
+	$ curl icanhazip.com
+	
+	
+----------------------------------------------------------------------------------------------------	
+### jq - Command-line JSON processor
+	curl -s http://127.0.0.1:4567/clients | jq .   	<= -s slient 
+	
+----------------------------------------------------------------------------------------------------	
+### cURL  
+	Testing on REST API
+	A. Content of the URL and display it in the STDOUT (i.e on your terminal)
+		$ curl http://www.centos.org
+	
+	B. To store the output in a file, you an redirect it.
+		$ curl http://www.centos.org > /tmp/centos-org.html  <= save to file
+	
+	C. Save the cURL Output to a file
+		-o (lowercase o) saved in the file name e
+		-O (uppercase O) the file name in the URL will be taken and it will be used as the file name to store the result
+		-l --list-only
+		-L --location
+	  $ curl -o saving_name.html http://www.gnu.org/text_info.html							
+	  $ curl -O http://www.gnu.org/software/gettext/manual/gettext.html or file_name		<= save the file to local 
+	
+	D.  Follow HTTP Location Headers with -L option  
+		$ curl -L http://google.com
+	
+	E.	
+		$ curl --limit-rate 1000B -O http:
+	
+	F. Proxy
+		$ curl -p 
+	
+	G.	$ curl -u username:password URL
+	
+	H.  Verbose
+		$ curl -v http://google.com
+	
+	I. $ curl dict://dict.org/d:bash
+	
+
+	# to get the HEADER info	
+	$curl -i http://address:3000/json-test 
+  	
+	HTTP/1.1 403 Forbidden
+	Date: Wed, 19 Oct 2016 02:07:18 GMT
+	Server: Apache/2.4.6 (CentOS)
+	...
+	Content-Length: 4897
+	Content-Type: text/html; charset=UTF-8
+	
+	
+	### Check multiple site
+	$ curl -sSF http://site.{one,two,three}.com
+
+----------------------------------------------------------------------------------------------------
+*C*R*U*D*
+
+POST method
+	$ curl -d "first=Alber&last=park" http://address:port/method_name
+
+PUT method
+	$ curl -X PUT -d "first=Alber&last=park" http://address:port/method_name
+
+Delete
+	$ curl -X DELETE  http://address:port/method_name
+
+	$ curl -u 
+
+	$ curl -X GET -H 
+	
+----------------------------------------------------------------------------------------------------
+### curl can download or upload through any protocol, http, ftp, sftp, scp, ldap, telnet
+
+curl 					www.yahoo.com -o output.html
+curl -O 				www.yahoo.com/index.html
+curl -# -u id:pw 		ftp://ftphost/fuzicast/sample.txt -o sample.txt 		# the -# adds progress bar
+curl -r 0-99 -u id:pw 	ftp://ftphost/fuzicast/sample.txt						# get first 100 bytes
+curl -r -500 -u id:pw   ftp://ftphost/fuzicast/sample.txt 						# get last 500 bytes
+echo "Hello World" | curl -T - -u id:pw \
+						ftp://ftphost/fuzicast/sample2.txt
+curl -T UNIX-1.14 -u id:pw ftp://ftphost/fuzicast/unix
+curl -T localfile1 servername/remotefile1 -T localfile2 servername/remotefile2
+curl -T UNIX-1.14 -u id:pw -a ftp://ftphost/fuzicast/unix 						# append to FTP file
+curl --ftp-create-dirs -T UNIX-1.14 -u id:pw ftp://ftphost/fuzicast/unix/test.txt
+curl --limit-rate 10240 -u id:pw ftp://ftphost/fuzicast/sample.txt 				# limit number of bytes per second .curlrc # curl configuration file
+curl -u id:pw -z sample.txt ftp://ftphost/fuzicast/sample.txt 					# download remotefile only if it's newer than localfile
+curl -z "Jan 12 2012" -u id:pw  ftp://ftphost/fuzicast/sample.txt 				# download remote file only if it's newer than Jan 12 2012
+curl -B -u id:pw 				ftp://ftphost/fuzicast/sample.txt 								# enforces ASCII transfer during FTP download 
+curl -u id:pw 					ftp://ftphost/fuzicast/sample.txt --create-dirs -o sampledir/sample.txt		# create directory if not exist
+curl --key id_rsa # use SSH key
+curl -u id:pw ftp://ftphost -Q 'RNFR /fuzicast/sample.txt' -Q 'RNTO /fuzicast/sampleyue.txt'	 # rename a remote file in FTP protocol
+curl -u id:pw ftp://ftphost -Q 'rename /fuzicast/sample.txt /fuzicast/sampleyue.txt' 			# rename in SFTP is different from FTP
+curl -R -u id:pw ftp://ftphost/fuzicast/sample.txt -o output.txt # reserve original file timestamp
+curl -l -u id:pw ftp://ftphost/fuzicast/ 										# list remote filenames
+curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater than 3000 bytes per second for a minute and 
+																				download process must be completed within 1800 seconds, otherwise the 
+																				download will abort
+
+----------------------------------------------------------------------------------------------------	
+### text browser ###
+	$ sudo apt-get install -y links
+	$ links http://www.google.com
+	
+----------------------------------------------------------------------------------------------------
+### base64 - base64 encode/decode data and print to standard output
+	http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
+	
+	# Encode
+	$ printf id:pw | base64
+		$ base64 data.txt > data.b64
+	# Decode using -d option
+	$ base64 -d 
+		$ base64 -d data.b64 						<= on to SCREEN(STDOUT)
+		$ base64 -d data.b64 > data.txt				<= on to Files
+	https://www.base64decode.org/	
+
+----------------------------------------------------------------------------------------------------
+### How to check SHELL type
+	$ echo $SHELL
+		/bin/bash
+	$ echo $0
+		-bash
+	$ env | grep SHELL
+		SHELL=/bin/bash
+	$ set | grep SHELL
+		SHELL=/bin/bash
+	$ ps | grep $$
+		3179 pts/0    00:00:00 bash
+	$ ps -ef | grep $$
+
+	# checking which shell
+	$ ps 		<= All shells PID
+	$ ps -p $$  <= Current shell PID
+ 
+
+	### install tcsh and login
+	$ yum install tcsh -y
+	$ tcsh
+	$ echo $0
+		tcsh
+		
+
 
 ### Copy, Move, Rename
 # cp
@@ -4706,7 +4765,19 @@ two cases:
 	$ sudo sh -c "ls > /root/somefile"
 	#-----------------------------------------------------------------------------------------------------
 
+### AWS Access Key/ Secret key
+	
+	/home/ubuntu/jarvis/ami/tcg/production/
+	
+    $ sudo sh -c "export OC_AWS_ACCESS_KEY=AKIAI6FBDACL5LFOEACA; \
+				  export OC_AWS_SECRET_KEY=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; \
+				  fab tcg.credit_gems:host=10.10.1.50,player_id="544053a5c66354d43f5f07d3",amount=50"
+		
+	To make a usage listing of the directories in the /home partition.  Note that this runs the commands in a
+    sub-shell to make the cd and file redirection work.
 
+    $ sudo sh -c "cd /home ; du -s * | sort -rn > diskUsage"   <= diskUsage file located in /home
+	
 	
 #### UBUNTU  ###	
 http://stackoverflow.com/questions/21515463/how-to-increase-maximum-file-open-limit-ulimit-in-ubuntu

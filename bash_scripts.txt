@@ -82,7 +82,10 @@ $ apt-get | yum install shellcheck	-y
 	
 	$ source script.sh
 		e.g. $ source .bashrc		 <= reload .bashrc
-
+	
+	$ . script.sh					 <= '.' is same as source
+										Execute commands from a file in the current shell.
+	
 	# run script as a different user from root
 	$ wget http://tecmint.com/wp-content/scripts/tecmint_monitor.sh
 	$ su -c "/home/apark/tecmint_monitor.sh" - root
@@ -163,7 +166,42 @@ $ apt-get | yum install shellcheck	-y
 	[2]-  Stopped                 vim
 	[3]   Done                    ls --color=auto -alR > /tmp/result.txt 2> /tmp/error.txt
 
-	
+---------------------------------------------------
+### Assign values to shell variables	
+https://bash.cyberciti.biz/guide/Assign_values_to_shell_variables	
+---------------------------------------------------
+
+$ echo "$varName"
+$ echo "${varName}"
+$ printf "${varName}"
+$ printf "%s\n" ${varName}
+
+# NULL variable
+	- NULL variable is variable which has no value at the time of definition
+var=
+var=""
+
+# Do not use ?,* and other special characters, to name your variable.
+?no=10 							#invalid
+out*put=/tmp/filename.txt 		#invalid
+
+_GREP=/usr/bin/grep 			#valid
+$ echo "$_GREP"
+---------------------------------------------------
+$ NOW=$(date)
+$ echo $NOW
+---------------------------------------------------
+More About ${varName} Syntax
+$ echo "MySHELL=>$SHELLCode<="				<= can't tell $SHELLCode
+  MySHELL=><=
+
+  $echo  "MySHELL=>\$SHELLCode<="				<= prints $
+  MySHELL=>$SHELLCode<=
+
+$ echo "MySHELL=>${SHELL}Code<="			<= Using {} for Variable $SHELL
+	MySHELL=>/bin/bashCode<=
+
+
 ---------------------------------------------------
 ### Environment Variable  ####
 ---------------------------------------------------
@@ -181,7 +219,7 @@ $ var=value		       #Assign the string value to shell variable var.
 	  5
 	  
 ---------------------------------------------------
-### Local Variable (within function) ####
+### SHELL (Local) Variable (within function) ####
 ---------------------------------------------------	  
 	- variables can be created in a function that will not be available outside(Global) of it
 	- variables only set within a function
@@ -1570,12 +1608,18 @@ else
     echo "The number is odd"
 fi
 
-------------------------------------
-# Read : within min time to input
-------------------------------------
+-----------------------------------------
+# Read : within time to input or expires
+-----------------------------------------
 # -t timing
 # -s security hidden
+# -p prompt
+-----------------------------------
 
+
+
+
+-----------------------------------
 #!/bin/bash
 echo -n  "Enter your number before expire within 3sec: "
 echo seq 3
@@ -2239,7 +2283,30 @@ done < myfile.txt
 	myfile.txt
 	hello
 	howdy
-
+------------------------------------
+# CASE with Function
+------------------------------------
+#!/bin/bash
+function1()
+{
+    echo "I am function 1"
+} 
+function2()
+{
+    echo "I am function 2"
+}
+opt=$1
+case $opt
+in
+    u) function1 ;;
+    g) function2 ;;
+    *) echo "Nothing to do"
+       exit ;;
+esac	
+	
+	
+	
+	
 ---------------------------------------------------------------------------------
 ### Function statement ###
 ---------------------------------------------------------------------------------
@@ -3366,9 +3433,9 @@ trap '' SIGQUIT  #3
 trap '' SIGTSTP  #20 Signal Stop as CTRL+Z
  
 # display message and pause 
-pause(){
-	local mesg="$@"						# pause() function
-	echo "$mesg"				 		# local makes within function variable
+pause(){									# pause() function
+	local mesg="$@"							# local makes within function variable
+	echo "$mesg"				 		
 	read -p "Press [Enter] key to continue..."   key			# key <-input value 
 			# -p prompt output the string PROMPT without a trailing 
 			#    newline before attempting to read

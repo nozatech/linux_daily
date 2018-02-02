@@ -69,6 +69,11 @@ clingy			<- kids are very clingy ###(of a person or garment) liable to cling; cl
 commercing 		<- starting
 condemnation	<- 심한비난
 conform			<- comply with rules, standards, or laws
+contention		<- heated disagreement.
+					synonyms:	disagreement, dispute, disputation, argument, discord, conflict, 
+							friction, strife, dissension, disharmony "a point of contention"
+					antonyms:	agreement
+
 contiguous		<- sharing a common border; touching. next or together in sequence.
 convoluted		<- (especially of an argument, story, or sentence) extremely complex and difficult to follow.
 					synonyms: complicated, complex, involved, elaborate, serpentine, labyrinthine,
@@ -101,6 +106,11 @@ duck out		<- Leave hurriedly or secretly
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
 embezzle		<- 횡령
 encompasses 	<- surround and have or hold within
+enrage			<- make very angry.
+					"the students were enraged at these new rules"
+				synonyms:	anger, infuriate, incense, madden, inflame; More
+				antonyms:	placate, calm
+
 entitlements	<- the amount to which a person has a right.
 eye stye		<- 눈다락지
 exalt			<- hold (someone or something) in very high regard; think or speak very highly of.
@@ -116,6 +126,12 @@ finicky			<-	fussy about one's needs or requirements.
 					[음식·옷 등에] 지나치게 까다로운, 몹시 신경을 쓰는, 집착이 강한
 					synonyms:	fussy, fastidious, punctilious, overparticular, difficult, 
 								exacting, demanding; More
+flout			<- [v] openly disregard (a rule, law or convention).
+					"Who flout the safty rules?"
+				synonyms:	defy, refuse to obey, disobey, break, violate, fail to comply with, 
+							fail to observe, contravene, infringe, breach, commit a breach of, 
+							transgress against; More
+				antonyms:	observe
 
 full-fledged	<- completely developed or established; of full status.
 
@@ -135,6 +151,9 @@ gripe			<- express a complaint or grumble about something, especially something 
 
 ###H
 hard-nosed		<- realistic and determined; tough-minded. 
+
+horrid			<- [a] causing horror (frightfull)
+					"a horrid beast"
 hypoxia			<- 저산소증	
 hospice			<- a type of care and philosophy of care that focuses on the palliation(make 
 (nursing home)		(a disease or its symptoms) less severe or unpleasant without removing the cause) 
@@ -179,7 +198,7 @@ marauder		<- a person who marauds; a raider.
 Marshalling 	<- arrange or assemble (a group of people, especially soldiers) in order.
 misnomer		<- a wrong or inaccurate name or designation, a wrong or inaccurate use of a name or term.
 mock-up			<- a model or replica of a machine or structure, used for instructional or experimental purposes.
-
+MNDA			<- Mutual Non-Disclosure Agreement
 
 ### N
 nifty			<- very good
@@ -187,6 +206,9 @@ nitty-gritty	<- what is essential and basic :specific practical details get down
 					synonyms:	basics, essentials, fundamentals, substance, quintessence, heart of the matter; More
 
 no frill 		<- simple, plain, 
+
+
+
 
 ### O
 obscurity		<- the state of being unknown, inconspicuous, or unimportant.
@@ -216,9 +238,22 @@ quirk			<- 변덕 				e.g. by a quirk of fate 운명의 장난으로
 
 
 ### P
+pacify			<- quell the anger, agitation, or excitement of.
+					"he had to pacify angry spectators"
+					synonyms:	placate, appease, calm (down), conciliate, propitiate, assuage, mollify, soothe
+					"go out there and try to pacify the passengers"
+					antonyms:	enrage
+
 palindrome		<- a word, phrase, or sequence that reads the same backward as forward, e.g., madam 
 perplex			<- [v]complicate or confuse (a matter)
 periodontitis	<- [페리오단타이티스] 치주염
+placate			<- make (someone) less angry(calm) or hostile.
+					"they attempted to placate the students with promises"
+					synonyms:	pacify, calm, appease, mollify, soothe, win over, conciliate, 
+								propitiate, make peace with, humor
+					"John did his best to placate her"
+					antonyms:	provoke
+
 poised			<- be ready
 primitive		<- relating to, denoting, or preserving the character of an early stage in the 
 					evolutionary or historical development of something.
@@ -314,6 +349,8 @@ wane			<- weaker, (especially of a condition or feeling) decrease in vigor, powe
 whimsical		<- 변덕스러운
 
 ### U
+ugh				<- used to express disgust or horror.
+					"Ugh! What's this disgusting object?"
 unbound			<- not bound or tied up.
 unwieldy 		<- hard to handle
 uphostery		<- [어포울스터리] soft, padded textile covering that is fixed to furniture.
