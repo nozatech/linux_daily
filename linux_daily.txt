@@ -519,6 +519,11 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	$ su - user_id					<= go to user's HOME directory
 --------------------------------------------------------------------------	
 # CD command
+	.. 	parent  directory
+	.	current directory
+	~	User's home directory
+	-	Previous directory
+	
 	$ mkdir -p /1/2/3/4/5			<= creating parent directories(sub dirs)
 	$ cd ../..						<= from /1/2/3/  =>  /1   		
 	$ cd ../2						<= from /1/2/3   =>  /1/2 		
@@ -1062,22 +1067,28 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 		$ file.*			<= matches any number of any characters
 		$ file*.txt
 		$ *.jpg
+	
 	2) ? Matches one(1) of any character
 		$ ls -l file?.txt
 		$ ls -l ?.jpg
+		
 	3) [ ] Character Sets
 		$ ls -l file[0-9].txt			<= file1.txt
 		$ ls -l file[a-z].txt
-		$ ls -l file[abc123].jpg		<= e.g. a.jpg, b.jpg, 3.jpg
-	4) [- ] Matches a - (hyphen)
+		$ ls -l file[abc123].jpg		<= any One from [abc123];  a.jpg, b.jpg, 3.jpg
+	
+	4) [ - ] Matches a '-' (hyphen)
 		$ file[-9-0].txt		
 		  file-.txt 
 		  file1.txt
-	5) [! ] Negate(NOT) a match
+	
+	5) [! ] Negate(NOT) a match; Do Not Match 0-9.txt
 		$ file[!0-9].txt		
 		  filea.txt
 		  fileb.txt
+	
 	6) [::] Matches on character of a certain type
+		Claass		Match
 		[:digit:]	Numbers
 		[:uppper:]	Upper case characters
 		[:lower:]	lower case characters
@@ -1091,35 +1102,43 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 		[:xdigit:]	Hexadecimal characters
 		
 	$ ls file[0-9].txt
-	$ ls file[[:digit:]].txt
+	$ ls f*[[:digit:]].txt
+	
 	$ ls file[[:digit:][:space:].txt
+	$ ls file[![:digit:][:space:].txt			<= ! Negate(but this)
+	
 	$ ls file[![:digit:]].txt
 	$ ls file[![:digit:][:space:]].txt 
 		
-	$ ls {*.jpg,*.gif,*.png}		<=works on 2 or more
+	$ ls {*.jpg,*.gif,*.png}		<= works on 2 or more
+		a.jpg, b.jpg, c.png, d.gif
 	$ ls -l {b*,c*}
 	$ rm *[^1].txt					<= delete all but *1.txt
 	$ rm *[!1].txt					<= range, delete all but *1.txt
 	$ cat myfile | grep '^s.*n$'	<= end of the line
 	
-	### Extended Globs
+### Extended Globs
 	$ shopt
-	$ shopt -s extglob
+	$ shopt -s extglob				<= put into .bashrc
+
 	1) +(match)
-		$ file+(abd).txt			<= fileabc.txt, fileabcabc.txt
+		$ file+(abc).txt			<= fileabc.txt, fileabcabc.txt
 
 	2) +(match|match)
-		$ ls +(photo|Photo)*+(.jpg|.gif)		<= photo.jpg, Photo.jpg, photo.gif, Photo.gif
+		$ ls +(photo|Photo)*+(.jpg|.gif)		
+			photo.jpg, Photo.gif
 		
 	3) *(match)
-		$ ls test*(1).*				<= test1.jpg, test1.png, test1.txt
-		$ ls test*1.*				<= test1.jpg, test1.png, test1.txt
+		$ ls test*(1).*				<= test1.jpg, testfile1.png, testUp1.txt
+		$ ls test*1.*				<= test1.jpg, testFile1.png, testUp1.txt
+		
+	# Invert match	
 	4) !(match)						<= Don't match 
 		ls -l !(*.jpg|*.png)
-			
+		
 	5) !(+(match)*+(match))			<= group match
-		$ ls !(+(photo|file)*+(.jpg|.gif)) 	<= All files that do not have photo or file, and don't
-												end with jpg or gif.
+		$ ls !(+(photo|file)*+(.jpg|.gif)) 	<= All files that do not have photo or file, and 
+												don't end with jpg or gif.
 			
 ### Shell Meta-Characters			
 	< >, $, *, {}, [], +, '', ^, ., ?, |, (), \, ""
@@ -1890,14 +1909,19 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	  Name:PC_Name/Date:2016-10-28/hour:11:37:43
 
 
-#	ls
+###	ls
 	http://unix.stackexchange.com/questions/21638/show-only-hidden-files-dot-files-in-ls-alias
+# list hidden files in current directory
+	$ ls -d  .*	  				<= list hidden .files only
 	$ ls -ld .*	  				<= list hidden .files only
 	$ ls -l  .*?				<= list hidden .files only
 	$ ls -Ad .*
 	$ ls -a | grep "^\."    	<= show hidden files start with . file
 	$ ls -1      				<= number 1, showing names only  (single column -1)
-	$ hidden() { ls -a "$@" | grep '^\.'; }
+	
+	$ hidden() { ls -a "$@" | grep '^\.'; }		<= function
+	$ alias hid="ls -a | grep '^\.'"			<= alias
+
 	  
 12. Route or IP
 

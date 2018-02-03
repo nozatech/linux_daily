@@ -1,5 +1,6 @@
 적!자!생!존!
 
+
 ######### A 
 adorn 			<- decorate
 abscess			<- 종기   Dental Abscess, discharge pus 고름 짜내다	

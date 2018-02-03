@@ -141,7 +141,7 @@ the different kinds of data each contains, but all the different print methods m
 be called in the same standardized manner from elsewhere in the program. These features 
 become especially useful when more than one programmer is contributing code to a project 
 or when the goal is to reuse code between projects.
-
+ 
 ###	Object-Oriented Programming ###
 https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/
 The "CLASS" is a fundamental building block in Python(blueprints or TEMPLATE for creating objects).
