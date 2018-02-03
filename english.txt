@@ -89,6 +89,7 @@ culprit			<- cause of an issue or a person who is responsible for a crime or oth
 damping			<- 습기를 주는, 전기: 감폭
 decapitate		<- cut off the head of (a person or animal).
 deceit 			<- fake or trick
+dereference		<- opposit of reference	
 degradation		<- changing to a lower state
 digress			<- off the subject
 defeat the purpose of 	<- to make (something) pointless

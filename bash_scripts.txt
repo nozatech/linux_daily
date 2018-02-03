@@ -777,6 +777,10 @@ $* - Expands to the positional parameters, starting from one. When the expansion
 $@ - Expands to the positional parameters, starting from one. When the expansion occurs within 
 	" "(double quotes), each parameter expands to a separate word.
 
+
+	
+
+	
 ------------------------------------------
 #!/bin/bash
 echo "With *:"
@@ -819,6 +823,54 @@ $? = was last command successful. Answer is 0 which means 'yes'
 $ echo -n     do not output the trailing newline
        -e     enable interpretation of backslash escapes
        -E     disable interpretation of backslash escapes (default)
+
+
+	   
+	   
+		   
+#--------------------------------------------------------------------------------
+# Usage 
+#--------------------------------------------------------------------------------   
+#!/bin/bash
+usage="Usage: This script needs arg1 and arg2 values"
+if [ ! $# == 2 ]; then
+    echo $usage
+fi
+
+echo $1 $2
+	   
+	   
+#--------------------------------------------------------------------------------
+#!/bin/bash
+### Comparing two directories ###
+#set -x 		# Debug mode  +x is disable mode
+# Usage: compare2dirs.sh DIR1_Name DIR2_Name #
+usage="Usage: $0 DIR1_Name DIR2_Name"
+ 
+#------------------------------------------------------------------------------------
+if [ $# -gt 2 ]; then                   # number of command line parameters.
+    echo $usage;						# if args are more than 2, echo $usage
+    echo 1
+fi
+
+if [ $# -lt 2 ]; then                   # number of command line parameters.
+    echo $usage;						# if args are less than 2, echo $usage
+    echo 
+fi
+ 
+if [ -z "$1" ]; then                    # length of '$1' parameter is empty(zero string)
+    echo $usage;
+fi
+#------------ Actual Code ------------#
+if [ -d "$1" -a -d "$2" ]; then         # -d "$1" <= file exists and is a directory
+                                        # -a      <= 'and' both dirs are exist
+                                        # -d "$2" <= file exists and is a directory
+    echo "Comparing $1 with $2 ....";
+    diff -r $1 $2                       # -r <= recursively compare any subdirectories found
+	
+	### Where is the result output???
+fi
+	   
 	   
 ---------------------------------------------------
 ### Quote in shell script ###
@@ -3183,36 +3235,7 @@ http://stackoverflow.com/questions/12628327/how-to-show-and-update-echo-on-same-
 #--------------------------------------------------------------------------------
 
 
-#--------------------------------------------------------------------------------
-#!/bin/bash
-### Comparing two directories ###
-#set -x 		# Debug mode  +x is disable mode
-# Usage: compare2dirs.sh DIR1_Name DIR2_Name #
-usage="Usage: $0 DIR1_Name DIR2_Name"
- 
-#------------------------------------------------------------------------------------
-if [ $# -gt 2 ]; then                   # number of command line parameters.
-    echo $usage;						# if args are more than 2, echo $usage
-    echo 1
-fi
 
-if [ $# -lt 2 ]; then                   # number of command line parameters.
-    echo $usage;						# if args are less than 2, echo $usage
-    echo 
-fi
- 
-if [ -z "$1" ]; then                    # length of '$1' parameter is empty(zero string)
-    echo $usage;
-fi
-#------------ Actual Code ------------#
-if [ -d "$1" -a -d "$2" ]; then         # -d "$1" <= file exists and is a directory
-                                        # -a      <= 'and' both dirs are exist
-                                        # -d "$2" <= file exists and is a directory
-    echo "Comparing $1 with $2 ....";
-    diff -r $1 $2                       # -r <= recursively compare any subdirectories found
-	
-	### Where is the result output???
-fi
 
 #--------------------------------------------------------------------------------
 # Alternative using find and git diff 

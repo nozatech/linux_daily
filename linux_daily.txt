@@ -89,6 +89,11 @@ SMACK Stack
 ### T ###
 TLS 	<= Transport Layer Security (TLS) – and its predecessor, Secure Sockets Layer (SSL)
 
+
+
+
+
+
 -------------------
 ### HELP ###
 -------------------
@@ -141,6 +146,7 @@ Daily Linux CMD List
 ###############
 1. SHELL	  #
 ###############
+
 
 ### Font Type <= Lucia Console, 12pt
 
@@ -219,6 +225,36 @@ EOF
 --------------------
 ### BASH Startup ###
 --------------------
+# Login Shell Process when everytime login to shell
+----------------------------------------------------------------------------------------------------
+# Login Shell Process
+	### Steps of Loading profiles ###
+	1. /etc/profile 			<= systemwide env and shell vars
+	2. /etc/profile.d/*.sh  	<= systemwide env and shell vars
+	3. ~/.bash_profile			<= User env and shell vars
+	4. ~/.bashrc				<= Execute /etc/bashrc
+	5. /etc/bashrc				<= Systemwide alias and shell functions
+	6. ~/.bashrc				<= Execute /etc/bashrc
+	### User Successfully LOGIN to the SHELL ###
+
+# Non-Login Shell Login Process
+	1. ~/.bashrc				<= Execute /etc/bashrc
+	2. /etc/bashrc				<= Systemwide alias and shell functions
+	3. ~/.bashrc				<= Execute /etc/bashrc
+
+# Variables for ALL USERS add to 
+	/etc/profile 			<= systemwide env and shell vars
+	/etc/profile.d/*.sh  	<= systemwide env and shell vars
+
+# Variables for individual USERS 
+	~/.bash_profile			<= User env and shell vars
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------
 $ /home/apark/.bash_profile  <= settings, environment profile
 $ /home/apark/.bashrc		 <= current & new vars  e.g. alias
 
@@ -333,24 +369,25 @@ Cut and Paste(v/V-d/y-p/P)
 
 ----------------------------------------------------------------------------------------------------	
 6. Environment variable check
-	### to check the SHELL variables
-	$ printenv     			<= same as env
-	$ env					<= same as printenv
+	### to check the environment variables
+	$ printenv     			
+	$ env					
 	### env == printenv ### they are same
 		
-	$ printenv SHELL	  	<= they are same
-	$ echo $SHELL		  	<= they are same
-	### printenv SHELL == echo $SHELL ###	     <= they are same
+# Check $SHELL variable	
+	$ printenv SHELL
+	$ printenv | grep SHELL
+	$ env | grep SHELL
+	$ echo $SHELL		  	
+	$ set | grep SELL					<= check current SHELL's variables
+=> they all same '/bin/bash <= 
 
-	$ set
-	$ env
-	$ printenv
 	
-# env <= is a program that runs another program with modified environment variables
+# env <= modified the environment variables
 		-  Set each NAME to VALUE in the environment and run COMMAND.
 	
-# set <= is a shell command to set the value of a shell attribute variable; 
-			these are internal variables used by the shell.
+# set <= is a SHELL command to set the value of a shell attribute variable; 
+		 these are internal variables used by the SHELL, Not Environment.
 		- 'Set' or 'unset' values of shell options and positional parameters.
 		- Change the value of shell attributes and positional parameters, or
 			display the names and values of shell variables.
@@ -364,8 +401,13 @@ Cut and Paste(v/V-d/y-p/P)
 	
 # Environment VS SHELL Variables 	
 	1. Environment Variables
-		Variables that are defined for the current shell and are inherited by any 
+		Variables that are defined for the current shell and are inherited by any child shells
+		or processes
+		
 	2. SHELL Variables 
+		Variables that are contained exclusively within the shell in which they were defined.
+
+		
 # export 	<= (default same as '-p')Set export attribute for shell variables.
 			Marks each NAME for automatic export to the environment of subsequently
 			executed commands.  If VALUE is supplied, assign VALUE before exporting.
@@ -383,14 +425,14 @@ Cut and Paste(v/V-d/y-p/P)
 	** No Result
 	$ printenv | grep VAR
 	** No Result 			<= VAR is not part of environment
+	
 # To put it into Env variables, use 'export'
 	$ export VAR			
 	$ env | grep VAR		
 	  VAR=TEST
 	$ export -n VAR			<= 	
 
-### Assign values to shell variables	
-	https://bash.cyberciti.biz/guide/Assign_values_to_shell_variables
+
 	
 	
 	
@@ -1855,7 +1897,7 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	$ ls -Ad .*
 	$ ls -a | grep "^\."    	<= show hidden files start with . file
 	$ ls -1      				<= number 1, showing names only  (single column -1)
-
+	$ hidden() { ls -a "$@" | grep '^\.'; }
 	  
 12. Route or IP
 

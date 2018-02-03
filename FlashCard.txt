@@ -59,9 +59,10 @@ cmd1 || cmd2 || cmd3    <= If cmd1 failed, run cmd2, otherwise runs cmd3, otherw
 
 12. pmstat iostat mpstat
 
-13. ls -al .?*		<= list hidden files 
+13. $ hidden() { ls -a "$@" | grep '^\.'; }		<= function
+	$ alias hid="ls -a | grep '^\.'"			<= alias	 
 
-14.
+14. 
 
 15.
 
