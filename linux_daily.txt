@@ -19,8 +19,10 @@ bring up the Task Manager
 ### Notepad++
 ---------------------------------------
 Settings > Short cut Mapper Menu.
-1. 	Ctrl + L			Delete Current line
-	Ctrl + D			Duplicate(copy) line
+1. 	Ctrl + L					Delete Current line
+	Ctrl + D					Duplicate(copy) line
+	Ctrl + Alt + Ent			Insert blank line below 
+	
 2. Auto-completion
 	Ctrl+Space			Function completion
 	Ctrl+Enter			Word completion
