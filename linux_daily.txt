@@ -224,6 +224,372 @@ EOF
 	Cyan    = 46
 	White   = 47
 	
+-----------------------
+### Boot Up Process ###
+-----------------------
+Fireware => Boot loader => Kernel => Initialization Stages
+1. POST(UEFI | BIOS) => Exec Boot Loader
+2. Boot Loader(GRUB2) => load Kernel
+	BIOS: /boot/grub2/grub.cfg
+	UEFI: /boot/efi/EFI/rehat/grub.cfg
+3. Kernel
+	Loads the RAMDISK(temp root file system) to RAM
+	Loads device drivers and config files from RAMDISK
+	Unmounts ramdisk and mounts root filesystem
+	Starts the initialization stage
+4. Initialization Stages
+	Kernel starts the 1st process(init, upstart, systemd)
+	Systemd starts sytem service
+	Systemd starts login shells and GUI interface
+	
+Systemd Targets
+	Target is a specific configuration(run level)
+	
+$ cat /etc/grub2/grub.cfg
+### BEGIN /etc/grub.d/00_header ###  	<= grub menu header
+
+### BEGIN /etc/grub.d/10_linux ###		<= Actual Kernel Choice
+
+linux16 /boot/vmlinuz-3.10.0-693.17.1.el7.x86_64 root=UUID=b3...aa 
+ro console=tty0 console=ttyS0,115200n8 crashkernel=auto console=ttyS0,115200 LANG=en_US.UTF-8
+
+#Init ramdisk
+initrd16 /boot/initramfs-3.10.0-693.17.1.el7.x86_64.img
+
+### BEGIN /etc/grub.d/40_custom ###
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+### END /etc/grub.d/40_custom ###
+
+$cat /etc/default/grub
+GRUB_TIMEOUT=1
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved					<= Default Kernel is saved in another file.
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL="serial console"
+GRUB_SERIAL_COMMAND="serial --speed=115200"
+GRUB_CMDLINE_LINUX="console=tty0 crashkernel=auto console=ttyS0,115200"
+GRUB_DISABLE_RECOVERY="true"
+
+$cat /boot/grub2/grubenv
+# GRUB Environment Block
+saved_entry=CentOS Linux (3.10.0-693.17.1.el7.x86_64) 7 (Core)
+###############################################################  <= 
+
+### Check boot up list menu
+$ awk -F\' '/menuentry/{print $2}' /boot/grub2/gr
+CentOS Linux 7 Rescue 08...04 (3.10.0-693.17.1.el7.x86_64)		<= 0
+CentOS Linux (3.10.0-693.17.1.el7.x86_64) 7 (Core)				<= 1
+CentOS Linux (3.10.0-693.11.6.el7.x86_64) 7 (Core)				<= 2
+CentOS Linux (0-rescue-60...9c)           7 (Core)              <= 3
+
+# Change menu
+$ grub2-set-default 1
+
+# Check back in 
+$ /etc/default/grub
+GRUB_CMDLINE_LINUX="console=tty0 crashkernel=auto console=ttyS0,115200" <= Kernel option
+	# change with " " 
+
+# Reconfigure
+$ grub2-mkconfig -o /boot/grub2/grub.cfg			<= BIOS
+$ grub2-mkconfig -0 /boot/efi/EFI/redhat/grub.cfg   <= UEFI
+
+# Custom GRUB menu
+ 
+
+
+
+
+
+
+
+
+
+
+	
+7. System services
+	SysV init process tree( from ATT Linux 80's)
+	init --> abrtd
+		  |-> agetty
+		  |--> auditd --{gdbud}
+		  
+	Runlevel 3	  
+		cups, httpd, iptables  
+	
+	Cons
+		slow startup
+		No service dependencies
+		No persistent network
+	to => Launchd & Upstart but ==> SystemD
+	
+	
+	
+	### SystemD ###
+	https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
+	https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files	
+	# Units(service name) <= target of most of actions which are resources, defined by unit files
+ 	
+	$ systemctl						<=
+	
+	$ systemctl list-units			<= only active units
+		UNIT: The systemd unit name
+		LOAD: Whether the unit's configuration has been parsed by systemd. 
+				The configuration of loaded units is kept in memory.
+		ACTIVE: A summary state about whether the unit is active. 
+				This is usually a fairly basic way to tell if the unit has started 
+				successfully or not.
+		SUB: This is a lower-level state that indicates more detailed information 
+			about the unit. This often varies by unit type, state, and the actual 
+			method in which the unit runs.
+		DESCRIPTION: A short textual description of what the unit is/does.
+		
+	$ systemctl list-units	--all
+	
+	**$ systemctl list-unit-files  <= displaces all 
+	
+	$ systemctl list-unit-files -at service
+		UNIT FILE                             STATE
+		arp-ethers.service                    disabled
+		atd.service                           enabled
+
+	$ systemctl list-units -at service
+		UNIT                                LOAD      ACTIVE   SUB     DESCRIPTION
+		atd.service                         loaded    active   running Job spooling tools
+		auditd.service                      loaded    active   running Security Auditing Service
+	
+	$ systemctl list-units -t service --state running
+		UNIT                     LOAD   ACTIVE SUB     DESCRIPTION
+		atd.service              loaded active running Job spooling tools
+		auditd.service           loaded active running Security Auditing Service
+	
+	$ systemctl enable | disable | status iptables
+		# /etc/systemd/system/basic.target.wants/iptables.service
+	
+	$ systemctl cat sshd				<= 'cat' concatenate the Unit file for 'sshd.service'
+		# /usr/lib/systemd/system/sshd.service
+		[Unit]
+		Description=OpenSSH server daemon
+			$ systemctl is-enabled nginginx 
+		disabled
+	
+	$ sudo systemctl enable nginx
+		Created symlink from '/etc/systemd/system/multi-user.target.wants/nginx.service' to 
+			'/usr/lib/systemd/system/nginx.service.'
+	
+	$ cat /etc/systemd/system/mucat lti-user.target.wants/nginx.service
+		[Unit]
+		Description=The nginx HTTP and reverse proxy server
+		After=network.target remote-fs.target nss-lookup.target
+
+		[Service]
+		Type=forking
+		PIDFile=/run/nginx.pid
+	
+	$ systemctl is-enabled sshd	
+	$ systemctl is-active  sshd 
+	$ systemctl is-failed  sshd 
+	$ systemctl reload-or-restart sshd.service
+	
+	$ systemctl list-dependencies sshd.service
+	
+	$ ls -l /etc/systemd/system/multi-user.target.wants
+		lrwxrwxrwx. 1 root root 36 Jan 25 10:14 sshd.service -> /usr/lib/systemd/system/sshd.service
+
+	$ systemctl list-units --all --state=active
+	$ systemctl list-units --all --state=inactive
+	$ systemctl list-units --type=service
+	
+	# low level
+	$ systemctl show sshd.service
+	
+	# Masking and unmasking units( making disable from start up by linking to /dev/null)
+	$ systemctl mask | unmask sshd.service  		<= start will fail due to masked
+
+	# Edit Unit file
+	$ systemctl edit sshd.service
+			
+	$ sudo systemctl edit nginx
+	Editing "/etc/systemd/system/nginx.service.d/override.conf" <= precedence over nginx.conf
+	
+	$ sudo systemctl edit --full nginx
+	# to Remove
+	$ sudo rm -r /etc/systemd/system/nginx.service.d	<= snippet
+	$ sudo rm /etc/systemd/system/nginx.service			<= full
+	# Restore default
+**  $ sudo systemctl daemon-reload						<= Restore to system default
+	
+	
+	### Journald ###
+	$ journalctl			<= log information from applications and the kernel
+		$ vi /etc/systemd/journald.conf
+	
+	$ journalctl -b					<= current boot
+	$ journalctl -k	  <=> dmesg     <= Kernal
+	$ journalctl -xe				<= -x  Augment log lines with explanation texts from the message 
+										   catalog.
+									<= -e  jump to the end of the journal 
+	
+	
+	
+	
+	
+	
+	
+8.	PROCESS
+	$ ps 				<= Unix, BSD, GNU types
+		1 UNIX 		<= ps -ef (Unix/POSIX)    which may be grouped and must be preceded by a dash.
+		2 BSD 		<= ps aux (Ubuntu/Debian) which may be grouped and must not be used with a dash.
+		3 GNU 		<= ps -ef (CentOS)		  Standard, long options, which are preceded by two dashes.
+	$ ps -e			<= everything
+	$ ps -eH		<= Hierachical 
+	$ ps ax | ps -ef 		<= BSD|Unix for every process (GNU e.g. CentOS)
+	$ ps aux		<= every process + -u user (BSD e.g. Ubuntu)
+	$ ps -elF		<= Long, 15 columes of options	
+	
+	$ ps -e --format uid,pid,ppid,%cpu,cmd  <= use '--format' for custom option
+	$ ps -G  group_name
+	$ ps -C nginx --format pid,ppid,%cpu,cmd --sort %cpu
+		PID  PPID %CPU CMD
+		23976 23968  0.0 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
+		23984 23976  0.0 nginx: worker process
+
+	$ ps -e --format uid,pid,ppid,tty,%cpu,cmd --sort %cpu
+	$ ps -e --format uid,pid,tty,rss,cmd --sort rss   <= memory usage, cmd sorted
+	$ ps -U root				<= -u & -U same(user)
+	$ ps -U apark --format %mem | awk '{memory +=$1};END {print memory}'  	 <= user memory usage
+	
+	### Process tree format
+	$ ps axjf  		<= BSD PS tree format
+	$ ps -ejH		<= CentOS 
+	
+	$ ps auxf
+
+# pstree
+	https://www.cyberciti.biz/faq/unix-linux-pstree-command-examples-shows-running-processestree/
+	$ yum -y install psmisc
+	$ pstree
+	$ pstree pid
+	$ pstree user
+	
+	$ pstree -p					<= show PIDS for each process name
+		systemd(1) ─┬─agetty(1166)
+					├─agetty(1167)
+					├─auditd(435)───{auditd}(436)
+
+	$ pstree -n				<= To sort processes with the same ancestor by PID instead of by name 
+	$ pstree -np				i.e. numeric sort, pass the -n options as follows:
+		systemd(1) ─┬─systemd-journal(357)
+					├─auditd(435)───{auditd}(436)
+					├─systemd-logind(552)
+					├─dbus-daemon(553)───{dbus-daemon}(554)
+
+	
+	
+9. Process Niceness/Priority
+	$ nice -2 top			<= if only 1 '-' +2,  '--' -2
+	$ ps -C top --format pid,nice,cmd,%cpu		<= -C  command name
+		PID  	NI CMD
+		21112   2  top
+	$ sudo nice --2 top		<= If no sudo, it will set to nice value '0'<- max permission
+	$ sudo renice -5 top	<= sudo requires
+	
+10. Manage Process Jobs
+	$ watch -n 5 'ps -C dd --format pid,cmd,%cpu'		<= Term1    
+	
+	$ dd if=/dev/zero of=/dev/null						<= Term2    
+	
+	$ Ctrl+z											<= Term2 "Stopping process"    
+		$ jobs
+			[1]+  Stopped                 dd if=/dev/zero of=/dev/null
+		$ bg 1
+			[1]+ dd if=/dev/zero of=/dev/null &
+		$ jobs
+			[1]+  Running                 dd if=/dev/zero of=/dev/null &
+		$ fg
+			dd if=/dev/zero of=/dev/null
+		$ Ctrl+z
+		$ bg
+		$ Ctrl+c
+		$ dd if=/dev/zero of=/dev/null &
+			[1] 24933
+		$ killall dd
+
+### pidof
+	pidof -- find the process ID of a running program.
+	$ pidof nginx
+		19177 19176 19175 19174 19173 6535 6534 6533 6531 6315
+
+	
+	
+	
+10. Kill Signal
+	$ kill -l 			<=list of singals
+	kill, killall, pkill
+	http://www.thegeekstuff.com/2009/12/4-ways-to-kill-a-process-kill-killall-pkill-xkill/
+	https://unix.stackexchange.com/questions/317492/list-of-kill-signals
+	$ pidof    sleep
+	$ pgrep    sleep
+	$ kill     15558 15559 15560		<= same as kill -15(greacefull)
+	$ kill -9  15558 15559 15560		
+	$ pkill   sleep
+	$ killall sleep					
+	$ killall -u user_name				<= Kill all related to user
+	
+	
+9. Monitoring TOP
+	$ top
+			l 	<= load avg & Uptime
+			1 	<= All CPU usage
+			t 	<= toggle CPU states
+			m	<= toggle betwen memory states
+			f	<= FIELD management
+				select and spacebar to enable
+			c	<= toggle between cmd name & cmdline
+			u	<= user name
+			k	<= kill task
+			r	<= renice,  choose PID, and value
+			
+		shift + m	<= Memory usage
+		shift + p	<= Process usage
+		shift + t	<= Time usage
+		shift + n	<=(PID Number)
+	
+
+### wait: wait [id]
+    Wait for job completion and return exit status.
+	https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/121391#121391
+	$ wait $!
+
+#!/bin/bash
+# The script uses trap to catch ctrl-c (or SIGTERM), kills off the command 
+# (I've used sleep here as a test) and exits.
+
+cleanup (){
+kill -s SIGTERM $!
+exit 0
+}
+
+trap cleanup SIGINT SIGTERM
+
+while [ 1 ]
+do
+    sleep 60 &
+    wait $!
+done
+
+
+
+
+
+
+
+
+
+
+
+
 --------------------
 ### BASH Startup ###
 --------------------
@@ -365,9 +731,11 @@ Cut and Paste(v/V-d/y-p/P)
 	# Change String like "SED" stream editor
 	http://vim.wikia.com/wiki/Search_and_replace
 	
-	# within VI, change foo to bar
+	# within VI, change 'foo' to 'bar'
 	:%s/foo/bar/g				<=
-
+	
+	# Search with in VI
+	
 
 ----------------------------------------------------------------------------------------------------	
 6. Environment variable check
@@ -410,7 +778,7 @@ Cut and Paste(v/V-d/y-p/P)
 		Variables that are contained exclusively within the shell in which they were defined.
 
 		
-# export 	<= (default same as '-p')Set export attribute for shell variables.
+### export 	<= (default same as '-p')Set export attribute for shell variables.
 			Marks each NAME for automatic export to the environment of subsequently
 			executed commands.  If VALUE is supplied, assign VALUE before exporting.
 			Options:
@@ -441,6 +809,8 @@ Cut and Paste(v/V-d/y-p/P)
 	
 	
 	
+### socat - Multipurpose relay (Socket CAT)
+
 	
 ### shopt						<= specific options for BASH Shell
 	$ shopt						<= list of Shell Option
@@ -573,7 +943,7 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	$ echo "export HISTSIZE=10000" >> ~/.bashrc
 	
 --------------------------------------------------------------------------	
-# Touch 
+### Touch 
 	$ touch apple banana cherry			<= creating multiple files
 	$ touch file_{01..1000}
 	$ echo {1..10..2}
@@ -583,7 +953,7 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	$ echo {w..d..2}					<= backward + every 2nd letter
 	$ touch cherry_{01..100}{w..d}.txt
 --------------------------------------------------------------------------
-# number line	'nl'
+### nl <= number line
 	$ nl file.txt
 	$ cat file.txt | nl 
 
@@ -601,7 +971,7 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	prw-rw-r--. 1 apark apark 0 Jun  1 15:10 named_pipe
 
 --------------------------------------------------------------------------	
-# STDIN, STDOUT, STDERR
+### STDIN, STDOUT, STDERR
 	$ sort < unsorted.txt > sorted.txt
 	$ ls | tee ls.txt
 	$ ls | tee -a ls.txt 			<= -a append
@@ -610,7 +980,8 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	$ find /etc &> /dev/null   			<= NO OUT PUT
 	
 --------------------------------------------------------------------------
-# long command using  \  for extent command
+### '\' back slash
+	long command using  \  for extent command
 	# escape character \
 	
 --------------------------------------------------------------------------
@@ -642,7 +1013,7 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	
 	$ ssh apark@netops
 --------------------------------------------------------------------------	
-### Login to internal lan server at 192.168.0.251 via our public UK office ssh based gateway using ##
+### Login to internal lan server 192.168.0.251 via our public UK office ssh based gateway using ##
 	## $ ssh uk.gw.lan ##
 	Host uk.gw.lan uk.lan
 		HostName 192.168.0.251
@@ -733,7 +1104,7 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	$ update-rc.d ssh enable 			# sets the default runlevels to on 
 	$ update-rc.d ssh disable 			# sets all to off
 
-  # Verbose mode using -v
+### SSH Verbose mode using -v
 	$ ssh -vvvv nozatech@192.168.221.129						<= Max verbose debugging mode
     
 	OpenSSH_6.7p1, OpenSSL 1.0.1k 8 Jan 2015
@@ -1118,6 +1489,10 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	$ rm *[^1].txt					<= delete all but *1.txt
 	$ rm *[!1].txt					<= range, delete all but *1.txt
 	$ cat myfile | grep '^s.*n$'	<= end of the line
+
+
+
+
 	
 ### Extended Globs
 	$ shopt
@@ -1161,278 +1536,7 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	# Socket(IPP) is the combination of IP address, port and protocol.
 	
 
-### socat - Multipurpose relay (Socket CAT)
 
-	
-7. System services
-	SysV init process tree( from ATT Linux 80's)
-	init --> abrtd
-		  |-> agetty
-		  |--> auditd --{gdbud}
-		  
-	Runlevel 3	  
-		cups, httpd, iptables  
-	
-	Cons
-		slow startup
-		No service dependencies
-		No persistent network
-	to => Launchd & Upstart but ==> SystemD
-	
-	
-	
-	### SystemD ###
-	https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
-	https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files	
-	# Units(service name) <= target of most of actions which are resources, defined by unit files
- 	
-	$ systemctl						<=
-	
-	$ systemctl list-units			<= only active units
-		UNIT: The systemd unit name
-		LOAD: Whether the unit's configuration has been parsed by systemd. 
-				The configuration of loaded units is kept in memory.
-		ACTIVE: A summary state about whether the unit is active. 
-				This is usually a fairly basic way to tell if the unit has started 
-				successfully or not.
-		SUB: This is a lower-level state that indicates more detailed information 
-			about the unit. This often varies by unit type, state, and the actual 
-			method in which the unit runs.
-		DESCRIPTION: A short textual description of what the unit is/does.
-		
-	$ systemctl list-units	--all
-	
-	**$ systemctl list-unit-files  <= displaces all 
-	
-	$ systemctl list-unit-files -at service
-		UNIT FILE                             STATE
-		arp-ethers.service                    disabled
-		atd.service                           enabled
-
-	$ systemctl list-units -at service
-		UNIT                                LOAD      ACTIVE   SUB     DESCRIPTION
-		atd.service                         loaded    active   running Job spooling tools
-		auditd.service                      loaded    active   running Security Auditing Service
-	
-	$ systemctl list-units -t service --state running
-		UNIT                     LOAD   ACTIVE SUB     DESCRIPTION
-		atd.service              loaded active running Job spooling tools
-		auditd.service           loaded active running Security Auditing Service
-	
-	$ systemctl enable | disable | status iptables
-		# /etc/systemd/system/basic.target.wants/iptables.service
-	
-	$ systemctl cat sshd				<= 'cat' concatenate the Unit file for 'sshd.service'
-		# /usr/lib/systemd/system/sshd.service
-		[Unit]
-		Description=OpenSSH server daemon
-			$ systemctl is-enabled nginginx 
-		disabled
-	
-	$ sudo systemctl enable nginx
-		Created symlink from '/etc/systemd/system/multi-user.target.wants/nginx.service' to 
-			'/usr/lib/systemd/system/nginx.service.'
-	
-	$ cat /etc/systemd/system/mucat lti-user.target.wants/nginx.service
-		[Unit]
-		Description=The nginx HTTP and reverse proxy server
-		After=network.target remote-fs.target nss-lookup.target
-
-		[Service]
-		Type=forking
-		PIDFile=/run/nginx.pid
-	
-	$ systemctl is-enabled sshd	
-	$ systemctl is-active  sshd 
-	$ systemctl is-failed  sshd 
-	$ systemctl reload-or-restart sshd.service
-	
-	$ systemctl list-dependencies sshd.service
-	
-	$ ls -l /etc/systemd/system/multi-user.target.wants
-		lrwxrwxrwx. 1 root root 36 Jan 25 10:14 sshd.service -> /usr/lib/systemd/system/sshd.service
-
-	$ systemctl list-units --all --state=active
-	$ systemctl list-units --all --state=inactive
-	$ systemctl list-units --type=service
-	
-	# low level
-	$ systemctl show sshd.service
-	
-	# Masking and unmasking units( making disable from start up by linking to /dev/null)
-	$ systemctl mask | unmask sshd.service  		<= start will fail due to masked
-
-	# Edit Unit file
-	$ systemctl edit sshd.service
-			
-	$ sudo systemctl edit nginx
-	Editing "/etc/systemd/system/nginx.service.d/override.conf" <= precedence over nginx.conf
-	
-	$ sudo systemctl edit --full nginx
-	# to Remove
-	$ sudo rm -r /etc/systemd/system/nginx.service.d	<= snippet
-	$ sudo rm /etc/systemd/system/nginx.service			<= full
-	# Restore default
-**  $ sudo systemctl daemon-reload						<= Restore to system default
-	
-	
-	### Journald ###
-	$ journalctl			<= log information from applications and the kernel
-		$ vi /etc/systemd/journald.conf
-	
-	$ journalctl -b					<= current boot
-	$ journalctl -k	  <=> dmesg     <= Kernal
-	$ journalctl -xe				<= -x  Augment log lines with explanation texts from the message 
-										   catalog.
-									<= -e  jump to the end of the journal 
-	
-	
-	
-	
-	
-	
-	
-8.	PROCESS
-	$ ps 				<= Unix, BSD, GNU types
-		1 UNIX 		<= ps -ef (Unix/POSIX)    which may be grouped and must be preceded by a dash.
-		2 BSD 		<= ps aux (Ubuntu/Debian) which may be grouped and must not be used with a dash.
-		3 GNU 		<= ps -ef (CentOS)		  Standard, long options, which are preceded by two dashes.
-	$ ps -e			<= everything
-	$ ps -eH		<= Hierachical 
-	$ ps ax | ps -ef 		<= BSD|Unix for every process (GNU e.g. CentOS)
-	$ ps aux		<= every process + -u user (BSD e.g. Ubuntu)
-	$ ps -elF		<= Long, 15 columes of options	
-	
-	$ ps -e --format uid,pid,ppid,%cpu,cmd  <= use '--format' for custom option
-	$ ps -G  group_name
-	$ ps -C nginx --format pid,ppid,%cpu,cmd --sort %cpu
-		PID  PPID %CPU CMD
-		23976 23968  0.0 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
-		23984 23976  0.0 nginx: worker process
-
-	$ ps -e --format uid,pid,ppid,tty,%cpu,cmd --sort %cpu
-	$ ps -e --format uid,pid,tty,rss,cmd --sort rss   <= memory usage, cmd sorted
-	$ ps -U root				<= -u & -U same(user)
-	$ ps -U apark --format %mem | awk '{memory +=$1};END {print memory}'  	 <= user memory usage
-	
-	### Process tree format
-	$ ps axjf  		<= BSD PS tree format
-	$ ps -ejH		<= CentOS 
-	
-	$ ps auxf
-
-# pstree
-	https://www.cyberciti.biz/faq/unix-linux-pstree-command-examples-shows-running-processestree/
-	$ yum -y install psmisc
-	$ pstree
-	$ pstree pid
-	$ pstree user
-	
-	$ pstree -p					<= show PIDS for each process name
-		systemd(1) ─┬─agetty(1166)
-					├─agetty(1167)
-					├─auditd(435)───{auditd}(436)
-
-	$ pstree -n				<= To sort processes with the same ancestor by PID instead of by name 
-	$ pstree -np				i.e. numeric sort, pass the -n options as follows:
-		systemd(1) ─┬─systemd-journal(357)
-					├─auditd(435)───{auditd}(436)
-					├─systemd-logind(552)
-					├─dbus-daemon(553)───{dbus-daemon}(554)
-
-	
-	
-9. Process Niceness/Priority
-	$ nice -2 top			<= if only 1 '-' +2,  '--' -2
-	$ ps -C top --format pid,nice,cmd,%cpu		<= -C  command name
-		PID  	NI CMD
-		21112   2  top
-	$ sudo nice --2 top		<= If no sudo, it will set to nice value '0'<- max permission
-	$ sudo renice -5 top	<= sudo requires
-	
-10. Manage Process Jobs
-	$ watch -n 5 'ps -C dd --format pid,cmd,%cpu'		<= Term1    
-	
-	$ dd if=/dev/zero of=/dev/null						<= Term2    
-	
-	$ Ctrl+z											<= Term2 "Stopping process"    
-		$ jobs
-			[1]+  Stopped                 dd if=/dev/zero of=/dev/null
-		$ bg 1
-			[1]+ dd if=/dev/zero of=/dev/null &
-		$ jobs
-			[1]+  Running                 dd if=/dev/zero of=/dev/null &
-		$ fg
-			dd if=/dev/zero of=/dev/null
-		$ Ctrl+z
-		$ bg
-		$ Ctrl+c
-		$ dd if=/dev/zero of=/dev/null &
-			[1] 24933
-		$ killall dd
-
-### pidof
-	pidof -- find the process ID of a running program.
-	$ pidof nginx
-		19177 19176 19175 19174 19173 6535 6534 6533 6531 6315
-
-	
-	
-	
-10. Kill Signal
-	$ kill -l 			<=list of singals
-	kill, killall, pkill
-	http://www.thegeekstuff.com/2009/12/4-ways-to-kill-a-process-kill-killall-pkill-xkill/
-	https://unix.stackexchange.com/questions/317492/list-of-kill-signals
-	$ pidof    sleep
-	$ pgrep    sleep
-	$ kill     15558 15559 15560		<= same as kill -15(greacefull)
-	$ kill -9  15558 15559 15560		
-	$ pkill   sleep
-	$ killall sleep					
-	$ killall -u user_name				<= Kill all related to user
-	
-	
-9. Monitoring TOP
-	$ top
-			l 	<= load avg & Uptime
-			1 	<= All CPU usage
-			t 	<= toggle CPU states
-			m	<= toggle betwen memory states
-			f	<= FIELD management
-				select and spacebar to enable
-			c	<= toggle between cmd name & cmdline
-			u	<= user name
-			k	<= kill task
-			r	<= renice,  choose PID, and value
-			
-		shift + m	<= Memory usage
-		shift + p	<= Process usage
-		shift + t	<= Time usage
-		shift + n	<=(PID Number)
-	
-
-### wait: wait [id]
-    Wait for job completion and return exit status.
-	https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/121391#121391
-	$ wait $!
-
-#!/bin/bash
-# The script uses trap to catch ctrl-c (or SIGTERM), kills off the command 
-# (I've used sleep here as a test) and exits.
-
-cleanup (){
-kill -s SIGTERM $!
-exit 0
-}
-
-trap cleanup SIGINT SIGTERM
-
-while [ 1 ]
-do
-    sleep 60 &
-    wait $!
-done
 	
 
 
@@ -2268,7 +2372,7 @@ H 2 * * *				<= Every 2am
 	$ fuser -vm   /								<= -v verbose, -m mount
 	
 	# show all processes having open files on the filesystem mounted on / (root directory)
-	$ fuser -vm / 2>&1 | awk '$3 ~ /f|F/' | less 		<=?????
+	$ fuser -vm / 2>&1 | awk '$3 ~ /f|F/' | less -N 		<=?????
 
 	### Network
 	$ nc -l -p 80
@@ -5337,7 +5441,47 @@ Ubuntu Package Installed
 	# from CMD using echo & sed
 	$ echo day | sed 's/day/night/'			
 		night
-	
+---------------------------
+### Regular Expressions ###
+---------------------------
+. (dot)	Any single character except newline
+*	zero or more occurances of any character
+[...]	Any single character specified in the set
+[^...]	Any single character not specified in the set
+^	Anchor - beginning of the line
+$	Anchor - end of line
+\<	Anchor - begining of word
+\>	Anchor - end of word
+\(...\)	Grouping - usually used to group conditions
+\n	Contents of nth grouping
+
+[...] - Set Examples
+[A-Z]	The SET from Capital A to Capital Z
+[a-z]	The SET from lowercase a to lowercase z
+[0-9]	The SET from 0 to 9 (All numerals)
+[./=+]	The SET containing . (dot), / (slash), =, and +
+[-A-F]	The SET from Capital A to Capital F and the dash (dashes must be specified first)
+[0-9 A-Z]	The SET containing all capital letters and digits and a space
+[A-Z][a-zA-Z]	In the first position, the SET from Capital A to Capital Z
+In the second character position, the SET containing all letters
+
+Regular Expression Examples
+/Hello/	Matches if the line contains the value Hello
+/^TEST$/	Matches if the line contains TEST by itself
+/^[a-zA-Z]/	Matches if the line starts with any letter
+/^[a-z].*/	Matches if the first character of the line is a-z and there is at least one more of any character following it
+/2134$/	Matches if line ends with 2134
+/\(21|35\)/	Matches is the line contains 21 or 35
+Note the use of ( ) with the pipe symbol to specify the 'or' condition
+/[0-9]*/	Matches if there are zero or more numbers in the line
+/^[^#]/	Matches if the first character is not a # in the line
+------------------------------------------------------------------------------------------------------------
+Notes:
+1. Regular expressions are case sensitive
+2. Regular expressions are to be used where pattern is specified
+------------------------------------------------------------------------------------------------------------
+
+		
 		  
 ### Add some rows and text
 $ cat << EOF >> /etc/puppet/puppet.conf
@@ -6317,7 +6461,7 @@ change take effect everywhere.
 	http://stackoverflow.com/questions/364775/should-we-use-nexus-or-artifactory-for-a-maven-repo
 	
 	
-### /dev diretory 
+### /dev 		<= directory 
 	http://unix.stackexchange.com/questions/18239/understanding-dev-and-its-subdirs-and-files
 	crw-r-----. 1 root kmem 1, 1 Feb  2 17:50 /dev/mem
 	^ Character devices
