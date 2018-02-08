@@ -157,8 +157,13 @@ Daily Linux CMD List
 ### Green prompt
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && source ~/.bashrc 
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && 		. ~/.bashrc 
+
 ### Green & Red promt
+----------------------------------------------------------------------------------------
 echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"' >> ~/.bashrc	&& source ~/.bashrc	 
+----------------------------------------------------------------------------------------
+###
+
 ### History Control Options
 echo 'export HISTCONTROL="ignorespace:erasedups:ignoredups"' >> ~/.bashrc	<= Ignore Duplication
 echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc					<= Ignore list
@@ -301,7 +306,15 @@ $ grub2-mkconfig -0 /boot/efi/EFI/redhat/grub.cfg   <= UEFI
 
 
 
-
+# Discovering Which Bootloader the Droplet Uses
+https://www.digitalocean.com/community/tutorials/how-to-update-a-digitalocean-server-s-kernel
+### Grub 2 ###
+Debian 7, 8
+Ubuntu 12.04, 14.04, 16.04
+CentOS 7
+Fedora 23
+### Grub 1 ###
+CentOS 5, 6
 
 
 
@@ -1187,21 +1200,22 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	
 		
 ----------------------------------------------------------------------------------------------------
-### Run command on remote shell
+### Run command on remote
 http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ssh-on-many-servers
 ----------------------------------------------------------------------------------------------------
-
-	$ ssh apark@192.241.190.57 	  'sudo iptables -nL'		
-	$ ssh 192.241.190.57 	      'sudo iptables -nL'			<= w/o apark user id
+### Run command on remote
+	$ ssh apark@192.241.190.57 	   'sudo iptables -nL'		
+	$ ssh apark@192.241.190.57 	   'sudo iptables -nL'			<= w/o apark user id
 	$ ssh puppet sudo              iptables -nL					<= using .ssh/config  file
-	$ ssh -t apark@192.241.190.57 'sudo iptables -nL'			<= -t  Force pseudo-tty allocation
+	$ ssh -t apark@192.241.190.57  'sudo iptables -nL'			<= -t  Force pseudo-tty allocation
 	  
-	### run script remotely
+### run script remotely
 
 	$ ssh apark@remote_server  'bash -s' < from_local_script.sh		<= run a script remotely from local using sudoer
-	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh                  <= installing as sudo	
+	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh              <= installing as sudo	
+
 	
-	# Create a server list text file and a update script first
+### Create a server list text file and a update script first
 	
 	$ for r in $(cat nrErrorServers.txt); do ssh -v $r 'sudo su && bash -s' < updateHosts.sh ; done
 	
@@ -1222,8 +1236,8 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	http://unix.stackexchange.com/questions/87405/how-can-i-execute-local-script-on-remote-machine-and-include-arguments
 	
 	$ for host in $(cat host_list.txt); do ssh "$host" "$command" > "output.$host"; done
-	Authenticating with name/password is really no good idea. 
-	You should set up a private key for this:
+		Authenticating with name/password is really no good idea. 
+		You should set up a private key for this:
 	
 	$ ssh-keygen && for host in $(cat hosts.txt); do ssh-copy-id $host; done
 	
@@ -1253,6 +1267,7 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 ### Finding my ip (gateway IP)
 	$ curl ifconfig.io	
 	$ curl icanhazip.com
+
 	
 	
 ----------------------------------------------------------------------------------------------------	
@@ -2767,10 +2782,21 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	
 	
 	
+### Path substitution ### 
 	
-	# Pushd						<= add directory
-	# dirs						<= list directories
-	# popd						<= remove a directory
+### Pushd						<= add directory
+	Add directories to stack.
+    Adds a directory to the top of the directory stack, or rotates
+    the stack, making the new top of the stack the current working
+    directory.  With no arguments, exchanges the top two directories.
+	
+### dirs						<= list directories
+	Dispay directory stack
+	Display the list of currently remembered directories.  Directories
+    find their way onto the list with the `pushd' command; you can get
+    back up through the list with the `popd' command.
+
+### popd						<= remove a directory
 	are shell builtins which allow you manipulate the directory stack. 
 	This can be used to change directories but return to the directory from which you came.
 	https://unix.stackexchange.com/questions/77077/how-do-i-use-pushd-and-popd-commands
@@ -2793,7 +2819,7 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	
 	
 	
-	
+---------------------------------------------------------------------------------------	
 25. $ last						<= show listing of last logged in users
 ###	$ Last Reboot ###
 	$ who -b
@@ -2840,19 +2866,19 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	$ 
 	
 	
-	
+---------------------------------------------------------------------------------------	
 15. Is .bash_profile is a file???? 
 	if [ -f .bash_profile ] ; then 					<= -f file is exist & regular file
 		echo "you have the file in your home dir"		
     	else 
 		echo "You do not have it"
 	fi
-
+---------------------------------------------------------------------------------------
 16. id -u        (-u <= --user for script)   
 	print real and effective user and group ID
 	uid=0(root) gid=0(root) groups=0(root) 				context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
 
-
+---------------------------------------------------------------------------------------
 21. rm -rf ./tmp/test/delme/*    <=delete folder contents
     
 	# deleting . file(hidden file)
@@ -2878,7 +2904,8 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 		-name "FILE-TO-FIND" : File pattern.
 		-exec rm -rf {} \; : Delete all files matched by file pattern.
 		-type f : Only match files and do not include directory names.
-	
+		
+---------------------------------------------------------------------------------------	
 #### Delete local backup folder older than 2 days	####
 	$ sudo find /backup/ -mindepth 1 -mtime +2 -delete
 
@@ -2905,8 +2932,9 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 		used for other operations like grep, sort, cat, head, tail and so on.
 
  
-	
-22. touch file_{1..100}    <= creating 100 files e.g. 1,2..100
+---------------------------------------------------------------------------------------	
+### touch 
+	touch file_{1..100}    <= creating 100 files e.g. 1,2..100
     touch file_{01..100}   <= to resolve file format problem above logic e.g. 001, 002..100
     touch {1,2,3,4,5}	   <= creating 1,2,3,4,5 files
     touch ./ls/{1..100}    <= creating files under ./ls/ folder
@@ -2925,7 +2953,8 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
     Prints special character without errors	
     echo '"! # $ % & '\'' ( ) * + , - . / : ; & < = > ? @ [ \ ] ^ _ { | } ~"'
     echo "! # $ % & '\'' ( ) * + , - . / : ; & < = > ? @ [ \ ] ^ _ { | } ~"
-
+	
+---------------------------------------------------------------------------------------
 23. 
 	echo $BASH_VERSION
 	echo $MACHTYPE
@@ -2937,7 +2966,7 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 
 	echo 1/3 | bc -l                <= .33333333333333333333
 
-24.	IP address 						<= finding IP from ifconfig using grep regex
+24.	IP address 						<= finding IP from ifconfig using grep re  gex
 	$ ifconfig | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
 	 192.168.232.132
 
@@ -5840,6 +5869,12 @@ Debian 			<- Using host kernel but running on Debian file system to modify
 $ nmap 			<- need to install
 $ exit
 
+### Ubuntu Kernel Update
+https://wiki.ubuntu.com/Kernel/LTSEnablementStack#Ubuntu_16.04_LTS_-_Xenial_Xerus
+Ubuntu 16.04 LTS Server- Xenial Xerus
+$sudo apt-get install --install-recommends linux-generic-hwe-16.04 
+
+
 
 ### Byobu multi screen utility ###
 # CentOS 7
@@ -6969,8 +7004,26 @@ CentOs 7 YUM update not working
 	
 	
 	
+###########################################	
+### Terminology 		###
+###########################################
 	
-	
+Stack 		<- used for static memory allocation 
+				int x=1
+				int x=
+Heap 		<- dynamic memory allocation	
+				frm Object
+	int x=1
+	int y=2
+	Form1 frm=newForm1()
+
+You can use the stack if you know exactly how much data you need to allocate before compile time 
+and it is not too big.	You can use heap if you don't know exactly how much data you will need 
+at runtime or if you need to allocate a lot of data.
+
+In a multi-threaded situation each thread will have its own completely independent stack but 
+they will share the heap. Stack is thread specific and Heap is application specific. The stack 
+is important to consider in exception handling and thread executions.	
 	
 	
 	

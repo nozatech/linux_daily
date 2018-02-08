@@ -48,7 +48,9 @@ amicably		<- in a friendly and peaceable manner.
 ample			<- [a] enough or more than enough; plentiful.
 					synonyms:	enough, sufficient, adequate, plenty of, more than enough, enough and to spare More
 					antonyms:	insufficient, meager
-
+annihilation	<- complete destruction or obliteration, t otal defeat.
+					"the threat of global annihilation"
+					total defeat.
 anticipate		<- regard as probable; expect or predict. 기대하다
 				   guess or be aware of (what will happen) and take action in order to be prepared.
 					"quicker than anticipated "
@@ -502,7 +504,9 @@ obscurity		<- the state of being unknown, inconspicuous, or unimportant.
 ### P
 palindrome 		<- a word that reads same forwards or backwards
 					e.g. madam, 12321  
-
+Pavilion		<- In architectural terminology it refers to a subsidiary building that is either positioned 
+					separately or as an attachment to a main building. 
+					Often its function makes it an object of pleasure.[정원 정자, 누각]
 parche			<- dried 			e.g. parched reservoirs
 partake			<- join in (an activity).
 					"visitors can partake in golfing or clay pigeon shooting"
