@@ -303,8 +303,12 @@ flout			<- [v] openly disregard (a rule, law or convention).
 							fail to observe, contravene, infringe, breach, commit a breach of, 
 							transgress against; More
 				antonyms:	observe
-
+frenzy			<- a state or period of uncontrolled excitement or wild behavior.
+					"Doreen worked herself into a frenzy of rage"
+					synonyms:	hysteria, madness, mania, delirium, feverishness, fever, wildness, 
+								agitation, turmoil, tumult;
 full-fledged	<- completely developed or established; of full status.
+
 
 
 
@@ -403,6 +407,10 @@ ingenious		<- (of a person) clever, original, and inventive.
 					synonyms:	inventive, creative, imaginative, original, innovative, pioneering, 
 								resourceful, enterprising, inspired; More
 inhibition		<- the action of inhibiting(금지), restricting, or hindering a process.
+
+indorinatley	<- to an unusually or disproportionately large degree; excessively.
+					"the information was inordinately vetted and censored"
+					
 insight			<- the capacity to gain an accurate and deep intuitive understanding of a person or thing.
 					synonyms:	intuition, discernment, perception, awareness, understanding, comprehension, 
 						apprehension, appreciation, penetration, acumen, perspicacity, judgment, acuity; More
@@ -463,6 +471,9 @@ masquerade		<- [n]a false show or pretense.
 						"a journalist masquerading as a man in distress"
 						synonyms:	pretend to be, pose as, pass oneself off as, impersonate, disguise oneself as
 
+microcosm		<- a community, place, or situation regarded as encapsulating in miniature the characteristic 
+					qualities or features of something much larger.
+					"Berlin is a microcosm of Germany, in unity as in division"
 misnomer		<- a wrong or inaccurate name or designation, a wrong or inaccurate use of a name or term.
 misdemeanor		<- a minor wrongdoing(경범죄).
 					"the player can expect a lengthy suspension for his latest misdemeanor"
@@ -760,6 +771,16 @@ vanquish		<- come out better in a competition, race, or conflict
 veteran			<- (베테랑)a person who has had long experience in a particular field.
 					synonyms:	expert, old hand, past master, doyen, vet; More
 					(재향군인)a person who has served in the military.
+
+vet				<- make a careful and critical examination of (something).
+vetted				"proposals for vetting large takeover bids"  
+					synonyms:	check, examine, scrutinize, investigate, inspect, look over,
+								screen, assess, evaluate, appraise; informalcheck out
+vigilant		<- [adj]keeping careful watch for possible danger or difficulties.
+
+
+
+					
 ### W
 walk the talk	<- suit one's actions to one's words.(keeping one's word)
 walk the walk	<- suit one's actions to one's words.
@@ -790,6 +811,11 @@ uptake			<- the action of taking up or making use of something that is available
 					"a recent uptake in cigar smoking"
 					 "Vitamin C increases your 'uptake of' minerals such as iron." <- 섭취
 unbound			<- not bound or tied up.
+unduly			<- to an unwarranted degree; inordinately. 과도하게
+unwarranted		<- not justified or authorized.
+					synonyms:	unjustified, uncalled for, unnecessary, unreasonable, unjust, groundless, 
+							excessive, gratuitous, immoderate, disproportionate, undue, unconscionable, 
+							unjustifiable, indefensible, inexcusable, unforgivable, unpardonable More
 unwieldy 		<- hard to handle
 uphostery		<- [어포울스터리] soft, padded textile covering that is fixed to furniture.
 urticaria		<- hive; a rash of round, red welts on the skin that itch intensely, sometimes 
@@ -818,7 +844,10 @@ I have always tried to do my best
 
 
 
-### Expressions ### 
+### Expressions ###
+as you may already know
+as you may have known      					<= know before
+ 
 As the saying goes
 I am a little  run down
 I am under the weather

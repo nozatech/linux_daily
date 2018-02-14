@@ -5,7 +5,7 @@ Flash Card
 { 	<= brace
 | 	<= vertical bar
 [	<= bracket
-_	<= undercore
+_	<= underscore
 :	<= colon
 ;	<= semicolon
 *	<= asterisk

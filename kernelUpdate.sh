@@ -2,7 +2,7 @@
 # Update Kernel and Reboot
 
 ### Color Settings
-RED="\033[1;31m"
+ ="\033[1;31m"
 YELLOW="\033[1;33m"
 GREEN="\033[1;32m"
 BOLD="\033[1m"
@@ -12,7 +12,7 @@ RESET="\033[0m"
 running_kernel=$( uname -r )
 
 # Check supported platform
-if [[ "$running_kernel" != *".el"[5-7]* ]]; then
+if [[ "$running_kernel" != *" .el"[5-7]* ]]; then
     echo -e "${RED}This script is only meant to detect vulnerable kernels on Red Hat Enterprise Linux 5, 6 and 7.${RESET}"
     exit 4
 fi

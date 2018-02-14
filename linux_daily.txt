@@ -113,9 +113,9 @@ $ man -k REGEX or UNIXCOMMAND
 
 $ info				<= Longer document
 	$ info grep
--------------------------
+----------------------------------
 ### Command and file Locations ###
--------------------------
+----------------------------------
 # Find the command location
 	$ whereis  cmd				<= <= Find binary /source / manual for commandD
 		$ whereis ls
@@ -1117,7 +1117,10 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	$ update-rc.d ssh enable 			# sets the default runlevels to on 
 	$ update-rc.d ssh disable 			# sets all to off
 
-### SSH Verbose mode using -v
+### SSH 
+	Verbose -v
+	Version -V
+	
 	$ ssh -vvvv nozatech@192.168.221.129						<= Max verbose debugging mode
     
 	OpenSSH_6.7p1, OpenSSL 1.0.1k 8 Jan 2015
@@ -1127,7 +1130,7 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
     debug1: identity file /home/apark/.ssh/id_rsa type 1
 
 	### SSL is TLS ###
-	SSL is the old name. It is called TLS these days.
+	SSL is the old name. It is called TLS(Transport Layer Security) these days.
 	https://curl.haxx.se/docs/sslcerts.html
 
 --------------------------------------------------------------------------	
@@ -1159,7 +1162,49 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	
 
 	
+
+### FROM CLIENT ###
+### Add user without password but ssh key only
+https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
+$ cat ~/.ssh/id_rsa.pub | ssh id@ip "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+
+
+## FROM SERVER ###
+https://unix.stackexchange.com/questions/210228/add-a-user-wthout-password-but-with-ssh-and-public-key
+# login to the remote server first
+$ sudo su -
+$ useradd -m -d /home/ipetcu    -s /bin/bash    ipetcu			<= new user name 'apark2'
+					-m --create-home		<= Create the user's home directory if it does not exist. 
+					-d --home-dir			<= The new user will be created using HOME_DIR as the value 
+												for the user's login directory.
+					-s --shell				<= default SHELL 'BASH'
+
+### Login as apark, switch user to ROOT.
+					
+useradd -m -d /home/ipetcu -s /bin/bash ipetcu	&& cd /home/ipetcu
+mkdir .ssh && chmod 700 .ssh  && chown ipetcu: .ssh 
+touch /home/ipetcu/.ssh/authorized_keys && chmod 600 .ssh/authorized_keys && chown ipetcu:  .ssh/authorized_keys
+vi .ssh/authorized_keys
+
+#cat id_rsa.pub >> .ssh/authorized_keys
+
+sudo visudo
+
+ipetcu  ALL=(ALL)       NOPASSWD:ALL
 	
+BNER IP: 89.37.124.86
+
+### Edit sshd config file	### 
+$ vi /etc/ssh/sshd_config
+----------------------------
+RSAAuthentication 			yes
+PubkeyAuthentication		yes
+AuthorizedKeysFile 			.ssh/authorized_keys
+PasswordAuthentication 		no	<= NO!
+
+----------------------------	
+$ /etc/init.d/sshd restart							<= Restarts the sshd   service
+$ systemctl restart sshd 		
 	
 --------------------------------------------------------------------------	
 ### /etc/passwd	
@@ -1245,14 +1290,19 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	
 ----------------------------------------------------------------------------------------------------	
 4.  RSA KEY( 1024bit, 2k, 4k bit)
+	### You need to login to the server !!!first!!!
 	$ ssh-keygen -t rsa							<= Generate  id_rsa (Private Key ) & id_rsa.pub (Public Key)	
 	
     $ ssh-copy-id user_id@remote_server			<= Transferring Public Key
 	
-	$ cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+	$ cat ~/.ssh/id_rsa.pub | ssh user@ip "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 
 	$ ssh remote_server "cat .ssh/*.pub"
 
+	
+	
+	
+	
 ----------------------------------------------------------------------------------------------------
 5. WGET to download a file using user_id & PW
 	$ wget --user=user_id --password='my_passwd' http://download.com/foo.pdf
@@ -1412,14 +1462,14 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 
 
 ### Copy, Move, Rename
-# cp
+### cp
 
 
 
 
 
 
-# mv 
+### mv 
 	https://superuser.com/questions/901183/who-deals-with-the-star-in-echo
 	e.g. test.txt test1(dir) test2(dir) test3(dir)
 	$ mv *
@@ -1428,9 +1478,11 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 	
 	
 
-# rename	
+### rename	
 	
 
+### yes 		
+	$ yes Testing 				<= output a string repeatedly until killed
 
 
 
@@ -5872,10 +5924,19 @@ $ exit
 ### Ubuntu Kernel Update
 https://wiki.ubuntu.com/Kernel/LTSEnablementStack#Ubuntu_16.04_LTS_-_Xenial_Xerus
 Ubuntu 16.04 LTS Server- Xenial Xerus
-$sudo apt-get install --install-recommends linux-generic-hwe-16.04 
 
+$ sudo apt-get install --install-recommends linux-generic-hwe-16.04 
 
+$ sudo apt-get update && sudo apt-get dist-upgrade
+	Update command is used to update cache, dist-upgrade will update your kernel to 
+	latest available in repository.
 
+	
+### CentOS Kernel Update	
+$ sudo yum update kernel -y	
+	
+	
+	
 ### Byobu multi screen utility ###
 # CentOS 7
 $ sudo yum install --enablerepo=epel byobu
@@ -6985,6 +7046,11 @@ $ pip install speedtest-cli
 CentOs 7 YUM update not working
 	$echo "http_caching=packages" >>   /etc/yum.conf file
 	
+
+### Received disconnect from server: 2: Too many authentication failures for username
+https://superuser.com/questions/187779/too-many-authentication-failures-for-username
+resolution: config .ssh/config
+
 	
 	
 ###########################################
