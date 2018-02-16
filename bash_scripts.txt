@@ -520,7 +520,8 @@ $?      # Return the exit status of the last command. 0 - Successful, 1 -fail
 $$      # Process id of script (id of the shell running the script)	
 		  the PID (process ID) of the current shell.
 
-The shell treats several parameters specially. These parameters may only be referenced; assignment to them is not allowed.
+The shell treats several parameters specially. 
+These parameters may only be referenced; assignment to them is not allowed.
 
 *
 ($*) Print all the parameter.
@@ -664,7 +665,8 @@ $ while     :; do dmesg -c ; sleep 1 ; done				<= : is same as "while true"
 $ while [ 1 ] ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostname'; sleep 10; done
 $ while false ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostname'; sleep 10; done
 
-$ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; kill $! ; wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
+$ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; kill $! ; \
+  wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
 
 https://stackoverflow.com/questions/1289026/syntax-for-a-single-line-bash-infinite-while-loop
 $ while sleep 2; do echo "Thinking"; done	
@@ -891,10 +893,11 @@ fi
 	$ awk '/lemon/ && /rice/'					<= search two words
 ---------------------------------------------------
 ### "2>&1" command:
-	Using "2>&1" , redirect the standard error(2) to standard output(1). The string "2>&1" indicates that any errors 
-	should be sent to the standard output(1), that is, the Linux/Linux file id of 2 for standard error, and the file 
-	id of 1 for standard output.  If you do not use this string, then you will be capturing only the good messages, 
-	and the error messages will not be captured.
+	Using "2>&1" , redirect the standard error(2) to standard output(1). The string "2>&1" 
+	indicates that any errors should be sent to the standard output(1), that is, the Linux/Linux 
+	file id of 2 for standard error, and the file id of 1 for standard output.  If you do not 
+	use this string, then you will be capturing only the good messages, and the error messages 
+	will not be captured.
 	
 	cmd 1>&2
 		stdout to same place as stderr
@@ -915,7 +918,7 @@ e.g. [ ! -z $HOME ]
 Operator	       Meaning									Example
 -------------------------------------------------------------------------------------
 -z			Length of String is (zero)EMPTY 					[ -z "$my_var" ]     my_var=""
-! -z		Length of String is NOT (zero)EMPTY 					[ -z "$my_var" ]     my_var=""
+! -z		Length of String is NOT (zero)EMPTY 				 [ -z "$my_var" ]     my_var=""
 -n			Length of String is NOT (zero)EMPTY					[ -n "$my_var" ]     my_var="num"
 -f			File is Exists & normal,regular 					[ -f "$myfile" ]
 -d			Directory is Exists  								[ -d "$mydir" ]
@@ -941,11 +944,11 @@ Operator	       Meaning									Example
 	[[ expression ]] statement for Comparison operation   0:TRUE  1:FALSE(Success)	 <= Newer
 	 
 	
-	Keywords
-Keywords are like builtins, with the main difference being that special parsing rules apply 
-to them. For example, [ is a Bash builtin, while [[ is a Bash keyword. They are both used for 
-testing stuff. [[ is a keyword rather than a builtin and is therefore able to offer an 
-extended test:
+###	Keywords
+Keywords are like built-in, with the main difference being that special parsing rules apply 
+to them. 
+For example, [ is a Bash built-in, while [[ is a Bash keyword.  
+[[ is a keyword rather than a built-in and is therefore able to offer an extended test:
 
 	$ [ A < B ]								<= echo $?  1 <- false, (B value is feeding into A command) 
 		-bash: b: No such file or directory
@@ -2509,7 +2512,10 @@ http://wiki.bash-hackers.org/commands/builtin/local
 declare, local, typeset
 
 
-The function refers to passed arguments by position (as if they were positional parameters), that is, $1, $2, and so forth. $@ is equal to "$1" "$2"... "$N", where N is the number of positional parameters. $# holds the number of positional parameters.
+The function refers to passed arguments by position (as if they were positional parameters), 
+that is, $1, $2, and so forth. $@ is equal to "$1" "$2"... "$N", where N is the number of 
+positional parameters. $# holds the number of positional parameters.
+
 functname() {
   shell commands
 }
@@ -3181,7 +3187,7 @@ done
 #------------------------------------------------------
 
 
-### Color ###
+###   ###
 RED="\033[1;31m"
 YELLOW="\033[1;33m"
 GREEN="\033[1;32m"

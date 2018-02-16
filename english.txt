@@ -192,7 +192,7 @@ conform			<- comply with rules, standards, or laws
 					synonyms:	comply with, abide by, obey, observe, follow, keep to, stick to, adhere to, 
 					uphold, heed, accept, go along with, fall in with, respect, defer to; More
 					antonyms:	flout
-
+Conglomerate	<- 대기업
 contention		<- heated disagreement.
 					synonyms:	disagreement, dispute, disputation, argument, discord, conflict, 
 								friction, strife, dissension, disharmony "a point of contention"
@@ -665,11 +665,17 @@ sensible		<- (of a statement or course of action) chosen in accordance with wisd
 					
 					
 seasoned IT		<- a veteran; [숙련자] an expert.	
+
 sliver			<- [none] a small, thin, narrow piece of something cut or split off a larger piece.
 						"a sliver of cheese"
 						synonyms:	splinter, shard, shiver, chip, flake, shred, scrap, 
 									shaving, paring, piece, fragment
 "slivers of glass"				
+shortcomings	<- a fault or failure(flaw) to meet a certain standard, typically in a person's character, 
+				a plan, or a system.
+					"he is so forthright about his shortcomings, it's hard to chastise him"
+					synonyms:	defect, fault, flaw, imperfection, deficiency, limitation, failing, drawback, 
+								weakness, weak point, foible, frailty, vice
 shutdown		<- [none]
 shut down		<- [verb]
 snippet			<- a small piece or brief extract. "snippet code"
@@ -702,7 +708,8 @@ sprint			<- run at full speed over a short distance.
 squealing 		<- 빽뺵소리 스피커에서
 statnd corrected <- admit that one's was wrong
 stash			<- store (something) safely and secretly in a specified place
-Startle			<- excited by sudden surprise or alarm and making a quick involuntary movement
+startle			<- excited by sudden surprise or alarm and making a quick involuntary movement
+
 stickler		<- a person who insists on a certain quality or type of behavior.
 					"a stickler for accuracy"
 					synonyms:	perfectionist, pedant, nitpicker, purist, diehard, hard-liner, fanatic
@@ -716,6 +723,7 @@ strife			<- angry or bitter disagreement over fundamental issues; conflict.
 
 streak			<- [striːk] Noun: a long, thin line or mark of a different substance or color from its surroundings.
 					Verb: move very fast in a specified direction.
+					
 subtle			<- (especially of a change or distinction) so delicate or 
 					precise as to be difficult to analyze or describe.
 					making use of clever and indirect methods to achieve something.
