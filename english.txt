@@ -491,8 +491,10 @@ negate			<- nullify; make ineffective(무효)
 					antonyms:	validate, confirm
 
 nifty			<- very good
-nitty-gritty	<- what is essential and basic :specific practical details get down to the nitty-gritty of the problem
-					synonyms:	basics, essentials, fundamentals, substance, quintessence, heart of the matter; More
+nitty-gritty	<- what is essential and basic :specific practical details(본격비교)
+					the most important aspects or practical details of a subject or situation.
+					"get down to the nitty-gritty of the problem"
+					synonyms:	basics, essentials, fundamentals, substance, quintessence, heart of the matter; More	
 
 no frill 		<- simple, plain, 과잉서비스를 제공하지 않는
 
