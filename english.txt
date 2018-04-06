@@ -1,13 +1,20 @@
 적!자!생!존!
-
+### Move
+	Ctrl+End			Bottom of page
+	Ctrl+Home			Top of page
+### Insert a line below
+	Ctrl+Alt+Enter
 
 ### A 
 accommodate		<- (of physical space, especially a building) provide lodging or sufficient space for.
 					"the cabins accommodate up to 6 people"
 					synonyms:	lodge, house, put up, billet, quarter, board, take in, 
 								shelter, give someone a roof over their head; 수용하다
+
 adorn 			<- decorate
 abscess			<- 종기   Dental Abscess, discharge pus 고름 짜내다	
+
+
 AFAIK 			<- "As Far As I Know" 
 adept			<- very skilled or proficient at something.
 					"he is adept at cutting through red tape"
@@ -83,6 +90,11 @@ Avenge 			<- a word broadly concerned with inflicting a punishment or penalty in
 					Avenge means the Achievement of justice
 Revenge 		<- a word broadly concerned with inflicting harm or punishment for personal retaliation.
 					Revenge means Retaliation.
+avid			<- having or showing a keen interest in or enthusiasm for something.
+					"Being a avid gamer"
+					synonyms: keen, eager, enthusiastic, ardent, passionate, zealous, hard-core; More
+
+
 ### B 
 bar				<- fasten (something, especially a door or window) with a bar or bars.
 					synonyms:	bolt, lock, fasten, secure, block, barricade, obstruct
@@ -96,6 +108,11 @@ barring			<- except for; if not for.
 					if there is/are no, discounting, short of, apart from, but for, other than, 
 					aside from, excluding, omitting, leaving out, save for, saving; informaloutside 
 					of "the facility is scheduled to open next year, barring any legal challenges"
+bastardization	<- corrupt or debase (something such as a language or art form), typically by adding new elements.
+					e.g. "Thanks to thx" "a strange, bastardized form of French"
+					synonyms:	adulterate, corrupt, contaminate, weaken, dilute, taint, pollute, debase, distort
+					"it is unthinkable that I would bastardize my values" 
+					
 be kept well under/ be quite tame	<= 길들여져있는
 bear in mind	<- keep in mind
 					remember and take into account.
@@ -127,6 +144,8 @@ bleak			<- [adj]
 						antonyms:	promising
 
 bedside manner 	<- a doctor's approach or attitude toward a patient.
+bespoke			<- (of goods, especially clothing) made to order.
+					"a bespoke suit, a bespoke engine"
 boggle 			<- (of a person or a person's mind) be astonished or overwhelmed when trying to imagine something.
 					"the 'mind boggles' at the spectacle"
 					synonyms:	marvel, wonder
@@ -193,6 +212,11 @@ conform			<- comply with rules, standards, or laws
 					uphold, heed, accept, go along with, fall in with, respect, defer to; More
 					antonyms:	flout
 Conglomerate	<- 대기업
+conscientious 	<- [kὰnʃiénʃəs] 양심있는
+					(of a person) wishing to do what is right, especially to do one's work or duty well and thoroughly.
+					"a conscientious and hardworking clerk"
+					synonyms:	diligent, industrious, punctilious, painstaking, sedulous, assiduous, dedicated, 
+							careful, meticulous, thorough, attentive, hard-working, studious, rigorous, particular; More
 contention		<- heated disagreement.
 					synonyms:	disagreement, dispute, disputation, argument, discord, conflict, 
 								friction, strife, dissension, disharmony "a point of contention"
@@ -219,6 +243,9 @@ culprit			<- cause of an issue or a person who is responsible for a crime or oth
 
 ### D
 damping			<- 습기를 주는, 전기: 감폭
+dapper			<- [adj](typically of a man) neat and trim in dress, appearance, or bearing.
+					synonyms:	smart, spruce, trim, debonair, neat, well dressed, well groomed, 
+					well turned out, elegant, chic, dashing; More
 decapitate		<- cut off the head of (a person or animal).
 deceit 			<- fake or trick
 deception		<- the action of deceiving someone.
@@ -226,6 +253,9 @@ deception		<- the action of deceiving someone.
 					synonyms:	deceit, deceitfulness, duplicity, double-dealing, fraud, cheating, trickery, 
 						chicanery, deviousness, slyness, wiliness, guile, bluff, lying, pretense, treachery; 
 defeat the purpose of 	<- to make (something) pointless
+dermatitis		<-  is a general term that describes an inflammation of the skin
+atopic dermatitis(eczema 습진) <- (아토피 피부염)
+
 dereference		<- opposit of reference	
 degradation		<- changing to a lower state
 despair			<- the complete loss or absence of hope.
@@ -235,7 +265,10 @@ despair			<- the complete loss or absence of hope.
 					"He rallies from the despair"
 
 digress			<- off the subject
-
+dire			<- of a situation or event) extremely serious or urgent.
+					"dire consequences"
+					synonyms:	terrible, dreadful, appalling, frightful, awful, atrocious, grim, alarming; 
+				
 disband			<- (of an organized group) break up or cause to break up and stop functioning.
 					synonyms:	break up, disperse, demobilize, dissolve, scatter, separate, 
 								go separate ways, part company
@@ -257,7 +290,9 @@ deterioration	<- the process of becoming progressively worse.
 
 duck out		<- Leave hurriedly or secretly
 
-
+dyslexia		<- 디스렉시아
+				a general term for disorders that involve difficulty in learning to read or 
+				interpret words, letters, and other symbols, but that do not affect general intelligence.
 
 ### E
 e.g				<- for expample
@@ -291,6 +326,7 @@ faculty			<- an aptitude or talent for doing something.
 					synonyms:	ability, proficiency, competence, capability, potential, 
 								capacity, facility; More
 fall through 	<- your plans didn't work out for some reaso, didn't work out
+fasting			<- 단식
 fatigue			<- 피로
 feasible		<- possible to do easily or conveniently.
 finicky			<-	fussy about one's needs or requirements.
@@ -341,23 +377,28 @@ grasp			<- [n] a firm hold or grip.
 				   [v] seize and hold firmly. "she grasped the bottle"
 					   get mental hold of; comprehend fully. "Bash is hard to grasp to learn"
 						…을 이해[파악]하다
-						synonyms: understand, comprehend, follow, take in, perceive, see, apprehend, assimilate, absorb; 
+						synonyms: understand, comprehend, follow, take in, perceive, see, 
+									apprehend, assimilate, absorb; 
 
 ### H
 hardness of hearing <- 난청
 hard-nosed		<- realistic and determined; tough-minded. 
 have out		<- to settle (a matter) or come to (a final decision), esp by fighting or by frank 
 					discussion (often in the phrase have it out)
+hay fever or asthma		<- 호흡기 알르레기
+				<- an allergy caused by pollen or dust in which the mucous membranes of the eyes 
+					and nose are itchy and inflamed, causing a runny nose and watery eyes.
+				
 hit the ground hard <- to start the day very energentically
 hit a snag			<- to run into an unexpected problem
 
-hives			<- same as urticaria
+hives			<- same as urticaria 두드러기
 holistic		<- characterized by comprehension of the parts of something as intimately interconnected 
 					and explicable only by reference to the whole.
 					## MEDICINE ##
 					characterized by the treatment of the whole person, taking into account mental and 
 					social factors, rather than just the physical symptoms of a disease.
-horrid			<- [a] causing horror (frightfull)
+horrid			<- [a] causing horror (frightful)
 					"a horrid beast"
 
 hospice			<- a type of care and philosophy of care that focuses on the palliation(make 
@@ -457,7 +498,15 @@ lieu			<- place; stead
 					in lieu of, in place of; instead of  
 					e.g. In lieu of the below mail, 
 loot			<- steal goods from (a place), typically during a war or riot.			
-				
+lump			<- a compact mass of a substance, especially one without a definite or regular shape.
+					"there was a lump of ice floating in the milk"
+					synonyms:	chunk, hunk, piece, mass, block, wedge, slab, cake, nugget, ball, brick, 
+								cube, pat, knob, clod, gobbet, dollop, wad; 덩어리, 혹, 
+lump sum		<- a single payment made at a particular time, as opposed to a number of smaller 
+					payments or installments.
+
+
+
 ### M
 marauder		<- a person who marauds; a raider.
 					synonyms:	raider, plunderer, pillager, looter, robber, pirate, freebooter, 
@@ -485,6 +534,16 @@ muscle spasm	<- 경련, 쥐, most common and are often due to overuse and muscle
 
 
 ### N
+narrative		<- a spoken or written account of connected events; a story.(
+					"the hero of his modest narrative"
+					synonyms:	account, chronicle, history, description, record, report, story
+"an interesting narrative about her year in Bolivia"
+neval			<- (belly button)a rounded, knotty depression in the center of a person's belly caused by the 
+					detachment of the umbilical cord after birth; the umbilicus.
+					synonyms: (informal) belly button; umbilicus
+					"Washington Neval Orange"
+"one's navel can be hollow or projecting"
+
 negate			<- nullify; make ineffective(무효)
 					"alcohol negates the effects of the drug"
 					synonyms:	invalidate, nullify, neutralize, cancel; More
@@ -535,6 +594,7 @@ pastime			<- an activity that someone does regularly for enjoyment rather than w
 pep talk		<- a talk intended to make someone feel more courageous or enthusiastic.
 pertinent		<- relevant or applicable to a particular matter; apposite. synonyms:relevant
 periodontists	<- 치주염
+ponderous		<- slow and clumsy because of great weight.
 precedence		<- [n] the condition of being considered more important than someone or something else; 
 						priority in importance, order, or rank.
 						"his desire for power soon took precedence over any other consideration"
@@ -544,6 +604,10 @@ precedence		<- [n] the condition of being considered more important than someone
 promiscuous		<- 
 prospective		<- (of a person) expected or expecting to be something particular in the future. 미래의, 장래의
 					vs Retrospective  <- 회고의,looking back on or dealing with past events or situations. 
+punctual		<- 	happening or doing something at the agreed or proper time; on time.
+					"he's the sort of man who's always punctual"
+					시간을 잘 지키는
+					
 pus				<- 고름
 
 pacify			<- quell the anger, agitation, or excitement of.
@@ -586,6 +650,8 @@ prospect		<- the possibility or likelihood of some future event occurring.
 					synonyms:	likelihood, hope, expectation, anticipation, (good/poor) chance, odds, 
 							probability, possibility, promise; More
 
+							
+							
 ### Q
 quirk			<- 변덕 	e.g. by a quirk of fate 운명의 장난으로
 
@@ -593,6 +659,12 @@ quirk			<- 변덕 	e.g. by a quirk of fate 운명의 장난으로
 
 					
 ### R
+rampage			<- [Verb](especially of a large group of people) rush around in a violent and uncontrollable manner.
+					"several thousand demonstrators rampaged through the city"
+					synonyms:	riot, run riot, go on the rampage, run amok, go berserk; More
+					[Noun] a period of violent and uncontrollable behavior, typically involving a large 
+					group of people.
+					"thugs went on a rampage and wrecked a classroom"
 rationales		<- a set of reasons or a logical basis for a course of action or a particular belief.
 					"he explained the rationale behind the change"
 					synonyms:	reason(s), reasoning, thinking, logic, grounds, sense; More
@@ -601,6 +673,8 @@ recapitulate	<- "RECAP"
 					"he began to recapitulate his argument with care"
 					synonyms:	summarize, sum up; More
 reconnaissance	<- military observation of a region to locate an enemy or ascertain strategic features.
+remainder		<- Something left over after other parts have been taken away.
+					"I will most likely be out for the remainder of the day."
 remuneration 	<- pay
 relapse			<- (of someone suffering from a disease) suffer deterioration after a period of improvement.
 					synonyms:	get ill/worse again, have/suffer a relapse, deteriorate, 
@@ -611,6 +685,7 @@ reassemble		<- (of a group) gather together again.
 						"after lunch the class reassembled"
 					put (something) together again.
 						"the trucks had to be reassembled on arrival"
+refrain			<- stop oneself from doing something.(자제하다)
 resonance		<- 울림, 공진
 relator			<-  a person who brings a public lawsuit, typically in the name of the 고발자,
 				   attorney general, regarding the abuse of an office or franchise.
@@ -624,7 +699,7 @@ resilient		<- (of a person or animal) able to withstand or recover quickly from 
 					"babies are generally far more resilient than new parents realize"
 					synonyms:	strong, tough, hardy; 
 retroactive  	<- (especially of legislation) taking effect from a particular date in time
-					소급이란 현재 생겨난 규정을 그 규정이 없었던 과거 시절의 사실에도 적용시킴.
+					소급이란 '현재 생겨난 규정을 그 규정이 없었던 과거 시절의 사실에도 적용시킴.'
 retrospect		<- a survey or review of a past course of events or period of time.
 retrospective   <- looking back on or dealing with past events or situations. 회고의,
 rig				<- manage or conduct (something) fraudulently so as to produce a result or situation 
@@ -637,7 +712,11 @@ rout			<- a disorderly retreat of defeated troops(패주시키다)
 rudimentray		<- involving or limited to basic principles.
 revelation		<- a surprising and previously unknown fact, especially one that is made known in a dramatic way
 					폭로, 적발, synonyms:	disclosure, surprising fact, announcement, report;				   
-				   
+
+rune			<- a letter of an ancient Germanic alphabet, related to the Roman alphabet.
+
+
+					
 ### S
 saunter			<- walk in a slow, relaxed manner, without hurry or effort.
 sacred			<- [seikrid] connected with God (or the gods) or dedicated to a religious 
@@ -680,11 +759,20 @@ shortcomings	<- a fault or failure(flaw) to meet a certain standard, typically i
 								weakness, weak point, foible, frailty, vice
 shutdown		<- [none]
 shut down		<- [verb]
+slack			<- [adj] not taut or held tightly in position; loose.
+					"a slack rope"
+					synonyms:	loose, limp, hanging, flexible More
+				   [noun] the part of a rope or line that is not held taut; the loose or unused part.
+					"I picked up the rod and wound in the slack"
+					synonyms:	looseness, play, give
+					"the rope had some slack in it"
+
+					
 snippet			<- a small piece or brief extract. "snippet code"
 					synonyms:	piece, bit, scrap, fragment, particle, shred; More
 snoop			<- investigate or look around furtively in an attempt to find out something, 
 					especially information about someone's private affairs.
-					souvenir
+					souvenir 
 softy			<- a softhearted, weak, or sentimental person.
 solicit			<- ask for or try to obtain (something) from someone.
 					synonyms:	ask for, request, seek, apply for, put in for, call for, press for, beg, plead for
@@ -738,7 +826,11 @@ supersede 		<- replace; take the place of (a person or thing previously in autho
 superintendent	<- a person who manages or superintends an organization or activity.
 					synonyms:	manager, director, administrator, supervisor, overseer, 
 								controller, chief, head, governor; informalboss
+
 ### T 
+tariff			<- a tax or duty to be paid on a particular class of imports or exports.
+					synonyms:	tax, duty, toll, excise, levy, charge, rate, fee, countervail; price list
+						"the lower tariffs across the border"
 that is			<- used to introduce or follow a clarification, interpretation, or correction of something already said.
 that is to say	<- i.e. same
 that said		<- "Having said that" is same. "However" 
@@ -899,6 +991,387 @@ Diego 		<- Jaime
 	what they prefer to be called.
 
 
+http://benefitshop.jungchul.com/customer/NoticeView.asp?Page=6&Idx=148&main=4&sub=1
+현재완료에서 been은 어떨 때 쓰나요? been이 어떻게 사용 
+되는지 여러 가지 예문을 통해 자세히 알려주세요. 
+
+안녕하세요? been은 말 그대로 be 동사가 현재완료의 have p.p.안에서 
+쓰일 때 p.p.형으로 쓰인 겁니다. 자세히 알아볼까요? 
+
+
+been은 말 그대로 be 동사가 현재완료의 have p.p. 안에서 쓰일 때, 
+p.p.형으로 쓰인 겁니다. 그러므로 be 동사가 쓰이는 곳은 모두 쓰인다고 보면 되는 거죠. 
+
+1) 현재완료진행으로 쓰일 때 
+
+* She has been reading a book all day. (그녀는 하루 내내 책을 읽어왔다.) 
+“~ 해오고 있다“ 라는 뜻을 나타내는 위와 같은 문장을, “현재완료진행시제”라고 합니다. 
+
+일단 현재 완료 진행을 이해하기 위해서, 진행 시제에 대해서 알아 볼까요? 
+여러분은! 진행 시제를 어떻게 쓰나요? 
+그렇죠, be동사 + ing 의 형태입니다. 
+
+* I am doing my homework. (나는 숙제를 하고 있습니다.) 
+이런 것이 현재 진행 시제이죠. 여러분은! 현재 완료는 어떻게 쓰나요? 
+그렇죠, have + p.p 의 형태입니다. 
+
+그럼 현재완료 진행은 어떻게 쓸까요? 말 그대로, 현재완료 진행은 
+현재완료 + 현재 진행 입니다. 
+have + p.p + be동사 + ing = have + been(be동사의 p.p형태) + ~ing 입니다. 
+뜻은 “~ 해 오고 있다” 로, 진행의 느낌이 있을 때 쓰는 거구요. 
+
+그렇다면, 위의 문장으로, 현재완료진행 시제를 만들어 봅시다. 
+* I am doing my homework. (나는 숙제를 하고 있습니다.) 
+-> I have been doing my homework. (나는 숙제를 해 오고 있습니다.) 
+어떤가요? 쉽지 않나요? ^-^ 
+
+2) ~ 있다. 는 be 동사의 의미를 살려서 쓸 때 
+
+현재완료는 be 동사에서도 똑같이 적용되어, is, are, am 등이 
+have(has) + been 으로 바뀐다는 것을 알면 이해하기가 쉬울 거예요. 
+
+예문으로 보면, 
+* It has been very hot since last week. (지난 주부터 아주 더워왔다) 
+이 문장을 보면, 간단히 현재완료시제의 문장 이예요. 
+일단, “ 덥다 ” 라는 문장을 보면 It is hot. 이죠. 
+현재완료 형태로 바꾸면 is 가 has been 이 되어서 It has been hot. 이 됩니다. 
+
+※이와 관련해서, 날씨에 관한 현재완료 표현을 많이 질문 하시는데요, 
+* It has been rainy since last Sunday. 
+* It has rained since last Sunday. 
+이 두 예문을 봅시다. 둘다 ‘저번 주 일요일 이후로 계속 비가 왔다’는 의미인데요. 
+이 두 문장을 보고, “ been을 어디에는 붙이고 어디에는 안 붙이나요? “ 
+하고 묻는 학생들이 있습니다. 
+
+위 문장들에서는 been 을 붙이고 안 붙이고의 문제가 아니고, 
+먼저 알아둬야 할 것은, “무엇이 동사인가” 하는 것 같네요. 
+
+위의 첫 번째 문장을 봅시다. 
+It has been rainy since last Sunday. (저번 주 일요일 이후로 계속 비가 오고 있다.) 
+이 문장을 현재형으로 바꾸면 어떤 문장이 될까요? 
+It is rainy. (비가 옵니다) 이지요? 
+be 동사가 본동사인 문장이지요? 그렇기 때문에, is 가 has been 으로 변합니다. 
+
+두 번째 문장을 보면, 
+It has rained since last Sunday. (저번 주 일요일 이후로 비가 와 왔다.) 
+이 문장의 현재형은 It rains. (비가 옵니다.) 이지요? 
+rains 가 본동사 이므로, has rained 로 변형됩니다. 
+동사가 be동사인 현재형 문장을 현재완료형으로 바꾸면, 
+has(have) been 이 되는 거고, 동사가 일반 동사인 현재형 문장을 
+현재완료형으로 바꾸면, have(has) + 일반 동사의 p.p 가 됩니다. 
+
+3) “~에 갔다 오다”라는 뜻으로 쓸 때. be동사는 “~이다“ 
+혹은 ”~있다“란 의미입니다. 
+
+하지만, be 동사가 p.p. 형으로 쓰이면 go and come 
+즉, “갔다 왔다“의 의미를 갖게 됩니다. 
+왜 그런지 그 의미를 추측 해 봅시다. 
+
+* I have been to New York. 이란 문장을 보면, 지금 내가 여기에서 
+이야기 하고 있는데, “뉴욕에도 있었다.”란 문장을 썼으니, 
+아~ 그렇다면, 뉴욕에 갔다고 온 것이군. 이란 의미가 되는 게 아닌가 싶습니다. 
 
 
 
+"have been to"는 하나의 숙어처럼 
+" ~에 갔다 왔다" 혹은 "~에 가본 적이 있다"란 말로 굳혀져서 사용하는 문구 입니다. 
+
+하지만, be 동사가 p.p. 형 일 때만 
+go and come 의 의미를 갖고, 
+그냥 be동사는 ~이다, ~있다의 
+의미만 갖습니다. 
+
+그러므로 “ 나는 뉴욕에 갔다.“ 라고 
+말하고 싶다면 be 동사가 아니라 
+I went to New York. 이라고 말해야 합니다. 
+
+
+마지막으로 been은 현재완료 수동태 문장을 만들 때도 사용됩니다. 
+
+수동태는 be + p.p 형태를 취하므로 현재완료 수동태를 만들 때는 
+be동사 역할을 하는 been이 와야 합니다. 
+
+예를 들어, 
+We have polluted water. 현재 완료 문장을 현재완료 수동태로 고치려고 한다면 
+Water has been polluted by us. 의 형태가 될 수 있겠죠. 
+현재완료 have p.p + 수동태 be p.p 가 합쳐져서 have been p.p의 형태가 되는 거죠. 
+
+----------------------------------------------------------------------------------
+♣ 불규칙동사 변화표 ♣
+# A-A-A 
+lead   	led 	led
+cut    	cut 	cut 
+hit 	hit 	hit 
+leave 	left 	left
+let 	let 	let 
+make 	made 	made
+put 	put 	put 
+pay 	paid 	paid
+set 	set 	set 
+lose 	lost 	lost
+shut 	shut 	shut 
+meet 	met 	met
+learn  learnt(learned) learnt(learned)
+
+# A-B-A 
+become 	became 	become 
+say 	said 	said
+come 	came 	come 
+send 	sent 	sent
+run 	ran 	run 
+sit 	sat 	sat
+read[ri:d] read[red] read[red]
+
+# A-B-B 
+sleep 	slept 	slept
+bring 	brought brought 
+spend 	spent 	spent
+build 	built 	built 
+stand 	stood 	stood
+buy 	bought 	bought 
+teach 	taught 	taught
+catch 	caught 	caught 
+tell 	told 	told
+feel 	felt 	felt 
+think 	thought thought
+fight 	fought 	fought 
+understand understood understood
+find 	found 	found 
+win 	won 	won
+forget forgot forgot 
+
+# A-B-C
+get 	got 	got 
+bear 	bore 	born(e)
+have 	had 	had 
+begin 	began 	begun
+hear 	hear 	heard 
+blow 	blew 	blown
+hold 	held 	held 
+break 	broke 	broken
+keep 	kept 	kept 
+choose 	chose 	chosen
+lay 	laid 	laid 
+do 		did 	done
+----------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------------------
+Idiom
+----------------------------------------------------------------------------------
+Idioms are word combinations that have a different meaning than the literal meanings of 
+each word or phrase. Kids can enjoy using fun and creative idioms to express their 
+thoughts in an entertaining way. We have a huge list of examples below.
+
+Everyday Idioms
+A grey area – Something unclear
+A rip-off – Too expensive
+Add fuel to the fire – To add more to an existing problem
+As easy as ABC – Something is very easy
+Call it a day – Time to quit
+Cool as a cucumber – To be very calm under stress
+Crack a book – Open up a book and study
+Down to the wire – At the last minute
+Draw a blank – Can’t remember
+Fill in the blanks – Provide more information
+Get a kick out of it – Really enjoy/like something
+Get your act together – Behave properly
+Give it a shot – To try to do something
+Have mixed feelings – Be unsure of how you feel
+Have second thoughts – Have doubts
+In hot water – Be in trouble
+In the same boat – Be in the same situation
+It’s in the bag – It’s a certainty
+I've got your number – To say you can't be fooled by someone since you have them figured out
+Miss the boat – you missed your chance
+Mumbo jumbo – To call something total nonsense
+Out of the blue – With no warning
+Pass with flying colors – To succeed at something easily
+Piece of cake – Something very easy
+Read between the lines – Find the hidden meaning
+Second to none – The best
+The icing on the cake – Something additional that turns good into great
+Body Part Idioms
+Cross your fingers – For good luck
+Fell on deaf ears – People wouldn't listen to something
+Get cold feet – Be nervous
+Giving the cold shoulder – Ignore someone
+Have a change of heart – Changed your mind
+I’m all ears – You have my full attention
+It cost an arm and a leg – It was expensive
+Play it by ear – Improvise
+See eye to eye – Agree
+Slipped my mind – I forgot
+Speak your mind – Say what you really feel
+Animal Idioms
+A bull in a china shop - Someone who is very clumsy
+A little birdie told me - Someone told me a secret
+Bee in her bonnet - She is upset
+Birdbrain - Someone who is not very smart
+Busy as a bee – To be very active and working hard at something
+Cat got your tongue? - Why aren’t you talking?
+Cry crocodile tears - To pretend to be upset
+Curiosity killed the cat - Asking too many questions may get you in trouble
+Different kettle of fish - Something completely different
+Doggy bag - A bag to take home leftovers from a restaurant
+Fish out of water - Being somewhere you don’t belong
+For the birds - Something that is not worth anything
+Get off your high horse - Quit thinking you are better than others
+Goose is cooked - Now you’re in trouble
+Hold your horses - Wait a minute
+Horse of a different color - Something that is quite different, a separate issue
+Hot dog - A person doing athletic stunts that are dangerous
+Let the cat out of the bag - Tell a secret
+Make a mountain out of a molehill - Make something unimportant into a big deal
+Night owl - Someone who stays up late
+Pig out - To eat a lot
+Put a bug in his ear - Make a suggestion
+Raining cats and dogs - It is raining very hard
+Snail's pace – To move extremely slow
+Stir a hornet's nest – To cause a lot of trouble
+Teacher's pet – The teacher's favorite student
+The world is your oyster – You can achieve whatever/go wherever you want
+When pigs fly - To say something is impossible
+Wolf in sheep’s clothing - A person who pretends to be nice but is not
+You can't teach an old dog new tricks - It’s harder for older people to learn new things
+Fun and Unique Expressions
+
+
+Commonly used smart idioms 
+A List of the most commonly used English idioms
+A hot potato: 
+	Speak of an issue which many people are talking about and which is usually disputed
+A penny for your thoughts:
+	A way of asking what someone is thinking
+Actions speak louder than words"
+	People's intentions can be judged better by what they do than what they say.
+Add insult to injury:
+	To further a loss with mockery or indignity; to worsen an unfavorable situation.
+An arm and a leg:
+	Very expensive or costly. A large amount of money.
+At the drop of a hat:
+	without any hesitation; instantly.
+Back to the drawing board:
+	When an attempt fails and it's time to start all over.
+Ball is in your court:
+	It is up to you to make the next decision or step
+Barking up the wrong tree:
+	Looking in the wrong place. Accusing the wrong person
+Be glad to see the back of:
+	Be happy when a person leaves.
+Beat around the bush:
+	Avoiding the main topic. Not speaking directly about the issue.
+Best of both worlds:
+	All the advantages.
+Best thing since sliced bread:
+	A good invention or innovation. A good idea or plan.
+Bite off more than you can chew:
+	To take on a task that is way to big.
+Blessing in disguise:
+	Something good that isn't recognized at first.
+Burn the midnight oil:
+	To work late into the night, alluding to the time before electric lighting.
+Can't judge a book by its cover:
+	Cannot judge something primarily on appearance.
+Caught between two stools:
+	When someone finds it difficult to choose between two alternatives.
+Costs an arm and a leg
+	This idiom is used when something is very expensive.
+Cross that bridge when you come to it
+	Deal with a problem if and when it becomes necessary, not before.
+Cry over spilt milk
+	When you complain about a loss from the past.
+Curiosity killed the cat
+	Being Inquisitive can lead you into an unpleasant situation.
+Cut corners
+	When something is done badly to save money.
+Cut the mustard
+	To succeed; to come up to expectations; adequate enough to compete or participate
+Devil's Advocate
+	To present a counter argument
+Don't count your chickens before the eggs have hatched
+	This idiom is used to express "Don't make plans for something that might not happen".
+Don't give up the day job
+	You are not very good at something. You could definitely not do it professionally.
+Don't put all your eggs in one basket
+	Do not put all your resources in one possibility.
+Drastic times call for drastic measures
+	When you are extremely desperate you need to take drastic actions.
+Elvis has left the building
+	The show has come to an end. It's all over.
+Every cloud has a silver lining
+	Be optimistic, even difficult times will lead to better days.
+Far cry from
+	Very different from.
+Feel a bit under the weather
+	Feeling slightly ill.
+Give the benefit of the doubt
+	Believe someone's statement, without proof.
+
+	
+Hear it on the grapevine:
+	'to hear rumors' about something or someone.
+Hit the nail on the head:
+	Do or say something exactly right
+Hit the sack | sheets | hay:
+	To go to bed.
+In the heat of the moment:
+	Overwhelmed by what is happening in the moment.
+It takes two to tango:
+	Actions or communications need more than one person
+Jump on the bandwagon:
+	Join a popular trend or activity.
+Keep something at bay:
+	Keep something away.
+Kill two birds with one stone:
+	to accomplish two different things at the same time.
+Last straw:
+	The final problem in a series of problems.
+Let sleeping dogs lie:
+	Do not disturb a situation as it is - since it would result in trouble or complications.
+Let the cat out of the bag:
+	To share information that was previously concealed
+Make a long story short:
+Come to the point:
+	leave out details
+Method to my madness:
+	An assertion that, despite one's approach seeming random, there actually is structure to it.
+Miss the boat:
+	someone missed his or her chance
+Not a spark of decency:
+	No manners
+Not playing with a full deck:
+	Someone who lacks intelligence.
+Off one's rocker:
+	Crazy, demented, out of one's mind, in a confused or befuddled state of mind, senile.
+On the ball:
+	When someone understands the situation well.
+Once in a blue moon:
+	Happens very rarely.
+Picture paints a thousand words:
+	A visual presentation is far more descriptive than words.
+Piece of cake:
+	A job, task or other activity that is easy or simple.
+Put wool over other people's eyes:
+	This means to deceive someone into thinking well of them.
+See eye to eye:
+	This idiom is used to say that two (or more people) agree on something.
+Sit on the fence:
+	This is used when someone does not want to choose or make a decision.
+Speak of the devil!:
+	This expression is used when the person you have just been talking about arrives.
+Steal someone's thunder:
+	To take the credit for something someone else did.
+Take with a grain of salt:
+	This means not to take what someone says too seriously.
+Taste of your own medicine:
+	Means that something happens to you, or is done to you, that you have done to someone else
+To hear something straight from the horse's mouth:
+	To hear something from the authoritative source.
+Whole nine yards:
+	Everything. All of it.
+Wouldn't be caught dead:
+	Would never like to do something
+Your guess is as good as mine:
+	To have no idea, do not know the answer to a question

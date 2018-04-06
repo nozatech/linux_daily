@@ -24,6 +24,7 @@ $ apt-get | yum install shellcheck	-y
 # Overview of set debugging options
 ---------------------------------------------------
 	'Set' or 'unset' values of shell options and positional parameters.
+	
 	$ help set
 	
 	set -f	(set -o noglob)		Disable file name generation using metacharacters(globbing).
@@ -32,12 +33,15 @@ $ apt-get | yum install shellcheck	-y
 	set -e          # Exit as soon as any line in the bash script fails
 	set -x          # Prints each command executed (prefix with ++)
 	set -ex         # Do both (for good practice)	
-	set -u 			<= checks undefine variables
+	set -u 			<= checks undefined variables
 	
-	e.g. in a script, add 'set -x' for each line output
+	
+	
+	e.g. in a script, add 'set -x' for each line output(debug mode)
 	#!/bin/bash
 	set -x			<= debug mode tracing
-	set -u 			<= checks undefine variables
+	set -u 			<= checks undefined variables
+	
 	$ cmd | tee -a output.file | ...		<= 'tee -a' append
 	
 	$ bash -n debug.sh					<= prints out Syntex error only
@@ -45,8 +49,12 @@ $ apt-get | yum install shellcheck	-y
 	e.g. embedded in a script
 	------------------------------------------
 	#!/bin/bash
-	set -u 
-	set -x						# Turn on
+	### check undefined var and
+	set -u 						# check undefined var
+	set -x						# Turn on  debug mode
+	set -e						# exit right away if there is a fail
+	# set -eux		<= 틀린(x) 이유(eu)를 알아야 고친다
+	###
 	a=1
 	echo my PID is $$
 	set +x						# Turn off the tracing
@@ -64,14 +72,14 @@ $ apt-get | yum install shellcheck	-y
 ---------------------------------------------------
 # How to run a script
 ---------------------------------------------------
-	$ ./script.sh					 <= run in seperate shell
+	$ ./script.sh					 <= run in separate shell
 	$ . ./script.sh   			     <= current login shell to run
 
     $ sh ./script.sh  				 <= same as 'sh script.sh')
-    $ sh +x script.sh   			 <= +x for debuging mode
-    $ sh -x script.sh   			 <= +x for debuging mode
-    $ sh -v script.sh   			 <= -v for debuging mode
-    $ sh +v script.sh   			 <= +v for debuging mode
+    $ sh +x script.sh   			 <= +x for debugging mode
+    $ sh -x script.sh   			 <= +x for debugging mode
+    $ sh -v script.sh   			 <= -v for debugging mode
+    $ sh +v script.sh   			 <= +v for debugging mode
 
     $ exec ./script   				 <= after it runs, exits from current shell 
 
@@ -111,7 +119,7 @@ $ apt-get | yum install shellcheck	-y
 	:h									<= vi, vim help 			
 	:q 									<= quit help page
 	
-	$ vi +101 file.txt					<= go to 101 line in filename
+	$ vi +101 file.txt					<= go to 101 line in file name
 	:12									<= Go to particular line number in vi editor 
 	
 # Move	
@@ -147,7 +155,7 @@ $ apt-get | yum install shellcheck	-y
 	
  # Stop and Exit running program
 	$ vi 1.sh
-      crtl + z 						<= exit to shell
+      ctrl + z 						<= exit to shell
 	$ vi 2.sh
 	$ jobs
 	[1] Stopped  vim
@@ -226,7 +234,7 @@ $ var=value		       #Assign the string value to shell variable var.
 	
 	- The 'typeset' cmd makes variables local, can provide a type, or can provide formatting.
 	$ typeset -i x							<= x must be an integer
-		- Arithmatic is faster
+		- Arithmetic is faster
 		- Let allows for convenient arithmetic:
 		  let x++; let y=x**2; let x=x*3; let x*=5, ...
 		  
@@ -269,7 +277,7 @@ y is 8				<= y=8 variable from the function
 ---------------------------------------------------	
 https://unix.stackexchange.com/questions/254367
 When used in a function, declare makes NAMEs local, as with the local command. 
-The -g option suppresses this behavior.
+The -g option suppresses this behaviour.
 
 abc=ok assigns a value to the variable abc. declare abc declares a variable called abc. 
 The two can be combined as declare abc=ok.
@@ -305,15 +313,15 @@ After f: a is Initial a
 After f: b is b in f
 
 
-The declare builtin is unique to bash. It's strongly inspired and very close to ksh's 
-typeset builtin, and bash provides typeset as a synonym of declare for compatibility. 
+The declare built-in is unique to bash. It's strongly inspired and very close to ksh's 
+typeset built-in, and bash provides typeset as a synonym of declare for compatibility. 
 There's a third synonym, local. 
 There's also export, which is the same as declare -x, again for compatibility 
 (with every Bourne-style shell).
 
 ----------------------------------------------------	  
-	 $ declare -l uppercase values in the variable are converted to lowercase
-	 $ declare -u lowercase values in the variable are converted to uppercase
+	 $ declare -l upper-case values in the variable are converted to lower-case
+	 $ declare -u lower-case values in the variable are converted to upper-case
 	 $ declare -r variable is made read-only
 	 $ declare -a MyArray will make MyArray an indexed array.
 	 $ declare -A MyArray2 will make MyArray2 an Associative array.
@@ -331,7 +339,7 @@ echo readOnly = $readOnly
 
 readOnly="New Value"
 
-MyArray[2]="Second Vlaue"
+MyArray[2]="Second Value"
 echo 'MyArray[2] = '${MyArray[2]}
 
 MyArray2["hotdog"]="baseball"
@@ -371,7 +379,7 @@ cmd1 || cmd2 || cmd3    <= If cmd1 failed, run cmd2, otherwise runs cmd3, otherw
 ### File Descriptor,  Redirection, Pipes ###
 -----------------------------------------------
 https://en.wikipedia.org/wiki/File_descriptor
-File Desciptor 0, 1, and 2 reservered as:
+File Descriptor 0, 1, and 2 reserved as:
 	0 - stdin  (Standard input)
 	1 - stdout (Standard output)
 	2 - stderr (Standard Error)
@@ -399,7 +407,7 @@ $ sort << EOF
 	
 	
 	
-- lsof	<= use 'lsof' to what fil desriptors for a proces are open
+- lsof	<= use 'lsof' to what file descriptors for a process are open
 	$ lsof -p $$		<= $$ Processor ID
 	
 	
@@ -415,15 +423,15 @@ $ sort << EOF
 # I/O Redirection:
 ----------------------------------------------	
 
-pgm > file     #Output of pgm is redirected to file.
-pgm < file     #Program pgm reads its input from file.
-pgm >> file    #Output of pgm is appended to file.
-pgm1 | pgm2    #Output of pgm1 is piped into pgm2 as the input to pgm2.
-n > file       #Output from stream with descriptor n redirected to file.
-n >> file      #Output from stream with descriptor n appended to file.
-n >& m         #Merge output from stream n with stream m.
-n <& m         #Merge input from stream n with stream m.
-<< tag         #Standard input comes from here through next tag at start of line.	
+pgm > file     # Output of pgm is redirected to file.
+pgm < file     # Program pgm reads its input from file.
+pgm >> file    # Output of pgm is appended to file.
+pgm1 | pgm2    # Output of pgm1 is piped into pgm2 as the input to pgm2.
+n > file       # Output from stream with descriptor n redirected to file.
+n >> file      # Output from stream with descriptor n appended to file.
+n >& m         # Merge output from stream n with stream m.
+n <& m         # Merge input from stream n with stream m.
+<< tag         # Standard input comes from here through next tag at start of line.	
 cmd << 		   # here document
 
 	# stderr
@@ -444,7 +452,7 @@ cmd << 		   # here document
 	$ cmd &>> output.txt
 	
 ---------------------------------------------------	
-### Arithmatic Operators
+### Arithmetic Operators
 ---------------------------------------------------	
 	Use in (( )) or with let
 	i++, i--, ++i, --i
@@ -852,7 +860,7 @@ usage="Usage: $0 DIR1_Name DIR2_Name"
 #------------------------------------------------------------------------------------
 if [ $# -gt 2 ]; then                   # number of command line parameters.
     echo $usage;						# if args are more than 2, echo $usage
-    echo 1
+      echo 1
 fi
 
 if [ $# -lt 2 ]; then                   # number of command line parameters.
@@ -3498,13 +3506,23 @@ do
 	esac
 done
 
+#---------------------------------------------------------------------------
+
+$ while :; do clear; your_command; sleep 2; done
+
 # ---------------------------------------------------------------------------
+#!/bin/bash
+# usage: watch.sh <your_command> <sleep_duration>
 
+while :; 
+  do 
+  clear
+  date
+  $1
+  sleep $2
+done
 
-
-
-
-
+#---------------------------------------------------------------------------
 
 
 

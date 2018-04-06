@@ -163,7 +163,7 @@ $ rename 's/\s/_/g' *
 	$ iptables -nL	
 
 	
-	### Java 8 install
+### Java 8 install
 	sudo add-apt-repository ppa:webupd8team/java
 	sudo apt update; sudo apt install oracle-java8-installer
 	javac -version	# java -version
@@ -552,15 +552,125 @@ $ p4 -u jenkins login -a
 
 
 
+OSX: 
+### How to start/stop/restart launchd services from the command line?
+https://serverfault.com/questions/194832/how-to-start-stop-restart-launchd-services-from-the-command-line
+
+### From Mac OSX SHELL ###
+Start
+	$ sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist 
+Stop
+	$ sudo launchctl unload  /System/Library/LaunchDaemons/ssh.plist 
+
+### From Web ###
+http://10.100.200.45:8080/restart
+Forces a restart without waiting for builds to complete.
+
+http://10.100.200.45:8080/safeRestart 
+Allows all running jobs to complete. New jobs will remain in the queue to run after the restart is complete
+	
+	
 
 
 
 
+### Jenkins setup on Mac OSX
+https://medium.com/@ved.pandey/setting-up-jenkins-on-mac-osx-50d8fe16df9f
+Prereqs:
+ A Mac Machine running Mac OSX Yosemite or higher with admin access. 
+ Java Development Kit should be installed on the machine.
+ Access to a remote repository on Git, Svn etc.
+
+1. Download Jenkins installer .pkg file from Jenkins official site
+2. SETTING UP JENKINS USER
+We need to give Jenkins admin access,
+
+unload Jenkins as a Daemon:
+$ sudo launchctl unload   /Library/LaunchDaemons/org.jenkins-ci.plist
+
+Next, move the .plist file, which defines how Jenkins will run, to the LaunchAgents folder:
+
+
+$ sudo mv /Library/LaunchDaemons/org.jenkins-ci.plist     /Library/LaunchAgents/
+
+
+Jenkins Home Directory
+Jenkins -> Configuration-> Home Directory
+	e.g./User/Shared/Jenkins/Home
+	
+
+
+### Remove Slave Nodes	
+Jenkins -> Manage Jenkins -> Script Console -> Paste and Run
+### Remove Off line Slave Nodes	
+https://stackoverflow.com/questions/24072354
+
+Jenkins -> Manage Jenkins -> Script Console -> Paste and Run 
+-------------------------------------------------------------------
+for (aSlave in hudson.model.Hudson.instance.slaves) {
+    if (aSlave.getComputer().isOffline()) {
+        aSlave.getComputer().setTemporarilyOffline(true,null);
+        aSlave.getComputer().doDoDelete();
+    }
+}	
+-------------------------------------------------------------------
+
+
+### keystore
+https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html
+https://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html
+https://support.globalsign.com/customer/en/portal/articles/2121490-java-keytool---create-keystore
+
+Example:
+http://10.100.200.45:8080/view/ToonSquad/job/ToonSquad_Android_Pull_HA_Staging_Build/configure
+BNEA_Android_Keystore_To_Use=Cartoon_Clash
+BNEA_Android_Key_To_Use=cartoon_clash
+
+
+
+http://10.100.200.45:8080/view/DrWho/job/DoctorWho_Android_Pull_HA_Dev_Build/configure
+BNEA_Android_Keystore_To_Use=DOCTOR_WHO
+BNEA_Android_Key_To_Use=doctor_who
+
+
+
+$ keytool -genkey -alias DOCTOR_WHO -keyalg RSA -keystore DOCTOR_WHO.jks -keysize 2048
+Enter keystore password: doctor_who
+
+
+What is your first and last name?
+	Bandai Namco
+What is the name of your organizational unit?
+    Bandainamecoent
+What is the name of your organization?
+   DoctorWho
+What is the name of your City or Locality?
+	Santa Clara
+What is the name of your State or Province?
+	CA
+What is the two-letter country code for this unit?
+	us
+Is CN=Bandai Namco, OU=Bandainamecoent, O=DoctorWho, L=Santa Clara, ST=CA, C=us correct?
+  [no]:  yes
+
+Enter key password for <DOCTOR_WHO>
+        (RETURN if same as keystore password):	doctor_who
+Re-enter new password:	doctor_who
+
+
+$ ls -l
+-rw-rw-r--. 1 apark apark 2266 Mar 15 15:22 KeyStore.jks
+
+
+fI&M)T0yNHFe=KW0dXX”Ia6jNCae7NyFiQ;Acvyl 
+keystore password is just 'bnga1740'
 
 
 
 
-
+Delete view 
+http://10.100.200.45:8080/view/<view name>/delete
+http://10.100.200.45:8080/view/Monocle/delete	<= delete view name
 
 
 

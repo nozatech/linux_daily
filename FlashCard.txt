@@ -101,6 +101,181 @@ cmd1 || cmd2 || cmd3    <= If cmd1 failed, run cmd2, otherwise runs cmd3, otherw
 30.
 
 
+======================================================================================================
+Bash scripting cheatsheet
+https://devhints.io/bash
+======================================================================================================
+#!/usr/bin/env bash
+
+NAME="John"
+echo "Hello $NAME!"
+
+### Variables
+NAME="John"
+echo $NAME
+echo "$NAME"
+echo "${NAME}!"
+
+### String quotes outputs literally $
+NAME="John"
+echo "Hi $NAME"  #=> Hi John
+echo 'Hi $NAME'  #=> Hi $NAME
+
+Shell execution
+echo "I'm in $(pwd)"
+echo "I'm in `pwd`"
+
+
+Shell execution
+echo "I'm in $(pwd)"
+echo "I'm in `pwd`"
+
+
+Brace expansion
+echo {A,B}.js
+{A,B}	Same as A B
+{A,B}.js	Same as A.js B.js
+{1..5}	Same as 1 2 3 4 5
+
+
+Functions
+get_name() {
+  echo "John"
+}
+
+echo "You are $(get_name)"
+
+
+Functions
+get_name() {
+  echo "John"
+}
+
+echo "You are $(get_name)"
+
+Conditionals
+if [ -z "$string" ]; then
+  echo "String is empty"
+elif [ -n "$string" ]; then
+  echo "String is not empty"
+fi
+
+
+
+#### Parameter expansions ####
+
+Basics
+name="John"
+echo ${name}
+echo ${name/J/j}    #=> "john" (substitution)
+echo ${name:0:2}    #=> "jo" (slicing)
+echo ${name::2}     #=> "jo" (slicing)
+echo ${name::-1}    #=> "joh" (slicing)
+echo ${food:-Cake}  #=> $food or "Cake"
+length=2
+echo ${name:0:length}  #=> "jo"
+See: Parameter expansion
+
+STR="/path/to/foo.cpp"
+echo ${STR%.cpp}    # /path/to/foo
+echo ${STR%.cpp}.o  # /path/to/foo.o
+
+echo ${STR##*.}     # cpp (extension)
+echo ${STR##*/}     # foo.cpp (basepath)
+
+echo ${STR#*/}      # path/to/foo.cpp
+echo ${STR##*/}     # foo.cpp
+
+echo ${STR/foo/bar} # /path/to/bar.cpp
+STR="Hello world"
+echo ${STR:6:5}   # "world"
+echo ${STR:-5:5}  # "world"
+SRC="/path/to/foo.cpp"
+BASE=${STR##*/}   #=> "foo.cpp" (basepath)
+DIR=${SRC%$BASE}  #=> "/path/to" (dirpath)
+
+Basics
+name="John"
+echo ${name}
+echo ${name/J/j}    #=> "john" (substitution)
+echo ${name:0:2}    #=> "jo" (slicing)
+echo ${name::2}     #=> "jo" (slicing)
+echo ${name::-1}    #=> "joh" (slicing)
+echo ${food:-Cake}  #=> $food or "Cake"
+length=2
+echo ${name:0:length}  #=> "jo"
+See: Parameter expansion
+
+STR="/path/to/foo.cpp"
+echo ${STR%.cpp}    # /path/to/foo
+echo ${STR%.cpp}.o  # /path/to/foo.o
+
+echo ${STR##*.}     # cpp (extension)
+echo ${STR##*/}     # foo.cpp (basepath)
+
+echo ${STR#*/}      # path/to/foo.cpp
+echo ${STR##*/}     # foo.cpp
+
+echo ${STR/foo/bar} # /path/to/bar.cpp
+STR="Hello world"
+echo ${STR:6:5}   # "world"
+echo ${STR:-5:5}  # "world"
+SRC="/path/to/foo.cpp"
+BASE=${STR##*/}   #=> "foo.cpp" (basepath)
+DIR=${SRC%$BASE}  #=> "/path/to" (dirpath)
+
+Length
+${#FOO}	Length of $FO
+
+Comments
+# Single line comment
+: '
+This is a
+multi line
+comment
+'
+Substrings
+${FOO:0:3}	Substring (position, length)
+${FOO:-3:3}	Substring from the right
+
+
+Default values
+${FOO:-val}	$FOO, or val if not set
+${FOO:=val}	Set $FOO to val if not set
+${FOO:+val}	val if $FOO is set
+${FOO:?message}	Show error message and exit if $FOO is not set
+The : is optional (eg, ${FOO=word} works)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======================================================================================================
+Vim scripting cheatsheet
+https://devhints.io/vimscript
+======================================================================================================
+
 
 
 

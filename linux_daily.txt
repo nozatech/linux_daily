@@ -1,5 +1,12 @@
 아무리 바빠도 해야할 일 - 책, && 돈이 많아도 하지 말아야 할일 -도박, 마약
 1.역사-역사의식 책임, 2.문화-감성, 3.경영-논리, 4.철학-생각에 방법, 5.사회학 인간학-인간 관계
+### Drucker's 5 Questions ###
+1. What is our mission?
+2. Who is our customers?
+3. What does the customer value?
+4. What are our result?
+5. What is our plan?
+
 ---------------------------------------
 ### Windows CMD kill process
 ---------------------------------------
@@ -32,11 +39,11 @@ Settings > Short cut Mapper Menu.
 	Ctrl+Home			Top of page
 4. Basic File Management
 	Ctrl+N				Create new document.
-	Ctrl+P				Display Print... dialog box.
-	Ctrl+O				Display Open File... dialog box.
+	Ctrl+P				Display Print... dialogue box.
+	Ctrl+O				Display Open File... dialogue box.
 	Ctrl+S				Save current document.
 **	Ctrl+Shift+S		Save all open documents
-	Ctrl+Alt+S			Display Save As... dialog box.
+	Ctrl+Alt+S			Display Save As... dialogue box.
 	Ctrl+W				Close current document.
 	Alt +F4				Exit Notepad++
 ---------------------------------------
@@ -58,6 +65,11 @@ Ctrl + H				Open history in a new tab
 Ctrl + K or Ctrl + E	Perform a Google search
 Ctrl + T				Opens a new tab.
 Ctrl + U				View a web page's source code
+---------------------------------------
+### Word ###
+---------------------------------------
+Removing empty lines
+Ctrl+f -> replace -> More => Special => Paragraph Mark => ^p   <= single line ^p^p  <= double empty lines
 
 ---------------------------------------------------------------------------------
 32bit is 2^32 =~ 4.3 billion    <=  IPv4 address is 32bit 
@@ -418,6 +430,8 @@ CentOS 5, 6
 		UNIT                     LOAD   ACTIVE SUB     DESCRIPTION
 		atd.service              loaded active running Job spooling tools
 		auditd.service           loaded active running Security Auditing Service
+		nginx.service            loaded active running The nginx HTTP and reverse proxy server
+		ntpd.service             loaded active running Network Time Service
 	
 	$ systemctl enable | disable | status iptables
 		# /etc/systemd/system/basic.target.wants/iptables.service
@@ -1291,11 +1305,16 @@ $ systemctl restart sshd
 http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ssh-on-many-servers
 ----------------------------------------------------------------------------------------------------
 ### Run command on remote
-	$ ssh apark@192.241.190.57 	   'sudo iptables -nL'		
-	$ ssh apark@192.241.190.57 	   'sudo iptables -nL'			<= w/o apark user id
+	$ ssh apark@192.241.190.57 	   'cat /etc/motd	'			<= w/o apark user id
 	$ ssh puppet sudo              iptables -nL					<= using .ssh/config  file
+	
+	$ ssh apark@138.68.10.194 'sudo iptables -nL'				<= Doesn't work
+		sudo: sorry, you must have a tty to run sudo	
 	$ ssh -t apark@192.241.190.57  'sudo iptables -nL'			<= -t  Force pseudo-tty allocation
-	  
+	
+
+
+	
 ### run script remotely
 
 	$ ssh apark@remote_server  'bash -s' < from_local_script.sh		<= run a script remotely from local using sudoer
@@ -2126,13 +2145,18 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 
 ###	ls
 	http://unix.stackexchange.com/questions/21638/show-only-hidden-files-dot-files-in-ls-alias
-# list hidden files in current directory
+# list directory
+	$ ls -dl */					<= -d directory
+	$ ls -Xl    <= sort alphabetically by entry extension
+	$ ls -1     <= list one file per line <= number 1, showing names only 
+
+# list hidden files in current directory  
 	$ ls -d  .*	  				<= list hidden .files only
 	$ ls -ld .*	  				<= list hidden .files only
 	$ ls -l  .*?				<= list hidden .files only
 	$ ls -Ad .*
 	$ ls -a | grep "^\."    	<= show hidden files start with . file
-	$ ls -1      				<= number 1, showing names only  (single column -1)
+
 	
 	$ hidden() { ls -a "$@" | grep '^\.'; }		<= function
 	$ alias hid="ls -a | grep '^\.'"			<= alias
@@ -2614,9 +2638,35 @@ H 2 * * *				<= Every 2am
   
   
   
+chmod 
+https://en.wikipedia.org/wiki/Chmod
+In "chmod aw" the "a" means "All" (everyone) and the "w" means "write" (edit) the file.
+
+u = user that owns the file
+g = group that owns the file
+o = other (everyone else)
+a = all (everybody)
+
+r = 4   <= read aces to the file
+w = 2	<= write access
+x = 1	<= execute (run) access
   
+### Numerical permissions
+#	Permission	rwx
+7	rwx		read, 	write, 	execute	
+6	rw- 	read, 	write	
+5	r-x		read, 	execute	
+4	r--		read 		
+3	-wx		write,	execute	 
+2	-w-		write 		
+1	--x 	execute 
+0	---		none	
   
-  
+$ chmod a-x publicComments.txt	<= removes execute permission for all classes
+$ chmod a+rx viewer.sh			<= adds read and execute permissions for all classes
+$ chmod -R u+w,go-w docs		<= adds write permission to the directory docs and all its contents 
+						(i.e. Recursively) for owner, and removes write permission for group and others
+$ chmod ug=rw groupAgreements.txt	<= sets read and write permissions for owner and group  
   
   
   
@@ -2836,6 +2886,7 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	$ echo "My name is $(whoami)"
 	$ echo  My name is `whoami`
 	$ echo "My name is `whoami`"
+	$ chown -R $(whoami) /home/$(whoami)/test
 	
 ### Nested command substitution
 	$ echo " Permissions for find are $(ls -l $(which find))"
@@ -3372,7 +3423,7 @@ Traceroute, Ping, and MTR
 	$ ping -i 0.1 127.0.0.1    	<= send out ping packets every 0.1 sec
 	
 	# ping localhost
-	$ ping loacalhost
+	$ ping localhost
 	$ ping 127.0.0.1
 	$ ping 127.0.0.2~254
 	$ ping 0.0.0.0
@@ -3384,10 +3435,12 @@ Traceroute, Ping, and MTR
 	# change the packet size which is by default 64 bytes
 	$ ping -s 200   0			<= 0 localhost
 	
-	# how to sepcify timeout
-	$ ping -w 7     0			<= 0 localhost 	
+	# how to specify time out
 	
+	$ ping -W 10     0			<= 0 localhost 	
 	
+	# ping every 10sec, ping localhost
+	$ ping -i 10 0			<= ping 0(localhost) every 10sec 
 	
 <<<<<<< Updated upstream
 43. stty 		   <= change and print terminal line settings
@@ -3397,17 +3450,6 @@ Traceroute, Ping, and MTR
 
 
 
-43. stat 				<= detailed and statistic on a file (ls -l foo.bar)
-	
-	$ stat foo.bar 
-		File: ‘foo.bar’
-		Size: 354             Blocks: 8          IO Block: 4096   regular file
-		Device: fc00h/64512d    Inode: 1046543     Links: 1
-		Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
-		Access: 2016-04-08 21:16:25.603244615 -0700
-		Modify: 2016-04-08 21:16:45.355245237 -0700
-		Change: 2016-04-08 21:16:45.355245237 -0700
-		Birth: -
 =======
 	
 42. strace - trace system calls and signals	
@@ -3461,40 +3503,45 @@ Traceroute, Ping, and MTR
 >>>>>>> Stashed changes
 
 45. Disabling User account
-	Change login passwd in /etc/passwd
+	#1. Change login passwd in /etc/passwd
 	apark:x:503:504::/home/apark:/bin/bash
-	apark:* or !:503:504::/home/apark:/bin/bash   <= X to * or !  
+	apark:* or !:503:504::/home/apark:/bin/bash   <= X to '*' or '!'  
 		note: will require you to assign a new password to the user if you re-enable the account,
+	#2.
 	apark:x:503:504::/home/apark:/bin/bash/nologin    <= add /nologin at the end
 	apark:x:503:504::/home/apark:/bin/nologin
 	apark:x:503:504::/home/apark:/usr/sbin/nologin
+	
 	e.g. $ ssh test@192.168.232.138
 			test@192.168.232.138's password:
 			Permission denied, please try again.
 	
+	#3. using usermod
 	$ usermod --lock --expiredate 1970-01-01 <username>
-	$ sudo usermod --lock --shell /bin/nologin username
-	$ sudo usermod -L -s /bin/nologin username
-
+	$ usermod --lock --shell /bin/nologin username
+	$ usermod -L     -s      /bin/nologin username
+	
+	#4. Change Age to '0'
 	$ chage -E 0 user_ID                                       <= $chage -E -1 user_ID   
 	$ ssh test1@192.168.232.138
 	test1@192.168.232.138's password:
 	Your account has expired; please contact your system administrator
 	Connection closed by 192.168.232.138
-
-# Reference 
-http://unix.stackexchange.com/questions/7690/how-do-i-completely-disable-an-account
+	
+	#5. Lock the password
+	http://unix.stackexchange.com/questions/7690/how-do-i-completely-disable-an-account
 	$ passwd -l user_ID			<= -l lock
 	
-Doesn't satisfy constraints because public key authentication bypasses PAM and still allows direct login.
+	Doesn't satisfy constraints because public key authentication bypasses PAM and still allows direct login.
 	$ usermod -s /sbin/nologin <user>
 	
-Doesn't satisfy constraints because breaks the enterprise scheduler
-### $ usermod --lock --expiredate 1970-01-01 <user>  ###
-	$ usermod -l -e 1970-01-01 user_ID
-	This is our winner. Remote login disabled, yet root can still su <user>, as can other users via 
-	sudo so the scheduler functions properly and authorized end users can become the target 
-	service account as needed.
+	#####
+	Doesn't satisfy constraints because breaks the enterprise scheduler
+	$ usermod --lock --expiredate 1970-01-01 <user>  
+	$ usermod -l 	 -e 		  1970-01-01 user_ID
+	<<< This is our winner. Remote login disabled, yet root can still su <user>, as can 
+		other users via sudo so the scheduler functions properly and authorized end users 
+		can become the target service account as needed. >>>
 
 
 45. Wall & message					<= messaging to users within system 				
@@ -3616,7 +3663,7 @@ cat /etc/inittab				systemctl list-units --type target  (--all for not active)
 journalctl - Query the systemd journal
 
 	journalctl may be used to query the contents of the systemd(1)
-    journal as written by systemd-journald.service(8).
+    journal as written by systF$(whoemd-journald.service(8).
 
 	$ journalctl | grep fail
 	$ journalctl -b          <= current boot
@@ -3827,7 +3874,9 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
     $  gpasswd -a apark wheel
     $  gpasswd -a apark root
     $  vi /etc/sudoers
-
+	
+		The term "WHELL" is derived from the slang phrase big wheel, 
+		referring to a person with great power or influence.
 	
 	
 55. SElinux <= add port to security-enhanced linux 
@@ -4659,6 +4708,8 @@ CentOS6.x file location =>
 	$ timedatectl list-timezones
 	$ timedatectl set-timezone UTC
 	$ timedatectl set-timezone America/New_York
+	$ timedatectl set-timezone America/Los_Angeles
+	
 	
 	Ubuntu timezone change
 	$ sudo dpkg-reconfigure tzdata	
@@ -4728,9 +4779,17 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 
 82. rsync
 	https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps
+	-v  --verbose
+	-q  --quiet
+	-a  --archive
+	-p	--perm			<= preserver permissions
+	-n  --dry-run
+	-z  --compress
 	
+	--size-only
+              This  modifies  rsync’s "quick check"
 	
-	### LOCAL >>>> REMOTE ###  **PUSH to Remote**
+### LOCAL >>>> REMOTE ###  **PUSH to Remote**
 	###			LOCAL file location  >>>>   REMOTE 'creating' remote folder
 	rsync -avn  /home/apark/rtest  			apark@45.55.5.69:/home/apark/      
 			<= -a, -v verbose -n dry-run
@@ -4741,7 +4800,7 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	rsync -av   ~/rtest/          	 		apark@45.55.5.69:/home/apark/rtest/   <= copy to rtest
 
 	
-	### REMOTE >>>> LOCAL ###   **PULL to Local**
+### REMOTE >>>> LOCAL ###   **PULL to Local**
 	###			REMOTE file & folder location	>>>>    LOCAL location		
 	rsync -av   apark@45.55.5.69:/home/apark/			/home/apark/ 		   <= copy to apark    
 	rsync -av   apark@45.55.5.69:/home/apark/rtest/ 	~/rtest/       	       <= copy to rtest
@@ -4749,26 +4808,50 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	rsync -av   apark@45.55.5.69:/home/apark/dir1    	~/					   <= home folder
 	receiving incremental file list
 	
-	### CAN NOT do REMOTE >>>> REMOTE ###
+
+
+
+### REMOTE  ===>>>>  LOCAL			  <Remote location>						<Local location>
+	$ rsync -azP  --exlude=dir* 	     apark@45.55.5.69:/home/apark/     	 	~   	
+	$ rsync -azP  --exclude={dir1,dir2}  apark@45.55.5.69:/home/apark/       	~/		
+	
+	
+	$ rsync -avzp ssh  --progress jenkins@10.100.200.41:/Users/Shared/Jenkins/Home/jobs/Chroma* 	/tmp
+	$ rsync -avzp --progress jenkins@10.100.200.41:/Users/Shared/Jenkins/Home/jobs/Chroma* 	/tmp
+	
+	
+	
+	Will it work????
+	$ rsync -avzp --progress --exclude={Perforce*,Library*,2015*,Mono*,Out*,Back*,Vill*,Strange*} jenkins@10.100.200.41:/Users/Shared/Jenkins/* 	/Users/Shared/Jenkins/
+	
+rsync -avzp --progress --exclude={Perforce*,Library*,2015*,Mono*,Out*,Back*,Vill*,Strange*,\
+Install*,*.dmg,backup_log,tmp*,test*} jenkins@10.100.200.41:/Users/Shared/Jenkins/*  /Users/Shared/Jenkins/
+
+
+
+	
+	
+### CAN NOT do REMOTE >>>> 2 REMOTES ###
+		Server A  <-Rsync-> XX Server B XX <-Rsync-> Server C
 		http://unix.stackexchange.com/questions/183504/how-to-rsync-files-between-two-remotes
 		Cannot use rsync with a remote source and a remote destination. 
-		Assuming the two servers can't talk directly to each other, it is possible to use "ssh to tunnel" 
-		via your local machine.
+		Assuming the two servers can't talk directly to each other, 
+			it is possible to use "ssh to tunnel" via your local machine.
 
-	$ ssh -R localhost:50000:host2:22   host1 'rsync -e "ssh -p 50000" -vuar /var/www localhost:/var/www'
+	$ ssh -R localhost:50000:host2:22   host1 'rsync -e "ssh -p 50000" -var /var/www localhost:/var/www'
 	
 	
 	# Options	
 	rsync -avz	source 		destination		<= -z Compression
 	rsync -avzP	source 		destination	 	<= -P Progress
 
+	Copy a File from a Remote Server to a Local Server with SSH
+	To specify a protocol with rsync you need to give “-e” option with protocol name you want to use. 
+	Here in this example, We will be using “ssh” with “-e” option and perform data transfer.
+	$ rsync -avzhe ssh root@192.168.0.100:/root/install.log     /tmp/	
 	
-	# REMOTE  ===>>>>  LOCAL			  <Remote location>						<Local location>
-	$ rsync -azP  --exlude=dir* 	     apark@45.55.5.69:/home/apark/     	 	~   	
-	$ rsync -azP  --exclude={dir1,dir2}  apark@45.55.5.69:/home/apark/       	~/		
-	$ rsync -avzp jenkins@10.100.200.41:/Users/Shared/Jenkins/Home/jobs/Chroma* 	/tmp
-
-	# Delete Destination folder has different than Source folder
+	
+### Delete Destination folder has different than Source folder
 	$ rsync -az -e --delete ssh /cdn/data/  apark@10.128.34.80:/cdn/data/
 		
 		# -e option is used to run a different remote shell
@@ -4803,8 +4886,11 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	rsync -av   lobby1:/root/       /root --exclude ".ssh"
 
 	ssh sg-eu "service iptables restart"
-    
-	### rsync failed due to remote host doesn't have the program installed.
+
+
+
+### Rsync issues ### 
+### rsync failed due to remote host doesn't have the program installed.
 	$rsync -av /RRServerLinux/ apark@10.128.8.174:/home/apark/RRServerSlave/
 		apark@10.128.8.174's password:
 		bash: rsync: command not found
@@ -4865,7 +4951,7 @@ two cases:
 
 
 ### SSH TUNNEL
-# orgin
+# origin
 	$ ssh -N -R 8822:localhost:22 remote.host.com
 	The optional -N says "don't execute a command" (helpful to prevent accidents caused by leaving 
 	remote shells laying around.)
@@ -4878,7 +4964,7 @@ two cases:
 	For extra credit, you can export the forwarding to the whole world, allowing anyone get to host1 
 	by hitting remote's port 8822. (Note the extra initial colon)
 
-# orgin
+# origin
 	$ ssh -N -R :8822:localhost:22 remote.host.com
 
 
@@ -6855,6 +6941,8 @@ into an application to protect the application protocols.
 Red Hat Enterprise Linux 6.4 (PV) - ami-6283a827 (64-bit) / ami-4a83a80f (32-bit)
 Red Hat Enterprise Linux version 6.4 (PV), EBS-backed
 Root device type: ebs Virtualization type: paravirtual
+
+
 ### Paravirtual (PVM)
 A virtual machine(VM) mode in which operating systems do not require complete emulation of hardware devices. 
 Paravirtual mode uses an API to interact with the host virtualization platform. Paravirtual mode doesn't require 
@@ -6877,6 +6965,8 @@ Wildcards can be added as domains in multi-domain certificates or Unified Commun
 	Thus it secureshttps://www.wikipedia.org as well as the completely different website name 
 	https://meta.m.wikimedia.org.[9] *.company.com
 
+	
+	
 ### Generate SSL Certificate Signing Request (CSR)
 The first part of enrolling for your SSL Certificate is to generate a Certificate Signing Request (CSR). 
 	CSR generation is wholly dependent on the software you use on your webserver. Select your webserver 
@@ -7201,6 +7291,18 @@ is important to consider in exception handling and thread executions.
 	
 	
 	
+	
+Cross-Site Request Forgery (CSRF)
+https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)	
+Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web 
+application(e.g. Jenkins) in which they're currently authenticated. CSRF attacks specifically target 
+state-changing requests, not theft of data, since the attacker has no way to see the response to the 
+forged request. With a little help of social engineering (such as sending a link via email or chat), 
+an attacker may trick the users of a web application into executing actions of the attacker's choosing. 
+
+If the victim is a normal user, a successful CSRF attack can force the user to perform state changing 
+requests like transferring funds, changing their email address, and so forth. If the victim is an 
+administrative account, CSRF can compromise the entire web application.
 	
 	
 	
