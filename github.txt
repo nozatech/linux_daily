@@ -1,18 +1,23 @@
-How to use GIT
-
-
+How to use the GIT
+---------------------------------------------
+git status	
+git add . 						<='-A' all, or a new file_name
+git commit -m "update message"
+git push
+---------------------------------------------		
+		
 Use HTTPS	https://github.com/nozatech/jenkins.git
 Use SSH     git@github.com:nozatech/jenkins.git
 
-
+### Configuration
 $ git config credential.helper store
 $ git push http://example.com/repo.git
-Username: <type your username>
-Password: <type your password>
+	Username: <type your username>
+	Password: <type your password>
 $ git help credentials
 
 
-Clone from repository
+### Clone from repository
 $ mkdir new_folder && cd new_folder
 $ git clone https://github.com/nozatech/linux_daily.git
 $ git clone https://nozatech:Noza5571@github.com/nozatech/linux_daily.git   <= ID &PW
