@@ -38,7 +38,7 @@ $ reboot
 
 ### Static IP setup
 
-If you don't have a DHCP server in your network, you must set a static IP address. Please consider the following example:
+If you don't have a DHCP server in your network, you must set a static IP address. 
 $ vim   /etc/sysconfig/network-scripts/ifcfg-eth0
 
 BOOTPROTO=none
@@ -46,7 +46,7 @@ DEVICE=eth0
 IPADDR=192.168.1.10 # your IP address
 NETMASK=255.255.255.0 # your netmask
 NETWORK=192.168.1.0 
-ONBOOT=yes
+ONBOOT=yes									<= Enabling DHCP when bootup
 
 Add GATEWAY 
 $ vi /etc/sysconfig/network

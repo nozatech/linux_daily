@@ -104,10 +104,14 @@ $ apt-get | yum install shellcheck	-y
 # VI: Run script WITHIN vim or vi
 ---------------------------------------------------
     :w   	      					<= write first
-    :!sh %   (# :! sh %)     		<= : <-cmd ! <-run, sh <-shell, % =currently open file
+    :! sh %   (# :! sh %)     		<= : <-cmd ! <-run, sh <-shell, % =currently open file
+	:!sh %							# works too
 	:!!         					<= run same script again 
+
     :!./script_name.sh
+
     :! python %
+
     :! perl %
 
 ---------------------------------------------------
@@ -842,7 +846,7 @@ $ echo -n     do not output the trailing newline
 # Usage 
 #--------------------------------------------------------------------------------   
 #!/bin/bash
-usage="Usage: This script needs arg1 and arg2 values"
+usage="Usage: This script ne eds arg1 and arg2 values"
 if [ ! $# == 2 ]; then
     echo $usage
 fi
@@ -3202,8 +3206,14 @@ GREEN="\033[1;32m"
 BOLD="\033[1m"
 RESET="\033[0m"
 
-echo -e "${RED}vulnerable kernels CentOS 5, 6 and 7.${RESET}"
+echo -e "\033[1;31m" vulnerable kernels CentOS 5, 6 and 7.  "\033[0"
+echo -e "${RED}      vulnerable kernels CentOS 5, 6 and 7. ${RESET}"
+		# -e     enable interpretation of backslash escapes
 
+### Without "-e" 
+$echo "\033[1;31m" vulnerable kernels CentOS 5, 6 and 7. "\033[0"
+	   
+	   \033[1;31m vulnerable kernels CentOS 5, 6 and 7. \033[0			<=have to use "-e"
 
 
 #--------------------------------------------------------------------------------
@@ -3464,7 +3474,9 @@ fi
 # Author: Vivek Gite < vivek @ nixcraft . com > under GPL v2.0+
 # https://www.cyberciti.biz/faq/bash-infinite-loop/
 # ---------------------------------------------------------------------------
-# Capture CTRL+C, CTRL+Z and QUIT singles using the trap
+# Usage: Capture CTRL+C, CTRL+Z and QUIT singles using the trap
+# ---------------------------------------------------------------------------
+
 trap '' SIGINT   #2  Signal Interupt as CTRL+C
 trap '' SIGQUIT  #3  
 trap '' SIGTSTP  #20 Signal Stop as CTRL+Z

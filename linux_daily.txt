@@ -1,5 +1,6 @@
 아무리 바빠도 해야할 일 - 책, && 돈이 많아도 하지 말아야 할일 -도박, 마약
 1.역사-역사의식 책임, 2.문화-감성, 3.경영-논리, 4.철학-생각에 방법, 5.사회학 인간학-인간 관계
+
 ### Drucker's 5 Questions ###
 1. What is our mission?
 2. Who is our customers?
@@ -1174,8 +1175,8 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	$ update-rc.d ssh disable 			# sets all to off
 
 ### SSH 
-	Verbose -v
-	Version -V
+	-v  <=verbose 
+	-V  <=Version 
 	
 	$ ssh -vvvv nozatech@192.168.221.129						<= Max verbose debugging mode
     
@@ -1186,7 +1187,8 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
     debug1: identity file /home/apark/.ssh/id_rsa type 1
 
 	### SSL is TLS ###
-	SSL is the old name. It is called TLS(Transport Layer Security) these days.
+	SSL(Secure Socket Layer) is the old name. 
+	TLS(Transport Layer Security) is for now a days.
 	https://curl.haxx.se/docs/sslcerts.html
 
 --------------------------------------------------------------------------	
@@ -1222,14 +1224,21 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 ### FROM CLIENT ###
 ### Add user without password but ssh key only
 https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
-$ cat ~/.ssh/id_rsa.pub | ssh id@ip "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 
+$ cat ~/.ssh/id_rsa.pub | ssh id@ip   "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+$ cat ~/.ssh/id_rsa.pub | ssh apark@162.243.144.182  \
+		"mkdir -p ~/.ssh && \
+		chmod 700 ~/.ssh && \ 
+		cat >>  ~/.ssh/authorized_keys"
+
+		
+		
 
 ## FROM SERVER ###
 https://unix.stackexchange.com/questions/210228/add-a-user-wthout-password-but-with-ssh-and-public-key
 # login to the remote server first
 $ sudo su -
-$ useradd -m -d /home/ipetcu    -s /bin/bash    ipetcu			<= new user name 'apark2'
+$ useradd -m -d /home/ipetcu -s /bin/bash  apark2			<= new user name 'apark2'
 					-m --create-home		<= Create the user's home directory if it does not exist. 
 					-d --home-dir			<= The new user will be created using HOME_DIR as the value 
 												for the user's login directory.
@@ -1243,13 +1252,10 @@ touch /home/ipetcu/.ssh/authorized_keys && chmod 600 .ssh/authorized_keys && cho
 vi .ssh/authorized_keys
 
 #cat id_rsa.pub >> .ssh/authorized_keys
-
 sudo visudo
-
 ipetcu  ALL=(ALL)       NOPASSWD:ALL
-	
 BNER IP: 89.37.124.86
-
+ 
 ### Edit sshd config file	### 
 $ vi /etc/ssh/sshd_config
 ----------------------------
@@ -3145,7 +3151,7 @@ https://www.computerhope.com/unix/ushutdow.htm
 	$ date +"Today's date is %m-%d-%Y and time is %H:%M:%S."
 	$ date +%T
 	$ date +%D
-	$ date +%F   				<= 2018-01-09
+	$ date +%F   				<= 2018-01-09  'F'ull date; same as %Y-%m-%d
 
 
 27. Printf vs echo (http://wiki.bash-hackers.org/commands/builtin/printf)
@@ -3848,10 +3854,10 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 	# Check who owns folder?
 	$ stat -c %U /var/www/html			<= %U User
 		www-data
-	$ stat -c %U /var/www/html			<= %G Group
+	$ stat -c %G /var/www/html			<= %G Group
 		www-data	
 	
-	groups
+	# groups
 	$ getent - get entries from Name Service Switch libraries
 
 	$ cat /etc/group  <= Group List
@@ -4156,10 +4162,10 @@ iptables -L -v
 	# Add netfilter-persistent Startup
 	$ invoke-rc.d netfilter-persistent save
 	
-	$ service netfilter-persistent stop
+	$ service netfilter-persistent stop | start
 	
 	### Edit IPtables ##
-	# Start netfilter-persistent Service
+	
 	
 	$ service netfilter-persistent enable
 	$ service netfilter-persistent start
@@ -5022,7 +5028,7 @@ two cases:
     $ cat /proc/version
 
 	###Install lsb_release on CentOS7
-	$ yum provides */lsb_release
+	$ yum provides */lsb_release			
 	$ yum install redhat-lsb 
 	$ lsb_release -a
    
@@ -5031,7 +5037,12 @@ two cases:
 	When you install sw and got a message saying that "xxx requires xxx library and xxx are missing."
 	Then run 'yum provides "xxx"' to check dependencies.
 	
-	
+	$lsb_release -a						<= lsb <-Linux Standard Release
+		No LSB modules are available.
+		Distributor ID: Ubuntu
+		Description:    Ubuntu 16.04.4 LTS
+		Release:        16.04
+		Codename:       xenial
 
    
 4. ulimit 		
@@ -5334,11 +5345,13 @@ echo "* hard nofile 102400" >> /etc/security/limits.d/*_limits.conf
 	another way is to mount with the nouuid option.
 
 ### Package List
-	#Ubuntu
+	# Ubuntu
 	$ dpkg -l | grep mysql
 	
 	# CentOS
 	$ rpm -qa | grep mysql
+	
+	
 
 
 #########################

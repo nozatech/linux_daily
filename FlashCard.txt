@@ -16,7 +16,7 @@ _	<= underscore
 echo $0			<= script itself
 echo $@ 		<= listing the arguments
 echo $#			<= total No. of arguments
-echo $?			<= shell exit code
+echo $?			<= shell exit status code
 echo $$			<= Current shell PID
 
 3. Back tic vs $()
@@ -29,8 +29,11 @@ $ echo $lsal
 
 4. Single and Double Quotes
 x=1
+$ echo $x		=> 1
 $ echo "$x"     => 1	<= outputs variable
+
 $ echo '$x'		=> $x   <= prints literally
+
 $ echo $x '$x' "$x"		<= 1  $x  1
 
 

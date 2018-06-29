@@ -1,0 +1,165 @@
+GitLab with CI/CD
+
+GitLab provides a broad set of functionality: 
+	- issue tracking 
+	- git repositories 
+	- continuous integration 
+	- container registry 
+	- deployment 
+	- monitoring 
+
+CI Runners 	<= The components that run the automated tests		
+			<= are the servers that check out the code and run automated tests to validate new changes
+
+CloudFlare DNS Record			
+https://gitlab.namcowireless.com
+root/Noza5571~~
+
+GitLab(CI/CD) Setup
+
+1. GitLab install on Ubuntu 16.04 
+
+-----------
+#! /bin/bash
+sudo apt-get update
+sudo apt-get install ca-certificates curl openssh-server postfix -y
+
+curl -LO https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh && sudo bash script.deb.sh
+# wgethttps://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh && sudo bash script.deb.sh
+
+sudo apt-get install gitlab-ce -y
+
+2. Firewall Setup(UFW  <- Uncomplicated Firewall, is a front-end to iptables) 
+https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server
+
+sudo ufw status
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw allow OpenSSH
+sudo ufw status
+
+3. Edit GitLab Config file
+$ sudo nano /etc/gitlab/gitlab.rb
+external_url 'https://gitlab.namcowireless.com'
+
+letsencrypt['enable'] = true
+letsencrypt['contact_emails'] = ['apark@bnga.com']
+
+Bug: https://gitlab.com/gitlab-org/gitlab-ce/issues/43719
+nginx['redirect_http_to_https'] = true
+nginx['redirect_http_to_https'] = 80
+
+
+
+$ gitlab-ctl reconfigure		
+Synchronizing Cookbooks:
+  - gitlab (0.0.1)
+  - postgresql (0.1.0)
+  - registry (0.1.0)
+  - mattermost (0.1.0)
+  - consul (0.0.0)
+  - gitaly (0.1.0)
+  - letsencrypt (0.1.0)
+  - nginx (0.1.0)
+  - runit (0.14.2)
+  - package (0.1.0)
+  - acme (3.1.0)
+  - crond (0.1.0)
+  - compat_resource (12.19.0)
+
+  
+$ sudo gitlab-ctl status |start service-name | restart
+run: alertmanager: (pid 15254) 71s; run: log: (pid 15266) 70s
+run: crond: (pid 15336) 69s; run: log: (pid 15332) 69s
+run: gitaly: (pid 15192) 72s; run: log: (pid 15201) 72s
+run: gitlab-monitor: (pid 15209) 72s; run: log: (pid 15226) 71s
+run: gitlab-workhorse: (pid 15172) 73s; run: log: (pid 15234) 71s
+run: logrotate: (pid 14568) 144s; run: log: (pid 15185) 72s
+run: nginx: (pid 14984) 99s; run: log: (pid 15235) 71s
+run: node-exporter: (pid 14783) 132s; run: log: (pid 15202) 72s
+run: postgres-exporter: (pid 15270) 70s; run: log: (pid 15277) 70s
+run: postgresql: (pid 14256) 215s; run: log: (pid 15212) 72s
+run: prometheus: (pid 15236) 71s; run: log: (pid 15245) 71s
+run: redis: (pid 14191) 221s; run: log: (pid 15211) 72s
+run: redis-exporter: (pid 14839) 119s; run: log: (pid 15227) 71s
+run: sidekiq: (pid 14503) 168s; run: log: (pid 15165) 73s
+run: unicorn: (pid 14465) 174s; run: log: (pid 15213) 72s
+
+$ sudo gitlab-ctl start service-name
+$ sudo gitlab-ctl restart
+
+$ sudo gitlab-ctl reconfigure
+
+### Free 'HTTPS' using Let's Encrypt ###
+https://www.youtube.com/watch?v=ksqTu7TX83g
+
+
+###############
+### Ansible ###
+###############
+https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-16-04
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install ansible
+sudo vi /etc/ansible/hosts
+-------------------------------------------
+[k8]
+k8_master    ansible_ssh_host=10.134.9.117  #
+k8_worker-01 ansible_ssh_host=10.134.24.77  #
+k8_worker-02 ansible_ssh_host=10.134.31.56  #
+-------------------------------------------
+# Setup Ansible connection 'user'
+$ sudo vi /etc/ansible/group_vars/servers
+-------------------------------------------
+ansible_ssh_user: root
+-------------------------------------------
+
+# Install Python on all Remote server before ping from Ansible.
+$ ssh root@10.134.9.117 apt-get install python -y
+$ ssh root@10.134.24.77 apt-get install python -y
+$ ssh root@10.134.31.56 apt-get install python -y
+
+$ ansible -m ping all 
+-------------------------------------------
+k8_worker-01 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+k8_master | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+k8_worker-02 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+-------------------------------------------
+
+$ ansible -m shell -a 'free -m' k8_master  <=remote hostname
+k8_master | SUCCESS | rc=0 >>
+              total        used        free      shared  buff/cache   available
+Mem:            992          50         498           3         443         785
+Swap:             0           0           0
+
+
+##################
+### Kubernetes ###
+##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

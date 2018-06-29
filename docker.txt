@@ -8,13 +8,31 @@ https://github.com/wsargent/docker-cheat-sheet
 https://docs.docker.com/engine/installation/linux/centos/
 https://docs.docker.com/engine/installation/linux/ubuntulinux/
 
-Definition
+### Definition ###
 docker engine		<= Hypervisor
 docker image        <= vm Template image
 docker container    <= Running VM
+docker tools		<= cli tools
+docker registry		<= image repository  e.g. Docker Hub or quay.io
+
+###  Docker Help ###
+$ docker
+$ docker help
+$ docker run  
+$ docker run  --help
+$ docker port --help
+$ docker ps
 
 
-### Docker log location
+### Permission ###
+$ sudo usermod -a -G docker ${USER}				<- from root
+completely log out of your account and log back in 
+	#check
+		$ grep ${USER} /etc/group
+		
+
+
+### Docker log location ###
 Ubuntu      	 - /var/log/upstart/docker.log
 Boot2Docker 	 - /var/log/docker.log
 Debian GNU/Linux - /var/log/daemon.log
@@ -151,10 +169,8 @@ $ docker network ls
 
 
 
-###  Docker CMDs ###
-$ docker help
-$ docker port --help
-$ docker ps
+
+
 
 
 
@@ -291,11 +307,15 @@ ubuntu              latest              45bc58500fa3        2 weeks ago         
 centos              latest              980e0e4c79ec        4 weeks ago         196.8 MB
 
 #######################################################################
-   <-cmd          <-image   <- app or process e.g. <= /usr/sbin/nginx 
-   v              v         v   
-$ docker run -it ubuntu   /bin/bash   		
-             ^
-			 i <- interactive(attach), t <- tty(login) 
+   v-cmd         v-image   v- app or process     e.g. <= /usr/sbin/nginx 
+                             
+$ docker exec -it ubuntu   /bin/bash   		
+$ docker run  -it ubuntu   /bin/bash   		
+									-i <- interactive(attach) 
+									-t <- tty(login) 
+									exec        Run a command in a RUNNING container
+									run         Run a command in a NEW container
+
 #######################################################################
 
 $ docker images
@@ -789,21 +809,81 @@ $ docker logs -f 43feac338895		<= -f is follow that runs from host
 #------------------------------------------------------------------------------------------------------
 ### Docker Volume
 #------------------------------------------------------------------------------------------------------
-
 # Docker container failed, but external volume saves the data
-# Decoupling data from containers and share
+# Decoupling data from containers and share         
 
-                  -v volume /mount name  
+$ docker volume create dockervolume				<= name can be Only lower cases
+$ docker volume rm	   dockervolume				
+				create      <= Create a volume
+				inspect     <= Display detailed information on one or more volumes
+				ls          <= List volumes
+				rm          <= Remove one or more volumes
+				prune       <= **Remove ALL** unused local volumes
+				
+$ docker volume create  dockervolume				
+$ docker volume inspect dockervolume
+----------------------------------------------------------------------------------------------
+[
+    {
+        "CreatedAt": "2018-04-13T17:27:55Z",
+        "Driver": "local",
+        "Labels": {},
+        "Mountpoint": "/var/lib/docker/volumes/dockervolume/_data",    #<= actual location of file
+        "Name": "dockervolume",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+----------------------------------------------------------------------------------------------				
 
-$ docker run -it -v /dockvol --name=ping ping /bin/bash
+### To persist of data(html folder), mount host htdocs(html) folder into a docker container web location
+Create a volume -> run a docker container with a volume -> Modify from container -> Persist in Volume
+Run a new docker container with persist volume
 
-# mount host dev folder into docker container web location
-$ docker run -p 80:80 -v /home/apark/web/:/var/www/html website
+1. create a volume name 'htdocs'
+$ docker create volume htdocs
 
+2. Run a 'web' Apache server docker container 
+$ docker run -p 80:80   --name web -d -v 	htdocs:/usr/local/apache2/htdocs httpd	<=Ubuntu-16
+# $ docker run -p 80:80 --name=web -dv 		htdocs:/usr/local/apache2/htdocs httpd	<=Ubuntu-16
+
+3. Edit container's 'index.html' file
+$ docker exec -it web /bin/bash
+	root@6c644af595f7:/usr/local/apache2#
+	echo '<h1>Hello from Container</h1>' > htdocs/index.html 
+	# echo '<h1>Hello from Container</h1>' | sudo tee htdocs/index.html > /dev/null
+	$ exit					#exit from container
+4. Check from Host 
+$ cat  /var/lib/docker/volumes/htdocs/_data/index.html
+	<h1>Test from Container</h1>
+$ curl localhost
+	<h1>Test from Container</h1>
+
+5. Delete and check the 'web' container
+$ docker rm -f web	
+$ docker ps
+
+6. Run a new container with Persist data volume 
+$ docker run -p 80:80   --name web -d -v dockervolume:/usr/local/apache2/htdocs httpd
+	5f6cbed50c327b3937a2622aa2dce7fd5219cf01730c6fd424c62418f6b3fdde
+$ root@BNEA-U16-D1:~# curl localhost
+	<h1>Test from Container</h1>
+
+----------------------------------------------------------------------------------------------
+	
+	
+$ docker volume ls
+$ docker run -p 80:80 --name web -d -v      htdocs/:/var/www/html website
+
+
+$ docker run -it -v /dockerVolume --name=ping ping /bin/bash
+$ docker run -it -v /dockerVolume --name ping ping /bin/bash
+										
+										-v  mounting volume name  
 
 root@c50b0860893f:/#ls -l
 
-drwxr-xr-x   2 root root 4096 Oct  6 02:13 dockvol           <= created when cmd run
+drwxr-xr-x   2 root root 4096 Oct  6 02:13 dockvol           <= created when docker cmd run
 
 
 ### 11 Docker Network

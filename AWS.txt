@@ -1,0 +1,92 @@
+AWS
+
+Region   Name	Region	Endpoint
+US East (N. Virginia)	us-east-1	
+US West (N. California)	us-west-1	
+US West (Oregon)	    us-west-2
+
+
+### Install and Configure AWS CLI ###
+https://devopsmates.com/install-configure-aws-cli-amazon-web-services-command-line-interface/
+yum install epel-release –y
+yum install python-pip –y
+pip install awscli
+pip install –upgrade awscli
+aws –version
+aws help
+
+### how to get Canonical ID ###
+$ aws s3api list-buckets
+{
+    "Owner": {
+        "DisplayName": "aws-gdpr",
+        "ID": "25c4bb815a498aa63ffee0cedfd35798858a12cc0897ef268fa0073ad729ef2e"  <= Canonical ID
+    },
+
+
+
+######################
+1. CloudTrail
+######################
+	a. CloudTrail Viewer Tool
+	https://github.com/githublemming/CloudTrailViewer/releases
+
+# Create a S3 bucket	
+$aws s3api create-bucket --bucket bnea-cloudtrail-bucket --region us-east-1
+{
+    "Location": "/bnea-cloudtrail-bucket"
+}
+
+# Create a Policy
+##############################################################################
+{
+	"Version": "2012-10-17",
+	"Statement": [{
+			"Sid": "AWSCloudTrailAclCheck20150319",
+			"Effect": "Allow",
+			"Principal": {
+				"Service": "cloudtrail.amazonaws.com"
+			},
+			"Action": "s3:GetBucketAcl",
+			"Resource": "arn:aws:s3:::bnga-cloudtrail-bucket"
+		},
+		{
+			"Sid": "AWSCloudTrailWrite20150319",
+			"Effect": "Allow",
+			"Principal": {
+				"Service": "cloudtrail.amazonaws.com"
+			},
+			"Action": "s3:PutObject",
+			"Resource": "arn:aws:s3:::bnea-cloudtrail-bucket/[optional prefix]/AWSLogs/myAccountID/*",
+			"Condition": {
+				"StringEquals": {
+					"s3:x-amz-acl": "bucket-owner-full-control"
+				}
+			}
+		}
+	]
+}
+##############################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -555,14 +555,22 @@ $ p4 -u jenkins login -a
 OSX: 
 ### How to start/stop/restart launchd services from the command line?
 https://serverfault.com/questions/194832/how-to-start-stop-restart-launchd-services-from-the-command-line
+https://stackoverflow.com/questions/6959327/how-to-stop-jenkins-installed-on-mac-snow-leopard
 
 ### From Mac OSX SHELL ###
-Start
+# SSH Start
 	$ sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist 
-Stop
+# SSH Stop
 	$ sudo launchctl unload  /System/Library/LaunchDaemons/ssh.plist 
 
-### From Web ###
+# Jenkins Start	
+$ sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist
+# Jenkins Stop
+$ sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist
+
+	
+	
+### Restart From Web command ###
 http://10.100.200.45:8080/restart
 Forces a restart without waiting for builds to complete.
 
@@ -570,7 +578,12 @@ http://10.100.200.45:8080/safeRestart
 Allows all running jobs to complete. New jobs will remain in the queue to run after the restart is complete
 	
 	
+### OSX Version Check from Shell
+$ sw_vers
 
+ProductName:    Mac OS X
+ProductVersion: 10.12.6
+BuildVersion:   16G29
 
 
 

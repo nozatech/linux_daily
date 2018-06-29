@@ -1,4 +1,5 @@
 적!자!생!존!
+
 ### Move
 	Ctrl+End			Bottom of page
 	Ctrl+Home			Top of page
@@ -6,6 +7,7 @@
 	Ctrl+Alt+Enter
 
 ### A 
+a great deal	<- extremely
 accommodate		<- (of physical space, especially a building) provide lodging or sufficient space for.
 					"the cabins accommodate up to 6 people"
 					synonyms:	lodge, house, put up, billet, quarter, board, take in, 
@@ -51,6 +53,11 @@ amass			<- gather together or accumulate (a large amount or number of valuable m
 					over a period of time.
 					synonyms:	gather, collect, assemble; More
 					antonyms:	dissipate
+amenity			<- a desirable or useful feature or facility of a building or place.
+					"heating is regarded as a basic amenity"
+					synonyms:	facility, service, convenience, resource, appliance, aid, 
+								comfort, benefit, feature, advantage
+					"basic amenities"
 amicably		<- in a friendly and peaceable manner.
 ample			<- [a] enough or more than enough; plentiful.
 					synonyms:	enough, sufficient, adequate, plenty of, more than enough, enough and to spare More
@@ -58,6 +65,9 @@ ample			<- [a] enough or more than enough; plentiful.
 annihilation	<- complete destruction or obliteration, t otal defeat.
 					"the threat of global annihilation"
 					total defeat.
+annotation		<- a note of explanation or comment added to a text or diagram.
+					synonyms:	note, notation, comment, gloss, footnote; More
+
 anticipate		<- regard as probable; expect or predict. 기대하다
 				   guess or be aware of (what will happen) and take action in order to be prepared.
 					"quicker than anticipated "
@@ -101,7 +111,8 @@ bar				<- fasten (something, especially a door or window) with a bar or bars.
 								"they have barred the door"
 					antonyms:	open, unlock
 
-
+baloney			<- foolish or deceptive talk; nonsense.
+					"typical salesman's baloney"
 
 barring			<- except for; if not for.
 					synonyms:	except for, with the exception of, excepting, in the absence of, 
@@ -146,6 +157,7 @@ bleak			<- [adj]
 bedside manner 	<- a doctor's approach or attitude toward a patient.
 bespoke			<- (of goods, especially clothing) made to order.
 					"a bespoke suit, a bespoke engine"
+blemish			<- a small mark or flaw that spoils the appearance of something.
 boggle 			<- (of a person or a person's mind) be astonished or overwhelmed when trying to imagine something.
 					"the 'mind boggles' at the spectacle"
 					synonyms:	marvel, wonder
@@ -202,6 +214,21 @@ clobber			<- hit (someone) hard.
 coffer			<- a strongbox or small chest for holding valuables.
 					synonyms:	strongbox, money box, cashbox, money chest, treasure chest, safe;
 commercing 		<- starting
+
+comply			<- [v] (of a person or group) act in accordance with a wish or command.
+					"we are unable to comply with your request"
+					synonyms:	abide by, observe, obey, adhere to, conform to, hew to, follow, respect
+
+compliance		<- [n]	the action or fact of complying with a wish or command.
+					"they must secure each other's cooperation or compliance"
+					synonyms:	obedience to, observance of, adherence to, conformity to, respect for
+					"compliance with international law"
+compliant		<- [Adj] inclined to agree with others or obey rules, especially to an excessive degree; acquiescent.
+					"good-humored, eagerly compliant girls"
+					synonyms:	acquiescent, amenable, biddable, tractable, complaisant, accommodating, cooperative
+					antonyms:	recalcitrant
+
+		
 comprise		<- consist of; be made up of.
 					"the country comprises twenty states"
 					synonyms:	consist of, be made up of, be composed of, contain, encompass, incorporate
@@ -220,6 +247,7 @@ conscientious 	<- [kὰnʃiénʃəs] 양심있는
 contention		<- heated disagreement.
 					synonyms:	disagreement, dispute, disputation, argument, discord, conflict, 
 								friction, strife, dissension, disharmony "a point of contention"
+								e.g. avoid resource contention
 					antonyms:	agreement
 
 contiguous		<- sharing a common border; touching. next or together in sequence.
@@ -253,7 +281,8 @@ deception		<- the action of deceiving someone.
 					synonyms:	deceit, deceitfulness, duplicity, double-dealing, fraud, cheating, trickery, 
 						chicanery, deviousness, slyness, wiliness, guile, bluff, lying, pretense, treachery; 
 defeat the purpose of 	<- to make (something) pointless
-dermatitis		<-  is a general term that describes an inflammation of the skin
+demographic		<- a particular sector of a population.
+dermatitis		<- is a general term that describes an inflammation of the skin
 atopic dermatitis(eczema 습진) <- (아토피 피부염)
 
 dereference		<- opposit of reference	
@@ -299,6 +328,10 @@ e.g				<- for expample
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
 embezzle		<- 횡령
 encompasses 	<- surround and have or hold within
+enlighten		<- give (someone) greater knowledge and understanding about a subject or situation.
+					"Christopher had not enlightened Frances as to their relationship"
+					synonyms:	inform, tell, make aware, open someone's eyes, notify, illuminate, 
+								apprise, brief, update, bring up to date; More
 enrage			<- make very angry.
 					"the students were enraged at these new rules"
 					synonyms:	anger, infuriate, incense, madden, inflame; More
@@ -306,16 +339,19 @@ enrage			<- make very angry.
 entice			<- attract or tempt by offering pleasure or advantage.
 					synonyms:	tempt, lure, allure, attract, appeal to; 유혹하다
 entitlements	<- the amount to which a person has a right.
+errand			<- a short journey undertaken in order to deliver or collect something, often on someone else's behalf.
+					"she asked Tim to run an errand for her"
+					synonyms:	task, job, chore, assignment; More
 eye stye		<- 눈다락지
 exalt			<- hold (someone or something) in very high regard; think or speak very highly of.
 					"the party will continue to exalt its hero"
 					synonyms:	extol, praise, acclaim, esteem; More
 					antonyms:	disparage, despise
-explicityly		<- clearly
+explicitly		<- clearly
 exploit			<- make full use of and derive benefit from (a resource).…을 (이익·영리를 위해) 이용하다
 					"500 companies sprang up to exploit this new technology"
 					synonyms:	utilize, harness, use, make use of, turn/put to good use, 
-							make the most of, capitalize on, benefit from; informalcash in on
+							make the most of, capitalize on, benefit from; informal cash in on
 						"we should exploit this new technology"
 
 
@@ -379,7 +415,12 @@ grasp			<- [n] a firm hold or grip.
 						…을 이해[파악]하다
 						synonyms: understand, comprehend, follow, take in, perceive, see, 
 									apprehend, assimilate, absorb; 
-
+gurgle			<- make a hollow bubbling sound like that made by water running out of a bottle.
+					"my stomach gurgled"
+					synonyms:	babble, burble, tinkle, bubble, ripple, murmur, purl, splash; literaryplash
+					"the water swirled and gurglED"
+									
+									
 ### H
 hardness of hearing <- 난청
 hard-nosed		<- realistic and determined; tough-minded. 
@@ -411,6 +452,9 @@ hypoxia			<- 저산소증
 
 ### I
 ideation 		<- 관념화 the formation of ideas or concepts.
+idiocy			<- extremely stupid behavior.
+					"the idiocy of decimating rainforests"
+					synonyms:	stupidity, folly, foolishness, foolhardiness, ignorance; More
 i.e.			<- in other words
 indie			<- (of a pop group, record label, or film company) not belonging to or affiliated 
 					with a major record or film company.
@@ -456,6 +500,9 @@ insight			<- the capacity to gain an accurate and deep intuitive understanding o
 					synonyms:	intuition, discernment, perception, awareness, understanding, comprehension, 
 						apprehension, appreciation, penetration, acumen, perspicacity, judgment, acuity; More
 in place of 	<- instead of
+intervene		<- [v] come between so as to prevent or alter a result or course of events.
+					"he acted outside his authority when he intervened in the dispute"
+intervention	<- [n]
 
 intimidate		<- frighten or overawe (someone), especially in order to make them do what one wants.
 					synonyms:	frighten, menace, terrify, scare, terrorize, cow, dragoon, subdue;
@@ -467,6 +514,7 @@ invocation		<- the action of invoking something or someone for assistance or as 
 					ex) application process invocation(호출	)
 invert			<- [v] put upside down or in the opposite position, order, or arrangement.
 intricacy		<- complicated, details, especially of an involved or perplexing subject.
+
 
 ### J
 jargon			<- special words or expressions that are used by a particular profession or group 
@@ -480,6 +528,7 @@ jump the gun	<= act before the proper time.
 jump the shark	<- Informal (of a television series or movie) reach a point at which far-fetched events are included 
 					merely for the sake of novelty, indicative of a decline in quality.
 					"unsuccessful gimmicks for promoting something"
+
 ### K
 keep the word 	<- To do as one has promised. 
 					"Tom always keeps his word, so if he promised to help you move, then he'll be here."
@@ -489,14 +538,24 @@ kink in my neck <- a stiffness in the neck, back, etc.; crick.
 					synonyms:	crick, stiffness, pinch, knot
 					"a kink in my neck" 목이 뻐근함
 knotty 			<- knotty wood 옹이 있는 목재
+kudos			<- praise and honor received for an achievement.
+					synonyms:	praise, glory, honor, status, standing, distinction, fame, celebrity;					
+					
 					
 ### L	
 lad				<- informal: a boy or young man (often as a form of address).
 					synonyms:	boy, schoolboy, youth, youngster, juvenile, stripling; informalkid, 
-								whippersnapper; derogatorybrat
+					whippersnapper; derogatorybrat
+leech			<- 1.One who constantly takes from others without giving anything in return. 
+				   2.One who constantly copies things from others, such as style, phrases, expressions, and actions.
+liaise			<- [v]리-애이즈 establish a working relationship, typically in order to cooperate on a matter of mutual concern.
+					"she will liaise with teachers across the country"
+					synonyms:	cooperate, work together, collaborate; More
+
 lieu			<- place; stead
 					in lieu of, in place of; instead of  
 					e.g. In lieu of the below mail, 
+
 loot			<- steal goods from (a place), typically during a war or riot.			
 lump			<- a compact mass of a substance, especially one without a definite or regular shape.
 					"there was a lump of ice floating in the milk"
@@ -570,8 +629,12 @@ obscurity		<- the state of being unknown, inconspicuous, or unimportant.
 					synonyms:	insignificance, inconspicuousness, unimportance, anonymity; More
 					antonyms:	fame
 
-
-
+omnibus			<- [adj] comprising several items.
+					"Congress passed an omnibus anticrime package"
+				<- [n] a volume containing several novels or other items previously published separately.
+					"an omnibus of her first trilogy(3부작)"
+					영화·드라마 등에서 몇 개의 독립된 짧은 이야기를 모아 하나의 작품으로 만든 것
+		
 
 ### P
 palindrome 		<- a word that reads same forwards or backwards
@@ -650,7 +713,7 @@ prospect		<- the possibility or likelihood of some future event occurring.
 					synonyms:	likelihood, hope, expectation, anticipation, (good/poor) chance, odds, 
 							probability, possibility, promise; More
 
-							
+prorate			<- 	(…을) 비례 계산(하여 산출)하다						
 							
 ### Q
 quirk			<- 변덕 	e.g. by a quirk of fate 운명의 장난으로
@@ -659,6 +722,7 @@ quirk			<- 변덕 	e.g. by a quirk of fate 운명의 장난으로
 
 					
 ### R
+rake			<- garden rake (갈퀴)
 rampage			<- [Verb](especially of a large group of people) rush around in a violent and uncontrollable manner.
 					"several thousand demonstrators rampaged through the city"
 					synonyms:	riot, run riot, go on the rampage, run amok, go berserk; More
@@ -687,7 +751,7 @@ reassemble		<- (of a group) gather together again.
 						"the trucks had to be reassembled on arrival"
 refrain			<- stop oneself from doing something.(자제하다)
 resonance		<- 울림, 공진
-relator			<-  a person who brings a public lawsuit, typically in the name of the 고발자,
+relator			<-  a person who brings a public lawsuit, typically in the name of the (고발자),
 				   attorney general, regarding the abuse of an office or franchise.
 relinquish 		<- give up
 repercussions	<- an unintended consequence occurring some time after an event or action, 
@@ -698,8 +762,19 @@ repercussions	<- an unintended consequence occurring some time after an event or
 resilient		<- (of a person or animal) able to withstand or recover quickly from difficult conditions.
 					"babies are generally far more resilient than new parents realize"
 					synonyms:	strong, tough, hardy; 
+rhetoric		<- the art of effective or persuasive speaking or writing, especially the use of figures 
+					of speech and other compositional techniques.
+					synonyms:	oratory, eloquence, command of language, way with words
+					"a form of rhetoric"
+				<- language designed to have a persuasive or impressive effect on its audience, 
+					but often regarded as lacking in sincerity or meaningful content.
+					"all we have from the opposition is empty rhetoric"
+					synonyms:	bombast, turgidity, grandiloquence, magniloquence, pomposity, extravagant language, 
+
+
+
 retroactive  	<- (especially of legislation) taking effect from a particular date in time
-					소급이란 '현재 생겨난 규정을 그 규정이 없었던 과거 시절의 사실에도 적용시킴.'
+					소급이란 '현재 생겨난 규정을 그 규정이 없었던 과거 시절의 사실에도 적용시킴'
 retrospect		<- a survey or review of a past course of events or period of time.
 retrospective   <- looking back on or dealing with past events or situations. 회고의,
 rig				<- manage or conduct (something) fraudulently so as to produce a result or situation 
@@ -709,7 +784,13 @@ rig				<- manage or conduct (something) fraudulently so as to produce a result o
 rout			<- a disorderly retreat of defeated troops(패주시키다)
 					"the retreat degenerated into a rout"
 					synonyms:	retreat, flight
-rudimentray		<- involving or limited to basic principles.
+rudimentary		<- involving or limited to basic principles.(초보, 기본, 미발달,미숙한)
+					synonyms:	basic, elementary, primary, fundamental, essential
+					"rudimentary carpentry skills"
+				<- relating to an immature, undeveloped, or basic form.
+					"a rudimentary stage of evolution"
+					synonyms:	primitive, crude, simple, unsophisticated, rough, rough and ready, makeshift
+
 revelation		<- a surprising and previously unknown fact, especially one that is made known in a dramatic way
 					폭로, 적발, synonyms:	disclosure, surprising fact, announcement, report;				   
 
@@ -861,7 +942,7 @@ toggle			<- a short rod of wood or plastic sewn to one side of a coat or other g
 					e.g. Toggle line numbers
 tongue in cheek <- without really meaning what one is saying or writing.
 trivial 		<- 	of little value or importance.
-					"huge fines were imposed for trivial offenses"
+					"huge fines were imposed for trivial offences"
 					synonyms:	unimportant, banal, trite, commonplace, insignificant, 
 								inconsequential, minor, of no account, of no consequence, of no importance; More
 					antonyms:	important, significant, life-and-death
@@ -877,9 +958,9 @@ veteran			<- (베테랑)a person who has had long experience in a particular fie
 vet				<- make a careful and critical examination of (something).
 vetted				"proposals for vetting large takeover bids"  
 					synonyms:	check, examine, scrutinize, investigate, inspect, look over,
-								screen, assess, evaluate, appraise; informalcheck out
+								screen, assess, evaluate, appraise; informal check out
 vigilant		<- [adj]keeping careful watch for possible danger or difficulties.
-
+					"Owners should be vigilant about.."
 
 
 					
@@ -909,6 +990,13 @@ whimsical		<- 변덕스러운
 ### U
 ugh				<- used to express disgust or horror.
 					"Ugh! What's this disgusting object?"
+underlying		<- gerund or present participle: underlying
+					(especially of a layer of rock or soil) lie or be situated under (something).
+					be the cause or basis of (something).
+					"the fundamental issue that underlies the conflict"
+					synonyms: fundamental, basic, primary, prime, central, principal, root, 
+								chief, cardinal, key, elementary, intrinsic, essential
+"the underlying aims of the research"
 uptake			<- the action of taking up or making use of something that is available.
 					"a recent uptake in cigar smoking"
 					 "Vitamin C increases your 'uptake of' minerals such as iron." <- 섭취
@@ -1375,3 +1463,85 @@ Wouldn't be caught dead:
 	Would never like to do something
 Your guess is as good as mine:
 	To have no idea, do not know the answer to a question
+	
+	###############################
+#############################################################################################	
+Word	Alternate		Translation			Example						Meaning
+#############################################################################################
+aah!	aaah, aaaahh	"Help!"			"Aaaah! It's eating my leg!"	Fright, shock. Sometimes it means "ahh" instead.
+aha		a-ha			"I understand"	"Aha! So you took the money!"	Understanding, triumph (can also be used as "ahh")
+ahem					"Attention, please!"	"Ahem! Swearing is against office policy."	The sound of clearing one's throat. Used to get someone's attention, especially if they don't know (or apparently forgot) that you're there.
+ahh		ahhh, ohh		"Ok, I see"		"Ahh, yes, I understand now"	Realisation, understanding. Sometimes it means "aaah" or "eh" instead.
+ahh		ahhh..			"So relaxing"	"Ahh... This hot tub is amazing"	Relief or relaxation
+argh	augh			"Damn!"			"Argh, the car won't work!"	Annoyance, anger, frustration
+aww		aw, awww		"How sweet!"	"Aww, what an adorable puppy"	Shows sentimental approval (also see next entry)
+aww		aw, ohh, ahh	"That's too bad"	"Aww, it hit him right in the nuts!"	Feeling sorry or pity for someone
+aw		oh				"Come on!"		"Aw, don't be like that!"	Mild disappointment or protest
+bah						"Whatever"		"Bah, I never liked him anyways."	Dismissive, annoyed
+blah
+boo		booh			"That's bad"	"Boo, get off the stage!"	Disapproval, contempt
+boo!	booh!			"Scared you!"	I jumped out from the closet and yelled "boo!"	A noise used to scare people by surprise
+boo-hoo	boohoo			"I'm crying!"	Your internet is slow? Boo-hoo, how sad for you.	Used, often sarcastically, to imitate crying.
+brr		brrrr			"It's cold"		"Brrr, it's -20C outside"	Being cold, shivering
+d'oh	doh				"That was stupid/bad!"	"I just deleted all my files. D'oh!"	Homer Simpson's catchphrase when something bad happens.
+duh						"That's dumb"	"Duh, you didn't plug it in."	Expresses annoyance over something stupid or obvious
+eek		eeeek			"Help!"			"Eeek, a mouse!"				Girly scream. Surprised, scared.
+eep		"Oh no!"		"Eep! I didn't mean to say that!"	Surprise (female)
+eh?		huh?			"What?"			"Eh? I didn't hear what you said."	Misunderstanding. Also see "eh?" below
+eh?		huh?, eyh?		"Is that right?"	"So she dumped you, eh?"	Stereotypically overused by Canadians
+eww		ugh, ewww, yuck, ick	"Disgusting"	"Ewww, this apple is rotten"	Disgust, dislike
+fuff					"Bullshit"		"Oh fuff, you don't know what you're talking about!"	Contempt and disregard
+gah						"This is hopeless"	"Gah, I give up"		Exasperation and despair
+gee						"Really?"		"Gee, that's super!"		Surprise, enthusiasm, or just general emphasis.
+grr		grrrr			"I'm angry"		"Grrr, I'll kick his ass"	Anger, snarling, growling. Often used for dogs and other animals.
+hmm		hm, hmmmm		"I wonder"		"Hmm, I'm not sure about that"	Thinking, hesitation.
+humph	harumph			"I don't like this"	"There are kids on my lawn again, humph!"	A snort, to express dislike, disbelief or annoyance.
+hah		heh				"Funny."		"Heh, that's clever"	The first syllable of "hahaha", when something is just a little funny
+haha	hehe, bahaha	"Funny!"	"Haha, that's hilarious!"	Regular laughter.
+huh						"Really?"	"Huh, you were right"	Mild, indifferent surprise
+hurrah	hooray, huzzah	"Let's celebrate!"	"Hurrah, we won!"	Generic exclaimation of joy
+ick		yuck, ich, yak	"Disgusting"	"Ick, this milk has gone bad"	Disgust, dislike
+meh						eh				"I don't know"	"Meh, whatever you think is best"	Indifference
+mhm		mmhm, uh-hu		"Yes"	"Do you think so too?" "Mhm"	Agreement, acknowledgement.
+mm		mmm, mmh		"Lovely"		"Mmm, this ice cream is delicious"	Pleasure. Sometimes it means "hmm" instead.
+muahaha	mwahaha, bwahaha	"I'm so evil!"	"I switched the sugar and the salt! Muahaha!"	Evil villain's triumphant laugh
+mwah	m-wah			"Kiss!"			"Thanks, you're so sweet! Mwah!"	The sound of blowing a kiss
+nah						"No"			"Want another beer?" "Nah, I'm good"	Informal no
+nuh-uh	nuh-hu, nu-huh	"No, it isn't!"/"Did not!"	"I hit you!" "Nuh-uh!" "Yuh-uh!" "Nuh-uh!"	Childish negation or refusal
+oh						"I see"			"Oh, you wanted sugar, not milk."	Realisation
+ooh-la-la	oh-lala		"Fancy!"		"A seven layer wedding cake? Ooh-la-la!"	An often ironic (or just funny) way indicating that something is fancy or high class
+ooh		oooh			"Wonderful!"	"Oooh, it's shiny!"	Wonder, amazement (ohhh can also mean ahhh)
+oomph	umph			"I'm exerting myself"	"Push on 3.. 1, 2, 3.. oomph!"	A grunt made on sudden exertion. Also used as a noun to mean "power" or "energy" ("This song needs more oomph!")
+oops					"I didn't mean to do that"	"Oops, I knocked your cup over"	Being surprised at or acknowledging your own mistakes
+ouch	ow, ouch, yeow	"That hurts"	"Ouch, I hit my thumb"	Expression of pain
+oww		oww, ouch, yeow	"That hurts"	"Oww, I hit my thumb"	Expression of pain
+oy		oi, oyh			"Hey, you!"	"Oy! You forgot your wallet!"	Mainly British: Used to get someone's attention, similar to "hey!". Also used disapprovingly ("Oy, you spilled your drink all over me!").
+oy		oy vay			"Oh no..."	"The bills are biling up. Oy..."	Mainly Jewish: Used to express self-pity, similar to "woe is me!"
+pew		pee-yew			"It stinks!"	"Pew, that smells so gross!"	Used for foul odors
+pff		pffh, pssh, pfft	"That's nothing"	"Pff, I once caught a fish twice that size"	Unimpressed
+phew	whew			"That was close!"	"I didn't do my homework, but the teacher didn't check. Phew!"	Expressing relief/or a feeling of being very hot or tired.
+psst		Whispering  "Hey, you!"	"Psst. Let's skip the next class!"	Used to quietly get someone's attention, often to tell them a secret.
+sheesh	jeez			"I can't believe this!"	"Sheesh, now he's drunk again"	Exasperation, annoyance (corruption of "Jesus")
+shh		hush, shush		"Be quiet"	"Shh, I'm trying to hear what they're saying!"	Used to make someone be quiet
+shoo					"Go away"	"Get out of here! Shoo!"	Used to drive away animals or small children
+tsk-tsk	tut-tut			"Disappointing"	"Tsk-tsk, he is late for work again"	disappointment, contempt (this is a clicking sound. Clip from Futurama)
+uh-huh	mhm, uh-hu		"Yes"			"Do you think so too?" "Uh-hu"	Agreement, acknowledgement (easily confused with uh-uh)
+uh-oh	oh-oh			"Oh no!"		"Uh-oh, I think the bear is inside the house"	Concerned for indications that something will happen
+uh-uh	unh-unh, unh-uh	"No"	"Eat your spinach!" "Uh-uh!"	Refusal, especially if your mouth is full or if you refuse to open it (easily confused with uh-huh)
+uhh		uhm, err		"Wait, I'm thinking"	"Seven times eight is... uhh... 56"	Indicates a pause in, rather than the end of, a sentence
+umm		uhh, ummm		"I'm hesitant"	"Umm.. Do you really think that's wise?"	Being hesitant or skeptical (usually interchangable with "uhh" above)
+waah	waaaaah			"I'm crying!"	"I don't want you to go! Waaah!"	Used, often sarcastically, for imitating crying or whining.
+wee		whee, weee		"This is fun!"	"Weee! Faster!"	Used by children when doing something fun, and often ironically by adults when something is fun but childish
+whoa					"Hold on."	"Whoa, take it easy!"	Can be used to suggest caution as in here, and also stereotypically used by marijuana smokers to express dumbfounded amazement ("whoa, look at the colors!"). Originally a sound used to make horses stop.
+wow						"Amazing!"	"Wow, that's incredible!"	Impressed, astonished
+yahoo	yippie			"Let's celebrate!"	"Yippie! We won!"	Generic exclaimation of joy
+yay						"Yes!"	"Yay! We won!"	All-purpose cheer. Approval, congratulations and triumph
+yeah	yeeeeaah!		"Yes!"	"Yeeeaah! Kick his butt!"	Common slang for "yes", sometimes also used as an interjection.
+yee-haw	yeehaw			"I'm excited!"	"Let's gather some cattle! Yee-haw!"	Much like "yahoo", but almost always associated with cowboys.
+yikes					"That's a bad surprise."	"I found out I owed $5000 in back taxes. Yikes!"	Fear and alarm.
+yoo-hoo	yoohoo			"Hey you!"	"Yoo-hoo, sugercup! Come give me a hug!"	The often ironic/comical, seductive call of a woman to get someone's attention
+yuh-uh	yuh-hu, yu-huh	"Yes, it is!"/"Did so!"	"I hit you!" "Nuh-uh!" "Yuh-uh!" "Nuh-uh!" ...	Childish affirmation, often used to counter "nuh-uh!" (not to be confused with yoo-hoo).
+yuck	ick, ich, blech, bleh, eww, ugh	"Disgusting!"	"Yuck, I wouldn't want to touch that"	Disgust, dislike
+zing	ba-dum-tss, badum tish	"Haha, well said!"	"You're so stupid, you'd trip over a wireless phone!" "Zing!"	Used (often ironically) to punctuate a punchline or witty comeback. From the sound of a rimshot, played after punchlines in some comedy acts.
+
+
