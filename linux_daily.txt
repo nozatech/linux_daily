@@ -2,11 +2,11 @@
 1.역사-역사의식 책임, 2.문화-감성, 3.경영-논리, 4.철학-생각에 방법, 5.사회학 인간학-인간 관계
 
 ### Drucker's 5 Questions ###
-1. What is our mission?
-2. Who is our customers?
-3. What does the customer value?
+1. What is  our mission?
+2. Who  is  our customers?
+3. What is  the customer value?
 4. What are our result?
-5. What is our plan?
+5. What is  our plan?
 
 ---------------------------------------
 ### Windows CMD kill process
@@ -50,6 +50,7 @@ Settings > Short cut Mapper Menu.
 ---------------------------------------
 ### Chrome ###
 ---------------------------------------
+Clean Cache - a hard refresh of the page (ctrl+shift+R)
 Plugins install
 	# Revolver <- Rotate Tabs
 	# AdBlock
@@ -183,6 +184,13 @@ echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc					<= Ignore list
 echo 'export HISTTIMEFORMAT="%F > "' >> ~/.bashrc							<= History time stamp(man date)
 echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
 ###
+
+### Bash Log Out Message
+	
+	$ vi ~/.bash_logout			<= user account
+		echo "You are logging out! GoodBye ^^*
+	$ vi /etc/bash.bashrc
+
 
 ### History with time stamp
 	export into ~/.bash_profile as well as /root/.bash_profile
@@ -1392,7 +1400,7 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	curl -s http://127.0.0.1:4567/clients | jq .   	<= -s slient 
 	
 ----------------------------------------------------------------------------------------------------	
-### cURL  
+### cURL   ### 
 	Testing on REST API
 	A. Content of the URL and display it in the STDOUT (i.e on your terminal)
 		$ curl http://www.centos.org
@@ -1457,6 +1465,7 @@ Delete
 	
 ----------------------------------------------------------------------------------------------------
 ### curl can download or upload through any protocol, http, ftp, sftp, scp, ldap, telnet
+https://curl.haxx.se/docs/httpscripting.html
 
 curl 					www.yahoo.com -o output.html
 curl -O 				www.yahoo.com/index.html
@@ -2314,8 +2323,10 @@ H 2 * * *				<= Every 2am
 	$ crontab -u user_id -e					<= edit
 	
 	### Finding cron job list for all users ###
-	$ for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done
-		
+	####################################################################################
+	###   $ for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done     ###
+	####################################################################################
+	
 	# permission issue
 	$ sudo "for user in $(cut -f1 -d: /etc/passwd); do echo $user; crontab -u $user -l; done"
 
@@ -3550,10 +3561,11 @@ Traceroute, Ping, and MTR
 		can become the target service account as needed. >>>
 
 
-45. Wall & message					<= messaging to users within system 				
+45. messaging and anouncement
+	#1. Wall 	<= messaging to everybody
 	$echo testing > wall.txt
-	$wall wall.txt
-		Broadcast Message from noza@fm
+	$wall wall.txt					
+		Broadcast Message from noza
 			(/dev/pts/1) at 19:46 ...
 		testing
 	
@@ -3561,8 +3573,15 @@ Traceroute, Ping, and MTR
 		Broadcast Message from noza@fm
 			(/dev/pts/1) at 19:47 ...
 		Please log out
-
-
+	#2. write — send a message to another user
+		$ write <user> 
+		  Some text goes here
+		  Ctrl+D (EOF)
+		$ echo "Some text goes here" | write <user>
+	#3. mesg - Control if (non-root) users can send messages to your terminal.
+	#4. talk - Talk with other logged in users.
+	
+	
 ### REDHAT ENT Linux Init Systems ###
 Date		| 	Init Systems
 ---------------------------
@@ -3684,7 +3703,8 @@ journalctl - Query the systemd journal
 
 	$ journalctl --since "10 min ago"
 
-#
+NignX Status page 
+# nginx -V 2>&1| grep -o http_stub_status_module
 
 	
 
@@ -5030,6 +5050,7 @@ two cases:
 	###Install lsb_release on CentOS7
 	$ yum provides */lsb_release			
 	$ yum install redhat-lsb 
+	$ yum install redhat-lsb-core
 	$ lsb_release -a
    
 
@@ -5037,7 +5058,7 @@ two cases:
 	When you install sw and got a message saying that "xxx requires xxx library and xxx are missing."
 	Then run 'yum provides "xxx"' to check dependencies.
 	
-	$lsb_release -a						<= lsb <-Linux Standard Release
+	$ lsb_release -a						<= lsb <-Linux Standard Release
 		No LSB modules are available.
 		Distributor ID: Ubuntu
 		Description:    Ubuntu 16.04.4 LTS
@@ -5186,7 +5207,7 @@ two cases:
 	####
 	$ echo 'fs.inotify.max_user_watches=100000' | sudo tee -a /etc/sysctl.conf; 			<=tee -a(append)
 	$ sudo sysctl -p
-	####
+	####06
 	
 	https://help.ubuntu.com/community/RootSudo
 	$ ls | sudo tee -a /root/somefile 
@@ -5195,6 +5216,26 @@ two cases:
 	$ sudo sh -c "ls > /root/somefile"
 	#-----------------------------------------------------------------------------------------------------
 
+	### is my ulimit exceeded?
+	Under high load it happens from time to time that network connections fail although everything they work 
+	perfectly under low load. The reason be the ulimit set on a process. A ulimit restricts the process from 
+	opening up more files (and network connections) than a certain number.
+	http://www.linuxintro.org/wiki/Is_my_ulimit_exceeded
+	$ ulimit -a
+	
+	$ You can permanently set the limits in /etc/security/limits.conf
+	# to check
+	$ ulimit -n 
+		1024  			<= default max file open value
+	$ ps -A (or -e)  select All processes
+	  PID TTY          TIME CMD
+		1 ?        00:00:10 systemd
+		2 ?        00:00:00 kthreadd
+
+	
+	
+	
+	
 ### AWS Access Key/ Secret key
 	
 	/home/ubuntu/jarvis/ami/tcg/production/
@@ -5209,7 +5250,7 @@ two cases:
     $ sudo sh -c "cd /home ; du -s * | sort -rn > diskUsage"   <= diskUsage file located in /home
 	
 	
-#### UBUNTU  ###	
+#### Ubuntu  ###	
 http://stackoverflow.com/questions/21515463/how-to-increase-maximum-file-open-limit-ulimit-in-ubuntu
 
 echo "* soft nofile 102400" > /etc/security/limits.d/*_limits.conf && \
@@ -5735,6 +5776,11 @@ Regular Expression Examples
 Note the use of ( ) with the pipe symbol to specify the 'or' condition
 /[0-9]*/	Matches if there are zero or more numbers in the line
 /^[^#]/	Matches if the first character is not a # in the line
+
+
+IP Regular Expression
+http://www.analyticsmarket.com/freetools/ipregex
+
 ------------------------------------------------------------------------------------------------------------
 Notes:
 1. Regular expressions are case sensitive
@@ -6183,7 +6229,8 @@ rmdir "c:/temp/1" /s/q
 ### Memcache  ##################################################################################################
 ################################################################################################################
 
-$ watch -n1 'memcached-tool localhost stats'
+$ watch -n1  'memcached-tool localhost stats'     <= number of time 1 sec
+$ watch -n 1 'memcached-tool localhost stats'
 
 
 
@@ -7317,7 +7364,73 @@ If the victim is a normal user, a successful CSRF attack can force the user to p
 requests like transferring funds, changing their email address, and so forth. If the victim is an 
 administrative account, CSRF can compromise the entire web application.
 	
+
+
+What is HTTPS?
+HTTPS is HTTP over a connection secured by TLS(used to be called SSL)
+	<= HTTP wraped over TLS encryped  connection	
+
+
+### Web site 'Random' unavailable error 
+nginx (lb) -> Apache(WWW) -> MySQL9DB)
+
+$ cat /var/log/messages		(CentOS)
+$ cat /var/log/syslog     	(Ubuntu)
+------------------------------------------------------------------------------
+### Problem: Nginx LB server is dropping packets in OS Kernel level.
+#Jul 10 02:27:54 nlt-lb-01 kernel: nf_conntrack: table full, dropping packet
+#.....
+#Jul 10 02:27:54 nlt-lb-01 kernel: nf_conntrack: table full, dropping packet
+#Jul 10 02:27:59 nlt-lb-01 kernel: net_ratelimit: 169 callbacks suppressed
+------------------------------------------------------------------------------
+
+After installed the IPTABLES, all netfilter related values are installed and set!
+# checking 'nf_conntrack_max' value
+$ cat /proc/sys/net/netfilter/nf_conntrack_max
+	262144
+	
+$ /sbin/sysctl net.netfilter.nf_conntrack_max		<= What is max set?
+$ /sbin/sysctl net.netfilter.nf_conntrack_count		<= what is CURRENT Count?
+
+
+# sysctl <= configure kernel parameters at runtime
+$ sysctl -a | grep netfilter
+$ sysctl -a | grep conntrack
+$ sysctl --names --all | grep -i conntrack
+
+# 
+
+### Increase the MAX connection issue 'kernel: nf_conntrack: table full, dropping packet"
+https://www.kernel.org/doc/Documentation/networking/nf_conntrack-sysctl.txt
+http://antmeetspenguin.blogspot.com/2011/01/high-performance-linux-router.html
+
+$vi /etc/sysctl.conf	
+	net.netfilter.nf_conntrack_max = 500000   <= add a VAR and value 
+
+$ /sbin/sysctl -p(or -f)    <= reload
+
+
+## check again
+$ sysctl -a | grep netfilter
+$ sysctl -a | grep conntrack
+
+net.netfilter.nf_conntrack_max = 500000   <- increase from 262144 to 500000
+	
+### Increase the Hash-Table Size	
+$ cat /sys/module/nf_conntrack/parameters/hashsize
+	65536				<= It should be Max(5000000)/8 = 62,500
 	
 	
 	
+	
+	
+EXAMPLES
+       /sbin/sysctl -a
+       /sbin/sysctl -n kernel.hostname
+       /sbin/sysctl -w kernel.domainname="example.com"
+       /sbin/sysctl -p/etc/sysctl.conf
+       /sbin/sysctl -a --pattern forward
+       /sbin/sysctl -a --pattern forward$
+       /sbin/sysctl -a --pattern 'net.ipv4.conf.(eth|wlan)0.arp'
+       /sbin/sysctl --system --pattern '^net.ipv6'
 	
