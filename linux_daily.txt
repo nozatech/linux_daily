@@ -1,5 +1,6 @@
 아무리 바빠도 해야할 일 - 책, && 돈이 많아도 하지 말아야 할일 -도박, 마약
 1.역사-역사의식 책임, 2.문화-감성, 3.경영-논리, 4.철학-생각에 방법, 5.사회학 인간학-인간 관계
+2. 얼마나 아는가 보다  어떻게 실행하는가?
 
 ### Drucker's 5 Questions ###
 1. What is  our mission?
@@ -7351,7 +7352,7 @@ is important to consider in exception handling and thread executions.
 	
 	
 	
-	
+------------------------------------------------------------------------------	
 Cross-Site Request Forgery (CSRF)
 https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)	
 Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web 
@@ -7365,12 +7366,14 @@ requests like transferring funds, changing their email address, and so forth. If
 administrative account, CSRF can compromise the entire web application.
 	
 
-
+------------------------------------------------------------------------------
 What is HTTPS?
 HTTPS is HTTP over a connection secured by TLS(used to be called SSL)
 	<= HTTP wraped over TLS encryped  connection	
 
-
+	   
+	   
+------------------------------------------------------------------------------
 ### Web site 'Random' unavailable error 
 nginx (lb) -> Apache(WWW) -> MySQL9DB)
 
@@ -7385,12 +7388,19 @@ $ cat /var/log/syslog     	(Ubuntu)
 ------------------------------------------------------------------------------
 
 After installed the IPTABLES, all netfilter related values are installed and set!
-# checking 'nf_conntrack_max' value
+
+## what is CURRENT Count?
+$ /sbin/sysctl    net.netfilter.nf_conntrack_count	
+$ /sbin/sysctl -a | grep netfilter | grep count
+	31774	
+$ cat /proc/sys/net/netfilter/nf_conntrack_count
+
+
+## What is CURRENT 'nf_conntrack_max' value
 $ cat /proc/sys/net/netfilter/nf_conntrack_max
 	262144
-	
-$ /sbin/sysctl net.netfilter.nf_conntrack_max		<= What is max set?
-$ /sbin/sysctl net.netfilter.nf_conntrack_count		<= what is CURRENT Count?
+$ /sbin/sysctl net.netfilter.nf_conntrack_max		
+	262144
 
 
 # sysctl <= configure kernel parameters at runtime
@@ -7407,24 +7417,27 @@ http://antmeetspenguin.blogspot.com/2011/01/high-performance-linux-router.html
 $vi /etc/sysctl.conf	
 	net.netfilter.nf_conntrack_max = 500000   <= add a VAR and value 
 
-$ /sbin/sysctl -p(or -f)    <= reload
+$ /sbin/sysctl -p  (or -f)    <= reload
 
 
-## check again
-$ sysctl -a | grep netfilter
-$ sysctl -a | grep conntrack
+## check again for "net.netfilter.nf_conntrack_max"
+$ sysctl -a | grep netfilter | grep max
+$ sysctl -a | grep conntrack | grep max
 
 net.netfilter.nf_conntrack_max = 500000   <- increase from 262144 to 500000
 	
-### Increase the Hash-Table Size	
+### Increase the "Hash-Table" Size	
 $ cat /sys/module/nf_conntrack/parameters/hashsize
-	65536				<= It should be Max(5000000)/8 = 62,500
+	65536				<= It should be around Max(5000000)/8 = 62500
 	
 	
 	
+### you can store about 32 times more conntrack entries than the default,	###
+### and get better performance for conntrack entry access.					###
 	
 	
-EXAMPLES
+------------------------------------------------------------------------------
+# sysctl examples
        /sbin/sysctl -a
        /sbin/sysctl -n kernel.hostname
        /sbin/sysctl -w kernel.domainname="example.com"
@@ -7433,4 +7446,68 @@ EXAMPLES
        /sbin/sysctl -a --pattern forward$
        /sbin/sysctl -a --pattern 'net.ipv4.conf.(eth|wlan)0.arp'
        /sbin/sysctl --system --pattern '^net.ipv6'
+------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	   
+	   
+	   
+	   
+	   
 	

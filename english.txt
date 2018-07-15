@@ -546,6 +546,12 @@ kudos			<- praise and honor received for an achievement.
 lad				<- informal: a boy or young man (often as a form of address).
 					synonyms:	boy, schoolboy, youth, youngster, juvenile, stripling; informalkid, 
 					whippersnapper; derogatorybrat
+lean 			<- [v] be in or move into a sloping position.
+					"he leaned back in his chair"
+					synonyms:	slant, incline, bend, tilt, be at an angle, slope, tip, list
+					"trees leaning in the wind"
+					[n] a deviation from the perpendicular; an inclination.
+					"the vehicle has a definite lean to the left"
 leech			<- 1.One who constantly takes from others without giving anything in return. 
 				   2.One who constantly copies things from others, such as style, phrases, expressions, and actions.
 liaise			<- [v]리-애이즈 establish a working relationship, typically in order to cooperate on a matter of mutual concern.
@@ -834,7 +840,7 @@ sliver			<- [none] a small, thin, narrow piece of something cut or split off a l
 									shaving, paring, piece, fragment
 "slivers of glass"				
 shortcomings	<- a fault or failure(flaw) to meet a certain standard, typically in a person's character, 
-				a plan, or a system.
+				a plan, or a system.(단점)
 					"he is so forthright about his shortcomings, it's hard to chastise him"
 					synonyms:	defect, fault, flaw, imperfection, deficiency, limitation, failing, drawback, 
 								weakness, weak point, foible, frailty, vice
