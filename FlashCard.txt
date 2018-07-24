@@ -11,6 +11,13 @@ _	<= underscore
 *	<= asterisk
 ~ 	<= tilde
 
+() 	<= Tuple
+[]	<= List
+{}	<= Dictionary
+
+SNS	<= Social Networking Service 
+SMS	<= Short Message Service (Text Message)
+MMS	<= Media Message Service (Video Message)
 
 2. ParameterS
 echo $0			<= script itself
@@ -31,9 +38,7 @@ $ echo $lsal
 x=1
 $ echo $x		=> 1
 $ echo "$x"     => 1	<= outputs variable
-
 $ echo '$x'		=> $x   <= prints literally
-
 $ echo $x '$x' "$x"		<= 1  $x  1
 
 

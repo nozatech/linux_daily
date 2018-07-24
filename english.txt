@@ -280,8 +280,17 @@ deception		<- the action of deceiving someone.
 					"obtaining property by deception"
 					synonyms:	deceit, deceitfulness, duplicity, double-dealing, fraud, cheating, trickery, 
 						chicanery, deviousness, slyness, wiliness, guile, bluff, lying, pretense, treachery; 
-defeat the purpose of 	<- to make (something) pointless
+						defeat the purpose of 	<- to make (something) pointless
+deed			<-  1.literary: an action that is performed intentionally or consciously.
+					"doing good deeds"
+					synonyms:	act, action
+					2.a legal document that is signed and delivered, especially one regarding the ownership 
+					of property or legal rights.
+					synonyms:	legal document, contract, indenture, instrument
+						"a deed to the property"
+
 demographic		<- a particular sector of a population.
+
 dermatitis		<- is a general term that describes an inflammation of the skin
 atopic dermatitis(eczema 습진) <- (아토피 피부염)
 
@@ -719,7 +728,12 @@ prospect		<- the possibility or likelihood of some future event occurring.
 					synonyms:	likelihood, hope, expectation, anticipation, (good/poor) chance, odds, 
 							probability, possibility, promise; More
 
-prorate			<- 	(…을) 비례 계산(하여 산출)하다						
+prorate			<- 	(…을) 비례 계산(하여 산출)하다	
+proverbs		<- 명언집(proverbs collection)
+					https://www.phrases.org.uk/meanings/proverbs.html
+					http://likumc.org/cp/?p=11946
+
+					
 							
 ### Q
 quirk			<- 변덕 	e.g. by a quirk of fate 운명의 장난으로
@@ -928,12 +942,14 @@ that being said	<-	That being said (or that having been said) is used as a trans
 
 thin-skinned	<- sesitive to criticism or insults
 thick-skinned
+tipping point	<- the point at which a series of small changes or incidents becomes significant enough 
+					to cause a larger, more important change.
 traverse		<- travel across or through.
 					"he traversed the forest"
 					synonyms:	travel over/across, cross, journey over/across, pass over; More
 					extend across or through.
 					"a moving catwalk that traversed a vast cavernous space"
-synonyms:	cross, bridge, span; More
+				synonyms:	cross, bridge, span; More
 triage			<- (in medical use) the assignment of degrees of urgency to wounds or illnesses to decide the order of 
 					treatment of a large number of patients or casualties.
 truncate		<- shorten (something) by cutting off the top or the end.

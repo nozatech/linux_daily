@@ -24,6 +24,18 @@ bring up the Task Manager
 	Windows + D   <= Show Desktop
 	Windows + L   <= Lock
 	Windows + F   <= search
+
+### ABBYY Temp files process	
+How to change the drive location so ABBYY Temp files process to a chosen drive.
+When scanning documents through the ABBY process component there are Bitmap files being stored in the "C:\Windows\Temp"
+Bitmap Image files are stored within the directory while being processed in the ABBY component. The Bitmap Image files are removed automatically when the documents are successfully processed. When the jobs fail to process or processing these images are stored in the Temp folder without being removed and causes space to be taking.
+Resolution / Workaround
+You can redirect these files to be processed onto another directory by changing the environmental variable settings:
+
+1. Right click on "my computer" and hit properties.
+2. Go to the advanced tab and click environmental variables.
+3. Click on the TMP variable under "User variables for Administrator," and click edit.
+4. Change the value to the specified directory you wish to use.
 --------------------------------------- 
 ### Notepad++
 ---------------------------------------
@@ -1492,6 +1504,8 @@ curl -l -u id:pw ftp://ftphost/fuzicast/ 										# list remote filenames
 curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater than 3000 bytes per second for a minute and 
 																				download process must be completed within 1800 seconds, otherwise the 
 																				download will abort
+### Verify the API Token
+$ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/apps
 
 ----------------------------------------------------------------------------------------------------	
 ### text browser ###
@@ -5743,43 +5757,55 @@ Ubuntu Package Installed
 	# from CMD using echo & sed
 	$ echo day | sed 's/day/night/'			
 		night
----------------------------
-### Regular Expressions ###
----------------------------
-. (dot)	Any single character except newline
-*	zero or more occurances of any character
-[...]	Any single character specified in the set
-[^...]	Any single character not specified in the set
-^	Anchor - beginning of the line
-$	Anchor - end of line
-\<	Anchor - begining of word
-\>	Anchor - end of word
-\(...\)	Grouping - usually used to group conditions
-\n	Contents of nth grouping
+----------------------------------
+### Regular Expressions (regex)###
+----------------------------------
+. 		<= Any single character except newline
+*		<= zero or more occurances of any character
+[...]	<= Any single character specified in the set
+[^...]	<= Any single character not specified in the set
+^		<= Anchor - beginning of the line
+$		<= Anchor - end of line
+\<		<= Anchor - begining of word
+\>		<= Anchor - end of word
+\(...\)	<= Grouping - usually used to group conditions
+\n		<= Contents of nth grouping
 
-[...] - Set Examples
-[A-Z]	The SET from Capital A to Capital Z
-[a-z]	The SET from lowercase a to lowercase z
-[0-9]	The SET from 0 to 9 (All numerals)
-[./=+]	The SET containing . (dot), / (slash), =, and +
-[-A-F]	The SET from Capital A to Capital F and the dash (dashes must be specified first)
-[0-9 A-Z]	The SET containing all capital letters and digits and a space
-[A-Z][a-zA-Z]	In the first position, the SET from Capital A to Capital Z
+[...]   <= Set Examples
+[A-Z]	<= The SET from Capital A to Capital Z
+[a-z]	<= The SET from lowercase a to lowercase z
+[0-9]	<= The SET from 0 to 9 (All numerals)
+[./=+]	<= The SET containing . (dot), / (slash), =, and +
+[-A-F]	<= The SET from Capital A to Capital F and the dash (dashes must be specified first)
+[0-9 A-Z]	<= The SET containing all capital letters and digits and a space
+[A-Z][a-zA-Z]	<= In the first position, the SET from Capital A to Capital Z
 In the second character position, the SET containing all letters
 
 Regular Expression Examples
-/Hello/	Matches if the line contains the value Hello
-/^TEST$/	Matches if the line contains TEST by itself
-/^[a-zA-Z]/	Matches if the line starts with any letter
-/^[a-z].*/	Matches if the first character of the line is a-z and there is at least one more of any character following it
-/2134$/	Matches if line ends with 2134
-/\(21|35\)/	Matches is the line contains 21 or 35
-Note the use of ( ) with the pipe symbol to specify the 'or' condition
-/[0-9]*/	Matches if there are zero or more numbers in the line
-/^[^#]/	Matches if the first character is not a # in the line
+/Hello/		<= Matches if the line contains the value Hello
+/^TEST$/	<= Matches if the line contains TEST by itself
+/^[a-zA-Z]/	<= Matches if the line starts with any letter
+/^[a-z].*/	<= Matches if the first character of the line is a-z and there is at least one more of any character following it
+/2134$/		<= Matches if line ends with 2134
+/\(21|35\)/	<= Matches is the line contains 21 or 35
+			   #Note: the use of ( ) with the pipe symbol to specify the 'or' condition
+/[0-9]*/	<= Matches if there are zero or more numbers in the line
+/^[^#]/		<= Matches if the first character is not a # in the line
 
 
-IP Regular Expression
+Regex tutorial- A quick cheatsheet 
+https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285
+Anchors ^ and $
+^The        <= matches any string that starts with The
+            https://regex101.com/r/cO8lqs/2
+end$        <= matches a string that ends with end
+^The end$   <= exact string match (starts and ends with The end)
+roar        <= matches any string that has the text roar in it
+
+
+
+
+### IP Regular Expression ###
 http://www.analyticsmarket.com/freetools/ipregex
 
 ------------------------------------------------------------------------------------------------------------
@@ -5790,7 +5816,7 @@ Notes:
 
 		
 		  
-### Add some rows and text
+### EOF (End Of File <= Add some rows and text)
 $ cat << EOF >> /etc/puppet/puppet.conf
 [agent]
 server = puppetmaster.domain.tld

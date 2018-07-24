@@ -13,7 +13,7 @@ yum install python-pip –y
 pip install awscli
 pip install –upgrade awscli
 aws –version
-aws help
+aws help 
 
 ### how to get Canonical ID ###
 $ aws s3api list-buckets
