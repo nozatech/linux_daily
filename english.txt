@@ -124,7 +124,8 @@ bastardization	<- corrupt or debase (something such as a language or art form), 
 					synonyms:	adulterate, corrupt, contaminate, weaken, dilute, taint, pollute, debase, distort
 					"it is unthinkable that I would bastardize my values" 
 					
-be kept well under/ be quite tame	<= 길들여져있는
+be kept well under / be quite tame	<= 길들여져있는
+
 bear in mind	<- keep in mind
 					remember and take into account.
 					"you need to bear in mind that the figures vary from place to place"
@@ -158,6 +159,8 @@ bedside manner 	<- a doctor's approach or attitude toward a patient.
 bespoke			<- (of goods, especially clothing) made to order.
 					"a bespoke suit, a bespoke engine"
 blemish			<- a small mark or flaw that spoils the appearance of something.
+blooper			<- an embarrassing error.
+					"he poked fun at his own tendency to utter bloopers"
 boggle 			<- (of a person or a person's mind) be astonished or overwhelmed when trying to imagine something.
 					"the 'mind boggles' at the spectacle"
 					synonyms:	marvel, wonder
