@@ -2164,6 +2164,33 @@ e.g.	cd $directory && rm -rf *
 
 e.g.    cd $directory || error_exit "No such dir and aborting!"
 
+----------------------------------------------------------------------------------
+$ false && echo howdy!
+							<= No exit code
+$ true && echo howdy!
+howdy!
+----------------------------------------------------------------------------------
+$ true || echo howdy!
+							<= No exit code
+$ false || echo howdy!
+howdy!
+----------------------------------------------------------------------------------
+"A ; B" Run A and then B, regardless of success of A
+"A && B" Run B if A succeeded
+"A || B" Run B if A failed
+"A &" Run A in background.
+----------------------------------------------------------------------------------
+
+if [ -f /root/Sample.txt ]
+then
+    echo "file found"
+else
+    echo "file not found"
+fi
+These 6 lines can be reduced to a single line:
+
+[[ -f /root/Sample.txt ]] && echo "file found" || echo "file not found"
+
 
 
 ----------------------------------------------------------------------------------

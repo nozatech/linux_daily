@@ -1,0 +1,26 @@
+Ansible
+
+$ ansible-playbook -i hosts ~/initial.yml
+
+	ansible 이 
+		playbook(책을갖고 놀다)가 
+					i(아이)를 다쳐 
+						hosts(호스피탈)에 갔는데 
+							i(아이)이식을 해야한다네.
+							
+
+
+### $ ansible-playbook   -i	hosts  ~/kubernetes/initial.yml
+$ ansible-playbook    -i	hosts  ~/kubernetes/userSetup.yml
+
+
+### $ ansible-playbook   -i	hosts  ~/kubernetes/dependency.yml
+$ ansible-playbook    -i	hosts  ~/kubernetes/kubernetesSetup.yml
+
+### $ ansible-playbook   -i	hosts  ~/kubernetes/master.yml
+ $ ansible-playbook   -i	hosts  ~/kubernetes/masterSetup.yml
+
+### $ ansible-playbook   -i	hosts  ~/kubernetes/workers.yml
+$ ansible-playbook   -i	hosts  ~/kubernetes/workersSetup.yml
+
+							

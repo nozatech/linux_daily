@@ -1,6 +1,13 @@
-아무리 바빠도 해야할 일 - 책, && 돈이 많아도 하지 말아야 할일 -도박, 마약
-1.역사-역사의식 책임, 2.문화-감성, 3.경영-논리, 4.철학-생각에 방법, 5.사회학 인간학-인간 관계
-2. 얼마나 아는가 보다  어떻게 실행하는가?
+아무리 바빠도 해야할 일 - 책 && 돈이 많아도 하지 말아야 할일 - 도박, 마약
+1.역사-역사의식 책임
+2.문화-감성 
+3.경영-논리 
+4.철학-생각에 방법 
+5.사회학 인문학-인간 관계
+
+"얼마나 아는가 보다  어떻게 실행하는가?"
+
+¯\_(ツ)_/¯
 
 ### Drucker's 5 Questions ###
 1. What is  our mission?
@@ -80,11 +87,13 @@ Ctrl + H				Open history in a new tab
 Ctrl + K or Ctrl + E	Perform a Google search
 Ctrl + T				Opens a new tab.
 Ctrl + U				View a web page's source code
+
 ---------------------------------------
 ### Word ###
 ---------------------------------------
 Removing empty lines
 Ctrl+f -> replace -> More => Special => Paragraph Mark => ^p   <= single line ^p^p  <= double empty lines
+
 
 ---------------------------------------------------------------------------------
 32bit is 2^32 =~ 4.3 billion    <=  IPv4 address is 32bit 
@@ -122,10 +131,14 @@ TLS 	<= Transport Layer Security (TLS) – and its predecessor, Secure Sockets L
 
 
 
+-----------------------------------------------------------------------------------	
+-----------------------------------------------------------------------------------	
+### LINUX ###
+-----------------------------------------------------------------------------------	
+-----------------------------------------------------------------------------------	
 
--------------------
 ### HELP ###
--------------------
+
 #  apropos 			<= Search the manual page names and descriptions
 	$ apropos grep
 	$ apropos -r REGEXofUNIXCOMMAND or Description
@@ -1503,7 +1516,7 @@ curl -R -u id:pw ftp://ftphost/fuzicast/sample.txt -o output.txt # reserve origi
 curl -l -u id:pw ftp://ftphost/fuzicast/ 										# list remote filenames
 curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater than 3000 bytes per second for a minute and 
 																				download process must be completed within 1800 seconds, otherwise the 
-																				download will abort
+								  												download will abort
 ### Verify the API Token
 $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/apps
 
@@ -6811,13 +6824,111 @@ change take effect everywhere.
 	xterm terminal emulator (X Window System)
 	"screen" used by terminal multiplexers such as screen and tmux.
 						   
+	
+	
+	
+	# Screen( multi shells)  
+	https://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/
+		1. Use multiple shell windows from a single SSH session.
+		2. Keep a shell active even through network disruptions.
+		3. Disconnect and re-connect to a shell sessions from multiple locations.
+		4. Run a long running process without maintaining an active shell session.
 
-						   
-						   
-						   
+	$ screen						<= launch a screen Shell
+	
+	$ 'Ctrl+a' then '?'				<= get help list from the inside of screen
+		# 'ctrl+a' is a signal to send commands to 'Screen' instead of the 'Shell'
+                                
+								Command key:  ^A   Literal ^A:  a
+		break       ^B b        history     { }         other       ^A          split       S
+		clear       C           info        i           pow_break   B           suspend     ^Z z
+		colon       :           kill        K k         pow_detach  D           time        ^T t
+		copy        ^[ [        lastmsg     ^M m        prev        ^H ^P p ^?  title       A
+		detach      ^D d        license     ,           quit        \           vbell       ^G
+		digraph     ^V          lockscreen  ^X x        readbuf     <           version     v
+		displays    *           log         H           redisplay   ^L l        width       W
+		dumptermcap .           login       L           remove      X           windows     ^W w
+		fit         F           meta        a           removebuf   =           wrap        ^R r
+		flow        ^F f        monitor     M           reset       Z           writebuf    >
+		focus       ^I          next        ^@ ^N sp n  screen      ^C c        xoff        ^S s
+		hardcopy    h           number      N           select      '           xon         ^Q q
+		help        ?           only        Q           silence     _
+		.......
+	
+	# 'C'reating Windows
+	$ Ctrl+a+c  or(||) Ctrl+a  c
+	
+	# Switching Between Windows 'N'ext & 'P'revious
+	$ Ctrl+a+n  || Ctrl+a  n   			<= Next 
+	$ Ctrl+a+p  || Ctrl+a  p 			<= Previous  
+	
+	# 'D'etaching From Screen to go back to ORIGINAL SCREEN
+	$ Ctrl+a+d	|| 	Ctrl+a d
+	
+	# Listing screens
+	$ screen -ls	
+		There are screens on:
+        31184.pts-8.i7  (Detached)
+        30957.pts-8.i7  (Detached)
+        30323.pts-8.i7  (Detached)
+		3 Sockets in /var/run/screen/S-apark
+	
+	# 'R'eattach to Screen
+	$ screen -r	 31184.pts-8.i7
+	
+	# 'D'etach(Log Out) screen
+	$ Ctrl+a+d	or 	Ctrl+a d
+	
+	# history save to 'H'ome ($HOME)
+	$ Ctrl+a  H(Capital H)
+	
+	# Getting Alerts 'M'essage
+	$ Ctrl+a  M(Capital M)
+	
+	# To monitor for silence or no output use 
+	$ Ctrl-A  _(Underscore)
+	
+	
+	# Screen Examples
+	$ screen					<= launch a screen Shell
+		$ ping google.com		<= a New screen Shell
+		$ 'Ctrl+a'  'd' 		<= detach from the New Screen
+
+	$ screen -ls				<= screen list
+		There are screens on:
+        31184.pts-8.i7  (Detached)
+        30957.pts-8.i7  (Detached)
+        30323.pts-8.i7  (Detached)
+		3 Sockets in /var/run/screen/S-apark		<= socket location
+	
+	or	$ ls -l /var/run/screen/S-apark/
+			srw-------. 1 apark apark 0 Jul 27 09:47 30323.pts-8.i7
+			srw-------. 1 apark apark 0 Jul 27 09:48 30957.pts-8.i7
+	
+	$ screen -r 31184.pts-8.i7			<= 'R'eattach PID 31184 
+	
+	$ exit  || Ctrl+d					<= exit from screen PID     31184
+		
+	$ screen -ls
+		There are screens on:
+        30957.pts-8.i7  (Detached)
+        30323.pts-8.i7  (Detached)
+
+	$ screen -dr	PID				<=	Reattach a session and if necessary to detach it first.
+ 		There are several suitable screens on:
+        31184.pts-8.i7  (Detached)
+        30957.pts-8.i7  (Detached)
+        30323.pts-8.i7  (Detached)
+		Type "screen [-d] -r [pid.]tty.host" to resume one of them.
+
+	$ screen -dr 31184.pts-8.i7			<= reattach '$ping google.com' screen
+
+
+	
 ### ETL https://en.wikipedia.org/wiki/Extract,_transform,_load
-	is short for extract, transform, load, three database functions that are combined into one tool to 
-	pull data out of one database and place it into another database. Extract is the process of reading data from a database.						   
+	Extract, Transform, & Load 
+	Three database functions that are combined into one tool to pull data out of one database 
+	and place it into another database. Extract is the process of reading data from a database.						   
 	
 	
 ### UML	https://en.wikipedia.org/wiki/Unified_Modeling_Language
@@ -6827,11 +6938,12 @@ change take effect everywhere.
 ### RSS https://en.wikipedia.org/wiki/RSS
 	(Rich Site Summary; originally RDF Site Summary; often called Really Simple Syndication) uses a family of 
 	standard web feed formats[2] to publish frequently updated information: blog entries, news headlines, 
-	audio, video. An RSS document (called "feed", "web feed",[3] or "channel") includes full or summarized 
+	audio, video. An RSS document (called "RSS feed", "web feed", or "channel") includes full or summarized 
 	text, and metadata, like publishing date and author's name.
-	RSS feeds enable publishers to syndicate data automatically. A standard XML file format ensures 
-	compatibility with many different machines/programs. RSS feeds also benefit users who want to receive 
-	timely updates from favourite websites or to aggregate data from many sites
+	'RSS Feeds' enable publishers to syndicate data automatically. A standard XML file format ensures 
+	compatibility with many different machines/programs. 
+	RSS feeds also benefit users who want to receive timely updates from favourite websites 
+	or to aggregate data from many sites
 	
 	
 ### Nexus or Artifictory for a Maven Repo	
@@ -6841,14 +6953,17 @@ change take effect everywhere.
 ### /dev 		<= directory 
 	http://unix.stackexchange.com/questions/18239/understanding-dev-and-its-subdirs-and-files
 	crw-r-----. 1 root kmem 1, 1 Feb  2 17:50 /dev/mem
+	
 	^ Character devices
 	There are two types of device files: block devices (indicated by b as the first character in the output of ls -l), 
 	and character devices (indicated by c).
+	
 	- Block Devices (indicated by b as the first character in the output of ls -l), and character 
 	devices (indicated by c). The distinction between block and character devices is not 
 	completely universal. Block devices are things like disks, which behave like large, 
 	fixed-size files: if you write a byte at a certain offset, and later read from the device 
-	at that offset, you get that byte back. 
+	at that offset, you get that byte back.  
+	
 	- Character devices are just about anything else, where writing a byte has some immediate 
 	effect (e.g. it's emitted on a serial line) and reading a byte also has some immediate 
 	effect (e.g. it's read from the serial port).	

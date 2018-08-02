@@ -17,15 +17,16 @@ adorn 			<- decorate
 abscess			<- 종기   Dental Abscess, discharge pus 고름 짜내다	
 
 
-AFAIK 			<- "As Far As I Know" 
+A.F.A.I.K.		<- "As Far As I Know" 
 adept			<- very skilled or proficient at something.
 					"he is adept at cutting through red tape"
 					synonyms:	expert, proficient, accomplished, skillful, talented, masterly, masterful, 
-								consummate, virtuoso; More
+								consummate, virtuoso
 					antonyms:	inept
 adhere			<- stick fast to (a surface or substance).
 					"paint won't adhere well to a greasy surface"
-					ynonyms:	stick (fast), cohere, cling, bond, attach; be stuck, be fixed, be glued, be cemented
+					synonyms:	stick (fast), cohere, cling, bond, attach; be stuck, be fixed, 
+					be glued, be cemented
 					"a dollop of cream adhered to her nose"
 adverse			<- preventing success or development; harmful; unfavorable.
 					synonyms:	unfavorable, disadvantageous, inauspicious, unpropitious, 
@@ -44,7 +45,8 @@ agile			<- [adj]민첩; able to move quickly and easily.
 								light-footed, light on one's feet; More
 agility			<- [n] ability to move quickly and easily.
 						ability to think and understand quickly.
-agnostic		<- 인지불능, e.g. user accounts would be agnostic 
+agnostic		<- 인지불능, 
+					"user accounts would be agnostic "
 alleviate 		<- provide physical relief, as from painalliviate
 all in all		<- everything considered; on the whole. mostly?
 all is well		<- everything is in a good or acceptable state: 
@@ -850,7 +852,7 @@ sensible		<- (of a statement or course of action) chosen in accordance with wisd
 					
 					
 seasoned IT		<- a veteran; [숙련자] an expert.	
-
+skim			<- I skimmed the material.  I did a quick readthrough. 훑다.
 sliver			<- [none] a small, thin, narrow piece of something cut or split off a larger piece.
 						"a sliver of cheese"
 						synonyms:	splinter, shard, shiver, chip, flake, shred, scrap, 
@@ -1569,4 +1571,602 @@ yuh-uh	yuh-hu, yu-huh	"Yes, it is!"/"Did so!"	"I hit you!" "Nuh-uh!" "Yuh-uh!" "
 yuck	ick, ich, blech, bleh, eww, ugh	"Disgusting!"	"Yuck, I wouldn't want to touch that"	Disgust, dislike
 zing	ba-dum-tss, badum tish	"Haha, well said!"	"You're so stupid, you'd trip over a wireless phone!" "Zing!"	Used (often ironically) to punctuate a punchline or witty comeback. From the sound of a rimshot, played after punchlines in some comedy acts.
 
+
+ 
+
+
+
+
+#############################################################################################
+영문법 - 12가지 시제
+#############################################################################################
+
+~ed와 ~ing는 현재와 미래시제를 뺀 나머지 10개의 시제에 포함되어 있습니다. 그만큼 중요합니다.
+시제에 사용되는 과거분사(완료)와 현재분사(진행)는 형용사의 역할을 합니다.
+시제	형태	예문
+현재	현재동사	I check the email.
+나는 이메일을 확인한다.
+과거	과거동사	I checked the email.
+나는 이메일을 확인했다.
+미래	be going to + 동사의 원형
+will  + 동사의 원형
+would + 동사의 원형	I am going to check the email. (90%이상의 의지)
+I will check the email. (90%의 의지)
+I would check the email. (90% 이하의 의지)
+나는 이메일을 확인할 예정이다.
+현재진행	am/are/is + ~ing	I am checking the email.
+나는 이메일을 확인하고 있다.
+과거진행	was/were + ~ing	I was checking the email.
+나는 이메일을 확인하고 있었다.
+미래진행	be going to be + ~ing
+will be + ~ing	I am going to be checking the email. (계획한 미래)
+I will be checking the email.
+나는 이메일을 확인하고 있는 중일 것이다.
+현재완료	have/has + p.p.	I have checked the email.
+나는 현재까지 이메일 확인하기를 끝마쳤다.
+과거완료	had + p.p.	I had checked the email.
+나는 과거 어느 시점까지 이메일 확인하기를 끝마쳤다.
+미래완료	will have + p.p.	I will have checked the email.
+나는 미래 어느 시점까지 이메일 확인하기를 끝마쳤을 것이다.
+현재완료진행	have/has been + ~ ing	I have been checking the email.
+나는 현재까지 계속해서 이메일을 확인하고 있는 중이다.
+과거완료진행	had been + ~ing	I had been checking the email.
+나는 과거 어느 시점까지 계속해서 이메일을 확인하고 있는 중이었다.
+미래완료진행	will have been + ~ing	I will have been checking the email.
+나는 미래 어느 시점까지 계속해서 이메일을 확인하고 있는 중일 것이다.
+
+
+
+
+현재
+현재동사 (동사의 원형)
+I get up at 6 every morning.
+현재 시제의 진짜 의미
+현재 시제라고해서 지금 일어나고 있는 상황을 꼭 이야기 하고 있는 것은 아닙니다.
+이런 경우는 현재 진행형을 더 많이 사용하게 됩니다.
+현재 시제는 과거에도 그렇고, 현재에도 그렇고, 미래에도 그럴것이라는 것을 말하고 있습니다.
+현재 시제를 사용하는 5가지 상황
+1. 일반적인 사실, 불변의 진리를 말할때 사용합니다.
+
+A good supervisor creates a nice environment.
+좋은 관리자는 훌륭한 환경을 만든다.
+
+The moon goes round the earth.
+과거에도 그렇고, 현재에도 그렇고, 미래에도 그럴것이라는것을 말하고 있습니다.
+
+Korea has four seasons. 한국은 4계절이 있다.
+(X) Korea had four seasons. 과거에는 그랬지만, 현재는 어떤지 모른다고 말하고 있습니다.
+(X) Korea is having four seasons. 과거나 미래는 아니였는데 현재는 사계절을 가지고 있다고 말하고 있습니다.
+   
+2. 일상적인 습관, 현재의 상태나 동작을 말할때 현재형을 사용합니다.
+I get up at 6 every morning.
+나는 매일 아침 6시에 일어난다.
+(나는 오늘 아침 6시에 일어났고, 미래에도 그럴것이라는 것을 암시하고 있습니다.)
+
+I work at a bank.
+나는 은행에서 일한다
+
+Jane is my friend.
+제인은 내 친구다.
+(제인은 현재에도 내 친구고, 과거에도 내 친구였고, 미래에도 내 친구일것을 암시하고 있습니다.)
+
+The company produces a family of household products.
+그 회사는 가정용품을 생산한다.
+
+
+3. 속담을 말할때 현재형을 사용합니다.
+
+Empty vessels make the most sound.
+빈수레가 요란하다.
+
+4. 왕(go), 래(come), 발(start, leave), 착(arrive)을 나타내는 동사는 현재형을 사용합니다.
+
+She goes back to Seoul tomrrow.
+그녀는 내일 서울로 돌아간다.
+(미래를 나타내는 부사와 함께 쓰였지만, 현재시제를 씁니다. 거의 100% 확실한 미래를 나타낼때.)
+
+5. 시간과 조건을 나타내는 부사절에서는 현재시제을 사용합니다.
+
+When your team finish the write-up, please have them send it to me.
+당신 팀이 기사를 다쓰면, 그것을 나에게 보내라고 해주세요.
+시간과 조건을 나타태는 부사절 : when, before, after, if, as soon as, unless, by the time
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+과거
+과거동사
+I lived in Seoul.
+나는 서울에 살았습니다.
+ 
+과거 시제에 숨어 있는 진짜 의미
+I lived in Seoul.
+과거에 서울에 살았지만, 현재에도 서울에 살고 있는지는 알 수가 없습니다.
+영어에서 과거형이 가지는 단점
+과거의 일을 현재와 연관시키지 못합니다. 그래서 현재완료형시제가 존재합니다.
+과거와 현재 완료의 비교
+I lived in Seoul. (과거에 서울에 살았지만, 현재에도 서울에 살고 있는지는 알 수가 없음)
+
+I have lived in Seoul.  (지금까지도 서울에 살고 있음)
+
+Summer came! (과거에 여름이였지만, 현재에도 여름인지 알수가 없습니다.)
+
+Summer has came!. (지금도 여름인 상태. )
+
+I lost my wallet. (나는 지갑을 잃어 버렸는데 지금은 그 지갑을 찾았는지 못찾았는지 알 수 없다.)
+
+I have lost my wallet. (지갑을 잃어 버렸는데 지금까지도 못찾고 있음.)
+과거형 동사를 만드는 세가지 방법
+1.	규칙적으로 변함 : 동사의 원형 + ed
+2.	불규칙적으로 변함1 : lie - lay
+3.	불규칙적으로 변함1 : cut - cut
+
+
+
+
+
+미래
+will + 동사의 원형
+I will buy a new car.
+be going to + 동사의 원형 (계획된 미래)
+I am going to buy a new car.
+would + 동사의 원형 (약한 의지의 미래)
+I would buy a new car.
+미래시제의 의미
+미래에 대한 계획이나 의지에 대해 이야기 합니다.
+ 
+미래를 이야기하고 있는 4개의 시제
+1. 현재형 : 현재형은 현재뿐만 아니라 과거나 미래에 대해서도 이야기 하고 있습니다.
+The moon goes round the earth. 달은 현재뿐만 아니라 과거에도 그렇고, 미래에도 지구 주변을 돌고 있을겁니다.
+2. will 미래형 : be going to보다는 조금 약한 의지나 계획에 대해 이야기 하고 있습니다.
+3. be going to 미래형 : 확실한 계획이나 의지, 즉 계획된 미래를 말할때 사용합니다.
+4. would 미래형 : will보다 약한 의지로 말할때 사용합니다.
+미래를 이야기 하고 있는 4개 시제의 확신이나 의지의 정도
+현재형은 100%의 확신이나 의지 - 95%의 의지 be going to - will(90%의 의지) - would(90% 이하)
+o	I buy a new car tomorrow . 99.9% 확실
+o	I am going to buy a new car tomorrow .  95% 확실
+o	I will buy a new car tomorrow . 90% 확실
+o	I would buy a new car tomorrow . will보다는 약한 의지
+자연현상에 대한 미래형의 사용
+날씨나 천재지변같은 자연현상은 계획할 수 있는게 아니기 때문에 be going to를 사용하지 못하고, will을 사용해야 합니다. 하지만 스피킹에서는 be going to를 사용하기도 하는데 예를 들어 It is going to rain이라고 하면 문을 열고 나가보기 거의 비가오기 직전의 날씨일때 이렇게 말하기도 합니다. 거의 100%비가올것이라고 예상될 때 사용할 수 있습니다.
+
+
+현재 진행
+be동사 + ~ing
+I am reading a book.
+현재진행형을 바라보는 시야
+1. 지금 이 순간 별어지고 있는 일 : I am waking up now.
+2. 일정한 주기를 가지고 반복과 멈춤, 시작이 반복되는 것.
+o	오늘 하루동안 책을 읽다 안읽다를 반복 → I am reading a book today.
+o	주중에 2~3일 정도 운동하기를 서너달정도 하고 있는 중 → I am exercising this month.
+o	일년동안 우표 수집을 불규칙적으로 4번정도 해고 있는 중 → I am collecting stamps this year.
+현재형과 현재진행형의 2가지 차이
+1. 현재형은 과거, 현재, 미래를 모두 내포하고 있습니다.
+He runs. 과거에도 뛰었고, 현재에도 뛰고, 미래에도 뛰겠다는 이야기.
+2. 현재형보다 현재진행형이 좀 더 생동감 있습니다.
+He is running → 현재형보다 좀 더 생동감 있다.
+o	I go to school. 나는 학교에 다닌다. (학생이다)
+I am going to school. 나는 (지금) 학교에 가고 있다.
+o	What do you do? 보통 뭐해 (직업이 뭐야?)
+What are you doing? (지금) 뭐하니?
+미래를 이야기 하고 있는 5개의 시제
+o	현재 진행 : I am buying a new car tomorrow. 100% 죽으면 귀신이 되어서라도 간다.
+o	현재 : I buy a new car tomorrow. 99.9% 죽으면 못간다.
+o	be going to 미래 : I am going to buy a new car tomorrow. 95%.
+o	will 미래 : I will buy a new car tomorrow. 90%
+o	would 미래 : I would buy a new car tomorrow.
+진행형 안에서의 always
+o	항상 always : You always call me at night.
+o	맨날 always : You are always calling me at night.(일반적으로 진행형과 함께 쓰이면 부정적인 뉘앙스지만, 앞뒤 문맥에 따라 긍정적으로 들리기도 합니다.)
+현재진행형으로 쓰면 어색한 동사
+일반적으로 "변함없음"의 의미를 내포하고있는 동사는 진행형으로 쓰이지 않습니다.
+o	I love you : 변함없이 사랑한다는 뜻.
+I am loving you. 지금 당장은 사랑하지만, 과거나 미래에도 사랑할지 안할지 모른다는 의미
+o	I have money : 보통 현재형으로 씁니다. 별일이 없는 이상 그 돈은 그냥 통장이나 주머니에 있을 돈.
+I am having money. : 강조를 하고 있거나 지금 가지고 있는데 곧 쓸 돈일 경우에만 씁니다.
+과거 진행
+
+was/were + ~ing
+I was having dinner.
+과거 진행의 의미
+현재 이전의 시간은 전부 과거이고, 과거 진행형은 과거 중 특별한 한 시점을 이야기 합니다.
+과거형과 과거진행형의 2가지 차이
+1.	과거형은 과거에 일어난 일을 의미하며 과거진행형은 과거 어느한 시점에 일어난 일을 이야기 하고 있습니다. 
+2.	과거형보다 과거진행형이 좀 더 생동감 있습니다.
+과거와 과거진행형이 함께 쓰였을 때
+과거와 과거 진행형이 함께 쓰였을 때 과거진행형이 항상 먼저 일어난 일입니다.
+o	When I entered the house, the phone was ringing. 전화가 울린것이 먼저 일어난 일.
+o	While I was watching a video, she was reading a magazine by me. 두 사건이 동시에 일어남.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+미래 진행
+will be ~ing
+I will be leaving for Seoul.
+be going to be ~ing
+I am going to be leaving for Seoul.
+
+단순미래와 미래진행형
+미래진행형에서 특정한 시점이나 시간을 제시하지 않은 경우 미래진행형이나 단순미래형이나 같은 문법이다.
+미래진행형의 종류 3가지
+o	단순미래 : I will wait for your reply.
+o	
+o	미래진행일반 : I will be waiting for your reply. 단순 미래 대신 미래진행형을 사용했다면 강조되고, 좀 더 생동감있게 느껴진다.
+o	
+o	미래진행계획 : I am going to be waiting for your reply. 계획한 미래
+미래형의 변동가능성
+o	will wait : 변동가능성이 가장 큰 미래
+o	
+o	will be waiting : 변동가능성이 작은 미래
+o	
+o	be going to be waiting : 변동가능성이 거의 없는 미래
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+현재 완료 (*중요*)
+
+have + p.p.
+I have lived in seoul.
+그들은 현재까지 그 시험을 위해서 준비했다.
+현재완료의 해석
+현재까지 ~했다.
+o	I have finished my homework : 나는 (현재까지) 숙제를 끝냈다.
+o	He has been to France : 그는 (현재까지) 프랑스에 가본적이 있다.
+o	I have seen the movie : 나는 (현재까지) 그 영화를 본적이 있다..
+o	I have lost my watch : 나는 (현재까지) 내 시계를 잃어버렸다.
+have의 4가지 용도.
+o	가지다, 먹다 : I have promise.
+o	시키다 : I have my dog go outside.
+o	~해야만 한다 (have to) : I have to know this.
+o	현재까지 ~했다(현재분사) : I have prepared for the test.
+종결, 끝냄, 완료를 나타냅니다.
+have의 역할과 과거분사의 역할
+have는 인칭변화를 하는 동사의 역할을 하며,
+과거분사는 동사(have)의 구체적인 내용을 말해주고 있습니다. 여기 과거분사는 동사가 아니라 형용사입니다.
+과거 분사를 쓰는 이유
+현재분사는 진행의 뉘앙스를 가지고 있으며, 과거분사는 완료의 뉘앙스를 가지고 있습니다.
+"현재까지 ~했다"는 완료의 뉘앙스를 가지고 있으므로 과거분사를 사용합니다.
+현재완료의 의미
+과거의 동작 + 현재의 의미 : 과거의 동작에 대해 말하고 있지만, 과거의 사건,동작으로 인해 현재 어떻다라는 말을 하려는 것임. (우리나라 말로 해석할때 과거의 형태로 해석되기 때문에 과거시제와 혼돈스러워함.)
+o	I lost my watch (과거에 시계를 잃어버렸는데 지금 찾았는지 찾지 못했는지 알지 못함.)
+o	I have lost my watch (과거에 시계를 잃어버렸는데 아직도 못찾아서 지금 시계가 없다는 뜻.)
+과거와 현재완료의 비교
+단순과거(점의 시제)
+o	과거시점의 단순한 현실을 이야기. 현재 상황에 대해서는 아는 바 없음.
+o	과거의 분명한 시점을 나타내는 단어들과 함께 온다.
+three days ago, last year, last week, yesterday, in 1985, 
+대화1
+o	A : Did you have lunch?
+o	B : Yes, I had lunch (or Yes, I did)
+현재완료(선의 시제)
+o	과거의 불특정 시점에서 시작된 상황이나 동작이 현재에 어떤 의미를 지니고 있는지에 대한 이야기
+o	과거의 불분명한 시점을 나타내는 단어들과 함께 온다. (불분명한 시점들은 과거시제와도 어울린다.)
+ever, never, already, yet, just, today, this week, this month, in my life
+대화2 (단순과거로 대답하면 이상한 상황)
+o	A : Are you hungry now?
+o	B : No, I've just have lunch.
+상황에 따라 과거 or 현재완료
+만약 할머니가 돌아가신 상황이라면...
+1.	My grandmother did a lot for me.
+2.	My grandmother had done a lot for me
+두번째 문장은 어색한 문장이 된다.
+프로젝트가 끝난 시점이라면 ...
+1.	They have given a lot of support to the project
+이 문장은 어색한 문장이 된다.
+그렇다면 이 문장은 ...
+1.	I've been to Paris twice in my life
+어색하지 않다. 파리에 간 경험은 내가 죽을때까지 유효하므로...
+문장 만들어 보기
+1.	전에 거기 가본 적 있다.
+2.	그 사람 일본으로 가버렸다. (가버리고 지금은 없어)
+3.	여기서 두 시간 동안 기다렸어
+4.	주디는 방금 집에 왔다.
+5.	시계를 잃어버렸어 (What time is it?에 대한 대답)
+6.	나는 그를 1시간 전에 보았어
+7.	1월 이후로 지금까지 여기 살고 있어.
+8.	3월 1일 이후 이곳에 살고 있어 (지금은 5월 1일)
+9.	자러갔어 (Where is she?에 대한 대답)
+10.	발목이 부러졌어 (아직 치료하지 못한 상태)
+11.	우리는 새집을 샀어 (아직 소유하고 있음)
+12.	주디봤어?
+13.	걔들 방금 도착했어 (도착해서 여기 있다는 의미 = There're here now)
+14.	방금 점심 먹었어 (점심 먹어서 배가 안고프다는 의미 = I'm not hungry now)
+15.	나는 어제 그를 봤어
+16.	나는 지난해에 거기 가지 않았어
+17.	어젯밤에 뭐했어?
+18.	그들은 언제 도착하니?
+19.	우리 할머니는 나에게 많은걸 해주셨다.  (아직 할머니가 살아계셔서 지금까지도 많은 걸 해주고 계심)
+20.	그들은 그 프로젝트에 많은 지원을 했다.  (프로젝트는 이미 끝났음)
+21.	난 지금까지 살면서 파리에 두번 간 적이 있다.
+
+
+
+
+
+
+
+과거 완료
+had + p.p.
+He had injured his leg.
+그는 (과거 어느 시점까지) 다리를 다쳤다.
+과거 완료의 해석
+과거의 어느 시점까지 ~했다.
+o	I had changed my hair styles. : 나는 과거 어느시점까지 내 머리스타일을 바꿨다.
+o	She had completed the project : 나는 과거의 어느시점까지 그 프로젝트를 완수했다.
+o	He had injured his leg and couldn't soccer.
+대과거 : 다리를 다친것.
+대과거의 사건으로 과거에까지 영향 받은것 : 축구를 못한것.
+과거 완료의 말투
+과거보다 더 과거(대과거)를 이야기하는 말투.
+대과거에 일어난 사건이 과거의 어느 시점에 끝이 났거나 영향을 줍니다.
+완료형에 많이 쓰이는 부연 설명
+for : 시간의 길이
+since : 시간의 때
+o	She had completed the project for two month.
+o	She had completed the project since last year. ( / November / 2009)
+과거형과 과거완료시제가 한 문자 안에 쓰였을 때.
+과거 완료가 과거보다 시간상 먼저 일어난 일입니다.
+o	I had cleaned the room when she came to me. 그녀가 오기전에 이미 청소를 하고 있던 상황
+o	I cleaned the room when she come to me. 그녀가 나한테 왔을때가 시간상 먼저 일어난 일
+
+
+
+
+
+
+
+미래 완료
+will have + p.p.
+I will have arrived home by six.
+나는 6시까지 집에 도착해 있을 겁니다.
+미래완료의 해석
+미래 어느시점까지 ~을 했을 것이다.
+o	I will have finished by this Friday.
+돌아오는 이번주 금요일까지는 그 일을 끝냈을겁니다.
+o	The movie will have started by the time we go there.
+그 영화는 우리가 거기에 막 도착했을 때 시작했을겁니다.
+by the time뒤 : 미래의 특정 시점을 나타내는 문장에서까지 미래형으로 쓸 필요는 없습니다.
+o	I will have registered after there days from now.
+나는 오늘부터 3일 후에는 이미 등록을 끝냈을 꺼예요.
+미래 완료 시제와 함께 많이 쓰이는 보충어.
+미래완료는 특정한 미래 시간대와 함께 많이 쓰입니다.
+o	by the time ( + 주어 + 동사)
+o	after three days
+o	by November 11월까지
+o	by then 그때까지
+o	by this time tomorrow 내일 이 시간에
+o	when the manager comes back
+완료형에서 습관적으로 많이 쓰이는 말.
+완료형에서는 일이 이미 끝남을 나타내므로 already라는 말을 습관적으로 많이 씁니다.
+
+
+
+
+
+
+
+
+
+
+현재 완료 진행
+have been + ~ing
+It has been raining since last night.
+어제밤부터 계속해서 비가 내리고 있는 중이다.
+현재완료진행형의 해석
+나는 현재까지 계속해서 ~하고 있는 중이다.
+o	I have been working here. 나는 현재까지 계속해서 여기에서 일을 하고 있는 중이다.
+현재완료 진행형이 만들어지는 과정
+have worked + be working --> have been working
+현재완료진행형과 현재완료형이 내용상 거의 차이가 없는 경우
+기간이나 시간대와 함께 사용된 경우 두 시제 사이의 내용상 차이는 거의 없다.
+o	I have been working here for 2 months. 나는 두달동안 여기에서 일하고 있는 중이다.
+I have worked here for 2 months. 나는 두달동안 여기서 일을 했다.
+o	I have been working here since last year.나는 지난해 부터 여기에서 일하고 있는 중이다.
+I have worked here since last year. 나는 지난해부터 여기서 일을 했다.
+현재 완료진행형보다 현재 완료형의 사용빈도수가 높은 이유
+기간이나 시간대와 함께 사용된 경우 두 시제 사이의 내용상 차이가 거의 없기 때문에 문장이 좀 더 간단한 현재완료형을 많이 사용한다. 다만 좀 더 강조를 하고 싶다면 현재 완료 진행형을 사용합니다.
+
+
+
+
+
+
+
+
+과거 완료 진행
+2013-11-07 23:53:28
+had been + ~ing
+I had been waiting for him.
+나는 과거 어느시점까지 계속해서 그를 기다리고 있는 중이었다.
+ 
+과거완료진행형의 해석
+나는 과거어느시점까지 계속해서 ~하고 있는 중이었다.
+o	I had been working here. 나는 과거어느시점까지 계속해서 여기에서 일을 하고 있는 중이었다.
+과거완료 진행형이 만들어지는 과정
+had worked + be working --> had been working
+과거완료진행형과 과거완료형이 내용상 거의 차이가 없는 경우
+기간이나 시간대와 함께 사용된 경우 두 시제 사이의 내용상 차이는 거의 없다.
+o	I had been working here for 2 months. 나는 두달동안 여기에서 일하고 있는 중이었다.
+I had worked here for 2 months. 나는 두달동안 여기서 일을 했었다.
+o	I had been working here since last year.나는 지난해 부터 여기에서 일하고 있는 중이었다.
+I had worked here since last year. 나는 지난해부터 여기서 일을 했었다.
+과거완료진행형보다 과거완료형의 사용빈도수가 높은 이유
+기간이나 시간대와 함께 사용된 경우 두 시제 사이의 내용상 차이가 거의 없기 때문에 문장이 좀 더 간단한 과거완료형을 많이 사용한다. 다만 내용을 좀 더 강조하고 싶을때 과거완료진행형을 사용합니다.
+
+
+
+
+
+미래 완료 진행
+2013-11-07 23:58:01
+will have been + ~ing
+I will have been living in Seoul.
+나는 미래 어느 시점까지 계속해서 서울에 살고 있는 중일것이다.
+미래완료진행형의 해석
+미래 어느 시점까지 계속해서 ~하고 있는 중일것이다.
+o	I will have been working here. 나는 미래 어느 시점까지 계속해서 여기에서 일을 하고 있는 중일것이다.
+미래완료 진행형이 만들어지는 과정
+will have worked + be working --> will have been working
+미래완료진행형과 미래완료형이 내용상 거의 차이가 없는 경우
+기간이나 시간대와 함께 사용된 경우 두 시제 사이의 내용상 차이는 거의 없다.
+o	I will have been working here for 2 months. 나는 두달동안 여기에서 일하고 있는 중일것이다.
+I will have worked here for 2 months. 나는 두달동안 여기서 일을 했을 것이다.
+o	I will have been working here since last year.나는 지난해 부터 여기에서 일하고 있는 중일것이다.
+I will have worked here since last year. 나는 지난해부터 여기서 일을 했을 것이다.
+미래완료진행형보다 미래완료형의 사용빈도수가 높은 이유
+기간이나 시간대와 함께 사용된 경우 두 시제 사이의 내용상 차이가 거의 없기 때문에 문장이 좀 더 간단한 미래완료형을 많이 사용한다. 다만 내용을 좀 더 강조하고 싶다면 미래완료진행형을 사용합니다.
+
+
+
+
+
+
+*** 복습하기 ***
+이전에 공부한 12시제를 이곳에서 한번 복습해 보세요.
+ Question.  위주로 다시 remind 해보면 도움일 될것 같습니다.
+현재
+현재동사 : I get up at 6 every morning.
+ Question. 
+1.	현재 시제의 진짜 의미
+2.	현재 시제를 사용하는 5가지 상황
+현재시제 자세히 보기
+과거
+과거동사 : I lived in Seoul.
+ Question. 
+1.	과거시제에 숨어 있는 진짜 의미
+2.	영어에서 과거형이 가지는 단점
+3.	과거와 현재 완료의 비교
+4.	과거형 동사를 만드는 세가지 방법
+과거시제 자세히 보기
+미래
+will + 동사의 원형 : I will buy a new car.
+be going to + 동사의 원형 : I am going to buy a new car.
+would + 동사의 원형 : I would buy a new car.
+ Question. 
+1.	미래시제에 숨어 있는 진짜 의미
+2.	미래를 이야기하고 있는 4개의 시제
+3.	미래를 이야기하고 있는 4개 시제의 확신이나 의지 정도
+4.	자연현상에 대한 미래형의 사용
+미래시제 자세히 보기
+현재진행
+be + ~ing : I am reading a book.
+ Question. 
+1.	현재진행형을 바라보는 2가지 시야.
+2.	현재형과 현재진행형의 2가지 차이.
+3.	미래를 이야기하고 있는 5개의 시제.
+4.	진행형 안에서의 always.
+5.	현재진행형으로 쓰면 어색한 동사.
+현재진행형 자세히 보기
+과거진행
+was/were + ~ing : I was having dinner.
+ Question. 
+o	과거 진행의 의미
+o	과거형과 과거진행형의 2가지 차이
+o	과거와 과거진행형이 함께 쓰였을 때
+과거진행형 자세히 보기
+미래진행
+will be ~ing : I will be leaving for Seoul.
+be going to be ~ing : I am going to be leaving for Seoul.
+ Question. 
+o	단순미래와 미래진행형
+o	미래진행형의 종류 3가지
+o	미래형의 변동 가능성
+미래진행형 자세히 보기
+현재완료
+have + p.p.  : I have lived in Seoul.
+ Question. 
+o	현재분사의 해석
+o	have의 4가지 용도.
+o	have의 역할과 과거분사의 역할
+o	과거 분사를 쓰는 이유
+o	현재완료의 의미
+o	과거와 현재 완료의 비교
+o	상황에 따라 과거 or 현재완료
+o	문장 만들어 보기
+현재완료 자세히 보기
+과거완료
+had + p.p. : He had injured his leg.
+ Question. 
+o	과거 완료의 해석
+o	과거 완료의 말투
+o	완료형에 많이 쓰이는 부연 설명
+o	과거형과 과거완료시제가 한 문자 안에 쓰였을 때.
+과거완료 자세히 보기
+미래완료
+will have + p.p. : I will have arrived home by six.
+ Question. 
+o	미래완료의 해석
+o	미래 완료 시제와 함께 많이 쓰이는 보충어.
+o	완료형에서 습관적으로 많이 쓰이는 말.
+미래완료 자세히 보기
+현재완료진행
+have been + ~ing : It has been raining since last night.
+ Question. 
+o	현재완료진행형의 해석
+o	현재완료진행형이 만들어지는 과정
+o	현재완료진행형과 현재완료형이 내용상 거의 차이가 없어지는 경우
+o	현재완료진행형보다 현재완료형의 사용빈도수가 높은 이유
+현재완료진행 자세히 보기
+과거완료진행
+had been + ~ing : I had been waiting for him.
+ Question. 
+o	과거완료진행형의 해석
+o	과거완료진행형이 만들어지는 과정
+o	과거완료진행형과 과거완료형이 내용상 거의 차이가 없어지는 경우
+o	과거완료진행형보다 과거완료형의 사용빈도수가 높은 이유
+과거완료진행 자세히 보기
+미래완료진행
+will have been + ~ing : I will have been living in Seoul.
+ Question. 
+o	미래완료진행형의 해석
+o	미래완료진행형이 만들어지는 과정
+o	미래완료진행형과 미래완료형이 내용상 거의 차이가 없어지는 경우
+o	미래완료진행형보다 미래완료형의 사용빈도수가 높은 이유
+미래완료진행 자세히 보기
 
