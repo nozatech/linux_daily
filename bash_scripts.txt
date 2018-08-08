@@ -682,8 +682,8 @@ $ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 
 
 https://stackoverflow.com/questions/1289026/syntax-for-a-single-line-bash-infinite-while-loop
 $ while sleep 2; do echo "Thinking"; done	
-$ while       :; do echo "Thinking"; sleep 2; done			<= run echo then sleep cmd
-$ while [ 1 ]  ; do echo "Thinking" && sleep 2 || break; done
+$ while       :; do echo "Thinking"; sleep 2; done				<= run echo then sleep cmd
+$ while [ 1 ]  ; do echo "Thinking" && sleep 2 || break; done   <= 1 is not true(0)
 
 
 $ until  ((0)); do echo "Thinking"; sleep 2; done
@@ -3547,13 +3547,13 @@ done
 
 #---------------------------------------------------------------------------
 
-$ while :; do clear; your_command; sleep 2; done
+$ while :; do clear; your_command; sleep 2; done  	<= : is TRUE or while true or while []
 
 # ---------------------------------------------------------------------------
 #!/bin/bash
 # usage: watch.sh <your_command> <sleep_duration>
 
-while :; 
+while :; 			### : <= is true
   do 
   clear
   date

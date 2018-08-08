@@ -11,29 +11,29 @@ _	<= underscore
 *	<= asterisk
 ~ 	<= tilde
 -	<= dash
-
+-------------------------------------------------
 () 	<= Tuple
 []	<= List
 {}	<= Dictionary
-
+-------------------------------------------------
 SNS	<= Social Networking Service 
 SMS	<= Short Message Service (Text Message)
 MMS	<= Media Message Service (Video Message)
-
+-------------------------------------------------
 2. ParameterS
 echo $0			<= script itself
 echo $@ 		<= listing the arguments
 echo $#			<= total No. of arguments
 echo $?			<= shell exit status code
 echo $$			<= Current shell PID
-
+-------------------------------------------------
 3. Back tic vs $()
 `command`		<= legacy
 $(command)		<= Easier for nesting
 $ lsal=$(ls -al)  
 $ lsal="$(ls -al)"  
 $ echo $lsal
-
+-------------------------------------------------
 
 4. Single and Double Quotes
 x=1
@@ -70,11 +70,11 @@ cmd1 || cmd2 || cmd3    <= If cmd1 failed, run cmd2, otherwise runs cmd3, otherw
    which cmd is located at?      location
 
 9. cat << EOF >> fileName.txt			<= Here document
-   read -a octets <<< "$ipAddr"		<= Here string
+   read -a octets <<< "$ipAddr"			<= Here string
 
 10. for i in {21..30}; do echo "$i".; echo; done
 
-11. sed -i 's/A/B/g' file		<='i'nsert 'g'lobal
+11. sed -i 's/A/B/g' file		<='i'nsert 'g'loba l
 
 12. pmstat iostat mpstat
 

@@ -9,12 +9,16 @@ git push
 Use HTTPS	https://github.com/nozatech/jenkins.git
 Use SSH     git@github.com:nozatech/jenkins.git
 
-### Configuration
+
+### User ID and Password Configuration Setup
+
 $ git config credential.helper store
-$ git push http://example.com/repo.git
-	Username: <type your username>
-	Password: <type your password>
-$ git help credentials
+$ git push https://github.com/nozatech/books.git
+	
+	Username: 
+	Password: 
+	
+$ git help credentials		<= manual
 
 
 ### Clone from repository
