@@ -52,6 +52,8 @@ agility			<- [n] ability to move quickly and easily.
 agnostic		<- 인지불능, 
 					"user accounts would be agnostic "
 alleviate 		<- provide physical relief, as from painalliviate
+alley			<- [앨리]   뒷골목 
+ally			<- [얼라이] 연합
 all in all		<- everything considered; on the whole. mostly?
 all is well		<- everything is in a good or acceptable state: 
 					"I hpne all is well with your friends"
@@ -393,6 +395,10 @@ flout			<- [v] openly disregard (a rule, law or convention).
 							fail to observe, contravene, infringe, breach, commit a breach of, 
 							transgress against; More
 				antonyms:	observe
+forgo			<- stopping (고스톱 4(for) go에서 "멈추다")
+					omit or decline to take (something pleasant or valuable); go without.
+					"she wanted to forgo the dessert and leave while they could"
+
 frenzy			<- a state or period of uncontrolled excitement or wild behavior.
 					"Doreen worked herself into a frenzy of rage"
 					synonyms:	hysteria, madness, mania, delirium, feverishness, fever, wildness, 
@@ -404,11 +410,15 @@ full-fledged	<- completely developed or established; of full status.
 
 
 ### G
-gingivitises	<- 치은염
+gingivitises	<- 치은염 <-잇몸질환 4명중1명 세균성 감염
+					 inflammation of the gums
+periodontitis	<- 치주염(풍치) [페리오단타이티스] <- 치아를 버텨주는 조직에 염증
+
 gratification	<- pleasure, especially when gained from the satisfaction of a desire.
 				"a thirst for sexual gratification"
 				synonyms: satisfaction, fulfillment, indulgence, relief, appeasement; More
-grave consequencesnoun <- a bleak outcome, a deleterious outcome, a deleterious outgrowth, 
+
+grave consequences <- a bleak outcome, a deleterious outcome, a deleterious outgrowth, 
 						a malignant scenario, an extremely unfortunate sequence of events, 
 						deleterious aftermath, deleterious developments, deleteeious effects, 
 						deleterious results, important and significant effects, severe fallout
@@ -705,7 +715,7 @@ pacify			<- quell the anger, agitation, or excitement of.
 
 palindrome		<- a word, phrase, or sequence that reads the same backward as forward, e.g., madam 
 perplex			<- [v]complicate or confuse (a matter)
-periodontitis	<- [페리오단타이티스] 치주염
+
 placate			<- make (someone) less angry(calm) or hostile.
 					"they attempted to placate the students with promises"
 					synonyms:	pacify, calm, appease, mollify, soothe, win over, conciliate, 
@@ -3890,3 +3900,143 @@ Your guess is as good as mine:
 ##################################################################################################
 idiomatic phrase(숙어)
 ##################################################################################################
+
+
+
+##################################################################################################
+# English Gammar Cheatsheet
+###############################################################################################
+
+
+n: noun(명사)
+v: verb(동사)
+vi : verb intransitive (자동사)
+vt : verb transitive (타동사)
+adj. : adjective(형용사),
+adv. : adverb(부사),
+prep.: preposition(전치사),
+abbr. : abbreviation (약어)
+sing. : singular (단수)
+pl. : plural (복수)
+pron. : pronoun (대명사)
+C. : Countable noun (가산명사)
+C : Complement (보어)
+U : Uncountable noun(불가산 명사)
+conj. : conjunction (접속사)
+det. : determiner (한정사)
+sb. : somebody (어떤 사람)
+sth. : something (무엇)
+
+Proper Noun (고유명사)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### transitions & conjunctive adverbs ###
+## HOWEVER, THEREFORE, FOR EXAMPLE, IN ADDITION, FURTHER, ON THE OTHER HAND
+
+
+<sentence> . However, <sentence>.
+<sentence> ; however, <sentence>. [less common]
+
+# HOWEVER
+	Meaning: used to introduce a statement that contrasts with 
+			or seems to contradict something that has been said previously.
+	synonyms:	nevertheless, nonetheless, but, still, yet, though, although, even so, 
+			for all that, despite that, in spite of that; More
+
+"I love the Northeast. However, the winters are brutal."
+"I love the Northeast; however, the winters are brutal."     <=Less common
+"People tend to put on weight in middle age. However, gaining weight is not inevitable"
+
+# ; (semicolon) fancy connector word 
+(HOWEVER, THEREFORE, FOR EXAMPLE, etc.), and a comma
+It rained heavily all night long; therefore, the carport flooded. 
+
+
+
+### [Subordinating Conjunction] ###
+## ALTHOUGH / BECAUSE / IF / WHEN / SINCE / BEFORE / AFTER / WHILE / UNLESS 
+
+# Because <sentence>, <sentence>.
+	Because she wanted to know what to study, she took a pretest. [comma between the 2 parts]
+
+# <sentence> because <sentence>.2
+	She took a pretest because she wanted to know what to study. [no comma]
+
+### COMMAS ###
+#after an introductory word or group of words
+	However, it's not good news.
+	After a detailed financial investigation, the team presented its findings.
+
+#On both sides of an interrupting phrase or bit of extra info
+	On page 112, for example, you'll see several sentence fragments.
+	[Notice that "for example" is used here as an interrupter, not to connect 2 sentences.]
+	Ted Johnson, my new assistant, will start next week.
+	Jack, my neighbor for twenty years, will take in my mail while I'm away
+
+#If the sentence ends where you would have put the 2nd comma, that’s OK.
+	You'll see several sentence fragments on page 112, for example.
+	I want you to meet Ted Johnson, my new assistant.
+
+### TRICKY SUBJECT-VERB AGREEMENT:
+	People who live in glass houses in the Pacific Northwest probably have high heating bills. 	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
