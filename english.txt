@@ -17,97 +17,151 @@ accommodate		<- (of physical space, especially a building) provide lodging or su
 					synonyms:	lodge, house, put up, billet, quarter, board, take in, 
 								shelter, give someone a roof over their head; 수용하다
 
-adorn 			<- decorate
+adorn 			<- make more beautiful or attractive.
+					synonyms: decorate, embellish, ornament, enhance;
+					"pictures and prints adorned his walls"
+
 abscess			<- 종기   Dental Abscess, discharge pus 고름 짜내다	
 
 
 A.F.A.I.K.		<- "As Far As I Know" 
 adept			<- very skilled or proficient at something.
 					"he is adept at cutting through red tape"
-					synonyms:	expert, proficient, accomplished, skillful, talented, masterly, masterful, 
-								consummate, virtuoso
+					synonyms:	expert, proficient, accomplished, skillful, talented, 
+								masterly, masterful, consummate, virtuoso
 					antonyms:	inept
+					
 adhere			<- stick fast to (a surface or substance).
 					"paint won't adhere well to a greasy surface"
 					synonyms:	stick (fast), cohere, cling, bond, attach; be stuck, be fixed, 
 					be glued, be cemented
 					"a dollop of cream adhered to her nose"
+					
 adverse			<- preventing success or development; harmful; unfavorable.
+					"taxes are having an adverse effect on production"
 					synonyms:	unfavorable, disadvantageous, inauspicious, unpropitious, 
 								unfortunate, unlucky, untimely, untoward More
 					antonyms:	favorable, auspicious, beneficial, positive, friendly
+					
 adversary		<- one's opponent in a contest, conflict, or dispute.
 					"Davis beat his old adversary in the quarterfinals"
-					synonyms:	opponent, rival, enemy, antagonist, combatant, challenger, contender, competitor, 
-								opposer; 
-adverse effect	<- an undesired harmful effect resulting(역효과) 
-adorn			<- make more beautiful or attractive.
-aggravation		<- get worse
+					synonyms:	opponent, rival, enemy, antagonist, combatant, challenger, 
+								contender, competitor, opposer; 
+								
+adverse effect(or event)	<- an undesired harmful effect resulting(역효과) 
+				Adverse events are unintended pharmacologic effects that occur when a medication 
+				is administered correctly while a 'Side Effect' is a secondary unwanted effect 
+				that occurs due to drug therapy.
+
+aggravation		<- [aɡrəˈvāSH(ə)n][none] get worse, an intensification of a negative quality or aspect.
+					"Negotiators were optimistic despite the aggravation of the standoff caused 
+					by the press release"
+					synonyms:	worsen, make worse, exacerbate, inflame, compound; More
+					
 agile			<- [adj]민첩; able to move quickly and easily.
 					"Ruth was as agile as a monkey"
 					synonyms:	nimble, lithe, supple, limber, acrobatic, fleet-footed, 
 								light-footed, light on one's feet; More
+								
 agility			<- [n] ability to move quickly and easily.
 						ability to think and understand quickly.
-agnostic		<- 인지불능, 
-					"user accounts would be agnostic "
+					"Though he was without formal training as dancer or athlete, 
+					 his physical agility was inexhaustible."
+					 
+agnostic		<- [n] A person who believes that nothing is known or can be known of the existence 
+					or nature of God or of anything beyond material phenomena; a person who claims 
+					neither faith nor disbelief in God.
+					synonyms:	skeptic, doubter, doubting Thomas, cynic; More
+					antonyms:	believer, theist
+				<- [adjective] relating to agnostics or agnosticism.
+					synonyms:	skeptic, doubter, doubting Thomas, cynic; More
+					antonyms:	believer, theist
+						(in a nonreligious context) having a doubtful or noncommittal attitude toward something.
+						"until now I've been fairly agnostic about electoral reform"
+					
 alleviate 		<- provide physical relief, as from painalliviate
+
 alley			<- [앨리]   뒷골목 
+
 ally			<- [얼라이] 연합
+
 all in all		<- everything considered; on the whole. mostly?
+
 all is well		<- everything is in a good or acceptable state: 
 					"I hpne all is well with your friends"
+
 amass			<- gather together or accumulate (a large amount or number of valuable material or things) 
 					over a period of time.
 					synonyms:	gather, collect, assemble; More
 					antonyms:	dissipate
+					
 amenity			<- a desirable or useful feature or facility of a building or place.
 					"heating is regarded as a basic amenity"
 					synonyms:	facility, service, convenience, resource, appliance, aid, 
 								comfort, benefit, feature, advantage
 					"basic amenities"
+					
 amicably		<- in a friendly and peaceable manner.
+
 ample			<- [a] enough or more than enough; plentiful.
 					synonyms:	enough, sufficient, adequate, plenty of, more than enough, enough and to spare More
 					antonyms:	insufficient, meager
+					
 annihilation	<- complete destruction or obliteration, t otal defeat.
 					"the threat of global annihilation"
 					total defeat.
+					
 annotation		<- a note of explanation or comment added to a text or diagram.
 					synonyms:	note, notation, comment, gloss, footnote; More
 
 anticipate		<- regard as probable; expect or predict. 기대하다
 				   guess or be aware of (what will happen) and take action in order to be prepared.
 					"quicker than anticipated "
+					
 analogy			<- 비유법
+
 anemia			<- 빈혈(Noun)
 					 is a condition in which you don't have enough healthy red blood cells to carry 
 					 adequate oxygen to the body's tissues
-anemic			<- 빈혈의(Ajetive)
-anemometer		<- [ӕnəmάmitər] an instrument for measuring the speed of the wind, or of any current of gas.
+					 
+anemic			<- 빈혈의(Adjetive)
+
+anemometer		<- [ӕnəmάmitər] 
+					an instrument for measuring the speed of the wind, or of any current of gas.
+
 anticoagulation	<-> coagulation  <= blood thinner
+
 aptitude		<- a natural ability to do something.
 					"he had a remarkable aptitude for learning words"
 						a natural tendency.
 					"his natural aptitude for failure"
 					synonyms:	talent, gift, flair, bent, skill, knack, facility, ability, 
 								proficiency, capability, potential, capacity, faculty, genius
-"an aptitude for higher mathematics"
+					"an aptitude for higher mathematics"
+
 apropos			<- [ӕprəpóu] with reference to; concerning.
+
 arise			<- (of a problem, opportunity, or situation) emerge; become apparent.
 					"new difficulties had arisen", " when the opportunity arises"
-					synonyms:	come to light, become apparent, appear, emerge, crop up, turn up, surface, spring up
+					synonyms: come to light, become apparent, appear, emerge, crop up, 
+							turn up, surface, spring up
+					
 as such			<- in the exact sense of the word(이를테면 '예를 들면')
+
 at last			<- after much delay.
 					"you've come back to me at last!"
 					synonyms:	finally, at long last, after a long time, in the end, eventually, 
 							ultimately, in (the fullness of) time
 					"at last, the rain stopped"
+					
 attest			<- (V)provide or serve as clear evidence of
+
 Avenge 			<- a word broadly concerned with inflicting a punishment or penalty in the pursuit of 'justice'.
 					Avenge means the Achievement of justice
+					
 Revenge 		<- a word broadly concerned with inflicting harm or punishment for personal retaliation.
 					Revenge means Retaliation.
+					
 avid			<- having or showing a keen interest in or enthusiasm for something.
 					"Being a avid gamer"
 					synonyms: keen, eager, enthusiastic, ardent, passionate, zealous, hard-core; More
@@ -327,12 +381,54 @@ disposition		<- a person's inherent qualities of mind and character.
 						"a sweet-natured girl of a placid disposition"
 					synonyms:	temperament, nature, character, constitution, makeup, mentality
 						"a nervous disposition"
+						
 don't leave me hanging <- hi five 안해줄때
+
 dollop			<- a shapeless mass or blob of something, especially soft food.
 					"great dollops of cream"
 					synonyms:	blob, gobbet, lump, ball; informalglob
 					"a dollop of whipped cream"
+					
 drench   		<- wet thoroughly; soak
+
+
+dread			<- [verb] you are really, really not looking forward to something.
+					anticipate with great apprehension or fear.
+					"Jane was dreading the party"
+					synonyms:	fear, be afraid of, worry about, be anxious about, 
+									have forebodings about; More
+				<- [noun} great fear or apprehension.
+					"the thought of returning to New Jersey filled her with dread"
+					synonyms:	fear, apprehension, trepidation, anxiety, worry, concern, 
+								foreboding, disquiet, unease, angst; More
+				<- [adjective] greatly feared; dreadful.
+					"he was stricken with the dread disease and died"
+				
+			"I am 'afraid' of the tiger: I'm 'scared'!"
+			"I am 'dreading' going back to work after my holidays: I am not 'scared' or 'afraid', 
+						I am just not looking forward to it."
+
+dreadful		<- [adjective] causing or involving great suffering, fear, or unhappiness; extremely bad or serious.
+					"there's been a dreadful accident"
+					synonyms:	terrible, frightful, horrible, grim, awful, dire; More
+
+				'Dread' is fear of something that will happen. 
+					"I am dreading the test. "
+				'Fear' is being scared of things that are not directly related to time. 
+					"I have a fear of heights."
+					
+		To fear: to be afraid of something (temer)
+					(I fear my teacher at school.)
+		To scare: to be scary to something or someone (assustar)
+						(That painting scares me.)
+		To dread: to fear heavily. 
+						This feeling is stronger than fear.
+		To fright: this is also "to scare," but using this as a verb is rather old.
+		
+		- 무섭다: "be scared/fearful of something". Most common everyday word for fearing something.
+		- 두렵다: "dread"(would rather avoid if possible). Sounds a bit literary, so is used less often in daily life.
+		
+
 deterioration	<- the process of becoming progressively worse.
 					"a deterioration in the condition of the patient"
 					synonyms:	decline, collapse, failure, drop, downturn, slump; More
@@ -347,21 +443,31 @@ dyslexia		<- 디스렉시아
 e.g				<- for expample
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
 embezzle		<- 횡령
+embody			<- be an expression of or give a tangible or visible form to (an idea, quality, or feeling).
+					"a team that embodies competitive spirit and skill"
+					synonyms: personify · incorporate · give human form/shape to 
+					
 encompasses 	<- surround and have or hold within
+
 enlighten		<- give (someone) greater knowledge and understanding about a subject or situation.
 					"Christopher had not enlightened Frances as to their relationship"
 					synonyms:	inform, tell, make aware, open someone's eyes, notify, illuminate, 
 								apprise, brief, update, bring up to date; More
+								
 enrage			<- make very angry.
 					"the students were enraged at these new rules"
 					synonyms:	anger, infuriate, incense, madden, inflame; More
 					antonyms:	placate, calm
+					
 entice			<- attract or tempt by offering pleasure or advantage.
 					synonyms:	tempt, lure, allure, attract, appeal to; 유혹하다
+					
 entitlements	<- the amount to which a person has a right.
+
 errand			<- a short journey undertaken in order to deliver or collect something, often on someone else's behalf.
 					"she asked Tim to run an errand for her"
 					synonyms:	task, job, chore, assignment; More
+					
 eye stye		<- 눈다락지
 exalt			<- hold (someone or something) in very high regard; think or speak very highly of.
 					"the party will continue to exalt its hero"
@@ -389,6 +495,15 @@ finicky			<-	fussy about one's needs or requirements.
 					[음식·옷 등에] 지나치게 까다로운, 몹시 신경을 쓰는, 집착이 강한
 					synonyms:	fussy, fastidious, punctilious, overparticular, difficult, 
 								exacting, demanding; More
+flock			<-[v] gerund or present participle: flocking
+					congregate or mass in a flock or large group.
+					"students flocked to spring break sites"
+					synonyms:	gather, collect, congregate, assemble, converge, mass, 
+								crowd, throng, cluster, swarm 
+Flocking 		<- (미) (직물·벽지 등에 까는) 양모 부스러기) 
+					How to Flock your car's Dashboard.
+
+
 flout			<- [v] openly disregard (a rule, law or convention).
 					"Who flout the safty rules?"
 				synonyms:	defy, refuse to obey, disobey, break, violate, fail to comply with, 
