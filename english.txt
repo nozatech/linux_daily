@@ -1,8 +1,17 @@
+Listening
+Speaking
+Reading
+Grammar
+Writing
+
+
+관용어 = 숙어 = Idiom
+
 적!자!생!존!
 불규칙 동사
 http://blog.naver.com/PostView.nhn?blogId=the3329&logNo=220916379394&parentCategoryNo=&categoryNo=81&viewDate=&isShowPopularPosts=true&from=search
 
-
+I have a beautiful Marties, who I consider to be a family memeber.
 
 ### Move
 	Ctrl+End			Bottom of page
@@ -16,7 +25,19 @@ accommodate		<- (of physical space, especially a building) provide lodging or su
 					"the cabins accommodate up to 6 people"
 					synonyms:	lodge, house, put up, billet, quarter, board, take in, 
 								shelter, give someone a roof over their head; 수용하다
-
+Abroad 			<- [adverb] 
+					1. in or to a foreign country or countries.
+					"we usually go abroad for a week in May"
+					synonyms:	overseas, out of the country, to/in foreign parts, to/in a foreign country, 
+					to/in a foreign land
+					"he regularly travels abroad"
+					2. in different directions; over a wide area.
+					"millions of seeds are annually scattered abroad"
+					synonyms:	in circulation, circulating, widely current, everywhere, in the air, 
+					‘here, there, and everywhere’
+					[noun]1. foreign countries considered collectively.
+					"servicemen returning from abroad"
+								
 adorn 			<- make more beautiful or attractive.
 					synonyms: decorate, embellish, ornament, enhance;
 					"pictures and prints adorned his walls"
@@ -56,12 +77,12 @@ adverse effect(or event)	<- an undesired harmful effect resulting(역효과)
 aggravation		<- [aɡrəˈvāSH(ə)n][none] get worse, an intensification of a negative quality or aspect.
 					"Negotiators were optimistic despite the aggravation of the standoff caused 
 					by the press release"
-					synonyms:	worsen, make worse, exacerbate, inflame, compound; More
+					synonyms:	worsen, make worse, exacerbate, inflame, compound
 					
 agile			<- [adj]민첩; able to move quickly and easily.
 					"Ruth was as agile as a monkey"
 					synonyms:	nimble, lithe, supple, limber, acrobatic, fleet-footed, 
-								light-footed, light on one's feet; More
+								light-footed, light on one's feet
 								
 agility			<- [n] ability to move quickly and easily.
 						ability to think and understand quickly.
@@ -71,10 +92,10 @@ agility			<- [n] ability to move quickly and easily.
 agnostic		<- [n] A person who believes that nothing is known or can be known of the existence 
 					or nature of God or of anything beyond material phenomena; a person who claims 
 					neither faith nor disbelief in God.
-					synonyms:	skeptic, doubter, doubting Thomas, cynic; More
+					synonyms:	skeptic, doubter, doubting Thomas, cynic
 					antonyms:	believer, theist
 				<- [adjective] relating to agnostics or agnosticism.
-					synonyms:	skeptic, doubter, doubting Thomas, cynic; More
+					synonyms:	skeptic, doubter, doubting Thomas, cynic
 					antonyms:	believer, theist
 						(in a nonreligious context) having a doubtful or noncommittal attitude toward something.
 						"until now I've been fairly agnostic about electoral reform"
@@ -92,7 +113,7 @@ all is well		<- everything is in a good or acceptable state:
 
 amass			<- gather together or accumulate (a large amount or number of valuable material or things) 
 					over a period of time.
-					synonyms:	gather, collect, assemble; More
+					synonyms:	gather, collect, assemble
 					antonyms:	dissipate
 					
 amenity			<- a desirable or useful feature or facility of a building or place.
@@ -112,7 +133,7 @@ annihilation	<- complete destruction or obliteration, t otal defeat.
 					total defeat.
 					
 annotation		<- a note of explanation or comment added to a text or diagram.
-					synonyms:	note, notation, comment, gloss, footnote; More
+					synonyms:	note, notation, comment, gloss, footnote
 
 anticipate		<- regard as probable; expect or predict. 기대하다
 				   guess or be aware of (what will happen) and take action in order to be prepared.
@@ -156,6 +177,11 @@ at last			<- after much delay.
 					
 attest			<- (V)provide or serve as clear evidence of
 
+augment			<- make (something) greater by adding to it; increase.
+					"he augmented his summer income by painting houses"
+					synonyms:	increase, add to, supplement, build up, enlarge, expand, 
+								extend, raise, multiply, swell, grow
+
 Avenge 			<- a word broadly concerned with inflicting a punishment or penalty in the pursuit of 'justice'.
 					Avenge means the Achievement of justice
 					
@@ -164,7 +190,7 @@ Revenge 		<- a word broadly concerned with inflicting harm or punishment for per
 					
 avid			<- having or showing a keen interest in or enthusiasm for something.
 					"Being a avid gamer"
-					synonyms: keen, eager, enthusiastic, ardent, passionate, zealous, hard-core; More
+					synonyms: keen, eager, enthusiastic, ardent, passionate, zealous, hard-core
 
 
 ### B 
@@ -188,12 +214,15 @@ bastardization	<- corrupt or debase (something such as a language or art form), 
 					
 be kept well under / be quite tame	<= 길들여져있는
 
+
 bear in mind	<- keep in mind
 					remember and take into account.
 					"you need to bear in mind that the figures vary from place to place"
 					synonyms:	take into account, take into consideration, remember, consider, 
 								be mindful, mind, mark, heed More
+
 bearer 			<- carrier or something carries something
+
 bearing			<- a person's way of standing or moving.
 					"a man of precise military bearing"
 					synonyms:	posture, stance, carriage, gait, deportment; formalcomportment
@@ -203,18 +232,28 @@ bearing			<- a person's way of standing or moving.
 					synonyms:	relevance, pertinence, connection, appositeness, germaneness, 
 								importance, significance, application
 					"this has no bearing on the matter"	
-					
+
+begrudge		<- [verb] 
+					1. envy (someone) the possession or enjoyment of (something). 시기
+						"she begrudged Martin his affluence"
+						synonyms:	envy, resent, grudge
+						"she begrudged Brian his affluence"
+					2. give reluctantly or resentfully. 아까워하다
+						"nobody begrudges a single penny spent on health"
+						synonyms:	resent, feel aggrieved about, feel bitter about, be annoyed about, 
+								be resentful of, grudge, mind, object to, take exception to, regret
+						"don't begrudge the cost"				
 					
 bleak			<- [adj]
 					1. (of an area of land) lacking vegetation and exposed to the elements.
 					"a bleak and barren moor"
-					synonyms:	bare, exposed, desolate, stark, desert, lunar, open, empty, windswept; More
+					synonyms:	bare, exposed, desolate, stark, desert, lunar, open, empty, windswept
 					antonyms:	lush
 					2. (of a building or room) charmless and inhospitable; dreary.
 					3.(of the weather) cold and miserable.
 					4. (of a situation or future prospect) not hopeful or encouraging; unlikely to have a favorable outcome.
 						"he paints a bleak picture of a company that has lost its way"
-						synonyms:	unpromising, unfavorable, unpropitious, inauspicious; More
+						synonyms:	unpromising, unfavorable, unpropitious, inauspicious
 						antonyms:	promising
 
 bedside manner 	<- a doctor's approach or attitude toward a patient.
@@ -234,7 +273,7 @@ brace	{}		<- a device that clamps things tightly together or that gives support,
 bracket []		
 breadth			<- the distance or measurement from side to side of something; width.
 					"a black sweater outlined the breadth of his shoulders"
-					synonyms:	width, broadness, wideness, thickness; More
+					synonyms:	width, broadness, wideness, thickness
 
 brown-out		<- a reduction in or restriction on the availability of electrical power in a particular area.
 brevity			<- concise and exact use of words in writing or speech.(간결한 말)
@@ -245,20 +284,20 @@ burning midnight oil <- working all night
 by and large	<- on the whole; everything considered.
 					"mammals have, by and large, bigger brains than reptiles"
 					synonyms:	on the whole, generally, in general, all things considered, all in all, 
-					for the most part, in the main, as a rule, overall, almost always, mainly, mostly; More
+					for the most part, in the main, as a rule, overall, almost always, mainly, mostly
 by convention	<- 관례상
 
 
 ### C
 cadence			<- 억양, 음율, 리듬
-					synonyms:	intonation, modulation, lilt, accent, inflection; More
+					synonyms:	intonation, modulation, lilt, accent, inflection
 
 call out		<- To announce something. 
 capped out		<- when you’ve reached the maximum, or cap, of your insurance benefits
 cavern			<- a cave, or a chamber in a cave, typically a large one.
 					synonyms:	large cave, grotto, underground chamber/gallery, vault
 caveat			<- a warning or proviso of specific stipulations, conditions, or limitations.
-					synonyms:	warning, caution, admonition; More
+					synonyms:	warning, caution, admonition
 chime in		<- join in harmoniously. 맞장구 치다
 					"He started to laugh, and we chimed in"
 Churn rate 		<=(sometimes called attrition rate), in its broadest sense, is a measure of the number 
@@ -299,16 +338,19 @@ comprise		<- consist of; be made up of.
 					synonyms:	consist of, be made up of, be composed of, contain, encompass, incorporate
 
 condemnation	<- 심한비난
+
 conform			<- comply with rules, standards, or laws
 					synonyms:	comply with, abide by, obey, observe, follow, keep to, stick to, adhere to, 
-					uphold, heed, accept, go along with, fall in with, respect, defer to; More
+					uphold, heed, accept, go along with, fall in with, respect, defer to
 					antonyms:	flout
+
 Conglomerate	<- 대기업
+
 conscientious 	<- [kὰnʃiénʃəs] 양심있는
 					(of a person) wishing to do what is right, especially to do one's work or duty well and thoroughly.
 					"a conscientious and hardworking clerk"
 					synonyms:	diligent, industrious, punctilious, painstaking, sedulous, assiduous, dedicated, 
-							careful, meticulous, thorough, attentive, hard-working, studious, rigorous, particular; More
+							careful, meticulous, thorough, attentive, hard-working, studious, rigorous, particular
 contention		<- heated disagreement.
 					synonyms:	disagreement, dispute, disputation, argument, discord, conflict, 
 								friction, strife, dissension, disharmony "a point of contention"
@@ -316,36 +358,66 @@ contention		<- heated disagreement.
 					antonyms:	agreement
 
 contiguous		<- sharing a common border; touching. next or together in sequence.
+
 converse		<- engage in conversation.
 					"he fell in beside her and they began to converse amicably"
-					synonyms:	talk, speak, chat, have a conversation, discourse, communicate; More
+					synonyms:	talk, speak, chat, have a conversation, discourse, communicate
 
 convoluted		<- (especially of an argument, story, or sentence) extremely complex and difficult to follow.
 					synonyms: complicated, complex, involved, elaborate, serpentine, labyrinthine,
 							  tortuous, tangled, Byzantine; 
 					antonyms: straightforward
+
 cornerstone		<- an important quality or feature on which a particular thing depends or is based.
 					"a national minimum wage remained the cornerstone of policy"
 					synonyms:	foundation, basis, keystone, mainspring, mainstay, linchpin, bedrock, 
 								base, backbone, key, centerpiece, core, heart, center, crux
+
+covert	vs	overt
+covert			<- [adj]not openly acknowledged or displayed.
+					"Something more covert in the rear of the vehicle."
+					"covert operations against the dictatorship"
+					synonyms:	secret, furtive, clandestine, surreptitious, stealthy, cloak-and-dagger,
+					hole-and-corner, backstairs, backroom, hidden, under-the-table, concealed, 
+					private, undercover, underground; informalhush-hush
+					"covert plans to sell arms"
+				
+overt			<- [adj] one or shown openly; plainly or readily apparent, not secret or hidden.
+					"Front of the vehicle is more overt."
+					"an overt act of aggression"
+					synonyms:	undisguised, unconcealed, plain (to see), clear, apparent, 
+						conspicuous, obvious, noticeable, manifest, patent, open, blatant
+					"an overt attempt to sidestep the truth"
+					antonyms:	covert
+			
+				
+				
 crouch			<- adopt a position where the knees are bent and the upper body is brought forward and down, 
 					sometimes to avoid detection or to defend oneself.
+
 crustacean		<- such as a crab, lobster, shrimp, or barnacle. 갑각류
+
 culprit			<- cause of an issue or a person who is responsible for a crime or other misdeed.
 
 
 ### D
+
 damping			<- 습기를 주는, 전기: 감폭
+
 dapper			<- [adj](typically of a man) neat and trim in dress, appearance, or bearing.
 					synonyms:	smart, spruce, trim, debonair, neat, well dressed, well groomed, 
-					well turned out, elegant, chic, dashing; More
+					well turned out, elegant, chic, dashing
+
 decapitate		<- cut off the head of (a person or animal).
+
 deceit 			<- fake or trick
+
 deception		<- the action of deceiving someone.
 					"obtaining property by deception"
 					synonyms:	deceit, deceitfulness, duplicity, double-dealing, fraud, cheating, trickery, 
 						chicanery, deviousness, slyness, wiliness, guile, bluff, lying, pretense, treachery; 
 						defeat the purpose of 	<- to make (something) pointless
+
 deed			<-  1.literary: an action that is performed intentionally or consciously.
 					"doing good deeds"
 					synonyms:	act, action
@@ -360,14 +432,17 @@ dermatitis		<- is a general term that describes an inflammation of the skin
 atopic dermatitis(eczema 습진) <- (아토피 피부염)
 
 dereference		<- opposit of reference	
+
 degradation		<- changing to a lower state
+
 despair			<- the complete loss or absence of hope.
 					"driven to despair, he throws himself under a train"
-					synonyms:	hopelessness, disheartenment, discouragement, desperation, distress, anguish, unhappiness; More
+					synonyms:	hopelessness, disheartenment, discouragement, desperation, distress, anguish, unhappiness
 					antonyms:	hope, joy
 					"He rallies from the despair"
 
 digress			<- off the subject
+
 dire			<- of a situation or event) extremely serious or urgent.
 					"dire consequences"
 					synonyms:	terrible, dreadful, appalling, frightful, awful, atrocious, grim, alarming; 
@@ -375,13 +450,19 @@ dire			<- of a situation or event) extremely serious or urgent.
 disband			<- (of an organized group) break up or cause to break up and stop functioning.
 					synonyms:	break up, disperse, demobilize, dissolve, scatter, separate, 
 								go separate ways, part company
+
 discrete		<- individually separate and distinct(분리된, 결개의)
+
 disparate		<- [adj] essentially different in kind; not allowing comparison. 본질적으로 다른
+
 disposition		<- a person's inherent qualities of mind and character.
 						"a sweet-natured girl of a placid disposition"
 					synonyms:	temperament, nature, character, constitution, makeup, mentality
 						"a nervous disposition"
 						
+dirt·bag		<- a very unkempt or unpleasant person.		
+
+					
 don't leave me hanging <- hi five 안해줄때
 
 dollop			<- a shapeless mass or blob of something, especially soft food.
@@ -396,11 +477,11 @@ dread			<- [verb] you are really, really not looking forward to something.
 					anticipate with great apprehension or fear.
 					"Jane was dreading the party"
 					synonyms:	fear, be afraid of, worry about, be anxious about, 
-									have forebodings about; More
+									have forebodings about
 				<- [noun} great fear or apprehension.
 					"the thought of returning to New Jersey filled her with dread"
 					synonyms:	fear, apprehension, trepidation, anxiety, worry, concern, 
-								foreboding, disquiet, unease, angst; More
+								foreboding, disquiet, unease, angst
 				<- [adjective] greatly feared; dreadful.
 					"he was stricken with the dread disease and died"
 				
@@ -410,7 +491,7 @@ dread			<- [verb] you are really, really not looking forward to something.
 
 dreadful		<- [adjective] causing or involving great suffering, fear, or unhappiness; extremely bad or serious.
 					"there's been a dreadful accident"
-					synonyms:	terrible, frightful, horrible, grim, awful, dire; More
+					synonyms:	terrible, frightful, horrible, grim, awful, dire
 
 				'Dread' is fear of something that will happen. 
 					"I am dreading the test. "
@@ -425,38 +506,59 @@ dreadful		<- [adjective] causing or involving great suffering, fear, or unhappin
 						This feeling is stronger than fear.
 		To fright: this is also "to scare," but using this as a verb is rather old.
 		
-		- 무섭다: "be scared/fearful of something". Most common everyday word for fearing something.
-		- 두렵다: "dread"(would rather avoid if possible). Sounds a bit literary, so is used less often in daily life.
+		- 무섭다: "be scared/fearful of something". 
+				Most common everyday word for fearing something.
+		- 두렵다: "dread"(would rather avoid if possible). 
+				Sounds a bit literary, so is used less often in daily life.
 		
 
 deterioration	<- the process of becoming progressively worse.
 					"a deterioration in the condition of the patient"
-					synonyms:	decline, collapse, failure, drop, downturn, slump; More
+					synonyms:	decline, collapse, failure, drop, downturn, slump
 
 duck out		<- Leave hurriedly or secretly
 
+dud				<- [noun] a thing that fails to work properly or is otherwise unsatisfactory or worthless.
+				"Hyundai didn't realize that maybe the market has changed a little bit in the 
+				last 30 years. Also not helping things is the fact that the Hyundai Genesis used be a model
+				and now Genesis is a seperate brand which has only created confusion.  So far the launch of 
+				of the Genesis brand has been s a dud, but that doesn't mean the card is a dud.
+				
+				
 dyslexia		<- 디스렉시아
 				a general term for disorders that involve difficulty in learning to read or 
 				interpret words, letters, and other symbols, but that do not affect general intelligence.
 
 ### E
 e.g				<- for expample
+
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
+
 embezzle		<- 횡령
+
 embody			<- be an expression of or give a tangible or visible form to (an idea, quality, or feeling).
 					"a team that embodies competitive spirit and skill"
 					synonyms: personify · incorporate · give human form/shape to 
 					
 encompasses 	<- surround and have or hold within
 
+endeavro		<- [v]try hard to do or achieve something.
+					"he is endeavoring to help the Third World"
+					synonyms:	try, attempt, seek, undertake, aspire, aim, set out
+
+				   [noun] an attempt to achieve a goal.
+					"an endeavor to reduce serious injury"
+					synonyms:	attempt, try, bid, effort, venture
+					
+					
 enlighten		<- give (someone) greater knowledge and understanding about a subject or situation.
 					"Christopher had not enlightened Frances as to their relationship"
 					synonyms:	inform, tell, make aware, open someone's eyes, notify, illuminate, 
-								apprise, brief, update, bring up to date; More
+								apprise, brief, update, bring up to date
 								
 enrage			<- make very angry.
 					"the students were enraged at these new rules"
-					synonyms:	anger, infuriate, incense, madden, inflame; More
+					synonyms:	anger, infuriate, incense, madden, inflame
 					antonyms:	placate, calm
 					
 entice			<- attract or tempt by offering pleasure or advantage.
@@ -466,14 +568,19 @@ entitlements	<- the amount to which a person has a right.
 
 errand			<- a short journey undertaken in order to deliver or collect something, often on someone else's behalf.
 					"she asked Tim to run an errand for her"
-					synonyms:	task, job, chore, assignment; More
+					synonyms:	task, job, chore, assignment
 					
 eye stye		<- 눈다락지
+
 exalt			<- hold (someone or something) in very high regard; think or speak very highly of.
+					to glorify or place above others
+					"In church, we exalt our god in prayer."
 					"the party will continue to exalt its hero"
-					synonyms:	extol, praise, acclaim, esteem; More
+					synonyms:	extol, praise, acclaim, esteem
 					antonyms:	disparage, despise
+					
 explicitly		<- clearly
+
 exploit			<- make full use of and derive benefit from (a resource).…을 (이익·영리를 위해) 이용하다
 					"500 companies sprang up to exploit this new technology"
 					synonyms:	utilize, harness, use, make use of, turn/put to good use, 
@@ -486,20 +593,30 @@ exploit			<- make full use of and derive benefit from (a resource).…을 (이�
 faculty			<- an aptitude or talent for doing something.
 					"the author's faculty for philosophical analysis"
 					synonyms:	ability, proficiency, competence, capability, potential, 
-								capacity, facility; More
+								capacity, facility
 fall through 	<- your plans didn't work out for some reaso, didn't work out
 fasting			<- 단식
 fatigue			<- 피로
 feasible		<- possible to do easily or conveniently.
+
+fed up			<- [adjective] annoyed or upset at a situation or treatment.
+					"he was fed up with doing all the work"
+					synonyms:	sick and tired of, weary of, tired of, sick of
+
+
+
+
 finicky			<-	fussy about one's needs or requirements.
 					[음식·옷 등에] 지나치게 까다로운, 몹시 신경을 쓰는, 집착이 강한
 					synonyms:	fussy, fastidious, punctilious, overparticular, difficult, 
-								exacting, demanding; More
+								exacting, demanding
+								
 flock			<-[v] gerund or present participle: flocking
 					congregate or mass in a flock or large group.
 					"students flocked to spring break sites"
 					synonyms:	gather, collect, congregate, assemble, converge, mass, 
 								crowd, throng, cluster, swarm 
+
 Flocking 		<- (미) (직물·벽지 등에 까는) 양모 부스러기) 
 					How to Flock your car's Dashboard.
 
@@ -508,7 +625,7 @@ flout			<- [v] openly disregard (a rule, law or convention).
 					"Who flout the safty rules?"
 				synonyms:	defy, refuse to obey, disobey, break, violate, fail to comply with, 
 							fail to observe, contravene, infringe, breach, commit a breach of, 
-							transgress against; More
+							transgress against
 				antonyms:	observe
 forgo			<- stopping (고스톱 4(for) go에서 "멈추다")
 					omit or decline to take (something pleasant or valuable); go without.
@@ -521,27 +638,35 @@ frenzy			<- a state or period of uncontrolled excitement or wild behavior.
 full-fledged	<- completely developed or established; of full status.
 
 
-
+be fond of		<- to like someone very much, especially when you have known them for a long time and almost feel love for them
+					"Joe’s quite fond of her, isn’t he?"
+					"Over the years we’ve grown very fond of each other."
 
 
 ### G
+
+gaze 			<- [v] look steadily and intently, especially in admiration, surprise, or thought.
+					"he could only gaze(look fixedly) at her in astonishment"
+					synonyms:	stare at, look fixedly at, gape at, goggle at, eye, look at, 
+								study, scrutinize, take a good look at; More
+
 gingivitises	<- 치은염 <-잇몸질환 4명중1명 세균성 감염
 					 inflammation of the gums
 periodontitis	<- 치주염(풍치) [페리오단타이티스] <- 치아를 버텨주는 조직에 염증
 
 gratification	<- pleasure, especially when gained from the satisfaction of a desire.
 				"a thirst for sexual gratification"
-				synonyms: satisfaction, fulfillment, indulgence, relief, appeasement; More
+				synonyms: satisfaction, fulfillment, indulgence, relief, appeasement
 
 grave consequences <- a bleak outcome, a deleterious outcome, a deleterious outgrowth, 
 						a malignant scenario, an extremely unfortunate sequence of events, 
 						deleterious aftermath, deleterious developments, deleteeious effects, 
 						deleterious results, important and significant effects, severe fallout
 grime			<- dirt ingrained on the surface of something, especially clothing, a building, or the skin.
-					synonyms:	dirt, filth, grunge, mud, mire, smut, soot, dust; More
+					synonyms:	dirt, filth, grunge, mud, mire, smut, soot, dust
 gripe			<- express a complaint or grumble about something, especially something trivial.
 					"they gripe about the busywork"
-					synonyms:	complain, grumble, grouse, protest, whine, bleat; More
+					synonyms:	complain, grumble, grouse, protest, whine, bleat
 
 grip			<- [n] holdon too, a firm hold; a tight grasp or clasp. "tire grip, golf grip"**
 				   [v] take and keep a firm hold of; grasp tightly.
@@ -550,7 +675,7 @@ grab 			<- [n] a quick, sudden clutch or attempt to seize.
 						synonyms:	lunge, snatch
 				   [v] grasp or seize suddenly and roughly.
 						"she grabbed the rope"**
-						synonyms:	seize, grasp, snatch, take hold of, grip, clasp, clutch; More
+						synonyms:	seize, grasp, snatch, take hold of, grip, clasp, clutch
 					
 grasp			<- [n] a firm hold or grip. 
 				   [v] seize and hold firmly. "she grasped the bottle"
@@ -597,7 +722,7 @@ hypoxia			<- 저산소증
 ideation 		<- 관념화 the formation of ideas or concepts.
 idiocy			<- extremely stupid behavior.
 					"the idiocy of decimating rainforests"
-					synonyms:	stupidity, folly, foolishness, foolhardiness, ignorance; More
+					synonyms:	stupidity, folly, foolishness, foolhardiness, ignorance
 i.e.			<- in other words
 indie			<- (of a pop group, record label, or film company) not belonging to or affiliated 
 					with a major record or film company.
@@ -606,7 +731,7 @@ indie			<- (of a pop group, record label, or film company) not belonging to or a
 impair			<- weaken or damage something (especially a human faculty or function).
 					"drug use that impairs job performance"
 					synonyms:	have a negative effect on, damage, harm, diminish, reduce, 
-								weaken, lessen, decrease, impede, hinder, hobble; More
+								weaken, lessen, decrease, impede, hinder, hobble
 					antonyms:	improve, enhanc
 impaired hearing <- 난청
 
@@ -627,21 +752,29 @@ indulging		<- allow oneself to enjoy the pleasure of.
 					indulge in A [A(욕망·쾌락 등)에] 빠지다, 탐닉하다; [A를] 마음껏 누리다, 실컷 즐기다
 indulgence		<- [n]the action or fact of indulging.
 					"indulgence in self-pity"
-					synonyms:	satisfaction, gratification, fulfillment, satiation, appeasement; More
+					synonyms:	satisfaction, gratification, fulfillment, satiation, appeasement
 					antonyms:	denial, withholding, moderation, restraint, strictness
+
+inept			<- [adjective] having or showing no skill; clumsy.
+					"the inept handling of the threat"
+					synonyms:	incompetent, unskillful, unskilled, inexpert, amateurish
 
 inflict			<- cause (something unpleasant or painful) to be suffered by someone or something. 가하다
 ingenious		<- (of a person) clever, original, and inventive.
 					synonyms:	inventive, creative, imaginative, original, innovative, pioneering, 
-								resourceful, enterprising, inspired; More
+								resourceful, enterprising, inspired
 inhibition		<- the action of inhibiting(금지), restricting, or hindering a process.
 
 indorinatley	<- to an unusually or disproportionately large degree; excessively.
 					"the information was inordinately vetted and censored"
+
+inquisitve		<- eager for knowledge; curious
+					"The inquisitive cat loves to sit in the windowsill."
+					"The inquisitive little boy would not stop asking his parents questions."
 					
 insight			<- the capacity to gain an accurate and deep intuitive understanding of a person or thing.
 					synonyms:	intuition, discernment, perception, awareness, understanding, comprehension, 
-						apprehension, appreciation, penetration, acumen, perspicacity, judgment, acuity; More
+						apprehension, appreciation, penetration, acumen, perspicacity, judgment, acuity
 in place of 	<- instead of
 intervene		<- [v] come between so as to prevent or alter a result or course of events.
 					"he acted outside his authority when he intervened in the dispute"
@@ -649,14 +782,17 @@ intervention	<- [n]
 
 intimidate		<- frighten or overawe (someone), especially in order to make them do what one wants.
 					synonyms:	frighten, menace, terrify, scare, terrorize, cow, dragoon, subdue;
-					irrigator		<- [írəgèitər]
+					
+					
 intrinsic		<- [adjective] belonging naturally; essential.(본래 갖추어진)
 					"access to the arts is intrinsic to a high quality of life"
-					synonyms:	inherent, innate, inborn, inbred, congenital, connate, natural; More
+					synonyms:	inherent, innate, inborn, inbred, congenital, connate, natural
 invocation		<- the action of invoking something or someone for assistance or as an authority.
 					ex) application process invocation(호출	)
 invert			<- [v] put upside down or in the opposite position, order, or arrangement.
 intricacy		<- complicated, details, especially of an involved or perplexing subject.
+
+irrigator		<- To supply (land or crops) with water by means of pipes, sprinklers, ditches, or streams.
 
 
 ### J
@@ -699,7 +835,7 @@ leech			<- 1.One who constantly takes from others without giving anything in ret
 				   2.One who constantly copies things from others, such as style, phrases, expressions, and actions.
 liaise			<- [v]리-애이즈 establish a working relationship, typically in order to cooperate on a matter of mutual concern.
 					"she will liaise with teachers across the country"
-					synonyms:	cooperate, work together, collaborate; More
+					synonyms:	cooperate, work together, collaborate
 
 lieu			<- place; stead
 					in lieu of, in place of; instead of  
@@ -716,10 +852,18 @@ lump sum		<- a single payment made at a particular time, as opposed to a number 
 
 
 ### M
+mangle			<- severely mutilate, disfigure, or damage by cutting, tearing, or crushing.
+					"the car was mangled almost beyond recognition"
+					synonyms:	mutilate, maim, disfigure, damage, injure, crush
+
+
+
 marauder		<- a person who marauds; a raider.
 					synonyms:	raider, plunderer, pillager, looter, robber, pirate, freebooter, 
 								bandit, bandito, highwayman, rustler
 Marshalling 	<- arrange or assemble (a group of people, especially soldiers) in order.
+
+
 masquerade		<- [n]a false show or pretense.
 					"his masquerade ended when he was arrested"
 					synonyms:	pretense, deception, pose, act, front, facade, disguise, dissimulation, 
@@ -730,11 +874,24 @@ masquerade		<- [n]a false show or pretense.
 
 microcosm		<- a community, place, or situation regarded as encapsulating in miniature the characteristic 
 					qualities or features of something much larger.
+
 					"Berlin is a microcosm of Germany, in unity as in division"
+mingle			<- mix or cause to mix together.
+					"the sound of voices mingled with a scraping of chairs"
+					synonyms:	mix, blend, intermingle, intermix, interweave, interlace, combine, 
+								merge, fuse, unite, join, amalgamate, meld, mesh; literarycommingle
+					"fact and fiction are skillfully mingled in his novels"
+					
+					antonyms:	separate, be separated
+
+
+					
+					
+					
 misnomer		<- a wrong or inaccurate name or designation, a wrong or inaccurate use of a name or term.
 misdemeanor		<- a minor wrongdoing(경범죄).
 					"the player can expect a lengthy suspension for his latest misdemeanor"
-					synonyms:	wrongdoing, evil deed, crime, felony; More
+					synonyms:	wrongdoing, evil deed, crime, felony
 mock-up			<- a model or replica of a machine or structure, used for instructional or experimental purposes.
 MNDA			<- Mutual Non-Disclosure Agreement
 muscle spasm	<- 경련, 쥐, most common and are often due to overuse and muscle fatigue, dehydration, and electrolyte 
@@ -745,7 +902,8 @@ muscle spasm	<- 경련, 쥐, most common and are often due to overuse and muscle
 narrative		<- a spoken or written account of connected events; a story.(
 					"the hero of his modest narrative"
 					synonyms:	account, chronicle, history, description, record, report, story
-"an interesting narrative about her year in Bolivia"
+					"an interesting narrative about her year in Bolivia"
+
 neval			<- (belly button)a rounded, knotty depression in the center of a person's belly caused by the 
 					detachment of the umbilical cord after birth; the umbilicus.
 					synonyms: (informal) belly button; umbilicus
@@ -754,14 +912,17 @@ neval			<- (belly button)a rounded, knotty depression in the center of a person'
 
 negate			<- nullify; make ineffective(무효)
 					"alcohol negates the effects of the drug"
-					synonyms:	invalidate, nullify, neutralize, cancel; More
+					synonyms:	invalidate, nullify, neutralize, cancel
 					antonyms:	validate, confirm
 
+
 nifty			<- very good
+
 nitty-gritty	<- what is essential and basic :specific practical details(본격비교)
+
 					the most important aspects or practical details of a subject or situation.
 					"get down to the nitty-gritty of the problem"
-					synonyms:	basics, essentials, fundamentals, substance, quintessence, heart of the matter; More	
+					synonyms:	basics, essentials, fundamentals, substance, quintessence, heart of the matter	
 
 no frill 		<- simple, plain, 과잉서비스를 제공하지 않는
 
@@ -772,10 +933,10 @@ no frill 		<- simple, plain, 과잉서비스를 제공하지 않는
 obliterate		<- destroy utterly; wipe out.
 					"the memory was so painful that he obliterated it from his mind"
 					synonyms:	destroy, wipe out, annihilate, demolish, eliminate, decimate, liquidate, 
-								wipe off the face of the earth, wipe off the map; More
+								wipe off the face of the earth, wipe off the map
 obscurity		<- the state of being unknown, inconspicuous, or unimportant.
 					"he is too good a player to slide into obscurity"
-					synonyms:	insignificance, inconspicuousness, unimportance, anonymity; More
+					synonyms:	insignificance, inconspicuousness, unimportance, anonymity
 					antonyms:	fame
 
 omnibus			<- [adj] comprising several items.
@@ -791,7 +952,9 @@ palindrome 		<- a word that reads same forwards or backwards
 Pavilion		<- In architectural terminology it refers to a subsidiary building that is either positioned 
 					separately or as an attachment to a main building. 
 					Often its function makes it an object of pleasure.[정원 정자, 누각]
+
 parche			<- dried 			e.g. parched reservoirs
+
 partake			<- join in (an activity).
 					"visitors can partake in golfing or clay pigeon shooting"
 					synonyms:	participate in, take part in, engage in, join in, enter into, get 
@@ -804,16 +967,29 @@ pastime			<- an activity that someone does regularly for enjoyment rather than w
 					synonyms:	hobby, leisure activity/pursuit, sport, game, recreation, 
 								amusement, diversion, avocation, entertainment, interest, sideline
 pep talk		<- a talk intended to make someone feel more courageous or enthusiastic.
+
 pertinent		<- relevant or applicable to a particular matter; apposite. synonyms:relevant
+
 periodontists	<- 치주염
+
 ponderous		<- slow and clumsy because of great weight.
+
 precedence		<- [n] the condition of being considered more important than someone or something else; 
 						priority in importance, order, or rank.
 						"his desire for power soon took precedence over any other consideration"
 						synonyms:	priority, rank, seniority, superiority, primacy, preeminence, 
 									eminence More
 					"by order of precedence"
+					
+procrastinate	<- [v] delay or postpone action; put off doing something.
+					"It won't be this price for long, so don't procrastinate"
+					synonyms:	delay, put off doing something, postpone action, defer action, 
+							be dilatory, use delaying tactics, stall, temporize, drag one's feet/heels, 
+							take one's time, play for time, play a waiting game
+					"fear of failure often causes people to procrastinate"		
+
 promiscuous		<- 
+
 prospective		<- (of a person) expected or expecting to be something particular in the future. 미래의, 장래의
 					vs Retrospective  <- 회고의,looking back on or dealing with past events or situations. 
 punctual		<- 	happening or doing something at the agreed or proper time; on time.
@@ -847,20 +1023,20 @@ primitive		<- relating to, denoting, or preserving the character of an early sta
 					evolutionary or historical development of something.
 profoundly		<- synonyms: extremely, very, deeply, exceedingly, greatly, immensely, enormously, 
 					tremendously, intensely, heartily, keenly, acutely, painfully, 
-					from the bottom of one's heart, downright, thoroughly, sincerely, so; More
+					from the bottom of one's heart, downright, thoroughly, sincerely, so
 promiscuous		<- having or characterized by many transient sexual relationships(난교).
 					"promiscuous teenagers"
-					synonyms:	licentious, sexually indiscriminate, wanton, immoral, fast; More
+					synonyms:	licentious, sexually indiscriminate, wanton, immoral, fast
 					antonyms:	chaste, virtuous
 
 promiscuity		<- the fact or state of being promiscuous.
 					"some fear this will lead to greater sexual promiscuity among teens"
-					synonyms:	licentiousness, wantonness, immorality; More
+					synonyms:	licentiousness, wantonness, immorality
 					antonyms:	chastity, virtue
 prospect		<- the possibility or likelihood of some future event occurring.
 					"there was no prospect of a reconciliation"
 					synonyms:	likelihood, hope, expectation, anticipation, (good/poor) chance, odds, 
-							probability, possibility, promise; More
+							probability, possibility, promise
 
 prorate			<- 	(…을) 비례 계산(하여 산출)하다	
 proverbs		<- 명언집(proverbs collection)
@@ -879,17 +1055,22 @@ quirk			<- 변덕 	e.g. by a quirk of fate 운명의 장난으로
 rake			<- garden rake (갈퀴)
 rampage			<- [Verb](especially of a large group of people) rush around in a violent and uncontrollable manner.
 					"several thousand demonstrators rampaged through the city"
-					synonyms:	riot, run riot, go on the rampage, run amok, go berserk; More
+					synonyms:	riot, run riot, go on the rampage, run amok, go berserk
 					[Noun] a period of violent and uncontrollable behavior, typically involving a large 
 					group of people.
 					"thugs went on a rampage and wrecked a classroom"
 rationales		<- a set of reasons or a logical basis for a course of action or a particular belief.
 					"he explained the rationale behind the change"
-					synonyms:	reason(s), reasoning, thinking, logic, grounds, sense; More
+					synonyms:	reason(s), reasoning, thinking, logic, grounds, sense
 recapitulate	<- "RECAP"
 					summarize and state again the main points of.
 					"he began to recapitulate his argument with care"
-					synonyms:	summarize, sum up; More
+					synonyms:	summarize, sum up
+
+recumbent		<- 	a resting or reclining state
+					"As soon as the flight attendant announced we could lean back, 
+					I lowered my seat to a recumbent position." 				
+					
 reconnaissance	<- military observation of a region to locate an enemy or ascertain strategic features.
 remainder		<- Something left over after other parts have been taken away.
 					"I will most likely be out for the remainder of the day."
@@ -911,7 +1092,7 @@ relinquish 		<- give up
 repercussions	<- an unintended consequence occurring some time after an event or action, 
 					especially an unwelcome one.(악영향)
 					"the move would have grave repercussions for the entire region"
-					synonyms:	consequence(s), result(s), effect(s), outcome; More
+					synonyms:	consequence(s), result(s), effect(s), outcome
 
 resilient		<- (of a person or animal) able to withstand or recover quickly from difficult conditions.
 					"babies are generally far more resilient than new parents realize"
@@ -958,7 +1139,7 @@ sacred			<- [seikrid] connected with God (or the gods) or dedicated to a religio
 					purpose and so deserving veneration.  종교적인
 scrutiny		<- critical observation or examination. 조사
 					"every aspect of local government was placed under scrutiny"
-					synonyms:	examination, inspection, survey, study, perusal; More
+					synonyms:	examination, inspection, survey, study, perusal
 
 setup VS set up <- setup [noun], set up [verb] 
 serpentine		<= winding curve(구불한) e.g. serpentine belt(fan belt) for car
@@ -1004,10 +1185,14 @@ slack			<- [adj] not taut or held tightly in position; loose.
 
 					
 snippet			<- a small piece or brief extract. "snippet code"
-					synonyms:	piece, bit, scrap, fragment, particle, shred; More
+					synonyms:	piece, bit, scrap, fragment, particle, shred
 snoop			<- investigate or look around furtively in an attempt to find out something, 
 					especially information about someone's private affairs.
 					souvenir 
+					
+so can you		<- you can too
+					"I lost 20 pounds in 4 days, and so can you."
+					
 softy			<- a softhearted, weak, or sentimental person.
 solicit			<- ask for or try to obtain (something) from someone.
 					synonyms:	ask for, request, seek, apply for, put in for, call for, press for, beg, plead for
@@ -1017,7 +1202,7 @@ sparse			<- thinly dispersed or scattered.
 Spectre			<- 
 splinter		<-	a small, thin, sharp piece of wood, glass, or similar material broken off from a larger piece.
 					"a splinter of ice"
-					synonyms:	sliver, shiver, chip, shard; More
+					synonyms:	sliver, shiver, chip, shard
 
 sporadically	<- [adv]occasionally or at irregular intervals.
 					"he worked sporadically at part-time jobs"
@@ -1028,7 +1213,7 @@ sprint			<- run at full speed over a short distance.
 					"I saw Charlie sprinting through the traffic toward me"
 					synonyms: run, race, dart, rush, dash, hasten, hurry, scurry, scamper, hare, bolt, fly, 
 					gallop, career, charge, shoot, hurtle, speed, zoom, go like lightning, 
-					go hell-bent for leather, go like the wind; More
+					go hell-bent for leather, go like the wind
 					antonyms: walk
 squealing 		<- 빽뺵소리 스피커에서
 statnd corrected <- admit that one's was wrong
@@ -1049,14 +1234,15 @@ strife			<- angry or bitter disagreement over fundamental issues; conflict.
 streak			<- [striːk] Noun: a long, thin line or mark of a different substance or color from its surroundings.
 					Verb: move very fast in a specified direction.
 					
-subtle			<- (especially of a change or distinction) so delicate or 
+subtle			<- [sΛtl](especially of a change or distinction) so delicate or 
 					precise as to be difficult to analyze or describe.
 					making use of clever and indirect methods to achieve something.
 					synonyms:	fine, fine-drawn, nice, hair-splitting
 					"subtle distinctions"  "fail in subtle way"
+					
 supersede 		<- replace; take the place of (a person or thing previously in authority or use); supplant.
 					"the older models have now been superseded"
-					synonyms:	replace, take the place of, take over from, succeed; More
+					synonyms:	replace, take the place of, take over from, succeed
 
 superintendent	<- a person who manages or superintends an organization or activity.
 					synonyms:	manager, director, administrator, supervisor, overseer, 
@@ -1078,17 +1264,27 @@ thin-skinned	<- sesitive to criticism or insults
 thick-skinned
 tipping point	<- the point at which a series of small changes or incidents becomes significant enough 
 					to cause a larger, more important change.
+					
+					
+tranquil		<-[adj] free from disturbance; calm.
+					"her tranquil gaze"
+					synonyms:	peaceful, calm, calming, still, serene, placid, restful, 
+								quiet, relaxing, undisturbed, limpid, pacific; More
+
+tranquilizer	<-
+					
+					
 traverse		<- travel across or through.
 					"he traversed the forest"
-					synonyms:	travel over/across, cross, journey over/across, pass over; More
+					synonyms:	travel over/across, cross, journey over/across, pass over
 					extend across or through.
 					"a moving catwalk that traversed a vast cavernous space"
-				synonyms:	cross, bridge, span; More
+				synonyms:	cross, bridge, span
 triage			<- (in medical use) the assignment of degrees of urgency to wounds or illnesses to decide the order of 
 					treatment of a large number of patients or casualties.
 truncate		<- shorten (something) by cutting off the top or the end.
 					"a truncated cone shape"
-					synonyms:	shorten, cut, cut short, curtail, bring to an untimely end; More
+					synonyms:	shorten, cut, cut short, curtail, bring to an untimely end
 					antonyms:	lengthen, extend
 
 turnkey			<- (car turn key to start & drive) | ~of or involving the provision of a complete product 
@@ -1100,7 +1296,7 @@ tongue in cheek <- without really meaning what one is saying or writing.
 trivial 		<- 	of little value or importance.
 					"huge fines were imposed for trivial offences"
 					synonyms:	unimportant, banal, trite, commonplace, insignificant, 
-								inconsequential, minor, of no account, of no consequence, of no importance; More
+								inconsequential, minor, of no account, of no consequence, of no importance
 					antonyms:	important, significant, life-and-death
 													 
 														 
@@ -1108,7 +1304,7 @@ trivial 		<- 	of little value or importance.
 ### V
 vanquish		<- come out better in a competition, race, or conflict
 veteran			<- (베테랑)a person who has had long experience in a particular field.
-					synonyms:	expert, old hand, past master, doyen, vet; More
+					synonyms:	expert, old hand, past master, doyen, vet
 					(재향군인)a person who has served in the military.
 
 vet				<- make a careful and critical examination of (something).
@@ -1141,7 +1337,19 @@ while vs awhile	<- while is a period of time vs awhile is a short period of time
 					awhile "stand here awhile"
 					synonyms:	for a moment, for a (little) while, for a short time; informalfor a bit
 					"please wait just awhile"
-whimsical		<- 변덕스러운
+					
+whimsical		<-[adjective]
+				1. playfully quaint or fanciful, especially in an appealing and amusing way.
+					"She has a whimsical sense of humor"
+				synonyms:	fanciful, playful, mischievous, waggish, quaint, quizzical, 
+							curious, droll, fantastical, Seussian
+				2. acting or behaving in a capricious manner(변덕스러운)
+					"the whimsical arbitrariness of autocracy(독재정치)"
+					"It's hard to make plans with such a whimsical best friend"
+				synonyms:	volatile, capricious, fickle, changeable, unpredictable, variable, 
+				erratic, mercurial, mutable, inconstant, inconsistent, unstable, protean
+				"the whimsical arbitrariness of autocracy"
+
 
 ### U
 ugh				<- used to express disgust or horror.
@@ -1152,7 +1360,14 @@ underlying		<- gerund or present participle: underlying
 					"the fundamental issue that underlies the conflict"
 					synonyms: fundamental, basic, primary, prime, central, principal, root, 
 								chief, cardinal, key, elementary, intrinsic, essential
-"the underlying aims of the research"
+					"the underlying aims of the research"
+					
+unkempt			<- [adj](especially of a person) having an untidy or disheveled appearance.
+					"they were unwashed and unkempt"
+					synonyms:	untidy, messy, scruffy, straggly, disordered, disheveled, 
+							disarranged, rumpled, windblown, ungroomed, bedraggled, in a mess, 
+							mussed, messed up
+
 uptake			<- the action of taking up or making use of something that is available.
 					"a recent uptake in cigar smoking"
 					 "Vitamin C increases your 'uptake of' minerals such as iron." <- 섭취
@@ -3873,6 +4088,7 @@ Fun and Unique Expressions
 
 
 Commonly used smart idioms 
+
 A List of the most commonly used English idioms
 A hot potato: 
 	Speak of an issue which many people are talking about and which is usually disputed
@@ -3946,75 +4162,350 @@ Give the benefit of the doubt
 	
 Hear it on the grapevine:
 	'to hear rumors' about something or someone.
+	
 Hit the nail on the head:
 	Do or say something exactly right
+	
 Hit the sack | sheets | hay:
 	To go to bed.
 In the heat of the moment:
 	Overwhelmed by what is happening in the moment.
 It takes two to tango:
 	Actions or communications need more than one person
+	
 Jump on the bandwagon:
 	Join a popular trend or activity.
+	
 Keep something at bay:
 	Keep something away.
+	
 Kill two birds with one stone:
 	to accomplish two different things at the same time.
+
 Last straw:
 	The final problem in a series of problems.
+
 Let sleeping dogs lie:
 	Do not disturb a situation as it is - since it would result in trouble or complications.
+
 Let the cat out of the bag:
 	To share information that was previously concealed
+
 Make a long story short:
+
 Come to the point:
 	leave out details
+
 Method to my madness:
 	An assertion that, despite one's approach seeming random, there actually is structure to it.
+
 Miss the boat:
 	someone missed his or her chance
+
+Near and dear to (one) 	
+	Of great importance to and held in very high esteem by one. 
+	Literature has been near and dear to me since high school. 
+	"It's important to have people in your life who are near and dear to you."
+	
 Not a spark of decency:
 	No manners
+
 Not playing with a full deck:
 	Someone who lacks intelligence.
+
 Off one's rocker:
 	Crazy, demented, out of one's mind, in a confused or befuddled state of mind, senile.
+
 On the ball:
 	When someone understands the situation well.
+
 Once in a blue moon:
 	Happens very rarely.
+
 Picture paints a thousand words:
 	A visual presentation is far more descriptive than words.
+
 Piece of cake:
 	A job, task or other activity that is easy or simple.
+
 Put wool over other people's eyes:
 	This means to deceive someone into thinking well of them.
+
 See eye to eye:
 	This idiom is used to say that two (or more people) agree on something.
+
 Sit on the fence:
 	This is used when someone does not want to choose or make a decision.
+
 Speak of the devil!:
 	This expression is used when the person you have just been talking about arrives.
+
 Steal someone's thunder:
 	To take the credit for something someone else did.
+
 Take with a grain of salt:
 	This means not to take what someone says too seriously.
+
 Taste of your own medicine:
 	Means that something happens to you, or is done to you, that you have done to someone else
+
 To hear something straight from the horse's mouth:
 	To hear something from the authoritative source.
+
 Whole nine yards:
 	Everything. All of it.
+
 Wouldn't be caught dead:
 	Would never like to do something
+
+
+	
 Your guess is as good as mine:
 	To have no idea, do not know the answer to a question
 
 
 
 ##################################################################################################
-idiomatic phrase(숙어)
+idioms
 ##################################################################################################
+A hot potato
+Speak of an issue (mostly current) which many people are talking about and which is usually disputed
+
+A penny for your thoughts
+A way of asking what someone is thinking
+
+Actions speak louder than words
+People's intentions can be judged better by what they do than what they say.
+
+Add insult to injury
+To further a loss with mockery or indignity; to worsen an unfavorable situation.
+
+At the drop of a hat
+Meaning: without any hesitation; instantly.
+
+Average Joe
+	=> Someone who is just like everyone else; a normal person. 
+	=> An ordinary person, especially a man.
+	Teacher: What do you want to be when you grow up, children?
+	Stupid child: Mommy said I could be anything, so I want to be a billionaire!
+	Asian: I want to be a doctor (because my parents are going to kill me if I dont!). 
+	Child of American heritage: I want to be an average Joe.
+
+
+Back to the drawing board
+When an attempt fails and it's time to start all over.
+
+Ball is in your court
+It is up to you to make the next decision or step
+
+Barking up the wrong tree
+Looking in the wrong place. Accusing the wrong person
+
+be in hot water (also get into hot water)
+​	to be in or get into a difficult situation in which you are 
+	in danger of being criticized or punished:
+	"He found himself in hot water over his comments about immigration."
+
+
+Be glad to see the back of
+Be happy when a person leaves.
+
+be (stuck) in a rut
+	To become seemingly trapped or stuck in a mundane, non-changing pattern of life, 
+	work, and/or personal behavior. 
+	"I had so many ambitions when I first graduated from college, 
+		but now I feel like I'm in a rut."
+	"We're stuck in a rut. let's move abroad for the summer and shake things up!"
+
+
+
+
+Beat around the bush
+Avoiding the main topic. Not speaking directly about the issue.
+
+Best of both worlds
+Meaning: All the advantages.
+
+Best thing since sliced bread
+A good invention or innovation. A good idea or plan.
+
+Bite off more than you can chew
+To take on a task that is way to big.
+
+Blessing in disguise
+Something good that isn't recognized at first.
+
+Burn the midnight oil
+To work late into the night, alluding to the time before electric lighting.
+
+Can't judge a book by its cover
+Cannot judge something primarily on appearance.
+
+Can't be all things at all time
+	"You can't be all things at all time."
+
+Caught between two stools
+When someone finds it difficult to choose between two alternatives.
+
+Costs an arm and a leg
+This idiom is used when something is very expensive.
+
+Cross that bridge when you come to it
+Deal with a problem if and when it becomes necessary, not before.
+
+Cry over spilt milk
+When you complain about a loss from the past.
+
+Cup of joe
+	A nickname for a cup of coffee. 
+	
+Curiosity killed the cat
+Being Inquisitive can lead you into an unpleasant situation.
+
+Cut corners
+When something is done badly to save money.
+
+Cut the mustard [possibly derived from "cut the muster"]
+To succeed; to come up to expectations; adequate enough to compete or participate
+
+Devil's Advocate
+To present a counter argument
+
+Don't count your chickens before the eggs have hatched
+This idiom is used to express "Don't make plans for something that might not happen".
+
+Don't give up the day job
+You are not very good at something. You could definitely not do it professionally.
+
+Don't put all your eggs in one basket
+Do not put all your resources in one possibility.
+
+Drastic times call for drastic measures
+When you are extremely desperate you need to take drastic actions.
+
+Elvis has left the building
+The show has come to an end. It's all over.
+
+Every cloud has a silver lining
+Be optimistic, even difficult times will lead to better days.
+
+Far cry from
+Very different from.
+
+'Feast Today Famine Tomorrow ' 
+		"Sarah you’re spending all your money at the beginning of the month. 
+		It’s like feast today famine tomorrow. By the end of the month you have nothing left"
+
+Feel a bit under the weather
+		Meaning: Feeling slightly ill.
+
+Give the benefit of the doubt
+		Believe someone's statement, without proof.
+
+Hear it on the grapevine
+	This idiom means 'to hear rumors' about something or someone.
+Hit the nail on the head
+Do or say something exactly right
+
+Hit the sack / sheets / hay
+Catch some Z's
+		To go to bed.
+
+
+In the heat of the moment
+Overwhelmed by what is happening in the moment.
+
+It takes two to tango
+Actions or communications need more than one person
+
+Jump on the bandwagon
+Join a popular trend or activity.
+
+Keep something at bay
+Keep something away.
+
+Kill two birds with one stone
+This idiom means, to accomplish two different things at the same time.
+
+Last straw
+The final problem in a series of problems.
+
+Let sleeping dogs lie
+Meaning - do not disturb a situation as it is - since it would result in trouble or complications.
+
+Let the cat out of the bag
+To share information that was previously concealed
+
+Make a long story short
+Come to the point - leave out details
+
+Method to my madness
+An assertion that, despite one's approach seeming random, there actually is structure to it.
+
+Miss the boat
+This idiom is used to say that someone missed his or her chance
+
+Not a spark of decency
+Meaning: No manners
+
+Not playing with a full deck
+Someone who lacks intelligence.
+
+Off one's rocker
+Crazy, demented, out of one's mind, in a confused or befuddled state of mind, senile.
+
+On the ball
+When someone understands the situation well.
+
+Once in a blue moon
+Meaning: Happens very rarely.
+
+Picture paints a thousand words
+A visual presentation is far more descriptive than words.
+
+Piece of cake
+A job, task or other activity that is easy or simple.
+
+Put wool over other people's eyes
+This means to deceive someone into thinking well of them.
+
+'one too many'		<- one drink of liquor too many, implying drunkenness. 
+	"I think I've had one too many. It's time to stop drinking."
+	"Don't drive if you've had one too many."
+
+See eye to eye
+This idiom is used to say that two (or more people) agree on something.
+
+Sit on the fence
+This is used when someone does not want to choose or make a decision.
+
+some loose ends
+	some things that are not yet finished; some problems not yet solved.
+
+Speak of the devil!
+This expression is used when the person you have just been talking about arrives.
+
+Steal someone's thunder
+To take the credit for something someone else did.
+
+Take with a grain of salt
+This means not to take what someone says too seriously.
+
+Taste of your own medicine
+Means that something happens to you, or is done to you, that you have done to someone else
+
+To hear something straight from the horse's mouth
+To hear something from the authoritative source.
+
+Whole nine yards
+Everything. All of it.
+
+Wouldn't be caught dead
+Would never like to do something
+
+'Your guess is as good as mine'
+	To have no idea, do not know the answer to a question
+
 
 
 
@@ -4100,7 +4591,7 @@ Proper Noun (고유명사)
 	Meaning: used to introduce a statement that contrasts with 
 			or seems to contradict something that has been said previously.
 	synonyms:	nevertheless, nonetheless, but, still, yet, though, although, even so, 
-			for all that, despite that, in spite of that; More
+			for all that, despite that, in spite of that
 
 "I love the Northeast. However, the winters are brutal."
 "I love the Northeast; however, the winters are brutal."     <=Less common
@@ -4140,16 +4631,144 @@ It rained heavily all night long; therefore, the carport flooded.
 	People who live in glass houses in the Pacific Northwest probably have high heating bills. 	
 	
 	
-	
-	
+##############################################################################
+영어문법 용어(English Grammar Term)
+##############################################################################
+출처: http://englishgate.tistory.com/256 [공부의 진리 예습 복습]
+
+Abstract noun  				추상명사
+Active voice   				능동태
+Adjective  					형용사
+Adverb						부사
+Agreement					일치
+Apposition					동격
+Article						관사
+Attributive use 			한정용법
+Auxiliary verb 				조동사
+Be verb 					be 동사
+Capital letter 				대문자
+Cardinal number 			기수
+Clause						절
+Collective noun				집합명사
+Comma						쉼표
+Comparative					비교급
+Complement					보어
+Conjunction					접속사
+Conditional					가정법
+Consonant					자음
+Countable nouns				가산명사
+Definite article			정관사
+Demonstrative pronouns		지시대명사
+Ellipsis					생략
+Emphasis					강조
+Exclamation point			느낌표
+Exclamatory sentence		감탄문
+Frequency adverb			빈도부사
+Future						미래
+Future perfect progressive	미래완료 진행
+Grammar						문법
+Gerund						동명사
+Imperative sentence			명령문
+Impersonal pronouns			비인칭대명사
+Incomplete verb				불완전 동사
+Indefinite article			부정관사
+Infinitive					부정사
+Interjection				감탄사
+Interrogative				의문사
+Interrogative pronouns		의문대명사
+Interrogative sentence 		의문문
+Intransitive verb			자동사
+Inversion					도치
+Irregular					불규칙적
+Material noun				물질명사
+Modifier					수식어
+Mood						법
+Narration					화법
+Negative sentence			부정문
+Noun						명사
+Objective					목적격
+Objects						목적어
+Ordinal number				서수
+Participle					분사
+Passive						수동태
+Past						과거
+Past participle				과거분사
+Past perfect				과거완료
+Past perfect progressive	과거완료 진행
+Past progressive			과거진행
+Past tense					과거시제
+Period						마침표
+Person						인칭
+Personal pronouns			인칭대명사
+Phrase						구
+Plural						복수
+Plural noun					복수 명사
+Possessive					소유격
+Possessive pronoun			소유대명사
+Predicative use				서술 용법
+Preposition					전치사
+Present						현재
+Present participle			현재 분사
+Present perfect				현재완료
+Present perfect progressive	현재완료진행
+Progressive form			진행형
+Pronoun						대명사
+Proper noun					고유명사
+Question mark				물음표
+Quotation mark				따옴표
+Reflexive pronoun			재귀대명사
+Reflexive verb				재귀동사
+Regular						규칙적
+Relative adjective			관계형용사
+Relative pronoun			관계대명사
+Sentence					문장
+Singular					단수
+Singular noun				단수명사
+Small letter				소문자
+Subject						주어
+Subjective					주격
+Subjunctive mood			가정법
+Superlative					최상급
+Tag question				부가의문문
+Tense						시제
+The first person			1인칭
+The second person			2인칭
+The third person			3인칭
+To infinitive 				to 부정사
+Transitive verb				타동사
+Uncountable nouns			불가산명사
+Verb						동사
+Voice						태
+Vowel						모음
+##############################################################################
 
 
+### However ###
 
+However = But
+"However" is a transition word that moves your ideas from one part of a sentence 
+to another. It's very similar to "but." It's used to show contrasts and differences. 
+"However" is also referred to as a conjunctive adverb.
 
+"Having a car can be very convenient; however, it's expensive to buy a car and maintain it."
+"Walter has a lot of work to do; however, he's too tired to finish it."
+"Jim is in love with Graciella; however, he's not sure if she loves him."
 
+However = No matter how
 
+"However hard she tried, she could not open the door to get the office supplies."
+"No matter how hard she tried, she could not open the door."
+"Bill doesn't mind working late; however, he's a little scared of walking 
+	home by himself at this time of the night."
+"Beekeeping is an important occupation; however, 
+	the beekeeper must keep himself covered at all times."
 
+"However long it takes, I will finish this project."
+"I will finish this project however long it takes."
 
+"You can eat however much you want to eat."
+"You can dress however you want."
+"She wears her hair however she wants."
 
 
 

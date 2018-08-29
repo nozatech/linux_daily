@@ -30,7 +30,7 @@ echo $$			<= Current shell PID
 3. Back tic vs $()
 `command`		<= legacy
 $(command)		<= Easier for nesting
-$ lsal=$(ls -al)  
+$ lsal=$(ls -al)   
 $ lsal="$(ls -al)"  
 $ echo $lsal
 -------------------------------------------------

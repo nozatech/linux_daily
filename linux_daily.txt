@@ -26,6 +26,9 @@ S.M.A.R.T.
 http://tweaks.com/windows/39559/kill-processes-from-command-prompt
 c:\taskkill /IM pdflite.exe /F 
 
+# Clear Type Text Tuner
+C:\Windows\System32\cttune.exe
+
 # Rename file 'F2'
 # Pin to Taskbar  <= on program, right click, pin to taskbar
 bring up the Task Manager 
@@ -36,6 +39,11 @@ bring up the Task Manager
 	Windows + L   <= Lock
 	Windows + F   <= search
 
+Windows 10: Narrator Voice
+Start: 	Windows Key + Enter
+Stop:  	Caps Lock   + Esc
+
+	
 ### ABBYY Temp files process	
 How to change the drive location so ABBYY Temp files process to a chosen drive.
 When scanning documents through the ABBY process component there are Bitmap files being stored in the "C:\Windows\Temp"
@@ -52,8 +60,10 @@ You can redirect these files to be processed onto another directory by changing 
 ---------------------------------------
 Settings > Short cut Mapper Menu.
 1. 	Ctrl + L					Delete Current line
-	Ctrl + D					Duplicate(copy) line
-	Ctrl + Alt + Ent			Insert blank line below 
+	Ctrl + D					Copy(Duplicate) line
+	Ctrl + Alt + Enter			Insert blank line Above ^
+	Ctrl+Alt+Shift+Enter		Insert blank line Below v
+	
 2. Auto-completion
 	Ctrl+Space			Function completion
 	Ctrl+Enter			Word completion
@@ -66,14 +76,13 @@ Settings > Short cut Mapper Menu.
 	Ctrl+P				Display Print... dialogue box.
 	Ctrl+O				Display Open File... dialogue box.
 	Ctrl+S				Save current document.
-**	Ctrl+Shift+S		Save all open documents
+**	Ctrl+Shift+S		SAVE all open documents **
 	Ctrl+Alt+S			Display Save As... dialogue box.
 	Ctrl+W				Close current document.
 	Alt +F4				Exit Notepad++
 ---------------------------------------
 ### Chrome ###
----------------------------------------
-Clean Cache - a hard refresh of the page (ctrl+shift+R)
+--------------------------------------- 000000000000000000000\0lean Cache - a hard refresh of the page (ctrl+shift+R)
 Plugins install
 	# Revolver <- Rotate Tabs
 	# AdBlock
