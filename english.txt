@@ -1033,6 +1033,15 @@ promiscuity		<- the fact or state of being promiscuous.
 					"some fear this will lead to greater sexual promiscuity among teens"
 					synonyms:	licentiousness, wantonness, immorality
 					antonyms:	chastity, virtue
+					
+prosperity		<- the state of being prosperous.
+					"a long period of prosperity"
+					synonyms:	success, profitability, affluence, wealth, opulence, luxury, 
+						the good life, milk and honey, (good) fortune, ease, plenty, comfort, 
+						security, well-being
+					"she deserves all the prosperity she now enjoys"					
+					
+
 prospect		<- the possibility or likelihood of some future event occurring.
 					"there was no prospect of a reconciliation"
 					synonyms:	likelihood, hope, expectation, anticipation, (good/poor) chance, odds, 
@@ -4771,6 +4780,386 @@ However = No matter how
 "She wears her hair however she wants."
 
 
+
+
+### Speak About You ###
+https://basicenglishspeaking.com/100-common-phrases-and-sentence-patterns/
+1. as far as
+ As far as I can remember, he didn’t come home until midnight.
+ As far as I can see, he’s a big liar.
+
+2. As far as… (is) (am) (are) concerned, …
+ As far as I’m concerned, I don’t mind that you wear this mini-skirt.
+ So far as he’s concerned, nothing is as important as his daughter.
+
+3. Be careful with...
+ Be careful with the wet paint.
+ Be careful that you don’t  catch a cold. Put on more clothes before you go out.
+ Be careful not to spill the milk.
+
+4. But this doesn’t mean that…
+ We are your employees,  but  this doesn’t mean that  we must  obey you unconditionally.
+ You are much older than I am, but it doesn’t mean that you are right about everything.
+ I  support  this measure,  but  it  doesn’t mean that  I  support  you  without reservation.
+ I like you, but this doesn’t mean that I’ll marry you.
+
+5. By the way ...
+ By the way, is there a bathroom in the apartment?
+ By the way, do you have any change on you?
+ By the way, he is a difficult person
+ 
+6. Compared to…
+ Compared to other students, she is quite hard working.
+ Compared to city life, country life is quiet and peaceful.
+ Compared to fans, air-conditioners are more comfortable.
+ 
+7. Did you use to…
+ Did you use to live in Tokyo?
+ Did you use to get up early?
+ You used to smoke heavily, didn’t you?
+
+8. Don’t ever…
+ Don’t ever miss a good opportunity.
+ Don’t ever arrive late for an interview.
+ 
+9. Do you agree…?
+ Do you agree that we should start early?
+ Do you agree with my plan?
+ Will he agree to the conditions in the contract?
+ 
+10. Do you carry this in…?
+ Do you carry this in size 10?
+ Do you carry this in beige?
+ Do you have this in medium?
+
+
+013. Do you have… available?
+ Do you have any single rooms available?
+ Do you have any tickets available?
+ Do you have any shoes in size 20 available?
+ 
+014. Do you mind…?
+ Would you mind if I smoke here?
+ Do you mind opening the window? It’s so stuffy in here.
+ Do you mind if I ask you a question?
+
+015. Do you feel like…?
+ Do you feel like going for a walk on the beach?
+ Do you feel like going shopping at the mall?
+ Do you feel like eating some ice cream or having cake or both?
+ 
+016. Shouldn’t we…?
+ Shouldn’t we check the weather before we go out?
+ Shouldn’t you try to save some money rather than spend it all?
+ 
+017. Have you ever…?
+ Have you ever wondered if there is life after death?
+ Have you ever been to New York?
+ Have you ever seen Ghost?
+ 
+018. Not…until…
+
+ Don’t tell him the bad news until he finishes his exam.
+ The secret was not discovered until he was dead.
+ I won’t stop shouting until you let me go.
+ 
+
+019. He is as… as…
+ He is as poor as a church mouse.
+ He is as fit as a fiddle though he is already seventy.
+ The twin sisters are as different as night and day.
+ 
+020. He is either…or…
+ He is either drunk or mad.
+ It’s either your fault or her fault.
+ Either you are wrong or I am.
+ 
+021. He is so… that…
+ I was so interested in the film that I went to see it several times.
+ It’s so hot that none of us want to go out.
+ He speaks French so well that we think he is a Frenchman.
+ 
+022. He is not only… but also…
+ He is not only humorous, but also patient.
+ He is not only a good leader, but also an eloquent speaker.
+ I’m not only going to the party, I’m also going to sing at it.
+ Not only do I support you, so do your acquaintances.
+ She’s not only beautiful; she’s also a talented actress.
+ 
+023. Help yourself to…
+ Make yourself at home. Help yourself to some fish.
+ Help yourself to the refrigerator.
+ Help yourself to some steak. I made it especially for you
+ 
+024. How about…?
+ How about going for a spin in my new car?
+ How about minding your own business?
+ 
+025. How come…?
+ You forgot to bring your homework again. How come?
+ How come your little sister is so angry?
+ 
+026. How dare you…!
+ How dare you call me fat!
+ How dare you speak to me like that!
+ How dare he do that to me!
+ How dare you accuse me of stealing!
+
+027. How do you like…? 
+ How do you like your new apartment?
+ How do you like your new colleagues? 
+ 
+028. How long does it take…?
+ How long does it take to get to the station by subway?
+ How long will it take to build the stadium?
+
+029. How often…?
+ How often do you write to your parents?
+ How often is there a leap year?
+ 
+030. I bet…
+ I bet we’re lost.
+ I bet he is home now.
+ 
+031. I can hardly believe that…
+ I can hardly believe that he is deaf; he can understand us so well.
+ I can hardly believe that Paul was put in prison for bribery.
+ I can hardly believe what I have seen.
+ I’m afraid so and you’re one of the workers whose job we’ll have to cut.
+ I can hardly believe my ears! I never thought I would lose my job here.
+
+
+032. I can’t help…
+ I can’t help laughing every time I think of that.
+ I couldn’t help noticing your ring; it’s beautiful.
+ 
+
+033. I can’t say…
+ I can’t say for certain.
+ I can’t say who did the best.
+ I can’t say with any certainty that eating less can be a cure for obesity.
+ 
+034. I cannot wait to…
+ I can’t wait to see my family.
+ I can’t wait to hear from you.
+ 
+035. I dare say…
+ I dare say you will succeed in the election.
+ Is it true that he will be leaving us to live in Alaska?
+ I dare say he won’t come.
+ 
+036. I’d like you to…
+ I’d like you to do me a favor.
+ I’d like you to send for a doctor.
+ I’d like you to look after my baby for a while.
+
+037. I’d hate for you to…
+ I’d hate for you to think I didn’t care.
+ I’d hate for you to miss the party.
+ I’d hate for you to leave our company.
+ 
+038. If it hadn’t been for… 
+ If it hadn’t been for your help, my experiments would have failed.
+ If it hadn’t been for the lifeboat, I would have drowned.
+ If it hadn’t been for her careful arrangement, the party would not have been a success.
+ Without my persuasion, he would not have come.
+ Without your financial support, we could not have finished the project 
+ 
+039. If there is one thing that… me, it’s… 
+ If there is one thing that annoys me,  it’s people who don’t keep their promises.
+ If there is one thing that disappoints me, it’s his failure to arrange his time responsibly.
+ If there is one thing that upsets me, it’s my forgetfulness.
+ If there is one thing that surprises me, it’s his winning the competition.
+ If there is one thing that interests me, it’s fashion design 
+ 
+040. I have no idea… 
+ I had no idea that she was a thief.
+ He has no idea how to operate these machines.
+ I have no idea what time it is.
+ 
+041. I have got to… 
+ I’ve got to go.
+ I have got to buy something to drink. 
+ You’ve got to try this dish; it’s tasty.
+ 
+ 
+042…. as… as possible
+ I’ll be back as soon as possible.
+ I’ll work as hard as I can.
+ Try to be as careful as possible.
+ Come as quickly as possible.
+ Run as fast as you can.
+ 
+
+043. I’ll let you know…
+  I’ll let you know when I’m leaving for Beijing.
+ I’ll let you know if I can make it for dinner.
+ 
+
+044. I’d be grateful…
+ I’d be grateful for your help.
+ I’d be grateful if you’d be quiet.
+ I’d be grateful if you’d give me a hand.
+ I’d be grateful if you’d take care of my baby.
+ I’d be grateful if you danced with me.
+ 
+
+045. I’m afraid…
+  I’m afraid you didn’t quite get his meaning.
+ A: Could I speak to Elizabeth, please?
+ B: I’m afraid she is not in at the moment.
+
+ I’m afraid we are going to be late.
+ I’m afraid I can’t make it.
+ 
+
+046. I’m calling to…
+ I’m calling to say goodbye to you.
+ I’m calling to tell you that the concert begins at 7:00.
+ I’m calling to book two tickets for tonight’s film.
+ I’m calling to warn you of the coming storm.
+ I’m calling to remind you that we have practice tomorrow.
+ 
+047. I’m looking forward to…
+ I’m looking forward to working with you.
+ I’m looking forward to coming to China again.
+ I’m really looking forward to the holidays.
+
+
+048. I’m not really happy with…
+ I’m not really happy with their performance.
+ I’m not really happy with your behavior.
+
+
+049. I’m thinking about…
+ I’m thinking about moving to a new house.
+ I’m thinking about taking a science course.
+ 
+
+050. I really go for… 
+	(like a particular type of person or thing /choose a particular thing/ try to get something)
+ I really go for Beethoven.
+ I really go for this house. It’s terrific.
+ She goes for tall and handsome men.
+ I don’t go much for modernism.
+ 
+
+051. It is… that…
+It was Jack who broke the window when we were playing football.
+ It is Jane that I want to marry.
+ It was here in the supermarket that he met his first love.
+ 
+
+052. It’s too bad that…
+  It’s too bad that we lost the match.
+ It’s too bad that we have to cancel the get-together.
+ It’s too bad that you can’t come.
+ 
+
+053. It’s my fault for…
+ It’s my fault we missed the bus.
+ It’s my fault you didn’t get paid on time.
+ It’s my fault we lost the game.
+ 
+
+054. It’s not that… but…
+ It’s not that I don’t like the car, but I think it is too expensive.
+ It’s not that I am unwilling to help you, but I’m tied up with extra work these days.
+ It’s not  that  he doesn’t need your help,  but he thinks it  will be an inconvenience to you.
+ A mountain is not famous because it is high, but because it has some spirit dwelling in it.
+ 
+055. It’s on the tip of my tongue.
+ His address is on the tip of my tongue, wait a minute.
+ The question she wanted to ask was on the tip of her tongue.
+ 
+
+056. It’s said that…
+ It is said that he is quite a handsome young man.
+ It’s said that a new president will be appointed.
+ It  should be pointed out  that  your proposals are theoretically correct  but practically impossible.
+ It has been proven that your method is the best.
+ It will be noted that what they have done to him is wrong.
+ 
+
+059. It may surprise you, but…
+ It may surprise you, but I paid off all the debts in a year.
+ It may surprise you, but Maggie refused my proposal.
+ It may surprise you, but I bought all these books for 20 Yuan.
+ It may surprise you, but he’s just been promoted to manager.
+ It may surprise you, but he was once in prison.
+ 
+
+060. I have been…
+ something started in the past and has continued up until now
+ I have been learning English for almost ten years.
+ I have been living here for thirty years.
+ Where have you been? We have been looking for you everywhere.
+ 
+
+061. I’ve had enough of…
+  I’ve had enough of her continual chatter.
+ I’ve had enough of your complaining.
+ Haven’t you had enough of him? I found him so boring.
+ I’ve had enough of the traffic here.
+ I’ve had enough of this city.
+ 
+
+062. I wonder if…？
+ I wonder if it would be convenient to visit you next Monday.
+ I wonder if Mr. Wang could arrange a meeting with me.
+ I was wondering if the manager would agree with my design.
+ I was wondering if you could come to the meeting this afternoon.
+ 
+063. I would rather… than…
+ I would rather stay than leave.
+ He would rather work all day long than do nothing.
+ The mother would rather die than lose her child.
+ She’d rather resign than take part in such shameful business deals.
+ 
+
+064. No matter what…
+  No matter what he says, don’t believe him.
+ No matter how you do it, it will be wrong.
+ No matter where he goes, he carries his suitcase.
+ No matter how you spend your holiday, tell me about it.
+ 
+
+065. No wonder… 
+  You eat so little. No wonder you are so slim.
+ Are you a librarian? No wonder you are so well read.
+ There is something wrong with your leg? No wonder you walk so slowly.
+ 
+
+066. Now that I (come to) think about it,… 
+ indicate that you have suddenly realized something, often something obvious.
+ Now that I come to think about it, you’re right to dismiss him.
+ Now that I come to think about it, how ignorant I was!
+ Now that I think about it, you are wise not to have accepted him.
+ Now that I think about it, he is a person really worth trusting
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 
 
