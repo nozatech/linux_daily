@@ -707,6 +707,7 @@ holistic		<- characterized by comprehension of the parts of something as intimat
 					## MEDICINE ##
 					characterized by the treatment of the whole person, taking into account mental and 
 					social factors, rather than just the physical symptoms of a disease.
+
 horrid			<- [a] causing horror (frightful)
 					"a horrid beast"
 
@@ -715,24 +716,30 @@ hospice			<- a type of care and philosophy of care that focuses on the palliatio
 					of a chronically ill, terminally ill or seriously ill patient's pain and symptoms, 
 					and attending to their emotional and spiritual needs.
 					숙박소, 숙사(호스피스)
+					
 hypoxia			<- 저산소증	
 
 
 # I
 ideation 		<- 관념화 the formation of ideas or concepts.
+
 idiocy			<- extremely stupid behavior.
 					"the idiocy of decimating rainforests"
 					synonyms:	stupidity, folly, foolishness, foolhardiness, ignorance
+					
 i.e.			<- in other words
+
 indie			<- (of a pop group, record label, or film company) not belonging to or affiliated 
 					with a major record or film company.
 					characteristic of the deliberately unpolished or uncommercial style of small 
 					independent pop groups.
+					
 impair			<- weaken or damage something (especially a human faculty or function).
 					"drug use that impairs job performance"
 					synonyms:	have a negative effect on, damage, harm, diminish, reduce, 
 								weaken, lessen, decrease, impede, hinder, hobble
 					antonyms:	improve, enhanc
+					
 impaired hearing <- 난청
 
 impose			<- force (something unwelcome or unfamiliar) to be accepted or put in place.
