@@ -832,6 +832,23 @@ kudos			<- praise and honor received for an achievement.
 lad				<- informal: a boy or young man (often as a form of address).
 					synonyms:	boy, schoolboy, youth, youngster, juvenile, stripling; informalkid, 
 					whippersnapper; derogatorybrat
+
+laborious		<- [adj](especially of a task, process, or journey) requiring considerable 
+					effort and time.
+					"years of laborious training"
+					synonyms:	arduous, hard, heavy, difficult, strenuous, grueling, 
+								punishing, exacting, tough, onerous, burdensome, 
+								back-breaking, labor-intensive, trying, challenging
+					antonyms:	easy
+				<- (especially of speech or writing style) showing obvious signs of effort 
+						and lacking in fluency.
+					"his slow, laborious style"
+					synonyms:	labored, strained, forced, contrived, affected, stiff, 
+								stilted, unnatural, artificial, overwrought, heavy, ponderous,
+								convoluted
+					"Doug's laborious writing style"
+					antonyms:	natural, effortless
+
 					
 lie vs lay
 lie	(기대다)		<- to rest or recline((lie(lying) - lay - lain)
@@ -860,6 +877,11 @@ liaise			<- [v]리-애이즈 establish a working relationship, typically in orde
 lieu			<- place; stead
 					in lieu of, in place of; instead of  
 					e.g. In lieu of the below mail, 
+					
+lobe			<- [n] a roundish and flattish part of something, typically each of 
+						two or more such parts divided by a fissure, and often projecting 
+						or hanging.
+					each of the parts of the cerebrum of the brain.				
 
 loot			<- steal goods from (a place), typically during a war or riot.			
 lump			<- a compact mass of a substance, especially one without a definite or regular shape.
@@ -1246,6 +1268,8 @@ solicit			<- ask for or try to obtain (something) from someone.
 					synonyms:	ask for, request, seek, apply for, put in for, call for, press for, beg, plead for
 solicitor		<- a person who tries to obtain business orders, advertising, etc.; a canvasser. 방문판매원
 
+spacial			<- [adj] relating to space. 공간의
+ 
 sparse			<- thinly dispersed or scattered. 
 					synonyms:	scant, scanty, scattered, scarce, infrequent, few and far between;
 Spectre			<- 
@@ -1480,7 +1504,7 @@ kick the can down the road
 shoot yourself in the foot
 
 #---------------------------------------------------
-# Shorten names #
+## Shorten names #
 #---------------------------------------------------
 https://english.stackexchange.com/questions/69059
 William 	<- Bill, while another could be Willy. Or Billy. Or Will.
@@ -4829,7 +4853,7 @@ However = No matter how
 
 
 
-# Speak About You #
+## Speak About You #
 https://basicenglishspeaking.com/100-common-phrases-and-sentence-patterns/
 1. as far as
  As far as I can remember, he didn’t come home until midnight.
@@ -5493,7 +5517,7 @@ Example: “Importantly, Scholar A was being employed by X when he wrote this wo
 		favourably than he perhaps might otherwise have done.”
 
 
-# Summarising
+## Summarising
 You’ve almost made it to the end of the essay, but your work isn’t over yet. 
 You need to end by wrapping up everything you’ve talked about, showing that you’ve 
 considered the arguments on both sides and reached the most likely conclusion. 
@@ -5722,7 +5746,7 @@ Too
 Even
 What’s more
 
-# Showing cause
+## Showing cause
 Due to
 Because
 Because of
@@ -5809,7 +5833,7 @@ I don’t take any interest in
 It’s all the same to me whether
 It means nothing to me 
 
-# Summarizing and drawing conclusions
+## Summarizing and drawing conclusions
 finally
 last of all
 last but not least
@@ -5829,7 +5853,7 @@ Finally,
 In short,
 To conclude with
 
-# Showing effect
+## Showing effect
 Therefore,
 
 As a result,
@@ -5885,7 +5909,7 @@ When
 As soon as
 
 
-# Stating Your Opinion
+## Stating Your Opinion
 In my opinion,
 According to me,
 In my view,
