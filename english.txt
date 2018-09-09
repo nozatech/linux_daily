@@ -13,13 +13,13 @@ http://blog.naver.com/PostView.nhn?blogId=the3329&logNo=220916379394&parentCateg
 
 I have a beautiful Marties, who I consider to be a family memeber.
 
-### Move
+# Move
 	Ctrl+End			Bottom of page
 	Ctrl+Home			Top of page
-### Insert a line below
+# Insert a line below
 	Ctrl+Alt+Enter
 
-### A 
+# A 
 
 accommodate		<- (of physical space, especially a building) provide lodging or sufficient space for.
 					"the cabins accommodate up to 6 people"
@@ -193,7 +193,7 @@ avid			<- having or showing a keen interest in or enthusiasm for something.
 					synonyms: keen, eager, enthusiastic, ardent, passionate, zealous, hard-core
 
 
-### B 
+# B 
 bar				<- fasten (something, especially a door or window) with a bar or bars.
 					synonyms:	bolt, lock, fasten, secure, block, barricade, obstruct
 								"they have barred the door"
@@ -288,7 +288,7 @@ by and large	<- on the whole; everything considered.
 by convention	<- 관례상
 
 
-### C
+# C
 cadence			<- 억양, 음율, 리듬
 					synonyms:	intonation, modulation, lilt, accent, inflection
 
@@ -310,7 +310,7 @@ circumvent		<- find a way around (an obstacle).
 "the checkpoints were easy to circumvent"
 cliche			<- a phrase or opinion that is 'overused' and betrays a lack of original thought. 진부한
 cling			<- (of a person or animal) hold on tightly to.
-clingy			<- kids are very clingy ###(of a person or garment) liable to cling; clinging
+clingy			<- kids are very clingy #(of a person or garment) liable to cling; clinging
 clobber			<- hit (someone) hard.
 					"if he does that I'll clobber him!"
 					treat or deal with harshly. 
@@ -400,7 +400,7 @@ crustacean		<- such as a crab, lobster, shrimp, or barnacle. 갑각류
 culprit			<- cause of an issue or a person who is responsible for a crime or other misdeed.
 
 
-### D
+# D
 
 damping			<- 습기를 주는, 전기: 감폭
 
@@ -529,7 +529,7 @@ dyslexia		<- 디스렉시아
 				a general term for disorders that involve difficulty in learning to read or 
 				interpret words, letters, and other symbols, but that do not affect general intelligence.
 
-### E
+# E
 e.g				<- for expample
 
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
@@ -589,7 +589,7 @@ exploit			<- make full use of and derive benefit from (a resource).…을 (이�
 
 
 
-### F
+# F
 faculty			<- an aptitude or talent for doing something.
 					"the author's faculty for philosophical analysis"
 					synonyms:	ability, proficiency, competence, capability, potential, 
@@ -643,7 +643,7 @@ be fond of		<- to like someone very much, especially when you have known them fo
 					"Over the years we’ve grown very fond of each other."
 
 
-### G
+# G
 
 gaze 			<- [v] look steadily and intently, especially in admiration, surprise, or thought.
 					"he could only gaze(look fixedly) at her in astonishment"
@@ -689,7 +689,7 @@ gurgle			<- make a hollow bubbling sound like that made by water running out of 
 					"the water swirled and gurglED"
 									
 									
-### H
+# H
 hardness of hearing <- 난청
 hard-nosed		<- realistic and determined; tough-minded. 
 have out		<- to settle (a matter) or come to (a final decision), esp by fighting or by frank 
@@ -718,7 +718,7 @@ hospice			<- a type of care and philosophy of care that focuses on the palliatio
 hypoxia			<- 저산소증	
 
 
-### I
+# I
 ideation 		<- 관념화 the formation of ideas or concepts.
 idiocy			<- extremely stupid behavior.
 					"the idiocy of decimating rainforests"
@@ -795,7 +795,7 @@ intricacy		<- complicated, details, especially of an involved or perplexing subj
 irrigator		<- To supply (land or crops) with water by means of pipes, sprinklers, ditches, or streams.
 
 
-### J
+# J
 jargon			<- special words or expressions that are used by a particular profession or group 
 					and are difficult for others to understand.
 						"legal jargon"
@@ -808,7 +808,7 @@ jump the shark	<- Informal (of a television series or movie) reach a point at wh
 					merely for the sake of novelty, indicative of a decline in quality.
 					"unsuccessful gimmicks for promoting something"
 
-### K
+# K
 keep the word 	<- To do as one has promised. 
 					"Tom always keeps his word, so if he promised to help you move, then he'll be here."
 
@@ -821,10 +821,23 @@ kudos			<- praise and honor received for an achievement.
 					synonyms:	praise, glory, honor, status, standing, distinction, fame, celebrity;					
 					
 					
-### L	
+# L	
 lad				<- informal: a boy or young man (often as a form of address).
 					synonyms:	boy, schoolboy, youth, youngster, juvenile, stripling; informalkid, 
 					whippersnapper; derogatorybrat
+					
+lie vs lay
+lie	(기대다)		<- to rest or recline((lie(lying) - lay - lain)
+					Recline <- lean or lie back in a relaxed position with the back supported.
+								"she was reclining in a deck chair"
+					"To l
+lay	(눕히다)		<- to put or place(lay(laying) - laid - laid)
+					put down, especially gently or carefully.
+					"she laid the baby in his crib"
+				<-	put down and set in position for use.
+					"it is advisable to have your carpet laid by a professional"
+					synonyms: set in place, put in place, set out		
+					
 lean 			<- [v] be in or move into a sloping position.
 					"he leaned back in his chair"
 					synonyms:	slant, incline, bend, tilt, be at an angle, slope, tip, list
@@ -851,7 +864,7 @@ lump sum		<- a single payment made at a particular time, as opposed to a number 
 
 
 
-### M
+# M
 mangle			<- severely mutilate, disfigure, or damage by cutting, tearing, or crushing.
 					"the car was mangled almost beyond recognition"
 					synonyms:	mutilate, maim, disfigure, damage, injure, crush
@@ -893,12 +906,19 @@ misdemeanor		<- a minor wrongdoing(경범죄).
 					"the player can expect a lengthy suspension for his latest misdemeanor"
 					synonyms:	wrongdoing, evil deed, crime, felony
 mock-up			<- a model or replica of a machine or structure, used for instructional or experimental purposes.
+
+mogul			<- [informal]an important or powerful person, especially in the motion picture or media industry.
+					synonyms:	magnate, tycoon, VIP, notable, personage, baron, captain, king, 
+								lord, grandee, nabob
+				<- a bump on a ski slope formed by the repeated turns of skiers over the same path.
+
 MNDA			<- Mutual Non-Disclosure Agreement
+
 muscle spasm	<- 경련, 쥐, most common and are often due to overuse and muscle fatigue, dehydration, and electrolyte 
 					abnormalities. The spasm occurs abruptly, is painful, and is usually short-lived.
 
 
-### N
+# N
 narrative		<- a spoken or written account of connected events; a story.(
 					"the hero of his modest narrative"
 					synonyms:	account, chronicle, history, description, record, report, story
@@ -908,7 +928,7 @@ neval			<- (belly button)a rounded, knotty depression in the center of a person'
 					detachment of the umbilical cord after birth; the umbilicus.
 					synonyms: (informal) belly button; umbilicus
 					"Washington Neval Orange"
-"one's navel can be hollow or projecting"
+					"one's navel can be hollow or projecting"
 
 negate			<- nullify; make ineffective(무효)
 					"alcohol negates the effects of the drug"
@@ -929,7 +949,7 @@ no frill 		<- simple, plain, 과잉서비스를 제공하지 않는
 
 
 
-### O
+# O
 obliterate		<- destroy utterly; wipe out.
 					"the memory was so painful that he obliterated it from his mind"
 					synonyms:	destroy, wipe out, annihilate, demolish, eliminate, decimate, liquidate, 
@@ -946,7 +966,7 @@ omnibus			<- [adj] comprising several items.
 					영화·드라마 등에서 몇 개의 독립된 짧은 이야기를 모아 하나의 작품으로 만든 것
 		
 
-### P
+# P
 palindrome 		<- a word that reads same forwards or backwards
 					e.g. madam, 12321  
 Pavilion		<- In architectural terminology it refers to a subsidiary building that is either positioned 
@@ -1054,13 +1074,13 @@ proverbs		<- 명언집(proverbs collection)
 
 					
 							
-### Q
+# Q
 quirk			<- 변덕 	e.g. by a quirk of fate 운명의 장난으로
 
 
 
 					
-### R
+# R
 rake			<- garden rake (갈퀴)
 rampage			<- [Verb](especially of a large group of people) rush around in a violent and uncontrollable manner.
 					"several thousand demonstrators rampaged through the city"
@@ -1098,6 +1118,12 @@ resonance		<- 울림, 공진
 relator			<-  a person who brings a public lawsuit, typically in the name of the (고발자),
 				   attorney general, regarding the abuse of an office or franchise.
 relinquish 		<- give up
+
+repartee		<- [n] conversation or speech characterized by quick, witty comments or replies.
+					synonyms:	banter, badinage, bantering, raillery, witticism(s), ripostes, 
+								sallies, quips, joking, jesting; formalpersiflage
+						"an evening of wit and repartee"
+
 repercussions	<- an unintended consequence occurring some time after an event or action, 
 					especially an unwelcome one.(악영향)
 					"the move would have grave repercussions for the entire region"
@@ -1142,7 +1168,7 @@ rune			<- a letter of an ancient Germanic alphabet, related to the Roman alphabe
 
 
 					
-### S
+# S
 saunter			<- walk in a slow, relaxed manner, without hurry or effort.
 sacred			<- [seikrid] connected with God (or the gods) or dedicated to a religious 
 					purpose and so deserving veneration.  종교적인
@@ -1171,12 +1197,15 @@ sensible		<- (of a statement or course of action) chosen in accordance with wisd
 					
 					
 seasoned IT		<- a veteran; [숙련자] an expert.	
+
 skim			<- I skimmed the material.  I did a quick readthrough. 훑다.
+
 sliver			<- [none] a small, thin, narrow piece of something cut or split off a larger piece.
 						"a sliver of cheese"
 						synonyms:	splinter, shard, shiver, chip, flake, shred, scrap, 
 									shaving, paring, piece, fragment
-"slivers of glass"				
+				"slivers of glass"				
+				
 shortcomings	<- a fault or failure(flaw) to meet a certain standard, typically in a person's character, 
 				a plan, or a system.(단점)
 					"he is so forthright about his shortcomings, it's hard to chastise him"
@@ -1184,6 +1213,7 @@ shortcomings	<- a fault or failure(flaw) to meet a certain standard, typically i
 								weakness, weak point, foible, frailty, vice
 shutdown		<- [none]
 shut down		<- [verb]
+
 slack			<- [adj] not taut or held tightly in position; loose.
 					"a slack rope"
 					synonyms:	loose, limp, hanging, flexible More
@@ -1195,6 +1225,7 @@ slack			<- [adj] not taut or held tightly in position; loose.
 					
 snippet			<- a small piece or brief extract. "snippet code"
 					synonyms:	piece, bit, scrap, fragment, particle, shred
+					
 snoop			<- investigate or look around furtively in an attempt to find out something, 
 					especially information about someone's private affairs.
 					souvenir 
@@ -1203,30 +1234,39 @@ so can you		<- you can too
 					"I lost 20 pounds in 4 days, and so can you."
 					
 softy			<- a softhearted, weak, or sentimental person.
+
 solicit			<- ask for or try to obtain (something) from someone.
 					synonyms:	ask for, request, seek, apply for, put in for, call for, press for, beg, plead for
 solicitor		<- a person who tries to obtain business orders, advertising, etc.; a canvasser. 방문판매원
+
 sparse			<- thinly dispersed or scattered. 
 					synonyms:	scant, scanty, scattered, scarce, infrequent, few and far between;
 Spectre			<- 
+
 splinter		<-	a small, thin, sharp piece of wood, glass, or similar material broken off from a larger piece.
 					"a splinter of ice"
 					synonyms:	sliver, shiver, chip, shard
 
 sporadically	<- [adv]occasionally or at irregular intervals.
 					"he worked sporadically at part-time jobs"
+					
 sprang			<- originate or arise from.
 					"madness and creativity could spring from the same source"
 					synonyms:	originate, derive, arise, stem, emanate, proceed, issue, evolve, come
+					
 sprint			<- run at full speed over a short distance.
 					"I saw Charlie sprinting through the traffic toward me"
 					synonyms: run, race, dart, rush, dash, hasten, hurry, scurry, scamper, hare, bolt, fly, 
 					gallop, career, charge, shoot, hurtle, speed, zoom, go like lightning, 
 					go hell-bent for leather, go like the wind
 					antonyms: walk
+					
 squealing 		<- 빽뺵소리 스피커에서
-statnd corrected <- admit that one's was wrong
+
+stand corrected <- admit that one's was wrong
+
 stash			<- store (something) safely and secretly in a specified place
+
 startle			<- excited by sudden surprise or alarm and making a quick involuntary movement
 
 stickler		<- a person who insists on a certain quality or type of behavior.
@@ -1257,7 +1297,7 @@ superintendent	<- a person who manages or superintends an organization or activi
 					synonyms:	manager, director, administrator, supervisor, overseer, 
 								controller, chief, head, governor; informalboss
 
-### T 
+# T 
 tariff			<- a tax or duty to be paid on a particular class of imports or exports.
 					synonyms:	tax, duty, toll, excise, levy, charge, rate, fee, countervail; price list
 						"the lower tariffs across the border"
@@ -1310,7 +1350,7 @@ trivial 		<- 	of little value or importance.
 													 
 														 
 														 
-### V
+# V
 vanquish		<- come out better in a competition, race, or conflict
 veteran			<- (베테랑)a person who has had long experience in a particular field.
 					synonyms:	expert, old hand, past master, doyen, vet
@@ -1325,7 +1365,7 @@ vigilant		<- [adj]keeping careful watch for possible danger or difficulties.
 
 
 					
-### W
+# W
 walk the talk	<- suit one's actions to one's words.(keeping one's word)
 walk the walk	<- suit one's actions to one's words.
 warden			<- a person responsible for the supervision of a particular place or thing or for
@@ -1360,7 +1400,7 @@ whimsical		<-[adjective]
 				"the whimsical arbitrariness of autocracy"
 
 
-### U
+# U
 ugh				<- used to express disgust or horror.
 					"Ugh! What's this disgusting object?"
 underlying		<- gerund or present participle: underlying
@@ -1398,7 +1438,7 @@ urticaria		<- hive; a rash of round, red welts on the skin that itch intensely, 
 
 
 
-### Time Tense  ### 
+# Time Tense  # 
 People can't ride in a 5th wheeler while it is being towed.
 Something you submitted it last time, it has been approved now.
 
@@ -1414,7 +1454,7 @@ I have always tried to do my best
 
 
 
-### Expressions ###
+# Expressions #
 as you may already know
 as you may have known      					<= know before
  
@@ -1428,13 +1468,13 @@ bite your toung
 
 
 
-### Old saying ### 
+# Old saying # 
 kick the can down the road
 shoot yourself in the foot
 
-###---------------------------------------------------
-### Shorten names ###
-###---------------------------------------------------
+#---------------------------------------------------
+# Shorten names #
+#---------------------------------------------------
 https://english.stackexchange.com/questions/69059
 William 	<- Bill, while another could be Willy. Or Billy. Or Will.
 Michael 	<- Mike, or Mikey, or Micky, or Mick.
@@ -1626,10 +1666,10 @@ do 		did 	done
 
 
 	
-	###############################
-#############################################################################################	
+	#
+#	
 Word	Alternate		Translation			Example						Meaning
-#############################################################################################
+#
 aah!	aaah, aaaahh	"Help!"			"Aaaah! It's eating my leg!"	Fright, shock. Sometimes it means "ahh" instead.
 aha		a-ha			"I understand"	"Aha! So you took the money!"	Understanding, triumph (can also be used as "ahh")
 ahem					"Attention, please!"	"Ahem! Swearing is against office policy."	The sound of clearing one's throat. Used to get someone's attention, especially if they don't know (or apparently forgot) that you're there.
@@ -1712,9 +1752,9 @@ zing	ba-dum-tss, badum tish	"Haha, well said!"	"You're so stupid, you'd trip ove
 
 
 
-#############################################################################################
+#
 영문법 - 12가지 시제
-#############################################################################################
+#
 
 ~ed와 ~ing는 현재와 미래시제를 뺀 나머지 10개의 시제에 포함되어 있습니다. 그만큼 중요합니다.
 시제에 사용되는 과거분사(완료)와 현재분사(진행)는 형용사의 역할을 합니다.
@@ -1752,7 +1792,7 @@ I will be checking the email.
 
 
 
-##################################################################################################
+##
 현재
 현재동사 (동사의 원형)
 I get up at 6 every morning.
@@ -1818,7 +1858,7 @@ When your team finish the write-up, please have them send it to me.
 
 
 
-##################################################################################################
+##
 과거
 과거동사
 I lived in Seoul.
@@ -1849,7 +1889,7 @@ I have lost my wallet. (지갑을 잃어 버렸는데 지금까지도 못찾고 
 
 
 
-##################################################################################################
+##
 미래
 will + 동사의 원형
 I will buy a new car.
@@ -1875,7 +1915,7 @@ o	I would buy a new car tomorrow . will보다는 약한 의지
 자연현상에 대한 미래형의 사용
 날씨나 천재지변같은 자연현상은 계획할 수 있는게 아니기 때문에 be going to를 사용하지 못하고, will을 사용해야 합니다. 하지만 스피킹에서는 be going to를 사용하기도 하는데 예를 들어 It is going to rain이라고 하면 문을 열고 나가보기 거의 비가오기 직전의 날씨일때 이렇게 말하기도 합니다. 거의 100%비가올것이라고 예상될 때 사용할 수 있습니다.
 
-##################################################################################################
+##
 현재 진행
 be동사 + ~ing
 I am reading a book.
@@ -1947,7 +1987,7 @@ o	While I was watching a video, she was reading a magazine by me. 두 사건이 
 
 
 
-##################################################################################################
+##
 미래 진행
 will be ~ing
 I will be leaving for Seoul.
@@ -1983,7 +2023,7 @@ o	be going to be waiting : 변동가능성이 거의 없는 미래
 
 
 
-##################################################################################################
+##
 현재 완료 (*중요*)
 
 have + p.p.
@@ -2065,7 +2105,7 @@ o	B : No, I've just have lunch.
 
 
 
-##################################################################################################
+##
 과거 완료
 had + p.p.
 He had injured his leg.
@@ -2095,7 +2135,7 @@ o	I cleaned the room when she come to me. 그녀가 나한테 왔을때가 시�
 
 
 
-##################################################################################################
+##
 미래 완료
 will have + p.p.
 I will have arrived home by six.
@@ -2128,7 +2168,7 @@ o	when the manager comes back
 
 
 
-##################################################################################################
+##
 현재 완료 진행
 have been + ~ing
 It has been raining since last night.
@@ -2153,7 +2193,7 @@ I have worked here since last year. 나는 지난해부터 여기서 일을 했�
 
 
 
-##################################################################################################
+##
 과거 완료 진행
 2013-11-07 23:53:28
 had been + ~ing
@@ -2177,7 +2217,7 @@ I had worked here since last year. 나는 지난해부터 여기서 일을 했�
 
 
 
-##################################################################################################
+##
 미래 완료 진행
 2013-11-07 23:58:01
 will have been + ~ing
@@ -2201,7 +2241,7 @@ I will have worked here since last year. 나는 지난해부터 여기서 일을
 
 
 
-##################################################################################################
+##
 *** 복습하기 ***
 이전에 공부한 12시제를 이곳에서 한번 복습해 보세요.
  Question.  위주로 다시 remind 해보면 도움일 될것 같습니다.
@@ -2306,9 +2346,9 @@ o	미래완료진행형보다 미래완료형의 사용빈도수가 높은 이�
 미래완료진행 자세히 보기
 
 
-##################################################################################################
+##
 idiomatic phrase(숙어)
-##################################################################################################
+##
 
 1.abide by : ～을 지키다
 ([əbáid] =keep, be faithful to) 
@@ -4274,9 +4314,9 @@ Your guess is as good as mine:
 
 
 
-##################################################################################################
+##
 idioms
-##################################################################################################
+##
 A hot potato
 Speak of an issue (mostly current) which many people are talking about and which is usually disputed
 
@@ -4518,9 +4558,9 @@ Would never like to do something
 
 
 
-##################################################################################################
+##
 # English Gammar Cheatsheet
-###############################################################################################
+#
 
 
 n: noun(명사)
@@ -4589,7 +4629,7 @@ Proper Noun (고유명사)
 
 
 
-### transitions & conjunctive adverbs ###
+# transitions & conjunctive adverbs #
 ## HOWEVER, THEREFORE, FOR EXAMPLE, IN ADDITION, FURTHER, ON THE OTHER HAND
 
 
@@ -4612,7 +4652,7 @@ It rained heavily all night long; therefore, the carport flooded.
 
 
 
-### [Subordinating Conjunction] ###
+# [Subordinating Conjunction] #
 ## ALTHOUGH / BECAUSE / IF / WHEN / SINCE / BEFORE / AFTER / WHILE / UNLESS 
 
 # Because <sentence>, <sentence>.
@@ -4621,7 +4661,7 @@ It rained heavily all night long; therefore, the carport flooded.
 # <sentence> because <sentence>.2
 	She took a pretest because she wanted to know what to study. [no comma]
 
-### COMMAS ###
+# COMMAS #
 #after an introductory word or group of words
 	However, it's not good news.
 	After a detailed financial investigation, the team presented its findings.
@@ -4636,13 +4676,13 @@ It rained heavily all night long; therefore, the carport flooded.
 	You'll see several sentence fragments on page 112, for example.
 	I want you to meet Ted Johnson, my new assistant.
 
-### TRICKY SUBJECT-VERB AGREEMENT:
+# TRICKY SUBJECT-VERB AGREEMENT:
 	People who live in glass houses in the Pacific Northwest probably have high heating bills. 	
 	
 	
-##############################################################################
+##
 영어문법 용어(English Grammar Term)
-##############################################################################
+##
 출처: http://englishgate.tistory.com/256 [공부의 진리 예습 복습]
 
 Abstract noun  				추상명사
@@ -4749,10 +4789,10 @@ Uncountable nouns			불가산명사
 Verb						동사
 Voice						태
 Vowel						모음
-##############################################################################
+##
 
 
-### However ###
+# However #
 
 However = But
 "However" is a transition word that moves your ideas from one part of a sentence 
@@ -4782,7 +4822,7 @@ However = No matter how
 
 
 
-### Speak About You ###
+# Speak About You #
 https://basicenglishspeaking.com/100-common-phrases-and-sentence-patterns/
 1. as far as
  As far as I can remember, he didn’t come home until midnight.
@@ -5231,7 +5271,7 @@ Speak About You
 
 
 
-####################################################################################################
+##
 
 40 Useful Words and Phrases for Top-Notch Essays
 https://www.oxford-royale.co.uk/articles/words-phrases-good-essays.html
@@ -5412,7 +5452,7 @@ Example: “Notwithstanding the limitations of the methodology used, it was an i
 
  
 
-### Giving examples
+# Giving examples
 Good essays always back up points with examples, but it’s going to get boring if you use the expression “for example” every time. Here are a couple of other ways of saying the same thing.
 
 31. For instance
@@ -5423,7 +5463,7 @@ Example: “To give an illustration of what I mean, let’s look at the case of�
 
   
 
-### Signifying importance
+# Signifying importance
 When you want to demonstrate that a point is particularly important, there are several ways of highlighting it as such.
 
 33. Significantly
@@ -5446,7 +5486,7 @@ Example: “Importantly, Scholar A was being employed by X when he wrote this wo
 		favourably than he perhaps might otherwise have done.”
 
 
-### Summarising
+# Summarising
 You’ve almost made it to the end of the essay, but your work isn’t over yet. 
 You need to end by wrapping up everything you’ve talked about, showing that you’ve 
 considered the arguments on both sides and reached the most likely conclusion. 
@@ -5483,24 +5523,24 @@ How many of these words and phrases will you get into your next essay? And are a
 favourite essay terms missing from our list? Let us know in the comments below!
 
 
-#############################################################
+#
 Useful expressions to write an essay 
-#############################################################
+#
 
 
-### Introduction
+# Introduction
 first of all
 to begin with
 in order to decide whether.... or not
 to outline the main points
 firstly, secondly, thirdly, finally / eventually
 
-### Enumerating arguments
+# Enumerating arguments
 in addition to / additionally
 besides / moreover / furthermore
 above all
 
-### Generalizing
+# Generalizing
 Generally,
 Generally speaking,
 Overall,
@@ -5518,7 +5558,7 @@ For the most part
 
 
 
-### Weighing up arguments
+# Weighing up arguments
 on the one hand..... on the other hand
 to consider the advantages and disadvantages
 arguments for and against
@@ -5533,14 +5573,14 @@ so to speak
 by no means / not at all
 
 
-### Comparisons
+# Comparisons
 compared to / in comparison with
 to draw / make a comparison between ...and
 similarly
 as well as 
 
 
-### Comparing
+# Comparing
 Similar to
 As...as
 in common
@@ -5554,7 +5594,7 @@ resemble
 
 
 
-### Restrictions
+# Restrictions
 however / though
 nevertheless
 whereas
@@ -5567,7 +5607,7 @@ sth is contrary to sth
 
 
 
-### Refering to
+# Refering to
 with reference to
 regarding
 as regards
@@ -5577,11 +5617,11 @@ someone else's opinion. Don't say "according to
 me")
 
 
-### Emphasizing
+# Emphasizing
 I’d like to point out that
 I’d like to emphasize 
 
-### Expressing condition
+# Expressing condition
 If
 Whether
 In case
@@ -5589,7 +5629,7 @@ Unless
 Provided that
 So that
 
-### Expressing Certainty
+# Expressing Certainty
 Certainly,
 Undoubtedly,
 Doubtless,
@@ -5599,7 +5639,7 @@ Of course,
 
  
 
-### Expressing Partial Agreement
+# Expressing Partial Agreement
 More or less,
 To some extent,
 Up to a point,
@@ -5611,7 +5651,7 @@ So to speak,
 
 
 
-### Generalizing
+# Generalizing
 on the whole
 in general / generally speaking
 as a rule
@@ -5623,7 +5663,7 @@ in most / many cases
 basically 
 
 
-### Giving examples
+# Giving examples
 for example / for instance
 such as / including
 in particular / particularly
@@ -5633,7 +5673,7 @@ what I mean is
 et cetera / and so on / and so forth
 that is to say / i.e
 
-### Giving Examples
+# Giving Examples
 For example,
 For instance,
 such as
@@ -5647,12 +5687,12 @@ To paraphrase
 
 
 
-### Making exeptions
+# Making exeptions
 apart from
 except
 with the exception of 
 
-### Giving reasons
+# Giving reasons
 because
 as / since
 because of
@@ -5661,7 +5701,7 @@ the reason why
 for some reasons or another
 I have every reason to believe that
 
-### Adding Information
+# Adding Information
 Furthermore
 In addition
 Also
@@ -5675,13 +5715,13 @@ Too
 Even
 What’s more
 
-### Showing cause
+# Showing cause
 Due to
 Because
 Because of
 Owing to
 
-### Contrasting
+# Contrasting
 However,
 
 But
@@ -5707,13 +5747,13 @@ Alternatively,
 Even though
 
 
-### Consequences
+# Consequences
 therefore
 consequently / as a result
 for this reason / all these reasons
 
 
-### Personal point of view
+# Personal point of view
 I think that
 in my opinion/ in my view / to my mind
 this is a matter of opinion
@@ -5727,7 +5767,7 @@ I am convinced that
 I firmly believe that
 I feel sth should be done about that 
 
-### Agreeing
+# Agreeing
 I entirely / absolutely agree with
 that’s exactly my own view
 I’m of exactly the same opinion
@@ -5735,7 +5775,7 @@ that’s perfectly true
 I’d like to support this view 
 
 
-### Disagreeing
+# Disagreeing
 I partly disagree with
 I don’t entirely agree with
 I agree in principle, but
@@ -5745,7 +5785,7 @@ I’m not at all convinced that
 I’m not absolutely sure 
 
 
-### Interest, Plans, Intentions
+# Interest, Plans, Intentions
 to be interested in sth / in doing sth
 It interests me a lot
 My main / particular interest is
@@ -5756,13 +5796,13 @@ I’m planning to do sth
 I’m very keen on doing sth 
 
 
-### Lack of interest
+# Lack of interest
 I find … rather uninteresting / boring
 I don’t take any interest in
 It’s all the same to me whether
 It means nothing to me 
 
-### Summarizing and drawing conclusions
+# Summarizing and drawing conclusions
 finally
 last of all
 last but not least
@@ -5782,7 +5822,7 @@ Finally,
 In short,
 To conclude with
 
-### Showing effect
+# Showing effect
 Therefore,
 
 As a result,
@@ -5803,7 +5843,7 @@ Hence,
 
 The reason why
 
-### Modifying adverbs
+# Modifying adverbs
 totally / entirely / completely
 mostly / mainly / chiefly
 partly
@@ -5811,7 +5851,7 @@ comparatively / relatively
 extremely / incredibly 
 
 
-### Marking time
+# Marking time
 First,
 Last
 Second,
@@ -5838,7 +5878,7 @@ When
 As soon as
 
 
-### Stating Your Opinion
+# Stating Your Opinion
 In my opinion,
 According to me,
 In my view,
