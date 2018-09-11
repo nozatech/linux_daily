@@ -4092,12 +4092,15 @@ Idiom
 Idioms are word combinations that have a different meaning than the literal meanings of 
 each word or phrase. Kids can enjoy using fun and creative idioms to express their 
 thoughts in an entertaining way. We have a huge list of examples below.
+----------------------------------------------------------------------------------
 
-Everyday Idioms
 A grey area – Something unclear
 A rip-off – Too expensive
 Add fuel to the fire – To add more to an existing problem
 As easy as ABC – Something is very easy
+boil down to  -  to be the main reason for something or the most basic part of something
+				"It’s difficult to choose which appliance to buy, 
+				 but in the end it usually boils down to cost."
 Call it a day – Time to quit
 Cool as a cucumber – To be very calm under stress
 Crack a book – Open up a book and study
@@ -4108,6 +4111,7 @@ Get a kick out of it – Really enjoy/like something
 Get your act together – Behave properly
 Give it a shot – To try to do something
 Have mixed feelings – Be unsure of how you feel
+Have second thoughts – Have doubts
 Have second thoughts – Have doubts
 In hot water – Be in trouble
 In the same boat – Be in the same situation
@@ -4129,11 +4133,14 @@ Giving the cold shoulder – Ignore someone
 Have a change of heart – Changed your mind
 I’m all ears – You have my full attention
 It cost an arm and a leg – It was expensive
-Play it by ear – Improvise
+
+Play it by ear( ~ go with the flow) – Improvise
+				- To let things go as they may
 See eye to eye – Agree
 Slipped my mind – I forgot
 Speak your mind – Say what you really feel
-Animal Idioms
+
+# Animal Idioms
 A bull in a china shop - Someone who is very clumsy
 A little birdie told me - Someone told me a secret
 Bee in her bonnet - She is upset
@@ -4167,9 +4174,8 @@ You can't teach an old dog new tricks - It’s harder for older people to learn 
 Fun and Unique Expressions
 
 
-Commonly used smart idioms 
+# Commonly used smart idioms 
 
-A List of the most commonly used English idioms
 A hot potato: 
 	Speak of an issue which many people are talking about and which is usually disputed
 A penny for your thoughts:
@@ -4177,7 +4183,7 @@ A penny for your thoughts:
 Actions speak louder than words"
 	People's intentions can be judged better by what they do than what they say.
 Add insult to injury:
-	To further a loss with mockery or indignity; to worsen an unfavorable situation.
+	To further a loss with mockery(조롱) or indignity(모욕); to worsen an unfavorable situation.
 An arm and a leg:
 	Very expensive or costly. A large amount of money.
 At the drop of a hat:
@@ -4204,13 +4210,13 @@ Burn the midnight oil:
 	To work late into the night, alluding to the time before electric lighting.
 Can't judge a book by its cover:
 	Cannot judge something primarily on appearance.
-Caught between two stools:
+Caught between two stools(chair without arm and back rest: e.g. bar stool):
 	When someone finds it difficult to choose between two alternatives.
 Costs an arm and a leg
 	This idiom is used when something is very expensive.
 Cross that bridge when you come to it
 	Deal with a problem if and when it becomes necessary, not before.
-Cry over spilt milk
+Cry over spilled milk
 	When you complain about a loss from the past.
 Curiosity killed the cat
 	Being Inquisitive can lead you into an unpleasant situation.
@@ -4218,7 +4224,7 @@ Cut corners
 	When something is done badly to save money.
 Cut the mustard
 	To succeed; to come up to expectations; adequate enough to compete or participate
-Devil's Advocate
+Devil's Advocate(이의를 제기하는 사람)
 	To present a counter argument
 Don't count your chickens before the eggs have hatched
 	This idiom is used to express "Don't make plans for something that might not happen".
