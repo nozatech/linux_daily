@@ -4,6 +4,116 @@ Reading
 Grammar
 Writing
 
+##
+영어문법 용어(English Grammar Term)
+##
+출처: http://englishgate.tistory.com/256 [공부의 진리 예습 복습]
+
+Abstract noun  				추상명사
+Active voice   				능동태
+Adjective  					형용사
+Adverb						부사
+Agreement					일치
+Apposition					동격
+Article						관사
+Attributive use 			한정용법
+Auxiliary verb 				조동사
+Be verb 					be 동사
+Capital letter 				대문자
+Cardinal number 			기수
+Clause						절
+Collective noun				집합명사
+Comma						쉼표
+Comparative					비교급
+Complement					보어
+Conjunction					접속사
+Conditional					가정법
+Consonant					자음
+Countable nouns				가산명사
+Definite article			정관사
+Demonstrative pronouns		지시대명사
+Ellipsis					생략
+Emphasis					강조
+Exclamation point			느낌표
+Exclamatory sentence		감탄문
+Frequency adverb			빈도부사
+Future						미래
+Future perfect progressive	미래완료 진행
+Grammar						문법
+Gerund						동명사 (동사형 명사) = To 부정사 (To Infinitive)
+Imperative sentence			명령문
+Impersonal pronouns			비인칭대명사
+Incomplete verb				불완전 동사
+Indefinite article			부정관사
+Infinitive					부정사
+Interjection				감탄사
+Interrogative				의문사
+Interrogative pronouns		의문대명사
+Interrogative sentence 		의문문
+Intransitive verb			자동사
+Inversion					도치
+Irregular					불규칙적
+Material noun				물질명사
+Modifier					수식어
+Mood						법
+Narration					화법
+Negative sentence			부정문
+Noun						명사
+Objective					목적격
+Objects						목적어
+Ordinal number				서수
+Participle					분사
+Passive						수동태
+Past						과거
+Past participle				과거분사
+Past perfect				과거완료
+Past perfect progressive	과거완료 진행
+Past progressive			과거진행
+Past tense					과거시제
+Period						마침표
+Person						인칭
+Personal pronouns			인칭대명사
+Phrase						구
+Plural						복수
+Plural noun					복수 명사
+Possessive					소유격
+Possessive pronoun			소유대명사
+Predicative use				서술 용법
+Preposition					전치사
+Present						현재
+Present participle			현재 분사
+Present perfect				현재완료
+Present perfect progressive	현재완료진행
+Progressive form			진행형
+Pronoun						대명사
+Proper noun					고유명사
+Question mark				물음표
+Quotation mark				따옴표
+Reflexive pronoun			재귀대명사
+Reflexive verb				재귀동사
+Regular						규칙적
+Relative adjective			관계형용사
+Relative pronoun			관계대명사
+Sentence					문장
+Singular					단수
+Singular noun				단수명사
+Small letter				소문자
+Subject						주어
+Subjective					주격
+Subjunctive mood			가정법
+Superlative					최상급
+Tag question				부가의문문
+Tense						시제
+The first person			1인칭
+The second person			2인칭
+The third person			3인칭
+To infinitive 				to 부정사 (부정확하게 많은 동사를 명사화한 명사)
+Transitive verb				타동사
+Uncountable nouns			불가산명사
+Verb						동사
+Voice						태
+Vowel						모음
+
 
 관용어 = 숙어 = Idiom
 
@@ -19,6 +129,333 @@ I have a beautiful Marties, who I consider to be a family memeber.
 # Insert a line below
 	Ctrl+Alt+Enter
 
+---------------------------------------------------------------
+## Irregular Verb
+Present  Past		Past Perfect
+---------------------------------------------------------------
+awake    awoke        awoke        깨우다      
+fight    fought       fought        싸우다     
+arise    arose        arisen       일어나다     
+find     found        found         찾다      
+be       was/were      been         -이 되다    
+fit      fit/fitted   fit/fitted    (치수가)맞다 
+bear     bore         born/borne   낳다       
+flee     fled          fled          도망가다    
+beat     beat         beaten       치다       
+fling    flung         flung         획 내던지다  
+become   became       become       -이 되다    
+fly      flew          flown         날아가다    
+begin     began        begun        시작하다     
+forbid    forbade    forbade       금하다     
+bend      bent         bent         구부리다     
+forecast  forecast    forecast      예고하다    
+bet       bet          bet          장담하다     
+forget    forgot        forgotten     잊다      
+bid       bid          bid          (값을)매기다  
+forgive   forgave    forgiven      포기하다    
+bind      bound        bound        묶다       
+forsake   forsook    forsaken      그만두다    
+bite      bit          bitten       물다       
+freeze    froze         frozen        얼다      
+bleed     bled         bled         피를 흘리다   
+get       got           gotten/got    얻다      
+blow      blew         blown        (바람이)불다  
+give      gave          given         주다      
+break     broke        broken       깨뜨리다     
+go        went          gone          가다      
+breed     bred         bred         (가축을)기르다 
+grind     ground     ground        갈다      
+bring     brought      brought      가져오다     
+grow      grew          grown         자라다     
+broadcast  broadcast   broadcast    방송하다     
+hang      hung          hung          매달다     
+build     built        built        짓다       
+have     had           had           가지다     
+burn     burned/burnt burned/burnt 타다       
+hear     heard         heard         듣다      
+brust    brust        brust        터뜨리다     
+hide     hid           hidden        숨다      
+buy      bought       bought       사다       
+hit      hit           hit           치다      
+cast     cast         cast         떨어지게 하다  
+hold     held          held          잡다      
+catch    caught       caught       잡다       
+hurt     hurt          hurt          상처를 입히다 
+choose   chose        chosen       선택하다     
+keep     kept          kept          유지하다    
+cling    clung        clung        꼭 붙들다    
+kneel    kneeled/knelt kneeled/knelt 무릎꿇다    
+come     came         come         오다       
+know     knew          known         알다      
+cost     cost         cost         비용이 들다   
+lay      laid          laid          놓다      
+creep    crept        crept        기어오르다    
+lead     led           led           이끌다     
+cut      cut          cut          자르다      
+lean     leaned/leant  leaned/leant  기대다     
+deal     dealt        dealt        -과 거래하다  
+leap     leaped/leapt  leaped/leapt  도약하다    
+dig      dug          dug          파다       
+learn    learned    learned       배우다    
+learn 	 learnt     learnt  
+do       did          done         하다                   
+              
+draw      drew         drawn        그리다      
+leave    left       	left          떠나다     
+dream     dreamed   	dreamed      꿈꾸다      
+dream     dreamt   		dreamt  
+lend     lent          lent          빌려주다    
+let      	let           let           -하게 하다  
+eat       	ate          eaten        먹이다      
+lie      	lay           lain          눕다      
+fall      	fell         fallen       떨어지다     
+lie      	lied          lied           거짓말하다  
+feel      	felt         felt         느끼다      
+light     	lighted/lit  lighted/lit   밝게 하다   
+lose   	lost          lost          잃어버리다  
+spill      spilled/spilt  spilled/spilt  엎지르다     
+make   	made          made          만들다    
+spin       spun           spun           (실을)잦다   
+mean   	meant         meant         의미하다   
+spit       spit/spat      spit/spat      침을 뱉다    
+meet   	met           met           만나다    
+split      split          split          찢다       
+mislay 	mislaid       mislaid       잘못 두다  
+spoil      spoiled/spoilt spoiled/spoilt 펴다       
+pay    	paid          paid          지불하다   
+spread     spread         spread         퍼지다      
+put    	put           put           놓다     
+spring     sprang         sprung         튀다.뛰어오르다 
+quit   	quit          quit          그만두다   
+/sprung                                           
+read   	read          read          읽다     
+stand      stood          stood          서다       
+rid    	rid           rid           자유롭게하다 
+steal      stole          stolen         홈치다      
+ride   	rode          ridden        타다     
+stick      stuck          stuck          찌르다      
+ring   	rang          rung          울리다    
+sting      stung          stung          찌르다      
+rise   	rose          risen         뜨다     
+stink      stank/stunk    stunk          악취를 풍기다  
+run    	ran           run           뛰다     
+strike     struck         struck         치다       
+strike     stricken      stricken      치다       
+say    said          said          말하다    
+strive     strove         striven        노력하다    
+strive 	   strafed        strafed   
+see    		saw           seen          보다                
+seek   		sought        sought        구하다    
+string     strung         strung         실에 꿰다    
+sell   		sold          sold          팔다     
+swear      sware          sworn          맹세하다     
+send   		sent          sent          보내다    
+sweep      sweep          sweep          청소하다     
+set    		set           set           놓다     
+swim       swam           swum           수영하다     
+shake  		shook         shaken        흔들다    
+swing      swung          swung          흔들리다     
+shed   		shed          shed          흘리다    
+take       took           taken          잡다       
+shine  		shone/shined  shone/shined  빛나다    
+teach      taught         taught         가르치다     
+shoot  		shot          shot          쏘다     
+tear       tore           torn           찢다       
+show   		showed        shown         보여주다   
+tell       told           told           말하다      
+shrink 	   shrank/shrunk  shrunk/shrunk          줄어들다   
+think      thought        thought        생각하다     
+throw      threw          thrown         던지다      
+shut   		shut          shut          닫다     
+thrust     thrust         thrust         밀다       
+sing   		sang          sung          노래하다   
+understand understood     understood     이해하다     
+sink   		sank          sunk          가라앉다   
+undertake  undertook      undertaken     책임 맡다    
+sit    		sat           sat           앉다     
+upset      upset          upset          뒤엎다      
+sleep  		slept         slept         자다     
+wake       woke/waked     waken/waked    일어나다     
+slide  		slid          slid          미끄러지다  
+wear       wore           worn           입다       
+slit   		slit          slit          쪼개다    
+weave      wove           woven          짜다 . 뜨다  
+smell  smelled/smelt      smelled/smelt       냄새나다   
+weep       wept           wept           울다       
+win        won            won            이기다      
+speak  		spoke         spoken        말하다    
+wind       wound          wound          구불거리다    
+speed  		sped/speeded  sped/speeded  서두르다   
+withdraw   withdrew       withdrawn      배대앗다     
+spell  		spelled/spelt spelled/spelt 철자-되다  
+wring      wrung          wrung          비틀다      
+spend  s		pent         spent         쓰다     
+write      wrote          written        쓰다  
+
+     
+규칙동사
+1. 어미에 때를 붙인다.
+want - wanted - wanted       
+pack - packed – packed
+
+2. -e로 끝나는 단어는 성만 붙인다.
+declare - declared  - declared 
+prepare - prepared - prepared
+
+3. 어미가 자음 + y 일 때는 서를 로 고친 뒤 때를 붙인다, 
+dry 	 - dried    - dried                
+study    - studied  - studied
+play 	 - played   - played           
+stay 	 - stayed   - stayed
+
+4. 1음절어로 단모음 + 단자음으로 
+beg  - begged - begged 
+plan - planed - planed 
+help - helped - helped
+
+끝날 때 자음자 하나 더 쓰고 -ed를 붙인다. 
+pat  - patted - patted 
+stop - stopped - stopped 
+seat - seated - seated
+
+5. 2음절 동사 중 끝음절에 강세가 있는 경우 자음자 하나 더 쓰고 -ed를 붙인다. 
+commit - committed - committed - committing 
+occur - occurred - occurred - occurring 
+omit - omitted - omitted - omitting 
+control - controlled - controlled – controlling
+visit - visited - visited - visiting 
+limit - limited - limited - limiting
+
+
+불규칙동사
+1. A - A - A 형
+cost - cost - cost   
+cast -cast -cast
+cut - cut - cut      
+hit, hurt, shut, spread, let, put, read 등
+
+2. A - B - B 
+cling - clung - clung 
+find - found - found 
+mean - meant - meant 
+build - built - built 
+lose - lost - lost 
+fight - fought - fought 
+buy - bought - bought 
+pay - paid - paid 
+feel - felt - felt 
+have - had - had 
+hold - held - held 
+lead - led - led 
+meet - met - met 
+sit - sat - sat 
+spend - spent - spent 
+stick - stuck - stuck 
+tell - told - told
+strike - struck - struck 
+bend - bent - bent 
+bring - brought - brought 
+keep - kept - kept 
+catch - caught - caught 
+teach - taught - taught 
+make - made - made 
+say - said - said 
+feed - fed - fed 
+hear - heard - heard 
+lay - laid - laid 
+leave - left - left 
+sell - sold - sold 
+sleep - slept - slept
+stand - stood - stood 
+sweep - swept - swept 
+win - won - won
+
+3. A - B - A
+become - became - become         
+come - came - come
+run - ran – run
+
+4. A - B - C
+bear - bore - borne 
+begin - began - begun 
+blow - blew - blown 
+choose - chose - chosen 
+draw - drew - drawn 
+fall - fell - fallen 
+forbid - forbade - forbidden 
+forgive - forgave - forgiven 
+get - got - gotten 
+go - went - gone
+beat - beat - beaten/beat 
+bite - bit - bitten 
+break - broke - broken 
+do - did - done 
+eat - ate - eaten 
+fly - flew - flown 
+forget - forgot - forgotten 
+freeze - froze - frozen 
+give - gave - given 
+grow - grew - grown
+hide - hid - hidden 
+lie - lay - lain 
+ride - rode - ridden 
+rise - rose - risen 
+shake - shook -shaken 
+sing - sang - sung 
+steal - stole - stolen 
+swear - swore - sworn 
+take - took - taken 
+throw - threw - thrown 
+write - worn wrote - written
+hang - hung/hanged - hung/hanged 
+know - knew - known 
+mistake - mistook - mistaken 
+ring - rang - rung 
+see - saw - seen 
+show - showed - shown/showed 
+speak - spoke - spoken 
+strike - struck - struck/stricken 
+swim - swam - swum 
+tear - tore - torn 
+wake - woke/waked - woken/waked 
+wear – wore - worn
+withdraw - withdrew - withdrawn
+
+
+
+5. 기타
+lay-laid-laid- laying 눕히다, 낳다-타동사(규칙동사)
+lie - lay - lain - lying 눕다-자동사(불규칙동사) 
+lie-lied-lied 거짓말 하다
+rise-rose-risen 일어나다
+raise-raised-raised 끌어 올리다
+hang- hung -hung 걸다 매달다
+hang- hanged - hanged 교수형처하다
+fall- fell- fallen 떨어지다
+fell -felled -felled 넘어뜨리다
+find -found- found 찾다
+found - founded - founded 설립하다
+see- saw -seen 보다
+saw -sawed -sawed/sawn 톱으로 자르다
+sow -sowed -sowed/sown 씨를 뿌리다
+sew -sewed -sewed/sewn 바느질하다
+wind - wound - wound 구불거리다
+wound - wounded - wounded 부상하게 되다, 다치게되다
+wring	- wrung	- wrung	 비틀다.	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 # A 
 
 accommodate		<- (of physical space, especially a building) provide lodging or sufficient space for.
@@ -565,6 +1002,11 @@ entice			<- attract or tempt by offering pleasure or advantage.
 					synonyms:	tempt, lure, allure, attract, appeal to; 유혹하다
 					
 entitlements	<- the amount to which a person has a right.
+					"annual leave entitlement"
+					synonyms:	right, prerogative, claim; More
+				<- the fact of having a right to something.
+					"full entitlement to fees and maintenance should be offered"
+					synonyms:	right, prerogative, claim; More
 
 errand			<- a short journey undertaken in order to deliver or collect something, often on someone else's behalf.
 					"she asked Tim to run an errand for her"
@@ -1029,6 +1471,17 @@ precedence		<- [n] the condition of being considered more important than someone
 						synonyms:	priority, rank, seniority, superiority, primacy, preeminence, 
 									eminence More
 					"by order of precedence"
+
+prerogative		<- [n][prəˈräɡədiv] [프라게티브][특권]
+					a right or privilege exclusive to a particular individual or class.
+					"owning an automobile was still the prerogative of the rich"
+					synonyms:	entitlement, right, privilege, advantage, due, birthright
+					"it's my prerogative to hold on to the farm"
+					a faculty or property distinguishing a person or class.
+					"it's not a female prerogative to feel insecure"
+					the right of the sovereign, which in British law is theoretically subject 
+					to no restriction.
+					noun: royal prerogative
 					
 procrastinate	<- [v] delay or postpone action; put off doing something.
 					"It won't be this price for long, so don't procrastinate"
@@ -1133,22 +1586,25 @@ reconnaissance	<- military observation of a region to locate an enemy or ascerta
 remainder		<- Something left over after other parts have been taken away.
 					"I will most likely be out for the remainder of the day."
 remuneration 	<- pay
-relapse			<- (of someone suffering from a disease) suffer deterioration after a period of improvement.
-					synonyms:	get ill/worse again, have/suffer a relapse, deteriorate, 
-								degenerate, take a turn for the worse
-					"a few patients relapse"
-					antonyms:	improve
+
 reassemble		<- (of a group) gather together again.
 						"after lunch the class reassembled"
 					put (something) together again.
 						"the trucks had to be reassembled on arrival"
 refrain			<- stop oneself from doing something.(자제하다)
+
+relapse			<- (of someone suffering from a disease) suffer deterioration after a period of improvement.
+					synonyms:	get ill/worse again, have/suffer a relapse, deteriorate, 
+								degenerate, take a turn for the worse
+					"a few patients relapse"
+					antonyms:	improve
+
 resonance		<- 울림, 공진
 relator			<-  a person who brings a public lawsuit, typically in the name of the (고발자),
 				   attorney general, regarding the abuse of an office or franchise.
 relinquish 		<- give up
 
-repartee		<- [n] conversation or speech characterized by quick, witty comments or replies.
+repartee		<- [n 레펄티] conversation or speech characterized by quick, witty comments or replies.
 					synonyms:	banter, badinage, bantering, raillery, witticism(s), ripostes, 
 								sallies, quips, joking, jesting; formalpersiflage
 						"an evening of wit and repartee"
@@ -4717,115 +5173,7 @@ It rained heavily all night long; therefore, the carport flooded.
 	People who live in glass houses in the Pacific Northwest probably have high heating bills. 	
 	
 	
-##
-영어문법 용어(English Grammar Term)
-##
-출처: http://englishgate.tistory.com/256 [공부의 진리 예습 복습]
 
-Abstract noun  				추상명사
-Active voice   				능동태
-Adjective  					형용사
-Adverb						부사
-Agreement					일치
-Apposition					동격
-Article						관사
-Attributive use 			한정용법
-Auxiliary verb 				조동사
-Be verb 					be 동사
-Capital letter 				대문자
-Cardinal number 			기수
-Clause						절
-Collective noun				집합명사
-Comma						쉼표
-Comparative					비교급
-Complement					보어
-Conjunction					접속사
-Conditional					가정법
-Consonant					자음
-Countable nouns				가산명사
-Definite article			정관사
-Demonstrative pronouns		지시대명사
-Ellipsis					생략
-Emphasis					강조
-Exclamation point			느낌표
-Exclamatory sentence		감탄문
-Frequency adverb			빈도부사
-Future						미래
-Future perfect progressive	미래완료 진행
-Grammar						문법
-Gerund						동명사
-Imperative sentence			명령문
-Impersonal pronouns			비인칭대명사
-Incomplete verb				불완전 동사
-Indefinite article			부정관사
-Infinitive					부정사
-Interjection				감탄사
-Interrogative				의문사
-Interrogative pronouns		의문대명사
-Interrogative sentence 		의문문
-Intransitive verb			자동사
-Inversion					도치
-Irregular					불규칙적
-Material noun				물질명사
-Modifier					수식어
-Mood						법
-Narration					화법
-Negative sentence			부정문
-Noun						명사
-Objective					목적격
-Objects						목적어
-Ordinal number				서수
-Participle					분사
-Passive						수동태
-Past						과거
-Past participle				과거분사
-Past perfect				과거완료
-Past perfect progressive	과거완료 진행
-Past progressive			과거진행
-Past tense					과거시제
-Period						마침표
-Person						인칭
-Personal pronouns			인칭대명사
-Phrase						구
-Plural						복수
-Plural noun					복수 명사
-Possessive					소유격
-Possessive pronoun			소유대명사
-Predicative use				서술 용법
-Preposition					전치사
-Present						현재
-Present participle			현재 분사
-Present perfect				현재완료
-Present perfect progressive	현재완료진행
-Progressive form			진행형
-Pronoun						대명사
-Proper noun					고유명사
-Question mark				물음표
-Quotation mark				따옴표
-Reflexive pronoun			재귀대명사
-Reflexive verb				재귀동사
-Regular						규칙적
-Relative adjective			관계형용사
-Relative pronoun			관계대명사
-Sentence					문장
-Singular					단수
-Singular noun				단수명사
-Small letter				소문자
-Subject						주어
-Subjective					주격
-Subjunctive mood			가정법
-Superlative					최상급
-Tag question				부가의문문
-Tense						시제
-The first person			1인칭
-The second person			2인칭
-The third person			3인칭
-To infinitive 				to 부정사
-Transitive verb				타동사
-Uncountable nouns			불가산명사
-Verb						동사
-Voice						태
-Vowel						모음
 ##
 
 
@@ -5932,6 +6280,7 @@ I realize
 I understand
 I imagine
 I feel
+
 
 
 
