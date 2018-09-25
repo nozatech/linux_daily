@@ -2557,5 +2557,6 @@ https://mariadb.com/kb/en/mariadb/configuring-mariadb-for-remote-client-access/
 ### MySQL Terminology
 	.frm stands for FoRMat used by MySQL
 
-
-
+MySQL Galera Cluster 
+	FINDING SLOW NODES
+http://galeracluster.com/documentation-webpages/detectingaslownode.html

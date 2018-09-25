@@ -17,7 +17,7 @@ Agreement					일치
 Apposition					동격
 Article						관사
 Attributive use 			한정용법
-Auxiliary verb 				조동사
+Auxiliary verb 				조동사 [보'조 동사'](본동사 [be동사, 일반동사]를 돕는 동사)
 Be verb 					be 동사
 Capital letter 				대문자
 Cardinal number 			기수
@@ -681,6 +681,12 @@ begrudge		<- [verb]
 								be resentful of, grudge, mind, object to, take exception to, regret
 						"don't begrudge the cost"				
 					
+
+
+bedside manner 	<- a doctor's approach or attitude toward a patient.
+bespoke			<- (of goods, especially clothing) made to order.
+					"a bespoke suit, a bespoke engine"
+					
 bleak			<- [adj]
 					1. (of an area of land) lacking vegetation and exposed to the elements.
 					"a bleak and barren moor"
@@ -692,13 +698,12 @@ bleak			<- [adj]
 						"he paints a bleak picture of a company that has lost its way"
 						synonyms:	unpromising, unfavorable, unpropitious, inauspicious
 						antonyms:	promising
-
-bedside manner 	<- a doctor's approach or attitude toward a patient.
-bespoke			<- (of goods, especially clothing) made to order.
-					"a bespoke suit, a bespoke engine"
+					
 blemish			<- a small mark or flaw that spoils the appearance of something.
+
 blooper			<- an embarrassing error.
 					"he poked fun at his own tendency to utter bloopers"
+					
 boggle 			<- (of a person or a person's mind) be astonished or overwhelmed when trying to imagine something.
 					"the 'mind boggles' at the spectacle"
 					synonyms:	marvel, wonder
@@ -706,22 +711,31 @@ boggle 			<- (of a person or a person's mind) be astonished or overwhelmed when 
 
 boggle the mind	<- (of a person or a person's mind) be astonished or overwhelmed when trying to imagine something
 brag 			<- say in a boastful manner.
+
 brace	{}		<- a device that clamps things tightly together or that gives support, in particular.
-bracket []		
+bracket []	
+
+brat			<- a child, typically a badly behaved one.
+					synonyms:	badly behaved child, spoiled child;
+	
 breadth			<- the distance or measurement from side to side of something; width.
 					"a black sweater outlined the breadth of his shoulders"
 					synonyms:	width, broadness, wideness, thickness
 
 brown-out		<- a reduction in or restriction on the availability of electrical power in a particular area.
+
 brevity			<- concise and exact use of words in writing or speech.(간결한 말)
 					synonyms:	conciseness, concision, succinctness, economy of language, 
 								pithiness, incisiveness, shortness, compactness
 burning midnight oil <- working all night
+
+buttocks, bottom	<- 엉덩이 
 								
 by and large	<- on the whole; everything considered.
 					"mammals have, by and large, bigger brains than reptiles"
 					synonyms:	on the whole, generally, in general, all things considered, all in all, 
 					for the most part, in the main, as a rule, overall, almost always, mainly, mostly
+					
 by convention	<- 관례상
 
 
@@ -730,31 +744,62 @@ cadence			<- 억양, 음율, 리듬
 					synonyms:	intonation, modulation, lilt, accent, inflection
 
 call out		<- To announce something. 
+
 capped out		<- when you’ve reached the maximum, or cap, of your insurance benefits
+
 cavern			<- a cave, or a chamber in a cave, typically a large one.
 					synonyms:	large cave, grotto, underground chamber/gallery, vault
+					
 caveat			<- a warning or proviso of specific stipulations, conditions, or limitations.
 					synonyms:	warning, caution, admonition
+
+cf.				<-  as "compare"
+					an abbreviation for the Latin word confer (the imperative singular form of "conferre"), 
+					literally meaning "bring together", is used to refer to other material or ideas which 
+					may provide similar or different information or arguments. It is mainly used in 
+					scholarly contexts, such as in academic (mainly humanities, physics and biology) 
+					or legal texts. It is translated, and can be read aloud, as "compare".
+
+
+
+					
 chime in		<- join in harmoniously. 맞장구 치다
 					"He started to laugh, and we chimed in"
+					
 Churn rate 		<=(sometimes called attrition rate), in its broadest sense, is a measure of the number 
 					of individuals or items moving out of a collective group over a specific period. ... 
 					The phrase is based on the English verb churn, meaning "to agitate or produce 
 					violent motion".
+					
+chug			<- (of a vehicle or boat) move slowly with engine making regular muffled explosive sounds.
+					"a cabin cruiser was chugging down the river"
+					칙칙폭폭 기차소리를
+					
 chug alone		<- along the lines, without a hitch, take a back seat
+
 circumvent		<- find a way around (an obstacle).
 					synonyms:	avoid, get around, get past, evade, bypass, sidestep, dodge; informalduck
-"the checkpoints were easy to circumvent"
+					"the checkpoints were easy to circumvent"
+					
 cliche			<- a phrase or opinion that is 'overused' and betrays a lack of original thought. 진부한
+
 cling			<- (of a person or animal) hold on tightly to.
+
 clingy			<- kids are very clingy #(of a person or garment) liable to cling; clinging
+
 clobber			<- hit (someone) hard.
 					"if he does that I'll clobber him!"
 					treat or deal with harshly. 
 					"the recession clobbered other parts of the business"
+					
 coffer			<- a strongbox or small chest for holding valuables.
 					synonyms:	strongbox, money box, cashbox, money chest, treasure chest, safe;
-commercing 		<- starting
+
+commence		<- [v] begin; start.
+					"his design team commenced work"
+					synonyms:	begin, start;
+					
+commencing 		<- starting, beginning
 
 comply			<- [v] (of a person or group) act in accordance with a wish or command.
 					"we are unable to comply with your request"
@@ -764,6 +809,7 @@ compliance		<- [n]	the action or fact of complying with a wish or command.
 					"they must secure each other's cooperation or compliance"
 					synonyms:	obedience to, observance of, adherence to, conformity to, respect for
 					"compliance with international law"
+					
 compliant		<- [Adj] inclined to agree with others or obey rules, especially to an excessive degree; acquiescent.
 					"good-humored, eagerly compliant girls"
 					synonyms:	acquiescent, amenable, biddable, tractable, complaisant, accommodating, cooperative
@@ -774,6 +820,14 @@ comprise		<- consist of; be made up of.
 					"the country comprises twenty states"
 					synonyms:	consist of, be made up of, be composed of, contain, encompass, incorporate
 
+Compromised		<- "Compromised" is a nice way of saying that someone or something has maliciously broken into 
+					your computer without your knowledge or permission. It means that you can't trust the 
+					integrity of any file (program, document, spreadsheet, image, etc.) on your computer.
+					You can't find out what's been done to your computer files without an exact "before" 
+					copy to compare them with, and you probably won't ever know what's been done with 
+					your personal information, including your passwords, or where they've been sent.
+					"My Computer has been Disabled because it is Compromised"
+					
 condemnation	<- 심한비난
 
 conform			<- comply with rules, standards, or laws
@@ -788,6 +842,7 @@ conscientious 	<- [kὰnʃiénʃəs] 양심있는
 					"a conscientious and hardworking clerk"
 					synonyms:	diligent, industrious, punctilious, painstaking, sedulous, assiduous, dedicated, 
 							careful, meticulous, thorough, attentive, hard-working, studious, rigorous, particular
+							
 contention		<- heated disagreement.
 					synonyms:	disagreement, dispute, disputation, argument, discord, conflict, 
 								friction, strife, dissension, disharmony "a point of contention"
@@ -826,7 +881,17 @@ overt			<- [adj] one or shown openly; plainly or readily apparent, not secret or
 						conspicuous, obvious, noticeable, manifest, patent, open, blatant
 					"an overt attempt to sidestep the truth"
 					antonyms:	covert
-			
+
+cringe			<- "Having to see some serious PDA up close makes me cringe."
+					(PDA <- Public Display of Affection 공공장소에서의 애정행위) 
+					공공장소에서의 진한 애정행위를 바로 코앞에서 봐야만 하다니 손발이 다 오글거려.
+					
+					"Whenever I hear the news of hate crimes, I cringe in fear."
+					묻지마 범죄 뉴스를 들을 때마다 나는 무서워서 몸이 다 움츠러들어.
+					
+cringe-worthy	<-	cringe에서 나온 cringe-worthy라는 표현도 있어요. 손발이 오글거리도록 “민망한”이란 뜻이죠.
+					"OMG, it was a cringe-worthy performance from start to finish."
+					맙소사, 처음부터 끝까지 진짜 민망한 공연이었어. (실수투성이거나 내용이 엉망이거나 등등)				
 				
 				
 crouch			<- adopt a position where the knees are bent and the upper body is brought forward and down, 
@@ -1463,6 +1528,13 @@ pertinent		<- relevant or applicable to a particular matter; apposite. synonyms:
 
 periodontists	<- 치주염
 
+pertain			<- documents pertaining to the lawsuit
+
+pet peeve		<- "One of my pet peeves is the unbearable humidity in summer. "
+					내가 진짜 싫어하는 것 중 하나가, 여름에 참을 수 없을 만큼 습한 거야.
+					"My biggest pet peeve is rude and arrogant people. "
+					내가 젤 싫어하는 건 무례하고 건방진 사람이야.
+
 ponderous		<- slow and clumsy because of great weight.
 
 precedence		<- [n] the condition of being considered more important than someone or something else; 
@@ -1885,7 +1957,7 @@ whimsical		<-[adjective]
 				synonyms:	volatile, capricious, fickle, changeable, unpredictable, variable, 
 				erratic, mercurial, mutable, inconstant, inconsistent, unstable, protean
 				"the whimsical arbitrariness of autocracy"
-
+wrap-up party	<- 뒷풀이
 
 # U
 ugh				<- used to express disgust or horror.
@@ -6282,6 +6354,199 @@ I imagine
 I feel
 
 
+## 12 시제 ##
+"It has always been a dream of mine to have a little place like this."
+
+
+
+## Prefixes and Suffixes
+In English we can add prefixes and suffixes to a basic word (known as the root word) in order to make a different word.
+
+A PREFIX goes at the beginning of the word and changes its meaning, quite often to the complete opposite.
+For example: Happy – Unhappy.
+
+Here is a list of the most commonly used PREFIXES in the English language. 
+
+PREFIX	  		MEANING			EXAMPLE WORD	NEW WORD
+ad				adding			verb			adverb
+ante			before			Room			Anteroom
+anti			against			Freeze			Anti-freeze
+auto			does by itself	Mobile			Automobile
+cyber			computing		Space			Cyberspace
+de				reverse			Frost			De-frost
+dis-* 			not,opposite of agree			disagree
+e				electronic		Mail			Email
+em				cause to 		brace 			embrace
+en-, 			cause to 		code			encode, embrace
+ex				out / away from	Communicate		Ex-communicate
+fore- 			before 			cast			forecast
+im/in/il/ir		opposite	Possible / Correct	Impossible / Incorrect
+inter			between			Act				Interact
+mid				middle			Day				Midday
+mis				do wrongly		Conduct			Misconduct
+multi			many			Cultural		Multicultural
+non				not				Sense			Nonsense
+over			too much		Paid			Overpaid
+pre				before			School			Pre-school
+pro				go forward		Active			Pro-active
+re				again			Do				Re-do
+semi			half			Detached		Semi-detached
+sub				under			Marine			Submarine
+super			bigger than		Market			Supermarket
+trans			across			Atlantic		Transatlantic
+un				opposite		Happy			Unhappy
+under			under			sea				undersea
+
+
+A SUFFIX is added to the end of a word and changes it from one part of speech to another.
+For example: Differ – Difference. The verb ‘Differ’ becomes a noun as 'Difference.'
+When a SUFFIX is added to the end of a word it changes the word from one class (part of speech) to another.
+For example: Like – Like-able. The verb ‘Like’ becomes an adjective as 'Liable.'
+
+SUFFIX	MEANING	EX. WORD	CLASS	NEW WORD	CLASS
+able/ible	can do	Like	verb	Likeable	adjective
+al/ial		pertaining to	Accident	noun	Accidental	adjective
+ary		connected with	Imagine	verb	Imaginary	adjective
+ate		to do / make	Alien	noun	Alienate	verb
+ed		past-tense verbs hopped
+en		to do / make of		Weak	adjective	Weaken	verb
+er		more than	Small	adjective	Smaller	comparative
+er/or	person who does	Act	verb	Actor	person
+est		the most	Long	adjective	Longest	superlative
+ful		to be full of	Use	noun / verb	Useful	adjective
+ic		having characteristics of		 linguistic		
+ing
+-ion, 	action / process	Hibernate	verb	Hibernation	noun  act, process occasion, attraction
+-tion, 
+-ation, 
+ition
+
+ility	able to be	Possible	adjective	Possibility	noun
+ish		being like	Child	noun	Childish	adjective
+
+-ive, 	adjective form of a noun		plaintive
+-ative, 
+-itive 
+
+ize		to become	Idol	noun	Idolize	verb
+less	without	Taste	noun	Tasteless	adjective
+logy	the study of	Zoo	noun	Zoology	noun
+ly		to be like	Clear	noun	Clearly	adverb
+ment	a process	Employ	verb	Employmnt	noun
+ness	a condition	Sad	adjective	Sadness	noun
+ous		to be full of	Caution	noun	Cautious	adjective
+-ous, 	possessing the  qualities of	joyous		qualities of
+-eous, 
+-ious 
+
+-s, 		more than one 			books, boxes
+-es* 
+y		-y characterized by happy
+ 
+
+
+
+
+
+ 
+https://www.myenglishteacher.eu/blog/prefixes-suffixes-list/
+ 
+ Here is a list of the most common prefixes:
+
+PREFIX	MEANING	EXAMPLES
+ante-	before	antenatal, anteroom, antedate
+anti-	against, opposing	antibiotic, antidepressant, antidote
+circum-	around	circumstance, circumvent, circumnavigate
+co-	with	co-worker, co-pilot, co-operation
+de-	off, down, away from	devalue, defrost, derail, demotivate
+dis-	opposite of, not	disagree, disappear, disintegrate, disapprove
+em-, en-	cause to, put into	embrace, encode, embed, enclose, engulf
+epi-	upon, close to, after	epicentre, episcope, epidermis
+ex-	former, out of	ex-president, ex-boyfriend, exterminate
+extra-	beyond, more than	extracurricular, extraordinary, extra-terrestrial
+fore-	before	forecast, forehead, foresee, foreword, foremost
+homo-	same	homosexual, homonuclear, homoplastic
+hyper-	over, above	hyperactive, hyperventilate
+il-, im-, in-, ir-	not	impossible, illegal, irresponsible, indefinite
+im-, in-	into	insert, import, inside
+infra-	beneath, below	infrastructure, infrared, infrasonic, infraspecific
+inter-, intra-	between	interact, intermediate, intergalactic, intranet
+macro-	large	macroeconomics, macromolecule
+micro-	small	microscope, microbiology, microfilm, microwave
+mid-	middle	midfielder, midway, midsummer
+mis-	wrongly	misinterpret, misfire, mistake, misunderstand
+mono-	one, singular	monotone, monobrow, monolithic
+non-	not, without	nonsense, nonentity, nondescript
+omni-	all, every	omnibus, omnivore, omnipotent
+para-	beside	parachute, paramedic, paradox
+post-	after	post-mortem, postpone, post-natal
+pre-	before	prefix, predetermine, pre-intermediate
+re-	again	return, rediscover, reiterate, reunite
+semi-	half	semicircle, semi-final, semiconscious
+sub-	under	submerge, submarine, sub-category, subtitle
+super-	above, over	superfood, superstar, supernatural, superimpose
+therm-	heat	thermometer, thermostat, thermodynamic
+trans-	across, beyond	transport, transnational, transatlantic
+tri-	three	triangle, tripod, tricycle
+un-	not	unfinished, unfriendly, undone, unknown
+uni-	one	unicycle, universal, unilateral, unanimous
+
+Here is a list of the most common prefixes:
+
+PREFIX	MEANING	EXAMPLES
+ante-	before	antenatal, anteroom, antedate
+anti-	against, opposing	antibiotic, antidepressant, antidote
+circum-	around	circumstance, circumvent, circumnavigate
+co-	with	co-worker, co-pilot, co-operation
+de-	off, down, away from	devalue, defrost, derail, demotivate
+dis-	opposite of, not	disagree, disappear, disintegrate, disapprove
+em-, en-	cause to, put into	embrace, encode, embed, enclose, engulf
+epi-	upon, close to, after	epicentre, episcope, epidermis
+ex-	former, out of	ex-president, ex-boyfriend, exterminate
+extra-	beyond, more than	extracurricular, extraordinary, extra-terrestrial
+fore-	before	forecast, forehead, foresee, foreword, foremost
+homo-	same	homosexual, homonuclear, homoplastic
+hyper-	over, above	hyperactive, hyperventilate
+il-, im-, in-, ir-	not	impossible, illegal, irresponsible, indefinite
+im-, in-	into	insert, import, inside
+infra-	beneath, below	infrastructure, infrared, infrasonic, infraspecific
+inter-, intra-	between	interact, intermediate, intergalactic, intranet
+macro-	large	macroeconomics, macromolecule
+micro-	small	microscope, microbiology, microfilm, microwave
+mid-	middle	midfielder, midway, midsummer
+mis-	wrongly	misinterpret, misfire, mistake, misunderstand
+mono-	one, singular	monotone, monobrow, monolithic
+non-	not, without	nonsense, nonentity, nondescript
+omni-	all, every	omnibus, omnivore, omnipotent
+para-	beside	parachute, paramedic, paradox
+post-	after	post-mortem, postpone, post-natal
+pre-	before	prefix, predetermine, pre-intermediate
+re-	again	return, rediscover, reiterate, reunite
+semi-	half	semicircle, semi-final, semiconscious
+sub-	under	submerge, submarine, sub-category, subtitle
+super-	above, over	superfood, superstar, supernatural, superimpose
+therm-	heat	thermometer, thermostat, thermodynamic
+trans-	across, beyond	transport, transnational, transatlantic
+tri-	three	triangle, tripod, tricycle
+un-	not	unfinished, unfriendly, undone, unknown
+uni-	one	unicycle, universal, unilateral, unanimous
+
+
+Here are some examples of prefixes that are also ‘combining forms’:
+
+PREFIX	MEANING	EXAMPLE	COMBINING FORM	MEANING	EXAMPLE
+com-, con-	with, alongside	comprise, connote	com-, con-	with, jointly	companion, comrade, community
+contra-	against	contraindicate	contra-	against	contraceptive, contradict
+de-	opposite	devalue	de-	down, away	descend
+ex-	former	ex-husband	ex-	out	exhort
+a-	not, without	amoral	a-, an-	not, without	apathy, anaemic
+in-	not	inconvenient	in-	into	inebriate, indulge
+homo-	same	homograph, homophone	homo-	same	homogeneous
+magn-	great	magnate	magn-	great	magnificent, magnanimous, magnitude, magnify
+para-	beside	paragraph, paramedic	para-	beside	paradox
+sub-	under	submarine	sub-	under	substitute
+trans-	across	transnational, transparent	trans-	through, across	transmit, transcend
+tri-	three	triangle, tripod	tri-	three	triceps, triathlon
 
 
 
@@ -6289,4 +6554,8 @@ I feel
 
 
 
-
+## Example email 1
+Hi Team,
+Last Friday, a team of over 20 individuals across different departments from BNEA volunteered our physical strength, keen sense of sight, touch, smell, along with our time to sort fresh peaches at the local Second Harvest Food Bank located on First Street. For those who have never sorted bins and bins of peaches; you really need to use your sense of sight to see if there’s any mold on the fruit, your sense of touch to see if any have gone mushy, and your sense of smell to pick out the fruit that may have turned. 
+During the two hours we were there, the BNEA team sorted and boxed 241 cases of fruit (25lbs per case) this equates to over 6000lbs of fresh peaches packaged up and made ready for distribution to smaller food banks that directly distribute food to the needy! I’m also proud to share that we were able to beat the Netflix team as they were only able to sort and package 3600lbs/144 cases of tomatoes😊.
+I want to send my heartfelt thanks to the BNEA team members who came out to help those in need within our community. There will be another opportunity to help those in need as we approach the holiday season; stay tuned!
