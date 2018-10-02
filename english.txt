@@ -576,7 +576,7 @@ anticipate		<- regard as probable; expect or predict. 기대하다
 				   guess or be aware of (what will happen) and take action in order to be prepared.
 					"quicker than anticipated "
 					
-analogy			<- 비유법
+
 
 anemia			<- 빈혈(Noun)
 					 is a condition in which you don't have enough healthy red blood cells to carry 
@@ -586,6 +586,14 @@ anemic			<- 빈혈의(Adjetive)
 
 anemometer		<- [ӕnəmάmitər] 
 					an instrument for measuring the speed of the wind, or of any current of gas.
+
+any update VS any updates
+any update		<- If you're expecting one piece of information, for example whether the completion 
+					time of a project has changed: 
+					"Do you have an update for me?"
+
+any updates		<- If you're expecting several possible pieces of information: 
+					"Do you have any updates for me?					"
 
 anticoagulation	<-> coagulation  <= blood thinner
 
@@ -962,6 +970,8 @@ disposition		<- a person's inherent qualities of mind and character.
 					synonyms:	temperament, nature, character, constitution, makeup, mentality
 						"a nervous disposition"
 						
+dissuade		<- persuade(someone) not to tak a particular course of action
+						
 dirt·bag		<- a very unkempt or unpleasant person.		
 
 					
@@ -1110,8 +1120,20 @@ fed up			<- [adjective] annoyed or upset at a situation or treatment.
 					"he was fed up with doing all the work"
 					synonyms:	sick and tired of, weary of, tired of, sick of
 
-
-
+figurative language	<- 비유언어
+	analogy			<- 비유법(유사관계)
+						
+	Metaphor		<- 은유법:  like (~처럼) 또는 as (~와 같은)를 사용하지 않고 표현합니다.
+						예) He is a pig. 그는 돼지이다
+						예) She is a cheetah. 그녀는 치타이다
+						
+	simile			<- 직유법: "like"나 "as" 를 써서 비교를 하는 것입니다.
+						예) He eats like a pig. 그는 돼지 "처럼" 먹는다.
+						예) She is fast as a cheetah. 그녀는 치타 "같이" 빠르다.
+						
+	personification <- 의인법: 인간이 아닌 무엇을 인간처럼 표현합니다.
+						예) The whispering wind 속삭이는 바람
+						예) The arms of the tree 나무의 팔
 
 finicky			<-	fussy about one's needs or requirements.
 					[음식·옷 등에] 지나치게 까다로운, 몹시 신경을 쓰는, 집착이 강한
@@ -1144,6 +1166,7 @@ frenzy			<- a state or period of uncontrolled excitement or wild behavior.
 								agitation, turmoil, tumult;
 full-fledged	<- completely developed or established; of full status.
 
+fullfillment	<- a sense of fulfillment 성취감,충족감, (기한 등의) 만료, 완료
 
 be fond of		<- to like someone very much, especially when you have known them for a long time and almost feel love for them
 					"Joe’s quite fond of her, isn’t he?"
@@ -1401,6 +1424,25 @@ lump sum		<- a single payment made at a particular time, as opposed to a number 
 
 
 # M
+manage			<-  1. I managed to forget my wife's birthday every year for the last ten years.
+					2. I managed to miss the train.
+					3. The easterlies started the day I headed south for Rutland, 
+						I managed to miss most of the migrants.
+					4. I knew it was badly written and full of typos from previous comments. 
+						So I managed to miss it.
+					5. I thought the event would start at 6pm, but it actually started at 3pm, 
+						so I managed to miss it. 
+ 
+					manage to find ~을 찾는 데 성공하다
+					barely manage to 간신히 ~하다
+					manage to get along 그럭저럭 살아가다
+					manage to escape death 가까스로 죽음을 모면하다
+					manage to be in time 어떻게 해서든 제 시간에 맞추다
+					
+					I'll be WFH today as I 'managed to forget(miss)' my laptop at home.
+					나는 오늘 집에서 일할꺼야 멍청하게도(본이아니게도) 집에 랩탑을 두고왔어. 
+
+
 mangle			<- severely mutilate, disfigure, or damage by cutting, tearing, or crushing.
 					"the car was mangled almost beyond recognition"
 					synonyms:	mutilate, maim, disfigure, damage, injure, crush
@@ -1421,6 +1463,10 @@ masquerade		<- [n]a false show or pretense.
 						"a journalist masquerading as a man in distress"
 						synonyms:	pretend to be, pose as, pass oneself off as, impersonate, disguise oneself as
 
+meat			<- 책·토론 등의) 중심 부분, 요점, 골자, 급소, 실질, 내용.
+					"the meat of the video 
+
+					
 microcosm		<- a community, place, or situation regarded as encapsulating in miniature the characteristic 
 					qualities or features of something much larger.
 
@@ -1554,6 +1600,30 @@ prerogative		<- [n][prəˈräɡədiv] [프라게티브][특권]
 					the right of the sovereign, which in British law is theoretically subject 
 					to no restriction.
 					noun: royal prerogative
+					
+					
+Process(제조,가공의)과정, vs Procedure(절차,순서,방법)
+Procedure		<-  procedure; a process or series of acts especially of a practical or mechanical 
+					nature involved in a particular form of work
+					
+					1. Procedures are implemented   / Processes are operated
+					2. Procedures are discontinuous / Processes flow to conclusion
+					3. Procedures define the sequence of steps to excute a task / 
+						Processes transform inputs into outputs through use of resources
+				legal[court] procedure 
+
+Process			<-[n]a series of actions or steps taken in order to achieve a particular end. 방법
+					"military operations could jeopardize the peace process"
+				<-[V]perform a series of mechanical or chemical operations on (something) 가공하다.
+					in order to change or preserve it.
+					"the various stages in processing the wool"
+				
+				
+				
+				
+
+출처: http://choishin.tistory.com/2 [Choi+Shin 부부이야기]
+					
 					
 procrastinate	<- [v] delay or postpone action; put off doing something.
 					"It won't be this price for long, so don't procrastinate"
@@ -1708,6 +1778,9 @@ rig				<- manage or conduct (something) fraudulently so as to produce a result o
 					that is advantageous to a particular person(부정 수단으로 조작하다).
 					"the results of the elections had been rigged"
 					synonyms:	manipulate, engineer, distort, misrepresent, pervert, tamper with, doctor; 
+					
+roster			<- a list of plan showing turns of duty or leave for indivisuals or groups in an organization
+					
 rout			<- a disorderly retreat of defeated troops(패주시키다)
 					"the retreat degenerated into a rout"
 					synonyms:	retreat, flight
@@ -1796,6 +1869,12 @@ solicit			<- ask for or try to obtain (something) from someone.
 					synonyms:	ask for, request, seek, apply for, put in for, call for, press for, beg, plead for
 solicitor		<- a person who tries to obtain business orders, advertising, etc.; a canvasser. 방문판매원
 
+sound bite		<- TV나 라디오를 통해 방송되는 정치가 등의 짧은 인상적인 발언(Interview)
+				"Don't rely on headlines, don't rely on sound bites, don't rely on one-sided conversations.
+				"The reporter clearly cherry-picked soundbites from the video to meet his editorial 
+				objective and do not align with our view on how to create career opportunities 
+				for employees."
+				
 spacial			<- [adj] relating to space. 공간의
  
 sparse			<- thinly dispersed or scattered. 
@@ -1945,6 +2024,11 @@ while vs awhile	<- while is a period of time vs awhile is a short period of time
 					awhile "stand here awhile"
 					synonyms:	for a moment, for a (little) while, for a short time; informalfor a bit
 					"please wait just awhile"
+					
+which			<- 
+				"But you might need to talk about how having a union could hurt innovation 
+				which could hurt customer obsession which could ultimately threaten the 
+				building’s continued existence.”
 					
 whimsical		<-[adjective]
 				1. playfully quaint or fanciful, especially in an appealing and amusing way.
@@ -6554,8 +6638,1765 @@ tri-	three	triangle, tripod	tri-	three	triceps, triathlon
 
 
 
-## Example email 1
+## Example email-1
 Hi Team,
-Last Friday, a team of over 20 individuals across different departments from BNEA volunteered our physical strength, keen sense of sight, touch, smell, along with our time to sort fresh peaches at the local Second Harvest Food Bank located on First Street. For those who have never sorted bins and bins of peaches; you really need to use your sense of sight to see if there’s any mold on the fruit, your sense of touch to see if any have gone mushy, and your sense of smell to pick out the fruit that may have turned. 
-During the two hours we were there, the BNEA team sorted and boxed 241 cases of fruit (25lbs per case) this equates to over 6000lbs of fresh peaches packaged up and made ready for distribution to smaller food banks that directly distribute food to the needy! I’m also proud to share that we were able to beat the Netflix team as they were only able to sort and package 3600lbs/144 cases of tomatoes😊.
-I want to send my heartfelt thanks to the BNEA team members who came out to help those in need within our community. There will be another opportunity to help those in need as we approach the holiday season; stay tuned!
+Last Friday, a team of over 20 individuals across different departments from BNEA volunteered 
+our physical strength, keen sense of sight, touch, smell, along with our time to sort fresh 
+peaches at the local Second Harvest Food Bank located on First Street. For those who have never 
+sorted bins and bins of peaches; you really need to use your sense of sight to see if there’s 
+any mold on the fruit, your sense of touch to see if any have gone mushy, and your sense of 
+smell to pick out the fruit that may have turned. 
+During the two hours we were there, the BNEA team sorted and boxed 241 cases of fruit 
+(25-lbs per case) this equates to over 6000lbs of fresh peaches packaged up and made 
+ready for distribution to smaller food banks that directly distribute food to the needy! 
+I’m also proud to share that we were able to beat the Netflix team as they were only able 
+to sort and package 3600lbs/144 cases of tomatoes😊.
+I want to send my heartfelt thanks to the BNEA team members who came out to help those 
+in need within our community. There will be another opportunity to help those in need 
+as we approach the holiday season; stay tuned!
+
+
+
+
+"You might be surprised to hear that the number of internet websites has been increasing by the minute"
+		<= "by the minute" is an expression which is used with the continuous form of the verb.
+
+		
+"Price has increased"	Vs. "has been increased"
+(Active Voice)       		 (Passive voice) 	
+
+"Here are the invoices for 8/2018($5,921.50) and it has been increased by 14.8% vs 7/2018($5,157.57)."
+															(Passive Voice using 'been' and 'by')
+															
+"Don’t give up now. The best is yet to come."
+“Albert encouraged me by saying that the best is yet to come.”
+
+"I have still [yet] to read the book." (난 아직도 그 책을 읽고 있지 않다.)
+	※이 경우 still 쪽이 yet보다 실현 가능성이 높다는 뉘앙스를 포함한 것으로 알려져 있습니다
+
+He is watching TV still (그 참, 아직 TV를보고있는거야.)
+I still have not read the book. (난 아직도 그 책을 읽고 있지 않다.)
+
+yet는 주로 부정문과 의문문에 사용됩니다.
+
+ Has she finished her homework yet? (그녀는 숙제를 마쳤나요?)
+ She has not finished her homework yet. (그녀는 여전히 숙제를 끝내지 않은)
+긍정적 문에서 사용하는 경우는 "아직"미래를 나타내는 "이윽고"라는 뜻입니다.
+
+ You have plenty of time yet [still] (아직 시간은 많이있어.)
+ You 'll see your pal yet. (언젠가 동료를 만날 함)
+이상과 같이, yet은 文尾에 두는 것이 보통이지만, 중간에 오기도합니다.
+
+ I have not yet finished the work. (난 아직도 그 일을 마치고하지 않습니다.)
+
+
+http://dreamingdean.tistory.com/17
+영어표현들
+
+
+[A]
+A piece of cake. 식은 죽 먹기지요
+Absolutely. 당근!
+After you. 먼저 가시지요
+Always. 항상 그렇지요
+Amazing. 대단하네요
+And then? 그리고 나서는요?
+Any good ideas? 어떤 좋은 생각이라도?
+Any time. 언제라도요
+Anybody home? 집에 누구있어요?
+Anything else? 그 밖에 또 뭐요?
+Are you in line? 지금 줄에 서 계신거죠?
+Are you kidding? 놀리는거 아니죠?
+Are you serious? 그거 진짜예요?
+At last. 드디어
+Attention, please! 좀 주목 해 주세요
+Awesome! 와우~ 멋지다
+
+[B]
+Back me up. 뒤좀 봐줘~ (지원해 달라는 의미의)
+Be my guest. 사양하지 마세요, 그럼 한번 해보세요, 어서 해보세요
+Be patient. 조금만 참아 보세요
+Be punctual! 시간좀 맞춰줘!
+Be right back with you. 잠깐만요 (곧 당신에게 돌아 올께요)
+Be seated. 앉으시죠
+Beat it. (이자리에서) 꺼져
+(Beer), please. (맥주) 주세요
+Behave yourself. 예의를 갖추시죠!
+Better late than never. 안하느니보단 늦는게 낫죠.
+Better than nothing. 없는 것보다는 낫지요
+Boy! It hurts. 와, 진짜 아프네
+Break it up. 그만 좀 싸워
+
+[C]
+Call me Sam, please. 샘이라고 불러 주세요
+Can I get a ride? 나를 태워다 줄 수 있어요?
+Can you hear me now? 잘 들려요?
+Can't argue with that. 그건 논란의 여지가 없죠
+Can't be better than this. 이것보다 더 좋을 순 없지요
+Cash or charge? 현찰이요 아니면 신용카드?
+Catch you later. 나중에 보자구요 (혹은 나중에 들을께요)
+Certainly. 확실히 그렇죠..
+Charge it please. 대금을 크레딧 카드로 결재해 주세요.
+Check it out. 확인해 봐봐
+Check, please. 계산서 좀 주세요
+Cheer up! 기운내요 (혹은 화이팅!)
+Cheers! 건배
+(Coffee), please. (커피) 주세요
+Come and get it. 와서 가져가요 (와서 먹어요)
+Come on in. 들어와요
+Come on. 설마 (혹은 에이~~) 
+Congratulations! 축하 합니다
+Could be. 그럴 수도 있죠
+Couldn't be better than this. 이보다 더 좋을 순 없어
+
+[D]
+Definitely. 그럼! (물론이죠 등 강한 동의)
+Delicious! 맛있어요
+Depends. 경우에 따라 다르지요
+Did you get it? 알아 들었어요?
+Didn't I make myself clear? 제 입장을 확실하게 말하지 않았나요?
+Disgusting! 기분 나빠. 재수 없어
+Do I know it? 저도 압니다. 누가 아니래요?
+Do I look all right? 제가 괜찮아 보여요?
+Do you follow me? 제 말 알아 듣겠어요?
+Do you have everything with you? 다 가지고 계신거죠??
+Do you? 당신은요?
+Doing okay? 잘 하고 있어요?
+Don’t get too serious. 너무 심각하게 그러지 말아요 (편하게 생각하세요)
+Don’t miss the boat. (보트를 놓치듯이) 기회를 놓지지 마세요
+Don’t press (push) your luck. 너무 날 뛰지 마세요 (너무 행운만 믿지 말아요)
+Don't ask. 묻지 말아요
+Don't be a chicken. 너무 소심하게 굴지 말아요. (겁먹을 것 없어요)
+Don't be afraid. 두려워 하지 마세요
+Don't be foolish. 멍청하게 굴지 말아요
+Don't be modest. 겸손해 하지 말아요
+Don't be shy. 부끄러워 하지 마세요
+Don't be silly. 싱겁게 놀지 말아요
+Don't bother. 신경쓰지 마세요
+Don't bother me. 나를 괴롭히지 마세요
+Don't change the subject! 화제를 다른데로 돌리지 마요
+Don't get into trouble. (Stay out of trouble.) 괜히 껴들지 마세요
+Don't get upset. 너무 화내지 말아요
+Don't mess with me. 나하고 해보자는 거죠 (저에게 함부로 하지 마세요)
+Don't let me down. 나를 실망시키지 말아요
+Don't make me laugh. 나 좀 웃기지 마요
+Don't push me! 너무 강요 하지 말아요
+Don't push! 밀지 말아요.
+Don't worry about it. 걱정하지 말아요
+Drive safely! 안전운행 하세요~~
+
+[E]
+Easy does it. 천천히 해요. 조심스럽게 하세요 (혹은 진정해요. 성질내지 말고)
+Either will do. (Anything will do.) 둘중에 어떤 것이든 되요 (어떤 것이든 되요)
+Enjoy your meal. 맛있게 드세요
+Enough is enough. 충분 하니까 이제 그만 해요
+Exactly. 바로 그거죠.
+Excellent! (Super!) 최고! (짱!)
+Excuse me. 실례합니다
+
+[F] 
+Far from it. 아직 멀었지요
+Fifty-fifty. 50:50 이죠.
+Follow me. 따라 오세요
+For good? 영원히?
+For what? 왜? 뭣땀시?
+Forget it. 그것에 대해서는 잊어 버리세요. 신경꺼요.
+
+[G]
+Get in the line. 줄을 서세요
+Get lost! 당장 꺼져 버려
+Get off my back. (등에 업혀 있지 말고) 이제 나를 고만 괴롭혀요
+Get real! 현실적이 되세요. 냉정해 지세요
+Get the picture? 완전히 이해가 되세요?
+Give it a rest. 내버려 두세요
+Give it a try. 노력해 보세요 (혹은 한번 시도해 보세요)
+Give me a call. 제게 전화 주세요
+Gladly. 기꺼이 하지요
+Go ahead. 하세요 (얘기 하다가 말을 잘라 먹었을 때 ‘말씀하세요' 하는 의미로도 쓰임)
+Go fifty-fifty. 반반 나누어 내지요
+Go for it. 한번 해 보시지요. 노력 해 보시지요 (화이팅! 의 의미로도 쓰여요)
+Go get it. 가서 가져와요 (혹은 격려의 의미로 ‘한번 해봐!` 로도)
+Go on, please. 어서 계속 하세요
+Going down? 내려 가세요? (주로 엘리베이터에서)
+Going up? 올라 가세요? (주로 엘리베이터에서)
+Good enough. 그 정도면 충분 합니다. 좋습니다
+Good for you. 잘 되었네요 (약한 축하의 의미로)
+Good luck to you! 당신에게 행운을 빕니다
+Good luck. 행운을 빕니다
+Good talking to you. 당신과의 대화는 즐거 웠어요
+Grow up! 좀 철좀 들어라
+Guess what? 뭔지 알아 맞추어 봐요
+
+[H]
+Hang in there.잘 견디고 있어 주세요
+Hang loose. 좀 편히 쉬고 있어요.
+Hang on! 잠깐만! 
+Have a nice day. 좋은 하루 되세요
+Have fun! 재미있게 즐겨!
+He didn't show up. 그가 나타나지 않았어요
+He is history to me. 그는 저에게 이미 지난 일
+Help me! 도와주세요
+Help yourself. 마음껏 드세요
+Here is something for you. 여기 당신을 위해 준비했어요
+Here you are. 여깄어요
+Hi. 안녕
+Hold it ! 움직이지 마요. 잠깐만!
+Hold on. 잠깐 기다리세요
+How about you? 당신은 어때요?
+How big is it? 얼마나 큰데요?
+How come? (Why?) 어떻게? (왜?) : 사실 how come 과 why 는 조금 의미가 다릅니다
+How do you like here? 여기 좋아하세요?
+How have you been? 그동안 어떻게 지냈어요?
+How many times do I have to say? 몇번이나 말해야 알겠어요?
+How many? 몇개나? 
+How much? 얼마나 많이?
+How was your trip (vacation)? 여행 (휴가)는 어땠어요?
+How? 어떻게?
+How's everything? 다 잘 되고 있죠? (안부의 의미로)
+How's work? 일은 좀 어때요?
+How's your family? 가족은 잘 있어요?
+
+[I]
+I agree. 동의합니다
+I am (deeply) touched. 정말 감동했어요 ㅠ.ㅠ
+I am a little disappointed. 좀 실망했어요
+I am all set. 준비 끝!
+I am aware of that. 그점에 대해서는 잘 알고 있습니다.
+I am back. 저 돌아 왔어요
+I am broke. 저 무일푼입니다 (완전 파산상태예요)
+I am coming. 지금 가요
+I am crazy about her. 나는 그녀에 빠졌어요
+I am exhausted. 완죤 지쳤어요.
+I am fed up with this. 정말 (이것에 관한한) 진저리가 나요
+I am free. 한가해요
+I am full. 배불러요
+I am getting hungry. 배가 슬슬 고파 오는데요
+I am going to miss you. 널 그리워하게 될거야
+I am impressed. 감동 받았어요.
+I am in a hurry. 좀 바쁩니다 (저 급해요)
+I am in need. 궁색 합니다
+I am nearsighted. 근시입니다
+I am on duty. 근무중입니다
+I am scared to death. 무서워 죽겠어요
+I am serious. 난 진심이라구요 (농담 아니라니깐요)
+I am short-changed. 잔돈이 모자라는데요
+I am single. 나는 미혼입니다
+I am sorry. 미안해요
+I am starving to death. 배가 고파 죽겠네여
+I am stuffed. 배 불러요 (더 이상 들어가지 못할 만큼 배부르다는 뜻으로도 쓰여요)
+I am upset. 화가 납니다
+I bet. 내가 장담컨대 (내기를 할정도로 자신있다) 혹은 ‘물론’이라는 동의어로 쓰여요.
+I can tell. 그렇게 보이는데요 (그래 보여요)
+I can handle it. 내가 할 수 있어요
+I can not handle it anymore. 난 더 이상 감당할 수 없네요
+I can’t afford that. (주로 재정적으로) 감당이 안되요 (제 형편에 무리예요 로도 사용)
+I can’t help it. 어쩔수 없어요
+I can't say for sure. 확실히는 말 못 하겠어요
+I can't stand it. 견딜 수 가 없군 (못 참겠어!)
+I can't thank you enough. 뭐라 감사의 말씀을 드려야할지 모르겠어요
+I didn't mean to. (I didn't mean it.) 난 그렇게 할 의도는 아니었어요. (일부러 그런건 아니예요)
+I don’t believe it. 난 믿지 않아요
+I don't care. 상관없어요
+I don't get it. 이해를 못하겠네
+I don't like it. (그것이) 싫어 (좋아하지 않아요)
+I doubt it. 아닌 것 같은데.. (No 대신에 정말 많이 쓰는 표현. 완곡한 No 의 표현)
+I feel the same way. 저도 똑같이 느꼈어요.
+I get it. 알아 들었어요
+I got lost. 난 길을 잃었어요
+I have got to go now. 이제 가야겠네요
+I have had enough. I quit. 난 이제 진저리가 나요. 그만 둘래요
+I hardly know him. 나는 그 사람을 잘 모릅니다
+I hate to eat and run but ... 먹자마자 가기는 싫지만…
+I have a long way to go. 갈길이 머네요
+I have no appetite. 식욕이 없어요
+I have no clue. 아이디어가 전혀 없네요 (어찌할지 모르겠네요)
+I have no energy. 의욕이 없어요
+I have no idea. 전혀 몰라요
+I have no time. 나는 시간이 없어요. 바쁘네요
+I haven't got all day. 좀 서둘러 주시겠어요? (제가 시간이 좀 없어요)
+I hear you loud and clear. 잘 듣고 있습니다.
+I know what! 아! 알았어요!
+I love it. 정말 좋아해
+I made it. 제가 해냈어요!
+I mean it. 정말입니다. 농담아니에요.
+I owe you one. 신세를 지네요
+I see. 알겠습니다
+I still love you. 난 널 아직도 사랑해 (I still love you long 은 ‘난 널 아직도 사랑하지롱' 물론 농담입니다 ^^)
+I swear to God. 내가 맹새컨데 (내가 맹세할 수 있다규!)
+I taught myself. (누가 가르쳐 준 사람 없이) 혼자 익혔어요
+I was lucky. 정말 운이 좋았죠
+I was told that. 그렇게 들었어요 혹은 제가 듣기에 (that 이하의 문장이 이어집니다)
+I will be in touch. 제가 연락드릴께요.
+I will do it for you. 제가 해 드리지요
+I will drink to that. 그것에 동감 입니다
+I will get it. (전화등을) 제가 받을 께요
+I will miss you. 널 그리워 할거야
+I will never make it on time. 제시간에 가기는 틀렸군
+I wouldn't say no. 아니라고는 말하지 않을께여
+I'm coming. 가요, 갑니다
+In a sense, he is nothing but a suit. 어떤 면에서는 그는 헛깨비나 다름없어 (이게 좀 어려운데 어떤 사람이 그 위치에 딱맞는 행동을 생각없이 수행하는 그런 걸 의미한다고 하네요. 무려 미국인 3명이랑 토론했네요 ^^)
+Incredible. 대단해
+Is that all? 그게 전부에요?
+It is chilly. 날이 쌀쌀 하네
+It is humid. 습하네요 (습기가 많은 날씨)
+It is muggy 날이 후덥지근하네 (온도 높고 습도 높고)
+It is out of style. 유행이 아니네요.
+It is painful for me. 그건 (저에겐) 참 고통스럽네요
+It is time for lunch. 점심식사할 시간입니다
+It is time to go. 갈 시간 입니다
+It is windy. 바람이 부네
+It makes sense. 말 되네요
+It takes time. 시간이 걸립니다
+It’s for you. 여기요 전화 왔어요
+It’s not fair. (It's unfair) 불공평해요
+It's all right. 괜찮습니다
+It's beautiful. 아름답군요
+It's cool. 멋있네요 (상황에 따라 괜찮아요 라는 뜻도 있습니다)
+It's free. 공짜 입니다
+It's freezing. 대박 춥네 (꽁꽁 얼어붙는다는 뜻에서 출발)
+It's my fault. (It's not my fault) 제 잘못 이지요 ( 제 잘못이 아닙니다.)
+It's all your fault. 모든게 네 잘못이야
+It's my pleasure. 천만에요 (감사에 대한 답. 저도 그렇게 해드려 기쁩니다에서 유래)
+It's my turn. 이번에 내 차례입니다
+It's now or never. 지금이 절호의 기회입니다
+It's on me. It's on the house. 이건 제가 쏘는 겁니다 이것은 주인집에서 써비스!
+It's really bad. 아주 나빠요
+It's tough. 힘들어요
+It's your turn. 당신 차례입니다
+
+[J]
+Just about. 거의 
+Just kidding. 그냥 농담이에요
+Just looking. 그냥 돌아 보는거에요 (쇼핑하러 가서 아이쇼핑할 때 쓰세요)
+Just a moment. 잠깐 만요
+
+[K]
+Keep an eye on this, will you? 이것좀 봐주세요. 해주실거죠?
+Keep going. 계속 가세요
+Keep in touch. 계속 연락합시다
+Keep it confidential. 대외 비밀로 해 주세요 (당신만 알고 계세요)
+Keep it to yourself. 당신만 알고 계세요. (비밀로 해 주세요)
+Keep looking. 계속해서 찾아 봐요
+Keep out of my way. 제 길을 막지 마세요
+Keep the change. 잔돈은 가지세요 (잔돈은 됐어요)
+Keep your chin up! 고개를 드세요. 낙담 하지 마세요 기운을 내요
+Knock it off. 그만해~~ (상대방이 놀리는 상황에서라든지 황당한 얘기를 할 때)
+
+[L]
+Large or small? 큰거요 아니면 작은 거요
+Let it be! 내버려 둬!
+Let me see… 어디 보자… (별 의미 없이 쓰는 접두어.. 음… 정도)
+Let me think about it. 제가 생각해 보죠 (이것도 의미없이 대화 중 음.. 하는 용도로 쓸 수 있어요)
+Let's give him a big hand. 그에게 큰 박수를 보냅시다
+Let's call it a day. 오늘은 이걸로 마치죠 (오늘은 여기까지 하죠)
+Let's eat out. 자, 외식합시다
+Let's get down to business. 자 본론으로 들어갑시다
+Let's get together sometime. 언제 한번 함께 보죠
+Let's go over it one more time. 자 한번 더 살펴 보지요
+Let's see. 자 어디.. (뭘 살펴볼 때 습관적으로 하는 말)
+Let's split the bill. 나누어서 냅시다
+Let's try. 한번 해보지요
+Look who's here. 아니 이게 누구야
+Lucky you! 자네 운이 좋았어 
+
+[M]
+Make a way! 길을 비켜 주세요
+Make mine well done. 내것은 well done (스테이크의) 으로 해줘요
+Make that two, please. 저도 같은 걸로 주세요 (식당 등에서 상대와 같은 음식으로 할때)
+Make yourself at home. 내집인양 편하게 계세요
+Many thanks in advance. 미리 감사 드려요
+Many thanks. 정말 고마워요
+May I interrupt you? 제가 좀 실례를 해도 될까요?
+Maybe. 그럴지도 모르지요
+Maybe not. 그렇지 않을지도 모르지요
+Maybe some other time. 다른 때 보자구요.
+Me, too. 나도 그래
+Money talks. 결국 돈이지 뭐
+Most likely. 아마도 그렇 것입니다
+My pleasure. 제 기쁨입니다 (감사에 대한 답례로 항상 써요)
+
+[N]
+Never better. 아주 좋아요. 최고에요. 
+Never mind. 신경쓰지 마세요
+Never say die. 포기하지마
+Never too late. 너무 늦었다고 생각하지 마
+Next time. 다음번에 
+Nice meeting you. 만나서 반가웠어요 (만났다가 헤어질 때)
+Nice talking to you. 좋은 대화였어요 (만났다가 헤어질 때)
+No kidding. 그럴리가! (감탄사에 가까워요. 연아가 올림픽 2연패 했대요. No kidding!)
+No problem. 문제가 아니네요
+No sweat. 껌이죠 (저에게는 일거리도 아니예요라는 뜻)
+No way. 절대 안돼
+No wonder. 어쩐지 그렇더라
+Not a chance. 절대 안되지요
+Not bad. 나쁘지 않은데요 ( 그런대로 좋군요)
+Not really. 그렇지는 않아
+Not too good. (Not too bad) 그져 그래 (나쁘지도 않고)
+Nothing much. 별거 없어
+Nothing new. 뭐 새소식이랄 것도 없지 (누가 ‘새로운 소식이라도 좀 있어?’ 라고 물어 볼 때)
+Nothing new about that. 그것에 대해선 달라진게 없어죠.
+Now what? 그래서요?
+Now you are talking. 이제야 서로 말이 통하는군
+
+[O]
+Occupied. 사용중 (비행기 기내 화장실 등에서 문에 표지로)
+Oh, dear! 아니 저런
+Okay. 그래. 알았어요.
+Okeydokey ( 가까운 사이에서만 사용) 좋아요 (OK 의 귀염귀염 버전)
+On the contrary. 반대로
+Once in a blue moon. 아주 가끔요
+Ouch! 아야
+Out of the question. 질문의 여지가 없습니다 (불가능 합니다. 강력한 No)
+
+[P]
+Pick it up! 주우세요!
+Please enjoy yourself. 자 그럼 즐기세요 (격려할 때는 좀 즐기도록 해의 뜻도)
+Please relax. 좀 느긋해 지세요
+Please! 제발
+Poor thing. 저런 (안스러워요, 불쌍해요 정도의 의미)
+Pretty good! 정말 좋지요
+Really? 정말?
+Relax. 좀 느긋해 지세요.
+
+[S]
+Same here. 저도 동감입니다
+Same to you. 당신도요
+Say cheese! 김~~치 (사진찍을 때 쓰는 말)
+Say hello for me. 나 대신 안부 전해줘요
+Say that again? 다시 말씀해 주실래요? (잘 못알아 들었을 때 엄청 많이 쓰는 표현)
+Say when. 그만이라고 말해주세요 (잔 등에 음료수나 물을 따를 때 언제 그만 따를까요라고 물어볼 때)
+See you later! (Later!) 나중에 봐요
+See you. 나중에 봐요
+Serious? 진심이에요?
+Shame on you. 쪽 팔린 줄 알아! (거의 정중한 욕입니다)
+She is my style. (She is not my style.) 그녀는 내 타입이에요 (그녀는 내 타입이 아니에요)
+She is very sophisticated. 그녀는 매우 세련되었어요
+Shoot! 제기랄! (배운 계층에서는 shit 이라고 욕을 안하고 shoot 이라고 합니다. Damn 을 Dang 으로 하듯이)
+Skip it! 다음으로 넘어 가요
+So much for that. 이제 그일은 그만 하지요
+So soon? 그리 빨리?
+So what?어쩌라고?
+Sold out. 매진
+Something's fishy. 뭔가 이상한데 (뭔가 냄새가 나)
+Something's never changed. 절대 안변하는게 있지
+Sorry to bother you. 번거롭게 해서 죄송 합니다
+Sorry? (누구의 말을 잘못 이해했을 때) 뭐라구 하셨지요?
+Sounds good. 좋은 생각이예요
+Speak out. 말좀 크게 하세요
+Speaking. 말하세요
+Speaking Spanish? 스페인어 하세요?
+Stay cool. 진정해요
+Stay longer. 좀더 계시지요.
+Stay out of trouble. 괜히 껴들지 마세요 
+Stick around. 옆에 있어 보세요 (상황에 따라 '지켜보세요' 라고도 쓰여요)
+Stick with it. (포기 하지말고) 계속 해 봐요.
+Stop complaining. 불평좀 그만 하시지요
+Suit yourself! 좋을대로 하세요
+Super. 짱!
+Sure. 물론
+Sure thing. 물론이지
+Sweet dreams. 잘 자요 (성시경 톤으로 해야 함)
+
+[T]
+Take a guess. (Can you guess?) 맞춰봐요
+Take care! 잘가~~ (원 뜻과 달리 헤어질 때 잘가라는 말고 가장 많이 씁니다. 병실에서야 ‘몸조리 잘해'가 되겠지만)
+Take my word for it. 그건 내 말만 믿어봐
+Take your time. 천천히 하세요
+Tell me about it. 내 말이~~ (강하게 긍정할 때)
+Thank God. 아이고~~ (안도의 한숨을 쉴 때)
+Thanks for calling. 전화 주셔서 감사 해요
+Thanks for everything. 여러가지로 고마워요
+Thanks for the compliment. 칭찬해 주셔서 감사 합니다
+Thanks for the ride. 차를 태워다 주어서 고마워요
+Thanks, but no thanks. 감사해요, 그러나 전 됐어요.
+That depends. 그야 경우에 따라서이지요
+That figures. 바로 그거군요
+That happens. 그런 일도 있지요
+That should help. 도움이 될겁니다
+That sounds good. 그거 좋은 아이디어네요
+That will be the day. 그렇게 되면 오죽 좋겠어요 (그런 일은 내게 일어날리가 없어!)
+That's a steal. 거저 가져 가는 셈이지요 (쌉니다, 공짜나 다름 없어요)
+That's all right. (그건) 괜찮아요
+That's all there is to it. 그게 다지 뭐
+That's all? 그게 다야?
+That's enough about that. 그정도로 충분합니다
+That's enough. 이제 되었어요
+That's good. 잘 되었네요
+That's hard to say. 뭐라 말하기 곤란하네요
+That's it. 바로 그거야
+That's a nice surprise! 이거 뜻밖인데요
+That's not fair.(That's unfair) 불공평 합니다
+That's right. 맞습니다
+That's the way to go. 그래 그렇게 하는거지
+That's what I mean. 내 말이! (그게 내가 말하고자 하는 바야)
+There you are. 여기 있습니다
+Things will work out all right. 다 잘될거야
+This is just between you and me. 우리들만의 비밀입니다
+This is not much. 약소합니다
+This is urgent. 긴급입니다
+This one? 이것 말이에요?
+Time will tell. 시간이 해결해 줄거예요 (시간이 말해 줄것입니다)
+Time's up. 땡! 시간이 다 되었어요
+Too bad! 안 되었네요
+Too expensive. 너무 비싸네
+To the best of my knowledge~ 적어도 내가 알기로는~
+Trust me. 날 믿어바바
+Try again. 다시 해 보세요
+
+[U]
+Uh-uh 이런!
+Unbelievable. 말도 안돼!
+Up to here. (목까지 손으로 대어 보이면서)폭발 일보직전이다 (여기까지 찼어)
+Up, or down? 올라가요? 아니면 내려가요? (엘리베이터에서겠죠?)
+
+[W]
+Wait a minute. 잠시만 기다리세요
+Watch out! 위험해, 주의해요
+Watch your language. 말 조심해요
+We are in the same boat. 우리는 같은 처지/운명이지요
+Welcome home! 집에 온것을 환영합니다
+Well done. 잘 했어요
+What a nerve! 뻔뻔 하군요 (간댕이가 부었군)
+What a relief! 이제 맘이 놓인다
+What a shame. 완전 창피한 일이지
+What about it? 그게 어떤데요?
+What about you?(What about me?) 당신은 어때요? (나는 어때요?)
+What brings you here? 어떻게 오셨지요?
+What did you say? 뭐라구요?
+What do you do? 직업이 뭐지요?
+What do you know? 무엇을 알고 있지요?
+What do you mean? 무슨 의미지요?
+What do you say? 뭐라고 하실래요? 어떠세요?
+What do you think of it? 이것에 대해서 뭐라고 생각 하세요?
+What do you think? 무엇이라고 생각하세요?
+What for? (For what?) 뭣땀시?
+What is it? 무슨 일이지요?
+What makes you say that? 무슨 근거로 그렇게 말하세요?
+What time is it? 몇시지요?
+What? 뭐라구요?
+What’s it called? 그것을 뭐라고 부르지요?
+What’s today's special? 오늘 특선 요리가 뭐지요?
+Whatever you say. 뭐라고 하시던지요
+What's happening? 어떻게 지내요?
+What's new? 그동안 새로운 거 있었어요?
+What's the big deal? 그래서 어쩌라구?
+What's the point? 요점이 뭐지요?
+What's up? 헤이 (일상적인 인사)
+What's wrong? 뭐가 문제지요?
+When? 언제?
+Where are we? 여기가 어디야?
+Where did you stay? 어디에 머물렀어요?
+Where do you live? 어디에 사세요?
+Where is a drugstore? 약국이 어디에 있지요?
+Where to ? 어디로?
+Which one? 어느 것이요?
+Who cares! 알게 뭐야 상관하지 않아
+Who is it? 누구시지요?
+Who knows? 누가 알겠어
+Who's there? 거기 누구죠?
+Who's calling? (전화를 받으면서) 누구시지요?
+Why didn't I think of that? 왜 그걸 생각 못했지?
+Why not? 왜 안되겠어/왜 안되는데 ?
+Why? 왜?
+Win-win situation. 양쪽 다 좋은 일이지
+With pleasure. 기꺼이
+Would you like some? 좀 드셔보실래요?
+Wow! 와우
+
+[Y]
+Yeah. Yes 네, 
+Yes and no. yes 이기도 하고 no 이기도 하고
+You are a lucky duck. 당신은 행운아!
+You are driving me crazy. 절 완전 짜증나게 하시네요
+You are getting better. 당신은 점점 좋아지네요
+You are soaked! 흠뻑 젖었군요
+You are teasing me. 지금 절 놀리시는 거죠?
+You're telling me. 완죤 동감!
+You are too much. 당신 너무하는 군요
+You bet. 당연하신 말씀 (물론이지요)
+You bet? 내기 할래? (자신할 수 있어?)
+You cannot fool me. 날 속일 수 있다고 생각하지 마
+You can say that again. 지당한 말씀이지요
+You first. 먼저 하세요
+You flatter me. 저를 우쭐하게 만들어주시네요 (보통은 감사의 의미)
+You have the wrong number. 전화를 잘 못 거셨어요
+You got it. 이해를 하셨군요
+You have lost me. 제가 말을 놓쳤네요 (무슨 말씀을 하시는지 잘 모르겠어요)
+You look good. 좋아 보이네요
+You must be crazy. 당신은 미친게 틀림없어
+You name it. 말씀만 하세요
+You said it. 지당하신 말씀
+You should get in shape. 몸을 좀 가꾸는게 좋겠는데요 (살을 좀 빼는게 좋겠네요 라는 의미로도 쓰여요)
+You stay out of it. 넌 이것에 끼어 들지 마
+You went too far this time. 이번엔 좀 과하셨어요
+You win. 당신이 이겼어요
+You're wasting your time. 당신은 시간만 낭비 하고 있어요
+You're welcome. 천만에요
+
+
+
+
+[특별부록]
+
+* 여기서부터는 제가 개인적으로 사용하기 위해 어디선가 퍼온 표현 50개입니다. 출처나 저자는 저도 모릅니다만 쓸만한 표현들이 많습니다.
+
+1. 당근이지 You bet./ Absolutely.
+
+2. 너나 잘 해 None of your business.
+
+3. 뒷북치지마 Thanks for the history lesson.
+
+4. 어제 필름이 끊겼어 I got blacked out yesterday.
+
+5. 그 사람 그거 참 잘~ 됐다(그게당연하다). 쌤통이다 He deserves it.
+
+6. 그래 니 팔뚝 (또는 니 X) 굵다 Okay, You are the boss!
+
+7. 죽을만큼 마셔보자 Let's go all the way!
+
+8. 니가 나한테 어떻게 그럴 수 있니? How could you do that to me?
+
+9. 놀구 있네~~ 삽질 하네~~ Yeah. Right~
+
+10. 거기 물 좋다 That place rocks! That place kicks!
+
+11. (문제의 답 등이) 너무쉽네/애개개 그게다야? That's it? /Is that all?
+
+12. 너도 내 입장이 되어봐 Put yourself in my shoes.
+
+13. 음식 잘 먹었습니다. I've never eaten better.
+
+14. 야, 친구 좋다는 게 뭐야? Come on, what are friends for?
+
+15. 너무 감격해서 눈물이 난다 .It was so touching, I almost cried.
+
+16. 미안해 할 것까지는 없어. There's nothing to be sorry about.
+
+17. 이보다 더 좋을 순 없다 It couldn't be better than this!
+
+18. 메롱 Neh Neh Neh Boo Boo
+
+19. 섭섭(실망)하지않게해드리겠습니다! You won't be disappointed!
+
+20. 나를 만만하게 보지마 Don't you think I am that easy. (you에 강세)
+
+21. 니가 하는 일이 다 그렇지 뭐 That's what you always do.
+
+22. 분위기 파악 좀 해라, 인간아 Consider your surroundings, you fool.
+
+23. 두고보자. Just wait! I'll get (또는 pay) you back.
+
+24. 이번 한 번만 봐준다 I'm gonna let it slide only this time.
+
+25. 쟤는 어디가도 굶어죽진 않겠다. He will never starve anywhere.
+
+26. 너무많은걸 알려고하면 다쳐 You'll get hurt if you try to know too much.
+
+27. 제발 잘난 척 좀 그만해 Stop acting like you're all that.
+
+28. 장난이 좀 심하군 The joke is too harsh.
+
+29. 말장난 그만 합시다. Let's stop playing word games
+
+30. 내가 만만하게 보여? Do I look like I am easy?
+
+31. 몸이 찌뿌둥하다 I feel heavy
+
+32. 오해 하지 마세요 Don't get me wrong.
+
+33. 기가막혀 말이 안나오네. It's so outrageous I can't say a word
+
+34. 니 맘대로 하세요 Suit yourself.
+
+35. 아직 옛날 실력 안 죽었어 I've still got it. (it은 옛날 실력을 의미)
+
+36. 넌 이제 죽었어 You are dead meat!
+
+37. 너 들으라고 한 소리 아냐 Don't take it personally.
+
+38. 까꿍! Peekaboo! (삐까부; "삐"자에 강세: 아기들 얼를 때나 놀라게 할 때))
+
+39. 알랑거리지마 Don't try to butter me up.
+
+40. 배째 Sue me!
+
+41. 그것만 해도 어딘데? That's better than nothing
+
+42. 머리뚜껑이 열렸다. My head is about to open
+
+43. 그녀는 이중 성격을 가졌어 She has a multi-personality (또는 split personality)
+
+44. (나에게) 너무 심한 것 아니예요? Don't you think you are too harsh?
+
+45. 그렇게까지 할 필요는 없어. You don't have to do all that
+
+47. 나도 맘이 편하지는 않아. I don't feel well(good) about it, either.
+
+48. 그다지 썩 내키지는 않는데.I don't feel like doing it
+
+49. 생각보다 '별로'인데... It's not as good as I thought (expected)
+
+50. 몸살에 걸려 온몸이 쑤신다. My whole body aches.
+
+
+
+
+* 다음은 제가 문장등을 구성할 때 참고하기 위하여 역시 어디선가 퍼와서 고이 보관하고 있었던 100개의 용례와 예문들입니다. 매우 기초적인 문장들이지만 이 정도만 잘 구사하셔도 굉장히 수준있는 회화를 구사하실 수 있습니다. 전문적인 것은 몰라도 일상 회화는 이 범위안에서 대부분이 커버된다고 해도 과언이 아닙니다.
+
+1. I need.... “...이 필요하다” 는 것을 표현할 때
+I need a new car. 나는 새 차가 필요해
+I need a vacation. 나는 휴가가 필요해
+I need some advice. 나는 조언이 필요해
+I need a haircut. 머리를 잘라야겠다.
+
+
+2. I hope.... “.을 희망한다. or 어떻게 되었으면 한다.” 는 표현
+I hope it snows. 눈이 내렸으면 좋겠다.
+I hope it's OK with you. 네가 좋다고 하면 좋겠다.
+I hope you can make it. 네가 그것을 만들 수 있으면 좋겠다.
+I hope my plane leaves on time. 내가 탈 비행기가 제시간에 출발 했으면 좋겠다.
+
+
+3. Can I...? “.... 할 수 있나요? ...해드릴까요? ” 라는 표현
+Can I help you? 도와드릴까요?
+Can I give you a hand? 도와드릴까요?
+Can I get you something? 뭔가 갖다 드릴까요?
+Can I take a message? 메시지를 받아 드릴까요?
+
+
+4. Are you...? “당신은...입니까?” 라는 상대방의 상태를 질문함
+Are you ready? 준비 되었습니까?
+Are you all right? 괜찮아요?
+Are you busy right now? 지금 바쁘신가요?
+Are you free tomorrow afternoon? 내일 오후에 시간이 있습니까?
+
+
+5. I'll (I will) .... “나는 ... 할 것이다.” 라는 자신의 의사를 표현
+I'll have the New York cut. 나는 뉴욕 컷을 먹겠습니다.
+I'll have a beer, please. 맥주 주세요.
+I'll have another cup of coffee. 커피를 한 잔 더 하겠어요
+I'll have the special. 특별 요리를 먹겠습니다.
+
+
+6. I want... “을 원한다.” 말을 할 때
+I want more responsibility. 좀더 책임 있는 일을 하고 싶습니다.
+I want a position with more responsibility. 좀더 책임 있는 지위에 있고 싶습니다.
+I want a raise. 봉급을 올려주길 원합니다.
+I want it all. 나는 그 모든 것을 원합니다.
+
+
+7. Do you want...? “...을 원합니까?” 라는 표현을 할 때
+Do you want some more coffee? 커피 더 하시겠어요?
+Do you want anything at the store? 가게에서 뭐 사올 것 없어요?
+Do you want anything else? 그 밖에 원하는 것 있어요?
+Do you want cream and sugar? 크림과 설탕을 넣을 까요?
+
+
+8. I think.... “나는 ... 생각한다.” 라는 표현을 할 때
+I think so. 나는 그렇게 생각한다.
+I don't think so. 그렇게 생각지 않는다.
+I think not. 그렇게 생각지 않는다.
+Don't you think so? 그렇게 생각하지 않나요?
+
+
+9. Do you think....? “...생각합니까?” 라고 상대방의 의사를 물을 때.
+Do you think this looks OK? 보기에 괜찮다고 생각해요?
+Do you think this looks good on me? 이것이 나한테 어울린다고 생각해요?
+Do you think this goes with my dress? 이것이 내 옷에 맞는다고 생각해요?
+Do you think this color suits me? 이 색깔이 나에게 어울린다고 생각해요?
+
+
+10. I know... “...을 알고 있다” 라는 표현을 할 때
+I know what you mean. 당신이 하는 말이 무슨 뜻인지 알겠어요.
+I know what you want. 네가 원하는 것을 알고 있다
+I know how you feel. 네 기분을 알 것 같다
+I know what you're thinking. 네가 뭘 생각하고 있는지 안다
+
+
+11. Do you know...? “...을 알고 있습니까?” 라는 표현을 할 때
+Do you know the recipe? 만드는 법을 알고 있습니까?
+Do you know that woman? 저 여자를 압니까?
+Do you know the story? 그 이야기를 알고 있습니까?
+Do you know the way? 그 길을 알고 있습니까?
+
+
+12. I feel... “..을 느낀다.” 라는 자신의 기분 상태를 말할 때
+I feel sick. 속이 느글거려
+I feel sick to my stomach. 배속이 매슥매슥하다
+I feel a little dizzy. 약간 현기증이 난다
+I feel really tired. 아주 지쳤어
+
+
+13. Feel free… “......사양하지 말고 하세요.” 하는 표현을 말할 때
+Feel free to call me if you have any questions.
+뭐 물어볼 것이 있으시면 주저하지 마시고 제게 전화 하세요
+Feel free to give me a call if there are any problems.
+문제가 있으면 언제든지 전화를 주세요.
+Feel free to ask me if you have any questions.
+질문이 있으시면 언제든지 물어보세요.
+Feel free to tell us if you want anything.
+원하는 것이 있으시면 언제든지 저희에게 말씀해 주세요.
+
+
+14. I have... “....을 갖고 있다” 는 것을 표현할 때
+I have two sisters. 나에게 자매가 둘이 있다
+I have an older sister and a younger sister. 나에게는 언니가 한명, 여동생이 한명 있다
+I have two sisters, one older and one younger.
+나에게는 언니와 여동생, 두 명의 자매가 있다
+I have two sisters, both older. 나에게는 언니가 두 명 있습니다.
+
+
+15. Have you...? “...해본 경험이 있어요?” 라고 질문할 때
+Have you ever been to Disneyland? 당신은 디즈니랜드에 가본 적이 있어요?
+* have been to-에 다녀오다, 가보다
+Have you been to Paris? 파리에 가본 적이 있어요.
+Have you ever seen Picasso's Three Dancers?
+피카소의 세 명의 무희라는 그림을 본적이 있습니까?
+Have you ever listened to anything by Miles Davis?
+마일즈 데이비스의 연주를 들은 적이 있습니까?
+
+
+16. I have to... "...을 해야만 한다. 는 표현을 할 때
+I have to make a decision. 나는 결정을 해야 합니다.
+* make a decision: 결정하다
+I have to make a choice. 나는 선택을 해야 한다
+I have to make the deadline. 마감시간에 맞추어야한다
+I have to make more of a contribution to the project.
+이 프로젝트에 좀더 공헌을 해야 합니다
+
+
+17. Have... “...을 가지세요.”어떤 상태가 되세요. 표현을 할 때
+Have a good time. 즐거운 시간되세요.
+Have a nice time. 즐거운 시간 되세요
+Have fun. 재미있게 보내세요.
+Have a nice weekend. 좋은 주말 보내세요.
+
+
+18. This is..... “이것은 ...입니다” 라는 표현
+This is for you. 이것을 당신에게 드리겠습니다. 이것은 당신 것입니다
+This is for John. 이것은 존에게 주는 겁니다.
+This is for the picnic. 이것은 피크닉을 위한 겁니다.
+This is for tonight's dinner. 이것은 오늘 밤의 저녁용이다.
+
+
+19. Is this....? “이것이 ...입니까?” 라고 물을 때
+Is this the report you were looking for? 이것이 당신이 찾고 있었던 보고서입니까?
+Is this what you were looking for? 이것이 당신이 찾고 있던 것이 아닌가요?
+Is this what you wanted? 당신이 원했던 것이 아닌가요?
+Is this the sweater you knitted? 이것이 당신이 짠 스웨터인가요?
+
+
+20. That's (That is)... “저것은...입니다” 라는 표현
+That's right. 그래요
+That's true. 그건 그래
+That's it. 맞아
+That's wrong. 그것은 잘못된 거야
+
+
+21. There's (There is).... “사물이나 사람이 어디에 있다” 는 표현
+There's some food in the refrigerator. 냉장고 안에 먹을 게 좀 있다
+There's some cake on the table. 테이블위에 케이크가 있다
+There's none left. 아무것도 남아있지 않다
+There's more ice cream in the freezer. 냉동실 안에 아이스크림이 더 있다.
+
+
+22. Is there....? 어디에 무엇이 있는지를 묻는 표현
+Is there a drugstore nearby? 부근에 약국이 있습니까?
+Is there a bus stop around here? 이 근처에 버스 정류장이 있습니까?
+Is there a direct flight to Seoul from Philadelphia? 필라델피아에서 서울로 가는 직행편이 있습니까?
+Is there another exit? 다른 출구가 있습니까?
+
+
+23. Could you...? “...을 해 주시겠어요?” 라고 공손히 요구하는 표현
+Could you do me a favor? 부탁하나 드려도 될까요?
+Could you help me out? 저를 좀 도와줄래요?
+Could you get me another beer? 나한테 맥주 한잔 더 줄래요?
+Could you wrap this separately, please? 이것을 따로 포장해 줄래요?
+
+
+24. You should... “...을 하는 것이 좋겠다.” 하는 식의 충고나 명령을 말할 때
+You should give her a call. 너는 그녀에게 전화를 하는 것이 좋겠다.
+You should give her a chance. 너는 그녀에게 기회를 주는 게 좋겠다.
+You should tell her how you feel.
+그녀한테 네가 어떻게 생각하고 있는지 이야기 하는 것이 좋겠다.
+You should finish your homework. 너는 숙제를 끝내야한다
+
+
+25. Would you... “...을 해 주시겠습니까” 라고 정중하게 부탁할 때
+Would you mail this letter for me? 이 편지를 부쳐 주시겠습니까?
+Would you type this letter, please? 이 편지를 타이핑 해 주시겠습니까?
+Would you please pass me the salt? 소금 좀 집어 주실래요?
+Would you explain it to her? 그것을 그녀한테 설명 해 주시겠어요?
+
+
+26. I'd like (I would like).... “나는 ..을 하겠다.” 는 자신의 선호를 표현할 때
+I'd like an ice cream sundae. 아이스크림선디를 주십시오.
+I'd like another drink. 한잔 더 주십시오.
+I'd like a slice of pizza, please. 피자 한 조각을 주세요.
+I'd like two tickets to the 9:30 show. 9시 반에 상연하는 티켓을 두장 주세요.
+
+
+27. It's (It is)... “이것은 ...입니다” 라는 뜻의 표현
+It's no problem. 별문제 아닙니다.
+It's a difficult question. 그것은 어려운 질문이군요.
+It's an emergency. 긴급사태입니다
+It's a joke. 농담이오.
+
+
+28. Let... “함께...합시다.” 라고 제안 하는 표현
+Let's take a break. 잠깐 쉽시다.
+Let's take a cab. 택시를 타자
+Let's eat out tonight. 오늘밤은 외식하자
+Let's set a date. 날짜를 정하자
+
+
+29. It takes ... “...이 소요 됩니다” 라는 표현
+It takes a lot of hard work. 아주 열심히 노력하지 않으면 안 된다
+It takes a lot of courage. 거기에는 대단한 용기가 필요하다
+It takes guts and determination. 거기에는 용기(배짱)와 결단력이 필요하다
+
+
+30. It looks like... “...인 것처럼 보인다.” 라고 말할 때
+It looks like it's going to rain. 비가 올 것 같다
+It looks like it‘s going to pop. 그것은 지금이라도 과연 될 것 같다
+It looks like the house is falling apart. 그 집은 지금이라도 무너질 것 같다
+It looks like spring is arriving earlier this year. 올해는 봄이 빨리 올 것 같다
+
+
+31. What's....? “...은 무엇입니까?” 라는 질문을 할 때
+What's your number? 당신의 전화번호는 무엇입니까?
+What's your name? 당신의 성함이 어찌 되지요
+What's your address? 당신의 주소가 어떻게 되지요
+
+
+32. What a ....! “참 ..이네요” 라는 말을 할 때
+What a mess! 왜 이렇게 어수선해!
+What a shame! 원 참 창피한 일이네!
+What a joke! 얼마나 우스꽝스러운 일인가!
+What a surprise! 야, 놀랍다!
+
+
+33. What do you ....? “무엇을 ... 하세요?” 라는 상대방의 의사나 상태를 물어 볼 때
+What do you want to do? 넌 어떻게 했으면 좋겠니?
+What do you want to know? 무엇을 알고 싶니?
+What do you plan to do? 무엇을 할 계획입니까?
+What do you suggest we do? 당신은 우리가 어떻게 할 것을 제의합니까?
+
+
+34. How's....? “....어떠세요?” 사물이나 사람이 어떤 상태인지를 질문
+How's your brother doing? 형은 어떻게 지내냐?
+How's your father doing? 아버님은 어떻게 지내시냐?
+How's Mary doing? 메리는 어떻게 지냅니까?
+How's she now? 그녀는 지금 어때요?
+
+
+35. How do you...? “...어떻게 합니까?” 하는 방식에 대한 질문
+How do you open this door? 이문은 어떻게 여는 겁니까?
+How do you do this? 이것을 어떻게 하는 겁니까?
+How do you work this? 이것은 어떻게 작동 시키는 겁니까?
+How do you get there? 거기에는 어떻게 갑니까?
+
+
+36. How about..? “...은 어떻습니까?” 는 말을 할 때
+How about a beer? 맥주라도 마실까?
+How about another piece of cake? 케이크 하나 더 드시겠어요?
+How about lunch? 점심이나 할까요?
+How about some eggs this morning? 오늘 아침 식사는 달걀이 어때요?
+
+
+37. How come...? “도대체..왜?” 라는 식으로 물을 때
+How come you're not going to the party? 너 왜 파티에 가지 않니?
+How come you can't go? 왜 갈수 없니?
+How come you never write? 왜 너는 한번도 편지를 쓰지 않니?
+How come it's not working? 왜 그것은 작동하지 않습니까?
+
+
+38. How long...? “얼마나 ... 오래 이지요?” 식의 시간의 길이를 질문
+How long does it take to get there? 거기까지 얼마나 걸리지요?
+How long does it take by bus? 버스로 얼마나 걸리지요?
+How long does it take on foot? 걸어서 얼마나 걸리지요?
+
+
+39. Why don't you...? “....하지 않겠어요?” 식으로 권유, 제안을 할 때
+Why don't you come along? 너도 같이 가는 게 어때?
+Why don't you join us? 우리와 함께 하지 않겠어요?
+Why don't you sit down? 앉지 그래요
+Why don't you take a break? 좀 쉬는 것이 어때요?
+
+
+40. Thanks for... “...감사 합니다” 는 감사의 기본적인 표현
+Thanks for everything. 여러 가지로 고마워요
+Thanks for all the help. 도와주어서 고맙습니다.
+Thanks for the encouragement. 격려해 주셔서 감사합니다.
+Thanks for the advice. 충고 해 주셔서 고맙습니다.
+
+
+41. Take... “...을 잡다 or 갖는다.” 는 표현
+Take it easy. 그럼 잘 가
+Take care. 조심 해. 잘 가
+Take your time. 천천히 하세요.
+Take a chance. 운에 맡기고 해보세요.
+
+
+42. Tell.... “..알려 주세요” 라는 것을 말할 때
+Tell her I'll stop by around 7. 그녀에게 7시쯤 들른다고 전해줘요
+Tell her I'll call her when I get home. 집에 도착하면 전화 한다고 그녀에게 전해줘요
+Tell him I said hello. 내가 안부 전한다고 전해줘요
+Tell Jane I bought a ticket for her. 제인의 티켓을 샀다고 전해줘요
+
+
+43. See you... “...에 만나지요” 라는 것을 말할 때
+See you on Saturday. 토요일에 만나요
+See you at 8. 8시에 만나요
+See you next week. 다음주에 만나요
+See you tomorrow. 내일 만나요
+
+
+44. This sounds.... “....처럼 생각되다” 는 표현을 할 때
+This sounds interesting. 재미있을 것 같다
+This sounds good. 좋을 것 같다
+This sounds exciting. 재미있을 것 같다
+This sounds scary. 무서울 것 같다
+
+
+45. Do you mind...? “...해도 상관없어요?” 라는 허가를 구할 때
+Do you mind? 상관없어요?
+Don't you mind? 상관없어요?
+Don't you care? 상관 하지 않아요?
+Do you care? 괜찮아요?
+
+
+46. Are you sure...? “...확실해요?” 상대방의 의도를 확인 하는 표현
+Are you sure? 확신 해?
+Are you certain? 확신 합니까?
+Are you positive? 틀림없습니까? (동의하세요?)
+Are you serious? 진지한거예요?, 중대한거예요?
+
+
+47. I'm worried about... “....염려가 돼요” 라는 불안의 표현
+I'm worried about Susan. 나는 수잔이 걱정돼
+I'm worried about you. 네가 걱정이다
+I'm worried about the kids. 아이들이 걱정이다
+I'm worried about our younger generation today. 오늘날의 젊은이들이 걱정이다
+
+
+48. be going to... “...하려고 하다” 는 자신의 의지를 표현하는 말
+I'm going to study harder next year. 내년에는 좀더 열심히 공부 할 생각이다
+I'm going to quit my job. 나는 일을 그만 둘 생각이아
+I'm going to take a long vacation this summer. 이번 여름에는 긴 휴가를 낼 생각이다
+
+
+49. I'm sorry... “...미안 합니다”는 뜻의 기본적인 표현
+I'm sorry about what I said. 그런 말을 해서 죄송해요
+I'm sorry about what I‘ve done. 여러 가지로 폐를 끼쳐 죄송합니다.
+I'm sorry I got upset. 화를 내서 미안 합니다
+
+
+50. I wonder... “... 일까?” 라는 확신이 없이 추측 하는 표현
+I wonder if he'll call. 그 사람이 과연 전화 할까?
+I wonder if he wants to come. 그 사람이 오고 싶어 할까?
+I wonder if we should invite Carl. 우리가 카알을 초대 해야만 하나?
+I wonder if it will be sunny this weekend. 이번 주말에는 날씨가 좋을는지 모르겠다.
+
+
+51. I hate... “...을 싫어한다.”는 자신의 기호를 말할 때
+I hate spinach. 나는 시금치를 싫어한다.
+I hate crowds. 나는 사람이 많은 것을 싫어한다.
+I hate that song. 나는 그 노래를 싫어한다.
+I hate this weather. 나는 이런 날씨는 질색이다
+
+
+52. I wish... “...을 소원하다”는 말의 표현
+I wish you luck. 당신의 행운을 빕니다.
+I wish you every success. 성공을 빕니다.
+I wish you all the happiness in the world. 세상에서 가장 행복하시길 바랍니다.
+I wish you all the best. 멋진 일이 있으시기를 바랍니다.
+
+
+53. I guess... “...이라고 생각한다.” 단서가 없이 하는 말
+I guess you're right. 네가 옳다고 생각한다.
+I guess it is OK. 괜찮다고 생각한다.
+I guess it would be all right. 괜찮을 것이라고 생각한다.
+I guess it doesn't matter. 상관없다고 생각한다.
+
+
+54. May I ...? “해도 좋습니까?” 식의 허가를 구할 때
+May I sit here? 여기에 앉아도 되겠습니까?
+May I help you? 도와 드릴까요?
+May I speak to Larry, please? 래리씨와 통화가 가능할까요?
+May I have another piece of pie? 파이 한 조각을 다 먹어도 될까요?
+
+
+55. I'm glad... “... 해서 기쁘다”는 말을 할 때
+I'm glad to hear that. 기쁜 소식이군요.
+I'm glad to be here. 여기에 오기를 잘 했네요.
+I'm glad to meet you. 만나서 반갑습니다.
+I'm glad to see you're all right. 건강한 모습을 보아서 반갑습니다.
+
+
+56. I heard... “...소문을 들었다” 는 표현
+I heard you're moving. 이사 하신다고 들었습니다.
+I heard you won. 당신이 이겼다고 들었습니다.
+I heard Jim got the promotion. 짐이 진급 했다고 들었습니다.
+I heard Kate and Richard are getting married.
+케이트와 리차드가 결혼할 것이라고 들었습니다.
+
+
+57. I'm afraid.... “....두렵다”는 두려움을 나타낼 때 하는 표현
+I'm afraid of flying. 나는 비행기 타기가 무섭다
+I'm afraid of the dark. 나는 어두운 곳이 무섭다
+I'm afraid of height. 나는 높은 곳이 무섭다 (나는 고소 공포증이 있다).
+I'm not afraid of him. 나는 그를 무서워하지 않는다.
+
+
+58. Shall I....? “....을 해 드릴까요?” 라는 뜻의 표현
+Shall I open the window? 창문을 열까요?
+Shall I get the door? 제가 문을 열까요?
+Shall I answer the phone? 제가 전화를 받을 까요?
+Shall I take a message? 메시지를 남기시겠습니까?
+
+
+59. ..., isn't it? “...이지요, 안 그래요?” 라는 표현
+This is our pen, isn't it? 이것이 당신의 펜이지요? 안 그래요?
+You're a student, aren't you? 학생이지요? 안 그래요?
+We're next, aren't we? 우리가 다음 차례이지요? 안 그래요?
+She's from Canada, Isn't she? 그녀는 캐나다 출신이지요? 안 그래요?
+
+
+60. Please.... (무엇을 요구하면서 분위기를 완화 하는 표현)
+Please forgive me. 부디 용서 해 주세요.
+Please accept my apology. 부디 제 사과를 받아주세요
+Please come with me. 부디 함께 가시지요
+Please don't tell anyone. 부디 아무한테도 말 하지 말아주세요
+
+
+61. Be... Be 동사의 명령형으로 “하라, 되라!”의 뜻으로 사용
+Be careful. 조심해요
+Be quiet. 조용히 하세요.
+Be reasonable. 이성적이 되세요.
+Be practical. 현실적으로 되세요.
+
+
+62. Here.... 가까운 것을 가리키는 “여기”를 나타내는 표현
+Here you are. 자 여기 있습니다.
+Here it is. 자 여기 있습니다.
+Here she comes. 그녀가 오네요.
+Here we go again. 자 다시 합시다.
+
+
+63. Because... "왜냐하면...“
+Because I like it. 그것을 좋아하기 때문입니다
+Because It's Sunday. 일요일이기 때문입니다
+Because It's required. 그것이 요구되기 때문입니다
+Because that's just the way it is. 세상이란 그런 것이기 때문입니다
+
+
+64. Don't ...... “...하지 마라” 의 듯을 나타내는 표현
+Don't jump to conclusions. 지레 짐작하지 마세요.
+Don't panic. 당황하지 마
+Don't worry about it. 그것에 관해서 걱정하지 마
+Don't mention it. 천만예요
+
+
+65. You'd better... “...하는 편이 좋다” 는 뜻을 나타내는 표현
+You'd better hurry. 서두르는 편이 좋겠다.
+You'd better watch out. 조심하는 것이 좋겠다.
+You'd better apologize. 당신이 사과하는 것이 좋겠어.
+You'd better be careful. 주의하는 것이 좋겠어.
+
+
+66. You must... “...해야만 한다.”
+You mustn't (must not) disturb her. 그녀를 방해해서는 안된다.
+You mustn't wake her up. 그녀를 깨워서는 안 된다
+You mustn't be late. 늦어서는 안 된다
+You mustn't forget. 잊어서는 안 된다
+
+
+67. You mean...? “즉 ..라는 말이지요?” 라는 뜻의 표현
+You mean you didn't accept the offer? 너는 그 제안을 받아들이지 않았다는 말이냐?
+You mean it's impossible? 불가능하다는 말입니까?
+You mean you're not going? 가지 않겠다는 말 이예요?
+You mean it's true? 그게 사실이란 말 이예요?
+
+
+68. I'd (I would) rather.... “...보다는 ...쪽을 하고 싶다” 는 뜻의 표현
+I'd rather stay home tonight. 어느 쪽인가 하면 오늘밤에는 집에 있고 싶다
+I'd rather eat out. 어느 쪽인가 하면 외식하고 싶어요.
+I'd rather go bowling. 어느 쪽인가 하면 볼링 치러가고 싶다
+I'd rather do something else. 뭔가 다른 것을 해보고 싶다
+
+
+69. I used to.... “옛날에는 ...이었다” 는 뜻의 표현
+I used to be a high-school teacher. 나는 전에는 고등학교 선생 이었다.
+I used to be a fan of hers. 나는 전에는 그녀의 팬이었다.
+I used to be a baseball player. 나는 전에는 야구 선수였다
+There used to be a market on the comer. 전에 그 모퉁이에 시장이 있었다.
+
+
+70. It seems.... “...라고 생각되다” 라고 추측하는 표현
+It doesn't make any difference to me. 나에게는 차이가 없다
+It makes sense. 그것은 일리가 있네요.
+It doesn't make any sense. 그건 도무지 말이 되지 않는다.
+It makes a good meal. 맛있어요.
+
+
+72. Is it all right...? “~해도 좋아요?” 허가를 구하는 표현
+Is it all right to use phone? 전화를 써도 될까요?
+Is it all right to let the cat out? 고양이를 밖으로 내 보내도 될까요?
+Is it all right to mention it to Tony? 토니에게 말해도 돼요?
+Is it all right to use this glass? 이 컵을 사용해도 돼요?
+
+
+73. That's (that is) what... “그것이 바로 ...이다”
+That's what I was thinking. 내가 생각하고 있던 것이 바로 그거야
+That's what we have to do. 우리들이 해야만 하는 것이 그것이다
+That's what I was afraid of. 내가 두려워했던 것이 바로 그것이다
+That's what I call modern art. 내가 현대 예술이라고 하는 것이 그것입니다.
+
+
+74. There's (there is) nothing..... “거기에 ...아무것도 없다” 는 표현
+There's nothing to do. 할 일이 아무것도 없다
+There's nothing to be afraid of. 아무것도 무서워 할 것 없다
+There's nothing to worry about. 아무것도 걱정 할 것이 없다
+There's nothing to drink. 마실 것이 아무것도 없다
+
+
+75. There's (there is) no... “.... 이 아무것도 없다”는 표현
+There's no way I'm going to finish it on time. 정해진 시간에 끝내는 것은 무리다
+There's no way now that we'll get a reservation. 지금 예약을 하는 것은 무리다
+There's no chance that you'll be able to make it. 당신이 제 시간에 해낼 가능성은 없다
+There's no possibility that you'll change your mind. 당신이 생각을 바꿀 가능성은 없다
+
+
+76. No wonder... “...에 대해서 무리는 아냐”...당연하다“ 표현
+No wonder she got angry. 그녀가 화가 난 것도 무리는 아니다
+No wonder. 그럴 만 해
+No wonder he quit. 그가 그만둔 것도 무리가 아니다
+No wonder you're upset. 네가 당황하는 것도 무리가 아니다
+
+
+77. Which~better.... “어느 것을 ~더” 둘 중에 하나를 선택해야 함
+Which do you like better, the red or the blue one?
+빨간 것과 파란 것 중에 어느 쪽을 좋아합니까?
+Which do you like better, spring or fall?
+봄하고 가을 중에 어느 것을 더 좋아하십니까?
+Which do you speak better, English or French? 영어하고 불어 중 어느 것을 더 잘 합니까?
+Which does he play better, tennis or racquetball?
+테니스와 라켓볼 중에 어느 쪽을 더 잘 합니까?
+
+
+78 Why not....? “... 하지 그래요?” 라고 제안하는 표현
+Why not give her a call? 그녀에게 전화해보는 것이 어때요?
+Why not give it a try? 시도해 보는 것이 어때요?
+Why not give it a chance? 한번 기회를 주는 것이 어때요?
+Why not give yourself more time? 좀더 시간을 들이는 것이 어때요?
+
+
+79. What if....? “....하면 어떨까?” 가정적인 지문을 통해서 상대방의 의사를 묻는 표현
+What if we put this table next to the chair? 테이블을 의자 옆에 놓으면 어떨까요?
+What if we get rid of this old desk? 이 낡은 책상을 치우면 어떨까요?
+What if we take an earlier bus? 좀더 이른 버스를 타면 어떨까요?
+
+
+80. What else... “그 밖에 무엇이...” 라고 물을 때
+What else happened? 그 밖에 무슨 일이 있었지요?
+what else is new? 그 밖에 새로운건 뭐가 있지?
+what else is there? 그 밖에 무엇이 있지요?
+what else is available? 그 밖에 (사용) 가능한 것은 뭐가 있죠?
+
+
+81. What makes you....? “어째서 당신은 ...합니까?” 라는 원인을 묻는 말
+What makes you so sure? 어째서 그런 확신을 갖고 있지요?
+What makes you so sure about that? 어째서 그것에 대해서 그런 자신을 갖고 있습니까?
+What makes you so positive? 어째서 그렇게 자신을 갖고 있습니까?
+What makes you so cheerful? 어째서 그렇게 즐겁습니까?
+
+
+82. What~ is...... “~하는 것은 ... 이다” 라고 할 때
+What you need is a nice long vacation.
+당신에게 필요한 것은 여유 있게 지낼 수 있는 긴 휴가입니다
+What you need is more information. 당신에게 필요한 것은 좀 더 많은 양의 정보이다
+What you need is better management. 네게 필요한 것은 좀 더 좋은 경영진이다
+What you need is a good hot bath. 네게 필요한 것은 따뜻한 목욕이다.
+
+
+83. Whatever.... “....하는 무엇이든지” 라는 표현
+Whatever you decide is OK with me. 어떻게 결정하시든지 저는 좋습니다
+Whatever you think is best. 당신이 무엇을 생각하든지 최고입니다
+Whatever you do is all right with me. 당신이 무엇을 하든지 나는 좋습니다.
+Whatever you want to do is OK with me. 당신이 하고 싶은 것이 무엇이든지 저는 좋습니다.
+
+
+84. Whenever... “할 때는 언제라도” 라는 표현
+Whenever you want to go is fine with me. 당신이 언제 가고 깊던지 나는 좋습니다.
+Whenever you come is OK with me. 당신이 언제 오든지 나는 좋습니다.
+Whenever he wants to meet is all right with me.
+그가 만나고 싶을 때가 언제든지 나는 좋습니다.
+Whenever you did it would be fine with me. 당신이 언제 했던지 나는 좋습니다.
+
+
+85. When.... “...했을 때” 특정한 시점을 말할 때 사용하는 표현
+When I was a child, things were different. 내가 어렸을 때는 사정이 달랐다.
+When I was in Spain, the weather was great. 내가 스페인에 있었을 때 날씨는 좋았다
+When my mother was young, she lived in Ohio. 엄마는 젊었을 때 오하이오 주에 살았다
+When he was in high school, he was one heck of an athlete.
+그가 고등학생 이었을 때 굉장한 운동 선수였다
+
+
+86. No matter.... “아무리 ...해도”
+No matter how hard I study, I don't seem to improve.
+아무리 열심히 공부를 해도 향상이 되지 않는 것 같다
+No matter how hard I work, it's never appreciated.
+아무리 열심히 일을 해도 전혀 인정을 받지 못한다
+No matter how late she goes to bed, she's always up early the next morning.
+아무리 늦게 잠자리에 들어도 그녀는 다음날 아침에 일찍 일어난다.
+No matter how much I feed the dog, he still wants more.
+개에게 아무리 많이 먹여도 그 개는 더 먹기를 원한다.
+
+
+87. While... “...하는 동안에” 라는 기간을 표현하는 말
+While you were out, Bill stopped by. 당신이 외출 했을 때 빌이 들렀었다
+While I was working on the computer, there was a power failure.
+내가 컴퓨터로 일을 하고 있는 동안에 정전이 있었다.
+While she was a student in England, she met her future husband.
+그녀가 영국에서 학생으로 있는 동안 그녀는 그녀의 장래의 남편을 만났다
+While they were away on vacation, someone broke into the house.
+그들이 휴가로 집을 비웠을 때, 누군가가 집에 침입을 했다
+
+
+88. If.... “만일...한다면” 어떤 상황을 가정해서 말할 때
+If it rains, we'll just have to reschedule it. 만일 비가 오면 계획을 다시 세워야 한다.
+If you get lost, just give us a call. 만일 길을 잃어버리면 우리에게 전화해 주세요.
+If she doesn't come soon, we'll just have to leave without her.
+만일 그녀가 곧 오지 않으면 우리는 그녀를 빼 놓고 출발해야한다
+If you really want to improve, you'll have to practice more.
+당신이 항상 하기를 진심으로 원하면 좀더 많은 연습을 해야 한다
+
+
+89. Even if... “비록.. 할지라도” 라는 양보의 뜻을 나타낼 때
+Even if it rains, we're still going. 설령 비가와도 그래도 우리는 간다.
+Even if we rush, we're still going to miss the beginning.
+설령 서두르더라도 우리들은 시작 부분을 놓치고 말 것이다
+Even if I wash this, I don't think it'll get clean.
+설령 이것을 빨더라도 나는 이것이 깨끗해지지 않을 것으로 생각 한다
+Even if we work overtime, we still won't get it done today.
+우리들이 설령 야근을 하더라고 그것은 오늘 중에 끝나지 않을 것이다
+
+
+90. The best ~ is .... “가장 좋은 ~은...이다” 라는 선호를 나타낼 때
+The best day for me is Thursday. 내게 가장 좋은날은 목요일입니다
+The best man for the job is Todd. 그 업무의 최 적임자는 Todd 이다
+The best medicine for a cold is plenty of rest. 감기에 가장 좋은 약은 푹 쉬는 것이다.
+The best place for ribs is Buffalo Bill's. 갈비를 잘 하는곳은 버팔로 빌즈이다
+
+
+91. So~that.... “너무~해서..하다” 원인과 결과를 나타내는 표현
+He was so happy that he bought everybody a drink.
+그는 너무 기분이 좋아서 모두에게 음료수를 샀다.
+He was so angry that he threw the book at her.
+그는 너무 화가 나서 그 책을 그녀에게 던졌다
+Dad was so excited that he forgot to call Mom and tell the good news.
+아버지는 너무 흥분한 나머지 엄마에게 전화해서 그 기쁜 소식을 전하는 것을 잊으셨다
+I was so tired that I almost fell asleep at the wheel.
+나는 너무 피곤해서 하마터면 졸음운전을 할 뻔 했다
+
+
+92. too ~ to ..... “너무 ~하기 때문에 .... 할 수 없다”
+He is too small to play football. 그는 너무 작아서 축구에는 적합하지 않다
+She' too young to be seeing that kind of movie.
+그녀는 너무 어려서 그런 영화를 볼 수 없다
+He's too sick to make it to the conference. 그는 너무 아파서 회의에 참석치 못했다
+They're too busy to help us with it right now.
+그들은 너무 바빠서 우리를 당장 도와줄 수 없다
+
+
+93. as ~ as ... “와 같은 정도의” 라는 비교를 나타낼 때
+
+She's as quiet as a mouse. 그녀는 정말 조용하다
+He's as big as a house. 그는 정말 크다
+Bill is every bit as capable as Jack. 빌은 어느 모로 보나 잭만큼 유능하다
+You've been as busy as a bee lately. 당신은 요즘 무척 바쁘시군요.
+
+
+94. It's (It is)~to... “~하는 것은 ... 이다.”
+It's safer to send checks by registered mail. 수표는 등기로 보내는 것이 더 안전하다
+It's faster and easier to send it by fax. 팩스로 보내는 것이 더 빠르고 쉽다
+It's not so easy to do. 행동하는 것은 그리 쉽지 않다
+It's not so hard to get in touch with him in the evening. 밤에 그에게 연락 하는 것은 그리 어렵지 않다
+
+
+95. It's (It is) ~but... “그것은 .. 이다 그러나...”
+It's true, but I still cant' believe it. 그것은 사실이지만 나는 아직 믿을 수가 없다
+It's nice, but i'm afraid it's a little too expensive. 그것은 좋지만 좀 비싼 것 같습니다
+It's free, but there must be some strings attached. 그것은 무료이지만 뭔가 부대조건이 있을 것이다
+It's pretty good, but I think you can do better. 상당히 잘 했는데, 나는 네가 더 잘 할 수 있으리라고 생각 한다
+
+
+96. Not only ~ but also... “A 뿐만 아니라 B 도 역시”
+Not only the city but the surrounding suburbs experienced flooding.
+그 도시 뿐만 아니라 근교도 홍수를 만났다
+Not only Maria but Juan also came from Costa Rica.
+마리아 뿐 아니라 후안도 코스타리카에서 왔다
+Not only mathematics but English is a required subject too.
+수학뿐만 아니라 영어도 필수 과목이다
+Not only you, everybody in the building has to vacate temporarily.
+너뿐만 아니라 그 빌딩 안에 있는 모든 사람들이 일시적으로 피난하지 않으면 안 된다
+
+97. All~ is.... “~하는 모든 것은... 이다” 라는 상황을 나타내는 표현
+All you can do now is wait. 지금 당신이 할 수 있는 일은 기다리는 것뿐이다
+All I can think about is my upcoming vacation. 내가 생각할 수 있는 것은 다가오는 휴가에 대한 것뿐이다
+All we can do now is just sit and wait.
+지금 우리가 할 수 있는 일은 그저 앉아서 기다리는 것뿐이다
+All I did yesterday was lie around and watch TV.
+어제 내가 한일은 빈둥빈둥 TV를 본 것뿐이다
+
+
+98. The more ~ , the more.... “~하면 할수록, .... 하다” 비교 강조할 때
+The more I think about it, the more confused I get.
+그것에 대해서 생각 하면 할수록 혼란스러워 진다
+The more you think about it, the more nervous you're going to get.
+그것에 대해서 생각하면 할수록 너는 점점 초조해진다
+The more he tried to explain, the more suspicious she got.
+그가 설명하면 할수록, 그녀는 더욱 더 수상히 여겼다
+The more she drank, the more talkative she became.
+마시면 마실수록 그녀는 말이 많아졌다
+
+
+99. Now that.... “자, 이제는 ...” 라는 식의 시간에 경과에 따른 결과를 표현할 때
+Now that all my children have grown up, I have a lot of free time.
+지금은 아이들이 모두 컸기 때문에 남는 시간이 많아요.
+Now that everyone's here, why don't we start?
+자 이제는 모두 모이신 것 같으니 시작할까요?
+Now that Tom has graduated, he'll be working for a trading company.
+이제는 탐도 학교를 졸업했으니 상사에서 일을 할 것이다
+Now that you've quit your job, what are you going to do next?
+자, 이제 회사를 그만 두었으니 다음에는 무엇을 할 생각입니까?
+
+
+100. Once... “일단... 하면” 라는 표현을 할 때
+Once you lose someone's trust, it's really hard to get it back.
+일단신용을 잃으면 만회하기가 정말 힘들다
+Once he makes up his mind to do something, he does it.
+일단 한다고 하면 그는 한다.
+Once you open that window, you'll never be able to close it.
+일단 그 창문을 열면, 두 번 다시 닫을 수 없게 된다.
+Once I start eating potato chips, it's hard for me to stop.
+일단 포테이토칩을 먹기 시작하면 좀처럼 멈출 수가 없다
+
+
+
+출처: http://dreamingdean.tistory.com/17 [Dreaming Dean]
+
+
+
+
+### 시제 #### 
+be + P.P.(Past Participle)
+############################################################################################
+과거
+	단순과거		You spoke English
+		#수동		English was spoken by you
+	과거진행		You were speaking English
+		#수동		English was being spoken by you
+	과거완료		You had spoken English
+		#수동		English had been written by you
+	과거완료진행	You had been speaking English
+		#수동		English had been being spoken by you
+	
+현재
+	단순현재		You speak English
+		#수동		English is spoken by you
+	현재진행		You are speaking English
+		#수동		English is being speaking by you
+	현재완료		You have spoken English
+		#수동		English have been spoken by you
+	현재완료진행	You have been speaking English
+		#수동		English had been being spoken by you
+	
+미래
+	단순미래		You will speak English
+		#수동		English will be spoken by you
+	미래진행		You will be speaking English
+		#수동		English will be being spoken by you
+	미래완료		You will have spoken English
+		#수동		English will have been spoken by you
+	미래완료진행	You will have been speaking English
+		#수동		English will have been being spoken by you
+
+################################################################################################
+
+과거
+	단순과거		You wrote a letter
+		#수동		A letter was written by you
+	과거진행		You were writing a letter
+		#수동		A letter was being written by you
+	과거완료		You had written a letter
+		#수동		A letter had been written by you
+	과거완료진행	You had been writting a letter
+		#수동		A letter had been being written by you
+	
+현재
+	단순현재		You write a letter
+		#수동		A letter is written by you
+	현재진행		You are writing a letter
+		#수동		A letter is being written by you
+	현재완료		You have written a letter
+		#수동		A letter have been written by you
+	현재완료진행	You have been writting a letter
+		#수동		A letter had been being written by you
+	
+미래 
+	단순미래		You will write a letter
+		#수동		A letter will be written by you
+	미래진행		You will be writing a letter
+		#수동		A letter will be being written by you
+	미래완료		You will have written a letter
+		#수동		A letter will have been written by you
+	미래완료진행	You will have been writting a letter
+		#수동		A letter will had been being written by you
+########################################################################################
+
+조동사 포함 시제
+
+과거
+	단순과거 		You spoke English
+		조동사	You could speak english
+	수동			English was spoken by you
+		조동사	English could be spoken by you
+	
+	과거진행 		You were speaking English
+		조동사	You could be speak english
+	수동			English was being spoken by you
+		조동사	English could be being spoken by you
+
+	과거완료 		You had spoken English
+		조동사	You could have spoken english
+	수동			English had been spoken by you
+		조동사	English could have been spoken by you
+
+	과거완료진행	You had been speaking English
+		조동사	You could have been speaking english
+	수동			English had been being spoken by you
+		조동사	English could have been spoken by you
+
+현재 
+	단순현재 		You speak English
+		조동사	You can speak english
+	수동			English is spoken by you
+		조동사	English can be spoken by you
+	
+	현재진행 		You are speaking English
+		조동사	You can be speak english
+	수동			English is being spoken by you
+		조동사	English can be being spoken by you
+
+	현재완료 		You have spoken English
+		조동사	You can have spoken english
+	수동			English have been spoken by you
+		조동사	English can have been spoken by you
+
+	현재완료진행	You have been speaking English
+		조동사	You can have been speaking english
+	수동			English has been being spoken by you
+		조동사	English can have been spoken by you
+
+
+
+미래
+	단순미래		You will speak English
+		#수동		English will be spoken by you
+		
+	미래진행		You will be speaking English
+		#수동		English will be being spoken by you
+		
+	미래완료		You will have spoken English
+		#수동		English will have been spoken by you
+		
+	미래완료진행	You will have been speaking English
+		#수동		English will have been being spoken by you
+
+
+########################################################################################
+시제 완결
+########################################################################################
+과거
+	단순과거		You spoke English
+				You did not speak English
+				Did you speak English?
+		
+		조동사	You could speak English
+				You could not speak English
+				Could you speak English?
+		
+		수동		English was spoken by you
+				English was not spoken by you
+				Was English spoken by you?
+	
+	조동사+수동	English could be spoken by you
+				English could not be spoken by you
+				Could English be spoken by you?
+				
+	과거진행		You were speaking English
+				You were not speaking English
+				Were you speaking English?
+			
+		조동사	You could be speaking English
+				You could not be speaking English
+				Could you be speaking English?
+				
+		수동		English was being spoken by you
+				English was not being spoken by you
+				Was English being spoken by you?
+				
+	조동사+수동	English could be being spoken by you
+				English could not be being spoken by you
+				Could English be being spoken by you?
+				
+	과거완료		You had spoken English
+				You had not spoken English
+				Had you spoken English?
+			
+		조동사	You could have spoken English
+				YOu could not have spoken English
+				Could you have spoken English?
+			
+		수동		English had been spoken by you
+				English had not been spoken by you
+				Had English been spoken by you?
+		
+	조동사+수동	English could have been spoken by you
+				English could not have been spoken by you
+				Could English have been spoken by you?
+				
+	과거완료진행	You had been speaking English
+				You had not been speaking English
+				Had you been speaking English?
+			
+		조동사	You could have ben speaking English
+				You could not have been speaking English
+				Could you have been speaking English?
+				
+		수동		English had been being spoken by you
+				English had not been being spoken by you
+				Had English been being spoken by you?
+		
+	조동사+수동	English could have been being spoken by you
+				English could not have been being spoken by you
+				Could English have been being spoken by you?
+				
+########################################################################################				
+현재		
+	단순현재		You speak English
+				You do not speak English
+				Do you speak English?
+			
+		조동사	You can speak English
+				You can not speak English
+				Can you speak English?
+		
+		수동		English is spoken by you
+				English is not spoken by you
+				Is English spoken by you?
+	
+	조동사+수동	English can be spoken by you
+				English can not be spoken by you
+				Can English be spoken by you?
+	
+	현재진행		You are speaking English
+				You are not speaking English
+				Are you speaking English?
+				
+		조동사	You can be speaking English
+				You can not be speaking English
+				Can you speak English?
+				
+		수동		English is being spoken by you
+				English is not being spoken by you
+				Is English being spoken by you?
+				
+	조동사+수동	English can be being spoken by you
+				English can not be being spoken by you
+				Can English be being spoken by you?
+	
+	현재완료		You have spoken English
+				You have not spoken English
+				Have you spoken English?
+			
+		조동사	You can have spoken English
+				You can not have spoken English
+				Can you have spoken English?
+		
+		수동		English has been spoken by you
+				English has not been spoken by you
+				Has English been spoken by you?
+				
+	조동사+수동	English can have been spoken by you
+				English can not have been spoken by you
+				Can English have been spoken by you?
+				
+	현재완료진행	You have been speaking English
+				You have not been speaking English
+				Have you been speaking English?
+				
+		조동사	You can have been speaking English
+				You can not have been speaking English
+				Can you have been speaking English?
+				
+		수동		English has been being spoken by you
+				English has not been being spoken by you
+				Has English been being spoken by you?
+		
+	조동사+수동	English can have been being spoken by you
+				English can not have been being spoken by you
+				Can English have been being spoken by you?
+				
+미래
+	단순미래		You will speak English
+				You will not speak English
+				Will you speak English?
+		
+		수동		English will be spoken by you
+				English will not be spoken by you
+				Will English be spoken by you?
+				
+	미래진행		You will be speaking English
+				You will not be speaking English
+				Will you be speaking English?
+				
+		수동		English will be being spoken by you
+				English will not be being spoken by you
+				Will English be being spoken by you?
+				
+	미래완료		You will have spoken English
+				You will not have spoken English
+				Will you have spoken English?
+				
+		수동		English will have been spoken by you
+				English will not have been spoken by you
+				Will English have been spoken by you?
+				
+	미래완료진행	You wil have been speaking English
+				You will not have been speaking English
+				Will you have been speaking English?
+				
+		수동		English will have been being spoken by you
+				English will not have been being spoken by you
+				Will English have been being spoken by you?
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

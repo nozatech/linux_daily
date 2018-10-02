@@ -2,3 +2,6 @@ Lynda.com - Unix for Mac OS X Users
 1-1 The Terminal Application
 	/Applications/Utilities/Terminal
 	-Shift+CMD+u
+	
+ScreenShot
+ Shift+Command+4
