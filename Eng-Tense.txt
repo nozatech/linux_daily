@@ -3,165 +3,165 @@ English Tense
 Present
 	
 	Simple Present		
-				You speak English
-				You do not speak English
+				You speak English.
+				You do not speak English.
 				Do you speak English?
 			
-		Auxiliary Verb	
-				You can speak English
-				You can not speak English
+		Auxiliary Verb (Helping Verb)	
+				You can speak English.
+				You can not speak English.
 				Can you speak English?
 		
 		Passive Voice		
-				English is spoken by you
-				English is not spoken by you
+				English is spoken by you.
+				English is not spoken by you.
 				Is English spoken by you?
 	
 	Auxiliary Verb + Passive Voice	
-				English can be spoken by you
-				English can not be spoken by you
+				English can be spoken by you.
+				English can not be spoken by you.
 				Can English be spoken by you?
 	
 	Present Continuous		
-				You are speaking English
-				You are not speaking English
+				You are speaking English.
+				You are not speaking English.
 				Are you speaking English?
 				
-		Auxiliary Verb	
-				You can be speaking English
-				You can not be speaking English
+		Auxiliary Verb (Helping Verb)	
+				You can be speaking English.
+				You can not be speaking English.
 				Can you speak English?
 				
 		Passive Voice		
-				English is being spoken by you
-				English is not being spoken by you
+				English is being spoken by you.
+				English is not being spoken by you.
 				Is English being spoken by you?
 				
 	Auxiliary Verb + Passive Voice	
-				English can be being spoken by you
-				English can not be being spoken by you
+				English can be being spoken by you.
+				English can not be being spoken by you.
 				Can English be being spoken by you?
 	
 	Present Perfect		
-				You have spoken English
-				You have not spoken English
+				You have spoken English.
+				You have not spoken English.
 				Have you spoken English?
 			
-		Auxiliary Verb	
-				You can have spoken English
-				You can not have spoken English
+		Auxiliary Verb (Helping Verb)	
+				You can have spoken English.
+				You can not have spoken English.
 				Can you have spoken English?
 		
 		Passive Voice		
-				English has been spoken by you
-				English has not been spoken by you
+				English has been spoken by you.
+				English has not been spoken by you.
 				Has English been spoken by you?
 				
 	Auxiliary Verb + Passive Voice	
-				English can have been spoken by you
-				English can not have been spoken by you
+				English can have been spoken by you.
+				English can not have been spoken by you.
 				Can English have been spoken by you?
 				
-	Present Perfect Continous	
-				You have been speaking English
-				You have not been speaking English
+	Present Perfect Continuous	
+				You have been speaking English.
+				You have not been speaking English.
 				Have you been speaking English?
 				
-		Auxiliary Verb	
-				You can have been speaking English
-				You can not have been speaking English
+		Auxiliary Verb (Helping Verb)	
+				You can have been speaking English.
+				You can not have been speaking English.
 				Can you have been speaking English?
 				
 		Passive Voice		
-				English has been being spoken by you
-				English has not been being spoken by you
+				English has been being spoken by you.
+				English has not been being spoken by you.
 				Has English been being spoken by you?
 		
 	Auxiliary Verb + Passive Voice	
-				English can have been being spoken by you
-				English can not have been being spoken by you
+				English can have been being spoken by you.
+				English can not have been being spoken by you.
 				Can English have been being spoken by you?
 
 
 Past
 	Simple Past		
-				You spoke English
-				You did not speak English
+				You spoke English.
+				You did not speak English.
 				Did you speak English?
 		
-		Auxiliary Verb	
-				You could speak English
-				You could not speak English
+		Auxiliary Verb (Helping Verb)	
+				You could speak English.
+				You could not speak English.
 				Could you speak English?
 		
 		Passive Voice		
-				English was spoken by you
-				English was not spoken by you
+				English was spoken by you.
+				English was not spoken by you.
 				Was English spoken by you?
 	
 	Auxiliary Verb + Passive Voice	
-				English could be spoken by you
-				English could not be spoken by you
+				English could be spoken by you.
+				English could not be spoken by you.
 				Could English be spoken by you?
 				
-	Past Continous		
-				You were speaking English
-				You were not speaking English
+	Past Continuous		
+				You were speaking English.
+				You were not speaking English.
 				Were you speaking English?
 			
-		Auxiliary Verb	
-				You could be speaking English
-				You could not be speaking English
+		Auxiliary Verb (Helping Verb)	
+				You could be speaking English.
+				You could not be speaking English.
 				Could you be speaking English?
 				
 		Passive Voice		
-				English was being spoken by you
-				English was not being spoken by you
+				English was being spoken by you.
+				English was not being spoken by you.
 				Was English being spoken by you?
 				
 	Auxiliary Verb + Passive Voice	
-				English could be being spoken by you
-				English could not be being spoken by you
+				English could be being spoken by you.
+				English could not be being spoken by you.
 				Could English be being spoken by you?
 				
 	Past Perfect		
-				You had spoken English
-				You had not spoken English
+				You had spoken English.
+				You had not spoken English.
 				Had you spoken English?
 			
-		Auxiliary Verb	
-				You could have spoken English
-				YOu could not have spoken English
+		Auxiliary Verb (Helping Verb)	
+				You could have spoken English.
+				YOu could not have spoken English.
 				Could you have spoken English?
 			
 		Passive Voice		
-				English had been spoken by you
-				English had not been spoken by you
+				English had been spoken by you.
+				English had not been spoken by you.
 				Had English been spoken by you?
 		
 	Auxiliary Verb + Passive Voice	
-				English could have been spoken by you
-				English could not have been spoken by you
+				English could have been spoken by you.
+				English could not have been spoken by you.
 				Could English have been spoken by you?
 				
-	Past PerfectContinous	
-				You had been speaking English
-				You had not been speaking English
+	Past PerfectContinuous	
+				You had been speaking English.
+				You had not been speaking English.
 				Had you been speaking English?
 			
-		Auxiliary Verb	
-				You could have ben speaking English
-				You could not have been speaking English
+		Auxiliary Verb (Helping Verb)	
+				You could have ben speaking English.
+				You could not have been speaking English.
 				Could you have been speaking English?
 				
 		Passive Voice		
-				English had been being spoken by you
-				English had not been being spoken by you
+				English had been being spoken by you.
+				English had not been being spoken by you.
 				Had English been being spoken by you?
 		
 	Auxiliary Verb + Passive Voice	
-				English could have been being spoken by you
-				English could not have been being spoken by you
+				English could have been being spoken by you.
+				English could not have been being spoken by you.
 				Could English have been being spoken by you?
 				
 				
@@ -171,41 +171,41 @@ Past
 Future
 
 	Simple Future		
-				You will speak English
-				You will not speak English
+				You will speak English.
+				You will not speak English.
 				Will you speak English?
 		
 		Passive Voice		
-				English will be spoken by you
-				English will not be spoken by you
+				English will be spoken by you.
+				English will not be spoken by you.
 				Will English be spoken by you?
 				
-	Future Continous		
-				You will be speaking English
-				You will not be speaking English
+	Future Continuous		
+				You will be speaking English.
+				You will not be speaking English.
 				Will you be speaking English?
 				
 		Passive Voice		
-				English will be being spoken by you
-				English will not be being spoken by you
+				English will be being spoken by you.
+				English will not be being spoken by you.
 				Will English be being spoken by you?
 				
 	Future Perfect
-				You will have spoken English
-				You will not have spoken English
+				You will have spoken English.
+				You will not have spoken English.
 				Will you have spoken English?
 				
 		Passive Voice		
-				English will have been spoken by you
-				English will not have been spoken by you
+				English will have been spoken by you.
+				English will not have been spoken by you.
 				Will English have been spoken by you?
 				
-	Future Perfect Continous	
-				You will have been speaking English
-				You will not have been speaking English
+	Future Perfect Continuous	
+				You will have been speaking English.
+				You will not have been speaking English.
 				Will you have been speaking English?
 				
 		Passive Voice		
-				English will have been being spoken by you
-				English will not have been being spoken by you
+				English will have been being spoken by you.
+				English will not have been being spoken by you.
 				Will English have been being spoken by you?

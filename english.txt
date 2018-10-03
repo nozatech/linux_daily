@@ -611,7 +611,9 @@ arise			<- (of a problem, opportunity, or situation) emerge; become apparent.
 					"new difficulties had arisen", " when the opportunity arises"
 					synonyms: come to light, become apparent, appear, emerge, crop up, 
 							turn up, surface, spring up
-					
+
+arugula			<-the rocket plant, used in cooking or salad.							
+							
 as such			<- in the exact sense of the word(이를테면 '예를 들면')
 
 at last			<- after much delay.
@@ -1042,6 +1044,12 @@ dyslexia		<- 디스렉시아
 				interpret words, letters, and other symbols, but that do not affect general intelligence.
 
 # E
+
+eatable[먹을수있는] vs edible[식용가능한] <-> inedible  palatable[맛좋은]
+				"Rummaging through the empty containers, he looked for any eatable morsels left behind."
+				"These mushrooms are edible but those over there are inedible."
+				
+				
 e.g				<- for expample
 
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
@@ -1549,6 +1557,17 @@ omnibus			<- [adj] comprising several items.
 		
 
 # P
+
+palatable		<- [Adj](of food or drink) pleasant to taste.
+					"a very palatable local red wine"
+					synonyms:	edible, eatable, digestible, tasty, appetizing, flavorful; formalcomestible
+					"palatable meals"
+					(of an action or proposal) acceptable or satisfactory.
+					"a device that made increased taxation more palatable"
+					synonyms:	pleasant, acceptable, pleasing, agreeable, to one's liking
+					"the truth is not always palatable"
+
+
 palindrome 		<- a word that reads same forwards or backwards
 					e.g. madam, 12321  
 Pavilion		<- In architectural terminology it refers to a subsidiary building that is either positioned 
@@ -2033,7 +2052,7 @@ which			<-
 whimsical		<-[adjective]
 				1. playfully quaint or fanciful, especially in an appealing and amusing way.
 					"She has a whimsical sense of humor"
-				synonyms:	fanciful, playful, mischievous, waggish, quaint, quizzical, 
+					synonyms:	fanciful, playful, mischievous, waggish, quaint, quizzical, 
 							curious, droll, fantastical, Seussian
 				2. acting or behaving in a capricious manner(변덕스러운)
 					"the whimsical arbitrariness of autocracy(독재정치)"
@@ -2041,6 +2060,15 @@ whimsical		<-[adjective]
 				synonyms:	volatile, capricious, fickle, changeable, unpredictable, variable, 
 				erratic, mercurial, mutable, inconstant, inconsistent, unstable, protean
 				"the whimsical arbitrariness of autocracy"
+				
+wilt			<- [v] (of a plant, leaf, or flower) become limp through heat(풀이죽다), 
+						loss of water, or disease; droop.
+					synonyms:	droop, sag, become limp, flop; More
+					
+				   [n] any of a number of fungal or bacterial diseases of plants 
+						characterized by wilting of the foliage.
+					
+
 wrap-up party	<- 뒷풀이
 
 # U
@@ -7973,6 +8001,18 @@ If you really want to improve, you'll have to practice more.
 당신이 항상 하기를 진심으로 원하면 좀더 많은 연습을 해야 한다
 
 
+"If only...." 
+used for saying that you would like a situation to be different
+
+"If only you knew how hard I’ve tried to please you."
+"There’s so much more I could do if only I had the time."
+"If only we could afford to buy a place of our own."
+
+used for saying that when something good happens, 
+it may only be for a limited purpose, time, etc.
+"I wish he’d come and see us sometime, if only just to say hello."
+
+
 89. Even if... “비록.. 할지라도” 라는 양보의 뜻을 나타낼 때
 Even if it rains, we're still going. 설령 비가와도 그래도 우리는 간다.
 Even if we rush, we're still going to miss the beginning.
@@ -8002,34 +8042,32 @@ I was so tired that I almost fell asleep at the wheel.
 
 
 92. too ~ to ..... “너무 ~하기 때문에 .... 할 수 없다”
-He is too small to play football. 그는 너무 작아서 축구에는 적합하지 않다
-She' too young to be seeing that kind of movie.
-그녀는 너무 어려서 그런 영화를 볼 수 없다
-He's too sick to make it to the conference. 그는 너무 아파서 회의에 참석치 못했다
-They're too busy to help us with it right now.
-그들은 너무 바빠서 우리를 당장 도와줄 수 없다
+He is too small to play football. 					그는 너무 작아서 축구에는 적합하지 않다
+She' too young to be seeing that kind of movie.		그녀는 너무 어려서 그런 영화를 볼 수 없다
+He's too sick to make it to the conference. 		그는 너무 아파서 회의에 참석치 못했다
+They're too busy to help us with it right now.		그들은 너무 바빠서 우리를 당장 도와줄 수 없다
 
 
 93. as ~ as ... “와 같은 정도의” 라는 비교를 나타낼 때
 
-She's as quiet as a mouse. 그녀는 정말 조용하다
-He's as big as a house. 그는 정말 크다
-Bill is every bit as capable as Jack. 빌은 어느 모로 보나 잭만큼 유능하다
-You've been as busy as a bee lately. 당신은 요즘 무척 바쁘시군요.
+She's as quiet as a mouse. 	그녀는 정말 조용하다
+He's as big as a house. 	그는 정말 크다
+Bill is every bit as capable as Jack. 	빌은 어느 모로 보나 잭만큼 유능하다
+You've been as busy as a bee lately. 	당신은 요즘 무척 바쁘시군요.
 
 
 94. It's (It is)~to... “~하는 것은 ... 이다.”
-It's safer to send checks by registered mail. 수표는 등기로 보내는 것이 더 안전하다
-It's faster and easier to send it by fax. 팩스로 보내는 것이 더 빠르고 쉽다
-It's not so easy to do. 행동하는 것은 그리 쉽지 않다
+It's safer to send checks by registered mail. 		수표는 등기로 보내는 것이 더 안전하다
+It's faster and easier to send it by fax. 			팩스로 보내는 것이 더 빠르고 쉽다
+It's not so easy to do. 							행동하는 것은 그리 쉽지 않다
 It's not so hard to get in touch with him in the evening. 밤에 그에게 연락 하는 것은 그리 어렵지 않다
 
 
 95. It's (It is) ~but... “그것은 .. 이다 그러나...”
-It's true, but I still cant' believe it. 그것은 사실이지만 나는 아직 믿을 수가 없다
-It's nice, but i'm afraid it's a little too expensive. 그것은 좋지만 좀 비싼 것 같습니다
-It's free, but there must be some strings attached. 그것은 무료이지만 뭔가 부대조건이 있을 것이다
-It's pretty good, but I think you can do better. 상당히 잘 했는데, 나는 네가 더 잘 할 수 있으리라고 생각 한다
+It's true, but I still cant' believe it. 				그것은 사실이지만 나는 아직 믿을 수가 없다
+It's nice, but i'm afraid it's a little too expensive. 	그것은 좋지만 좀 비싼 것 같습니다
+It's free, but there must be some strings attached. 	그것은 무료이지만 뭔가 부대조건이 있을 것이다
+It's pretty good, but I think you can do better. 		상당히 잘 했는데, 나는 네가 더 잘 할 수 있으리라고 생각 한다
 
 
 96. Not only ~ but also... “A 뿐만 아니라 B 도 역시”
@@ -8084,7 +8122,6 @@ Once I start eating potato chips, it's hard for me to stop.
 일단 포테이토칩을 먹기 시작하면 좀처럼 멈출 수가 없다
 
 
-
 출처: http://dreamingdean.tistory.com/17 [Dreaming Dean]
 
 
@@ -8092,6 +8129,15 @@ Once I start eating potato chips, it's hard for me to stop.
 
 ### 시제 #### 
 be + P.P.(Past Participle)
+
+Tense
+Present
+	Indefinite
+	Continuous
+	Perfect
+	Perfect Continous
+
+
 ############################################################################################
 과거
 	단순과거		You spoke English
