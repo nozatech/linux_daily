@@ -1,151 +1,188 @@
-########################################################################################
-시제 완결
-########################################################################################
-과거
-	단순과거		You spoke English
-				You did not speak English
-				Did you speak English?
-		
-		조동사	You could speak English
-				You could not speak English
-				Could you speak English?
-		
-		수동		English was spoken by you
-				English was not spoken by you
-				Was English spoken by you?
+English Tense 
+
+Present
 	
-	조동사+수동	English could be spoken by you
-				English could not be spoken by you
-				Could English be spoken by you?
-				
-	과거진행		You were speaking English
-				You were not speaking English
-				Were you speaking English?
-			
-		조동사	You could be speaking English
-				You could not be speaking English
-				Could you be speaking English?
-				
-		수동		English was being spoken by you
-				English was not being spoken by you
-				Was English being spoken by you?
-				
-	조동사+수동	English could be being spoken by you
-				English could not be being spoken by you
-				Could English be being spoken by you?
-				
-	과거완료		You had spoken English
-				You had not spoken English
-				Had you spoken English?
-			
-		조동사	You could have spoken English
-				YOu could not have spoken English
-				Could you have spoken English?
-			
-		수동		English had been spoken by you
-				English had not been spoken by you
-				Had English been spoken by you?
-		
-	조동사+수동	English could have been spoken by you
-				English could not have been spoken by you
-				Could English have been spoken by you?
-				
-	과거완료진행	You had been speaking English
-				You had not been speaking English
-				Had you been speaking English?
-			
-		조동사	You could have ben speaking English
-				You could not have been speaking English
-				Could you have been speaking English?
-				
-		수동		English had been being spoken by you
-				English had not been being spoken by you
-				Had English been being spoken by you?
-		
-	조동사+수동	English could have been being spoken by you
-				English could not have been being spoken by you
-				Could English have been being spoken by you?
-				
-########################################################################################				
-현재		
-	단순현재		You speak English
+	Simple Present		
+				You speak English
 				You do not speak English
 				Do you speak English?
 			
-		조동사	You can speak English
+		Auxiliary Verb	
+				You can speak English
 				You can not speak English
 				Can you speak English?
 		
-		수동		English is spoken by you
+		Passive Voice		
+				English is spoken by you
 				English is not spoken by you
 				Is English spoken by you?
 	
-	조동사+수동	English can be spoken by you
+	Auxiliary Verb + Passive Voice	
+				English can be spoken by you
 				English can not be spoken by you
 				Can English be spoken by you?
 	
-	현재진행		You are speaking English
+	Present Continuous		
+				You are speaking English
 				You are not speaking English
 				Are you speaking English?
 				
-		조동사	You can be speaking English
+		Auxiliary Verb	
+				You can be speaking English
 				You can not be speaking English
 				Can you speak English?
 				
-		수동		English is being spoken by you
+		Passive Voice		
+				English is being spoken by you
 				English is not being spoken by you
 				Is English being spoken by you?
 				
-	조동사+수동	English can be being spoken by you
+	Auxiliary Verb + Passive Voice	
+				English can be being spoken by you
 				English can not be being spoken by you
 				Can English be being spoken by you?
 	
-	현재완료		You have spoken English
+	Present Perfect		
+				You have spoken English
 				You have not spoken English
 				Have you spoken English?
 			
-		조동사	You can have spoken English
+		Auxiliary Verb	
+				You can have spoken English
 				You can not have spoken English
 				Can you have spoken English?
 		
-		수동		English has been spoken by you
+		Passive Voice		
+				English has been spoken by you
 				English has not been spoken by you
 				Has English been spoken by you?
 				
-	조동사+수동	English can have been spoken by you
+	Auxiliary Verb + Passive Voice	
+				English can have been spoken by you
 				English can not have been spoken by you
 				Can English have been spoken by you?
 				
-	현재완료진행	You have been speaking English
+	Present Perfect Continous	
+				You have been speaking English
 				You have not been speaking English
 				Have you been speaking English?
 				
-		조동사	You can have been speaking English
+		Auxiliary Verb	
+				You can have been speaking English
 				You can not have been speaking English
 				Can you have been speaking English?
 				
-		수동		English has been being spoken by you
+		Passive Voice		
+				English has been being spoken by you
 				English has not been being spoken by you
 				Has English been being spoken by you?
 		
-	조동사+수동	English can have been being spoken by you
+	Auxiliary Verb + Passive Voice	
+				English can have been being spoken by you
 				English can not have been being spoken by you
 				Can English have been being spoken by you?
+
+
+Past
+	Simple Past		
+				You spoke English
+				You did not speak English
+				Did you speak English?
+		
+		Auxiliary Verb	
+				You could speak English
+				You could not speak English
+				Could you speak English?
+		
+		Passive Voice		
+				English was spoken by you
+				English was not spoken by you
+				Was English spoken by you?
+	
+	Auxiliary Verb + Passive Voice	
+				English could be spoken by you
+				English could not be spoken by you
+				Could English be spoken by you?
 				
-미래
+	Past Continous		
+				You were speaking English
+				You were not speaking English
+				Were you speaking English?
+			
+		Auxiliary Verb	
+				You could be speaking English
+				You could not be speaking English
+				Could you be speaking English?
+				
+		Passive Voice		
+				English was being spoken by you
+				English was not being spoken by you
+				Was English being spoken by you?
+				
+	Auxiliary Verb + Passive Voice	
+				English could be being spoken by you
+				English could not be being spoken by you
+				Could English be being spoken by you?
+				
+	Past Perfect		
+				You had spoken English
+				You had not spoken English
+				Had you spoken English?
+			
+		Auxiliary Verb	
+				You could have spoken English
+				YOu could not have spoken English
+				Could you have spoken English?
+			
+		Passive Voice		
+				English had been spoken by you
+				English had not been spoken by you
+				Had English been spoken by you?
+		
+	Auxiliary Verb + Passive Voice	
+				English could have been spoken by you
+				English could not have been spoken by you
+				Could English have been spoken by you?
+				
+	Past PerfectContinous	
+				You had been speaking English
+				You had not been speaking English
+				Had you been speaking English?
+			
+		Auxiliary Verb	
+				You could have ben speaking English
+				You could not have been speaking English
+				Could you have been speaking English?
+				
+		Passive Voice		
+				English had been being spoken by you
+				English had not been being spoken by you
+				Had English been being spoken by you?
+		
+	Auxiliary Verb + Passive Voice	
+				English could have been being spoken by you
+				English could not have been being spoken by you
+				Could English have been being spoken by you?
+				
+				
+
+				
+
+Future
+
 	단순미래		You will speak English
 				You will not speak English
 				Will you speak English?
 		
-		수동		English will be spoken by you
+		Passive Voice		English will be spoken by you
 				English will not be spoken by you
 				Will English be spoken by you?
 				
-	미래진행		You will be speaking English
+	미래Continous		You will be speaking English
 				You will not be speaking English
 				Will you be speaking English?
 				
-		수동		English will be being spoken by you
+		Passive Voice		English will be being spoken by you
 				English will not be being spoken by you
 				Will English be being spoken by you?
 				
@@ -153,14 +190,14 @@
 				You will not have spoken English
 				Will you have spoken English?
 				
-		수동		English will have been spoken by you
+		Passive Voice		English will have been spoken by you
 				English will not have been spoken by you
 				Will English have been spoken by you?
 				
-	미래완료진행	You wil have been speaking English
+	미래완료Continous	You wil have been speaking English
 				You will not have been speaking English
 				Will you have been speaking English?
 				
-		수동		English will have been being spoken by you
+		Passive Voice		English will have been being spoken by you
 				English will not have been being spoken by you
 				Will English have been being spoken by you?
