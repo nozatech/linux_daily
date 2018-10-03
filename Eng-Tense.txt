@@ -170,34 +170,42 @@ Past
 
 Future
 
-	단순미래		You will speak English
+	Simple Future		
+				You will speak English
 				You will not speak English
 				Will you speak English?
 		
-		Passive Voice		English will be spoken by you
+		Passive Voice		
+				English will be spoken by you
 				English will not be spoken by you
 				Will English be spoken by you?
 				
-	미래Continous		You will be speaking English
+	Future Continous		
+				You will be speaking English
 				You will not be speaking English
 				Will you be speaking English?
 				
-		Passive Voice		English will be being spoken by you
+		Passive Voice		
+				English will be being spoken by you
 				English will not be being spoken by you
 				Will English be being spoken by you?
 				
-	미래완료		You will have spoken English
+	Future Perfect
+				You will have spoken English
 				You will not have spoken English
 				Will you have spoken English?
 				
-		Passive Voice		English will have been spoken by you
+		Passive Voice		
+				English will have been spoken by you
 				English will not have been spoken by you
 				Will English have been spoken by you?
 				
-	미래완료Continous	You wil have been speaking English
+	Future Perfect Continous	
+				You will have been speaking English
 				You will not have been speaking English
 				Will you have been speaking English?
 				
-		Passive Voice		English will have been being spoken by you
+		Passive Voice		
+				English will have been being spoken by you
 				English will not have been being spoken by you
 				Will English have been being spoken by you?
