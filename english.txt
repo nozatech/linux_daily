@@ -770,7 +770,10 @@ cf.				<-  as "compare"
 					scholarly contexts, such as in academic (mainly humanities, physics and biology) 
 					or legal texts. It is translated, and can be read aloud, as "compare".
 
-
+chauffeur		<- SHōˈfər 쇼펄
+					[n] a person employed to drive a private or rented automobile.
+				   [v] drive (a car or a passenger in a car), typically as part of one's job.
+						"she insisted on being chauffeured around" ...의 운전사로 일하다
 
 					
 chime in		<- join in harmoniously. 맞장구 치다
@@ -1595,7 +1598,9 @@ periodontists	<- 치주염
 
 pertain			<- documents pertaining to the lawsuit
 
-pet peeve		<- "One of my pet peeves is the unbearable humidity in summer. "
+pet peeve		<- something that a particular person finds especially annoying.
+					"one of my biggest pet peeves is poor customer service"
+					"One of my pet peeves is the unbearable humidity in summer. "
 					내가 진짜 싫어하는 것 중 하나가, 여름에 참을 수 없을 만큼 습한 거야.
 					"My biggest pet peeve is rude and arrogant people. "
 					내가 젤 싫어하는 건 무례하고 건방진 사람이야.
