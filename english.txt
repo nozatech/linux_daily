@@ -933,6 +933,11 @@ deception		<- the action of deceiving someone.
 						chicanery, deviousness, slyness, wiliness, guile, bluff, lying, pretense, treachery; 
 						defeat the purpose of 	<- to make (something) pointless
 
+decimate		<- kill, destroy, or remove a large percentage or part of.
+					"the project would decimate the fragile wetland wilderness"
+				<- drastically reduce the strength or effectiveness of (something).
+					"plant viruses that can decimate yields"
+						
 deed			<-  1.literary: an action that is performed intentionally or consciously.
 					"doing good deeds"
 					synonyms:	act, action
@@ -1232,17 +1237,32 @@ gurgle			<- make a hollow bubbling sound like that made by water running out of 
 									
 # H
 hardness of hearing <- 난청
+
 hard-nosed		<- realistic and determined; tough-minded. 
+
 have out		<- to settle (a matter) or come to (a final decision), esp by fighting or by frank 
-					discussion (often in the phrase have it out)
+         		   discussion (often in the phrase have it out)
+
 hay fever or asthma		<- 호흡기 알르레기
 				<- an allergy caused by pollen or dust in which the mucous membranes of the eyes 
 					and nose are itchy and inflamed, causing a runny nose and watery eyes.
 				
-hit the ground hard <- to start the day very energentically
+			
+hit the ground running 	<- to be ready to work immediately on a new activity
+						<- start something and proceed at a fast pace with enthusiasm.
+					
+					"She studied the reports over the weekend so she could hit the ground running 
+					when the meeting began."
+					
+					"If you want to succeed in your new job, you will need to hit the ground running, from day one."
+					 
+					"She hits the ground running, sounding like a presidential candidate."
+					
+					
 hit a snag			<- to run into an unexpected problem
 
 hives			<- same as urticaria 두드러기
+
 holistic		<- characterized by comprehension of the parts of something as intimately interconnected 
 					and explicable only by reference to the whole.
 					## MEDICINE ##
@@ -1265,7 +1285,7 @@ hypoxia			<- 저산소증
 ideation 		<- 관념화 the formation of ideas or concepts.
 
 idiocy			<- extremely stupid behavior.
-					"the idiocy of decimating rainforests"
+					"the idiocy of decimating(kill, destroy) rainforests"
 					synonyms:	stupidity, folly, foolishness, foolhardiness, ignorance
 					
 i.e.			<- in other words
@@ -1547,6 +1567,7 @@ obliterate		<- destroy utterly; wipe out.
 					"the memory was so painful that he obliterated it from his mind"
 					synonyms:	destroy, wipe out, annihilate, demolish, eliminate, decimate, liquidate, 
 								wipe off the face of the earth, wipe off the map
+								
 obscurity		<- the state of being unknown, inconspicuous, or unimportant.
 					"he is too good a player to slide into obscurity"
 					synonyms:	insignificance, inconspicuousness, unimportance, anonymity
@@ -8442,7 +8463,9 @@ Present
 
 
 
-
+I wanted to let you all know that I am dealing with a medical emergency and 
+will be back to school as soon as I am able.  
+Thank you for your understanding and patience during this time.
 
 
 
