@@ -1045,8 +1045,12 @@ dud				<- [noun] a thing that fails to work properly or is otherwise unsatisfact
 				last 30 years. Also not helping things is the fact that the Hyundai Genesis used be a model
 				and now Genesis is a seperate brand which has only created confusion.  So far the launch of 
 				of the Genesis brand has been s a dud, but that doesn't mean the card is a dud.
-				
-				
+
+dwell			<- [dwelled, dwelt]
+					"Let's not dwell on the past."				
+					"Memory of him still dwelt in her mind."
+					그의 추억은 아직도 그녀의 마음속에서 사라지지 않고 있었다.
+					
 dyslexia		<- 디스렉시아
 				a general term for disorders that involve difficulty in learning to read or 
 				interpret words, letters, and other symbols, but that do not affect general intelligence.
@@ -1136,6 +1140,11 @@ fed up			<- [adjective] annoyed or upset at a situation or treatment.
 					"he was fed up with doing all the work"
 					synonyms:	sick and tired of, weary of, tired of, sick of
 
+					
+fickle			<- [adj] changing frequently, especially as regards one's loyalties, interests, or affection.
+					"Web patrons are a notoriously fickle lot, bouncing from one site to another on a whim"
+					synonyms:	capricious, changeable, variable, volatile, mercurial; More 					
+					
 figurative language	<- 비유언어
 	analogy			<- 비유법(유사관계)
 						
@@ -1578,8 +1587,12 @@ omnibus			<- [adj] comprising several items.
 				<- [n] a volume containing several novels or other items previously published separately.
 					"an omnibus of her first trilogy(3부작)"
 					영화·드라마 등에서 몇 개의 독립된 짧은 이야기를 모아 하나의 작품으로 만든 것
-		
 
+outset			<- 	the start or beginning of something.				
+					"a field of which he had known nothing at the outset and learned on the job"
+					synonyms:	start, starting point, beginning, commencement, dawn, birth, origin, 
+					inception, opening, launch, inauguration; informalthe word go
+					"at the outset, we had nothing but problems"
 # P
 
 palatable		<- [Adj](of food or drink) pleasant to taste.
@@ -1616,6 +1629,11 @@ pep talk		<- a talk intended to make someone feel more courageous or enthusiasti
 pertinent		<- relevant or applicable to a particular matter; apposite. synonyms:relevant
 
 periodontists	<- 치주염
+
+perseverance	<- steadfastness in doing something despite difficulty or delay in achieving success.
+					"his perseverance with the technique illustrates his single-mindedness"
+					synonyms:	persistence, tenacity, determination, staying power, indefatigability, 
+								steadfastness, purposefulness.
 
 pertain			<- documents pertaining to the lawsuit
 
@@ -1984,6 +2002,20 @@ superintendent	<- a person who manages or superintends an organization or activi
 tariff			<- a tax or duty to be paid on a particular class of imports or exports.
 					synonyms:	tax, duty, toll, excise, levy, charge, rate, fee, countervail; price list
 						"the lower tariffs across the border"
+
+tenacity		<- 	the quality or fact of being able to grip something firmly; grip.
+					"the sheer tenacity of the limpet"
+					synonyms:	persistence, determination, perseverance, doggedness, strength of purpose, 
+								tirelessness, indefatigability, resolution, resoluteness, resolve, firmness, 
+								patience, purposefulness, staunchness, steadfastness, staying power, 
+								endurance, stamina, stubbornness, intransigence, obstinacy, obduracy, 
+								pertinacity
+					"she practices her gymnastics routine with the tenacity of a bulldog"
+					the quality or fact of being very determined; determination.
+					"you have to admire the tenacity of these two guys"
+					the quality or fact of continuing to exist; persistence.
+					"the tenacity of certain myths within the historical record"					
+						
 that is			<- used to introduce or follow a clarification, interpretation, or correction of something already said.
 that is to say	<- i.e. same
 that said		<- "Having said that" is same. "However" 
@@ -8466,6 +8498,113 @@ Present
 I wanted to let you all know that I am dealing with a medical emergency and 
 will be back to school as soon as I am able.  
 Thank you for your understanding and patience during this time.
+
+
+
+
+Speak About You
+
+# Starting 
+Today I am going to talk about my family.
+Today I would like to talk about someone I consider a hero.
+Today we are talking about one of the best we have read recently.
+My presentation today is on the question what is your best feature.
+Our toptic today is our personalities and personality problem.
+I would like to share with you about my dream becoming an engineer.
+I want to say a few words about my bad habits.
+I want to start by mentioning some of my fixer upper experiences I had with my house.
+I would like to take a few minites of your time to talk about the time that I feel the most stress.
+
+To begin with one thing good thing about my personality is that I easily try new things.
+First of all it is an important what others think about you.
+The first thing that comes to mind is 
+	- What is the first thing that comes in your mind when you hear the word BMW?
+	- When I think about bad point of my personality, the first thing that comes to mind is restlessness.
+First I would like to point out that you can only slow board in the winter.
+	- Even though the topic is personality problems first I would like to point out that 
+		being fickle can have some good consequences.
+At(or from) the outset <= at or from the beginning.
+	- At the outset, I think the relationship was like any other crush. 
+	- At the outset, we had nothing but problems.
+
+# Continue
+The reason that we all gethering in this room is that it is most warm place in this house.
+	- The reason that Sujin failed the math in her class was that she didn't try hard enough.
+The most important factor is the wonderful musicians whom I adore.
+	- The most important factor is fear and stress and way we handle it.
+For some reason I am the one who fix the car.
+Another import factor is the physical activity to lose the weight.
+I think ~ responsible for ~
+	- I think car's alernator was the responsible for brakedonw.
+	- I think smoking is responsible for 90% of lung related death.
+For this reason, I have been able to fix the car.
+Let me give you some reasons why it wouldn't work.
+There are a few reasons for this root causes.
+Now that I have learned how to fix a car, I can fix any car.
+Account for 
+	- I think that his idleness could account for his failure.
+In ohter words the car is a junk.
+More over I continue to work on the Fiat until it runs again.
+What's more I have tried my different way to fix the same issue.
+BMW is not only nice cars but also luxerious cars.
+The BMW's I8 is a super car, but it is also beautiful a car as well.
+	- These habits can have other consequences as well. 
+Additionally, there is a 20-dollar surcharge for any returned check. 
+On the other hand, Genesis has been reliable car for last 6 year.
+A side from my parents, I also have a sister.
+In addition to BMW brand cars in US, there are many other brands cars in US, too.
+	- In addtioin to Korean food, I also like Italian food.
+Apart from the seeming routine life, I have two exciting hobbies.
+
+
+35. 나의 의견 말하기
+Personally I love the BMW
+To be honest I didn't know Joe's death until knocked his door and heard from his wife.
+37. In my view <- 제 생각으로는 
+	- In my view if I didn't buy the X6, I could have been bought an another house.
+	
+38. The way I see it is that 제가 보는관점에서는 무엇이라고 생각합니다.
+	- The way I see it is that I have more freedom now than I ever have or probably ever will have again.
+	
+39. for my part 저로서는 
+	- For my part, the most difficult stress comes with problems in friendships and relationships.
+	- For my part, I prefer living in the country.
+	- For my part, I don't mind where we eat.
+	- For my part, I don't care who wins.
+	- For my part, I feel elated and close to tears.
+
+40. In my opinion  저의 의견으로는
+	- In my opinion, the best car is my BMW X6. 
+	
+41. In my experience 저의 경험으로는 
+	- In my experience, your physical health is one of the things that helps determind how happy you are.
+	- In my experience, people generally smile back if you smile at them.
+
+42. I found A to be B  저는 A가 B라는 것을 알았습니다.	
+	- I found MB to be a joy to ride.
+	- I found Odyssey to be a junk.
+	- The prominent(famous) personage(저명인사) among the guests at the dinner party I found to be Mr. Murthwaite.
+	
+43. One of the things that I am doing is 제가 하는것중에 하나는 무엇입니다.	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+# Closing Statement
+
+
 
 
 
