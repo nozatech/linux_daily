@@ -1477,7 +1477,14 @@ lobe			<- [n] a roundish and flattish part of something, typically each of
 						or hanging.
 					each of the parts of the cerebrum of the brain.				
 
-loot			<- steal goods from (a place), typically during a war or riot.			
+loot			<- steal goods from (a place), typically during a war or riot.	
+
+lucrative		<- [adj]producing a great deal of profit.
+					"a lucrative career as a stand-up comedian"
+					synonyms:	profitable, profit-making, gainful, remunerative, moneymaking, paying, 
+								high-income, well paid, bankable; More
+
+		
 lump			<- a compact mass of a substance, especially one without a definite or regular shape.
 					"there was a lump of ice floating in the milk"
 					synonyms:	chunk, hunk, piece, mass, block, wedge, slab, cake, nugget, ball, brick, 
@@ -7128,6 +7135,7 @@ Maybe. 그럴지도 모르지요
 Maybe not. 그렇지 않을지도 모르지요
 Maybe some other time. 다른 때 보자구요.
 Me, too. 나도 그래
+mind your manners	- used for telling someone, especially a child, to behave politely
 Money talks. 결국 돈이지 뭐
 Most likely. 아마도 그렇 것입니다
 My pleasure. 제 기쁨입니다 (감사에 대한 답례로 항상 써요)
@@ -8530,7 +8538,8 @@ I wanted to let you all know that I am dealing with a medical emergency and
 will be back to school as soon as I am able.  
 Thank you for your understanding and patience during this time.
 
-
+I will give it a shot
+I'll give your suggestions a shot.
 
 
 Speak About You
@@ -8740,17 +8749,91 @@ Speak About You
 58. When I say.. I mean that..  제가 무엇이라고 이야기하는것은 무엇이라는 뜻입니다.
 	- When I say it will take time, I mean that I will take time for me to adjust to the new environment.
 
-59.
+59. I am interested in ... ing 저는 무엇하는게 관심이 있습니다.
+	- I am interested in collecting stemps.
+	- I am alway interested in learning new things.
 
-60.
+60. The most interesting part is ... 가장 흥미있는 부분은 무엇입니다.
+	- The most interesting part of the noble is the main character.
+	
+61. The most... I have ever heard of ... 제가 들어본것중 가장 무엇한것
+	- The joke was the most of funny story I have ever heard of.
 
-61.
+62. One of my favorit things to do is  제가 가장 하기 좋아하는 것중에 하나는 무엇입니다.
+	- One of my favorit things to do is working on a car that I can improve dramatically nice look.
 
+63. If there is one thing most about.. 무엇에 대해서 정말 무엇한것이 하나 있다면
+	- If there is one thing that most memoralble about the BMW 740iL, it has so much space in the back seat.
+
+64. Strangely enough 이상하게도 
+	- Strangely enough, BMW's new X2 is so confortable. 
+
+65. I would suggest... 무엇을 제안하고 싶습니다.
+	- If you need a new car, I would suggest BMW's new X2 crossover car.
+
+66. I look forward to.. ing   저는 무엇을 기대합니다.
+	- Sumin is looking forward to her birthday.
 	
+67. By the way, let me note that..  무엇이라는 점을 주의해야 합니다.
+	- By the way, let me note that at this stage that true your friends are more 
+		they will mock(make fun of) you.
+	- By the way, let me note that you don't forget to wash your hands after touching the dog.
+
+# 그밖에 표현들
+68. One would think 무엇이라 생각할수도 있습니다.
+	- One would think that such ridiculous habit would be easy to control.
+	- You would think stopping smoke is easy, but it is not.
+
+69. Some experts say that... 무엇이라고 이야기하는 전문가들도 있습니다.
+	- Some experts say that most nervious habits actually do help the brain to think better. 
 	
+70. as the name suggest... 무엇이라는 이름이 말해주는것 처럼.	
+	- As the name nervious habit's suggest biting my finger nails makes me seem nervious  
+		and makes the people around me nervious as well.
+		
+71. It is natural that.. 무엇하는것은 당연합니다.
+	- It is natural that if you are born with hand skill, you start tinkering things around you.
+
+72. One could say.. 누군가는 무엇이라고 말할수도 있습니다.
+	- One could say that I met them at right time in my life, or one could even say 
+		that it's matter of luck.
 	
+73. You might expect..무엇이라고 예상할수도 있습니다.
+	- You might expect that such bargan car has multiple issues.
+	- You might expect that such good food would be quiet expensive, but actually the menu is
+		moderately priced.
 	
+74. As you can see 보시다 싶피 알다싶이
+	- As you can see the BMW i8 is one of the supercar looking but actually the car is moderately priced.
+
+75. I was about to.. 저는 막 무엇하려 했습니다.	
+	- I was about to leave for airport.	
+	- I was just about to leave, too.
 	
+76. As such.. (therefore) 그것으로서, 그러한 자격으로서 
+	- It is now the capital of Nepal and, as such, the center of its government, economy, and culture.
+		현재는 네팔의 수도이며, (그러므로, 그것으로서, 당연히,) 행정, 경제, 문화의 중심지이다.
+	[adjective] As it should be, as described.
+		- The budget was not allocated as such.
+	[adverb] Per se, by itself, in itself.	
+		- I'm not a big fan of popular music, as such; I much prefer opera.
+		- Changing the transmission oil is not difficult as such, but a special tool is required to do it.
+	[adverb] Therefore; thus; so.
+		- I'm not a big fan of popular music. As such, I never go to concerts.	
+	문장 중간에 사용됨
+		- The wages of slopers, so far as they have been found designated as such on the pay rolls, 
+		are given in Table 63.
+	문장의 끝에서 사용
+	 -	The inquiry’s chair, Alex Gallacher, later looked up flexicuffs on an electronic device, 
+		and described them as “basically cable ties”, noting it would be very easy for Nichols 
+		to mistake them as such.	
+	
+	- Tim had an accident, totalled the car and broke his leg. As such, he's not in condition to go to work.
+	- Tim had an accident, totalled the car and broke his leg. (so or)Therefore, I can't lend it to you because it's totally junk now.
+	(It is clear the other clause is speaking about Tim.	)
+		
+		
+77. Before I explain.. 무엇을 설명하기 전에	
 	
 	
 	
@@ -8758,6 +8841,50 @@ Speak About You
 	
 	
 # Closing Statement
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
