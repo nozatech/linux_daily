@@ -17,7 +17,7 @@ Agreement					일치
 Apposition					동격
 Article						관사
 Attributive use 			한정용법
-Auxiliary verb 				조동사 [보'조 동사'](본동사 [be동사, 일반동사]를 돕는 동사)
+Auxiliary verb 				조동사 [보조동사/조력동사](본동사 [be동사, 일반동사]를 돕는 동사)
 Be verb 					be 동사
 Capital letter 				대문자
 Cardinal number 			기수
@@ -45,7 +45,7 @@ Imperative sentence			명령문
 Impersonal pronouns			비인칭대명사
 Incomplete verb				불완전 동사
 Indefinite article			부정관사
-Infinitive					부정사
+Infinitive					부정사(부정확하게 많은 동사)
 Interjection				감탄사
 Interrogative				의문사
 Interrogative pronouns		의문대명사
@@ -113,6 +113,16 @@ Uncountable nouns			불가산명사
 Verb						동사
 Voice						태
 Vowel						모음
+
+
+
+Indefinite Active Infinitive  (능동태에서 정의되지 않은이)  — to ask
+Indefinite Passive Infinitive (수동태 공약에 정의되지 않은) — to be asked
+Continuous Infinitive         (긴)                   — to be asking
+Perfect Infinitive            (완벽)                  — to have asked
+Perfect Passive Infinitive    (수동태에 완벽) 			— to have been asked
+Perfect Continuous Infinitive (긴 완벽)     			— to have been asking
+
 
 
 관용어 = 숙어 = Idiom
@@ -924,6 +934,7 @@ crustacean		<- such as a crab, lobster, shrimp, or barnacle. 갑각류
 
 culprit			<- cause of an issue or a person who is responsible for a crime or other misdeed.
 
+cut his teeth   <- '경험을 얻는것'
 
 # D
 
@@ -5224,14 +5235,11 @@ Feel a bit under the weather
 Give the benefit of the doubt
 		Believe someone's statement, without proof.
 
-Hear it on the grapevine
-	This idiom means 'to hear rumors' about something or someone.
-Hit the nail on the head
-Do or say something exactly right
+Hear it on the grapevine	<- This idiom means 'to hear rumors' about something or someone.
+Hit the nail on the head <- Do or say something exactly right
 
 Hit the sack / sheets / hay
-Catch some Z's
-		To go to bed.
+Catch some Z's		<- To go to bed.
 
 
 In the heat of the moment
@@ -5291,10 +5299,16 @@ A job, task or other activity that is easy or simple.
 Put wool over other people's eyes
 This means to deceive someone into thinking well of them.
 
-'one too many'		<- one drink of liquor too many, implying drunkenness. 
+one too many		<- one drink of liquor too many, implying drunkenness. 
 	"I think I've had one too many. It's time to stop drinking."
 	"Don't drive if you've had one too many."
 
+ruffle one's feather  <- 심기를 불편하게하다.
+	"I ruffled my mother's feather." 
+	"You ruffle your feathers too easily.  It makes others feel uneasy."
+	"HIs speech ruffled a lot feathers among many nations."
+	
+	
 See eye to eye
 This idiom is used to say that two (or more people) agree on something.
 
