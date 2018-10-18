@@ -473,6 +473,18 @@ accommodate		<- (of physical space, especially a building) provide lodging or su
 					"the cabins accommodate up to 6 people"
 					synonyms:	lodge, house, put up, billet, quarter, board, take in, 
 								shelter, give someone a roof over their head; 수용하다
+								
+abject			<- 	 (of something bad) experienced or present to the maximum degree.
+						"his letter plunged her into abject misery"
+					synonyms:	wretched, miserable, hopeless, pathetic, pitiful, pitiable, piteous, 
+								sorry, woeful, lamentable, degrading, appalling, atrocious, awful
+					"abject poverty" 찢어지는 가난
+
+					(of a person or their behavior) completely without pride or dignity; self-abasing.
+					"an abject apology"
+					synonyms:	contemptible, base, low, vile, worthless, debased, degraded, despicable, 
+						ignominious, mean, unworthy, ignoble More								
+								
 Abroad 			<- [adverb] 
 					1. in or to a foreign country or countries.
 					"we usually go abroad for a week in May"
@@ -631,6 +643,12 @@ arise			<- (of a problem, opportunity, or situation) emerge; become apparent.
 				Raise your hand.
 				I wish I had a pay raise.
 				I got a pay raise.
+
+arson			<- the criminal act of deliberately setting fire to property.
+				"police are treating the fire as arson"
+				synonyms:	pyromania, incendiarism; informaltorching
+				"the fire is being treated as arson"
+
 				
 arugula			<-the rocket plant, used in cooking or salad.							
 							
@@ -716,6 +734,11 @@ begrudge		<- [verb]
 bedside manner 	<- a doctor's approach or attitude toward a patient.
 bespoke			<- (of goods, especially clothing) made to order.
 					"a bespoke suit, a bespoke engine"
+
+binge			<- a short period devoted to indulging in an activity to excess, 
+					especially drinking alcohol or eating.
+					"he went on a binge and was in no shape to drive"
+					synonyms:	drinking bout, debauch; More
 					
 bleak			<- [adj]
 					1. (of an area of land) lacking vegetation and exposed to the elements.
@@ -970,6 +993,14 @@ deed			<-  1.literary: an action that is performed intentionally or consciously.
 demographic		<- a particular sector of a population.
 
 dermatitis		<- is a general term that describes an inflammation of the skin
+
+detest			<- dislike intensely.
+				"The animal activists detest people who purchase fur coats."
+					synonyms:	abhor, hate, loathe, despise, shrink from, be unable to bear, find intolerable, 
+					dislike, disdain, have an aversion to; formalabominate
+				"the only vegetable I truly detest is broccoli"
+
+
 atopic dermatitis(eczema 습진) <- (아토피 피부염)
 
 dereference		<- opposit of reference	
@@ -1004,6 +1035,13 @@ disposition		<- a person's inherent qualities of mind and character.
 dissuade		<- persuade(someone) not to tak a particular course of action
 						
 dirt·bag		<- a very unkempt or unpleasant person.		
+
+docile			<- 온순한 ready to accept control or instruction; submissive
+					"a cheap and docile workforce"
+					synonyms:	compliant, obedient, pliant, dutiful, submissive, deferential, 
+						unassertive, cooperative, amenable, accommodating, biddable, malleable
+					"his docile children do everything he asks of them"
+
 
 					
 don't leave me hanging <- hi five 안해줄때
@@ -1291,7 +1329,13 @@ hay fever or asthma		<- 호흡기 알르레기
 				<- an allergy caused by pollen or dust in which the mucous membranes of the eyes 
 					and nose are itchy and inflamed, causing a runny nose and watery eyes.
 				
-			
+hedge			<- [n] a fence or boundary formed by closely growing bushes or shrubs.
+				
+				<- [v] protect oneself against loss on (a bet or investment) by making balancing or compensating transactions.
+					 "the company hedged its investment position on the futures market"
+					synonyms:	safeguard, protect, shield, guard, cushion; More
+					"Hedge fund"
+				
 hit the ground running 	<- to be ready to work immediately on a new activity
 						<- start something and proceed at a fast pace with enthusiasm.
 					
@@ -1412,6 +1456,13 @@ jargon			<- special words or expressions that are used by a particular professio
 					and are difficult for others to understand.
 						"legal jargon"
 					synonyms:	specialized language, slang, cant, idiom, argot, patter
+					
+juggernaut		<- a huge, powerful, and overwhelming force or institution.
+					"The company predicts its unique mobile phone will become a bestseller 
+						and make it a juggernaut in the phone market."					
+					"Because our football team has gone undefeated for two years, 
+					 our competitors view us as a juggernaut."
+					 
 jump the gun	<= act before the proper time.
 					"Don't jump the gun" 성급하게 굴지마라
 					synonyms: act prematurely, act too soon, be too/overly hasty, 
@@ -1524,6 +1575,7 @@ manage			<-  1. I managed to forget my wife's birthday every year for the last t
 					I'll be WFH today as I 'managed to forget(miss)' my laptop at home.
 					나는 오늘 집에서 일할꺼야 멍청하게도(본이아니게도) 집에 랩탑을 두고왔어. 
 
+Malignant		<- 악의 있는	
 
 mangle			<- severely mutilate, disfigure, or damage by cutting, tearing, or crushing.
 					"the car was mangled almost beyond recognition"
@@ -1576,6 +1628,10 @@ mogul			<- [informal]an important or powerful person, especially in the motion p
 								lord, grandee, nabob
 				<- a bump on a ski slope formed by the repeated turns of skiers over the same path.
 
+molestation		<- 	sexual assault or abuse of a person, especially a woman or child.
+					"he was tried for molestation of two young girls"			성추행
+				
+				
 MNDA			<- Mutual Non-Disclosure Agreement
 
 muscle spasm	<- 경련, 쥐, most common and are often due to overuse and muscle fatigue, dehydration, and electrolyte 
@@ -1649,6 +1705,8 @@ palatable		<- [Adj](of food or drink) pleasant to taste.
 
 palindrome 		<- a word that reads same forwards or backwards
 					e.g. madam, 12321  
+
+					
 Pavilion		<- In architectural terminology it refers to a subsidiary building that is either positioned 
 					separately or as an attachment to a main building. 
 					Often its function makes it an object of pleasure.[정원 정자, 누각]
@@ -1666,6 +1724,14 @@ pastime			<- an activity that someone does regularly for enjoyment rather than w
 					"his favorite pastimes were shooting and golf"
 					synonyms:	hobby, leisure activity/pursuit, sport, game, recreation, 
 								amusement, diversion, avocation, entertainment, interest, sideline
+
+pay their respect	<- make a polite visit to someone.
+					"we went to pay our respects to the head lama"
+					 To offer (someone) a proper or formal expression of greeting, welcome, esteem, 
+					 or well wishes. 
+					 "I think we should go over and pay our respects to the new neighbors and 
+					 make them feel welcome to the area!"			
+								
 pep talk		<- a talk intended to make someone feel more courageous or enthusiastic.
 
 pertinent		<- relevant or applicable to a particular matter; apposite. synonyms:relevant
@@ -2041,10 +2107,21 @@ superintendent	<- a person who manages or superintends an organization or activi
 								controller, chief, head, governor; informalboss
 
 # T 
+tacky			<- (of glue, paint, or other substances) retaining a slightly sticky feel; not fully dry.
+				"the paint was still tacky"
+					synonyms:	sticky, wet, gluey, gummy, adhesive, viscous, viscid, treacly; 
+							informalgooey
+				<- showing poor taste and quality.
+					"even in her faintly tacky costumes, she won our hearts"
+					synonyms:	tawdry, tasteless, kitsch, kitschy, vulgar, crude, garish, gaudy, 
+							showy, trashy, cheesy, cheap, common, second-rate
+
 tariff			<- a tax or duty to be paid on a particular class of imports or exports.
 					synonyms:	tax, duty, toll, excise, levy, charge, rate, fee, countervail; price list
 						"the lower tariffs across the border"
 
+						
+						
 tenacity		<- 	the quality or fact of being able to grip something firmly; grip.
 					"the sheer tenacity of the limpet"
 					synonyms:	persistence, determination, perseverance, doggedness, strength of purpose, 
@@ -2167,7 +2244,8 @@ wilt			<- [v] (of a plant, leaf, or flower) become limp through heat(풀이죽�
 					
 				   [n] any of a number of fungal or bacterial diseases of plants 
 						characterized by wilting of the foliage.
-					
+
+worriedly		<-						
 
 wrap-up party	<- 뒷풀이
 
@@ -4799,15 +4877,16 @@ Please wait for me here.
 She does wane to wait on him. 
 
 394. wanting in : ～이 결핍한
-(=lacking in) 
-He is wanting in manners. 
+	(=lacking in) 
+	He is wanting in manners. 
 
 395. with all : ～에도 불구하고
-(=for all, in spite of) 
-I like him with all his faults. 
-With all due respect, I have to say I don't think your plan will work.
-With all due respect, Sir, I don't think that's the case.
-It seems that you are, with all due respect, wrong in this particular case — as you see the murder took place at three o'clock.
+	(=for all, in spite of) 
+	I like him with all his faults. 
+	With all due respect, I have to say I don't think your plan will work.
+	With all due respect, Sir, I don't think that's the case.
+	It seems that you are, with all due respect, wrong in this particular case — as you see the murder took place at three o'clock.
+
 
 396. within one's reach : ～의 손이 닿는 곳에
 (=within the reach of) 
@@ -5324,6 +5403,10 @@ This expression is used when the person you have just been talking about arrives
 Steal someone's thunder
 To take the credit for something someone else did.
 
+
+take away from something 
+	to reduce the positive effect or success of something
+
 Take with a grain of salt
 This means not to take what someone says too seriously.
 
@@ -5344,10 +5427,143 @@ Would never like to do something
 
 
 
+### From "Desperate Housewives"
+
+S1-Episode 3	
+Could you scoot a little?	
+Just scoot?
+It was uncalled for   	<- 	불필요한, 쓸모없는, 주제넘게 나서는
+
+S1-Episode 4
+H e's just always given me the creeps.	
+Well, I guess I have done my good deed for the day. 착한일을 했나보네요.	
+Do your good deed for the day, everyday. 
+Your good deed for the day <- something kind or helpful that you do – used humorously
+
+It was embarrassing the way she was throwing herself at him.
+		<= to make it obvious that you think someone is sexually attractive
+He is quite a catch <- he is a great partner
+She is always coy about her weight.  그녀는 언제나 나이를 밝히지 않는다.
+Being coy is a strategy best employed by virgins at their first dance. 
+		<= 처음 댄스파티 간 처녀도 아니고 뭘 그렇게 부끄러워해요? 
+Your secret is not an easy burden to bear. 	<=보통 비밀이 아니다.	
+I can't wrangle two small girls without doping them <= 마약없이 관리못한다.
+I don't like lying. Yeah? I don't like your ironing, so there. 
+		<= So there. <-used for emphasis, or to show that something is being done 
+						against someone else's wishes:
+A way of saying "TAKE THAT JACKASS" I don't like you anymore, SO THERE...
+Imagine what you'd lose if he finds out you're trimming more than the hedges. 		
+		생각해봐 그가 네가 헤지 트림밍만 하는게 아닌걸 알면 무엇을 잃어버릴지.  
+I am rapidly reaching the end of my patience with you. 
+I hope you are not screening. That is so tacky. 설마 피하는건 아니겠지.
+Boy, you are one sick ticket. 진짜 해도 너무하네.
+I wanted to apologize for my outburst yesterday. Don't worry about it. We unloaded a lot on you. 
+I suppose(think) you're wondering why I reacted so violently to that note. 
+Are you going to study hard from now on?  I suppose not(I don't think so).
+If you're capable of arson(방화), you're capable of breaking and entering. 
+You're a piece of work. Do you know that? 정말 상대 못 할 사람인거 알고 계세요? 
+Careful, dear. Let's not say things we'll live to regret. 
+
+Not in so many words(꼭찝어서말하지 않았지만), but everything Paul said made 
+it seem like she was schizophrenic(스킷서프레닉-정신분열증환자). 
+He said he liked you. At least, not in so many words, but that was the idea.
+
+S1-Episode 5
+regular surveillance will deter even the most determined criminal. 
+범죄예방엔 방범순찰만큼 효과적인게 없습니다 
+So you think it should be dusted for prints? 
+I'll make sure it gets done.
+So why weren't you sitting with Mike? I thought you two were becoming an item. 
+왜 마이크 옆에 안 앉았어? 둘이 꽤 발전한 줄 알았어 
+Slang a couple identified publicly as sweethearts or lovers: (John and Joan are an item) 
+When two people are a couple, or dating, in a relationship, etc, they say, "We're an item". 
+I sort of thought so too. Getting a lot of mixed signals. 
+나도 그렇게 생각했는데 또 헷갈리게 하지 뭐야 
+I'll tell you who wasn't giving mixed signals. Sexy Officer Thompson. 
+헷갈리지 않는 남자 가르쳐줘? 섹시한 톰슨 경관 
+Yes. You can tell them how beautifully behaved the boys are. 
+But I suppose that doesn't matter to you, does it? 
+그건 지금 안 통하겠지
+You all look like bookends.  Same everything.
+
+I know it's hard to hear, but the marriage counseling might not work. 
+이런 말 듣기 힘들겠지만 결혼상담이 효과 없는 것 같아 
+You need to get used to being alone. 
+You're right. That was hard to hear.
+
+Thank God for the Thin Blue Line(Police and Law Enforcement) 
+
+Lynette hatched a plan to break her children into Barcliff Academy. 
+
+hatch a plot idiom
+Definition of hatch a plot 
+: to make a secret plan to do something that is usually illegal or harmful
+They hatched(꾸미다) a plot to steal the famous painting. 
+Lynette hatched a plan to break her children into Barcliff Academy. 
+리네트는 바클리프에 아이들을 침입 시킬 방법을 (음모를)꾸몄다(찾아야했다) 
+
+If I wanted to sit around, I could do it on the can(toilet). 
+내가 멍하니 앉아있고 싶을 땐 볼(변)일 볼 때 뿐이야 
+I gotta pull up stakes(to pack up and leave) before they come looking for me.
+Let's pull up stakes and head home before the storm hits.
+These are nice people. My money says(I bet) one of them isn't. 
+So until she puts out, Janita won't even know that I'm gone. 
+그녀가 섹스 할 때까지는 제니타는 내가 나온 거 모를 거야.
+Just so you know, I've turned down half the pep-squad(cheer leaders) for you. 
+The next thing we heard were brakes screeching.
+You don't understand. This poor kid is 'scared out of his mind.'  
+You scared the hell out of me. 무서워 죽는 줄 알았어(혼겁-혼이 빠지도록 겁을 냄)
+Have you ever had real old-fashioned eggnog? You are going to love it! It has quite a kick.
+<= shockingly strong or hot,
+eggnog <= 달걀·우유·설탕을 섞은 것에 브랜디나 럼 등을 첨가한 음료.
+If you're stuck in a rut, you've been doing the same old thing for too long. 
+	<= It's also a boring routine that can be hard to break. 
+You're the one who's shopping. - Mama, you're in a rut. 네 거나 사 - 너무 똑같은 것만 입으세요 
+We need to spice up your wardrobe(의상). Ooh. Here. 스타일을 바꿔보는 것도 괜찮아요 여기요 
+Two DUIs, one check-kiting and an open bench warrant. 
+음주운전 2건에 수표사기, 법원 영장발부 
+You've been a good sport(someone who is cooperative) coming along on my shift with me
+Ma'am, he confessed to breaking in. - This is not up for discussion. 
+ 침입사실을 시인했어요 - 무조건 풀어줘요! 
+ 
+S1-Episode 6 
+Suburbia(교외거주자) is a battle ground, an arena for all forms of domestic combat. 
+Husbands clash with wives, parents cross swords(have an argument or dispute) with children. 
+Of the many suburban rituals, none is quite so cherished as the neighborhood yard sale. 
+교외에 사는(동네에서) 열리는 여러 행사 중에 
+Shoppers come to sift(조사하다) through the discarded belongings of someone they really don't know, 
+in hopes of finding bargains they don't really need, each so determined to save a few pennies 
+they often miss hidden treasures. 엄마를 기억할 물건으로요 
+Marriage takes work. 결혼엔 노력이 필요한 법이다
+I am not surprise he is play it close to the vest. Paul knows we're onto him. 
+말 안하는 게 당연해 우리가 의심하는 거 알잖아 
+close to the vest <=keep something secret, to hold something close so no one else can see it 
+let's leave the creative suggestions to the mothers who have assumed the heavy lifting.
+	heavy lifting <= most of the work involved in something; the most difficult part of a task:
+I must say I'm jealous of how much time you two spend together. 
+두분이 늘 함께 다니시니까 정말(강조) 질투 날 지경이에요 
+	I must (or have to) say <=꼭 말해야겠습니다
+Susan was infuriated by Paul's evasive answers. 
+폴의 애매한 대답에 화가 난 수잔은 
+To succed, Susan would have to be evasive herself. 
+ 조금은 치사한 방법을 쓰기로 결심했다 
+I'm fresh out. <= Having no stock of a certain item or product because the last one 
+					has just been sold or used. 
+Because it is really starting to tick me off. 
+너무 기가 차서 더 이상은 못 봐주겠어요! 
+
+
+
+
+
+
+
+
 
 ##
 # English Gammar Cheatsheet
 #
+
 
 
 n: noun(명사)
@@ -8541,7 +8757,10 @@ Present
 				Will English have been being spoken by you?
 		
 
-
+		
+		
+He is helpful		<= This is something he always does or is part of his character.
+He is being helpful <= This describes his current or recent actions.
 
 
 
