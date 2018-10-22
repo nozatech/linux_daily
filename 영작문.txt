@@ -21,12 +21,15 @@
 3.	They hope to finish the work in a week.
 4.	Mrs. Kim seemed to be much contented with the result. 
 5.	Jun-ho is sure to succeed this time. 
+
 He seems to be a teacher.
 = It seems that he is a teacher.
-
 He seemed to be a teacher.
 = It seemed that he was a teacher.
-
+I think him to be honest.
+	= I think that he is honest
+I hope to do well on the exam.
+	= I hope that I will do well on the exam.
 
 
 주어 + 동사 + 완료부정사
