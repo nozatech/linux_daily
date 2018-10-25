@@ -610,6 +610,12 @@ anemic			<- 빈혈의(Adjetive)
 anemometer		<- [ӕnəmάmitər] 
 					an instrument for measuring the speed of the wind, or of any current of gas.
 
+anomaly			<- something that deviates from what is standard, normal, or expected.
+					"there are a number of anomalies in the present system"
+					synonyms:	oddity, peculiarity, abnormality, irregularity, inconsistency, 
+					incongruity, aberration, quirk, rarity
+
+
 any update VS any updates
 any update		<- If you're expecting one piece of information, for example whether the completion 
 					time of a project has changed: 
@@ -763,19 +769,26 @@ boggle 			<- (of a person or a person's mind) be astonished or overwhelmed when 
 					"this data makes the mind boggle"
 
 boggle the mind	<- (of a person or a person's mind) be astonished or overwhelmed when trying to imagine something
-brag 			<- say in a boastful manner.
+brag 			<- say in a boastful[자랑] manner.
 
 brace	{}		<- a device that clamps things tightly together or that gives support, in particular.
 bracket []	
 
 brat			<- a child, typically a badly behaved one.
 					synonyms:	badly behaved child, spoiled child;
+
+bravado			<- [브러바도우] 허세, 허장성세(swaggering); 무모함
 	
 breadth			<- the distance or measurement from side to side of something; width.
 					"a black sweater outlined the breadth of his shoulders"
 					synonyms:	width, broadness, wideness, thickness
 
+boobs			<- 가슴
+
 brown-out		<- a reduction in or restriction on the availability of electrical power in a particular area.
+
+breath[n 브래뜨] vs breathe[v 브리뜨]
+If you breathe[v] with garic in your mouth, no one will like your breath[n].
 
 brevity			<- concise and exact use of words in writing or speech.(간결한 말)
 					synonyms:	conciseness, concision, succinctness, economy of language, 
@@ -783,6 +796,7 @@ brevity			<- concise and exact use of words in writing or speech.(간결한 말)
 burning midnight oil <- working all night
 
 buttocks, bottom	<- 엉덩이 
+
 								
 by and large	<- on the whole; everything considered.
 					"mammals have, by and large, bigger brains than reptiles"
@@ -1195,9 +1209,15 @@ faculty			<- an aptitude or talent for doing something.
 					"the author's faculty for philosophical analysis"
 					synonyms:	ability, proficiency, competence, capability, potential, 
 								capacity, facility
+
 fall through 	<- your plans didn't work out for some reaso, didn't work out
+
+fallcy			<- [팰러씨](격식) 잘못된 생각, 착오, 오신(誤信); 그릇된 논의, 궤변(sophism)
+
 fasting			<- 단식
+
 fatigue			<- 피로
+
 feasible		<- possible to do easily or conveniently.
 
 fed up			<- [adjective] annoyed or upset at a situation or treatment.
@@ -1479,7 +1499,16 @@ kink in my neck <- a stiffness in the neck, back, etc.; crick.
 					"it takes the kinks out of stiff necks"
 					synonyms:	crick, stiffness, pinch, knot
 					"a kink in my neck" 목이 뻐근함
+
+kiss and tell	<- (헤어진 연인의) 과거를 공개하는
+					I really don't want to date Maria. She loves to kiss and tell. 
+					Everyone knows about her ex's foot fetish(성적 감정을 일으키는).
+
+klutz			<- a clumsy, awkward, or foolish person.
+					synonyms:	stupid, stumblebum, butterfingers; More
+
 knotty 			<- knotty wood 옹이 있는 목재
+
 kudos			<- praise and honor received for an achievement.
 					synonyms:	praise, glory, honor, status, standing, distinction, fame, celebrity;					
 					
@@ -1509,13 +1538,13 @@ laborious		<- [adj](especially of a task, process, or journey) requiring conside
 lie vs lay
 lie	(기대다)		<- to rest or recline((lie(lying) - lay - lain)
 					Recline <- lean or lie back in a relaxed position with the back supported.
-								"she was reclining in a deck chair"
-					"To l
+					"she lie down to her lazy boy"
+					
 lay	(눕히다)		<- to put or place(lay(laying) - laid - laid)
 					put down, especially gently or carefully.
-					"she laid the baby in his crib"
+					"she lay(laid) the baby in his crib"
 				<-	put down and set in position for use.
-					"it is advisable to have your carpet laid by a professional"
+					"it is advisable to have your carpet laid by a professional" Present Perfect
 					synonyms: set in place, put in place, set out		
 					
 lean 			<- [v] be in or move into a sloping position.
@@ -1524,8 +1553,10 @@ lean 			<- [v] be in or move into a sloping position.
 					"trees leaning in the wind"
 					[n] a deviation from the perpendicular; an inclination.
 					"the vehicle has a definite lean to the left"
+
 leech			<- 1.One who constantly takes from others without giving anything in return. 
 				   2.One who constantly copies things from others, such as style, phrases, expressions, and actions.
+
 liaise			<- [v]리-애이즈 establish a working relationship, typically in order to cooperate on a matter of mutual concern.
 					"she will liaise with teachers across the country"
 					synonyms:	cooperate, work together, collaborate
@@ -1551,6 +1582,7 @@ lump			<- a compact mass of a substance, especially one without a definite or re
 					"there was a lump of ice floating in the milk"
 					synonyms:	chunk, hunk, piece, mass, block, wedge, slab, cake, nugget, ball, brick, 
 								cube, pat, knob, clod, gobbet, dollop, wad; 덩어리, 혹, 
+
 lump sum		<- a single payment made at a particular time, as opposed to a number of smaller 
 					payments or installments.
 
@@ -1618,9 +1650,11 @@ mingle			<- mix or cause to mix together.
 					
 					
 misnomer		<- a wrong or inaccurate name or designation, a wrong or inaccurate use of a name or term.
+
 misdemeanor		<- a minor wrongdoing(경범죄).
 					"the player can expect a lengthy suspension for his latest misdemeanor"
 					synonyms:	wrongdoing, evil deed, crime, felony
+
 mock-up			<- a model or replica of a machine or structure, used for instructional or experimental purposes.
 
 mogul			<- [informal]an important or powerful person, especially in the motion picture or media industry.
@@ -1706,10 +1740,17 @@ palatable		<- [Adj](of food or drink) pleasant to taste.
 palindrome 		<- a word that reads same forwards or backwards
 					e.g. madam, 12321  
 
+pandemonium		<- 아수라장 대혼란
+				    wild and noisy disorder or confusion; uproar.
+					"pandemonium broke out"
+					synonyms:	bedlam, chaos, mayhem, uproar, turmoil, tumult, commotion, 
+							confusion, anarchy, furor, hubbub, rumpus; More
+
 					
-Pavilion		<- In architectural terminology it refers to a subsidiary building that is either positioned 
+Pavilion		<- [정원 정자, 누각]
+					In architectural terminology it refers to a subsidiary building that is either positioned 
 					separately or as an attachment to a main building. 
-					Often its function makes it an object of pleasure.[정원 정자, 누각]
+					Often its function makes it an object of pleasure.
 
 parche			<- dried 			e.g. parched reservoirs
 
@@ -1788,13 +1829,7 @@ Process			<-[n]a series of actions or steps taken in order to achieve a particul
 				<-[V]perform a series of mechanical or chemical operations on (something) 가공하다.
 					in order to change or preserve it.
 					"the various stages in processing the wool"
-				
-				
-				
-				
-
-출처: http://choishin.tistory.com/2 [Choi+Shin 부부이야기]
-					
+									
 					
 procrastinate	<- [v] delay or postpone action; put off doing something.
 					"It won't be this price for long, so don't procrastinate"
@@ -1807,6 +1842,7 @@ promiscuous		<-
 
 prospective		<- (of a person) expected or expecting to be something particular in the future. 미래의, 장래의
 					vs Retrospective  <- 회고의,looking back on or dealing with past events or situations. 
+
 punctual		<- 	happening or doing something at the agreed or proper time; on time.
 					"he's the sort of man who's always punctual"
 					시간을 잘 지키는
@@ -1820,6 +1856,7 @@ pacify			<- quell the anger, agitation, or excitement of.
 					antonyms:	enrage
 
 palindrome		<- a word, phrase, or sequence that reads the same backward as forward, e.g., madam 
+
 perplex			<- [v]complicate or confuse (a matter)
 
 placate			<- make (someone) less angry(calm) or hostile.
@@ -1829,16 +1866,20 @@ placate			<- make (someone) less angry(calm) or hostile.
 					"John did his best to placate her"
 					antonyms:	provoke
 
+
 poised			<- be ready
+
 post mortem		<- an examination of a dead body to determine the cause of death.
 					synonyms:	autopsy, postmortem examination, necropsy
 					"the hospital carried out a postmortem"
 
 primitive		<- relating to, denoting, or preserving the character of an early stage in the 
 					evolutionary or historical development of something.
+
 profoundly		<- synonyms: extremely, very, deeply, exceedingly, greatly, immensely, enormously, 
 					tremendously, intensely, heartily, keenly, acutely, painfully, 
 					from the bottom of one's heart, downright, thoroughly, sincerely, so
+
 promiscuous		<- having or characterized by many transient sexual relationships(난교).
 					"promiscuous teenagers"
 					synonyms:	licentious, sexually indiscriminate, wanton, immoral, fast
@@ -1863,6 +1904,7 @@ prospect		<- the possibility or likelihood of some future event occurring.
 							probability, possibility, promise
 
 prorate			<- 	(…을) 비례 계산(하여 산출)하다	
+
 proverbs		<- 명언집(proverbs collection)
 					https://www.phrases.org.uk/meanings/proverbs.html
 					http://likumc.org/cp/?p=11946
@@ -1877,15 +1919,18 @@ quirk			<- 변덕 	e.g. by a quirk of fate 운명의 장난으로
 					
 # R
 rake			<- garden rake (갈퀴)
+
 rampage			<- [Verb](especially of a large group of people) rush around in a violent and uncontrollable manner.
 					"several thousand demonstrators rampaged through the city"
 					synonyms:	riot, run riot, go on the rampage, run amok, go berserk
 					[Noun] a period of violent and uncontrollable behavior, typically involving a large 
 					group of people.
 					"thugs went on a rampage and wrecked a classroom"
+
 rationales		<- a set of reasons or a logical basis for a course of action or a particular belief.
 					"he explained the rationale behind the change"
 					synonyms:	reason(s), reasoning, thinking, logic, grounds, sense
+
 recapitulate	<- "RECAP"
 					summarize and state again the main points of.
 					"he began to recapitulate his argument with care"
@@ -1896,14 +1941,22 @@ recumbent		<- 	a resting or reclining state
 					I lowered my seat to a recumbent position." 				
 					
 reconnaissance	<- military observation of a region to locate an enemy or ascertain strategic features.
+
 remainder		<- Something left over after other parts have been taken away.
 					"I will most likely be out for the remainder of the day."
+
 remuneration 	<- pay
 
 reassemble		<- (of a group) gather together again.
 						"after lunch the class reassembled"
 					put (something) together again.
 						"the trucks had to be reassembled on arrival"
+
+rebuke			<- (격식) rebuke＋[목적어]/rebuke＋[목적어]＋[전치사]＋[명사] 
+					[…의 일로] 몹시 비난하다, 질책하다[for ‥]; …을 훈계하다 
+					REPROACH [유의어]
+					"He rebuked his son for waking him at seven."
+					
 refrain			<- stop oneself from doing something.(자제하다)
 
 relapse			<- (of someone suffering from a disease) suffer deterioration after a period of improvement.
@@ -1912,9 +1965,15 @@ relapse			<- (of someone suffering from a disease) suffer deterioration after a 
 					"a few patients relapse"
 					antonyms:	improve
 
+remonstrate		<- [v]make a forcefully reproachful protest. 항의하여 말하다
+					"he turned angrily to remonstrate with Tommy"
+					synonyms:	protest, complain, expostulate; More
+
 resonance		<- 울림, 공진
+
 relator			<-  a person who brings a public lawsuit, typically in the name of the (고발자),
 				   attorney general, regarding the abuse of an office or franchise.
+
 relinquish 		<- give up
 
 repartee		<- [n 레펄티] conversation or speech characterized by quick, witty comments or replies.
@@ -1927,6 +1986,10 @@ repercussions	<- an unintended consequence occurring some time after an event or
 					"the move would have grave repercussions for the entire region"
 					synonyms:	consequence(s), result(s), effect(s), outcome
 
+reprimand		<- [n][래프러맨드] 질책, 비난; 견책, 징계, 계고
+				<- [v] […의 이유로] …을 질책[비난]하다, (공식적으로) 견책[징계, 계고]하다
+				
+				
 resilient		<- (of a person or animal) able to withstand or recover quickly from difficult conditions.
 					"babies are generally far more resilient than new parents realize"
 					synonyms:	strong, tough, hardy; 
@@ -1943,8 +2006,11 @@ rhetoric		<- the art of effective or persuasive speaking or writing, especially 
 
 retroactive  	<- (especially of legislation) taking effect from a particular date in time
 					소급이란 '현재 생겨난 규정을 그 규정이 없었던 과거 시절의 사실에도 적용시킴'
+
 retrospect		<- a survey or review of a past course of events or period of time.
+
 retrospective   <- looking back on or dealing with past events or situations. 회고의,
+
 rig				<- manage or conduct (something) fraudulently so as to produce a result or situation 
 					that is advantageous to a particular person(부정 수단으로 조작하다).
 					"the results of the elections had been rigged"
@@ -1955,6 +2021,7 @@ roster			<- a list of plan showing turns of duty or leave for indivisuals or gro
 rout			<- a disorderly retreat of defeated troops(패주시키다)
 					"the retreat degenerated into a rout"
 					synonyms:	retreat, flight
+
 rudimentary		<- involving or limited to basic principles.(초보, 기본, 미발달,미숙한)
 					synonyms:	basic, elementary, primary, fundamental, essential
 					"rudimentary carpentry skills"
@@ -1971,6 +2038,7 @@ rune			<- a letter of an ancient Germanic alphabet, related to the Roman alphabe
 					
 # S
 saunter			<- walk in a slow, relaxed manner, without hurry or effort.
+
 sacred			<- [seikrid] connected with God (or the gods) or dedicated to a religious 
 					purpose and so deserving veneration.  종교적인
 scrutiny		<- critical observation or examination. 조사
@@ -1978,8 +2046,18 @@ scrutiny		<- critical observation or examination. 조사
 					synonyms:	examination, inspection, survey, study, perusal
 
 setup VS set up <- setup [noun], set up [verb] 
+
 serpentine		<= winding curve(구불한) e.g. serpentine belt(fan belt) for car
+
+scold 			<- remonstrate with or rebuke 꾸짓다 (someone) angrily.
+					"Mom took Anna away, scolding her for her bad behavior"
+					synonyms:	rebuke, reprimand, reproach, reprove, admonish, remonstrate with, chastise, 
+								chide, upbraid, berate, take to task, read someone the riot act, give 
+								someone a piece of one's mind, rake/haul someone over the coals, 
+								vituperate, revile; More
+
 scoot			<- go or leave somewhere quickly.
+
 scorn			<- the feeling or belief that someone or something is worthless or despicable; contempt.
 					"I do not wish to become the object of scorn"
 					synonyms:	contempt, derision, contemptuousness, disdain, derisiveness, mockery, sneering
@@ -1987,6 +2065,7 @@ scorn			<- the feeling or belief that someone or something is worthless or despi
 					antonyms:	admiration, respect
 
 scrutiny		<- critical observation or examination:	examination, inspection, survey, study, perusal;
+
 sensible		<- (of a statement or course of action) chosen in accordance with wisdom or prudence; 
 					likely to be of benefit.
 					synonyms:	practical, realistic, responsible, reasonable, commonsensical, rational, 
@@ -2038,6 +2117,7 @@ softy			<- a softhearted, weak, or sentimental person.
 
 solicit			<- ask for or try to obtain (something) from someone.
 					synonyms:	ask for, request, seek, apply for, put in for, call for, press for, beg, plead for
+
 solicitor		<- a person who tries to obtain business orders, advertising, etc.; a canvasser. 방문판매원
 
 sound bite		<- TV나 라디오를 통해 방송되는 정치가 등의 짧은 인상적인 발언(Interview)
@@ -2091,6 +2171,8 @@ strife			<- angry or bitter disagreement over fundamental issues; conflict.
 
 streak			<- [striːk] Noun: a long, thin line or mark of a different substance or color from its surroundings.
 					Verb: move very fast in a specified direction.
+
+struth = strewth <- 깜짝이야!
 					
 subtle			<- [sΛtl](especially of a change or distinction) so delicate or 
 					precise as to be difficult to analyze or describe.
@@ -2145,6 +2227,7 @@ that being said	<-	That being said (or that having been said) is used as a trans
 
 thin-skinned	<- sesitive to criticism or insults
 thick-skinned
+
 tipping point	<- the point at which a series of small changes or incidents becomes significant enough 
 					to cause a larger, more important change.
 					
@@ -2163,8 +2246,10 @@ traverse		<- travel across or through.
 					extend across or through.
 					"a moving catwalk that traversed a vast cavernous space"
 				synonyms:	cross, bridge, span
+
 triage			<- (in medical use) the assignment of degrees of urgency to wounds or illnesses to decide the order of 
 					treatment of a large number of patients or casualties.
+
 truncate		<- shorten (something) by cutting off the top or the end.
 					"a truncated cone shape"
 					synonyms:	shorten, cut, cut short, curtail, bring to an untimely end
@@ -2172,10 +2257,12 @@ truncate		<- shorten (something) by cutting off the top or the end.
 
 turnkey			<- (car turn key to start & drive) | ~of or involving the provision of a complete product 
 														 or service that is ready for immediate use.
+
 toggle			<- a short rod of wood or plastic sewn to one side of a coat or other garment, pushed through 
 					a hole or loop on the other side and twisted so as to act as a fastener.
 					e.g. Toggle line numbers
 tongue in cheek <- without really meaning what one is saying or writing.
+
 trivial 		<- 	of little value or importance.
 					"huge fines were imposed for trivial offences"
 					synonyms:	unimportant, banal, trite, commonplace, insignificant, 
@@ -2186,6 +2273,7 @@ trivial 		<- 	of little value or importance.
 														 
 # V
 vanquish		<- come out better in a competition, race, or conflict
+
 veteran			<- (베테랑)a person who has had long experience in a particular field.
 					synonyms:	expert, old hand, past master, doyen, vet
 					(재향군인)a person who has served in the military.
@@ -2202,6 +2290,7 @@ vigilant		<- [adj]keeping careful watch for possible danger or difficulties.
 # W
 walk the talk	<- suit one's actions to one's words.(keeping one's word)
 walk the walk	<- suit one's actions to one's words.
+
 warden			<- a person responsible for the supervision of a particular place or thing or for
 					ensuring that regulations associated with it are obeyed.
 					"the warden of a local nature reserve"
@@ -2212,10 +2301,12 @@ warden			<- a person responsible for the supervision of a particular place or th
 wash out of my eyes	<= 
 					
 wane			<- weaker, (especially of a condition or feeling) decrease in vigor, power, or extent; become weaker.
+
 whatnot			<- informal(이것저것)
 					used to refer to an item or items that are not identified but are felt to have something 
 					in common with items already named.
 					"little flashing digital displays, electric zooms and whatnots"
+
 while vs awhile	<- while is a period of time vs awhile is a short period of time
 					awhile "stand here awhile"
 					synonyms:	for a moment, for a (little) while, for a short time; informalfor a bit
@@ -2238,6 +2329,9 @@ whimsical		<-[adjective]
 				erratic, mercurial, mutable, inconstant, inconsistent, unstable, protean
 				"the whimsical arbitrariness of autocracy"
 				
+whodunit		<- 추리 극 a story or play about a murder in which the identity of the murderer 
+					is not revealed until the end.
+				
 wilt			<- [v] (of a plant, leaf, or flower) become limp through heat(풀이죽다), 
 						loss of water, or disease; droop.
 					synonyms:	droop, sag, become limp, flop; More
@@ -2245,7 +2339,7 @@ wilt			<- [v] (of a plant, leaf, or flower) become limp through heat(풀이죽�
 				   [n] any of a number of fungal or bacterial diseases of plants 
 						characterized by wilting of the foliage.
 
-worriedly		<-						
+worriedly		<-	[adj]					
 
 wrap-up party	<- 뒷풀이
 
@@ -2269,19 +2363,50 @@ unkempt			<- [adj](especially of a person) having an untidy or disheveled appear
 uptake			<- the action of taking up or making use of something that is available.
 					"a recent uptake in cigar smoking"
 					 "Vitamin C increases your 'uptake of' minerals such as iron." <- 섭취
+
 unbound			<- not bound or tied up.
+
 unduly			<- to an unwarranted degree; inordinately. 과도하게
+
 unwarranted		<- not justified or authorized.
 					synonyms:	unjustified, uncalled for, unnecessary, unreasonable, unjust, groundless, 
 							excessive, gratuitous, immoderate, disproportionate, undue, unconscionable, 
 							unjustifiable, indefensible, inexcusable, unforgivable, unpardonable More
+
 unwieldy 		<- hard to handle
+
 uphostery		<- [어포울스터리] soft, padded textile covering that is fixed to furniture.
+
 urticaria		<- hive; a rash of round, red welts on the skin that itch intensely, sometimes 
 					with dangerous swelling, caused by an allergic reaction, typically to specific foods
 
 
 
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 
 
 
@@ -2352,7 +2477,7 @@ http://benefitshop.jungchul.com/customer/NoticeView.asp?Page=6&Idx=148&main=4&su
 현재완료에서 been은 어떨 때 쓰나요? been이 어떻게 사용 
 되는지 여러 가지 예문을 통해 자세히 알려주세요. 
 
-안녕하세요? been은 말 그대로 be 동사가 현재완료의 have p.p.안에서 
+been은 말 그대로 be 동사가 현재완료의 have p.p.안에서 
 쓰일 때 p.p.형으로 쓰인 겁니다. 자세히 알아볼까요? 
 
 
@@ -9936,10 +10061,10 @@ So if I'm gonna get you out of this mess, you have to reciprocate.
 	
 	
 	
-	
-	
-	
-	
+
+
+
+
 	
 	
 	

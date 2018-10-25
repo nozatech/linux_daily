@@ -7566,7 +7566,7 @@ https://www.kernel.org/doc/Documentation/networking/nf_conntrack-sysctl.txt
 http://antmeetspenguin.blogspot.com/2011/01/high-performance-linux-router.html
 
 $vi /etc/sysctl.conf	
-	net.netfilter.nf_conntrack_max = 500000   <= add a VAR and value 
+	net.netfilter.nf_conntrack_max = 500000   <= add a VAR and value  
 
 $ /sbin/sysctl -p  (or -f)    <= reload
 
