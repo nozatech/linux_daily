@@ -1,5 +1,5 @@
 부정사구 + 동사 + 보어 형식 
-1. To tell the truth, they are not legal husband and wife.
+1.  To tell the truth, they are not legal husband and wife.
 1.	To help others has always been her great pleasure. 
 2.	To travel around the world has long been a dream of mine. 
 3.	To master a foreign language is really not an easy task.
@@ -14,8 +14,7 @@
 6. To be frank with you, I think him (to be) too honest at any time. 
 
 주어 + expect + 단순부정사
-
- I expect him to pass the employment examination.
+I expect him to pass the employment examination.
 1.	I hope to see you some time next week
 2.	She seemed to be seriously sick then. 
 3.	They hope to finish the work in a week.

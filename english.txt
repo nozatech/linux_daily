@@ -741,6 +741,12 @@ bedside manner 	<- a doctor's approach or attitude toward a patient.
 bespoke			<- (of goods, especially clothing) made to order.
 					"a bespoke suit, a bespoke engine"
 
+betide			<- happen.
+					"I waited with beating heart, as yet not knowing what would betide"
+					synonyms:	happen, occur, take place, come about, transpire, arise, chance; More
+					happen to (someone).
+					"she was trembling with fear lest worse might betide her"
+
 binge			<- a short period devoted to indulging in an activity to excess, 
 					especially drinking alcohol or eating.
 					"he went on a binge and was in no shape to drive"
@@ -951,6 +957,12 @@ overt			<- [adj] one or shown openly; plainly or readily apparent, not secret or
 						conspicuous, obvious, noticeable, manifest, patent, open, blatant
 					"an overt attempt to sidestep the truth"
 					antonyms:	covert
+
+crater			<- a large, bowl-shaped cavity in the ground or on the surface of a planet or the moon,분화구 
+				typically one caused by an explosion or the impact of a meteorite or other celestial body.
+					synonyms:	hollow, bowl, basin, hole, cavity, depression; caldera
+					"the crater has become a lake"
+					"Amazon shares are cratering"
 
 cringe			<- "Having to see some serious PDA up close makes me cringe."
 					(PDA <- Public Display of Affection 공공장소에서의 애정행위) 
@@ -1170,6 +1182,11 @@ enrage			<- make very angry.
 					"the students were enraged at these new rules"
 					synonyms:	anger, infuriate, incense, madden, inflame
 					antonyms:	placate, calm
+
+enthused		<- say something that expresses one's eager enjoyment, interest, or approval. 열광, 열중
+					"they both enthused over my new look"
+					synonyms:	rave about, be enthusiastic about, gush over, wax lyrical about, 
+							be effusive about, get all worked up about, rhapsodize about; More
 					
 entice			<- attract or tempt by offering pleasure or advantage.
 					synonyms:	tempt, lure, allure, attract, appeal to; 유혹하다
@@ -1556,6 +1573,9 @@ lean 			<- [v] be in or move into a sloping position.
 
 leech			<- 1.One who constantly takes from others without giving anything in return. 
 				   2.One who constantly copies things from others, such as style, phrases, expressions, and actions.
+
+leg down		<- Another big leg down means another big fall in value for Sterling(Pounds) vs 
+					other currencies, mainly vs the US dollar.
 
 liaise			<- [v]리-애이즈 establish a working relationship, typically in order to cooperate on a matter of mutual concern.
 					"she will liaise with teachers across the country"
@@ -2020,8 +2040,10 @@ roster			<- a list of plan showing turns of duty or leave for indivisuals or gro
 					
 rout			<- a disorderly retreat of defeated troops(패주시키다)
 					"the retreat degenerated into a rout"
-					synonyms:	retreat, flight
+					synonyms:	retreat, flight, crush, smash
+					"Stocks could rally 20% after this bruising rout"
 
+			
 rudimentary		<- involving or limited to basic principles.(초보, 기본, 미발달,미숙한)
 					synonyms:	basic, elementary, primary, fundamental, essential
 					"rudimentary carpentry skills"
@@ -3325,6 +3347,110 @@ o	미래완료진행형이 만들어지는 과정
 o	미래완료진행형과 미래완료형이 내용상 거의 차이가 없어지는 경우
 o	미래완료진행형보다 미래완료형의 사용빈도수가 높은 이유
 미래완료진행 자세히 보기
+
+
+
+
+직설법 -> 명령법 -> 가정법
+
+### 가정법 ###
+-------------------------------------------------
+가정				조건절(IF | V)  		주절 (S V)
+-------------------------------------------------
+현재 사실의 반대	If | V'ed			I would V
+(가정법 과거)		(과거형)				(조동사 과거형)
+--------------------------------------------------
+과거 사실의 반대	If | Had P.P.		I would have P.P.
+(가정법 과거완료)	(과거 완료로 씀)		(과거 조동사 + have + P.P.)
+--------------------------------------------------
+과거 사실의 반대	If | Had P.P.		I would V
+(가정법 혼합형)		(과거 완료로 쓰임)		(조동사 과거형)
+--------------------------------------------------
+현실/미래 가능한 일	If | V				I will V
+				(현재시제로 쓰임)		(조동사 원형)
+--------------------------------------------------
+
+<현재>(현실/미래) 조건절
+If I have the same chance, I will sell the stocks.
+If you do that again, I will kill you.
+If you pass the exam, I will buy you a car.
+	너 시험에 합격하면, 내가 차 사줄께.
+If I have time, I will sell.
+
+<현재> 현재 사실의 반대(과거동사 사용)
+If I had time, I would sell the stocks.
+If I were your boss, I would fire you.
+If I knew about the news, I would sell the stocks.
+	뉴스를 알았다면, 주식을 팔았을텐데..
+If you passed the exam, I would buy you a car.
+	너 시험에 합격하면, 내가 차 사줄텐데..
+If I were you, I wouldn't buy this car.
+
+
+<과거>(과거완료) 과거 사실의 반대
+If I had listened to you selling stocks on Sept, I would have made $50,000.
+If I had known about the bad news, I would have sold the stocks.
+If you had passed the exam, I would have bought you a car.
+	너 시험에 합격했더라면, 내가 차 사줬을 텐데.
+If I had gone to the movie, I would have a good time now.	
+
+	
+	
+(혼합형) 과거 사실의 반대
+If I had sold the stocks, I wouldn't lose $50,000.
+
+
+
+
+
+<현재시재>
+<현재 조건부>
+If I have time, I will sell.				시간이 있으면, 팔꺼야		<= 팔수있음
+				  can
+				  may
+				  shall
+
+<과거를 이용한 현재시재>
+If I had time, 	I would sell.				시간이 있으면, 팔을텐데   <= 못팜
+				  should
+				  might
+				  could
+
+<과거완료시재>
+과거완료<->과거<->현재완료<->현재
+과거에 후회하는 사실이 있으면 더 과거로 돌아감.
+
+
+If I had had time, I would have sold the stocks.		
+	시간이 있더라라면, 팔았을 텐데..
+If I had sold the stock on Sept, I would have made $50k.
+	9월에 팔았더라면, $50k 만들었을텐데. 
+Someone could have driven off with them, and you wouldn't have even noticed. 
+누군가 차로 애들을 치고 갔어도, 당신은 알아차리지도 못했을 거잖아. 
+
+
+
+
+
+<가정법 미래>
+If they should come here tomorrow, you will 
+If they were to come here tomorrow, 
+
+
+
+
+<가정법 예문들>
+How dare he thought he could have an affair with me?	어떻게 감히 그가 나와 불륜 관계를 맺을 수 있다고 생각한 거야?
+Holden could have more friends but chooses not to.	홀덴은 더 많은 친구들과 사귈수있었지만 안하기로 선택하였다.
+His design was infinitely better than anything I could have done.	그의 디자인은 내가 할 수 있는 그 어떤 것보다도 엄청 더 좋았다.
+I'm glad we could have this little chat.	우리가 이런 담소를 나눌 수 있어서 기쁘다
+If you were strong, you could have survived.	너희가 강했다면 살아날 수도 있었을 거야.
+
+
+
+
+
+
 
 
 ##
@@ -9700,7 +9826,7 @@ It must have been an accident.
 사고였을 거야
 I, uh... had a standing order with the florist. 
 꽃집에 미리 오더 해놓고 
-Well, I could be mistaken. As I said, it's... been years. 
+Well, I could be mistaken. As I said, it's been years. 
 
 I could have been a millionaire if I had accepted the deal last year. 
 	<- But unfortunately I did not accept the deal and I can not be a millionaire now.
