@@ -1291,6 +1291,12 @@ flout			<- [v] openly disregard (a rule, law or convention).
 							fail to observe, contravene, infringe, breach, commit a breach of, 
 							transgress against
 				antonyms:	observe
+
+formidable		<- [adj] inspiring fear or respect through being impressively large, powerful, intense, or capable.
+					"a formidable opponent" 무서운, 만만치 않은
+					synonyms:	intimidating, forbidding, daunting, disturbing, alarming, frightening, disquieting, 
+					brooding, awesome, fearsome, ominous, foreboding, sinister, menacing, threatening, dangerous More
+
 forgo			<- stopping (고스톱 4(for) go에서 "멈추다")
 					omit or decline to take (something pleasant or valuable); go without.
 					"she wanted to forgo the dessert and leave while they could"
@@ -2180,6 +2186,8 @@ stash			<- store (something) safely and secretly in a specified place
 
 startle			<- excited by sudden surprise or alarm and making a quick involuntary movement
 
+stay put		<- (of a person or object) remain somewhere without moving or being moved.
+
 stickler		<- a person who insists on a certain quality or type of behavior.
 					"a stickler for accuracy"
 					synonyms:	perfectionist, pedant, nitpicker, purist, diehard, hard-liner, fanatic
@@ -2253,6 +2261,8 @@ thick-skinned
 tipping point	<- the point at which a series of small changes or incidents becomes significant enough 
 					to cause a larger, more important change.
 					
+To this end		<- 이를 위하여, In order to achieve this goal. as a way of dealing with or doing something
+					We want to save the building. To this end, we have hired someone to assess its current state.
 					
 tranquil		<-[adj] free from disturbance; calm.
 					"her tranquil gaze"
@@ -2279,6 +2289,8 @@ truncate		<- shorten (something) by cutting off the top or the end.
 
 turnkey			<- (car turn key to start & drive) | ~of or involving the provision of a complete product 
 														 or service that is ready for immediate use.
+
+
 
 toggle			<- a short rod of wood or plastic sewn to one side of a coat or other garment, pushed through 
 					a hole or loop on the other side and twisted so as to act as a fastener.
@@ -3432,11 +3444,21 @@ Someone could have driven off with them, and you wouldn't have even noticed.
 
 
 
-<가정법 미래>
-If they should come here tomorrow, you will 
-If they were to come here tomorrow, 
-
-
+<가정법 미래> 조건절
+If it rains this weekend, I am going to stay home.
+If she asks, I'm just going to pretend I don't know anything
+If I get off work early today, I'm going to meet up with some friends for some drinks.
+If this happens again, they are going to lose everything.
+If you don't like it, you can return it.
+If you study really hard, you might pass the test.
+if you are late, you can take the taxi.
+If you tell her the truth, she might understand.
+You don't have to eat if you are not hunry.
+If I can't have save enough money, you might have to borrow some money.
+Michael is supposed to give a presentation in the meeting today, but if he's late, you might have to do it.
+If they don't help us, we won't be able to finish this on time.
+If we leave(go) now, we might be able to catch the last train/bus.
+If the weather is really nice, we're going to be able to swim.
 
 
 <가정법 예문들>
@@ -3445,6 +3467,82 @@ Holden could have more friends but chooses not to.	홀덴은 더 많은 친구�
 His design was infinitely better than anything I could have done.	그의 디자인은 내가 할 수 있는 그 어떤 것보다도 엄청 더 좋았다.
 I'm glad we could have this little chat.	우리가 이런 담소를 나눌 수 있어서 기쁘다
 If you were strong, you could have survived.	너희가 강했다면 살아날 수도 있었을 거야.
+
+
+<평서문>
+I went to bed late last night, so it was hard to get up this morning.
+<과거완료형> 
+1. ~을 했을꺼야/이랬을꺼야/저랬을꺼다
+If I had gone to bed earlier last night, I wouldn't have been so hard to get up this morning.
+	<과거 P.P.>										<현재 P.P.>
+
+I wasn't prepared, so I didn't do well on the interview.
+If I had been more prepared, I would've done better on the interview.
+
+I didn't eat breakfast, so I was very hungry during the test.
+If I had eaten breakfast, I wouldn't have been so hungry during the test, and I would've concentrated better.
+
+I didn't konw about his situation, so I couldn't help him.
+If I had known about his situation, I would've helped him.
+ 
+2. ~을 할수도 있었어/ 했었을지도 몰라
+If he had asked me, I might've help him. 
+
+If she had practiced harder, she might not have made that mistake.
+If she had practiced harder, she might not've made that mistake.
+
+If I had looked into it a little more, I might've chosen a different decision.
+If I had looked into it a little more, I might've chosen a different one.
+
+If he hadn't told her, she might not've realized how important it was.
+							<mihgt have p.p.>
+
+3. ~할 수 있었을꺼야/~할 수 있었을텐데
+If I had studied harder, I could've gone to a better school.
+If I had known the China's economic issues, I could've sold the stocks earlier.
+If I had known the China's economic issues, I would've been able to sell the stocks earlier.
+< 부정- 부정>
+If you hadn't helped me, I couldn't have finished this on time.
+If you hadn't helped me, I wouldn't have been able to finish this on time.
+
+If we had left a little later, we couldn't have arrived here at this time.
+If we had left a little later, we wouldn't have been able to arrive here at this time.
+
+4. ~해야 했을거야/ 해야 됬었을꺼야
+If I hadn't saved enough money, I would've had to be(stay) there for another year.
+If she hadn't passed the exam, she would've had to prepare another for the test.
+
+If you had told me a little earlier, I wouldn't have had to wait this long.
+If I hadn't made that mistake, we wouldn't have had to do this again.
+If I hadn't made that mistake, we wouldn't have needed to do this again.
+
+If I had watched your videos back in my early 20's, I could've enjoyed learning English a lot 
+	and I would've had much better English skills by  now.
+
+
+
+
+가정법	
+1. 일반적인 사실	
+When the weather is this hot, it's better to walk your dog at night.	
+
+2. 가능한 미래
+If it's hot like this for the rest of week, it's going to be one really tough week.
+
+3. 현재의 사실에 대한 가정
+I wish there were a policy where we all get a day off when the weather is not past(beyond) a certain point.
+If that were true, that would be awesome!
+
+4-1. 과거의 사실에 대한 가정이 '현재'에 줬을 변화
+If you had fixed the AC earlier(sooner), we wouldn't need to go through this now
+and people wouldn't be complaining about it.
+
+4-1. 과거의 사실에 대한 가정이 '과거'에 줬을 변화
+If we had known there was a problem with the  AC, of course we would've fixed it earlier.
+
+
+
+
 
 
 
