@@ -3501,7 +3501,7 @@ If he hadn't told her, she might not've realized how important it was.
 If I had studied harder, I could've gone to a better school.
 If I had known the China's economic issues, I could've sold the stocks earlier.
 If I had known the China's economic issues, I would've been able to sell the stocks earlier.
-< 부정- 부정>
+< 부정 - 부정> <과거 - 과거>
 If you hadn't helped me, I couldn't have finished this on time.
 If you hadn't helped me, I wouldn't have been able to finish this on time.
 
@@ -3523,11 +3523,11 @@ If I had watched your videos back in my early 20's, I could've enjoyed learning 
 
 
 가정법	
-1. 일반적인 사실	
+1. 일반적인 사실	 
 When the weather is this hot, it's better to walk your dog at night.	
 
 2. 가능한 미래
-If it's hot like this for the rest of week, it's going to be one really tough week.
+If it's hot like this for the rest of week, it's going to be a really tough week.
 
 3. 현재의 사실에 대한 가정
 I wish there were a policy where we all get a day off when the weather is not past(beyond) a certain point.
@@ -3543,6 +3543,22 @@ If we had known there was a problem with the  AC, of course we would've fixed it
 
 
 
+
+
+being 사용법
+수동태
+1. be being p.p.
+
+2. ~것 형용사
+being smart is good
+
+3. He is mad		<- always angry
+   he is being mad  <- temp angry
+
+
+I don't want to be ripped off.
+6 Signs You're Being Ripped Off.
+Avoid being ripped off before buying a new car.
 
 
 
@@ -10250,19 +10266,25 @@ https://m.blog.naver.com/PostView.nhn?blogId=newworldalps&logNo=220350334584&pro
 It is time that we left.
 
 ( It is time + v1/ s or es ) explains that it is time to do something and it is possible.
-( It is time + v2) explains that it is time to do something and it can not possible. Here , past tense doesn't give the sense of past (completion )
-‘It is time you go home' . Means it is time to go and you are going or makes you remember the time to go home.
-It is time I went home' . Means it is time to go but it appears not possible ( willing to go but unable. )
+( It is time + v2) explains that it is time to do something and it can not possible. 
+					Here , past tense doesn't give the sense of past (completion )
+‘It is time you go home' 
+		- it is time to go and you are going or makes you remember the time to go home.
+'It is time I went home' 
+		- it is time to go but it appears not possible ( willing to go but unable. )
 
-It's time to go to bed <- 이 문장은 내가 이얘기를 한다라면 내 말을 들을수있는 모든
-						사람들에게 말하고 있는 표현입니다.
-It's time that you went to bed	<- (너)받는 사람을 문장에 넣고싶을때는
+It's time to go to bed 			<- 모든 사람들에게 말하고 있는 표현
+It's time that we all go to bed <- 모든 사람들에게 말하고 있는 표현
+It's time that you went to bed	<- 이미 자고있어야하는 시간인데 자러가. 
+									went 를 사용한 가정법
 
 It's time to eat lunch.			<- 모두 먹을시간
 It's time that you had lunch!	<- 너만 먹을시간이야. 내가 생각하기에를 ~ed로 표현
 
-She has a ten-month-old baby. Where is it? 
-I don't know. If we'd seen a kid we wouldn't have left it in a crack house. 
+Where is the baby? 
+I don't know. If we'd seen a kid, we wouldn't have left it in a crack house. 
+				<가정법 과거 have+p.p.>   <would have +p.p.>
+
 
 Why should you fend for yourself when you can just come home with me? 
 왜 혼자 있겠다고 고집을 부리니? 

@@ -1,33 +1,34 @@
 English Tense 
 
-Present
+시재
+1. Present 현재시재
 	
-	Simple Present		
+	A. Simple Present		
 				You speak English.
 				You do not speak English.
 				Do you speak English?
 			
-		Auxiliary Verb (Helping Verb)	
+		Auxiliary Verb 조동사 (Helping Verb)	
 				You can speak English.
 				You can not speak English.
 				Can you speak English?
 		
-		Passive Voice		
+		Passive Voice 수동태		
 				English is spoken by you.
 				English is not spoken by you.
 				Is English spoken by you?
-	
-	Auxiliary Verb + Passive Voice	
+					
+		Passive Voice + Auxiliary Verb 
 				English can be spoken by you.
 				English can not be spoken by you.
 				Can English be spoken by you?
 	
-	Present Continuous		
+	B. Present Continuous (adding ~ing)		
 				You are speaking English.
 				You are not speaking English.
 				Are you speaking English?
 				
-		Auxiliary Verb (Helping Verb)	
+		Auxiliary Verb 조동사 (Helping Verb)	
 				You can be speaking English.
 				You can not be speaking English.
 				Can you speak English?
@@ -37,12 +38,12 @@ Present
 				English is not being spoken by you.
 				Is English being spoken by you?
 				
-	Auxiliary Verb + Passive Voice	
+		Passive Voice +	Auxiliary Verb 
 				English can be being spoken by you.
 				English can not be being spoken by you.
 				Can English be being spoken by you?
 	
-	Present Perfect		
+	C. Present Perfect		
 				You have spoken English.
 				You have not spoken English.
 				Have you spoken English?
@@ -57,12 +58,12 @@ Present
 				English has not been spoken by you.
 				Has English been spoken by you?
 				
-	Auxiliary Verb + Passive Voice	
+		Passive Voice +	Auxiliary Verb
 				English can have been spoken by you.
 				English can not have been spoken by you.
 				Can English have been spoken by you?
 				
-	Present Perfect Continuous	
+		Present Perfect Continuous	
 				You have been speaking English.
 				You have not been speaking English.
 				Have you been speaking English?
@@ -77,14 +78,14 @@ Present
 				English has not been being spoken by you.
 				Has English been being spoken by you?
 		
-	Auxiliary Verb + Passive Voice	
+		Passive Voice + Auxiliary Verb 	
 				English can have been being spoken by you.
 				English can not have been being spoken by you.
 				Can English have been being spoken by you?
 
 
-Past
-	Simple Past		
+2. Past 과거시재
+	A. Simple Past		
 				You spoke English.
 				You did not speak English.
 				Did you speak English?
@@ -99,12 +100,12 @@ Past
 				English was not spoken by you.
 				Was English spoken by you?
 	
-	Auxiliary Verb + Passive Voice	
+		Passive Voice + Auxiliary Verb 	
 				English could be spoken by you.
 				English could not be spoken by you.
 				Could English be spoken by you?
 				
-	Past Continuous		
+		Past Continuous		
 				You were speaking English.
 				You were not speaking English.
 				Were you speaking English?
@@ -119,12 +120,12 @@ Past
 				English was not being spoken by you.
 				Was English being spoken by you?
 				
-	Auxiliary Verb + Passive Voice	
+		Passive Voice +	Auxiliary Verb 
 				English could be being spoken by you.
 				English could not be being spoken by you.
 				Could English be being spoken by you?
 				
-	Past Perfect		
+	B. Past Perfect		
 				You had spoken English.
 				You had not spoken English.
 				Had you spoken English?
@@ -139,12 +140,12 @@ Past
 				English had not been spoken by you.
 				Had English been spoken by you?
 		
-	Auxiliary Verb + Passive Voice	
+		Passive Voice + Auxiliary Verb	
 				English could have been spoken by you.
 				English could not have been spoken by you.
 				Could English have been spoken by you?
 				
-	Past PerfectContinuous	
+		Past PerfectContinuous	
 				You had been speaking English.
 				You had not been speaking English.
 				Had you been speaking English?
@@ -159,18 +160,15 @@ Past
 				English had not been being spoken by you.
 				Had English been being spoken by you?
 		
-	Auxiliary Verb + Passive Voice	
+		Passive Voice + Auxiliary Verb 	
 				English could have been being spoken by you.
 				English could not have been being spoken by you.
 				Could English have been being spoken by you?
 				
 				
+3. Future 미래시재
 
-				
-
-Future
-
-	Simple Future		
+	A. Simple Future		
 				You will speak English.
 				You will not speak English.
 				Will you speak English?
@@ -180,7 +178,7 @@ Future
 				English will not be spoken by you.
 				Will English be spoken by you?
 				
-	Future Continuous		
+	B. Future Continuous		
 				You will be speaking English.
 				You will not be speaking English.
 				Will you be speaking English?
@@ -190,7 +188,7 @@ Future
 				English will not be being spoken by you.
 				Will English be being spoken by you?
 				
-	Future Perfect
+	C. Future Perfect
 				You will have spoken English.
 				You will not have spoken English.
 				Will you have spoken English?
@@ -200,7 +198,7 @@ Future
 				English will not have been spoken by you.
 				Will English have been spoken by you?
 				
-	Future Perfect Continuous	
+		Future Perfect Continuous	
 				You will have been speaking English.
 				You will not have been speaking English.
 				Will you have been speaking English?
@@ -209,3 +207,78 @@ Future
 				English will have been being spoken by you.
 				English will not have been being spoken by you.
 				Will English have been being spoken by you?
+				
+				
+				
+Subjunctive Mood 가정법
+
+<평서문>
+I went to bed late last night, so it was hard to get up this morning.
+<과거완료형> 
+1. ~을 했을꺼야/이랬을꺼야/저랬을꺼다
+If I had gone to bed earlier last night, I wouldn't have been so hard to get up this morning.
+	<과거 P.P.>										<현재 P.P.>
+
+I wasn't prepared, so I didn't do well on the interview.
+If I had been more prepared, I would've done better on the interview.
+
+I didn't eat breakfast, so I was very hungry during the test.
+If I had eaten breakfast, I wouldn't have been so hungry during the test, and I would've concentrated better.
+
+I didn't konw about his situation, so I couldn't help him.
+If I had known about his situation, I would've helped him.
+ 
+2. ~을 할수도 있었어/ 했었을지도 몰라
+If he had asked me, I might've help him. 
+
+If she had practiced harder, she might not have made that mistake.
+If she had practiced harder, she might not've made that mistake.
+
+If I had looked into it a little more, I might've chosen a different decision.
+If I had looked into it a little more, I might've chosen a different one.
+
+If he hadn't told her, she might not've realized how important it was.
+							<mihgt have p.p.>
+
+3. ~할 수 있었을꺼야/~할 수 있었을텐데
+If I had studied harder, I could've gone to a better school.
+If I had known the China's economic issues, I could've sold the stocks earlier.
+If I had known the China's economic issues, I would've been able to sell the stocks earlier.
+< 부정- 부정>
+If you hadn't helped me, I couldn't have finished this on time.
+If you hadn't helped me, I wouldn't have been able to finish this on time.
+
+If we had left a little later, we couldn't have arrived here at this time.
+If we had left a little later, we wouldn't have been able to arrive here at this time.
+
+4. ~해야 했을거야/ 해야 됬었을꺼야
+If I hadn't saved enough money, I would've had to be(stay) there for another year.
+If she hadn't passed the exam, she would've had to prepare another for the test.
+
+If you had told me a little earlier, I wouldn't have had to wait this long.
+If I hadn't made that mistake, we wouldn't have had to do this again.
+If I hadn't made that mistake, we wouldn't have needed to do this again.
+
+If I had watched your videos back in my early 20's, I could've enjoyed learning English a lot 
+	and I would've had much better English skills by  now.
+
+
+
+
+가정법	
+1. 일반적인 사실	 
+When the weather is this hot, it's better to walk your dog at night.	
+
+2. 가능한 미래
+If it's hot like this for the rest of week, it's going to be a really tough week.
+
+3. 현재의 사실에 대한 가정
+I wish there were a policy where we all get a day off when the weather is not past(beyond) a certain point.
+If that were true, that would be awesome!
+
+4-1. 과거의 사실에 대한 가정이 '현재'에 줬을 변화
+If you had fixed the AC earlier(sooner), we wouldn't need to go through this now
+and people wouldn't be complaining about it.
+
+4-1. 과거의 사실에 대한 가정이 '과거'에 줬을 변화
+If we had known there was a problem with the  AC, of course we would've fixed it earlier.
