@@ -860,8 +860,13 @@ circumvent		<- find a way around (an obstacle).
 cliche			<- a phrase or opinion that is 'overused' and betrays a lack of original thought. 진부한
 
 cling			<- (of a person or animal) hold on tightly to.
-
-clingy			<- kids are very clingy #(of a person or garment) liable to cling; clinging
+					매달리다, 집착하다, 고수하다
+					
+clingy			<- [adj]kids are very clingy #(of a person or garment) liable to cling; clinging 남에게 의존하는, 감겨 붙는
+					"The thing is I don't know if he is losing interest, playing it cool or 
+					looking at the whole thing as a casual relationship. I don't want to 
+					ask because I don't want to come across as clingy / desperate... "
+					
 
 clobber			<- hit (someone) hard.
 					"if he does that I'll clobber him!"
@@ -1394,6 +1399,8 @@ hit a snag			<- to run into an unexpected problem
 
 hives			<- same as urticaria 두드러기
 
+holidays		<- hols  <=short for holidays in British
+
 holistic		<- characterized by comprehension of the parts of something as intimately interconnected 
 					and explicable only by reference to the whole.
 					## MEDICINE ##
@@ -1515,6 +1522,21 @@ jump the shark	<- Informal (of a television series or movie) reach a point at wh
 					"unsuccessful gimmicks for promoting something"
 
 # K
+
+keen to 		<- be keen to go abroad / I am keen not to go abroad
+					외국에 가고 싶어하다		/ 외국에 가고 싶지 않다
+					I don't know tbh(to be honest). 
+					I thought he'd make that call, and I am keen not to come across as desperate!
+
+				<- to be keen on	|	
+				   to be fond of	|  to like or be very nterested in something
+				   to be fan of		|
+				
+				I am very keen on running.  | I'm not so keen on cleaning
+				I am very fond of running.	| I'm not so fond of cleaning
+				I am a big fan of running.	| I'm not such a fan of cleaning
+				
+					
 keep the word 	<- To do as one has promised. 
 					"Tom always keeps his word, so if he promised to help you move, then he'll be here."
 
@@ -10309,7 +10331,62 @@ So if I'm gonna get you out of this mess, you have to reciprocate.
 	
 
 
+	
+신체부위 영어표현
 
+
+[신체부위별 증상 표현 - 목(NECK)]
+
+※ 보통 목을 말할 때는 목구멍(throat)을 말하는데 편도선(tonsil)관는 다르게 표현한다.
+throat는 목구멍 즉 식도를 말하고 편도선(tonsil)은 사람의 입속 양쪽구석에 하나씩 있는 평평하고타원형인 임파선(lymphatic gland)을 말한다.
+※ 가래(phlegm,sputum)는 침(saliva)과는 성질이 다른데 묽은가래는 thin sputum,
+된가래는 thick sputum, 피석인 가래는 bloody phlegm로 표현한다.
+
+＊ Do you have a sore throat?(목이 아프십니까?)
+
+＊ I have a sore throat.(목이 아픕니다.)
+＊ My throat feels raw.(목이 쓰라립니다.)
+＊ I have an irritated throat.(목이 따금따금 거립니다.)
+＊ My throat hurts when I swallow.(삼킬 때 목이 아픕니다.)
+＊ My throat bruns when I cough.(기침을 하면 목이 화끈거립니다.)
+
+＊ It's difficult to talk.(말하기가 힘이 듭니다.)
+＊ I think my tonsils are swollen.(편도선이 부은 것 같습니다.)
+＊ I'm always thirsty.(늘 목이 마릅니다.)
+＊ I have a rough throat.(목이 까칠까칠 합니다.)
+
+＊The back of my throat is itchy and tickles.(목의 안쪽이 간질간질 거립니다.)
+＊ It feels as if something were in my throat.(목에 뭔가 걸린 것 같습니다.)
+
+＊ Please remove the fishbon stuck in my throat.(목에 걸려있는 생선가시를 빼주세요.)
+＊ I have an uncomfortable feeling deep in my throat.(목 안쪽이 불편합니다.)
+
+＊ My voice gets hoarse.(목이 쉬었어요.)
+＊ For the past few days I've been hoarse.(지난 몇일동안 계속 목이 쉬었어요.)
+＊ If I speak for any length of time, I get hoarse.(말을 얼마동안 하고나면, 목이 쉽니다.)
+＊ If I talk too much or speak in loud voice, I get hoarse easily.(말을 많이 하거나 큰 소리로 말하면 목이 쉽게 쉽니다.)
+
+＊ I cough up phlegm.(가래가 나옵니다.)
+＊ I cough up thin sputum.( 묽은가래가 나옵니다.)
+＊ I cough up thick sputum.(진한 가래가 나옵니다.)
+＊ I cough up bloody phlegm.(피섞인 가래가 나옵니다.)
+＊ I feel like sputum is sticking in my throat.(목에 가래가 걸린 것 같아요.)
+＊ I always salivates.(항상 침을 흘립니다.)
+
+＊ I strained my neck and can't move my head.(목을 삐어서 머리를 움직일 수가 없어요.)
+＊ My neck is so stiff that I can't move. (목이 너무 뻐근해서 움직일 수가 없어요.)
+
+＊ I got crick in my neck while sleeping.(잠자는 동안 목에 쥐가 났어요.)
+
+＊ I have a sharp pain if I try to turn my neck.(목을 돌릴려고하면 통증이 심합니다.)
+
+＊ I was wondering if something may be wrong with the neck bones.(목뼈가 잘못된 것 같습니다.)
+
+＊ My neck is so painful that I can't turn it.(목이 나무아파서 돌릴 수가 없어요.)
+
+＊ My neck sanpped when I suddenly put on the brakes(내가 갑자기 브레이크를 밟았을 때 목이 부러졌습니다.)
+
+＊ I have a hard lump in my neck.(목에 딱딱한 혹이 생겼습니다.)
 
 	
 	

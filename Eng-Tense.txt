@@ -1,23 +1,36 @@
 English Tense 
 
 시재
-1. Present 현재시재
+1. Present(현재시재)
 	
 	A. Simple Present		
 				You speak English.
 				You do not speak English.
 				Do you speak English?
+				
+				He seems excited.
+				He doesn't seem excited.
+				Does he seem excited?
 			
 		Auxiliary Verb 조동사 (Helping Verb)	
 				You can speak English.
 				You can not speak English.
 				Can you speak English?
+				
+				He can speak English.
+				He can't speak English.
+				Can he speak English?
 		
 		Passive Voice 수동태		
 				English is spoken by you.
 				English is not spoken by you.
 				Is English spoken by you?
 					
+				Car is fixed by him.
+				Car isn't fixed by him.
+				Is car fixed by him?
+
+				
 		Passive Voice + Auxiliary Verb 
 				English can be spoken by you.
 				English can not be spoken by you.
@@ -28,20 +41,39 @@ English Tense
 				You are not speaking English.
 				Are you speaking English?
 				
+				He is fixing the car.
+				He isn't fixing the car.
+				Is he fixing the car?
+				
 		Auxiliary Verb 조동사 (Helping Verb)	
 				You can be speaking English.
 				You can not be speaking English.
 				Can you speak English?
+				
+				He can be fixing the car.
+				He can't be fixing the car.
+				Can he fix the car?
 				
 		Passive Voice		
 				English is being spoken by you.
 				English is not being spoken by you.
 				Is English being spoken by you?
 				
+				The car is being fixed by him.
+				The car isn't being fixed by him.
+				Is car being fixed by him?
+				
+				
 		Passive Voice +	Auxiliary Verb 
 				English can be being spoken by you.
 				English can not be being spoken by you.
 				Can English be being spoken by you?
+				
+				Car can be being fixed by him.
+				Car can't be being fixed by him.
+				Can car be being fixed by him?
+				
+				
 	
 	C. Present Perfect		
 				You have spoken English.
