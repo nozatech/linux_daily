@@ -1886,10 +1886,18 @@ procrastinate	<- [v] delay or postpone action; put off doing something.
 							take one's time, play for time, play a waiting game
 					"fear of failure often causes people to procrastinate"		
 
-promiscuous		<- 
-
+promiscuous		<- extend beyond or above a surface.
+					synonyms:	stick out, jut (out), project, extend, stand out, bulge out, 
+								poke out, thrust out, cantilever More
+					"something like a fin protruded from the water"
+					"protrude one's lips"  튀어나오다, 돌출하다
+					
+					
+					
 prospective		<- (of a person) expected or expecting to be something particular in the future. 미래의, 장래의
 					vs Retrospective  <- 회고의,looking back on or dealing with past events or situations. 
+
+protrude		<- 
 
 punctual		<- 	happening or doing something at the agreed or proper time; on time.
 					"he's the sort of man who's always punctual"
@@ -2162,6 +2170,8 @@ snoop			<- investigate or look around furtively in an attempt to find out someth
 					
 so can you		<- you can too
 					"I lost 20 pounds in 4 days, and so can you."
+
+Social Setting	<- The surroundings or environment in which social activities occur.
 					
 softy			<- a softhearted, weak, or sentimental person.
 
