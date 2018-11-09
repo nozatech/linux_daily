@@ -217,6 +217,41 @@ Perfect Continuous Infinitive (긴 완벽)     			— to have been asking
 
 
 
+
+### 조동사 ###
+<과거>			<현재>		<미래>
+could			can			Could
+would			will		would
+should			shall		should
+might			may			might
+(might have to)
+dare			dare		dare		<- 의문문,부정문에만 사용
+had to			must		must/have to
+did				do			do
+
+### 준+조동사 ### 70% 조동사
+<과거> was/were 		<현재> am/is/are		<미래> am/are/is			
+going to			going to			going to
+was/were			used to
+					supposed to
+should				ought to			should
+					have to
+					have got to
+					had better 
+be able to			be able to
+didn't have to		need not			Don't have to
+
+
+
+
+
+
+
+
+
+
+
+
 관용어 = 숙어 = Idiom
 
 적!자!생!존!
@@ -3381,12 +3416,16 @@ I will have worked here since last year. 나는 지난해부터 여기서 일을
 
 
 
-직설법 -> 명령법 -> 가정법
+
 
 ### 가정법 ###
+직설법 -> 명령법 -> 가정법
 -------------------------------------------------
 가정				조건절(IF | V)  		주절 (S V)
 -------------------------------------------------
+현실/미래 가능한 일	If | V				I will V
+				(현재시제로 쓰임)		(조동사 원형)
+--------------------------------------------------
 현재 사실의 반대	If | V'ed			I would V
 (가정법 과거)		(과거형)				(조동사 과거형)
 --------------------------------------------------
@@ -3396,20 +3435,16 @@ I will have worked here since last year. 나는 지난해부터 여기서 일을
 과거 사실의 반대	If | Had P.P.		I would V
 (가정법 혼합형)		(과거 완료로 쓰임)		(조동사 과거형)
 --------------------------------------------------
-현실/미래 가능한 일	If | V				I will V
-				(현재시제로 쓰임)		(조동사 원형)
---------------------------------------------------
 
-<현재>
-현실 조건  => 미래 결론  <- 조건절
+
+<현재> 현실 조건  => 미래 결론  <- 조건절
 If I have the same chance, I will sell the stocks.
 If time comes, I will sell the stocks.
-If you do that again, I will kill you.
+If you do that again, I will hit you.
 If you pass the exam, I will buy you a car.
 If I have time, I will sell the cookies for you.
 
-<현재> 
-현재 사실의 반대(과거동사 사용)
+<현재> 현재 사실의 반대(과거 동사 사용)
 If I had time, I would sell the stocks.
 If I were your boss, I would fire you.
 If I knew about the news, I would sell the stocks.
@@ -3420,17 +3455,25 @@ If you passed the exam, I would buy you a car.
 If I were you, I wouldn't buy this junk car.
 
 
-<과거>
-과거완료 	<- 과거 사실의 반대
-If I had listened to you selling stocks back in Sept, I would have made $50,000.
+
+
+<과거> 과거완료 	<- 과거 사실의 반대
+If I had listened' to you, I 'would have made' a lot of money.
+If I'd   listened' to you, I'd have made' a lot of money.
+	< 과거 + P.P. >			< would + 현재 +P.P. >
+		말을 들었었더라면 			벌었을 텐테
 If I had known about the bad news, I would have sold the stocks.
 If you had passed the exam, I would have bought you a car.
 	너 시험에 합격했더라면, 내가 차 사줬을 텐데.
 If I had gone to the movie, I would have enjoyed time being myself.	
 
+Someone could had driven off with them, 	and you wouldn't have even noticed. 
+Someone could've driven off with them, 		and you wouldn't have even noticed. 
+누군가 차로 애들을 치고 갔어도, 당신은 알아차리지도 못했을 거잖아. 
+
 	
 	
-(혼합형) 과거 사실의 반대
+(혼합형) 과거 사실의 부정문
 과거완료						현재 완료
 If I had sold the stocks, I wouldn't have lost $50,000.
 
@@ -3446,22 +3489,24 @@ If I have time, I will sell.				시간이 있으면, 팔꺼야		<= 팔수있음
 				  shall
 
 	<과거를 이용한 현재시재>
-If I had time, 	I would sell.				시간이 있으면, 팔을텐데   <= 못팜
+If I had time, 	I would sell.				시간이 있었으면, 팔을텐데   <= 못팜
 				  should
 				  might
 				  could
 
 <과거완료시재>
-	과거완료<->과거<->현재완료<->현재
+	과거완료 <-> 과거 <-> 현재완료 <-> 현재
 	과거에 후회하는 사실이 있으면 더 과거로 돌아감.
 
 
-If I had had time, I would have sold the stocks.		
-	시간이 있었더라면, 팔았었을 텐데..
-If I had sold the stock back in Sept, I would have made $50k.
-	9월에 팔았더라면, $50k 만들었을텐데. 
-Someone could have driven off with them, and you wouldn't have even noticed. 
-누군가 차로 애들을 치고 갔어도, 당신은 알아차리지도 못했을 거잖아. 
+If I had had time, 	I would have sold the stocks.		
+If I'd had time, 	I would've sold the stocks.		
+	시간이 있었더라면, 	팔았었을 텐데..
+If I had sold the stock back in Sept, 	I would have made $50k.
+If I'd 	 sold the stock back in Sept, 	I would've made $50k.
+		9월에 팔았더라면, 					$50k 만들었을텐데. 
+
+
 
 
 
@@ -3569,6 +3614,9 @@ If I had million dollors, I would quit my job.
 
 I live near the town, but I wish I lived at beach.
 I wish I lived near the beach so that I would go skin diving on weekend.
+If I lived closer to beach, I would be able to skin diving every weekend.
+If I lived closer to beach, I could go to skin diving every weekend.
+
 I wish I knew the future, so that I could make tons money.
 I wish there were a policy where we all get a day off when the weather is not past(beyond) a certain point.
 If that were true, that would be awesome!
@@ -3585,20 +3633,45 @@ If we had known there was a problem with the  AC, of course we would've fixed it
 
 
 
+https://m.blog.naver.com/PostView.nhn?blogId=newworldalps&logNo=220350334584&proxyReferer=https%3A%2F%2Fwww.google.com%2F
+It is time that we left.
+
+( It is time + v1 / s/es)	<- it is time to do something and it is possible.
+( It is time + v2 / +ed ) 	<- it is time to do something and it can not possible.(가정법) 
+								past tense doesn't give the sense of past (completion )
+‘It is time you go home' 
+		- it is time to go and you are going or makes you remember the time to go home.
+'It is time I went home' 
+		- it is time to go but it appears not possible ( willing to go but unable. )
+
+It's time to go to bed 			<- 모든 사람들에게 말하고 있는 표현
+It's time that we all go to bed <- 모든 사람들에게 말하고 있는 표현
+It's time that you went to bed	<- 이미 자고있어야하는 시간인데 자러가. 
+									went 를 사용한 가정법
+
+It's time to eat lunch.			<- 모두 먹을시간
+It's time that you had lunch!	<- 너만 먹을시간이야. 내가 생각하기에를 ~ed로 표현
+
+Where is the baby? 
+I don't know. If we'd seen a kid, we wouldn't have left it in a crack house. 
+				<가정법 과거 have+p.p.>   <would have +p.p.>
+
+
 
 being 사용법
-수동태
-1. be being p.p.
+
+1. 수동태: be being p.p.
 
 	I don't want to be ripped off.	
 	6 Signs you're Being Ripped Off.
 	Avoid being ripped off before buying a new car.
 
-2. '~것' 형용사
+2. 형용사: '~것' 
 	being smart is good
 
-3. He is mad.										<- always angry
-   he is being mad because of his stupitity panic.	<- temp angry
+3. 상태: 
+	He is mad.										<- always angry
+	he is being mad because of his stupitity panic.	<- temp angry
 
 	He is helpful		<= This is something he always does or is part of his character.
 	He is being helpful <= This describes his current or recent actions.
@@ -10091,7 +10164,7 @@ There's not a lot of sleeping going on. Not if I'm doing my job right.
 Maisy Gibbons, you're under arrest for solicitation((창녀의) 손님 유인). 
 This is entrapment(함정). You all are making a gigantic mistake. 	
 Yes, the scandalous arrest of Maisy Gibbons would soon prove to be the 'shot heard round the world.'
-온 세상으로 전파되기 직전의 모습이었다   T
+온 세상으로 전파되기 직전의 모습이었다.   
 'shot heard round the world' <- The whole world heard about it and 
 								it made everyone react in one way or another.
 Innocent until proven guilty
@@ -10193,7 +10266,7 @@ They're such tools.
 S1-Episode 20
 
 I wanted to, but I kept putting it off. I knew how you'd react. 
-계속 입이 안 떨어졌어 당신이 어떻게 나올지 아니까 
+계속 입이 안 떨어졌어. 당신이 어떻게 나올지 아니까 
 Well, technically, Peterson found her. I just vouched for her. 
 난 대답만 했어
 I was just leaving you a gift to apologize for, 
@@ -10292,7 +10365,7 @@ S1-Episode 22
 
 You're an unfeeling bitch. 
 감정이라곤 없는
- Lee Craig has the biggest ego of any doctor I know. If he wants to consult with someone, that means he's
+Lee Craig has the biggest ego of any doctor I know. If he wants to consult with someone, that means he's
 stumped, which means I'm screwed.
 리 크레이그는 내가 아는 의사들 중에 가장 자존심이 센 사람이야. 그가 다른 사람과 상담을 하고 싶어
 한다면 그 얘기는 곤란한 일이 생겼단 뜻이고 난 망했다는 소리라고.
@@ -10300,7 +10373,7 @@ Rex: What in god's name is your point?
 도대체 무슨 소릴 하고 싶은거야?
 Felicia: Okay so it's not such a stretch, the wonder if Paul avenged his wife's death 
 by killing Martha for blackmailing them. But perhaps I'm alone in that.
-그래서 마사가 협박을 해서 부인을 죽게 한 것 때문에 폴이 마사를 죽여서 복수했다고 생각하는 것도
+그래서 말따가 협박을 해서 부인을 죽게 한 것 때문에 폴이 마사를 죽여서 복수했다고 생각하는 것도
 무리가 아니에요. 하지만 아마 저만 그렇게 생각하는 것 같아요.
 At least be man enough to own up(자백하다) to it. She would've been.
 적어도 남자답게 순순히 자백해. 어머니라면 그러셨을 거야.
@@ -10313,28 +10386,9 @@ Isn't it idyllic(전원적)?
 It's time that you left. 
 네가 떠날 때야
 
-https://m.blog.naver.com/PostView.nhn?blogId=newworldalps&logNo=220350334584&proxyReferer=https%3A%2F%2Fwww.google.com%2F
-It is time that we left.
-
-( It is time + v1 / s/es)	<- it is time to do something and it is possible.
-( It is time + v2 / +ed ) 	<- it is time to do something and it can not possible.(가정법) 
-								past tense doesn't give the sense of past (completion )
-‘It is time you go home' 
-		- it is time to go and you are going or makes you remember the time to go home.
-'It is time I went home' 
-		- it is time to go but it appears not possible ( willing to go but unable. )
-
-It's time to go to bed 			<- 모든 사람들에게 말하고 있는 표현
-It's time that we all go to bed <- 모든 사람들에게 말하고 있는 표현
-It's time that you went to bed	<- 이미 자고있어야하는 시간인데 자러가. 
-									went 를 사용한 가정법
-
-It's time to eat lunch.			<- 모두 먹을시간
-It's time that you had lunch!	<- 너만 먹을시간이야. 내가 생각하기에를 ~ed로 표현
-
 Where is the baby? 
 I don't know. If we'd seen a kid, we wouldn't have left it in a crack house. 
-				<가정법 과거 have+p.p.>   <would have +p.p.>
+				<가정법 과거 had+p.p.>   <would have+p.p.>
 
 
 Why should you fend for yourself when you can just come home with me? 
