@@ -1,9 +1,101 @@
-Listening
-Speaking
-Reading
-Grammar
-Writing
+Notepad++ short key
+# Move
+	Bottom of page	<- Ctrl+End			
+	Top of page  	<- Ctrl+Home			
+# Insert a line below
+	Ctrl+Alt+Enter
 
+
+Listening: Speaking: Reading: Grammar: Writing
+
+8품사: 명사, 대명사, 동사, 형용사, 부사, 전치사, 접속사, 감탄사
+
+1. 명사 <- 이름씨: 사람, 사물, 물질, 개념, 행동
+		Tom, car, water, peach, answer
+	a. 동명사  	<- 동사를 명사화한 명사
+		
+2. 대명사 <- 명사를 대신 받아주는 명사		
+	a. 인칭 대명사: I, you, he, she, it, her, him, me, you, self
+	b. 지시 대명사: This, these, that, those
+	c. 부정 대명사: (부정확하게 많은, 막연하게) all, some, any, none, each, one, ones, 
+	d. 수량 대명사: others, one, ones, much, little, few
+3. 동사 
+	a. 동사: wants & go
+	b. 술어: wants
+		He wants to go there.
+4. 형용사 <- 명사를 꿈여주는 말
+	a. 명사 수식
+		형용사 + 명사 + 형용사
+	b. 보어 <주어 보어, 목적어 보어>
+
+5. 전치사<- 명사 뒤에 붙는 토시어
+	He killed the animal __ Tom.  <- with, for  
+
+6. 접속사 
+	구+접+구, 절+접+절
+	a.  and, but, that, or, where, so, because, unless, since, as
+
+7. 부사(Adverb): 수식어(꾸미는 말)(형용사, 부사, 동사, 절 전체 꾸며줌) 매우 머머한, 머마하게
+		자세한 정보를 제공: 시간, 장소, 방법, 정도, etc)
+	Unfortunately, S + V
+	He is 'very' smart.
+	~ly: He looks 'carefully' at my face.  ~ly를 붙이면 동사 꾸며줌
+
+8. 감탄사
+
+
+to+부정사(동사원형)  <- 부정확하게 많은 동사원형을 갖어다 명사, 형용사, 부사적으로 쓰이는 말.
+https://namu.wiki/w/to%20%EB%B6%80%EC%A0%95%EC%82%AC 
+		명사적		으로도 사용: To raise children is hard.
+		형용사적 		으로도 사용: He wants something to drink.
+		부사적		으로도 사용: He went to Busan 'to visit' his grandfather.	
+관사(a, an, the) + 명사	<= 명사를 수식해주는 '형용사'임
+	
+관계사 <- 접속사와 대명사의 역활을 동시에 함
+		두 문장을 한 문장으로 연결하는 역할을 하는 단어의 일종으로, 크게 관계대명사, 유사관계대명사, 관계부사로 나뉜다
+		
+선행사			주격		소유격			목적격
+사람				who		of whom/whose	whom
+사물, 동물			which	of which/whose	which
+사람, 사물, 동물	that	-				that
+사물(선행사 포함)	what	-				what
+
+		He's reading a wiki. (그는 위키를 읽고 있다.)
+		The wiki has useful information. (그 위키에는 유용한 정보가 있다.)
+		=> He's reading a wiki 'which' has useful information. (그는 유용한 정보가 있는 위키를 읽고 있다.)
+
+1. 단어 		<= word
+2. 구(phrase) 	<= word + word
+	He wants 'to be with you.'	
+	S	V		O (to 부정사 '구') == 명사 '구'
+	
+3. 절(Clause) 문장
+	주어와 동사를 가지고 있는 단어들의 덩어리로, 문장(sentence)
+	I got up late this morning because my phone was dead.
+
+4. 문단(단락)(Paragraph)
+
+5. 지문(Passage)
+
+6. 구문 독해(문장) <= 관용어구가 들어가 있는 문장
+	I find it very hard to keep awake during the class.
+
+7. 보어(complement 보충해주는 말)	
+	S + V + C(주격보어, 목적격보어, 명사, 대명사, 동명사, to 부정사, 분사, 명사절, 형용사)
+	
+8. 분사 = 형용사 (Participle<- a word formed from a verb:  going, gone, being, been )
+	(현재 분사 +ing, 과거분사 +ed)
+	형용사의 기능을 가지는 동사의 부정형(infinite form). 상과 태의 기능을 주로 나타낸다.
+	happy, sad, tall, honest, pretty
+	현재분사(present participle): tiring, exciting, intersting, satisfying
+	과거분사(past participle)   : tired, excied, intered, satisfied
+	
+	
+
+
+
+
+	
 ##
 영어문법 용어(English Grammar Term)
 ##
@@ -125,6 +217,41 @@ Perfect Continuous Infinitive (긴 완벽)     			— to have been asking
 
 
 
+
+### 조동사 ###
+<과거>			<현재>		<미래>
+could			can			Could
+would			will		would
+should			shall		should
+might			may			might
+(might have to)
+dare			dare		dare		<- 의문문,부정문에만 사용
+had to			must		must/have to
+did				do			do
+
+### 준+조동사 ### 70% 조동사
+<과거> was/were 		<현재> am/is/are		<미래> am/are/is			
+going to			going to			going to
+was/were			used to
+					supposed to
+should				ought to			should
+					have to
+					have got to
+					had better 
+be able to			be able to
+didn't have to		need not			Don't have to
+
+
+
+
+
+
+
+
+
+
+
+
 관용어 = 숙어 = Idiom
 
 적!자!생!존!
@@ -134,11 +261,7 @@ http://blog.naver.com/PostView.nhn?blogId=the3329&logNo=220916379394&parentCateg
 I have a beautiful Marties, who I consider to be a family memeber.
 
 
-# Move
-	Ctrl+End			Bottom of page
-	Ctrl+Home			Top of page
-# Insert a line below
-	Ctrl+Alt+Enter
+
 
 ---------------------------------------------------------------
 ## Irregular Verb
@@ -456,14 +579,23 @@ wring	- wrung	- wrung	 비틀다.
 	
 	
 	
+자동사	
+rise	rose	risen
+lie		lay		lain	
+sit		sat		sat
+
+타동사: 목적어 + 동사
+raise	raised 	raised
+lay		laid 	laid
+seat	seated	seated	
+	
+lie		lied	lied  거짓말	
 	
 	
 	
 	
 	
-	
-	
-	
+### 단어장	###
 	
 	
 	
@@ -2260,6 +2392,8 @@ tacky			<- (of glue, paint, or other substances) retaining a slightly sticky fee
 					synonyms:	tawdry, tasteless, kitsch, kitschy, vulgar, crude, garish, gaudy, 
 							showy, trashy, cheesy, cheap, common, second-rate
 
+talk of the town <-	"Her conduct became the talk of the town."	그녀의 행실이 마을 사람들의 입에 올랐다
+
 tariff			<- a tax or duty to be paid on a particular class of imports or exports.
 					synonyms:	tax, duty, toll, excise, levy, charge, rate, fee, countervail; price list
 						"the lower tariffs across the border"
@@ -2799,7 +2933,7 @@ zing	ba-dum-tss, badum tish	"Haha, well said!"	"You're so stupid, you'd trip ove
 ~ed와 ~ing는 현재와 미래시제를 뺀 나머지 10개의 시제에 포함되어 있습니다. 그만큼 중요합니다.
 시제에 사용되는 과거분사(완료)와 현재분사(진행)는 형용사의 역할을 합니다.
 시제	형태	예문
-현재	현재동사	I check the email. 나는 이메일을 확인한다.
+현재	현재동사	I check the email. 		나는 이메일을 확인한다.
 과거	과거동사	I checked the email. 나는 이메일을 확인했다.
 미래	be going to + 동사의 원형
 will  + 동사의 원형
@@ -2955,7 +3089,7 @@ o	I would buy a new car tomorrow . will보다는 약한 의지
 
 ##
 현재 진행
-be동사 + ~ing
+be동사(am,is,are,be) + ~ing
 I am reading a book.
 현재진행형을 바라보는 시야
 1. 지금 이 순간 별어지고 있는 일 : I am waking up now.
@@ -3288,119 +3422,20 @@ I will have worked here since last year. 나는 지난해부터 여기서 일을
 
 
 
-##
-*** 복습하기 ***
-이전에 공부한 12시제를 이곳에서 한번 복습해 보세요.
- Question.  위주로 다시 remind 해보면 도움일 될것 같습니다.
-현재
-현재동사 : I get up at 6 every morning.
- Question. 
-1.	현재 시제의 진짜 의미
-2.	현재 시제를 사용하는 5가지 상황
-현재시제 자세히 보기
-과거
-과거동사 : I lived in Seoul.
- Question. 
-1.	과거시제에 숨어 있는 진짜 의미
-2.	영어에서 과거형이 가지는 단점
-3.	과거와 현재 완료의 비교
-4.	과거형 동사를 만드는 세가지 방법
-과거시제 자세히 보기
-미래
-will + 동사의 원형 : I will buy a new car.
-be going to + 동사의 원형 : I am going to buy a new car.
-would + 동사의 원형 : I would buy a new car.
- Question. 
-1.	미래시제에 숨어 있는 진짜 의미
-2.	미래를 이야기하고 있는 4개의 시제
-3.	미래를 이야기하고 있는 4개 시제의 확신이나 의지 정도
-4.	자연현상에 대한 미래형의 사용
-미래시제 자세히 보기
-현재진행
-be + ~ing : I am reading a book.
- Question. 
-1.	현재진행형을 바라보는 2가지 시야.
-2.	현재형과 현재진행형의 2가지 차이.
-3.	미래를 이야기하고 있는 5개의 시제.
-4.	진행형 안에서의 always.
-5.	현재진행형으로 쓰면 어색한 동사.
-현재진행형 자세히 보기
-과거진행
-was/were + ~ing : I was having dinner.
- Question. 
-o	과거 진행의 의미
-o	과거형과 과거진행형의 2가지 차이
-o	과거와 과거진행형이 함께 쓰였을 때
-과거진행형 자세히 보기
-미래진행
-will be ~ing : I will be leaving for Seoul.
-be going to be ~ing : I am going to be leaving for Seoul.
- Question. 
-o	단순미래와 미래진행형
-o	미래진행형의 종류 3가지
-o	미래형의 변동 가능성
-미래진행형 자세히 보기
-현재완료
-have + p.p.  : I have lived in Seoul.
- Question. 
-o	현재분사의 해석
-o	have의 4가지 용도.
-o	have의 역할과 과거분사의 역할
-o	과거 분사를 쓰는 이유
-o	현재완료의 의미
-o	과거와 현재 완료의 비교
-o	상황에 따라 과거 or 현재완료
-o	문장 만들어 보기
-현재완료 자세히 보기
-과거완료
-had + p.p. : He had injured his leg.
- Question. 
-o	과거 완료의 해석
-o	과거 완료의 말투
-o	완료형에 많이 쓰이는 부연 설명
-o	과거형과 과거완료시제가 한 문자 안에 쓰였을 때.
-과거완료 자세히 보기
-미래완료
-will have + p.p. : I will have arrived home by six.
- Question. 
-o	미래완료의 해석
-o	미래 완료 시제와 함께 많이 쓰이는 보충어.
-o	완료형에서 습관적으로 많이 쓰이는 말.
-미래완료 자세히 보기
-현재완료진행
-have been + ~ing : It has been raining since last night.
- Question. 
-o	현재완료진행형의 해석
-o	현재완료진행형이 만들어지는 과정
-o	현재완료진행형과 현재완료형이 내용상 거의 차이가 없어지는 경우
-o	현재완료진행형보다 현재완료형의 사용빈도수가 높은 이유
-현재완료진행 자세히 보기
-과거완료진행
-had been + ~ing : I had been waiting for him.
- Question. 
-o	과거완료진행형의 해석
-o	과거완료진행형이 만들어지는 과정
-o	과거완료진행형과 과거완료형이 내용상 거의 차이가 없어지는 경우
-o	과거완료진행형보다 과거완료형의 사용빈도수가 높은 이유
-과거완료진행 자세히 보기
-미래완료진행
-will have been + ~ing : I will have been living in Seoul.
- Question. 
-o	미래완료진행형의 해석
-o	미래완료진행형이 만들어지는 과정
-o	미래완료진행형과 미래완료형이 내용상 거의 차이가 없어지는 경우
-o	미래완료진행형보다 미래완료형의 사용빈도수가 높은 이유
-미래완료진행 자세히 보기
 
 
 
 
-직설법 -> 명령법 -> 가정법
+
 
 ### 가정법 ###
+직설법 -> 명령법 -> 가정법
 -------------------------------------------------
 가정				조건절(IF | V)  		주절 (S V)
 -------------------------------------------------
+현실/미래 가능한 일	If | V				I will V
+				(현재시제로 쓰임)		(조동사 원형)
+--------------------------------------------------
 현재 사실의 반대	If | V'ed			I would V
 (가정법 과거)		(과거형)				(조동사 과거형)
 --------------------------------------------------
@@ -3410,115 +3445,134 @@ o	미래완료진행형보다 미래완료형의 사용빈도수가 높은 이�
 과거 사실의 반대	If | Had P.P.		I would V
 (가정법 혼합형)		(과거 완료로 쓰임)		(조동사 과거형)
 --------------------------------------------------
-현실/미래 가능한 일	If | V				I will V
-				(현재시제로 쓰임)		(조동사 원형)
---------------------------------------------------
 
-<현재>(현실/미래) 조건절
+
+<현재> 현실 조건  => 미래 결론  <- 조건절
 If I have the same chance, I will sell the stocks.
-If you do that again, I will kill you.
+If time comes, I will sell the stocks.
+If you do that again, I will hit you.
 If you pass the exam, I will buy you a car.
-	너 시험에 합격하면, 내가 차 사줄께.
-If I have time, I will sell.
+If I have time, I will sell the cookies for you.
 
-<현재> 현재 사실의 반대(과거동사 사용)
+<현재> 현재 사실의 반대(과거 동사 사용)
 If I had time, I would sell the stocks.
 If I were your boss, I would fire you.
 If I knew about the news, I would sell the stocks.
 	뉴스를 알았다면, 주식을 팔았을텐데..
+If I could hold the stress, I wouldn't sell the stocks.
 If you passed the exam, I would buy you a car.
 	너 시험에 합격하면, 내가 차 사줄텐데..
-If I were you, I wouldn't buy this car.
+If I were you, I wouldn't buy this junk car.
 
 
-<과거>(과거완료) 과거 사실의 반대
-If I had listened to you selling stocks on Sept, I would have made $50,000.
+
+
+<과거> 과거완료 	<- 과거 사실의 반대
+If I had listened' to you, I 'would have made' a lot of money.
+If I'd   listened' to you, I'd have made' a lot of money.
+	< 과거 + P.P. >			< would + 현재 +P.P. >
+		말을 들었었더라면 			벌었을 텐테
 If I had known about the bad news, I would have sold the stocks.
 If you had passed the exam, I would have bought you a car.
 	너 시험에 합격했더라면, 내가 차 사줬을 텐데.
-If I had gone to the movie, I would have a good time now.	
+If I had gone to the movie, I would have enjoyed time being myself.	
+
+Someone could had driven off with them, 	and you wouldn't have even noticed. 
+Someone could've driven off with them, 		and you wouldn't have even noticed. 
+누군가 차로 애들을 치고 갔어도, 당신은 알아차리지도 못했을 거잖아. 
 
 	
 	
-(혼합형) 과거 사실의 반대
-If I had sold the stocks, I wouldn't lose $50,000.
+(혼합형) 과거 사실의 부정문
+과거완료						현재 완료
+If I had sold the stocks, I wouldn't have lost $50,000.
 
 
 
 
 
 <현재시재>
-<현재 조건부>
+	<현재 조건부>
 If I have time, I will sell.				시간이 있으면, 팔꺼야		<= 팔수있음
 				  can
 				  may
 				  shall
 
-<과거를 이용한 현재시재>
-If I had time, 	I would sell.				시간이 있으면, 팔을텐데   <= 못팜
+	<과거를 이용한 현재시재>
+If I had time, 	I would sell.				시간이 있었으면, 팔을텐데   <= 못팜
 				  should
 				  might
 				  could
 
 <과거완료시재>
-과거완료<->과거<->현재완료<->현재
-과거에 후회하는 사실이 있으면 더 과거로 돌아감.
+	과거완료 <-> 과거 <-> 현재완료 <-> 현재
+	과거에 후회하는 사실이 있으면 더 과거로 돌아감.
 
 
-If I had had time, I would have sold the stocks.		
-	시간이 있더라라면, 팔았을 텐데..
-If I had sold the stock on Sept, I would have made $50k.
-	9월에 팔았더라면, $50k 만들었을텐데. 
-Someone could have driven off with them, and you wouldn't have even noticed. 
-누군가 차로 애들을 치고 갔어도, 당신은 알아차리지도 못했을 거잖아. 
+If I had had time, 	I would have sold the stocks.		
+If I'd had time, 	I would've sold the stocks.		
+	시간이 있었더라면, 	팔았었을 텐데..
+If I had sold the stock back in Sept, 	I would have made $50k.
+If I'd 	 sold the stock back in Sept, 	I would've made $50k.
+		9월에 팔았더라면, 					$50k 만들었을텐데. 
+
+
 
 
 
 
 
 <가정법 미래> 조건절
+<현재 조건	>					<미래 결과>
 If it rains this weekend, I am going to stay home.
-If she asks, I'm just going to pretend I don't know anything
+If she asks, I'm just going to pretend I don't know anything.
 If I get off work early today, I'm going to meet up with some friends for some drinks.
 If this happens again, they are going to lose everything.
 If you don't like it, you can return it.
-If you study really hard, you might pass the test.
+If you study really hard, you 'might' pass the test.
+If you study really hard, you 'can' pass the test.
+If you study really hard, you 'would' pass the test.
+If you study really hard, you 'shall' pass the test.
+If you study really hard, you 'will be able to' pass the test.
 if you are late, you can take the taxi.
 If you tell her the truth, she might understand.
+If you tell her the truth, she should forgive you.
 You don't have to eat if you are not hunry.
-If I can't have save enough money, you might have to borrow some money.
-Michael is supposed to give a presentation in the meeting today, but if he's late, you might have to do it.
+If I can't have save enough money, you 'might' have to borrow some money.
+Michael is supposed to give a presentation in the meeting today, but if he's late, you 'might' have to do it.
 If they don't help us, we won't be able to finish this on time.
-If we leave(go) now, we might be able to catch the last train/bus.
+If we leave(go) now, we 'might be able to' catch the last train/bus.
 If the weather is really nice, we're going to be able to swim.
 
 
 <가정법 예문들>
-How dare he thought he could have an affair with me?	어떻게 감히 그가 나와 불륜 관계를 맺을 수 있다고 생각한 거야?
+How dare he thought he 'could' have an affair with me?	어떻게 감히 그가 나와 불륜 관계를 맺을 수 있다고 생각한 거야?
 Holden could have more friends but chooses not to.	홀덴은 더 많은 친구들과 사귈수있었지만 안하기로 선택하였다.
-His design was infinitely better than anything I could have done.	그의 디자인은 내가 할 수 있는 그 어떤 것보다도 엄청 더 좋았다.
-I'm glad we could have this little chat.	우리가 이런 담소를 나눌 수 있어서 기쁘다
-If you were strong, you could have survived.	너희가 강했다면 살아날 수도 있었을 거야.
+His design was infinitely better than anything I 'could have done.' (과거완료)	그의 디자인은 내가 할 수 있는 그 어떤 것보다도 엄청 더 좋았다.
+I'm glad we could have this little chat.	우리가 이런 담소를 나눌 수 있어서 기쁘다.
+If you were strong, you could have survived.	너가 강했다면 살아날 수도 있었을 거야.
 
 
-<평서문>
+<평서문><과거형 조건>
 I went to bed late last night, so it was hard to get up this morning.
-<과거완료형> 
+	hard(adj 힘든) 
+
+	<과거완료형> 
 1. ~을 했을꺼야/이랬을꺼야/저랬을꺼다
 If I had gone to bed earlier last night, I wouldn't have been so hard to get up this morning.
 	<과거 P.P.>										<현재 P.P.>
 
 I wasn't prepared, so I didn't do well on the interview.
-If I had been more prepared, I would've done better on the interview.
+	<= If I had been more prepared, I would've done better on the interview.
 
 I didn't eat breakfast, so I was very hungry during the test.
-If I had eaten breakfast, I wouldn't have been so hungry during the test, and I would've concentrated better.
+	<= If I had eaten breakfast, I wouldn't have been so hungry during the test, and I would've concentrated better.
 
 I didn't konw about his situation, so I couldn't help him.
-If I had known about his situation, I would've helped him.
+	<= If I had known about his situation, I would've helped him.
  
 2. ~을 할수도 있었어/ 했었을지도 몰라
-If he had asked me, I might've help him. 
+If he had asked me, I might've helped him. 
 
 If she had practiced harder, she might not have made that mistake.
 If she had practiced harder, she might not've made that mistake.
@@ -3533,6 +3587,7 @@ If he hadn't told her, she might not've realized how important it was.
 If I had studied harder, I could've gone to a better school.
 If I had known the China's economic issues, I could've sold the stocks earlier.
 If I had known the China's economic issues, I would've been able to sell the stocks earlier.
+
 < 부정 - 부정> <과거 - 과거>
 If you hadn't helped me, I couldn't have finished this on time.
 If you hadn't helped me, I wouldn't have been able to finish this on time.
@@ -3554,7 +3609,7 @@ If I had watched your videos back in my early 20's, I could've enjoyed learning 
 
 
 
-가정법	
+가정법 in short	
 1. 일반적인 사실	 
 When the weather is this hot, it's better to walk your dog at night.	
 
@@ -3562,8 +3617,20 @@ When the weather is this hot, it's better to walk your dog at night.
 If it's hot like this for the rest of week, it's going to be a really tough week.
 
 3. 현재의 사실에 대한 가정
+If Tom asked Karen out, she would say yes.  80%
+If Tom asked Karen out, she might say yes.. but might say no.  50/50%
+If I had million dollors, I could buy a big house.
+If I had million dollors, I would quit my job.
+
+I live near the town, but I wish I lived at beach.
+I wish I lived near the beach so that I would go skin diving on weekend.
+If I lived closer to beach, I would be able to skin diving every weekend.
+If I lived closer to beach, I could go to skin diving every weekend.
+
+I wish I knew the future, so that I could make tons money.
 I wish there were a policy where we all get a day off when the weather is not past(beyond) a certain point.
 If that were true, that would be awesome!
+
 
 4-1. 과거의 사실에 대한 가정이 '현재'에 줬을 변화
 If you had fixed the AC earlier(sooner), we wouldn't need to go through this now
@@ -3576,21 +3643,49 @@ If we had known there was a problem with the  AC, of course we would've fixed it
 
 
 
+https://m.blog.naver.com/PostView.nhn?blogId=newworldalps&logNo=220350334584&proxyReferer=https%3A%2F%2Fwww.google.com%2F
+It is time that we left.
+
+( It is time + v1 / s/es)	<- it is time to do something and it is possible.
+( It is time + v2 / +ed ) 	<- it is time to do something and it can not possible.(가정법) 
+								past tense doesn't give the sense of past (completion )
+‘It is time you go home' 
+		- it is time to go and you are going or makes you remember the time to go home.
+'It is time I went home' 
+		- it is time to go but it appears not possible ( willing to go but unable. )
+
+It's time to go to bed 			<- 모든 사람들에게 말하고 있는 표현
+It's time that we all go to bed <- 모든 사람들에게 말하고 있는 표현
+It's time that you went to bed	<- 이미 자고있어야하는 시간인데 자러가. 
+									went 를 사용한 가정법
+
+It's time to eat lunch.			<- 모두 먹을시간
+It's time that you had lunch!	<- 너만 먹을시간이야. 내가 생각하기에를 ~ed로 표현
+
+Where is the baby? 
+I don't know. If we'd seen a kid, we wouldn't have left it in a crack house. 
+				<가정법 과거 have+p.p.>   <would have +p.p.>
+
+
 
 being 사용법
-수동태
-1. be being p.p.
 
-2. ~것 형용사
-being smart is good
+1. 수동태: be being p.p.
 
-3. He is mad		<- always angry
-   he is being mad  <- temp angry
+	I don't want to be ripped off.	
+	6 Signs you're Being Ripped Off.
+	Avoid being ripped off before buying a new car.
 
+2. 형용사: '~것' 
+	being smart is good
 
-I don't want to be ripped off.
-6 Signs You're Being Ripped Off.
-Avoid being ripped off before buying a new car.
+3. 상태: 
+	He is mad.										<- always angry
+	he is being mad because of his stupitity panic.	<- temp angry
+
+	He is helpful		<= This is something he always does or is part of his character.
+	He is being helpful <= This describes his current or recent actions.
+
 
 
 
@@ -9061,8 +9156,7 @@ Present
 
 		
 		
-He is helpful		<= This is something he always does or is part of his character.
-He is being helpful <= This describes his current or recent actions.
+
 
 
 
@@ -9307,7 +9401,15 @@ Speak About You
 	- If you need a new car, I would suggest BMW's new X2 crossover car.
 
 66. I look forward to.. ing   저는 무엇을 기대합니다.
-	- Sumin is looking forward to her birthday.
+	a. look forward to + 동명사 		<- 
+	b. looking forward to
+	
+	- Sumin is looking forward to her birthday.		<- 생일이 기달려진다.
+	- I'm looking forward to hearing from you soon.		<- 	
+	- I always look forward to the weekend.			<- 항상 주말이 기다려진다.
+	- I was really looking forward to this trip with you.	<- 난 정말 너하고의 이 여행을 고대했는데.
+	- I'll look forward to seeing you.
+	- I'm looking forward to your visit next week.
 	
 67. By the way, let me note that..  무엇이라는 점을 주의해야 합니다.
 	- By the way, let me note that at this stage that true your friends are more 
@@ -10072,7 +10174,7 @@ There's not a lot of sleeping going on. Not if I'm doing my job right.
 Maisy Gibbons, you're under arrest for solicitation((창녀의) 손님 유인). 
 This is entrapment(함정). You all are making a gigantic mistake. 	
 Yes, the scandalous arrest of Maisy Gibbons would soon prove to be the 'shot heard round the world.'
-온 세상으로 전파되기 직전의 모습이었다   T
+온 세상으로 전파되기 직전의 모습이었다.   
 'shot heard round the world' <- The whole world heard about it and 
 								it made everyone react in one way or another.
 Innocent until proven guilty
@@ -10174,7 +10276,7 @@ They're such tools.
 S1-Episode 20
 
 I wanted to, but I kept putting it off. I knew how you'd react. 
-계속 입이 안 떨어졌어 당신이 어떻게 나올지 아니까 
+계속 입이 안 떨어졌어. 당신이 어떻게 나올지 아니까 
 Well, technically, Peterson found her. I just vouched for her. 
 난 대답만 했어
 I was just leaving you a gift to apologize for, 
@@ -10273,7 +10375,7 @@ S1-Episode 22
 
 You're an unfeeling bitch. 
 감정이라곤 없는
- Lee Craig has the biggest ego of any doctor I know. If he wants to consult with someone, that means he's
+Lee Craig has the biggest ego of any doctor I know. If he wants to consult with someone, that means he's
 stumped, which means I'm screwed.
 리 크레이그는 내가 아는 의사들 중에 가장 자존심이 센 사람이야. 그가 다른 사람과 상담을 하고 싶어
 한다면 그 얘기는 곤란한 일이 생겼단 뜻이고 난 망했다는 소리라고.
@@ -10281,7 +10383,7 @@ Rex: What in god's name is your point?
 도대체 무슨 소릴 하고 싶은거야?
 Felicia: Okay so it's not such a stretch, the wonder if Paul avenged his wife's death 
 by killing Martha for blackmailing them. But perhaps I'm alone in that.
-그래서 마사가 협박을 해서 부인을 죽게 한 것 때문에 폴이 마사를 죽여서 복수했다고 생각하는 것도
+그래서 말따가 협박을 해서 부인을 죽게 한 것 때문에 폴이 마사를 죽여서 복수했다고 생각하는 것도
 무리가 아니에요. 하지만 아마 저만 그렇게 생각하는 것 같아요.
 At least be man enough to own up(자백하다) to it. She would've been.
 적어도 남자답게 순순히 자백해. 어머니라면 그러셨을 거야.
@@ -10294,28 +10396,9 @@ Isn't it idyllic(전원적)?
 It's time that you left. 
 네가 떠날 때야
 
-https://m.blog.naver.com/PostView.nhn?blogId=newworldalps&logNo=220350334584&proxyReferer=https%3A%2F%2Fwww.google.com%2F
-It is time that we left.
-
-( It is time + v1/ s or es ) explains that it is time to do something and it is possible.
-( It is time + v2) explains that it is time to do something and it can not possible. 
-					Here , past tense doesn't give the sense of past (completion )
-‘It is time you go home' 
-		- it is time to go and you are going or makes you remember the time to go home.
-'It is time I went home' 
-		- it is time to go but it appears not possible ( willing to go but unable. )
-
-It's time to go to bed 			<- 모든 사람들에게 말하고 있는 표현
-It's time that we all go to bed <- 모든 사람들에게 말하고 있는 표현
-It's time that you went to bed	<- 이미 자고있어야하는 시간인데 자러가. 
-									went 를 사용한 가정법
-
-It's time to eat lunch.			<- 모두 먹을시간
-It's time that you had lunch!	<- 너만 먹을시간이야. 내가 생각하기에를 ~ed로 표현
-
 Where is the baby? 
 I don't know. If we'd seen a kid, we wouldn't have left it in a crack house. 
-				<가정법 과거 have+p.p.>   <would have +p.p.>
+				<가정법 과거 had+p.p.>   <would have+p.p.>
 
 
 Why should you fend for yourself when you can just come home with me? 
@@ -10342,7 +10425,58 @@ So if I'm gonna get you out of this mess, you have to reciprocate.
 
 
 	
-신체부위 영어표현
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+### 신체부위 영어표현 ###
+신체명칭
+Head 머리 / Brain 뇌 / Skull 두괴골 / Meninx (복수 Meninges) 수막 (뇌막) / Hair 머리카락 / Face 얼굴 
+/ Forehead 이마 / Eye(s) 눈 / Eye Brows 눈썹 / Eyelashes 속눈썹 / Eyeball 안구
+Nose 코 / Ear(s) 귀 / Mouth 입 / Lip(s) 입술 / Tongue 혀 /Tooth (복수 Teeth) 이빨 / 
+Gum 잇몸 / Chin 턱끝 / Jaw 턱 / Neck 목 / Thr oat 목구멍 / Shoulder(s) 어깨 / Arm Pit(s) 겨드랑이 
+/ Arm(s) 팔 / Upper Arm 팔꿈치 에서 어깨까지/ Fore Arm 팔꿈치에서 손목까지 / Wrist(s) 손목 / Hand(s)) 손/ 
+Palm(s) 손바닥 / Thumb(s) 엄지 손가락/ Finger(s) 손가락 (영국에서는 두개의 엄지와 8개의 손가락 이라고 합니다. 
+열개 모두를 손가락 이라고 한단어를 쓰는 경우는 Digits 이라고 쓰지요, 발가락에도 해당됩 니다.) 
+/ Leg(s) 다리 / Thigh(s) 허벅지 / Knee(s) 무릎/ Patella(s) 무릎마디 / Calf(s) 종아리, 장딴지/ Heels) 발꿈치 / 
+Foot (복수 feet) 발 / Ankle(s) 발목 / Toe(s) 발가락 / 니m bs (팔, 다리를 통털어서 .. 인간은 네개의 니mbs 를 가지고 있지요.) 
+/ Chest 가슴 / Breast 유방 / Nipple(s) 젖곡지 / Stomach 배 / Navel 배꼽 (다른말로는 Belly Button) 
+/ Spin 척추 / Heart 심장/ Abdomen 복부/ Oesophague (Esophagus) 식도/ Bone 뼈 / Skin 살, 살가 죽/ Muscle(s) 근육 
+/ Blood 피 / Nervous 신경 / Cell 세포 / Fat 지방 / Liver 간 / Kidney 신장 / Lung 폐 / Lymph 혈청 / 
+Lymphocytes 혈구 / Rib(s) 갈빗대, 늑골
+
+
+
+ I feel dizzy.(어지러워요.)
+ I have a headache(머리가 아파요.)
+ I have a slight headache((머리가 약간 아파요.)
+ I have a terrible headache.(머리가 심하게 아파요.)
+ I have a splitting headache.(머리가 찌르듯이 아파요.)
+ I have throbbing headache.(머리가 쑤시듯이 아파요.)
+ I can't stand this headache(머리가 아파서 견딜 수가 없어요.)
+ I have severe migraine.(심한 편두통이 있습니다.)
+ I've been sufferring from migraine 5 years.(편두통으로 5년동안 고생하고 있습니다.)  
+ I have a smarting pain in the back of my head.(뒤통수에 예리한 통증이 있습니다.)
+ There is a throbbing pain in my temples(관자놀이가 지끈지끈 아픕니다.)
+ I have severe dandruff.(머리에 비듬이 심합니다.)
+ I had a head injury in a car accident.(자동차 사고로 머 리를 다쳤습니다.)
+ I hit my head aginst a big rock.(머리를 큰 바위에 부딪쳤습니다.)
+ There was internal bleeding in my brain.(뇌출혈이 있었습니다.)
+ My cheeks burn.(얼굴이 화끈거립니다.)
+ I have too many pimples on my face.(얼굴에 여드름이 너무 많아요.)
+ I can't get rid of the pimples on my face.(얼굴에 여드름을 없앨 수가 없어요.)
+ I have a puffy face.(얼굴이 부었습니다.)
+
 
 
 [신체부위별 증상 표현 - 목(NECK)]
@@ -10353,7 +10487,6 @@ throat는 목구멍 즉 식도를 말하고 편도선(tonsil)은 사람의 입�
 된가래는 thick sputum, 피석인 가래는 bloody phlegm로 표현한다.
 
 ＊ Do you have a sore throat?(목이 아프십니까?)
-
 ＊ I have a sore throat.(목이 아픕니다.)
 ＊ My throat feels raw.(목이 쓰라립니다.)
 ＊ I have an irritated throat.(목이 따금따금 거립니다.)
@@ -10401,7 +10534,63 @@ throat는 목구멍 즉 식도를 말하고 편도선(tonsil)은 사람의 입�
 	
 	
 	
-	
+	[신체부위별 증상 표현 - 가슴(Chest)]
+浴- 가슴(breast,chest,bosom,bust[여자])에는 여러 가지의 영어단어가 사용되는데 breast는 특히 가슴의 앞쪽 유방을 가리키며 부인에게는 bosom을 사용하는 편이좋다. chest는 가슴 전체를 말하며 heart는 추상적인 의미의 가슴(마옴)을 말한다.
+¥ I have pain in the chest.(가슴이 아파요.)
+擊 My breast are tender(가슴이 아파요.)
+¥ There is a sudden sharp pain in my chest.(가슴에 갑작스러운 예리한 통증이 있읍니다.)
+¥ I have a prickling pain in my chest.(가슴이 따금 거립니다.)
+¥ My chest throbs.(가슴이 쑤십니다.)
+¥ It's hard to breathe.(숨쉬기가 힘듭니다.)
+擊 I have heavy feeling in my chest.(가슴이 답답합니다.)
+¥ I get out of breath when I walk a little.(조금만 걸어도 숨이 찹니다.)
+¥ I have a lump in my breast.(유방에 혹이하나 있습니다.)
+¥ I feel as if I have a convulsion in my chest.(심장에 경련이 일어나는 것 같습니다.)
+¥ I have a heart disease.(심장병에 걸렸습니다.)
+¥ There is an occasional pause in my pulse.(맥박이 간헐적으로 멈춥니다.)
+¥ I have heartburn.(가슴앓이를 앓고 있습니다.)
+¥ I feel blocked up in the chest.(가슴이 막힌 듯한 느낌입니다.)
+¥ My heart goes pit-a-pat.(심장이 두근 두근 거립니다.)
+¥ I seem to have the symptoms of pheumonia.(폐렴증상이 있는 것 같습니다.)
+¥ I have attacks of asthma.(천식이 발병하였습니다.)
+¥ I suffer from chronic asthma.(만성천식에 시딜리고 있습니다.)
+¥ I have a past history of tuberculosis.(과거에 결핵을 앓았던적이 있습니다.)
+¥ I suffered from T.B in my early 20's.(20대 초반에 결핵으로 고생했습니다.)
+
+신체부위별 증상 표현 - 허리.등(Back)]
+※- 허리의 영어표현은 back,lower back,waist,small of the back등으로 표현하고 등은 back으로 표현하면 된다.
+♦	I have sever pain in my back.(등이 심하게 아픕니다.)
+♦	My back hurts sometimes.(때때로 등이 아픕니다.)
+♦	I have pulling pain in my back.(등이 당겨지는 통증이 있습니다.)
+♦	When I tried to lift a heavy thing, I felt my back snap.(무거운 것을 들어 올릴려고할 때 등이 부러지는 것 같았습니다.)
+♦	My back iches.(등이 가렵습니다.)
+♦	I have a rash on my back.(등에 발진이 생겼습니다.)
+♦	I have stubborn boil on my back.(등에 딱딱한 종기가 생겼습니다.)
+♦	I suffer from back pain.(요통으로 고생하고 있습니다.)
+♦	I have lower back pain.(허리가 아픕니다.)
+♦	The lower part of my back hurts so much I can't move.(허리가 너무 아파서 움직일 수가 없어요.)
+♦	When I try to straighten my back, the pain hits me.(등을 펼려고 할 때 아픕니다.)
+♦	When I cough, my back hurts down here.(기침을 할 때 여기가 아파요.)
+♦	Is the spine or the hip bone fractured? (척추가 부러진 것입니까? 좌골이 부러진 것입니까?)
+[신체부위별 증상 표현 - 손.팔(Hand and Arm)]
+I got a splinter in my finger.(손가락에 가시하나가 박혔어요.)
+I cut my hand with a knife.(칼로 손을 베었습니다.)
+▲	I've torn off a fingernail.(손톱이 떨어져 나갔습니다.)
+▲	I have a prickling sensation in my finger.(손가락이 따금거립니다.)
+▲	I got stung by an insect.(벌레에 물렸습니다.)
+▲	I have blister on my palm.(손바닥에 물집이 생겼습니다.)
+▲	I burned my hand while cooking..( 요리를 하다가 손에 화상을 입었어요.)
+▲	I have sever frosbite on my hands..(손에 심한 동상을 입었습니다.)
+▲	My hands often get numb.(손이 자주 마비됩니다.)
+▲	I broke my arm.(팔이 부러졌습니다.)
+▲	My arm hurts so much I can't move.(팔이 너무 아파서 움직일 수가 없어요.)
+▲	I can't lift my arm.(팔을 들 수가 없어요.)
+▲	The muscles of arms and legs ache.(팔다리 근육이 아파요.)
+▲	I can't strech my arm.(팔을 펼 수가 없어요.)
+▲	My tennis elbow began to ache again.(팔꿈치가 다시 아프기 시작합니다.)
+▲	I dislocated my elbow joint.(팔꿈치 관절이 탈구 되었습니다.)
+
+
 	
 	
 	
