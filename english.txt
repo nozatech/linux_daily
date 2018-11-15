@@ -870,6 +870,11 @@ begrudge		<- [verb]
 
 
 bedside manner 	<- a doctor's approach or attitude toward a patient.
+
+bellwether		<- 	one that takes the lead or initiative : LEADER  : an indicator of trends
+	거세된양			Apple, bellwether for technology stocks across Wall Street, 
+					falls into bear market territory
+
 bespoke			<- (of goods, especially clothing) made to order.
 					"a bespoke suit, a bespoke engine"
 
