@@ -872,8 +872,8 @@ begrudge		<- [verb]
 bedside manner 	<- a doctor's approach or attitude toward a patient.
 
 bellwether		<- 	one that takes the lead or initiative : LEADER  : an indicator of trends
-	거세된양			Apple, bellwether for technology stocks across Wall Street, 
-					falls into bear market territory
+	거세된양			"Apple, bellwether for technology stocks across Wall Street, 
+					falls into bear market territory."
 
 bespoke			<- (of goods, especially clothing) made to order.
 					"a bespoke suit, a bespoke engine"
@@ -1407,6 +1407,12 @@ finicky			<-	fussy about one's needs or requirements.
 					[음식·옷 등에] 지나치게 까다로운, 몹시 신경을 쓰는, 집착이 강한
 					synonyms:	fussy, fastidious, punctilious, overparticular, difficult, 
 								exacting, demanding
+
+fixate			<- (보통 수동태) [물건에] 집착하다.
+					cause (someone) to acquire an obsessive attachment to someone or something.
+					"she has for some time been fixated on photography"
+					synonyms:	obsessed with, preoccupied with, obsessive about;
+
 								
 flair			<- a special or instinctive aptitude(재능) or ability for doing something well.
 					"she had a flair for languages"
@@ -1534,6 +1540,13 @@ hit the ground running 	<- to be ready to work immediately on a new activity
 					
 hit a snag			<- to run into an unexpected problem
 
+hit me				<- Accepting an offer to be included in something, 
+					ie. "count me in". 
+					Gambling term from blackjack, meaning "I would like another card".
+					"We're going up the road for pizza. You in?" 
+					"Hit me."
+					"More whine?" "Hit me."
+					
 hives			<- same as urticaria 두드러기
 
 holidays		<- hols  <=short for holidays in British
@@ -2483,6 +2496,14 @@ vigilant		<- [adj]keeping careful watch for possible danger or difficulties.
 
 					
 # W
+wager			<- "You got a wager."
+					"I'll wager ten dollars that we won't get to Chicago on time."
+					make a wager with a person 남과 내기하다
+					lay a wager of ten dollars on …에 10달러 걸다.
+					
+
+
+					
 walk the talk	<- suit one's actions to one's words.(keeping one's word)
 walk the walk	<- suit one's actions to one's words.
 

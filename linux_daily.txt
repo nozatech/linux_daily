@@ -82,7 +82,8 @@ Settings > Short cut Mapper Menu.
 	Alt +F4				Exit Notepad++
 ---------------------------------------
 ### Chrome ###
---------------------------------------- 000000000000000000000\0lean Cache - a hard refresh of the page (ctrl+shift+R)
+--------------------------------------- 
+Clean Cache - a hard refresh of the page (ctrl+shift+R)
 Plugins install
 	# Revolver <- Rotate Tabs
 	# AdBlock
