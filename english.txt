@@ -92,10 +92,6 @@ https://namu.wiki/w/to%20%EB%B6%80%EC%A0%95%EC%82%AC
 	
 	
 
-
-
-
-	
 ##
 영어문법 용어(English Grammar Term)
 ##
@@ -244,14 +240,6 @@ didn't have to		need not			Don't have to
 
 
 
-
-
-
-
-
-
-
-
 관용어 = 숙어 = Idiom
 
 적!자!생!존!
@@ -259,9 +247,6 @@ didn't have to		need not			Don't have to
 http://blog.naver.com/PostView.nhn?blogId=the3329&logNo=220916379394&parentCategoryNo=&categoryNo=81&viewDate=&isShowPopularPosts=true&from=search
 
 I have a beautiful Marties, who I consider to be a family memeber.
-
-
-
 
 ---------------------------------------------------------------
 ## Irregular Verb
@@ -2293,6 +2278,9 @@ shortcomings	<- a fault or failure(flaw) to meet a certain standard, typically i
 								weakness, weak point, foible, frailty, vice
 shutdown		<- [none]
 shut down		<- [verb]
+
+skirt			<- 자동사 […을] 회피하다[around, round ‥]
+					"Goldman believes the U.S. will skirt a recession next year 2019.
 
 slack			<- [adj] not taut or held tightly in position; loose.
 					"a slack rope"
@@ -5685,9 +5673,10 @@ Your guess is as good as mine:
 
 
 
-##
-idioms
-##
+###
+# idioms
+###
+
 A hot potato
 Speak of an issue (mostly current) which many people are talking about and which is usually disputed
 
@@ -5757,6 +5746,15 @@ Something good that isn't recognized at first.
 
 Burn the midnight oil
 To work late into the night, alluding to the time before electric lighting.
+
+Brush under the rug
+	To ignore, deny, or conceal from public view or knowledge something that 
+	is embarrassing, unappealing, or damaging to one's reputation. 
+	"The senator has been accused of trying to sweep his former drug use under the rug."
+	"You need to stop sweeping your problems under the rug."
+
+
+
 
 Can't judge a book by its cover
 Cannot judge something primarily on appearance.
@@ -5890,7 +5888,7 @@ one too many		<- one drink of liquor too many, implying drunkenness.
 	"I think I've had one too many. It's time to stop drinking."
 	"Don't drive if you've had one too many."
 
-ruffle one's feather  <- 심기를 불편하게하다.
+ruffle one's feather  <- 심기를 불편하게하다. ruffle <-물결이 일게 하다
 	"I ruffled my mother's feather." 
 	"You ruffle your feathers too easily.  It makes others feel uneasy."
 	"HIs speech ruffled a lot feathers among many nations."
