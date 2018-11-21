@@ -1,9 +1,20 @@
-Notepad++ short key
-# Move
-	Bottom of page	<- Ctrl+End			
-	Top of page  	<- Ctrl+Home			
-# Insert a line below
-	Ctrl+Alt+Enter
+*뭐더라공부법 
+순서
+1.한문장 구간반복으로 모든 문장 입에 붙이기
+2.메모지에 문장 입력
+3.라이트너 박스 실행
+
+
+라이트너 박스 단계
+1단계 : 매일			
+2단계 : 2일에 한번			<- 1단계에서 성공한뒤 옮기기, 틀리면 다시 1단계로 옮김
+3단계 : 4일에 한번
+4단계 : 8일에 한번
+5단계 : 16일에 한번
+6단계 : 32일에 한번
+7단계 : 64일에 한번
+
+
 
 
 Listening: Speaking: Reading: Grammar: Writing
@@ -922,6 +933,9 @@ brevity			<- concise and exact use of words in writing or speech.(간결한 말)
 					synonyms:	conciseness, concision, succinctness, economy of language, 
 								pithiness, incisiveness, shortness, compactness
 burning midnight oil <- working all night
+
+buttress		<- provide (a building or structure) with projecting supports built against its walls.
+					"a buttressed wall"
 
 buttocks, bottom	<- 엉덩이 
 
@@ -10435,10 +10449,11 @@ So if I'm gonna get you out of this mess, you have to reciprocate.
 	
 	
 	
-	
-
-
-	
+I tried hard only to fail.		<-  he really worked hard but no matter how hard he tried, 
+									he just ended up being FAILED"
+She studied hard for the exam only to fail.  <- to 부정사가 결과적인 의미로 쓰인 것입니다.
+											(열심히 공부했지만 결과는(only to 동사원형) ....)뿐이었다
+											
 	
 	
 	

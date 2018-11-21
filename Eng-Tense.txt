@@ -1,5 +1,22 @@
 English Tense 
 
+현재			I 		 	   wait for you.
+현재진행		I am  		waiting for you.
+현재완료		I have 		 waited for you.
+현재완료진행	I have been waiting for you.
+
+과거			I 			waited for you.
+과거진행		I was 		wating for you.
+과거완료		I had 		waited for you.
+과거완료진행	I had been waiting for you.
+
+미래			I will				wait for you.
+미래진행		I will be 		 waiting for you.
+미래완료		I will have 	  waited for you.
+미래완료진행	I will have been waiting for you.
+
+
+
 시재
 1. Present(현재시재)
 	
@@ -8,7 +25,7 @@ English Tense
 				You don't 	speak English.
 				Do you 		speak English?
 				
-		Auxiliary Verb - 조동사 (Helping Verb)	
+		Auxiliary Verb(조동사 - Helping Verb)	
 				You can 	speak English.
 				You can't 	speak English.
 				Can you 	speak English?
@@ -31,11 +48,11 @@ English Tense
 				Does he 	seem  excited?
 				
 		Passive Voice + Auxiliary Verb 
-				English can 	be spoken by you.
-				English can't 	be spoken by you.
-				Can English 	be spoken by you?
+				English can 	be  spoken by you.
+				English can't 	be  spoken by you.
+				Can English 	be  spoken by you?
 	
-	B. Present Continuous (adding ~ing)		
+	B. Present Continuous (현재 진행 - adding ~ing)		
 				You are 	speaking English.
 				You aren't	speaking English.
 				Are you 	speaking English?
@@ -44,16 +61,16 @@ English Tense
 				He isn't fixing the car.
 				Is he 	 fixing the car?
 				
-		Auxiliary Verb - 조동사 (Helping Verb)	
-				You can  be speaking English.
-				You can' be speaking English.
-				Can you 	speak English?
+		Auxiliary Verb (조동사 - Helping Verb)	
+				You can   be speaking English.
+				You can't be speaking English.
+				Can you 	 speak English?
 				
 				He can 	 be fixing the car.
 				He can't be fixing the car.
 				Can he 		fix the car?
 				
-		Passive Voice - 수동태		
+		Passive Voice ( 수동태 )		
 				English  is    being spoken by you.
 				English  isn't being spoken by you.
 				Is English 	   being spoken by you?
@@ -62,8 +79,7 @@ English Tense
 				The car isn't being fixed by him.
 				Is car 		  being fixed by him?
 				
-				
-		Passive Voice +	Auxiliary Verb 
+		Passive Voice (수동태) +	Auxiliary Verb (조동사)
 				English can   be being spoken by you.
 				English can't be being spoken by you.
 				Can English   be being spoken by you?
@@ -71,107 +87,110 @@ English Tense
 				Car can   be being fixed by him.
 				Car can't be being fixed by him.
 				Can car   be being fixed by him?
-				
-				
 	
-	C. Present Perfect		
-				You have 	spoken English.
-				You haven't spoken English.
-				Have you 	spoken English?
+	C. Present Perfect	( 현재 완료 )	
+				You  have 	 spoken  English.
+				You  haven't spoken  English.
+				Have you 	 spoken  English?
+				Haven't you  spoken  English?
 			
-		Auxiliary Verb (Helping Verb)	
+		Auxiliary Verb ( 조동사 - Helping Verb)	
 				You can   have spoken English.
 				You can't have spoken English.
 				Can you   have spoken English?
 		
-		Passive Voice		
-				English     has been spoken by you.
+		Passive Voice (수동태)		
+				English     has been 	spoken by you.
 				English     hasn't been spoken by you.
-				Has English been spoken by you?
+				Has English been 		spoken by you?
 				
-		Passive Voice +	Auxiliary Verb
+		Passive Voice (수동태)+ Auxiliary Verb(조동사)
 				English   can have been spoken by you.
 				English can't have been spoken by you.
 				Can English   have been spoken by you?
 				
-		Present Perfect Continuous	
+		Present Perfect Continuous (현재 완료 진행)	
 				You have    been speaking English.
 				You haven't been speaking English.
 				Have you    been speaking English?
 				
-		Auxiliary Verb (Helping Verb)	
+				I have 		been waiting for you.
+				I haven't 	been waiting for you
+				Have I 		been waiting for you?
+				
+		Auxiliary Verb (조동사 - Helping Verb)	
 				You can   have been speaking English.
 				You can't have been speaking English.
 				Can you   have been speaking English?
 				
-		Passive Voice		
+		Passive Voice (수동태)		
 				English has    been being spoken by you.
 				English hasn't been being spoken by you.
 				Has English    been being spoken by you?
 		
-		Passive Voice + Auxiliary Verb 	
+		Passive Voice (수동태) + Auxiliary Verb (조동사)
 				English can   have been being spoken by you.
 				English can't have been being spoken by you.
 				Can English   have been being spoken by you?
 
 
 2. Past 과거시재
-	A. Simple Past		
+	A. Simple Past(과거)		
 				You        spoke English.
 				You didn't speak English.
 				Did you    speak English?
 		
-		Auxiliary Verb (Helping Verb)	
+		Auxiliary Verb (조동사 - Helping Verb. Can 을 Could 로 바꿈)	
 				You could    speak English.
 				You couldn't speak English.
 				Could you    speak English?
 		
-		Passive Voice		
+		Passive Voice (수동태)		
 				English was    spoken by you.
 				English wasn't spoken by you.
 				Was English    spoken by you?
 	
-		Passive Voice + Auxiliary Verb 	
+		Passive Voice (수동태)+ Auxiliary Verb (조동사)	
 				English could    be spoken by you.
 				English couldn't be spoken by you.
 				Could English    be spoken by you?
 				
-		Past Continuous		
+	B. Past Continuous	(과거진행)	
 				You were    speaking English.
 				You weren't speaking English.
 				Were you    speaking English?
 			
-		Auxiliary Verb (Helping Verb)	
+		Auxiliary Verb (조동사 - Helping Verb)	
 				You could 	 be speaking English.
 				You couldn't be speaking English.
 				Could you    be speaking English?
 				
-		Passive Voice		
+		Passive Voice (수동태)		
 				English was    being spoken by you.
 				English wasn't being spoken by you.
 				Was English    being spoken by you?
 				
-		Passive Voice +	Auxiliary Verb 
+		Passive Voice(수동태)+	Auxiliary Verb (조동사)
 				English could    be being spoken by you.
 				English couldn't be being spoken by you.
 				Could English    be being spoken by you?
 				
-	B. Past Perfect		
+	C. Past Perfect	(과거 완료 시재)	
 				You had    spoken English.
 				You hadn't spoken English.
 				Had you    spoken English?
 			
-		Auxiliary Verb (Helping Verb)	
+		Past Auxiliary Verb (조동사 - Helping Verb)	
 				You could    have spoken English.
 				YOu couldn't have spoken English.
 				Could you    have spoken English?
 			
-		Passive Voice		
+		Past Passive Voice		
 				English had    been spoken by you.
 				English hadn't been spoken by you.
 				Had English    been spoken by you?
 		
-		Passive Voice + Auxiliary Verb	
+		Past Passive Voice + Auxiliary Verb	
 				English could    have been spoken by you.
 				English couldn't have been spoken by you.
 				Could English    have been spoken by you?
@@ -181,17 +200,17 @@ English Tense
 				You hadn't been speaking English.
 				Had you    been speaking English?
 			
-		Auxiliary Verb (Helping Verb)	
+		Past Auxiliary Verb (Helping Verb)	
 				You could    have ben speaking English.
 				You couldn't have been speaking English.
 				Could you    have been speaking English?
 				
-		Passive Voice		
+		Past Passive Voice		
 				English had    been being spoken by you.
 				English hadn't been being spoken by you.
 				Had English    been being spoken by you?
 		
-		Passive Voice + Auxiliary Verb 	
+		Past Passive Voice + Auxiliary Verb 	
 				English could    have been being spoken by you.
 				English couldn't have been being spoken by you.
 				Could English    have been being spoken by you?
@@ -239,11 +258,13 @@ English Tense
 				English will not have been being spoken by you.
 				Will English 	 have been being spoken by you?
 				
+
+
 				
 				
 Subjunctive Mood - 가정법
 
-<평서문>
+<평서문 - statement>
 I went to bed late last night, so it was hard to get up this morning.
 
 <과거완료형> 
