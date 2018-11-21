@@ -2422,6 +2422,11 @@ tenacity		<- 	the quality or fact of being able to grip something firmly; grip.
 					"you have to admire the tenacity of these two guys"
 					the quality or fact of continuing to exist; persistence.
 					"the tenacity of certain myths within the historical record"					
+
+tenure			<- 	보유 기간, 보유권, 임기, 재직
+					제84조 대통령은 내란 또는 외환의 죄를 범한 경우를 제외하고는 '재직중' 형사상의 소추를 받지 아니한다. 
+					Article 84 	"The President shall not be charged with a criminal offense 
+							during 'his tenure of office' except for insurrection or treason."
 						
 that is			<- used to introduce or follow a clarification, interpretation, or correction of something already said.
 that is to say	<- i.e. same
@@ -10421,8 +10426,7 @@ you had to share my humiliation with your co-workers?
 
 S1-Episode 23
 Isn't it idyllic(전원적)? 
-It's time that you left. 
-네가 떠날 때야
+It's time that you left. 			네가 떠날 때야
 
 Where is the baby? 
 I don't know. If we'd seen a kid, we wouldn't have left it in a crack house. 
@@ -10441,13 +10445,55 @@ I wanted to spare you this,
 	"I can see that you understand 	what you did wrong, so I'll spare you a lecture 
 	about it. 	Spare us the lurid details, James."
 
+You were awfully brave buying a place site unseen. 	
+	보지도않고 결정하시다니 용기가 대단하세요 
+	(You are awfully(extremely) brave 'buying a home sight unseen.')
 Yes, well, Carlos, in some circles, beating people up at all is frowned upon. 
 맞아요, 누가 그러는데 폭행은 아주 악질 범죄래요 
 So if I'm gonna get you out of this mess, you have to reciprocate. 
 그러니까 당신을 구해주면 당신도 그만큼 보답을 해요 	
 	
+Which part don't you understand?
+What 	   don't you understand? 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+S2-Episode 11
+	Getting your licks in" means "grabbing your opportunity while you have a chance; making the most of the opportunity." 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 I tried hard only to fail.		<-  he really worked hard but no matter how hard he tried, 
 									he just ended up being FAILED"
