@@ -10,9 +10,7 @@
 
 S.M.A.R.T.	
 1.Specific	2.Measureable	3.Action-Oriented	4.Realistic	 5.Time-Limited
-
 ¯\_(ツ)_/¯
-
 ### Drucker's 5 Questions ###
 1. What is  our mission?
 2. Who  is  our customers?
@@ -20,6 +18,12 @@ S.M.A.R.T.
 4. What are our result?
 5. What is  our plan?
 
+Notepad++ short key
+# Move
+	Bottom of page	<- Ctrl+End			
+	Top of page  	<- Ctrl+Home			
+# Insert a line below
+	Ctrl+Alt+Enter
 ---------------------------------------
 ### Windows CMD kill process
 ---------------------------------------
@@ -82,7 +86,8 @@ Settings > Short cut Mapper Menu.
 	Alt +F4				Exit Notepad++
 ---------------------------------------
 ### Chrome ###
---------------------------------------- 000000000000000000000\0lean Cache - a hard refresh of the page (ctrl+shift+R)
+--------------------------------------- 
+Clean Cache - a hard refresh of the page (ctrl+shift+R)
 Plugins install
 	# Revolver <- Rotate Tabs
 	# AdBlock

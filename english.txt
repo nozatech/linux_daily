@@ -1,9 +1,20 @@
-Notepad++ short key
-# Move
-	Bottom of page	<- Ctrl+End			
-	Top of page  	<- Ctrl+Home			
-# Insert a line below
-	Ctrl+Alt+Enter
+*뭐더라공부법 
+순서
+1.한문장 구간반복으로 모든 문장 입에 붙이기
+2.메모지에 문장 입력
+3.라이트너 박스 실행
+
+
+라이트너 박스 단계
+1단계 : 매일			
+2단계 : 2일에 한번			<- 1단계에서 성공한뒤 옮기기, 틀리면 다시 1단계로 옮김
+3단계 : 4일에 한번
+4단계 : 8일에 한번
+5단계 : 16일에 한번
+6단계 : 32일에 한번
+7단계 : 64일에 한번
+
+
 
 
 Listening: Speaking: Reading: Grammar: Writing
@@ -92,10 +103,6 @@ https://namu.wiki/w/to%20%EB%B6%80%EC%A0%95%EC%82%AC
 	
 	
 
-
-
-
-	
 ##
 영어문법 용어(English Grammar Term)
 ##
@@ -244,14 +251,6 @@ didn't have to		need not			Don't have to
 
 
 
-
-
-
-
-
-
-
-
 관용어 = 숙어 = Idiom
 
 적!자!생!존!
@@ -259,9 +258,6 @@ didn't have to		need not			Don't have to
 http://blog.naver.com/PostView.nhn?blogId=the3329&logNo=220916379394&parentCategoryNo=&categoryNo=81&viewDate=&isShowPopularPosts=true&from=search
 
 I have a beautiful Marties, who I consider to be a family memeber.
-
-
-
 
 ---------------------------------------------------------------
 ## Irregular Verb
@@ -870,6 +866,11 @@ begrudge		<- [verb]
 
 
 bedside manner 	<- a doctor's approach or attitude toward a patient.
+
+bellwether		<- 	one that takes the lead or initiative : LEADER  : an indicator of trends
+	거세된양			"Apple, bellwether for technology stocks across Wall Street, 
+					falls into bear market territory."
+
 bespoke			<- (of goods, especially clothing) made to order.
 					"a bespoke suit, a bespoke engine"
 
@@ -932,6 +933,9 @@ brevity			<- concise and exact use of words in writing or speech.(간결한 말)
 					synonyms:	conciseness, concision, succinctness, economy of language, 
 								pithiness, incisiveness, shortness, compactness
 burning midnight oil <- working all night
+
+buttress		<- provide (a building or structure) with projecting supports built against its walls.
+					"a buttressed wall"
 
 buttocks, bottom	<- 엉덩이 
 
@@ -1402,6 +1406,12 @@ finicky			<-	fussy about one's needs or requirements.
 					[음식·옷 등에] 지나치게 까다로운, 몹시 신경을 쓰는, 집착이 강한
 					synonyms:	fussy, fastidious, punctilious, overparticular, difficult, 
 								exacting, demanding
+
+fixate			<- (보통 수동태) [물건에] 집착하다.
+					cause (someone) to acquire an obsessive attachment to someone or something.
+					"she has for some time been fixated on photography"
+					synonyms:	obsessed with, preoccupied with, obsessive about;
+
 								
 flair			<- a special or instinctive aptitude(재능) or ability for doing something well.
 					"she had a flair for languages"
@@ -1529,6 +1539,13 @@ hit the ground running 	<- to be ready to work immediately on a new activity
 					
 hit a snag			<- to run into an unexpected problem
 
+hit me				<- Accepting an offer to be included in something, 
+					ie. "count me in". 
+					Gambling term from blackjack, meaning "I would like another card".
+					"We're going up the road for pizza. You in?" 
+					"Hit me."
+					"More whine?" "Hit me."
+					
 hives			<- same as urticaria 두드러기
 
 holidays		<- hols  <=short for holidays in British
@@ -2284,6 +2301,9 @@ shortcomings	<- a fault or failure(flaw) to meet a certain standard, typically i
 shutdown		<- [none]
 shut down		<- [verb]
 
+skirt			<- 자동사 […을] 회피하다[around, round ‥]
+					"Goldman believes the U.S. will skirt a recession next year 2019.
+
 slack			<- [adj] not taut or held tightly in position; loose.
 					"a slack rope"
 					synonyms:	loose, limp, hanging, flexible More
@@ -2412,6 +2432,11 @@ tenacity		<- 	the quality or fact of being able to grip something firmly; grip.
 					"you have to admire the tenacity of these two guys"
 					the quality or fact of continuing to exist; persistence.
 					"the tenacity of certain myths within the historical record"					
+
+tenure			<- 	보유 기간, 보유권, 임기, 재직
+					제84조 대통령은 내란 또는 외환의 죄를 범한 경우를 제외하고는 '재직중' 형사상의 소추를 받지 아니한다. 
+					Article 84 	"The President shall not be charged with a criminal offense 
+							during 'his tenure of office' except for insurrection or treason."
 						
 that is			<- used to introduce or follow a clarification, interpretation, or correction of something already said.
 that is to say	<- i.e. same
@@ -2488,6 +2513,14 @@ vigilant		<- [adj]keeping careful watch for possible danger or difficulties.
 
 					
 # W
+wager			<- "You got a wager."
+					"I'll wager ten dollars that we won't get to Chicago on time."
+					make a wager with a person 남과 내기하다
+					lay a wager of ten dollars on …에 10달러 걸다.
+					
+
+
+					
 walk the talk	<- suit one's actions to one's words.(keeping one's word)
 walk the walk	<- suit one's actions to one's words.
 
@@ -5669,9 +5702,10 @@ Your guess is as good as mine:
 
 
 
-##
-idioms
-##
+###
+# idioms
+###
+
 A hot potato
 Speak of an issue (mostly current) which many people are talking about and which is usually disputed
 
@@ -5741,6 +5775,15 @@ Something good that isn't recognized at first.
 
 Burn the midnight oil
 To work late into the night, alluding to the time before electric lighting.
+
+Brush under the rug
+	To ignore, deny, or conceal from public view or knowledge something that 
+	is embarrassing, unappealing, or damaging to one's reputation. 
+	"The senator has been accused of trying to sweep his former drug use under the rug."
+	"You need to stop sweeping your problems under the rug."
+
+
+
 
 Can't judge a book by its cover
 Cannot judge something primarily on appearance.
@@ -5874,7 +5917,7 @@ one too many		<- one drink of liquor too many, implying drunkenness.
 	"I think I've had one too many. It's time to stop drinking."
 	"Don't drive if you've had one too many."
 
-ruffle one's feather  <- 심기를 불편하게하다.
+ruffle one's feather  <- 심기를 불편하게하다. ruffle <-물결이 일게 하다
 	"I ruffled my mother's feather." 
 	"You ruffle your feathers too easily.  It makes others feel uneasy."
 	"HIs speech ruffled a lot feathers among many nations."
@@ -10393,8 +10436,7 @@ you had to share my humiliation with your co-workers?
 
 S1-Episode 23
 Isn't it idyllic(전원적)? 
-It's time that you left. 
-네가 떠날 때야
+It's time that you left. 			네가 떠날 때야
 
 Where is the baby? 
 I don't know. If we'd seen a kid, we wouldn't have left it in a crack house. 
@@ -10413,18 +10455,61 @@ I wanted to spare you this,
 	"I can see that you understand 	what you did wrong, so I'll spare you a lecture 
 	about it. 	Spare us the lurid details, James."
 
+You were awfully brave buying a place site unseen. 	
+	보지도않고 결정하시다니 용기가 대단하세요 
+	(You are awfully(extremely) brave 'buying a home sight unseen.')
 Yes, well, Carlos, in some circles, beating people up at all is frowned upon. 
 맞아요, 누가 그러는데 폭행은 아주 악질 범죄래요 
 So if I'm gonna get you out of this mess, you have to reciprocate. 
 그러니까 당신을 구해주면 당신도 그만큼 보답을 해요 	
 	
+Which part don't you understand?
+What 	   don't you understand? 	
 	
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+S2-Episode 11
+	Getting your licks in" means "grabbing your opportunity while you have a chance; making the most of the opportunity." 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	
+I tried hard only to fail.		<-  he really worked hard but no matter how hard he tried, 
+									he just ended up being FAILED"
+She studied hard for the exam only to fail.  <- to 부정사가 결과적인 의미로 쓰인 것입니다.
+											(열심히 공부했지만 결과는(only to 동사원형) ....)뿐이었다
+											
 	
 	
 	
