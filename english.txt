@@ -1120,6 +1120,9 @@ cringe-worthy	<-	cringe에서 나온 cringe-worthy라는 표현도 있어요. �
 crouch			<- adopt a position where the knees are bent and the upper body is brought forward and down, 
 					sometimes to avoid detection or to defend oneself.
 
+Cry me a river. <- 그렇게 내 옆에서 계속 찡찡거리면서 귀찮게하지말고 가서 속편하게 펑펑 울라는 뜻입니다.
+Cry on my shoulders  란 표현도 있습니다.
+
 crustacean		<- such as a crab, lobster, shrimp, or barnacle. 갑각류
 
 culprit			<- cause of an issue or a person who is responsible for a crime or other misdeed.
@@ -1870,6 +1873,9 @@ muscle spasm	<- 경련, 쥐, most common and are often due to overuse and muscle
 
 
 # N
+namely			<- i.e.(즉 …이다) 앞서 말한 것을 부연 설명.
+					"Two boys came, namely, Bill and Jack."
+
 narrative		<- a spoken or written account of connected events; a story.(
 					"the hero of his modest narrative"
 					synonyms:	account, chronicle, history, description, record, report, story
@@ -2074,6 +2080,11 @@ placate			<- make (someone) less angry(calm) or hostile.
 
 poised			<- be ready
 
+posh			<- [adj] elegant or stylishly luxurious.
+					"a posh Munich hotel"
+					synonyms:	smart, stylish, fancy, high-class, fashionable, chic, luxurious, 
+					luxury, deluxe, exclusive, opulent, lavish, grand, showy, upscale, upmarket
+
 post mortem		<- an examination of a dead body to determine the cause of death.
 					synonyms:	autopsy, postmortem examination, necropsy
 					"the hospital carried out a postmortem"
@@ -2270,6 +2281,16 @@ scorn			<- the feeling or belief that someone or something is worthless or despi
 					synonyms:	contempt, derision, contemptuousness, disdain, derisiveness, mockery, sneering
 					"he was unable to hide the scorn in his voice"
 					antonyms:	admiration, respect
+
+scrunch up		<- 1. To crouch or huddle into a small, cramped position. 
+					"We all scrunched up so that the guards wouldn't be able to see us."
+					"Would the people in the front row mind scrunching up in their seats so 
+					the people in back can see better, please?"
+				  2. To squeeze, crush, or crumple something into a smaller shape, size, or space. 
+					A noun or pronoun can be used between "scrunch" and "up"; often followed by 
+					"into (something)." 
+					"I scrunched the note up into a ball and tossed it across the room to Jake." 
+					"Don't scrunch the newspaper up like that—it makes it hard to read!"
 
 scrutiny		<- critical observation or examination:	examination, inspection, survey, study, perusal;
 
@@ -3701,7 +3722,7 @@ I don't know. If we'd seen a kid, we wouldn't have left it in a crack house.
 
 
 
-being 사용법
+# being 사용법
 
 1. 수동태: be being p.p.
 
@@ -10678,12 +10699,17 @@ I cut my hand with a knife.(칼로 손을 베었습니다.)
 
 	
 	
-	
-	
-	
-	
-	
-	
+I knew right then and there that I was in for a very long nihgt.	
+They will already be one by the time I get up.
+Hell hath no fury like a woman scorned.  <-  지옥의 분노도, 모멸감을 당한 여자의 분노만 못하다.' 라는 의미입니다.
+											"여자가 한을 품으면 온유월에도 서리가 내린다."
+											hath=has 고어, scorn <- 경멸 
+dovish vs hawkish		<- 저금리 Vs 금리인상  정책 	
+	Dovish (Inflationism)	<-  저금리를 경제발전의 수단으로 정의
+	Hawkish		<-	물가 안정을 위해 통화량과 금리의 인상을 주장하는 진보세력인 강경파
+
+	출처: https://dojason.com/3 [제이슨을 하다]
+	dovish <- Pacifism(평화주의) Vs hawkish <- militaris(군국주의)	
 	
 	
 	
