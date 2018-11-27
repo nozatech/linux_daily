@@ -2,7 +2,7 @@ English Tense
 
 현재			I 		 	   wait for you.
 현재진행		I am  		waiting for you.
-현재완료		I have 		 waited for you.
+현재완료		I have 		 waited for you.      I have just finished my work now.
 현재완료진행	I have been waiting for you.
 
 과거			I 			waited for you.
@@ -25,7 +25,7 @@ English Tense
 				You don't 	speak English.
 				Do you 		speak English?
 				
-		Auxiliary Verb(조동사 - Helping Verb)	
+	B.	Auxiliary Verb(조동사 - Helping Verb)	
 				You can 	speak English.
 				You can't 	speak English.
 				Can you 	speak English?
@@ -34,7 +34,7 @@ English Tense
 				He can't 	speak English.
 				Can he 		speak English?
 		
-		Passive Voice( 수동태	)
+	C.	Passive Voice( 수동태	)
 				English is 		spoken by you.
 				English isn't 	spoken by you.
 				Is English 		spoken by you?
