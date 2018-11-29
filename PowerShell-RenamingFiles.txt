@@ -1,0 +1,24 @@
+PowerShell 
+Go to folder and Shift+ right click to launch the PowerShell.
+
+
+$Files = Get-ChildItem -Path "d:\With_Space"
+
+Copy-Item $Files.FullName -Destination d:\Without_Space
+
+Set-Location -Path d:\Without_Space
+
+
+
+# Remove Space
+Get-ChildItem *.mp3 | Rename-Item -NewName { $_.Name -replace ' ','' }
+
+# Name Changes - PART
+dir | rename-item -newname {$_.name -replace "Ch","WordsMate1-"}
+
+dir | rename-item -newname {$_.name -replace "^Ch","WordsMate1-"}		^ <-Start with 'Ch'
+
+
+
+# Name Changes with Numbering
+Dir -filter *.mp3 | %{Rename-Item $_ -NewName ("국제회의영어_{0}.jpg" -f $nr++)}

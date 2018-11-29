@@ -14,9 +14,6 @@
 6단계 : 32일에 한번
 7단계 : 64일에 한번
 
-
-
-
 Listening: Speaking: Reading: Grammar: Writing
 
 8품사: 명사, 대명사, 동사, 형용사, 부사, 전치사, 접속사, 감탄사
@@ -1279,6 +1276,9 @@ dud				<- [noun] a thing that fails to work properly or is otherwise unsatisfact
 				last 30 years. Also not helping things is the fact that the Hyundai Genesis used be a model
 				and now Genesis is a seperate brand which has only created confusion.  So far the launch of 
 				of the Genesis brand has been s a dud, but that doesn't mean the card is a dud.
+
+duh	= doy		<- Kind of means "Wasn't that obvious, huh?" 
+					You have to turn the Computer on first, Doy!
 
 dwell			<- [dwelled, dwelt]
 					"Let's not dwell on the past."				
@@ -10487,35 +10487,81 @@ So if I'm gonna get you out of this mess, you have to reciprocate.
 Which part don't you understand?
 What 	   don't you understand? 	
 	
+If you got a promotion, we never would have seen you. 
+		You would have been traveling all the time.	
+You're right. That promotion would have just killed us.	
+	
+This is a long way to go to do what you could have done in my back yard. 	
+	
+You're kind of taking your time. Walking a lot. 	   <- 시간 낭비
+You self-righteous bitch. 	<- 독선적인
+
+
+S2-EpisodeS2-EpisodeS2-EpisodeS2-EpisodeS2-EpisodeS2-EpisodeS2-Episode
+
+
+
+
+
+
+
+
+
+
 	
 	
 	
+S2-Episode 1
+
+
+
 	
+S2-Episode 2
+S2-Episode 3
+S2-Episode 4
+S2-Episode 5
+S2-Episode 6
+S2-Episode 7
 	
-	
-	
-	
-	
-	
-	
-	
+S2-Episode 8	
+	Oh, so we lucked out! - Yes, we did.    운이 좋았다
 	
 	
 	
 	
 S2-Episode 11
-	Getting your licks in" means "grabbing your opportunity while you have a chance; making the most of the opportunity." 	
+	Getting your licks in. <-  "grabbing your opportunity while you have a chance; making the most of the opportunity." 	
 
 
 
 
+Friends-S1-Episode 1 
 
+Friends-S1-Episode 2
+Can I stay?     That 'whould be' no.
+Oh, like I wasn't dreading tomorrow enough, having to give it back to him.
+		어떡해, 나 내일 배리에게 돌려주려 한 것만으로도 무서워 죽겠는데. 
+Any diamond ring we find, we'll run it by you. 
+		run something by/past somebody <- to tell someone something so that they can give you their opinion
 
+Friends-S2-Episode 1  
+I never would have gone for it, if it hadn't been for you. 
+I was trying to spare your feelings. 		<- to avoid doing something that would 
+												cause someone to feel sad or upset
+Was there a second of all? 두번째로 할 말은 뭐지? 
+Oh. No, I think that was the whole all. 아까 그게 전부 같아
 
-
-
-
-
+Friends-S2-Episode 2
+Oh, you're losin' your apron here, let me get it. 어머나, 끈이 떨어졌네 내가 묶어줄게요 
+Joanna, it's not as simple as all that, ok?   그게 그렇게 간단한 일이 아녜요 
+Oh, I'm sorry, did my back hurt your knife?   내 찔린등이 니칼을 손상시켰냐?
+but I'm pretty much totally intimidated by you. 난 레이첼 때문에 기가(두렵다)팍 죽었어요 
+Look, there are people like Ross who need to shoot for the stars, 
+	with his museum, and his papers getting published.
+			이것 봐라, 자기 박물관이 있고, 논문이 출판되곤 하는 로스처럼 
+		shoot for the stars <- To set one's goals or ambitions very high; 
+				to try to attain or achieve something particularly difficult. 
+Dr. Farber, Jason Greenstein's gagging(chocking or retch-구역질).
 
 
 
@@ -10711,7 +10757,7 @@ dovish vs hawkish		<- 저금리 Vs 금리인상  정책
 	출처: https://dojason.com/3 [제이슨을 하다]
 	dovish <- Pacifism(평화주의) Vs hawkish <- militaris(군국주의)	
 	
-	
+spill the beans		<- 무심코 비밀을 누설하다. 입을 잘못 놀리다
 	
 	
 	
