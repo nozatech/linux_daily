@@ -10761,7 +10761,129 @@ spill the beans		<- 무심코 비밀을 누설하다. 입을 잘못 놀리다
 	
 	
 	
-	
+### HARRY POTTER -1	
+
+말하는 스타일
+ - 동사 -
+advised
+assured			<- 안심,확인,납득 시키다
+barked			<- 마구 고함, 소리치다
+blurted			<- (비밀등을)무심코 말하다, 불쑥 말하다
+boomed			<- 큰소리로 말하다
+chocked			<- 숨이막하디, 소리가 나지 않다
+chortled		<- 만족스러운듯 웃다(말하다)
+crided			<- 소리치다, 울부짖다
+croaked			<- 쉰소리로 말하다
+drawled			<- 느릿느릿 말하다, 점잔뺴며 말하다
+faltered		<- (목소리가)떨리다,주저하다, 더듬다
+gasped			<- 숨을 헐떡 거리며 말하다
+grinned			<-(이를 보이며) 웃다
+grumbled		<- 불평하하다, 투덜거리다
+growled			<- 으르렁거리다, 화내다, 호통치다
+hissed			<- 작은 목소리로 꾸짓다, 쉿 소리를 내다
+howley			<- 으르렁거리다, 큰소리를 내다
+moaned			<- 신음하듯 말하다, 불평하다
+mumbled			<- 웅얼, 중얼거리다
+murmured		<- 중얼, 투덜거리다
+muttered		<- 중얼, 투덜거리다
+panted			<- 숨을 거칠에 내쉬다, 헐떡거리며 말하다
+observed		<- (알게된것을)말하다, 진술하다
+retorted		<- 맞받아 응수하다, 반박하다, 재치 있는 응수
+roared			<- 고함치다, 소리치다
+rumbled			<- 낮은 목소리로 말하다
+screeched		<- 꺅꺅소리내다, 비명을 지르다
+shrieked		<- 새된 소리로 말하다, 비명을 지르다
+smirked			<- 능글맞게 웃다, 히죽거리다
+snapped			<- 쏘아부이다, 역정을 내다, 비난하다
+snarled			<- 떽떽거리다, 고함치다
+sneered			<- 낄낄거리다, 비우사, 조소하다
+sobbed			<- 울며 말하다, 흐느껴 울다
+spat			<- 침을 뱃다, 모욕하다, 내뱉듯이 말하다
+spluttered		<- 침튀기며 (빠른 어투로) 말하다
+squeaked		<- 새된 소리로 말하다
+stormed			<- 호통치다, 고함치며 말하다
+squealed		<- 꽥 소리를 지르다
+thundered		<- 큰소리로 말하다, 격렬히 비난하다
+wheedled		<- (솔깃한 말로 꾀어서) ~하게하다, 슬슬 구슬리다
+wailed			<- 탄식/통곡하다
+wept			<-(소리없이)울다, 슬퍼하다
+yawned			<- 하품을 쉬며 말하다
+
+
+
+ - 부사 -
+abruptly		<- 무뚝뚝하게, 퉁명스럽게, 불쑥
+airily			<- 가볍게, 쾌활하게,유쾌하게
+blankly			<- 멍하니,망연히,
+briskly			<- 힘차게, 씩씩하게
+casually		<- 우연히, 별생각없이, 불쑥
+cooly
+crisply			<- 시원, 명쾌, 척척 말하다
+crossly			<- 심술이 나서 뽀루퉁하게
+darkly			<- 음울, 음침하게, 남몰래
+dreamily		<- 꿈꾸듯이 말하다
+eagerly			<- 열심히
+earnestly		<- 
+enviously		<- 부러워하며, 샘내며
+faintely		<- 약하게, 힘없이
+flatly			<- 단조롭게, 힘없이, 단호하게
+frantically		<- 미친듯이, 필사적으로
+fondly			<- 애정을 담아, 상냥하게
+grimly			<- 엄단하게 단호하게, 퉁명스럽게
+gruffly			<- 무뚝뚝하게
+grudgingly		<- 못마땅해하며, 마지못해, 억지로
+harshly			<- 귀에 거슬리게, 거칠게, 엄하게
+hoarsely		<- 쉰 목소리로
+huffily			<- 뿌르퉁해서, 화가나서, 골이나서
+icily			<- 냉담하게, 차갑게
+indignantly		<- 분개하여, 화나서, 
+irritabley		<- 성미급하게, 안달하며
+lazily
+pointedly		<- 매섭게, 날카롭게, 신랄하게
+pompously		<- 화려,과장,거만하게
+reverently		<- 경건/공손하게
+ruefully		<- 스픈듯이, 후회하며, 애처롭게
+shrilly			<- 새된 소리로, 날카롭게
+shortly			<- 날카롭게, 엄격하게, 분명/선명히
+smugly			<- 잘난척하며, 뻐기며
+sternly			<- 엄격, 단호하게
+stiffly			<- 딱딱/완고하게
+testily			<- 성미급하게, 퉁명 스럽게, 분개하여, 걸핏하면 화를 잘 내어
+thickly			<- 불문명하게, 탁한목소리로
+viciously		<- 심술궂게, 난폭하게, 고약하게
+wearily			<- 지루하게, 피곤하여, 싫증나서
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
