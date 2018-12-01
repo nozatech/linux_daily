@@ -260,6 +260,9 @@ English Tense
 				
 
 
+I saw my friend at school today and I noticed (that) she had gotten a haircut.				
+She came out with a new album, and I noticed (that) her style had changed a little bit.				
+I ran into my friend on the street this morning, and I noticed she looked a little different.				
 				
 				
 Subjunctive Mood - 가정법
@@ -273,15 +276,15 @@ I went to bed late last night, so it was hard to get up this morning.
 	<과거 P.P.>										<현재 P.P.>
 
 	I wasn't prepared, so I didn't do well on the interview.
-	If I had been more prepared, I would've done better on the interview.
+		=> If I had been more prepared, I would've done better on the interview.
 
 	I didn't eat breakfast, so I was very hungry during the test.
-	If I had eaten breakfast, I wouldn't have been so hungry during the test, and I would've concentrated better.
+		=> If I had eaten breakfast, I wouldn't have been so hungry during the test, and I would've concentrated better.
 
 	I didn't konw about his situation, so I couldn't help him.
-	If I had known about his situation, I would've helped him.
+		=> If I had known about his situation, I would've helped him.
  
-2. ~을 할수도 있었어/ 했었을지도 몰라
+2. ~을 할수도 있었어(과거)/ 했었을지도 몰라
 	If he had asked me, I might've help him. 
 
 	If she had practiced harder, she might not have made that mistake.
@@ -293,7 +296,7 @@ I went to bed late last night, so it was hard to get up this morning.
 	If he hadn't told her, she might not've realized how important it was.
 							<mihgt have p.p.>
 
-3. ~할 수 있었을꺼야/~할 수 있었을텐데
+3. ~할 수 있었을꺼야(과거+과거가정)/~할 수 있었을텐데
 	If I had studied harder, I could've gone to a better school.
 	If I had known the China's economic issues, I could've sold the stocks earlier.
 	If I had known the China's economic issues, I would've been able to sell the stocks earlier.
@@ -321,13 +324,13 @@ I went to bed late last night, so it was hard to get up this morning.
 
 가정법	
 1. 일반적인 사실(현재시제 + 미래시제)	 
-	When the weather is this hot, it's better to walk your dog at night.	
+	When the weather is this hot, it is better to walk your dog at night.	
 
 2. 가능한 미래 (현재시제 + 미래시재)
 	If it's hot like this for the rest of week, it's going to be a really tough week.
 
-3. 현재의 사실에 대한 가정(
-	I wish there were a policy where we all get a day off when the weather is not past(beyond) a certain point.
+3. 현재의 사실에 대한 가정(일어나지 않았음)
+	I wish(현재) there were(과거-있었음) a policy where we all get a day off when the weather is(현재-있었음) not past(beyond) a certain point.
 	If that were true, that would be awesome!
 	(현재를 과거로가정 + would(과거시제)
 	

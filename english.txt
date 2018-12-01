@@ -4,7 +4,6 @@
 2.메모지에 문장 입력
 3.라이트너 박스 실행
 
-
 라이트너 박스 단계
 1단계 : 매일			
 2단계 : 2일에 한번			<- 1단계에서 성공한뒤 옮기기, 틀리면 다시 1단계로 옮김
@@ -13,6 +12,7 @@
 5단계 : 16일에 한번
 6단계 : 32일에 한번
 7단계 : 64일에 한번
+
 
 Listening: Speaking: Reading: Grammar: Writing
 
@@ -10858,25 +10858,55 @@ wearily			<- 지루하게, 피곤하여, 싫증나서
 
 
 
+### 라이브아카데미 ###
+
+# would와 could 올바르게 이해하고 자연스럽게 사용하는 법
+영어회화 https://www.youtube.com/channel/UCGDA1e6qQSAH0R9hoip9VrA
+
+# Would
+I thought it would rain today.								<= 비가 올줄 알았어
+She promised(that) she wouldn't talk about that again.		<= 않기로
+I told him (that) I would try my best.						<= 
+They told me they would give me an answer by this Friday.	<=
+
+I thought you would know about that.	<= 난 네가 그거에 대해서 		'알줄' 알았어
+I thought you already knew about that.	<= 난 네가 그거에 대해서 이미 '아는줄'(알고있는줄) 알았어
+
+I thought this would be more expensive.	<= 난 이게 더 '비쌀줄(비싸다는 가정하에)'   알았어
+I thought this was	    more expensive.	<= 난 이게 더 '비싼줄(비싸다고 알고 있었어)' 알았어
+
+I thought you would   have a lunch.		<= 먹은줄
+I thought you already had  a lunch.		<= 난 네가 이미 점심 (확신차게)'먹었는줄' 알았어
+
+I thought you would solve this problem.		<= 풀줄
+I thought you ready solved this problem.	<= 풀었을줄	
+
+I thought we weren't   supposed to bring our smartphones. <= 난 스마트폰을 가지고 오면 안된걸로 알고 있었어요.
+I didn't think we were supposed to bring our smartphones. <= 스마트폰을 가지고 오면 안될거 같았다.
+
+
+
+# Could
+I thought you could help me.
+I didn't think I could get here on time.
+She knew(that) she could pass the past.
+
+I didn't think I could make it on time. Vs I knew I couldn't arrive(make it) on time.
+
+If you were my friend, I would help you.
+I couldn't get up early yesterday.
+	I wasn't able to get up early yesterday.
+	I managed to get up early yesterday.
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+I saw my friend at school today and I noticed (that) she had gotten a haircut.				
+She came out with a new album, and I noticed (that) her style had changed a little bit.				
+I ran into my friend on the street this morning, and I noticed she looked a little different.
+I notice you were drinking a lot of coffee today, did you have trouble sheeping last night?
+If you saw your handwriting, would you recognize it?
 
 
 

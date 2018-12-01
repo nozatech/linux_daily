@@ -1,5 +1,5 @@
 PowerShell 
-Go to folder and Shift+ right click to launch the PowerShell.
+ Go to folder and Shift+ right click to launch the PowerShell.
 
 
 $Files = Get-ChildItem -Path "d:\With_Space"
