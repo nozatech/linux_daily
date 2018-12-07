@@ -1584,6 +1584,10 @@ indie			<- (of a pop group, record label, or film company) not belonging to or a
 					with a major record or film company.
 					characteristic of the deliberately unpolished or uncommercial style of small 
 					independent pop groups.
+
+imminent		<- 임박한, 일측측발
+					be in imminent danger  위급하게 되다
+					be in imminent peril   누란의 위기에 처하다
 					
 impair			<- weaken or damage something (especially a human faculty or function).
 					"drug use that impairs job performance"
@@ -1829,6 +1833,15 @@ masquerade		<- [n]a false show or pretense.
 						"a journalist masquerading as a man in distress"
 						synonyms:	pretend to be, pose as, pass oneself off as, impersonate, disguise oneself as
 
+may be			<- It may(조동사) be(동사) right.
+maybe			<- Adverb						
+					Maybe, you are right.	
+						
+
+mayham			<- violent or damaging disorder; chaos.
+					synonyms:	chaos, disorder, havoc(해브-억,재앙), bedlam(대소동, 혼란),
+						pandemonium(대혼란), tumult(혼란), uproar(소동,소란), turmoil(혼란), commotion(소란)  
+
 meat			<- 책·토론 등의) 중심 부분, 요점, 골자, 급소, 실질, 내용.
 					"the meat of the video 
 
@@ -1916,6 +1929,8 @@ obscurity		<- the state of being unknown, inconspicuous, or unimportant.
 					"he is too good a player to slide into obscurity"
 					synonyms:	insignificance, inconspicuousness, unimportance, anonymity
 					antonyms:	fame
+
+omen			<- 전조가 되는 일, 예시, 예감
 
 omnibus			<- [adj] comprising several items.
 					"Congress passed an omnibus anticrime package"
@@ -2157,6 +2172,9 @@ recumbent		<- 	a resting or reclining state
 					I lowered my seat to a recumbent position." 				
 					
 reconnaissance	<- military observation of a region to locate an enemy or ascertain strategic features.
+
+redact			<- Edit (text) for publication.(
+					censor or obscure (part of a text) for legal or security purposes.
 
 remainder		<- Something left over after other parts have been taken away.
 					"I will most likely be out for the remainder of the day."
@@ -3731,7 +3749,7 @@ I don't know. If we'd seen a kid, we wouldn't have left it in a crack house.
 	Avoid being ripped off before buying a new car.
 
 2. 형용사: '~것' 
-	being smart is good
+	being smart is good.
 
 3. 상태: 
 	He is mad.										<- always angry
@@ -5466,10 +5484,10 @@ each word or phrase. Kids can enjoy using fun and creative idioms to express the
 thoughts in an entertaining way. We have a huge list of examples below.
 ----------------------------------------------------------------------------------
 
-A grey area – Something unclear
-A rip-off – Too expensive
+A grey area 		– Something unclear
+A rip-off 			– Too expensive
 Add fuel to the fire – To add more to an existing problem
-As easy as ABC – Something is very easy
+As easy as ABC 		– Something is very easy
 boil down to  -  to be the main reason for something or the most basic part of something
 				"It’s difficult to choose which appliance to buy, 
 				 but in the end it usually boils down to cost."
@@ -5515,7 +5533,8 @@ Speak your mind – Say what you really feel
 # Animal Idioms
 A bull in a china shop - Someone who is very clumsy
 A little birdie told me - Someone told me a secret
-Bee in her bonnet - She is upset
+Have a bee in her bonnet - She is to keep talking about something again and again 
+					because you think it is very important:
 Birdbrain - Someone who is not very smart
 Busy as a bee – To be very active and working hard at something
 Cat got your tongue? - Why aren’t you talking?
@@ -7480,8 +7499,8 @@ as we approach the holiday season; stay tuned!
 "Price has increased"	Vs. "has been increased"
 (Active Voice)       		 (Passive voice) 	
 
-"Here are the invoices for 8/2018($5,921.50) and it has been increased by 14.8% vs 7/2018($5,157.57)."
-															(Passive Voice using 'been' and 'by')
+"Here are the invoices for 8/2018($5.5k) and it has been increased by 10% Vs 7/2018($5k)."
+												(Passive Voice using 'been' and 'by')
 															
 "Don’t give up now. The best is yet to come."
 “Albert encouraged me by saying that the best is yet to come.”
@@ -7494,19 +7513,23 @@ I still have not read the book. (난 아직도 그 책을 읽고 있지 않다.)
 
 yet는 주로 부정문과 의문문에 사용됩니다.
 
- Has she finished her homework yet? (그녀는 숙제를 마쳤나요?)
- She has not finished her homework yet. (그녀는 여전히 숙제를 끝내지 않은)
-긍정적 문에서 사용하는 경우는 "아직"미래를 나타내는 "이윽고"라는 뜻입니다.
+	Has she finished her homework yet? (그녀는 숙제를 마쳤나요?)
+	She has not finished her homework yet. (그녀는 여전히 숙제를 끝내지 않은)
+	긍정적 문에서 사용하는 경우는 "아직"미래를 나타내는 "이윽고"라는 뜻입니다.
 
- You have plenty of time yet [still] (아직 시간은 많이있어.)
- You 'll see your pal yet. (언젠가 동료를 만날 함)
-이상과 같이, yet은 文尾에 두는 것이 보통이지만, 중간에 오기도합니다.
+	You have plenty of time yet [still] (아직 시간은 많이있어.)
+	You'll see your pal yet. (언젠가 동료를 만날 함)
+	
+	I have not yet finished the work. (난 아직도 그 일을 마치고하지 않습니다.)
 
- I have not yet finished the work. (난 아직도 그 일을 마치고하지 않습니다.)
 
-
+	
+	
+	
+	
+	
 http://dreamingdean.tistory.com/17
-영어표현들
+관용어 Idioms
 
 
 [A]
@@ -7529,6 +7552,8 @@ Awesome! 와우~ 멋지다
 
 [B]
 Back me up. 뒤좀 봐줘~ (지원해 달라는 의미의)
+bakcup the truck 	<= purchase of a large position in a stock or 
+						other financial asset by an investor or trader. 
 Be my guest. 사양하지 마세요, 그럼 한번 해보세요, 어서 해보세요
 Be patient. 조금만 참아 보세요
 Be punctual! 시간좀 맞춰줘!
@@ -7873,7 +7898,8 @@ Poor thing. 저런 (안스러워요, 불쌍해요 정도의 의미)
 Pretty good! 정말 좋지요
 Really? 정말?
 Relax. 좀 느긋해 지세요.
-
+put your money where your mouth is 
+		<= to support something that you believe in, especially by giving money
 [S]
 Same here. 저도 동감입니다
 Same to you. 당신도요
