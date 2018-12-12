@@ -1182,6 +1182,15 @@ despair			<- the complete loss or absence of hope.
 
 digress			<- off the subject
 
+dilate			<- make or become wider, larger, or more open.
+					"her eyes dilated with horror"
+					synonyms:	enlarge, widen, expand, distend
+						"her nostrils dilated"
+				speak or write at length on (a subject).
+					synonyms:	expatiate, expound, enlarge, elaborate, speak/write at length
+					"Diane dilated on the joys of her married life"
+
+
 dire			<- of a situation or event) extremely serious or urgent.
 					"dire consequences"
 					synonyms:	terrible, dreadful, appalling, frightful, awful, atrocious, grim, alarming; 

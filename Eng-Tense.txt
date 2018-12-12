@@ -17,10 +17,10 @@ English Tense
 
 
 
-시재
-1. Present(현재시재)
+### 12 x 시재
+1. Present(현재시재)  ----------------------------
 	
-	A. Simple Present		
+	A. 현재 - Simple Present		
 				You 		speak English.
 				You don't 	speak English.
 				Do you 		speak English?
@@ -134,7 +134,7 @@ English Tense
 				Can English   have been being spoken by you?
 
 
-2. Past 과거시재
+2. Past 과거시재  ----------------------------
 	A. Simple Past(과거)		
 				You        spoke English.
 				You didn't speak English.
@@ -216,7 +216,7 @@ English Tense
 				Could English    have been being spoken by you?
 				
 				
-3. Future 미래시재
+3. Future 미래시재 ----------------------------
 
 	A. Simple Future		
 				You will     speak English.
@@ -383,8 +383,27 @@ Might have P.P. 무엇했을지도 몰라, 했었나봐
 	He might have succeeded if he had tried hard.	
 	
 	
-	
-	
+# 수동태
+A letter is written. (쓰여있다)
+A letter will be written. (적힐거다)
+A letter was written. (쓰였다)
+A letter has been written.(쓰였었다. 적혀지고 있다)
+A letter has been being written. (지금 쓰여지고 있는 중이다)
+A letter had been written. (이미 전에 쓰여졌었다.)
+A letter is suppouse to be written. (쓰여질거다)
+A letter may/might be written. (쓰여지는지도 모르겠다)
+A letter would be written. (쓰여진거다, 확신 99%)
+A letter could be written. (쓰여질 수도 있다.)
+A letter should be written. (쓰여지는게 좋다)
+A letter must be written. (쓰여져야만 한다)
+A letter should have been written. (쓰여졌어야했다 근데 못했다)
+A letter shouldn’t have been written. (안쓰여져야했는데 해버렸다)
+A letter would have been wiritten.(쓰여져어야했는데 후회스럽다)
+A letter wouldn’t have been written. (안쓰여져야했는데 …)
+A letter could have been written. (쓰여졌을 수도 있다.)
+A letter couldn’t have been written. (안쓰여졌을 수도 있다.)
+A letter must have been written. (쓰여졌어야 한다)
+A letter mustn’t have been written. (안쓰여졌어야 한다.)	
 	
 	
 	
