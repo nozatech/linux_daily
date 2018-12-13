@@ -1,40 +1,53 @@
-English Tense 
+### 12 x 시재 English Tense 
+------------------------------------------------------------------------------------
+현재			I 		 	 	wait for you.		
+현재진행		I am  			waiting for you.
+현재완료		I have 			waited for you.      I have just finished my work now.
+현재완료진행	I have been 	waiting for you.
 
-현재			I 		 	   wait for you.
-현재진행		I am  		waiting for you.
-현재완료		I have 		 waited for you.      I have just finished my work now.
-현재완료진행	I have been waiting for you.
+과거			I 				waited for you.
+과거진행		I was 			wating for you.
+과거완료		I had 			waited for you.
+과거완료진행	I had been 		waiting for you.
 
-과거			I 			waited for you.
-과거진행		I was 		wating for you.
-과거완료		I had 		waited for you.
-과거완료진행	I had been waiting for you.
-
-미래			I will				wait for you.
-미래진행		I will be 		 waiting for you.
-미래완료		I will have 	  waited for you.
+미래			I will			wait for you.
+미래진행		I will be 		waiting for you.
+미래완료		I will have 	waited for you.
 미래완료진행	I will have been waiting for you.
+------------------------------------------------------------------------------------
+	시재	  |		능동태							|	수동태
+------------------------------------------------------------------------------------
+현재			I 		 	  write a letter.		| A letter is written (by me).
+현재진행		I am  		writing a letter.		|		   is being written
+현재완료		I have 		  wrote a letter.     	|		   has been written
+현재완료진행	I have been writing a letter.		|
 
+과거			I 			  wrote a letter.		| A letter was written by me
+과거진행		I was 		writing a letter.		|          was being writtend
+과거완료		I had 		written a letter.		|		   had been written
+과거완료진행	I had been  writing a letter.		|
 
+미래			I will			 write a letter.	|			will be written
+미래진행		I will be 		 writing a letter.	|			will be being written
+미래완료		I will have 	 written a letter.	|			will have been written
+미래완료진행	I will have been writing a letter.	|
 
-### 12 x 시재
-1. Present(현재시재)  ----------------------------
+------------------------------------------------------------------------------------
+### 12 x 시재 ###
+------------------------------------------------------------------------------------
+1. 현재 시재(Present) - 현재, 현재진행, 현재완료, 현재완료 진행  
 	
-	A. 현재 - Simple Present		
+	A.  1)단순현재 - Simple Present		
 				You 		speak English.
 				You don't 	speak English.
 				Do you 		speak English?
 				
-	B.	Auxiliary Verb(조동사 - Helping Verb)	
-				You can 	speak English.
-				You can't 	speak English.
-				Can you 	speak English?
+			2)조동사 - Auxiliary Verb(Helping Verb)	
+				You can 	speak English.	/ He can 	speak English.
+				You can't 	speak English.	/ He can't 	speak English.
+				Can you 	speak English?	/ Can he 	speak English?
 				
-				He can 		speak English.
-				He can't 	speak English.
-				Can he 		speak English?
-		
-	C.	Passive Voice( 수동태	)
+			3)수동태 (Passive Voice)
 				English is 		spoken by you.
 				English isn't 	spoken by you.
 				Is English 		spoken by you?
@@ -43,16 +56,16 @@ English Tense
 				Car isn't 	fixed by him.
 				Is car 		fixed by him?
 				
-				He 			seems excited.
+				He 			seems excited.	/ he 
 				He doesn't 	seem  excited.
 				Does he 	seem  excited?
 				
-		Passive Voice + Auxiliary Verb 
+			4)수동태(Passive Voice) + 조동사(Auxiliary Verb)
 				English can 	be  spoken by you.
 				English can't 	be  spoken by you.
 				Can English 	be  spoken by you?
 	
-	B. Present Continuous (현재 진행 - adding ~ing)		
+	B. 	1)현재-진행 (Present Continuous - adding ~ing)		
 				You are 	speaking English.
 				You aren't	speaking English.
 				Are you 	speaking English?
@@ -61,7 +74,7 @@ English Tense
 				He isn't fixing the car.
 				Is he 	 fixing the car?
 				
-		Auxiliary Verb (조동사 - Helping Verb)	
+			2)조동사 (Auxiliary Verb - Helping Verb)	
 				You can   be speaking English.
 				You can't be speaking English.
 				Can you 	 speak English?
@@ -70,7 +83,7 @@ English Tense
 				He can't be fixing the car.
 				Can he 		fix the car?
 				
-		Passive Voice ( 수동태 )		
+			3)수동태 (Passive Voice)		
 				English  is    being spoken by you.
 				English  isn't being spoken by you.
 				Is English 	   being spoken by you?
@@ -79,7 +92,7 @@ English Tense
 				The car isn't being fixed by him.
 				Is car 		  being fixed by him?
 				
-		Passive Voice (수동태) +	Auxiliary Verb (조동사)
+			4)수동태 (Passive Voice) +	조동사(Auxiliary Verb)
 				English can   be being spoken by you.
 				English can't be being spoken by you.
 				Can English   be being spoken by you?
@@ -88,28 +101,28 @@ English Tense
 				Car can't be being fixed by him.
 				Can car   be being fixed by him?
 	
-	C. Present Perfect	( 현재 완료 )	
+	C. 	1)현재 완료 - Present Perfect		
 				You  have 	 spoken  English.
 				You  haven't spoken  English.
 				Have you 	 spoken  English?
 				Haven't you  spoken  English?
 			
-		Auxiliary Verb ( 조동사 - Helping Verb)	
+			2)조동사 (Auxiliary Verb - Helping Verb)	
 				You can   have spoken English.
 				You can't have spoken English.
 				Can you   have spoken English?
 		
-		Passive Voice (수동태)		
+			3)수동태(Passive Voice)		
 				English     has been 	spoken by you.
 				English     hasn't been spoken by you.
 				Has English been 		spoken by you?
 				
-		Passive Voice (수동태)+ Auxiliary Verb(조동사)
+			4)수동태(Passive Voice) + 조동사(Auxiliary Verb)
 				English   can have been spoken by you.
 				English can't have been spoken by you.
 				Can English   have been spoken by you?
 				
-		Present Perfect Continuous (현재 완료 진행)	
+	D.	1)현재 완료 진행 (Present Perfect Continuous)
 				You have    been speaking English.
 				You haven't been speaking English.
 				Have you    been speaking English?
@@ -118,152 +131,157 @@ English Tense
 				I haven't 	been waiting for you
 				Have I 		been waiting for you?
 				
-		Auxiliary Verb (조동사 - Helping Verb)	
+			2)조동사 (Auxiliary Verb - Helping Verb)	
 				You can   have been speaking English.
 				You can't have been speaking English.
 				Can you   have been speaking English?
 				
-		Passive Voice (수동태)		
+			3)수동태(Passive Voice)		
 				English has    been being spoken by you.
 				English hasn't been being spoken by you.
 				Has English    been being spoken by you?
 		
-		Passive Voice (수동태) + Auxiliary Verb (조동사)
+			4)수동태(Passive Voice) + 조동사(Auxiliary Verb)
 				English can   have been being spoken by you.
 				English can't have been being spoken by you.
 				Can English   have been being spoken by you?
 
-
-2. Past 과거시재  ----------------------------
-	A. Simple Past(과거)		
+--------------------------------------------------------
+2. 과거시재 (PAST)(과거, 과거진행, 과거완료, 과거완료 진행)
+	A.  1)단순-과거(Simple Past)		
 				You        spoke English.
 				You didn't speak English.
 				Did you    speak English?
 		
-		Auxiliary Verb (조동사 - Helping Verb. Can 을 Could 로 바꿈)	
+			2)조동사 (Auxiliary Verb - Helping Verb. Can 을 Could 로 바꿈)	
 				You could    speak English.
 				You couldn't speak English.
 				Could you    speak English?
 		
-		Passive Voice (수동태)		
+			3)Passive Voice (수동태)		
 				English was    spoken by you.
 				English wasn't spoken by you.
 				Was English    spoken by you?
 	
-		Passive Voice (수동태)+ Auxiliary Verb (조동사)	
+			4)Passive Voice (수동태)+ Auxiliary Verb (조동사)	
 				English could    be spoken by you.
 				English couldn't be spoken by you.
 				Could English    be spoken by you?
 				
-	B. Past Continuous	(과거진행)	
+	B.  1)과거-진행(Past Continuous)
 				You were    speaking English.
 				You weren't speaking English.
 				Were you    speaking English?
 			
-		Auxiliary Verb (조동사 - Helping Verb)	
+			2)Auxiliary Verb (조동사 - Helping Verb)	
 				You could 	 be speaking English.
 				You couldn't be speaking English.
 				Could you    be speaking English?
 				
-		Passive Voice (수동태)		
+			3)Passive Voice (수동태)		
 				English was    being spoken by you.
 				English wasn't being spoken by you.
 				Was English    being spoken by you?
 				
-		Passive Voice(수동태)+	Auxiliary Verb (조동사)
+			4)Passive Voice(수동태)+	Auxiliary Verb (조동사)
 				English could    be being spoken by you.
 				English couldn't be being spoken by you.
 				Could English    be being spoken by you?
 				
-	C. Past Perfect	(과거 완료 시재)	
+	C.  1)과거-완료 - Past Perfect		
 				You had    spoken English.
 				You hadn't spoken English.
 				Had you    spoken English?
 			
-		Past Auxiliary Verb (조동사 - Helping Verb)	
+			2)조동사(Auxiliary Verb - Helping Verb)	
 				You could    have spoken English.
 				YOu couldn't have spoken English.
 				Could you    have spoken English?
 			
-		Past Passive Voice		
+			3)수동태(Passive Voice)
 				English had    been spoken by you.
 				English hadn't been spoken by you.
 				Had English    been spoken by you?
 		
-		Past Passive Voice + Auxiliary Verb	
+			4)수동태(Passive Voice) + 조동사(Auxiliary Verb)
 				English could    have been spoken by you.
 				English couldn't have been spoken by you.
 				Could English    have been spoken by you?
 				
-		Past PerfectContinuous	
+	D.	1)과거-완료-진행(Past-Perfect-Continuous)
 				You had    been speaking English.
 				You hadn't been speaking English.
 				Had you    been speaking English?
 			
-		Past Auxiliary Verb (Helping Verb)	
+			2)조동사(Auxiliary Verb - Helping Verb)	
 				You could    have ben speaking English.
 				You couldn't have been speaking English.
 				Could you    have been speaking English?
 				
-		Past Passive Voice		
+			3)수동태(Passive Voice)
 				English had    been being spoken by you.
 				English hadn't been being spoken by you.
 				Had English    been being spoken by you?
 		
-		Past Passive Voice + Auxiliary Verb 	
+			4)수동태(Passive Voice) + 조동사(Auxiliary Verb)
 				English could    have been being spoken by you.
 				English couldn't have been being spoken by you.
 				Could English    have been being spoken by you?
 				
-				
-3. Future 미래시재 ----------------------------
+------------------------------------------------------------------------------------				
+3. 미래-시재(Future)(단순-미래, 미래-진행, 미래-완료, 미래-완료-진행)
 
-	A. Simple Future		
+	A.  1)단순미래(Simple Future)
 				You will     speak English.
 				You will not speak English.
 				Will you 	 speak English?
 		
-		Passive Voice		
+		2)수동(Passive Voice)
 				English will 	 be spoken by you.
 				English will not be spoken by you.
 				Will English 	 be spoken by you?
 				
-	B. Future Continuous		
+	B.  1)미래-진행(Future Continuous)
 				You will 	 be speaking English.
 				You will not be speaking English.
 				Will you 	 be speaking English?
 				
-		Passive Voice		
+		2)수동(Passive Voice)
 				English will 	 be being spoken by you.
 				English will not be being spoken by you.
 				Will English     be being spoken by you?
 				
-	C. Future Perfect
+	C.  1)미래-완료(Future Perfect)
 				You will have 	  spoken English.
 				You will not have spoken English.
 				Will you have 	  spoken English?
 				
-		Passive Voice		
+		2)수동(Passive Voice)
 				English will 	 have been spoken by you.
 				English will not have been spoken by you.
 				Will English 	 have been spoken by you?
 				
-		Future Perfect Continuous	
+	D.	1)미래-완료-진행(Future Perfect Continuous)	
 				You will 	 have been speaking English.
 				You will not have been speaking English.
 				Will you 	 have been speaking English?
 				
-		Passive Voice		
+		2)수동(Passive Voice)
 				English will	 have been being spoken by you.
 				English will not have been being spoken by you.
 				Will English 	 have been being spoken by you?
 				
-
-
-I saw my friend at school today and I noticed (that) she had gotten a haircut.				
-She came out with a new album, and I noticed (that) her style had changed a little bit.				
-I ran into my friend on the street this morning, and I noticed she looked a little different.				
+		
 				
+				
+------------------------------------------------------------------------------------
+
+I saw my friend at school today and I noticed (that) she had gotten a haircut.
+	-봤다													-머리가 잘려진			
+She came out with a new album, and I noticed (that) her style had changed a little bit.				
+															- 스타일이 바뀐	
+I ran into my friend on the street this morning, and I noticed she looked a little different.				
+																	
 				
 Subjunctive Mood - 가정법
 
@@ -384,37 +402,70 @@ Might have P.P. 무엇했을지도 몰라, 했었나봐
 	
 	
 # 수동태
-A letter is written. (쓰여있다)
-A letter will be written. (적힐거다)
-A letter was written. (쓰였다)
-A letter has been written.(쓰였었다. 적혀지고 있다)
-A letter has been being written. (지금 쓰여지고 있는 중이다)
-A letter had been written. (이미 전에 쓰여졌었다.)
+A letter is written. 				(쓰여있다)
+A letter will be written. 			(적힐거다)
+A letter was written. 				(쓰였다)
+A letter has been written.			(쓰였었다. 적혀지고 있다)
+A letter has been being written. 	(지금 쓰여지고 있는 중이다)
+A letter had been written. 			(이미 전에 쓰여졌었다.)
 A letter is suppouse to be written. (쓰여질거다)
-A letter may/might be written. (쓰여지는지도 모르겠다)
-A letter would be written. (쓰여진거다, 확신 99%)
-A letter could be written. (쓰여질 수도 있다.)
-A letter should be written. (쓰여지는게 좋다)
-A letter must be written. (쓰여져야만 한다)
-A letter should have been written. (쓰여졌어야했다 근데 못했다)
-A letter shouldn’t have been written. (안쓰여져야했는데 해버렸다)
-A letter would have been wiritten.(쓰여져어야했는데 후회스럽다)
-A letter wouldn’t have been written. (안쓰여져야했는데 …)
-A letter could have been written. (쓰여졌을 수도 있다.)
-A letter couldn’t have been written. (안쓰여졌을 수도 있다.)
-A letter must have been written. (쓰여졌어야 한다)
-A letter mustn’t have been written. (안쓰여졌어야 한다.)	
+A letter may/might be written. 		(쓰여지는지도 모르겠다)
+A letter would be written. 			(쓰여진거다, 확신 99%)
+A letter could be written. 			(쓰여질 수도 있다.)
+A letter should be written. 		(쓰여지는게 좋다)
+A letter must be written. 			(쓰여져야만 한다)
+A letter should have been written.  	(쓰여졌어야했다 근데 못했다)
+A letter shouldn’t have been written. 	(안쓰여져야했는데 해버렸다)
+A letter would have been wiritten.		(쓰여져어야했는데 후회스럽다)
+A letter wouldn’t have been written. 	(안쓰여져야했는데 …)
+A letter could have been written. 		(쓰여졌을 수도 있다.)
+A letter couldn’t have been written. 	(안쓰여졌을 수도 있다.)
+A letter must have been written. 		(쓰여졌어야 한다)
+A letter mustn’t have been written. 	(안쓰여졌어야 한다.)	
 	
+# 수동태 예문
+- A guy was hit by a streetcar.
+- The guy has been taken to the hospital.	(그 남자는 병원으로 지금막(현재완료-has been taken) 후송되었다.)	
+	관계대명사 - The guy 'who was hit by a streetcar' 	  has been taken to the hospital.
+	부사절	- 'Because a guy was hit by a street', he has been taken to the hospital.
+	수동태	- The guy 'hit by a streetcar' 			  has been taken to the hospital.
+	분사구분	- Hit by a streetcar, 			the guy   has been taken to the hospital.
+	- 스트리트카에 친, 그 남자는. Hit by a streetcar, the guy …
+	- 병원으로 후송 되었다. has bee taken to the hospital.	
 	
+	3형식 (주어 + 동사 + 목적어(대상) )
+	– be + 과거분사
+	-	She wrote this book in English.
+		→ This book 'was written' in English.
 	
+	4형식(주어 + 동사 + 간접목적어 + 직접목적어)
+	– be + 과거분사 + 명사
+	- He 'was given a ten-year jail sentence.'
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	5형식 (주어 + 동사 + 목적어 + 목적보어)
+	- be + 과거분사 + 명사/형용사
+	- Instant noodle used to be considered a high calorie food.
+
+	be + 과거분사 + as
+		as가 꼭 와야 말이 되는 동사들이 있습니다. 그 중에서 cite(인용하다)가 있습니다. 
+		그래서 A를 B로 인용하다고 할 때는 as를 써야합니다.
+	"The data are going to be cited as evidence for the theory."
+		그 자료는 그 가설의 증거로 인용될거다
+
+	be + 과거분사 + of
+		전치사 각각의 뜻이 중요한 것이 아니라 특정 동사 뒤에 전치사 of가 오는 경우를 입으로 잘 익혀야합니다. 
+		그 중에서 예로 compose가 있습니다.	
+		"The board should be composed of at least 15 members."
+		이사회는 적어도 15명으로 구성되어야한다.
+
+		be + 과거분사 + with
+		load라고 말하는 순간 머릿속에는 전치사 with가 생각나면서 말을 해야합니다. 
+		그래서 be + 과거분사 + with가 됩니다.
+		"Alcohol is loaded with calories"
+		알콜은 칼로리를 가지고 있다.
+
+쓰이다		읽다
+쓰였다		읽었다
+스였었다		읽었었다
+
+		
