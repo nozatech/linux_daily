@@ -1,59 +1,60 @@
 ### 12 x 시재 English Tense 
+능동태(Active Voice)
 ------------------------------------------------------------------------------------
-현재			I 		 	 	wait for you.		
-현재진행		I am  			waiting for you.
-현재완료		I have 			waited for you.      I have just finished my work now.
-현재완료진행	I have been 	waiting for you.
+현재			I 		 	 	 wait for you.		
+현재진행		I am  			 waiting for you.
+현재완료		I have 			 waited for you.      I have just finished my work now.
+현재완료진행	I have been 	 waiting for you.
 
-과거			I 				waited for you.
-과거진행		I was 			wating for you.
-과거완료		I had 			waited for you.
-과거완료진행	I had been 		waiting for you.
+과거			I 				 waited for you.
+과거진행		I was 			 wating for you.
+과거완료		I had 			 waited for you.
+과거완료진행	I had been 		 waiting for you.
 
-미래			I will			wait for you.
-미래진행		I will be 		waiting for you.
-미래완료		I will have 	waited for you.
+미래			I will			 wait for you.
+미래진행		I will be 		 waiting for you.
+미래완료		I will have 	 waited for you.
 미래완료진행	I will have been waiting for you.
 ------------------------------------------------------------------------------------
-	시재	  |		능동태							|	수동태
+시재(Tense) |		능동태(Active Voice)				|	수동태(Passive Voice)
 ------------------------------------------------------------------------------------
 현재			I 		 	  write a letter.		| A letter is written (by me).
-현재진행		I am  		writing a letter.		|		   is being written
-현재완료		I have 		  wrote a letter.     	|		   has been written
+현재진행		I am  		writing a letter.		| A letter is being written
+현재완료		I have 		  wrote a letter.     	| A letter has been written
 현재완료진행	I have been writing a letter.		|
 
 과거			I 			  wrote a letter.		| A letter was written by me
-과거진행		I was 		writing a letter.		|          was being writtend
-과거완료		I had 		written a letter.		|		   had been written
+과거진행		I was 		writing a letter.		| A letter was being writtend
+과거완료		I had 		written a letter.		| A letter had been written
 과거완료진행	I had been  writing a letter.		|
 
-미래			I will			 write a letter.	|			will be written
-미래진행		I will be 		 writing a letter.	|			will be being written
-미래완료		I will have 	 written a letter.	|			will have been written
+미래			I will			 write a letter.	| A letter 	will be written
+미래진행		I will be 		 writing a letter.	| A letter	will be being written
+미래완료		I will have 	 written a letter.	| A letter	will have been written
 미래완료진행	I will have been writing a letter.	|
 
 ------------------------------------------------------------------------------------
 ### 12 x 시재 ###
 ------------------------------------------------------------------------------------
-1. 현재 시재(Present) - 현재, 현재진행, 현재완료, 현재완료 진행  
+1. 현재 시재(Present) - 현재, 현재진행, 현재완료, 현재완료진행  
 	
 	A.  1)단순현재 - Simple Present		
-				You 		speak English.
-				You don't 	speak English.
-				Do you 		speak English?
+				You 		speak English.	수동 => English is 	 spoken by you.
+				You don't 	speak English.	수동 => English isn't spoken by you.
+				Do you 		speak English?	수동 => Is English 	 spoken by you?
 				
 			2)조동사 - Auxiliary Verb(Helping Verb)	
-				You can 	speak English.	/ He can 	speak English.
-				You can't 	speak English.	/ He can't 	speak English.
-				Can you 	speak English?	/ Can he 	speak English?
+				You can 	speak English.	| He can 	speak English.
+				You can't 	speak English.	| He can't 	speak English.
+				Can you 	speak English?	| Can he 	speak English?
 				
 			3)수동태 (Passive Voice)
 				English is 		spoken by you.
 				English isn't 	spoken by you.
 				Is English 		spoken by you?
 					
-				Car is 		fixed by him.
-				Car isn't 	fixed by him.
+				He fixes his car 	  => Car is    fixed by him.
+				He can't fix the car  => Car isn't fixed by him.
 				Is car 		fixed by him?
 				
 				He 			seems excited.	/ he 
@@ -464,8 +465,7 @@ A letter mustn’t have been written. 	(안쓰여졌어야 한다.)
 		"Alcohol is loaded with calories"
 		알콜은 칼로리를 가지고 있다.
 
-쓰이다		읽다
-쓰였다		읽었다
-스였었다		읽었었다
-
-		
+#   능동		vs.	수동		
+	보내다		보낸다
+	읽다 		읽힌다
+	쓰다			쓰인다		
