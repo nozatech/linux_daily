@@ -1,56 +1,56 @@
 ### 12 x 시재 English Tense 
 능동태(Active Voice)
 ------------------------------------------------------------------------------------
-현재			I 		 	 	 wait for you.		
+현재				I 		 	 	 	 wait for you.		
 현재진행		I am  			 waiting for you.
 현재완료		I have 			 waited for you.      I have just finished my work now.
 현재완료진행	I have been 	 waiting for you.
 
-과거			I 				 waited for you.
+과거				I 				  	 waited for you.
 과거진행		I was 			 wating for you.
 과거완료		I had 			 waited for you.
-과거완료진행	I had been 		 waiting for you.
+과거완료진행	I had been 	 waiting for you.
 
-미래			I will			 wait for you.
-미래진행		I will be 		 waiting for you.
-미래완료		I will have 	 waited for you.
-미래완료진행	I will have been waiting for you.
+미래				I will			 		wait for you.
+미래진행		I will be 		 		waiting for you.
+미래완료		I will have 	 		waited for you.
+미래완료진행	I will have been 	waiting for you.
 ------------------------------------------------------------------------------------
 시재(Tense) |		능동태(Active Voice)				|	수동태(Passive Voice)
 ------------------------------------------------------------------------------------
-현재			I 		 	  write a letter.		| A letter is written (by me).
-현재진행		I am  		writing a letter.		| A letter is being written
-현재완료		I have 		  wrote a letter.     	| A letter has been written
-현재완료진행	I have been writing a letter.		|
+현재				I 		 	  		write a letter.		| A letter is written (by me).
+현재진행		I am  			writing a letter.		| ( ) 	is being written 	( ).
+현재완료		I have 		  	written a letter.     	| ( )	has been written 	( ).
+현재완료진행	I have been 	writing a letter.		| ( )	have been being written ().
 
-과거			I 			  wrote a letter.		| A letter was written by me
-과거진행		I was 		writing a letter.		| A letter was being writtend
-과거완료		I had 		written a letter.		| A letter had been written
-과거완료진행	I had been  writing a letter.		|
+과거				I 			  		wrote a letter.		| ( )   was written by me 	( ).
+과거진행		I was 			writing a letter.		| ( ) 	was being written 	( ).
+과거완료		I had 			written a letter.		| ( )	had been written 		( ).
+과거완료진행	I had been  	writing a letter.		| ( )	had been being written ( ).
 
-미래			I will			 write a letter.	| A letter 	will be written
-미래진행		I will be 		 writing a letter.	| A letter	will be being written
-미래완료		I will have 	 written a letter.	| A letter	will have been written
-미래완료진행	I will have been writing a letter.	|
+미래				I will			 write a letter.		| ( ) 	will be 						 written ( ).
+미래진행		I will be 		 writing a letter.	| ( ) 	will be being 			 written ( ).
+미래완료		I will have 	 written a letter.		| ( ) 	will have been 			 written ( ).
+미래완료진행	I will have been writing a letter.| ( )   will have been being  written ( ). 
 
 ------------------------------------------------------------------------------------
 ### 12 x 시재 ###
 ------------------------------------------------------------------------------------
 1. 현재 시재(Present) - 현재, 현재진행, 현재완료, 현재완료진행  
 	
-	A.  1)단순현재 - Simple Present		
-				You 		speak English.	수동 => English is 	 spoken by you.
-				You don't 	speak English.	수동 => English isn't spoken by you.
-				Do you 		speak English?	수동 => Is English 	 spoken by you?
+	A.  1)단순현재 (능동=>수동)- Simple Present		
+				You 			speak English.	수동 => English is 	 spoken by you.
+				You don't 	speak English.	수동 => English isn't  spoken by you.
+				Do you 	speak English?	수동 => Is English 	 spoken by you?
 				
 			2)조동사 - Auxiliary Verb(Helping Verb)	
-				You can 	speak English.	| He can 	speak English.
-				You can't 	speak English.	| He can't 	speak English.
-				Can you 	speak English?	| Can he 	speak English?
+				I (You/He/She/They) 		can 		speak English.	
+				I (You/He/She/They) 		can't 	speak English.	
+				Can  	I (You/He/She/They) 		speak English?	
 				
 			3)수동태 (Passive Voice)
 				English is 		spoken by you.
-				English isn't 	spoken by you.
+				English isn't 	  spoken by you.
 				Is English 		spoken by you?
 					
 				He fixes his car 	  => Car is    fixed by him.
@@ -339,8 +339,6 @@ I went to bed late last night, so it was hard to get up this morning.
 	and I would've had much better English skills by  now.
 
 
-
-
 가정법	
 1. 일반적인 사실(현재시제 + 미래시제)	 
 	When the weather is this hot, it is better to walk your dog at night.	
@@ -361,31 +359,31 @@ I went to bed late last night, so it was hard to get up this morning.
 	If we had known there was a problem with the  AC, of course we would've fixed it earlier.
 
 	
-	
-
 Shouldn't you be 너 무엇 해야하는거 아니야?
-	Shouldn't you be in your class at this hour?
-	Shouldn't you be sleeping now?
-	shouldn't you be with Sumin?
-	Shouldn't you be sick at home?
+	Shouldn't you be 		in your class at this hour?
+	Shouldn't you be 		sleeping now?
+	shouldn't you be 		with Sumin?
+	Shouldn't you be 		sick at home?
 
 I should have + P.P.	 ~을 무었해야 했는데, 할껄
-	I should've given it more thought. 더 깊이 생각해 봐야 했는데
-	I should've charged my cellphone last night. 어제밤에 핸드폰 충전시킬껄
-	I should've followed my heart.	내 감정에 충실했었어야 했는데.
-	I shouldn't have eaten so much at dinner.	저녁에 과식하지 말껄
+	You should've tried harder.
+	You should've planned more carefully.
+	I should've given it more thought. 					더 깊이 생각해 봐야 했는데
+	I should've charged my cellphone last night. 	어제밤에 핸드폰 충전시킬껄
+	I should've followed my heart.							내 감정에 충실했었어야 했는데.
+	I shouldn't have eaten so much at dinner.			저녁에 과식하지 말껄
 	I would hope in the future you would be little more mature and responsible your behavior.
 	I should've rotted in jail.
 
 You should have + P.P.  넌 무엇 해야했어
-	You should've been more careful. 넌 더 주의 해어야했어
-	You should've taken back what you said to her.  너 그녀에게 한말 취소 해야 하는거였어.
-	You shouldn't have brought it up in the first palce.  니가 에초에 그 이야기를 끄내지 말았어야지.
-	You should've known better than that. 			나이를 먹었으면 그정도는 알았어야지.
+	You should've been more careful. 								넌 더 주의 해어야했어
+	You should've taken back what you said to her.  		너 그녀에게 한말 취소 해야 하는거였어.
+	You shouldn't have brought it up in the first palce.  	니가 에초에 그 이야기를 끄내지 말았어야지.
+	You should've known better than that. 						나이를 먹었으면 그정도는 알았어야지.
 	
 You could have + P.P. 네가 무엇 할수도 있었잖아( 현재시점 기준에서 과거시점에서 ~을 해줄수도 있었잖아)
-	You could've at least called me.  			적어도 나한테 전화 정도는 해줄수 있었잖아.
-	You could've told me the truth.  			그냥 나한테 진실을 말할수 있었잖아.
+	You could've at least called me.  					적어도 나한테 전화 정도는 해줄수 있었잖아.
+	You could've told me the truth.  					그냥 나한테 진실을 말할수 있었잖아.
 	You could've warned me in advance.			미리 나한테 경고해 줄수도 있었잖아.
 	You could've handled this matter yourself. 	니가 알아서 이일 처리할수 있었잖아.
 	You could've told it was hot.				
@@ -427,10 +425,10 @@ A letter mustn’t have been written. 	(안쓰여졌어야 한다.)
 # 수동태 예문
 - A guy was hit by a streetcar.
 - The guy has been taken to the hospital.	(그 남자는 병원으로 지금막(현재완료-has been taken) 후송되었다.)	
-	관계대명사 - The guy 'who was hit by a streetcar' 	  has been taken to the hospital.
-	부사절	- 'Because a guy was hit by a street', he has been taken to the hospital.
-	수동태	- The guy 'hit by a streetcar' 			  has been taken to the hospital.
-	분사구분	- Hit by a streetcar, 			the guy   has been taken to the hospital.
+	관계대명사 - The guy 'who was hit by a streetcar' 	has been taken to the hospital.
+	부사절		- 'Because a guy was hit by a street', 	he has been taken to the hospital.
+	수동태		- The guy 'hit by a streetcar' 			  		has been taken to the hospital.
+	분사구분	- Hit by a streetcar, 			the guy   		has been taken to the hospital.
 	- 스트리트카에 친, 그 남자는. Hit by a streetcar, the guy …
 	- 병원으로 후송 되었다. has bee taken to the hospital.	
 	
@@ -454,9 +452,9 @@ A letter mustn’t have been written. 	(안쓰여졌어야 한다.)
 		그 자료는 그 가설의 증거로 인용될거다
 
 	be + 과거분사 + of
-		전치사 각각의 뜻이 중요한 것이 아니라 특정 동사 뒤에 전치사 of가 오는 경우를 입으로 잘 익혀야합니다. 
+		전치사 각각의 뜻이 중요한 것이 아니라 특정 동사 뒤에 전치사 'of' 가 오는 경우를 입으로 잘 익혀야합니다. 
 		그 중에서 예로 compose가 있습니다.	
-		"The board should be composed of at least 15 members."
+		"The board 'should be composed of' at least 15 members."
 		이사회는 적어도 15명으로 구성되어야한다.
 
 		be + 과거분사 + with
@@ -465,7 +463,15 @@ A letter mustn’t have been written. 	(안쓰여졌어야 한다.)
 		"Alcohol is loaded with calories"
 		알콜은 칼로리를 가지고 있다.
 
-#   능동		vs.	수동		
+#   능동	  vs.	수동		
 	보내다		보낸다
-	읽다 		읽힌다
+	읽다 			읽힌다
 	쓰다			쓰인다		
+	먹다 			먹이다
+	웃다			웃기다
+	불다			불리다
+	열다			연린다
+	
+	
+	
+	
