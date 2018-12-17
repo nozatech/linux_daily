@@ -403,26 +403,27 @@ Might have P.P. 무엇했을지도 몰라, 했었나봐
 	
 	
 # 수동태
-A letter is written. 				(쓰여있다)
-A letter will be written. 			(적힐거다)
-A letter was written. 				(쓰였다)
-A letter has been written.			(쓰였었다. 적혀지고 있다)
-A letter has been being written. 	(지금 쓰여지고 있는 중이다)
-A letter had been written. 			(이미 전에 쓰여졌었다.)
-A letter is suppouse to be written. (쓰여질거다)
-A letter may/might be written. 		(쓰여지는지도 모르겠다)
-A letter would be written. 			(쓰여진거다, 확신 99%)
-A letter could be written. 			(쓰여질 수도 있다.)
-A letter should be written. 		(쓰여지는게 좋다)
-A letter must be written. 			(쓰여져야만 한다)
-A letter should have been written.  	(쓰여졌어야했다 근데 못했다)
-A letter shouldn’t have been written. 	(안쓰여져야했는데 해버렸다)
-A letter would have been wiritten.		(쓰여져어야했는데 후회스럽다)
-A letter wouldn’t have been written. 	(안쓰여져야했는데 …)
-A letter could have been written. 		(쓰여졌을 수도 있다.)
-A letter couldn’t have been written. 	(안쓰여졌을 수도 있다.)
-A letter must have been written. 		(쓰여졌어야 한다)
-A letter mustn’t have been written. 	(안쓰여졌어야 한다.)	
+		평서문(능동)			===>>>		## 수동 ## 
+I write a letter 					=> (A letter) is written(by me).	(쓰다 	 => 쓰여있다)
+I will write a letter. 				=> () will be written(). 			(적을꺼다  => 적힐거다)
+I wrote a letter					=> () was written(). 				(썻다	 => 쓰였다)
+I have written a letter				=> () has been written().			(여태쓰고있다 => 쓰였었다/적혀지고있다)
+I have been writting				=> () has been being written(). 	(여태쓰고있는 중이다 => 지금 쓰여지고 있는 중이다)
+I had written a letter				=> () had been written(). 			(이미 전에 -쓰였다 => 쓰여졌었다.)
+I suppose to write a letter			=> () is suppouse to be written().  (써야한다 => 쓰여질거다)
+I might write a letter				=> () may/might be written(). 		(쓸지도 모른다 => 쓰여지는지도 모르겠다)
+I would write a letter				=> () would be written(). 			(쓸꺼다 	 => 쓰여진거다, 확신99%)
+I could write a letter				=> () could be written(). 			(쓸수도 있다 => 쓰여질 수도 있다.)
+I should write a letter				=> () should be written(). 		    (써야한다 	=> 쓰여지는게 좋다)
+I must write a letter				=> () must be written(). 			(써야한다 	=> 쓰여져야만 한다)
+I should have written a letter		=> () should have been written().  	(썼어야 했다 => 쓰여졌어야했다 근데 못했다)
+I shouldn't have written a letter	=> () shouldn’t have been written(). 	(안쓰여져야했는데 해버렸다)
+I would have written a letter		=> () would have been wiritten().		(쓰여져어야했는데 후회스럽다)
+I wouldn't have written a letter	=> () wouldn’t have been written(). 	(안썼었을꺼야 => 안쓰여져야했는데 …)
+I could have writtend a letter		=> () could have been written(). 		(쓰여졌을 수도 있다.)
+I couldn't have writtend ().		=> () couldn’t have been written(). 	(안쓰여졌을 수도 있다.)
+I must have written	().				=> () must have been written(). 		(쓰여졌어야 한다)
+I mustn't have wrirren ().			=> () mustn’t have been written(). 	(안쓰여졌어야 한다.)	
 	
 # 수동태 예문
 - A guy was hit by a streetcar.
@@ -469,3 +470,5 @@ A letter mustn’t have been written. 	(안쓰여졌어야 한다.)
 	보내다		보낸다
 	읽다 		읽힌다
 	쓰다			쓰인다		
+	크다			키운다
+	
