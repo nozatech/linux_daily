@@ -1,0 +1,13 @@
+Kubernetes 1.10
+
+Prerequisite
+Ansible <= operating-system-level dependencies and their configuration
+
+https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-1-10-cluster-using-kubeadm-on-centos-7
+https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-1-10-cluster-using-kubeadm-on-ubuntu-16-04
+
+Kubeadm 
+	automates the installation and configuration of Kubernetes components such as the 
+	1) API server, 2)Controller Manager, 3)Kube DNS
+
+	

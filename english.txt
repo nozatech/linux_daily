@@ -1785,6 +1785,9 @@ lobe			<- [n] a roundish and flattish part of something, typically each of
 
 loot			<- steal goods from (a place), typically during a war or riot.	
 
+love tap		<- The (sometimes) gentle nudge of the car behind and/or in front of you 
+					that occurs in the process of good solo parallel parking.
+
 lucrative		<- [adj]producing a great deal of profit.
 					"a lucrative career as a stand-up comedian"
 					synonyms:	profitable, profit-making, gainful, remunerative, moneymaking, paying, 
@@ -2202,6 +2205,9 @@ rebuke			<- (격식) rebuke＋[목적어]/rebuke＋[목적어]＋[전치사]＋[
 					
 refrain			<- stop oneself from doing something.(자제하다)
 
+refrigerator(냉장고) <- 냉장실-(냉장고, fridge)와 
+					  냉동실-(냉동고, freezer)가 함께 있는 것을 통칭 
+
 relapse			<- (of someone suffering from a disease) suffer deterioration after a period of improvement.
 					synonyms:	get ill/worse again, have/suffer a relapse, deteriorate, 
 								degenerate, take a turn for the worse
@@ -2367,6 +2373,11 @@ snippet			<- a small piece or brief extract. "snippet code"
 snoop			<- investigate or look around furtively in an attempt to find out something, 
 					especially information about someone's private affairs.
 					souvenir 
+
+snugly			<- 1. in a comfortable, warm, and cozy or well-protected manner.
+						"the baby nestled snugly in his rescuer's arms"
+					2. in a way that is tight or close-fitting; securely.
+						"the collar should fit snugly around your neck"
 					
 so can you		<- you can too
 					"I lost 20 pounds in 4 days, and so can you."
@@ -2517,6 +2528,16 @@ traverse		<- travel across or through.
 					extend across or through.
 					"a moving catwalk that traversed a vast cavernous space"
 				synonyms:	cross, bridge, span
+				
+treacherous		<- [adj] guilty of or involving betrayal or deception.(배반하는)
+					"a treacherous Gestapo agent"
+					synonyms:	traitorous, disloyal, faithless, unfaithful, duplicitous, deceitful, deceptive, false, 
+								backstabbing, double-crossing, double-dealing, two-faced, Janus-faced, weaselly, 
+								untrustworthy, unreliable; More
+					(of ground, water, conditions, etc.) hazardous because of presenting hidden or unpredictable dangers.
+					"a vacationer was swept away by treacherous currents"
+					synonyms:	dangerous, hazardous, perilous, unsafe, precarious, risky, deceptive, unreliable
+
 
 triage			<- (in medical use) the assignment of degrees of urgency to wounds or illnesses to decide the order of 
 					treatment of a large number of patients or casualties.
@@ -2646,6 +2667,8 @@ uptake			<- the action of taking up or making use of something that is available
 					 "Vitamin C increases your 'uptake of' minerals such as iron." <- 섭취
 
 unbound			<- not bound or tied up.
+
+underwrite		<- ~에 동의하여 서명하다, [주식·회사채 등을] 인수하다, 
 
 unduly			<- to an unwarranted degree; inordinately. 과도하게
 
