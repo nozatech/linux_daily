@@ -36,8 +36,6 @@ $ apt-get | yum install shellcheck	-y
 	set -ex         # Do both (for good practice)	
 	set -u 			<= checks undefined variables
 	
-	
-	
 	e.g. in a script, add 'set -x' for each line output(debug mode)
 	#!/bin/bash
 	set -x			<= debug mode tracing

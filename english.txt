@@ -2115,6 +2115,9 @@ posh			<- [adj] elegant or stylishly luxurious.
 post mortem		<- an examination of a dead body to determine the cause of death.
 					synonyms:	autopsy, postmortem examination, necropsy
 					"the hospital carried out a postmortem"
+					
+prenup			<- a prenuptial agreement. 결혼 전 계약서
+					"did you get her to sign a prenup?"
 
 primitive		<- relating to, denoting, or preserving the character of an early stage in the 
 					evolutionary or historical development of something.
@@ -2505,6 +2508,8 @@ that being said	<-	That being said (or that having been said) is used as a trans
 					It is close in meaning to however. 
 					I love apples. That being said, I almost never eat them.
 
+thick as thieves	<-	사이가 아주 좋은, 매우 절친한 사이				
+					
 thin-skinned	<- sesitive to criticism or insults
 thick-skinned
 

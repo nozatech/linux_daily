@@ -2,6 +2,18 @@ Kubernetes 1.10
 
 Prerequisite
 Ansible <= operating-system-level dependencies and their configuration
+		1. An SSH key pair on your local Linux/Mac OS/BSD machine. If you haven't used SSH keys before, 
+			you can learn how to set them up by following this explanation of how to set up SSH keys on your local machine.
+		2. Three servers running Ubuntu 16.04 with at least 1GB RAM. You should be able to SSH into each 
+			server as the root user with your SSH key pair.
+		3. Ansible installed on your local machine. If you're running Ubuntu 16.04 as your OS, follow the 
+			"Step 1 - Installing Ansible" section in How to Install and Configure Ansible on Ubuntu 16.04 
+			to install Ansible. For installation instructions on other platforms like Mac OS X or CentOS, 
+			follow the official Ansible installation documentation.
+		4. Familiarity with Ansible playbooks. For review, check out Configuration Management 101: Writing Ansible Playbooks.
+		5. Knowledge of how to launch a container from a Docker image. Look at "Step 5 — Running a Docker Container" 
+			in How To Install and Use Docker on Ubuntu 16.04 if you need a refresher.
+
 
 https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-1-10-cluster-using-kubeadm-on-centos-7
 https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-1-10-cluster-using-kubeadm-on-ubuntu-16-04
@@ -10,4 +22,56 @@ Kubeadm
 	automates the installation and configuration of Kubernetes components such as the 
 	1) API server, 2)Controller Manager, 3)Kube DNS
 
-	
+	1. One master node <= The master node (a node in Kubernetes refers to a server) is responsible for 
+							managing the state of the cluster. It runs Etcd, which stores cluster data among 
+							components that schedule workloads to worker nodes.
+							Two worker nodes
+	2. Worker nodes 	<= are the servers where your workloads (i.e. containerized applications and services) will run. 
+							A worker will continue to run your workload once they're assigned to it, even if the master 
+							goes down once scheduling is complete. A cluster's capacity can be increased by adding workers.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							

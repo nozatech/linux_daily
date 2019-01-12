@@ -5447,7 +5447,7 @@ This is slightly different from CTRL+Z in that the process is only stopped when 
 read input from terminal. Of course, to interupt a job, type CTRL+C.
 
 
-myCommand &  # runs job in the background and prompts back the shell
+Linux_CMD &  # runs job in the background using '&' at the end and prompts back the shell
 
 jobs         # lists all jobs (use with -l to see associated PID)
 
