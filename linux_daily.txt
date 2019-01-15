@@ -6036,18 +6036,58 @@ $ iptables -A INPUT -p ICMP --icmp-type 8 -j DROP
 
 
 
-
+### email setup and send out from shell ###
+	http://www.binarytides.com/linux-mailx-command/
+	https://www.digitalocean.com/community/tutorials/how-to-send-e-mail-alerts-on-a-centos-vps-for-system-monitoring
+	
+	$ yum -y update
+	$ yum install -y mailx
+	$ ln -s /bin/mailx /bin/email
+	
+	# Sending an email to G-mail
+		## Method 1
+	$ mail -s "Test" albert@gmail.com < /dev/null
+		## Method 2
+	$ mail -s "Test" albert@gmail.com 
+		This is the MSG Test
+	  'CTRL+D'  to end the program.
+	
+	# $ vi /etc/mail.rc     <= ???
+	
+############################################################################
+#!/bin/bash
+# If IP Address had been changed, it would send out an email for update.
+currentIP=`ifconfig | grep 'inet'| awk '{print $2}' | head -1`;
+time=`date`;
+oldIP_file='/home/apark/ipAddress/oldIP.txt';
+oldIP=`cat ${oldIP_file}`;
+if [[ ${currentIP} != ${oldIP} ]]
+then
+        echo "New IP = ${currentIP}"
+        echo "IP has been changed and need to send an email."
+        echo -e "Hello\n\n\
+                Timestamp = ${time}\nIP = ${currentIP}\n\nBye" | \
+                /usr/bin/mail -s \
+                "[INFO] IP has been changed to ${currentIP}" \
+                albertpark5@gmail.com;
+        echo ${currentIP} > ${oldIP_file};
+else
+        echo "no IP change!"
+fi
+############################################################################
+$crontab -e
+*/30 * * * * /home/apark/ipAddress/ip_changes_alert.sh > /dev/null
+############################################################################
+	
+	
+	
+	
+	
 ### email send out from SHELL
 	echo "hello" | mailx -v -s 'test' apark@bnga.com		<= -v verbose
 	echo "hello" | mail  -s    'test' apark@bnga.com
 	echo "Test"  | mail  -s    "This is Subject" -r "Icinga2<apark@bnga.com>" apark@bnga.com
 															^ -r <= from<email>?	
-	http://www.binarytides.com/linux-mailx-command/
-	https://www.digitalocean.com/community/tutorials/how-to-send-e-mail-alerts-on-a-centos-vps-for-system-monitoring
- 
-	$ yum install -y mailx
-	$ ln -s /bin/mailx /bin/email
-	$ /etc/mail.rc
  
 	### Check mail log
 	
@@ -6064,7 +6104,7 @@ $ iptables -A INPUT -p ICMP --icmp-type 8 -j DROP
 		-S ssl-verify=true \
 		apark@bnga.com
 		
-### SMTP setup
+### SMTP setup (email server setup)
 	$vi	/etc/ssmtp/ssmtp.conf
 
 	$cat /etc/ssmtp/ssmtp.conf.rpmsave
