@@ -1,9 +1,9 @@
 "한 줄의 코딩을 하더라도 실제로 사용할 수 있는 것을 만들자!"
 https://mywiki.wooledge.org/BashGuide/Parameters
 
-######################
-### 1. Run Scripts ###
-######################
+################################
+### 1. Running SHELL Scripts ###
+################################
 
 special characters Names
 https://www.owasp.org/index.php/Password_special_characters
@@ -22,7 +22,7 @@ https://www.shellcheck.net/
 $ apt-get | yum install shellcheck	-y
 
 ---------------------------------------------------
-# Overview of set debugging options
+# Debugging options
 ---------------------------------------------------
 	'Set' or 'unset' values of shell options and positional parameters.
 	
@@ -176,6 +176,16 @@ $ apt-get | yum install shellcheck	-y
 	[1]+  Stopped                 vim
 	[2]-  Stopped                 vim
 	[3]   Done                    ls --color=auto -alR > /tmp/result.txt 2> /tmp/error.txt
+
+	
+### Monitoring Scripts		
+https://bash.cyberciti.biz/shell/monitoring/
+
+
+
+
+### Bash scripting cheatsheet
+	https://devhints.io/bash
 
 ---------------------------------------------------
 ### Assign values to shell variables	
@@ -359,9 +369,10 @@ echo 'MyArray2[hotdog]= ' ${MyArray2["hotdog"]}
 ---------------------------------------------------
 # Combines 2 or more commands
 ---------------------------------------------------
-cmd1; cmd2     			<= Do cmd1 first, then cmd2(cmd1 has failed or not)
+cmd1 ; cmd2     			<= Do cmd1 first, then cmd2(cmd1 has failed or not)
 	$ sleep 5 ; ls -l
-cmd1 & cmd2    			<= Do cmd1 and cmd2 without waiting for cmd1 to finish
+
+cmd1 & cmd2    			<= Do BOTH 'cmd1 and cmd2' without waiting for cmd1 to finish
 	$ sleep 4 & ls -l
 
 cmd1 && cmd2   		    <= If cmd1 successful, run cmd2, otherwise skip.
