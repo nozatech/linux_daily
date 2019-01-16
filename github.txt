@@ -5,6 +5,10 @@ git add . 						<='-A' all, or a new file_name
 git commit -m "update message"
 git push
 ---------------------------------------------		
+# Linefeed(Linux \n) and Carriage Return(Windows \r\n) Issue
+$ git config core.autocrlf input
+
+
 		
 Use HTTPS	https://github.com/nozatech/jenkins.git
 Use SSH     git@github.com:nozatech/jenkins.git
