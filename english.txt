@@ -2,9 +2,9 @@
 순서
 1.한문장 구간반복으로 모든 문장 입에 붙이기
 2.메모지에 문장 입력
-3.라이트너 박스 실행
+3.라이트너(flash card) 박스 실행
 
-라이트너 박스 단계
+라이트너(FlashCards) 박스 단계
 1단계 : 매일			
 2단계 : 2일에 한번			<- 1단계에서 성공한뒤 옮기기, 틀리면 다시 1단계로 옮김
 3단계 : 4일에 한번
@@ -53,7 +53,7 @@ Listening: Speaking: Reading: Grammar: Writing
 
 
 to+부정사(동사원형)  <- 부정확하게 많은 동사원형을 갖어다 명사, 형용사, 부사적으로 쓰이는 말.
-https://namu.wiki/w/to%20%EB%B6%80%EC%A0%95%EC%82%AC 
+https://namu.wiki/w/to%20%EB%B6%80%EC%A0%95%EC%82%AC
 		명사적		으로도 사용: To raise children is hard.
 		형용사적 		으로도 사용: He wants something to drink.
 		부사적		으로도 사용: He went to Busan 'to visit' his grandfather.	
@@ -62,7 +62,9 @@ https://namu.wiki/w/to%20%EB%B6%80%EC%A0%95%EC%82%AC
 관계사 <- 접속사와 대명사의 역활을 동시에 함
 		두 문장을 한 문장으로 연결하는 역할을 하는 단어의 일종으로, 크게 관계대명사, 유사관계대명사, 관계부사로 나뉜다
 		
+
 선행사			주격		소유격			목적격
+---------------------------------------------------
 사람				who		of whom/whose	whom
 사물, 동물			which	of which/whose	which
 사람, 사물, 동물	that	-				that
@@ -260,46 +262,46 @@ I have a beautiful Marties, who I consider to be a family memeber.
 ## Irregular Verb
 Present  Past		Past Perfect
 ---------------------------------------------------------------
-awake    awoke        awoke        깨우다      
-fight    fought       fought        싸우다     
-arise    arose        arisen       일어나다     
+awake    awoke        awoke          깨우다      
+fight    fought       fought         싸우다     
+arise    arose        arisen        일어나다     
 find     found        found         찾다      
 be       was/were      been         -이 되다    
 fit      fit/fitted   fit/fitted    (치수가)맞다 
-bear     bore         born/borne   낳다       
+bear     bore         born/borne     낳다       
 flee     fled          fled          도망가다    
-beat     beat         beaten       치다       
+beat     beat         beaten         치다       
 fling    flung         flung         획 내던지다  
-become   became       become       -이 되다    
+become   became       become         -이 되다    
 fly      flew          flown         날아가다    
-begin     began        begun        시작하다     
-forbid    forbade    forbade       금하다     
+begin     began        begun         시작하다     
+forbid    forbade    forbade         금하다     
 bend      bent         bent         구부리다     
 forecast  forecast    forecast      예고하다    
 bet       bet          bet          장담하다     
 forget    forgot        forgotten     잊다      
 bid       bid          bid          (값을)매기다  
-forgive   forgave    forgiven      포기하다    
+forgive   forgave    forgiven       포기하다    
 bind      bound        bound        묶다       
-forsake   forsook    forsaken      그만두다    
+forsake   forsook    forsaken       그만두다    
 bite      bit          bitten       물다       
-freeze    froze         frozen        얼다      
+freeze    froze         frozen      얼다      
 bleed     bled         bled         피를 흘리다   
-get       got           gotten/got    얻다      
+get       got           gotten/got  얻다      
 blow      blew         blown        (바람이)불다  
-give      gave          given         주다      
+give      gave          given       주다      
 break     broke        broken       깨뜨리다     
-go        went          gone          가다      
+go        went          gone        가다      
 breed     bred         bred         (가축을)기르다 
-grind     ground     ground        갈다      
+grind     ground     ground         갈다      
 bring     brought      brought      가져오다     
-grow      grew          grown         자라다     
+grow      grew          grown       자라다     
 broadcast  broadcast   broadcast    방송하다     
-hang      hung          hung          매달다     
+hang      hung          hung        매달다     
 build     built        built        짓다       
-have     had           had           가지다     
+have     had           had          가지다     
 burn     burned/burnt burned/burnt 타다       
-hear     heard         heard         듣다      
+hear     heard         heard        듣다      
 brust    brust        brust        터뜨리다     
 hide     hid           hidden        숨다      
 buy      bought       bought       사다       

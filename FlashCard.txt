@@ -1,11 +1,11 @@
 Flash Card
 ### Bash ###
 1. special characters
-(	<= parenthesis
+(	<= parenthesis 
 { 	<= brace
 | 	<= vertical bar
 [	<= bracket
-_	<= underscore
+_	<= underscore 
 :	<= colon
 ;	<= semicolon
 *	<= asterisk
