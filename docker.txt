@@ -34,16 +34,15 @@ completely log out of your account and log back in
 
 ### Docker log location ###
 Ubuntu      	 - /var/log/upstart/docker.log
+CentOS7	  		 - /var/log/messages
+CentOS 			 - /var/log/daemon.log | grep docker
 Boot2Docker 	 - /var/log/docker.log
 Debian GNU/Linux - /var/log/daemon.log
-CentOS 			 - /var/log/daemon.log | grep docker
-CentOS7	  		 - /var/log/messages
 Red Hat 		 - /var/log/messages | grep docker
 CoreOS 			 - journalctl -u docker.service
 Fedora 			 - journalctl -u docker.service
 OpenSuSE 		 - journalctl -u docker.service
 OSX 			 - ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/log/d‌​ocker.log
-
 
 #-----------------------------------------------------------------------------------------------------------
 Docker cmd
@@ -77,26 +76,14 @@ https://hub.docker.com/_/jenkins/
 
 # To Run
 $ docker run -d -u root -p 8080:8080 -p 50000:50000 -v /home/apark:/var/jenkins_home jenkins
+
 # Login to bash shell
 $ docker run -it jenkins /bin/bash
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Docker install script using curl	
-	$ curl -fsSL https://get.docker.com/ | sh   				<= docker install script
+	$ curl -fsSL https://get.docker.com/ | sh   		<= docker install script
 		   -f  fail silently(no output at all)
 		   -s	--silent (Silent or quiet mode)
 		   -S	--show-error
@@ -105,9 +92,8 @@ $ docker run -it jenkins /bin/bash
 	https://get.docker.com/
 
 	
-### CentOS7 ###
-Step 1 - setup
-$ systemctl start docker
+### CentOS7 - Initial Setup ###
+$ systemctl start  docker
 $ systemctl enable docker
 $ docker -v     			<= version
 $ docker info
@@ -116,6 +102,7 @@ $ docker run hello-world
 
 Step 2 - Setup the MariaDB Container
 
+### Maria DB
 $ docker pull mariadb
 $ docker images
 
@@ -125,10 +112,8 @@ $ docker run -e MYSQL_ROOT_PASSWORD=noza -e MYSQL_USER=noza -e MYSQL_PASSWORD=no
 $ docker inspect -f '{{ .NetworkSettings.IPAddress }}' wordpressdb
  => 172.17.0.2
 
-$ yum install mysql  					<= client,  mysql-server is server
-$ mysql -u noza -h 172.17.0.2 -p
 
-
+### wordpress
 
 $ docker pull wordpress:latest
 
@@ -139,12 +124,10 @@ $ docker run -e WORDPRESS_DB_USER=noza -e WORDPRESS_DB_PASSWORD=noza -e \
 $ http://192.168.232.148:8081   <=setup word press
 
 
-Step 4. Nginx reverse proxy install 
+### Nginx reverse proxy setup 
 	In this step, we will install the Nginx web server on the host system. 
 	We will configure Nginx as a reverse proxy for the Docker container 'wpcontainer' on the port 8081.
 	
-
-
 	
 	
 ###	Delete all containers ###
@@ -174,9 +157,9 @@ $ docker network ls
 
 
 
-######################
-### Ubuntu14 setup ###
-######################
+#######################
+### Ubuntu 14 setup ###
+#######################
 
 $ ls -l /var/run/
   srw-rw---- 1 root       docker        0 Sep 19 16:03 docker.sock

@@ -106,7 +106,7 @@ Ctrl + T				Opens a new tab.
 Ctrl + U				View a web page's source code
 
 ---------------------------------------
-### Word ###
+### MS Word ###
 ---------------------------------------
 Removing empty lines
 Ctrl+f -> replace -> More => Special => Paragraph Mark => ^p   <= single line ^p^p  <= double empty lines
@@ -1533,12 +1533,16 @@ Delete
 	$ curl -u 
 
 	$ curl -X GET -H 
+
+
+
 	
 ----------------------------------------------------------------------------------------------------
 ### curl can download or upload through any protocol, http, ftp, sftp, scp, ldap, telnet
 https://curl.haxx.se/docs/httpscripting.html
 
-curl 					www.yahoo.com -o output.html
+curl 					www.yahoo.com 		-o 		output.html					# -o output to
+curl -sL 	https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh			# -s(silence)L(location) -o(output)
 curl -O 				www.yahoo.com/index.html
 curl -# -u id:pw 		ftp://ftphost/fuzicast/sample.txt -o sample.txt 		# the -# adds progress bar
 curl -r 0-99 -u id:pw 	ftp://ftphost/fuzicast/sample.txt						# get first 100 bytes
@@ -1565,10 +1569,15 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 ### Verify the API Token
 $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/apps
 
+
+
 ----------------------------------------------------------------------------------------------------	
 ### text browser ###
 	$ sudo apt-get install -y links
 	$ links http://www.google.com
+
+
+
 	
 ----------------------------------------------------------------------------------------------------
 ### base64 - base64 encode/decode data and print to standard output
@@ -2722,11 +2731,17 @@ H 2 * * *				<= Every 2am
 
  
   169  cat /proc/mounts
+  
   170  ls /mnt
+  
   171  mount -l
+  
   172  history | grep mount
+  
   173  ps aux | grep jarvis
+  
   174  ls -la /
+  
   175  ls -la /mnt/
   
   176  history
@@ -2744,6 +2759,8 @@ H 2 * * *				<= Every 2am
 
 https://en.wikipedia.org/wiki/Chmod
 In "chmod aw" the "a" means "All" (everyone) and the "w" means "write" (edit) the file.
+chmod + x
+chmod + xu
 
 u = user that owns the file
 g = group that owns the file
@@ -2765,9 +2782,9 @@ x = 1	<= execute (run) access
 1	--x 	execute 
 0	---		none	
   
-$ chmod a-x publicComments.txt	<= removes execute permission for all classes
-$ chmod a+rx viewer.sh			<= adds read and execute permissions for all classes
-$ chmod -R u+w,go-w docs		<= adds write permission to the directory docs and all its contents 
+$ chmod a-x 	text.txt			<= -x 'REMOVES' Execute permission for all classes
+$ chmod a+rx 	test.sh				<= adds read and execute permissions for all classes
+$ chmod -R u+w,go-w  text.txt		<= adds write permission to the directory docs and all its contents 
 						(i.e. Recursively) for owner, and removes write permission for group and others
 $ chmod ug=rw groupAgreements.txt	<= sets read and write permissions for owner and group  
   
@@ -2793,7 +2810,9 @@ $ chmod ug=rw groupAgreements.txt	<= sets read and write permissions for owner a
 	
 
 
-### Count Active connections
+### Count and Check Active connections
+	# ss			<= another utility to investigate sockets
+
 	$ ss  		<= is  used to dump "Socket Statistics"(replacement of NETSTAT.)
 				http://www.binarytides.com/linux-ss-command/
 	$ ss -t 	<= tcp("established = connected)  
@@ -2802,12 +2821,12 @@ $ chmod ug=rw groupAgreements.txt	<= sets read and write permissions for owner a
 	$ ss -ltn
 	
 				
-	netstat -na | grep ESTA | wc -l				<== n no reverse lookup(quick), t tcp, a all, p program
-	netstat -na | grep ESTABLISHED.*sshd		<= sshd connection list
-	ps auxwww | grep sshd:						<= sshd connection list
-	netstat -plunt								<= which ports are open and which program(application) is listening
-	netstat -punt								<= program, udp, no lookup, tcp
-	netstat -ntl								<= no lookuop, tcp, LISTEN port
+	$ netstat -na | grep ESTA | wc -l				<== n no reverse lookup(quick), t tcp, a all, p program
+	$ netstat -na | grep ESTABLISHED.*sshd		<= sshd connection list
+	$ ps auxwww | grep sshd:						<= sshd connection list
+	$ netstat -plunt								<= which ports are open and which program(application) is listening
+	$ netstat -punt								<= program, udp, no lookup, tcp
+	$ netstat -ntl								<= no lookuop, tcp, LISTEN port
 
 	$ watch -d -n1 "netstat -ntap | grep ESTA"  		<= Print active connections n1 <= every 1sec
 	
