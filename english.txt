@@ -955,6 +955,8 @@ call out		<- To announce something.
 
 capped out		<- when you’ve reached the maximum, or cap, of your insurance benefits
 
+caret vs carat	vs carrot <=  '^' Caret[캐릿] vs. diamond 1-Carat[캐럿] vs. carrot[캐럿] 당근
+				
 cavern			<- a cave, or a chamber in a cave, typically a large one.
 					synonyms:	large cave, grotto, underground chamber/gallery, vault
 					

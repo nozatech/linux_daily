@@ -6719,7 +6719,9 @@ Check config file
 $ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; \ #continue
   kill $! ; wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
 
-
+  # kill $! <= kill PID of the most recent background command
+  
+ 
 	A. View Apache requests per minute
 
 $ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{print $2":"$3}' | sort -nk1 -nk2 | uniq -c | awk '{ if ($1 > 10) print $0}'

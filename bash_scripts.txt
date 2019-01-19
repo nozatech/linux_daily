@@ -5,17 +5,20 @@ https://mywiki.wooledge.org/BashGuide/Parameters
 ### 1. Running SHELL Scripts ###
 ################################
 
-special characters Names
+# special characters Names
 https://www.owasp.org/index.php/Password_special_characters
-(	<= parenthesis
-{ 	<= brace
-| 	<= vertical bar
-[	<= bracket
-_	<= undercore
-:	<= colon
-;	<= semicolon
--	<= hyphen
-*	<= asterisk
+(	<= Parenthesis
+{ 	<= Brace
+| 	<= Vertical bar
+[	<= Bracket
+_	<= Undercore
+:	<= Colon
+;	<= Semicolon
+-	<= Hyphen
+*	<= Asterisk
+^	<= Caret[캐릿]
+~	<= Tilde[틸더]
+`	<= Backtic
 
 https://explainshell.com/
 https://www.shellcheck.net/
@@ -126,20 +129,47 @@ $ apt-get | yum install shellcheck	-y
     :! perl %
 
 ---------------------------------------------------
-# VI: Save in read only file ###
+# VI - Short Keys #
 ---------------------------------------------------
-	:w !sudo tee %                  	<= save as sudo privilege.  type (L) load at the prompt to reload.
+# Save in read only file 
+	
+	:w !sudo tee %                  	<= save as sudo privilege.  
+										   type (L) load at the prompt to reload.
+	
 	:w !chmod 777 %    then    :wq!
 	
 	:h									<= vi, vim help 			
 	:q 									<= quit help page
 	
 	$ vi +101 file.txt					<= go to 101 line in file name
-	:12									<= Go to particular line number in vi editor 
+	:12										<= Go to particular line number in vi editor 
 	
 # Move	
+	^		<= Move cursor to the beginning of the line.
+	$		<= Move cursor to the end of the current line.
+	
+	H | L 		<= go to TOP of page
+	G 		<= go to BOTTOM of page
+	E		<= End of Word
+	w		<= Next Word
+	
+	
+# Exit
+	1. Save and Exit
+	ESC :wq enter
+	ESC ZZ			<=Cap ZZ
+	
+# Insert	
+	o					<= insert underneath line
+	i
+	a
+	A
+	
+# Go to
+	
 	:15 <- go to 15th line
 	$ vi +15 script.sh
+	
 	G 					<= go to bottom of page
 	
 	o					<= insert underneath line
@@ -160,6 +190,8 @@ $ apt-get | yum install shellcheck	-y
 										
 
 
+										
+										
 ---------------------------------------------------
 # Writing 2 Scripts at same time in background
 ---------------------------------------------------
@@ -509,57 +541,55 @@ $ sort << EOF
 # I/O Redirection:
 ----------------------------------------------	
 
-pgm > file     # Output of pgm is redirected to file.
-pgm < file     # Program pgm reads its input from file.
-pgm >> file    # Output of pgm is appended to file.
-pgm1 | pgm2    # Output of pgm1 is piped into pgm2 as the input to pgm2.
-n > file       # Output from stream with descriptor n redirected to file.
-n >> file      # Output from stream with descriptor n appended to file.
-n >& m         # Merge output from stream n with stream m.
-n <& m         # Merge input from stream n with stream m.
+pgm > file     # Output of pgm is redirected to 'file'.
+pgm < file     # Program pgm reads its input from the 'file'.
+pgm >> file    # Output of pgm is 'appended' to file.
+pgm1 | pgm2    # Output of pgm1 is 'piped' into pgm2 as the input to pgm2.
+n > file       # Output from stream with descriptor 'n' 'redirected' to file.
+n >> file      # Output from stream with descriptor 'n' 'appended' to file.
+n >& m         # 'Merge' output from stream n with stream m.
+n <& m         # 'Merge' input from stream  n with stream m.
 << tag         # Standard input comes from here through next tag at start of line.	
-cmd << 		   # here document
 
-	# stderr
-		$ ls +
-		  ls: cannot access +: No such file or directory			<= stderr
-		$ ls +   2>  error.txt
+cmd << EOF	  # '<<' here document using EOF(End Of File)
+bla~~
+EOF		   
+
+$cat << EOF
+	> Test1
+	> Test2
+	> EOF
+  Test1
+  Test2
+
+# stdin, stdout, stderr
+	$ ls +
+	  ls: cannot access +: No such file or directory			<= stderr
+	$ ls +   2>  error.txt
 		
-	$ cmd 2> stderr.txt 1> stdout.txt
-	$ cmd 2&>1	> output.txt 
-	$ cmd &> 	> output.txt ( &> is same as 2&>1 )
-	$ cmd > /dev/null
-	$ cmd > /dev/null 2&>1
+	$ cmd 2>    stderr.txt  1>  stdout.txt
+	$ cmd 2&>1	> output.txt	(stdout & stderr into output.txt) 
+	$ cmd &> 	> output.txt 	( &> is same as 2&>1 )
 	
-	$ cmd | tee file1 file2
-	$ cmd | tee -a file1 		
+	$ cmd > /dev/null
+	$ cmd > /dev/null 2&>1 		<= redirect the output of your program to /dev/null[black hole]. 
+								   Include both the Standard Error and Standard Out.
+	
+	$ cmd | tee file1 			<= same as  'cmd > file1'
+	$ cmd | tee file1 file2		<= tee make 2 copies file1 and file2
+	$ cmd | tee -a file1 		<= -a Append to file1
 	
 	$ cmd < file.txt
-	$ cmd &>> output.txt
+		$ cat < file.txt
+			file contents
 	
----------------------------------------------------	
-### Arithmetic Operators
----------------------------------------------------	
-	Use in (( )) or with let
-	i++, i--, ++i, --i
-	!  ~  **  *  /  %  +  -
-	<<  >>  <=  >=  <  >
-	== !=  &  ^  |  &&  ||
-	expr?expr:expr
-	
-	n=5
-	((n++)
-	if
-	((n>4 || n == 0))
-	
-	((n=2**3 + 5))
-	((y=n^4))
-	echo y = $y
-	
-	
-	
-	
-	
+	$ cmd &>> output.txt		<= Append stdout & stderr to output.txt
+		$ls + &>> output.txt
+		$ls + &>> output.txt
+		$cat < output.txt
+			ls: cannot access '+': No such file or directory
+			ls: cannot access '+': No such file or directory
+
 	
 	
 	
@@ -646,6 +676,7 @@ These parameters may only be referenced; assignment to them is not allowed.
 
 (?!) Process ID of the last background command
 
+
 ---------------------------------------------------  	
 # Pattern Matching:
 ----------------------------------------------	
@@ -691,7 +722,9 @@ $ echo "`echo \\a`" "$(echo \\a)"
 
 -------------------------------------------------------------------
 # Arithmetic: BASH arithmetic is done using the expr command as in:
--------------------------------------------------------------------			
+-------------------------------------------------------------------	
+# expr - evaluate expressions
+		
 result=`expr $1 + 2`   				<= ` back tic
 result=`expr $2 + $1 / 2`
 result=`expr $2 \* 5`               #note the \ on the * symbol
@@ -706,6 +739,26 @@ word splitting
 pathname expansion      (using *, ?, and [abc] )
 
 
+	
+---------------------------------------------------	
+### Arithmetic Operators
+---------------------------------------------------	
+	Use in (( )) or with let
+	i++, i--, ++i, --i
+	!  ~  **  *  /  %  +  -
+	<<  >>  <=  >=  <  >
+	== !=  &  ^  |  &&  ||
+	expr?expr:expr
+	
+	n=5
+	((n++)
+	if
+	((n>4 || n == 0))
+	
+	((n=2**3 + 5))
+	((y=n^4))
+	echo y = $y
+
 
 ---------------------------------------------------	
 ### Script running remotely
@@ -716,19 +769,26 @@ $ ssh-copy-id id@remote_ip             <= copy id_rsa.pub file into remote first
 
 $ ssh id@remote_ip 'bash -s' < /home/scrhipt.sh >> output.log   <= run as sudo mode
 
-BASH ( https://linux.die.net/man/1/bash )
-	-c  <= read from string
-	-i  <= shell is interactive
-	-s  <= read from the standard input
+
+	bash -c  <= read from string
+				If there are arguments after the string, they are assigned to the positional parameters, 
+				starting with $0.
+	bash -i  <= shell is interactive
+	bash -s  <= read from the standard input
+	
 	
 ---------------------------------------------------
 ### Single Line Command script from SHELL ###
 ---------------------------------------------------
+
 #### For Loop ####
-$ for i in $(cat ~/list); do ssh apark@$i [[ -f /home/apark/rkchk.sh ]] && echo "File exist" || echo "Not Exist";done                      
+
+$ for i in $(cat ~/list); do ssh apark@$i [[ -f /home/apark/rkchk.sh ]] && \   (use '\' for next line)
+	echo "File exist" || echo "Not Exist";done                      
 $ for i in $(cat "/home/apark/nu"); do ssh apark@$i "hostname && ls -l"; done
 $ for i in $(cat "/home/apark/nu"); do ssh apark@$i "rm -f rkchk.sh"; done
 $ for i in $(cat "/home/apark/nu"); do ssh -t apark@$i "sudo yum update kernel -y"; done
+	# ssh -t <= Force pseudo-terminal allocation(Man ssh). 
 
 $ for i in us eu as; do echo sg-$i; ssh sg-$i "uptime"; done
 $ for i in sg-us sg-eu sg-as ; do echo $i; date; done
@@ -743,16 +803,17 @@ $ for f in *; do if [ "${f#*.}" == 'jpg' ]; then echo $f; fi; done
 # This deletes them:
 $ for f in *; do if [ "${f#*.}" == 'jpg' ]; then rm -r $f; fi; done
 
-
-
+# Check crontab for all users 
+$ for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done    
 
 
 #### While Loop ####
 $ while  true; do dmesg -c ; sleep 1 ; done				<= -c clear, need subo 
 $ while [ 0 ]; do dmesg -c ; sleep 1 ; done				<= -c clear, need subo 
 $ while     :; do dmesg -c ; sleep 1 ; done				<= : is same as "while true"
-	The : (colon) is a built-in command that does nothing, but returns 0 (success). Thus, it's shorter 
-	(and faster) than calling an actual command to do the same thing.
+
+	The : (colon) is a built-in command that does nothing, but returns 0 (success<= TRUE). 
+	Thus, it's shorter (and faster) than calling an actual command to do the same thing.
 
 
 	
@@ -860,6 +921,7 @@ https://coderwall.com/p/85jnpq/bash-built-in-variables
 	* Must be quoted, otherwise it defaults to $@
 	
 echo $$ <= the PID of the current process.
+echo $! <= The PID of the most recent background command
 echo $? <= the return code of the last executed command. 0:True, 1:False	
 echo $# <= the number of arguments in $*
 echo $* <= the list of arguments passed to the current process
