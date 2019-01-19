@@ -1746,6 +1746,8 @@ laborious		<- [adj](especially of a task, process, or journey) requiring conside
 					"Doug's laborious writing style"
 					antonyms:	natural, effortless
 
+legitimacy		<- [레짓트머씨 합법성, 전통 ability to be defended with logic or justification; validity.
+
 					
 lie vs lay
 lie	(기대다)		<- to rest or recline((lie(lying) - lay - lain)
@@ -2451,12 +2453,15 @@ streak			<- [striːk] Noun: a long, thin line or mark of a different substance o
 					Verb: move very fast in a specified direction.
 
 struth = strewth <- 깜짝이야!
+
 					
 subtle			<- [sΛtl](especially of a change or distinction) so delicate or 
 					precise as to be difficult to analyze or describe.
 					making use of clever and indirect methods to achieve something.
 					synonyms:	fine, fine-drawn, nice, hair-splitting
 					"subtle distinctions"  "fail in subtle way"
+
+succinctly		<= [səksíŋktli] in a brief and clearly expressed manner.
 					
 supersede 		<- replace; take the place of (a person or thing previously in authority or use); supplant.
 					"the older models have now been superseded"

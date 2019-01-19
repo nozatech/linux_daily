@@ -3,6 +3,8 @@
 
 docker-cheat-sheet
 https://github.com/wsargent/docker-cheat-sheet
+https://www.docker.com/sites/default/files/Docker_CheatSheet_08.09.2016_0.pdf
+
 
 ### Installation ###
 https://docs.docker.com/engine/installation/linux/centos/
@@ -192,6 +194,8 @@ $ netstat -plnt
 
 $docker info                      <= running on network, not the docker socket.
 Cannot connect to the Docker daemon. Is the docker daemon running on this host?
+	
+	
 	
 	
 #############################

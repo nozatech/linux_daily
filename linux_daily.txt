@@ -57,8 +57,17 @@ You can redirect these files to be processed onto another directory by changing 
 
 1. Right click on "my computer" and hit properties.
 2. Go to the advanced tab and click environmental variables.
-3. Click on the TMP variable under "User variables for Administrator," and click edit.
+3. Click on the TMP variable under "User variables for Administrator ," and click edit.
 4. Change the value to the specified directory you wish to use.
+
+Carriage Return(CR) <= 캐리지 리턴 문자 (0x0D, \r)는 커서를 다음 줄로 진행하지 않고 행의 시작 부분으로 이동합니다. 
+						이 문자는 Commodore와 초기의 Macintosh 운영 체제 (OS-9 및 이전 버전)에서 줄 바꿈 문자로 사용됩니다. 
+Line Feed (LF)		<= 라인 피드 문자 (0x0A, \n)는 행의 시작 부분으로 돌아 가지 않고 커서를 다음 행으로 이동합니다. 
+						이 문자는 UNIX 기반 시스템 (Linux, Mac OSX 등)에서 줄 바꿈 문자로 사용됩니다.
+End Of Line (EOL)	<= 라인 끝  문자 (0x0D0A, \r\n)는 두개의 ASCII 문자이며 CR과 LF 의 조합입니다. 
+						커서를 다음 줄과 그 줄의 시작 부분으로 이동합니다. 이 문자는 Microsoft Windows, Symbian OS를 
+						포함한 기타 대부분의 비 UNIX 운영 체제에서 줄 바꿈 문자로 사용됩니다.
+
 --------------------------------------- 
 ### Notepad++
 ---------------------------------------
@@ -2618,14 +2627,14 @@ H 2 * * *				<= Every 2am
 	# show all processes having open files on the filesystem mounted on / (root directory)
 	$ fuser -vm / 2>&1 | awk '$3 ~ /f|F/' | less -N 		<=?????
 
-### Network
-	$ nc -l -p 80
+### Network 
+	$ nc -l -p 80									<= Netcat -l listen -p port 
 	$ fuser -v -n tcp 80							<= -n name space
 					USER        PID ACCESS COMMAND
 		80/tcp:   	apark     20168 F.... nc
 
 ### Kill
-	$ fuser -k -i 80/tcp			<= -i ask before kill
+	$ fuser -k -i 80/tcp						<= -i ask before kill
 	
 ### Find The Process Accessing A File System
 	$ fuser -v -m /var/log/dmesg						<= -v verbose, -m mount
@@ -2715,7 +2724,10 @@ H 2 * * *				<= Every 2am
         ext2
         ext4
 		
-	$ cat $(which sys-unconfig) 	== cat `which sys-unconfig`
+	$ cat $(which sys-unconfig) 	<=newer / older=>  $ cat `which sys-unconfig`
+	
+	### sys-unconfig  <= shutdown the <SYSTEM>!!!
+	
 	
 	$ df -h    <= report file system disk space usage (Check Disk Free)
 	$ df -T   <= file system type

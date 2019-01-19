@@ -1,12 +1,14 @@
 ### Python ###
 
-### IDE
+### IDE(Integrated Development Environment) ### 
 # PyCharm
 Ctrl+Y 		<= Remove a Line
 Shift+Enter	<= add a line
 
+# Visual Studio
 
-1. Installation
+
+1.  Python Installation
 
 ### CentOS7  <- Python 3.5.2 Install on
 https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-centos-7
@@ -205,6 +207,7 @@ http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html
 Python 2.x  
 	print "Hello World"			<= NO  ()
 	input()
+	
 Python 3.x
 	print ("Hello World")       <= YES ()
 	raw_input()
@@ -3052,14 +3055,42 @@ foo(4)
 	
 	
 	
+----------------------------------------------------------------------------------------------	
+	
+# Reverse Array	
+https://stackoverflow.com/questions/3940128/how-can-i-reverse-a-list-in-python
+
+def reverse_in_place(lst):      # Declare a function
+    size = len(lst)             # Get the length of the sequence
+    hiindex = size - 1
+    its = size/2                # Number of iterations required
+    for i in xrange(0, its):    # i is the low index pointer
+        temp = lst[hiindex]     # Perform a classic swap
+        lst[hiindex] = lst[i]
+        lst[i] = temp
+        hiindex -= 1            # Decrement the high index pointer
+    print "Done!"
+
+# Now test it!!
+array = [2, 5, 8, 9, 12, 19, 25, 27, 32, 60, 65, 1, 7, 24, 124, 654]
+
+print array                    # Print the original sequence
+reverse_in_place(array)        # Call the function passing the list
+print array                    # Print reversed list
+
+
+**The result:**
+[2, 5, 8, 9, 12, 19, 25, 27, 32, 60, 65, 1, 7, 24, 124, 654]
+Done!
+[654, 124, 24, 7, 1, 65, 60, 32, 27, 25, 19, 12, 9, 8, 5, 2]	
+----------------------------------------------------------------------------------------------
 	
 	
-	
-	
-	
-	
-	
-	
+for n in range(5):
+...   num_list=range(n+1)
+...   print “current num_list: “,num_list
+...   new_list=num_list[len(num_list)/2::-1] + num_list[len(num_list)/2+1::]
+...   print “new_list is: “,new_list 	
 	
 	
 	

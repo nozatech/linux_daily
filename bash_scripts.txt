@@ -68,6 +68,16 @@ $ apt-get | yum install shellcheck	-y
 	+ set +x
 	debug.sh: line 9: c: unbound variable   <= set -u report
 
+	---------------------------------------------------								
+    #!/bin/bash -x 					<= add " -x " for debugging mode in #!/bin/bash script
+    $ bash -x ./script.sh  			( same as 'bash script.sh') 
+    $ bash -vx script.sh			<= add -xv from shell -v <-verbose -x <-debug
+	:! sh -x %						<= -x is for DEBUG(verbose) mode
+    set -x              			<= End of file +x for TURN OFF
+	$ bash -n ./script.sh 			<= checking syntax error
+	
+
+
 ---------------------------------------------------
 # How to run a script
 ---------------------------------------------------
@@ -75,10 +85,6 @@ $ apt-get | yum install shellcheck	-y
 	$ . ./script.sh   			     <= current login shell to run
 
     $ sh ./script.sh  				 <= same as 'sh script.sh')
-    $ sh +x script.sh   			 <= +x for debugging mode
-    $ sh -x script.sh   			 <= +x for debugging mode
-    $ sh -v script.sh   			 <= -v for debugging mode
-    $ sh +v script.sh   			 <= +v for debugging mode
 
     $ exec ./script   				 <= after it runs, exits from current shell 
 
@@ -99,8 +105,14 @@ $ apt-get | yum install shellcheck	-y
 	$ ./tecmint_monitor.sh -i    <- install
 	$ monitor
 
+	# Run in debugging mode
+    $ sh +x script.sh   			 <= +x for debugging mode
+    $ sh -x script.sh   			 <= +x for debugging mode
+    $ sh -v script.sh   			 <= -v for debugging mode
+    $ sh +v script.sh   			 <= +v for debugging mode
+
 ---------------------------------------------------	
-# VI: Run script WITHIN vim or vi
+# VI: Run script 'within' VIM or VI
 ---------------------------------------------------
     :w   	      					<= write first
     :! sh %   (# :! sh %)     		<= : <-cmd ! <-run, sh <-shell, % =currently open file
@@ -136,7 +148,7 @@ $ apt-get | yum install shellcheck	-y
 # VI: Search and replace 	( http://vim.wikia.com/wiki/Search_and_replace )
 ---------------------------------------------------
     :s/foo/bar/g					<= current line only
-	:%s/foo/bar/gc					<= % all, c to confirm first but also INSENSITVE
+	:%s/foo/bar/gc					<= % -all, c - to confirm first but also INSENSITVE
 	#:%s/foo/bar/gci				<= i insensitive(save as above cmd)
 	
 	:%s/\<foo\>/bar/gc				<= Change only whole words exactly matching 'foo' to 'bar'
@@ -146,81 +158,89 @@ $ apt-get | yum install shellcheck	-y
 										The regex is 'blank line'  
 										:d (delete)
 										
----------------------------------------------------								
-# Debug mode	
+
+
 ---------------------------------------------------
-    #!/bin/bash -x 					<= add " -x " for debugging mode in #!/bin/bash script
-    $ bash -x ./script.sh  			( same as 'bash script.sh') 
-    $ bash -vx script.sh			<= add -xv from shell -v <-verbose -x <-debug
-	:! sh -x %						<= -x is for DEBUG(verbose) mode
-    set -x              			<= End of file +x for TURN OFF
-	$ bash -n ./script.sh 			<= checking syntax error
-	
- # Stop and Exit running program
+# Writing 2 Scripts at same time in background
+---------------------------------------------------
 	$ vi 1.sh
-      ctrl + z 						<= exit to shell
+# Ctrl + z 						<= exit to shell
 	$ vi 2.sh
+# Ctrl + z 						<= exit to shell	
+
+# Check list of jobs	
 	$ jobs
 	[1] Stopped  vim
 	[2] Stopped  vim
+
 	$ fg %1							<= go back to 1.sh
-	ctrl + z
+# Ctrl + z
+	$ fg %2							<= go back to 2.sh
+	
+# Save and exit or KILL Jobs
 	$ kill %2
-	$ kill -9 %2
-
----------------------------------------------------
-# Run from background
----------------------------------------------------
-    $ ls -alR > /tmp/result.txt 2> /tmp/error.txt &
-	$ jobs
-	[1]+  Stopped                 vim
-	[2]-  Stopped                 vim
-	[3]   Done                    ls --color=auto -alR > /tmp/result.txt 2> /tmp/error.txt
-
+	$ kill -9 %1
+	
 	
 ### Monitoring Scripts		
 https://bash.cyberciti.biz/shell/monitoring/
 
 
-
-
 ### Bash scripting cheatsheet
 	https://devhints.io/bash
+
 
 ---------------------------------------------------
 ### Assign values to shell variables	
 https://bash.cyberciti.biz/guide/Assign_values_to_shell_variables	
 ---------------------------------------------------
 
-$ echo "$varName"
-$ echo "${varName}"
+$ echo 	 "$varName"
+$ echo   "${varName}"
+
 $ printf "${varName}"
 $ printf "%s\n" ${varName}
 
+
 # NULL variable
-	- NULL variable is variable which has no value at the time of definition
+	- NULL variable is variable which has 'no value' at the time of definition
 var=
 var=""
 
-# Do not use ?,* and other special characters, to name your variable.
-?no=10 							#invalid
-out*put=/tmp/filename.txt 		#invalid
+# Do not use '?' or '*' and other special characters to name your variable.
+?no=10 							#invalid '?' var
+out*put=/tmp/filename.txt 		#invalid '*' var
 
 _GREP=/usr/bin/grep 			#valid
 $ echo "$_GREP"
+
+# Variable convention using VarName=$(date)
 ---------------------------------------------------
-$ NOW=$(date)
+$ NOW=$(date)			<= (date) = `date` is shell program
 $ echo $NOW
+
+$ now=`date`
+$ echo $now
+	Fri Jan 18 15:25:43 PST 2019
+
+$ now=$(date)
+$ echo $now
+	Fri Jan 18 15:26:02 PST 2019
+
 ---------------------------------------------------
+
 More About ${varName} Syntax
-$ echo "MySHELL=>$SHELLCode<="				<= can't tell $SHELLCode
+$ echo "MySHELL=>$SHELLCode<="				<= can't tell VAR name '$SHELLCode'
   MySHELL=><=
 
-  $echo  "MySHELL=>\$SHELLCode<="				<= prints $
+  $echo  "MySHELL=>\$SHELLCode<="				<= ignore VAR '$' and print as TEXT
   MySHELL=>$SHELLCode<=
 
-$ echo "MySHELL=>${SHELL}Code<="			<= Using {} for Variable $SHELL
+$ echo $SHELL
+	/bin/bash
+$ echo "MySHELL=>${SHELL}Code<="			<= Using ${SHELL} for Variable $SHELL in ""
 	MySHELL=>/bin/bashCode<=
+
 
 
 ---------------------------------------------------
@@ -228,56 +248,111 @@ $ echo "MySHELL=>${SHELL}Code<="			<= Using {} for Variable $SHELL
 ---------------------------------------------------
 $ var	        	   #Value of shell variable var.
 $ var=value		       #Assign the string value to shell variable var.
-	$var=5222
+
+	$ var=52
 	$ echo $var
 	$ echo ${var}
-	  52222
-	$ echo ${var}5    # appending '2' to $var.
-	  522225  				
+	  52
+	  
+	$ echo ${var}5    # appending '5' to $var.
+	  5225  				
 	$ length=${#var}	<- length of variable using '#'
 							https://stackoverflow.com/questions/17368067/length-of-string-in-bash
-	$ echo $length
-	  5
+	$ echo $length   // $ echo ${length}
+	  2
 	  
 ---------------------------------------------------
 ### SHELL (Local) Variable (within function) ####
 ---------------------------------------------------	  
-	- variables can be created in a function that will not be available outside(Global) of it
-	- variables only set within a function
+	- variables can be created in a function that will not be available Global(outside) of it
+	- variables are only set within a function
 	
 	- The 'typeset' cmd makes variables local, can provide a type, or can provide formatting.
+		<= Declare variables and/or give them attributes.  If no names are given  then
+           display the values of variables. 
+	
 	$ typeset -i x							<= x must be an integer
 		- Arithmetic is faster
 		- Let allows for convenient arithmetic:
-		  let x++; let y=x**2; let x=x*3; let x*=5, ...
+		  let x++; 
+		  let y=x**2; 
+		  let x=x*3; 
+		  let x*=5, ...
 		  
-------------------------------------	  
+------------------------------------
+# When to use () vs. {} in bash?	  
+
 https://askubuntu.com/questions/606378/when-to-use-vs-in-bash
 
+### {...} <= current shell
 $ f() { echo this is a function; }  			<= space between { echo ...  ; }
 													executes in current shell
+
+$ count_tmp() { cd /tmp; files=(*); echo "${#files[@]}"; }
+$ pwd; count_tmp; pwd
+	/home/apark
+	11
+	/tmp
+$ echo "${#files[@]}"
+	11  													
+													
+### (...) <= subshell													
 $ f() (echo this is a function)					<= No effect on space nor ; to close
 
+$ cd ; unset files
+$ count_tmp() (cd /tmp; files=(*); echo "${#files[@]}")
+$ pwd; count_tmp; pwd
+	/home/apark
+	11
+	/home/apark
+$ echo "${#files[@]}"
+	0	
 
+
+# ()		<= Subshell
+( list )
+	Placing a list-of-commands between parentheses causes a 'subshell' environment to be created, 
+	and each of the commands in list to be executed in that subshell. Since the list is executed 
+	in a subshell, variable assignments do not remain in effect after the subshell completes.
+
+	Code in '()' is run inside a separate, child process of bash that is discarded after execution. 
+	This child process is often referred to as a sub-shell and can be thought of as a new, child-like scope.
+
+# {}		<= Current Shell
+{ list; }
+	Placing a list of commands between curly braces causes the list to be executed in the 'current shell'
+	context. No subshell is created. The semicolon (or newline) following list is required.
+
+	Code in '{}' is executed in the current thread/process/environment and changes are preserved, 
+	to put it more succinctly, the code is run in the current scope.
+
+
+
+
+--------------------
+### Bash Scripts ###
+--------------------
 
 ------------------------------------	  
 #!/bin/bash
-function invoke_f1 {
+# Function for local and global vars  
+
+function f1 {
 	typeset x			# make x as a var within function(inside of function as local var)
 	x=7
 	y=8					# y becomes global var
 }
-#--------------
+
 x=1
 y=2
+
 echo x is $x
 echo y is $y
-#--------------
-invoke_f1						# Invoking function like command
-#--------------
-echo x is $x
-echo y is $y
-------------------------------------
+
+f1						# Invoking function like command
+echo x is $x		<= f1's var X value
+echo y is $y		<= f1's var y value
+
 # Output:
 x is 1
 y is 2
@@ -292,7 +367,9 @@ https://unix.stackexchange.com/questions/254367
 When used in a function, declare makes NAMEs local, as with the local command. 
 The -g option suppresses this behaviour.
 
-abc=ok assigns a value to the variable abc. declare abc declares a variable called abc. 
+abc=ok 		<= assigns a value to the variable abc. 
+				Declare abc declares a variable called abc. 
+
 The two can be combined as declare abc=ok.
 
 In bash, like other shells, string and array variables don't need to be declared, so declare 
@@ -306,7 +383,7 @@ e.g. 'declare -gA' to create a global associative array in a function.)
 Example:
 ------------------------
 #!/bin/bash
-f () {
+func1 () {
   declare a
   a='a in f'
   b='b in f'
@@ -315,7 +392,7 @@ f () {
 }
 a='Initial a'
 b='Initial b'
-f								#Invoking the function like command
+func1								#Invoking the function like command
 echo "After f: a is $a"
 echo "After f: b is $b"
 ------------------------
@@ -361,18 +438,14 @@ echo 'MyArray2[hotdog]= ' ${MyArray2["hotdog"]}
 
  	 
 	 
-	 
-	 
-	 
-	 
 
 ---------------------------------------------------
 # Combines 2 or more commands
 ---------------------------------------------------
-cmd1 ; cmd2     			<= Do cmd1 first, then cmd2(cmd1 has failed or not)
+cmd1 ; cmd2     		<= Do cmd1 first, then cmd2(even if 'cmd1' has failed or not)
 	$ sleep 5 ; ls -l
 
-cmd1 & cmd2    			<= Do BOTH 'cmd1 and cmd2' without waiting for cmd1 to finish
+cmd1 & cmd2    			<= Do BOTH at same time 'cmd1 and cmd2' (without waiting for cmd1 to finish0
 	$ sleep 4 & ls -l
 
 cmd1 && cmd2   		    <= If cmd1 successful, run cmd2, otherwise skip.
@@ -382,15 +455,13 @@ cmd1 || cmd2   		    <= If cmd1 failed, run cmd2, otherwise skip.
 cmd1 || cmd2 || cmd3    <= If cmd1 failed, run cmd2, otherwise runs cmd3, otherwise skip.
 
 
-
-	
 !     # not
 -a    # and
 -o    # or	
 
 	
 -----------------------------------------------
-### File Descriptor,  Redirection, Pipes ###
+### File Descriptor,  RedirectionS, Pipes ###
 -----------------------------------------------
 https://en.wikipedia.org/wiki/File_descriptor
 File Descriptor 0, 1, and 2 reserved as:
@@ -403,9 +474,10 @@ Command > stdout-here 2> stderr-here < stdin-from-here
 command 2>&1| command2		<= same
 command |&    command2		<= same(variable by different shell
 
-command &> file			
+command &> file.log			<= everything(stdout & stderr)
 
 command <<  				<= Here is a document
+
 $ sort << EOF
 	orange
 	apple
@@ -413,18 +485,18 @@ $ sort << EOF
 	EOF
 	
 # Open and Close File Descriptors ????????????????
-- exec N< myfile  <= opens file descriptor N for 'reading' from file 'myfile'
-- exec N> myfile  <= opens file descriptor N for 'writing' from file 'myfile'
-- exec N<> myfile  <= opens file descriptor N for 'reading & writing' from file 'myfile'
-- exec N<> myfile  <= opens file descriptor N for 'writing' from file 'myfile'
+- exec N < myfile   <= opens file descriptor N for 'reading' from file 'myfile'
+- exec N > myfile   <= opens file descriptor N for 'writing' from file 'myfile'
+- exec N <> myfile  <= opens file descriptor N for 'reading & writing' from file 'myfile'
+- exec N <> myfile  <= opens file descriptor N for 'writing' from file 'myfile'
 	
 	
 	
 	
-- lsof	<= use 'lsof' to what file descriptors for a process are open
+- lsof					<= what file descriptors for a process are open
 	$ lsof -p $$		<= $$ Processor ID
 	
-	
+- fuser					<= which processes using files or sockets
 	
 	
 	
@@ -3572,7 +3644,6 @@ while :; 			### : <= is true
 done
 
 #---------------------------------------------------------------------------
-
 
 
 
