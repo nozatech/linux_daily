@@ -3870,7 +3870,15 @@ Ubuntu 16.04 or higher			V
 	$ colordiff file1 file2
     $ diff -u file1 file2 | colordiff
 
-
+	https://stackoverflow.com/questions/16787916/difference-between-two-directories-in-linux
+	$ diff -r dir1 dir2 | grep dir1 | awk '{print $4}' > difference1.txt	
+	$ diff -rq dir1 dir2		
+			-r - Recursively compare any subdirectories found.
+			-q - Output only whether files differ.
+			
+	https://askubuntu.com/questions/421712/comparing-the-contents-of-two-directories
+	
+	
 	# Diff between two remote folders through SSH
 
 Server 1

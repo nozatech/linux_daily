@@ -904,26 +904,33 @@ https://coderwall.com/p/85jnpq/bash-built-in-variables
 	$1		positional parameter #1
 	$2-9	positional parameter #2-9
 	${10}	positional parameter #10 and up         e.g. ${10}, ${11}, ${12}....
+	
+	$* 		the list of arguments passed to the current process
 	$#		Total number of positional parameters   e.g. 4
 	$@		what parameters were passed 			e.g. 1 2 3 4
+	
 	"$*"	all the positional parameters(as separate word)*
 	"$@"	all the positional parameters(as separate strings)
 	${#*}	number of positional parameters
 	${#@}	number of positional parameters
+	
 	$?		return value
 	$$	 	process ID(PID) of script
+	$!		process ID(PID) of last job run in background
 	
 	$-		flags passed to script( set's opntion 'himBHs', $help set)
 	$_		last argument of previous command
 		e.g. $ bash test.txt
 			 $ cat $_			<= $_ is test.txt
-	$!		process ID(PID) of last job run in background
-	* Must be quoted, otherwise it defaults to $@
 	
+	* Must be quoted, otherwise it defaults to $@
+
+e.g.	
 echo $$ <= the PID of the current process.
 echo $! <= The PID of the most recent background command
 echo $? <= the return code of the last executed command. 0:True, 1:False	
-echo $# <= the number of arguments in $*
+
+echo $# <= the Total number of arguments in $*
 echo $* <= the list of arguments passed to the current process
 echo $@ <= List of arguments
 	
@@ -941,11 +948,21 @@ $@ - Expands to the positional parameters, starting from one. When the expansion
 	
 ------------------------------------------
 #!/bin/bash
+# save and run script.sh 1 2 3 4
+#
 echo "With *:"
-for arg in "$*"; do echo "< $arg >"; done
-echo
+for arg in "$*"; do echo "< $arg >"; done		#<= $* <- the list of arguments passed
+
+echo "------------------------------------"
+
 echo "With @:"
-for arg in "$@"; do echo "< $arg >"; done   			
+for arg in "$@"; do echo "< $arg >"; done 		#<= $@ <- 
+
+echo "------------------------------------"
+
+echo "With #:"
+for arg in "$#"; do echo "< $arg >"; done 		#<= $# <- the Total number of arguments in $*
+  			
 ------------------------------------------
 
 $ /tmp/test.sh 1  2 "3 4"
@@ -957,53 +974,58 @@ With @:				<= per line	due to 'For Loop'
 <2>
 <3 4>
 
+With #:
+<3>
+
 https://coderwall.com/p/85jnpq/bash-built-in-variables
+
 -----------------------
 $ vi test.sh
 #!/bin/sh
-echo 'The number of positional parameters are $#' $#
-echo 'All positional parameters are $@' $@
-echo 'The exit code of fg command is $?' $?
+echo 'The number of positional parameters are $# is: ' $#
+echo 'All positional parameters are $@ is: ' $@
+echo 'The exit code of fg(foreground command $? is: ' $?
 -----------------------
 
 $ bash test.sh 1 2 3
 output:
-$#  3
+$#  3				<= The number of positional parameters
 $@  1 2 3			<= all the arg values in the single line(use for loop for colum)
-$?  0
+$?  0				<= 'True' exit code
 
 *You passed 3 parameters to your script.*
 
-$# = number of arguments. Answer is 3
-$@ = what parameters were passed. Answer is 1 2 3
-$? = was last command successful. Answer is 0 which means 'yes'
+$# = number of arguments is 3
+$@ = what parameters were passed was 1 2 3
+$? = was last command successful. Answer is 0 which means 'yes(True)'
 	
-$ echo -n     do not output the trailing newline
+
+# Echo in BASH Script	
+$ echo -n     do not output the trailing newline (\n)
        -e     enable interpretation of backslash escapes
        -E     disable interpretation of backslash escapes (default)
 
-
-	   
-	   
-		   
 #--------------------------------------------------------------------------------
-# Usage 
+### Usage Message ### 
 #--------------------------------------------------------------------------------   
 #!/bin/bash
-usage="Usage: This script ne eds arg1 and arg2 values"
+usage="Usage: This script needs arg1 and arg2 values"
 if [ ! $# == 2 ]; then
     echo $usage
 fi
 
-echo $1 $2  
+echo "1st argument is $1"
+echo "2nd argument is $2"  
 	   
 	   
 #--------------------------------------------------------------------------------
 #!/bin/bash
 ### Comparing two directories ###
-#set -x 		# Debug mode  +x is disable mode
+#set -x 		<= Debug mode  '+x' <= Disable mode
 # Usage: compare2dirs.sh DIR1_Name DIR2_Name #
 usage="Usage: $0 DIR1_Name DIR2_Name"
+
+
  
 #------------------------------------------------------------------------------------
 if [ $# -gt 2 ]; then                   # number of command line parameters.
