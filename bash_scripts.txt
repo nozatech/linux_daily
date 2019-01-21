@@ -142,7 +142,7 @@ $ apt-get | yum install shellcheck	-y
 	:q 									<= quit help page
 	
 	$ vi +101 file.txt					<= go to 101 line in file name
-	:12										<= Go to particular line number in vi editor 
+	:12									<= Go to particular line number in vi editor 
 	
 # Move	
 	^		<= Move cursor to the beginning of the line.
@@ -157,7 +157,7 @@ $ apt-get | yum install shellcheck	-y
 # Exit
 	1. Save and Exit
 	ESC :wq enter
-	ESC ZZ			<=Cap ZZ
+	ESC Shif + ZZ			<=Cap ZZ
 	
 # Insert	
 	o					<= insert underneath line
@@ -226,13 +226,17 @@ https://bash.cyberciti.biz/shell/monitoring/
 ### Assign values to shell variables	
 https://bash.cyberciti.biz/guide/Assign_values_to_shell_variables	
 ---------------------------------------------------
+varName="test"
 
 $ echo 	 "$varName"
 $ echo   "${varName}"
+	test
 
 $ printf "${varName}"
-$ printf "%s\n" ${varName}
+test[apark@i7 ~]		
 
+$ printf "%s\n" ${varName}			<= Add a NEW line using '%s\n'
+test
 
 # NULL variable
 	- NULL variable is variable which has 'no value' at the time of definition
@@ -248,35 +252,44 @@ $ echo "$_GREP"
 
 # Variable convention using VarName=$(date)
 ---------------------------------------------------
-$ NOW=$(date)			<= (date) = `date` is shell program
+$ NOW=$(date)			<=  `date` is shell program
+$ NOW="$(date)"			<= SAME as above
 $ echo $NOW
-
+	Fri Jan 18 15:25:43 PST 2019
+	
+!!! Not work !!!
+	$ NOW=$"(date)"
+	$ echo $NOW
+	 (date)
+	
 $ now=`date`
 $ echo $now
 	Fri Jan 18 15:25:43 PST 2019
 
-$ now=$(date)
-$ echo $now
-	Fri Jan 18 15:26:02 PST 2019
-
 ---------------------------------------------------
 
-More About ${varName} Syntax
+# ${varName} 								<= VAR Syntax
+
 $ echo "MySHELL=>$SHELLCode<="				<= can't tell VAR name '$SHELLCode'
   MySHELL=><=
 
-  $echo  "MySHELL=>\$SHELLCode<="				<= ignore VAR '$' and print as TEXT
+$ echo  "MySHELL=>\$SHELLCode<="			<= User " "double quote ignore VAR '$' and print as TEXT
+  MySHELL=>$SHELLCode<=
+
+$ echo  'MySHELL=>\$SHELLCode<='			<= Use ' 'single quote to ignore VAR '$' and print as TEXT
   MySHELL=>$SHELLCode<=
 
 $ echo $SHELL
 	/bin/bash
-$ echo "MySHELL=>${SHELL}Code<="			<= Using ${SHELL} for Variable $SHELL in ""
-	MySHELL=>/bin/bashCode<=
+	
+$ echo "MySHELL=>${SHELL} is Shell location.<="		<= Using ${SHELL} for Variable $SHELL in ""
+	MySHELL=>/bin/bash is Shell location.<=
 
 
 
 ---------------------------------------------------
-### Environment Variable  ####
+### Length of string in bash  ####
+https://stackoverflow.com/questions/17368067/length-of-string-in-bash	
 ---------------------------------------------------
 $ var	        	   #Value of shell variable var.
 $ var=value		       #Assign the string value to shell variable var.
@@ -284,14 +297,23 @@ $ var=value		       #Assign the string value to shell variable var.
 	$ var=52
 	$ echo $var
 	$ echo ${var}
-	  52
-	  
+	$ echo "${var}"
+	 => 52
+	
+	$ echo $var
 	$ echo ${var}5    # appending '5' to $var.
-	  5225  				
+	$ echo "${var}"5	
+	$ echo "${var}5"	
+	 => 525  
+
+	 
 	$ length=${#var}	<- length of variable using '#'
-							https://stackoverflow.com/questions/17368067/length-of-string-in-bash
-	$ echo $length   // $ echo ${length}
-	  2
+	$ length="${#var}"	<- length of variable using '#'
+		
+	$ echo $length   
+	$ echo ${length}
+	$ echo "${length}"
+	 => 2
 	  
 ---------------------------------------------------
 ### SHELL (Local) Variable (within function) ####
@@ -306,6 +328,7 @@ $ var=value		       #Assign the string value to shell variable var.
 	$ typeset -i x							<= x must be an integer
 		- Arithmetic is faster
 		- Let allows for convenient arithmetic:
+		
 		  let x++; 
 		  let y=x**2; 
 		  let x=x*3; 
@@ -313,14 +336,15 @@ $ var=value		       #Assign the string value to shell variable var.
 		  
 ------------------------------------
 # When to use () vs. {} in bash?	  
-
+------------------------------------
 https://askubuntu.com/questions/606378/when-to-use-vs-in-bash
 
 ### {...} <= current shell
 $ f() { echo this is a function; }  			<= space between { echo ...  ; }
-													executes in current shell
+		^ space					^ space         	executes in 'current' shell
 
 $ count_tmp() { cd /tmp; files=(*); echo "${#files[@]}"; }
+ 
 $ pwd; count_tmp; pwd
 	/home/apark
 	11
