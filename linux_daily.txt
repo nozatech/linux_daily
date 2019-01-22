@@ -1,16 +1,12 @@
-  아무리 바빠도 해야할 일 - 책 
+아무리 바빠도 해야할 일 - 책 
 돈이 많아도 하지 말아야 할일 - 도박, 마약
-1.역사-역사의식 책임
-2.문화-감성 
-3.경영-논리 
-4.철학-생각에 방법 
-5.사회학 인문학-인간 관계
+1.역사-역사의식 책임 | 2.문화-감성 | 3.경영-논리 | 4.철학-생각에 방법 | 5.사회학 인문학-인간 관계
 
 "얼마나 아는가 보다  어떻게 실행하는가?"
 
-S.M.A.R.T.	
+S.M.A.R.T.	( ¯\_(ツ)_/¯ )
 1.Specific	2.Measureable	3.Action-Oriented	4.Realistic	 5.Time-Limited
-¯\_(ツ)_/¯
+
 ### Drucker's 5 Questions ###
 1. What is  our mission?
 2. Who  is  our customers?
@@ -18,12 +14,7 @@ S.M.A.R.T.
 4. What are our result?
 5. What is  our plan?
 
-Notepad++ short key
-# Move
-	Bottom of page	<- Ctrl+End			
-	Top of page  	<- Ctrl+Home			
-# Insert a line below
-	Ctrl+Alt+Enter
+
 ---------------------------------------
 ### Windows CMD kill process
 ---------------------------------------
@@ -34,8 +25,10 @@ c:\taskkill /IM pdflite.exe /F
 C:\Windows\System32\cttune.exe
 
 # Rename file 'F2'
-# Pin to Taskbar  <= on program, right click, pin to taskbar
-bring up the Task Manager 
+
+# Pin to Taskbar  			<= on program, right click, pin to taskbar
+
+# bring up the Task Manager 
 	Ctrl+Shift+Esc 
 	Windows + R   <= run
 	Windows + E	  <= Explorer
@@ -46,7 +39,6 @@ bring up the Task Manager
 Windows 10: Narrator Voice
 Start: 	Windows Key + Enter
 Stop:  	Caps Lock   + Esc
-
 	
 ### ABBYY Temp files process	
 How to change the drive location so ABBYY Temp files process to a chosen drive.
@@ -69,9 +61,9 @@ End Of Line (EOL)	<= 라인 끝  문자 (0x0D0A, \r\n)는 두개의 ASCII 문자
 						포함한 기타 대부분의 비 UNIX 운영 체제에서 줄 바꿈 문자로 사용됩니다.
 
 --------------------------------------- 
-### Notepad++
+### Notepad++  (Settings > Short cut Mapper Menu)
 ---------------------------------------
-Settings > Short cut Mapper Menu.
+
 1. 	Ctrl + L					Delete Current line
 	Ctrl + D					Copy(Duplicate) line
 	Ctrl + Alt + Enter			Insert blank line Above ^
@@ -93,12 +85,13 @@ Settings > Short cut Mapper Menu.
 	Ctrl+Alt+S			Display Save As... dialogue box.
 	Ctrl+W				Close current document.
 	Alt +F4				Exit Notepad++
+	
 ---------------------------------------
 ### Chrome ###
 --------------------------------------- 
 Clean Cache - a hard refresh of the page (ctrl+shift+R)
 Plugins install
-	# Revolver <- Rotate Tabs
+	# Revolver 			<- Rotate Tabs
 	# AdBlock
 Alt + Home				Open your homepage.
 Alt + Tab				Toggle between browser windows
@@ -122,6 +115,7 @@ Ctrl+f -> replace -> More => Special => Paragraph Mark => ^p   <= single line ^p
 
 
 ---------------------------------------------------------------------------------
+### IPv4 
 32bit is 2^32 =~ 4.3 billion    <=  IPv4 address is 32bit 
 ---------------------------------------------------------------------------------
 just without the prefix(e.g. www) as 'something.com' is a 'naked domain.'
@@ -153,6 +147,9 @@ SMACK Stack
 ### T ###
 TLS 	<= Transport Layer Security (TLS) – and its predecessor, Secure Sockets Layer (SSL)
 
+
+
+
 -----------------------------------------------------------------------------------	
 -----------------------------------------------------------------------------------	
 ### LINUX ###
@@ -175,9 +172,9 @@ $ man -k REGEX or UNIXCOMMAND
 
 $ info				<= Longer document
 	$ info grep
-----------------------------------
+-----------------------------------------------------------------------------------	
 ### Command and file Locations ###
-----------------------------------
+-----------------------------------------------------------------------------------	
 # Find the command location
 	$ whereis  cmd				<= <= Find binary /source / manual for commandD
 		$ whereis ls
@@ -221,10 +218,11 @@ echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && source ~/
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && 		. ~/.bashrc 
 
 ### Green & Red promt
-----------------------------------------------------------------------------------------
+========================================================================================
 echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"' >> ~/.bashrc	&& source ~/.bashrc	 
-----------------------------------------------------------------------------------------
-###
+========================================================================================
+### change .bashrc within shell to actiavate a new alias
+$ source ~/.bashrc	
 
 ### History Control Options
 echo 'export HISTCONTROL="ignorespace:erasedups:ignoredups"' >> ~/.bashrc	<= Ignore Duplication
@@ -256,12 +254,12 @@ echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
 	<< EOF here document method  << STDIN, >> STDOUT 
 -----------------------------------------------------------------------------------
 cat << EOF >> ~/.bashrc
-export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"				# Color
-export HISTCONTROL="ignorespace:erasedups:ignoredups"		# Ignore space, dups, 
-export HISTIGNORE="history*:ll*:ls*:"						# Ignore ls ll
-export HISTTIMEFORMAT="%F > " 								# Date format
-export HISTSIZE=10000
-EOF
+	export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"				# Color
+	export HISTCONTROL="ignorespace:erasedups:ignoredups"		# Ignore space, dups, 
+	export HISTIGNORE="history*:ll*:ls*:"						# Ignore ls ll
+	export HISTTIMEFORMAT="%F > " 								# Date format
+	export HISTSIZE=10000
+	EOF
 
 # Reload .bashrc 
 	$ source ~/.bashrc 
@@ -269,7 +267,7 @@ EOF
 	$ pssh -O StrictHostKeyChecking=no -h serverList.txt -l apark -A -I < ./shellenv.sh
 -----------------------------------------------------------------------------------
 	
-### Color Codes	for Fonts
+### 9x Color Codes	for Fonts
 	Reset   = 0
 	Black   = 30
 	Red     = 31
@@ -281,7 +279,7 @@ EOF
 	White   = 37
 	
 	$ echo -e "\e[1;31m This is red text. \e[0m"	<- \e[1;31m (\)escape string sets(-e ON) color
-		This is red text.							<- \e[0m reset
+		This is red text.							<- \e[0m reset to default color
 	
 	$ echo -e '\e[1;31m	"Red text" \e[0m'
 	
@@ -303,7 +301,7 @@ EOF
 	
 -----------------------------------------------------------------------------------------	
 ########################
-###   Boot Process   ### bootup process
+###   Boot Process   ###  
 ########################
 
 Firmware(POST or UEFI) => Boot loader => Kernel => Initialization Stages
@@ -3926,6 +3924,8 @@ sudo apt-get install sshpass
   cut      Divide a file into several parts
 
 
+  
+  
 52. # chkconfig --add <script_name>
 	# chkconfig <script_name> on
 
@@ -7542,7 +7542,7 @@ http://askubuntu.com/questions/104755/how-to-check-internet-speed-via-terminal
 $ curl -s  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -	
 $ wget --output-document=/dev/null http://speedtest.wdc01.softlayer.com/downloads/test500.zip	
 	
-# Ubuntu 16.04x	
+# Ubuntu 16.04	
 $ sudo apt install speedtest-cli
 $ speedtest-cli	
 
@@ -7679,7 +7679,7 @@ $ /sbin/sysctl net.netfilter.nf_conntrack_max
 	262144
 
 
-# sysctl <= configure kernel parameters at runtime
+# sysctl 	<= configure kernel parameters at runtime
 $ sysctl -a | grep netfilter
 $ sysctl -a | grep conntrack
 $ sysctl --names --all | grep -i conntrack
@@ -7690,7 +7690,7 @@ $ sysctl --names --all | grep -i conntrack
 https://www.kernel.org/doc/Documentation/networking/nf_conntrack-sysctl.txt
 http://antmeetspenguin.blogspot.com/2011/01/high-performance-linux-router.html
 
-$vi /etc/sysctl.conf	
+$ vi /etc/sysctl.conf	
 	net.netfilter.nf_conntrack_max = 500000   <= add a VAR and value  
 
 $ /sbin/sysctl -p  (or -f)    <= reload

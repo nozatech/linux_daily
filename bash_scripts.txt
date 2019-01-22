@@ -252,19 +252,19 @@ $ echo "$_GREP"
 
 # Variable convention using VarName=$(date)
 ---------------------------------------------------
-$ NOW=$(date)			<=  `date` is shell program
-$ NOW="$(date)"			<= SAME as above
-$ echo $NOW
-	Fri Jan 18 15:25:43 PST 2019
+	$ NOW=$(date)			<=  `date` is shell program
+	$ NOW="$(date)"			<= SAME as above
+	$ echo $NOW
+	  Fri Jan 18 15:25:43 PST 2019
 	
-!!! Not work !!!
+	!!! Not work !!!
 	$ NOW=$"(date)"
 	$ echo $NOW
 	 (date)
 	
-$ now=`date`
-$ echo $now
-	Fri Jan 18 15:25:43 PST 2019
+	$ now=`date`
+	$ echo $now
+	  Fri Jan 18 15:25:43 PST 2019
 
 ---------------------------------------------------
 
@@ -285,7 +285,33 @@ $ echo $SHELL
 $ echo "MySHELL=>${SHELL} is Shell location.<="		<= Using ${SHELL} for Variable $SHELL in ""
 	MySHELL=>/bin/bash is Shell location.<=
 
+------------------------------------------------------------------------------------	
+### Bash built-in Variable
 
+$#, $@ & $? bash built-in variable
+https://coderwall.com/p/85jnpq/bash-built-in-variables
+
+$ vi test.sh
+------------------------
+#!/bin/sh
+echo '$#' $#
+echo '$@' $@
+echo '$?' $?
+------------------------
+$ bash ./test.sh 1 2 3
+output:
+$#  3
+$@  1 2 3
+$?  0
+
+*You passed 3 parameters to your script.*
+
+$# = number of total arguments. 	<= 'Usage' error report if any arg missing
+$@ = what parameters were passed. 	<= Answer is 1 2 3
+$? = was last command successful. 	<= Answer is 0 which means 'True'	
+------------------------------------------------------------------------------------	
+	
+	
 
 ---------------------------------------------------
 ### Length of string in bash  ####
@@ -301,7 +327,7 @@ $ var=value		       #Assign the string value to shell variable var.
 	 => 52
 	
 	$ echo $var
-	$ echo ${var}5    # appending '5' to $var.
+	$ echo ${var}5    	<= appending '5' to $var.
 	$ echo "${var}"5	
 	$ echo "${var}5"	
 	 => 525  
@@ -335,24 +361,41 @@ $ var=value		       #Assign the string value to shell variable var.
 		  let x*=5, ...
 		  
 ------------------------------------
-# When to use () vs. {} in bash?	  
+# When to use (List) <- Subshell  vs. { List; } <- Current Shell# in bash?	  
 ------------------------------------
 https://askubuntu.com/questions/606378/when-to-use-vs-in-bash
 
-### {...} <= current shell
-$ f() { echo this is a function; }  			<= space between { echo ...  ; }
-		^ space					^ space         	executes in 'current' shell
+### {...; } <= current shell
+------------------------------------
+$ function() { echo this is a function; }  			<= space between { echo ...  ; } 
+														Similar to 'TEST' [[ statement ]] 
+		      ^ space				   ^ space        	executes in 'current' shell
 
 $ count_tmp() { cd /tmp; files=(*); echo "${#files[@]}"; }
+			   ^ space                     ^ NO space	^ space		
+			   
+$ count_tmp		<= execute the function	  
+	=> 3
+	
+	
+$ count_var() { cd /var/log; files=(*); echo "${#files[@]}"; }
+	=> 54
+$ ls -l | wc -l		<= Same result
+	=> 54
  
 $ pwd; count_tmp; pwd
 	/home/apark
 	11
 	/tmp
+
 $ echo "${#files[@]}"
 	11  													
-													
+						
+
+
+ 						
 ### (...) <= subshell													
+------------------------------------
 $ f() (echo this is a function)					<= No effect on space nor ; to close
 
 $ cd ; unset files

@@ -16,6 +16,14 @@ _	<= underscore
 []	<= List
 {}	<= Dictionary
 -------------------------------------------------
+Comments
+# Single line comment
+: '
+This is a
+multi line
+comment
+'
+-------------------------------------------------
 SNS	<= Social Networking Service 
 SMS	<= Short Message Service (Text Message)
 MMS	<= Media Message Service (Video Message)
@@ -28,7 +36,7 @@ echo $?			<= shell exit status code
 echo $$			<= Current shell PID
 -------------------------------------------------
 3. Back tic vs $()
-`command`		<= legacy
+$`command`		<= legacy
 $(command)		<= Easier for nesting
 $ lsal=$(ls -al)   
 $ lsal="$(ls -al)"  
@@ -45,12 +53,12 @@ $ echo $x '$x' "$x"		<= 1  $x  1
 
 5. Combines 2 or more commands
 ---------------------------------------------------
-"A ; B" 	<= Run A and then B, regardless of success of A
-"A && B" 	<= Run B if A succeeded
-"A || B" 	<= Run B if A failed
-"A &" 		<= Run A in background.
+A ; B 		<= Run A and then B, regardless of success of A
+A && B 		<= Run B if A succeeded
+A || B 		<= Run B if A failed
+A & 		<= Run A in background.
 ------------------------------------------------------------------------------------------------------
-cmd1; cmd2     			<= Do cmd1 first, then(;) cmd2(cmd1 has failed or not)
+cmd1 ; cmd2     		<= Do cmd1 first, then(;) cmd2(cmd1 has failed or not)
 	$ sleep 5 ; ls -l
 
 cmd1 & cmd2    			<= Do cmd1 and(&) cmd2 without waiting for cmd1 to finish
@@ -62,23 +70,23 @@ cmd1 && cmd2 && cmd3    <= If cmd1 successful, run cmd2, run cmd3,  otherwise sk
 cmd1 || cmd2   		    <= If cmd1 failed, run cmd2, otherwise skip.
 cmd1 || cmd2 || cmd3    <= If cmd1 failed, run cmd2, otherwise runs cmd3, otherwise skip.
 
-6. BASH provides 3 types of parameters: Strings, Integers and Arrays
+6. BASH provides 3 types of 'Parameters': Strings, Integers, and Arrays
 
-7. set -e  Exit immediately if a command exits with a non-zero status.
+7. set -e  		<= Exit immediately if a command exits with a non-zero status.
 
-8. whereis everthing located at? location and manual
-   which cmd is located at?      location
+8. 'whereis' everthing located at? 	     location and manual
+   'which'   command is located at?      location
 
 9. cat << EOF >> fileName.txt			<= Here document
    read -a octets <<< "$ipAddr"			<= Here string
 
 10. for i in {21..30}; do echo "$i".; echo; done
 
-11. sed -i 's/A/B/g' file		<='i'nsert 'g'loba l
+11. sed -i 's/A/B/g' file		<='i'nsert 'g'lobal
 
 12. pmstat iostat mpstat
 
-13. $ hidden() { ls -a "$@" | grep '^\.'; }		<= function
+13. $ hidden() { ls -a "$@" | grep '^\.'; }		<= hidden () is a function
 	$ alias hid="ls -a | grep '^\.'"			<= alias	 
 
 14. 
@@ -125,6 +133,10 @@ https://devhints.io/bash
 NAME="John"
 echo "Hello $NAME!"
 
+CMD="$(ls -al)"		<= "$(for command)"
+CMD=$(ls-al)
+echo $CMD
+
 ### Variables
 NAME="John"
 echo $NAME
@@ -146,14 +158,15 @@ echo "I'm in $(pwd)"
 echo "I'm in `pwd`"
 
 
-Brace expansion
+{ } Brace expansion
 echo {A,B}.js
-{A,B}	Same as A B
+=> A.js B.js
+{A,B}		Same as A B
 {A,B}.js	Same as A.js B.js
-{1..5}	Same as 1 2 3 4 5
+{1..5}		Same as 1 2 3 4 5
 
 
-Functions
+# Functions
 get_name() {
   echo "John"
 }
@@ -161,14 +174,7 @@ get_name() {
 echo "You are $(get_name)"
 
 
-Functions
-get_name() {
-  echo "John"
-}
-
-echo "You are $(get_name)"
-
-Conditionals
+# Conditionals
 if [ -z "$string" ]; then
   echo "String is empty"
 elif [ -n "$string" ]; then
@@ -182,17 +188,21 @@ fi
 Basics
 name="John"
 echo ${name}
-echo ${name/J/j}    #=> "john" (substitution)
-echo ${name:0:2}    #=> "jo" (slicing)
-echo ${name::2}     #=> "jo" (slicing)
-echo ${name::-1}    #=> "joh" (slicing)
+
+echo ${name/J/S}    #=> "Sohn" (J->S substitution)
+echo ${name:0:2}    #=> "jo" (slicing from front)
+echo ${name::2}     #=> "jo" (slicing from front)
+echo ${name::-1}    #=> "joh" (slicing from back)
+
+length=2			#=> variable
+echo ${name:0:length}  #=> "jo" Same as 'echo ${name:0:2}'
+
 echo ${food:-Cake}  #=> $food or "Cake"
-length=2
-echo ${name:0:length}  #=> "jo"
+
 See: Parameter expansion
 
 STR="/path/to/foo.cpp"
-echo ${STR%.cpp}    # /path/to/foo
+echo ${STR%.cpp}    # /path/to/foo  What is '%'???
 echo ${STR%.cpp}.o  # /path/to/foo.o
 
 echo ${STR##*.}     # cpp (extension)
@@ -202,36 +212,7 @@ echo ${STR#*/}      # path/to/foo.cpp
 echo ${STR##*/}     # foo.cpp
 
 echo ${STR/foo/bar} # /path/to/bar.cpp
-STR="Hello world"
-echo ${STR:6:5}   # "world"
-echo ${STR:-5:5}  # "world"
-SRC="/path/to/foo.cpp"
-BASE=${STR##*/}   #=> "foo.cpp" (basepath)
-DIR=${SRC%$BASE}  #=> "/path/to" (dirpath)
 
-Basics
-name="John"
-echo ${name}
-echo ${name/J/j}    #=> "john" (substitution)
-echo ${name:0:2}    #=> "jo" (slicing)
-echo ${name::2}     #=> "jo" (slicing)
-echo ${name::-1}    #=> "joh" (slicing)
-echo ${food:-Cake}  #=> $food or "Cake"
-length=2
-echo ${name:0:length}  #=> "jo"
-See: Parameter expansion
-
-STR="/path/to/foo.cpp"
-echo ${STR%.cpp}    # /path/to/foo
-echo ${STR%.cpp}.o  # /path/to/foo.o
-
-echo ${STR##*.}     # cpp (extension)
-echo ${STR##*/}     # foo.cpp (basepath)
-
-echo ${STR#*/}      # path/to/foo.cpp
-echo ${STR##*/}     # foo.cpp
-
-echo ${STR/foo/bar} # /path/to/bar.cpp
 STR="Hello world"
 echo ${STR:6:5}   # "world"
 echo ${STR:-5:5}  # "world"
@@ -242,13 +223,7 @@ DIR=${SRC%$BASE}  #=> "/path/to" (dirpath)
 Length
 ${#FOO}	Length of $FO
 
-Comments
-# Single line comment
-: '
-This is a
-multi line
-comment
-'
+
 Substrings
 ${FOO:0:3}	Substring (position, length)
 ${FOO:-3:3}	Substring from the right
