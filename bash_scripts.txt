@@ -223,34 +223,36 @@ https://bash.cyberciti.biz/shell/monitoring/
 
 
 ---------------------------------------------------
-### Assign values to shell variables	
+### Variables ###	 
+
+${Variable}  Vs.  $(Command) <==> `Command`
+
+Name="Albert Park"
+$ echo $NAME
+$ echo "$NAME"
+$ echo "${NAME}"
+
+LSAL=`ls -al`
+LSAL=$(ls -al)
+LSAL="$(ls -al)"
+
+
 https://bash.cyberciti.biz/guide/Assign_values_to_shell_variables	
 ---------------------------------------------------
 varName="test"
-
-$ echo 	 "$varName"
+$ echo 	   $varName
+$ echo 	  "$varName"
 $ echo   "${varName}"
-	test
+=>test
 
 $ printf "${varName}"
-test[apark@i7 ~]		
+test[apark@i7 ~]					<= No NEW LINE	
 
-$ printf "%s\n" ${varName}			<= Add a NEW line using '%s\n'
+$ printf "%s\n" ${varName}			<= Add a NEW line using '%s' <- String | '\n' <-a new line'
 test
 
-# NULL variable
-	- NULL variable is variable which has 'no value' at the time of definition
-var=
-var=""
 
-# Do not use '?' or '*' and other special characters to name your variable.
-?no=10 							#invalid '?' var
-out*put=/tmp/filename.txt 		#invalid '*' var
-
-_GREP=/usr/bin/grep 			#valid
-$ echo "$_GREP"
-
-# Variable convention using VarName=$(date)
+# Variable convention using VarName=$(date)  <= Execute in subshell $(command)
 ---------------------------------------------------
 	$ NOW=$(date)			<=  `date` is shell program
 	$ NOW="$(date)"			<= SAME as above
@@ -260,7 +262,7 @@ $ echo "$_GREP"
 	!!! Not work !!!
 	$ NOW=$"(date)"
 	$ echo $NOW
-	 (date)
+	  => (date)		<= Variable Strings, Not the Date!
 	
 	$ now=`date`
 	$ echo $now
@@ -284,6 +286,33 @@ $ echo $SHELL
 	
 $ echo "MySHELL=>${SHELL} is Shell location.<="		<= Using ${SHELL} for Variable $SHELL in ""
 	MySHELL=>/bin/bash is Shell location.<=
+
+------------------------------------------------------------------------------------
+# Length of Variable
+
+$ myvar="some string"
+
+$ echo ${#myvar}  				<= use '#' for number of 
+  => 11
+
+$ echo echo ${myvar} | wc -c   <= wc -c or wc --bytes for 'byte' counts 
+								Unicode characters are counted with 2, 3 or more bytes.
+$ echo echo ${myvar} | wc -m   <= wc -m or wc --chars for 'character' counts 
+								Unicode characters are counted single until they use more bytes.
+
+
+---------------------------------------------------
+# NULL variable
+	- NULL variable is variable which has 'no value' at the time of definition
+var=
+var=""
+
+# Do not use '?' or '*' and other special characters to name your variable.
+?no=10 							<= Invalid '?' var
+out*put=/tmp/filename.txt 		<= Invalid '*' var
+
+_GREP=/usr/bin/grep 			#valid
+$ echo "$_GREP"
 
 ------------------------------------------------------------------------------------	
 ### Bash built-in Variable
@@ -310,7 +339,31 @@ $# = number of total arguments. 	<= 'Usage' error report if any arg missing
 $@ = what parameters were passed. 	<= Answer is 1 2 3
 $? = was last command successful. 	<= Answer is 0 which means 'True'	
 ------------------------------------------------------------------------------------	
-	
+
+$* and $@ bash parameters are same but Difference is using "" 	
+https://javarevisited.blogspot.com/2011/06/special-bash-parameters-in-script-linux.html
+
+$* individual parameters will be separated by first char of IFS characters
+$@ individual parameters will appear in quotes and separated by space.
+
+$ vi spacialChar.sh
+------------------------
+#!/bin/sh
+echo '$#' $#
+echo '$@' $@
+echo '$@' "$@"
+echo '$*' $*
+echo '$*' "$*"
+echo '$?' $?
+------------------------
+$bash spacialChar.sh  1 2 3 4
+$# 4
+$@ 1 2 3 4
+$@ 1 2 3 4
+$* 1 2 3 4
+$* 1 2 3 4
+$? 0
+
 	
 
 ---------------------------------------------------
@@ -329,10 +382,9 @@ $ var=value		       #Assign the string value to shell variable var.
 	$ echo $var
 	$ echo ${var}5    	<= appending '5' to $var.
 	$ echo "${var}"5	
-	$ echo "${var}5"	
+	$ echo "${var}5"	<= best practice
 	 => 525  
 
-	 
 	$ length=${#var}	<- length of variable using '#'
 	$ length="${#var}"	<- length of variable using '#'
 		
@@ -340,7 +392,9 @@ $ var=value		       #Assign the string value to shell variable var.
 	$ echo ${length}
 	$ echo "${length}"
 	 => 2
-	  
+	$ echo "${length}" | wc --bytes
+	$ echo "${length}" | wc --chars
+	
 ---------------------------------------------------
 ### SHELL (Local) Variable (within function) ####
 ---------------------------------------------------	  

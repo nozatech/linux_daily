@@ -1,0 +1,136 @@
+Penetration Testing Essential Training - 1
+https://www.linkedin.com/learning/penetration-testing-essential-training
+
+Cyber Kill Chain
+	Reconnaissance
+		- Cyber equivalent of "casting the joint"
+		-IP acan
+		-Port scan
+		-
+	Weaponization
+	Delivery
+	Exploitation
+	Installation
+	Command and control
+	Actions
+	
+### Penetration Testing Tool
+-----------------------------------------------------------------------------------
+1. NMAP
+-----------------------------------------------------------------------------------
+	# Ping Scan(Alive) 
+	$ nmap -sn 10.100.0.0./16  		<= -sn: Ping Scan - disable port scan
+		
+		Starting Nmap 6.40 ( http://nmap.org ) at 2019-01-22 14:46 PST
+		Nmap scan report for 10.100.5.246
+		Host is up (0.000092s latency).
+		
+	# Port Scan(Which Port is opened) 
+	$nmap -PS 10.100.5.246			<= -PS Port Scan(Connect to server and disconnect before complete)
+									   -PS/PA/PU/PY[portlist]: TCP SYN/ACK, UDP or SCTP discovery to given ports
+
+		PORT   STATE SERVICE
+		22/tcp open  ssh
+
+	$ sudo nmap -sUT 10.100.5.246			<= -s(scan), U(UDP), T(TCP)
+
+		PORT    STATE         SERVICE
+		22/tcp  open          ssh
+		68/udp  open|filtered dhcpc
+		123/udp open          ntp
+
+
+	$ sudo nmap -sV -p22 10.100.5.246		<= -p22 <-Port 22,  
+											   -sV  <-service/Version info
+
+		
+		>>> 22/tcp open  ssh     OpenSSH 7.4 (protocol 2.0) <<<
+
+	$ nmap -sTUV -p U:68,123,T:22 10.100.5.246
+
+		PORT    STATE         SERVICE VERSION
+		22/tcp  open          ssh     OpenSSH 7.4 (protocol 2.0)
+		68/udp  open|filtered dhcpc
+		123/udp open          ntp     NTP v4
+	
+	# OS scan	
+	$ nmap -PS -O 10.100.5.246		<= -PS/PA/PU/PY[portlist]: TCP SYN/ACK, UDP or   
+	$ nmap -O    10.100.5.246			SCTP(Stream Control Transmission Protocol) discovery to given ports
+									   -O  OS Detect
+		
+		PORT   STATE SERVICE
+		22/tcp open  ssh
+		Device type: general purpose
+		Running: Linux 3.X
+		OS CPE: cpe:/o:linux:linux_kernel:3
+		OS details: Linux 3.7 - 3.9
+		Network Distance: 0 hops
+
+	### ALL COMBINED to get info
+	-----------------------------------------------------------------------------------	
+	$ nmap -sTUV -O -p U:68,123,T:22 10.100.5.246		<= Scan TCP,UDP,Version,OS,Ports
+	-----------------------------------------------------------------------------------	
+		PORT    STATE         SERVICE VERSION
+		22/tcp  open          ssh     OpenSSH 7.4 (protocol 2.0)
+		68/udp  open|filtered dhcpc
+		123/udp open          ntp     NTP v4
+		Warning: OSScan results may be unreliable.... 
+		Device type: general purpose
+		Running: Linux 3.X
+		OS CPE: cpe:/o:linux:linux_kernel:3
+		OS details: Linux 3.7 - 3.9
+
+-----------------------------------------------------------------------------------
+2. NetCat
+-----------------------------------------------------------------------------------
+	# Listening Port
+	A-Server(Listening server)
+	$ nc -lp 4545				<= Start '-l'istening '-p'ort 4545
+		Hi A-Server Port4545
+	
+	# Messaging
+	B-Server(Query server)
+	$ nc A-server 4545
+	Hi A-Server Port4545		<- Enter to send to A-Server
+		
+	# Listening Port
+	A-Server(Listening server)
+	$ nc -lp 4545 > incomingLog.txt
+	
+		$ cat incomingLog.txt
+			Hello from A Server!
+			Are you there B Server?
+	
+	B-Server(Query server)
+	$ nc -w3 A-server 4545 < myfile.txt	 <= -w3 (--wait <time>) 3sec terminate!
+		
+		$ cat <<eof>> myfile.txt
+			> Hello from A Server!
+			> Are you there B Server?
+			> eof
+
+	# Connect HTTP Web server
+	$ nc -v google.com 80
+		GET index.html HTTP/1.1
+		-------------------------------------------
+		HTTP/1.0 400 Bad Request
+		Content-Type: text/html; charset=UTF-8
+		-------------------------------------------
+
+	# Connect FTP server
+	$ nc -v ftp.namco.com
+		user anonymouse
+	
+
+
+
+
+
+
+
+
+
+
+
+
+

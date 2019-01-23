@@ -156,8 +156,9 @@ TLS 	<= Transport Layer Security (TLS) – and its predecessor, Secure Sockets L
 -----------------------------------------------------------------------------------	
 -----------------------------------------------------------------------------------	
 
+------------------------------------------------------------
 ### HELP ###
-
+------------------------------------------------------------
 # apropos 			<= Search the manual page names and descriptions
 	$ apropos grep
 	$ apropos -r REGEXofUNIXCOMMAND or Description
@@ -168,10 +169,14 @@ $ whatis 			<= Searches a set of database files containing short descriptions
 $ help
 	$ man --help
 	
-$ man -k REGEX or UNIXCOMMAND
-
 $ info				<= Longer document
 	$ info grep
+	
+$ man bash | less -p '-A action$'		<=  -p Pattern  '-A action$' <- $end with 'n'
+$ man bash | less -p '-c$'
+
+$ man -k REGEX or UNIXCOMMAND
+
 -----------------------------------------------------------------------------------	
 ### Command and file Locations ###
 -----------------------------------------------------------------------------------	
@@ -207,7 +212,6 @@ Daily Linux CMD List
 ###############
 1. SHELL	  #
 ###############
-
 
 ### Font Type <= Lucia Console, 12pt
 
@@ -888,11 +892,46 @@ esc highlight
 # env <= modified the environment variables
 		-  Set each NAME to VALUE in the environment and run COMMAND.
 	
-# set <= is a SHELL command to set the value of a shell attribute variable; 
-		 these are internal variables used by the SHELL, Not Environment.
-		- 'Set' or 'unset' values of shell options and positional parameters.
-		- Change the value of shell attributes and positional parameters, or
-			display the names and values of shell variables.
+# set 
+http://linuxcommand.org/lc3_man_pages/seth.html
+	<= Set or unset values of shell options and positional parameters(NOT Environment).	
+	Set is a SHELL command to set the value of a shell attribute variable; 
+	these are internal variables used by the SHELL, Not Environment.
+	- 'Set' or 'unset' values of shell options and positional parameters.
+	- Change the value of shell attributes and positional parameters, or
+		display the names and values of shell variables.
+			
+			
+set can see shell-LOCAL variables, env cannot.
+
+	Shells can have variables of 2 types: locals, which are only accessible from the current shell, 
+	and (exported) environment variables, which are passed on to every executed program.
+
+	Since set is a built-in shell command, it also sees sees shell-local variables (including 
+	shell functions). env on the other hand is an independent executable; it only sees the 
+	variables that the shell passes to it, or environment variables.
+
+	When you type a line like "a=1" then a local variable is created (unless it already 
+	existed in the environment). Environment variables are created with "export a=1"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # printenv <= print all or part of environment
 	
@@ -4265,6 +4304,9 @@ iptables -L -v
 	$ grep mysqld /var/log/audit/audit.log
 
 	
+
+	
+	
 	
 58. # CentOS 6 Turn off firewall and SELINUX
 
@@ -4911,7 +4953,7 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	2.6.32-431.1.2.0.1.el6.x86_64
 	
 	
-	# Result is all same	
+	# Results are all same	
 	$ cat /boot/config-$(uname -r)  
 	$ cat /boot/config-`uname -r`
 	$ cat /boot/config-4.2.0-27-generic 
