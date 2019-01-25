@@ -24,29 +24,48 @@ https://explainshell.com/
 https://www.shellcheck.net/
 $ apt-get | yum install shellcheck	-y
 
+
+---------------------------------------------------
+# Commenting
+http://tldp.org/LDP/abs/html/special-chars.html
+---------------------------------------------------
+echo "The # here does not begin a comment."
+echo 'The # here does not begin a comment.'
+echo The \# here does not begin a comment.
+echo The  # here begins a comment.
+
+echo ${PATH#*:}        		<= Parameter substitution, NOT a comment.
+echo $(( 2#101011 ))   		<= Base conversion, NOT a comment.
+
+
 ---------------------------------------------------
 # Debugging options
 ---------------------------------------------------
-	'Set' or 'unset' values of shell options and positional parameters.
+'Set' or 'unset' values of shell options and positional parameters.
 	
-	$ help set
+$ help set
+	set -xeu		<= 틀린(x) 이유(eu)를 알아야 고친다
 	
+	set -ex         # Do both for good practice 
+	Set +ex  		<= Unset debug
+	
+	set -e          # Exit as soon as any line in the bash script fails
+	set -x          # Prints each command executed (prefix with ++)
+
 	set -f	(set -o noglob)		Disable file name generation using metacharacters(globbing).
 	set -v	(set -o verbose)	Prints shell input lines as they are read.
 	set -x	(set -o xtrace)		Print command traces before executing command.
-	set -e          # Exit as soon as any line in the bash script fails
-	set -x          # Prints each command executed (prefix with ++)
-	set -ex         # Do both (for good practice)	
+	
 	set -u 			<= checks undefined variables
 	
-	e.g. in a script, add 'set -x' for each line output(debug mode)
+e.g. in a script, add 'set -x' for each line output(debug mode)
 	#!/bin/bash
 	set -x			<= debug mode tracing
 	set -u 			<= checks undefined variables
 	
-	$ cmd | tee -a output.file | ...		<= 'tee -a' append
+	$ ls -al | tee -a output.file | ...		<= 'tee -a' append
 	
-	$ bash -n debug.sh					<= prints out Syntex error only
+	$ bash -n debug.sh					    <= prints out Syntex error only
 	
 	e.g. embedded in a script
 	------------------------------------------
@@ -56,6 +75,8 @@ $ apt-get | yum install shellcheck	-y
 	set -x						# Turn on  debug mode
 	set -e						# exit right away if there is a fail
 	# set -eux		<= 틀린(x) 이유(eu)를 알아야 고친다
+	
+	
 	###
 	a=1
 	echo my PID is $$
@@ -84,6 +105,8 @@ $ apt-get | yum install shellcheck	-y
 ---------------------------------------------------
 # How to run a script
 ---------------------------------------------------
+== Use 'chmod + x' befre run a script. ==
+
 	$ ./script.sh					 <= run in separate shell
 	$ . ./script.sh   			     <= current login shell to run
 
@@ -91,28 +114,31 @@ $ apt-get | yum install shellcheck	-y
 
     $ exec ./script   				 <= after it runs, exits from current shell 
 
-	$ bash script.sh
+	$ bash script.sh				<= No Need to change 'chmod +x'
 	$ bash ./script.sh
 	$ bash -x  script.sh			 <= debug mode
 	$ bash -v 
-	
+
+# source command( run in CURRENT SHELL)
 	$ source script.sh
-		e.g. $ source .bashrc		 <= reload .bashrc
-	
-	$ . script.sh					 <= '.' is same as source
+	$ source .bashrc		 		<= reload .bashrc in CURRENT SHELL
+	$ . script.sh					<= '.' is same as source
 										Execute commands from a file in the current shell.
 	
-	# run script as a different user from root
+# run script as a different user from root
 	$ wget http://tecmint.com/wp-content/scripts/tecmint_monitor.sh
 	$ su -c "/home/apark/tecmint_monitor.sh" - root
 	$ ./tecmint_monitor.sh -i    <- install
 	$ monitor
 
-	# Run in debugging mode
-    $ sh +x script.sh   			 <= +x for debugging mode
-    $ sh -x script.sh   			 <= +x for debugging mode
-    $ sh -v script.sh   			 <= -v for debugging mode
-    $ sh +v script.sh   			 <= +v for debugging mode
+# Run in Debugging and Verbose mode
+    $ sh -x script.sh   			 <= -x 	for debugging mode from Shell
+    $ sh +x script.sh   			 <= +x 	Disabling debugging mode
+	
+	$ bash -x script.sh   			 <= -x 	for debugging mode from Shell
+	
+    $ sh -v script.sh   			 <= -v 	for Verbose mode Shell
+    $ sh +v script.sh   			 <= +v 	Disabling the  Verbose mode
 
 ---------------------------------------------------	
 # VI: Run script 'within' VIM or VI
@@ -173,6 +199,10 @@ $ apt-get | yum install shellcheck	-y
 	G 					<= go to bottom of page
 	
 	o					<= insert underneath line
+
+# Undo & Redo
+	Esc + u
+	Ctrl + r
 	
 ---------------------------------------------------	
 # VI: Search and replace 	( http://vim.wikia.com/wiki/Search_and_replace )
@@ -189,8 +219,24 @@ $ apt-get | yum install shellcheck	-y
 										:d (delete)
 										
 
+---------------------------------------------------
+# incrementing ((i++)) or ((i=i+1))										
+---------------------------------------------------
+i=5
+let i+=4                  <= i(5) + 4
+echo "$i"
 
-										
+
+
+echo "i = $(( i++ ))"
+echo "i = $(( ++i ))"
+echo "i = $(( i-- ))"
+echo "i = $(( --i ))"
+
+
+
+
+
 										
 ---------------------------------------------------
 # Writing 2 Scripts at same time in background
@@ -448,7 +494,7 @@ $ echo "${#files[@]}"
 
 
  						
-### (...) <= subshell													
+### (...) <= subshell command													
 ------------------------------------
 $ f() (echo this is a function)					<= No effect on space nor ; to close
 
@@ -462,7 +508,7 @@ $ echo "${#files[@]}"
 	0	
 
 
-# ()		<= Subshell
+# ()		<= Subshell Command
 ( list )
 	Placing a list-of-commands between parentheses causes a 'subshell' environment to be created, 
 	and each of the commands in list to be executed in that subshell. Since the list is executed 
@@ -471,7 +517,7 @@ $ echo "${#files[@]}"
 	Code in '()' is run inside a separate, child process of bash that is discarded after execution. 
 	This child process is often referred to as a sub-shell and can be thought of as a new, child-like scope.
 
-# {}		<= Current Shell
+# {}		<= Current Shell Command
 { list; }
 	Placing a list of commands between curly braces causes the list to be executed in the 'current shell'
 	context. No subshell is created. The semicolon (or newline) following list is required.
@@ -514,8 +560,16 @@ y is 8				<= y=8 variable from the function
 		  
 		  
 ---------------------------------------------------
-### Declare  ####
+### Declare  #### Make constant value for variable
 ---------------------------------------------------	
+$ help declare 
+#!/bin/bash
+declare -r NUM1=5
+num2=4
+sum=$((NUM1+num2))
+
+
+
 https://unix.stackexchange.com/questions/254367
 When used in a function, declare makes NAMEs local, as with the local command. 
 The -g option suppresses this behaviour.
@@ -1217,7 +1271,7 @@ e.g. [ ! -z $HOME ]
 Operator	       Meaning									Example
 -------------------------------------------------------------------------------------
 -z			Length of String is (zero)EMPTY 					[ -z "$my_var" ]     my_var=""
-! -z		Length of String is NOT (zero)EMPTY 				 [ -z "$my_var" ]     my_var=""
+! -z		Length of String is NOT (zero)EMPTY 				[ -z "$my_var" ]     my_var=""
 -n			Length of String is NOT (zero)EMPTY					[ -n "$my_var" ]     my_var="num"
 -f			File is Exists & normal,regular 					[ -f "$myfile" ]
 -d			Directory is Exists  								[ -d "$mydir" ]
@@ -1241,7 +1295,7 @@ Operator	       Meaning									Example
 ### Test [  ] [[  ]] satement
 	[ expression ]   statement for Comparison operation   0:TRUE  1:FALSE(Success)   <= Legacy
 	[[ expression ]] statement for Comparison operation   0:TRUE  1:FALSE(Success)	 <= Newer
-	 
+	  
 	
 ###	Keywords
 Keywords are like built-in, with the main difference being that special parsing rules apply 
@@ -1446,8 +1500,15 @@ $ test 90 -gt 99 && echo "Yes, that's true." || echo "No, that's false."
 if [ $num -lt 10 -o $num -gt 100 ]				# -o  or
 	then
     echo "Number $num is out of range"
-elif [ ! -w $filename ]							# -w writeable
+elif [ ! -w $filename ]							# -w writeable <= No use of ';' for combine cmds
 	then
+    echo "Cannot write to $filename"
+fi	
+----------------------------------------------	
+#!/bin/bash
+if [ $num -lt 10 -o $num -gt 100 ]; then		 <= use ';' for two or more commands in same line
+	echo "Number $num is out of range"
+elif [ ! -w $filename ]; then					 <= ';' for two or more commands
     echo "Cannot write to $filename"
 fi	
 ----------------------------------------------	
@@ -1496,7 +1557,38 @@ fi
 ----------------------------------------------------------------------------------------------------
 
 
+#!/bin/bash
+# Detecting OS (CentOS or Ubuntu)
+detect_os ()
+{
+    if [ -f /etc/redhat-release ]; then
+        echo "Your OS is CentOS."
 
+    elif [ -f /etc/lsb-release ]; then
+        echo "Your OS is Ubuntu."
+
+    else
+        unknown_os
+
+    fi
+}
+detect_os
+----------------------------------------------------------------------------------------------------
+	#!/bin/bash
+	# Detecting OS using $OSTYPE variable
+	
+	if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        # ...
+	elif [[ "$OSTYPE" == "darwin"* ]]; then
+        # Mac OSX
+	elif [[ "$OSTYPE" == "cygwin" ]]; then
+        # POSIX compatibility layer and Linux environment emulation for Windows
+	elif [[ "$OSTYPE" == "msys" ]]; then
+        # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
+	elif [[ "$OSTYPE" == "freebsd"* ]]; then
+        # ...
+	else
+----------------------------------------------------------------------------------------------------      
 
 
 
@@ -1510,7 +1602,6 @@ fi
 ----------------------------------------------------------------------------------
 ### for_loop### 
 ----------------------------------------------------------------------------------
-
 #!/bin/bash
 
 for i in $(ls)
@@ -1518,8 +1609,8 @@ do
     echo $i
 done
 ------------------------------------
-
-### for_loop1.sh		
+### for_loop1.sh
+------------------------------------		
 #!/bin/bash
 for i in *; do   # * is local directory
 	echo “$i”
@@ -1528,6 +1619,7 @@ $./for_loop1.sh
 => local files list
 ------------------------------------
 ### for_loop2.sh
+------------------------------------
 #!/bin/bash
 for i in $#; do
 	echo “$i”			# zip archive "$i"
@@ -1536,6 +1628,7 @@ $./for_loop1.sh 1 2 3 4
 => 4   <= total number of argument 1,2,3,4 is 4 total!
 ------------------------------------
 ### for_loop2.sh
+------------------------------------
 #!/bin/bash
 for i in $@; do
 	echo “$i”			# zip archive "$i"
@@ -1547,6 +1640,9 @@ $./for_loop1.sh 1 2 3 4
 $ for i in {1..10..2}; do echo $i; done
 $ for (( i=1; i<=10; i++));do echo $i; done
 $ for (( i=1; i<=10; i++));do echo -n $i `sleep 1`" "; done
+
+
+
 
 ----------------------------------------------------------------------------------
 ### Array ###
@@ -1620,6 +1716,7 @@ done
 
 ---------------------------------------------------------
 # From Bash Shell
+
 ex) Set array 1, 2, 3
 	$ array_var=(1 2 3)
 	$ array_var[0]="test1"
@@ -1956,6 +2053,7 @@ number=0
 echo -n "Enter a number >"
 read number
 echo "The number is $number"
+
 if [ $(( number %2 )) -eq 0 ]; then
     echo "The number is even"
 else

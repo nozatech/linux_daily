@@ -267,11 +267,13 @@ cat << EOF >> ~/.bashrc
 
 # Reload .bashrc 
 	$ source ~/.bashrc 
+	
 # Copy to servers  
 	$ pssh -O StrictHostKeyChecking=no -h serverList.txt -l apark -A -I < ./shellenv.sh
------------------------------------------------------------------------------------
 	
+-----------------------------------------------------------------------------------
 ### 9x Color Codes	for Fonts
+
 	Reset   = 0
 	Black   = 30
 	Red     = 31
@@ -304,6 +306,7 @@ cat << EOF >> ~/.bashrc
 	
 	
 -----------------------------------------------------------------------------------------	
+
 ########################
 ###   Boot Process   ###  
 ########################
@@ -803,9 +806,11 @@ https://mywiki.wooledge.org/BashGuide/CommandsAndArguments
 
 
 -----------------------------------------------------------------------------------
-http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 ### Vi environment set-up (setting)
-	Create a .vimrc file in home directory
+
+http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
+
+Create a .vimrc file in home directory
 	
 $ vi .vimrc
 ----------------------------------------------------
@@ -813,7 +818,13 @@ $ vi .vimrc
 :set tabstop=4
 syntax on
 colorscheme desert
--------------------------------------------------------
+----------------------------------------------------
+# To check
+$ vi test	<= or '$ vim test'
+	:echo $MYVIMRC
+	/home/apark/.vimrc
+
+
 	
 	####	Vim color scheme enable   ###
 	http://www.server-world.info/en/note?os=CentOS_7&p=initial_conf&f=7
@@ -830,22 +841,24 @@ colorscheme desert
 	$ source /etc/profile 
 
 	4.Configure vim. 
-	( Apply to a user below. If you applly to all users, Write the same settings in '/etc/vimrc',  
-	some settings are applied by default though. )
+		( Apply to a user below. If you apply to all users, Write the same settings in 
+		'/etc/vimrc', some settings are applied by default though. )
 
 	# Add following 
-	syntax on
-	colorscheme desert
+		syntax on
+		colorscheme desert
 	---------------------------------------------------------------------------------------------------
-esc highlight
+	esc highlight
 
 
-# VI - number line
+# VI - number line and tab stop
 	$ vi -V 			<= version check
 	:set nu 			<= set number On
 	:set nu!   			<= set number Off
 	:e file_name        <= open & create  file
  	:w new_name 	    <= save as to new_name
+	
+	:set tabstop=4		<= Tab will stop at 4 spaces
 	
 	# Cut and Paste(v/V-d/y-p/P)
 
@@ -860,8 +873,9 @@ esc highlight
 	pp	<=	shift+p to paste
 
 
-	# Undo
-	esc then uu
+	# Undo & Redo
+	Esc u
+	Ctrl + r
 	
 	# Change String like "SED" stream editor
 	http://vim.wikia.com/wiki/Search_and_replace
@@ -879,7 +893,8 @@ esc highlight
 	$ printenv     			
 	$ env					
 	### env == printenv ### they are same
-		
+	$ set	
+	
 # Check $SHELL variable	
 	$ printenv SHELL
 	$ printenv | grep SHELL
@@ -892,7 +907,7 @@ esc highlight
 # env <= modified the environment variables
 		-  Set each NAME to VALUE in the environment and run COMMAND.
 	
-# set 
+# set and unset
 http://linuxcommand.org/lc3_man_pages/seth.html
 	<= Set or unset values of shell options and positional parameters(NOT Environment).	
 	Set is a SHELL command to set the value of a shell attribute variable; 
@@ -900,7 +915,16 @@ http://linuxcommand.org/lc3_man_pages/seth.html
 	- 'Set' or 'unset' values of shell options and positional parameters.
 	- Change the value of shell attributes and positional parameters, or
 		display the names and values of shell variables.
-			
+	
+	e.g.
+	$ i=10
+	$ echo $i
+	  10
+	
+	# Unset
+	$ unset i
+	$ echo $i
+		
 			
 set can see shell-LOCAL variables, env cannot.
 
@@ -913,24 +937,6 @@ set can see shell-LOCAL variables, env cannot.
 
 	When you type a line like "a=1" then a local variable is created (unless it already 
 	existed in the environment). Environment variables are created with "export a=1"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # printenv <= print all or part of environment
@@ -959,13 +965,15 @@ set can see shell-LOCAL variables, env cannot.
 
 	$ VAR=TEST				<= creating variable 'VAR'
 	$ set | grep VAR		
-		VAR=TEST
+	  VAR=TEST
+	
 	$ unset VAR				<= Removing 'VAR'
 	
 	$ env | grep VAR
-	** No Result
+		** No Result
+	
 	$ printenv | grep VAR
-	** No Result 			<= VAR is not part of environment
+		** No Result 			<= VAR is not part of environment
 	
 # To put it into Env variables, use 'export'
 	$ export VAR			
@@ -1682,7 +1690,9 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 	
 	
 
-### rename	
+### rename
+	$ rename	a to b
+	$ mv		a to b
 	
 
 ### yes 		
@@ -1704,6 +1714,10 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 	$ grep -i word *		<= current dir
 	$ grep -i word */*		<= sub dirs
 	$ grep -i word */*/*    <= sub sub dirs
+	
+	# Only first grep result 
+	$ grep -i -m 1 'centos' /etc/*rel*
+	$ cat /etc/*rel* |  grep -i -m 1 'centos'
 
 	
 7. File Globs
@@ -3437,21 +3451,44 @@ https://www.computerhope.com/unix/ushutdow.htm
 
 40. Clean Up Logs
 	
-    $ cd /var/log
-	$ > log_file
-    $ cat /dev/null > messages
-	$ cat /dev/null > wtmp			<= utmp, wtmp - login records
+    $ cat > /var/log/log_file
+    $ cat /dev/null > /var/log/messages
+	$ cat /dev/null > /var/log/wtmp			<= utmp, wtmp - login records
   
 	echo "Log files cleaned up."
 
-	utmp <= complete picture of users logins at which terminals, logouts, system events and current status 		
-			of the system, system boot time (used by uptime) etc.
-	wtmp <= historical data of utmp.
-	btmp <= records only failed login attempts.
+# Login and Logout Info
+	# Last 
+	http://www.softpanorama.org/Utilities/last.shtml	
+	=> searches 'Last Login List' through the file /var/log/wtmp 
+				(or the file designated by the -f(file) flag)
+	
+	$ last <=same as => last -f /var/run/wtmp 
+					<= default location without using -f(file) /var/log/wtmp 			
+	$ last -a     	<= Display  the  hostname  in  the last column	
+	
+	$ last -F     	<= Print -F(full) login and logout times and dates.
+	
+	$ last -f /var/run/wtmp     <= /var/run/utmp for different location using '-f' file flag
+	$ last -f /var/log/btmp		<= Failed Logins
+ 
+	
+	# wtmp <= historical data of utmp.	
+	# btmp <= records only failed login attempts.	
 
-	$ last 		<= default location without using -f(file) /var/log/wtmp  
-	$ last -f /var/run/utmp   <= /var/run/utmp for different location using -f flag
-	$ last -f /var/log/btmp
+	## utmp <= complete picture of users logins at which terminals, logouts, system events 
+				and current status of the system, system boot time (used by uptime) etc.
+
+# Find out failed login
+	$ grep "Failed password" /var/log/auth.log
+	$ egrep "Failed|Failure" /var/log/auth.log
+	$ egrep "Failed|Failure" /var/log/secure
+	$ cat /var/log/auth.log | grep "Failed password"
+
+	$ journalctl _SYSTEMD_UNIT=ssh.service  | egrep "Failed|Failure"
+	$ journalctl _SYSTEMD_UNIT=sshd.service | egrep "Failed|Failure"  #In RHEL, CentOS 
+	$ journalctl _SYSTEMD_UNIT=sshd.service | grep  "failure"
+	$ journalctl _SYSTEMD_UNIT=sshd.service | grep  "Failed"	
 
 41.	Watch command to real time monitoring
 
@@ -3614,21 +3651,17 @@ Traceroute, Ping, and MTR
     $ TTY  		   <= TeleTYpe
 
 
-
-=======
 	
-42. strace - trace system calls and signals	
+### strace - trace system calls and signals	
 	$ strace foobar.sh  	<= debugging a command/script   
+	
 
-43. stty 		 <= change and print terminal line settings
-	$ stty -echo   <= hide(turn off) terminal typing(Can't see typing)
-    $ stty echo    <= show(restore) terminal typing(able to see typing)
-    $ TTY  		 <= TeleTYpe
+
 
 
 >>>>>>> Stashed changes
 
-43. stat 				<= detailed and statistic on a file (ls -l foo.bar)
+### stat 				<= detailed and statistic on a file (ls -l foo.bar)
 	
 	$ stat foo.bar 
 		File: ‘foo.bar’
@@ -3640,17 +3673,13 @@ Traceroute, Ping, and MTR
 		Change: 2016-04-08 21:16:45.355245237 -0700
 		Birth: -
 
-<<<<<<< Updated upstream
-44. lsmod = Show the status of modules in the Linux Kernel
+
+### lsmod = Show the status of modules in the Linux Kernel
 			same as  "cat /proc/modules"
 
-=======
-
-44. lsmod = Show the status of modules in the Linux Kernel
-			same as  "cat /proc/modules"
-			
 	
-	mrmod					 <= rmmod - Simple program to remove a module from the Linux Kernel
+	
+##	mrmod					 <= rmmod - Simple program to remove a module from the Linux Kernel
 	Error msg  "blk_update_request: I/O error, dev fd0, sector 0 errors"
 	http://unix.stackexchange.com/questions/282845/blk-update-request-i-o-error-dev-fd0-sector-0
 	$ rmmod floppy		
@@ -3665,7 +3694,7 @@ Traceroute, Ping, and MTR
 
 	
 	
->>>>>>> Stashed changes
+
 
 45. Disabling User account
 	#1. Change login passwd in /etc/passwd
@@ -3851,8 +3880,7 @@ journalctl - Query the systemd journal
 
 	$ journalctl --since "10 min ago"
 
-NignX Status page 
-# nginx -V 2>&1| grep -o http_stub_status_module
+
 
 	
 
@@ -4021,11 +4049,7 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
        cific type of services, in the case where services of either  type  may
        share a name. Possible values for type are sysv and xinetd.
 
-53. Nagios
-	systemctl start nagios.service
-	systemctl start httpd.service
-	systemctl enable httpd.service		<= Apache in startup
-	ln -s '/usr/lib/systemd/system/httpd.service'  '/etc/systemd/system/multi-user.target.wants/httpd.service'
+
 
 54. List of groups
 	
@@ -5202,12 +5226,27 @@ two cases:
 	ps -u <user_id>				<= u (user)
 		
 		
-3. Linux CentOS or Ubuntu Version check	
+# OS TYPE
+Linux CentOS or Ubuntu Version check	
+	
     $ cat /etc/*rel*
     $ uname -a				<= all include kernel, processor(32/64bit), hostname, 
     $ uname -r 				<= kernel version
     $ cat /proc/version
-
+	$ echo $OSTYPE
+	$ lsb_release -d | awk -F"\t" '{print $2}'
+	$ cat /etc/os-release
+	$ cat /etc/centos-release
+	$ cat /etc/lsb-release
+	
+	$ cat /etc/*-release | grep -w NAME | cut -d= -f2 | tr -d '"'
+	
+    ---------------------------------------------------------------------
+	#!/bin/bash
+	DISTRO=$(cat /etc/*-release | grep -w NAME | cut -d= -f2 | tr -d '"')
+	echo $DISTRO
+	---------------------------------------------------------------------
+	
 	###Install lsb_release on CentOS7
 	$ yum provides */lsb_release			
 	$ yum install redhat-lsb 
@@ -5225,7 +5264,38 @@ two cases:
 		Description:    Ubuntu 16.04.4 LTS
 		Release:        16.04
 		Codename:       xenial
-
+	
+	How to detect the OS from a Bash script?
+    https://stackoverflow.com/questions/394230/how-to-detect-the-os-from-a-bash-script
+   
+	#!/bin/bash
+	
+	if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        # ...
+	elif [[ "$OSTYPE" == "darwin"* ]]; then
+        # Mac OSX
+	elif [[ "$OSTYPE" == "cygwin" ]]; then
+        # POSIX compatibility layer and Linux environment emulation for Windows
+	elif [[ "$OSTYPE" == "msys" ]]; then
+        # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
+	elif [[ "$OSTYPE" == "win32" ]]; then
+        # I'm not sure this can happen.
+	elif [[ "$OSTYPE" == "freebsd"* ]]; then
+        # ...
+	else
+        # Unknown.
+	fi
+   
+    #!/bin/bash
+    if [ -f /etc/redhat-release ]; then
+		echo "CentOS"
+	fi
+	if [ -f /etc/lsb-release ]; then
+		echo "Ubuntu"
+	fi
+   
+   
+   
    
 4. ulimit 		
 	system wide, user resource limits
@@ -5394,6 +5464,14 @@ two cases:
 		2 ?        00:00:00 kthreadd
 
 	
+###  Nagios
+	systemctl start nagios.service
+	systemctl start httpd.service
+	systemctl enable httpd.service		<= Apache in startup
+	ln -s '/usr/lib/systemd/system/httpd.service'  '/etc/systemd/system/multi-user.target.wants/httpd.service'
+
+###  NignX Status page 
+	# nginx -V 2>&1| grep -o http_stub_status_module
 	
 	
 	
@@ -5493,8 +5571,15 @@ echo "* hard nofile 102400" >> /etc/security/limits.d/*_limits.conf
 	sudo update-rc.d filename defaults 
 	
 	
-	
-  
+# UID
+	# Finding user UID
+	$ id				<=  print real and effective user and group IDs
+	$ id -u apark		<= User ID
+		1000
+	     -g, --group    <= print only the effective group ID
+		 -G, --groups	<= print all group IDs
+		 -u, --user		<= Effective user ID
+
 8. UUID  <= identifier for block devices. 
 	UUIDs are 128 bit long numbers represented by 32 hexadecimal digits and which are used in 
 	software development to uniquely identify information with no further context. 
@@ -5737,7 +5822,7 @@ wait                  # waits until all background jobs have finished
 
 	$ source .bashrc
 	$ cd websites
-	$ cd *				<= if there is only one folder
+	$ cd *				<= It works only if there is only one folder
 
 
 ############################################
@@ -5747,7 +5832,7 @@ wait                  # waits until all background jobs have finished
 	$ ls -lt		<= Modification Time
 	$ ls -ltr		<= Modification Time but Reverse
 	$ ls -ln		<= by name	
-	$ ls -lnr		<= by name	
+	$ ls -lnr		<= by name	Reverse
 	
 	B. List Files Based on Last Access Time
 		
@@ -5758,7 +5843,7 @@ wait                  # waits until all background jobs have finished
 	$ grep -i					# Case insensitive search
 	$ grep -r 					# Recursive
 	$ grep -r "port 80" /etc/httpd/*   <= search subdirectories with key words port 80.
-	$ grep -v httpd				# Inverted search (everything but httpd)
+	$ grep -v httpd				# Inverted search "everything but httpd"
 	$ grep -o					# Show matched part of file only
 	$ grep -v grep    			# don't match the grep word
     To remove the grep in search word, use "grep -v grep" 2nd grep is a word to -v <= don't match word .

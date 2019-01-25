@@ -8,8 +8,11 @@ git commit -m "update message"
 git push
 ---------------------------------------------		
 
-# Linefeed(Linux \n) and Carriage Return(Windows \r\n) Issue
-$ git config core.autocrlf input
+$To resolve \n and \r\n issue for  Linux and Windows 
+	\n		<= Linefeed	(Linux)  
+	\r\n	<= Carriage Return <= (Windows)
+# Remove '\r' from Windows baiss commit
+$ git config core.autocrlf input		
 
 
 		

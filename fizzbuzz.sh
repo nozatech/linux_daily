@@ -1,6 +1,5 @@
 FizzBuzz in Bash
 
-
 ############
 # for loop #
 ############
@@ -16,7 +15,14 @@ for i in {1..30}; do
         fi
 done
 
-
+# Using sequence'seq' command
+for i in seq 1 30; do
+        if (( $i % 3 == 0 )) && (( $i % 5 == 0 )); then echo "for-loop"
+                elif (( $i % 3 == 0 )); then echo "for"
+                elif (( $i % 5 == 0 )); then echo "loop"
+        else echo $i;
+        fi
+done
 #!/bin/bash
 ## C style
 for (( i = 0; i <= 30; i++ )); do
@@ -185,6 +191,7 @@ for num in xrange(1,31):
     if num % 5 == 0:
         msg += 'Buzz'
     print msg or num
+	
 $python fz.py
 
 

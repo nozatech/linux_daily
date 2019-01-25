@@ -687,9 +687,10 @@ agnostic		<- [n] A person who believes that nothing is known or can be known of 
 						(in a nonreligious context) having a doubtful or noncommittal attitude toward something.
 						"until now I've been fairly agnostic about electoral reform"
 					
-alleviate 		<- provide physical relief, as from painalliviate
-
-alley			<- [앨리]   뒷골목 
+alleviate 		<- provide physical relief, as from pain alliviate
+				"this is inappropriate sizing and aggravated my condition rather than alleviate it." 
+				 
+alley			<- [앨리] 뒷골목 
 
 ally			<- [얼라이] 연합
 
