@@ -3380,31 +3380,37 @@ https://www.computerhope.com/unix/ushutdow.htm
 	  -bash: ls|less: command not found
 	$ eval $A			<= use eval to execute the variable $a
 
-------------------------------	
-### let   
-------------------------------	
-	let, expr, $[],  (( ))
+------------------------------------------------------------	
+### let  <= Simple arithmatic evaluation    
+------------------------------------------------------------	
 	https://askubuntu.com/questions/939294/difference-between-let-expr-and
-
+	let 			Arithmatic Expansiion
+	expr 			Evaluate Expression
+	$[1+1]  		*Deprecated* Arithmatic Expansiion
+	((1+1))			Arithmatic Expansiion
+	# bc			<- An arbitrary precision calculator language
+	
 	$ let arg [arg ...]  same as (( )) <- ARITHMETIC EVALUATION
         Each  arg  is an arithmetic expression let == (( )) to be evaluated.
         If the last arg evaluates to 0, let returns 1; 0 is returned otherwise.
-	$ no1=4 no2=5
-	$ let result=no1+no2
+	e.g.  using 'let'
+	$ numA=4 numB=5
+	$ let result=numA+numB
 	$ echo $result
-	  3
-	$ let no1++ 
-	$ let no2-- 
+	  9
+	  
+	$ let numA++ 
+	$ let numB-- 
 	
-	$ result=no1+no2
-	$ result=$[ no1 + no2 ]
-	$ result=(( no1 + no2 ))
+	$ result=numA+numB
+	$ result=$[ numA + numB ]
+	$ result=(( numA + numB ))
 	$ echo $result
 	  9
 	$ result=`expr 3 + 4`				<= If no spze 3+4 out put will be 3+4, not 7
-	$ result=$(expr no1 + 4)			<= If no spze no1 +4 out put will Syntax error!
+	$ result=$(expr numA + 4)			<= If no spze no1 +4 out put will Syntax error!
 	
-	## BC  <- An arbitrary precision calculator language
+
 	$ no1=4
 	$ echo "4 * 0.56" | bc
 	$ result=`echo "$no1 * 1.5" | bc`
@@ -4535,16 +4541,21 @@ http://www.beetlebrow.co.uk/what-do-you-need/help-and-documentation/unix-tricks-
 https://securityonline.info/tutorial-nslookuphostdigwhois-dns-information-gathering/
 
 	# Simple to get theIP
-	$ ping			<= get IP
-	$ host 			
+	
+	$ ping 		domainName.com		<= get IP
+	
+	$ host 		domainName.com			
 	
 	# DNS Detail info
 	$ nslookup
-    $ dig 
-	$ whois  domainName.com
+    
+	$ dig 
+	
+	$ whois  	domainName.com
 	
     $ yum install bind-utils
-    $ host $HOSTNAME | xargs | cut -f4 -d' '
+    
+	$ host $HOSTNAME | xargs | cut -f4 -d' '
 	
 	$ dig +short +trace www.name.com
 	

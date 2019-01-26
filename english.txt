@@ -874,6 +874,15 @@ bellwether		<- 	one that takes the lead or initiative : LEADER  : an indicator o
 bespoke			<- (of goods, especially clothing) made to order.
 					"a bespoke suit, a bespoke engine"
 
+bereave			<- [biríːv]	be deprived of a loved one through a profound absence, especially due to the loved one's death.
+					"those who counsel the bereaved"
+					synonyms:	deprive, dispossess, rob, divest, strip More
+
+Bereavement		<- the action or condition of being bereaved.
+					"there is no right way to experience bereavement"
+					synonyms:	loss, deprivation, dispossession, privation; More
+					1.사별 2.근친자 상실 3.여읨
+ 
 betide			<- happen.
 					"I waited with beating heart, as yet not knowing what would betide"
 					synonyms:	happen, occur, take place, come about, transpire, arise, chance; More
@@ -1610,6 +1619,12 @@ impair			<- weaken or damage something (especially a human faculty or function).
 					antonyms:	improve, enhanc
 					
 impaired hearing <- 난청
+
+impasse			<- a situation in which no progress is possible, especially because of disagreement; 
+					a deadlock.
+					"the current political impasse"
+					synonyms:	deadlock, dead end, stalemate, checkmate, standoff; More
+
 
 impose			<- force (something unwelcome or unfamiliar) to be accepted or put in place.
 impaired		<- the state or fact of being impaired(weakened or damaged), especially in a specified faculty.

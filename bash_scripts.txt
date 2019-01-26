@@ -235,6 +235,17 @@ echo "i = $(( --i ))"
 
 
 
+VAR="$(command")		Command substitution & assign to Variable $VAR
+Var=`command`			Command substitution & assign to Variable $VAR
+
+((..)) 			Arithmatic
+[1+2]			Deprecated Arithmatic
+let a=1+1		Arithmatic
+
+[ $a -eq $ ]	Test statement
+[[ ... ]] 		Test statement
+
+
 
 
 										
