@@ -3421,10 +3421,11 @@ https://www.computerhope.com/unix/ushutdow.htm
 	
 	
 	
-30. df . and  df / are same result
+# df .
+  df / 
 
 	df -h / | grep -E "\/$" | awk '{print $4}'
-	df -h / | xargs | awk '{print $11}'       <= Same result
+	df -h / | xargs | awk '{print $11}'      	
 	
 	fdisk -l				
 	
@@ -3462,6 +3463,7 @@ https://www.computerhope.com/unix/ushutdow.htm
 	$ cat /dev/null > /var/log/wtmp			<= utmp, wtmp - login records
   
 	echo "Log files cleaned up."
+
 
 # Login and Logout Info
 	# Last 
