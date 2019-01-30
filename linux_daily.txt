@@ -205,12 +205,11 @@ $ man -k REGEX or UNIXCOMMAND
 		  /etc/ssh/ssh_config.rpmnew
 		  /usr/share/man/man5/ssh_config.5.gz
 
-
 -----------------------------------------------------------------------------------	
 Daily Linux CMD List
 -----------------------------------------------------------------------------------	
 ###############
-1. SHELL	  #
+1. Bash SHELL	 #
 ###############
 
 ### Font Type <= Lucia Console, 12pt

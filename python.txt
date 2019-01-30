@@ -8,6 +8,10 @@ Shift+Enter	<= add a line
 # Visual Studio
 
 
+# Python 32 or 64bit version check in Python Shell
+>>> import struct;print struct.calcsize("P") * 8
+
+
 1.  Python Installation
 
 ### CentOS7  <- Python 3.5.2 Install on
@@ -30,7 +34,7 @@ $ pip install --target c:/python34/Lib/site-packages boto  <= if boto is keep in
 ### Win7 	<- Cygwin "ImportError: No module named boto"
 http://stackoverflow.com/questions/5599872/python-windows-importerror-no-module-named-site
 
-$ vi boboCheck.py
+$ vi botoCheck.py
 #!/usr/bin/env python
 import boto
 print boto.Version
