@@ -28,9 +28,10 @@ $ docker ps
 
 ### Permission ###
 $ sudo usermod -a -G docker ${USER}				<- from root
-completely log out of your account and log back in 
-	#check
-		$ grep ${USER} /etc/group
+```completely log out of your account and log back in 
+
+#check
+$ grep ${USER} /etc/group
 		
 
 
@@ -71,9 +72,7 @@ $ docker network ls
 
 #-----------------------------------------------------------------------------------------------------------
 
-
-
-#--- Running Jenkins ---#
+#--- Running 'Jenkins' using Docker Contaner ---#
 https://hub.docker.com/_/jenkins/
 
 # To Run
@@ -93,7 +92,7 @@ $ docker run -it jenkins /bin/bash
 	
 	https://get.docker.com/
 
-	
+#----------------------------------------------------------	
 ### CentOS7 - Initial Setup ###
 $ systemctl start  docker
 $ systemctl enable docker
@@ -104,6 +103,7 @@ $ docker run hello-world
 
 Step 2 - Setup the MariaDB Container
 
+#----------------------------------------------------------
 ### Maria DB
 $ docker pull mariadb
 $ docker images
@@ -114,7 +114,7 @@ $ docker run -e MYSQL_ROOT_PASSWORD=noza -e MYSQL_USER=noza -e MYSQL_PASSWORD=no
 $ docker inspect -f '{{ .NetworkSettings.IPAddress }}' wordpressdb
  => 172.17.0.2
 
-
+#----------------------------------------------------------
 ### wordpress
 
 $ docker pull wordpress:latest
@@ -125,13 +125,13 @@ $ docker run -e WORDPRESS_DB_USER=noza -e WORDPRESS_DB_PASSWORD=noza -e \
   
 $ http://192.168.232.148:8081   <=setup word press
 
-
+#----------------------------------------------------------
 ### Nginx reverse proxy setup 
 	In this step, we will install the Nginx web server on the host system. 
 	We will configure Nginx as a reverse proxy for the Docker container 'wpcontainer' on the port 8081.
 	
 	
-	
+#----------------------------------------------------------	
 ###	Delete all containers ###
 #!/bin/bash
 
@@ -143,7 +143,7 @@ docker rmi $(docker images -q)
 ###
 
 
-
+#----------------------------------------------------------
 ### Creating separate docker shell
 
 $ docker run -i -t  image_name:version_no /bin/bash
@@ -198,7 +198,7 @@ Cannot connect to the Docker daemon. Is the docker daemon running on this host?
 	
 	
 	
-#############################
+#######################
 ### ON CentOS7 #######
 #######################
 
@@ -221,7 +221,7 @@ Kernel Version: 3.10.0-327.28.3.el7.x86_64
 Operating System: CentOS Linux 7 (Core)           <= 
 ...........
 
-
+#----------------------------------------------------------
 #### On Ubuntu
 
 $service docker start
@@ -275,7 +275,9 @@ $ docker attach 796dab5a1c1b
 	[root@796dab5a1c1b /]#
 	[root@796dab5a1c1b ~]# cat wow.txt
 		wow
-
+		
+		
+#----------------------------------------------------------
 ### Container Name convention [a-zA-Z0-9_-]
 
 $ docker run -it fedora /bin/bash
@@ -872,8 +874,9 @@ root@c50b0860893f:/#ls -l
 
 drwxr-xr-x   2 root root 4096 Oct  6 02:13 dockvol           <= created when docker cmd run
 
-
+#----------------------------------------------------------
 ### 11 Docker Network
+#----------------------------------------------------------
 
 # Docker0 Bridge
 $ ifconfig
@@ -1561,26 +1564,6 @@ https://github.com/grafana/grafana-docker
 $ docker run -d --name=grafana -p 3000:3000 grafana/grafana
 http://localhost:3000
 ### default admin user is admin/admin.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

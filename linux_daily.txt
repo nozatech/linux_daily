@@ -64,11 +64,10 @@ End Of Line (EOL)	<= 라인 끝  문자 (0x0D0A, \r\n)는 두개의 ASCII 문자
 ### Notepad++  (Settings > Short cut Mapper Menu)
 ---------------------------------------
 
-1. 	Ctrl + L					Delete Current line
+1. 	Ctrl + L					Delete Current line(from cursor to all the way RIGHT)
 	Ctrl + D					Copy(Duplicate) line
 	Ctrl + Alt + Enter			Insert blank line Above ^
 	Ctrl+Alt+Shift+Enter		Insert blank line Below v
-	
 2. Auto-completion
 	Ctrl+Space			Function completion
 	Ctrl+Enter			Word completion
@@ -1587,8 +1586,15 @@ Delete
 
 	$ curl -X GET -H 
 
-
-
+----------------------------------------------------------------------------------------------------
+# User-Agent
+	When a software agent operates in a network protocol, it often identifies itself, 
+	its application type, operating system, software vendor, or software revision, 
+	by submitting a characteristic identification string to its operating peer. 
+	In HTTP,[3] SIP,[2] and NNTP[4] protocols, this identification is transmitted in 
+	a header field User-Agent. Bots, such as Web crawlers, often also include a URL 
+	and/or e-mail address so that the Webmaster can contact the operator of the bot.
+	
 	
 ----------------------------------------------------------------------------------------------------
 ### curl can download or upload through any protocol, http, ftp, sftp, scp, ldap, telnet
@@ -3412,13 +3418,16 @@ https://www.computerhope.com/unix/ushutdow.htm
 
 	$ no1=4
 	$ echo "4 * 0.56" | bc
-	$ result=`echo "$no1 * 1.5" | bc`
+	$ result=`echo "$no1 * 1.5" | bc`	<= BC for decimal
+	
+	
+	
 	$ echo $result
 	  6.0
 
 	Decimal => binary => Octal  
 	
-	
+	$ result2=`expr $no1 \* 2`			<= EXPR Only for Integer and use '\' for '*' multiply
 	
 # df .
   df / 
