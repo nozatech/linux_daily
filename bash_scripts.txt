@@ -141,13 +141,15 @@ e.g. in a script, add 'set -x' for each line output(debug mode)
     $ sh +v script.sh   			 <= +v 	Disabling the  Verbose mode
 
 ---------------------------------------------------	
-# VI: Run script 'within' VIM or VI
+# VI: Run a script 'Within' VIM or VI
 ---------------------------------------------------
     :w   	      					<= write first
-    :! sh %   (# :! sh %)     		<= : <-cmd ! <-run, sh <-shell, % =currently open file
-	:!sh %							# works too
-	:!!         					<= run same script again 
-
+    :! sh %                  		<= : <-cmd, ! <-run, sh <-shell, % =currently open file
+    # :!sh %						# works too
+    
+    # Same as Shell '!!' Repeating command
+	:!!         					<= run same script again(Error: No Previous Command)
+    
     :!./script_name.sh
 
     :! python %
@@ -155,21 +157,19 @@ e.g. in a script, add 'set -x' for each line output(debug mode)
     :! perl %
 
 ---------------------------------------------------
-# VI - Short Keys #
+# VI - Save READ-ONLY file
 ---------------------------------------------------
-# Save in read only file 
+# Save the 'read only' file for under privilege error
 	
 	:w !sudo tee %                  	<= save as sudo privilege.  
 										   type (L) load at the prompt to reload.
 	
 	:w !chmod 777 %    then    :wq!
 	
-	:h									<= vi, vim help 			
-	:q 									<= quit help page
-	
-	$ vi +101 file.txt					<= go to 101 line in file name
-	:12									<= Go to particular line number in vi editor 
-	
+
+---------------------------------------------------
+# VI - Short Keys #
+---------------------------------------------------	
 # Move	
 	^		<= Move cursor to the beginning of the line.
 	$		<= Move cursor to the end of the current line.
@@ -203,6 +203,16 @@ e.g. in a script, add 'set -x' for each line output(debug mode)
 # Undo & Redo
 	Esc + u
 	Ctrl + r
+
+# Help
+	:h									<= vi, vim help 			
+	:q 									<= quit help page
+	
+# Go to line
+
+	$ vi +101 file.txt					<= go to 101 line in file name
+
+	:12									<= Go to particular line number in vi editor 
 	
 ---------------------------------------------------	
 # VI: Search and replace 	( http://vim.wikia.com/wiki/Search_and_replace )
@@ -224,24 +234,33 @@ e.g. in a script, add 'set -x' for each line output(debug mode)
 ---------------------------------------------------
 i=5
 let i+=4                  <= i(5) + 4
-echo "$i"
+echo "$i"                 <= 9
+let i+=4                  <= i(9) + 4
+echo $i                   <= 13  
+
+echo "i = $(( i++ ))"       <= 13
+echo "i = $(( i++ ))"       <= 14
+
+echo "i = $(( ++i ))"       <=15
+echo "i = $(( ++i ))"       <=16
+echo "i = $(( i-- ))"       <=15
+echo "i = $(( --i ))"       <=14
 
 
 
-echo "i = $(( i++ ))"
-echo "i = $(( ++i ))"
-echo "i = $(( i-- ))"
-echo "i = $(( --i ))"
+VAR="$(command)"		Newer <= Command substitution & assign to Variable $VAR
+Var=`command`			#Old-Style <=Command substitution & assign to Variable $VAR
 
-
-
-VAR="$(command")		Command substitution & assign to Variable $VAR
-Var=`command`			Command substitution & assign to Variable $VAR
-
+---------------------------------------------------
+# Arithmatic
+---------------------------------------------------
 ((..)) 			Arithmatic
 [1+2]			Deprecated Arithmatic
 let a=1+1		Arithmatic
 
+---------------------------------------------------
+# Test Statement
+---------------------------------------------------
 [ $a -eq $ ]	Test statement
 [[ ... ]] 		Test statement
 
@@ -252,9 +271,9 @@ let a=1+1		Arithmatic
 ---------------------------------------------------
 # Writing 2 Scripts at same time in background
 ---------------------------------------------------
-	$ vi 1.sh
+	$ vi 1st.sh
 # Ctrl + z 						<= exit to shell
-	$ vi 2.sh
+	$ vi 2nd.sh
 # Ctrl + z 						<= exit to shell	
 
 # Check list of jobs	
@@ -262,9 +281,9 @@ let a=1+1		Arithmatic
 	[1] Stopped  vim
 	[2] Stopped  vim
 
-	$ fg %1							<= go back to 1.sh
+	$ fg %1							<= go back to 1st.sh
 # Ctrl + z
-	$ fg %2							<= go back to 2.sh
+	$ fg %2							<= go back to 2nd.sh
 	
 # Save and exit or KILL Jobs
 	$ kill %2
@@ -284,10 +303,11 @@ https://bash.cyberciti.biz/shell/monitoring/
 
 ${Variable}  Vs.  $(Command) <==> `Command`
 
-Name="Albert Park"
-$ echo $NAME
-$ echo "$NAME"
-$ echo "${NAME}"
+NAME="Albert Park"
+$ echo $NAME        is awesome
+$ echo "$NAME"      is awesome
+$ echo "$NAME"      is awesome
+$ echo "${NAME}"    is awesome
 
 LSAL=`ls -al`
 LSAL=$(ls -al)

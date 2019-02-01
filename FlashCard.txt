@@ -130,7 +130,7 @@ https://devhints.io/bash
 ======================================================================================================
 #!/usr/bin/env bash
 
-NAME="John"
+NAME="Albert Park"
 echo "Hello $NAME!"
 
 CMD="$(ls -al)"		<= "$(for command)"
