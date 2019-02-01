@@ -221,7 +221,9 @@ echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && 		. ~/.ba
 
 ### Green & Red promt
 ========================================================================================
+
 echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"' >> ~/.bashrc	&& source ~/.bashrc	 
+
 ========================================================================================
 ### change .bashrc within shell to actiavate a new alias
 $ source ~/.bashrc	
@@ -3345,7 +3347,11 @@ https://www.computerhope.com/unix/ushutdow.htm
 		-n     do not output the trailing newline
 		-t     do not output the trailing horizontal
 		 
+	%s is a format specifier for printf command.
 	
+	https://www.quora.com/What-does-s-mean-in-Bash
+	%s <= In BASH: Using the format string %s causes the arguments to be concatenated without 
+		intervening spaces. It interprets the associated argument literally as s string.
 
 
 
@@ -5207,11 +5213,71 @@ two cases:
 # System Info #
 ###############
 
-1. ssh -i .ssh/pem_key 		user_id@IP_Address
+1. $ ssh -i .ssh/pem_key 		user_id@IP_Address			# -i uses file
 
-   ssh -p <port>       		user_id@IP_Address
+   $ ssh -p <port>       		user_id@IP_Address			# -p specify port
 
-   ssh-copy-id 	       		user_id@IP_Address
+   $ ssh-copy-id 	       		user_id@IP_Address			# copy .ssh/id_rsa.pub to remote
+   
+   
+   $ ssh-agent bash
+   $ ssh-add
+    $ ssh-add --help
+   
+   https://stackoverflow.com/questions/22272299/what-is-the-difference-between-ssh-add-and-ssh-agent
+   So you can give your passphrase to 'ssh-agent' once and it will use it whenever required. 
+   You use 'ssh-add' to give your keys to 'ssh-agent'. You can always check what all keys your 
+   'ssh-agent' is managing by issuing '$ ssh-add -l '.
+   
+   https://superuser.com/questions/284374/ssh-keys-ssh-agent-bash-and-ssh-add
+   
+	$ ps							<= Currnet user process
+	  PID TTY          TIME CMD
+	16818 pts/1    00:00:00 bash
+	16841 pts/1    00:00:00 ps
+	
+	$ ssh-agent bash && ssh-add ~/.ssh/id_rsa
+	
+    $ ps
+		PID TTY          TIME CMD
+	16818 pts/1    00:00:00 bash
+	16849 pts/1    00:00:00 bash		<= A New BASH Shell created
+	16867 pts/1    00:00:00 ps
+	
+	###the agent would remain running, but inaccessible###
+    $ eval `ssh-agent` 			<= this runs the agent in background, and sets the apropriate 
+								   environment variables for the current shell instance.
+	
+	###	automatically kills ssh-agent when you close the terminal window###
+	$ exec ssh-agent bash 		<= starts a new instance of the 'bash shell', replacing the 
+									current one.	
+		$ ps
+			PID TTY          TIME CMD
+		16818 pts/1    00:00:00 bash
+		17198 pts/1    00:00:00 ps
+	$ exec ssh-agent bash
+		$ps
+			PID TTY          TIME CMD
+		16818 pts/1    00:00:00 bash			<=SAME BASH SHELL PROCESS ID will be killed when close
+		17222 pts/1    00:00:00 ps
+	------------------------------------------------------------
+	$ exec ssh-agent bash && ssh-add ~/.ssh/id_rsa		<= use this 
+	------------------------------------------------------------
+		$ ps
+			PID TTY          TIME CMD
+		16818 pts/1    00:00:00 bash			<= NO New PID
+		17553 pts/1    00:00:00 ps
+
+		$ ssh-add -l							<= check the list
+
+	### Edit your ~/.bashrc file, and add ###
+	-----------------------------------------------------------------------------------------
+		ssh-add &>/dev/null || eval `ssh-agent` &>/dev/null # start ssh-agent if not present
+		[ $? -eq 0 ] && {                                   # ssh-agent has started
+		ssh-add ~/.ssh/your_private.key1 &>/dev/null        # Load key 1
+		ssh-add ~/.ssh/your_private.key2 &>/dev/null        # Load key 2
+		}
+		-----------------------------------------------------------------------------------------
 
    # CentOS sudo without passwd
    
@@ -5232,7 +5298,8 @@ two cases:
 		# Allow members of group sudo to execute any command
 		%sudo   ALL=(ALL:ALL) NOPASSWD:ALL									<= Add NOPASSWD
 
-	
+	$ visudo -cf %s  	<= validate 
+
 	
 	
 	

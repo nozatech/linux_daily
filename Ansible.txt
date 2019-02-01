@@ -1,12 +1,148 @@
 Ansible
 
-$ ansible-playbook -i hosts ~/initial.yml
+### YAML Valicator 
+	https://codebeautify.org/yaml-validator
 
-	ansible 이 
-		playbook(책을갖고 놀다)가 
-					i(아이)를 다쳐 
-						hosts(호스피탈)에 갔는데 
-							i(아이)이식을 해야한다네.
+# Setup
+https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-centos-7
+
+$ ansible --version
+$ ansible --help
+
+
+# Setup Hosts file for Groups and Server IPs
+$ mkdir k8-cluster && vi k8-cluster/hosts
+----------------------------------------------------------------
+[master]
+master  ansible_ssh_host=162.243.143.73
+
+[workders]
+worker1 ansible_ssh_host=162.243.144.182
+worker2 ansible_ssh_host=107.170.245.103
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+----------------------------------------------------------------
+
+
+
+###  Ad-Hoc command ###
+https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html
+
+Module Index 750
+https://docs.ansible.com/ansible/latest/modules/modules_by_category.html
+
+
+
+## Parallelism and Shell Commands
+# PING
+
+$ ansible all -m ping
+
+$ ansible -i ~/k8-cluster/hosts -m ping all
+--------------------------------
+ [WARNING]: Found both group and host with same name: master
+worker2 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+worker1 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+master | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+--------------------------------
+
+# -a MODULE_ARGS, --args=MODULE_ARGS module arguments
+# -m MODULE_NAME, --module-name=MODULE_NAME
+                        module name to execute (default=command)
+
+$ ansible -i hosts 			-a 'uptime' all
+$ ansible -i hosts 			-a 'last reboot' all
+$ ansible -i hosts 			-a 'who' all						
+$ ansible -i hosts 			-a 'whoami' all
+$ ansible -i hosts 			-a 'echo $SHELL' all
+
+# Using -m Shell Module
+$ ansible -i hosts -m shell -a 'uptime' all
+$ ansible -i hosts -m shell -a 'last reboot' all
+$ ansible -i hosts -m shell -a 'who' all
+$ ansible -i hosts -m shell -a 'whoami' all
+$ ansible -i hosts -m shell -a 'echo $SHELL' all
+
+
+
+# Creating a Non-Root User on All Remote Servers
+
+$ vi ~/k8-cluster/initial.yml
+---------------------------------------------------------------
+- hosts: all
+  become: yes
+  tasks:
+    - name: create the 'noza' user
+      user: name=ubuntu append=yes state=present createhome=yes shell=/bin/bash
+
+    - name: allow 'noza' to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        line: 'noza ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+
+    - name: set up authorized keys for the ubuntu user
+      authorized_key: user=ubuntu key="{{item}}"
+      with_file:
+        - ~/.ssh/id_rsa.pub
+---------------------------------------------------------------
+# Creating users in hosts file
+$ ansible-playbook -i hosts ~/k8-cluster/initial.yml
+
+# Ansible Playbook
+$ ansible-playbook -i hosts ~/k8-cluster/initial.yml
+  ansible 이 
+		 -playbook(책을갖고 놀다)가 
+				   -i(아이)를 다쳐 
+					  hosts(호스피탈)에 갔는데 
+										initial.yml(아이)이식을 해야한다네.
+
+
+
+
+### Installing Kubernetes' Dependencies
+	Docker 	<= a container runtime. It is the component that runs your containers. 
+				Support for other runtimes such as rkt is under active development in Kubernetes.
+	kubeadm <= a CLI tool that will install and configure the various components of a cluster in a standard way.
+	kubelet <= a system service/program that runs on all nodes and handles node-level operations.
+	kubectl <= a CLI tool used for issuing commands to the cluster through its API Server.
+
+
+
+
+
+
+
+
+
+
+
+
+File Transfer
+Managing Packages
+Users and Groups
+Deploying From Source Control
+Managing Services
+Time Limited Background Operations
+Gathering Facts
+
+
+
+
+
+
+
+
 							
 
 
