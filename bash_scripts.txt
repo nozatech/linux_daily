@@ -308,10 +308,11 @@ $ echo $NAME        is awesome
 $ echo "$NAME"      is awesome
 $ echo "$NAME"      is awesome
 $ echo "${NAME}"    is awesome
+$ echo "${NAME} master"    is awesome
 
-LSAL=`ls -al`
-LSAL=$(ls -al)
-LSAL="$(ls -al)"
+ll=`ls -al`
+ll=$(ls -al)
+ll="$(ls -al)"
 
 
 https://bash.cyberciti.biz/guide/Assign_values_to_shell_variables	
@@ -1726,23 +1727,16 @@ readarray -t a < stream			<= Same as mapfile.
 #!/bin/bash
 # Assign the values "mickey", "minnie", and "goofy" to sequential indexes starting with 0(zero).
 
-host=(mickey minnie goofy)			
+host=(mickey minnie goofy)										<= Array	
 # host="mickey minnie goofy"
 # host='mickey minnie goofy'
 
 # Iterate over the indexes of "host".
 for i in "${!host[@]}"; do
-    printf 'Host number %d is %s\n' "$i" "${host[i]}"
+    printf 'Host number %d is %s\n' "$i" "${host[i]}"			<= %s\n  <- A new Line
 done
 
  
-
-
- 
-
-
-
-
 
 
 ---------------------------------------------------------
@@ -1764,6 +1758,7 @@ ex) Set array 1, 2, 3
 	  test3
 	$ echo ${array_var[*]}
 	  test1 test2 test3 m
+	
 	$ echo ${array_var[@]}
 		test1 test2 test3
 	$ echo ${#array_var[*]}

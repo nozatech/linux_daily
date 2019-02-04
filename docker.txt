@@ -1,9 +1,14 @@
 ### Docker ####
 ###############
 
+A container image is a self-contained entity with its own application code, 
+runtime, and dependencies that you can use to create and run containers.
+
+
 docker-cheat-sheet
 https://github.com/wsargent/docker-cheat-sheet
 https://www.docker.com/sites/default/files/Docker_CheatSheet_08.09.2016_0.pdf
+
 
 
 ### Installation ###
@@ -127,8 +132,7 @@ $ http://192.168.232.148:8081   <=setup word press
 
 #----------------------------------------------------------
 ### Nginx reverse proxy setup 
-	In this step, we will install the Nginx web server on the host system. 
-	We will configure Nginx as a reverse proxy for the Docker container 'wpcontainer' on the port 8081.
+	In this step, we will install the Nginx web server on the hgure Nginx as a reverse proxy for the Docker container 'wpcontainer' on the port 8081.
 	
 	
 #----------------------------------------------------------	

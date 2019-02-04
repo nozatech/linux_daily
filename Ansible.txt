@@ -29,6 +29,7 @@ ansible_python_interpreter=/usr/bin/python3
 ###  Ad-Hoc command ###
 https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html
 
+https://www.ansible.com/overview/how-ansible-works
 Module Index 750
 https://docs.ansible.com/ansible/latest/modules/modules_by_category.html
 

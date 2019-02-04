@@ -1,5 +1,9 @@
 #!/bin/sh
 # Docker Install Script
+# sudo yum check-update
+# $ curl -fsSL https://get.docker.com/ | sh
+
+
 set -e
 
 # This script is meant for quick & easy install via:
