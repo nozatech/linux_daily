@@ -290,20 +290,27 @@ cat << EOF >> ~/.bashrc
 	$ echo -e '\e[1;31m	"Red text" \e[0m'
 	
 ### Color Codes	for Colored Background
-	
-	$echo -e "\e[1;42m This is green background! \e[0m"
-	    This is green background!
-	
-	Reset   = 0
-	Black   = 40
-	Red     = 41
-	Green   = 42
-	Yellow  = 43
-	Blue    = 44
-	Magenta = 45
-	Cyan    = 46
-	White   = 47
-	
+	Coloring and Styling
+
+	# NCSA Escape code - Sequence
+	$ bash -e			<= enable, echo with Escaping
+
+	$ echo -e "\033[34;42mThis is green background\033[0m"
+		This is green background
+
+	# Colored test(ANSI)
+	-----------------------------------------------
+	Color		Foreground 	Background
+	-----------------------------------------------
+	Black			30			40
+	Red				31			41
+	Green			32			42
+	Yellow			33			43
+	Blue			34			44
+	Magenta(분홍)	35			45
+	Cyan(하늘색)	    36			46
+	White			37			47
+-----------------------------------------------	
 	
 -----------------------------------------------------------------------------------------	
 
@@ -990,11 +997,20 @@ set can see shell-LOCAL variables, env cannot.
 	
 ### socat - Multipurpose relay (Socket CAT)
 
+
+
+
+# Bash options
+# set vs. shopt 
+
+	$ set -o					<=inherited from other Bourne-style shells (mostly ksh)
+	(https://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_06.html)
 	
-### shopt						<= specific options for BASH Shell
-	$ shopt						<= list of Shell Option
-	$ shopt -s extglob			<= turn set  (on) extended glob
-	$ shopt -u extglob			<= turn unset(off) extended glob
+	
+#	$ shopt( Bash 'sh'ell 'opt'ions)	<= specific options for BASH Shell
+										   list of Bash  Shell Option
+	$ shopt -s extglob					<= turn set  (on)  extended glob
+	$ shopt -u extglob					<= turn unset(off) extended glob
 	$ shopt | grep extglob
 	
 	
@@ -1069,18 +1085,31 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	$ su   user_id					<= just switch user but same current directory
 	$ su - user_id					<= go to user's HOME directory
 --------------------------------------------------------------------------	
+
+
 # CD command
-	.. 	parent  directory
-	.	current directory
-	~	User's home directory
-	-	Previous directory
+# Tilde extension
+
+	$ cd .. 		<= Parent  directory
+	$ cd .			<= Current directory
+	$ cd ~			<= User's home directory
+	$ cd -			<= Previous directory
+	$ cd ~-			<= goto last location
+	$ echo ~-		<= Print out last location
 	
-	$ mkdir -p /1/2/3/4/5			<= creating parent directories(sub dirs)
-	$ cd ../..						<= from /1/2/3/  =>  /1   		
-	$ cd ../2						<= from /1/2/3   =>  /1/2 		
+	#e.g.
+	$ mkdir delme && cd delme && mkdir -p 1/2/3			<= creating Subdirectories
+	$ cd 1/2/3
+	$ pwd
+	  /home/apark/delme/1/2/3
+
+	$ cd ../..						<= from /1/2/3  =>  /1   	
+	$ pwd
+	  /home/apark/delme/1
 	$ cd -							<= move to previous directory
-	$ cd ~-							<= same
-	$ echo ~-						<= out put previous directory
+	$ cd ~-							<= move to previous directory
+	
+	$ echo ~-						<= Print previous directory
 	
 
 --------------------------------------------------------------------------
@@ -1122,15 +1151,75 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	$ echo "export HISTSIZE=10000" >> ~/.bashrc
 	
 --------------------------------------------------------------------------	
-### Touch 
-	$ touch apple banana cherry			<= creating multiple files
-	$ touch file_{01..1000}
-	$ echo {1..10..2}
-	  1 3 5 7 9
-	$ echo {A..Z}
-	$ echo {A..z}						<= Capital 1st
-	$ echo {w..d..2}					<= backward + every 2nd letter
+# Touch 
+# Brace expansion
+
+	$ touch apple banana cherry				<= creating multiple files
+	$ touch {apple,banana,cherry}			<= !NO SPACE!creating multiple files
+	
+	$ touch file_{01..1000}					<= adding 0 to fixes the file name issue
+		file_0001 .....file_10000
+	
 	$ touch cherry_{01..100}{w..d}.txt
+	
+	$ echo {1..10..2}						<= Prints 1~10 every 2nd number 
+	  1 3 5 7 9
+	$ echo {A..z..2}
+	  A C E ... U W Y [ ] _ a c e ... u w y
+	
+	$ echo {A..Z}						<= Prints A to Z
+	  A .... Z
+	  
+	$ echo {A..z}						<= Prints Capital A-Z, then a-z
+		A B C D E F G H I J K L M N O P Q R S T U V W X Y Z  [  ] ^ _ ` <= This also prints out
+		a b c d e f g h i j k l m n o p q r s t u v w x y z
+	
+	$ echo {{a..z},{A..Z},{1..10}}  	<= Double braces for combine
+
+	$ echo {w..d..2}					<= Backward + every 2nd letter
+
+  # Brace combine
+	--------------------------------------------------------------------------
+	$ echo {{A..Z},{a..z}}				<= without printing  [  ] ^ _ ` 
+	  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 
+		a b c d e f g h i j k l m n o p q r s t u v w x y z
+
+	--------------------------------------------------------------------------
+	
+	$ echo {A..Z}{a..z}				<= Aa Ab Ac Ad Ae Af Ag Ah Ai ....
+	$ echo {A..Z},{a..z}			<= A,a A,b A,c A,d A,e A,f A,g ....
+	$ echo {{A..Z}{a..z}}			<= {Aa} {Ab} {Ac} {Ad} {Ae} {Af} {Ag} {Ah} {Ai}
+	--------------------------------------------------------------------------
+	$ echo {{A..Z},{a..z}}			<= A B C ... x y z  <-This is What we want!!!
+	--------------------------------------------------------------------------
+
+	# Counting how many outputs
+	$ for i in $(echo {{A..Z},{a..z}}); do echo $i; done | wc -l	
+		52
+	$ for i in $(echo {A..Z}{a..z}); do echo $i; done | wc -l
+		676
+	
+# Out put Variables using Brace Expansion
+	fruit="apple banana banana cherry"
+
+	$ echo ${fruit/banana/mango}				<= change 1st banana to mango 
+		apple mango banana cherry
+	
+	$ echo $fruit
+		apple banana banana cherry				<= same 
+	
+	$ echo ${fruit//banana/mango}				<= // change all banana to mango 
+		apple mango mango cherry
+	
+	$ echo ${fruit/#banana/mango}				<= # ONLY FIRST list item change
+		mango banana banana cherry
+	
+	$ echo ${fruit/%cherry/mango}				<= % only the END of string
+		apple banana banana mango
+	
+	$ echo ${fruit/*/mango}						<= * Matching
+		cherry
+	
 --------------------------------------------------------------------------
 ### nl <= number line
 	$ nl file.txt
@@ -1716,6 +1805,9 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 
 	
 ### grep
+	$ grep --color=auto apark /var/log/secure
+	$ export GREP_OPTIONS='--color=auto'
+
 
 	# Finding a string word using grep
 	$ grep -i word *		<= current dir
@@ -3303,10 +3395,12 @@ https://www.computerhope.com/unix/ushutdow.htm
     echo "! # $ % & '\'' ( ) * + , - . / : ; & < = > ? @ [ \ ] ^ _ { | } ~"
 	
 ---------------------------------------------------------------------------------------
-23. 
-	echo $BASH_VERSION
-	echo $MACHTYPE
-	echo $SECONDS 					<= Count script started 
+# bash version
+	$ bash -version
+	$ echo $BASH_VERSION
+	
+	$ echo $MACHTYPE
+	$ echo $SECONDS 					<= Count script started 
 
 
 	d=$(pwd)
@@ -3338,24 +3432,52 @@ https://www.computerhope.com/unix/ushutdow.htm
 
 
 27. Printf vs echo (http://wiki.bash-hackers.org/commands/builtin/printf)
+
 	$ printf Hello World			Hello					<= Prints only first argument
 	$ printf "Hello World"			Hello World				<= Prints both, but No New Line
-		hello worldapark@i7~/
-	$ printf '%s\n' "Hello World"							<= Prints both, % New Line
+		hello worldapark@i7~/								<= NO NEW LINE
+	$ printf '%s\n' "Hello World"							<= Prints both, '%s\n' put a New Line
 		Hello World											
+	$ eho "Hellow World"
 	
 	$ printf '%s\n' "$var"				<= %s	Interprets the associated argument literally as String
 										<= %n	a new line
 	$ echo "\n\t"
 		-n     do not output the trailing newline
 		-t     do not output the trailing horizontal
-		 
-	%s is a format specifier for printf command.
 	
+	$ echo -e "Hello\nworld"			<= -e  enable interpretation of backslash escapes
+	$ echo -e 'Hello\nworld'			<= \n  a new line
+	$ echo Hello$'\n'world
+	  hello
+	  World
+
+	
+	%s <= a format specifier for printf command.
+
 	https://www.quora.com/What-does-s-mean-in-Bash
 	%s <= In BASH: Using the format string %s causes the arguments to be concatenated without 
 		intervening spaces. It interprets the associated argument literally as s string.
 
+	$ printf "Name:\t%s\nID:\t%04d\n" "Albert" "12" 	<= \t tab, %s string,\n new line,%04d 4digit
+	  Name:   Albert
+	  ID:     0012
+	-----------------------------------------------
+	#!/bin/bash
+	today=$(date +%F)
+	time=$(date +%T)
+	printf -v d "\tCurrent User:\t%s\n\tDate:\t\t%s at(@) %s\n"  $USER $today $time
+	echo "$d"
+-----------------------------------------------
+	Current User:   apark
+	Date:           2017-01-18 at(@) 17:02:28
+
+	$ printf "My name is \"%s\".\nIt's a pleasure to meet you."  "Albert"
+	My name is "Albert".
+	It's a pleasure to meet you.
+	
+	$ echo $USER
+	$ echo $LOGNAME	
 
 
 
@@ -3398,11 +3520,13 @@ https://www.computerhope.com/unix/ushutdow.htm
 ### let  <= Simple arithmatic evaluation    
 ------------------------------------------------------------	
 	https://askubuntu.com/questions/939294/difference-between-let-expr-and
-	let 			Arithmatic Expansiion
-	expr 			Evaluate Expression
-	$[1+1]  		*Deprecated* Arithmatic Expansiion
-	((1+1))			Arithmatic Expansiion
-	# bc			<- An arbitrary precision calculator language
+	
+	$ let 			<= Arithmatic Expansiion
+	$ expr 			<= Evaluate Expression
+	$ ((1+1))			<= Arithmatic Expansiion
+	$ bc			<- An arbitrary precision calculator language
+		$ [1+1]		<= Using [ ] is *Deprecated* Arithmatic Expansiion
+	
 	
 	$ let arg [arg ...]  same as (( )) <- ARITHMETIC EVALUATION
         Each  arg  is an arithmetic expression let == (( )) to be evaluated.
@@ -3429,6 +3553,12 @@ https://www.computerhope.com/unix/ushutdow.htm
 	$ echo "4 * 0.56" | bc
 	$ result=`echo "$no1 * 1.5" | bc`	<= BC for decimal
 	
+	# Bash only works with Integers, not decimals
+	$a=$(echo 1/3 |bc -l)						<= user BC An arbitrary precision calculator language
+												-l, --mathlib
+												Define the standard math library.
+	$ echo $a
+		.33333333
 	
 	
 	$ echo $result
@@ -3437,6 +3567,147 @@ https://www.computerhope.com/unix/ushutdow.htm
 	Decimal => binary => Octal  
 	
 	$ result2=`expr $no1 \* 2`			<= EXPR Only for Integer and use '\' for '*' multiply
+	
+	
+	
+	
+#####  Number Operations 산수 계산 #####
+# Arithmetic (Numbers) Operations	
+	value=$(( $a expression $b ))
+-----------------------------------------
+	Operation				Operator
+-----------------------------------------
+	Exponentiation			(( $a ** $b ))
+	Multiplication			(( $a * $b ))
+	Division				(( $a / $b ))
+	Modulo					(( $a % $b ))
+	Addition				(( $a + $b ))
+	Subtraction				(( $a - $b ))
+-----------------------------------------
+	$ echo $(( 10 * 10 ))	<= 100
+
+
+
+##### Comparing String Values #####  	
+# Test Statement [ ... ] , [[ ... ]]
+# Comparison Operations (STRING)
+	
+-----------------------------------------------
+	Operation						Operator
+-----------------------------------------------
+	Less than					[[ $a < $b ]]
+	Greater than				[[ $a > $b ]]
+	Less than or equal to 		[[ $a <= $b ]]
+	Greater than or equal to	[[ $a >= $b ]]
+	Equal(single or double)		[[ $a == $b ]] or [[ $a = $b ]]
+	Not Equal 					[[ $a != $b ]]
+-----------------------------------------------	
+	[[  expressions  ]]  	0: True    1: False
+
+# Equal
+$ [[ cat == cat ]]  or	
+  [[ cat = cat ]]  or 
+   [ cat = cat ] or 
+   [ cat=cat ]
+$ [[ 'cat' == 'cat']]  or	
+  [[ 'cat' = 'cat' ]] or 
+   [ 'cat' = 'cat' ] or 
+  [[ 'cat'='cat' ]] 
+$ [[ "cat" == "cat" ]]
+	^space		   ^space !MUST!
+
+	$ [[ 20 > 100 ]]
+	$ echo $? 
+		0 <= true because it compares STRINGS, not the number! 
+			20 is higher than 100 lexcially.
+
+##### Comparing Numbers using [[ ... ]] Test Statement 번호 비교 #####
+##### Comparison Operations (INTEGER) #####
+-----------------------------------------------
+	Operation						Operator
+-----------------------------------------------
+	Less than					[[ $a -lt $b ]]
+	Greater than				[[ $a -gt $b ]]
+	Less than or equal to 		[[ $a -le $b ]]
+	Greater than or equal to	[[ $a -ge $b ]]
+	Equal(single or double)		[[ $a -eq $b ]] 
+	Not Equal 					[[ $a -nq $b ]]
+-----------------------------------------------
+$ if [[ 1 -lt 2 ]]; then echo "1 is less than 2"; else echo "1 is NOT less than 2"; fi
+
+
+# Logic Operations
+-----------------------------------------------
+	Operation						Operator
+-----------------------------------------------
+	AND							[[ $a && $b ]]
+	OR							[[ $a || $b ]]
+	NOT 						[[ ! $a ]]
+-----------------------------------------------
+
+
+# String NULL(EMPTY) value Check
+-----------------------------------------------
+	Operation						Operator
+-----------------------------------------------
+	Is Null(Empty)?					[[ -z  $a ]]
+	Is NOT Null(Empty)?				[[ !-z $a ]]
+
+	Is NOT Null(Empty)?				[[ -n  $a ]]
+	Is Null(Empty)?					[[ !-n $a ]]
+-----------------------------------------------
+
+	e.g.
+	$ a=""
+	$ b="cat"
+
+	$ if [[ -z $a ]]; then echo 'Var $a is empty'; else echo 'Var $a is not empty';  fi
+	$ if [[ -n $b ]]; then echo 'Var $b is NOT empty'; else echo 'Var $b is empty';  fi
+	
+	# Is $a Empty?
+	$ [[ -z $a ]]		<= Is $a Empty?
+	$ echo $?      		<= 0 true(Yes Empty)
+	
+	# Is $b Empty?
+	$ [[ -n $b ]]		<= Is $b Not Empty?
+	$ echo $?  	 		<= 0 true(Yes, Not empty) 
+
+
+	# [ ]  single test statement "test - check file types and compare values"
+	# [[ ]] 		<= bash 2.2 extended test
+
+
+# Working with string & Reverse
+	$ a="hello"
+	$ b="world"
+	$ c=$a$b
+	$ d="$b $a"				 <= Reverse order
+	$ echo $c $d			 <=	helloworld world hello
+
+# how long is the string for variable $a and $c
+	$ echo ${#a}
+	  5
+	$ echo ${#c}
+	  10
+
+# sub string or piece
+d=${c:3}			<= starting at the 3rd character
+loworld				<= $c=helloworld   h=0, e=1, l=2, l=3
+d=${c:3:4}			<= starting at the 3rd character to next 4 character
+echo $d 
+lowo
+d=${c: -4}			<= count from end of string
+orld
+d=${c: -4:3}		<= 3 of last 4
+ord
+
+
+
+
+
+
+	
+	
 	
 # df .
   df / 
@@ -3575,9 +3846,7 @@ https://www.computerhope.com/unix/ushutdow.htm
 	8. 
 
 # Network Troubleshooting
-Traceroute, Ping, and MTR
-	
-	mtr(Mutli function TRracert) 
+	# mtr(Mutli function TRracert) 
 	
 	https://www.linode.com/docs/networking/diagnostics/diagnosing-network-issues-with-mtr
 	combines  the  functionality  of the traceroute and ping in a single network diagnostic tool.
@@ -3668,6 +3937,16 @@ Traceroute, Ping, and MTR
 	
 	# ping every 10sec, ping localhost
 	$ ping -i 10 0			<= ping 0(localhost) every 10sec 
+	
+	
+	# IP Address, Gateway, Route
+	$ ip address 		<= ip a, ip add, ip addr 	<- all woorks
+	
+	# IP Gateway
+	$ ip route			<= ip r, ip rou, ip rout	<- all works
+	
+	
+	
 	
 <<<<<<< Updated upstream
 43. stty 		   <= change and print terminal line settings
@@ -6154,6 +6433,17 @@ The 'cat << EOF' Bash syntax is very useful when one needs to work with multilin
 	  EOF
 	  )
 	
+$ cat file.txt  VS.  cat < file.txt
+http://unix.stackexchange.com/questions/258931/difference-between-cat-and-cat
+cat file.txt  	<= reads the file myfile.txt then prints it to the standard output.
+
+cat < file.txt 	<= here cat isn't given any file(s) to open, so -like many Unix commands do- reads 
+					the data from the standard input, which is directed there from file.txt by the shell, 
+					and prints to standard output.
+
+
+
+
 	
 noza@fm:~$ echo $sql
 SELECT foo, bar FROM db WHERE foo='baz'
@@ -6208,6 +6498,24 @@ $ cat >> test <<HERE
 More: http://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
 
 
+# Reading and writing
+$ echo "something" | sudo tee --append /var/log.file    <= non suoder gets permission error so use " sudo tee --append" 
+
+----------------------------------------------- 
+#!/bin/bash								
+i=0
+while read f; do
+	echo "Line $i: $f"
+	((i++)
+done < file.txt
+-----------------------------------------------
+file.txt 		<= test1, test2, test3, test4
+
+$./while.sh 
+Line 0: test1
+Line 1: test2
+Line 2: test3
+Line 3: test4
 
 
 ####
@@ -7741,6 +8049,46 @@ $# = number of total arguments. <= 'Usage' error report if any arg missing
 $@ = what parameters were passed. Answer is 1 2 3
 $? = was last command successful. Answer is 0 which means 'True'	
 #------------------------------------------------------------------------------------	
+
+Array
+a=()
+b=("apple" "banana" "cherry")   or  $b=(apple banana cherry)
+$ echo $b						<= only returns apple
+$ echo ${b[2]}
+$ b[5]="kiwi"					<= add to 5th position in array
+$ echo ${b[5]}
+kiwi
+$ b+=("mango")					<= add to the end of array
+$ echo ${b[@]}					<= @ as whole array list	
+apple banana cherry kiwi mango
+$ b+=melon						<= add to the 0 position of array
+$ echo ${b[@]}
+applemelon banana cherry kiwi mango
+
+$ echo ${b[@]}
+applemelon banana cherry kiwi mango melon melon
+
+#grep last
+$ echo ${b[@]: -1}				<= grep last element on the array
+melon				
+
+# Bash 4 <, associate ARRAY
+-----------------------------------------------
+#!/bin/bash
+declare -A my_array
+my_array[car_brand]=BMW
+my_array["car_model"]="X6"
+echo ${my_array["car_brand"]} is ${my_array[car_model]}
+-----------------------------------------------
+#!/bin/bash
+declare -A my_array
+my_array[brand]=BMW
+my_array["model"]="X6"
+echo I have a ${my_array["brand"]} ${my_array[model]} car.
+-----------------------------------------------
+
+
+
 	
 	
 	

@@ -16,7 +16,7 @@ _	<= underscore
 []	<= List
 {}	<= Dictionary
 -------------------------------------------------
-Comments
+Bash Comments
 # Single line comment
 : '
 This is a
