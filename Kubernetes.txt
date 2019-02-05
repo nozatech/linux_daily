@@ -35,6 +35,92 @@ Kubeadm
 
 
 
+                            
+                            
+                            
+                            
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###                             
+                            
+$kubectl --kubeconfig=''    <= Path to the kubeconfig file to use for CLI requests.      
+                            $ kubectl config view --raw
+
+$ kubectl --kubeconfig='bnea-k8-config.yml' get nodes
+    NAME                STATUS   ROLES    AGE    VERSION
+    bnea-k8-master      Ready    master   216d   v1.11.0
+    bnea-k8-worker-01   Ready    <none>   216d   v1.11.0
+    bnea-k8-worker-02   Ready    <none>   216d   v1.11.0
+                           
+
+
+                            
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
+Kubernetes Cluster Introspection(
+                           
+                           
+$ kubectl api-resources  <= complete list of supported resources.
+                           
+# kubectl api-describes
+
+
+$ kubectl options
+
+$ kubectl get nodes      <= List currnet     nodes(Wokers)
+$ kubectl get pods       <= List currnet     pods(Dockers)
+$ kubectl get rc         <= List replication controllers    
+$ kubectl get services   <= List services
+              service
+              svc
+
+# Describe pod <name>
+    $ kubectl describe pod 
+    $ kubectl describe pod <name>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+                            
+                            
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
+
+                            
+### Terminology                            
+                            
+kops <= Kubernetes Operations
+
+kubeadm <= easily bootstrap a secure Kubernetes cluster.
+        $ kubeadm --help
+                            
+# docker: Got permission denied
+$ sudo usermod -a -G docker $USER                            
+                            
+                            
+                            
+                            
+                            
+## Kubenetes Cluster Dashboard
+https://github.com/kubernetes/dashboard/blob/master/README.md
+
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
 
 
 

@@ -21,14 +21,15 @@ _	<= Undercore
 `	<= Backtic
 
 https://explainshell.com/
+
 https://www.shellcheck.net/
 $ apt-get | yum install shellcheck	-y
 
 
----------------------------------------------------
+----------------------------------------------------------------------------------------
 # Commenting
 http://tldp.org/LDP/abs/html/special-chars.html
----------------------------------------------------
+----------------------------------------------------------------------------------------
 echo "The # here does not begin a comment."
 echo 'The # here does not begin a comment.'
 echo The \# here does not begin a comment.
@@ -38,9 +39,9 @@ echo ${PATH#*:}        		<= Parameter substitution, NOT a comment.
 echo $(( 2#101011 ))   		<= Base conversion, NOT a comment.
 
 
----------------------------------------------------
+----------------------------------------------------------------------------------------
 # Debugging options
----------------------------------------------------
+----------------------------------------------------------------------------------------
 'Set' or 'unset' values of shell options and positional parameters.
 	
 $ help set
@@ -57,6 +58,7 @@ $ help set
 	set -x	(set -o xtrace)		Print command traces before executing command.
 	
 	set -u 			<= checks undefined variables
+	
 	
 e.g. in a script, add 'set -x' for each line output(debug mode)
 	#!/bin/bash
@@ -102,10 +104,10 @@ e.g. in a script, add 'set -x' for each line output(debug mode)
 	
 
 
----------------------------------------------------
+----------------------------------------------------------------------------------------
 # How to run a script
----------------------------------------------------
-== Use 'chmod + x' befre run a script. ==
+----------------------------------------------------------------------------------------
+== Use 'chmod + x' before run a script. ==
 
 	$ ./script.sh					 <= run in separate shell
 	$ . ./script.sh   			     <= current login shell to run
@@ -140,9 +142,9 @@ e.g. in a script, add 'set -x' for each line output(debug mode)
     $ sh -v script.sh   			 <= -v 	for Verbose mode Shell
     $ sh +v script.sh   			 <= +v 	Disabling the  Verbose mode
 
----------------------------------------------------	
+----------------------------------------------------------------------------------------	
 # VI: Run a script 'Within' VIM or VI
----------------------------------------------------
+----------------------------------------------------------------------------------------
     :w   	      					<= write first
     :! sh %                  		<= : <-cmd, ! <-run, sh <-shell, % =currently open file
     # :!sh %						# works too
@@ -156,9 +158,9 @@ e.g. in a script, add 'set -x' for each line output(debug mode)
 
     :! perl %
 
----------------------------------------------------
+----------------------------------------------------------------------------------------
 # VI - Save READ-ONLY file
----------------------------------------------------
+----------------------------------------------------------------------------------------
 # Save the 'read only' file for under privilege error
 	
 	:w !sudo tee %                  	<= save as sudo privilege.  
@@ -167,9 +169,9 @@ e.g. in a script, add 'set -x' for each line output(debug mode)
 	:w !chmod 777 %    then    :wq!
 	
 
----------------------------------------------------
+----------------------------------------------------------------------------------------
 # VI - Short Keys #
----------------------------------------------------	
+----------------------------------------------------------------------------------------
 # Move	
 	^		<= Move cursor to the beginning of the line.
 	$		<= Move cursor to the end of the current line.
@@ -193,7 +195,7 @@ e.g. in a script, add 'set -x' for each line output(debug mode)
 	
 # Go to
 	
-	:15 <- go to 15th line
+	:15					<= go to 15th line
 	$ vi +15 script.sh
 	
 	G 					<= go to bottom of page
@@ -214,9 +216,9 @@ e.g. in a script, add 'set -x' for each line output(debug mode)
 
 	:12									<= Go to particular line number in vi editor 
 	
----------------------------------------------------	
+----------------------------------------------------------------------------------------
 # VI: Search and replace 	( http://vim.wikia.com/wiki/Search_and_replace )
----------------------------------------------------
+----------------------------------------------------------------------------------------
     :s/foo/bar/g					<= current line only
 	:%s/foo/bar/gc					<= % -all, c - to confirm first but also INSENSITVE
 	#:%s/foo/bar/gci				<= i insensitive(save as above cmd)
@@ -229,40 +231,45 @@ e.g. in a script, add 'set -x' for each line output(debug mode)
 										:d (delete)
 										
 
----------------------------------------------------
+----------------------------------------------------------------------------------------
 # incrementing ((i++)) or ((i=i+1))										
+----------------------------------------------------------------------------------------
+	((i+=1)) == ((i++)) == ((i=i+1))
+	   -=   
+	   *= 
+	   /= 
+	   %=
+	   
+	$ i=5
+	$ let i+=4                  <= i(5) + 4
+	$ echo "$i"                 <= 9
+	$ let i+=4                  <= i(9) + 4
+	$ echo $i                   <= 13  
+
+	$ echo "i = $(( i++ ))"       <= 13
+	$ echo "i = $(( i++ ))"       <= 14
+
+	$ echo "i = $(( ++i ))"       <=15
+	$ echo "i = $(( ++i ))"       <=16
+	$ echo "i = $(( i-- ))"       <=15
+	$ echo "i = $(( --i ))"       <=14
+
+
+	$ VAR="$(command)"		Newer <= Command substitution & assign to Variable $VAR
+	$ VAR=`command`			#Old-Style <=Command substitution & assign to Variable $VAR
+
 ---------------------------------------------------
-i=5
-let i+=4                  <= i(5) + 4
-echo "$i"                 <= 9
-let i+=4                  <= i(9) + 4
-echo $i                   <= 13  
-
-echo "i = $(( i++ ))"       <= 13
-echo "i = $(( i++ ))"       <= 14
-
-echo "i = $(( ++i ))"       <=15
-echo "i = $(( ++i ))"       <=16
-echo "i = $(( i-- ))"       <=15
-echo "i = $(( --i ))"       <=14
-
-
-
-VAR="$(command)"		Newer <= Command substitution & assign to Variable $VAR
-Var=`command`			#Old-Style <=Command substitution & assign to Variable $VAR
-
+# Arithmatic (산수 계산)
 ---------------------------------------------------
-# Arithmatic
----------------------------------------------------
-((..)) 			Arithmatic
-[1+2]			Deprecated Arithmatic
-let a=1+1		Arithmatic
+(( ... )) 			Arithmatic
+[1+2]				Deprecated Arithmatic
+let a=1+1			Arithmatic
 
 ---------------------------------------------------
 # Test Statement
 ---------------------------------------------------
-[ $a -eq $ ]	Test statement
-[[ ... ]] 		Test statement
+[ $a -eq $ ]	Test statement old style
+[[ ... ]] 		Test statement extended
 
 
 
@@ -298,9 +305,9 @@ https://bash.cyberciti.biz/shell/monitoring/
 	https://devhints.io/bash
 
 
----------------------------------------------------
+----------------------------------------------------------------------------------------
 ### Variables ###	 
-
+----------------------------------------------------------------------------------------
 ${Variable}  Vs.  $(Command) <==> `Command`
 
 NAME="Albert Park"
@@ -330,8 +337,8 @@ $ printf "%s\n" ${varName}			<= Add a NEW line using '%s' <- String | '\n' <-a n
 test
 
 
-# Variable convention using VarName=$(date)  <= Execute in subshell $(command)
----------------------------------------------------
+# Variable convention using VarName=$(date)  		<= Execute in subshell $(command)
+----------------------------------------------------------------------------------------
 	$ NOW=$(date)			<=  `date` is shell program
 	$ NOW="$(date)"			<= SAME as above
 	$ echo $NOW
@@ -345,13 +352,12 @@ test
 	$ now=`date`
 	$ echo $now
 	  Fri Jan 18 15:25:43 PST 2019
-
----------------------------------------------------
+----------------------------------------------------------------------------------------
 
 # ${varName} 								<= VAR Syntax
 
-$ echo "MySHELL=>$SHELLCode<="				<= can't tell VAR name '$SHELLCode'
-  MySHELL=><=
+$ echo "MySHELL=>$SHELLCode<="				<= What is '$SHELLCode'?
+  MySHELL=><=								<= Missing 
 
 $ echo  "MySHELL=>\$SHELLCode<="			<= User " "double quote ignore VAR '$' and print as TEXT
   MySHELL=>$SHELLCode<=
@@ -367,7 +373,7 @@ $ echo "MySHELL=>${SHELL} is Shell location.<="		<= Using ${SHELL} for Variable 
 
 ------------------------------------------------------------------------------------
 # Length of Variable
-
+------------------------------------------------------------------------------------
 $ myvar="some string"
 
 $ echo ${#myvar}  				<= use '#' for number of 
@@ -379,9 +385,9 @@ $ echo echo ${myvar} | wc -m   <= wc -m or wc --chars for 'character' counts
 								Unicode characters are counted single until they use more bytes.
 
 
----------------------------------------------------
-# NULL variable
-	- NULL variable is variable which has 'no value' at the time of definition
+------------------------------------------------------------------------------------
+# NULL variable	<= NULL variable is variable which has 'no value' at the time of definition
+------------------------------------------------------------------------------------
 var=
 var=""
 
@@ -389,18 +395,28 @@ var=""
 ?no=10 							<= Invalid '?' var
 out*put=/tmp/filename.txt 		<= Invalid '*' var
 
-_GREP=/usr/bin/grep 			#valid
+_GREP=/usr/bin/grep 			# OK (valid)
 $ echo "$_GREP"
 
 ------------------------------------------------------------------------------------	
 ### Bash built-in Variable
-
-$#, $@ & $? bash built-in variable
+------------------------------------------------------------------------------------
 https://coderwall.com/p/85jnpq/bash-built-in-variables
+
+	$# 	<= number of total arguments. 		
+	$@ 	<= what parameters were passed. 	
+	$? 	<= was last command successful. 	
 
 $ vi test.sh
 ------------------------
 #!/bin/sh
+usage="Usage: This script needs arg1, arg2, arg3 values.\n\ 
+e.g. script.sh 1 2 3"
+
+if [ ! $# == 3 ]; then
+    echo -e $usage
+fi
+
 echo '$#' $#
 echo '$@' $@
 echo '$?' $?
@@ -416,13 +432,57 @@ $?  0
 $# = number of total arguments. 	<= 'Usage' error report if any arg missing
 $@ = what parameters were passed. 	<= Answer is 1 2 3
 $? = was last command successful. 	<= Answer is 0 which means 'True'	
+
+------------------------------------------------------------------------------------
+#!/bin/bash
+#set -x
+clear
+usage="Usage: This script needs arg1, arg2, arg3 values!\n
+e.g. script.sh 1 2 3"
+
+if [ ! $# == 3 ]; then
+    echo -e $usage
+	echo 
+fi
+
+echo "1st argument is $1"
+echo "2nd argument is $2"
+echo "3nd argument is $3"
+echo -----------------------------------------------------------
+echo '$0' $0  '<=This is script itself'
+echo '$#' $#  '<=This should be total argments which should be 3'
+echo '$@' $@  '<=This is what are the argment values passed'
+echo ----------------------------------------------------------
+echo -e '$?' $?  '<=If the value is 0, it ran successfully,\n
+                    if the value is 1, it failed'
 ------------------------------------------------------------------------------------	
+#!/bin/bash
+#set -x
+clear
+USAGE="Usage: This script needs arg1, arg2, arg3 values!\ne.g. script.sh 1 2 3"
 
-$* and $@ bash parameters are same but Difference is using "" 	
-https://javarevisited.blogspot.com/2011/06/special-bash-parameters-in-script-linux.html
+if [ ! $# == 3 ]; then
+    echo -e $USAGE
+    echo "Try again..........................."
+else
+        echo "1st argument is $1"
+        echo "2nd argument is $2"
+        echo "3nd argument is $3"
+        echo -----------------------------------------------------------
+        echo '$0' $0  '<=This is script itself'
+        echo '$#' $#  '<=This should be total argments which should be 3'
+        echo '$@' $@  '<=This is what are the argment values passed'
+        echo ----------------------------------------------------------
+        echo -e '$?' $?  '<=If the value is 0, it ran successfully,\nif the value is 1, it failed'
+fi
 
-$* individual parameters will be separated by first char of IFS characters
-$@ individual parameters will appear in quotes and separated by space.
+------------------------------------------------------------------------------------
+	$* <==> $@ 
+	bash parameters are same but Difference is using "" 	
+	https://javarevisited.blogspot.com/2011/06/special-bash-parameters-in-script-linux.html
+
+	$* 	<= individual parameters will be separated by first char of IFS characters
+	$@ 	<= individual parameters will appear in quotes and separated by space.
 
 $ vi spacialChar.sh
 ------------------------

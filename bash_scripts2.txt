@@ -120,21 +120,6 @@ echo "$NUM / $num2 =$num6"
 echo $((5**2))
 echo $((5/4))
 
-## incremental
-((i+=1)) == ((i++)) == ((i=i+1))
-  -=   
-  *= 
-  /= 
-  %=
-
-  
-random=5
-((random++))
-echo $random
-
-random=5
-((random+=4))
-echo $random  or echo "$random"   NO '$random' will print out $random, not the value!
 
 --------------------------------------------------------------------------------------
 random=5
@@ -144,6 +129,9 @@ echo "++random = $(( ++random ))"  	<=7 ++ (1) then print  6+1
 echo "random-- = $(( random-- ))"	<=7 print random then --
 random is already 6 from --
 echo "--random = $(( --random ))"	<=5 -- then print
+
+
+
 
 ### Using Python for ***floating point value***
 #!/bin/bash
@@ -473,7 +461,7 @@ done
 #7
 
 for i in ${fav_numis[@]}; do
-        echo $i
+     echo $i
 done
 #3.14
 #2.78
