@@ -8076,12 +8076,6 @@ melon
 -----------------------------------------------
 #!/bin/bash
 declare -A my_array
-my_array[car_brand]=BMW
-my_array["car_model"]="X6"
-echo ${my_array["car_brand"]} is ${my_array[car_model]}
------------------------------------------------
-#!/bin/bash
-declare -A my_array
 my_array[brand]=BMW
 my_array["model"]="X6"
 echo I have a ${my_array["brand"]} ${my_array[model]} car.
