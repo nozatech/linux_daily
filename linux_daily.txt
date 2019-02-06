@@ -346,8 +346,9 @@ Firmware(POST or UEFI) => Boot loader => Kernel => Initialization Stages
 	Systems can be booted into different targets. 
 		e.g. rescue mode
 		
-
+-----------------------------------------------------------------------------------------
 # CentOS 7 uses the GRUB2
+-----------------------------------------------------------------------------------------
 $ cat /boot/grub2/grub.cfg				<= BIOS system
 $ cat /boot/efi/EFI/centos/grub.cfg		<= UEFI system
 
@@ -463,8 +464,9 @@ CentOS 5, 6
 	to => Launchd & Upstart but ==> SystemD
 	
 	
-	
-	### SystemD ###
+-----------------------------------------------------------------------------------------	
+### SystemD ###
+-----------------------------------------------------------------------------------------
 	https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
 	https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files	
 	# Units(service name) <= target of most of actions which are resources, defined by unit files
@@ -576,8 +578,9 @@ CentOS 5, 6
 	
 	
 	
-	
-8.	PROCESS
+-----------------------------------------------------------------------------------------	
+# PROCESS
+-----------------------------------------------------------------------------------------
 	$ ps 				<= Unix, BSD, GNU types
 		1 UNIX 		<= ps -ef (Unix/POSIX)    which may be grouped and must be preceded by a dash.
 		2 BSD 		<= ps aux (Ubuntu/Debian) which may be grouped and must not be used with a dash.
@@ -605,8 +608,9 @@ CentOS 5, 6
 	$ ps -ejH		<= CentOS 
 	
 	$ ps auxf
-
+-----------------------------------------------------------------------------------------
 # pstree
+-----------------------------------------------------------------------------------------
 	https://www.cyberciti.biz/faq/unix-linux-pstree-command-examples-shows-running-processestree/
 	$ yum -y install psmisc
 	$ pstree
@@ -626,16 +630,18 @@ CentOS 5, 6
 					├─dbus-daemon(553)───{dbus-daemon}(554)
 
 	
-	
-9. Process Niceness/Priority
+-----------------------------------------------------------------------------------------	
+# Process Niceness/Priority
+-----------------------------------------------------------------------------------------
 	$ nice -2 top			<= if only 1 '-' +2,  '--' -2
 	$ ps -C top --format pid,nice,cmd,%cpu		<= -C  command name
 		PID  	NI CMD
 		21112   2  top
 	$ sudo nice --2 top		<= If no sudo, it will set to nice value '0'<- max permission
 	$ sudo renice -5 top	<= sudo requires
-	
-10. Manage Process Jobs
+-----------------------------------------------------------------------------------------	
+# Process Jobs manage
+-----------------------------------------------------------------------------------------
 	$ watch -n 5 'ps -C dd --format pid,cmd,%cpu'		<= Term1    
 	
 	$ dd if=/dev/zero of=/dev/null						<= Term2    
@@ -655,16 +661,18 @@ CentOS 5, 6
 		$ dd if=/dev/zero of=/dev/null &
 			[1] 24933
 		$ killall dd
-
-### pidof
+-----------------------------------------------------------------------------------------
+# pidof
+-----------------------------------------------------------------------------------------
 	pidof -- find the process ID of a running program.
-	$ pidof nginx
-		19177 19176 19175 19174 19173 6535 6534 6533 6531 6315
+	$ pidof systemd
+		1
 
 	
 	
-	
-10. Kill Signal
+-----------------------------------------------------------------------------------------	
+# Kill Signal
+-----------------------------------------------------------------------------------------
 	$ kill -l 			<=list of singals
 	kill, killall, pkill
 	http://www.thegeekstuff.com/2009/12/4-ways-to-kill-a-process-kill-killall-pkill-xkill/
@@ -677,8 +685,10 @@ CentOS 5, 6
 	$ killall sleep					
 	$ killall -u user_name				<= Kill all related to user
 	
-	
-9. Monitoring TOP
+-----------------------------------------------------------------------------------------	
+# Monitoring 
+# TOP
+-----------------------------------------------------------------------------------------
 	$ top
 			l 	<= load avg & Uptime
 			1 	<= All CPU usage
@@ -700,16 +710,17 @@ CentOS 5, 6
 	https://bash.cyberciti.biz/shell/monitoring/
 
 	
-	
-### wait: wait [id]
+-----------------------------------------------------------------------------------------	
+# wait: wait [id]
+-----------------------------------------------------------------------------------------
     Wait for job completion and return exit status.
 	https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/121391#121391
 	$ wait $!
 
-	
+-------------------------------------------------	
 #!/bin/bash
-# The script uses trap to catch ctrl-c (or SIGTERM), kills off the command 
-# (I've used sleep here as a test) and exits.
+# Thhis script uses trap to catch ctrl-c (or SIGTERM), kills off the command 
+# use sleep  as a test and exits.
 
 cleanup (){
 kill -s SIGTERM $!
@@ -723,13 +734,7 @@ do
     sleep 60 &
     wait $!
 done
-
-
-
-
-
-
-
+-------------------------------------------------
 
 
 
@@ -794,6 +799,7 @@ zsh, ksh, csh
 
 -----------------------------------------------------------------------------------
 https://mywiki.wooledge.org/BashGuide/CommandsAndArguments
+
 # Alias  
 	a word that is mapped to a string. Whenever that word is used as a command, 
 	it is replaced by the string it has mapped.
@@ -814,7 +820,7 @@ https://mywiki.wooledge.org/BashGuide/CommandsAndArguments
 
 -----------------------------------------------------------------------------------
 ### Vi environment set-up (setting)
-
+-----------------------------------------------------------------------------------
 http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 
 Create a .vimrc file in home directory
@@ -826,14 +832,15 @@ $ vi .vimrc
 syntax on
 colorscheme desert
 ----------------------------------------------------
-# To check
-$ vi test	<= or '$ vim test'
-	:echo $MYVIMRC
+	# To check
+	$ vi test				
+	:echo $MYVIMRC			<=Vim variable $MYVIMRC
 	/home/apark/.vimrc
 
 
-	
+	----------------------------------------------------
 	####	Vim color scheme enable   ###
+	----------------------------------------------------
 	http://www.server-world.info/en/note?os=CentOS_7&p=initial_conf&f=7
 
 	1. Install vim-enhanced
@@ -857,8 +864,9 @@ $ vi test	<= or '$ vim test'
 	---------------------------------------------------------------------------------------------------
 	esc highlight
 
-
+----------------------------------------------------
 # VI - number line and tab stop
+----------------------------------------------------
 	$ vi -V 			<= version check
 	:set nu 			<= set number On
 	:set nu!   			<= set number Off
@@ -895,26 +903,29 @@ $ vi test	<= or '$ vim test'
 	
 
 ----------------------------------------------------------------------------------------------------	
-6. Environment variable check
+# Environment variable check
+----------------------------------------------------
 	### to check the environment variables
 	$ printenv     			
 	$ env					
 	### env == printenv ### they are same
 	$ set	
-	
+----------------------------------------------------	
 # Check $SHELL variable	
+----------------------------------------------------
 	$ printenv SHELL
 	$ printenv | grep SHELL
 	$ env | grep SHELL
 	$ echo $SHELL		  	
 	$ set | grep SELL					<= check current SHELL's variables
-=> they all same '/bin/bash <= 
+	=> they all same '/bin/bash <= 
 
 	
-# env <= modified the environment variables
+	$ env <= modified the environment variables
 		-  Set each NAME to VALUE in the environment and run COMMAND.
-	
+----------------------------------------------------	
 # set and unset
+----------------------------------------------------
 http://linuxcommand.org/lc3_man_pages/seth.html
 	<= Set or unset values of shell options and positional parameters(NOT Environment).	
 	Set is a SHELL command to set the value of a shell attribute variable; 
@@ -932,9 +943,9 @@ http://linuxcommand.org/lc3_man_pages/seth.html
 	$ unset i
 	$ echo $i
 		
-			
-set can see shell-LOCAL variables, env cannot.
-
+----------------------------------------------------			
+# set can see shell-LOCAL variables, env cannot.
+----------------------------------------------------
 	Shells can have variables of 2 types: locals, which are only accessible from the current shell, 
 	and (exported) environment variables, which are passed on to every executed program.
 
@@ -952,8 +963,9 @@ set can see shell-LOCAL variables, env cannot.
 	$ set -o posix			<= Turn on POSIX, see shell variables, remove all shell functions
 	$ set +o posix			<= +o removes POSIX mode
 
-	
+----------------------------------------------------	
 # Environment VS SHELL Variables 	
+----------------------------------------------------
 	1. Environment Variables
 		Variables that are defined for the current shell and are inherited by any child shells
 		or processes
@@ -961,8 +973,9 @@ set can see shell-LOCAL variables, env cannot.
 	2. SHELL Variables 
 		Variables that are contained exclusively within the shell in which they were defined.
 
-		
+----------------------------------------------------		
 ### export 	<= (default same as '-p')Set export attribute for shell variables.
+--------------------------------------------------------------------------------------------------------
 			Marks each NAME for automatic export to the environment of subsequently
 			executed commands.  If VALUE is supplied, assign VALUE before exporting.
 			Options:
@@ -981,8 +994,9 @@ set can see shell-LOCAL variables, env cannot.
 	
 	$ printenv | grep VAR
 		** No Result 			<= VAR is not part of environment
-	
+----------------------------------------------------	
 # To put it into Env variables, use 'export'
+----------------------------------------------------
 	$ export VAR			
 	$ env | grep VAR		
 	  VAR=TEST
@@ -994,13 +1008,14 @@ set can see shell-LOCAL variables, env cannot.
 	
 	
 	
-	
-### socat - Multipurpose relay (Socket CAT)
+----------------------------------------------------	
+# socat - Multipurpose relay (Socket CAT)
+----------------------------------------------------
 
 
-
-
+----------------------------------------------------
 # Bash options
+----------------------------------------------------
 # set vs. shopt 
 
 	$ set -o					<=inherited from other Bourne-style shells (mostly ksh)
@@ -1082,14 +1097,16 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	
 --------------------------------------------------------------------------	
 # Switch user
+--------------------------------------------------------------------------
 	$ su   user_id					<= just switch user but same current directory
 	$ su - user_id					<= go to user's HOME directory
 --------------------------------------------------------------------------	
 
 
+--------------------------------------------------------------------------	
 # CD command
-# Tilde extension
-
+# Tilde( ~ ) extension
+--------------------------------------------------------------------------	
 	$ cd .. 		<= Parent  directory
 	$ cd .			<= Current directory
 	$ cd ~			<= User's home directory
@@ -1114,6 +1131,7 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 
 --------------------------------------------------------------------------
 # History	
+--------------------------------------------------------------------------	
 	$ ls /var/log
 	$ cd  !*						<= cd into last command directory
 		$ cd /var/log
@@ -1152,7 +1170,9 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	
 --------------------------------------------------------------------------	
 # Touch 
+--------------------------------------------------------------------------	
 # Brace expansion
+--------------------------------------------------------------------------	
 
 	$ touch apple banana cherry				<= creating multiple files
 	$ touch {apple,banana,cherry}			<= !NO SPACE!creating multiple files
@@ -1177,9 +1197,9 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	$ echo {{a..z},{A..Z},{1..10}}  	<= Double braces for combine
 
 	$ echo {w..d..2}					<= Backward + every 2nd letter
-
-  # Brace combine
-	--------------------------------------------------------------------------
+--------------------------------------------------------------------------	
+# Brace combination
+--------------------------------------------------------------------------
 	$ echo {{A..Z},{a..z}}				<= without printing  [  ] ^ _ ` 
 	  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 
 		a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -1221,7 +1241,9 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 		cherry
 	
 --------------------------------------------------------------------------
-### nl <= number line
+# nl <= number line
+--------------------------------------------------------------------------	
+
 	$ nl file.txt
 	$ cat file.txt | nl 
 
@@ -1234,36 +1256,73 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	$ echo "hi" > named_pipe
 	
 	From 2nd shell
-	$cat named_pipe
+	$ cat named_pipe
 	# meta data
 	prw-rw-r--. 1 apark apark 0 Jun  1 15:10 named_pipe
 
 --------------------------------------------------------------------------	
 ### STDIN, STDOUT, STDERR
+--------------------------------------------------------------------------	
 	$ sort < unsorted.txt > sorted.txt
 	$ ls | tee ls.txt
 	$ ls | tee -a ls.txt 			<= -a append
+
 	$ find /etc |sort|tee etcSort.txt|wc -l
 	$ find /etc 2> etcErr.txt |sort|tee etcSort.txt|wc -l
 	$ find /etc &> /dev/null   			<= NO OUT PUT
 	
 --------------------------------------------------------------------------
 ### '\' back slash
+--------------------------------------------------------------------------	
 	long command using  \  for extent command
 	# escape character \
+
+
+
+--------------------------------------------------------------------------	
+### SSH 
+--------------------------------------------------------------------------	
+	-v  <=verbose 
+	-V  <=Version 
+	
+	$ ssh -vvvv nozatech@192.168.221.129						<= Max verbose debugging mode
+    
+	OpenSSH_6.7p1, OpenSSL 1.0.1k 8 Jan 2015
+    debug1: Reading configuration data /etc/ssh_config
+    debug1: Connecting to 192.168.221.129 [192.168.221.129] port 22.
+    debug1: Connection established.
+    debug1: identity file /home/apark/.ssh/id_rsa type 1
+
+	### SSL is TLS ###
+	SSL(Secure Socket Layer) is the old name. 
+	TLS(Transport Layer Security) is for now a days.
+	https://curl.haxx.se/docs/sslcerts.html
 	
 --------------------------------------------------------------------------
-### Putty, mRemote, Cygwins, Shell, Terminal
+### SSH, Putty, mRemote, Cygwins, Shell, Terminal ###
+--------------------------------------------------------------------------	
 	
 3. SSH connection login
 	$ ssh -v root@172.16.248.xx > result.txt					<= -v debugging mode
 	$ ssh -v root@172.16.248.xx 2>&1 > result.txt	
 	$ ssh id@x.x.x.x -p 2222									<= different port 2222
 	$ ssh -l ubuntu ip_address (or hostname)					<= -l login user name
+	
+--------------------------------------------------------------------------	 
+### sshd ### 
+--------------------------------------------------------------------------	
+	$ vi /etc/ssh/sshd_config
+		RSAAuthentication 			yes
+		PubkeyAuthentication		yes
+		AuthorizedKeysFile 			.ssh/authorized_keys
+		PasswordAuthentication 		no	<= NO!
 
+	$ /etc/init.d/sshd restart							<= Restarts the sshd   service
+	$ systemctl restart sshd 	
+	
 --------------------------------------------------------------------------
-### List of host in ~/.ssh/config file  
-											** using Alias is OLD way ***
+# ssh using  Alias vs ~/.ssh/config
+									
 	https://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/
 	
 	$ vi ~/.ssh/config
@@ -1271,15 +1330,17 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	Host netops
 		HostName 45.55.5.69
 		User apark
-		Port 22
 		IdentityFile ~/.ssh/id_rsa
+		
 	Host puppet
-		HostName IP
+		HostName 45.55.5.69
 		User apark
 		Port 22
 		IdentityFile ~/.ssh/id_rsa
 	
-	$ ssh apark@netops
+	# SSH Connection 
+	$ ssh apark@netops			<= from .ssh/config file
+	
 --------------------------------------------------------------------------	
 ### Login to internal lan server 192.168.0.251 via our public UK office ssh based gateway using ##
 	## $ ssh uk.gw.lan ##
@@ -1299,8 +1360,11 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 				   its proxy support. For example, the following directive would connect via an HTTP proxy at 
 				   192.1.0.253:  ProxyCommand /usr/bin/nc -X connect -x 192.1.0.253:3128 %h %p
 
---------------------------------------------------------------------------	
-	# Creating SSH config file and single Ciphers option
+--------------------------------------------------------------------------
+# SSH Ciphers option
+--------------------------------------------------------------------------
+https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process
+
 	$ ssh -c aes256-ctr apark@45.55.5.69
 	$ ssh -c 3des-cbc   apark@45.55.5.69
 	$ ssh -Q [cipher | cipher-auth | mac | kex | key]
@@ -1314,9 +1378,11 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 
 
 --------------------------------------------------------------------------	
-	### Set SSH debugging mode on server
+# Set SSH debugging mode on server
+--------------------------------------------------------------------------
 	https://en.wikibooks.org/wiki/OpenSSH/Logging_and_Troubleshooting
-	$ systemctl stop sshd 					<= your connection is still live
+	
+	$ systemctl stop sshd 					<= your connection is still Alive
 	$ /usr/sbin/sshd -ddd					<= running debugging mode on screen	
 
 	## Client can't connect
@@ -1327,9 +1393,9 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	$ chown 700 -R .ssh
 	
 
-	
 	# MD5 (Message-Digest algorithm 5)
 	https://help.ubuntu.com/community/HowToMD5SUM
+	
 	$ md5sum file_name
 	When one has downloaded an ISO file for installing or trying Ubuntu, it is recommended to test 
 	that the file is correct and safe to use. The MD5 calculation gives a checksum (called a hash value), 
@@ -1337,6 +1403,7 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	
 --------------------------------------------------------------------------	
 ###  basename 		<= 	strip directory and suffix from filenames
+--------------------------------------------------------------------------	
 	basename prints filename NAME with any leading directory components removed. 
 	It can optionally also remove any trailing suffix.
 	
@@ -1371,28 +1438,13 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	$ update-rc.d ssh defaults			<= put it into start up
 	$ update-rc.d ssh enable 			# sets the default runlevels to on 
 	$ update-rc.d ssh disable 			# sets all to off
-
-### SSH 
-	-v  <=verbose 
-	-V  <=Version 
 	
-	$ ssh -vvvv nozatech@192.168.221.129						<= Max verbose debugging mode
-    
-	OpenSSH_6.7p1, OpenSSL 1.0.1k 8 Jan 2015
-    debug1: Reading configuration data /etc/ssh_config
-    debug1: Connecting to 192.168.221.129 [192.168.221.129] port 22.
-    debug1: Connection established.
-    debug1: identity file /home/apark/.ssh/id_rsa type 1
-
-	### SSL is TLS ###
-	SSL(Secure Socket Layer) is the old name. 
-	TLS(Transport Layer Security) is for now a days.
-	https://curl.haxx.se/docs/sslcerts.html
 
 --------------------------------------------------------------------------	
 ### User management	
 --------------------------------------------------------------------------
 # useradd vs adduser
+--------------------------------------------------------------------------	
 	# https://askubuntu.com/questions/345974/what-is-the-difference-between-adduser-and-useradd
 	
 	addduser / deluser 			<= Perl script that creates /home/user & ssh in shell
@@ -1406,8 +1458,10 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 		so that these users can't log into the server.
 	$ useradd --no-create-home --shell /bin/false prometheus
 	$ useradd --no-create-home --shell /bin/false node_exporter
-	
+
+--------------------------------------------------------------------------		
 # Change user name
+--------------------------------------------------------------------------	
 	https://askubuntu.com/questions/34074/how-do-i-change-my-username
 	
 	$ sudo usermod -l newUsername oldUsername
@@ -1444,31 +1498,20 @@ $ useradd -m -d /home/ipetcu -s /bin/bash  apark2			<= new user name 'apark2'
 
 ### Login as apark, switch user to ROOT.
 					
-useradd -m -d /home/ipetcu -s /bin/bash ipetcu	&& cd /home/ipetcu
-mkdir .ssh && chmod 700 .ssh  && chown ipetcu: .ssh 
-touch /home/ipetcu/.ssh/authorized_keys && chmod 600 .ssh/authorized_keys && chown ipetcu:  .ssh/authorized_keys
-vi .ssh/authorized_keys
+	$ useradd -m -d /home/ipetcu -s /bin/bash ipetcu	&& cd /home/ipetcu
+	$ mkdir .ssh && chmod 700 .ssh  && chown ipetcu: .ssh 
+	$ touch /home/ipetcu/.ssh/authorized_keys && chmod 600 .ssh/authorized_keys && chown ipetcu:  .ssh/authorized_keys
+	$ vi .ssh/authorized_keys
 
-#cat id_rsa.pub >> .ssh/authorized_keys
-sudo visudo
-ipetcu  ALL=(ALL)       NOPASSWD:ALL
-BNER IP: 89.37.124.86
- 
-### Edit sshd config file	### 
-$ vi /etc/ssh/sshd_config
-----------------------------
-RSAAuthentication 			yes
-PubkeyAuthentication		yes
-AuthorizedKeysFile 			.ssh/authorized_keys
-PasswordAuthentication 		no	<= NO!
+	$ cat id_rsa.pub >> .ssh/authorized_keys
+	$ sudo visudo
+	  ipetcu  ALL=(ALL)       NOPASSWD:ALL
 
-----------------------------	
-$ /etc/init.d/sshd restart							<= Restarts the sshd   service
-$ systemctl restart sshd 		
+	
 	
 --------------------------------------------------------------------------	
 ### /etc/passwd	
-
+--------------------------------------------------------------------------	
 	userID:pw:uid:gid:gecos:home             : shell
 	icinga:x:992:987:icinga:/var/spool/icinga2:/sbin/nologin
 	
@@ -1518,15 +1561,15 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	
 
 
-	
+--------------------------------------------------------------------------		
 ### run script remotely
-
+--------------------------------------------------------------------------	
 	$ ssh apark@remote_server  'bash -s' < from_local_script.sh		<= run a script remotely from local using sudoer
 	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh              <= installing as sudo	
 
-	
+--------------------------------------------------------------------------		
 ### Create a server list text file and a update script first
-	
+--------------------------------------------------------------------------		
 	$ for r in $(cat nrErrorServers.txt); do ssh -v $r 'sudo su && bash -s' < updateHosts.sh ; done
 	
 	$ for i in $(cat doUpdateList.txt); do ssh -t apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
@@ -1535,13 +1578,15 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	### Ignoring 'adding remote host (yes/no)'
 	$ for i in $(cat doUpdateList.txt); do ssh -t -o "StrictHostkeyChecking no" apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
 
-	
+--------------------------------------------------------------------------		
 ### PSSH ###
-#	$ pssh -O StrictHostKeyChecking=no -h HostList.txt -l apark -A -i   -x '-t -t'    "sudo /etc/init.d/newrelic-sysmond restart"
-### 
+--------------------------------------------------------------------------	
+	$ pssh -O StrictHostKeyChecking=no -h HostList.txt -l apark -A -i   -x '-t -t'    "sudo /etc/init.d/newrelic-sysmond restart"
+ 
+--------------------------------------------------------------------------	
 ### PRSYNC ###	
-# 	$ prsync -h /cdn/usEdgeServers.txt -l apark -v -x '-avz --delete' /cdn/data/ /cdn/data/
-###	
+--------------------------------------------------------------------------	
+ 	$ prsync -h /cdn/usEdgeServers.txt -l apark -v -x '-avz --delete' /cdn/data/ /cdn/data/
 	
 	http://unix.stackexchange.com/questions/87405/how-can-i-execute-local-script-on-remote-machine-and-include-arguments
 	
@@ -1555,6 +1600,7 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	
 ----------------------------------------------------------------------------------------------------	
 4.  RSA KEY( 1024bit, 2k, 4k bit)
+--------------------------------------------------------------------------	
 	### You need to login to the server !!!first!!!
 	$ ssh-keygen -t rsa							<= Generate  id_rsa (Private Key ) & id_rsa.pub (Public Key)	
 	
@@ -1569,7 +1615,8 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	
 	
 ----------------------------------------------------------------------------------------------------
-5. WGET to download a file using user_id & PW
+#  WGET to download a file using user_id & PW
+--------------------------------------------------------------------------	
 	$ wget --user=user_id --password='my_passwd' http://download.com/foo.pdf
 	$ wget http://www.gnu.org/software/gettext/manual/gettext.html  or file_name	
 	$ time wget http://www.gnu.org/software/gettext/manual/gettext.html  			<= measuring download time
@@ -1580,6 +1627,7 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	
 ----------------------------------------------------------------------------------------------------	
 ### Finding my ip (Gateway IP)
+--------------------------------------------------------------------------	
 	$ curl ifconfig.io	
 	$ curl icanhazip.com
 
@@ -1611,11 +1659,13 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	
 ----------------------------------------------------------------------------------------------------	
 ### jq - Command-line JSON processor
+--------------------------------------------------------------------------	
 	curl -s http://127.0.0.1:4567/clients | jq .   	<= -s slient 
 	
 ----------------------------------------------------------------------------------------------------	
 ### cURL   ### 
-	Testing on REST API
+--------------------------------------------------------------------------	
+  # REST API Testing
 	A. Content of the URL and display it in the STDOUT (i.e on your terminal)
 		$ curl http://www.centos.org
 	
@@ -1661,8 +1711,9 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	### Check multiple site
 	$ curl -sSF http://site.{one,two,three}.com
 
-----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------
 *C*R*U*D*
+--------------------------------------------------------------------------	
 
 POST method
 	$ curl -d "first=Alber&last=park" http://address:port/method_name
@@ -1677,8 +1728,9 @@ Delete
 
 	$ curl -X GET -H 
 
-----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------
 # User-Agent
+--------------------------------------------------------------------------	
 	When a software agent operates in a network protocol, it often identifies itself, 
 	its application type, operating system, software vendor, or software revision, 
 	by submitting a characteristic identification string to its operating peer. 
@@ -1690,6 +1742,7 @@ Delete
 ----------------------------------------------------------------------------------------------------
 ### curl can download or upload through any protocol, http, ftp, sftp, scp, ldap, telnet
 https://curl.haxx.se/docs/httpscripting.html
+--------------------------------------------------------------------------	
 
 curl 					www.yahoo.com 		-o 		output.html					# -o output to
 curl -sL 	https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh			# -s(silence)L(location) -o(output)
@@ -1731,6 +1784,7 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 	
 ----------------------------------------------------------------------------------------------------
 ### base64 - base64 encode/decode data and print to standard output
+--------------------------------------------------------------------------	
 	http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
 	
 	# Encode
@@ -1744,6 +1798,7 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 
 ----------------------------------------------------------------------------------------------------
 ### How to check SHELL type
+--------------------------------------------------------------------------	
 	$ echo $SHELL
 		/bin/bash
 	$ echo $0
@@ -1769,15 +1824,16 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 		
 
 
-### Copy, Move, Rename
+--------------------------------------------------------------------------	
 ### cp
+--------------------------------------------------------------------------	
 
 
 
 
-
-
+--------------------------------------------------------------------------	
 ### mv 
+--------------------------------------------------------------------------	
 	https://superuser.com/questions/901183/who-deals-with-the-star-in-echo
 	e.g. test.txt test1(dir) test2(dir) test3(dir)
 	$ mv *
@@ -1785,8 +1841,9 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 		test3(dir)   <= cuz 'mv' test.txt test1(dir) test2(dir) => test3(dir)
 	
 	
-
+--------------------------------------------------------------------------	
 ### rename
+--------------------------------------------------------------------------	
 	$ rename	a to b
 	$ mv		a to b
 	
@@ -1803,8 +1860,9 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 	$ rm "the file name.mp3"			<= if there are spaces in file name
 	
 
-	
+--------------------------------------------------------------------------		
 ### grep
+--------------------------------------------------------------------------	
 	$ grep --color=auto apark /var/log/secure
 	$ export GREP_OPTIONS='--color=auto'
 
@@ -1818,8 +1876,9 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 	$ grep -i -m 1 'centos' /etc/*rel*
 	$ cat /etc/*rel* |  grep -i -m 1 'centos'
 
-	
-7. File Globs
+--------------------------------------------------------------------------		
+# File Globs
+--------------------------------------------------------------------------	
 	1) * (asterist)
 		$ file.*			<= matches any number of any characters
 		$ file*.txt
@@ -1877,8 +1936,9 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 
 
 
-	
+--------------------------------------------------------------------------		
 ### Extended Globs
+--------------------------------------------------------------------------	
 	$ shopt
 	$ shopt -s extglob				<= put into .bashrc
 
@@ -1900,9 +1960,11 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 	5) !(+(match)*+(match))			<= group match
 		$ ls !(+(photo|file)*+(.jpg|.gif)) 	<= All files that do not have photo or file, and 
 												don't end with jpg or gif.
-			
-### Shell Meta-Characters			
+--------------------------------------------------------------------------				
+# Meta-Characters			
+--------------------------------------------------------------------------	
 	< >, $, *, {}, [], +, '', ^, ., ?, |, (), \, ""
+
 	$ USER=apark
 	$ echo  $USER
 	$ echo  My name is $USER
@@ -1925,9 +1987,9 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 
 
 	
-		
-4. free  
-	 
+--------------------------------------------------------------------------			
+# free  
+--------------------------------------------------------------------------		 
 	### Most memory used by process
 	
 	$ ps aux --sort=-%mem | awk 'NR<=10{print $0}'	
@@ -1948,8 +2010,10 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
             option is not specified, free subtracts buffer memory from the  used
             memory and adds it to the free memory reported.
 	$ egrep --color 'Mem|Cache|Swap' /proc/meminfo
-
-5. vmstat   
+	
+--------------------------------------------------------------------------	
+# vmstat   
+--------------------------------------------------------------------------	
 	# virtual memory statistics 
 	# reports information about processes, memory, paging, block IO, traps, and cpu activity.	
 	
@@ -4233,69 +4297,90 @@ Ubuntu 16.04 or higher			V
 	
 	
 
-51. diff & sdiff
+--------------------------------------------------------------------------------------------------
+# Diff Tools
+https://www.tecmint.com/best-linux-file-diff-tools-comparison/
+
+# diff  	<= compare files line by line
+# sdiff 	<= side-by-side merge of file differences
+# comm 		<= compare two sorted files line by line
+# diff3		<= compare 3 files line by line 
+# cmp		<= compare two files byte by byte
+# diffstat
+# colordiff	<= https://www.colordiff.org/
+--------------------------------------------------------------------------------------------------
 	https://www.lifewire.com/compare-two-text-files-linux-3861434
      
 	$ colordiff file1 file2
     $ diff -u file1 file2 | colordiff
 
 	https://stackoverflow.com/questions/16787916/difference-between-two-directories-in-linux
-	$ diff -r dir1 dir2 | grep dir1 | awk '{print $4}' > difference1.txt	
+	
+	$ diff -r dir1 dir2 | grep dir1 | awk '{print $4}' > differences.txt	
+	
 	$ diff -rq dir1 dir2		
 			-r - Recursively compare any subdirectories found.
 			-q - Output only whether files differ.
 			
 	https://askubuntu.com/questions/421712/comparing-the-contents-of-two-directories
 	
-	
+	---------------------------------------------------------------------------
 	# Diff between two remote folders through SSH
-
-Server 1
-
-IP: images.server1.com
-User: ubuntu1
-Password: pa$$word1
-Images Path: /home/www/images/test_images
-
-Server 2
-
-IP: images.server2.com
-User: ubuntu2
-Password: pa$$word2
-Images Path: /var/www/site/images/test_images
-
+	---------------------------------------------------------------------------
+	Server 1
+	IP: images.server1.com
+	Images Path: /home/www/images/test_images
+	
+	Server 2
+	IP: images.server2.com
+	Images Path: /var/www/site/images/test_images
 
 -------------------------------------------------------------------------------------------
-diff -B <(sshpass -p 'pa$$word1' \
-	ssh ubuntu1@images.server1.com "find /home/www/images/test_images -type f\ 
-	| sed 's/\/home\/www\/images\/test_images\///g'" | sort -n) < \
-	(sshpass -p 'pa$$word2' ssh ubuntu2@images.server2.com \ 
-	"find /var/www/site/images/test_images -type f |  \ 
-	sed 's/\/var\/www\/site\/images\/test_images\///g'" | sort -n)\ 
-	| grep ">" | awk '{print $2}'
+	$ diff -B <\
+		(sshpass -p 'pa$$word1' ssh ubuntu1@images.server1.com \
+		"find /home/www/images/test_images -type f\ 
+		| sed 's/\/home\/www\/images\/test_images\///g'" | sort -n) < \
+		
+		(sshpass -p 'pa$$word2' ssh ubuntu2@images.server2.com \ 
+		"find /var/www/site/images/test_images -type f |  \ 
+		sed 's/\/var\/www\/site\/images\/test_images\///g'" | sort -n)\ 
+		| grep ">" | awk '{print $2}'
 -------------------------------------------------------------------------------------------
+		Explanation:
 
-Explanation:
+		You can use diff -B <() <() for taking the diff between two streams. The command first uses 
+		sshpass to ssh into the two servers without having to enter your passwords interactively.
 
-You can use diff -B <() <() for taking the diff between two streams. The command first uses 
-sshpass to ssh into the two servers without having to enter your passwords interactively.
+		Each parameter for diff -B uses find command to recursively list all your images in the 
+		specified directory and uses sed to remove the root path of the files (because they are 
+		different for two servers - and to make it work for the diff command); and the sort command to sort them.
 
-Each parameter for diff -B uses find command to recursively list all your images in the 
-specified directory and uses sed to remove the root path of the files (because they are 
-different for two servers - and to make it work for the diff command); and the sort command to sort them.
+		Since the output of the diff command returns either > or <, grep is used to filter out 
+		only the diffs from your Server 2. Last, awk prints out only the second column 
+		(removes the > column from the output).
 
-Since the output of the diff command returns either > or <, grep is used to filter out 
-only the diffs from your Server 2. Last, awk prints out only the second column (removes the > column from the output).
-
-NOTE: You need to install sshpass first. 
-sudo apt-get install sshpass
-
-
-  csplit   Split a file into context-determined pieces
-  cut      Divide a file into several parts
+		NOTE: You need to install sshpass first. 
+		sudo apt-get install sshpass
 
 
+# csplit   Split a file into context-determined pieces
+
+# cut      Divide a file into several parts
+
+
+# Comparing two directories
+https://stackoverflow.com/questions/16787916/difference-between-two-directories-in-linux/16788549	   
+
+$ diff -r dir1 dir2 | grep dir1 | awk '{print $4}' > difference1.txt
+
+$ diff -rq dir1 dir2 				<= -r - Recursively compare any subdirectories found.
+									<= -q - Output different files.
   
+
+# comm		<=  files those are in dir1 and not in dir2
+	$ comm -23 <(ls dir1 |sort) <(ls dir2|sort)		<= <( ) sign, you can google it as 'process substitution'.
+
+
   
 52. # chkconfig --add <script_name>
 	# chkconfig <script_name> on

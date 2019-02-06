@@ -1,12 +1,15 @@
+----------------------------------------------------------------------------------------
+###  Bash Shell Scripting ###
+----------------------------------------------------------------------------------------
 "한 줄의 코딩을 하더라도 실제로 사용할 수 있는 것을 만들자!"
 https://mywiki.wooledge.org/BashGuide/Parameters
 
-################################
-### 1. Running SHELL Scripts ###
-################################
+https://explainshell.com/
+https://www.shellcheck.net/
 
-# special characters Names
-https://www.owasp.org/index.php/Password_special_characters
+----------------------------------------------------------------------------------------
+# Special Characters Names(https://www.owasp.org/index.php/Password_special_characters)
+----------------------------------------------------------------------------------------
 (	<= Parenthesis
 { 	<= Brace
 | 	<= Vertical bar
@@ -19,25 +22,18 @@ _	<= Undercore
 ^	<= Caret[캐릿]
 ~	<= Tilde[틸더]
 `	<= Backtic
-
-https://explainshell.com/
-
-https://www.shellcheck.net/
-$ apt-get | yum install shellcheck	-y
-
-
 ----------------------------------------------------------------------------------------
-# Commenting
-http://tldp.org/LDP/abs/html/special-chars.html
+# Commenting (http://tldp.org/LDP/abs/html/special-chars.html)
 ----------------------------------------------------------------------------------------
-echo "The # here does not begin a comment."
-echo 'The # here does not begin a comment.'
-echo The \# here does not begin a comment.
-echo The  # here begins a comment.
+	$ echo "The # here does not begin a comment."
+	$ echo 'The # here does not begin a comment.'
+	$ echo The \# here does not begin a comment.
+	$ echo The  # here begins a comment.
 
-echo ${PATH#*:}        		<= Parameter substitution, NOT a comment.
-echo $(( 2#101011 ))   		<= Base conversion, NOT a comment.
-
+	$ echo -e "This is 1st line.\n\tThis is 2nd line.\n\t\tThis is 3rd line."
+	  This is 1st line.
+          This is 2nd line.
+              This is 3rd line
 
 ----------------------------------------------------------------------------------------
 # Debugging options
@@ -45,7 +41,7 @@ echo $(( 2#101011 ))   		<= Base conversion, NOT a comment.
 'Set' or 'unset' values of shell options and positional parameters.
 	
 $ help set
-	set -xeu		<= 틀린(x) 이유(eu)를 알아야 고친다
+	set -xeu		<= x<-틀린(debug) eu<-이유(exit,undefine vars)를 알아야 고친다
 	
 	set -ex         # Do both for good practice 
 	Set +ex  		<= Unset debug
@@ -59,8 +55,9 @@ $ help set
 	
 	set -u 			<= checks undefined variables
 	
-	
-e.g. in a script, add 'set -x' for each line output(debug mode)
+	--------------------------------------------------------------------
+	e.g. in a script, add 'set -x' for each line output(debug mode)
+	--------------------------------------------------------------------
 	#!/bin/bash
 	set -x			<= debug mode tracing
 	set -u 			<= checks undefined variables
@@ -68,58 +65,66 @@ e.g. in a script, add 'set -x' for each line output(debug mode)
 	$ ls -al | tee -a output.file | ...		<= 'tee -a' append
 	
 	$ bash -n debug.sh					    <= prints out Syntex error only
-	
-	e.g. embedded in a script
 	------------------------------------------
 	#!/bin/bash
-	### check undefined var and
+	# check undefined var and
 	set -u 						# check undefined var
 	set -x						# Turn on  debug mode
 	set -e						# exit right away if there is a fail
-	# set -eux		<= 틀린(x) 이유(eu)를 알아야 고친다
 	
+	set -eux					<= 틀린(x) 이유(eu)를 알아야 고친다
 	
-	###
+	------------------------------------------
+	$ vi debug.sh
+	#!/bin/bash
 	a=1
 	echo my PID is $$
 	set +x						# Turn off the tracing
 	b=2							# no out put for variable 'b'
-	set -x						# Turn on
+	set -xu						# Turn on
 	echo a is $a b is $b c is $c
-	------------------------------------------
-	$ ./debug.sh
-	+ a=1
-	+ echo my PID is 1316
-	my PID is 1316
-	+ set +x
-	debug.sh: line 9: c: unbound variable   <= set -u report
+		
+	$ bash debug.sh
+		+ a=1					<=+ is debug
+		+ echo my PID is 1316
+		my PID is 1316
+		+ set +x
+		debug.sh: line 9: c: unbound variable   <= set -u report
 
 	---------------------------------------------------								
     #!/bin/bash -x 					<= add " -x " for debugging mode in #!/bin/bash script
     $ bash -x ./script.sh  			( same as 'bash script.sh') 
     $ bash -vx script.sh			<= add -xv from shell -v <-verbose -x <-debug
+	
+	# Run a script with Debug mode within VI 
 	:! sh -x %						<= -x is for DEBUG(verbose) mode
-    set -x              			<= End of file +x for TURN OFF
+    set +x              			<= End of file +x for TURN OFF
+	
 	$ bash -n ./script.sh 			<= checking syntax error
 	
-
-
 ----------------------------------------------------------------------------------------
 # How to run a script
 ----------------------------------------------------------------------------------------
-== Use 'chmod + x' before run a script. ==
+	###  Change permission before run a script ###
+	$ chmod + x	  script.sh		<= before run a script
+	
+	# Version Check
+	$ bash -version 
+	$ echo $BASH_VERSION 	
 
-	$ ./script.sh					 <= run in separate shell
+	$ bash 		script.sh			 <= No Need to change 'chmod +x'
+	$ bash 	  ./script.sh
+	$ bash -x   script.sh			 <= debug mode
+
+	$   ./script.sh					 <= run in separate shell
 	$ . ./script.sh   			     <= current login shell to run
 
+    $ sh   script.sh  				
     $ sh ./script.sh  				 <= same as 'sh script.sh')
 
-    $ exec ./script   				 <= after it runs, exits from current shell 
+    $ exec ./script   				 <= after it runs, EXIT from current shell 
 
-	$ bash script.sh				<= No Need to change 'chmod +x'
-	$ bash ./script.sh
-	$ bash -x  script.sh			 <= debug mode
-	$ bash -v 
+
 
 # source command( run in CURRENT SHELL)
 	$ source script.sh
@@ -408,7 +413,7 @@ https://coderwall.com/p/85jnpq/bash-built-in-variables
 	$? 	<= was last command successful. 	
 
 $ vi test.sh
-------------------------
+------------------------------------------------------------------------
 #!/bin/sh
 usage="Usage: This script needs arg1, arg2, arg3 values.\n\ 
 e.g. script.sh 1 2 3"
@@ -420,7 +425,7 @@ fi
 echo '$#' $#
 echo '$@' $@
 echo '$?' $?
-------------------------
+------------------------------------------------------------------------
 $ bash ./test.sh 1 2 3
 output:
 $#  3
@@ -623,6 +628,11 @@ $ echo "${#files[@]}"
 --------------------
 ### Bash Scripts ###
 --------------------
+------------------------------------------
+# FUNCTION
+------------------------------------------
+
+
 
 ------------------------------------	  
 #!/bin/bash
@@ -818,11 +828,11 @@ n >& m         # 'Merge' output from stream n with stream m.
 n <& m         # 'Merge' input from stream  n with stream m.
 << tag         # Standard input comes from here through next tag at start of line.	
 
-cmd << EOF	  # '<<' here document using EOF(End Of File)
-bla~~
-EOF		   
+	$ cmd << EOF	  # '<<' here document using EOF(End Of File)
+	  blah~~
+	  EOF		   
 
-$cat << EOF
+$ cat << EOF
 	> Test1
 	> Test2
 	> EOF
@@ -892,6 +902,8 @@ indexed and associative arrays.
 	the following rule:
 	Name: A word consisting only of letters, digits and underscores, and beginning with a letter 
 		or an underscore. Also referred to as an identifier.	
+
+
 		
 ---------------------------------------------------	
 # Shell Built-in Variables:
@@ -1105,17 +1117,21 @@ $ until    [ ]; do echo "Thinking"; sleep 2; done
 
 
 ---------------------------------------------------	
-Grouping Commands	
+# Grouping Commands
+---------------------------------------------------		
 https://www.gnu.org/software/bash/manual/bashref.html#Command-Grouping
-Current Shell vs Non-effect Shell
+
+---------------------------------------------------	
+Current Shell vs Non-effect (sub)Shell
+---------------------------------------------------	
 https://askubuntu.com/questions/606378/when-to-use-vs-in-bash
 
-### ()   	<=  ( list )
+### $(  )   	<=  ( list )
 	Placing a list of 'commands' between parentheses causes a 'subshell' environment to be created, 
 	and each of the commands in list to be executed in that subshell. Since the list is executed 
 	in a subshell, variable assignments do not remain in effect after the subshell completes.
 
-### {} 		<=	{ list; }
+### { } 		<=	{ list; }
 	Placing a list of commands between curly braces causes the list to be executed in the 
 	current shell context. 
 	No subshell is created. The semicolon (or newline) following list is required.	
@@ -1130,7 +1146,7 @@ https://askubuntu.com/questions/606378/when-to-use-vs-in-bash
 
 	#!/bin/bash  # or '#!/bin/bash -x'
 	### turn on debug mode
-	set -x           <- Turn on/ Off " +x " debug mode
+	set -x           					<= Turn on/  " +x " Off debug mode
 	for i in $(ls)
 	do
 		file $i
@@ -1271,6 +1287,9 @@ $? = was last command successful. Answer is 0 which means 'yes(True)'
 $ echo -n     do not output the trailing newline (\n)
        -e     enable interpretation of backslash escapes
        -E     disable interpretation of backslash escapes (default)
+	   
+echo ${PATH#*:}        		<= Parameter substitution, NOT a comment.
+echo $(( 2#101011 ))   		<= Base conversion, NOT a comment. 
 
 #--------------------------------------------------------------------------------
 ### Usage Message ### 
@@ -1292,22 +1311,22 @@ echo "2nd argument is $2"
 # Usage: compare2dirs.sh DIR1_Name DIR2_Name #
 usage="Usage: $0 DIR1_Name DIR2_Name"
 
-
- 
-#------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+# Test Statement
+# Comparing two directories
+------------------------------------------------------------------------------------
 if [ $# -gt 2 ]; then                   # number of command line parameters.
     echo $usage;						# if args are more than 2, echo $usage
-      echo 1
 fi
 
 if [ $# -lt 2 ]; then                   # number of command line parameters.
     echo $usage;						# if args are less than 2, echo $usage
-    echo 
 fi
  
 if [ -z "$1" ]; then                    # length of '$1' parameter is empty(zero string)
     echo $usage;
 fi
+
 #------------ Actual Code ------------#
 if [ -d "$1" -a -d "$2" ]; then         # -d "$1" <= file exists and is a directory
                                         # -a      <= 'and' both dirs are exist
@@ -1317,8 +1336,15 @@ if [ -d "$1" -a -d "$2" ]; then         # -d "$1" <= file exists and is a direct
 	
 	### Where is the result output???
 fi
-	   
-	   
+
+
+https://stackoverflow.com/questions/16787916/difference-between-two-directories-in-linux/16788549	   
+$ diff -r dir1 dir2 | grep dir1 | awk '{print $4}' > difference1.txt
+$ diff -rq dir1 dir2 
+
+
+$  comm -23 <(ls dir1 |sort) <(ls dir2|sort)
+
 ---------------------------------------------------
 ### Quote in shell script ###
 
@@ -1404,14 +1430,16 @@ For example, [ is a Bash built-in, while [[ is a Bash keyword.
 		    	Explanation: Alphabetical comparison. The character '<' no longer has its typical meaning 
 				of a File Redirection operator when it's used with the extended 
 
-A. Comparing variables									           For Arithmatic with Integer
- 	Less than			        [[ $1 < $2 ]]                    = (( $a < $B ))   , a=1, b=2
+-------------------------------------------------------------------------------------
+# Comparing variables									           For Arithmatic with Integer
+------------------------------------------------------------------------------------- 
+	Less than			        [[ $1 < $2 ]]                    = (( $a < $B ))   , a=1, b=2
 	greater than			    [[ $a > $b ]]
 	less than or equal to 		[[ $a <= $b ]]
 	greater than or equal to 	[[ $a >= $b ]]
 	equal(same)			        [[ $a == $b ]]
 	not equal(same)		        [[ $a != $b ]]
-		
+-------------------------------------------------------------------------------------		
 $ [ 9 -lt 10 ] ; echo $?
 $ [ "awesome" = "awesome" ]; echo $?
 $ [ 10 == 10 ] ; echo $?
@@ -1621,18 +1649,30 @@ fi
 
 	
 ### ! -z $HOME 		<= If home is NOT empty, echo $HOME
-$ if [ ! -z $HOME ]; then echo $HOME; else echo "No Home"; fi
-$ if [[ -n $HOME]];  then echo $HOME; else echo "No Home"; fi       <= if home is exist
-/home/noza                                                          <= Same answer
+
+	$ if [ ! -z $HOME ]; then echo $HOME; else echo "No Home"; fi
+	$ if [[ -n $HOME]];  then echo $HOME; else echo "No Home"; fi       <= if home is exist
+	/home/noza                                                          <= Same answer
            
 ### -z $HOME    	<= $HOME is empty which is False, echo "No Home"
-$ if [ -z $HOME ]; then echo $HOME; else echo "no home"; fi
-$ if [[ ! -n $HOME ]]; then echo $HOME; else echo "no home"; fi
-no home  
 
+	$ if [ -z $HOME ]; 	   then echo $HOME; else echo "no home"; fi		<= SAME answer
+	$ if [[ ! -n $HOME ]]; then echo $HOME; else echo "no home"; fi		<= SAME answer
+	no home  
 
-$ if [[ ! -z $HOME ]]; then echo $HOME; elif [[ -z $HOME ]]; then echo "No Home"; fi
-/home/noza
+	$ if [[ ! -z $HOME ]]; then echo $HOME; elif [[ -z $HOME ]]; then echo "No Home"; fi
+	/home/noza
+	
+	---------------------------
+	$vi homeCheck.sh
+	---------------------------
+	#!/bin/bash
+	if [[ ! -z $HOME ]]; then 
+		echo $HOME; 
+	elif [[ -z $HOME ]]; then 
+		echo "No Home"; 
+	fi
+	---------------------------
 
 
 
@@ -2673,12 +2713,13 @@ $ function helloworld {
   }
 $ helloworld
 	Hello World!
+	
 ------------------------------------------------------
 # Single input multiple outputs using function
 ------------------------------------------------------
 #!/bin/bash
 string_test() {									# use () instead of 'function' key word
-        echo "string test"
+    echo "Print out fomr function string test"
 }
 
 function string_test2 {
@@ -2700,13 +2741,18 @@ string_test2 "hello" "world"
 
 # 'return'  <= functions return when there are no more statements
 				or when a return statement is executed.
+------------------------------------------------------				
 $ function helloworld {
 	echo "Hello World!"
 	return
 	echo "This will not be executed!"
   }
+
 $ helloworld
 	Hello World!	
+------------------------------------------------------ 	
+
+
 # Functions produce results by writing 'output' like commands do.
 	resultVar=$(printhello)
 	
@@ -2715,10 +2761,11 @@ $ helloworld
 		0 - success, 1 - failed, 2 - custom error ...
 	- Exit terminates the shell process
 	- Exit in a function terminates the whole shell program, not just the function.
+	
 ------------------------------------------------------
 # function that exports to a new shell
 ------------------------------------------
-	$function helloWorld {
+	$ function helloWorld {
 	> echo "Hello World!"
 	echo "Hello World"
 	> return
@@ -2736,9 +2783,9 @@ $ helloworld
 	26462 pts/3    00:00:00 bash	<= New Shell
 	26477 pts/3    00:00:00 ps
 ------------------------------------------	
-	$ps -p $$						<= Checking which shell I am on
-	PID TTY          TIME CMD
-	26462 pts/3    00:00:00 bash
+	$ ps -p $$						<= Checking which shell I am on
+	 PID TTY          TIME CMD
+	 26462 pts/3    00:00:00 bash
 ------------------------------------------	
 	$helloWorld						<= Execute a new 'helloWorld' from new shell
 	Hello World
@@ -2753,6 +2800,7 @@ function myFunc {
 myFunc
 n=$(myFunc)								<= put myFunc to 'n' variable
 echo "n is $n"
+
 ------------------------------------------
 #!/bin/bash
 # func2.sh
@@ -2766,6 +2814,7 @@ function f2 {
 echo "Starting"					<= Just echo "Starting"
 f2								<= execute f2 function will stop the program!!!!
 echo "after f2"					<= After f2 with exit code 2, it will not execute 
+
 ------------------------------------------
 $ bash func2.sh
 Starting
@@ -2777,15 +2826,15 @@ $ echo $?						<= checking exit code
 	
 	
 ------------------------------------------------------
-# hidden file listing function that runs from shell
+# function - hidden file listing  that runs from shell
 ------------------------------------------------------
 $ hidden() { ls -a "$@" | grep '^\.'; }			<= $@  
-$ hidden() (ls -a "$@" | grep '^\.')			<= using () works too without ; and a space { ls
+$ hidden() ( ls -a "$@" | grep '^\.' )			<= using () works too without ; and a space { ls
 
 $ hidden .	 or hidden /home/apark				<= run  and . is current directory	
 
 
-
+------------------------------------------------------
 #!/bin/bash
 function numberthings {		<= Declaring function name
     i=1			<= 
@@ -2795,7 +2844,7 @@ function numberthings {		<= Declaring function name
         ((i+=1))			<= incrementing ((i++)) or ((i=i+1))
     done
 }
-
+------------------------------------------------------
 numberthings $(ls)
 numberthings pine birch maple spruce
 
@@ -4036,29 +4085,31 @@ done
 
 
 
-### Calculator ###
+### Calculator Script ###
 ---------------------------------------------------------------------------
 #!/bin/bash
-#Calculator using EXPR
+# Calculator
+#set -xeu  					#debug, error exit, check undefined Vars
 
-#if [ `id -u` != 0 ]; then								    #<= Only Root can run
-###if [ $(id -u) != 0 ]; then								#<= same result using $(...)
+clear
+
+#if [ $(id -u) != 0 ]; then
 #  echo "Only root may run this program." ; exit 1
 #fi
 
-if [ $# != 3 ]; then   										#<= If not 3 args
+if [ $# != 3 ]; then
   echo "You did not run the program correctly"
-  echo "Example:  ./calculator 4 + 5"
+  echo "Example:  calculator 4 + 5"
   exit 1
 fi
 
-# Actual Math (note quotes)
-if 	 [ "$2" = "+" ]; then echo `expr $1 + $3`
+# Now do the math (note quotes)
+if   [ "$2" = "+" ]; then echo "Answer is `expr $1 + $3`"
 elif [ "$2" = "-" ]; then echo `expr $1 - $3`
 elif [ "$2" = "*" ]; then echo `expr $1 \* $3`
 elif [ "$2" = "/" ]; then echo `expr $1 / $3`
 fi
-exit 0
+exit 0      #Successful
 ---------------------------------------------------------------------------
 
 
