@@ -1,185 +1,43 @@
-아무리 바빠도 해야할 일 - 책 
-돈이 많아도 하지 말아야 할일 - 도박, 마약
-1.역사-역사의식 책임 | 2.문화-감성 | 3.경영-논리 | 4.철학-생각에 방법 | 5.사회학 인문학-인간 관계
+### LINUX ### 
 
-"얼마나 아는가 보다  어떻게 실행하는가?"   ( ¯\_(ツ)_/¯ )
-
-S.M.A.R.T.	
-1.Specific	2.Measureable	3.Action-Oriented	4.Realistic	 5.Time-Limited
-
-### Drucker's 5 Questions ###
-1. What is  our mission?
-2. Who  is  our customers?
-3. What is  the customer value?
-4. What are our result?
-5. What is  our plan?
-
-
----------------------------------------
-### Windows CMD kill process
----------------------------------------
-http://tweaks.com/windows/39559/kill-processes-from-command-prompt
-c:\taskkill /IM pdflite.exe /F 
-
-# Clear Type Text Tuner
-C:\Windows\System32\cttune.exe
-
-# Rename file 'F2'
-
-# Pin to Taskbar  			<= on program, right click, pin to taskbar
-
-# bring up the Task Manager 
-	Ctrl+Shift+Esc 
-	Windows + R   <= run
-	Windows + E	  <= Explorer
-	Windows + D   <= Show Desktop
-	Windows + L   <= Lock
-	Windows + F   <= search
-
-Windows 10: Narrator Voice
-Start: 	Windows Key + Enter
-Stop:  	Caps Lock   + Esc
-	
-### ABBYY Temp files process	
-How to change the drive location so ABBYY Temp files process to a chosen drive.
-When scanning documents through the ABBY process component there are Bitmap files being stored in the "C:\Windows\Temp"
-Bitmap Image files are stored within the directory while being processed in the ABBY component. The Bitmap Image files are removed automatically when the documents are successfully processed. When the jobs fail to process or processing these images are stored in the Temp folder without being removed and causes space to be taking.
-Resolution / Workaround
-You can redirect these files to be processed onto another directory by changing the environmental variable settings:
-
-1. Right click on "my computer" and hit properties.
-2. Go to the advanced tab and click environmental variables.
-3. Click on the TMP variable under "User variables for Administrator ," and click edit.
-4. Change the value to the specified directory you wish to use.
-
-Carriage Return(CR) <= 캐리지 리턴 문자 (0x0D, \r)는 커서를 다음 줄로 진행하지 않고 행의 시작 부분으로 이동합니다. 
-						이 문자는 Commodore와 초기의 Macintosh 운영 체제 (OS-9 및 이전 버전)에서 줄 바꿈 문자로 사용됩니다. 
-Line Feed (LF)		<= 라인 피드 문자 (0x0A, \n)는 행의 시작 부분으로 돌아 가지 않고 커서를 다음 행으로 이동합니다. 
-						이 문자는 UNIX 기반 시스템 (Linux, Mac OSX 등)에서 줄 바꿈 문자로 사용됩니다.
-End Of Line (EOL)	<= 라인 끝  문자 (0x0D0A, \r\n)는 두개의 ASCII 문자이며 CR과 LF 의 조합입니다. 
-						커서를 다음 줄과 그 줄의 시작 부분으로 이동합니다. 이 문자는 Microsoft Windows, Symbian OS를 
-						포함한 기타 대부분의 비 UNIX 운영 체제에서 줄 바꿈 문자로 사용됩니다.
-
---------------------------------------- 
-### Notepad++  (Settings > Short cut Mapper Menu)
----------------------------------------
-
-1. 	Ctrl + L					Delete Current line(from cursor to all the way RIGHT)
-	Ctrl + D					Copy(Duplicate) line
-	Ctrl + Alt + Enter			Insert blank line Above ^
-	Ctrl+Alt+Shift+Enter		Insert blank line Below v
-2. Auto-completion
-	Ctrl+Space			Function completion
-	Ctrl+Enter			Word completion
-	Ctrl+Shift+Space	Function parameter hint
-3. Move
-	Ctrl+End			Bottom of page
-	Ctrl+Home			Top of page
-4. Basic File Management
-	Ctrl+N				Create new document.
-	Ctrl+P				Display Print... dialogue box.
-	Ctrl+O				Display Open File... dialogue box.
-	Ctrl+S				Save current document.
-**	Ctrl+Shift+S		SAVE all open documents **
-	Ctrl+Alt+S			Display Save As... dialogue box.
-	Ctrl+W				Close current document.
-	Alt +F4				Exit Notepad++
-	
----------------------------------------
-### Chrome ###
---------------------------------------- 
-Clean Cache - a hard refresh of the page (ctrl+shift+R)
-Plugins install
-	# Revolver 			<- Rotate Tabs
-	# AdBlock
-Alt + Home				Open your homepage.
-Alt + Tab				Toggle between browser windows
-Alt + Left 0Arrow		Back a page.
-Alt + Right Arrow		Forward a page.
-F11						Full screen
-Esc						Stop page or download from loading.
-Ctrl + Shift + I		Development Tools*** 
-Ctrl + Shift + O		Open the Bookmark manager.
-Ctrl + Shift + N		New Incognito Window
-Ctrl + H				Open history in a new tab
-Ctrl + K or Ctrl + E	Perform a Google search
-Ctrl + T				Opens a new tab.
-Ctrl + U				View a web page's source code
-
----------------------------------------
-### MS Word ###
----------------------------------------
-Removing empty lines
-Ctrl+f -> replace -> More => Special => Paragraph Mark => ^p   <= single line ^p^p  <= double empty lines
-
-
----------------------------------------------------------------------------------
-### IPv4 
-32bit is 2^32 =~ 4.3 billion    <=  IPv4 address is 32bit 
----------------------------------------------------------------------------------
-just without the prefix(e.g. www) as 'something.com' is a 'naked domain.'
-
------------------------------------------------------------------------------------	
-### Terminology
------------------------------------------------------------------------------------	
-
-### I
-IFTTT	<= IF This Then That
-
-### M
-MEAN stack <= MongoDB, Express.js, AngularJS, and Node.js
-
-### S
-SSL 	<= Secure Sockets Layer
-
-SMACK Stack
-	Spark - fast and general engine for distributed, large-scale data processing
-	Mesos - cluster resource management system that provides efficient resource
-			isolation and sharing across distributed applications
-	Akka -  a toolkit and runtime for building highly concurrent, distributed, 
-			and resilience message-driven app on the JVM
-	Cassandra - distributed, highly available DB designed to handle large amounts of data
-			across multiple datacenters
-	Kafka - a high-throughput, low-latency distributed messaging system designed for
-			handling real-time 'data feeds'
-
-### T ###
-TLS 	<= Transport Layer Security (TLS) – and its predecessor, Secure Sockets Layer (SSL)
-
-
-
-
------------------------------------------------------------------------------------	
------------------------------------------------------------------------------------	
-### LINUX ###
------------------------------------------------------------------------------------	
------------------------------------------------------------------------------------	
+Bash Command List https://ss64.com/bash/
 
 ------------------------------------------------------------
-### HELP ###
+# HELP 
 ------------------------------------------------------------
-# apropos 			<= Search the manual page names and descriptions
-	$ apropos grep
-	$ apropos -r REGEXofUNIXCOMMAND or Description
+# apropos(~에 관하여) 			<= Search the manual page names and descriptions
+  
+  $ apropos egrep
+		bzgrep (1)           - search possibly bzip2 compressed files for a regular expression
+		egrep (1)            - print lines matching a pattern
+		xzegrep (1)          - search compressed files for a regular expression
 
-$ whatis 			<= Searches a set of database files containing short descriptions
+  $ apropos -r REGEXofUNIXCOMMAND or Description
+								<= -r  Interpret  each  keyword as a regular expression. 
+
+$ whatis(무엇에 관하여)			<= Searches a set of database files containing short descriptions
 	$ whatis grep
 
 $ help
-	$ man --help
+	$ grep --help
 	
 $ info				<= Longer document
 	$ info grep
+
+$ man grep | less -p '-a'				<=  shows '-a, --text' option
 	
-$ man bash | less -p '-A action$'		<=  -p Pattern  '-A action$' <- $end with 'n'
+$ man bash | less -p '-A action$'		<=  -p Pattern  '-A action$' <- $ end with 'n'
 $ man bash | less -p '-c$'
 
 $ man -k REGEX or UNIXCOMMAND
 
+## Build-in Bash uses MAN		e.g.  $ man bash
+## 3rd Utils uses     --help    e.g.  $ kubectl --help
+
 -----------------------------------------------------------------------------------	
 ### Command and file Locations ###
------------------------------------------------------------------------------------	
 # Find the command location
+-----------------------------------------------------------------------------------	 
 	$ whereis  cmd				<= <= Find binary /source / manual for commandD
 		$ whereis ls
 			ls: /usr/bin/ls /usr/share/man/man1/ls.1.gz
@@ -205,57 +63,60 @@ $ man -k REGEX or UNIXCOMMAND
 		  /usr/share/man/man5/ssh_config.5.gz
 
 -----------------------------------------------------------------------------------	
-Daily Linux CMD List
+# Bash Shell Setting	 
 -----------------------------------------------------------------------------------	
-###############
-1. Bash SHELL	 #
-###############
-
 ### Font Type <= Lucia Console, 12pt
-
 ### Shell's Color, History, Time stamp, Size ### 
 
-### Green prompt
+### User Green Prompt
+-----------------------------------------------------------------------------------	
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && source ~/.bashrc 
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && 		. ~/.bashrc 
+-----------------------------------------------------------------------------------	
 
 ### Green & Red promt
 ========================================================================================
-
 echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"' >> ~/.bashrc	&& source ~/.bashrc	 
-
 ========================================================================================
-### change .bashrc within shell to actiavate a new alias
-$ source ~/.bashrc	
 
-### History Control Options
+-----------------------------------------------------------------------------------	
+# Reload .bashrc within current shell without re-login
+-----------------------------------------------------------------------------------	
+	$ source ~/.bashrc	
+
+-----------------------------------------------------------------------------------	
+# History Control Options for Bash
+-----------------------------------------------------------------------------------	
 echo 'export HISTCONTROL="ignorespace:erasedups:ignoredups"' >> ~/.bashrc	<= Ignore Duplication
 echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc					<= Ignore list
 echo 'export HISTTIMEFORMAT="%F > "' >> ~/.bashrc							<= History time stamp(man date)
 echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
-###
-
-### Bash Log Out Message
-	
-	$ vi ~/.bash_logout			<= user account
-		echo "You are logging out! GoodBye ^^*
-	$ vi /etc/bash.bashrc
 
 
-### History with time stamp
+# History with time stamp
 	export into ~/.bash_profile as well as /root/.bash_profile
 	$ export HISTTIMEFORMAT="%F %T "
 	
 	# Modify .bashrc Path and reload
 	http://docs.aws.amazon.com/cli/latest/userguide/awscli-install-linux.html#awscli-install-linux-path
+	
 	$ export PATH=~/.local/bin:$PATH		<= export  - Modify
 	$ source ~/.bash_profile				<= source  - reLoad
 	$ . ~/.bash_profile						<= source  - reLoad
 	$ source .bashrc						<= reload .bashrc
+-----------------------------------------------------------------------------------	
+
+-----------------------------------------------------------------------------------	
+# Bash Log Out Message
+-----------------------------------------------------------------------------------		
+	$ vi ~/.bash_logout			<= user account
+		echo "You are logging out! GoodBye ^^*
+	$ vi /etc/bash.bashrc
+
 	
 -----------------------------------------------------------------------------------
-### Copy & Paste or create a 'shellenv.sh' script and PSSH to all servers ###
-	<< EOF here document method  << STDIN, >> STDOUT 
+# Copy & Paste or create a 'shellenv.sh' script and PSSH to all servers 
+	<< EOF here document method  << STDIN >> STDOUT 
 -----------------------------------------------------------------------------------
 cat << EOF >> ~/.bashrc
 	export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"				# Color
@@ -265,15 +126,15 @@ cat << EOF >> ~/.bashrc
 	export HISTSIZE=10000
 	EOF
 
-# Reload .bashrc 
+	# Reload .bashrc 
 	$ source ~/.bashrc 
 	
-# Copy to servers  
+	# Copy to servers using PSSH, 
 	$ pssh -O StrictHostKeyChecking=no -h serverList.txt -l apark -A -I < ./shellenv.sh
 	
 -----------------------------------------------------------------------------------
-### 9x Color Codes	for Fonts
-
+# Color Codes( 9 )	for Fonts
+-----------------------------------------------------------------------------------
 	Reset   = 0
 	Black   = 30
 	Red     = 31
@@ -289,10 +150,10 @@ cat << EOF >> ~/.bashrc
 	
 	$ echo -e '\e[1;31m	"Red text" \e[0m'
 	
-### Color Codes	for Colored Background
+  # Color Codes	for Colored Background
 	Coloring and Styling
 
-	# NCSA Escape code - Sequence
+  NCSA Escape code - Sequence
 	$ bash -e			<= enable, echo with Escaping
 
 	$ echo -e "\033[34;42mThis is green background\033[0m"
@@ -314,9 +175,9 @@ cat << EOF >> ~/.bashrc
 	
 -----------------------------------------------------------------------------------------	
 
-########################
-###   Boot Process   ###  
-########################
+#########################################################################################
+#   Boot Process   
+#########################################################################################
 
 Firmware(POST or UEFI) => Boot loader => Kernel => Initialization Stages
 
@@ -340,14 +201,14 @@ Firmware(POST or UEFI) => Boot loader => Kernel => Initialization Stages
 5. OS is ready to be used
 -----------------------------------------------------------------------------------------
 	
-# CentOS 7 uses theSystemd Targets
+# CentOS 7 uses the Systemd Targets
 	Target is a specific configuration(run level)
 	Default target is graphical.target
 	Systems can be booted into different targets. 
 		e.g. rescue mode
 		
 -----------------------------------------------------------------------------------------
-# CentOS 7 uses the GRUB2
+# GRUB2 - CentOS 7  
 -----------------------------------------------------------------------------------------
 $ cat /boot/grub2/grub.cfg				<= BIOS system
 $ cat /boot/efi/EFI/centos/grub.cfg		<= UEFI system
@@ -3192,16 +3053,17 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 
 	
 	
-
+------------------------------------------------------------------------------------
 ### Echo 
-# echo -n opntion
+------------------------------------------------------------------------------------
+	# echo -n opntion
 	$ echo -n Hello World\$			<= -n no return line
 		Hello World$apark@i7~$		<= \$ ignore special char   
 	
 	$ echo -n "Hello World\n\n"
 		Hello World\n\napark@i7~$   <= -n NO return line
 									<= \n\n prints as string
-# echo -e option	
+	# echo -e option	
 	$ echo -e "Hello World\n\n"		<= -e enable interpretation of backslash escapes
 		Hello World
 		empty line					<= \n prints a new empty line 
@@ -3213,8 +3075,11 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	$ echo ~-  == cd -
 	$ echo s{pe,pi}ll				<= don't use quote ""
 		spell spill
-
+		
+	$ echo 1/3 | bc -l                <= .3333333
+------------------------------------------------------------------------------------	
 # double & single quotes	
+------------------------------------------------------------------------------------
     $ echo 'Single quotes "protects" the double quotes.'
         Single quotes "protect" double quotes.
 		  
@@ -3460,17 +3325,20 @@ https://www.computerhope.com/unix/ushutdow.htm
 	
 ---------------------------------------------------------------------------------------
 # bash version
+---------------------------------------------------------------------------------------
 	$ bash -version
 	$ echo $BASH_VERSION
 	
 	$ echo $MACHTYPE
 	$ echo $SECONDS 					<= Count script started 
+	
+	$ echo $SHELL						<= /bin/bash
+	$ env | grep SHELL					<= SHELL=/bin/bash
+	$ ps					 
+	  1453 pts/1    00:00:00 bash  		<= BASH
+	$ ps | grep `echo $$` | awk '{ print $4 }'		<= BASH
 
-
-	d=$(pwd)
-	echo $d
-
-	echo 1/3 | bc -l                <= .33333333333333333333
+	
 
 ###	IP address 						<= finding IP from ifconfig using grep re  gex
 	$ ifconfig | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
@@ -6324,9 +6192,12 @@ fi
 
 
 
-### 
-# Find biggest | largest files top 5 list Only
-###
+------------------------------------------------------------------------------------
+# Find 
+------------------------------------------------------------------------------------
+	# Find biggest | largest files top 5 list Only
+
+
 
 # NCurses Disk Usage	<= Utility
 	$ ncdu /
@@ -6367,17 +6238,29 @@ fi
 	$ find /lib64 | grep mysql
 		/lib64/libmysqlcppconn.so
 		/lib64/libmysqlcppconn.so.7.1.1.3
+------------------------------------------------------------------------------------
+# fin -  dictory is empty?
+https://stackoverflow.com/questions/20456666/bash-checking-if-folder-has-contents
+------------------------------------------------------------------------------------
+	$ find . -maxdepth 0 -empty -exec echo {} is empty. \;
 
-####
-Tmux  Terminal Multiplexer
 
+
+
+
+
+
+------------------------------------------------------------------------------------
+# Tmux  Terminal Multiplexer
+# screen
+------------------------------------------------------------------------------------
 ctrl-b <command>
 ctrl-b c - new window
 
 
-#####
-Ubuntu Package Installed 
-
+------------------------------------------------------------------------------------
+# Package Installed - Ubuntu 
+------------------------------------------------------------------------------------
 	$ dpkg -l | grep mongo
 
 	$ root@puppet:~# dpkg --get-selections
@@ -6385,8 +6268,9 @@ Ubuntu Package Installed
 		puppet-common                                   install
 		puppetlabs-release                              install
 
-
-### sed (stream editor) 
+------------------------------------------------------------------------------------
+# sed (stream editor) 
+------------------------------------------------------------------------------------
 	https://linuxconfig.org/learning-linux-commands-sed
 	http://www.grymoire.com/Unix/Sed.html
 
@@ -6443,9 +6327,12 @@ Ubuntu Package Installed
 	# from CMD using echo & sed
 	$ echo day | sed 's/day/night/'			
 		night
-----------------------------------
-### Regular Expressions (regex)###
-----------------------------------
+		
+		
+------------------------------------------------------------------------------------
+# Regular Expressions (regex)
+------------------------------------------------------------------------------------
+
 . 		<= Any single character except newline
 *		<= zero or more occurances of any character
 [...]	<= Any single character specified in the set
@@ -6467,7 +6354,9 @@ $		<= Anchor - end of line
 [A-Z][a-zA-Z]	<= In the first position, the SET from Capital A to Capital Z
 In the second character position, the SET containing all letters
 
-Regular Expression Examples
+------------------------------------------------------------------------------------
+# Regular Expression Examples
+------------------------------------------------------------------------------------
 /Hello/		<= Matches if the line contains the value Hello
 /^TEST$/	<= Matches if the line contains TEST by itself
 /^[a-zA-Z]/	<= Matches if the line starts with any letter
@@ -6478,8 +6367,9 @@ Regular Expression Examples
 /[0-9]*/	<= Matches if there are zero or more numbers in the line
 /^[^#]/		<= Matches if the first character is not a # in the line
 
-
-Regex tutorial- A quick cheatsheet 
+------------------------------------------------------------------------------------
+# Regex tutorial- A quick cheatsheet 
+------------------------------------------------------------------------------------
 https://medium.com/factory-mind/regex-tutorial-a-simple-cheatsheet-by-examples-649dc1c3f285
 Anchors ^ and $
 ^The        <= matches any string that starts with The
@@ -6490,11 +6380,11 @@ roar        <= matches any string that has the text roar in it
 
 
 
-
-### IP Regular Expression ###
+------------------------------------------------------------------------------------
+# IP Regular Expression 
 http://www.analyticsmarket.com/freetools/ipregex
+------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------------------------------------------
 Notes:
 1. Regular expressions are case sensitive
 2. Regular expressions are to be used where pattern is specified
@@ -6517,9 +6407,11 @@ The 'cat << EOF' Bash syntax is very useful when one needs to work with multilin
 	  WHERE foo='baz'
 	  EOF
 	  )
-	
-$ cat file.txt  VS.  cat < file.txt
-http://unix.stackexchange.com/questions/258931/difference-between-cat-and-cat
+------------------------------------------------------------------------------------------------------------
+# cat file.txt  VS.  cat < file.txt
+	http://unix.stackexchange.com/questions/258931/difference-between-cat-and-cat
+------------------------------------------------------------------------------------------------------------
+
 cat file.txt  	<= reads the file myfile.txt then prints it to the standard output.
 
 cat < file.txt 	<= here cat isn't given any file(s) to open, so -like many Unix commands do- reads 
@@ -6541,29 +6433,9 @@ SELECT foo, bar FROM db
 WHERE foo='baz'
 The $sql variable now holds newlines as well, you can check it with echo -e "$sql" cmd.
 
-2. Passing multiline string to a file:
-
-$ cat << EOF > print.sh
-#!/bin/bash
-echo \$PWD
-echo $PWD
-EOF
-The print.sh file now contains:
-
-#!/bin/bash
-echo $PWD
-echo /home/user
-
-3. Passing multiline string to a command/pipe:
-
-$ cat <<EOF | grep 'b' | tee b.txt | grep 'r'
-foo
-bar
-baz
-EOF
-This creates b.txt file with both bar and baz lines but prints only the bar.
-
-
+------------------------------------------------------------------------------------------------------------
+# EOF <=  Passing multiline string to a file:
+------------------------------------------------------------------------------------------------------------
 "EOF" is known as a "Here DATE". Basically << Here tells the shell that you are going to enter 
 	a multiline string until the "DATE" Here. You can name this DATE as you want, it's often EOF or STOP.
 	- The DATE can be any string, uppercase or lowercase, though most people use uppercase by convention.
@@ -6572,40 +6444,65 @@ This creates b.txt file with both bar and baz lines but prints only the bar.
 		to be considered a DATE.
 	- The DATE should have no leading or trailing spaces in that line to be considered a DATE. Otherwise 
 		it will be considered as part of the string.
-example:
+	
+	More: http://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
 
-$ cat >> test <<HERE
-> Hello world HERE <--- Not the end of string
-> This is a test
->  HERE <-- Leading space, so not end of string
-> and a new line
-> HERE <-- Now we have the end of the string
-More: http://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
+  example:
+  $ cat >> test <<HERE
+	> Hello world HERE <--- Not the end of string
+	> This is a test
+	>  HERE <-- Leading space, so not end of string
+	> and a new line
+	> HERE <-- Now we have the end of the string
 
+  $ cat << EOF > print.sh
+	#!/bin/bash
+	echo \$PWD
+	echo $PWD
+	EOF
+	The print.sh file now contains:
 
+	#!/bin/bash
+	echo $PWD
+	echo /home/user
+
+------------------------------------------------------------------------------------------------------------
+# EOF Passing multiline string to a command/pipe:
+------------------------------------------------------------------------------------------------------------
+  $ cat <<EOF | grep 'b' | tee b.txt | grep 'r'
+	foo
+	bar
+	baz
+	EOF
+	This creates b.txt file with both 'bar' and 'baz' lines but prints only the "bar".
+
+------------------------------------------------------------------------------------------------------------
 # Reading and writing
-$ echo "something" | sudo tee --append /var/log.file    <= non suoder gets permission error so use " sudo tee --append" 
+------------------------------------------------------------------------------------------------------------
+$ echo "something" | sudo tee --append /var/log.file    
+				<= non suoder gets permission error so use " sudo tee --append" 
 
 ----------------------------------------------- 
+# While Loop that inputs file.txt file
 #!/bin/bash								
 i=0
 while read f; do
 	echo "Line $i: $f"
-	((i++)
+	((i++))
 done < file.txt
 -----------------------------------------------
-file.txt 		<= test1, test2, test3, test4
+	$ echo -e "Test1\nTest2\nTest3\nTest4" > file.txt 		
 
-$./while.sh 
-Line 0: test1
-Line 1: test2
-Line 2: test3
-Line 3: test4
+	$./while.sh 
+	Line 0: test1
+	Line 1: test2
+	Line 2: test3
+	Line 3: test4
 
 
-####
+------------------------------------------------------------------------------------------------------------
 Install Fabric, boto, yaml
-
+------------------------------------------------------------------------------------------------------------
    1) Install fabric, boto and yaml
 
          wget https://bootstrap.pypa.io/get-pip.py
@@ -6616,9 +6513,9 @@ Install Fabric, boto, yaml
 
 		 
 
-#################	 
+###################################################################################################### 
 ###  Repair   ###
-#################
+######################################################################################################
 Recover from File System Corruption Using 'FSCK' and a Recovery ISO
 https://www.digitalocean.com/community/tutorials/how-to-recover-from-file-system-corruption-using-fsck-and-a-recovery-iso
 
@@ -6630,23 +6527,10 @@ https://www.digitalocean.com/community/tutorials/how-to-recover-from-file-system
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 		 
-#################	 
+######################################################################################################	 
 ### Security  ###
-#################
+######################################################################################################
 
 1.Verifying Which Ports Are Listening
 CentOS
@@ -6677,8 +6561,9 @@ CentOS
 	Allow all from x.x.x.x IP 
 	-A INPUT -m state -s x.x.x.x --state NEW -j ACCEPT
 
-###
-Allow everything from single IP using cmd	
+######################################################################################################
+# Iptables <= Allow everything from single IP using cmd	
+######################################################################################################
 ###------------------------------------------------------------------
 $ iptables -A INPUT -m state -s 65.87.26.0/24     --state NEW -j ACCEPT		<= BNEA Corp IP
 
@@ -6695,15 +6580,18 @@ $ iptables -A INPUT -m state -s 73.231.235.144/32 --state NEW -j ACCEPT   	<= Ap
 						-F
 
 # http://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml#icmp-parameters-codes-8
-# allow ping from IPs
+-----------------------------------------------------------------
+# Iptables <= allow ping from IPs
+-----------------------------------------------------------------
 $ iptables -A INPUT -s x.x.x.x -p ICMP --icmp-type 8 -j ACCEPT
-
-# block all ping
+-----------------------------------------------------------------
+# Iptables <=  block all ping
+-----------------------------------------------------------------
 $ iptables -A INPUT -p ICMP --icmp-type 8 -j DROP
 
-
-### Ubuntu Port Forwarding using Iptables
-
+-----------------------------------------------------------------
+# Iptables ## Ubuntu Port Forwarding using 
+-----------------------------------------------------------------
 	# Using Linux iptables for port 80 -> 8080
 	
 	This enables port forwarding of traffic between ports 80 and 8080. 
@@ -6722,8 +6610,9 @@ $ iptables -A INPUT -p ICMP --icmp-type 8 -j DROP
 	Additional info: https://gist.github.com/m5m1th/6870a54717c0387468c3
 
 
-
-### email setup and send out from shell ###
+-----------------------------------------------------------------
+# Eemail setup and send out from shell ###
+-----------------------------------------------------------------
 	http://www.binarytides.com/linux-mailx-command/
 	https://www.digitalocean.com/community/tutorials/how-to-send-e-mail-alerts-on-a-centos-vps-for-system-monitoring
 	
@@ -6741,9 +6630,12 @@ $ iptables -A INPUT -p ICMP --icmp-type 8 -j DROP
 	
 	# $ vi /etc/mail.rc     <= ???
 	
-############################################################################
+------------------------------------------------------------------------------------
+# Email send if IP changes	
+------------------------------------------------------------------------------------
 #!/bin/bash
 # If IP Address changes, it will send out an email for update.
+#
 currentIP=`ifconfig | grep 'inet'| awk '{print $2}' | head -1`;
 time=`date`;
 oldIP_file='/home/apark/ipAddress/oldIP.txt';
@@ -6763,14 +6655,11 @@ then
 else
         echo "no IP changes!"
 fi
-############################################################################
-$crontab -e
+------------------------------------------------------------------------------------
+$ crontab -e
 */30 * * * * /home/apark/ipAddress/ip_changes_alert.sh > /dev/null
-############################################################################
-	
-	
-	
-	
+------------------------------------------------------------------------------------
+		
 	
 ### email send out from SHELL
 	echo "hello" | mailx -v -s 'test' apark@bnga.com		<= -v verbose
@@ -6793,7 +6682,7 @@ $crontab -e
 		-S ssl-verify=true \
 		apark@bnga.com
 		
-### SMTP setup (email server setup)
+# email SMTP setup (email server setup)
 	$vi	/etc/ssmtp/ssmtp.conf
 
 	$cat /etc/ssmtp/ssmtp.conf.rpmsave
@@ -6830,9 +6719,10 @@ $crontab -e
 		
 		
 
-###########
-### SSL ###
-###########
+---------------------------------------------------------------
+# SSL 
+# TLS
+---------------------------------------------------------------
 
 DSA is faster in signing, but slower in verifying. A DSA key of the same strength as RSA (1024 bits) 
 generates a smaller signature. An RSA 512 bit key has been cracked, but only a 280 DSA key. 
@@ -6888,9 +6778,10 @@ DER The parent format of PEM. It's useful to think of it as a binary version of 
 
 
 
-#####################################################
-###  mistakenly deleted /boot folder and rebooted ###
-#####################################################
+------------------------------------------------------------------------------------
+# boot   
+# mistakenly deleted /boot folder and rebooted and  when Kernel is gone
+------------------------------------------------------------------------------------
 1. Bootup with Live CD.
 
 2. Find the drive/partition where you have installed your root filesystem. 
@@ -6937,28 +6828,33 @@ DER The parent format of PEM. It's useful to think of it as a binary version of 
 	when run in the chroot due to a bug in os-prober. If this is an issue, just run sudo update-grub 
 	again in the repaired system.
 
-	
-### CentOS package update vs upgrade	
+------------------------------------------------------------------------------------	
+# update vs upgrade	- CentOS package 
+------------------------------------------------------------------------------------
 'yum upgrade' and 'yum update' will perform the same function that update to the latest current version of package.
 
 But the difference is 'Upgrade' will delete obsolete packages, while 'update' will preserve them.
 $ yum upgrade kernel -y   	<= only upgrade the kernel 
 $ yum update  kernel -y		<= 
 
-
-### CHROOT
+------------------------------------------------------------------------------------
+# CHROOT
+------------------------------------------------------------------------------------
 	Using chroot cmd to switch different file systems
 	e.g. Host OS kernel, module, drivers on host file system1(Ubuntu /dev/sda1) can modify on file system2(Debina /dev/sda2) 
 
-Ubuntu 
-$nmap 			<- works
-$ cd /debian
-$ chroot . bash
-Debian 			<- Using host kernel but running on Debian file system to modify
-$ nmap 			<- need to install
-$ exit
+	Ubuntu 
+	$nmap 			<- works
+	$ cd /debian
+	$ chroot . bash
+	Debian 			<- Using host kernel but running on Debian file system to modify
+	$ nmap 			<- need to install
+	$ exit
 
-### Ubuntu Kernel Update
+------------------------------------------------------------------------------------
+# Kernel Update 
+------------------------------------------------------------------------------------
+### Ubuntu
 https://wiki.ubuntu.com/Kernel/LTSEnablementStack#Ubuntu_16.04_LTS_-_Xenial_Xerus
 Ubuntu 16.04 LTS Server- Xenial Xerus
 
@@ -6973,8 +6869,12 @@ $ sudo apt-get update && sudo apt-get dist-upgrade
 $ sudo yum update kernel -y	
 	
 	
-	
-### Byobu multi screen utility ###
+------------------------------------------------------------------------------------	
+#  multi screen utility 
+# Byobu
+# screen
+# tmux
+------------------------------------------------------------------------------------
 # CentOS 7
 $ sudo yum install --enablerepo=epel byobu
 
@@ -7009,6 +6909,13 @@ rmdir "c:/temp/1" /s/q
 
 
 
+
+
+
+
+
+
+
 ################################################################################################################
 ### Memcache  ##################################################################################################
 ################################################################################################################
@@ -7022,18 +6929,9 @@ $ watch -n 1 'memcached-tool localhost stats'
 
 
 
-
-
-
-
-
-
-
-
-
-################################################################################################################
-### Nginx  ##################################################################################################
-################################################################
+------------------------------------------------------------------------------------
+# Nginx  
+------------------------------------------------------------------------------------
 
 1. Nginx log rotate
 
@@ -7067,9 +6965,9 @@ $ cat /var/run/nginx.pid
 
 
 
-##################
-### Log rotate ###
-##################
+------------------------------------------------------------------------------------
+# Log rotate
+------------------------------------------------------------------------------------
 to check logrotate, run cmd
 
 $ logroate
@@ -7135,9 +7033,9 @@ exit 0
 	
 	
 
-##########################################
-### CUSTOM LOG FILE Rotation logrotate ###
-##########################################
+------------------------------------------------------------------------------------
+# logrotate  - CUSTOM LOG FILE Rotation
+------------------------------------------------------------------------------------
 
 $ vi /etc/logrotate.d/rrserver
 
@@ -7213,9 +7111,9 @@ running script with arg /RRLinux/run.log: "
 
 	
 
-
-### httpd logrotate check ###
-
+------------------------------------------------------------------------------------
+# logrotate check - httpd ###
+------------------------------------------------------------------------------------
 $ logrotate -vdf /etc/logrotate.d/httpd
 
 ##########
@@ -7382,8 +7280,9 @@ $ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{prin
 	
 	
 	
-	
+------------------------------------------------------------------------------------	
 ### Awk ### 
+------------------------------------------------------------------------------------
 	Built-in Variables – FS, OFS, RS, ORS, NR, NF, FILENAME, FNR
 	http://www.thegeekstuff.com/2010/01/8-powerful-awk-built-in-variables-fs-ofs-rs-ors-nr-nf-filename-fnr/?ref=binfind.com/web
 	
@@ -7392,8 +7291,9 @@ $ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{prin
 	
 	
 	
-	
+------------------------------------------------------------------------------------	
 # Remove a space in string
+------------------------------------------------------------------------------------
 	https://stackoverflow.com/questions/13659318/how-to-remove-space-from-string
 	sed 's/ //g'
 	tr -d ' '
@@ -7403,8 +7303,9 @@ $ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{prin
 	
 	
 	
-	
-### What is a .h file?
+------------------------------------------------------------------------------------	
+# .h file what is it?
+------------------------------------------------------------------------------------
 Files that contain the .h file extension are normally header files used with the C or C++ programming languages. 
 .h files are commonly known by programmers as "header files". They may contain constants, function prototypes 
 and external variable definitions.
@@ -7417,9 +7318,11 @@ change take effect everywhere.
 	
 	
 	
-	
-### Network Trobleshooting
-	# Wireshark Filter <= https://www.youtube.com/watch?v=68t07-KOH9Y
+------------------------------------------------------------------------------------	
+# Network Trobleshooting
+------------------------------------------------------------------------------------
+  # Wireshark Filter <= https://www.youtube.com/watch?v=68t07-KOH9Y
+------------------------------------------------------------------------------------
 	filters are here:
 	ip.addr == 10.0.0.1
 	tcp or dns
@@ -7431,8 +7334,9 @@ change take effect everywhere.
 	http.response.code == 200
 	http.request
 	tcp.flags.syn == 1
-	
-	### Tshark ### 
+------------------------------------------------------------------------------------	
+  # Tshark  
+------------------------------------------------------------------------------------
 	# Dump and analyze network traffic for CLI environment and READ from GUI WIRESHARK!!!! 
 	https://linuxsimba.com/tshark-examples
 	
@@ -7454,13 +7358,17 @@ change take effect everywhere.
     $ tshark -i 1 -a duration:10 -w /tmp/10secs.pcap
 	$ tshark -r /tmp/10secs.pcap
 	
-			
-	##  ldd 
-		prints the shared objects (shared libraries) required by each program or shared object specified 
-		on the command line.  An example of its use and output is the following:
-	$ ldd /usr/sbin/sshd
+------------------------------------------------------------------------------------			
+#  ldd 
+------------------------------------------------------------------------------------	
+	prints the shared objects (shared libraries) required by each program or shared object specified 
+	on the command line.  An example of its use and output is the following:
 	
-	## Debug
+	$ ldd /usr/sbin/sshd
+
+------------------------------------------------------------------------------------	
+# Debug
+------------------------------------------------------------------------------------	
 	$ yum groupinstall -y 'Development Tools'
 	$ debuginfo-install openssh-server-6.6.1p1-33.el7_3.x86_64
 	$ yum info openssl
@@ -7470,8 +7378,11 @@ change take effect everywhere.
 		- fix CVE-2015-3194 - certificate verify crash with missing PSS parameter
 		- fix CVE-2015-3195 - X509_ATTRIBUTE memory leak
 		- fix CVE-2015-3196 - race condition when handling PSK identity hint
-	
-	# change MTU size
+
+------------------------------------------------------------------------------------	
+# Network 
+# MTU resize size
+------------------------------------------------------------------------------------
 	$ ifconfig eth0 mtu 1000
 	
 	### check network RX size
@@ -7541,8 +7452,9 @@ change take effect everywhere.
 						   
 						   
 						   
-						   
-### tput 
+------------------------------------------------------------------------------------						   
+# tput
+------------------------------------------------------------------------------------ 
 		(http://linuxcommand.org/lc3_adv_tput.php)
 		# When we start a terminal session on our Linux system, the terminal emulator sets the TERM environment 
 		  variable with the name of a terminal type.	
@@ -7572,8 +7484,9 @@ change take effect everywhere.
 						   
 	
 	
-	
-	# Screen( multi shells)  
+------------------------------------------------------------------------------------	
+# Screen( multi shells)  
+------------------------------------------------------------------------------------	
 	https://www.rackaid.com/blog/linux-screen-tutorial-and-how-to/
 		1. Use multiple shell windows from a single SSH session.
 		2. Keep a shell active even through network disruptions.
@@ -7670,18 +7583,22 @@ change take effect everywhere.
 	$ screen -dr 31184.pts-8.i7			<= reattach '$ping google.com' screen
 
 
-	
-### ETL https://en.wikipedia.org/wiki/Extract,_transform,_load
+------------------------------------------------------------------------------------	
+# ETL https://en.wikipedia.org/wiki/Extract,_transform,_load
+------------------------------------------------------------------------------------
 	Extract, Transform, & Load 
 	Three database functions that are combined into one tool to pull data out of one database 
 	and place it into another database. Extract is the process of reading data from a database.						   
 	
-	
-### UML	https://en.wikipedia.org/wiki/Unified_Modeling_Language
+------------------------------------------------------------------------------------	
+# UML	https://en.wikipedia.org/wiki/Unified_Modeling_Language
+------------------------------------------------------------------------------------
 	The Unified Modeling Language (UML) is a general-purpose, developmental, modeling language in the field 
 	of software engineering, that is intended to provide a standard way to visualize the design of a system.
-	
-### RSS https://en.wikipedia.org/wiki/RSS
+
+------------------------------------------------------------------------------------	
+# RSS https://en.wikipedia.org/wiki/RSS
+------------------------------------------------------------------------------------
 	(Rich Site Summary; originally RDF Site Summary; often called Really Simple Syndication) uses a family of 
 	standard web feed formats[2] to publish frequently updated information: blog entries, news headlines, 
 	audio, video. An RSS document (called "RSS feed", "web feed", or "channel") includes full or summarized 
@@ -7691,8 +7608,10 @@ change take effect everywhere.
 	RSS feeds also benefit users who want to receive timely updates from favourite websites 
 	or to aggregate data from many sites
 	
-	
+------------------------------------------------------------------------------------	
+# build
 ### Nexus or Artifictory for a Maven Repo	
+------------------------------------------------------------------------------------
 	http://stackoverflow.com/questions/364775/should-we-use-nexus-or-artifactory-for-a-maven-repo
 	
 	
@@ -7700,7 +7619,7 @@ change take effect everywhere.
 	http://unix.stackexchange.com/questions/18239/understanding-dev-and-its-subdirs-and-files
 	crw-r-----. 1 root kmem 1, 1 Feb  2 17:50 /dev/mem
 	
-	^ Character devices
+	^ c <= Character devices
 	There are two types of device files: block devices (indicated by b as the first character in the output of ls -l), 
 	and character devices (indicated by c).
 	
@@ -7714,8 +7633,9 @@ change take effect everywhere.
 	effect (e.g. it's emitted on a serial line) and reading a byte also has some immediate 
 	effect (e.g. it's read from the serial port).	
 	
-	
-### /var/log 
+------------------------------------------------------------------------------------	
+# /var/log 
+------------------------------------------------------------------------------------
 	http://superuser.com/questions/565927/differences-in-var-log-syslog-dmesg-messages-log-files
 
 	Log files from the system and various programs/services, especially login (/var/log/wtmp, which logs all 
@@ -7730,8 +7650,9 @@ change take effect everywhere.
 /var/log/messages 	– Contains global system messages, including the messages that are logged during system "START-UP". 
 (up to start up)	  There are several things that are logged in /var/log/messages including mail, cron, daemon, kern, auth, etc.
 
-
+------------------------------------------------------------------------------------
 # dmesg vs /var/log/dmesg
+------------------------------------------------------------------------------------
 
 dmesg				- Realtime Kernel Log  <= Run from Prompt 
  					  Current content of the kernel syslog ring buffer messages
@@ -7797,8 +7718,9 @@ dmesg				- Realtime Kernel Log  <= Run from Prompt
 
 
 
-
-### Servlets 
+------------------------------------------------------------------------------------
+# Servlets 
+------------------------------------------------------------------------------------
 	A servlet is simply a class which responds to a particular type of network request - most commonly an HTTP request. 
 	Basically servlets are usually used to implement web applications - but there are also various frameworks which 
 	operate on top of servlets (e.g. Struts) to give a higher-level abstraction than the "here's an HTTP request, 
@@ -7808,7 +7730,7 @@ dmesg				- Realtime Kernel Log  <= Run from Prompt
 	connection handling etc). One of the best-known open source servlet containers is Tomcat.	
 	
 	
-	
+------------------------------------------------------------------------------------	
 ### Binary releases - contain computer OS readable version of the application, meaning it is compiled. 
 ### Source releases - contain human readable version(code) of the application, meaning it has to be compiled 
 					  before it can be used.	
@@ -7822,21 +7744,26 @@ dmesg				- Realtime Kernel Log  <= Run from Prompt
 						String, Scanner, Random, Die, int[], String[], etc.
 						reference variables store addresses	
 	
-	 
-### Directory . and .. means
+------------------------------------------------------------------------------------	 
+# Directory 
+# . and .. means
+------------------------------------------------------------------------------------
 http://www.basicconfig.com/linux/linux_cd_command_tutorial	
 	.  means the current directory.
 	.. means the parent directory.
 	e.g. when you type cd .. , you will move one level up. 
 		 When you type cp /etc/resolv.conf  .  , you will copy file /etc/resolv.conf in the current directory.	
-	
-### Regression testing
+
+------------------------------------------------------------------------------------	
+# Regression testing
+------------------------------------------------------------------------------------
 	is a type of software testing that verifies that software previously developed and tested still 
 	performs correctly even after it was changed or interfaced with other software. Changes may 
 	include software enhancements, patches, configuration changes, etc.	
 	
-	
-### Makefile - build 
+------------------------------------------------------------------------------------	
+# Makefile - build 
+------------------------------------------------------------------------------------
 	Make is a build automation tool that automatically builds executable programs and libraries from 
 	source code by reading files called Makefiles which specify how to derive the target program. 
 	Though integrated development environments and language-specific compiler features can also be 
@@ -7844,23 +7771,28 @@ http://www.basicconfig.com/linux/linux_cd_command_tutorial
 	operating systems.
 	Besides building programs, Make can be used to manage any project where some files must be 
 	updated automatically from others whenever the others change.	
-	
+
+------------------------------------------------------------------------------------	
 ### Node.JS
+------------------------------------------------------------------------------------
 	It lets you write web apps that use Javascript on both the server and the client, so you 
 	don't need to know multiple programming languages to program your website. It's also 
 	really good at handling real-time concurrent web applications, which makes it a great 
 	choice for a lot of modern web apps.
 	
 	NVM - Node Version Manager
-	
+
+------------------------------------------------------------------------------------	
 ###	Paginators 
+------------------------------------------------------------------------------------
 	a feature of the SDK that act as an abstraction over this process to make it easier for developers 
 	to use paginated APIs. A Paginator is essentially an iterator of results. They are created via the 
 	getPaginator() method of the client.
 	https://docs.aws.amazon.com/aws-sdk-php/v3/guide/guide/paginators.html
 	
-
-### SSL cert location
+------------------------------------------------------------------------------------
+# SSL cert location
+------------------------------------------------------------------------------------
 public root certificates:
 
 "/etc/ssl/certs/ca-certificates.crt", // Debian/Ubuntu/Gentoo etc.
@@ -7868,8 +7800,9 @@ public root certificates:
 
 
 	
-	
-###A bastion host 
+------------------------------------------------------------------------------------	
+# A bastion host 
+------------------------------------------------------------------------------------
 is a special purpose computer on a network specifically designed and configured to withstand attacks. 
 The computer generally hosts a single application, for example a proxy server, and all other services are removed or 
 limited to reduce the threat to the computer. It is hardened in this manner primarily due to its location and purpose, 
@@ -7885,20 +7818,23 @@ operate in the upper layers of the TCP/IP model. Hence, IPsec protects any appli
 Applications do not need to be specifically designed to use IPsec. Without IPsec, the use of TLS/SSL must be designed 
 into an application to protect the application protocols.
 
-### Hardware Virtualization Machine (HVM)
-Red Hat Enterprise Linux 6.4 (PV) - ami-6283a827 (64-bit) / ami-4a83a80f (32-bit)
-Red Hat Enterprise Linux version 6.4 (PV), EBS-backed
-Root device type: ebs Virtualization type: paravirtual
+------------------------------------------------------------------------------------
+# AWS
+------------------------------------------------------------------------------------
+  # Hardware Virtualization Machine (HVM)
+		Red Hat Enterprise Linux 6.4 (PV) - ami-6283a827 (64-bit) / ami-4a83a80f (32-bit)
+		Red Hat Enterprise Linux version 6.4 (PV), EBS-backed
+		Root device type: ebs Virtualization type: paravirtual
+
+  # Paravirtual (PVM)
+		A virtual machine(VM) mode in which operating systems do not require complete emulation of hardware devices. 
+		Paravirtual mode uses an API to interact with the host virtualization platform. Paravirtual mode doesn't require 
+		special virtualization technology hardware.
 
 
-### Paravirtual (PVM)
-A virtual machine(VM) mode in which operating systems do not require complete emulation of hardware devices. 
-Paravirtual mode uses an API to interact with the host virtualization platform. Paravirtual mode doesn't require 
-special virtualization technology hardware.
-
-
-
-### Wildcard certificate
+------------------------------------------------------------------------------------
+# Certificate
+------------------------------------------------------------------------------------
  A wildcard certificate is a public key certificate which can be used with multiple subdomains of a domain.[1]
 Depending on the number of subdomains an advantage could be that it saves money and also could be more convenient. 
 Limitation[edit]
@@ -7929,7 +7865,9 @@ Our SSL Certificate are compatible with almost all popular webserver software. I
 	does not appear on the list, please contact support@comodo.com with full details of your webserver 
 	software and we will contact you with further instructions.
 
-### Jscrambler
+------------------------------------------------------------------------------------
+# Jscrambler
+------------------------------------------------------------------------------------
 
 JScrambler is an online JavaScript obfuscator and code optimization tool available as a Web application and Web API. 
 	First release was in 2010 [1] by Auditmark, a startup based on a Portuguese business incubator known as UPTEC.
@@ -7950,7 +7888,9 @@ OpenStack OpenStack is a global collaboration of developers and cloud computing 
 	feature rich. The technology consists of a series ofinterrelated projects delivering various components 
 	for a cloud infrastructure solution.
 
-### Hash function
+------------------------------------------------------------------------------------
+# Hash function
+------------------------------------------------------------------------------------
 Hash functions are primarily used to generate fixed-length output data that acts as a shortened 
 reference to the original data. This is useful when the original data is too cumbersome to use in its entirety.
 One practical use is a data structure called a hash table where the data is stored associatively. 
@@ -7980,26 +7920,19 @@ own uses and requirements and is designed and optimized differently. The Hash Ke
 American National Drug Intelligence Center, for instance, is more aptly described as a catalog of file fingerprints 
 than of hash values.
 
-### Oplog
-The oplog (operations log) is a special capped collection that keeps a rolling record of all operations that 
-modify the data stored in your databases. MongoDB applies database operations on the primary and then records 
-the operations on the primary's oplog.
 
-### Tableau
-Tableau Online is a hosted version of Tableau Server. It makes rapid-fire business analytics easier than ever. 
-Share dashboards with your whole company and with customers and partners— in minutes. Provide live, interactive 
-views of data that let people answer their own questions, right in a web browser or on a tablet. And do it in a secure, 
-hosted environment.
-Get up and running in minutes. Add new users in a few clicks. Tableau Online can scale up as much as you 
-need and you can use it wherever you need it. You don't need to purchase, set up or manage any infrastructure.
 
+
+------------------------------------------------------------------------------------
 ### GridFS
-1.	GridFS is a specification for storing and retrieving files that exceed the BSON-document size limit 
+------------------------------------------------------------------------------------
+	GridFS is a specification for storing and retrieving files that exceed the BSON-document size limit 
 	of 16MB. Instead of storing a file in a single document, GridFS divides a file into parts, or chunks, 
 	and stores each of those chunks as a separate document.
   
-
-### OLAP
+------------------------------------------------------------------------------------
+# OLAP
+------------------------------------------------------------------------------------
 In computing, online analytical processing, or OLAP, is an approach to answering multi-dimensional analytical(MDA) 
 queries swiftly.[1] OLAP is part of the broader category of business intelligence, which also encompasses 
 relational database, report writing and data mining.[2] Typical applications of OLAP include business 
@@ -8027,7 +7960,9 @@ and present the information to the reader in this condensed form. If the reader 
 to check how we actually got the results they will want to examine the data that we used ... 
 the data that underlies the results.
 
-### MapReduce ###
+------------------------------------------------------------------------------------
+# MapReduce 
+------------------------------------------------------------------------------------
 MapReduce is a programming model for processing large data sets with a parallel, 
 distributed algorithm on a cluster.[1]
 A MapReduce program is composed of a Map() procedure that performs filtering and sorting 
@@ -8050,8 +7985,9 @@ MapReduce libraries have been written in many programming languages, with differ
 levels of optimization. A popular open-source implementation is Apache Hadoop. 
 The name MapReduce originally referred to the proprietaryGoogle technology but has since been genericized.
 
-### Nginx ###
-
+------------------------------------------------------------------------------------
+# Nginx 
+------------------------------------------------------------------------------------
 Nginx (pronounced "engine-ex") is an open source reverse proxy server for HTTP, 
 HTTPS, SMTP, POP3, and IMAP protocols, as well as a load balancer, HTTP cache, 
 and a web server (origin server). The nginx project started with a strong focus 
@@ -8060,7 +7996,9 @@ under the 2-clause BSD-like license and it runs on Linux, BSD variants, Mac OS X
 Solaris, AIX, HP-UX, as well as on other *nix flavors. It also has a proof 
 of concept port for Microsoft Windows.[6]
 
-### Null (SQL)
+------------------------------------------------------------------------------------
+# Null (SQL)
+------------------------------------------------------------------------------------
 Null is a special marker used in Structured Query Language (SQL) to indicate that a data 
 value does not exist in the database. Introduced by the creator of the relational database 
 model, E. F. Codd, SQL Null serves to fulfill the requirement that all true relational 
@@ -8094,9 +8032,9 @@ programming languages, where null means not assigned to a particular instance
 	
 	
 	
-	
-###### Print Usage	######
-#------------------------------------------------------------------------------------	
+------------------------------------------------------------------------------------	
+# Print 
+------------------------------------------------------------------------------------
 #!/bin/sh
 print_usage() {
         echo -e "`basename $0` ssh_connexion local_script"
@@ -8111,28 +8049,35 @@ INTERPRETER=$(head -n 1 $2 | sed -e 's/#!//')
 
 cat $2 | grep -v "#" | ssh -t $1 $INTERPRETER	
 #------------------------------------------------------------------------------------	
-	
+
+----------------------------------------------------------------------------------------
+# bash built-in variable	
+----------------------------------------------------------------------------------------	
 https://coderwall.com/p/85jnpq/bash-built-in-variables
-$#, $@ & $? bash built-in variable
-
-$ vi test.sh
----------------
-#!/bin/sh
-echo '$#' $#
-echo '$@' $@
-echo '$?' $?
----------------
-$ bash ./test.sh 1 2 3
-output:
-$#  3
-$@  1 2 3
-$?  0
-
 *You passed 3 parameters to your script.*
 
 $# = number of total arguments. <= 'Usage' error report if any arg missing
-$@ = what parameters were passed. Answer is 1 2 3
-$? = was last command successful. Answer is 0 which means 'True'	
+$@ = what parameters were passed. 
+$? = was last command successful. Answer is 0 which means 'True'
+$$ = PID of this script
+
+$ vi test.sh
+------------------------------------------------------------
+#!/bin/bash
+echo 'Number of total argument is $#:' $#
+echo 'Total argument past is $@:'      $@
+echo 'Exit code of this script is $?:' $?
+echo 'PID of this script is $$:'       $$
+------------------------------------------------------------
+$ bash ./test.sh 1 2 3 4
+	output:
+	Number of total argument is $#: 4
+	Total argument past is $@: 1 2 3 4
+	Exit code of this script is $?: 0
+	PID of this script is $$: 2033
+
+
+	
 #------------------------------------------------------------------------------------	
 
 Array
@@ -8171,8 +8116,9 @@ echo I have a ${my_array["brand"]} ${my_array[model]} car.
 	
 	
 	
-	
-### Stress test using 'stress'
+------------------------------------------------------------------------------------	
+# Stress test using 'stress'
+------------------------------------------------------------------------------------
 http://www.tecmint.com/linux-cpu-load-stress-test-with-stress-ng-tool/
 
 # Install
@@ -8180,8 +8126,9 @@ $ wget ftp://fr2.rpmfind.net/linux/dag/redhat/el7/en/x86_64/dag/RPMS/stress-1.0.
 $ yum localinstall stress-1.0.2-1.el7.rf.x86_64.rpm
 	
 	
-
+------------------------------------------------------------------------------------
 # Internet speed test
+------------------------------------------------------------------------------------
 http://askubuntu.com/questions/104755/how-to-check-internet-speed-via-terminal
 
 $ curl -s  https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -	
@@ -8194,19 +8141,23 @@ $ speedtest-cli
 $ pip install speedtest-cli	
 	
 
-
+------------------------------------------------------------------------------------
 ### SONAR
+------------------------------------------------------------------------------------
 	Open Source Project and Code Quality Monitoring
 	https://www.sonarsource.com/
 	http://www.methodsandtools.com/tools/tools.php?sonar
 
+------------------------------------------------------------------------------------
 ### Anemometer[ӕnəmάmitər 애너마미털] 풍향게
+------------------------------------------------------------------------------------
 	https://github.com/box/Anemometer
 	The MySQL Slow Query Monitor. This tool is used to analyze slow query logs collected 
 	from MySQL instances to identify problematic queries.	
 
-	
+------------------------------------------------------------------------------------	
 ### OSI Layers - Quick Summary
+------------------------------------------------------------------------------------
 	Application 	<- Responsible for determining when access to the network is required
 	Presentation	<- Ensures data is received in a useable format.
 						Data encryption is done here!
@@ -8221,13 +8172,16 @@ $ pip install speedtest-cli
 	Physical		<- Transmissionof the raw bit stream. Electrical signalling.
 	
 	
-	
+------------------------------------------------------------------------------------	
 ***Troubleshoot***
-CentOs 7 YUM update not working
+------------------------------------------------------------------------------------
+# YUM update not working - CentOS 7 
+------------------------------------------------------------------------------------
 	$echo "http_caching=packages" >>   /etc/yum.conf file
 	
-
+------------------------------------------------------------------------------------
 ### Received disconnect from server: 2: Too many authentication failures for username
+------------------------------------------------------------------------------------
 https://superuser.com/questions/187779/too-many-authentication-failures-for-username
 resolution: config .ssh/config
 
@@ -8250,14 +8204,15 @@ resolution: config .ssh/config
 	
 	
 	
-###########################################	
-### Terminology 		###
-###########################################
+------------------------------------------------------------------------------------
+# Terminology 		###
+------------------------------------------------------------------------------------
 	
-Stack 		<- used for static memory allocation 
+# Stack 		<- used for static memory allocation 
 				int x=1
 				int x=
-Heap 		<- dynamic memory allocation	
+
+# Heap 		<- dynamic memory allocation	
 				frm Object
 	int x=1
 	int y=2
@@ -8275,6 +8230,7 @@ is important to consider in exception handling and thread executions.
 	
 ------------------------------------------------------------------------------	
 Cross-Site Request Forgery (CSRF)
+------------------------------------------------------------------------------------
 https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)	
 Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web 
 application(e.g. Jenkins) in which they're currently authenticated. CSRF attacks specifically target 
@@ -8288,14 +8244,16 @@ administrative account, CSRF can compromise the entire web application.
 	
 
 ------------------------------------------------------------------------------
-What is HTTPS?
-HTTPS is HTTP over a connection secured by TLS(used to be called SSL)
-	<= HTTP wraped over TLS encryped  connection	
+# HTTPS?
+------------------------------------------------------------------------------------
+HTTPS is HTTP over a connection secured by TLS(SSL)
+	<= HTTP wraped over 'TLS encryped' connection	
 
 	   
 	   
 ------------------------------------------------------------------------------
-### Web site 'Random' unavailable error 
+# Web site 'Random' unavailable error 
+------------------------------------------------------------------------------------
 nginx (lb) -> Apache(WWW) -> MySQL9DB)
 
 $ cat /var/log/messages		(CentOS)
@@ -8308,8 +8266,10 @@ $ cat /var/log/syslog     	(Ubuntu)
 #Jul 10 02:27:59 nlt-lb-01 kernel: net_ratelimit: 169 callbacks suppressed
 ------------------------------------------------------------------------------
 
-After installed the IPTABLES, all netfilter related values are installed and set!
-
+------------------------------------------------------------------------------------
+# Iptables
+# After installed the IPTABLES, all netfilter related values are installed and set!
+------------------------------------------------------------------------------------
 ## what is CURRENT Count?
 $ /sbin/sysctl    net.netfilter.nf_conntrack_count	
 $ /sbin/sysctl -a | grep netfilter | grep count
@@ -8323,8 +8283,9 @@ $ cat /proc/sys/net/netfilter/nf_conntrack_max
 $ /sbin/sysctl net.netfilter.nf_conntrack_max		
 	262144
 
-
-# sysctl 	<= configure kernel parameters at runtime
+------------------------------------------------------------------------------------
+# sysctl 							<= configure kernel parameters at runtime
+------------------------------------------------------------------------------------
 $ sysctl -a | grep netfilter
 $ sysctl -a | grep conntrack
 $ sysctl --names --all | grep -i conntrack
@@ -8370,7 +8331,8 @@ $ cat /sys/module/nf_conntrack/parameters/hashsize
 	
 	
 ------------------------------------------------------------------------------
-# sysctl examples
+# sysctl
+------------------------------------------------------------------------------------
        /sbin/sysctl -a
        /sbin/sysctl -n kernel.hostname
        /sbin/sysctl -w kernel.domainname="example.com"

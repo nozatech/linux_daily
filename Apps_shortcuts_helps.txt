@@ -1,0 +1,150 @@
+아무리 바빠도 해야할 일 - 책 
+돈이 많아도 하지 말아야 할일 - 도박, 마약
+1.역사-역사의식 책임 | 2.문화-감성 | 3.경영-논리 | 4.철학-생각에 방법 | 5.사회학 인문학-인간 관계
+
+"얼마나 아는가 보다  어떻게 실행하는가?"   ( ¯\_(ツ)_/¯ )
+
+S.M.A.R.T.	
+1.Specific	2.Measureable	3.Action-Oriented	4.Realistic	 5.Time-Limited
+
+### Drucker's 5 Questions ###
+1. What is  our mission?
+2. Who  is  our customers?
+3. What is  the customer value?
+4. What are our result?
+5. What is  our plan?
+
+
+---------------------------------------
+### Windows CMD kill process
+---------------------------------------
+http://tweaks.com/windows/39559/kill-processes-from-command-prompt
+c:\taskkill /IM pdflite.exe /F 
+
+# Clear Type Text Tuner
+C:\Windows\System32\cttune.exe
+
+# Rename file 'F2'
+
+# Pin to Taskbar  			<= on program, right click, pin to taskbar
+
+# bring up the Task Manager 
+	Ctrl+Shift+Esc 
+	Windows + R   <= run
+	Windows + E	  <= Explorer
+	Windows + D   <= Show Desktop
+	Windows + L   <= Lock
+	Windows + F   <= search
+
+Windows 10: Narrator Voice
+Start: 	Windows Key + Enter
+Stop:  	Caps Lock   + Esc
+	
+### ABBYY Temp files process	
+How to change the drive location so ABBYY Temp files process to a chosen drive.
+When scanning documents through the ABBY process component there are Bitmap files being stored in the "C:\Windows\Temp"
+Bitmap Image files are stored within the directory while being processed in the ABBY component. The Bitmap Image files are removed automatically when the documents are successfully processed. When the jobs fail to process or processing these images are stored in the Temp folder without being removed and causes space to be taking.
+Resolution / Workaround
+You can redirect these files to be processed onto another directory by changing the environmental variable settings:
+
+1. Right click on "my computer" and hit properties.
+2. Go to the advanced tab and click environmental variables.
+3. Click on the TMP variable under "User variables for Administrator ," and click edit.
+4. Change the value to the specified directory you wish to use.
+
+Carriage Return(CR) <= 캐리지 리턴 문자 (0x0D, \r)는 커서를 다음 줄로 진행하지 않고 행의 시작 부분으로 이동합니다. 
+						이 문자는 Commodore와 초기의 Macintosh 운영 체제 (OS-9 및 이전 버전)에서 줄 바꿈 문자로 사용됩니다. 
+Line Feed (LF)		<= 라인 피드 문자 (0x0A, \n)는 행의 시작 부분으로 돌아 가지 않고 커서를 다음 행으로 이동합니다. 
+						이 문자는 UNIX 기반 시스템 (Linux, Mac OSX 등)에서 줄 바꿈 문자로 사용됩니다.
+End Of Line (EOL)	<= 라인 끝  문자 (0x0D0A, \r\n)는 두개의 ASCII 문자이며 CR과 LF 의 조합입니다. 
+						커서를 다음 줄과 그 줄의 시작 부분으로 이동합니다. 이 문자는 Microsoft Windows, Symbian OS를 
+						포함한 기타 대부분의 비 UNIX 운영 체제에서 줄 바꿈 문자로 사용됩니다.
+
+--------------------------------------- 
+### Notepad++  (Settings > Short cut Mapper Menu)
+---------------------------------------
+
+1. 	Ctrl + L					Delete Current line(from cursor to all the way RIGHT)
+	Ctrl + D					Copy(Duplicate) line
+	Ctrl + Alt + Enter			Insert blank line Above ^
+	Ctrl+Alt+Shift+Enter		Insert blank line Below v
+2. Auto-completion
+	Ctrl+Space			Function completion
+	Ctrl+Enter			Word completion
+	Ctrl+Shift+Space	Function parameter hint
+3. Move
+	Ctrl+End			Bottom of page
+	Ctrl+Home			Top of page
+4. Basic File Management
+	Ctrl+N				Create new document.
+	Ctrl+P				Display Print... dialogue box.
+	Ctrl+O				Display Open File... dialogue box.
+	Ctrl+S				Save current document.
+**	Ctrl+Shift+S		SAVE all open documents **
+	Ctrl+Alt+S			Display Save As... dialogue box.
+	Ctrl+W				Close current document.
+	Alt +F4				Exit Notepad++
+	
+---------------------------------------
+### Chrome ###
+--------------------------------------- 
+Clean Cache - a hard refresh of the page (ctrl+shift+R)
+Plugins install
+	# Revolver 			<- Rotate Tabs
+	# AdBlock
+Alt + Home				Open your homepage.
+Alt + Tab				Toggle between browser windows
+Alt + Left 0Arrow		Back a page.
+Alt + Right Arrow		Forward a page.
+F11						Full screen
+Esc						Stop page or download from loading.
+Ctrl + Shift + I		Development Tools*** 
+Ctrl + Shift + O		Open the Bookmark manager.
+Ctrl + Shift + N		New Incognito Window
+Ctrl + H				Open history in a new tab
+Ctrl + K or Ctrl + E	Perform a Google search
+Ctrl + T				Opens a new tab.
+Ctrl + U				View a web page's source code
+
+---------------------------------------
+### MS Word ###
+---------------------------------------
+Removing empty lines
+Ctrl+f -> replace -> More => Special => Paragraph Mark => ^p   <= single line ^p^p  <= double empty lines
+
+
+---------------------------------------------------------------------------------
+### IPv4 
+32bit is 2^32 =~ 4.3 billion    <=  IPv4 address is 32bit 
+---------------------------------------------------------------------------------
+just without the prefix(e.g. www) as 'something.com' is a 'naked domain.'
+
+-----------------------------------------------------------------------------------	
+### Terminology
+-----------------------------------------------------------------------------------	
+
+### I
+IFTTT	<= IF This Then That
+
+### M
+MEAN stack <= MongoDB, Express.js, AngularJS, and Node.js
+
+### S
+SSL 	<= Secure Sockets Layer
+
+SMACK Stack
+	Spark - fast and general engine for distributed, large-scale data processing
+	Mesos - cluster resource management system that provides efficient resource
+			isolation and sharing across distributed applications
+	Akka -  a toolkit and runtime for building highly concurrent, distributed, 
+			and resilience message-driven app on the JVM
+	Cassandra - distributed, highly available DB designed to handle large amounts of data
+			across multiple datacenters
+	Kafka - a high-throughput, low-latency distributed messaging system designed for
+			handling real-time 'data feeds'
+
+### T ###
+TLS 	<= Transport Layer Security (TLS) – and its predecessor, Secure Sockets Layer (SSL)
+
+
+
