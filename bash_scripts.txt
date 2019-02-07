@@ -39,8 +39,9 @@ _	<= Undercore
 # Debugging options
 ----------------------------------------------------------------------------------------
 'Set' or 'unset' values of shell options and positional parameters.
-	
-$ help set
+----------------------------------------------------------------------------------------	
+  $ help set
+----------------------------------------------------------------------------------------
 	set -xeu		<= x<-틀린(debug) eu<-이유(exit,undefine vars)를 알아야 고친다
 	
 	set -ex         # Do both for good practice 
@@ -54,7 +55,16 @@ $ help set
 	set -x	(set -o xtrace)		Print command traces before executing command.
 	
 	set -u 			<= checks undefined variables
+----------------------------------------------------------------------------------------	
+  # Run in Debugging and Verbose mode
+----------------------------------------------------------------------------------------
+    $ sh -x script.sh   			 <= -x 	for debugging mode from Shell
+    $ sh +x script.sh   			 <= +x 	Disabling debugging mode
 	
+	$ bash -x script.sh   			 <= -x 	for debugging mode from Shell
+	
+    $ sh -v script.sh   			 <= -v 	for Verbose mode Shell
+    $ sh +v script.sh   			 <= +v 	Disabling the  Verbose mode
 	--------------------------------------------------------------------
 	e.g. in a script, add 'set -x' for each line output(debug mode)
 	--------------------------------------------------------------------
@@ -62,20 +72,15 @@ $ help set
 	set -x			<= debug mode tracing
 	set -u 			<= checks undefined variables
 	
-	$ ls -al | tee -a output.file | ...		<= 'tee -a' append
+	$ ls -Al | tee -a output.file 			<= 'tee -a' append A <- removed . & ..
 	
+	--------------------------------------------------------------------
 	$ bash -n debug.sh					    <= prints out Syntex error only
-	------------------------------------------
-	#!/bin/bash
-	# check undefined var and
-	set -u 						# check undefined var
-	set -x						# Turn on  debug mode
-	set -e						# exit right away if there is a fail
-	
-	set -eux					<= 틀린(x) 이유(eu)를 알아야 고친다
+	--------------------------------------------------------------------
 	
 	------------------------------------------
 	$ vi debug.sh
+	------------------------------------------
 	#!/bin/bash
 	a=1
 	echo my PID is $$
@@ -105,19 +110,28 @@ $ help set
 ----------------------------------------------------------------------------------------
 # How to run a script
 ----------------------------------------------------------------------------------------
-	###  Change permission before run a script ###
-	$ chmod + x	  script.sh		<= before run a script
+  # Change permission before run a script ###
+----------------------------------------------------------------------------------------
+	$ chmod + x	  script.sh		<= x run 
+	$ chmod u+x	  script.sh		<= u only user   
 	
-	# Version Check
+----------------------------------------------------------------------------------------	
+  # Bash Version 
+----------------------------------------------------------------------------------------	
 	$ bash -version 
 	$ echo $BASH_VERSION 	
 
+----------------------------------------------------------------------------------------
+# Script Run
+----------------------------------------------------------------------------------------
 	$ bash 		script.sh			 <= No Need to change 'chmod +x'
 	$ bash 	  ./script.sh
 	$ bash -x   script.sh			 <= debug mode
+	$ bash -n   script.sh			 <= Syntex error only print
 
-	$   ./script.sh					 <= run in separate shell
+	$   ./script.sh					 <= run in Separate shell
 	$ . ./script.sh   			     <= current login shell to run
+	$ .   script.sh   			     <= current login shell to run
 
     $ sh   script.sh  				
     $ sh ./script.sh  				 <= same as 'sh script.sh')
@@ -125,27 +139,21 @@ $ help set
     $ exec ./script   				 <= after it runs, EXIT from current shell 
 
 
-
+----------------------------------------------------------------------------------------
 # source command( run in CURRENT SHELL)
+----------------------------------------------------------------------------------------
 	$ source script.sh
 	$ source .bashrc		 		<= reload .bashrc in CURRENT SHELL
 	$ . script.sh					<= '.' is same as source
 										Execute commands from a file in the current shell.
-	
+----------------------------------------------------------------------------------------	
 # run script as a different user from root
+----------------------------------------------------------------------------------------
 	$ wget http://tecmint.com/wp-content/scripts/tecmint_monitor.sh
 	$ su -c "/home/apark/tecmint_monitor.sh" - root
-	$ ./tecmint_monitor.sh -i    <- install
+	$ ./tecmint_monitor.sh -i    					<= install
 	$ monitor
 
-# Run in Debugging and Verbose mode
-    $ sh -x script.sh   			 <= -x 	for debugging mode from Shell
-    $ sh +x script.sh   			 <= +x 	Disabling debugging mode
-	
-	$ bash -x script.sh   			 <= -x 	for debugging mode from Shell
-	
-    $ sh -v script.sh   			 <= -v 	for Verbose mode Shell
-    $ sh +v script.sh   			 <= +v 	Disabling the  Verbose mode
 
 ----------------------------------------------------------------------------------------	
 # VI: Run a script 'Within' VIM or VI
@@ -166,18 +174,17 @@ $ help set
 ----------------------------------------------------------------------------------------
 # VI - Save READ-ONLY file
 ----------------------------------------------------------------------------------------
-# Save the 'read only' file for under privilege error
+  # Save the 'read only' file for under privilege error
 	
 	:w !sudo tee %                  	<= save as sudo privilege.  
 										   type (L) load at the prompt to reload.
 	
-	:w !chmod 777 %    then    :wq!
-	
+	:w !chmod 777 %       				<= Change mod 777
 
 ----------------------------------------------------------------------------------------
-# VI - Short Keys #
+# VI - Short Keys 
 ----------------------------------------------------------------------------------------
-# Move	
+  # Move	
 	^		<= Move cursor to the beginning of the line.
 	$		<= Move cursor to the end of the current line.
 	
@@ -187,18 +194,18 @@ $ help set
 	w		<= Next Word
 	
 	
-# Exit
-	1. Save and Exit
+ # Save and Exit
 	ESC :wq enter
-	ESC Shif + ZZ			<=Cap ZZ
+	ESC Shift + ZZ			<=Cap ZZ
 	
-# Insert	
+  # Insert
+	Shift + A	
 	o					<= insert underneath line
-	i
+	i					<= insert
 	a
 	A
 	
-# Go to
+  # Go to
 	
 	:15					<= go to 15th line
 	$ vi +15 script.sh
@@ -207,18 +214,16 @@ $ help set
 	
 	o					<= insert underneath line
 
-# Undo & Redo
+  # Undo & Redo
 	Esc + u
 	Ctrl + r
 
-# Help
+  # Help
 	:h									<= vi, vim help 			
 	:q 									<= quit help page
 	
-# Go to line
-
+  # Go to line
 	$ vi +101 file.txt					<= go to 101 line in file name
-
 	:12									<= Go to particular line number in vi editor 
 	
 ----------------------------------------------------------------------------------------
@@ -235,7 +240,6 @@ $ help set
 										The regex is 'blank line'  
 										:d (delete)
 										
-
 ----------------------------------------------------------------------------------------
 # incrementing ((i++)) or ((i=i+1))										
 ----------------------------------------------------------------------------------------
@@ -244,7 +248,8 @@ $ help set
 	   *= 
 	   /= 
 	   %=
-	   
+	
+	Example:   
 	$ i=5
 	$ let i+=4                  <= i(5) + 4
 	$ echo "$i"                 <= 9
@@ -259,207 +264,210 @@ $ help set
 	$ echo "i = $(( i-- ))"       <=15
 	$ echo "i = $(( --i ))"       <=14
 
-
-	$ VAR="$(command)"		Newer <= Command substitution & assign to Variable $VAR
-	$ VAR=`command`			#Old-Style <=Command substitution & assign to Variable $VAR
-
----------------------------------------------------
-# Arithmatic (산수 계산)
----------------------------------------------------
-(( ... )) 			Arithmatic
-[1+2]				Deprecated Arithmatic
-let a=1+1			Arithmatic
-
----------------------------------------------------
-# Test Statement
----------------------------------------------------
-[ $a -eq $ ]	Test statement old style
-[[ ... ]] 		Test statement extended
-
-
-
-
-										
+									
 ---------------------------------------------------
 # Writing 2 Scripts at same time in background
 ---------------------------------------------------
 	$ vi 1st.sh
-# Ctrl + z 						<= exit to shell
+  ## Ctrl + z 						<= exit to shell
 	$ vi 2nd.sh
-# Ctrl + z 						<= exit to shell	
+  ## Ctrl + z 						<= exit to shell	
 
-# Check list of jobs	
+ ## Check list of jobs	
 	$ jobs
 	[1] Stopped  vim
 	[2] Stopped  vim
 
 	$ fg %1							<= go back to 1st.sh
-# Ctrl + z
+  ## Ctrl + z
 	$ fg %2							<= go back to 2nd.sh
 	
-# Save and exit or KILL Jobs
+  ## Save and exit or KILL Jobs
 	$ kill %2
 	$ kill -9 %1
 	
-	
-### Monitoring Scripts		
-https://bash.cyberciti.biz/shell/monitoring/
+----------------------------------------------------------------------------------------
+# Monitoring Scripts		 https://bash.cyberciti.biz/shell/monitoring/
 
-
-### Bash scripting cheatsheet
-	https://devhints.io/bash
-
+# Bash scripting cheatsheet  https://devhints.io/bash
 
 ----------------------------------------------------------------------------------------
 ### Variables ###	 
 ----------------------------------------------------------------------------------------
-${Variable}  Vs.  $(Command) <==> `Command`
+https://bash.cyberciti.biz/guide/Assign_values_to_shell_variables
+${Variable} 			<= Actual String 
+	
+	nameVar="Albert Park"
+	$ echo $nameVar        		is awesome
+	$ echo "$nameVar"      		is awesome
+	$ echo "$nameVar"      		is awesome
+	$ echo "${nameVar}"    		is awesome
+	$ echo "${nameVar} master"  is awesome
 
-NAME="Albert Park"
-$ echo $NAME        is awesome
-$ echo "$NAME"      is awesome
-$ echo "$NAME"      is awesome
-$ echo "${NAME}"    is awesome
-$ echo "${NAME} master"    is awesome
+	$ printf "${nameVar}"			<= printf <-format and print data
+										No NEW LINE
+	$ printf "%s\n" "${nameVar}"	<= %s string, \n new line
+	  > Albert							Add a NEW line using %s and \n
+	  > Park
 
-ll=`ls -al`
-ll=$(ls -al)
-ll="$(ls -al)"
-
-
-https://bash.cyberciti.biz/guide/Assign_values_to_shell_variables	
----------------------------------------------------
-varName="test"
-$ echo 	   $varName
-$ echo 	  "$varName"
-$ echo   "${varName}"
-=>test
-
-$ printf "${varName}"
-test[apark@i7 ~]					<= No NEW LINE	
-
-$ printf "%s\n" ${varName}			<= Add a NEW line using '%s' <- String | '\n' <-a new line'
-test
-
-
+$ VAR="$(command)"		<= Command substitution & assign to Variable $VAR <= Newer
+$ VAR=`command`			<= Command substitution & assign to Variable $VAR <= Old
+	
+	$ ll=`ls -Al`
+	$ ll=$(ls -Al)
+	$ ll="$(ls -Al)"
+	$ echo $ll
+	$ echo ${ll}
+	$ echo "${ll} is weird looking"
+	$ printf "${ll}" 
+	
+----------------------------------------------------------------------------------------
 # Variable convention using VarName=$(date)  		<= Execute in subshell $(command)
 ----------------------------------------------------------------------------------------
-	$ NOW=$(date)			<=  `date` is shell program
-	$ NOW="$(date)"			<= SAME as above
-	$ echo $NOW
-	  Fri Jan 18 15:25:43 PST 2019
+	$ NOW=$(date)						<=  `date` is shell program
+	$ NOW=`date`
+	$ NOW="$(date)"						<= SAME as above
+	$ NOW="$(date +%Y-%m-%d-%H-%M-%S)	<= 2019-01-15-11-30-02
+	$ TIMESTAMP=$(date +%F) 
+	$ TIMESTAMP=`date +%F`  			<= set variable name 'timestamp'
 	
-	!!! Not work !!!
-	$ NOW=$"(date)"
-	$ echo $NOW
-	  => (date)		<= Variable Strings, Not the Date!
-	
-	$ now=`date`
-	$ echo $now
-	  Fri Jan 18 15:25:43 PST 2019
+	$ echo $NOW							<= Fri Jan 18 15:25:43 PST 2019
+			
+	$ NOW=`date`
+	$ echo $NOW							<= Fri Jan 18 15:25:43 PST 2019
+	$ echo ${NOW}							<= Fri Jan 18 15:25:43 PST 2019
+	$ echo "${NOW}"							<= Fri Jan 18 15:25:43 PST 2019
+	  
 ----------------------------------------------------------------------------------------
 
-# ${varName} 								<= VAR Syntax
+	VAR=varName 								<= VAR Syntax
+	VAR=${varName} 								<= VAR Syntax
+	VAR="${varName}" 							<= VAR Syntax
 
-$ echo "MySHELL=>$SHELLCode<="				<= What is '$SHELLCode'?
-  MySHELL=><=								<= Missing 
-
-$ echo  "MySHELL=>\$SHELLCode<="			<= User " "double quote ignore VAR '$' and print as TEXT
-  MySHELL=>$SHELLCode<=
-
-$ echo  'MySHELL=>\$SHELLCode<='			<= Use ' 'single quote to ignore VAR '$' and print as TEXT
-  MySHELL=>$SHELLCode<=
-
-$ echo $SHELL
-	/bin/bash
+	$ echo $SHELL
+		/bin/bash
 	
-$ echo "MySHELL=>${SHELL} is Shell location.<="		<= Using ${SHELL} for Variable $SHELL in ""
-	MySHELL=>/bin/bash is Shell location.<=
-
-------------------------------------------------------------------------------------
-# Length of Variable
-------------------------------------------------------------------------------------
-$ myvar="some string"
-
-$ echo ${#myvar}  				<= use '#' for number of 
-  => 11
-
-$ echo echo ${myvar} | wc -c   <= wc -c or wc --bytes for 'byte' counts 
-								Unicode characters are counted with 2, 3 or more bytes.
-$ echo echo ${myvar} | wc -m   <= wc -m or wc --chars for 'character' counts 
-								Unicode characters are counted single until they use more bytes.
+	$ echo "MySHELL is at $SHELL"				<= double quotes		
+	$ echo "MySHELL is at ${SHELL}"				<= Braces on Var	
+	$ echo  MySHELL is at "${SHELL}"			<= Braces + Double Quotes	
+	$ echo  MySHELL is at `echo $SHELL`			<= Back-tik
+	$ echo  MySHELL is at $(echo $SHELL)		<= Parenthesis		
+	$ echo  MySHELL is at "$(echo $SHELL)"		<= Parenthesis + Double Quotes			
+		
+	=>	MySHELL is at /bin/bash <= All same output
+								 
 
 
 ------------------------------------------------------------------------------------
-# NULL variable	<= NULL variable is variable which has 'no value' at the time of definition
+# Length of Variable using {#var]
+	https://stackoverflow.com/questions/17368067/length-of-string-in-bash
 ------------------------------------------------------------------------------------
-var=
-var=""
+  $ myVar="some string"
+  $ echo ${#myVar}  				<= use '{#...}' for number of 
+   => 11
+  
+  $ myVar="12345 6789"
+  $ echo ${#myVar}
+    => 10
+  
+  $ echo echo ${myvar} | wc -c    <= wc -c or wc --bytes for 'BYTE' counts 
+    => 11   					   Unicode characters are counted with 2, 3 or more bytes.
+  $ echo echo ${myvar} | wc -m   <= wc -m or wc --chars for 'Character' counts 
+    => 11							Unicode characters are counted single until they use more bytes.
 
-# Do not use '?' or '*' and other special characters to name your variable.
-?no=10 							<= Invalid '?' var
-out*put=/tmp/filename.txt 		<= Invalid '*' var
+  $ myvar="some string"
+	varSIZE=${#myvar} 
+	echo "$varSIZE"
+	11
+  
+  Example:  
+	if [ ${#string} -ge 12 ]; then 
+		echo ">= 12 characters. too long"
+		exit
+	else 
+		echo "under 12 characters, not too long."
+	fi	
+	
 
-_GREP=/usr/bin/grep 			# OK (valid)
-$ echo "$_GREP"
+------------------------------------------------------------------------------------
+# NULL variable		<= 'NO Value(Empty)' at the time of definition
+------------------------------------------------------------------------------------
+	VAR=
+	VAR=""
+	
+	** Use 'set -u' for Unassinged variable in bash script
 
 ------------------------------------------------------------------------------------	
-### Bash built-in Variable
+# Variable Naming Convention
 ------------------------------------------------------------------------------------
-https://coderwall.com/p/85jnpq/bash-built-in-variables
+	# Do not use '?' or '*' and other special characters to name your variable.
+	?no=10 							<= Invalid '?' var
+	out*put=/tmp/filename.txt 		<= Invalid '*' var
+
+	_GREP=/usr/bin/grep 			# OK (valid)
+	$ echo "$_GREP"
+
+------------------------------------------------------------------------------------	
+# Variable - Bash built-in 
+------------------------------------------------------------------------------------
+https://www.tldp.org/LDP/abs/html/internalvariables.html
 
 	$# 	<= number of total arguments. 		
 	$@ 	<= what parameters were passed. 	
 	$? 	<= was last command successful. 	
 
-$ vi test.sh
-------------------------------------------------------------------------
-#!/bin/sh
-usage="Usage: This script needs arg1, arg2, arg3 values.\n\ 
-e.g. script.sh 1 2 3"
+	Example:
+	$ vi test.sh
+	------------------------------------------------------------------------
+	#!/bin/sh
+	usage="Usage: This script needs arg1, arg2, arg3 values.\n\ 
+	e.g. script.sh 1 2 3"
+	
+	if [ ! $# == 3 ]; then
+		echo -e $usage
+	fi
 
-if [ ! $# == 3 ]; then
-    echo -e $usage
-fi
+	echo '$#' $#
+	echo '$@' $@
+	echo '$?' $?
+	echo '$$' $$			# This script's PID
+	
+	------------------------------------------------------------------------
+	$ bash ./test.sh 1 2 3
+	  output:
+	  $#  3
+	  $@  1 2 3
+	  $?  0
+	  $$  2123
+	  
+	*You passed 3 parameters to your script.*
 
-echo '$#' $#
-echo '$@' $@
-echo '$?' $?
-------------------------------------------------------------------------
-$ bash ./test.sh 1 2 3
-output:
-$#  3
-$@  1 2 3
-$?  0
-
-*You passed 3 parameters to your script.*
-
-$# = number of total arguments. 	<= 'Usage' error report if any arg missing
-$@ = what parameters were passed. 	<= Answer is 1 2 3
-$? = was last command successful. 	<= Answer is 0 which means 'True'	
+	$# = number of total arguments. 	<= 'Usage' error report if any arg missing
+	$@ = what parameters were passed. 	<= Answer is 1 2 3
+	$? = was last command successful. 	<= Answer is 0 which means 'True'	
 
 ------------------------------------------------------------------------------------
-#!/bin/bash
-#set -x
-clear
-usage="Usage: This script needs arg1, arg2, arg3 values!\n
-e.g. script.sh 1 2 3"
+	#!/bin/bash
+	#set -x
+	clear
+	usage="Usage: This script needs arg1, arg2, arg3 values!\n
+	e.g. script.sh 1 2 3"
 
-if [ ! $# == 3 ]; then
-    echo -e $usage
-	echo 
-fi
+	if [ ! $# == 3 ]; then
+		echo -e $usage
+		echo 
+	fi
 
-echo "1st argument is $1"
-echo "2nd argument is $2"
-echo "3nd argument is $3"
-echo -----------------------------------------------------------
-echo '$0' $0  '<=This is script itself'
-echo '$#' $#  '<=This should be total argments which should be 3'
-echo '$@' $@  '<=This is what are the argment values passed'
-echo ----------------------------------------------------------
-echo -e '$?' $?  '<=If the value is 0, it ran successfully,\n
-                    if the value is 1, it failed'
+	echo "1st argument is $1"
+	echo "2nd argument is $2"
+	echo "3nd argument is $3"
+	echo -----------------------------------------------------------
+	echo '$0' $0  '<=This is script itself'
+	echo '$#' $#  '<=This should be total argments which should be 3'
+	echo '$@' $@  '<=This is what are the argment values passed'
+	echo ----------------------------------------------------------
+	echo -e '$?' $?  '<=If the value is 0, it ran successfully,\n
+                        if the value is 1, it failed'
 ------------------------------------------------------------------------------------	
 #!/bin/bash
 #set -x
@@ -481,62 +489,35 @@ else
         echo -e '$?' $?  '<=If the value is 0, it ran successfully,\nif the value is 1, it failed'
 fi
 
-------------------------------------------------------------------------------------
-	$* <==> $@ 
+    -----------------------------------------------------------------------------------
+	$* <==> $@   Differences
+	------------------------------------------------------------------------------------
 	bash parameters are same but Difference is using "" 	
 	https://javarevisited.blogspot.com/2011/06/special-bash-parameters-in-script-linux.html
 
 	$* 	<= individual parameters will be separated by first char of IFS characters
 	$@ 	<= individual parameters will appear in quotes and separated by space.
 
-$ vi spacialChar.sh
+$ vi specialCharacters.sh
 ------------------------
 #!/bin/sh
-echo '$#' $#
-echo '$@' $@
-echo '$@' "$@"
-echo '$*' $*
-echo '$*' "$*"
-echo '$?' $?
+echo '$# is' $#
+echo '$@ is' $@
+echo '$@ is' "$@"
+echo '$* is' $*
+echo '$* is' "$*"
+echo '$? is' $?
 ------------------------
-$bash spacialChar.sh  1 2 3 4
-$# 4
-$@ 1 2 3 4
-$@ 1 2 3 4
-$* 1 2 3 4
-$* 1 2 3 4
-$? 0
+$bash specialChar.sh  1 2 3 4
+$# is 4
+$@ is 1 2 3 4
+$@ is1 2 3 4
+$* is1 2 3 4
+$* is1 2 3 4
+$? is0
 
 	
 
----------------------------------------------------
-### Length of string in bash  ####
-https://stackoverflow.com/questions/17368067/length-of-string-in-bash	
----------------------------------------------------
-$ var	        	   #Value of shell variable var.
-$ var=value		       #Assign the string value to shell variable var.
-
-	$ var=52
-	$ echo $var
-	$ echo ${var}
-	$ echo "${var}"
-	 => 52
-	
-	$ echo $var
-	$ echo ${var}5    	<= appending '5' to $var.
-	$ echo "${var}"5	
-	$ echo "${var}5"	<= best practice
-	 => 525  
-
-	$ length=${#var}	<- length of variable using '#'
-	$ length="${#var}"	<- length of variable using '#'
-		
-	$ echo $length   
-	$ echo ${length}
-	$ echo "${length}"
-	 => 2
-	$ echo "${length}" | wc --bytes
-	$ echo "${length}" | wc --chars
 	
 ---------------------------------------------------
 ### SHELL (Local) Variable (within function) ####
@@ -557,13 +538,15 @@ $ var=value		       #Assign the string value to shell variable var.
 		  let x=x*3; 
 		  let x*=5, ...
 		  
-------------------------------------
+------------------------------------------------------------------------
 # When to use (List) <- Subshell  vs. { List; } <- Current Shell# in bash?	  
-------------------------------------
+------------------------------------------------------------------------
 https://askubuntu.com/questions/606378/when-to-use-vs-in-bash
 
-### {...; } <= current shell
-------------------------------------
+------------------------------------------------------------------------
+# {...; } 
+# current shell
+------------------------------------------------------------------------
 $ function() { echo this is a function; }  			<= space between { echo ...  ; } 
 														Similar to 'TEST' [[ statement ]] 
 		      ^ space				   ^ space        	executes in 'current' shell
@@ -590,10 +573,11 @@ $ echo "${#files[@]}"
 						
 
 
- 						
-### (...) <= subshell command													
-------------------------------------
-$ f() (echo this is a function)					<= No effect on space nor ; to close
+------------------------------------------------------------------------ 						
+# (...) 
+# Subshell command													
+------------------------------------------------------------------------
+$ f( ) (echo this is a function)					<= No effect on space nor ; to close
 
 $ cd ; unset files
 $ count_tmp() (cd /tmp; files=(*); echo "${#files[@]}")
@@ -604,18 +588,20 @@ $ pwd; count_tmp; pwd
 $ echo "${#files[@]}"
 	0	
 
-
-# ()		<= Subshell Command
+------------------------------------------------------------------------
+# ( )		<= Subshell Command
 ( list )
+------------------------------------------------------------------------
 	Placing a list-of-commands between parentheses causes a 'subshell' environment to be created, 
 	and each of the commands in list to be executed in that subshell. Since the list is executed 
 	in a subshell, variable assignments do not remain in effect after the subshell completes.
 
 	Code in '()' is run inside a separate, child process of bash that is discarded after execution. 
 	This child process is often referred to as a sub-shell and can be thought of as a new, child-like scope.
-
-# {}		<= Current Shell Command
+------------------------------------------------------------------------
+# { }		<= Current Shell Command
 { list; }
+------------------------------------------------------------------------
 	Placing a list of commands between curly braces causes the list to be executed in the 'current shell'
 	context. No subshell is created. The semicolon (or newline) following list is required.
 
@@ -625,9 +611,6 @@ $ echo "${#files[@]}"
 
 
 
---------------------
-### Bash Scripts ###
---------------------
 ------------------------------------------
 # FUNCTION
 ------------------------------------------
@@ -4116,8 +4099,17 @@ exit 0      #Successful
 
 
 
+# Arithmatic (산수 계산)
+---------------------------------------------------
+(( ... )) 			Arithmatic
+[1+2]				Deprecated Arithmatic
+let a=1+1			Arithmatic
 
-
+---------------------------------------------------
+# Test Statement
+---------------------------------------------------
+[ $a -eq $ ]	Test statement old style
+[[ ... ]] 		Test statement extended
 
 
 
