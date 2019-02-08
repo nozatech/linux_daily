@@ -25,15 +25,16 @@ _	<= Undercore
 ----------------------------------------------------------------------------------------
 # Commenting (http://tldp.org/LDP/abs/html/special-chars.html)
 ----------------------------------------------------------------------------------------
-	$ echo "The # here does not begin a comment."
-	$ echo 'The # here does not begin a comment.'
-	$ echo The \# here does not begin a comment.
-	$ echo The  # here begins a comment.
+	$ echo "The # here does not begin a comment."			<= " " prints out as character
+	$ echo 'The # here does not begin a comment.'			<= ' ' prints out as is #, $, etc..
+	$ echo The \# here does not begin a comment.			<= \ ignore # comment
+	$ echo The  # here begins a comment.					<= No Quote, # after wards become comment
+	  => The												
 
 	$ echo -e "This is 1st line.\n\tThis is 2nd line.\n\t\tThis is 3rd line."
 	  This is 1st line.
           This is 2nd line.
-              This is 3rd line
+              This is 3rd line 
 
 ----------------------------------------------------------------------------------------
 # Debugging options
@@ -70,17 +71,30 @@ _	<= Undercore
 	--------------------------------------------------------------------
 	#!/bin/bash
 	set -x			<= debug mode tracing
-	set -u 			<= checks undefined variables
+	set -u 			<= checks Undefined variables
 	
-	$ ls -Al | tee -a output.file 			<= 'tee -a' append A <- removed . & ..
+	$ ls -Al | tee -a output.file 			<= 'tee -a' append - A <- removed . & ..
+
+-------------------------------------------------------------------- 
+# Syntex error only
+https://stackoverflow.com/questions/171924/how-do-i-syntax-check-a-bash-script-without-running-it
+--------------------------------------------------------------------
+$ bash -n script.sh					    <= prints out Syntex error only
+$ sh -n   script.sh						<= prints out Syntex error only
+--------------------------------------------------------------------
+# Shell Checker
+	https://github.com/koalaman/shellcheck#user-content-installing
+	$ yum -y install epel-release
+	$ yum install ShellCheck         <= Cap 'S' and 'C'
+--------------------------------------------------------------------	
+	Example:
+	$ shellcheck script.sh
 	
-	--------------------------------------------------------------------
-	$ bash -n debug.sh					    <= prints out Syntex error only
-	--------------------------------------------------------------------
 	
-	------------------------------------------
-	$ vi debug.sh
-	------------------------------------------
+	
+	--------------------------------------------------------------
+	$ vi find_pid.sh
+	--------------------------------------------------------------
 	#!/bin/bash
 	a=1
 	echo my PID is $$
@@ -89,14 +103,14 @@ _	<= Undercore
 	set -xu						# Turn on
 	echo a is $a b is $b c is $c
 		
-	$ bash debug.sh
+	$ bash find_pid.sh
 		+ a=1					<=+ is debug
 		+ echo my PID is 1316
 		my PID is 1316
 		+ set +x
-		debug.sh: line 9: c: unbound variable   <= set -u report
+		find_pid.sh: line 9: c: unbound variable   <= set -u report
 
-	---------------------------------------------------								
+	-----------------------------------------------------------------------------------							
     #!/bin/bash -x 					<= add " -x " for debugging mode in #!/bin/bash script
     $ bash -x ./script.sh  			( same as 'bash script.sh') 
     $ bash -vx script.sh			<= add -xv from shell -v <-verbose -x <-debug
@@ -469,15 +483,15 @@ https://www.tldp.org/LDP/abs/html/internalvariables.html
 	echo -e '$?' $?  '<=If the value is 0, it ran successfully,\n
                         if the value is 1, it failed'
 ------------------------------------------------------------------------------------	
-#!/bin/bash
-#set -x
-clear
-USAGE="Usage: This script needs arg1, arg2, arg3 values!\ne.g. script.sh 1 2 3"
+	#!/bin/bash
+	#set -x
+	clear
+	USAGE="Usage: This script needs arg1, arg2, arg3 values!\ne.g. script.sh 1 2 3"
 
-if [ ! $# == 3 ]; then
-    echo -e $USAGE
-    echo "Try again..........................."
-else
+	if [ ! $# == 3 ]; then
+		echo -e $USAGE
+		echo "Try again..........................."
+	else
         echo "1st argument is $1"
         echo "2nd argument is $2"
         echo "3nd argument is $3"
@@ -487,7 +501,7 @@ else
         echo '$@' $@  '<=This is what are the argment values passed'
         echo ----------------------------------------------------------
         echo -e '$?' $?  '<=If the value is 0, it ran successfully,\nif the value is 1, it failed'
-fi
+	fi
 
     -----------------------------------------------------------------------------------
 	$* <==> $@   Differences
@@ -499,7 +513,7 @@ fi
 	$@ 	<= individual parameters will appear in quotes and separated by space.
 
 $ vi specialCharacters.sh
-------------------------
+------------------------------------------------
 #!/bin/sh
 echo '$# is' $#
 echo '$@ is' $@
@@ -507,18 +521,17 @@ echo '$@ is' "$@"
 echo '$* is' $*
 echo '$* is' "$*"
 echo '$? is' $?
-------------------------
-$bash specialChar.sh  1 2 3 4
-$# is 4
-$@ is 1 2 3 4
-$@ is1 2 3 4
-$* is1 2 3 4
-$* is1 2 3 4
-$? is0
+------------------------------------------------
 
-	
+	$ bash specialChar.sh  1 2 3 4
+		$# is 4
+		$@ is 1 2 3 4
+		$@ is1 2 3 4
+		$* is1 2 3 4
+		$* is1 2 3 4
+		$? is0
 
-	
+		
 ---------------------------------------------------
 ### SHELL (Local) Variable (within function) ####
 ---------------------------------------------------	  
@@ -1085,10 +1098,13 @@ $ while false ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostn
 $ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; kill $! ; \
   wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
 
+------------------------------------------------------------------------------------
+# infinite while loop
+------------------------------------------------------------------------------------
 https://stackoverflow.com/questions/1289026/syntax-for-a-single-line-bash-infinite-while-loop
 $ while sleep 2; do echo "Thinking"; done	
-$ while       :; do echo "Thinking"; sleep 2; done				<= run echo then sleep cmd
-$ while [ 1 ]  ; do echo "Thinking" && sleep 2 || break; done   <= 1 is not true(0)
+$ while       :; do echo "Thinking"; sleep 2; done				<= : <-true, run echo then sleep cmd
+$ while [ 1 ]  ; do echo "Thinking" && sleep 2 || break; done   <= 1 is not true [ test ]
 
 
 $ until  ((0)); do echo "Thinking"; sleep 2; done
@@ -1097,12 +1113,19 @@ $ for   ((;;)); do echo "Thinking"; sleep 2; done
 $ until    [ ]; do echo "Thinking"; sleep 2; done
 
 
+# Move or rename file from CMD
+$ if [ -e .vimrc ]; then mv .vimrc .vimrc_bak; fi
+
 
 
 ---------------------------------------------------	
 # Grouping Commands
 ---------------------------------------------------		
 https://www.gnu.org/software/bash/manual/bashref.html#Command-Grouping
+
+
+
+
 
 ---------------------------------------------------	
 Current Shell vs Non-effect (sub)Shell
@@ -1365,10 +1388,14 @@ $  comm -23 <(ls dir1 |sort) <(ls dir2|sort)
 Note: You must separate the square brackets from other text by a space.
 e.g. [ ! -z $HOME ] 
       ^ ^space   ^space 
+	
 	# if $HOME is exist[true], echo $HOME; fi
+	
 	$ if [ ! -z $HOME ]; then echo "$HOME"; fi 
 
-### Common Bash comparisons
+-------------------------------------------------------------------------------------
+# comparisons
+-------------------------------------------------------------------------------------
 Operator	       Meaning									Example
 -------------------------------------------------------------------------------------
 -z			Length of String is (zero)EMPTY 					[ -z "$my_var" ]     my_var=""
@@ -1968,6 +1995,7 @@ done
 
 ----------------------------------------------------------------------------------
 ###  Length of the Bash Array ###
+
 get the length of an array using the special parameter called $#.
 
 ${#array_name[@]} gives you the length of the array.
@@ -2218,31 +2246,69 @@ do
     fi
 done
 
+----------------------------------------------------------------------------------
+# email - IP update script
+----------------------------------------------------------------------------------
+#!/bin/bash
+# If IP Address had been changed, it would send out an email for update.
+#set -xeu
 
+current_IP="$(/usr/sbin/ifconfig | grep 'inet'| awk '{print $2}' | head -1)"
+	# Use full path to prevent 'ifconfig: command not found'
+TIMESTAMP="$(date +%F)"
 
+old_IP_file='/home/apark/ipAddress/old_IP.txt'
+old_IP=$(cat "${old_IP_file}")
+
+if [[ ${current_IP} != ${old_IP} ]]; then    # != Strings are Not Same
+    echo "You have a NEW IP Address = ${current_IP}"
+    echo "IP has been changed and need to send an update email...."
 	
-24. Test statement for Comparison operation [[ expression ]]     0:TRUE  1:FALSE 
-	A. Comparing variables									        For Integer
+	# Email echo MSG => use 'mail -s' => Header => sending address
+    echo -e "Hello\nTime of IP change = ${TIMESTAMP}\nIP = ${current_IP}\nBye"\
+             | /usr/bin/mail -s \
+            "[Subject] Your i7 server's IP has been changed to ${current_IP}" \
+            albertpark5@gmail.com
+	    
+    echo ${current_IP}  >  ${old_IP_file}		# Update current_IP to old_Ip_file
+
+else
+        echo "You have same IP!"
+fi
+----------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------	
+# Test statement for Comparison operation [[ expression ]]     0:TRUE  1:FALSE 
+----------------------------------------------------------------------------------
+	-----------------------------------------------------
+	A. Comparing variables(Integer <= Numbers)
+	-----------------------------------------------------
 		Less than			        [[ $a < $b ]]             = (( $a < $B )) 
 		greater than			    [[ $a > $b ]]
 		less than or equal to 		[[ $a <= $b ]]
 		greater than or equal to 	[[ $a >= $b ]]
 		equal(same)			        [[ $a == $b ]]
 		not equal(same)		        [[ $a != $b ]]
+	-----------------------------------------------------
+	B. String comparison
+	-----------------------------------------------------
+	[[ "cat" == "cat" ]]
 	
-	### String comparison
-	ex) [[ "cat" == "cat" ]]
-		a=cat
+	a=cat
 		b=dog
 		[[ $a == $b ]]
 		echo $?			<= 1:FALSE 0:TRUE
-
+		
+	-----------------------------------------------------
 	B. Logical Operations
+	-----------------------------------------------------
 		AND     [[ $a && $b ]]
 		OR   	[[ $a || $b ]] 
 		NOT     [[ ! $a ]]
-
+	
+	-----------------------------------------------------
 	C. Integer Number comparison operations
+	-----------------------------------------------------
 		less than			         [[ $a -lt $b ]]
 		greater than			     [[ $a -gt $b ]]
 		less than or equal to 		 [[ $a -le $b ]]
@@ -2252,8 +2318,9 @@ done
 		
 	Eg)	[[ 20 -gt 100 ]]
 		echo $?
-	
+	-----------------------------------------------------
 	D. String null value
+	-----------------------------------------------------
 		is null(EMPTY)?			    [[ -z $a ]]   <= [[ !-z $a ]]
 		is not null(EMPTY)?			[[ -n $a ]]   <= [[ !-n $a ]]
 
@@ -2270,8 +2337,9 @@ done
 		fi
 
 
-
-28. Array (can do from prompt)
+-----------------------------------------------------
+# Array (can do from prompt)
+-----------------------------------------------------
 	
 	a=()
 	b=("apple" "banana" "cherry" "$today" "$time")
@@ -2284,8 +2352,9 @@ done
 	
 	
 	
-	
-1. Comparisons: cmp vs diff
+-----------------------------------------------------	
+#  cmp vs diff 			
+-----------------------------------------------------
 	cmp -  compare files byte by byte
 	cmp -s $file1 $file2
     
@@ -2296,47 +2365,48 @@ done
 
 	sdiff  <= side by side comparison
 	
-	
-32. if Condition statement
+----------------------------------------------------------------------------------	
+# if Condition statement
+----------------------------------------------------------------------------------
 
-	a. if condition ; then	<= if condition is true, commands run
+	a. if condition ; then			<= if condition is true, commands run
 		commands
-   	   fi			<= if condition is false, do nothing!
+   	   fi							<= if condition is false, do nothing!
 
-	b. if condition ; then  <= if condition is true, 1st commands run otherwise 
+	b. if condition ; then  		<= if condition is true, 1st commands run otherwise 
 	   	commands   
-	   else			<= if condition is false, 2nd commands run
+	   else							<= if condition is false, 2nd commands run
 		commands
 	   fi
 
-	c. if condition ; then   <= if condition is true, 1st commands run
+	c. if condition ; then   		<= if condition is true, 1st commands run
 	   	commands
-	   elif conditions; then <= if condition is false, and if the 2nd command is true
-	   	commands	 <= then 2nd set of commands run  	
+	   elif conditions; then 		<= if condition is false, and if the 2nd command is true
+	   	commands	 				<= then 2nd set of commands run  	
 	   if
 	   
 	#!/bin/bash
-	if [ -f /etc/foo ]; then     # -f for file exit?
-        	cp /etc/foo .
+	if [ -f /etc/passwd ]; then     		# -f for file exit?
+        	cp /etc/passed .
        		echo "copy done!"
 	else
-        	echo "This file does not exist"
-        	exit (1 ??)
+        	echo "Passwd file does not exist"
+        	exit 1								<= Failed Exit code
 	fi
 --------------------------------------------------
 
 	if cmp -s "$file1" "$file2"
 		then
-	   echo "The files match"
+			echo "The files match"
 	else
-	   echo "The files are different"
+	    echo "The files are different"
 	fi
-
 
 
 ----------------------------------------------------------------------------------
 # Exit code
 ----------------------------------------------------------------------------------
+	-------------------------------------------
 	#!/bin/bash
 
 	touch /root/test 2> /dev/null
@@ -2349,7 +2419,7 @@ done
 	  echo "Could not create file" >&2
 	  exit 1
 	fi
-	
+	-------------------------------------------
 
 	## With the exit command in this script, we will exit with a successful message 
 	and 0 exit code if the touch command is successful. If the touch command fails 
@@ -2357,8 +2427,7 @@ done
 	which indicates failure. ##
 
 	
-	# Move or rename file from CMD
-	$ if [ -e .vimrc ]; then mv .vimrc .vimrc_bak; fi
+
 
 	
 	

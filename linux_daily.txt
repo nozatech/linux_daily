@@ -7385,13 +7385,23 @@ change take effect everywhere.
 ------------------------------------------------------------------------------------
 	$ ifconfig eth0 mtu 1000
 	
+	
 	### check network RX size
 	$ ifconfig eth0 | grep "RX " | awk '{print $2}' | cut -d: -f2
+	$ ifconfig | grep enp* | grep "RX " | awk '{print $2}' | cut -d: -f2
 	$ RX=`ifconfig eth0 | grep "RX " | awk '{print $2}' | cut -d: -f2`; echo $RX
+    
+	# MTU size check
+	$ $cat /sys/class/net/enp*/mtu						<= CentOS enp* <- auto named Network card
+	
+	$ ifconfig | grep enp* | grep -o 'mtu ....'			<= .... == 1500 <-4 dots -o Only matching
+	  => mtu 1500
 
 	
 	
-	### Ping
+------------------------------------------------------------------------------------	
+# Ping
+------------------------------------------------------------------------------------
 	- Is the remote host alive?		=> Host reachability
 	- Is the network speed good? 	=> Network congestion
 	- Is the remote host far? 		=> Travel length
@@ -7400,6 +7410,17 @@ change take effect everywhere.
 	http://muzso.hu/2009/05/17/how-to-determine-the-proper-mtu-size-with-icmp-pings
 	
 	https://openmaniak.com/ping.php
+	
+	ICMP Packet
+	<-------------------->|<--------------------->|<---------------------->|<------------------->
+	Mac Header(14-bytes)	IP Header(20-bytes)		ICMP Header(8-bytes)	ICMP Data Variable
+	|<----------------------------------------------------------------------------------------->|
+							Ethernet Frame
+	|<----------------------------------------------------------------------------------------->|
+											IP Packet	
+	|<----------------------------------------------------------------------------------------->|	
+														ICMP Packet
+	
 	
 	$ ping -M  do -s 1500 remote_host
 			-M pmtudisc_opt
@@ -7415,12 +7436,15 @@ change take effect everywhere.
 			
 			
 	$ ping -M do -s 1500 45.55.5.69
-	PING 45.55.5.69 (45.55.5.69) 1500(1528) bytes of data.
-	ping: local error: Message too long, mtu=1500
+		PING 45.55.5.69 (45.55.5.69) 1500(1528) bytes of data.
+		ping: local error: Message too long, mtu=1500
 
 	$ ping -M do -s 1400 45.55.5.69
-	PING 45.55.5.69 (45.55.5.69) 1400(1428) bytes of data.
-	1408 bytes from 45.55.5.69: icmp_seq=1 ttl=52 time=9.05 ms
+		PING 45.55.5.69 (45.55.5.69) 1400(1428) bytes of data.
+		1408 bytes from 45.55.5.69: icmp_seq=1 ttl=52 time=9.05 ms
+	
+	$ ping -6 ipv6.google.com
+	$ ping6   ipv6.google.com
 	
 	#------------------------------------------------------------------------------------
 	#### Works solution ###
