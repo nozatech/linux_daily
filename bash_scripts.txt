@@ -82,12 +82,15 @@ https://stackoverflow.com/questions/171924/how-do-i-syntax-check-a-bash-script-w
 $ bash -n script.sh					    <= prints out Syntex error only
 $ sh -n   script.sh						<= prints out Syntex error only
 --------------------------------------------------------------------
-# Shell Checker
+
+--------------------------------------------------------------------
+# Shell Checker <<<=== Excellent!!! ###
+--------------------------------------------------------------------
 	https://github.com/koalaman/shellcheck#user-content-installing
 	$ yum -y install epel-release
 	$ yum install ShellCheck         <= Cap 'S' and 'C'
---------------------------------------------------------------------	
-	Example:
+	
+	### Example:
 	$ shellcheck script.sh
 	
 	
@@ -126,8 +129,8 @@ $ sh -n   script.sh						<= prints out Syntex error only
 ----------------------------------------------------------------------------------------
   # Change permission before run a script ###
 ----------------------------------------------------------------------------------------
-	$ chmod + x	  script.sh		<= x run 
-	$ chmod u+x	  script.sh		<= u only user   
+	$ chmod + x	      script.sh		<= x run 
+	$ chmod u + x	  script.sh		<= u only user   
 	
 ----------------------------------------------------------------------------------------	
   # Bash Version 
@@ -140,12 +143,11 @@ $ sh -n   script.sh						<= prints out Syntex error only
 ----------------------------------------------------------------------------------------
 	$ bash 		script.sh			 <= No Need to change 'chmod +x'
 	$ bash 	  ./script.sh
-	$ bash -x   script.sh			 <= debug mode
-	$ bash -n   script.sh			 <= Syntex error only print
-
-	$   ./script.sh					 <= run in Separate shell
-	$ . ./script.sh   			     <= current login shell to run
-	$ .   script.sh   			     <= current login shell to run
+	$   	  ./script.sh			 <= run in Separate shell
+	
+	$ scource   script.sh   		 <= current login shell to run
+			.   script.sh   		 <= . is same as source
+	$ 		. ./script.sh   		 <= current login shell to run
 
     $ sh   script.sh  				
     $ sh ./script.sh  				 <= same as 'sh script.sh')
@@ -161,7 +163,7 @@ $ sh -n   script.sh						<= prints out Syntex error only
 	$ . script.sh					<= '.' is same as source
 										Execute commands from a file in the current shell.
 ----------------------------------------------------------------------------------------	
-# run script as a different user from root
+# run a script as a different user from root
 ----------------------------------------------------------------------------------------
 	$ wget http://tecmint.com/wp-content/scripts/tecmint_monitor.sh
 	$ su -c "/home/apark/tecmint_monitor.sh" - root
@@ -202,14 +204,14 @@ $ sh -n   script.sh						<= prints out Syntex error only
 	^		<= Move cursor to the beginning of the line.
 	$		<= Move cursor to the end of the current line.
 	
-	H | L 		<= go to TOP of page
+	H | L 	<= go to TOP of page
 	G 		<= go to BOTTOM of page
 	E		<= End of Word
 	w		<= Next Word
 	
 	
  # Save and Exit
-	ESC :wq enter
+	ESC :wq     enter
 	ESC Shift + ZZ			<=Cap ZZ
 	
   # Insert
@@ -220,12 +222,9 @@ $ sh -n   script.sh						<= prints out Syntex error only
 	A
 	
   # Go to
-	
 	:15					<= go to 15th line
 	$ vi +15 script.sh
-	
 	G 					<= go to bottom of page
-	
 	o					<= insert underneath line
 
   # Undo & Redo
@@ -254,29 +253,7 @@ $ sh -n   script.sh						<= prints out Syntex error only
 										The regex is 'blank line'  
 										:d (delete)
 										
-----------------------------------------------------------------------------------------
-# incrementing ((i++)) or ((i=i+1))										
-----------------------------------------------------------------------------------------
-	((i+=1)) == ((i++)) == ((i=i+1))
-	   -=   
-	   *= 
-	   /= 
-	   %=
-	
-	Example:   
-	$ i=5
-	$ let i+=4                  <= i(5) + 4
-	$ echo "$i"                 <= 9
-	$ let i+=4                  <= i(9) + 4
-	$ echo $i                   <= 13  
 
-	$ echo "i = $(( i++ ))"       <= 13
-	$ echo "i = $(( i++ ))"       <= 14
-
-	$ echo "i = $(( ++i ))"       <=15
-	$ echo "i = $(( ++i ))"       <=16
-	$ echo "i = $(( i-- ))"       <=15
-	$ echo "i = $(( --i ))"       <=14
 
 									
 ---------------------------------------------------
@@ -622,8 +599,6 @@ $ echo "${#files[@]}"
 	to put it more succinctly, the code is run in the current scope.
 
 
-
-
 ------------------------------------------
 # FUNCTION
 ------------------------------------------
@@ -882,6 +857,8 @@ echo ------------------------------------------
 echo "Redirect both STDOUT & STDERR using '&>'"
 find /etc -name grub &> both.out
 cat both.out
+
+
 ---------------------------------------------------	
 ### Parameters ###
 https://mywiki.wooledge.org/BashGuide/Parameters
@@ -975,14 +952,9 @@ echo \*                 #Echos * to screen, not all filename as in:  echo *
 echo '$1$2hello'        #Writes literally $1$2hello on screen.
 echo "$1$2hello"        #Writes value of parameters 1 and 2 and string hello.
 
--------------------------------------------------------------------	
-### ${}  expression is used for variable substitution
--------------------------------------------------------------------
-	
-	
 	
 -------------------------------------------------------------------
-### Back Tic `...` legacy VS Parenthesis $(...) - Command substitution
+### BackTic `...` legacy VS Parenthesis $(...) - Command substitution
 -------------------------------------------------------------------
 Forgot about the Back Tic `...` It isn't consistent with the syntax of Expansion and 
 is terribly hard to nest. Use  $(...)  instead.
@@ -1008,9 +980,9 @@ brace expansion         (see a reference book)
 ~ expansion             (for login ids)
 parameters              (such as $1)
 variables               (such as $var)
-command substitution    (Example:  match=`grep DNS *` )
+command substitution    (Example:  match=`grep DNS *` $(date)
 arithmetic              (from left to right)
-word splitting
+word splitting			${name:0:2}
 pathname expansion      (using *, ?, and [abc] )
 
 
@@ -1034,7 +1006,34 @@ pathname expansion      (using *, ?, and [abc] )
 	((y=n^4))
 	echo y = $y
 
+----------------------------------------------------------------------------------------
+# incrementing ((i++)) or ((i=i+1))										
+----------------------------------------------------------------------------------------
+	((i+=1)) == ((i++)) == ((i=i+1))
+	   -=   
+	   *= 
+	   /= 
+	   %=
+	
+	Example:   
+	$ i=5
+	$ let i+=4                  <= i(5) + 4
+	$ echo "$i"                 <= 9
+	$ let i+=4                  <= i(9) + 4
+	$ echo $i                   <= 13  
 
+	$ echo "i = $(( i++ ))"       <= 13
+	$ echo "i = $(( i++ ))"       <= 14
+
+	$ echo "i = $(( ++i ))"       <=15
+	$ echo "i = $(( ++i ))"       <=16
+	$ echo "i = $(( i-- ))"       <=15
+	$ echo "i = $(( --i ))"       <=14
+
+
+
+
+	
 ---------------------------------------------------	
 ### Script running remotely
 ---------------------------------------------------
@@ -1044,13 +1043,14 @@ $ ssh-copy-id id@remote_ip             <= copy id_rsa.pub file into remote first
 
 $ ssh id@remote_ip 'bash -s' < /home/scrhipt.sh >> output.log   <= run as sudo mode
 
-
-	bash -c  <= read from string
+	bash -c  <= Command read from string
 				If there are arguments after the string, they are assigned to the positional parameters, 
 				starting with $0.
 	bash -i  <= shell is interactive
 	bash -s  <= read from the standard input
 	
+	$ bash -c "help set"		<= Help page
+	$ bash -c help				<= Help page
 	
 ---------------------------------------------------
 ### Single Line Command script from SHELL ###
@@ -1098,8 +1098,10 @@ $ while false ; do echo "ssh to 45.55.5.69...";ssh apark@45.55.5.69 'date; hostn
 $ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 2; kill $! ; \
   wc -l /tmp/tmp.log | cut -c-2; done 2> /dev/null
 
+  
+  
 ------------------------------------------------------------------------------------
-# infinite while loop
+# while loop - infinite 
 ------------------------------------------------------------------------------------
 https://stackoverflow.com/questions/1289026/syntax-for-a-single-line-bash-infinite-while-loop
 $ while sleep 2; do echo "Thinking"; done	
@@ -1127,20 +1129,7 @@ https://www.gnu.org/software/bash/manual/bashref.html#Command-Grouping
 
 
 
----------------------------------------------------	
-Current Shell vs Non-effect (sub)Shell
----------------------------------------------------	
-https://askubuntu.com/questions/606378/when-to-use-vs-in-bash
 
-### $(  )   	<=  ( list )
-	Placing a list of 'commands' between parentheses causes a 'subshell' environment to be created, 
-	and each of the commands in list to be executed in that subshell. Since the list is executed 
-	in a subshell, variable assignments do not remain in effect after the subshell completes.
-
-### { } 		<=	{ list; }
-	Placing a list of commands between curly braces causes the list to be executed in the 
-	current shell context. 
-	No subshell is created. The semicolon (or newline) following list is required.	
 	
 	
 
@@ -3593,9 +3582,9 @@ trap returntrap RETURN  # is executed each time a shell function or a script exe
 
 
 
-###---------------------###
-### Fibonacci Script	###
-###---------------------###
+#-----------------------------------------------------------
+# Fibonacci Script	
+#-----------------------------------------------------------
 Write a script to print the first 10 elements of Fibonacci series.
 http://www.bashguru.com/2010/12/shell-script-to-generate-fibonacci.html
 
@@ -3604,7 +3593,8 @@ $ a=1;b=1;for i in `seq 8`;do echo $((x=b,b=a+b,a=x));done
 #-----------------------------------------------------------
 $ echo $((b=1,a=0));for i in `seq 8`;do echo $((x=b,b=a+b,a=x));done
 #-----------------------------------------------------------
-#####################
+
+-----------------------------------------
 #!/bin/bash -x
 a=1
 b=1
@@ -3619,10 +3609,13 @@ a=$c
 
 echo $c
 done
+-----------------------------------------
 ### 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+-----------------------------------------
 
-
-#------------------------------------------------------
+------------------------------------------------------
+# Copy file to remote servers
+------------------------------------------------------
 #!/bin/bash
 # Copy file to remote servers, Chmod +x, Run script
 
@@ -3717,6 +3710,8 @@ for i in $list; do
      echo ---------------------------------------
 
 done
+
+
 #------------------------------------------------------
 
 #!/bin/bash
@@ -3878,9 +3873,9 @@ $ for i in {1..300}; do echo -ne $i '\r'; sleep 1; done; echo
 Function 
 
 
-
-## Get PID ###
-
+------------------------------------------------------
+# PID 
+------------------------------------------------------
 get_ntopng_pid() {
 if [ -f "/etc/ntopng/ntopng.conf" ]; then
 PID_FILE=$(cat /etc/ntopng/ntopng.conf | grep -E '-G=|--pid'|cut -d '=' -f 2)
@@ -3888,8 +3883,9 @@ else
 PID_FILE="/var/tmp/ntopng.pid"
 fi
 
-#--------------------------------------------------------------------------------
-### fork bomb ###
+------------------------------------------------------
+# fork bomb 
+------------------------------------------------------
 https://www.cyberciti.biz/faq/understanding-bash-fork-bomb/
 $ :(){ :|:& };:
 denial-of-service (DoS) attack against a Linux based system
