@@ -2421,39 +2421,14 @@ if [[ ${current_IP} != ${old_IP} ]]; then    # != Strings are Not Same
                         "[INFO] IP has been changed to ${current_IP}" \
                         albertpark5@gmail.com
 
-        # Update current_IP to old_Ip_file
+    # Update current_IP to old_Ip_file
     echo ${current_IP}  >  ${old_IP_file}
 else
         echo "You have same IP!"
-fi
+   fi
 
 ----------------------------------------------------------------------------------
-#!/bin/bash
-# If IP Address had been changed, it would send out an email for update.
-#set -xeu
 
-current_IP="$(/usr/sbin/ifconfig | grep 'inet'| awk '{print $2}' | head -1)"
-	# Use full path to prevent 'ifconfig: command not found'
-TIMESTAMP="$(date +%F)"
-
-old_IP_file='/home/apark/ipAddress/old_IP.txt'
-old_IP=$(cat "${old_IP_file}")
-
-if [[ ${current_IP} != ${old_IP} ]]; then    # != Strings are Not Same
-    echo "You have a NEW IP Address = ${current_IP}"
-    echo "IP has been changed and need to send an update email...."
-	
-	# Email echo MSG => use 'mail -s' => Header => sending address
-    echo -e "Hello\nTime of IP change = ${TIMESTAMP}\nIP = ${current_IP}\nBye"\
-             | /usr/bin/mail -s \
-            "[Subject] Your i7 server's IP has been changed to ${current_IP}" \
-            albertpark5@gmail.com
-	    
-    echo ${current_IP}  >  ${old_IP_file}		# Update current_IP to old_Ip_file
-
-else
-        echo "You have same IP!"
-fi
 ----------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------	
