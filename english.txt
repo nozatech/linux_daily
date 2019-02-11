@@ -2480,6 +2480,9 @@ subtle			<- [sΛtl](especially of a change or distinction) so delicate or
 					"subtle distinctions"  "fail in subtle way"
 
 succinctly		<= [səksíŋktli] in a brief and clearly expressed manner.
+
+superfluous		<= unnecessary, especially through being more than enough.
+
 					
 supersede 		<- replace; take the place of (a person or thing previously in authority or use); supplant.
 					"the older models have now been superseded"

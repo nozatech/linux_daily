@@ -45,7 +45,7 @@ sleep 2
 
 #!/bin/bash
 i=1
-while (( i < 31 ));
+while (( i < 31 ));   # Stops at 30 <- '31<31' becomes false and terminates the WHILE LOOP!
 do
         if (( $i % 3 == 0 )) && (( $i % 5 == 0 )); then echo "While-Loop"
         elif (( $i % 3 == 0 )); then echo "While"
@@ -127,6 +127,7 @@ done
 ### While Loop
 
 #!/usr/bin/python3
+# Count 1-100
 count = 0
 while i < 101:
     if i % 5 == 0 and i % 3 == 0:
@@ -151,7 +152,8 @@ for i in range(1,31):
         print "Buzz"
     else:
         print i
-#Py3.5
+
+### Python 3.5
 for i in range(1,31):
     if i % 5 == 0 and i % 3 == 0:
         print ("FizzBuzz")

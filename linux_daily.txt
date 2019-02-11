@@ -804,11 +804,15 @@ http://linuxcommand.org/lc3_man_pages/seth.html
 	$ unset i
 	$ echo $i
 		
-----------------------------------------------------			
-# set can see shell-LOCAL variables, env cannot.
-----------------------------------------------------
-	Shells can have variables of 2 types: locals, which are only accessible from the current shell, 
-	and (exported) environment variables, which are passed on to every executed program.
+----------------------------------------------------------------------------------------------		
+# set can see Shell-LOCAL variables, env cannot.
+----------------------------------------------------------------------------------------------
+	https://www.cyberciti.biz/faq/linux-list-all-environment-variables-env-command/
+	
+	Shells can have variables of 2 types: 
+	
+	locals, <= which are only accessible from the current shell,  and (exported)
+	environment variables, <= which are passed on to every executed program.
 
 	Since set is a built-in shell command, it also sees sees shell-local variables (including 
 	shell functions). env on the other hand is an independent executable; it only sees the 
@@ -816,17 +820,22 @@ http://linuxcommand.org/lc3_man_pages/seth.html
 
 	When you type a line like "a=1" then a local variable is created (unless it already 
 	existed in the environment). Environment variables are created with "export a=1"
-
-
-# printenv <= print all or part of environment
 	
+	env
+	set
+	printenv
+	
+
+----------------------------------------------------------------------------------------------
+# printenv <= print all or part of environment
+----------------------------------------------------------------------------------------------
 	$ set -o 				<= -o Options,  Inherite from BASH or other Shells
 	$ set -o posix			<= Turn on POSIX, see shell variables, remove all shell functions
 	$ set +o posix			<= +o removes POSIX mode
 
-----------------------------------------------------	
+----------------------------------------------------------------------------------------------
 # Environment VS SHELL Variables 	
-----------------------------------------------------
+----------------------------------------------------------------------------------------------
 	1. Environment Variables
 		Variables that are defined for the current shell and are inherited by any child shells
 		or processes
@@ -834,9 +843,9 @@ http://linuxcommand.org/lc3_man_pages/seth.html
 	2. SHELL Variables 
 		Variables that are contained exclusively within the shell in which they were defined.
 
-----------------------------------------------------		
-### export 	<= (default same as '-p')Set export attribute for shell variables.
---------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+# export 	<= (default same as '-p')Set export attribute for Shell Variables.
+----------------------------------------------------------------------------------------------
 			Marks each NAME for automatic export to the environment of subsequently
 			executed commands.  If VALUE is supplied, assign VALUE before exporting.
 			Options:
@@ -856,7 +865,7 @@ http://linuxcommand.org/lc3_man_pages/seth.html
 	$ printenv | grep VAR
 		** No Result 			<= VAR is not part of environment
 ----------------------------------------------------	
-# To put it into Env variables, use 'export'
+# Env variables, use 'export'
 ----------------------------------------------------
 	$ export VAR			
 	$ env | grep VAR		
@@ -872,6 +881,11 @@ http://linuxcommand.org/lc3_man_pages/seth.html
 ----------------------------------------------------	
 # socat - Multipurpose relay (Socket CAT)
 ----------------------------------------------------
+https://medium.com/@copyconstruct/socat-29453e9fc8a6
+	utility for data transfer between two addresses.
+
+
+
 
 
 ----------------------------------------------------
@@ -2673,9 +2687,9 @@ H 2 * * *				<= Every 2am
 	File descriptor
 	https://en.wikipedia.org/wiki/File_descriptor
 	
-#---------------------------------------------------------------------	
-### lsof and fuser
-#---------------------------------------------------------------------
+---------------------------------------------------------------------	
+# lsof and fuser
+---------------------------------------------------------------------
 
 	# fuser - which processes using files or sockets
 			- user owning the process and the type of access
@@ -2686,13 +2700,13 @@ H 2 * * *				<= Every 2am
 	
 	$ fuser -v .	(current dir)<= gives information about the USER, PID, ACCESS and COMMAND
         USER        PID ACCESS COMMAND
-	/home/apark/localVariable:
+		/home/apark/localVariable:
         apark     10233 ..c.. bash
         apark     26462 ..c.. bash
 	
 	$ fuser -v    /  (root dir)
 		USER        PID ACCESS COMMAND
-	/:  root     kernel mount /
+		/:  root     kernel mount /
         apark     10028 .r... bash
 			............
         apark     26462 .r... bash
@@ -2702,16 +2716,16 @@ H 2 * * *				<= Every 2am
 	# show all processes having open files on the filesystem mounted on / (root directory)
 	$ fuser -vm / 2>&1 | awk '$3 ~ /f|F/' | less -N 		<=?????
 
-### Network 
+	### Network 
 	$ nc -l -p 80									<= Netcat -l listen -p port 
 	$ fuser -v -n tcp 80							<= -n name space
 					USER        PID ACCESS COMMAND
 		80/tcp:   	apark     20168 F.... nc
 
-### Kill
+	### Kill
 	$ fuser -k -i 80/tcp						<= -i ask before kill
 	
-### Find The Process Accessing A File System
+	### Find The Process Accessing A File System
 	$ fuser -v -m /var/log/dmesg						<= -v verbose, -m mount
 	
 					USER        PID ACCESS COMMAND
@@ -2731,11 +2745,16 @@ H 2 * * *				<= Every 2am
 	
 	
 	
-------------------------------------- ------------------------------------- 		
-### lsof ###				<= list open files using by PID or Program
+-------------------------------------------------------------------------- 		
+# lsof				<= 'li'st 'o'pen 'f'iles using by PID or Program
+-------------------------------------------------------------------------- 	
 	http://www.thegeekstuff.com/2012/08/lsof-command-examples
 	
-	$ lsof 					<= list all opened files start 'Init 1'
+	$ lsof 				<= list all opened files start 'Init 1'
+
+	$ lsof -p $$		<= $$ Processor ID
+	
+	$ lsof -u apark		<= List of all opened files by user
 
 	# Which processes have this file open
 	$ lsof  /var/log/nginx/access.log
@@ -2748,7 +2767,7 @@ H 2 * * *				<= Every 2am
 	# List opened files based on process names starting with
 	$ lsof -c ssh
 	
-	# Which files does PID have open?
+	# Which PID have opened files?
 	$ ps aux | grep nginx |
 	$ lsof -p nginx_PID							<= Process ID (PID)
 
@@ -2791,8 +2810,9 @@ H 2 * * *				<= Every 2am
 	
 	
 
-	
-### What Kernel supports filesystem
+--------------------------------------------------------------------------	
+# Kernel supports filesystem
+--------------------------------------------------------------------------
 	$ cat /proc/filesystems
 		nodev   devpts
         ext3
@@ -2841,8 +2861,9 @@ H 2 * * *				<= Every 2am
   
   
   
-  
-### chmod 
+--------------------------------------------------------------------------  
+# chmod 
+--------------------------------------------------------------------------
 
 https://en.wikipedia.org/wiki/Chmod
 In "chmod aw" the "a" means "All" (everyone) and the "w" means "write" (edit) the file.
@@ -2874,7 +2895,7 @@ $ chmod a+rx 	test.sh				<= adds read and execute permissions for all classes
 $ chmod -R u+w,go-w  text.txt		<= adds write permission to the directory docs and all its contents 
 						(i.e. Recursively) for owner, and removes write permission for group and others
 $ chmod ug=rw groupAgreements.txt	<= sets read and write permissions for owner and group  
-  
+ -------------------------------------------------------------------------- 
   
   
   177  lsblk
@@ -2922,8 +2943,9 @@ $ chmod ug=rw groupAgreements.txt	<= sets read and write permissions for owner a
 	$ watch -n 0.1 "dmesg | tail -n $((LINES-6))"
 	
 	$ while true; do dmesg -c ; sleep 1 ; done
-
-### Infinite loop - while loop
+--------------------------------------------------------------------------
+# Infinite loop - while loop
+--------------------------------------------------------------------------
 https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/121391#121391
 
 >>>	$ while true; do ping google.com; done  	
@@ -2939,8 +2961,9 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	$ while [ 1 ]; do COMMAND || break; done;
 	
 	
-
-### vmstat - report virtual memory statistics
+--------------------------------------------------------------------------
+# vmstat - report virtual memory statistics
+--------------------------------------------------------------------------
 	- vmstat reports information about processes, memory, paging, block IO, 
 	  traps, disks and cpu activity.
 	vmstat is a tool that collects and reports data about your system’s memory, 
@@ -2956,8 +2979,9 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	
 
 	
-	
-### Alias
+--------------------------------------------------------------------------	
+# Alias
+--------------------------------------------------------------------------
 	#only used in interactive shells and not in scripts!!
 	https://mywiki.wooledge.org/BashGuide/CommandsAndArguments
 	
@@ -2970,8 +2994,9 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	$ alias server1='ssh root@ip_address -p 3404'   <= add your alias in .bash_profile
 	$ alias lp='ls -al ../'							<= ls -al parent directory  
 
-
-### Time NTP
+--------------------------------------------------------------------------
+# NTP
+--------------------------------------------------------------------------
 
 	alias today='date +"%A, %B %-d, %Y"'
 
@@ -3002,8 +3027,10 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 
 	
 	
-	
-### cat and strings
+--------------------------------------------------------------------------	
+# cat 
+# zcat 
+--------------------------------------------------------------------------
 	$ cat /usr/bin/bash XXXX
     
 	$ zcat file.archived.tar.gz			<= reading gzip (view zip) file without extract first 
@@ -3011,8 +3038,9 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	$ strings /usr/bin/bash  <= human readable content buried inside the program.
  
 
-   
-### uptime		<= uptime, number of users,        CPU load 1,   5,  15 mins
+--------------------------------------------------------------------------   
+# uptime		<= uptime, number of users,        CPU load 1,   5,  15 mins
+--------------------------------------------------------------------------
 	09:35:45 up 10 days, 21:18,  2 users,  load average: 0.03, 0.03, 0.05
 	
 	### How many days it has been running
@@ -3039,13 +3067,16 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	### Scriptreplay  <= Movie file ###
 	$ script 	   --timing=timeline.txt movieRecording.log
 	$ scriptreplay --timing=timeline.txt movieRecording.log
-	
-### List of services running
+--------------------------------------------------------------------------	
+# Services Listing 
+--------------------------------------------------------------------------
 	$ /usr/sbin/service --status-all
 	$ /sbin/service --status-all
 	$ service --status-all
-	
-### mkdir
+
+--------------------------------------------------------------------------	
+# mkdir
+--------------------------------------------------------------------------
 	$ mkdir -p production/{modules,manifests}      <= creating multi SUB folders
 	
 	mkdir and cd into directory
@@ -3054,7 +3085,7 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	
 	
 ------------------------------------------------------------------------------------
-### Echo 
+# Echo 
 ------------------------------------------------------------------------------------
 	# echo -n opntion
 	$ echo -n Hello World\$			<= -n no return line
@@ -3077,6 +3108,7 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 		spell spill
 		
 	$ echo 1/3 | bc -l                <= .3333333
+	
 ------------------------------------------------------------------------------------	
 # double & single quotes	
 ------------------------------------------------------------------------------------
@@ -3100,8 +3132,10 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	$ echo  My name is `whoami`
 	$ echo "My name is `whoami`"
 	$ chown -R $(whoami) /home/$(whoami)/test
-	
-### Nested command substitution
+
+--------------------------------------------------------------------------	
+# Nested command substitution
+--------------------------------------------------------------------------
 	$ echo " Permissions for find are $(ls -l $(which find))"
 		4th			3rd					2nd			1st(/bin/find)
 		Permissions for find are -rwxr-xr-x. 1 root root 199200 Nov 20  2015 /usr/bin/find
@@ -3111,7 +3145,9 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	$ echo "PC name is $(hostname)."			<= PC name is PC.
 	$ echo "PC name is $(HOSTNAME)."			<= PC name is PC.
 
+--------------------------------------------------------------------------
 # \ ingnore special character
+--------------------------------------------------------------------------
     $ echo "PC name is \"($HOSTNAME)\"."		<= \ ignores " as a string 
     
 
@@ -3179,6 +3215,7 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	
 ---------------------------------------------------------------------------------------	
 # $ last						<= show listing of last logged in users
+--------------------------------------------------------------------------
 
 # Check Last time reboot
 	$ last reboot
@@ -3197,8 +3234,10 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	$ who
 	$ who -r 					<= runlevel
 	$ who -b
-
-### shutdown 
+	
+--------------------------------------------------------------------------
+# shutdown 
+--------------------------------------------------------------------------
 https://www.computerhope.com/unix/ushutdow.htm
 	halt 
 	poweroff 
@@ -3222,8 +3261,10 @@ https://www.computerhope.com/unix/ushutdow.htm
 		The system is going down for reboot at Tue 2017-12-05 11:08:28 PST!
 
 	$ poweroff	
-		
-### Check
+
+--------------------------------------------------------------------------		
+# Reboot Check
+--------------------------------------------------------------------------
 	$ last reboot			<= check last reboot time
 	### CANCEL SHUTDOWN SCHEDULE ###
 	$ shutdown -c
@@ -3236,14 +3277,16 @@ https://www.computerhope.com/unix/ushutdow.htm
 	
 	
 ---------------------------------------------------------------------------------------	
-15. Is .bash_profile is a file???? 
+# .bash_profile is a file???? 
+--------------------------------------------------------------------------
 	if [ -f .bash_profile ] ; then 					<= -f file is exist & regular file
 		echo "you have the file in your home dir"		
     	else 
 		echo "You do not have it"
 	fi
 ---------------------------------------------------------------------------------------
-### id -u        (-u <= --user for script)   
+# id -u        (-u <= --user for script)   
+--------------------------------------------------------------------------
 	print real and effective user and group ID
 	uid=0(root) gid=0(root) groups=0(root) 				context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
 
@@ -3275,10 +3318,12 @@ https://www.computerhope.com/unix/ushutdow.htm
 		-type f : Only match files and do not include directory names.
 		
 ---------------------------------------------------------------------------------------	
-#### Delete local backup folder older than 2 days	####
+# Delete local backup folder older than 2 days	
+---------------------------------------------------------------------------------------	
 	$ sudo find /backup/ -mindepth 1 -mtime +2 -delete
 
-	$ sudo find /data/backups/ -type f -mtime +0 -name 'rrs_us_db.sql.*' -delete   	<= mtime (days), mmin (mins)
+	$ sudo find /data/backups/ -type f -mtime +0 -name 'rrs_us_db.sql.*' -delete   	
+				<= mtime (days), mmin (mins)
 	
 	-mtime   
 		Day 0~1, 2, 3, 4, 5
@@ -3302,7 +3347,8 @@ https://www.computerhope.com/unix/ushutdow.htm
 
  
 ---------------------------------------------------------------------------------------	
-### touch 
+# touch 
+---------------------------------------------------------------------------------------	
 	touch file_{1..100}    <= creating 100 files e.g. 1,2..100
     touch file_{01..100}   <= to resolve file format problem above logic e.g. 001, 002..100
     touch {1,2,3,4,5}	   <= creating 1,2,3,4,5 files
@@ -3334,13 +3380,15 @@ https://www.computerhope.com/unix/ushutdow.htm
 	
 	$ echo $SHELL						<= /bin/bash
 	$ env | grep SHELL					<= SHELL=/bin/bash
+	
 	$ ps					 
-	  1453 pts/1    00:00:00 bash  		<= BASH
+	  1453 pts/1    00:00:00 bash  					<= BASH
 	$ ps | grep `echo $$` | awk '{ print $4 }'		<= BASH
 
 	
-
-###	IP address 						<= finding IP from ifconfig using grep re  gex
+---------------------------------------------------------------------------------------	
+#	IP address 						<= finding IP from ifconfig using grep re  gex
+---------------------------------------------------------------------------------------	
 	$ ifconfig | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
 	 192.168.232.132
 
@@ -3349,7 +3397,9 @@ https://www.computerhope.com/unix/ushutdow.htm
 	$ ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
 	$ ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//' | head -n 1
 	
-### tail
+---------------------------------------------------------------------------------------		
+# tail
+---------------------------------------------------------------------------------------	
   tail -f *Slave.log
   tail -f *vSlave.log | grep "Info: Slave - Sending status"	
 
@@ -3362,9 +3412,9 @@ https://www.computerhope.com/unix/ushutdow.htm
 
 
 
-
-27. Printf vs echo (http://wiki.bash-hackers.org/commands/builtin/printf)
-
+---------------------------------------------------------------------------------------	
+# Printf vs echo (http://wiki.bash-hackers.org/commands/builtin/printf)
+---------------------------------------------------------------------------------------	
 	$ printf Hello World			Hello					<= Prints only first argument
 	$ printf "Hello World"			Hello World				<= Prints both, but No New Line
 		hello worldapark@i7~/								<= NO NEW LINE
@@ -3384,8 +3434,9 @@ https://www.computerhope.com/unix/ushutdow.htm
 	  hello
 	  World
 
-	
-	%s <= a format specifier for printf command.
+---------------------------------------------------------------------------------------		
+# %s 	<= a format specifier for printf command.
+---------------------------------------------------------------------------------------	
 
 	https://www.quora.com/What-does-s-mean-in-Bash
 	%s <= In BASH: Using the format string %s causes the arguments to be concatenated without 
@@ -3414,8 +3465,9 @@ https://www.computerhope.com/unix/ushutdow.htm
 
 
 
-
-29. Empty file contents or logs
+---------------------------------------------------------------------------------------	
+# Empty logs or file contents  
+---------------------------------------------------------------------------------------	
 						Bourne POSIX  zsh    csh/tcsh  rc/es  fish
 	> file                Y      Y      N(1)   N(1)      N      N
 	: > file              N/Y(2) Y(3)   Y      Y(4)      N(5)   N(5)
@@ -3424,9 +3476,10 @@ https://www.computerhope.com/unix/ushutdow.htm
 	cp /dev/null file (7) Y(5)   Y      Y(5)   Y(5)      Y(5)   Y(5)
 	printf '' > file      Y(5)   Y      Y      Y(5)      Y(5)   Y
 	eval > file           Y(3,8) Y(3)   Y      Y(6)      Y      Y
-------------------------------
-### Eval  
-------------------------------
+	
+---------------------------------------------------------------------------------------	
+#   Eval  
+---------------------------------------------------------------------------------------	
 	is part of POSIX. Its an interface which can be a shell built-in.
 
 	https://unix.stackexchange.com/questions/23111/what-is-the-eval-command-in-bash
@@ -3442,6 +3495,7 @@ https://www.computerhope.com/unix/ushutdow.htm
 	5) eval y='$'$x		<= evaluate $x to the string 'foo'. y=$foo which will get evaluated to y=10
 	6) echo $y
 	7) 10				<= The result of echo $y is now the value '10'
+	
 	Example-2
 	$ A="ls | less"		<= two cmds to concatenated	
 	$ $A 			

@@ -1,60 +1,65 @@
+A To Z List of Linux Commands | Linux Command Line Reference
+https://fossbytes.com/a-z-list-linux-command-line-reference/
+
 Linux Commands – A
 Command	Description
-accept	 Accept or Reject jobs to a destination, such as a printer.
-access	 Check a user’s RWX permission for a file.
-aclocal	GNU autoconf too
-aconnect	  ALSA sequencer connection manager.
-acpi	 Show information about the Advanced Configuration and Power Interface.
-acpi_available	 Check if ACPI functionality exists on the system.
-acpid	 Informs user-space programs about ACPI events.
-addr2line	 Used to convert addresses into file names and line numbers.
-addresses	 Formats for internet mail addresses.
-agetty	 An alternative Linux Getty
-alias	 Create an alias for Linux commands
-alsactl	 Access advanced controls for ALSA soundcard driver.
-amidi	 Perform read/write operation for ALSA RawMIDI ports.
-amixer	 Access CLI-based mixer for ALSA soundcard driver.
-anacron	 Used to run commands periodically.
-aplay	 Sound recorder and player for CLI.
-aplaymidi	 CLI utility used to play MIDI files.
-apm	 Show Advanced Power Management (APM) hardware info on older systems.
-apmd	 Used to handle events reported by APM BIOS drivers.
-apropos	 Shows the list of all man pages containing a specific keyword
-apt	 Advanced Package Tool, a package management system for Debian and derivatives.
-apt-get	 Command-line utility to install/remove/update packages based on APT system.
-aptitude	 Another utility to add/remove/upgrade packages based on the APT system.
-ar	 A utility to create/modify/extract from archives.
-arch	 Display print machine hardware name.
-arecord	 Just like aplay, it’s a sound recorder and player for ALSA soundcard driver.
-arecordmidi	 Record standard MIDI files.
-arp	 Used to make changes to the system’s ARP cache
-as	 A portable GNU assembler.
-aspell	 An interactive spell checker utility.
-at	 Used to schedule command execution at specified date & time, reading commands from an input file.
-atd	 Used to execute jobs queued by the at command.
-atq	 List a user’s pending jobs for the at command.
-atrm	 Delete jobs queued by the at command.
-audiosend	 Used to send an audio recording as an email.
-aumix	 An audio mixer utility.
-autoconf	 Generate configuration scripts from a TEMPLATE-FILE and send the output to standard output.
-autoheader	 Create a template header for configure.
-automake	 Creates GNU standards-compliant Makefiles from template files
-autoreconf	 Update generated configuration files.
-autoscan	 Generate a preliminary configure.in
-autoupdate	 Update a configure.in file to newer autoconf.
-awk	 Used to find and replace text in a file(s).
+accept	 		Accept or Reject jobs to a destination, such as a printer.
+access	 		Check a user’s RWX permission for a file.
+aclocal			GNU autoconf too
+aconnect	 	ALSA sequencer connection manager.
+acpi	 		Show information about the Advanced Configuration and Power Interface.
+acpi_available	Check if ACPI functionality exists on the system.
+acpid	 		Informs user-space programs about ACPI events.
+addr2line	 	Used to convert addresses into file names and line numbers.
+addresses	 	Formats for internet mail addresses.
+agetty	 		An alternative Linux Getty
+alias	 		Create an alias for Linux commands
+alsactl	 		Access advanced controls for ALSA soundcard driver.
+amidi	 		Perform read/write operation for ALSA RawMIDI ports.
+amixer	 		Access CLI-based mixer for ALSA soundcard driver.
+anacron	 		Used to run commands periodically.
+aplay	 		Sound recorder and player for CLI.
+aplaymidi	 	CLI utility used to play MIDI files.
+apm	 			Show Advanced Power Management (APM) hardware info on older systems.
+apmd	 		Used to handle events reported by APM BIOS drivers.
+apropos	 		Shows the list of all man pages containing a specific keyword
+apt	 			Advanced Package Tool, a package management system for Debian and derivatives.
+apt-get	 		Command-line utility to install/remove/update packages based on APT system.
+aptitude	 	Another utility to add/remove/upgrade packages based on the APT system.
+ar				A utility to create/modify/extract from archives.
+arch	 		Display print machine hardware name.
+arecord	 		Just like aplay, it’s a sound recorder and player for ALSA soundcard driver.
+arecordmidi	 	Record standard MIDI files.
+arp	 			Used to make changes to the system’s ARP cache
+as	 			A portable GNU assembler.
+aspell	 		An interactive spell checker utility.
+at	 			Used to schedule command execution at specified date & time, reading commands from an input file.
+atd	 			Used to execute jobs queued by the at command.
+atq	 			List a user’s pending jobs for the at command.
+atrm	 		Delete jobs queued by the at command.
+audiosend	 	Used to send an audio recording as an email.
+aumix	 		An audio mixer utility.
+autoconf	 	Generate configuration scripts from a TEMPLATE-FILE and send the output to standard output.
+autoheader	 	Create a template header for configure.
+automake	 	Creates GNU standards-compliant Makefiles from template files
+autoreconf	 	Update generated configuration files.
+autoscan		Generate a preliminary configure.in
+autoupdate	 	Update a configure.in file to newer autoconf.
+awk	 			Used to find and replace text in a file(s).
+
+
 Linux Commands – B
 Command	Description
-badblocks	 Search a disk partition for bad sectors.
-banner	 Used to print characters as a poster.
-basename	 Used to display filenames with directoy or suffix.
-bash	 GNU Bourne-Again Shell.
-batch	 Used to run commands entered on a standard input.
-bc	 Access the GNU bc calculator utility.
-bg	 Send processes to the background.
-biff	 Notify about incoming mail and sender’s name on a system running comsat server.
-bind	 Used to attach a name to a socket.
-bison	 A GNU parser generator, compatible with yacc.
+badblocks	 	Search a disk partition for bad sectors.
+banner	 		Used to print characters as a poster.
+basename	 	Used to display filenames with directoy or suffix.
+bash	 		GNU Bourne-Again Shell.
+batch			Used to run commands entered on a standard input.
+bc	 			Access the GNU bc calculator utility.
+bg	 			Send processes to the background.
+biff	 		Notify about incoming mail and sender’s name on a system running comsat server.
+bind	 		Used to attach a name to a socket.
+bison	 		A GNU parser generator, compatible with yacc.
 break	 Used to exit from a loop (eg: for, while, select).
 builtin	 Used to run shell builtin commands, make custom functions for commands extending their functionality.
 bzcmp	 Used to call the cmp program for bzip2 compressed files.
@@ -63,37 +68,38 @@ bzgrep	 Used to call grep for bzip2 compressed files.
 bzip2	 A block-sorting file compressor used to shrink given files.
 bzless	 Used to apply ‘less’ (show info one page at a time) to bzip2 compressed files.
 bzmore	 Used to apply ‘more’ (an inferior version of less) to bzip2 compressed files.
+
 Linux Commands – C
 Command	Description
-cal	 Show calendar.
-cardctl	 Used to control PCMCIA sockets and select configuration schemes.
-cardmgr	 Keeps an eye on the added/removes sockets for PCMCIA devices.
-case	 Execute a command conditionally by matching a pattern.
-cat	 Used to concatenate files and print them on the screen.
-cc	 GNU C and C++ compiler.
-cd	 Used to change directory.
-cdda2wav	 Used to rip a CD-ROM and make WAV file.
-cdparanoia	 Record audio from CD more reliably using data-verification algorithms.
-cdrdao	 Used to write all the content specified to a file to a CD all at once.
-cdrecord	 Used to record data or audio compact discs.
-cfdisk	 Show or change the disk partition table.
-chage	 Used to change user password information.
-chattr	 Used to change file attributes.
-chdir	 Used to change active working directory.
-chfn	 Used to change real user name and information.
-chgrp	 Used to change group ownership for file.
-chkconfig	 Manage execution of runlevel services.
-chmod	 Change access permission for a file(s).
-chown	 Change the owner or group for a file.
-chpasswd	 Update password in a batch.
-chroot	 Run a command with root privileges.
-chrt	 Alter process attributed in real-time.
-chsh	 Switch login shell.
-chvt	 Change foreground virtual terminal.
-cksum	 Perform a CRC checksum for files.
-clear	 Used to clear the terminal window.
-cmp	 Compare two files (byte by byte).
-col	 Filter reverse (and half-reverse) line feeds from the input.
+cal	 			Show calendar.
+cardctl	 		Used to control PCMCIA sockets and select configuration schemes.
+cardmgr	 		Keeps an eye on the added/removes sockets for PCMCIA devices.
+case	 		Execute a command conditionally by matching a pattern.
+cat	 			Used to concatenate files and print them on the screen.
+cc	 			GNU C and C++ compiler.
+cd	 			Used to change directory.
+cdda2wav	 	Used to rip a CD-ROM and make WAV file.
+cdparanoia	 	Record audio from CD more reliably using data-verification algorithms.
+cdrdao	 		Used to write all the content specified to a file to a CD all at once.
+cdrecord		Used to record data or audio compact discs.
+cfdisk	 		Show or change the disk partition table.
+chage	 		Used to change user password information.
+chattr	 		Used to change file attributes.
+chdir	 		Used to change active working directory.
+chfn	 		Used to change real user name and information.
+chgrp	 		Used to change group ownership for file.
+chkconfig	 	Manage execution of runlevel services.
+chmod	 		Change access permission for a file(s).
+chown	 		Change the owner or group for a file.
+chpasswd	 	Update password in a batch.
+chroot	 		Run a command with root privileges.
+chrt	 		Alter process attributed in real-time.
+chsh	 		Switch login shell.
+chvt	 		Change foreground virtual terminal.
+cksum	 		Perform a CRC checksum for files.
+clear	 		Used to clear the terminal window.
+cmp	 			Compare two files (byte by byte).
+col	 			Filter reverse (and half-reverse) line feeds from the input.
 colcrt	 Filter nroff output for CRT previewing.
 colrm	 Remove columns from the lines of a file.
 column	 A utility that formats its input into columns.
