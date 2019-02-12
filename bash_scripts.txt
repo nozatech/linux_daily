@@ -278,6 +278,13 @@ $ sh -n   script.sh						<= prints out Syntex error only
 	$ kill -9 %1
 	
 ----------------------------------------------------------------------------------------
+$ echo '#!/bin/bash' > myScript.sh
+$ echo 'echo Hello World' >> myScript.sh
+$ chmod +x myScript.sh   (or chmod 755)
+$ ./myScript.sh
+Hellow World
+	
+----------------------------------------------------------------------------------------
 # Monitoring Scripts		 https://bash.cyberciti.biz/shell/monitoring/
 
 # Bash scripting cheatsheet  https://devhints.io/bash
@@ -1323,6 +1330,14 @@ echo $(( 2#101011 ))   		<= Base conversion, NOT a comment.
 #--------------------------------------------------------------------------------
 ### Usage Message ### 
 #--------------------------------------------------------------------------------   
+
+#!/bin/bash
+if [ $(id -u) != "0" ]; then
+    echo "You must be the superuser to run this script" >&2
+    exit 1
+fi
+
+--------------------------------------------------------------------------------
 #!/bin/bash
 usage="Usage: This script needs arg1 and arg2 values"
 if [ ! $# == 2 ]; then
@@ -1332,7 +1347,22 @@ fi
 echo "1st argument is $1"
 echo "2nd argument is $2"  
 	   
-	   
+--------------------------------------------------------------------------------
+
+function home_space
+{
+    # Only the superuser can get this information
+
+    if [ "$(id -u)" = "0" ]; then
+        echo "<h2>Home directory space by user</h2>"
+        echo "<pre>"
+        echo "Bytes Directory"
+            du -s /home/* | sort -nr
+        echo "</pre>"
+    fi
+
+}   # en	
+	
 #--------------------------------------------------------------------------------
 #!/bin/bash
 ### Comparing two directories ###
@@ -1932,9 +1962,10 @@ $ for (( i=1; i<=10; i++));do echo -n $i `sleep 1`" "; done
 
 
 
-
 ----------------------------------------------------------------------------------
-### Array ###
+----------------------------------------------------------------------------------
+# Array ###
+----------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------
 # Arrays and Associative Arrays
 	BASH provides 3 types of parameters: Strings, Integers and Arrays
@@ -1943,7 +1974,9 @@ $ for (( i=1; i<=10; i++));do echo -n $i `sleep 1`" "; done
 	Associative Arrays <= Take a string as their array index (Bash V4 or higher)
 	
 ARRAY_NAME[index_number]=value
-The Index_Number is treated as an arithmetic expression that must evaluate to a + positive number.
+
+	The Index_Number is treated as an arithmetic expression that must evaluate to a + positive number.
+
 
 # Indexed Array
 https://mywiki.wooledge.org/BashFAQ/005
@@ -1974,7 +2007,7 @@ unset 'a[i]'					<= Unset one element.
 
 "${a[@]#trimstart}" 			<= Expand all elements as a list of words, with modifications applied to each element separately.
 "${a[@]%trimend}"
-"${a[@]//search/repl}"		
+"${a[@]//search/replace}"		
 					
 declare -p a					<= Show/dump the array, in a bash-reusable form.
 mapfile   -t a < stream			<= Initialize an array from a stream (bash 4.0).
@@ -1984,9 +2017,9 @@ readarray -t a < stream			<= Same as mapfile.
 #!/bin/bash
 # Assign the values "mickey", "minnie", and "goofy" to sequential indexes starting with 0(zero).
 
-host=(mickey minnie goofy)										<= Array	
-# host="mickey minnie goofy"
-# host='mickey minnie goofy'
+host=(mickey minnie goofy)			<= Array	
+# host="mickey minnie goofy"		<= Variable
+# host='mickey minnie goofy'		<= Variable
 
 # Iterate over the indexes of "host".
 for i in "${!host[@]}"; do
@@ -2288,7 +2321,7 @@ else
 	echo "False"
 fi
 ###
-------------------------------------
+----------------------------------------------------------------------
 #!/bin/bash
 # Integer comparison
 a=5
@@ -2298,7 +2331,7 @@ if [ $a -gt $b ]; then
 else
     echo "$a is less than $b."
 fi
-------------------------------------	
+-----------------------------------------------------------------------	
 #!/bin/bash
 # String matches using REGEX   =~ [0-9]+
 a="This is my 1st string!"
@@ -2307,7 +2340,7 @@ if [[ $a =~ [0-9]+ ]]; then
 else
     echo "There are no numbers in the string: $a"
 fi
-------------------------------------
+-----------------------------------------------------------------------
 #!/bin/bash
 # empty variable or not
 if [ -z "$my_var" ]
@@ -2331,7 +2364,7 @@ fi
 	echo $(( 1+2 ))
 	+, -, *, /, %, **,
 
-------------------------------------	
+-----------------------------------------------------------------------	
 #!/bin/bash
 number=0
 echo -n "Enter a number >"
@@ -2344,18 +2377,25 @@ else
     echo "The number is odd"
 fi
 
------------------------------------------
+----------------------------------------------------------------------------
 # Read : within time to input or expires
------------------------------------------
+----------------------------------------------------------------------------
 # -t timing
 # -s security hidden
 # -p prompt
------------------------------------
+----------------------------------------------------------------------
+# read
+https://www.tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.html#sect_08_02_01
+
+echo "foo bar baz" | read w1 w2 w3
+echo $w1 - $w2 - $w3
+
+$ echo -n "Enter your name:  "   # -n No new line 
+$ read name
+$ echo your name is $name
 
 
-
-
------------------------------------
+----------------------------------------------------------------------
 #!/bin/bash
 echo -n  "Enter your number before expire within 3sec: "
 echo seq 3
@@ -2612,7 +2652,9 @@ total 1364
      $a     $b   					 $c       $d
 
 --------------------------------------------
-$while read i; do echo $i; done < while1.sh
+
+$ while read i; do echo $i; done < while1.sh
+
 --------------------------------------------
 #!/bin/bash
 i=1
@@ -2642,19 +2684,43 @@ while [ $i -le 10 ]; do
     ((i+=1))
 #   ((i=$i+1))
 done
+-------------------------------------------------------------------------------------------
+#!/bin/bash
+echo "What is your favorit animal?"
+read answer
 
-### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### 
-### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ###### UNTIL LOOP ######
+while [ "$answer" != dog ]
+do
+    echo "That answer is incorrect"
+    echo please try again
+    read answer
+done
+-------------------------------------------------------------------------------------------
+$ who | while read user ter time; do echo $user has been on $term since $time; done
+  root has been on since 2019-02-10 04:14
+  root has been on since 2019-02-10 12:52 (192.168.190.1)
 
+noza@localhost~/delme$who
+root     tty1         2019-02-10 04:14
+root     pts/0        2019-02-10 12:52 (192.168.190.1)
+^ $user  ^
+-------------------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+###  Until Loop ###
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
 - J 가 10보다 크거나 같을때 가지.
 j=0
 until [ $j -ge 10 ]; do
     echo j is $j
     ((j++))
 done
+
 ------------------------------------
-
-
 #!/bin/bash
 
 INPUT_STRING=hello
@@ -2667,8 +2733,7 @@ do
 done
 
 
-
-
+-------------------------------------------------------------------------------------------
 
 
 
@@ -2717,8 +2782,44 @@ done
 --------------------------------------------------	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+--------------------------------------------------	
 --------------------------------------------------		
-34. for loops
+# for loop
+--------------------------------------------------
+--------------------------------------------------
 # goes over per word, not line
 --------------------------------------------------	
 for i in $(<dataFile.txt)
@@ -4420,6 +4521,176 @@ fi
 ---------------------------------------------------------------------------
 
 
+-------------------------------------------------------------------------------------------
+### Brace To Array to Reverse
+-------------------------------------------------------------------------------------------
+$ vi braceToArrayToRevers.sh
+------------------------------------------------------------------------------------------
+#!/bin/bash
+
+# Creating Array
+array=($(echo -e test{1..6}'\n'    | sed '/^[[:space:]]*$/d' | sed 's/ //g')) 
+
+# Count number of index
+noIndice=($(echo -e test{1..6}'\n' | sed '/^[[:space:]]*$/d' | sed 's/ //g' | wc -l))
+
+# Cut in half and find out the middle index number
+firstHalfArray=$(echo $(( noIndice / 2 )) )
+
+# Prints 1st half of array
+echo ${array[@]:0:$firstHalfArray}
+
+# Prints 1st half REVERSE array
+echo ${array[@]:0:$firstHalfArray} | rev 
+-------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+#!/bin/bash
+# User input name of index and quantity
+
+read -p "Please type name of the index(e.g. test): "	indexName	# -p prompt
+read -p "How many Index to create(e.g. 10): "           indexNumber
+
+#read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+
+if [ -z $indexName ]; then 
+	read -p "Please type name of the index(e.g. test): "		# -p prompt
+	read index
+fi
+
+if [ -z $number ]; then 
+	read -p "How many Index to create(e.g. 10): "
+	read indexNumber 
+fi
+
+if [[ -n $index  &&  -n $number ]]; then 
+	echo -e "You input \nIndex:$index \nNumber:$number"; 
+fi
+
+
+
+# Creating Array
+array=($(eval echo $index{1..$number})) 
+
+# Count number of index
+noIndex=$(for i in $array[@]; do echo $i; done | wc -l)
+
+# Cut in half and find out the middle index number
+firstHalfArray=$(echo $(( noIndex / 2 )) )
+
+# Prints 1st half of array
+echo ${array[@]:0:$firstHalfArray}
+
+# Prints 1st half REVERSE array
+echo ${array[@]:0:$firstHalfArray} | rev 
+
+
+-------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------
+#!/bin/bash
+# User input name of index and quantity
+
+echo -n "Please type name of the index(e.g. test): "            # -p prompt
+read indexName
+
+echo -n "How many Index to create(e.g. 10): "
+read indexNumber
+
+if [ -z $indexName ]; then
+        read -p "Please type name of the index(e.g. test): "
+        read indexName
+fi
+
+if [ -z $indexNumber ]; then
+        read -p "How many Index to create(e.g. 10): "
+        read indexNumber
+fi
+
+if [[ -n $indexName  &&  -n $indexNumber ]]; then
+        echo "You input Index:$indexName Number:$indexNumber";
+fi
+
+
+# Creating Array
+array=($(eval echo $indexName{1..$indexNumber}))
+echo "Here are the Array Indice: ${array[@]}"
+
+# Count number of index
+noIndex=$(for i in ${array[@]}; do echo $i; done | wc -l)
+echo "Total number of Array index: $noIndex"
+
+# Cut in half and find out the middle index number
+firstHalfArray=$(echo $(( noIndex / 2 )) )
+echo "Half of array index is: $firstHalfArray"
+
+# Prints 1st half of array
+echo "Here are the list of index"
+echo ${array[@]:0:$firstHalfArray}
+
+
+# Prints 1st half REVERSE array
+echo "This needs to be worked as REVERSE, Alphbet got reversed too"
+echo ${array[@]:0:$firstHalfArray} | rev
+
+-------------------------------------------------------------------------------------------
+# While Loop for user not entering index and number values
+-------------------------------------------------------------------------------------------
+#!/bin/bash
+# User input name of index and quantity
+func_name(){
+        echo -n "Please type name of the index(e.g. test): "            # -p prompt
+        read indexName
+}
+func_number(){
+        echo -n "How many Index to create(e.g. 11): "
+        read indexNumber
+}
+
+func_name
+func_number
+
+while true;
+        do
+                if [ -z $indexName ]; then
+                echo "Calling func_name"
+                        func_name
+                fi
+
+                if [ -z $indexNumber ]; then
+                        echo "Calling func_number"
+                        func_number
+                fi
+
+
+                if [[ -n $indexName  &&  -n $indexNumber ]]; then
+                        echo "You input Index:$indexName Number:$indexNumber";
+                fi
+
+done
+
+
+# Creating Array
+array=($(eval echo $indexName{1..$indexNumber}))
+echo "Here are the Array Indice: ${array[@]}"
+
+# Count number of index
+noIndex=$(for i in ${array[@]}; do echo $i; done | wc -l)
+echo "Total number of Array index: $noIndex"
+
+# Cut in half and find out the middle index number
+firstHalfArray=$(echo $(( noIndex / 2 )) )
+echo "Half of array index is: $firstHalfArray"
+
+# Prints 1st half of array
+echo "Here are the list of index"
+echo ${array[@]:0:$firstHalfArray}
+
+
+# Prints 1st half REVERSE array
+echo "This needs to be worked as REVERSE, Alphbet got reversed too"
+echo ${array[@]:0:$firstHalfArray} | rev
+-------------------------------------------------------------------------------------------
 
 
 

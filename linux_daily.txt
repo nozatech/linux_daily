@@ -68,7 +68,8 @@ $ man -k REGEX or UNIXCOMMAND
 ### Font Type <= Lucia Console, 12pt
 ### Shell's Color, History, Time stamp, Size ### 
 
-### User Green Prompt
+# PS1 (Prompt Setting 1~ 4) <=  Green 
+$ PS1="#: " ; export PS1
 -----------------------------------------------------------------------------------	
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && source ~/.bashrc 
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && 		. ~/.bashrc 
@@ -804,6 +805,26 @@ http://linuxcommand.org/lc3_man_pages/seth.html
 	$ unset i
 	$ echo $i
 		
+		
+	$ foo=(4 5 6)
+	$ foo[2]=
+	$ echo ${#foo[*]}
+		3
+	$ unset foo[2]
+	$ echo ${#foo[*]}	
+	2	
+
+	/home/user1> var=""
+	/home/user1> echo $var
+
+	/home/user1> set -u
+	/home/user1> echo $var
+
+	/home/user1> unset var
+	/home/user1> echo $var
+	>>> -bash: var: unbound variable <<<
+
+	
 ----------------------------------------------------------------------------------------------		
 # set can see Shell-LOCAL variables, env cannot.
 ----------------------------------------------------------------------------------------------
@@ -6381,6 +6402,13 @@ ctrl-b c - new window
 	# from CMD using echo & sed
 	$ echo day | sed 's/day/night/'			
 		night
+	
+
+	$ cat textFile.txt | sed s/fromOrginal/changedTo/ 1> changed_textFile.txt
+	$ cat textFile.txt | awk '/us/ {print $2}'		<= find starting with /us/ and Prints out 2nd field
+		
+		
+		
 		
 		
 ------------------------------------------------------------------------------------
