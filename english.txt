@@ -2452,6 +2452,10 @@ stand corrected <- admit that one's was wrong
 
 stash			<- store (something) safely and secretly in a specified place
 
+status quo		<- the existing state of affairs, especially regarding social or political issues.
+					"they have a vested interest in maintaining the status quo"
+				  현재의상황	
+
 startle			<- excited by sudden surprise or alarm and making a quick involuntary movement
 
 stay put		<- (of a person or object) remain somewhere without moving or being moved.
@@ -2478,6 +2482,7 @@ subtle			<- [sΛtl](especially of a change or distinction) so delicate or
 					making use of clever and indirect methods to achieve something.
 					synonyms:	fine, fine-drawn, nice, hair-splitting
 					"subtle distinctions"  "fail in subtle way"
+					파악하기 어려운, 교활한, 세밀한
 
 succinctly		<= [səksíŋktli] in a brief and clearly expressed manner.
 

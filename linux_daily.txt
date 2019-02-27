@@ -682,10 +682,19 @@ https://mywiki.wooledge.org/BashGuide/CommandsAndArguments
 
 -----------------------------------------------------------------------------------
 ### Vi environment set-up (setting)
+# vimrc
 -----------------------------------------------------------------------------------
+
+# Cywin
+Copy vimrc_expample.vim file from Ubuntu14 and create a ~/.vimrc file in Windows.
+Ubuntu 14's vimrc_expample.vim file location is /usr/share/vim/vim74/vimrc_example.vim
+
+
 http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 
 Create a .vimrc file in home directory
+
+
 	
 $ vi .vimrc
 ----------------------------------------------------
@@ -2329,11 +2338,19 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 ### Date format 
 	$ date
 	  Tue Jan 15 11:29:01 PST 2019
-
+	  
+	$ DATE=`date   +%H:%M:%S`			 <= `command.....`      <- Legacy way
+	$ DATE=$(date  +%H:%M:%S)			 <= $(command....)
+	$ DATE="$(date +%H:%M:%S)"			 <= $(command....)
+		
+		$ echo $DATE
+		  22:18:35
+	
 	$ date +%F
 	  2016-08-11
 	
 	$ timestamp=`date +%F`  			<= set variable name 'timestamp'
+	$ timestamp=$(date +%F)  			<= set variable name 'timestamp'
 	
 	$ date +%Y-%m-%d-%H-%M-%S
 	  2019-01-15-11-30-02
@@ -2342,32 +2359,38 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	$ echo $DATE
 	  2016-03-24-22-15-39
 
-	$ DATE=`date +%H:%M:%S`				 <= `command.....`      <- Legacy way
-	$ DATE=$(date +%H:%M:%S)			 <= $(command....)
-	$ DATE="$(date +%H:%M:%S)"			 <= $(command....)
-	
-	$ echo $DATE
-		22:18:35
+
 	$ DATE='$(date +%H:%M:%S)'			<= NO Single Quote XXX
 		$(date +%H:%M:%S)				<= Literal with Single Quotes
 
 	 
 	# time stamp for script
-	$ date +%s                 <= %s     seconds since 1970-01-01 00:00:00 UTC
+	$ date +%s                 			<= %s  seconds since 1970-01-01 00:00:00 UTC
+	
+	$ date +%S                 			<= from 60 seconds (0~60 sec)
 	
 	# milliseconds since 1-1-1970(Use %3N to truncate the nanoseconds to the 3 most significant digits)
 	$ date +%s%3N
-	1397392146866 
+		1397392146866 
 	 
 	$ date +%Y-%m-%d-hour-%H:%M:%S
+	
 	$ date +Name:`hostname`/Date:%Y-%m-%d/hour:%H:%M:%S 
 	  Name:PC_Name/Date:2016-10-28/hour:11:37:43
+	  
+	$ date +Name:`hostname`\|Date:%Y-%m-%d\|hour:%H:%M:%S
+	  Name:i7|Date:2019-02-25|hour:14:42:34
 
 	$ date +"%m-%d-%Y"   		<= 12-17-2014
 	$ date +"%H:%M:%S"   		<= 10:20:18
+
 	$ date +"Today's date is %m-%d-%Y and time is %H:%M:%S."
+		Today's date is 02-25-2019 and time is 14:38:29.
+
 	$ date +%T
 	$ date +%D
+	
+	
 	$ date +%F   				<= 2018-01-09  'F'ull date; same as %Y-%m-%d
 	
 	
