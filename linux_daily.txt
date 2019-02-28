@@ -109,6 +109,7 @@ echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
 
 -----------------------------------------------------------------------------------	
 # Bash Log Out Message
+# .bash_logout
 -----------------------------------------------------------------------------------		
 	$ vi ~/.bash_logout			<= user account
 		echo "You are logging out! GoodBye ^^*
@@ -1123,8 +1124,9 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 		52
 	$ for i in $(echo {A..Z}{a..z}); do echo $i; done | wc -l
 		676
-	
-# Out put Variables using Brace Expansion
+--------------------------------------------------------------------------	
+# Brace Expansion - Variables 
+--------------------------------------------------------------------------
 	fruit="apple banana banana cherry"
 
 	$ echo ${fruit/banana/mango}				<= change 1st banana to mango 

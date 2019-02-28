@@ -217,6 +217,13 @@ http://stackoverflow.com/questions/16103810/force-my-local-master-to-be-origin-m
 3. error: Your local changes to the following files would be overwritten by merge:
 http://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me
 
+	$ git stash				<= stores the changes temporarily 
+	$ git pull 				<= switches branches
+	# $ git pull <remote name> <remote branch name> (or) switch branch
+	$ git stash apply --index	<= Restore the changes from temporarily backed up
+								   --index <= staged files are still staged
+
+
 	1. Commit the change using
 		$ git commit -m "My message"
 
