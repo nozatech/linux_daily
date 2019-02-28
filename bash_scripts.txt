@@ -35,7 +35,10 @@ _	<= Undercore
 	  This is 1st line.
           This is 2nd line.
               This is 3rd line 
-
+			-n     do not output the trailing newline
+			-e     enable interpretation of backslash escapes
+			-E     disable interpretation of backslash escapes (default)
+			-t 		tab
 ----------------------------------------------------------------------------------------
 # Debugging options
 ----------------------------------------------------------------------------------------
@@ -4522,7 +4525,7 @@ fi
 
 
 -------------------------------------------------------------------------------------------
-### Brace To Array to Reverse
+### Brace {...}  To Array [...] to Reverse
 -------------------------------------------------------------------------------------------
 $ vi braceToArrayToRevers.sh
 ------------------------------------------------------------------------------------------
@@ -4713,8 +4716,26 @@ Last login
 		fi
 	sleep 1
  done
--------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+Last login-V2
+------------------------------------------------------------------------------------------
+#!/bin/bash
+# Find out who was the last person to login
 
+SUBJECT="New login on $(hostname)"
+EMAIL="albertpark5@gmail.com"
+
+while true; do
+    LASTLOGIN=$(last | head -1)
+        if [ "$PREVLOGIN" = "$LASTLOGIN" ]; then    # String Comparison
+            PREVLOGIN=$LASTLOGIN                    #
+        else
+            echo "$LASTLOGIN $SUBJECT"
+            PREVLOGIN=$LASTLOGIN
+        fi
+        sleep 1
+done
+------------------------------------------------------------------------------------------
 
 
 

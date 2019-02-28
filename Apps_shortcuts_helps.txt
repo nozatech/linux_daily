@@ -8,11 +8,11 @@ S.M.A.R.T.
 1.Specific	2.Measureable	3.Action-Oriented	4.Realistic	 5.Time-Limited
 
 ### Drucker's 5 Questions ###
-1. What is  our mission?
-2. Who  is  our customers?
-3. What is  the customer value?
-4. What are our result?
-5. What is  our plan?
+1. What is  our  mission?
+2. Who  is  our  customers?
+3. What is  the  customer value?
+4. What is  our  result?
+5. What is  our  plan?
 
 
 ---------------------------------------
@@ -60,9 +60,9 @@ End Of Line (EOL)	<= 라인 끝  문자 (0x0D0A, \r\n)는 두개의 ASCII 문자
 						커서를 다음 줄과 그 줄의 시작 부분으로 이동합니다. 이 문자는 Microsoft Windows, Symbian OS를 
 						포함한 기타 대부분의 비 UNIX 운영 체제에서 줄 바꿈 문자로 사용됩니다.
 
---------------------------------------- 
+--------------------------------------------------------  
 ### Notepad++  (Settings > Short cut Mapper Menu)
----------------------------------------
+-------------------------------------------------------- 
 
 1. 	Ctrl + L					Delete Current line(from cursor to all the way RIGHT)
 	Ctrl + D					Copy(Duplicate) line
