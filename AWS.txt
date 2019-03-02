@@ -6,14 +6,71 @@ US West (N. California)	us-west-1
 US West (Oregon)	    us-west-2
 
 
-### Install and Configure AWS CLI ###
-https://devopsmates.com/install-configure-aws-cli-amazon-web-services-command-line-interface/
-yum install epel-release –y
-yum install python-pip –y
-pip install awscli
-pip install –upgrade awscli
-aws –version
-aws help 
+### AWS CLI <= Install and Configure ###
+
+$ sudo pip install awscli --ignore-installed six 		<= 1.16 EKS Works
+--------------------------------------------------------------------------------------------
+	# Alternative Installation using CentOS Repository YUM
+	https://devopsmates.com/install-configure-aws-cli-amazon-web-services-command-line-interface/
+	yum install epel-release –y
+	yum install python-pip –y
+	pip install awscli
+	pip install –upgrade awscli
+	aws –version			<=1.14  !Not supporting the ESK(starts on 1.15.32)yet
+	aws help 
+--------------------------------------------------------------------------------------------
+
+$ aws --version
+	aws-cli/1.16.115 Python/3.6.7 Linux/3.10.0-957.1.3.el7.x86_64 botocore/1.12.105   <= EKS Works
+
+$ aws configure
+	AWS Access Key ID [None]: 
+	AWS Secret Access Key [None]: 
+	Default region name [None]: us-west-2  <= Oregon
+	Default output format [None]: json
+	
+$ aws configure --profile=clusterAdmin					<= Specific AWS USER account credential
+	AWS Access Key ID [****************UVFA]:
+	AWS Secret Access Key [****************KJ2l]:
+	Default region name [us-region-2]: us-west-2		<= Oregon
+	Default output format [None]: json
+
+$ export AWS_PROFILE=clusterAdmin
+  $ echo AWS_PROFILE=clusterAdmin >> .bash_profile 		# or .bashrc
+  
+$ aws eks update-kubeconfig --name classCluster	
+	Added new context arn:aws:eks:us-west-2:688595016292:cluster/classCluster 
+	to /home/awseks/.kube/config
+
+
+$ aws eks list-clusters
+	{
+		"clusters": [
+			"classCluster"			<= Cluster Name
+		]
+	}
+	
+# Configuration test
+$ aws s3 ls
+	2017-02-27 20:39:36 backup-jenkins-sign
+	2017-05-22 16:10:49 mobile-xpromo
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### how to get Canonical ID ###
 $ aws s3api list-buckets
@@ -22,6 +79,19 @@ $ aws s3api list-buckets
         "DisplayName": "aws-gdpr",
         "ID": "25c4bb815a498aa63ffee0cedfd35798858a12cc0897ef268fa0073ad729ef2e"  <= Canonical ID
     },
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

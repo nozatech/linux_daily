@@ -174,8 +174,55 @@ cat << EOF >> ~/.bashrc
 	Cyan(하늘색)	    36			46
 	White			37			47
 -----------------------------------------------	
+# .bashrc vs .bash_profile	
+https://apple.stackexchange.com/questions/51036/what-is-the-difference-between-bash-profile-and-bashrc
+
+.bash_profile 	<= is executed for login shells
+.bashrc 		<= is executed for interactive non-login or new shells.
+
+-----------------------------------------------------------------------------------------
+# BASH SHELL - Movement
+https://www.cheatography.com/citguy/cheat-sheets/bash-shortcuts/
+https://blog.m157q.tw/posts/2014/10/16/bash-cheat-sheet/
+https://ss64.com/bash/syntax-keyboard.html
+
+# Move
+	Ctrl + a	<= go to the start of the command line
+	Ctrl + e	<= go to the end   of the command line
+	
+	Ctrl + <-	<= < left  Arrow go to Left Front of word	
+	Ctrl + ->	<= > right Arrow go to Right  End   of word	
+	
+
+# Clean / Stop 
+	Ctrl + l	<= clear screen
+	Ctrl + s	<= Stop verbose output
+
+# Control
+	Ctrl + c	<= terminate command
+	Ctrl + z	<= suspend comman­d/send to background (use fg to bring forward)
+
+# Cut / Paste / Delete 
+	Ctrl + u	<= from cursor, delete to start of line     <= Delete delete...|Ok
+	Ctrl + k	<= from cursor, delete to end of line		Ok|Delete delete ... =>
+	
+	Ctrl + y	<= Paste
+	
+	Ctrl + w	<= Delete word 
+	Alt  + d	<= delete word
+	
+	
+
+# !(bang) Commands
+	!!			<= Run last command
+	!number		<= History then run from history command number
+	!$ or Alt+.	<= the last word of the previous command
 	
 -----------------------------------------------------------------------------------------	
+
+
+
+
 
 #########################################################################################
 #   Boot Process   
