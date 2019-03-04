@@ -8419,7 +8419,13 @@ an attacker may trick the users of a web application into executing actions of t
 If the victim is a normal user, a successful CSRF attack can force the user to perform state changing 
 requests like transferring funds, changing their email address, and so forth. If the victim is an 
 administrative account, CSRF can compromise the entire web application.
-	
+
+------------------------------------------------------------------------------------	
+Runtime
+------------------------------------------------------------------------------------ 
+	is the period of time when a program is running. It begins when a program is opened 
+	(or executed) and ends with the program is quit or closed.
+------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
 # HTTPS?

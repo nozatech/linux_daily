@@ -18,7 +18,10 @@ Ansible <= operating-system-level dependencies and their configuration
 https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-1-10-cluster-using-kubeadm-on-centos-7
 https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-1-10-cluster-using-kubeadm-on-ubuntu-16-04
 
+
+------------------------------------------------------------------------------------
 Kubeadm 
+------------------------------------------------------------------------------------	
 	automates the installation and configuration of Kubernetes components such as the 
 	1) API server, 2)Controller Manager, 3)Kube DNS
 
@@ -29,15 +32,42 @@ Kubeadm
 	2. Worker nodes 	<= are the servers where your workloads (i.e. containerized applications and services) will run. 
 							A worker will continue to run your workload once they're assigned to it, even if the master 
 							goes down once scheduling is complete. A cluster's capacity can be increased by adding workers.
+	e.g.
+	$ kubeadm version
+
+------------------------------------------------------------------------------------
+Kunelet
+	https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
+------------------------------------------------------------------------------------
+	A system service/program that runs on all nodes(worker servers) and handles node-level(workers) operation
+	
+	e.g.
+	$ kubelet
+	
+------------------------------------------------------------------------------------	
+Kubectl
+------------------------------------------------------------------------------------
+	A CLI tool used for issuing commands to the cluster through its API Server(Master)
+
+	e.g.
+	$ kubectl --kubeconfig='bnea-k8-config.yml' get nodes
+	
+	$ kubectl cluster-info
+	
+	$ kubectl version
+------------------------------------------------------------------------------------
+Pods                            
+------------------------------------------------------------------------------------	
+	is an atomic unit that runs one or more Docker containers
+------------------------------------------------------------------------------------                            
+ 
+------------------------------------------------------------------------------------	
+Pod Network Plugins
+------------------------------------------------------------------------------------ 
+	Flannel(체크남방) 
 
 
 
-
-
-
-                            
-                            
-                            
                             
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###                             
                             
