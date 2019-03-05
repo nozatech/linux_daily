@@ -97,6 +97,12 @@ End Of Line (EOL)	<= 라인 끝  문자 (0x0D0A, \r\n)는 두개의 ASCII 문자
 	Ctrl+Alt+S			Display Save As... dialogue box.
 	Ctrl+W				Close current document.
 	Alt +F4				Exit Notepad++
+
+5. Copy Entire Single Line
+	Ctrl + Shift + X
+    Home then   Shift + End
+	End	 then	Shift + Home  then   Ctrl + C
+	
 	
 ---------------------------------------
 ### Chrome ###

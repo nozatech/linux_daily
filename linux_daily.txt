@@ -2485,7 +2485,7 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 
 ### Compression 	
 	
-    # tar (compression for backup)
+    ## tar ('T'ape 'Ar'chive) compression for backup --> 'tarball')
 
 	A. Creating tar file 
 	# tar -c(create)v(verbose)p(preserve permission)z(compression)f(filename)
