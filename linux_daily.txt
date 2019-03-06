@@ -106,6 +106,13 @@ echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
 	$ . ~/.bash_profile						<= source  - reLoad
 	$ source .bashrc						<= reload .bashrc
 -----------------------------------------------------------------------------------	
+# Reload Profile
+	Issue occurs after uninstalling kubectl but new binary file is in /usr/local/bin
+	bash: /usr/bin/kubectl: No such file or directory
+	
+	Reload profile wiill fix
+	$ . ./bash_profile
+	$ source ./bash_profile
 
 -----------------------------------------------------------------------------------	
 # Bash Log Out Message

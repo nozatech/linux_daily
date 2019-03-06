@@ -1494,7 +1494,7 @@ gaze 			<- [v] look steadily and intently, especially in admiration, surprise, o
 					synonyms:	stare at, look fixedly at, gape at, goggle at, eye, look at, 
 								study, scrutinize, take a good look at; More
 
-gingivitises	<- 치은염 <-잇몸질환 4명중1명 세균성 감염
+gingivitises	<- 치은염 [진저바이터스]<-잇몸질환 4명중1명 세균성 감염
 					 inflammation of the gums
 periodontitis	<- 치주염(풍치) [페리오단타이티스] <- 치아를 버텨주는 조직에 염증
 
@@ -1964,6 +1964,11 @@ obscurity		<- the state of being unknown, inconspicuous, or unimportant.
 					synonyms:	insignificance, inconspicuousness, unimportance, anonymity
 					antonyms:	fame
 
+occlusion		<-[Noun] the blockage or closing of a blood vessel or hollow organ.
+					synonyms:	blockage, obstruction, obstructing, blocking (up), closing (up), closure
+					"the occlusion of a major coronary artery"
+					"apologies for the occlusion of this webcam." 
+
 omen			<- 전조가 되는 일, 예시, 예감
 
 omnibus			<- [adj] comprising several items.
@@ -1995,7 +2000,7 @@ palindrome 		<- a word that reads same forwards or backwards
 pandemonium		<- 아수라장 대혼란
 				    wild and noisy disorder or confusion; uproar.
 					"pandemonium broke out"
-					synonyms:	bedlam, chaos, mayhem, uproar, turmoil, tumult, commotion, 
+					synonyms: bedlam, chaos, mayhem, uproar, turmoil, tumult, commotion, 
 							confusion, anarchy, furor, hubbub, rumpus; More
 
 					

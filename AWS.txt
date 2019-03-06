@@ -7,9 +7,9 @@ US West (Oregon)	    us-west-2
 
 
 
-### AWS CLI <= Install and Configure ###
+### AWS CLI ### 
 
-$ sudo pip install awscli --ignore-installed six 		<= 1.16 EKS Works
+$ sudo pip install awscli --ignore-installed six 		<= version 1.16, it supports EKS
 --------------------------------------------------------------------------------------------
 	# Alternative Installation using CentOS Repository YUM
 	https://devopsmates.com/install-configure-aws-cli-amazon-web-services-command-line-interface/
@@ -17,7 +17,7 @@ $ sudo pip install awscli --ignore-installed six 		<= 1.16 EKS Works
 	yum install python-pip –y
 	pip install awscli
 	pip install –upgrade awscli
-	aws –version			<=1.14  !Not supporting the ESK(starts on 1.15.32)yet
+	aws –version							<=1.14  !Not supporting the ESK(starts on 1.15.32)yet
 	aws help 
 --------------------------------------------------------------------------------------------
 
@@ -34,7 +34,7 @@ $ aws configure --profile=clusterAdmin					<= Specific AWS USER account credenti
 	AWS Access Key ID [****************UVFA]:
 	AWS Secret Access Key [****************KJ2l]:
 	Default region name [us-region-2]: us-west-2		<= Oregon
-	Default output format [None]: json					<= ONLY JSON WORKS!!!! 
+	Default output format [None]: json					<= ONLY 'JSON' WORKS!!!! 
 -------------------------------------------------------------------------------
 # Configuration test
 -------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ $ aws s3 ls
 	2017-02-27 20:39:36 backup-jenkins-sign
 	2017-05-22 16:10:49 mobile-xpromo
 -------------------------------------------------------------------------------
-### how to get Canonical ID ###
+# Canonical ID #
 -------------------------------------------------------------------------------
 $ aws s3api list-buckets
 {
@@ -50,31 +50,6 @@ $ aws s3api list-buckets
         "DisplayName": "aws-gdpr",
         "ID": "25c4bb815a498aa63ffee0cedfd35798858a12cc0897ef268fa0073ad729ef2e"  <= Canonical ID
     },
--------------------------------------------------------------------------------
-# Add to Environment Variable
--------------------------------------------------------------------------------
-$ env | grep AWS										<= If no, add 
-$ export AWS_PROFILE=clusterAdmin
-  $ echo AWS_PROFILE=clusterAdmin >> .bash_profile 		<= .bash_profile <= login shell 
-														<= .bashrc 		 <= after login user shell
-  
-$ aws eks update-kubeconfig --name classCluster	
-	Added new context arn:aws:eks:us-west-2:688595016292:cluster/classCluster 
-	to /home/awseks/.kube/config
-
-
-$ aws eks list-clusters
-	{
-		"clusters": [
-			"classCluster"			<= Cluster Name
-		]
-	}
--------------------------------------------------------------------------------	
-
-
-
-
-
 
 
 
@@ -84,21 +59,46 @@ $ aws eks list-clusters
 ### EKS  (Elastic Kubernetes Service)
 #   Training: https://www.linkedin.com/learning/running-kubernetes-on-aws-eks
 ##############################################################################
+Pre-EKS Deployment
+	1. AWS CLI
+	2. Kubectl CLI
+	3. BASH CLI
+Pre-AWS EKS Deployment
+	1. IAM Configuration
+		- Create a ROLE defined with EKS Permissions
+		- EKS:* Policy applied to user/group
+		
+	2. VPC create for ESK use
+		- Create ESK VPC using CloudFormation
 
+EKS Core Service
+	1. Create cluster 'controle plane'(system configuration and management)
+	2. Establish kubectl credentials
+		- Install aws-iam-authenticator and kubectl
+		- aws eks update-kubeconfig --name '#Rename to cluster's_name'
+Create Worker Nodes	
+	1. Create an autoscaling group of nodes with CloudFormation
+	2. Create node auth with 'kubectl apply -f aws-auth-cm.yaml'
+	
+Wait for the nodes to register
+	1. 'kubectl get nodes -w'
+	
+Ensure you can create an ELB
+	1. 'aws iam create-service-linked-role --aws-service-name elasticloadbalancing.amazonaws.comaws
+	
+Use your Kubernetes Envrionment
+	
 
 --------------------------------------------------------------------------------------------
 EKS Support Regions 
 --------------------------------------------------------------------------------------------
 https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/
-us-west-2 (Oregon)
-us-east-1 (N. Virginia)
-us-east-2 (Ohio)
-Ireland, Frankfurt, London,	Paris, Stockholm
-Singapore, Tokyo, Sydney, Seoul, Mumbai
+us-west-2 (Oregon), us-east-1 (N. Virginia), us-east-2 (Ohio)
+Ireland, Frankfurt, London,	Paris, Stockholm, Singapore, Tokyo, Sydney, Seoul, Mumbai
 --------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------
-### Gether Info ###
+### Gethering ESK Setup Info ###
 --------------------------------------------------------------------------------------------
 IAM-ROLE-ARN: arn:aws:iam::688595016292:role/Cluster_EKS_Role
 
@@ -107,22 +107,19 @@ SECURITY-GROUP-ID:sg-09222c96502064a3a
 SUBNET-IDS:subnet-09442239f4e596b6d,subnet-069fb4ed48718a9f7,subnet-05a8b3907455065ce
 
 NODE-ROLE-ARN:
-
 LABEL-NODE-ROLE-ARN:
-
 USER_ARN:
+
 --------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------
 1. Create IAM Accounts and Policy for CRUD operations 
 --------------------------------------------------------------------------------------------
-
   Create 2 Policies for EKS and CloudFormation Admins
+	AWS -> IAM -> Policies -> Create Policy
+		=> AdminEKSPolicy & AdminCloudFormationPolicy
 
-Name: AdminEKSPolicy	
-Name: AdminCloudFormationPolicy
-
-Name: AdminEKSPolicy
+  # Name: AdminEKSPolicy				<= Kubernetes 
 ----------------------------------------------
 {
     "Version": "2012-10-17",
@@ -137,7 +134,7 @@ Name: AdminEKSPolicy
     ]
 }
 ----------------------------------------------
-Name: AdminCloudFormationPolicy			<= CM Tool
+  # Name: AdminCloudFormationPolicy			<= CM Tool
 ----------------------------------------------
 {
     "Version": "2012-10-17",
@@ -152,31 +149,36 @@ Name: AdminCloudFormationPolicy			<= CM Tool
 ----------------------------------------------
 
 Create Roll 
-# ClusterEKSRoll
+	AWS -> IAM -> Roles -> Create Role -> AWS Service -> EKS -> Add 
+	  - AmazonEKSServicePolicy 			<= From Existing Policy
+      - AmazonEKSClusterPolicy 			<= From Existkuing Policy
+	Create -> Name: ClusterEKSRoll
 
-EKS 
+	IAM-ROLE-ARN: arn:aws:iam::6...2:role/Cluster_EKS_Role
 
-
-
-##################################################################
 
 --------------------------------------------------------------------------------------------
 IAM: Creating ClusterAdmin and ClusterUser accounts
 --------------------------------------------------------------------------------------------
+
 User #1:  clusterAdmin
 
+  IAM -> Username: clusterAdmin -> Access Type: both Programmatic and console Access 
+	  -> Password -> Attach 4 existing Policies ->  Download CSV
+					AdminEKSPolicy					<= Newly created by me
+					AdminCloudFormationPolicy		<= Newly created by me
+					AmazonEKSServicePolicy 			<= From Existing   Policy
+					AmazonEKSClusterPolicy 			<= From Existkuing Policy
+					
  - eks admin policy
  - k8s admin "system:master" group
  
-  Add policies:
-  
-   AdminEKSPolicy					<= Newly created by me
-   AdminCloudFormationPolicy		<= Newly created by me
-   
-   AmazonEKSServicePolicy 			<= From Existing Policy
-   AmazonEKSClusterPolicy 			<= From Existkuing Policy
+
 
 User #2: clusterUser
+	IAM -> Username: clusterAdmin -> Access Type: both Programmatic and console Access 
+		-> Password -> Attach 4 existing Policies ->  Download CSV
+
 
   Add policies: 
  - no IAM policies
@@ -186,26 +188,33 @@ User #2: clusterUser
 --------------------------------------------------------------------------------------------
 CloudFormation - Create Stack VPC Template From S3
 --------------------------------------------------------------------------------------------
-https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2018-08-30/amazon-eks-vpc-sample.yaml
-Check Region first
+1. Check Region us-west-02(Orgegon)first
 
-Create Stack
-	Select a sample template from S3
+2. AWS Colsone -> ESK -> Create Cluster -> Specify an AWS S3 template URL
+	https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2018-08-30/amazon-eks-vpc-sample.yaml
+
+  -> Stack name: classCluster (or classEKSVPC) 
+	VPCBlock: 192.168.0.0/16
+	Subnet01Block: subnet1(192.168.64.0./18...)
+	Subnet02Block: subnet2(192.168.128.0./18...)
+	Subnet03Block: subnet3(192.168.192.0./18...)
+
+  -> Rest Default to create
+  -> From Output
+		Key				Value					Description	       Export Name
+		SecurityGroups	sg-09222c96502064a3a		
+		VpcId			vpc-0121526bc433d8e2b		
+		SubnetIds		subnet-09442239f4e596b6d,subnet-069fb4ed48718a9f7,subnet-05a8b3907455065ce 
 	
-Copy from :
-VPC-ID:
-SECURITY-GROUP-ID:
-SUBNET-IDS:
-
-
-Key	Value	Description	Export Name
-SecurityGroups	sg-09222c96502064a3a		
-VpcId			vpc-0121526bc433d8e2b		
-SubnetIds		subnet-09442239f4e596b6d,subnet-069fb4ed48718a9f7,subnet-05a8b3907455065ce 
-
+Copy from output:
+	IAM-ROLE-ARN: arn:aws:iam::688595016292:role/Cluster_EKS_Role
+	
+	VPC-ID: vpc-0121526bc433d8e2b
+	SECURITY-GROUP-ID:s g-09222c96502064a3a
+	SUBNET-IDS: subnet-09442239f4e596b6d,subnet-069fb4ed48718a9f7,subnet-05a8b3907455065ce 
 
 -------------------------------------------------------------------------------
-# Remote Tools Setup
+# Remote Tools 'Kubectl', 'aws-iam-authenticator', 'AWS CLI'
 -------------------------------------------------------------------------------
   1. Install "kubectl" 
 	https://kubernetes.io/docs/tasks/tools/install-kubectl/
@@ -217,11 +226,18 @@ SubnetIds		subnet-09442239f4e596b6d,subnet-069fb4ed48718a9f7,subnet-05a8b3907455
 	curl -LO https://storage.googleapis.com/kubernetes-release/release/\
 		$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl
 
+	$ chmod + x kubectl
+	$ mv kubectl /usr/local/bin
+	# $ source .bash_profile				<= If kubectl not works, reload profile
+	
 	$ kubectl version --short --client
+	
 	
 -------------------------------------------------------------------------------
   2. Download "aws-iam-authenticator" binary:
+-------------------------------------------------------------------------------
 	https://docs.aws.amazon.com/eks/latest/userguide/configure-kubectl.html
+	https://github.com/kubernetes-sigs/aws-iam-authenticator
 	-------------------------------------------------------------------------------
   Linux:
 	curl -sLO https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/amd64/aws-iam-authenticator
@@ -238,21 +254,28 @@ SubnetIds		subnet-09442239f4e596b6d,subnet-069fb4ed48718a9f7,subnet-05a8b3907455
 	$ sudo pip install awscli --ignore-installed six 		<= 1.16 EKS Works
 	$ pip install awscli --upgrade --user
 -------------------------------------------------------------------------------
+	$ aws --version
+		aw s-cli/1.16.115 Python/3.6.7 Linux/3.10.0-957.1.3.el7.x86_64 botocore/1.12.105
+
+	# AWS sts (Security Token Service)
+	$ aws sts get-caller-identity --output text --query 'Account'
+		688595016292		<= account ID
+	# get your account ID
+		ACCOUNT_ID=$(aws sts get-caller-identity --output text --query 'Account')
+
+	$ aws eks update-kubeconfig --name classEKS
 
 -------------------------------------------------------------------------------
-# Create EKS Cluster from AWS Console
+# Configuration on Linux Shell 
+# Add to Environment Variable
 -------------------------------------------------------------------------------
-
-
--------------------------------------------------------------------------------
-# Configuration on Linux Shell
--------------------------------------------------------------------------------
-  Config CLI for AWS and Kubectl
-  $ aws configure
+  # Config CLI for AWS and Kubectl
+  # AWS CLI
+  $ aws configure									<= Setup or update
 	  AWS Access Key ID [****************UVFA]:
 	  AWS Secret Access Key [****************KJ2l]:
 	  Default region name [us-west-2]: 				<= Oregon
-	  Default output format [json]: yaml
+	  Default output format [json]: 				<= Only json works
    
     SYNOPSIS
      aws configure [--profile profile-name]  
@@ -260,57 +283,280 @@ SubnetIds		subnet-09442239f4e596b6d,subnet-069fb4ed48718a9f7,subnet-05a8b3907455
 	$ aws configure --profile=clusterAdmin
 	
 	$ export AWS_PROFILE=clusterAdmin
-	# $ echo "export AWS_PROFILE=clusterAdmin" >> .bash_profile
+
+	$ env | grep AWS_PROFILE												<= If no, add 
+
+***	$ echo "export AWS_PROFILE=clusterAdmin" >> .bash_profile				<= .bash_profile <= login shell 
+																			<= .bashrc 		 <= after login user shell
 	
-	$ aws eks --region us-west-2 update-kubeconfig --name classCluster
-	  Updated context arn:aws:eks:us-west-2:688595016292:cluster/classCluster in /home/awseks/.kube/config
+***	$ aws eks update-kubeconfig --name classEKS							<= Updated CLI
+	
+	# $ aws eks --region us-west-2 update-kubeconfig --name classEKS	<= Old CLI
+	  => Updated context arn:aws:eks:us-west-2:688595016292:cluster/classCluster in /home/awseks/.kube/config
 
 	$ aws eks list-clusters			<= Get EKS cluster info
 	{
 		"clusters": [
-			"classCluster"
+			"classEKS"				<= AWS EKS Cluster Name
 		]
 	}
-  
-  # Testing
-	$ kubectl get nodes				<= to check
-	$ kubectl get pods				<= to check
 
+
+
+-------------------------------------------------------------------------------
+# Create a EKS Cluster from AWS Console
+-------------------------------------------------------------------------------
+AWS -> EKS -> Create Cluster -> 
+# Cluster configuration
+	Cluster name 	   -> classEKS
+	Kubernetes Version -> 1.11   				<= Latest
+	Role Name: Cluster_EKS_Role
+# Networking	
+	VPC -> 	vpc-xxx(192.168.0.0/16..)
+	Subnets	-> subnet1(192.168.64.0./18...)
+			   subnet2(192.168.128.0./18...)
+			   subnet3(192.168.192.0./18...)	
+# Security groups 
+	sg-09222c96502064a3a
+	
+>>> Create <<<	
+
+# Reigster cluster 'classEKS' to Kubectl
+$ aws eks update-kubeconfig --name classEKS
+	Added new context arn:aws:eks:us-west-2:688595016292:cluster/classEKS to /home/awseks/.kube/config
+
+# check if kubeclt actually communicating with 'classEKS'
+$ kubectl get pods
+	No resources found.						<= Good
+$ kubectl get nodes
+	No resources found.
+
+$ kubectl apply -f hostname.yaml				
+	deployment.extensions/hostname-v1 created
+	service/hostname-v1 created
+
+$ kubectl get pods
+	NAME                           READY   STATUS    RESTARTS   AGE
+	hostname-v1-56bc754656-njdgp   0/1     Pending   0          13s
+-------------------------------------------------------------------------------------------
+### hostname.yaml
+------------------------------------------
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hostname-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hostname-v1
+        version: v1
+    spec:
+      containers:
+      - image: rstarmer/hostname:v1
+        imagePullPolicy: Always
+        name: hostname
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: hostname-v1
+  name: hostname-v1
+spec:
+  ports:
+  - name: web
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: hostname-v1
+----------------------------------------
 
 -------------------------------------------------------------------------------
 # Adding Wokers(Nodes) to EKS 
 -------------------------------------------------------------------------------
-Go to CloudFormation -> Create a New stack 
+AWS -> CloudFormation -> Create a New stack -> Specify an Amazon S3 template URL
+	https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2018-08-30/amazon-eks-nodegroup.yaml
+	-> Stack Name: eksWorkerNodesStack
+	-> Cluster Name: classCluster
+	-> ClusterControlPlaneSecurityGroup: Learning-EKS-VPC
+	-> NodeGroupName: workerNodesEKS
+	-> NodeAutoScaling size: 1~3				<= Min ~ max size of Node Group AutoScaleGroup.
+	-> NodeVolumeSize: 20 						<= default
+	-> NodeImageId: ami-0c28139856aaf9c3b		<= us-west-2(Oregon)<- ESK Optimized AMI
+	-------------------------------------------------------------------------------
+	# Amazon EKS-Optimized AMI List
+	https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
+	-------------------------------------------------------------------------------
+	-> KeyName:eksAdmin		<= EC2 access PEM key (EC2 -> Create key Pair)
 
-From S3 template
+	-> Worker Network Configuration
+		VpcId	: vpc-xxx(192.168.0.0/16..)
+		Subnets	: subnet1(192.168.64.0./18...)
+				  subnet2(192.168.128.0./18...)
+				  subnet3(192.168.192.0./18...)			
+
+	-> Options:  <= pass on this		
+	-> Check on Agree then Click on Create!
+	eksWorkerNodesStack 2019-03-04 CREATE_IN_PROGRESS NOT_CHECKED Amazon EKS - Node Group 
+-------------------------------------------------------------------------------
+# After Workder Nodes creatation is done, get eksWorkerNodesStack's 'ARN' and add to 'rolearn' 
+	in order to the Kubectl accesses the 'eksWorkerNodes'
+    -> CouldFormation -> Stacks -> chose 'eksWorkderNodesStacks' -> Stack Details 
+	-> Outputs -> copy value : arn:aws:iam::6...2:role/eksWorkerNodesStack-NodeInstanceRole
+	-------------------------------------------------------------------------------
+	$ vi aws-auth-cm.yaml
+	-------------------------------------------------------------------------------
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapRoles: |
+    - rolearn: arn:aws:iam::6...2:role/eksWorkerNodesStack-NodeInstanceRole-14RJGE47079RC
+    #- rolearn: <ARN of instance role (not instance profile)>
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+-------------------------------------------------------------------------------
+
+$ kubectl apply -f aws-auth-cm.yaml
+	configmap/aws-auth created
+
+$ kubectl config view
+
+$ kubectl get nodes
+	NAME                                            STATUS   ROLES    AGE   VERSION
+	ip-192-168-120-42.us-west-2.compute.internal    Ready    <none>   58s   v1.11.5
+	ip-192-168-165-134.us-west-2.compute.internal   Ready    <none>   1m    v1.11.5
+	ip-192-168-201-63.us-west-2.compute.internal    Ready    <none>   1m    v1.11.5
+-------------------------------------------------------------------------------
+# Now it is deployed into the Nodes so the POD is Running
+-------------------------------------------------------------------------------
+$ kubectl get pods
+	NAME                           READY   STATUS    RESTARTS   AGE
+	hostname-v1-56bc754656-njdgp   1/1     Running   0          1h
+-------------------------------------------------------------------------------
+# AutoScalingGroup_Policy
+	AWS -> EC2 -> AutoScaling -> Auto Scaling Group -> Choose: eksWorkderNodes
+	-> Scaling Policies -> 
+	------------------------------------------------------------------
+	Name Launch Config.. Instances Desired Min Max Availability Zones
+	eks..	eksWorkerNodes  3		3      1    3  us-west-02a,b,c
+	------------------------------------------------------------------
+	Add Policy  -> Name: scale-cpu-70 
+				-> metric type: Ave CPU
+				-> Target Value: 70
+				-> Instances need: none
+				- Disable scale-in: none
+				
+	>>> CREATE <<<
+
+  # After AutoScalePolicy creation, it immediatly reducing number of Nodes from 3 to
+	$ kubectl get nodes
+	NAME                                           STATUS   ROLES    AGE   VERSION
+	ip-192-168-120-42.us-west-2.compute.internal   Ready    <none>   29m   v1.11.5
+	ip-192-168-201-63.us-west-2.compute.internal   Ready    <none>   29m   v1.11.5
+
+	# Scaled down to ONLY 1****
+	$kubectl get nodes
+	NAME                                           STATUS   ROLES    AGE   VERSION
+	ip-192-168-120-42.us-west-2.compute.internal   Ready    <none>   30m   v1.11.5
+
+-------------------------------------------------------------------------------
+# Differenciate Workers
+# Auto Labeling
+$ kubectl label nodes <node-name> <label-key>=<label-value>
+
+AWS -> CloudFormation -> Create Stack -> Specify template -> Template source
+Amazon S3 URL 
 https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2018-08-30/amazon-eks-nodegroup.yaml
 
-Stack Name: eksWorkerNodesStack
+# Specify stack details
+	Stack name: labelNodes
+	EKS Cluster
+		ClusterName: clusterEKS
+		ClusterControlPlaneSecurityGroup: Learning-EKS-VPC....3a)
+	Worker Node Configuration
+		NodeGroupName: labelNodes
+		NodeAutoScalingGroupMinSize: 1
+		NodeAutoScalingGroupMaxSize: 3
+		NodeInstanceType: t2.small
+		NodeImageID: ami-0c28139856aaf9c3b		<= us-west-2(Oregon)<- ESK Optimized AMI
+		KeyName: eksAdmin
+		BootstrapArguments:--kubelet-extra-args '--node-labels "nodetype=generalpurpose"'
+	
+	Worker Network Configuration
+		VpcId:vpc-xxx(192.168.0.0/16..)
+		Subnets: subnet1(192.168.64.0./18...)
+				 subnet2(192.168.128.0./18...)
+				 subnet3(192.168.192.0./18...)	
 
-EKS Cluster
-	Cluster Name: classCluster
-	ClusterControlPlaneSecurityGroup: Learning-EKS-VPC
-	NodeGroupName:workerNodes
-	NodeAutoScaling size: 1~3		<= Min ~ max size of Node Group AutoScaleGroup.
-	NodeVolumeSize: 20 				<= default
-	NodeImageId: ami-0c28139856aaf9c3b		<= us-west-2(Oregon) AMI
+# Go to labelNodes -> Outputs
+	
+-------------------------------------------------------------------------------				 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapRoles: |
+    - rolearn: arn:aws:iam::688595016292:role/eksWorkerNodesStack-NodeInstanceRole-14RJGE47079RC
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+-------------------------------------------------------------------------------	
+
+
+
+
+
+
+
+
+
+
 -------------------------------------------------------------------------------
-	Amazon EKS-Optimized AMI
-	https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
+
 -------------------------------------------------------------------------------
-	KeyName:eksAdmin		<= EC2 access PEM key (EC2 -> Create key Pair)
 
-Worker Network Configuration
-	VpcId	: vpc-xxx(192.168.0.0/16..)
-	Subnets	: subnet1(192.168.64.0./18...)
-			  subnet2(192.168.128.0./18...)
-			  subnet3(192.168.192.0./18...)			
+-------------------------------------------------------------------------------
 
-Options:  <= pass on this		
-Check on Agree then Click on Create!
-eksWorkerNodesStack 2019-03-04 CREATE_IN_PROGRESS NOT_CHECKED Amazon EKS - Node Group 
+-------------------------------------------------------------------------------
 
+-------------------------------------------------------------------------------
 
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 # Debug	connecting AWS EKS clusterAdmin
   
@@ -340,7 +586,7 @@ eksWorkerNodesStack 2019-03-04 CREATE_IN_PROGRESS NOT_CHECKED Amazon EKS - Node 
   $ kubectl version --short --client
 		Client Version: v1.13.4
 	
-
+  # RBAC <= Role-based access control (RBAC)
 
 -------------------------------------------------------------------------------
 
