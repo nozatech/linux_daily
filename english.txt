@@ -720,7 +720,7 @@ annihilation	<- complete destruction or obliteration, t otal defeat.
 					"the threat of global annihilation"
 					total defeat.
 					
-annotation		<- a note of explanation or comment added to a text or diagram.
+annotation		<- 주석, a note of explanation or comment added to a text or diagram.
 					synonyms:	note, notation, comment, gloss, footnote
 
 anticipate		<- regard as probable; expect or predict. 기대하다
@@ -761,8 +761,11 @@ aptitude		<- a natural ability to do something.
 					synonyms:	talent, gift, flair, bent, skill, knack, facility, ability, 
 								proficiency, capability, potential, capacity, faculty, genius
 					"an aptitude for higher mathematics"
+					
 
 apropos			<- [ӕprəpóu] with reference to; concerning.
+
+aorta			<- [eiɔ́ːrtə 에이올터] 대동맥
 
 arise			<- (of a problem, opportunity, or situation) emerge; become apparent.
 					"new difficulties had arisen"
@@ -1494,7 +1497,7 @@ gaze 			<- [v] look steadily and intently, especially in admiration, surprise, o
 					synonyms:	stare at, look fixedly at, gape at, goggle at, eye, look at, 
 								study, scrutinize, take a good look at; More
 
-gingivitises	<- 치은염 [진저바이터스]<-잇몸질환 4명중1명 세균성 감염
+gingivitises	<- 치은염       [진저바이터스]	   <-잇몸질환 4명중1명 세균성 감염
 					 inflammation of the gums
 periodontitis	<- 치주염(풍치) [페리오단타이티스] <- 치아를 버텨주는 조직에 염증
 
@@ -1851,8 +1854,11 @@ mangle			<- severely mutilate, disfigure, or damage by cutting, tearing, or crus
 					"the car was mangled almost beyond recognition"
 					synonyms:	mutilate, maim, disfigure, damage, injure, crush
 
-
-
+manifest		<- [adj]clear or obvious to the eye or mind.
+					"Manifest labels"
+				   [V]display or show (a quality or feeling) by one's acts or appearance; demonstrate.
+					"she manifested signs of depression"
+				
 marauder		<- a person who marauds; a raider.
 					synonyms:	raider, plunderer, pillager, looter, robber, pirate, freebooter, 
 								bandit, bandito, highwayman, rustler
@@ -2148,6 +2154,10 @@ prenup			<- a prenuptial agreement. 결혼 전 계약서
 
 primitive		<- relating to, denoting, or preserving the character of an early stage in the 
 					evolutionary or historical development of something.
+
+profound		<- (of a person or statement) having or showing great knowledge or insight.
+					"a profound philosopher"
+					"a profound analysis of the problems"
 
 profoundly		<- synonyms: extremely, very, deeply, exceedingly, greatly, immensely, enormously, 
 					tremendously, intensely, heartily, keenly, acutely, painfully, 
