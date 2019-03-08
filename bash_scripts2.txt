@@ -173,12 +173,14 @@ hello
 quit
 echo foo
 ----------------------------
-# test.sh for $1, $2, $3
+# test.sh             for $1, $2, $3
 #!/bin/bash
 echo "\$1 is now $1"
 echo "\$2 is now $2"
 echo "\$3 is now $3"
+
 # ./test.sh 1 2 3
+
 ----------------------------
 #!/bin/bash
 getDate(){  		<= set a function name getDate()
@@ -190,7 +192,7 @@ getDate				<= invoke function name getDate
 -------------------------------------------------------------------------------------------------------
 Global & Local Variables
 
-name="Albert"  				#Global
+name="Albert"  			<= Global Variable
 
 nameLocal(){
 	local name="Kunsu"		# local name for function variable name
@@ -200,6 +202,7 @@ nameLocal
 echo $name
 -------------------------------------------------------------------------------------------------------
 #set up function
+
 getSum(){
 	local num3=$1				local num3=num1				local num3=num1
 	local num4=$2				local num4=num2				local num4=num2

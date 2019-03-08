@@ -144,6 +144,12 @@ $ sh -n   script.sh						<= prints out Syntex error only
 	$ bash -version 
 	$ echo $BASH_VERSION 	
 
+$ enable --help
+  enable: enable [-a] [-dnps] [-f filename] [name ...]
+    Enable and disable shell - builtins.
+
+
+
 ----------------------------------------------------------------------------------------
 # Script Run
 ----------------------------------------------------------------------------------------
@@ -320,6 +326,7 @@ $ VAR=`command`			<= Command substitution & assign to Variable $VAR <= Old
 	$ ll=`ls -Al`
 	$ ll=$(ls -Al)
 	$ ll="$(ls -Al)"
+	
 	$ echo $ll
 	$ echo ${ll}
 	$ echo "${ll} is weird looking"
@@ -791,8 +798,9 @@ File Descriptor 0, 1, and 2 reserved as:
 $ Command 			> stdout-here 2> stderr-here < stdin-from-here
   ./monitoring.sh   > log.txt	  2> Error.log   <- Input.txt
 
-command 2>&1| command2			<= same
-command |&    command2			<= same(variable by different shell
+  		  < PIPE >	
+command 2>&1 |   command2		<= stdout & stderr to(Pipe) CMD2  
+command      | & command2		<= same(variable by different shell
 
 -----------------------------------------------------------------------------
 command  2>&1 	file.log		<= everything(stdout & stderr)
@@ -1374,15 +1382,16 @@ function home_space
 }   # en	
 	
 #--------------------------------------------------------------------------------
+### Comparing two directories ###
+#--------------------------------------------------------------------------------
 #!/bin/bash
 ### Comparing two directories ###
 #set -x 		<= Debug mode  '+x' <= Disable mode
-# Usage: compare2dirs.sh DIR1_Name DIR2_Name #
+# Usage: compare2dirs.sh DIR1_Name DIR2_Name 
 usage="Usage: $0 DIR1_Name DIR2_Name"
-
 ------------------------------------------------------------------------------------
 # Test Statement
-# Comparing 
+# Comparing Numbers (번호 비교)
 ------------------------------------------------------------------------------------
 if [ $# -gt 2 ]; then                   # number of command line parameters.
     echo $usage;						# if args are more than 2, echo $usage
@@ -1450,20 +1459,23 @@ $  comm -23 <(ls dir1 |sort) <(ls dir2|sort)
 
 
 -------------------------------------------------------------------------------------
-# comparisons
+# Comparisons String Values
 -------------------------------------------------------------------------------------
 Operator	       Meaning									Example
 -------------------------------------------------------------------------------------
--z			Length of String is (zero)EMPTY 					[ -z "$var" ]     var=""
-! -z		Length of String is NOT (zero)EMPTY 				[ -z "$var" ]     var="num"
+-z			$Var has Zero String(EMPTY) 			Var=" "	    if[ -z "$Var" ];then echo EMPTY;fi     
+! -z		$Var has Nt Zero String(NOT EMPTY) 		Var="YO!"	if[ ! -z "$Var" ];then echo Not Empty; if
 
 -n			Length of String is NOT (zero)EMPTY					[ -n "$var" ]     var="num"
+! -n		Length of String is EMPTY					        [ -n "$var" ]     var=" "
+
 -f			File is Exists & normal,regular 					[ -f "$file" ]
 -d			Directory is Exists  								[ -d "$dir" ]
 -e 			file exist
 -w			Writeable 
-=			Strings are same									[ "abc" = "$my_var" ]
-!=			Strings are Not Same   								[ "abc" != "$my_var" ]
+
+=			Strings are same						글자 비교	if [ "abc" = "abc" ];then echo Same; fi   
+!=			Strings are Not Same   								 [ "abc" != "my" ]
 
 
 -eq	  		Equal (Numeric equality)							[ 3 -eq 3 ("$my_integer") ]
@@ -1479,39 +1491,41 @@ Operator	       Meaning									Example
 
 
 -------------------------------------------------------------------------------------
-# Ccomparison - Integers (Number Values only)
+# Comparison >> Integers << (Number Values only) 크고 작음 번호 비교 
+ -eq | -ne | -gt|  -ge | -lt | -le
 -------------------------------------------------------------------------------------
-# -eq	<= equal to
-		if [ "$a" -eq "$b" ]
+# -eq	<= Equal To( 숫자, 번호 비교 )
+		if [  "$a" -eq "$b" ]      [ 3 -eq 3 ]
+		if [[ "$a" -eq "$b" ]]    [[ 3 -eq 3 ]]
 
 # -ne   <= Not equal to
-		if [ "$a" -ne "$b" ]
+		if [ "$a" -ne "$b" ]		[ 4 -ne 3 ] 4가 3과 같지 않다면
 
-# -gt	<=  greater than
-		if [ "$a" -gt "$b" ]
+# -gt	<=  Greater Than				
+		if [ "$a" -gt "$b" ]		[ 4 -gt 3 ] 4가 3보다 크다면
 
-# -ge	<= greater than or equal to
+# -ge	<= Greater than or Equal to [ 3 -lt 4 ]  3이 4보다 크거나 같다면 
 		if [ "$a" -ge "$b" ]
 
-# -lt	<= less than
+# -lt	<= Less Than			 	[ 3 -lt 4 ]  3이 4보다 적다면 
 		if [ "$a" -lt "$b" ]
 
-# -le	<= less than or equal to
+# -le	<= Less than or Equal to     [ 3 -le 4 ] 작거나 같거나 ... 0부터 4까지
 		if [ "$a" -le "$b" ]
 		
 -------------------------------------------------------------------------------------		
 # Comparison - Arithmatic (Number Values only)
 -------------------------------------------------------------------------------------
 # <		<= less than 
-		(( "$a" < "$b" ))
+		(( "$a" < "$b" ))    	  if ((3 < 4)); then echo true; fi
 
-# <=    <= less than or equal 
+# <=    <= less than or equal     if ((4 <= 4)); then echo true; fi
 		(( "$a" <= "$b" ))
 
-# >		<= greater than 
+# >		<= greater than 		  if ((4 > 3)); then echo true; fi
 		(( "$a" > "$b" ))
 
-# >=	greater than or equal
+# >=	greater than or equal	  if ((4 >= 4)); then echo true; fi
 		((" $a" >= "$b" ))
 
 -------------------------------------------------------------------------------------
