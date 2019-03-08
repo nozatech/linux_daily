@@ -559,7 +559,7 @@ $ function 								<= Invoke function like command
 
 
 $ count_tmp( ) { cd /tmp; files=(*); echo "${#files[@]}"; }
-			   ^ space                     ^ NO space	^ space		
+			  ^ space                       ^ NO space	 ^ space		
 			   
 $ count_tmp		<= execute the function	  
 	=> 3
@@ -595,6 +595,10 @@ $ pwd; count_tmp; pwd
 $ echo "${#files[@]}"
 	0	
 
+$ cat <(ls -l)
+	   ^ NO SPACE
+	   
+	   
 ------------------------------------------------------------------------
 # ( )		<= Subshell Command
 ( list )

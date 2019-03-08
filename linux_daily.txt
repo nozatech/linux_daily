@@ -178,14 +178,16 @@ cat << EOF >> ~/.bashrc
 	Yellow			33			43
 	Blue			34			44
 	Magenta(분홍)	35			45
-	Cyan(하늘색)	    36			46
+	Cyan(하늘색)	36			46
 	White			37			47
 -----------------------------------------------	
 # .bashrc vs .bash_profile	
 https://apple.stackexchange.com/questions/51036/what-is-the-difference-between-bash-profile-and-bashrc
+https://superuser.com/questions/409186/environment-variables-in-bash-profile-or-bashrc
 
-.bash_profile 	<= is executed for login shells
-.bashrc 		<= is executed for interactive non-login or new shells.
+	.bash_profile 	<= is executed for login shells
+	
+	.bashrc 		<= is executed for interactive non-login or new shells.
 
 -----------------------------------------------------------------------------------------
 # BASH SHELL - Movement

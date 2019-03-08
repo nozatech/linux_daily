@@ -1598,6 +1598,7 @@ hypoxia			<- 저산소증
 
 
 # I
+
 ideation 		<- 관념화 the formation of ideas or concepts.
 
 idiocy			<- extremely stupid behavior.
@@ -1639,6 +1640,10 @@ imply			<- strongly suggest the truth or existence of (something not expressly s
 					"are you implying he is mad?"
 inadvertently	<- [adv] without intention; accidentally.
 					"his name had been inadvertently omitted from the list"
+
+incessant		<- [adj] (of something regarded as unpleasant) continuing without pause or interruption.
+					"incessant rain or snow fall" 끊임없는
+
 
 indulging		<- allow oneself to enjoy the pleasure of.
 					synonyms:	wallow in, give oneself up to, give way to, yield to, abandon oneself to, 
