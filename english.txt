@@ -816,13 +816,17 @@ avid			<- having or showing a keen interest in or enthusiasm for something.
 
 
 # B 
+baloney			<- foolish or deceptive talk; nonsense.
+					"typical salesman's baloney"
+
 bar				<- fasten (something, especially a door or window) with a bar or bars.
 					synonyms:	bolt, lock, fasten, secure, block, barricade, obstruct
 								"they have barred the door"
 					antonyms:	open, unlock
 
-baloney			<- foolish or deceptive talk; nonsense.
-					"typical salesman's baloney"
+bar none		<- with no exceptions.
+					"the greatest living American poet bar none"
+
 
 barring			<- except for; if not for.
 					synonyms:	except for, with the exception of, excepting, in the absence of, 
@@ -1173,6 +1177,14 @@ deed			<-  1.literary: an action that is performed intentionally or consciously.
 					of property or legal rights.
 					synonyms:	legal document, contract, indenture, instrument
 						"a deed to the property"
+
+delve			<- [verb] reach inside a receptacle and search for something.[탐구하다]
+					"she delved in her pocket"
+					synonyms:	rummage (about/around/round) in, search (through), hunt through, 
+								scrabble about/around in, root about/around in, ferret (about/around) in, 
+								fish about/around in, poke about/around in, dig in, grub about/around in, 
+								go through, burrow in; 
+
 
 demographic		<- a particular sector of a population.
 
@@ -1886,6 +1898,17 @@ maybe			<- Adverb
 mayham			<- violent or damaging disorder; chaos.
 					synonyms:	chaos, disorder, havoc(해브-억,재앙), bedlam(대소동, 혼란),
 						pandemonium(대혼란), tumult(혼란), uproar(소동,소란), turmoil(혼란), commotion(소란)  
+
+meager			<- [adj](of something provided or available) lacking in quantity or quality.
+					"they were forced to supplement their meager earnings"
+					synonyms:	inadequate, scanty, scant, paltry, limited, restricted, modest, 
+								insufficient, sparse, spare, 
+					"A meager allowance of money."	얼마 안 되는 용돈.
+					
+				<- [n](of a person or animal) lean; thin.	
+					
+					"A meager man (/meager soil)."	마른 사람 (/메마른 토지)
+
 
 meat			<- 책·토론 등의) 중심 부분, 요점, 골자, 급소, 실질, 내용.
 					"the meat of the video 

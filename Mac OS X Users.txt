@@ -1,7 +1,19 @@
-Lynda.com - Unix for Mac OS X Users
+Unix for Mac OS X Users - Lynda.com 
+
+ 
 1-1 The Terminal Application
 	/Applications/Utilities/Terminal
 	-Shift+CMD+u
 	
 ScreenShot
  Shift+Command+4
+ 
+Scree Lock
+	Ctrl + Shift + Eject
+	
+Go to Current user's Home
+	CMD + Shift + H
+
+Screen Capture
+	CMD + Shift + 4 	=> 	Drag mouse for AREA Capture
+	
