@@ -686,7 +686,9 @@ agnostic		<- [n] A person who believes that nothing is known or can be known of 
 					antonyms:	believer, theist
 						(in a nonreligious context) having a doubtful or noncommittal attitude toward something.
 						"until now I've been fairly agnostic about electoral reform"
-					
+
+airworthy		<- [adj] (of an aircraft) safe to fly.
+						
 alleviate 		<- provide physical relief, as from pain alliviate
 				"this is inappropriate sizing and aggravated my condition rather than alleviate it." 
 				 
@@ -1230,6 +1232,15 @@ disband			<- (of an organized group) break up or cause to break up and stop func
 
 discrete		<- individually separate and distinct(분리된, 결개의)
 
+discretion		<- [n] the quality of behaving or speaking in such a way as to avoid causing offense or 
+						revealing private information.
+					"she knew she could rely on his discretion"
+					"we will repair it without charge, or replace it, at our discretion."
+					synonyms:	circumspection, care, carefulness, caution, wariness, chariness, guardedness;
+					
+					2. the freedom to decide what should be done in a particular situation.
+
+
 disparate		<- [adj] essentially different in kind; not allowing comparison. 본질적으로 다른
 
 disposition		<- a person's inherent qualities of mind and character.
@@ -1566,6 +1577,10 @@ hedge			<- [n] a fence or boundary formed by closely growing bushes or shrubs.
 					 "the company hedged its investment position on the futures market"
 					synonyms:	safeguard, protect, shield, guard, cushion; More
 					"Hedge fund"
+
+helm			<-	a tiller(키의 손잡이) or wheel and any associated equipment for 'steering' a ship or boat.
+					조타장치, 키를 잡다, 
+
 				
 hit the ground running 	<- to be ready to work immediately on a new activity
 						<- start something and proceed at a fast pace with enthusiasm.
@@ -2360,6 +2375,9 @@ saunter			<- walk in a slow, relaxed manner, without hurry or effort.
 
 sacred			<- [seikrid] connected with God (or the gods) or dedicated to a religious 
 					purpose and so deserving veneration.  종교적인
+
+secular			<- Denoting attitudes, activities, or other things that have no religious or spiritual basis.
+
 scrutiny		<- critical observation or examination. 조사
 					"every aspect of local government was placed under scrutiny"
 					synonyms:	examination, inspection, survey, study, perusal
@@ -2721,6 +2739,12 @@ wilt			<- [v] (of a plant, leaf, or flower) become limp through heat(풀이죽�
 					
 				   [n] any of a number of fungal or bacterial diseases of plants 
 						characterized by wilting of the foliage.
+
+woe				<- sorrow
+					"Economic woes"
+
+woefully		<- [adv] in a manner expressing sorrow or misery.
+					"The fourth-leading cause of death in the U.S. is woefully underdiagnosed"
 
 worriedly		<-	[adj]					
 

@@ -232,12 +232,21 @@ $ enable --help
 	i					<= insert
 	a
 	A
+
+  # Delete to right 'CW'
+	abc:defgh
+	    ^--->
+	abc:
+	
 	
   # Go to
 	:15					<= go to 15th line
 	$ vi +15 script.sh
 	G 					<= go to bottom of page
 	o					<= insert underneath line
+	
+
+  
 
   # Undo & Redo
 	Esc + u

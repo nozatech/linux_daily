@@ -325,6 +325,18 @@ IAM: Creating ClusterAdmin and ClusterUser accounts
 	# 
 	$ aws eks update-kubeconfig --name classEKS
 
+	$  cat credentials
+[default]
+aws_access_key_id = AKIAJRP3YJVV7EZPUVFA
+aws_secret_access_key = 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
+[clusterAdmin]
+aws_access_key_id = AKIAJRP3YJVV7EZPUVFA
+aws_secret_access_key = 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
+[clusterUser]
+aws_access_key_id = AKIAINQUBCZ2FVHY7ABA
+aws_secret_access_key = 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
+
+
 -------------------------------------------------------------------------------
 # Configuration on Linux Shell 
 # Add to Environment Variable
@@ -1453,59 +1465,65 @@ $ kubectl exec -it $(kubectl get pod -l run=curl -o jsonpath={.items..metadata.n
 </HTML>
 
 #------------------------------------------------------
-# AWS IAM and K8s RBAC(Role-based access control)
+# AWS IAM and K8s RBAC(Role Based Access Control)
 # Video 22 | file 04-02
 #------------------------------------------------------
+AW IAM(Tokens) <--> AWS-IAM-Authenticator(Local) <--> Kubectl CLI
 
-  Users within the EKS environment are authenticated against AWS IAM, 
-  which provides enhanced security.  If we add our 'clusterUser' credentials 
-  to the local aws client:
+  Users within the EKS environment are authenticated through AWS IAM, which provides enhanced security.  
+  If we add our 'clusterUser' credentials to the local aws client, we will see that kubernetes 
+  will still try to talk to the API, but will fail:
 
 # clusterUser Info
 	User name: 			clusterUser
 	Access key ID: 		AKIAIN...Y7ABA
 	Secret access key:	j8/8ar...Rmgf2
 	
-$ cat ~/Downloads/credentials-2.csv
+$ cat ~/Downloads/credentials-clusterUser.csv
 $ aws configure --profile=clusterUser
 $ export AWS_PROFILE=clusterUser
 $ env | grep AWS
 	AWS_PROFILE=clusterUser
 	
-$ kubectl get pods		<= This will FAIL!!!
+$ kubectl get pods		<= This will and should FAIL!!!
 	error: the server doesn't have a resource type "pods"  <= Cuz of Permission
 
 # Change to clusterAdmin profile to work again
 	
 $ export AWS_PROFILE=clusterAdmin
+
 $ kubectl get pods
+	-----------------------------------------------------------------
 	NAME                           READY   STATUS    RESTARTS   AGE
 	alpine-6b9858595b-7zncb        1/1     Running   24         1d
 	curl-66df598c4-zwz5v           1/1     Running   0          54m
 	hostname-v1-56bc754656-j8mwh   1/1     Running   0          2d
 	hostname-v2-6499cb8cc8-w6w4s   1/1     Running   0          1d
-	
-	
+	-----------------------------------------------------------------
 
 $ export AWS_PROFILE=clusterAdmin
+
 $ kubectl edit configmap aws-auth -n kube-system
 
-Adding additional users to the kubernetes cluster in EKS is done by adding new
-users to the "system:masters" group which maps to the equivalent of the ClusterAdmin 
-role in Kubernetes RBAC rules.
+  Adding additional users to the kubernetes cluster in EKS is done by adding new
+  users to the "system:masters" group which maps to the equivalent of the ClusterAdmin 
+  role in Kubernetes RBAC rules.
 
-The key parameter we need is the User's IAM ARN, which can be pulled from the 
-User IAM page in the AWS console:
+  The key parameter we need is the User's IAM ARN, which can be pulled from the 
+  User IAM page in the AWS console:
+
+---------------------------------------------
 data:
   mapUsers: |
     - userarn: USER-ARN
       username: admin
       groups:
         - system:masters
+---------------------------------------------
 		
-We need to add the mapUsers: section to the aws-auth-cm.yaml document, and we 
-can do that either locally and "apply" the changes, or we can edit the document 
-in place in the kubernetes service.
+  We need to add the mapUsers: section to the aws-auth-cm.yaml document, and we 
+  can do that either locally and "apply" the changes, or we can edit the document 
+  in place in the kubernetes service.
 
 We will edit the file in place, as we don't want to have to recreate the 
 worker node role mappings which are part of the same auth structure:
@@ -1513,25 +1531,260 @@ worker node role mappings which are part of the same auth structure:
 $ export AWS_PROFILE=clusterAdmin
 $ kubectl edit configmap aws-auth -n kube-system
 
-Once we're done with the edit, we can switch back to our clusterUser and we 
+Once we're done with the edit, we can switch back to our 'clusterUser' and we 
 should have access to the system:
 
-export AWS_PROFILE=clusterUser
-kubectl get pods
+$ export AWS_PROFILE=clusterUser
+$ kubectl get pods
 
 Add the mapUsers: section right after the data: key, above the mapRoles: | line. 
 It should look similar to the aws-auth-cm.yaml document.
+---------------------------------------------
+$ vi aws-auth-cm.yaml
+---------------------------------------------
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapUsers: |
+    - userarn: USER-ARN
+      username: admin
+      groups:
+        - system:masters		<= Master Group allows to access the EKS
+  mapRoles: |
+    - rolearn: NODE-ROLE-ARN
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+    - rolearn: LABEL-NODE-ROLE-ARN
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+---------------------------------------------
 
 
 
+#------------------------------------------------------
+#------------------------------------------------------
+# Prometheus Install on LOCAL PC
+# Video 24 | file 05-02
+#------------------------------------------------------
+#------------------------------------------------------
+
+Install on CentOS7
+$ wget https://storage.googleapis.com/kubernetes-helm/helm-v2.11.0-linux-amd64.tar.gz
+$ tar -xzvf helm-v2.11.0-linux-amd64.tar.gz
+$ sudo cp linux-amd64/helm /usr/local/bin/
+
+---------------------------------------------
+$ vi helm-rbac.yaml
+---------------------------------------------
+# Create a service account for Helm and grant the cluster admin role.
+# It is assumed that helm should be installed with this service account
+# (tiller).
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tiller
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: tiller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: tiller
+  namespace: kube-system
+---------------------------------------------
+
+$ kubectl create -f helm-rbac.yaml
+	serviceaccount/tiller created
+	clusterrolebinding.rbac.authorization.k8s.io/tiller created
+
+$ sudo cp linux-amd64/helm    /usr/local/bin/
+
+$ helm init --service-account=tiller
+------------------------------------------------------------------------------------------
+Creating /home/awseks/.helm
+Creating /home/awseks/.helm/repository
+Creating /home/awseks/.helm/repository/cache
+Creating /home/awseks/.helm/repository/local
+Creating /home/awseks/.helm/plugins
+Creating /home/awseks/.helm/starters
+Creating /home/awseks/.helm/cache/archive
+Creating /home/awseks/.helm/repository/repositories.yaml
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com
+Adding local repo with URL: http://127.0.0.1:8879/charts
+$HELM_HOME has been configured at /home/awseks/.helm.
+
+Tiller (the Helm server-side component) has been installed into your Kubernetes Cluster.
+
+Please note: by default, Tiller is deployed with an insecure 'allow unauthenticated users' policy.
+To prevent this, run `helm init` with the --tiller-tls-verify flag.
+For more information on securing your installation see: 
+https://docs.helm.sh/using_helm/#securing-your-helm-installation
+https://github.com/helm/helm
+
+Helm      <= is a tool for managing Kubernetes charts. 
+   Charts <= are packages of pre-configured Kubernetes resources.
+------------------------------------------------------------------------------------------
+ 
+ Once Helm is installed, launching Prometheus is a simple command, though note that we are
+ defining the storage class that Prometheus should use to store it's metrics:
 
 
+$ helm install --name PrometheusEKS --set server.persistentVolume.storageClass=gp2 stable/prometheus
+
+------------------------------------------------------------------------------------------
+NAME:   promeks
+LAST DEPLOYED: Mon Mar 11 10:44:59 2019
+NAMESPACE: default
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1beta1/ClusterRole
+NAME                                   AGE
+promeks-prometheus-kube-state-metrics  1s
+promeks-prometheus-server              1s
+
+==> v1beta1/ClusterRoleBinding
+promeks-prometheus-kube-state-metrics  1s
+promeks-prometheus-server              1s
+
+==> v1beta1/DaemonSet
+promeks-prometheus-node-exporter  1s
+
+==> v1beta1/Deployment
+promeks-prometheus-alertmanager        1s
+promeks-prometheus-kube-state-metrics  1s
+promeks-prometheus-pushgateway         1s
+promeks-prometheus-server              1s
+
+==> v1/Pod(related)
+
+NAME                                                    READY  STATUS             RESTARTS  AGE
+promeks-prometheus-node-exporter-hrh5q                  0/1    ContainerCreating  0         1s
+promeks-prometheus-node-exporter-krb62                  0/1    ContainerCreating  0         1s
+promeks-prometheus-node-exporter-nd5cz                  0/1    ContainerCreating  0         1s
+promeks-prometheus-node-exporter-r5k8p                  0/1    ContainerCreating  0         1s
+promeks-prometheus-alertmanager-769c8b64b5-g5hfh        0/2    Pending            0         1s
+promeks-prometheus-kube-state-metrics-5b44db6dbc-jx8sf  0/1    ContainerCreating  0         1s
+promeks-prometheus-pushgateway-7dcf9b6cd8-wdgd4         0/1    ContainerCreating  0         1s
+promeks-prometheus-server-5486d488d5-mrjvl              0/2    Init:0/1           0         1s
+
+==> v1/ConfigMap
+
+NAME                             AGE
+promeks-prometheus-alertmanager  1s
+promeks-prometheus-server        1s
+
+==> v1/PersistentVolumeClaim
+promeks-prometheus-alertmanager  1s
+promeks-prometheus-server        1s
+
+==> v1/ServiceAccount
+promeks-prometheus-alertmanager        1s
+promeks-prometheus-kube-state-metrics  1s
+promeks-prometheus-node-exporter       1s
+promeks-prometheus-pushgateway         1s
+promeks-prometheus-server              1s
+
+==> v1/Service
+promeks-prometheus-alertmanager        1s
+promeks-prometheus-kube-state-metrics  1s
+promeks-prometheus-node-exporter       1s
+promeks-prometheus-pushgateway         1s
+promeks-prometheus-server              1s
 
 
+NOTES:
+The Prometheus server can be accessed via port 80 on the following DNS name from within your cluster:
+promeks-prometheus-server.default.svc.cluster.local
 
 
+Get the Prometheus server URL by running these commands in the same shell:
+  export POD_NAME=$(kubectl get pods --namespace default -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace default port-forward $POD_NAME 9090
 
 
+The Prometheus 'alertmanager' can be accessed via port 80 on the following DNS name from within your cluster:
+promeks-prometheus-alertmanager.default.svc.cluster.local
+
+
+Get the Alertmanager URL by running these commands in the same shell:
+  export POD_NAME=$(kubectl get pods --namespace default -l "app=prometheus,component=alertmanager" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace default port-forward $POD_NAME 9093
+
+
+The Prometheus PushGateway can be accessed via port 9091 on the following DNS name from within your cluster:
+promeks-prometheus-pushgateway.default.svc.cluster.local
+
+
+Get the PushGateway URL by running these commands in the same shell:
+  export POD_NAME=$(kubectl get pods --namespace default -l "app=prometheus,component=pushgateway" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace default port-forward $POD_NAME 9091
+
+------------------------------------------------------------------------------------------
+
+# Watch the deployment Progress 
+$ kubectl get pods -w  
+
+NAME                                                     READY   STATUS              RESTARTS   AGE
+alpine-6b9858595b-7zncb                                  1/1     Running             113        4d17h
+curl-66df598c4-zwz5v                                     1/1     Running             8          3d17h
+hostname-v1-56bc754656-j8mwh                             1/1     Running             0          5d17h
+hostname-v2-6499cb8cc8-w6w4s                             1/1     Running             0          4d22h
+promeks-prometheus-alertmanager-769c8b64b5-g5hfh         0/2     ContainerCreating   0          40s
+promeks-prometheus-kube-state-metrics-5b44db6dbc-jx8sf   1/1     Running             0          40s
+promeks-prometheus-node-exporter-hrh5q                   1/1     Running             0          40s
+promeks-prometheus-node-exporter-krb62                   1/1     Running             0          40s
+promeks-prometheus-node-exporter-nd5cz                   1/1     Running             0          40s
+promeks-prometheus-node-exporter-r5k8p                   1/1     Running             0          40s
+promeks-prometheus-pushgateway-7dcf9b6cd8-wdgd4          1/1     Running             0          40s
+promeks-prometheus-server-5486d488d5-mrjvl               1/2     Running             0          40s
+promeks-prometheus-alertmanager-769c8b64b5-g5hfh   1/2   Running   0     44s
+promeks-prometheus-server-5486d488d5-mrjvl   2/2   Running   0     61s
+promeks-prometheus-alertmanager-769c8b64b5-g5hfh   2/2   Running   0     76s
+curl-66df598c4-zwz5v   0/1   Completed   8     3d18h
+curl-66df598c4-zwz5v   1/1   Running   9     3d18h
+
+
+$ kubectl get nodes
+NAME                                            STATUS   ROLES    AGE   VERSION
+ip-192-168-112-219.us-west-2.compute.internal   Ready    <none>   4d    v1.11.5
+ip-192-168-120-42.us-west-2.compute.internal    Ready    <none>   5d    v1.11.5
+ip-192-168-137-151.us-west-2.compute.internal   Ready    <none>   4d    v1.11.5
+ip-192-168-199-194.us-west-2.compute.internal   Ready    <none>   4d    v1.11.5
+
+
+TO expose the Prometheus UI(from Local PC) so that we can have a look at some of the Pod/Container level metrics:
+
+$ kubectl --namespace default port-forward $(kubectl get pods --namespace default -l\
+  "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}") 9090 &
+
+$ Forwarding from 127.0.0.1:9090 -> 9090
+	Forwarding from [::1]:9090 -> 9090
+
+
+$ links http://localhost:9090
+
+
+$ kubectl get pod -o wide
+NAME                            READY   STATUS    RESTARTS   AGE   IP             
+alpine-6b9858595b-7zncb         1/1     Running   117        4d    192.168.133.249 
+curl-66df598c4-zwz5v            1/1     Running   9          3d    192.168.78.101 
+
+# Finding a Service's IP
+$ kubectl get service --all-namespaces
 
 
 
