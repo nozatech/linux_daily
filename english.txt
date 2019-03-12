@@ -2460,7 +2460,12 @@ snoop			<- investigate or look around furtively in an attempt to find out someth
 					especially information about someone's private affairs.
 					souvenir 
 
-snugly			<- 1. in a comfortable, warm, and cozy or well-protected manner.
+snug			<- [adj] comfortable, warm, and cozy; well protected from the weather or cold.
+					"she was safe and snug in Ruth's arms"
+					synonyms:	cozy, comfortable, warm, homely, cheerful, welcoming, friendly, congenial, 
+							hospitable, relaxed, restful, reassuring, intimate, sheltered, secure; informalcomfy					
+					
+snugly			<- [adv]1. in a comfortable, warm, and cozy or well-protected manner.
 						"the baby nestled snugly in his rescuer's arms"
 					2. in a way that is tight or close-fitting; securely.
 						"the collar should fit snugly around your neck"

@@ -327,14 +327,14 @@ IAM: Creating ClusterAdmin and ClusterUser accounts
 
 	$  cat credentials
 [default]
-aws_access_key_id = AKIAJRP3YJVV7EZPUVFA
-aws_secret_access_key = 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
+aws_access_key_id = AKIAJ...EZPUVFA
+aws_secret_access_key = NJUpg...4fKJ2l
 [clusterAdmin]
-aws_access_key_id = AKIAJRP3YJVV7EZPUVFA
-aws_secret_access_key = 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
+aws_access_key_id = AKIAJR...PUVFA
+aws_secret_access_key = NJUpgo2+y...
 [clusterUser]
-aws_access_key_id = AKIAINQUBCZ2FVHY7ABA
-aws_secret_access_key = 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
+aws_access_key_id = AKIA...7ABA
+aws_secret_access_key = j8/8a....Rmgf2
 
 
 -------------------------------------------------------------------------------
@@ -1816,7 +1816,7 @@ $ kubectl get service --all-namespaces
   # Check Who's ID is used for connection 
   $ aws sts get-caller-identity			<= AWS Security Token Service (STS)
 	{
-      "UserId": "AIDAJC4NG62FQHAPKEYRK",
+      "UserId": "AIDA...EYRK",
       "Account": "688595016292",
       "Arn": "arn:aws:iam::688595016292:user/clusterAdmin"
 	}
