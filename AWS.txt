@@ -64,11 +64,11 @@ $ aws s3api list-buckets
 
 API/CLI		---> Kubectl, Ajax, etc
 Management				|
-						V
+------------------------V-----------------------------------------------------
 Secheduler	\						Kubelet Node		
 									Service Proxy
 								/	
-  etct		-	API Server		-	Kubelet Node		<- User from Internet
+  etcd		-	API Server		-	Kubelet Node		<- User from Internet
 			   (Master Node)	\	Service Proxy
 
 Controller /						Kubelet Node
@@ -78,12 +78,9 @@ Manager								Servcie Proxy
 
 
 
-
-
-
 Pre-EKS Deployment
 	1. AWS 		CLI
-	2. Kubectl  CLI
+	2. Kubectl  CLI				<= Auto completion
 	3. BASH 	CLI
 	
 Pre-AWS EKS Deployment
@@ -97,7 +94,7 @@ Pre-AWS EKS Deployment
 EKS Core Service
 	1. Create cluster 'Controle Plane'(system configuration and management)
 	2. Establish kubectl credentials
-		- Install aws-iam-authenticator and kubectl
+		- Install aws-iam-authenticator(binary) and kubectl
 		- $ aws eks update-kubeconfig --name '#Rename to cluster's_name'
 		
 Create Worker Nodes	
@@ -140,13 +137,14 @@ USER_ARN:
 --------------------------------------------------------------------------------------------
   Create 2x Policies for EKS and CloudFormation Admins
 	AWS -> IAM -> Policies -> Create Policy
-		=> AdminEKSPolicy & AdminCloudFormationPolicy
+		=> AdminEKSPolicy 
+		=> AdminCloudFormationPolicy
 
-----------------------------------------------
+----------------------------------------------------------
 # Create Policy		
-----------------------------------------------
+----------------------------------------------------------
   # Name: AdminEKSPolicy			<= for Kubernetes 
-----------------------------------------------
+----------------------------------------------------------
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -159,9 +157,9 @@ USER_ARN:
         }
     ]
 }
-----------------------------------------------
+----------------------------------------------------------
   # Name: AdminCloudFormationPolicy		<= fot CM Tool
-----------------------------------------------
+----------------------------------------------------------
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -172,9 +170,9 @@ USER_ARN:
         }
     ]
 }
-----------------------------------------------
+----------------------------------------------------------
 # Create Roll 
-----------------------------------------------
+----------------------------------------------------------
 	AWS -> IAM -> Roles -> Create Role -> AWS Service -> EKS -> Add 
 	  - AmazonEKSServicePolicy 			<= From Existing Policy
       - AmazonEKSClusterPolicy 			<= From Existkuing Policy
@@ -183,11 +181,12 @@ USER_ARN:
 
 	IAM-ROLE-ARN: arn:aws:iam::6...2:role/Cluster_EKS_Role
 
---------------------------------------------------------------------------------------------
+-------------------------------------------------------------------
 IAM: Creating ClusterAdmin and ClusterUser accounts
---------------------------------------------------------------------------------------------
+-------------------------------------------------------------------
+
 -----------------------------------------------------
-	# Create User #1:  clusterAdmin
+# Create User #1:  clusterAdmin
 -----------------------------------------------------
   IAM -> Username: clusterAdmin 
 	  -> Access Type: both Programmatic and console Access 
@@ -206,7 +205,7 @@ IAM: Creating ClusterAdmin and ClusterUser accounts
  
 
 -----------------------------------------------------
-	# Create User #2: clusterUser
+# Create User #2: clusterUser
 -----------------------------------------------------
 	IAM -> Username: clusterAdmin 
 		-> Access Type: both Programmatic and console Access 
@@ -216,9 +215,11 @@ IAM: Creating ClusterAdmin and ClusterUser accounts
 
 
 	Add policies: 
+	  - AdminEKSPolicy					<= NEW
+		
 	- no IAM policies
 	- k8s admin "system:master" group
-	- AdminEKSPolicy					<= NEW
+
 
 --------------------------------------------------------------------------------------------
 # CloudFormation - Create a Stack VPC Template From S3
@@ -252,7 +253,11 @@ IAM: Creating ClusterAdmin and ClusterUser accounts
 	SUBNET-IDS: subnet-09442239f4e596b6d,subnet-069fb4ed48718a9f7,subnet-05a8b3907455065ce 
 
 -------------------------------------------------------------------------------
-# Remote Tools Setup 'Kubectl', 'aws-iam-authenticator', 'AWS CLI'
+# Setup 3x-Remote Tools 
+	- Kubectl 
+	- aws-iam-authenticator 
+	- AWS CLI
+	
 -------------------------------------------------------------------------------
   1. Install "kubectl" 
 	https://kubernetes.io/docs/tasks/tools/install-kubectl/
@@ -270,11 +275,13 @@ IAM: Creating ClusterAdmin and ClusterUser accounts
 	
 	$ kubectl version --short --client
 	
-	###  kubectl command syntax ###
-	$ kubectl [command] [TYPE] [NAME] [flags]
+	-------------------------------------------------
+	| ###  kubectl command syntax ###				|
+	| $ kubectl [command] [TYPE] [NAME] [flags]		|	
+	-------------------------------------------------
 	
 	---------------------------------------------------
-	# Enabling shell autocompletion
+	# Enabling shell auto-completion
 	---------------------------------------------------
 	https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion
 	$ kubectl completion -h						<= Check first

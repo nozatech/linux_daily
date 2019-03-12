@@ -740,7 +740,7 @@ anemic			<- 빈혈의(Adjetive)
 anemometer		<- [ӕnəmάmitər] 
 					an instrument for measuring the speed of the wind, or of any current of gas.
 
-anomaly			<- something that deviates from what is standard, normal, or expected.
+anomaly			<-[ənάməli] something that deviates from what is standard, normal, or expected.
 					"there are a number of anomalies in the present system"
 					synonyms:	oddity, peculiarity, abnormality, irregularity, inconsistency, 
 					incongruity, aberration, quirk, rarity
@@ -1656,15 +1656,25 @@ impasse			<- a situation in which no progress is possible, especially because of
 					"the current political impasse"
 					synonyms:	deadlock, dead end, stalemate, checkmate, standoff; More
 
-
-impose			<- force (something unwelcome or unfamiliar) to be accepted or put in place.
-impaired		<- the state or fact of being impaired(weakened or damaged), especially in a specified faculty.
 implicitly		<- unclearly
+
+implicate		<- (종종 수동태) …을 [범죄 등에] 말려들게 하다, 
+					be implicated in a plot
+
+implication		<- [영향]This accident could have serious implications for the government's nuclear policy.
+
 imply			<- strongly suggest the truth or existence of (something not expressly stated, 암시, 함축).
 					"the salesmen who uses jargon to imply his superior knowledge"
 					synonyms:	insinuate, suggest, hint (at), intimate, say indirectly, indicate, 
 								give someone to understand, convey the impression, signal
 					"are you implying he is mad?"
+
+
+
+impose			<- force (something unwelcome or unfamiliar) to be accepted or put in place.
+
+impaired		<- the state or fact of being impaired(weakened or damaged), especially in a specified faculty.
+
 inadvertently	<- [adv] without intention; accidentally.
 					"his name had been inadvertently omitted from the list"
 
@@ -2550,6 +2560,10 @@ subtle			<- [sΛtl](especially of a change or distinction) so delicate or
 					"subtle distinctions"  "fail in subtle way"
 					파악하기 어려운, 교활한, 세밀한
 
+suede			<- [sweid 스웨이드] 가죽: 안쪽에 보풀이 있는 부드러운 가죽.
+					"Suede leather car seat 
+
+
 succinctly		<= [səksíŋktli] in a brief and clearly expressed manner.
 
 superfluous		<= unnecessary, especially through being more than enough.
@@ -2617,6 +2631,21 @@ tipping point	<- the point at which a series of small changes or incidents becom
 					
 To this end		<- 이를 위하여, In order to achieve this goal. as a way of dealing with or doing something
 					We want to save the building. To this end, we have hired someone to assess its current state.
+
+
+toggle			<- a short rod of wood or plastic sewn to one side of a coat or other garment, pushed through 
+					a hole or loop on the other side and twisted so as to act as a fastener.
+					e.g. Toggle line numbers
+
+tongue in cheek <- without really meaning what one is saying or writing.
+
+tout			<- [타웃]attempt to sell (something), typically by pestering people in an aggressive or bold manner.
+					(거래·일 등을) 성가시게 조르다[요구하다]; […을] 강매하다, 
+					"Jim was touting his wares(물건, 상품)"
+					"Trump touts paid family leave in budget as taxpayers worry about costs"
+					
+					"I am not a ticket tout(ticket resale).	나는 암표상이 아니다."
+					
 					
 tranquil		<-[adj] free from disturbance; calm.
 					"her tranquil gaze"
@@ -2656,10 +2685,6 @@ turnkey			<- (car turn key to start & drive) | ~of or involving the provision of
 
 
 
-toggle			<- a short rod of wood or plastic sewn to one side of a coat or other garment, pushed through 
-					a hole or loop on the other side and twisted so as to act as a fastener.
-					e.g. Toggle line numbers
-tongue in cheek <- without really meaning what one is saying or writing.
 
 trivial 		<- 	of little value or importance.
 					"huge fines were imposed for trivial offences"
@@ -11046,7 +11071,7 @@ I thought this was	    more expensive.	<= 난 이게 더 '비싼줄(비싸다고
 I thought you would   have a lunch.		<= 먹은줄
 I thought you already had  a lunch.		<= 난 네가 이미 점심 (확신차게)'먹었는줄' 알았어
 
-I thought you would solve this problem.		<= 풀줄
+I thought you would solve  this problem.		<= 풀줄
 I thought you ready solved this problem.	<= 풀었을줄	
 
 I thought we weren't   supposed to bring our smartphones. <= 난 스마트폰을 가지고 오면 안된걸로 알고 있었어요.
@@ -11079,10 +11104,17 @@ If you saw your handwriting, would you recognize it?
 
 
 
+The better your understanding, of course, the more productive you'll be.
 
+If you don't already know that.(vs. You already know this.)
+	=> This implies that there is a piece of knowledge that you have not previously learned. 
+		The implication is that you can learn it now and the speaker can teach it to you. 
+		This usage also has an inverted form: 
+	
+Maybe you don't know it yet, but I've already won the championship tomorrow!
+	=> This implies that you haven't learned something but it is something that can be 
+		learned in the future. This usage is also common when someone is making a claim 
+		that they are extremely confident about:
 
-
-
-
-
+if you haven't already done so please RSVP.
 

@@ -36,7 +36,7 @@ Kubeadm
 	$ kubeadm version
 
 ------------------------------------------------------------------------------------
-Kunelet
+Kunelet(Node Agent)
 	https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
 ------------------------------------------------------------------------------------
 	A system service/program that runs on all nodes(worker servers) and handles node-level(workers) operation
@@ -45,16 +45,17 @@ Kunelet
 	$ kubelet
 	
 ------------------------------------------------------------------------------------	
-Kubectl
+Kubectl(
 ------------------------------------------------------------------------------------
 	A CLI tool used for issuing commands to the cluster through its API Server(Master)
 
 	e.g.
 	$ kubectl --kubeconfig='bnea-k8-config.yml' get nodes
-	
 	$ kubectl cluster-info
-	
 	$ kubectl version
+	$ kubectl get nodes
+	$ kubectl get pods
+	
 ------------------------------------------------------------------------------------
 Pods                            
 ------------------------------------------------------------------------------------	
