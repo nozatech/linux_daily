@@ -4847,7 +4847,10 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 		$ iftop -t -s 60 > log.txt	  <= 60 sec  
 		$ iftop -t -s 60 > log.txt &  <= running in background
 	
-	# vnstat	 					<= a console-based network traffic monitor
+	# vnstat	 					
+	# a console-based network traffic monitor
+	https://www.howtoforge.com/tutorial/vnstat-network-monitoring-ubuntu/
+	
 		$ vnstat -l					<= real time network statistic
 		$ vnstat --testkernel		<= check the kernel is providing all the information
 		$ vnstat -d					<= -h hour, -d day, -w week, -w month,

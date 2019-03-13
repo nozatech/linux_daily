@@ -249,7 +249,7 @@ $ enable --help
   
 
   # Undo & Redo
-	Esc + u
+	Esc  + u
 	Ctrl + r
 
   # Help

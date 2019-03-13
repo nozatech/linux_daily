@@ -876,6 +876,11 @@ begrudge		<- [verb]
 
 bedside manner 	<- a doctor's approach or attitude toward a patient.
 
+belie			<- …을 속이다, 숨기다; …을 거짓[잘못] 전하다
+					to show to be false; contradict:
+					"His trembling hands belied his calm voice.	"
+					"Her smile belied her true feelings of displeasure. "
+
 bellwether		<- 	one that takes the lead or initiative : LEADER  : an indicator of trends
 	거세된양			"Apple, bellwether for technology stocks across Wall Street, 
 					falls into bear market territory."
@@ -2041,6 +2046,10 @@ outset			<- 	the start or beginning of something.
 					synonyms:	start, starting point, beginning, commencement, dawn, birth, origin, 
 					inception, opening, launch, inauguration; informalthe word go
 					"at the outset, we had nothing but problems"
+
+overabundance	<- [ouˈvərəbəˈndəns] o·ver·a·bun·dance - 과잉,과다
+
+
 # P
 
 palatable		<- [Adj](of food or drink) pleasant to taste.
