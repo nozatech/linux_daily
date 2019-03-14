@@ -769,6 +769,12 @@ apropos			<- [ӕprəpóu] with reference to; concerning.
 
 aorta			<- [eiɔ́ːrtə 에이올터] 대동맥
 
+aribtrage		<= [금융] (차액을 취득하는) 중개 매매
+					the simultaneous buying and selling of securities, currency, or commodities in different 
+					markets or in derivative forms in order to take advantage of differing prices for the same asset.
+					"profitable arbitrage opportunities"
+
+
 arise			<- (of a problem, opportunity, or situation) emerge; become apparent.
 					"new difficulties had arisen"
 					" when the opportunity arises"
