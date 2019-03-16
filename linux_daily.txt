@@ -5706,7 +5706,14 @@ two cases:
 
 	$ visudo -cf %s  	<= validate 
 
-	
+ # User has to re-login after add to a new Group 
+	https://superuser.com/questions/122744/is-there-a-way-in-linux-to-update-the-user-group-properties-without-having-to-lo
+	 A user does not exist as an object at the kernel level; only processes (and files) do. 
+	 A process has a uid (effective and whatnot) and a list of group ids.
+
+	 When you are adding a user to a group, the kernel has no idea what it means. 
+	 It only knows, indirectly, that the next time /bin/login or /usr/bin/newgrp 
+	 is run a process with that user id will have a new group id in its list.
 	
 	
 	# Allowing/Denying User-Level Cron

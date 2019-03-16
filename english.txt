@@ -913,6 +913,8 @@ binge			<- a short period devoted to indulging in an activity to excess,
 					especially drinking alcohol or eating.
 					"he went on a binge and was in no shape to drive"
 					synonyms:	drinking bout, debauch; More
+					"TV Shows You Can Binge in a Weekend"
+					
 					
 bleak			<- [adj]
 					1. (of an area of land) lacking vegetation and exposed to the elements.
@@ -1900,6 +1902,22 @@ manage			<-  1. I managed to forget my wife's birthday every year for the last t
 					
 					I'll be WFH today as I 'managed to forget(miss)' my laptop at home.
 					나는 오늘 집에서 일할꺼야 멍청하게도(본이아니게도) 집에 랩탑을 두고왔어. 
+
+Management vs Governance 
+	Governance(관리)	<= refers to oversight and decision-making related to strategic direction, 
+						financial planning, and bylaws- the set of core policies that outline the 
+						organization’s purpose, values, and structure. Governance decisions should 
+						provide guidelines for management. In most cooperatives, all members are 
+						empowered to run for and elect the governing body (often called the Board 
+						of Directors) and / or vote on certain governance decisions, such as changes 
+						to the by-laws. Read more about governance in this article.
+	
+	Management(운영)	<= refers to the routine decisions and administrative work related to the daily 
+						operations of the organization. Management decisions should support or implement 
+						goals and values defined by governing bodies (such as the Board of Directors) 
+						and documents (such as the bylaws). In some cooperatives, all members participate 
+						in the management.
+
 
 Malignant		<- 악의 있는	
 
