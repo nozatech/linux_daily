@@ -701,6 +701,18 @@ all in all		<- everything considered; on the whole. mostly?
 all is well		<- everything is in a good or acceptable state: 
 					"I hpne all is well with your friends"
 
+allegation		<- a claim or assertion that someone has done something illegal or wrong, typically one made 
+					without proof.[혐의]
+					
+					"Uber settles with Waymo over allegations of stolen trade secrets."
+					"he made allegations of corruption against the administration"
+					
+					synonyms:	claim, assertion, declaration, statement, proclamation, contention, argument, 
+					affirmation, averment, avowal, attestation, testimony, certification, evidence, witness, 
+					charge, accusation, suggestion, implication, hint, insinuation, indication, intimation, 
+					imputation, plea, pretense, profession; More
+
+
 amass			<- gather together or accumulate (a large amount or number of valuable material or things) 
 					over a period of time.
 					synonyms:	gather, collect, assemble
@@ -824,6 +836,14 @@ avid			<- having or showing a keen interest in or enthusiasm for something.
 
 
 # B 
+ballot			<- [bǽlət 밸렛]
+					[noun] a process of voting, in writing and typically in secret.
+					"the commissioners were elected by ballot"
+					
+					[v] (of an organization) elicit a secret vote from (members) on a particular issue.
+					"the union is preparing to ballot its members on the same issue"
+					"Surprise as leader Kim Jong-un 'not on ballot'"
+
 baloney			<- foolish or deceptive talk; nonsense.
 					"typical salesman's baloney"
 
@@ -1137,7 +1157,13 @@ crater			<- a large, bowl-shaped cavity in the ground or on the surface of a pla
 					synonyms:	hollow, bowl, basin, hole, cavity, depression; caldera
 					"the crater has become a lake"
 					"Amazon shares are cratering"
-
+					
+crib			<- [v] copy (another person's work) illicitly or without acknowledgment.
+					"he was doing an exam and didn't want anybody to crib the answers from him"
+					synonyms:	copy, reproduce, duplicate, appropriate, plagiarize, poach, steal, bootleg;					
+					" The documents allegedly allowed the company to accelerate the development of its 
+						technology by cribbing off of Tesla's proprietary work."
+						
 cringe			<- "Having to see some serious PDA up close makes me cringe."
 					(PDA <- Public Display of Affection 공공장소에서의 애정행위) 
 					공공장소에서의 진한 애정행위를 바로 코앞에서 봐야만 하다니 손발이 다 오글거려.
@@ -1364,6 +1390,14 @@ embrace			<- accept or support (a belief, theory, or change) willingly and enthu
 
 embezzle		<- 횡령
 
+emblazon		<- [v] conspicuously inscribe or display a design on.
+					…을 칭찬하다2.	꾸미다3.	장식하다
+					"T-shirts emblazoned with the names of baseball teams"
+					synonyms:	adorn, decorate, ornament, embellish, illuminate; More
+				"The email had an attached image of an internal Tesla document, 
+					unchanged from the original but emblazoned with a Zoox logo."
+
+
 embody			<- be an expression of or give a tangible or visible form to (an idea, quality, or feeling).
 					"a team that embodies competitive spirit and skill"
 					synonyms: personify · incorporate · give human form/shape to 
@@ -1416,6 +1450,10 @@ exalt			<- hold (someone or something) in very high regard; think or speak very 
 					"the party will continue to exalt its hero"
 					synonyms:	extol, praise, acclaim, esteem
 					antonyms:	disparage, despise
+					
+expat			<- a person who lives outside their native country.
+					"a British expat who's been living in Amsterdam for 14 years"
+					"Zoox, a California-based company, has staffed up with a considerable number of Tesla expats."
 					
 explicitly		<- clearly
 
@@ -1822,6 +1860,15 @@ laborious		<- [adj](especially of a task, process, or journey) requiring conside
 					"Doug's laborious writing style"
 					antonyms:	natural, effortless
 
+lapse			<-[noun] a temporary failure of concentration, memory, or judgment.
+					"a lapse of concentration in the second set cost her the match"
+					"The U.S. Department of Transportation launched a probe into whether there were lapses(과실) 
+					in the approval of Boeing 737 Max planes after a fatal crash in Indonesia last October, 
+					The Wall Street Journal reported on Sunday.
+					synonyms:	failure, failing, slip, error, mistake, blunder, fault, omission, 
+					oversight, negligence, dereliction; More
+
+
 legitimacy		<- [레짓트머씨 합법성, 전통 ability to be defended with logic or justification; validity.
 
 					
@@ -1846,6 +1893,14 @@ lean 			<- [v] be in or move into a sloping position.
 
 leech			<- 1.One who constantly takes from others without giving anything in return. 
 				   2.One who constantly copies things from others, such as style, phrases, expressions, and actions.
+
+leeway			<- [여지]the amount of freedom to move or act that is available.
+					"the government had several months' leeway to introduce reforms"
+					synonyms:	freedom, scope, room to maneuver, latitude, elbow room, slack, space, room, 
+					liberty, room to spare, room to operate, scope for initiative, freedom of action, 
+					freedom from restriction, a free hand, flexibility, independence, license, 
+					self-determination, free rein, free play, unrestrictedness, indulgence, margin, 
+					play, give, laxity, leisure; More
 
 leg down		<- Another big leg down means another big fall in value for Sterling(Pounds) vs 
 					other currencies, mainly vs the US dollar.
@@ -2161,7 +2216,14 @@ prerogative		<- [n][prəˈräɡədiv] [프라게티브][특권]
 					the right of the sovereign, which in British law is theoretically subject 
 					to no restriction.
 					noun: royal prerogative
-					
+
+prestige		<- [명성]widespread respect and admiration felt for someone or something on the basis of a 
+					perception of their achievements or quality.
+					"he experienced a tremendous increase in prestige following his victory"
+					synonyms: status, standing, stature, prestigiousness, reputation, repute, regard, fame, 
+							note, renown, honor, esteem, estimation, image, account, rank, celebrity, importance, 
+							prominence, consequence, class, distinction, influence, weight, authority, supremacy, 
+							eminence, superiority; More
 					
 Process(제조,가공의)과정, vs Procedure(절차,순서,방법)
 Procedure		<-  procedure; a process or series of acts especially of a practical or mechanical 
@@ -2728,6 +2790,9 @@ trivial 		<- 	of little value or importance.
 														 
 														 
 # V
+valet 			<-  (…에게) 하인·보이로 시중들다; (남의 옷을) 세탁하다.
+valet parking		대리추차
+
 vanquish		<- come out better in a competition, race, or conflict
 
 veteran			<- (베테랑)a person who has had long experience in a particular field.
@@ -11151,3 +11216,107 @@ Maybe you don't know it yet, but I've already won the championship tomorrow!
 
 if you haven't already done so please RSVP.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------
+### Finance Terminology
+----------------------------------------------------------------------------------------
+CLO (대출-채권-담보부-증권)
+	은행의 대출채권을 묶어 풀(POOL)을 구성한 뒤 자산유동화전문회사(SPC)에 매각하고, 
+	자산유동화전문회사는 풀의 대출채권을 담보로 유동화증권을 발행하는 것으로 자산유동화증권(ABS)
+	의 일종임. 일반적인 경우 은행이 유동성을 확보하기 위한 수단
+
+CMBS(Commercial Mortgage Backed Security - 부동산 증권화)
+	투자은행이 상업용 부동산 담보대출을 pool로 만들어 SPC(특별목적회사) 로 소유권을 이전하여 
+	그 pool에서 생긴 현금을 기초로 하여 투자자에게 지급해야할 순위를 정하고 구분한뒤 SPC가 증권을 발행한다.
+
+
+	
+ABS CBO / CLO 및 MBS의 차이점
+	자산 유동화에 관한법률(ABS법)에서는 부동산,대출채권,매출채권,유가증권 등 모든 유형의 
+	자산(재산권)을 기초로 발행되는 모든 유가증권을 총칭하여 유동화 증권(ABS:Asset Backed Securities)
+	이라 정의하고 있는데 CBO/CLO는 그 유동화 자산이 사채 (주로 Junk Bond) 또는 대출채권인 유동화 증권이고 
+	MBS는 그 유동화자산이 주택저당대출채권(Mortgage)인 유동화증권이라 할수 있다. 
+	
+	실무적으로는 ABS법에 따라 발행되는 유동화증권을 ABS(사채,출자증권,수익증권 등의 형태로 발행됨)로 
+	분류하고, 주택저당채권유동화회사법(MBS법)에 따라 발행되는 유동화증권을 MBS(사채 및 수익증권 
+	형태로 발행됨)로 분류하고 있다. 	
+	
+ABS (자산유동화채권) 
+
+MBS (주택저당채권) 	
+
+
+bonds(채권) <-	A bond is an IOU.
+	Those who buy such bonds are, put simply, loaning money to the issuer for a fixed period 
+	of time.
+
+	At the end of that period, the value of the bond is repaid. Investors also receive a 
+	pre-determined interest rate (the coupon) - usually paid annually.
+
+	For example, if a company or government issues a 10-year, $100m bond with a coupon of 5% 
+	it is saying, "In ten years time, I owe you $100m, and every year until then I will pay 
+	you $5m interest".	
+	
+	However bondholders can, if they wish, sell a bond to someone else before the agreed time 
+	period. And this is why bonds are interesting as the trade in them gives an indication of 
+	the level confidence in the company or government issuing the bond.
+	
+	
+----------------------------------------------------------------------------------------
+Loan 종류
+----------------------------------------------------------------------------------------
+	
+Leveraged Loan(레버리지 론)  
+	레버리지 론은 이미 부채 규모가 상당한 수준의 개인이나 기업이 더 빌린 돈을 말한다. 기업 
+	인수합병(M&A)에서 인수 대상 기업의 자산을 담보로 돈을 빌리는 것도 레버리지 론에 포함된다. 
+	투기등급 기업들이 빌리는 돈을 레버리지 론으로 부르기도 한다. 레버리지 론은 채무불이행(디폴트) 
+	위험이 더 높은 것으로 간주되고, 따라서 더 높은 금리가 적용된다. 회사채와 달리 레버리지 론 
+	발행은 증권이 아닌 대출 계약 형식이다. 채권자에게서 돈을 빌리되 변동금리가 적용되고, 이 
+	때문에 금리 상승기에 채권에 비해 수익이 더 높은 장점이 있다.
+	
+	
+----------------------------------------------------------------------------------------
+주식 용어
+----------------------------------------------------------------------------------------	
+익절	<- 이익보고 파는거
+손절	<- 손해보고 파는거
+	
+	
+	
+----------------------------------------------------------------------------------------
+US Neutral Rate 3.5%
+----------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------
+QE vs QT (https://www.investopedia.com/terms/q/quantitative-easing.asp)
+----------------------------------------------------------------------------------------
+Quantitative Easing	
+Quantitative Tightening	
+	
+	
+	
+	
+	
+	
