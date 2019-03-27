@@ -89,7 +89,32 @@ cmd1 || cmd2 || cmd3    <= If cmd1 failed, run cmd2, otherwise runs cmd3, otherw
 13. $ hidden() { ls -a "$@" | grep '^\.'; }		<= hidden () is a function
 	$ alias hid="ls -a | grep '^\.'"			<= alias	 
 
-14. 
+14. Stdin, stdout(1), stderr(2) 
+	$ my_prog < inputfile 2> errorfile | grep XYZ
+	
+	Standard Input, Standard Output and Standard Error
+		Type		  Symbol
+	standard input		0<
+	standard output		1>
+	standard error		2>
+	
+	> 	<= redirect standard output (implicit 1>)
+	& 	<= what comes next is a file descriptor, not a file (only for right hand side of >)
+	2 	<= stderr file descriptor number
+	
+	-----------------------------------------------------------------------	
+	1>   success.log	<= Only Stdout 
+	2>     error.log	<= Only Stderr 
+	
+	>		 all_output	<= Stdout + Stderr 
+	1>&2 	 all.log	<= Stdout + Stderr 
+	2>&1	 all.log	<= Stdout + Stderr 
+	>&		 all.log	<= Stdout + Stderr 	
+	>&2		 all.log	<= Stdout + Stderr
+	-----------------------------------------------------------------------	
+	
+
+	
 
 15.
 

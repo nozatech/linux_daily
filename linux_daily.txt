@@ -1226,15 +1226,49 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	prw-rw-r--. 1 apark apark 0 Jun  1 15:10 named_pipe
 
 --------------------------------------------------------------------------	
-### STDIN, STDOUT, STDERR
+### STDIN(0), STDOUT(1), STDERR(2)
 --------------------------------------------------------------------------	
+		Type		  Symbol
+	-------------------------------------
+	standard input		0<
+	standard output		1>
+	standard error		2>
+	-------------------------------------
+	
 	$ sort < unsorted.txt > sorted.txt
-	$ ls | tee ls.txt
-	$ ls | tee -a ls.txt 			<= -a append
 
 	$ find /etc |sort|tee etcSort.txt|wc -l
 	$ find /etc 2> etcErr.txt |sort|tee etcSort.txt|wc -l
 	$ find /etc &> /dev/null   			<= NO OUT PUT
+	
+	$ my_prog < inputfile 2> errorfile | grep XYZ
+	
+
+	
+	> 	<= redirect standard output (implicit 1>)
+	& 	<= what comes next is a file descriptor, not a file (only for right hand side of >)
+	2 	<= stderr file descriptor number
+	
+	-----------------------------------------------------------------------	
+  # Redirecting output	
+  	>		 Redirect_output	<= Stdout + Stderr 
+	
+	1>   success.log	<= Only Stdout 
+	2>     error.log	<= Only Stderr 
+	&>       redirect 	<= both stdout and stderr
+	
+	
+	1>&2 	 all.log	<= Stdout + Stderr 
+	2>&1	 all.log	<= Stdout + Stderr (stderr to stdout)
+	>&		 all.log	<= Stdout + Stderr 	
+	>&2		 all.log	<= Stdout + Stderr
+	
+	
+  # close file descriptors for instance
+  https://www.linuxunit.com/io-redirection-stdin-stdout-stderr-streams/
+	n<&- 	, closing the input file descriptor n.
+	0<&-, <&- 			Closing stdin.
+	-----------------------------------------------------------------------
 	
 --------------------------------------------------------------------------
 ### '\' back slash
@@ -5278,7 +5312,7 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 
 
 
-75. Error 
+75. Stdin, Stdout(1), Stderr(2) 
 	1>&2    <= STD output should go to the same place as STD error is going.
 
 	
@@ -9066,6 +9100,22 @@ a regular file and directory
 
 
 # mkdir
+
+
+# mktemp (https://stackoverflow.com/questions/11636790/why-do-we-need-mktemp)
+	Create  a  temporary  file  or directory, safely, and print its name.  TEMPLATE must contain 
+	at least 3 consecutive 'X's in last component.  If TEMPLATE is not specified, 
+	use tmp.XXXXXXXXXX,	and --tmpdir is implied.  Files are  created  u+rw,  
+	and directories u+rwx, minus umask restrictions.
+	
+	$ mktemp -d -t 
+			 -d   <= create a directory, not a file
+			 -t   <= interpret  TEMPLATE  as  a  single file name component, 
+
+	$ temp_dir=`mktemp -d -t floatsign`
+
+
+
 # rmdir
 
 
@@ -9166,8 +9216,11 @@ process									    		device
 # PIPE (a FIFO as a file)
 
 		  <-read	|FIFO|  <- Write	
-process	A							  Process B
+process-A							  Process-B
 		  write ->	|FIFO|	read ->
+		  
+	$ ls | tee ls.txt
+	$ ls | tee -a ls.txt 			<= -a append		  
 
 # mknode 
 	make node: create a regular file, device file, or named pipe

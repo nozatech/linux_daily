@@ -1,0 +1,48 @@
+#!/bin/bash
+set -e
+
+apk_original_path="$1"
+apk_resigned_path="$2"
+keystore="$3"
+keystorepass="$4"
+keyname="$5"
+keypass="$6"
+adk_build_tools_path="$7"
+
+owd=`pwd`
+
+if [[ -z "${SEVENZIP_PATH}" ]]
+then
+    SEVENZIP_PATH='/usr/local/bin/7z'
+fi
+
+if [[ ! -f "$apk_original_path" ]]
+then
+    echo "FATAL no APK at path $apk_original_path"
+    exit 1
+fi
+
+apk_name=`basename "$apk_original_path"`
+
+echo "Creating temp dir..."
+mkdir exploded
+cp "$apk_original_path" "exploded/${apk_name}"
+cd exploded
+
+echo "Removing existing code signature"
+"${SEVENZIP_PATH}" d "${apk_name}" META-INF
+mv "${apk_name}" "temp_unsigned.apk"
+"${SEVENZIP_PATH}" l "temp_unsigned.apk"
+
+echo "Signing the APK"
+jarsigner -verbose -sigalg MD5withRSA -digestalg SHA1 -keystore "$keystore" -keypass "$keypass" -storepass "$keystorepass" -signedjar "temp_signed_unaligned.apk" "temp_unsigned.apk" "$keyname"
+
+echo "Aligning the APK"
+"$adk_build_tools_path"/zipalign -f 4 "temp_signed_unaligned.apk" "$apk_resigned_path"
+
+echo "Cleaning up..."
+rm "temp_signed_unaligned.apk"
+rm "temp_unsigned.apk"
+rm -rf exploded
+
+echo "Done!"

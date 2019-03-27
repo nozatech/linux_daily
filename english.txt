@@ -2623,10 +2623,14 @@ stand corrected <- admit that one's was wrong
 
 stash			<- store (something) safely and secretly in a specified place
 
-status quo		<- the existing state of affairs, especially regarding social or political issues.
+status quo		<- [kwou 쿠오우](라틴어) 현상
+					the existing state of affairs, especially regarding social or political issues.
 					"they have a vested interest in maintaining the status quo"
-				  현재의상황	
-
+					현재의상황	
+					"The race to lead the 5G economy requires a new type of company to drive competition, 
+					 disrupt the status quo and help ensure America leads the way in this rapidly changing 
+					 digital era."
+					 
 startle			<- excited by sudden surprise or alarm and making a quick involuntary movement
 
 stay put		<- (of a person or object) remain somewhere without moving or being moved.

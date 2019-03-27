@@ -18,4 +18,4 @@ Screen Capture
 	CMD + Shift + 4 	=> 	Drag mouse for AREA Capture
 
 
-	
+	 
