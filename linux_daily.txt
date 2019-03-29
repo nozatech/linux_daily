@@ -8472,6 +8472,11 @@ they will share the heap. Stack is thread specific and Heap is application speci
 is important to consider in exception handling and thread executions.	
 	
 	
+# Plist
+	In the macOS, iOS, NeXTSTEP, and GNUstep programming frameworks, property list files are files 
+	that store serialized objects. Property list files use the filename extension .plist
+	
+	
 	
 ------------------------------------------------------------------------------	
 Cross-Site Request Forgery (CSRF)

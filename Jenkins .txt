@@ -587,7 +587,7 @@ BuildVersion:   16G29
 
 
 
-### Jenkins setup on Mac OSX
+### Mac OSX - Jenkins setup 
 https://medium.com/@ved.pandey/setting-up-jenkins-on-mac-osx-50d8fe16df9f
 Prereqs:
  A Mac Machine running Mac OSX Yosemite or higher with admin access. 
@@ -598,6 +598,7 @@ Prereqs:
 2. SETTING UP JENKINS USER
 We need to give Jenkins admin access,
 
+# Stop and Start Jenkins' Service
 unload Jenkins as a Daemon:
 $ sudo launchctl unload   /Library/LaunchDaemons/org.jenkins-ci.plist
 
@@ -647,7 +648,7 @@ BNEA_Android_Key_To_Use=doctor_who
 
 
 
-$ keytool -genkey -alias DOCTOR_WHO -keyalg RSA -keystore DOCTOR_WHO.jks -keysize 2048
+$ keytool -genkey -alias DOCTOR_WHO -keyalg RSA -keystore DOCTOR_WHO.jks -keysize 2048 -validity 7300
 Enter keystore password: doctor_who
 
 
@@ -676,20 +677,23 @@ $ ls -l
 
 
 fI&M)T0yNHFe=KW0dXX”Ia6jNCae7NyFiQ;Acvyl 
-keystore password is just 'bnga1740'
+keystore password is just 'bngaxxxx'
 
 
 
 
-Delete view 
+# Delete view 
 http://10.100.200.45:8080/view/<view name>/delete
 http://10.100.200.45:8080/view/Monocle/delete	<= delete view name
 
 
 
+# Migration - MacOS Jenkins-A to another Jenkins-B 
+move the files from your 
+Copy Jenins-A's /User/Shared/Jenkins/Home 
+Paste Jenkins-B's /User/Shared/Jenkins/Home(or different directory)  
 
-
-
+$ echo "export JENKINS_HOME=/Users/myUsername/jenkins" >> ~/.bashrc && source ~/.bashrc
 
 
 

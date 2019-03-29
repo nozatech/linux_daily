@@ -1,21 +1,33 @@
 Unix for Mac OS X Users - Lynda.com 
 
  
-1-1 The Terminal Application
-	/Applications/Utilities/Terminal
-	-Shift+CMD+u
+# The Terminal Application
+  /Applications/Utilities/Terminal
+  Shift + CMD + u
 	
-ScreenShot
- Shift+Command+4
+# ScreenShot
+  Shift+Command+4
  
-Scree Lock
-	Ctrl + Shift + Eject
+# Scree Lock
+  Ctrl + Shift + Eject
 	
-Go to Current user's Home
-	CMD + Shift + H
+# Go to Current user's Home
+  CMD + Shift + H
 
-Screen Capture
-	CMD + Shift + 4 	=> 	Drag mouse for AREA Capture
+# Screen Capture
+  CMD + Shift + 4 	=> 	Drag mouse for AREA Capture
 
 
-	 
+
+
+
+
+
+
+
+
+### Terminology ###
+
+# Plist
+	In the macOS, iOS, NeXTSTEP, and GNUstep programming frameworks, property list files are files 
+	that store serialized objects. Property list files use the filename extension .plist	 

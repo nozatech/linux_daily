@@ -195,7 +195,7 @@ Storage:
 Database
 ----------------------------------------------------------------------------------------
 	----------------------------------------------------------------------------------------
-	RDS
+	RDS (Relational Database Service MySQL, Aurora, Postgres)
 	----------------------------------------------------------------------------------------
 	
 	
@@ -283,12 +283,12 @@ Networking & Content Delivery
 	
 	
 	----------------------------------------------------------------------------------------
-	CloudFront
+	CloudFront (Content Delivery Network (CDN)
 	----------------------------------------------------------------------------------------
 	
 	
 	----------------------------------------------------------------------------------------
-	Route 53
+	Route 53 (DNS)
 	----------------------------------------------------------------------------------------
 	
 	
@@ -303,18 +303,26 @@ Networking & Content Delivery
 	----------------------------------------------------------------------------------------
 	Direct Connect
 	----------------------------------------------------------------------------------------
-	
+	AWS Direct Connect is a cloud service solution that makes it easy to establish a dedicated 
+	network connection from your premises to AWS. Using AWS Direct Connect, you can establish 
+	private connectivity between AWS and your datacenter, office, or colocation environment, 
+	which in many cases can reduce your network costs, increase bandwidth throughput, and 
+	provide a more consistent network experience than Internet-based connections.
 	
 	
 	----------------------------------------------------------------------------------------
 	AWS Cloud Map
 	----------------------------------------------------------------------------------------
-	
+	AWS Cloud Map is a cloud resource discovery service. With Cloud Map, you can define custom 
+	names for your application resources, and it maintains the updated location of these 
+	dynamically changing resources. This increases your application availability because 
+	your web service always discovers the most up-to-date locations of its resources.
 	
 	----------------------------------------------------------------------------------------
 	Global Accelerator
 	----------------------------------------------------------------------------------------
-	
+	AWS Global Accelerator is a networking service that improves the availability and 
+	performance of the applications that you offer to your global users.
 	
 ----------------------------------------------------------------------------------------	
 Developer Tools
@@ -340,26 +348,30 @@ Developer Tools
 	Amazon EC2 instances).
 	
 	----------------------------------------------------------------------------------------
-	CodeCommit(Securely host highly scalable private Git repositories. Collaborate on code.)
+	CodeCommit
+	(Securely host highly scalable private Git repositories. Collaborate on code.)
 	----------------------------------------------------------------------------------------
 	AWS CodeCommit is a fully-managed source control service that hosts secure Git-based repositories. It makes it easy for teams to collaborate on code in a secure and highly scalable ecosystem. CodeCommit eliminates the need to operate your own source control system or worry about scaling its infrastructure. You can use CodeCommit to securely store anything from source code to binaries, and it works seamlessly with your existing Git tools.
 	
 	
 	
 	----------------------------------------------------------------------------------------
-	CodeBuild(Build and test code with continuous scaling. Pay only for the build time you use.)
+	CodeBuild
+	(Build and test code with continuous scaling. Pay only for the build time you use.)
 	----------------------------------------------------------------------------------------
 	AWS CodeBuild is a fully managed continuous integration service that compiles source code, runs tests, and produces software packages that are ready to deploy. With CodeBuild, you don’t need to provision, manage, and scale your own build servers. CodeBuild scales continuously and processes multiple builds concurrently, so your builds are not left waiting in a queue. You can get started quickly by using prepackaged build environments, or you can create custom build environments that use your own build tools. With CodeBuild, you are charged by the minute for the compute resources you use.
 	
 	
 	----------------------------------------------------------------------------------------
-	CodeDeploy(Automate code deployments to maintain application uptime)
+	CodeDeploy
+	(Automate code deployments to maintain application uptime)
 	----------------------------------------------------------------------------------------
 	AWS CodeDeploy is a fully managed deployment service that automates software deployments to a variety of compute services such as Amazon EC2, AWS Fargate, AWS Lambda, and your on-premises servers. AWS CodeDeploy makes it easier for you to rapidly release new features, helps you avoid downtime during application deployment, and handles the complexity of updating your applications. You can use AWS CodeDeploy to automate software deployments, eliminating the need for error-prone manual operations. The service scales to match your deployment needs.
 	
 	
 	----------------------------------------------------------------------------------------
-	CodePipeline(Automate continuous delivery pipelines for fast and reliable updates)
+	CodePipeline
+	(Automate continuous delivery pipelines for fast and reliable updates)
 	----------------------------------------------------------------------------------------
 	AWS CodePipeline is a fully managed continuous delivery service that helps you automate your release pipelines for fast and reliable application and infrastructure updates. CodePipeline automates the build, test, and deploy phases of your release process every time there is a code change, based on the release model you define. This enables you to rapidly and reliably deliver features and updates. You can easily integrate AWS CodePipeline with third-party services such as GitHub or with your own custom plugin. With AWS CodePipeline, you only pay for what you use. There are no upfront fees or long-term commitments.
 	
@@ -383,34 +395,62 @@ Management(운영) & Governance(관리)
 	----------------------------------------------------------------------------------------
 	
 	----------------------------------------------------------------------------------------
-	CloudFormation(Model and provision all your cloud infrastructure resources)
+	CloudFormation
+	(Model and provision all your cloud infrastructure resources)
 	----------------------------------------------------------------------------------------
-	AWS CloudFormation provides a common language for you to describe and provision all the infrastructure resources in your cloud environment. CloudFormation allows you to use a simple text file to model and provision, in an automated and secure manner, all the resources needed for your applications across all regions and accounts. This file serves as the single source of truth for your cloud environment. 
+	AWS CloudFormation provides a common language for you to describe and provision all the 
+	infrastructure resources in your cloud environment. CloudFormation allows you to use a 
+	simple text file to model and provision, in an automated and secure manner, all the 
+	resources needed for your applications across all regions and accounts. This file serves 
+	as the single source of truth for your cloud environment. 
 	
-	AWS CloudFormation is available at no additional charge, and you pay only for the AWS resources needed to run your applications.
+	AWS CloudFormation is available at no additional charge, and you pay only for the AWS 
+	resources needed to run your applications.
 	
 	----------------------------------------------------------------------------------------
 	CloudTrail(Track user activity and API usage)
 	----------------------------------------------------------------------------------------
-	AWS CloudTrail is a service that enables governance, compliance, operational auditing, and risk auditing of your AWS account. With CloudTrail, you can log, continuously monitor, and retain account activity related to actions across your AWS infrastructure. CloudTrail provides event history of your AWS account activity, including actions taken through the AWS Management Console, AWS SDKs, command line tools, and other AWS services. This event history simplifies security analysis, resource change tracking, and troubleshooting.
+	AWS CloudTrail is a service that enables governance, compliance, operational auditing, 
+	and risk auditing of your AWS account. With CloudTrail, you can log, continuously monitor, 
+	and retain account activity related to actions across your AWS infrastructure. CloudTrail 
+	provides event history of your AWS account activity, including actions taken through the 
+	AWS Management Console, AWS SDKs, command line tools, and other AWS services. This event 
+	history simplifies security analysis, resource change tracking, and troubleshooting.
 	
 	
 	----------------------------------------------------------------------------------------
 	Config(Record and evaluate configurations of your AWS resources)
 	----------------------------------------------------------------------------------------
-	AWS Config is a service that enables you to assess, audit, and evaluate the configurations of your AWS resources. Config continuously monitors and records your AWS resource configurations and allows you to automate the evaluation of recorded configurations against desired configurations. With Config, you can review changes in configurations and relationships between AWS resources, dive into detailed resource configuration histories, and determine your overall compliance against the configurations specified in your internal guidelines. This enables you to simplify compliance auditing, security analysis, change management, and operational troubleshooting.
+	AWS Config is a service that enables you to assess, audit, and evaluate the configurations 
+	of your AWS resources. Config continuously monitors and records your AWS resource 
+	configurations and allows you to automate the evaluation of recorded configurations 
+	against desired configurations. With Config, you can review changes in configurations 
+	and relationships between AWS resources, dive into detailed resource configuration 
+	histories, and determine your overall compliance against the configurations specified 
+	in your internal guidelines. This enables you to simplify compliance auditing, security 
+	analysis, change management, and operational troubleshooting.
 	
 	----------------------------------------------------------------------------------------
 	OpsWorks(Automate Operations with Chef and Puppet)
 	https://aws.amazon.com/opsworks/
 	----------------------------------------------------------------------------------------
-	AWS OpsWorks is a configuration management service that provides managed instances of Chef and Puppet. Chef and Puppet are automation platforms that allow you to use code to automate the configurations of your servers. OpsWorks lets you use Chef and Puppet to automate how servers are configured, deployed, and managed across your Amazon EC2 instances or on-premises compute environments. OpsWorks has three offerings, AWS Opsworks for Chef Automate, AWS OpsWorks for Puppet Enterprise, and AWS OpsWorks Stacks.
+	AWS OpsWorks is a configuration management service that provides managed instances of Chef 
+	and Puppet. Chef and Puppet are automation platforms that allow you to use code to automate 
+	the configurations of your servers. OpsWorks lets you use Chef and Puppet to automate how 
+	servers are configured, deployed, and managed across your Amazon EC2 instances or on-premises 
+	compute environments. OpsWorks has three offerings, AWS Opsworks for Chef Automate, AWS OpsWorks 
+	for Puppet Enterprise, and AWS OpsWorks Stacks.
 	
 	
 	----------------------------------------------------------------------------------------
 	Service Catalog
 	----------------------------------------------------------------------------------------
-	
+	AWS Service Catalog allows organizations to create and manage catalogs of IT services that 
+	are approved for use on AWS. These IT services can include everything from virtual machine 
+	images, servers, software, and databases to complete multi-tier application architectures. 
+	AWS Service Catalog allows you to centrally manage commonly deployed IT services, and helps 
+	you achieve consistent governance and meet your compliance requirements, while enabling 
+	users to quickly deploy only the approved IT services they need.
 	
 	----------------------------------------------------------------------------------------
 	Systems Manager
@@ -428,13 +468,30 @@ Management(운영) & Governance(관리)
 	
 	
 	----------------------------------------------------------------------------------------
-	Control Tower(The easiest way to set up and govern a secure, compliant multi-account AWS environment)
+	Control Tower
+	(The easiest way to set up and govern a secure, compliant multi-account AWS environment)
 	----------------------------------------------------------------------------------------
-	AWS Control Tower automates the set-up of a baseline environment, or landing zone, that is a secure, well-architected multi-account AWS environment. The configuration of the landing zone is based on best practices that have been established by working with thousands of enterprise customers to create a secure environment that makes it easier to govern AWS workloads with rules for security, operations, and compliance.
+	AWS Control Tower automates the set-up of a baseline environment, or landing zone, that 
+	is a secure, well-architected multi-account AWS environment. The configuration of the 
+	landing zone is based on best practices that have been established by working with 
+	thousands of enterprise customers to create a secure environment that makes it easier 
+	to govern AWS workloads with rules for security, operations, and compliance.
 
-	As enterprises migrate to AWS, they typically have a large number of applications and distributed teams. They often want to create multiple accounts to allow their teams to work independently, while still maintaining a consistent level of security and compliance. In addition, they use AWS’s management and security services, like AWS Organizations, AWS Service Catalog and AWS Config, that provide very granular controls over their workloads. They want to maintain this control, but they also want a way to centrally govern and enforce the best use of AWS services across all the accounts in their environment.
+	As enterprises migrate to AWS, they typically have a large number of applications and 
+	distributed teams. They often want to create multiple accounts to allow their teams to 
+	work independently, while still maintaining a consistent level of security and compliance. 
+	In addition, they use AWS’s management and security services, like AWS Organizations, 
+	AWS Service Catalog and AWS Config, that provide very granular controls over their workloads. 
+	They want to maintain this control, but they also want a way to centrally govern and 
+	enforce the best use of AWS services across all the accounts in their environment.
 
-	Control Tower automates the set-up of their landing zone and configures AWS management and security services based on established best practices in a secure, compliant, multi-account environment. Distributed teams are able to provision new AWS accounts quickly, while central teams have the peace of mind knowing that new accounts are aligned with centrally established, company-wide compliance policies. This gives you control over your environment, without sacrificing the speed and agility AWS provides your development teams.
+	Control Tower automates the set-up of their landing zone and configures AWS management 
+	and security services based on established best practices in a secure, compliant, 
+	multi-account environment. Distributed teams are able to provision new AWS accounts 
+	quickly, while central teams have the peace of mind knowing that new accounts are 
+	aligned with centrally established, company-wide compliance policies. This gives you 
+	control over your environment, without sacrificing the speed and agility AWS provides 
+	your development teams.
 	
 	----------------------------------------------------------------------------------------
 	AWS License Manager
@@ -457,70 +514,138 @@ Analytics
 	----------------------------------------------------------------------------------------
 	Athena(Start querying data instantly. Get results in seconds. Pay only for the queries you run.)
 	----------------------------------------------------------------------------------------
-	Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. Athena is serverless, so there is no infrastructure to manage, and you pay only for the queries that you run.
+	Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon 
+	S3 using standard SQL. Athena is serverless, so there is no infrastructure to manage, and 
+	you pay only for the queries that you run.
 
-	Athena is easy to use. Simply point to your data in Amazon S3, define the schema, and start querying using standard SQL. Most results are delivered within seconds. With Athena, there’s no need for complex ETL jobs to prepare your data for analysis. This makes it easy for anyone with SQL skills to quickly analyze large-scale datasets.
+	Athena is easy to use. Simply point to your data in Amazon S3, define the schema, and 
+	start querying using standard SQL. Most results are delivered within seconds. With Athena, 
+	there’s no need for complex ETL jobs to prepare your data for analysis. This makes it easy 
+	for anyone with SQL skills to quickly analyze large-scale datasets.
 
-	Athena is out-of-the-box integrated with AWS Glue Data Catalog, allowing you to create a unified metadata repository across various services, crawl data sources to discover schemas and populate your Catalog with new and modified table and partition definitions, and maintain schema versioning. You can also use Glue’s fully-managed ETL capabilities to transform data or convert it into columnar formats to optimize cost and improve performance.
+	Athena is out-of-the-box integrated with AWS Glue Data Catalog, allowing you to create a 
+	unified metadata repository across various services, crawl data sources to discover 
+	schemas and populate your Catalog with new and modified table and partition definitions, 
+	and maintain schema versioning. You can also use Glue’s fully-managed ETL capabilities 
+	to transform data or convert it into columnar formats to optimize cost and improve performance.
 
 	
 	----------------------------------------------------------------------------------------
 	EMR(Apache Spark, Hadoop, HBase, Presto, Hive, and other Big Data Frameworks)
 	----------------------------------------------------------------------------------------
-	Amazon EMR provides a managed Hadoop framework that makes it easy, fast, and cost-effective to process vast amounts of data across dynamically scalable Amazon EC2 instances. You can also run other popular distributed frameworks such as Apache Spark, HBase, Presto, and Flink in EMR, and interact with data in other AWS data stores such as Amazon S3 and Amazon DynamoDB. EMR Notebooks, based on the popular Jupyter Notebook, provide a development and collaboration environment for ad hoc querying and exploratory analysis.
+	Amazon EMR provides a managed Hadoop framework that makes it easy, fast, and cost-effective 
+	to process vast amounts of data across dynamically scalable Amazon EC2 instances. You can 
+	also run other popular distributed frameworks such as Apache Spark, HBase, Presto, and 
+	Flink in EMR, and interact with data in other AWS data stores such as Amazon S3 and Amazon 
+	DynamoDB. EMR Notebooks, based on the popular Jupyter Notebook, provide a development and 
+	collaboration environment for ad hoc querying and exploratory analysis.
 
-	EMR securely and reliably handles a broad set of big data use cases, including log analysis, web indexing, data transformations (ETL), machine learning, financial analysis, scientific simulation, and bioinformatics.
+	EMR securely and reliably handles a broad set of big data use cases, including log analysis, 
+	web indexing, data transformations (ETL), machine learning, financial analysis, scientific 
+	simulation, and bioinformatics.
 	
 	----------------------------------------------------------------------------------------
 	CloudSearch
 	----------------------------------------------------------------------------------------
-	Amazon CloudSearch is a managed service in the AWS Cloud that makes it simple and cost-effective to set up, manage, and scale a search solution for your website or application.
+	Amazon CloudSearch is a managed service in the AWS Cloud that makes it simple and 
+	cost-effective to set up, manage, and scale a search solution for your website or application.
 	
-	Amazon CloudSearch supports 34 languages and popular search features such as highlighting, autocomplete, and geospatial search. For more information, see Benefits.
+	Amazon CloudSearch supports 34 languages and popular search features such as highlighting, 
+	autocomplete, and geospatial search. For more information, see Benefits.
 	
 	----------------------------------------------------------------------------------------
 	Elasticsearch Service
 	----------------------------------------------------------------------------------------
-	Amazon Elasticsearch Service is a fully managed service that makes it easy for you to deploy, secure, and operate Elasticsearch at scale with zero down time. The service offers open-source Elasticsearch APIs, managed Kibana, and integrations with Logstash and other AWS Services, enabling you to securely ingest data from any source and search, analyze, and visualize it in real time. Amazon Elasticsearch Service lets you pay only for what you use – there are no upfront costs or usage requirements. With Amazon Elasticsearch Service, you get the ELK stack you need, without the operational overhead.
+	Amazon Elasticsearch Service is a fully managed service that makes it easy for you to deploy, 
+	secure, and operate Elasticsearch at scale with zero down time. The service offers open-source 
+	Elasticsearch APIs, managed Kibana, and integrations with Logstash and other AWS Services, 
+	enabling you to securely ingest data from any source and search, analyze, and visualize 
+	it in real time. Amazon Elasticsearch Service lets you pay only for what you use – there 
+	are no upfront costs or usage requirements. With Amazon Elasticsearch Service, you get 
+	the ELK stack you need, without the operational overhead.
 	
 	
 	----------------------------------------------------------------------------------------
 	Kinesis(collect, process, and analyze video and data streams in real time)
 	----------------------------------------------------------------------------------------
-	Amazon Kinesis makes it easy to collect, process, and analyze real-time, streaming data so you can get timely insights and react quickly to new information. Amazon Kinesis offers key capabilities to cost-effectively process streaming data at any scale, along with the flexibility to choose the tools that best suit the requirements of your application. With Amazon Kinesis, you can ingest real-time data such as video, audio, application logs, website clickstreams, and IoT telemetry data for machine learning, analytics, and other applications. Amazon Kinesis enables you to process and analyze data as it arrives and respond instantly instead of having to wait until all your data is collected before the processing can begin.
+	Amazon Kinesis makes it easy to collect, process, and analyze real-time, streaming data 
+	so you can get timely insights and react quickly to new information. Amazon Kinesis offers 
+	key capabilities to cost-effectively process streaming data at any scale, along with the 
+	flexibility to choose the tools that best suit the requirements of your application. With 
+	Amazon Kinesis, you can ingest real-time data such as video, audio, application logs, 
+	website clickstreams, and IoT telemetry data for machine learning, analytics, and other 
+	applications. Amazon Kinesis enables you to process and analyze data as it arrives and 
+	respond instantly instead of having to wait until all your data is collected before the 
+	processing can begin.
 	
 	
 	----------------------------------------------------------------------------------------
 	QuickSight (First BI Service with Pay-per-Session Pricing
 				and ML Insights for everyone.)
 	----------------------------------------------------------------------------------------
-	Amazon QuickSight is a fast, cloud-powered business intelligence service that makes it easy to deliver insights to everyone in your organization.
+	Amazon QuickSight is a fast, cloud-powered business intelligence service that makes it easy 
+	to deliver insights to everyone in your organization.
 
-	As a fully managed service, QuickSight lets you easily create and publish interactive dashboards that include ML Insights. Dashboards can then be accessed from any device, and embedded into your applications, portals, and websites.
+	As a fully managed service, QuickSight lets you easily create and publish interactive 
+	dashboards that include ML Insights. Dashboards can then be accessed from any device, 
+	and embedded into your applications, portals, and websites.
 
-	With our Pay-per-Session pricing, QuickSight allows you to give everyone access to the data they need, while only paying for what you use.
+	With our Pay-per-Session pricing, QuickSight allows you to give everyone access to the 
+	data they need, while only paying for what you use.
 	
 	----------------------------------------------------------------------------------------
 	Data Pipeline
 	----------------------------------------------------------------------------------------
-	AWS Data Pipeline is a web service that helps you reliably process and move data between different AWS compute and storage services, as well as on-premises data sources, at specified intervals. With AWS Data Pipeline, you can regularly access your data where it’s stored, transform and process it at scale, and efficiently transfer the results to AWS services such as Amazon S3, Amazon RDS, Amazon DynamoDB, and Amazon EMR.
+	AWS Data Pipeline is a web service that helps you reliably process and move data between 
+	different AWS compute and storage services, as well as on-premises data sources, at 
+	specified intervals. With AWS Data Pipeline, you can regularly access your data where 
+	it’s stored, transform and process it at scale, and efficiently transfer the results 
+	to AWS services such as Amazon S3, Amazon RDS, Amazon DynamoDB, and Amazon EMR.
 
-	AWS Data Pipeline helps you easily create complex data processing workloads that are fault tolerant, repeatable, and highly available. You don’t have to worry about ensuring resource availability, managing inter-task dependencies, retrying transient failures or timeouts in individual tasks, or creating a failure notification system. AWS Data Pipeline also allows you to move and process data that was previously locked up in on-premises data silos.
+	AWS Data Pipeline helps you easily create complex data processing workloads that are 
+	fault tolerant, repeatable, and highly available. You don’t have to worry about ensuring 
+	resource availability, managing inter-task dependencies, retrying transient failures or 
+	timeouts in individual tasks, or creating a failure notification system. AWS Data Pipeline 
+	also allows you to move and process data that was previously locked up in on-premises 
+	data silos.
 	
 	
 	----------------------------------------------------------------------------------------
 	Glue(Simple, flexible, and cost-effective ETL)
 	----------------------------------------------------------------------------------------
-	AWS Glue is a fully managed extract, transform, and load (ETL) service that makes it easy for customers to prepare and load their data for analytics. You can create and run an ETL job with a few clicks in the AWS Management Console. You simply point AWS Glue to your data stored on AWS, and AWS Glue discovers your data and stores the associated metadata (e.g. table definition and schema) in the AWS Glue Data Catalog. Once cataloged, your data is immediately searchable, queryable, and available for ETL.
+	AWS Glue is a fully managed extract, transform, and load (ETL) service that makes it easy 
+	for customers to prepare and load their data for analytics. You can create and run an 
+	ETL job with a few clicks in the AWS Management Console. You simply point AWS Glue to 
+	your data stored on AWS, and AWS Glue discovers your data and stores the associated 
+	metadata (e.g. table definition and schema) in the AWS Glue Data Catalog. Once cataloged, 
+	your data is immediately searchable, queryable, and available for ETL.
 	
 	----------------------------------------------------------------------------------------
 	MSK(Managed Streaming for Kafka0
 	----------------------------------------------------------------------------------------
-	Amazon Managed Streaming for Kafka (Amazon MSK) is a fully managed service that makes it easy for you to build and run applications that use Apache Kafka to process streaming data. Apache Kafka is an open-source platform for building real-time streaming data pipelines and applications. With Amazon MSK, you can use Apache Kafka APIs to populate data lakes, stream changes to and from databases, and power machine learning and analytics applications.
+	Amazon Managed Streaming for Kafka (Amazon MSK) is a fully managed service that makes it 
+	easy for you to build and run applications that use Apache Kafka to process streaming 
+	data. Apache Kafka is an open-source platform for building real-time streaming data 
+	pipelines and applications. With Amazon MSK, you can use Apache Kafka APIs to populate 
+	data lakes, stream changes to and from databases, and power machine learning and 
+	analytics applications.
 
-	Apache Kafka clusters are challenging to setup, scale, and manage in production. When you run Apache Kafka on your own, you need to provision servers, configure Apache Kafka manually, replace servers when they fail, orchestrate server patches and upgrades, architect the cluster for high availability, ensure data is durably stored and secured, setup monitoring and alarms, and carefully plan scaling events to support load changes. Amazon Managed Streaming for Kafka makes it easy for you to build and run production applications on Apache Kafka without needing Apache Kafka infrastructure management expertise. That means you spend less time managing infrastructure and more time building applications.
+	Apache Kafka clusters are challenging to setup, scale, and manage in production. When 
+	you run Apache Kafka on your own, you need to provision servers, configure Apache Kafka 
+	manually, replace servers when they fail, orchestrate server patches and upgrades, 
+	architect the cluster for high availability, ensure data is durably stored and secured, 
+	setup monitoring and alarms, and carefully plan scaling events to support load changes. 
+	Amazon Managed Streaming for Kafka makes it easy for you to build and run production 
+	applications on Apache Kafka without needing Apache Kafka infrastructure management 
+	expertise. That means you spend less time managing infrastructure and more time building 
+	applications.
 
-	With a few clicks in the Amazon MSK console you can create highly available Apache Kafka clusters with settings and configuration based on Apache Kafka’s deployment best practices. Amazon MSK automatically provisions and runs your Apache Kafka clusters. Amazon MSK continuously monitors cluster health and automatically replaces unhealthy nodes with no downtime to your application. In addition, Amazon MSK secures your Apache Kafka cluster by encrypting data at rest.
+	With a few clicks in the Amazon MSK console you can create highly available Apache 
+	Kafka clusters with settings and configuration based on Apache Kafka’s deployment 
+	best practices. Amazon MSK automatically provisions and runs your Apache Kafka clusters. 
+	Amazon MSK continuously monitors cluster health and automatically replaces unhealthy 
+	nodes with no downtime to your application. In addition, Amazon MSK secures your Apache 
+	Kafka cluster by encrypting data at rest.
 	
 	
 	
@@ -546,15 +671,27 @@ Security, Identity, & Compliance
 	----------------------------------------------------------------------------------------
 	Resource Access Manager(Simple, secure service to share AWS resources)
 	----------------------------------------------------------------------------------------
-	AWS Resource Access Manager (RAM) is a service that enables you to easily and securely share AWS resources with any AWS account or within your AWS Organization. You can share AWS Transit Gateways, Subnets, AWS License Manager configurations, and Amazon Route 53 Resolver rules resources with RAM.
+	AWS Resource Access Manager (RAM) is a service that enables you to easily and securely 
+	share AWS resources with any AWS account or within your AWS Organization. You can share 
+	AWS Transit Gateways, Subnets, AWS License Manager configurations, and Amazon Route 53 
+	Resolver rules resources with RAM.
 
-	Many organizations use multiple accounts to create administrative or billing isolation, and to limit the impact of errors. RAM eliminates the need to create duplicate resources in multiple accounts, reducing the operational overhead of managing those resources in every single account you own. You can create resources centrally in a multi-account environment, and use RAM to share those resources across accounts in three simple steps: create a Resource Share, specify resources, and specify accounts. RAM is available to you at no additional charge.
+	Many organizations use multiple accounts to create administrative or billing isolation, 
+	and to limit the impact of errors. RAM eliminates the need to create duplicate resources 
+	in multiple accounts, reducing the operational overhead of managing those resources in 
+	every single account you own. You can create resources centrally in a multi-account 
+	environment, and use RAM to share those resources across accounts in three simple steps: 
+	create a Resource Share, specify resources, and specify accounts. RAM is available to 
+	you at no additional charge.
 	
 	
 	----------------------------------------------------------------------------------------
 	Cognito(Simple and Secure User Sign-Up, Sign-In, and Access Control)
 	----------------------------------------------------------------------------------------
-	Amazon Cognito lets you add user sign-up, sign-in, and access control to your web and mobile apps quickly and easily. Amazon Cognito scales to millions of users and supports sign-in with social identity providers, such as Facebook, Google, and Amazon, and enterprise identity providers via SAML 2.0.
+	Amazon Cognito lets you add user sign-up, sign-in, and access control to your web and 
+	mobile apps quickly and easily. Amazon Cognito scales to millions of users and supports 
+	sign-in with social identity providers, such as Facebook, Google, and Amazon, and 
+	enterprise identity providers via SAML 2.0.
 	
 	
 	----------------------------------------------------------------------------------------
@@ -562,7 +699,16 @@ Security, Identity, & Compliance
 		(rotate, manage, and retrieve database credentials, API keys, and other secrets 
 		through their lifecycle)
 	----------------------------------------------------------------------------------------
-	AWS Secrets Manager helps you protect secrets needed to access your applications, services, and IT resources. The service enables you to easily rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle. Users and applications retrieve secrets with a call to Secrets Manager APIs, eliminating the need to hardcode sensitive information in plain text. Secrets Manager offers secret rotation with built-in integration for Amazon RDS for MySQL, PostgreSQL, and Amazon Aurora. Also, the service is extensible to other types of secrets, including API keys and OAuth tokens. In addition, Secrets Manager enables you to control access to secrets using fine-grained permissions and audit secret rotation centrally for resources in the AWS Cloud, third-party services, and on-premises.
+	AWS Secrets Manager helps you protect secrets needed to access your applications, services, 
+	and IT resources. The service enables you to easily rotate, manage, and retrieve database 
+	credentials, API keys, and other secrets throughout their lifecycle. Users and applications 
+	retrieve secrets with a call to Secrets Manager APIs, eliminating the need to hardcode 
+	sensitive information in plain text. Secrets Manager offers secret rotation with built-in 
+	integration for Amazon RDS for MySQL, PostgreSQL, and Amazon Aurora. Also, the service 
+	is extensible to other types of secrets, including API keys and OAuth tokens. In addition, 
+	Secrets Manager enables you to control access to secrets using fine-grained permissions 
+	and audit secret rotation centrally for resources in the AWS Cloud, third-party services, 
+	and on-premises.
 	
 	----------------------------------------------------------------------------------------
 	GuardDuty
@@ -577,9 +723,17 @@ Security, Identity, & Compliance
 	
 	
 	----------------------------------------------------------------------------------------
-	Macie(A machine learning-powered security service to discover, classify, and protect sensitive data.)
+	Macie
+	(A machine learning-powered security service to discover, classify, and protect sensitive data.)
 	----------------------------------------------------------------------------------------
-	Amazon Macie is a security service that uses machine learning to automatically discover, classify, and protect sensitive data in AWS. Amazon Macie recognizes sensitive data such as personally identifiable information (PII) or intellectual property, and provides you with dashboards and alerts that give visibility into how this data is being accessed or moved. The fully managed service continuously monitors data access activity for anomalies, and generates detailed alerts when it detects risk of unauthorized access or inadvertent data leaks. Today, Amazon Macie is available to protect data stored in Amazon S3, with support for additional AWS data stores coming later this year.
+	Amazon Macie is a security service that uses machine learning to automatically discover, 
+	classify, and protect sensitive data in AWS. Amazon Macie recognizes sensitive data such 
+	as personally identifiable information (PII) or intellectual property, and provides you 
+	with dashboards and alerts that give visibility into how this data is being accessed or 
+	moved. The fully managed service continuously monitors data access activity for anomalies, 
+	and generates detailed alerts when it detects risk of unauthorized access or inadvertent 
+	data leaks. Today, Amazon Macie is available to protect data stored in Amazon S3, with 
+	support for additional AWS data stores coming later this year.
 	
 	----------------------------------------------------------------------------------------
 	Organizations
@@ -590,16 +744,40 @@ Security, Identity, & Compliance
 	----------------------------------------------------------------------------------------
 	Single Sign-On
 	----------------------------------------------------------------------------------------
-	AWS Single Sign-On (SSO) is a cloud SSO service that makes it easy to centrally manage SSO access to multiple AWS accounts and business applications. With just a few clicks, you can enable a highly available SSO service without the upfront investment and on-going maintenance costs of operating your own SSO infrastructure. With AWS SSO, you can easily manage SSO access and user permissions to all of your accounts in AWS Organizations centrally. AWS SSO also includes built-in SAML integrations to many business applications, such as Salesforce, Box, and Office 365. Further, by using the AWS SSO application configuration wizard, you can create Security Assertion Markup Language (SAML) 2.0 integrations and extend SSO access to any of your SAML-enabled applications. Your users simply sign in to a user portal with credentials they configure in AWS SSO or using their existing corporate credentials to access all their assigned accounts and applications from one place.
+	AWS Single Sign-On (SSO) is a cloud SSO service that makes it easy to centrally manage 
+	SSO access to multiple AWS accounts and business applications. With just a few clicks, 
+	you can enable a highly available SSO service without the upfront investment and on-going 
+	maintenance costs of operating your own SSO infrastructure. With AWS SSO, you can easily 
+	manage SSO access and user permissions to all of your accounts in AWS Organizations 
+	centrally. AWS SSO also includes built-in SAML integrations to many business applications, 
+	such as Salesforce, Box, and Office 365. Further, by using the AWS SSO application 
+	configuration wizard, you can create Security Assertion Markup Language (SAML) 2.0 
+	integrations and extend SSO access to any of your SAML-enabled applications. Your users 
+	simply sign in to a user portal with credentials they configure in AWS SSO or using 
+	their existing corporate credentials to access all their assigned accounts and applications 
+	from one place.
 	
 	----------------------------------------------------------------------------------------
 	Certificate Manager
 		Easily provision, manage, and deploy public and private SSL/TLS certificates 
 		for use with AWS services and your internal connected resources
 	----------------------------------------------------------------------------------------
-	AWS Certificate Manager is a service that lets you easily provision, manage, and deploy public and private Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificates for use with AWS services and your internal connected resources. SSL/TLS certificates are used to secure network communications and establish the identity of websites over the Internet as well as resources on private networks. AWS Certificate Manager removes the time-consuming manual process of purchasing, uploading, and renewing SSL/TLS certificates.
+	AWS Certificate Manager is a service that lets you easily provision, manage, and deploy 
+	public and private Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificates 
+	for use with AWS services and your internal connected resources. SSL/TLS certificates 
+	are used to secure network communications and establish the identity of websites over 
+	the Internet as well as resources on private networks. AWS Certificate Manager removes t
+	he time-consuming manual process of purchasing, uploading, and renewing SSL/TLS certificates.
 
-	With AWS Certificate Manager, you can quickly request a certificate, deploy it on ACM-integrated AWS resources, such as Elastic Load Balancers, Amazon CloudFront distributions, and APIs on API Gateway, and let AWS Certificate Manager handle certificate renewals. It also enables you to create private certificates for your internal resources and manage the certificate lifecycle centrally. Public and private certificates provisioned through AWS Certificate Manager for use with ACM-integrated services are free. You pay only for the AWS resources you create to run your application. With AWS Certificate Manager Private Certificate Authority, you pay monthly for the operation of the private CA and for the private certificates you issue.
+	With AWS Certificate Manager, you can quickly request a certificate, deploy it on 
+	ACM-integrated AWS resources, such as Elastic Load Balancers, Amazon CloudFront 
+	distributions, and APIs on API Gateway, and let AWS Certificate Manager handle certificate 
+	renewals. It also enables you to create private certificates for your internal resources 
+	and manage the certificate lifecycle centrally. Public and private certificates provisioned 
+	through AWS Certificate Manager for use with ACM-integrated services are free. You pay 
+	only for the AWS resources you create to run your application. With AWS Certificate 
+	Manager Private Certificate Authority, you pay monthly for the operation of the private 
+	CA and for the private certificates you issue.
 	
 	----------------------------------------------------------------------------------------
 	Key Management Service
@@ -628,13 +806,32 @@ Security, Identity, & Compliance
 	----------------------------------------------------------------------------------------	
 	Artifact
 	----------------------------------------------------------------------------------------
-	AWS Artifact is your go-to, central resource for compliance-related information that matters to you. It provides on-demand access to AWS’ security and compliance reports and select online agreements. Reports available in AWS Artifact include our Service Organization Control (SOC) reports, Payment Card Industry (PCI) reports, and certifications from accreditation bodies across geographies and compliance verticals that validate the implementation and operating effectiveness of AWS security controls. Agreements available in AWS Artifact include the Business Associate Addendum (BAA) and the Nondisclosure Agreement (NDA).
+	AWS Artifact is your go-to, central resource for compliance-related information that 
+	matters to you. It provides on-demand access to AWS’ security and compliance reports and 
+	select online agreements. Reports available in AWS Artifact include our Service 
+	Organization Control (SOC) reports, Payment Card Industry (PCI) reports, and certifications 
+	from accreditation bodies across geographies and compliance verticals that validate the 
+	implementation and operating effectiveness of AWS security controls. Agreements available 
+	in AWS Artifact include the Business Associate Addendum (BAA) and the Nondisclosure 
+	Agreement (NDA).
 	
 	
 	----------------------------------------------------------------------------------------
 	Security Hub(Centrally view and manage security alerts and automate compliance checks)
 	----------------------------------------------------------------------------------------
-	AWS Security Hub gives you a comprehensive view of your high-priority security alerts and compliance status across AWS accounts. There are a range of powerful security tools at your disposal, from firewalls and endpoint protection to vulnerability and compliance scanners. But oftentimes this leaves your team switching back-and-forth between these tools to deal with hundreds, and sometimes thousands, of security alerts every day. With Security Hub, you now have a single place that aggregates, organizes, and prioritizes your security alerts, or findings, from multiple AWS services, such as Amazon GuardDuty, Amazon Inspector, and Amazon Macie, as well as from AWS Partner solutions. Your findings are visually summarized on integrated dashboards with actionable graphs and tables. You can also continuously monitor your environment using automated compliance checks based on the AWS best practices and industry standards your organization follows. Get started with AWS Security Hub in just a few clicks in the Management Console and once enabled, Security Hub will begin aggregating and prioritizing findings.
+	AWS Security Hub gives you a comprehensive view of your high-priority security alerts 
+	and compliance status across AWS accounts. There are a range of powerful security tools 
+	at your disposal, from firewalls and endpoint protection to vulnerability and compliance 
+	scanners. But oftentimes this leaves your team switching back-and-forth between these 
+	tools to deal with hundreds, and sometimes thousands, of security alerts every day. 
+	With Security Hub, you now have a single place that aggregates, organizes, and 
+	prioritizes your security alerts, or findings, from multiple AWS services, such as 
+	Amazon GuardDuty, Amazon Inspector, and Amazon Macie, as well as from AWS Partner 
+	solutions. Your findings are visually summarized on integrated dashboards with actionable 
+	graphs and tables. You can also continuously monitor your environment using automated 
+	compliance checks based on the AWS best practices and industry standards your organization 
+	follows. Get started with AWS Security Hub in just a few clicks in the Management Console 
+	and once enabled, Security Hub will begin aggregating and prioritizing findings.
 	
 	
 	
@@ -678,23 +875,33 @@ Application Integration
 	----------------------------------------------------------------------------------------
 	Simple Queue Service (SQS)
 	----------------------------------------------------------------------------------------
-	Amazon SQS is a fully managed and highly scalable message queuing service for distributed applications and systems.
+	Amazon SQS is a fully managed and highly scalable message queuing service for distributed 
+	applications and systems.
 	
 	
 	----------------------------------------------------------------------------------------
 	SWF(Simple Workflow Service)
 	----------------------------------------------------------------------------------------
-	Amazon SWF helps developers build, run, and scale background jobs that have parallel or sequential steps. You can think of Amazon SWF as a fully-managed state tracker and task coordinator in the Cloud.
+	Amazon SWF helps developers build, run, and scale background jobs that have parallel or 
+	sequential steps. You can think of Amazon SWF as a fully-managed state tracker and task
+	coordinator in the Cloud.
 
-If your app's steps take more than 500 milliseconds to complete, you need to track the state of processing, and you need to recover or retry if a task fails, Amazon SWF can help you.
+If your app's steps take more than 500 milliseconds to complete, you need to track the state 
+of processing, and you need to recover or retry if a task fails, Amazon SWF can help you.
 	
 	
 	----------------------------------------------------------------------------------------
 	Simple Email Service(email sending and receiving platform)
 	----------------------------------------------------------------------------------------
-	Amazon Simple Email Service (Amazon SES) is a cloud-based email sending service designed to help digital marketers and application developers send marketing, notification, and transactional emails. It is a reliable, cost-effective service for businesses of all sizes that use email to keep in contact with their customers.
+	Amazon Simple Email Service (Amazon SES) is a cloud-based email sending service designed 
+	to help digital marketers and application developers send marketing, notification, and 
+	transactional emails. It is a reliable, cost-effective service for businesses of all sizes 
+	that use email to keep in contact with their customers.
 
-	You can use our SMTP interface or one of the AWS SDKs to integrate Amazon SES directly into your existing applications. You can also integrate the email sending capabilities of Amazon SES into the software you already use, such as ticketing systems and email clients.
+	You can use our SMTP interface or one of the AWS SDKs to integrate Amazon SES directly 
+	into your existing applications. You can also integrate the email sending capabilities 
+	of Amazon SES into the software you already use, such as ticketing systems and email 
+	clients.
 	
 	
 	
@@ -2224,9 +2431,10 @@ $ kubectl exec -it $(kubectl get pod -l run=curl -o jsonpath={.items..metadata.n
 #------------------------------------------------------
 AW IAM(Tokens) <--> AWS-IAM-Authenticator(Local) <--> Kubectl CLI
 
-  Users within the EKS environment are authenticated through AWS IAM, which provides enhanced security.  
-  If we add our 'clusterUser' credentials to the local aws client, we will see that kubernetes 
-  will still try to talk to the API, but will fail:
+  Users within the EKS environment are authenticated through AWS IAM, 
+  which provides enhanced security.  
+  If we add our 'clusterUser' credentials to the local aws client, 
+  we will see that kubernetes will still try to talk to the API, but will fail:
 
 # clusterUser Info
 	User name: 			clusterUser
@@ -2597,13 +2805,46 @@ $ kubectl get service --all-namespaces
 
 -------------------------------------------------------------------------------
 
--------------------------------------------------------------------------------
+##############################################################################
+### CloudFormation
+#   Training: https://www.linkedin.com/learning/learning-aws-cloudformation
+##############################################################################
 
--------------------------------------------------------------------------------
+JSON or YAML <=	Contains a description of resources to be provision
 
--------------------------------------------------------------------------------
+Stacks	<= Instantiation of the template
 
+Parameters 
+
+Resources
+
+Events
+	
 -------------------------------------------------------------------------------
+3. Template
+	Format Version
+	Description
+	Parameters
+	Resources
+	Outputs
+	
+-------------------------------------------------------------------------------
+Resources
+	"S3Bucket" : {
+		"Type" : "AWS::S3::Bucket",
+		"Properties" : { ... },
+		"DeletionPolicy" : "Retain"
+	}	
+
+	WebsiteURL" : {
+		"Value" : {
+		"Descriptin" : 
+	}
+	
+	
+
+
+
 
 -------------------------------------------------------------------------------
 
