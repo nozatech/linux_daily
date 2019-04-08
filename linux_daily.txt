@@ -388,11 +388,13 @@ CentOS 5, 6
 -----------------------------------------------------------------------------------------
 	https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
 	https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files	
+	https://askubuntu.com/questions/795226/how-to-list-all-enabled-services-from-systemctl
+	
 	# Units(service name) <= target of most of actions which are resources, defined by unit files
  	
-	$ systemctl						<=
+	$ systemctl						
 	
-	$ systemctl list-units			<= only active units
+	$ systemctl list-units			<= Listing only active units
 		UNIT: The systemd unit name
 		LOAD: Whether the unit's configuration has been parsed by systemd. 
 				The configuration of loaded units is kept in memory.
@@ -403,7 +405,11 @@ CentOS 5, 6
 			about the unit. This often varies by unit type, state, and the actual 
 			method in which the unit runs.
 		DESCRIPTION: A short textual description of what the unit is/does.
-		
+	
+	# Check Enabled list
+	$ systemctl list-unit-files | grep enabled
+		jenkins_proxy.service     enabled
+	
 	$ systemctl list-units	--all
 	
 	**$ systemctl list-unit-files  <= displaces all 
@@ -493,6 +499,67 @@ CentOS 5, 6
 									<= -e  jump to the end of the journal 
 	
 	
+# SystemD create startup Script
+https://stackoverflow.com/questions/39284563
+
+# SystemD Service and Log files
+
+$ sudo vi /etc/systemd/system/jenkins_proxy.service
+#or# 
+$ systemctl edit --full jenkins_proxy.service
+--------------------------------------------------------------
+[Unit]
+Description=Jenkins Proxy Server
+
+[Service]
+ExecStart=/usr/bin/node index.js > /var/log/jenkins-proxy.log			
+Restart=always
+
+#RestartSec=90
+#StartLimitInterval=400
+#StartLimitBurst=3
+
+User=node
+Group=node
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/var/app/jenkins-proxy				
+
+[Install]
+WantedBy=network.target
+--------------------------------------------------------------
+
+# Creating App Directory and Change Permission 
+$ mkdir /var/app
+$ sudo chmod -R a+w /var/app/			<= a <-all, w <-write, R <- Recursive
+
+
+# Creating Index_test.js
+$ vim /var/app/index_test.js
+-------------------------------------------------------------------------------
+// Load the http module to create an http server.
+var http = require('http');
+
+// Configure our HTTP server to respond with Hello World to all requests.
+var server = http.createServer(function (request, response) {
+  response.writeHead(200, {"Content-Type": "text/plain"});
+  response.end("Hello World\n");
+});
+
+// Listen on port 8000, IP defaults to 127.0.0.1
+var port = 3000;
+server.listen(port);
+
+// Put a friendly message on the terminal
+console.log("Server running on port", port);
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
 	
 	
 	
@@ -1469,6 +1536,15 @@ https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryptio
 	
 	$ ln -s    /home/newname   /home/oldname   
 	
+
+--------------------------------------------------------------------------		
+# sudo
+--------------------------------------------------------------------------	
+$ sudo -l			<= If no command is specified, list the allowed (and forbidden) 
+						commands for the invoking user (or the user specified by 
+						the -U option) on the current host. 
+$ sudo -k	
+
 
 	
 
@@ -2671,7 +2747,7 @@ H 2 * * *				<= Every 2am
 	###   $ for user in $(cut -f1 -d: /etc/passwd); do crontab -u $user -l; done     ###
 	####################################################################################
 	
-	# permission issue
+	# Run as SUDOER for permission issue
 	$ sudo "for user in $(cut -f1 -d: /etc/passwd); do echo $user; crontab -u $user -l; done"
 
 	
@@ -3000,8 +3076,25 @@ H 2 * * *				<= Every 2am
   
   
   
-  
-  
+-------------------------------------------------------------------------- 
+# pkexec - Execute a command as another user
+# runuser - run a command with substitute user and group ID
+--------------------------------------------------------------------------
+ $ runuser -l node -c 'cat index.js'
+			-l <-login user name,  -c <-command 
+
+use it in script
+#!/sbin/runuser username
+
+
+				
+Run as root		
+$ su - -c "command arg1"	
+$ su - root -c "command"
+$ su - root -c "ls -l /root			
+
+$ su - apark -c 'ulimit -aHS'
+
   
 --------------------------------------------------------------------------  
 # chmod 
@@ -4256,7 +4349,7 @@ B. CentOS 7(systemd)
    
   
   
-### List processes
+### List processes 
 
 	## chkconfig ##					## systemd ##
 	
@@ -4285,16 +4378,16 @@ cat /etc/inittab				systemctl list-units --type target  (--all for not active)
 								change to multi-user target
 								systemctl set-default multi-uiser.target
 								systemctl reboot
-								startx <= Windows environment 
+								startx 							<= Windows environment 
 								systemctl set-default graphical.target
 								systemctl reboot
 								systemctl start/stop sshd.service
 								systemctl enable/disalbe sshd.service  (constant run)		
-								systemctl is-enabled sshd 			 <= check for sshd
+								systemctl is-enabled sshd 		<= check for sshd
 								sytemctl daemon-reload          <= Revert httpd.conf orginal file reload 
 								systemctl reload httpd			<= httpd service reload
 
-journalctl - Query the systemd journal
+# journalctl - Query the systemd journal
 
 	journalctl may be used to query the contents of the systemd(1)
     journal as written by systF$(whoemd-journald.service(8).
@@ -4306,9 +4399,9 @@ journalctl - Query the systemd journal
 	$ journalctl -xe		 <= -x  Augment log lines with explanation texts from the message catalog.
 							    -e  jump to the end of the journal 
 	
-	# Check program logs
-	$ journalctl -u nginx 		 <= -u unit
-	$ journalctl -u sshd    
+	# Check specifig program log
+	$ journalctl -u nginx 		 	<= -u unit
+	$ journalctl -u -f sshd    		<= -f follow
 
 	$ journalctl --since "10 min ago"
 
@@ -4661,8 +4754,26 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 ### Iptables opens all	###
   $ iptables -I INPUT -j ACCEPT
 	
-	$ sudo iptables -L
 	
+	$ sudo iptables -L			<=  -L, --list 		 [List  all  rules  in the selected chain.]
+	$ sudo iptables -S 			<=  -S, --list-rules [chain - Print all rules in the selected chain. ]
+	$ sudo iptables -nL			<= List  all rules in the selected chain. '-n' NO DNS lookup (Faster)
+	
+	
+# NAT
+# Reroute
+
+	# Check NAT List
+	https://unix.stackexchange.com/questions/205867/viewing-all-iptables-rules
+	
+	$ sudo iptables -t nat -L  (티네 리스트)
+	
+	Chain PREROUTING (policy ACCEPT)
+	target     prot opt source               destination
+	REDIRECT   tcp  --  anywhere             anywhere             tcp dpt:http redir ports 3000
+	REDIRECT   tcp  --  anywhere             anywhere             tcp dpt:http redir ports 3000	
+	
+# Install IPtabls on CentOS 7	
 	$ sudo yum -y install iptables-services
 	$ sudo systemctl enable iptables 		
 	$ sudo systemctl mask firewalld			
@@ -4746,6 +4857,11 @@ iptables -L -v
 ### -j REJECT --reject-with icmp-host-prohibited
 	https://unix.stackexchange.com/questions/124624/what-a-input-j-reject-reject-with-icmp-host-prohibited-iptables-line-does-ex
 	
+
+
+
+
+
 
 	
 ### Changing data directory on Centos 7 + MySQL 5.6	
@@ -6782,6 +6898,12 @@ CentOS
 	Allow all from x.x.x.x IP 
 	-A INPUT -m state -s x.x.x.x --state NEW -j ACCEPT
 
+# Port 80  open
+	
+$ sudo iptables -A INPUT -i eth0 -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT	
+	
+	
+
 ######################################################################################################
 # Iptables <= Allow everything from single IP using cmd	
 ######################################################################################################
@@ -6974,6 +7096,11 @@ SSL has been around for long enough you'd think that there would be agreed upon 
 	was enhanced by Microsoft. This is a passworded container format that contains both public and private 
 	certificate pairs. Unlike .pem files, this container is fully encrypted. Openssl can turn this into 
 	a .pem file with both public and private keys: openssl pkcs12 -in file-to-convert.p12 -out converted-file.pem -nodes
+
+P12 - File containing a digital certificate that uses PKCS#12 (Public Key Cryptography Standard #12) 
+		encryption; used as a portable format for transferring personal private keys or other sensitive 
+		information; used by various security and encryption programs.
+
 A few other formats that show up from time to time:
 
 .der A way to encode ASN.1 syntax in binary, a .pem file is just a Base64 encoded .der file. OpenSSL 
@@ -8452,6 +8579,13 @@ resolution: config .ssh/config
 ------------------------------------------------------------------------------------
 # Terminology 		###
 ------------------------------------------------------------------------------------
+
+# entitlement <= [궐리,자격] An entitlement is a single right granted to a particular app, tool, 
+				or other executable that gives it additional permissions beyond what it would ordinarily 
+				have. Some entitlements are represented by key-value pairs in the entitlements 
+				file in your project (a file with a .entitlements file extension), and others 
+				are enabled for an App ID in your developer account.
+
 	
 # Stack 		<- used for static memory allocation 
 				int x=1
@@ -8462,6 +8596,29 @@ resolution: config .ssh/config
 	int x=1
 	int y=2
 	Form1 frm=newForm1()
+	
+# Jetty
+	Eclipse Jetty provides a Web server and javax.servlet container, plus support for HTTP/2, 
+	WebSocket, OSGi, JMX, JNDI, JAAS and many other integrations. These components are open 
+	source and available for commercial use and distribution.
+
+	Eclipse Jetty is used in a wide variety of projects and products, both in development 
+	and production. Jetty can be easily embedded in devices, tools, frameworks, application 
+	servers, and clusters. See the Jetty Powered page for more uses of Jetty.
+	
+# Java Servlet
+	A servlet is simply a class which responds to a particular type of network request - 
+	most commonly an HTTP request. Basically servlets are usually used to implement web 
+	applications - but there are also various frameworks which operate on top of servlets 
+	(e.g. Struts) to give a higher-level abstraction than the "here's an HTTP request, 
+	write to this HTTP response" level which servlets provide.
+
+	Servlets run in a servlet container which handles the networking side (e.g. parsing an 
+	HTTP request, connection handling etc). One of the best-known open source servlet 
+	containers is Tomcat.
+
+
+
 
 You can use the stack if you know exactly how much data you need to allocate before compile time 
 and it is not too big.	You can use heap if you don't know exactly how much data you will need 

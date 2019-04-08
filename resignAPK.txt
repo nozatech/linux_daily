@@ -35,7 +35,9 @@ mv "${apk_name}" "temp_unsigned.apk"
 "${SEVENZIP_PATH}" l "temp_unsigned.apk"
 
 echo "Signing the APK"
-jarsigner -verbose -sigalg MD5withRSA -digestalg SHA1 -keystore "$keystore" -keypass "$keypass" -storepass "$keystorepass" -signedjar "temp_signed_unaligned.apk" "temp_unsigned.apk" "$keyname"
+jarsigner -verbose -sigalg MD5withRSA -digestalg SHA1 -keystore "$keystore" -keypass \
+		  "$keypass" -storepass "$keystorepass" -signedjar "temp_signed_unaligned.apk" \
+		  "temp_unsigned.apk" "$keyname"
 
 echo "Aligning the APK"
 "$adk_build_tools_path"/zipalign -f 4 "temp_signed_unaligned.apk" "$apk_resigned_path"

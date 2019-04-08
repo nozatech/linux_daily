@@ -1,0 +1,17 @@
+오늘 401K 주식 T+2 Settlement
+
+10만이 자본이고 거래를 하자면 "T+2 Rule" 이 걸리니 50%로만 거래 
+
+월: $10만어치 Apple을 샀다치면(Transaction-Day)
+화: T+1(주식오는중 / 돈 가는중)
+수: T+2 에 주식왔으니 Apple를 다시 팔수있고(Transaction-Day)
+목: T+1(돈만 오는중)
+금: T+2 돈 왔으니 또 Apple 주식 사는날(Transaction-Day)
+
+
+### SELL  ###
+
+Trading => Conditionals
+
+OTO(Order 
+

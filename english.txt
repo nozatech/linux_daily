@@ -2286,7 +2286,7 @@ placate			<- make (someone) less angry(calm) or hostile.
 					antonyms:	provoke
 
 
-poised			<- be ready
+poised			<- be ready 
 
 posh			<- [adj] elegant or stylishly luxurious.
 					"a posh Munich hotel"
@@ -2302,6 +2302,8 @@ prenup			<- a prenuptial agreement. 결혼 전 계약서
 
 primitive		<- relating to, denoting, or preserving the character of an early stage in the 
 					evolutionary or historical development of something.
+					
+proceed			<- 수입 money obtained from an event or activity.
 
 profound		<- (of a person or statement) having or showing great knowledge or insight.
 					"a profound philosopher"
@@ -2599,6 +2601,10 @@ sparse			<- thinly dispersed or scattered.
 					synonyms:	scant, scanty, scattered, scarce, infrequent, few and far between;
 Spectre			<- 
 
+spitulate		<- [규정하다] demand or specify (a requirement), typically as part of a bargain or agreement.
+					"he stipulated certain conditions before their marriage"
+					synonyms:	specify, set down, set out, lay down, set forth, state clearly
+					
 splinter		<-	a small, thin, sharp piece of wood, glass, or similar material broken off from a larger piece.
 					"a splinter of ice"
 					synonyms:	sliver, shiver, chip, shard
@@ -2685,6 +2691,13 @@ tacky			<- (of glue, paint, or other substances) retaining a slightly sticky fee
 					"even in her faintly tacky costumes, she won our hearts"
 					synonyms:	tawdry, tasteless, kitsch, kitschy, vulgar, crude, garish, gaudy, 
 							showy, trashy, cheesy, cheap, common, second-rate
+
+takeaway		<- a key fact, point, or idea to be remembered, 
+					typically one emerging from a discussion or meeting.
+					"What is your takeaway?"
+					"the main takeaway for me is that we need to continue to communicate all the things 
+					  we're doing for our customers"
+
 
 talk of the town <-	"Her conduct became the talk of the town."	그녀의 행실이 마을 사람들의 입에 올랐다
 

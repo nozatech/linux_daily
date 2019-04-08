@@ -563,8 +563,12 @@ https://stackoverflow.com/questions/6959327/how-to-stop-jenkins-installed-on-mac
 # SSH Stop
 	$ sudo launchctl unload  /System/Library/LaunchDaemons/ssh.plist 
 
+
+
 # Jenkins Start	
 $ sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist
+
+
 # Jenkins Stop
 $ sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist
 
@@ -689,7 +693,7 @@ http://10.100.200.45:8080/view/Monocle/delete	<= delete view name
 
 
 # Migration - MacOS Jenkins-A to another Jenkins-B 
-move the files from your 
+move the files from your Jenins-A ==>> Jenins-B
 Copy Jenins-A's /User/Shared/Jenkins/Home 
 Paste Jenkins-B's /User/Shared/Jenkins/Home(or different directory)  
 

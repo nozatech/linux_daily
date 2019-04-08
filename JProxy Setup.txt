@@ -1,0 +1,248 @@
+JProxy Setup
+
+Node.js is running as Web server as proxy.
+
+CentOS7
+
+$ sudo yum install net-tools
+
+
+# NodeJS Install( Alternative is using 'Nginx's Reverse Proxy')
+
+$ curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+$ sudo yum install nodejs
+$ node --version
+$ npm --version
+
+# Node location
+$ which node
+/usr/bin/node
+
+# Node Dependencies 
+$ npm install express
+$ npm install morgan
+$ npm install lokijs
+$ npm install async
+
+# NPM installed List Check
+$ npm list -g --depth=1
+	/usr/lib
+	├── lodash@4.17.11
+	|─- npm@6.4.1
+	├── abbrev@1.1.1
+	├── ansicolors@0.3.2
+	├── ansistyles@0.1.3
+	├── archy@1.0.0
+
+
+
+
+
+# Node Version Manager Install 
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+$ nvm --version
+
+
+
+
+
+# Add 'node' user without login
+$ sudo adduser node -s /sbin/nologin	<= node:x:1001:1001::/home/node:/sbin/nologin
+
+$ sudo useradd jproxy					<= actual login user
+
+
+# SystemD Service and Log files
+
+$ sudo vi /etc/systemd/system/jenkins_proxy.service
+--------------------------------------------------------------
+[Unit]
+Description=Jenkins Proxy Server
+
+[Service]
+ExecStart=/usr/bin/node index.js > /var/log/jenkins-proxy.log
+Restart=always
+
+#RestartSec=90
+#StartLimitInterval=400
+#StartLimitBurst=3
+
+User=node
+Group=node
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/var/app/jenkins-proxy				
+
+[Install]
+WantedBy=network.target
+--------------------------------------------------------------
+
+# Creating App Directory and Change Permission 
+$ mkdir /var/app
+$ sudo chmod -R a+w /var/app/			<= a <-all, w <-write, R <- Recursive
+
+$ ls -l /var/app/
+total 8
+-rw-rw-r--. 1 jproxy jproxy  487 Jun 10  2016 index.js
+drwxrwxrwx. 4 jproxy jproxy 4096 May  9  2018 jenkins-proxy
+drwxrwxr-x. 3 jproxy jproxy   19 May  9  2017 Users
+
+
+# Creating Index.js
+$ vim /var/app/index.js
+-------------------------------------------------------------------------------
+// Load the http module to create an http server.
+var http = require('http');
+
+// Configure our HTTP server to respond with Hello World to all requests.
+var server = http.createServer(function (request, response) {
+  response.writeHead(200, {"Content-Type": "text/plain"});
+  response.end("Hello World\n");
+});
+
+// Listen on port 8000, IP defaults to 127.0.0.1
+var port = 3000;
+server.listen(port);
+
+// Put a friendly message on the terminal
+console.log("Server running on port", port);
+-------------------------------------------------------------------------------
+# Reference
+https://nodejs.org/api/http.html
+https://stackoverflow.com/questions/38291523/what-is-a-requirehttp-in-node-js
+
+
+$ sudo systemctl start  jenkins_proxy
+$ sudo systemctl daemon-reload				<= Write on disk error.
+$ sudo systemctl enable jenkins_proxy
+
+$ systemctl list-unit-files | grep enabled
+	jenkins_proxy.service     enabled
+
+
+# Logs
+$ sudo mkdir /var/log/jenkins-proxy
+$ sudo chmod a+rwx /var/log/jenkins-proxy
+
+
+$ journalctl -f -u jenkins_proxy
+
+
+# Location of Jenkins-Proxy Files
+
+$ ls -l  /var/app/jenkins-proxy
+drwxrwxrwx. 2 jproxy jproxy   31 Feb 11 15:04 db
+-rw-rw-rw-. 1 jproxy jproxy 4478 May  9  2018 index.js
+drwxrwxrwx. 7 jproxy jproxy   76 May  9  2018 node_modules
+-rw-rw-rw-. 1 jproxy jproxy  307 May  9  2018 package.json
+-rw-rw-rw-. 1 jproxy jproxy 7230 Feb 11 15:04 supportedBuilds.js
+
+# Log checking
+$ journalctl -u jenkins_proxy.service
+$ journalctl -f -u jenkins_proxy.service		<= follow log
+
+# Jenkins's Webhook <= This strip striggers the Jenkins runs Resigning jobs
+/var/app/jenkins-proxy/supportedBuilds.js
+
+
+
+
+# Exec the web server 
+$ node helloworld.js
+
+
+# Reset DB
+$ sudo service jenkins_proxy stop
+$ > /var/app/jenkins-proxy/db/jenkins-proxy.json
+
+
+
+
+
+curl -v -X POST --user proxy:2e...22 'http://10.100.200.41:8080/job/Server/build'
+
+# Reroute from port 80 to 3000
+
+# Enable Port 3000
+$ sudo iptables -A INPUT -i eth0 -p tcp --dport 3000 -m state --state NEW,ESTABLISHED -j ACCEPT
+# Enable Port 80
+$ sudo iptables -A INPUT -i eth0 -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+# Reroute from port 80 to 3000
+$ sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+
+
+# Check IPTables List
+$ iptables -L (or -nL No DNS lookup-faster)
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:3000 state NEW,ESTABLISHED
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:80 state NEW,ESTABLISHED
+
+
+# Check NAT List
+$ sudo iptables -t nat -L
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination
+REDIRECT   tcp  --  anywhere             anywhere             tcp dpt:http redir ports 3000
+REDIRECT   tcp  --  anywhere             anywhere             tcp dpt:http redir ports 3000
+
+
+
+
+# Check website
+$ curl -v 'http://localhost:3000/'				<= -v verbose
+--------------------------------------------------------------
+* About to connect() to localhost port 3000 (#0)
+*   Trying ::1...
+* Connected to localhost (::1) port 3000 (#0)
+> GET / HTTP/1.1
+> User-Agent: curl/7.29.0
+> Host: localhost:3000
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 15
+< ETag: W/"f-DHdpl5M+tggzs3vq9DgUyA"
+< Date: Thu, 04 Apr 2019 20:09:22 GMT
+< Connection: keep-alive
+<
+* Connection #0 to host localhost left intact
+{"status":"OK"}
+--------------------------------------------------------------
+
+# Check listening Ports
+$ netstat -plnt
+-----------------------------------------------------------------------------------
+(No info could be read for "-p": geteuid()=1000 but you should be root.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -             
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      -             
+tcp6       0      0 :::22                   :::*                    LISTEN      -             
+tcp6       0      0 :::3000                 :::*                    LISTEN      -             
+tcp6       0      0 ::1:25                  :::*                    LISTEN      -  
+-----------------------------------------------------------------------------------
+
+
+
+
+curl 'http://bnea-mobile-jenkins-01:8080'
+curl 'http://10.100.200.45:8080'
+
+cat id_rsa.pub >> .ssh/authorized_keys
+
+sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+
+
+
+
+
+
+
+
+
+
+
