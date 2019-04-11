@@ -735,10 +735,12 @@ done
 ----------------------------------------------------------------------------------------------------
 # Login Shell Process
 	### Steps of Loading profiles ###
-	1. /etc/profile 			<= systemwide env and shell vars
+	1. /etc/profile 			<= systemwide env and shell vars(Sys Admin)
 	2. /etc/profile.d/*.sh  	<= systemwide env and shell vars
+	
 	3. ~/.bash_profile			<= User env and shell vars
-	4. ~/.bashrc				<= Execute /etc/bashrc
+	4. ~/.bashrc				<= Execute /etc/bashrc (within shell)
+	
 	5. /etc/bashrc				<= Systemwide alias and shell functions
 	6. ~/.bashrc				<= Execute /etc/bashrc
 	### User Successfully LOGIN to the SHELL ###
@@ -749,11 +751,11 @@ done
 	3. ~/.bashrc				<= Execute /etc/bashrc
 
 # Variables for ALL USERS add to 
-	/etc/profile 			<= systemwide env and shell vars
-	/etc/profile.d/*.sh  	<= systemwide env and shell vars
+	/etc/profile 				<= systemwide env and shell vars
+	/etc/profile.d/*.sh  		<= systemwide env and shell vars
 
 # Variables for individual USERS 
-	~/.bash_profile			<= User env and shell vars
+	~/.bash_profile				<= User env and shell vars
 
 
 
@@ -1530,9 +1532,9 @@ https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryptio
 --------------------------------------------------------------------------	
 	https://askubuntu.com/questions/34074/how-do-i-change-my-username
 	
-	$ sudo usermod -l newUsername oldUsername
+	$ sudo usermod -l    newUsername   oldUsername
 	
-	$ sudo usermod -d /home/newHomeDir -m newUsername
+	$ sudo usermod -d   /home/newHomeDir  -m   newUsername
 	
 	$ ln -s    /home/newname   /home/oldname   
 	
@@ -1688,16 +1690,7 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	
 	
 	
-	
-----------------------------------------------------------------------------------------------------
-#  WGET to download a file using user_id & PW
---------------------------------------------------------------------------	
-	$ wget --user=user_id --password='my_passwd' http://download.com/foo.pdf
-	$ wget http://www.gnu.org/software/gettext/manual/gettext.html  or file_name	
-	$ time wget http://www.gnu.org/software/gettext/manual/gettext.html  			<= measuring download time
 
-	# download web folder files
-	$ wget -r --no-parent http://www.download.com/folder_name/
 	
 	
 ----------------------------------------------------------------------------------------------------	
@@ -1732,13 +1725,15 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	# nmcli 	<= command-line tool for controlling NetworkManager
 	$ nmcli -p device show
 	
-----------------------------------------------------------------------------------------------------	
+--------------------------------------------------------------------------
 ### jq - Command-line JSON processor
 --------------------------------------------------------------------------	
 	curl -s http://127.0.0.1:4567/clients | jq .   	<= -s slient 
 	
-----------------------------------------------------------------------------------------------------	
-### cURL   ### 
+---------------------------------------------------------------------------
+### cURL vs wget  ### 
+# powered by libcurl - a cross-platform library with a stable API 
+https://daniel.haxx.se/docs/curl-vs-wget.html
 --------------------------------------------------------------------------	
   # REST API Testing
 	A. Content of the URL and display it in the STDOUT (i.e on your terminal)
@@ -1749,11 +1744,12 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	
 	C. Save the cURL Output to a file
 		-o (lowercase o) saved in the file name e
-		-O (uppercase O) the file name in the URL will be taken and it will be used as the file name to store the result
+		-O (uppercase O) the file name in the URL will be taken and it will be 
+			used as the file name to store the result
 		-l --list-only
 		-L --location
 	  $ curl -o saving_name.html http://www.gnu.org/text_info.html							
-	  $ curl -O http://www.gnu.org/software/gettext/manual/gettext.html or file_name		<= save the file to local 
+	  $ curl -O http://www.gnu.org/software/gettext/manual/gettext.html or file_name	<= save the file to local 
 	
 	D.  Follow HTTP Location Headers with -L option  
 		$ curl -L http://google.com
@@ -1802,6 +1798,19 @@ Delete
 	$ curl -u 
 
 	$ curl -X GET -H 
+
+	
+----------------------------------------------------------------------------------------------------
+#  WGET to download a file using user_id & PW
+# Wget is command line only. There's no library.
+--------------------------------------------------------------------------	
+	$ wget --user=user_id --password='my_passwd' http://download.com/foo.pdf
+	$ wget http://www.gnu.org/software/gettext/manual/gettext.html  or file_name	
+	$ time wget http://www.gnu.org/software/gettext/manual/gettext.html  			<= measuring download time
+
+	# download web folder files
+	$ wget -r --no-parent http://www.download.com/folder_name/
+
 
 --------------------------------------------------------------------------
 # User-Agent

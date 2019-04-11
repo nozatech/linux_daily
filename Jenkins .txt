@@ -60,16 +60,24 @@ in-house 	→ Jenkins or gitlab-ci
 Github.com 	→ Travis-CI
 ------------------------------------------------------------------------------
 1. Setting up CI for a project:
-	Travis : comes in first place.. It's very easy to setup. Takes less than a minute to setup with github. -- Login to github - create web hook for Travis - back to Travis (https://travis-ci.org/) - login with github credentials and sync your github repo and enable Push and Pull requests. Very Easy Setup in Travis..
-	Jenkins: Create an Environment (Master Jenkins) - create web hooks - configurations on each job (takes time compare to Travis)
+	Travis : comes in first place.. It's very easy to setup. Takes less than a minute to 
+			setup with github. -- Login to github - create web hook for Travis - 
+			back to Travis (https://travis-ci.org/) - login with github credentials and 
+			sync your github repo and enable Push and Pull requests. Very Easy Setup in Travis..
+	Jenkins: Create an Environment (Master Jenkins) - create web hooks - configurations 
+			on each job (takes time compare to Travis)
 
 2. Re-run the builds:
-	Travis : Who ever is having write access on github they can re-run the build by clicking on restart build
-	Jenkins: re-run the build based on phrase: provide phrase text in PR/commit description like reverify jenkins
+	Travis : Who ever is having write access on github they can re-run the build 
+			by clicking on restart build
+	Jenkins: re-run the build based on phrase: provide phrase text in PR/commit
+			description like reverify jenkins
 
 3. Controlling environment:
-	Travis : Travis provides hosted environment, Travis installs required softwares for every build is a time consuming process.
-	Jenkins: It's a onetime setup, Install all the required softwares in node/slave machine and perform all the tests on pre-installed environment.
+	Travis : Travis provides hosted environment, Travis installs required softwares 
+			for every build is a time consuming process.
+	Jenkins: It's a onetime setup, Install all the required softwares in node/slave 
+			machine and perform all the tests on pre-installed environment.
 
 4. Build Logs:
 	Travis : Supports build logs to place in Amazon S3.

@@ -6,7 +6,7 @@ AWS Terminology
 Compute:
 --------------------------------------------------------------------------------------------
 	----------------------------------------------------------------------------------------
-	EC2
+	EC2 (VM Servers)
 	----------------------------------------------------------------------------------------
 	
 	----------------------------------------------------------------------------------------
@@ -103,9 +103,15 @@ Storage:
 	----------------------------------------------------------------------------------------
 	
 	----------------------------------------------------------------------------------------
-	EFS(Elastic File System)
+	EFS(Elastic File System - NFS)
+	https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html
 	----------------------------------------------------------------------------------------
-	Amazon Elastic File System (Amazon EFS) provides a simple, scalable, elastic file system 
+	Amazon EFS provides file storage in the AWS Cloud. With Amazon EFS, you can create a file 
+	system, mount the file system on an Amazon EC2 instance, and then read and write data to 
+	and from your file system. You can mount an Amazon EFS file system in your VPC, through 
+	the Network File System versions 4.0 and 4.1 (NFSv4) protocol.
+	
+	Amazon Elastic File System (Amazon EFS- NFS) provides a simple, scalable, elastic file system 
 	for Linux-based workloads for use with AWS Cloud services and on-premises resources. It 
 	is built to scale on demand to petabytes without disrupting applications, growing and 
 	shrinking automatically as you add and remove files, so your applications have the storage 
@@ -1034,7 +1040,7 @@ Manager								Servcie Proxy
 
 Pre-EKS Deployment
 	1. AWS 		CLI
-	2. Kubectl  CLI				<= Auto completion
+	2. Kubectl  CLI				<= Auto Shell CMD completion
 	3. BASH 	CLI
 	
 Pre-AWS EKS Deployment

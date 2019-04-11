@@ -1,4 +1,4 @@
-오늘 401K 주식 T+2 Settlement
+﻿오늘 401K 주식 T+2 Settlement
 
 10만이 자본이고 거래를 하자면 "T+2 Rule" 이 걸리니 50%로만 거래 
 
@@ -13,5 +13,5 @@
 
 Trading => Conditionals
 
-OTO(Order 
+OTO(One-Triggers-Other)
 
