@@ -2375,6 +2375,13 @@ recumbent		<- 	a resting or reclining state
 					
 reconnaissance	<- military observation of a region to locate an enemy or ascertain strategic features.
 
+reconcile		<- restore friendly relations between.
+					"she wanted to be reconciled with her father"
+					"reconcile A to B" (종종 재귀 용법 또는 수동태) [A(남)에게 B(손해·운명 등)를] 
+					감수[체념]하게 하다
+					'reconcile oneself to a fact'
+					
+사실을 (체념하고) 인정하다
 redact			<- Edit (text) for publication.(
 					censor or obscure (part of a text) for legal or security purposes.
 

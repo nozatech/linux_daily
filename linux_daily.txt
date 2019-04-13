@@ -1734,6 +1734,15 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 ### cURL vs wget  ### 
 # powered by libcurl - a cross-platform library with a stable API 
 https://daniel.haxx.se/docs/curl-vs-wget.html
+
+Download a file into current folder
+wget     http://file.com/get.zip
+curl -O  http://file.com/get.zip			
+
+
+
+
+
 --------------------------------------------------------------------------	
   # REST API Testing
 	A. Content of the URL and display it in the STDOUT (i.e on your terminal)
@@ -1748,8 +1757,17 @@ https://daniel.haxx.se/docs/curl-vs-wget.html
 			used as the file name to store the result
 		-l --list-only
 		-L --location
-	  $ curl -o saving_name.html http://www.gnu.org/text_info.html							
-	  $ curl -O http://www.gnu.org/software/gettext/manual/gettext.html or file_name	<= save the file to local 
+	
+	# -o 	<- saves the file with a predefined filename,
+	  $ curl -o ~/tmp/<saving_name.html> http://www.gnu.org/text_info.html							
+	  $ ls -l ~/tmp/
+		text_info.html	
+	
+	# -O 	<- will save the file with its original filename
+	  $ curl -O http://www.gnu.org/text_info.html  
+	  $ ls -l 
+		text_info.html   
+	
 	
 	D.  Follow HTTP Location Headers with -L option  
 		$ curl -L http://google.com
@@ -9477,9 +9495,29 @@ SIGPWR	30	Power failure restart (System V)
 	
 	
 
+#################
+HashiCorp Packer 
+https://www.packer.io/intro/index.html
+https://www.digitalocean.com/community/tutorials/how-to-create-digitalocean-snapshots-using-packer-on-ubuntu-16-04
+#################
+Packer, by Hashicorp, is a command-line tool for quickly creating identical machine 
+images for multiple platforms and environments. With Packer, you use a configuration 
+file, called a template, to create a machine image containing a preconfigured operating 
+system and software. You can then use this image to create new machines. You can even 
+use a single template to orchestrate the simultaneous creation of your production, 
+staging, and development environments.
 
+Packer is an open source tool for creating identical machine images for multiple platforms 
+from a single source configuration. Packer is lightweight, runs on every major operating system, 
+and is highly performant, creating machine images for multiple platforms in parallel. 
 
+Packer does not replace configuration management like Chef or Puppet. In fact, when building images, 
+Packer is able to use tools like Chef or Puppet to install software onto the image.
 
+A machine image is a single static unit that contains a pre-configured operating system 
+and installed software which is used to quickly create new running machines. Machine 
+image formats change for each platform. Some examples include AMIs for EC2, VMDK/VMX 
+files for VMware, OVF exports for VirtualBox, etc.
 
 
 

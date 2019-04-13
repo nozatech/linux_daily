@@ -1,17 +1,17 @@
-﻿오늘 401K 주식 T+2 Settlement
+﻿//대장주거래//분할매수//감정배제//물타기금물
 
-10만이 자본이고 거래를 하자면 "T+2 Rule" 이 걸리니 50%로만 거래 
+############################################
+1. 총액에 10%만 간보기로
+2. 분할 매수 90%에서 10%씩
+3. 이득이 1%이상 나면 팔기
+############################################
 
-월: $10만어치 Apple을 샀다치면(Transaction-Day)
-화: T+1(주식오는중 / 돈 가는중)
-수: T+2 에 주식왔으니 Apple를 다시 팔수있고(Transaction-Day)
-목: T+1(돈만 오는중)
-금: T+2 돈 왔으니 또 Apple 주식 사는날(Transaction-Day)
-
-
-### SELL  ###
-
+### Buy and Sell  ###
 Trading => Conditionals
-
 OTO(One-Triggers-Other)
 
+PER (Price-to-Earnings)
+	- 동종/비교업종 비교
+	- 5~6년 PER 비교
+	= market value per share/ Earning per share
+	
