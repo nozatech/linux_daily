@@ -1,17 +1,47 @@
 ﻿//대장주거래//분할매수//감정배제//물타기금물
-
 ############################################
-1. 총액에 10%만 간보기로
+1. 총액에 10%만 간보기
 2. 분할 매수 90%에서 10%씩
-3. 이득이 1%이상 나면 팔기
+3. 이득 1%이상 나면 팔기
+4. NO!!! Earning Play
+5. Stop Loss 걸구 시작
+6. 
 ############################################
 
+############################################
 ### Buy and Sell  ###
+############################################
 Trading => Conditionals
 OTO(One-Triggers-Other)
 
-PER (Price-to-Earnings)
+PE Ratio <- Price-to-Earnings Ratio 
+		"LOWER THE BETTER"
 	- 동종/비교업종 비교
 	- 5~6년 PER 비교
 	= market value per share/ Earning per share
-	
+
+EPS		<- Earning Per Share
+		   "EPS serves as an indicator of a company's profitability" 
+
+IFRS 	<- International Financial Reporting Standards
+
+NRI 	<- Non-Recurring Items 
+
+
+
+
+############################################
+Chart
+############################################
+MACD		<- Moving Average Convergence/Divergence 	
+PBR			<- Price-to-Book Ratio (P/B Ratio)
+Mutual Fund <- 주식회사 방식으로 운영되는 펀드
+
+
+
+############################################
+Terminology
+############################################
+Beige Book 	<- Summary of Commentary on 'Current Economic Conditions' By Federal Reserve District
+
+ETF 		<- Exchange Traded Fund(e.g. QQQ(FAANG Stocks), SPY(S&P), 

@@ -5,6 +5,8 @@ A container image is a self-contained entity with its own application code,
 runtime, and dependencies that you can use to create and run containers.
 
 
+
+
 docker-cheat-sheet
 https://github.com/wsargent/docker-cheat-sheet
 https://www.docker.com/sites/default/files/Docker_CheatSheet_08.09.2016_0.pdf
@@ -22,6 +24,11 @@ docker container    <= Running VM
 docker tools		<= cli tools
 docker registry		<= image repository  e.g. Docker Hub or quay.io
 
+Image(Snapshot) vs Container(VM)
+An image is an inert, immutable, file that's essentially a snapshot of a container. 
+Images are created with the build command, and they'll produce a container when started with run. 
+
+
 ###  Docker Help ###
 $ docker
 $ docker help
@@ -32,8 +39,8 @@ $ docker ps
 
 
 ### Permission ###
-$ sudo usermod -a -G docker ${USER}				<- from root
-```completely log out of your account and log back in 
+$ sudo usermod -a -G docker ${USER}				<- Re-Login to affect
+
 
 #check
 $ grep ${USER} /etc/group
@@ -52,6 +59,7 @@ Fedora 			 - journalctl -u docker.service
 OpenSuSE 		 - journalctl -u docker.service
 OSX 			 - ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/log/d‌​ocker.log
 
+
 #-----------------------------------------------------------------------------------------------------------
 Docker cmd
 #-----------------------------------------------------------------------------------------------------------
@@ -61,10 +69,28 @@ $ docker ps -q
 $ docker images
 
 
+# Kill
+$ docker kill $(docker ps -q) 				<=  'KILL' all docker containers
 
-$ docker kill $(docker ps -q) 				<= kill all docker containers
+# Delete all containers
 $ docker rm   $(docker ps -a -q)			<=  Delete all containers
-$ docker rmi  $(docker images -q)			<=  Delete all images
+
+# Delete all images
+$ docker rm   $(docker images -q)			<=  Delete all images
+
+$ docker ps --help
+  -a, --all             Show all containers (default shows just running)
+  -f, --filter filter   Filter output based on conditions provided
+      --format string   Pretty-print containers using a Go template
+  -n, --last int        Show n last created containers (includes all states) (default -1)
+  -l, --latest          Show the latest created container (includes all states)
+      --no-trunc        Don't truncate output
+  -q, --quiet           Only display numeric IDs
+  -s, --size            Display total file sizes
+
+
+
+
 
 
 ### Creating separate docker shell
@@ -554,7 +580,9 @@ CMD ["echo","Hello World"]
 
 -rw-r--r-- 1 root root  218 Oct  5 14:50 Dockerfile
 
-$ docker build -t helloworld:0.1 .          <= . current directory
+$ docker build -t helloworld:0.1   .         			 <= . current directory
+$ docker build -t helloworld:0.1   ~/docker_images       <= . current directory
+
 ...................
 Sending build context to Docker daemon 2.048 kB      <= daemon running build
 Step 1 : FROM ubuntu:14.04
@@ -1801,7 +1829,7 @@ Docker for CentOS7
 	$ grep docker /etc/group | 
 	$ docker:x:993:				<= from		
 	$ docker:x:993:apark		<= to
-	$ RE-LOGIN
+	$ Log off and RE-LOGIN
 
 
 $ docker ps

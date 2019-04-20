@@ -72,7 +72,8 @@ $ man -k REGEX or UNIXCOMMAND
 $ PS1="#: " ; export PS1
 -----------------------------------------------------------------------------------	
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && source ~/.bashrc 
-echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && 		. ~/.bashrc 
+
+# echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && 		. ~/.bashrc 
 -----------------------------------------------------------------------------------	
 
 ### Green & Red promt
@@ -1763,7 +1764,7 @@ curl -O  http://file.com/get.zip
 	  $ ls -l ~/tmp/
 		text_info.html	
 	
-	# -O 	<- will save the file with its original filename
+	# -O  	<- will save the file with its original filename
 	  $ curl -O http://www.gnu.org/text_info.html  
 	  $ ls -l 
 		text_info.html   
@@ -1829,7 +1830,8 @@ Delete
 	# download web folder files
 	$ wget -r --no-parent http://www.download.com/folder_name/
 
-
+	$ sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+	
 --------------------------------------------------------------------------
 # User-Agent
 --------------------------------------------------------------------------	

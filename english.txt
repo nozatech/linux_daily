@@ -2194,10 +2194,16 @@ pet peeve		<- something that a particular person finds especially annoying.
 					"one of my biggest pet peeves is poor customer service"
 					"One of my pet peeves is the unbearable humidity in summer. "
 					내가 진짜 싫어하는 것 중 하나가, 여름에 참을 수 없을 만큼 습한 거야.
-					"My biggest pet peeve is rude and arrogant people. "
+					"My biggest 'pet peeve' is rude and arrogant people. "
 					내가 젤 싫어하는 건 무례하고 건방진 사람이야.
+					"His biggest pet peeve is tardiness."
+					그가 가장 혐오하는 건 시간에 늦고 게으른 거야
 
 ponderous		<- slow and clumsy because of great weight.
+
+pragmatic		<- [adj 실리적인]dealing with things sensibly and realistically in a way that is based 
+					on practical rather than theoretical considerations.
+					"a pragmatic approach to politics"
 
 precedence		<- [n] the condition of being considered more important than someone or something else; 
 						priority in importance, order, or rank.
@@ -2261,6 +2267,9 @@ prospective		<- (of a person) expected or expecting to be something particular i
 					vs Retrospective  <- 회고의,looking back on or dealing with past events or situations. 
 
 protrude		<- 
+
+pulling forward	<- speed up, accelerate, quicken...
+
 
 punctual		<- 	happening or doing something at the agreed or proper time; on time.
 					"he's the sort of man who's always punctual"
@@ -2664,6 +2673,12 @@ streak			<- [striːk] Noun: a long, thin line or mark of a different substance o
 
 struth = strewth <- 깜짝이야!
 
+subdued			<- [adj]억제된(of a person or their manner) quiet and rather reflective or depressed.
+					"I felt strangely subdued as I drove home"
+					"Empire State manufacturing index called ‘subdued’ as outlook component slumps to three-year low"
+					synonyms:	somber, low-spirited, downcast, sad, dejected, depressed, low, gloomy, 
+							despondent, dispirited, disheartened, forlorn, woebegone; More
+
 					
 subtle			<- [sΛtl](especially of a change or distinction) so delicate or 
 					precise as to be difficult to analyze or describe.
@@ -2728,7 +2743,8 @@ tenacity		<- 	the quality or fact of being able to grip something firmly; grip.
 					"the tenacity of certain myths within the historical record"					
 
 tenure			<- 	보유 기간, 보유권, 임기, 재직
-					제84조 대통령은 내란 또는 외환의 죄를 범한 경우를 제외하고는 '재직중' 형사상의 소추를 받지 아니한다. 
+					제84조 대통령은 내란 또는 외환의 죄를 범한 경우를 제외하고는 '재직중' 
+					형사상의 소추를 받지 아니한다. 
 					Article 84 	"The President shall not be charged with a criminal offense 
 							during 'his tenure of office' except for insurrection or treason."
 						
@@ -2747,6 +2763,9 @@ thick-skinned
 
 tipping point	<- the point at which a series of small changes or incidents becomes significant enough 
 					to cause a larger, more important change.
+
+TLDR 			<- acronym for Too Long, Didn't Read
+
 					
 To this end		<- 이를 위하여, In order to achieve this goal. as a way of dealing with or doing something
 					We want to save the building. To this end, we have hired someone to assess its current state.
