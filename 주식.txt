@@ -5,43 +5,156 @@
 3. 이득 1%이상 나면 팔기
 4. NO!!! Earning Play
 5. Stop Loss 걸구 시작
-6. 
+6. Sell tailing
 ############################################
+
+Research
+Google Search:  
+	amazon filetype:pdf
+
 
 ############################################
 ### Buy and Sell  ###
 ############################################
+잉여금	<- 쓰고난돈. a surplus (fund); balance in hand.
+
 Trading => Conditionals
 OTO(One-Triggers-Other)
 
-PE Ratio <- Price-to-Earnings Ratio 
-		"LOWER THE BETTER"
-	- 동종/비교업종 비교
-	- 5~6년 PER 비교
-	= market value per share/ Earning per share
+DART 	<- Daily Average Revenue Trades 
+			https://www.investopedia.com/terms/d/daily-average-revenue-trades.asp
 
-EPS		<- Earning Per Share
+
+
+Beta (3Y Monthly)	<- 	
+						https://www.investopedia.com/terms/b/beta.asp
+
+
+
+BPS		<- Book-value Per Share (주당-순자산가치(청산가치))
+			=(기업의 현재 순자산 / 총 발행주식수)
+		[ 자본총액 100억/주식총수 100주 = 1주당 순자산 1억 ]
+
+CPI		<- Consumer Price Index (소비자 물가지수)
+PPI		<- Product Price Index	(생산자 물가지수)
+
+CPS|CPFS	<- Cash Flow Per Share
+			***주당 현금(흐름)이 큰회사가 더 좋은회사.
+
+
+DTI		<- Debt to Income Ratio(연간 소득에서 대출로 갑아야하는 비율)
+
+DPS		<- Dividends Per Share(주당배당금)
+
+배당수익율 	= 1주당 배당액 / 주가
+			
+
+VTL		<- Loan To Value Ratio (주택대출 비율)
+
+ISM		<- 제조업 지수(	저 성장 <-50-> 고성장)
+None-ISM	<- 비제조업 지수(서비스, 금융)(	저 성장 <-50-> 고성장)
+
+EBIT	<- Earning Before Interest and Tax
+			*** 클수록 좋은회사***
+
+EDGAR — Electronic Data Gathering, Analysis and Retrieval
+		기업들의 발표자료와 데이터	
+		https://www.sec.gov/edgar/searchedgar/companysearch.html
+		
+EPS		<- Earning Per Share(주당-순이익) ***클수록 좋은회사***
 		   "EPS serves as an indicator of a company's profitability" 
+		(= 자본총액/ 총주식)
 
-IFRS 	<- International Financial Reporting Standards
+EV		<- Enterprise Value(시가총액+총부채-현금)
+
+FCF		<- Free Cash Flow(임여현금흐름)  Surplus Money <= 클수록 좋음
+
+PER 	<- Price-to-Earnings Ratio (주가-수익율-비율) 
+		"LOWER THE BETTER" ***저평가주*** 4이하 급등가능성/ 8이상 급락 가능성
+		- 동종/비교업종 비교
+		- 5~6년 PER 비교
+		= market value per share/ Earning per share
+
+
+GAAP 	<- Generally Accepted Accounting Principles 		   
+Non-GAAP <- addition to their earnings based on GAAP earnings	
+			https://www.investopedia.com/terms/n/non-gaap-earnings.asp
+
+HTS		<- Home Trading System 
+MTS		<- Mobile Trading System 
+		   
+IFRS 	<- International Financial Reporting Standards(미국에서 유럽식 회계)
+			국제회계기준위원회(ISAC)가 기업의 회계 처리와 재무제표에 대한 국제적 통일
 
 NRI 	<- Non-Recurring Items 
 
+PBR		<- Price-to-Book Ratio (P/B Ratio) (Lower 저성장) 주가순자산비율
+			(= 현재주가 / BPS) 주가 10만원/주당순자산 20만원 = 0.5
+
+ROA 	<- Return On Assets(총자산 이익율)
+			총자산이익율 = 순이익/자산(=부채+자본)
+			*** 높을수록 좋음***
+			
+ROE		<- Return on Equity	
+		(자기자본[초기]이익율) = (당기-순이익 / 자본총액) x 100%
+			*** 높을수록 좋음***
+ROIC	<- Return On Invested Captital
+			*** 높을수록 좋음***
+		
+
+BPS 	<- 
+
+PEG		<- Price Earnings to Growth Ratio(향휴ㅜ 3~5년 성장룰 추정값)
+		PEG= PER/EPS 증가율
+
+PCR 	<- Price per Cash Ratio(주가현금비율)
+		 PCR = 주가/주당현금흐름   <= 낮을수록 저평가
 
 
+PSR		<- Price per Sales Ratio
+			주가매출비율 = 주가/주당매출액
+			[주가매출비율 0.5 = 주가 10만원/주당매출액 20만원]
+			*** PSR이 낮을수록 주당순매출액에 비해 주가가 낮으므로, 저평가 가능성이 높음***
+			
 
+RSI		<- Relative Strength Index(accurate analysis of momentum and duration of trends/range bound charts)
+			80  <- Over bought 			<- BUY
+			20	<- Negative momentum 	<- SELL
+
+SPS		<- Sales Per Share
+			주당매출액 = 매출액/발행주식총수 
+			[회사 매출액 100억/ 주식총수 100주= 1억 주당매출액] ***더큰회사가 좋음***
+
+TTM		<- Trailing Twelve Months( Company's Revenue 12-months) 			
+			
 ############################################
 Chart
 ############################################
+MA			<- Moving Avergate
 MACD		<- Moving Average Convergence/Divergence 	
-PBR			<- Price-to-Book Ratio (P/B Ratio)
-Mutual Fund <- 주식회사 방식으로 운영되는 펀드
 
 
+Candle Stick Chart
+	If GREEN!
+		|	<- Hight a Day or min/hr
+		|
+	   | |	<- Close
+	   | |	
+	   | |	<- Open
+	    |	<- Lowest a Day or min/hr
+       
 
+
+	   
+	   
+	   
 ############################################
 Terminology
 ############################################
 Beige Book 	<- Summary of Commentary on 'Current Economic Conditions' By Federal Reserve District
 
 ETF 		<- Exchange Traded Fund(e.g. QQQ(FAANG Stocks), SPY(S&P), 
+
+Mutual Fund <- 주식회사 방식으로 운영되는 펀드
+
+
