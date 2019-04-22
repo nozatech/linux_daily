@@ -1740,6 +1740,10 @@ Download a file into current folder
 wget     http://file.com/get.zip
 curl -O  http://file.com/get.zip			
 
+Data Integrity  and Authenticity check using "SHA256SUM"
+$ wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
+$ sha256sum       go1.10.3.linux-amd64.tar.gz
+	fa1b0........f901035  go1.10.3.linux-amd64.tar.gz  <= compare the value from downloaded site
 
 
 
@@ -1876,8 +1880,9 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 ### Verify the API Token
 $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/apps
 
-
-
+curl -fsSL 		-f  (fail silently(no output))
+				-sS (silence, --show-error_)When used with -s it makes curl show an error message if it fails.
+				-L (location)	
 ----------------------------------------------------------------------------------------------------	
 ### text browser ###
 https://www.tecmint.com/command-line-web-browser-download-file-in-linux/
@@ -4452,6 +4457,32 @@ Ubuntu 14.04 or lower									V
 Ubuntu 16.04 or higher			V	
 ----------------------------------------------------------------		
 	
+
+From 10.04 up to 17.04:
+
+   Ubuntu      |       Debian  
+18.04  bionic     buster  / sid   - 10
+17.10  artful     stretch / sid   - 9
+17.04  zesty      stretch / sid
+16.10  yakkety    stretch / sid
+16.04  xenial     stretch / sid
+
+15.10  wily       jessie  / sid   - 8
+15.04  vivid      jessie  / sid
+14.10  utopic     jessie  / sid
+14.04  trusty     jessie  / sid
+
+13.10  saucy      wheezy  / sid   - 7
+13.04  raring     wheezy  / sid
+12.10  quantal    wheezy  / sid
+12.04  precise    wheezy  / sid
+11.10  oneiric    wheezy  / sid
+
+11.04  natty      squeeze / sid   - 6
+10.10  maverick   squeeze / sid
+10.04  lucid      squeeze / sid
+
+
 	
 46. List of package installed
 	$ rpm -qa | grep ^httpd

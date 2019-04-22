@@ -1219,6 +1219,11 @@ deed			<-  1.literary: an action that is performed intentionally or consciously.
 					synonyms:	legal document, contract, indenture, instrument
 						"a deed to the property"
 
+deluge			<- [델유쥐] a severe flood.
+					synonyms:	flood, flash flood, torrent; spate
+					"many homes were swept away by the deluge"
+					"Stocks end the day little changed as Wall Street braces for a corporate earnings deluge"
+
 delve			<- [verb] reach inside a receptacle and search for something.[탐구하다]
 					"she delved in her pocket"
 					synonyms:	rummage (about/around/round) in, search (through), hunt through, 
@@ -1706,6 +1711,8 @@ impasse			<- a situation in which no progress is possible, especially because of
 					a deadlock.
 					"the current political impasse"
 					synonyms:	deadlock, dead end, stalemate, checkmate, standoff; More
+
+imperative		<- 반드시 …해야 하는
 
 implicitly		<- unclearly
 
