@@ -2190,10 +2190,15 @@ pertinent		<- relevant or applicable to a particular matter; apposite. synonyms:
 
 periodontists	<- 치주염
 
-perseverance	<- steadfastness in doing something despite difficulty or delay in achieving success.
+perseverance	<- 끈기, 인내. steadfastness in doing something despite difficulty or delay in achieving success.
 					"his perseverance with the technique illustrates his single-mindedness"
 					synonyms:	persistence, tenacity, determination, staying power, indefatigability, 
 								steadfastness, purposefulness.
+
+persist			<- 계속 …하다
+persistence		<- 
+					entice with persistence
+					끈질기게 ~을 유혹하다
 
 pertain			<- documents pertaining to the lawsuit
 

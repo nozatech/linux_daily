@@ -1004,6 +1004,14 @@ $ docker run -it --name=net1 net-img
 
 $ docker run -it --name=net2 net-img
 
+# Check & Install  Bridge
+https://www.itzgeek.com/how-tos/mini-howtos/create-a-network-bridge-on-centos-7-rhel-7.html
+$ modinfo bridge
+# Enable 
+$ modprobe --first-time bridge
+ 
+$ yum install bridge-utils -y
+
 $ brctl show
 bridge name     bridge id               STP enabled     interfaces
 docker0         8000.02426112d121       no              veth9e62a9f  <= net2 virtual adapter
@@ -1040,6 +1048,16 @@ $ cat /var/lib/docker/containers/08...e7e/hosts
 127.0.0.1       localhost
 ::1     localhost ip6-localhost ip6-loopback
 
+$ ls -l /var/lib/docker/containers/08...e7e/
+-rw-r-----. 1 root root  371 Apr 23 03:08 1a6fe3b89ce2cd73bc35fed709fc0385a9e61069f200ee3a8cd67656ed0b4061-json.log
+drwx------. 2 root root    6 Apr 23 03:08 checkpoints
+-rw-------. 1 root root 2717 Apr 23 03:08 config.v2.json
+-rw-r--r--. 1 root root 1421 Apr 23 03:08 hostconfig.json
+-rw-r--r--. 1 root root   13 Apr 23 03:08 hostname
+-rw-r--r--. 1 root root  174 Apr 23 03:08 hosts
+drwx------. 3 root root   17 Apr 23 03:08 mounts
+-rw-r--r--. 1 root root  117 Apr 23 03:08 resolv.conf
+-rw-r--r--. 1 root root   71 Apr 23 03:08 resolv.conf.hash
 
 
 # On Host resolve.conf
@@ -1054,6 +1072,7 @@ $cat /etc/hosts
 127.0.0.1       localhost
 127.0.1.1       u14lts
 
+
 $ docker run --dns=8.8.8.8 --name=dnstest net-img
 
 $ docker inspect net-img
@@ -1064,10 +1083,10 @@ $ docker inspect net-img
 #------------------------------------------------------------------------------------------------------
 
 1. Docker Daemon Logging
- debug		<= debug + info + error + fatal
- info		<= info + error + fatal
- error		<= error + fatal
- fatal		<= fatal
+	debug		<= debug + info + error + fatal
+	info		<= info + error + fatal
+	error		<= error + fatal
+	fatal		<= fatal
  
  $ service docker stop
   
