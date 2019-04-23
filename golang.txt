@@ -1,0 +1,49 @@
+Go (golang) 
+	=> a general purpose, higher-level, imperative programming language.
+	=> a programming language first developed at Google. It is a statically-typed language 
+		with syntax loosely derived from C, but with additional features such as garbage collection, 
+		type safety, some dynamic-typing capabilities, additional built-in types 
+		(e.g., variable-length arrays and key-value maps), and a large standard library.
+		
+Golang Installation and Hello World
+https://linuxize.com/post/how-to-install-go-on-centos-7/
+
+$ wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
+$ sha256sum go1.10.3.linux-amd64.tar.gz
+
+# Use the tar command to extract the tarball to the /usr/local directory:
+$ sudo tar -C  /usr/local         -xzf  go1.10.3.linux-amd64.tar.gz
+		   -C, --directory=DIR	  -x extract, -z gzip, -f --file=ARCHIVE
+$ export PATH=$PATH:/usr/local/go/bin
+$ source ~/.bash_profile
+
+# Test
+$ mkdir -p ~/go/src/hello
+$ vi ~/go/src/hello/hello.go
+----------------------------------------
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Printf("Hello, World\n")
+}
+----------------------------------------
+Build the hello.go file:
+NOTe: You have to be in ~/go/src/hello directory first!!
+$ go build ~/go/src/hello 
+# hello build will be in $PWD instead of ~/go/src/hello 
+$ cd ~/go/src/hello 
+$ go build
+
+$ pwd
+	/home/apark/go/src/hello
+$ go build
+$ ls -l
+total 1980
+-rwxrwxr-x. 1 apark apark 2020012 Apr 22 14:51 hello	<= this is build	
+-rw-rw-r--. 1 apark apark      78 Apr 22 14:44 hello.go
+
+Run(Execute) the build
+$ ./hello
+	Hello, World		<= This is RESULT!
