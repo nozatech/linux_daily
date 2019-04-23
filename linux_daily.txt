@@ -8705,7 +8705,10 @@ is important to consider in exception handling and thread executions.
 	In the macOS, iOS, NeXTSTEP, and GNUstep programming frameworks, property list files are files 
 	that store serialized objects. Property list files use the filename extension .plist
 	
-	
+# Node.js 
+	is a JavaScript platform for general-purpose programming that allows users to build network 
+	applications quickly. By leveraging JavaScript on both the front and backend, Node.js makes 
+	development more consistent and integrated.	
 	
 ------------------------------------------------------------------------------	
 Cross-Site Request Forgery (CSRF)

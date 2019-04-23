@@ -1,3 +1,5 @@
+Go microservices with Docker and Docker images
+
 Go (golang) 
 	=> a general purpose, higher-level, imperative programming language.
 	=> a programming language first developed at Google. It is a statically-typed language 
@@ -15,7 +17,8 @@ $ sha256sum go1.10.3.linux-amd64.tar.gz
 $ sudo tar -C  /usr/local         -xzf  go1.10.3.linux-amd64.tar.gz
 		   -C, --directory=DIR	  -x extract, -z gzip, -f --file=ARCHIVE
 $ export PATH=$PATH:/usr/local/go/bin
-$ source ~/.bash_profile
+$ source ~/.bash_profile				<= load at login
+#or# $ source ~/.bashrc					<= load at running shell
 
 # Test
 $ mkdir -p ~/go/src/hello
@@ -47,3 +50,54 @@ total 1980
 Run(Execute) the build
 $ ./hello
 	Hello, World		<= This is RESULT!
+	
+# Git Clone
+$ git clone https://github.com/do-community/mux-go-api.git	
+
+
+Building a Base Ubuntu Image	
+
+$ vi ~/mux-go-api/Dockerfile.ubuntu	
+#----------------------------------------
+FROM ubuntu:18.04
+
+RUN apt-get update -y \
+  && apt-get install -y git gcc make golang-1.10
+
+ENV GOROOT /usr/lib/go-1.10
+ENV PATH $GOROOT/bin:$PATH
+ENV GOPATH /root/go
+ENV APIPATH /root/go/src/api
+
+WORKDIR $APIPATH
+COPY . .
+
+RUN \ 
+  go get -d -v \
+  && go install -v \
+  && go build
+
+EXPOSE 3000
+CMD ["./api"]
+#----------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
