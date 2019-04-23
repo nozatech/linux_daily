@@ -30,19 +30,18 @@ Images are created with the build command, and they'll produce a container when 
 
 
 ###  Docker Help ###
-$ docker
 $ docker help
-$ docker run  
+
 $ docker run  --help
 $ docker port --help
-$ docker ps
+$ docker ps	  --help
 
 
-### Permission ###
+### Linux User Permission to run Docker command ###
 $ sudo usermod -a -G docker ${USER}				<- Re-Login to affect
+$ sudo usermod -aG   docker ${USER}				<- Re-Login to affect
 
-
-#check
+# To check
 $ grep ${USER} /etc/group
 		
 
@@ -70,10 +69,10 @@ $ docker images
 
 
 # Kill
-$ docker kill $(docker ps -q) 				<=  'KILL' all docker containers
-
+$ docker kill $(docker ps -q) 			<= 'KILL' "$(docker ps -q)" <= all docker containers
+																-q [quiet]
 # Delete all containers
-$ docker rm   $(docker ps -a -q)			<=  Delete all containers
+$ docker rm   $(docker ps -a -q)			<=  Delete quietly all containers
 
 # Delete all images
 $ docker rm   $(docker images -q)			<=  Delete all images
@@ -90,12 +89,12 @@ $ docker ps --help
 
 
 
-
-
-
-### Creating separate docker shell
+### Login to Docker Container Bash Shell
 $ docker run -it ubuntu:14.04 /bin/bash  	<= specific version login
-
+			 -i interactive
+			 -t termial
+			 -d detach		   /bin/bash shell
+							   
 $ docker inspect image_name
 $ ctrl+p+q  								<=	to exit shell without terminate the container
 $ docker network ls
@@ -118,7 +117,7 @@ $ docker run -it jenkins /bin/bash
 	$ curl -fsSL https://get.docker.com/ | sh   		<= docker install script
 		   -f  fail silently(no output at all)
 		   -s	--silent (Silent or quiet mode)
-		   -S	--show-error
+		   -S	--show-error if '-s' is used
 		   -L 	--location
 	
 	https://get.docker.com/
@@ -477,10 +476,10 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 e9e7ae8a6abd        ubuntu:14.04        "/bin/bash"         6 minutes ago       Exited (0) 3 minutes ago                       prickly_torvalds
 
 
-$ docker start | stop | restart  container_name <= container to start, stop, restart (VM)
-$ docker start | stop | restart e9e7ae8a6abd
+$ docker start | stop | restart  container_name 	<= container to start, stop, restart (VM)
+$ docker start | stop | restart  e9e7ae8a6abd
 
-$ docker attach | restart e9e7ae8a6abd  		<= reconnect <= connection to container using PID 1(ssh to the container)  
+$ docker attach | restart 	e9e7ae8a6abd  		<= reconnect <= connection to container using PID 1(ssh to the container)  
 
   
 ### PID ###
@@ -498,12 +497,12 @@ $ docker rm -f					<= -f force
 # check 
 $ docker run ubuntu /bin/bash
 $ ping google.com -c 60
-$ ctrl++p+q
+$ ctrl+p+q					<= leave the container running and back to HOST OS prompt
 
 ### Using Host PID 33702
 root     33702  0.0  0.3  18244  3292 pts/3    Ss+  13:36   0:00 /bin/bash
 
-## phusion/baseimage <= docker image from Docker hub
+## phusion/baseimage 			<= docker image from Docker hub
 
 ### check what is going on with the container
 
@@ -526,7 +525,22 @@ Reading package lists... Done
 
 $ docker ps
 
-$ docker inspect 972a27e39f97
+$ docker inspect 972a27e39f97	
+[
+    {
+        "Id": "sha256:9f38484d220fa527b1fb19747638497179500a1bed8bf0498eb788229229e6e1",
+        "RepoTags": [
+            "centos:latest"
+        ],
+        "RepoDigests": [
+            "centos@sha256:8d487d68857f5bc9595793279b33d082b03713341ddec91054382641d14db861"
+        ],
+        "Parent": "",
+        "Comment": "",
+        "Created": "2019-03-14T21:19:53.361167852Z",
+		----------------
+]
+	
 
 $ cat /var/lib/docker/containers/f84d...70/config.v2.json
 
@@ -548,16 +562,22 @@ $ nsenter -m -u -n -p -i -t 18141 /bin/bash
 root@4eeaa3992e4e:/#
 
 ## within running container only, pause will fail 
-$ docker exec 972a27e39f97 ls
+$ docker exec 972a27e39f97 ls -l | grep 
+		 exec <= Run a command in a running container
 
 ### 
-$ docker exec -it 972a27e39f97 /bin/bash
+$ docker exec -it 972a27e39f97 /bin/bash			
+$ docker exec     8fc784ad5992  echo "hello world"
+	hello world
+
 $ docker attach 972a27e39f97 
+
 
 
 #------------------------------------------------------------------------------------------------------
 ### Dockerfile for build image 
 #------------------------------------------------------------------------------------------------------  
+
 
 Dockerhub Ubuntu 14.04 image creating Docker file
 https://github.com/tianon/docker-brew-ubuntu-core/blob/50cfe3fd07327a05e449574f0ece07a6e0bb0c76/trusty/Dockerfile
@@ -565,23 +585,24 @@ https://github.com/tianon/docker-brew-ubuntu-core/blob/50cfe3fd07327a05e449574f0
 $ mkdir ~/Dockerfile
 $ vi ~/Dockerfile/Dockerfile
 
-###
+#-----------------------------------------
 # Ubuntu based Hello World container
-###
-
+#-----------------------------------------
 FROM ubuntu:14.04
 MAINTAINER apark@bnga.com
 RUN apt-get update
 RUN apt-get install -y nginx
-RUN apt-get install -y golang
-RUN apt-get install -y ncdu
 CMD ["echo","Hello World"]
-#############
+#-----------------------------------------
 
+$ ls -l
 -rw-r--r-- 1 root root  218 Oct  5 14:50 Dockerfile
+
+$ docker build --help
 
 $ docker build -t helloworld:0.1   .         			 <= . current directory
 $ docker build -t helloworld:0.1   ~/docker_images       <= . current directory
+			   -t, --tag list      Name and optionally a tag in the 'name:tag' format
 
 ...................
 Sending build context to Docker daemon 2.048 kB      <= daemon running build
@@ -631,8 +652,6 @@ $ docker history 708ebc798c79
 
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 708ebc798c79        13 minutes ago      /bin/sh -c #(nop)  CMD ["echo" "Hello World"]   0 B
-27f1cae8cf98        13 minutes ago      /bin/sh -c apt-get install -y ncdu              1.155 MB
-0314ac85ccbe        13 minutes ago      /bin/sh -c apt-get install -y golang            174.5 MB
 5b05e13fc816        18 minutes ago      /bin/sh -c apt-get install -y nginx             18.15 MB
 b21ed8c8a4e6        18 minutes ago      /bin/sh -c apt-get update                       22.2 MB
 19041d274879        19 minutes ago      /bin/sh -c #(nop)  MAINTAINER apark@bnga.com    0 B
@@ -643,16 +662,18 @@ f2d8ce9fa988        9 days ago          /bin/sh -c #(nop)  CMD ["/bin/bash"]    
 <missing>           9 days ago          /bin/sh -c set -xe   && echo '#!/bin/sh' > /u   194.6 kB
 <missing>           9 days ago          /bin/sh -c #(nop) ADD file:561625b38aa88058c3   187.7 MB
 
-
+# To Test new docker image
 $ docker run helloworld:0.1
-Hello World
+	Hello World						<= Result
 
-### Docker file ###
+
+### Dockerfile ###
 
 $ vi ~/Dockerfile/Dockerfile
 
 $ docker build -t="build2" .                <= . looking for local directory
-
+				-t, --tag list      Name and optionally a tag in the 'name:tag' format
+				
 Sending build context to Docker daemon 2.048 kB
 Step 1 : FROM ubuntu:14.04
  ---> f2d8ce9fa988
@@ -668,12 +689,14 @@ Step 4 : CMD echo Hello World
 Successfully built abe14f2a6270
 
 
-### Creating Simple web server container
+### Creating Simple WEB Server Container
+$ su - apark
+$ mkdir ~/web && $_				<=  $_	Expands to the last argument of the last command that was executed.
+	-bash: /apark/web: Is a directory
 
-$ mkdir ~/web && $_
 $ vi Dockerfile
 
-###
+#----------------------------------------
 FROM ubuntu:15.04
 MAINTAINER apark@bnga.com
 RUN apt-get update
@@ -684,10 +707,10 @@ RUN apt-get install -y ncdu
 RUN apt-get clean
 EXPOSE 80
 CMD ["apache2ctl", "-D", "FOREGROUD"]
-###
+#----------------------------------------
 
 
-$ docker build -t="webserver" .
+$ docker build -t="webserver"   .    <= current directory
 ...............
 Step 10 : CMD apache2ctl -D FOREGROUD   <= 10 layers
  ---> Running in f3cd9d1e6c36
@@ -699,22 +722,22 @@ Successfully built f82f83036e59
 ### Reducing layers from 10 to 5
 
 $ vi Dockerfile
-##########
+#-------------------------------------------------------
 # Simple web server
 FROM ubuntu:15.04
 MAINTAINER apark@bnga.com
------------------ single command -------------------------
+#----------- single command -------------------------
 RUN apt-get update && apt-get install -y \                   <= put && front of each apt-get
     apache2 \
     apache2-utils \
     vim \
     ncdu \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-----------------------------------------------------------
+    && rm -rf /var/lib/apt/lists/*  /tmp/*  /var/tmp/*
+# ------------------------------------------------------
 	EXPOSE 80
 CMD ["apache2ctl", "-D", "FOREGROUD"]
-###########
+#-------------------------------------------------------
 
 $ docker build -t="webserver_small" .
 
@@ -724,8 +747,12 @@ $ docker build -t="webserver_small" .
 Removing intermediate container 30be3f6dcf4c
 Successfully built 922d356602f6
  
-$ docker run -d -p 80:80 webserver_small
-fefcdfab9feb8165750503f3fbc39d23a3931a104ad6342d5f4369872003b253
+ 
+ 
+$ docker run -d -p 80:80 webserver_small				
+			 -d detach 
+				-p port
+fefcdfab9f.....69872003b253
 
 
 # open localhost web page
@@ -735,7 +762,7 @@ RUN           <= build-time, add layer, install apps
 
 In the Dockerfile, build-time
 
-#CMD <= run-time, run cmd in container at launch time
+# CMD <= run-time, run cmd in container at launch time
 	 = docker run <args> <command>
      = docker run <args> /bin/bash
 	 
@@ -759,11 +786,12 @@ RUN apt-get update && apt-get install -y iputils-ping
 ENTRYPOINT ["echo"]
 ####
 
-
+????? NOT WORKING ????????
 $ docker build -t="entrypoint" .
 
-$ docker run entrypoint hello there		<=stdin hello there to stdout echo
-hello there								
+$ docker run entrypoint hello there						<=stdin hello there to stdout echo
+$ docker run -d --entrypoint string  hello there		<=stdin hello there to stdout echo
+	hello there								
 
 
 $ vi Dockerfile
@@ -782,7 +810,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 27bef11a61bf        web2                "apache2ctl -D FOREGR"   5 seconds ago       Up 5 seconds        0.0.0.0:80->80/tcp   happy_goldstine
 
 
-### ENV  ### evironment variable
+### ENV  ### 			<= evironment variable
 
 $ vi Dockerfile
 ###
@@ -817,7 +845,7 @@ PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 64 bytes from 8.8.8.8: icmp_seq=2 ttl=127 time=2.15 ms
 
 $ docker run -d ping
-43feac3388952450732344fe78357768992b2cfcfc108f7135fca58a0d83f274
+43feac33889524....fca58a0d83f274
 
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
@@ -827,66 +855,90 @@ $ docker logs -f 43feac338895		<= -f is follow that runs from host
 64 bytes from 8.8.8.8: icmp_seq=81 ttl=127 time=2.89 ms
 64 bytes from 8.8.8.8: icmp_seq=82 ttl=127 time=2.89 ms
 
+
+
 #------------------------------------------------------------------------------------------------------
 ### Docker Volume
 #------------------------------------------------------------------------------------------------------
 # Docker container failed, but external volume saves the data
 # Decoupling data from containers and share         
 
+$ docker volume --help
+				create      Create a volume
+				inspect     Display detailed information on one or more volumes
+				ls          List volumes
+				prune       Remove all unused local volumes
+				rm          Remove one or more volumes
+
 $ docker volume create dockervolume				<= name can be Only lower cases
-$ docker volume rm	   dockervolume				
+$ ls -l /var/lib/docker/volumes					<= Location of volumes
+
+$ docker volume inspect dockervolume
+----------------------------------------------------------------------------------------------
+[
+    {
+        "CreatedAt": "2019-04-23T03:44:02Z",
+        "Driver": "local",
+        "Labels": {},
+        "Mountpoint": "/var/lib/docker/volumes/dockervolume/_data",			<= LOCATION OF VOLUME
+        "Name": "dockervolume",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+----------------------------------------------------------------------------------------------
+$ docker volume ls
+
+$ docker volume rm	   		dockervolume			<= Delete volume			
+							<= Volume Name
 				create      <= Create a volume
 				inspect     <= Display detailed information on one or more volumes
 				ls          <= List volumes
 				rm          <= Remove one or more volumes
 				prune       <= **Remove ALL** unused local volumes
 				
-$ docker volume create  dockervolume				
-$ docker volume inspect dockervolume
-----------------------------------------------------------------------------------------------
-[
-    {
-        "CreatedAt": "2018-04-13T17:27:55Z",
-        "Driver": "local",
-        "Labels": {},
-        "Mountpoint": "/var/lib/docker/volumes/dockervolume/_data",    #<= actual location of file
-        "Name": "dockervolume",
-        "Options": {},
-        "Scope": "local"
-    }
-]
-----------------------------------------------------------------------------------------------				
+			
 
+----------------------------------------------------------------------------------------------
 ### To persist of data(html folder), mount host htdocs(html) folder into a docker container web location
-Create a volume -> run a docker container with a volume -> Modify from container -> Persist in Volume
-Run a new docker container with persist volume
+->	Create a volume
+	->	run a docker container with a volume  
+		->	Modify from container 
+			->	Persist in Volume 
+				->	Run a new docker container with persist volume
+
 
 1. create a volume name 'htdocs'
-$ docker create volume htdocs
+$ docker create volume htdocs			<= Apache Document Name
 
 2. Run a 'web' Apache server docker container 
 $ docker run -p 80:80   --name web -d -v 	htdocs:/usr/local/apache2/htdocs httpd	<=Ubuntu-16
 # $ docker run -p 80:80 --name=web -dv 		htdocs:/usr/local/apache2/htdocs httpd	<=Ubuntu-16
-
+									-d Detach terminal
+										-v Persist Volume
+										
 3. Edit container's 'index.html' file
 $ docker exec -it web /bin/bash
 	root@6c644af595f7:/usr/local/apache2#
-	echo '<h1>Hello from Container</h1>' > htdocs/index.html 
+	echo '<h1>Hello from Container</h1>'   > htdocs/index.html 
 	# echo '<h1>Hello from Container</h1>' | sudo tee htdocs/index.html > /dev/null
-	$ exit					#exit from container
-4. Check from Host 
+$ exit					#exit from container
+	
+4. Check from Host Server(Not Docker since persist volume is located in Host Server)
 $ cat  /var/lib/docker/volumes/htdocs/_data/index.html
 	<h1>Test from Container</h1>
+
 $ curl localhost
 	<h1>Test from Container</h1>
 
 5. Delete and check the 'web' container
-$ docker rm -f web	
-$ docker ps
+$ docker rm -f web				<= -f force to remove live
+$ docker ps						
 
 6. Run a new container with Persist data volume 
 $ docker run -p 80:80   --name web -d -v dockervolume:/usr/local/apache2/htdocs httpd
-	5f6cbed50c327b3937a2622aa2dce7fd5219cf01730c6fd424c62418f6b3fdde
+	5f6cbed....f6b3fdde
+
 $ root@BNEA-U16-D1:~# curl localhost
 	<h1>Test from Container</h1>
 
@@ -902,7 +954,7 @@ $ docker run -it -v /dockerVolume --name ping ping /bin/bash
 										
 										-v  mounting volume name  
 
-root@c50b0860893f:/#ls -l
+root@c50b0860893f:/# ls -l
 
 drwxr-xr-x   2 root root 4096 Oct  6 02:13 dockvol           <= created when docker cmd run
 
@@ -914,7 +966,7 @@ drwxr-xr-x   2 root root 4096 Oct  6 02:13 dockvol           <= created when doc
 $ ifconfig
 $ ip a
 
-docker0   Link encap:Ethernet  HWaddr 02:42:61:12:d1:21				<= Bridge or virtual switch
+docker0   Link encap:Ethernet   HWaddr 02:42:61:12:d1:21				<= Bridge or virtual switch
           inet addr:172.17.0.1  Bcast:0.0.0.0  Mask:255.255.0.0
           ....
           RX bytes:14902715 (14.9 MB)  TX bytes:356385122 (356.3 MB)
@@ -946,7 +998,7 @@ RUN apt-get update && apt-get install -y iputils-ping traceroute
 ENTRYPOINT ["/bin/bash"]
 ###
 
-$ docker build -t="net-img" .
+$ docker build -t="net-img"   	.		<= . current directory
 
 $ docker run -it --name=net1 net-img
 

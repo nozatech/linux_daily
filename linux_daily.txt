@@ -3351,7 +3351,10 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	mkdir and cd into directory
 	$ mkdir ~/docker-registry && cd $_	
 
-	
+	$_	
+	echo "$_"
+	echo "test"
+	echo "$_"
 	
 ------------------------------------------------------------------------------------
 # Echo 
@@ -3478,11 +3481,20 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 	
 	
 	
+--------------------------------------------------------------------------	
+# brctl <= Network Bridge						
+--------------------------------------------------------------------------	
+# Check & Install  Bridge
+https://www.itzgeek.com/how-tos/mini-howtos/create-a-network-bridge-on-centos-7-rhel-7.html
+$ modinfo bridge
+# Enable 
+$ modprobe --first-time bridge
+ 
+$ yum install bridge-utils -y
+$ brctl show	
 	
 	
-	
-	
----------------------------------------------------------------------------------------	
+-------------------------------------------------------------------------
 # $ last						<= show listing of last logged in users
 --------------------------------------------------------------------------
 
