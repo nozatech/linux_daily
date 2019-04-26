@@ -4,48 +4,366 @@
 A container image is a self-contained entity with its own application code, 
 runtime, and dependencies that you can use to create and run containers.
 
+				
+Docker 		<= makes it easy to create, deploy, and run applications inside of containers.
+			   platform allows developers to package and run applications as containers.
+			   
+Containers 	<= let developers gather applications and all their core necessities and dependencies 
+				into a single package that you can turn into a Docker image and replicate. 
+			   
+Docker images <= are built from Dockerfiles
+				The image includes your application code, libraries, configuration files, 
+				environment variables, and runtime. 
+				
+Dockerfile 	<= is a file where you define what the image will look like, what base operating 
+				system it will have, and which commands will run inside of it.
+			e.g. 
+				$ docker build -t Dockerfile.golang -t golang 	~/dockerImages			
+
+Alpine Linux	<= Alpine is a suitable Linux distribution for production because it only has the 
+				   bare necessities that your application needs to run.essities that your 
+				   application needs to run.
 
 
-
-docker-cheat-sheet
+#---------------------------------------------------------------------------------------
+## docker-cheat-sheet
 https://github.com/wsargent/docker-cheat-sheet
 https://www.docker.com/sites/default/files/Docker_CheatSheet_08.09.2016_0.pdf
-
-
+#---------------------------------------------------------------------------------------
 
 ### Installation ###
 https://docs.docker.com/engine/installation/linux/centos/
 https://docs.docker.com/engine/installation/linux/ubuntulinux/
 
+#---------------------------------------------------------------------------------------
 ### Definition ###
 docker engine		<= Hypervisor
-docker image        <= vm Template image
+docker image        <= vm Template image(Original)
 docker container    <= Running VM
 docker tools		<= cli tools
 docker registry		<= image repository  e.g. Docker Hub or quay.io
 
-Image(Snapshot) vs Container(VM)
-An image is an inert, immutable, file that's essentially a snapshot of a container. 
-Images are created with the build command, and they'll produce a container when started with run. 
+
+#------------------------------------------------------------------------------------------------------------------
+# Docker Display Format in order to read Vertically <= readability
+#------------------------------------------------------------------------------------------------------------------
+$ docker ps -l --format=$FORMAT			<= add FORMAT Variable string into .bashrc
+
+# Export Single line String Variable to .bashrc
+$ echo 'export FORMAT="\nID\t{{.ID}}\nIMAGE\t{{.Image}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.RunningFor}}\nSTATUS\t{{.Status}}\PORTS\t{{.Ports}}\nNAME\t{{.Names}}\n"' >> ~/.bashrc && source ~/.bashrc	
+
+# using '\' but NO SPACE in beginning of next line
+
+$ echo 'export FORMAT="\nID\t{{.ID}}\nIMAGE\t{{.Image}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.RunningFor}}\
+\nSTATUS\t{{.Status}}\PORTS\t{{.Ports}}\nNAME\t{{.Names}}\n"' >> ~/.bashrc && source ~/.bashrc
+
+# Using 'echo' to use double quote for "long_string"
+
+$ echo 'export FORMAT="\nID\t{{.ID}}\nIMAGE\t{{.Image}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.RunningFor}}"\
+"\nSTATUS\t{{.Status}}\PORTS\t{{.Ports}}\nNAME\t{{.Names}}\n"' >> ~/.bashrc && source ~/.bashrc
+
+$ echo $FORMAT 
+\nID\t{{.ID}}\nIMAGE\t{{.Image}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.RunningFor}}\nSTATUS\t{{.Status}}\PORTS\t{{.Ports}}\nNAME\t{{.Names}}\n
+
+#------------------------------------------------------------------------------------------------------------------
+$ docker ps -l 		<= list container, last used
+		 ps 	<- list container(Linux PS 'P'roce'S'ses Report)
+			-l 	<- lastest  
+
+CONTAINER ID   IMAGE          COMMAND                  CREATED        STATUS           PORTS  NAMES
+82d7d2320ffd   faf397329fe6   "/bin/sh -c 'go get …"   16 hours ago   Exited(2) 6 hrs ago    compassionate_austin
+
+# List all stopped images)
+$ docker ps -a   
 
 
-###  Docker Help ###
-$ docker help
+$ docker ps -l --format=$FORMAT				<= '--format=$FORMAT' makes read 
 
-$ docker run  --help
-$ docker port --help
-$ docker ps	  --help
+ID      82d7d2320ffd
+IMAGE   faf397329fe6
+COMMAND "/bin/sh -c 'go get …"
+CREATED 16 hours ago
+STATUS  Exited (2) 16 hours ago\PORTS
+NAME    compassionate_austin
+
+#-------------------------------------------------------------------------------------------------------
+# Image	=> 'docker run' => Running Container => Stopped(exit) Container => 'docker commit'	=> NEW IMAGE
+#-------------------------------------------------------------------------------------------------------
 
 
 ### Linux User Permission to run Docker command ###
 $ sudo usermod -a -G docker ${USER}				<- Re-Login to affect
 $ sudo usermod -aG   docker ${USER}				<- Re-Login to affect
 
-# To check
-$ grep ${USER} /etc/group
-		
+# To check user in the Docker group
+$ grep ${USER}   /etc/group
 
 
+Image(Template(Snapshot)) vs Container(VM)
+	Images	<=An image is an inert, immutable, file that's essentially a snapshot of a container template.
+				e.g. CentOS, Ubuntu
+			Images are created with the 'Docker build' using 'Dockerfile' command, and they'll produce 
+			a container when started with run. 
+
+#------------------------------------------------------------------------------------------------
+###  Docker Help Pattern ###
+#------------------------------------------------------------------------------------------------
+$ docker help  
+$ docker --help
+
+$ docker run  --help
+$ docker ps	  --help
+
+
+#------------------------------------------------------------------------------------------------------------------
+# Teplate Image	=> 'docker run' => Running Container => Mod&Exit Container => 'docker commit' => NEW IMAGE
+#------------------------------------------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------------
+ Create Docker Containers to "IMAGES"
+#----------------------------------------------------------------------------------------
+1. Download and run Ubuntu
+
+$ docker run -it ubuntu /bin/bash			<- Download Ubuntu image and Run /bin/bash -it Interactive Terminal
+ root@9833c91767e3:/# touch Test_Saving.FILE
+ root@9833c91767e3:/# exit 		<= EXIT ONLY   'ctrl+d'  <- doesn't Save, have to use 'EXIT' cmd
+
+2. Check latest used(ran) image 
+
+$ docker ps -l --format=$FORMAT		<= 'ps -l' container list last 
+ID      9833c91767e3				<= USE id
+IMAGE   ubuntu
+COMMAND "/bin/bash"
+CREATED 2 minutes ago
+
+3. SAVE-AS a new image using 'commit'
+  $ docker commit     			
+
+  $ docker commit 9833c91767e3		 <- Create a new image from a container's changes
+	sha256:db019f663237efa175e87a40e34651084aaefa1a488a041c5dcabc96dde74243
+
+
+# docker container id 
+$ docker inspect --format="{{.Id}}" ubuntu
+	sha256:94e814e2efa8845d95b2112d54497fbad173e45121ce9255b93401392f538499
+	
+	
+4. Creating my own IMAGE suing 'COMMIT'
+docker commit   9833c91767e3 		ubuntu-test_saving.file
+				^-Container ID	     NEW_NAME
+
+
+# tag    <- Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE  (Copy to new name)
+5. docker tag sha256:94e814e2efa8845d95b2112d54497fbad173e45121ce9255b93401392f538499  new_ubuntu_image
+				      ^^^Container ID
+### OR EASIER Way ###				
+$ docker commit   d7135b9fc05c    centos-test1
+				  <Orignal name>
+								   <New Name>
+								   
+$ docker images		<= images list
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+<none>              <none>              db019f663237        10 minutes ago      88.9MB
+centos              latest              9f38484d220f        5 weeks ago         202MB
+new_ubuntu_image    latest              94e814e2efa8        6 weeks ago         88.9MB				<= New Copied and renamed image
+ubuntu              latest              94e814e2efa8        6 weeks ago         88.9MB
+
+
+$ docker run -it new_ubuntu_image /bin/bash
+$ docker run -it new_ubuntu_image				<= same bash prompt
+
+
+$ docker   commit   d7135b9fc05c   centos-test1		
+		  <Rename>		<ID>		 <New-NAME>
+		  
+sha256:368d41ef78900b8a0b9d94777eb92ab652d173354504baa777106050165ea659
+
+
+[apark@i7 ~]$docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+----------------------------------------------------------------------------------------
+centos		       latest              368d41ef7890        6 seconds ago       202MB
+----------------------------------------------------------------------------------------
+Respository <- Where the image came from(Dockerhub respository)
+					TAG	<- Verion of it	
+										IMAGE ID <- by Dockerhub
+
+#----------------------------------------------------------------------------------------
+
+
+
+#----------------------------------------------------------------------------------------
+Docker ps
+#----------------------------------------------------------------------------------------
+1. Run a Container
+Shell#1  							
+$docker run -rm -it ubuntu 
+$docker run -rm -it ubuntu bash
+$docker run -rm -it ubuntu /bin/bash
+
+2. Rund Docker ps to chech WHAT Containers are running
+Shell#2							
+$docker ps --format $FORMAT
+
+ID      56d4c484ec88
+IMAGE   ubuntu
+COMMAND "/bin/bash"
+CREATED 46 seconds ago
+STATUS  Up 43 seconds\PORTS
+NAME    wonderful_aryabhata
+
+3. From Shell#2, Attach to Same 'wonderful_aryabhata' container.
+$ docker attach wonderful_aryabhata
+
+### Shell#1 and Shell#2 runs in same BASH SHELL. 
+### Just like a REMOTE DESKTOP ### 
+
+
+4. Only EXIT from Shell#2, exit but NOT KILL(CTRL+D will kill the Container.
+##############
+CTRL+P+Q 
+#############
+
+$ docker attach wonderful_aryabhata			<= 
+
+
+#----------------------------------------------------------------------------------------
+Docker run vs Docker attach vs Docker exec
+#----------------------------------------------------------------------------------------
+1. Start another process in an existing container
+2. Great for debugging and DB amdin
+3. NO ports, volumes, etc. Only for additional PROCESS to run using 'exec'
+
+Shell#1 (Same Bash Shell)
+$ docker run  	 -it adoring_euclid /bin/bash
+
+	Note: :/# ctrl+d 		<= Exits Both Bash 1& 2 shell/if original dies, all dies!!!
+
+Shell#2 (Same Bash Shell)
+$ docker attach  -it adoring_euclid /bin/bash
+
+Shell#3	(2nd Bash Shell)
+$ docker exec 	 -it adoring_euclid /bin/bash			<== 2nd Bash Shell
+
+	:/# top
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+    1 root      20   0   18496   2040   1620 S   0.0  0.0   0:00.07 bash
+   12 root      20   0   18496   2040   1624 S   0.0  0.0   0:00.05 bash		<== 2nd Bash Shell
+
+	Note:/# ctrl+d 		<= Exits from Bash2 shell, leave Bash -1 shell as-is
+
+
+### Docker Images(Original Template) and Docker Containers(Stopped Running VMs) ###
+#----------------------------------------------------------------------------------------
+Delete Container after RUN
+#----------------------------------------------------------------------------------------		
+# Run and Delete the Container!
+$ docker run --rm -it ubuntu sleep 5 && Echo "Hello World"
+$ docker run --rm -it ubuntu bash -c "sleep 3; echo 'Sleep 3sec has done!'"
+
+$ docker ps -a		<= list all containers (--rm removed newly ran Containers)
+
+#----------------------------------------------------------------------------------------
+Docker Logs
+#----------------------------------------------------------------------------------------
+
+# Run detach
+$ docker run --name example -d ubuntu bash -c "LESS /etc/passwd"		<=Should be failed
+
+$ docker ps -l		<= -l last used
+CONTAINER ID    IMAGE     COMMAND                  CREATED         STATUS        PORTS   NAMES
+11c2d35eb6ba    ubuntu    "bash -c 'less /etc/…"   3 minutes ago   Exited (127)           example
+
+$ docker ps -a  	<= -a all
+  CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS        PORTS   NAMES
+  11c2d35eb6ba   ubuntu    "bash -c 'less /etc/…"   35 seconds ago  Exited (127)          example
+
+$ docker ps -aq		<- -q quiet, only display IDs.
+  CONTAINER ID
+  11c2d35eb6ba
+	
+	
+# Run Docker Container
+$ docker run --name test -d busybox sh -c "while true; do $(echo date); sleep 1; done"
+
+# Check logs
+$ docker logs test
+
+$ docker run  --name test -d busybox sh -c "while true; do $(echo date); sleep 1; done"
+$ docker attach test <=XXX Not working
+$ docker ps -l  then  grep the "NAMES"
+
+
+
+
+
+
+#----------------------------------------------------------------------------------------
+Docker Purging (Unused,Dangling, Containers, Volumes, Networks
+#----------------------------------------------------------------------------------------
+# clean up any resources 
+	— images, containers, volumes, and networks — that are dangling (not associated with a container):
+$ docker system prune
+
+# remove any stopped containers and all unused images
+$ docker system prune -a
+
+
+
+#----------------------------------------------------------------------------------------
+Docker Stopping and Removing container
+#----------------------------------------------------------------------------------------	
+$ docker kill container_name	<= Stopping running container
+$ docker rm   container_name	<= Deleting container	
+
+----------------------------------------------------------------------
+1. Check container list with status UP as running container
+$ docker ps
+CONTAINER ID        IMAGE      COMMAND                  CREATED          STATUS        NAMES
+70daee2d621c        busybox    "sh -c 'while true; …"   2 hours ago      Up 2 hours    busybox2
+7b94002e33e4        busybox    "sh -c 'while true; …"   2 hours ago      Up 2 hours    loving_montalcini
+
+2. You can use CONTAINER ID or NAMES to kill command
+$ docker kill 70daee2d621c				<= use ID
+70daee2d621c
+
+$ docker kill loving_montalcini			<= use NAME
+loving_montalcini
+
+$docker ps
+CONTAINER ID    IMAGE    COMMAND   CREATED     STATUS     PORTS   NAMES
+----------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------------------
+Delete Docker Images
+#----------------------------------------------------------------------------------------		
+# docker rm NAME or CONTAINER ID
+$ docker rm busybox2
+
+
+# RUN then REMOVE AFTERWARDS
+$ docker run --rm -it ubuntu sleep 5 && Echo "Hello World"		<= RUN and REMOVE AFTERWARDS
+$
+
+
+
+#----------------------------------------------------------------------------------------
+Attach and Detach Container after RUN 
+#----------------------------------------------------------------------------------------	
+$ docker run --help
+	-d --detach 	<= Deatch from running Docker container
+	-a --attach 
+$ docker run -it -d ubuntu 	
+$ docker run -it -d ubuntu bash
+$ docker run -it -d ubuntu /bin/bash
+
+
+
+
+
+#----------------------------------------------------------------------------------------
 ### Docker log location ###
 Ubuntu      	 - /var/log/upstart/docker.log
 CentOS7	  		 - /var/log/messages

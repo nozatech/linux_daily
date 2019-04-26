@@ -80,6 +80,11 @@ GAAP 	<- Generally Accepted Accounting Principles
 Non-GAAP <- addition to their earnings based on GAAP earnings	
 			https://www.investopedia.com/terms/n/non-gaap-earnings.asp
 
+Golden Cross <- This indicates an increasing stock price and often results in higher trading volumes.
+			 <- A golden cross occurs when a short term moving average (50 days for example) 
+			    moves up and crosses over a longer moving average (200 days for example). 
+			
+
 HTS		<- Home Trading System 
 MTS		<- Mobile Trading System 
 		   

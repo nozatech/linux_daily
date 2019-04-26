@@ -1313,15 +1313,16 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	
 	$ my_prog < inputfile 2> errorfile | grep XYZ
 	
-
+	-----------------------------------------------------------------------	
+  # Redirection 
+    # Redirect outpu
 	
 	> 	<= redirect standard output (implicit 1>)
 	& 	<= what comes next is a file descriptor, not a file (only for right hand side of >)
 	2 	<= stderr file descriptor number
 	
-	-----------------------------------------------------------------------	
-  # Redirecting output	
-  	>		 Redirect_output	<= Stdout + Stderr 
+	
+  	>	 Redirect_output	<= Stdout + Stderr 
 	
 	1>   success.log	<= Only Stdout 
 	2>     error.log	<= Only Stderr 
@@ -1329,8 +1330,8 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 	
 	
 	1>&2 	 all.log	<= Stdout + Stderr 
-	2>&1	 all.log	<= Stdout + Stderr (stderr to stdout)
-	>&		 all.log	<= Stdout + Stderr 	
+	2>&1	 all.log	<= Stderr + Stdout (stderr to stdout)
+	>&		 all.log	<= Stdout + Stderr (both)	
 	>&2		 all.log	<= Stdout + Stderr
 	
 	
@@ -1344,7 +1345,11 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 ### '\' back slash
 --------------------------------------------------------------------------	
 	long command using  \  for extent command
-	# escape character \
+	1. escape character \
+	2. Long command 
+		$ echo "test"\
+		> "test"			<= No Space in front
+		testtest			<= No Space
 
 
 
@@ -3136,10 +3141,15 @@ $ su - apark -c 'ulimit -aHS'
 
 https://en.wikipedia.org/wiki/Chmod
 In "chmod aw" the "a" means "All" (everyone) and the "w" means "write" (edit) the file.
+
 chmod + x
 chmod + xu
+chmod 755
+	 -7 	owner
+	  -5 	group
+	   -5 	other
 
-u = user that owns the file
+u = user tha t owns the file
 g = group that owns the file
 o = other (everyone else)
 a = all (everybody)
@@ -3380,6 +3390,20 @@ https://unix.stackexchange.com/questions/42287/terminating-an-infinite-loop/1213
 		spell spill
 		
 	$ echo 1/3 | bc -l                <= .3333333
+	
+	
+	# Long string variable
+		
+	$echo "test"\
+	> "test"\			<= NO Space in front
+	> "test"\			<= NO Space in front
+	>
+	=> testtesttest		<= NO Space between test
+
+$ echo 'export FORMAT="\nID\t{{.ID}}\nIMAGE\t{{.Image}}\nCOMMAND\
+\t{{.Command}}\nCREATED\t{{.RunningFor}}\								<= NO Space in front
+\nSTATUS\t{{.Status}}\PORTS\t{{.Ports}}\								<= NO Space in front
+\nNAME\t{{.Names}}\n"' >> ~/.bashrc && source ~/.bashrc
 	
 ------------------------------------------------------------------------------------	
 # double & single quotes	

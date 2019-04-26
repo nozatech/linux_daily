@@ -1130,7 +1130,7 @@ convoluted		<- (especially of an argument, story, or sentence) extremely complex
 							  tortuous, tangled, Byzantine; 
 					antonyms: straightforward
 
-cornerstone		<- an important quality or feature on which a particular thing depends or is based.
+cornerstone		<- 토대,기초/an important quality or feature on which a particular thing depends or is based.
 					"a national minimum wage remained the cornerstone of policy"
 					synonyms:	foundation, basis, keystone, mainspring, mainstay, linchpin, bedrock, 
 								base, backbone, key, centerpiece, core, heart, center, crux
@@ -1689,6 +1689,8 @@ idiocy			<- extremely stupid behavior.
 					synonyms:	stupidity, folly, foolishness, foolhardiness, ignorance
 					
 i.e.			<- in other words
+
+indicative		<- 암시하는, 나타내는, 
 
 indie			<- (of a pop group, record label, or film company) not belonging to or affiliated 
 					with a major record or film company.
@@ -2824,6 +2826,9 @@ treacherous		<- [adj] guilty of or involving betrayal or deception.(배반하는
 
 triage			<- (in medical use) the assignment of degrees of urgency to wounds or illnesses to decide the order of 
 					treatment of a large number of patients or casualties.
+
+truce			<- 휴전
+					at the truce village of Panmunjom on April 27, 2018.
 
 truncate		<- shorten (something) by cutting off the top or the end.
 					"a truncated cone shape"

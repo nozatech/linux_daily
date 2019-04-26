@@ -82,7 +82,25 @@ CMD ["./api"]
 #----------------------------------------
 
 
+$ docker build -f Dockerfile.ubuntu -t ubuntu .
+		 -> build build image
+			  -f specifies that you want to build from the Dockerfile.ubuntu file,
+				 --file string   Name of the Dockerfile (Default is 'PATH/Dockerfile')
+									-t, --tag list  name and optionally a tag in the 'name:tag' format
+										 Tagging it with the name 'ubuntu'
 
+
+
+
+
+
+
+
+
+
+
+$ docker build -f Dockerfile.golang -t golang .
+			  -f --file string      Name of the Dockerfile (Default is 'PATH/Dockerfile')
 
 
 
