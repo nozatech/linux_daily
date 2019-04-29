@@ -76,7 +76,7 @@ PER 	<- Price-to-Earnings Ratio (주가-수익율-비율)
 		= market value per share/ Earning per share
 
 
-GAAP 	<- Generally Accepted Accounting Principles 		   
+GAAP 	 <- Generally Accepted Accounting Principles 		   
 Non-GAAP <- addition to their earnings based on GAAP earnings	
 			https://www.investopedia.com/terms/n/non-gaap-earnings.asp
 

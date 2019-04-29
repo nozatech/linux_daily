@@ -4,6 +4,9 @@
 A container image is a self-contained entity with its own application code, 
 runtime, and dependencies that you can use to create and run containers.
 
+#-------------------------------------------------------------------------------------------------------#
+# Image	=> 'docker run' => Running Container => Stopped(exit) Container => 'docker commit'	=> NEW IMAGE#
+#-------------------------------------------------------------------------------------------------------#
 				
 Docker 		<= makes it easy to create, deploy, and run applications inside of containers.
 			   platform allows developers to package and run applications as containers.
@@ -66,44 +69,47 @@ $ echo $FORMAT
 \nID\t{{.ID}}\nIMAGE\t{{.Image}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.RunningFor}}\nSTATUS\t{{.Status}}\PORTS\t{{.Ports}}\nNAME\t{{.Names}}\n
 
 #------------------------------------------------------------------------------------------------------------------
-$ docker ps -l 		<= list container, last used
-		 ps 	<- list container(Linux PS 'P'roce'S'ses Report)
-			-l 	<- lastest  
+$ docker ps -l 		<= list container with 'last used' container, 
+		 ps 		<- list container(Linux PS 'P'roce'S'ses Report)
+			-l 		<- lastest  
 
 CONTAINER ID   IMAGE          COMMAND                  CREATED        STATUS           PORTS  NAMES
 82d7d2320ffd   faf397329fe6   "/bin/sh -c 'go get …"   16 hours ago   Exited(2) 6 hrs ago    compassionate_austin
 
-# List all stopped images)
+# List all stopped Containers)
 $ docker ps -a   
 
 
 $ docker ps -l --format=$FORMAT				<= '--format=$FORMAT' makes read 
-
+--------------------------------------
 ID      82d7d2320ffd
 IMAGE   faf397329fe6
 COMMAND "/bin/sh -c 'go get …"
 CREATED 16 hours ago
 STATUS  Exited (2) 16 hours ago\PORTS
 NAME    compassionate_austin
+--------------------------------------
 
-#-------------------------------------------------------------------------------------------------------
-# Image	=> 'docker run' => Running Container => Stopped(exit) Container => 'docker commit'	=> NEW IMAGE
-#-------------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------#
+# Image	=> 'docker run' => Running Container => Stopped(exit) Container => 'docker commit'	=> NEW IMAGE#
+#-------------------------------------------------------------------------------------------------------#
 
-
+#-------------------------------------------------------------------
 ### Linux User Permission to run Docker command ###
+#-------------------------------------------------------------------
 $ sudo usermod -a -G docker ${USER}				<- Re-Login to affect
 $ sudo usermod -aG   docker ${USER}				<- Re-Login to affect
 
 # To check user in the Docker group
 $ grep ${USER}   /etc/group
 
-
+#------------------------------------------------------------------------------------------------
 Image(Template(Snapshot)) vs Container(VM)
 	Images	<=An image is an inert, immutable, file that's essentially a snapshot of a container template.
 				e.g. CentOS, Ubuntu
 			Images are created with the 'Docker build' using 'Dockerfile' command, and they'll produce 
 			a container when started with run. 
+#------------------------------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------------------------
 ###  Docker Help Pattern ###
@@ -118,6 +124,19 @@ $ docker ps	  --help
 #------------------------------------------------------------------------------------------------------------------
 # Teplate Image	=> 'docker run' => Running Container => Mod&Exit Container => 'docker commit' => NEW IMAGE
 #------------------------------------------------------------------------------------------------------------------
+
+$ docker commit     <= Create a new image from a container's changes
+	$ docker run -it busybox					<= Run container from IMAGE
+	  /# touch busybox-test.txt					<= add txt file
+	  /# exit
+	$ docker commit busybox busybox-test		<= Save the container as 'busybox-test' IMAGE
+	$ docker run -it busybox-test				<= Run new Image 'busybox-test'
+	  /# ls
+	  /# busybox-test.txt						<= 'txt' is in the new image
+	  
+	  
+$ docker tag		<= Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+
 
 #----------------------------------------------------------------------------------------
  Create Docker Containers to "IMAGES"
@@ -136,10 +155,10 @@ IMAGE   ubuntu
 COMMAND "/bin/bash"
 CREATED 2 minutes ago
 
-3. SAVE-AS a new image using 'commit'
+3. SAVE-AS the container as a new image using 'commit'
   $ docker commit     			
 
-  $ docker commit 9833c91767e3		 <- Create a new image from a container's changes
+  $ docker commit 9833c91767e3	 new_name	 <- Create a new image from a container's changes
 	sha256:db019f663237efa175e87a40e34651084aaefa1a488a041c5dcabc96dde74243
 
 
@@ -155,12 +174,16 @@ docker commit   9833c91767e3 		ubuntu-test_saving.file
 
 # tag    <- Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE  (Copy to new name)
 5. docker tag sha256:94e814e2efa8845d95b2112d54497fbad173e45121ce9255b93401392f538499  new_ubuntu_image
+
 				      ^^^Container ID
+					  
+---------------------------------------------					  
 ### OR EASIER Way ###				
-$ docker commit   d7135b9fc05c    centos-test1
-				  <Orignal name>
-								   <New Name>
+---------------------------------------------
+$ docker commit   d7135b9fc05c      		centos-test1
+				  <Current container name>	<New Name>
 								   
+---------------------------------------------								   
 $ docker images		<= images list
 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
@@ -174,13 +197,12 @@ $ docker run -it new_ubuntu_image /bin/bash
 $ docker run -it new_ubuntu_image				<= same bash prompt
 
 
-$ docker   commit   d7135b9fc05c   centos-test1		
-		  <Rename>		<ID>		 <New-NAME>
-		  
-sha256:368d41ef78900b8a0b9d94777eb92ab652d173354504baa777106050165ea659
 
 
-[apark@i7 ~]$docker images
+
+$ docker images
+Location: /var/lib/docker
+
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 ----------------------------------------------------------------------------------------
 centos		       latest              368d41ef7890        6 seconds ago       202MB
@@ -194,13 +216,22 @@ Respository <- Where the image came from(Dockerhub respository)
 
 
 #----------------------------------------------------------------------------------------
-Docker ps
+# Docker ps 		<= List containers(Stopped running VMs state)
 #----------------------------------------------------------------------------------------
 1. Run a Container
 Shell#1  							
-$docker run -rm -it ubuntu 
-$docker run -rm -it ubuntu bash
-$docker run -rm -it ubuntu /bin/bash
+$ docker run -rm -it ubuntu 				<= prompt to same bash
+$ docker run -rm -it ubuntu bash			<= prompt to same bash
+$ docker run -rm -it ubuntu /bin/bash	<= prompt to same bash	
+			-rm(Remove one or more containers) NO Container after exit
+$ docker ps -a 
+	No container
+	
+$ docker run -it ubuntu	/bin/bash
+	Ubuntu Container 				<= YOu can rename this using 'COMMIT" as ubuntu2
+  $ docker commit ubntu ubunt2		<= save the container 'ubuntu' as 'ubuntu2'
+
+
 
 2. Rund Docker ps to chech WHAT Containers are running
 Shell#2							
@@ -220,43 +251,49 @@ $ docker attach wonderful_aryabhata
 ### Just like a REMOTE DESKTOP ### 
 
 
-4. Only EXIT from Shell#2, exit but NOT KILL(CTRL+D will kill the Container.
-##############
-CTRL+P+Q 
-#############
+# Attach and Detach running Container
+4. Only EXIT from Shell#2, 
+	exit but NOT KILL('CTRL+D' will kill the Container.
+############
+# CTRL+P+Q #
+############
 
 $ docker attach wonderful_aryabhata			<= 
 
 
 #----------------------------------------------------------------------------------------
-Docker run vs Docker attach vs Docker exec
+Docker 'run' vs Docker 'attach & detach' vs Docker 'exec'
 #----------------------------------------------------------------------------------------
 1. Start another process in an existing container
 2. Great for debugging and DB amdin
 3. NO ports, volumes, etc. Only for additional PROCESS to run using 'exec'
 
-Shell#1 (Same Bash Shell)
-$ docker run  	 -it adoring_euclid /bin/bash
+Bash Shell #1 (Same Bash Shell)
+$ docker run  -it  adoring_euclid  /bin/bash
+$ #/ exit
 
-	Note: :/# ctrl+d 		<= Exits Both Bash 1& 2 shell/if original dies, all dies!!!
+###	Note: 
+	Use 'EXIT' instead of 'ctrl+d' 	
+	'ctrl+d' <= kills(exit) Both Bashes 1&2 shells/if original dies, all dies!!!
 
-Shell#2 (Same Bash Shell)
+
+Bash Shell #1 (Same Bash Shell)
 $ docker attach  -it adoring_euclid /bin/bash
 
-Shell#3	(2nd Bash Shell)
-$ docker exec 	 -it adoring_euclid /bin/bash			<== 2nd Bash Shell
-
+Bash Shell #2	(2nd Bash Shell)
+$ docker exec 	 -it adoring_euclid /bin/bash	<== 2nd Bash Shell to access 'adoring_euclid' container
+												just like ssh in to same server but tty2, instead tty1
 	:/# top
   PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
     1 root      20   0   18496   2040   1620 S   0.0  0.0   0:00.07 bash
    12 root      20   0   18496   2040   1624 S   0.0  0.0   0:00.05 bash		<== 2nd Bash Shell
 
-	Note:/# ctrl+d 		<= Exits from Bash2 shell, leave Bash -1 shell as-is
+
 
 
 ### Docker Images(Original Template) and Docker Containers(Stopped Running VMs) ###
 #----------------------------------------------------------------------------------------
-Delete Container after RUN
+# Delete Container after RUN using '--rm' remove option
 #----------------------------------------------------------------------------------------		
 # Run and Delete the Container!
 $ docker run --rm -it ubuntu sleep 5 && Echo "Hello World"
@@ -265,7 +302,7 @@ $ docker run --rm -it ubuntu bash -c "sleep 3; echo 'Sleep 3sec has done!'"
 $ docker ps -a		<= list all containers (--rm removed newly ran Containers)
 
 #----------------------------------------------------------------------------------------
-Docker Logs
+# Docker Logs
 #----------------------------------------------------------------------------------------
 
 # Run detach
@@ -295,26 +332,102 @@ $ docker attach test <=XXX Not working
 $ docker ps -l  then  grep the "NAMES"
 
 
+#----------------------------------------------------------------------------------------
+# Dockerfile(Creating an IMAGE(location -> /var/lib/docker)
+#----------------------------------------------------------------------------------------
+$ docker build -t new_image_name	. 
+			   -t tag(naming)		. <- here(local computer's registry)
+
+				
+$ mkdir dockerfile-busybox && cd dockerfile-busybox
+$ vi Dockerfile
+FROM busybox
+Run echo "Building simple docke image."
+CMD echo "Hello Busybox"
+
+$ docker build -t busybox-hello .
+#---------------------------------------------------
+Sending build context to Docker daemon  2.048kB
+Step 1/3 : FROM busybox
+ ---> af2f74c517aa					<=Creating Image from
+---------------------------->
+Step 2/3 : Run echo "Building simple docke image."
+ ---> Running in				  <885c8e4c1bc5>		<= Creating a CONTAINER 	
+'Building' simple docke image.
+'Removing' intermediate container <885c8e4c1bc5>
+ ---> <548d9c22f80f>
+---------------------------->
+Step 3/3 : CMD echo "Hello Busybox"
+ ---> Running in <c3e779abaaaa>						    <= Creating a CONTAINER 
+'Removing' intermediate container <c3e779abaaaa>
+ ---> <3d4364b52da7>
+---------------------------->
+Successfully built 3d4364b52da7				<= FINAL IMAGE
+Successfully tagged buxybox-hello:latest
+#---------------------------------------------------
+
+$docker images
+	REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
+	buxybox-hello       latest              <3d4364b52da7>        About a minute ago   1.2MB
+
+$ docker run --rm 3d4364b52da7 echo "hello"
+
+
+
+
+
+
+
+
+
+
+#----------------------------------------------------------------------------------------
+Docker Networks(Private Container Networking)
+#----------------------------------------------------------------------------------------
+- Docker isolated from the internet by default
+- Group your containers into private networks
+- Exposing prots and linking containers
+
+
+$ docker run --rm -it -p 80:8000	  -p 8080:9090	--name echo-server 	
+						Pulic:inside	
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 #----------------------------------------------------------------------------------------
 Docker Purging (Unused,Dangling, Containers, Volumes, Networks
+https://docs.docker.com/engine/reference/commandline/system_prune/
 #----------------------------------------------------------------------------------------
 # clean up any resources 
 	— images, containers, volumes, and networks — that are dangling (not associated with a container):
+	
 $ docker system prune
+$ docker system prune -a	<= remove any stopped containers & unused images
 
-# remove any stopped containers and all unused images
-$ docker system prune -a
-
+$ docker system df			<= Show docker disk usage
+$ docker system events		<= Get real time events from the server
+$ docker system info		<= Display system-wide information
+$ docker system prune		<= Remove unused data
 
 
 #----------------------------------------------------------------------------------------
 Docker Stopping and Removing container
 #----------------------------------------------------------------------------------------	
-$ docker kill container_name	<= Stopping running container
+$ docker kill container_name	<= Stopping the running container
 $ docker rm   container_name	<= Deleting container	
 
 ----------------------------------------------------------------------
@@ -339,9 +452,9 @@ CONTAINER ID    IMAGE    COMMAND   CREATED     STATUS     PORTS   NAMES
 #----------------------------------------------------------------------------------------
 Delete Docker Images
 #----------------------------------------------------------------------------------------		
-# docker rm NAME or CONTAINER ID
-$ docker rm busybox2
-
+# docker rm   'NAME' or 'CONTAINER ID'
+$ docker rm   busybox2
+$ docker rm   70daee2d621c
 
 # RUN then REMOVE AFTERWARDS
 $ docker run --rm -it ubuntu sleep 5 && Echo "Hello World"		<= RUN and REMOVE AFTERWARDS
@@ -360,6 +473,17 @@ $ docker run -it -d ubuntu bash
 $ docker run -it -d ubuntu /bin/bash
 
 
+#----------------------------------------------------------------------------------------
+Container Resource Contraints 
+#----------------------------------------------------------------------------------------
+
+Container Tips
+1. Container should contain all the DEPENDENCIES INCLUDED
+2. Save the STOPPED Container
+
+  $ docker commit  d7135b9fc05c  centos-super-1 <= Create a NEW IMAGE from a container's changes
+
+  $ docker tag     d7135b9fc05c  centos-test-1  <= Create a TAG TARGET_IMAGE that refers to SOURCE_IMAGE
 
 
 
@@ -2206,7 +2330,7 @@ Docker for Mac - Video 7
 Docker for CentOS7	
 	https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-centos-7	
 	$ sudo yum check-update
-	$ curl -fsSL https://get.docker.com/ | sh
+	$ curl -fsSL https://get.docker.com/ | sh			<= Without 'sudo' installing docker 
 	$ sudo systemctl start docker
 	$ sudo systemctl status docker
 	$ sudo systemctl enable docker
@@ -2215,7 +2339,7 @@ Docker for CentOS7
 	$ sudo usermod -aG docker username
 	
 	
-	$ grep docker /etc/group | 
+	$ grep docker /etc/group 
 	$ docker:x:993:				<= from		
 	$ docker:x:993:apark		<= to
 	$ Log off and RE-LOGIN
