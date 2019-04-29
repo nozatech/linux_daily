@@ -4701,11 +4701,13 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 	$ stat -c %G /var/www/html			<= %G Group
 		www-data	
 	
+	$ cat /etc/group  <= Group List
+ 	$ getent group | cut -d: -f1
+	
 	# groups
 	$ getent - get entries from Name Service Switch libraries
 
-	$ cat /etc/group  <= Group List
- 	$ getent group | cut -d: -f1
+
 	
 	# Who(users list) is in the group
 	$ getent group www-data
@@ -4717,6 +4719,11 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 	$ getent group www-data
 		www-data:x:33:apark  <= apark added
 	
+	# Delete group
+	$ groupdel Group_Name
+	
+	$sudo groupdel $(getent group | cut -d: -f1 | grep dock)
+
 	
 	### gpasswd
 	
@@ -5405,6 +5412,9 @@ using the following command, running as root user:
     ### Remove
 	$ rpm -qa | grep -i webmin
 	$ rpm -e <package name>
+	# Combo
+	$ sudo rpm -e $(sudo rpm -qa docker*)
+
 
 	### Search installed sw
 	$ rpm -qa | grep mysql

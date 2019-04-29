@@ -8,9 +8,9 @@
 6. Sell tailing
 ############################################
 
-Research
+Research Company's Documents
 Google Search:  
-	amazon filetype:pdf
+	amazon filetype:pdf     
 
 
 ############################################
@@ -152,14 +152,95 @@ Candle Stick Chart
 
 	   
 	   
-	   
-############################################
-Terminology
-############################################
+----------------------------------------------------------------------------------------
+### Finance & Stock Terminology
+----------------------------------------------------------------------------------------
+
+----------
+주식 용어
+----------
+
+익절	<- 이익보고 파는거
+손절	<- 손해보고 파는거
+
+
+CLO (대출-채권-담보부-증권)
+	은행의 대출채권을 묶어 풀(POOL)을 구성한 뒤 자산유동화전문회사(SPC)에 매각하고, 
+	자산유동화전문회사는 풀의 대출채권을 담보로 유동화증권을 발행하는 것으로 자산유동화증권(ABS)
+	의 일종임. 일반적인 경우 은행이 유동성을 확보하기 위한 수단
+
+CMBS(Commercial Mortgage Backed Security - 부동산 증권화)
+	투자은행이 상업용 부동산 담보대출을 pool로 만들어 SPC(특별목적회사) 로 소유권을 이전하여 
+	그 pool에서 생긴 현금을 기초로 하여 투자자에게 지급해야할 순위를 정하고 구분한뒤 SPC가 증권을 발행한다.
+
+
+	
+ABS CBO / CLO 및 MBS의 차이점
+	자산 유동화에 관한법률(ABS법)에서는 부동산,대출채권,매출채권,유가증권 등 모든 유형의 
+	자산(재산권)을 기초로 발행되는 모든 유가증권을 총칭하여 유동화 증권(ABS:Asset Backed Securities)
+	이라 정의하고 있는데 CBO/CLO는 그 유동화 자산이 사채 (주로 Junk Bond) 또는 대출채권인 유동화 증권이고 
+	MBS는 그 유동화자산이 주택저당대출채권(Mortgage)인 유동화증권이라 할수 있다. 
+	
+	실무적으로는 ABS법에 따라 발행되는 유동화증권을 ABS(사채,출자증권,수익증권 등의 형태로 발행됨)로 
+	분류하고, 주택저당채권유동화회사법(MBS법)에 따라 발행되는 유동화증권을 MBS(사채 및 수익증권 
+	형태로 발행됨)로 분류하고 있다. 	
+	
+ABS (자산유동화채권) 
+
+MBS (주택저당채권) 	
+
+
+bonds(채권) <-	A bond is an IOU.
+	Those who buy such bonds are, put simply, loaning money to the issuer for a fixed period 
+	of time.
+
+	At the end of that period, the value of the bond is repaid. Investors also receive a 
+	pre-determined interest rate (the coupon) - usually paid annually.
+
+	For example, if a company or government issues a 10-year, $100m bond with a coupon of 5% 
+	it is saying, "In ten years time, I owe you $100m, and every year until then I will pay 
+	you $5m interest".	
+	
+	However bondholders can, if they wish, sell a bond to someone else before the agreed time 
+	period. And this is why bonds are interesting as the trade in them gives an indication of 
+	the level confidence in the company or government issuing the bond.
+	
+
 Beige Book 	<- Summary of Commentary on 'Current Economic Conditions' By Federal Reserve District
 
 ETF 		<- Exchange Traded Fund(e.g. QQQ(FAANG Stocks), SPY(S&P), 
 
 Mutual Fund <- 주식회사 방식으로 운영되는 펀드
+	
+----------------------------------------------------------------------------------------
+Loan 종류
+----------------------------------------------------------------------------------------
+	
+Leveraged Loan(레버리지 론)  
+	레버리지 론은 이미 부채 규모가 상당한 수준의 개인이나 기업이 더 빌린 돈을 말한다. 기업 
+	인수합병(M&A)에서 인수 대상 기업의 자산을 담보로 돈을 빌리는 것도 레버리지 론에 포함된다. 
+	투기등급 기업들이 빌리는 돈을 레버리지 론으로 부르기도 한다. 레버리지 론은 채무불이행(디폴트) 
+	위험이 더 높은 것으로 간주되고, 따라서 더 높은 금리가 적용된다. 회사채와 달리 레버리지 론 
+	발행은 증권이 아닌 대출 계약 형식이다. 채권자에게서 돈을 빌리되 변동금리가 적용되고, 이 
+	때문에 금리 상승기에 채권에 비해 수익이 더 높은 장점이 있다.
+	
+	
+
+
+	
+	
+	
+----------------------------------------------------------------------------------------
+US Neutral Rate 3.5%
+----------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------
+QE vs QT (https://www.investopedia.com/terms/q/quantitative-easing.asp)
+----------------------------------------------------------------------------------------
+Quantitative Easing	
+Quantitative Tightening	
+		   
+
+
 
 
