@@ -3404,6 +3404,24 @@ $ echo 'export FORMAT="\nID\t{{.ID}}\nIMAGE\t{{.Image}}\nCOMMAND\
 \t{{.Command}}\nCREATED\t{{.RunningFor}}\								<= NO Space in front
 \nSTATUS\t{{.Status}}\PORTS\t{{.Ports}}\								<= NO Space in front
 \nNAME\t{{.Names}}\n"' >> ~/.bashrc && source ~/.bashrc
+
+
+------------------------------------------------------------------------------------
+# Echo server using '|' pipe
+------------------------------------------------------------------------------------
+# echo forwarding server
+$ nc -lp 8888| nc -lp 9999
+
+# 2nd Terminal
+$ nc localhost 8888
+	This is 8888 Echo msg		<= echo this msg to echo server
+
+# 3rd Terminal 
+$ nc localhost 9999
+	This is 9999 Echo msg		<= Echo forward this 3rd terminal 
+
+
+
 	
 ------------------------------------------------------------------------------------	
 # double & single quotes	
@@ -4203,7 +4221,7 @@ ord
 	
 	# Ping
 	Windows Ping TTL is 128
-	Redhat	Ping TTL is 64
+	RedHat	Ping TTL is 64
 	Other linux < 128
 	
 	$ ping -i 4   127.0.0.1    	<= send out ping packets every 4 sec

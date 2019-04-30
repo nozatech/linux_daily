@@ -387,21 +387,162 @@ Docker Networks(Private Container Networking)
 - Docker isolated from the internet by default
 - Group your containers into private networks
 - Exposing prots and linking containers
-
-
-$ docker run --rm -it -p 80:8000	  -p 8080:9090	--name echo-server 	
-						Pulic:inside	
-
-
-
+- the port inside the container is fixed
+- The port on the host is chosen from the unused ports
+- This allows many containers running programs with fixed ports
+- This often is used with a service discovery program
 
 
 
+$ docker run --rm -it   -p 80:8000	  -p 8080:9090	--name echo-server 	busybox
+	                  <Public:inside>
+
+# Dynamically choose the port
+$docker run --rm -it       -p 45678    -p 45679 --name echo-server busybox
+	                  <Public:inside>
+
+
+$ docker port echo-server
+  45678/tcp -> 0.0.0.0:32769
+  45679/tcp -> 0.0.0.0:32768
 
 
 
 
+### Echo Server ###
+# 1st Terminal
+$ docker run --rm -it -p 45678:45678	  -p 456789:45679	--name echo-server 
+	$ nc -lp 80 | nc -lp 8080		<= NC listening port 80 FORWARD to listening port 8080
 
+# 2nd Terminal
+$ nc localhost 45678
+	This is 45678 Echo msg		<= docker echo this msg to docker container
+
+# 3nd Terminal 
+$ nc localhost 45679
+	This is 45678 Echo msg		<= docker forward this msg
+
+
+
+
+#----------------------------------------------------------------------------------------
+# Connecting between Containers
+#----------------------------------------------------------------------------------------
+# Senario #1
+Linux Docker Host 			->	 Host Network	->
+							|					  |
+							|	Virtual	Network   |
+							|					  |
+			    	Client Container	    Server Container			
+
+# Term #1 <- Run a cotainer 
+$ docker run --rm -it -p 1234:1234 --name echo-server busybox
+	/ # nc -lp 1234						<= listening to prot 1234
+	hello from term#3					<= received and display msg from Term #2
+	hello from term#3
+	
+# Term #2 <- Check port is listing
+$ nc localhost 1234							<= Host's Bash shell
+	hello from term#3						<= send msg
+
+
+# Term #3
+$ docker run --rm -it busybox
+	/ # nc 10.100.5.246 1234		<- Linux HOST IP - 10.100.5.246  
+	hello from term#3				<= send from Docker bash shell
+
+#----------------------------------------------------------------------------------------
+# Senario #2		<= More Efficient!!!
+#----------------------------------------------------------------------------------------
+- Generally used with Orchestration
+- Links all ports, thouhg only one way
+- Only for services that catn't ever be run on different machines
+- A service and its health check 
+
+
+Linux Docker Host 				 Host Network	
+												
+							|->	Virtual	Network ->|
+							|					  |
+			    	Client Container	    Server Container
+					
+			
+Client Container	==> Connecting to ==>    Server Container			
+
+#----------------------------------------------------------------------------------------
+# Senario #1	" --kink server_name"  <= LINKING option 'host & port'
+#----------------------------------------------------------------------------------------
+### Server##  listing port 1234
+$ docker run --rm -it  --name server  busybox
+
+/ # nc -lp 1234
+    Message from client(Term#2)
+
+### Client ### sending msg to 'Server' port 1234
+$ docker run -it --rm  --link server --name client busybox
+
+/ # nc server 1234						<= Server's IP
+	Message from client(Term#2)
+
+# How clients knows the server ip?
+/ # cat /etc/hosts
+	172.17.0.2      server 0aa7ec32892e	<= Server's IP
+	172.17.0.3      edd2a16f6776		<= Client's IP	
+
+	### Note###
+	If server ip changes, it won't connect!!!
+	
+#----------------------------------------------------------------------------------------
+# Senario #2 using  '--net=network_name'		<= More Efficient!!!
+#----------------------------------------------------------------------------------------	
+# How to make links don't break
+- Docker has private networks
+- These have built in nameserver that fix the links
+- You must crate the networks in advance
+
+
+$ docker   network    create       example		<= Network Name
+	e20d520ba75ad0....d85a304de39
+
+### Server ###  
+ $ docker run --rm -it  --net=example --name server  busybox
+ /# nc -lp 1234
+	hello from client				<= Receiving message from Client
+
+
+
+	
+### Client ###   !!!Can be resumed once the server is back from reboot or recreated!!!
+ $ docker run -it --rm  --link server --net=example --name client busybox
+ #/ nc -v server 1234
+	hello from client				<= Sending message
+
+
+#----------------------------------------------------------------------------------------
+# IP Address Binding in Your Service
+#----------------------------------------------------------------------------------------
+- Services that listen "locally" by default are only available in the Container
+- To allow connections, you need to use the "bind address" "0.0.0.0" inside the container
+- You should use Docker to limit access to only the HOST.
+
+	e.g. Private Container
+	$ docker run -p 127.0.0.1:1234:1234/tcp		
+					---------
+					^only listening from localhost 127.0.0.1
+							 
+
+
+
+
+#----------------------------------------------------------------------------------------
+# Docker Images  <= listing
+#----------------------------------------------------------------------------------------
+- Tagging igives images names
+- 'docker commit' tags images for you
+
+$ docker images
+$ docker ps -l
+$ docker commit 
 
 
 
