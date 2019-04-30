@@ -535,14 +535,55 @@ $ docker   network    create       example		<= Network Name
 
 
 #----------------------------------------------------------------------------------------
-# Docker Images  <= listing
+# Docker Images & Clean up <= listing
 #----------------------------------------------------------------------------------------
 - Tagging igives images names
 - 'docker commit' tags images for you
 
 $ docker images
 $ docker ps -l
-$ docker commit 
+$ docker commit <ID_name> <New_name:v2.1>
+#format
+	registry.example.com:port/organization/image-name:version-tag
+
+$ docker pull 
+$ docker run
+$ docker commit
+$ docker push
+
+$ docker rmi image-name:tag									<= remove an image
+$ docker rmi image-name:tag	image-name:tag image-name:tag	<= multiple  images
+
+
+
+
+#----------------------------------------------------------------------------------------
+# Docker Volume 		<=  
+#----------------------------------------------------------------------------------------
+- Virtaul "discs" to store and share data
+- Persistent vs ephemeral
+- Not part of images
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
