@@ -50,6 +50,7 @@ docker registry		<= image repository  e.g. Docker Hub or quay.io
 #------------------------------------------------------------------------------------------------------------------
 # Docker Display Format in order to read Vertically <= readability
 #------------------------------------------------------------------------------------------------------------------
+
 $ docker ps -l --format=$FORMAT			<= add FORMAT Variable string into .bashrc
 
 # Export Single line String Variable to .bashrc
@@ -105,10 +106,26 @@ $ grep ${USER}   /etc/group
 
 #------------------------------------------------------------------------------------------------
 Image(Template(Snapshot)) vs Container(VM)
+#------------------------------------------------------------------------------------------------
+
 	Images	<=An image is an inert, immutable, file that's essentially a snapshot of a container template.
 				e.g. CentOS, Ubuntu
 			Images are created with the 'Docker build' using 'Dockerfile' command, and they'll produce 
 			a container when started with run. 
+#------------------------------------------------------------------------------------------------
+Docker Tag vs Commit
+#------------------------------------------------------------------------------------------------
+# tag    	<- Images' Save-As
+$ docker tag busybox:latest noza/busybox-test-01:v1				
+$ docker push noza/busybox-test-01:v1	
+
+
+# commit	<- Container's Save-As 
+			
+			
+			
+			
+			
 #------------------------------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------------------------
@@ -122,7 +139,7 @@ $ docker ps	  --help
 
 
 #------------------------------------------------------------------------------------------------------------------
-# Teplate Image	=> 'docker run' => Running Container => Mod&Exit Container => 'docker commit' => NEW IMAGE
+# Template Image	=> 'docker run' => Running Container => Mod&Exit Container => 'docker commit' => NEW IMAGE
 #------------------------------------------------------------------------------------------------------------------
 
 $ docker commit     <= Create a new image from a container's changes
@@ -173,7 +190,7 @@ docker commit   9833c91767e3 		ubuntu-test_saving.file
 
 
 # tag    <- Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE  (Copy to new name)
-5. docker tag sha256:94e814e2efa8845d95b2112d54497fbad173e45121ce9255b93401392f538499  new_ubuntu_image
+5. docker tag sha256:94e81...392f538499  new_ubuntu_image
 
 				      ^^^Container ID
 					  
@@ -558,36 +575,107 @@ $ docker rmi image-name:tag	image-name:tag image-name:tag	<= multiple  images
 
 
 #----------------------------------------------------------------------------------------
-# Docker Volume 		<=  
+# Docker Volume 		<= Sharing Data 
 #----------------------------------------------------------------------------------------
-- Virtaul "discs" to store and share data
-- Persistent vs ephemeral
+
+### Sharing Data with HOST ####
+- Virtual "disks" to store and share data
+- Persistent vs ephemeral(temp)
+- Not part of images
 - Not part of images
 
 
+$ mkdir dockerVolume
+$ docker run -it --rm -v /home/apark/dockerVolume:/shared-volume busybox
+												  /home/apark/dockerVolume/shared-volume
+  /# touch test{01..100}.txt
+  /# exit
+$ ls -lha /home/apark/dockerVolume/shared-volume
+
+
+### Shareing Data with Containers ###  <= volumes-from
+- Shared folders with the host
+- Sharing a "single file" into a container
+- Note that a file must EXIST before you start the container!
+
+# 1-Sharing Container # 
+$ docker run -it --rm -v /shared-data busybox			<= creating within Container
+$ ls -l
+drwxr-xr-x    2 root     root             6 May  1 18:16 shared-data		<==
+$ touch test{01..10}.txt
+
+
+
+# 2-Accessing Container #  <= using "--volumes-from"
+$ docker ps -l			<= Currently running Container name
+$ docker run -it --volumes-from    f357df8483fd   			busybox
+									^1-Sharing Container  	^Name of Image
+$ ls /share-data
+$ echo "Test from Container#2" >  /share-date/from_container#2
 
 
 
 
+#----------------------------------------------------------------------------------------
+# Docker PUSH and PULL (Registries Placeholders) 
+	http://hub.docker.com
+
+	https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html
+#----------------------------------------------------------------------------------------
+$ docker login  <= Docker account
+	noza|노자생일
+	
+$ docker login --username=LoginID --email=your-email@company.com
+
+# WARNING! Your password will be stored unencrypted in /home/apark/.docker/config.json.
+
+
+# Search Images #
+$ docker search Image_Name
+
+# Step-1		<= search images
+
+$ docker search busybox
+NAME          DESCRIPTION         STARS               OFFICIAL            AUTOMATED
+busybox       Busybox base image.                        1567                [OK]
+
+# Step-2		<= pull(download) image
+$ docker pull busybox
+--------------------------------------------------------
+Using default tag: latest
+latest: Pulling from library/busybox
+e79bb959ec00: Pull complete
+Digest: sha256:724b0f....abe0ef5
+Status: Downloaded newer image for busybox:latest
+--------------------------------------------------------
+
+# Step-3		<= 'Docker Tag(Rename)' your image
+busybox:latest    ==> TAG(renaming) ==>  noza/busybox-test-01:tag-v1
+
+$ docker tag    busybox:latest     noza/busybox-test-01:tag-v1
+									^-hub.docker.com <-Account name
+
+$ docker images
+
+REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
+noza/busybox-test-01       v1                  af2f74c517aa        4 weeks ago         1.2MB
+
+# Upload to docker hub
+$ docker   push   noza/busybox-test-01:tag-v1
+
+
+The push refers to repository [docker.io/noza/busybox-test-01]
+0b97b1c81a32: Mounted from library/busybox
 
 
 
 
+# Save to Local file server using 'TAR'
+$ docker save busybox:latest > busybox:latest.tar
+-rw-rw-r--.  1 apark apark 1.4M May  1 16:28 busybox:latest.tar
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Load to Docker Image List instead of download from hub.docker.com
+$ docker load --input busybox:latest.tar
 
 
 #----------------------------------------------------------------------------------------
@@ -785,7 +873,8 @@ $ http://192.168.232.148:8081   <=setup word press
 	
 	
 #----------------------------------------------------------	
-###	Delete all containers ###
+###	Delete all containers script ### 	=> del-docker-images.sh
+#----------------------------------------------------------
 #!/bin/bash
 
 # Delete all containers
@@ -798,11 +887,12 @@ docker rmi $(docker images -q)
 
 #----------------------------------------------------------
 ### Creating separate docker shell
-
-$ docker run -i -t  image_name:version_no /bin/bash
-$ docker run -t -i ubuntu:14.04 /bin/bash  					<= specific version login
+#----------------------------------------------------------
+Syntex: $ docker run -i -t  image_name:version_no /bin/bash
+e.g.
+$ docker run -t -i  ubuntu:14.04 /bin/bash  					<= specific version login
 $ docker inspect image_name
-$ ctrl+p+q  to exit shell without terminate the container
+	# 'ctrl+p+q'  to exit shell without terminate the container
 $ docker network ls
 
 
