@@ -911,6 +911,13 @@ bellwether		<- 	one that takes the lead or initiative : LEADER  : an indicator o
 	거세된양			"Apple, bellwether for technology stocks across Wall Street, 
 					falls into bear market territory."
 
+
+bemoan			<- express discontent or sorrow over (something). 당황한
+					synonyms:	lament, bewail, deplore, complain about, express regret about;
+					"He bemoaned his fate." 그는 자신의 운명을 한탄했다.
+					"Shares of ServiceNow (NOW) dropped Thursday as analysts bemoaned the departure of its 
+					longtime chief financial office"
+					
 bespoke			<- (of goods, especially clothing) made to order.
 					"a bespoke suit, a bespoke engine"
 
@@ -1792,6 +1799,19 @@ irrigator		<- To supply (land or crops) with water by means of pipes, sprinklers
 
 
 # J
+jar [jarred]	<- 1. send a painful or damaging shock through (something, especially a part of the body).
+					  "he jarred his knee in training"
+					  
+					  "Fed Chairman Jerome Powell 'jarred' markets by suggesting that neither 
+					   a hike nor a rate cut was likely in the near-term."
+					  
+					  synonyms:	jolt, jerk, shake, vibrate; bang
+					  "each step jarred my whole body"
+					
+					2. have an unpleasant, annoying, or disturbing effect.
+						"a laugh that jarred on the ears"
+						synonyms:	grate on, set someone's teeth on edge; More
+
 jargon			<- special words or expressions that are used by a particular profession or group 
 					and are difficult for others to understand.
 						"legal jargon"
