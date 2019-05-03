@@ -650,32 +650,237 @@ Status: Downloaded newer image for busybox:latest
 --------------------------------------------------------
 
 # Step-3		<= 'Docker Tag(Rename)' your image
-busybox:latest    ==> TAG(renaming) ==>  noza/busybox-test-01:tag-v1
+busybox:latest    ==> TAG(renaming) ==>  noza/busybox-test-01:web-v1
 
-$ docker tag    busybox:latest     noza/busybox-test-01:tag-v1
-									^-hub.docker.com <-Account name
+$ docker tag    busybox:latest     noza/busybox-test-01:web-v1
+									^-hub.docker.com <-Account User_ID
 
 $ docker images
 
 REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
 noza/busybox-test-01       v1                  af2f74c517aa        4 weeks ago         1.2MB
 
-# Upload to docker hub
-$ docker   push   noza/busybox-test-01:tag-v1
 
+# 'Upload' to docker hub	<= under 'noza' account
+$ docker   push   noza/busybox-test-01:web-v1
+
+# Upload Location
+https://cloud.docker.com/repository/list
+=> go -> top -> Repositories
+
+$ docker   push   noza/busybox-test-01:web-v1	
+
+# Once login, search from Bash Shell
+$ docker search noza | grep noza/
+
+noza/dockerhub-noza       dockerhub-noza                                 0                                 
+noza/busybox-test-01                                                     0  
 
 The push refers to repository [docker.io/noza/busybox-test-01]
 0b97b1c81a32: Mounted from library/busybox
 
-
-
-
-# Save to Local file server using 'TAR'
-$ docker save busybox:latest > busybox:latest.tar
+# Download from Repository
+$ docker   pull   noza/busybox-test-01:web-v1	
+										^^^ Must use or error "lastest not found"
+										
+#----------------------------------------------------------------------------------------
+### Save to Local file server using 'TAR' ###
+#----------------------------------------------------------------------------------------
+$ docker   save   busybox:latest  >  busybox:latest.tar
 -rw-rw-r--.  1 apark apark 1.4M May  1 16:28 busybox:latest.tar
 
 # Load to Docker Image List instead of download from hub.docker.com
-$ docker load --input busybox:latest.tar
+$ docker   load   --input busybox:latest.tar
+
+#----------------------------------------------------------------------------------------
+### Dockerfile ###
+https://docs.docker.com/engine/reference/builder/
+#----------------------------------------------------------------------------------------
+$ docker build -t tag-name-image   .    <- the Dockerfile is located in current directory
+$ docker build -t tag-name-image   /home/apark/dockerfile/busybox1 <- the Dockerfile location
+
+$ vi /home/apark/dockerfile/busybox1/Dockerfile
+------------------------------------------
+FROM busybox:latest								<=1
+RUN  echo "Building simple docker image."		<=2	
+CMD  echo "Hello Container"						<=3
+CMD  echo "EXITING GoodBye~~~"					<=4
+------------------------------------------
+
+$docker build -t busybox1   .			<= Location of the 'Dockerfile'
+
+Sending build context to Docker daemon  2.048kB
+Step #1/4 : FROM busybox:latest
+			---> af2f74c517aa							<= 1st IMAGE from Template
+			
+Step #2/4 : RUN  echo "Building simple docker image."
+			---> Running in 6d86672a1c8c				<= 2nd IMAGE 
+			
+Building simple docker image.
+Removing intermediate container 6d86672a1c8c
+			---> 099d34b48ee3							<= 3rd IMAGE 
+			
+Step #3/4 : CMD  echo "Hello Container"
+			---> Running in fea6a136144e				<= 4th IMAGE 
+			
+Removing intermediate container fea6a136144e
+			---> 2a004ec97f33							<= 5th IMAGE 
+			
+Step #4/4 : CMD  echo "EXITING GoodBye~~~"
+			---> Running in afcc6b3b9501				<= 6th IMAGE 
+			
+Removing intermediate container afcc6b3b9501
+			---> 8c0b1decfa72							<= FINAL IMAGE !!!!
+			
+Successfully built 8c0b1decfa72			<= FINAL!!!!
+Successfully tagged busybox1:latest
+
+
+
+# To check the image layers
+
+$ docker inspect busybox1
+
+1 => "busybox1:latest"
+2 => "CMD [\"/bin/sh\" \"-c\" \"echo \\\"EXITING GoodBye~~~\\\"\"]"
+4 => "echo \"EXITING GoodBye~~~\""
+
+
+
+$ vi /home/apark/dockerfile/busybox2/Dockerfile
+------------------------------------------
+FROM ubuntu:latest								<= Original Image from Dockerhub!
+RUN  apt-get -y update
+RUN  apt-get install apt-utils  vim -y
+RUN  echo "Building simple docker image."
+CMD  echo "Hello Container"
+CMD  echo "EXITING GoodBye~~~"
+CMD  "vi" /tmp/notes"
+CMD  echo "this is msg from dockerfile" > /tmp/msgfromdockerfile
+CMD ["/usr/bin/vim", "/tmp/notes"]				<= Launching VIM when Docker Container Runs!
+------------------------------------------
+
+$ docker build -t ubunt-vim			<= -t tag (Save-as)
+
+$ docker images
+ubunt-vim   latest              1ba6596118fc        6 seconds ago       127MB
+
+$ docker run --rm -it ubunt-vim
+=> Launches 
+
+
+## Adding(Chain together) to the new 'ubuntu-vim' image
+$ vi /home/apark/dockerfile/busybox2/Dockerfile
+------------------------------------------
+FROM ubunt-vim:latest
+ADD note.txt /note.txt
+CMD "vim" /note.txt			
+------------------------------------------
+
+#----------------------------------------------------------------------------------------
+Docker File 
+#----------------------------------------------------------------------------------------
+FROM					<= Which Image
+  e.g.  FROM   ubuntu:latest
+  e.g.  FROM   ansible/ubuntu14.04-ansible  
+
+MAINTAINER 				<= 
+	MAINTAINER   user name  user_id@xxx.com
+	
+RUN						<= commands line
+	RUN  unzip install.zip /opt/install/
+	RUN  echo "Hello Docker"
+
+Add						<= Add local files
+	ADD run.sh	/run.sh
+	ADD project.tar.gz	/install/
+	ADD https://project.example.com/donwload/1.0/project.rpm   /project/
+
+EVN						<= Sets evn variables
+							Both during the build and when running the result
+	
+	EVN DB_HOST=db.production.example.com
+	EVN DB_PORT= 3606						<= MySQL 
+
+ENTRYPOINT				<= Specifices the start of the command to run
+
+CMD						<= Specifices the whole command to run
+
+# shell form
+	vi note.txt
+	
+# Exec from
+	["/usr/bin/vi", "note.txt"]
+
+
+EXPOSE
+	EXPOSE 8080
+	
+
+VOLUME
+  #Define Shared ro Ephemeral Volumes
+	VOLUME ["/host/path/"  "/container/path/"]
+	VOLUME ["/shared-data"]
+
+  # Avoid defining shared folders in Dockerfiles
+	
+WORKDIR					<= Set
+	WORKDIR /install/
+	
+	
+USER					<= run as
+	USER user_id
+	USER 1000
+
+
+
+#----------------------------------------------------------------------------------------
+Golden Image
+#----------------------------------------------------------------------------------------
+- Include installs in your project!!  Packages will not going to be available after months.
+
+
+
+#----------------------------------------------------------------------------------------
+What Docker does
+#----------------------------------------------------------------------------------------
+- Docker Program written in GO  
+- Docker uses 'cgroup' to contain processes in Kernel
+- Group process toghter
+- Uses 'namespaces' to contain networks
+- Uses 'copy on write' filesystems to build images
+
+- Makes scripting distributed systems "easy"
+
+# Docker split into 2 programs: client and server
+Server - receives command over a socket(either over a network or through a 'file'
+		 	
+
+Client - 
+
+
+Running Docker Locally
+					Linux Docker Host
+															   |-> Docker Container		
+Docker Client Program <==> Socket <==> Docker Server Program <-|-> Docker Container	
+															   |-> Docker Container	
+
+
+					Linux Docker Host
+					
+Docker Server Program <==> Socket <==> Docker container
+											|->Docker Client Program
+
+
+
+
+	
+
+
+
+
+
+
 
 
 #----------------------------------------------------------------------------------------
@@ -723,12 +928,24 @@ CONTAINER ID    IMAGE    COMMAND   CREATED     STATUS     PORTS   NAMES
 Delete Docker Images
 #----------------------------------------------------------------------------------------		
 # docker rm   'NAME' or 'CONTAINER ID'
-$ docker rm   busybox2
-$ docker rm   70daee2d621c
+$ docker rm -f  busybox2			-f force
+$ docker rmi    70daee2d621c		-i image
+
+Docker  rm(container)  vs  rmi(image)
+$ docker rm  <= Remove one or more containers
+$ docker rmi <= Remove one or more images
+
+
 
 # RUN then REMOVE AFTERWARDS
 $ docker run --rm -it ubuntu sleep 5 && Echo "Hello World"		<= RUN and REMOVE AFTERWARDS
 $
+
+#----------------------------------------------------------------------------------------
+Delete Docker Container
+#----------------------------------------------------------------------------------------
+$ docker container ls -a    <=same result 
+$ docker ps -a				<=same result 
 
 
 
@@ -775,8 +992,8 @@ OSX 			 - ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-li
 Docker cmd
 #-----------------------------------------------------------------------------------------------------------
 $ docker info
-$ docker ps
-$ docker ps -q
+$ docker ps	-l			<= ps container list, -l latest
+$ docker ps -q			<= -q quiet display image or container IDs
 $ docker images
 
 
@@ -785,6 +1002,8 @@ $ docker kill $(docker ps -q) 			<= 'KILL' "$(docker ps -q)" <= all docker conta
 																-q [quiet]
 # Delete all containers
 $ docker rm   $(docker ps -a -q)			<=  Delete quietly all containers
+$ docker rm   $(docker ps -aq  )			<=    -q, --quiet           Only display numeric IDs
+
 
 # Delete all images
 $ docker rm   $(docker images -q)			<=  Delete all images
@@ -796,8 +1015,13 @@ $ docker ps --help
   -n, --last int        Show n last created containers (includes all states) (default -1)
   -l, --latest          Show the latest created container (includes all states)
       --no-trunc        Don't truncate output
-  -q, --quiet           Only display numeric IDs
+  -q, --quiet           Only display numeric IDs( instead of grep and awk, e.g. b08856a68a0f)
   -s, --size            Display total file sizes
+
+$ docker ps -aq			<= display all quietly with IDs
+
+# Alternative 
+$ docker rmi $(docker images -a | grep '\<none\>' | awk '{print $3}')
 
 
 
@@ -813,10 +1037,9 @@ $ docker network ls
 
 
 #-----------------------------------------------------------------------------------------------------------
-
-#--- Running 'Jenkins' using Docker Contaner ---#
+# 'Jenkins' using Docker Contaner #			1. Install on Server OS, 2. Run on Java, 3. Run on Docker
 https://hub.docker.com/_/jenkins/
-
+#-----------------------------------------------------------------------------------------------------------
 # To Run
 $ docker run -d -u root -p 8080:8080 -p 50000:50000 -v /home/apark:/var/jenkins_home jenkins
 

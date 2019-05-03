@@ -6,6 +6,9 @@ Go (golang)
 		with syntax loosely derived from C, but with additional features such as garbage collection, 
 		type safety, some dynamic-typing capabilities, additional built-in types 
 		(e.g., variable-length arrays and key-value maps), and a large standard library.
+
+	Go programming language is simple to implement because, once it is compiled, it typically does 
+	not require external libraries.
 		
 Golang Installation and Hello World
 https://linuxize.com/post/how-to-install-go-on-centos-7/
