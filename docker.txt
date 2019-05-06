@@ -23,6 +23,7 @@ Dockerfile 	<= is a file where you define what the image will look like, what ba
 			e.g. 
 				$ docker build -t Dockerfile.golang -t golang 	~/dockerImages			
 
+
 Alpine Linux	<= Alpine is a suitable Linux distribution for production because it only has the 
 				   bare necessities that your application needs to run.essities that your 
 				   application needs to run.
@@ -40,6 +41,7 @@ https://docs.docker.com/engine/installation/linux/ubuntulinux/
 
 #---------------------------------------------------------------------------------------
 ### Definition ###
+#---------------------------------------------------------------------------------------
 docker engine		<= Hypervisor
 docker image        <= vm Template image(Original)
 docker container    <= Running VM
@@ -76,8 +78,9 @@ $ docker ps -l 		<= list container with 'last used' container,
 
 CONTAINER ID   IMAGE          COMMAND                  CREATED        STATUS           PORTS  NAMES
 82d7d2320ffd   faf397329fe6   "/bin/sh -c 'go get …"   16 hours ago   Exited(2) 6 hrs ago    compassionate_austin
+#------------------------------------------------------------------------------------------------------------------
 
-# List all stopped Containers)
+# List all Stopped Containers
 $ docker ps -a   
 
 
@@ -92,8 +95,11 @@ NAME    compassionate_austin
 --------------------------------------
 
 #-------------------------------------------------------------------------------------------------------#
-# Image	=> 'docker run' => Running Container => Stopped(exit) Container => 'docker commit'	=> NEW IMAGE#
+# Image	=> 'docker run' => Running Container => Stopped(exited) Container => 'docker commit' => NEW IMAGE#
 #-------------------------------------------------------------------------------------------------------#
+
+
+
 
 #-------------------------------------------------------------------
 ### Linux User Permission to run Docker command ###
@@ -113,24 +119,12 @@ Image(Template(Snapshot)) vs Container(VM)
 			Images are created with the 'Docker build' using 'Dockerfile' command, and they'll produce 
 			a container when started with run. 
 #------------------------------------------------------------------------------------------------
-Docker Tag vs Commit
-#------------------------------------------------------------------------------------------------
-# tag    	<- Images' Save-As
-$ docker tag busybox:latest noza/busybox-test-01:v1				
-$ docker push noza/busybox-test-01:v1	
 
-
-# commit	<- Container's Save-As 
-			
-			
-			
-			
-			
-#------------------------------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------------------------
 ###  Docker Help Pattern ###
 #------------------------------------------------------------------------------------------------
+$ docker 
 $ docker help  
 $ docker --help
 
@@ -141,8 +135,27 @@ $ docker ps	  --help
 #------------------------------------------------------------------------------------------------------------------
 # Template Image	=> 'docker run' => Running Container => Mod&Exit Container => 'docker commit' => NEW IMAGE
 #------------------------------------------------------------------------------------------------------------------
+Docker Tag vs Commit
+Docker Tag(Rename Original Images) vs Docker Commit(Save-As Container after configuration)
+#------------------------------------------------------------------------------------------------
 
-$ docker commit     <= Create a new image from a container's changes
+# tag    			<- Images' Save-As
+# tag    <- Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE  (Copy to new name)
+
+  $ docker tag		<= Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  
+  $ docker tag  busybox:latest   noza/busybox-test-01:v1				
+
+  $ docker push noza/busybox-test-01:v1					<= upload to repository
+
+  $ docker tag sha256:94e81...392f538499  new_ubuntu_image
+				      ^- Container ID
+
+
+# commit	<- Container's Save-As 
+	$ docker  commit  busybox  busybox-test
+			
+    $ docker commit     <= Create a new image from a container's changes
 	$ docker run -it busybox					<= Run container from IMAGE
 	  /# touch busybox-test.txt					<= add txt file
 	  /# exit
@@ -150,49 +163,43 @@ $ docker commit     <= Create a new image from a container's changes
 	$ docker run -it busybox-test				<= Run new Image 'busybox-test'
 	  /# ls
 	  /# busybox-test.txt						<= 'txt' is in the new image
-	  
-	  
-$ docker tag		<= Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
-
-
+	
+	
 #----------------------------------------------------------------------------------------
- Create Docker Containers to "IMAGES"
+# Create Docker Containers to "IMAGES"
 #----------------------------------------------------------------------------------------
 1. Download and run Ubuntu
 
 $ docker run -it ubuntu /bin/bash			<- Download Ubuntu image and Run /bin/bash -it Interactive Terminal
- root@9833c91767e3:/# touch Test_Saving.FILE
- root@9833c91767e3:/# exit 		<= EXIT ONLY   'ctrl+d'  <- doesn't Save, have to use 'EXIT' cmd
+  root@9833c91767e3:/# touch    Test_Saving.FILE
+  root@9833c91767e3:/# exit 		<= EXIT ONLY   'ctrl+d'  <- doesn't Save, have to use 'EXIT' cmd
 
 2. Check latest used(ran) image 
 
-$ docker ps -l --format=$FORMAT		<= 'ps -l' container list last 
-ID      9833c91767e3				<= USE id
-IMAGE   ubuntu
-COMMAND "/bin/bash"
-CREATED 2 minutes ago
+$ docker ps -l --format=$FORMAT			<= 'ps -l' container list, last 
+	ID      9833c91767e3				<= USE id
+	IMAGE   ubuntu
+	COMMAND "/bin/bash"
+	CREATED 2 minutes ago
 
 3. SAVE-AS the container as a new image using 'commit'
   $ docker commit     			
 
-  $ docker commit 9833c91767e3	 new_name	 <- Create a new image from a container's changes
+  $ docker commit   9833c91767e3	 new_name	 <- Create a new image from a container's changes
 	sha256:db019f663237efa175e87a40e34651084aaefa1a488a041c5dcabc96dde74243
 
-
+#----------------------------------------------------------------------------------------
 # docker container id 
+#----------------------------------------------------------------------------------------
 $ docker inspect --format="{{.Id}}" ubuntu
-	sha256:94e814e2efa8845d95b2112d54497fbad173e45121ce9255b93401392f538499
+	
+	sha256:94e814e2e....b93401392f538499
 	
 	
-4. Creating my own IMAGE suing 'COMMIT'
-docker commit   9833c91767e3 		ubuntu-test_saving.file
+4. Creating my own IMAGE using 'COMMIT'
+  $ docker commit   9833c91767e3 		ubuntu-test_saving.file
 				^-Container ID	     NEW_NAME
 
-
-# tag    <- Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE  (Copy to new name)
-5. docker tag sha256:94e81...392f538499  new_ubuntu_image
-
-				      ^^^Container ID
 					  
 ---------------------------------------------					  
 ### OR EASIER Way ###				
@@ -206,7 +213,7 @@ $ docker images		<= images list
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 <none>              <none>              db019f663237        10 minutes ago      88.9MB
 centos              latest              9f38484d220f        5 weeks ago         202MB
-new_ubuntu_image    latest              94e814e2efa8        6 weeks ago         88.9MB				<= New Copied and renamed image
+new_ubuntu_image    latest              94e814e2efa8        6 weeks ago         88.9MB	<= New Copied and renamed image
 ubuntu              latest              94e814e2efa8        6 weeks ago         88.9MB
 
 
@@ -2401,7 +2408,7 @@ registry:
  
  
 ###-----------------------------------------------------------------------------------
-### Glossary ###
+### Glossary and Terminology ###
 ###-----------------------------------------------------------------------------------
 
 # aufs

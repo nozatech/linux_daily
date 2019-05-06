@@ -2458,6 +2458,9 @@ remonstrate		<- [v]make a forcefully reproachful protest. 항의하여 말하다
 					"he turned angrily to remonstrate with Tommy"
 					synonyms:	protest, complain, expostulate; More
 
+renege			<-[rini:g 리니-그](사람을) 낙심시키다; (약속을) 어기다[renege on ~].
+					Lighthizer Says China 'Reneging' on Trade-Talk Commitments.
+
 resonance		<- 울림, 공진
 
 relator			<-  a person who brings a public lawsuit, typically in the name of the (고발자),
@@ -2855,11 +2858,12 @@ truncate		<- shorten (something) by cutting off the top or the end.
 					synonyms:	shorten, cut, cut short, curtail, bring to an untimely end
 					antonyms:	lengthen, extend
 
-turnkey			<- (car turn key to start & drive) | ~of or involving the provision of a complete product 
-														 or service that is ready for immediate use.
+turnkey			<- (car turn key to start & drive) of or involving the provision of a complete product 
+					or service that is ready for immediate use.
+Turnkey properties <- (준비된 집) are homes that are move-in ready, meaning appliances are in working condition and 
+					  there are no obvious structural or electrical issues with the home. 
 
-
-
+turnkey system	<- buyer 의 요구대로 시공을 한 뒤 완벽한 작동/운행 시험을 거친뒤 buyer 에게 넘겨주는 시스템.
 
 trivial 		<- 	of little value or importance.
 					"huge fines were imposed for trivial offences"
