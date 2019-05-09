@@ -655,7 +655,9 @@ adversary		<- one's opponent in a contest, conflict, or dispute.
 					"Davis beat his old adversary in the quarterfinals"
 					synonyms:	opponent, rival, enemy, antagonist, combatant, challenger, 
 								contender, competitor, opposer; 
-								
+					"England is proving to be a formidable adversary."	영국은 위협적인 적이 된 것 같소
+					"‘We’ve been adversaries(적) for decades’: analyst on U.S.- China relations"
+					
 adverse effect(or event)	<- an undesired harmful effect resulting(역효과) 
 				Adverse events are unintended pharmacologic effects that occur when a medication 
 				is administered correctly while a 'Side Effect' is a secondary unwanted effect 
@@ -2339,9 +2341,14 @@ posh			<- [adj] elegant or stylishly luxurious.
 post mortem		<- an examination of a dead body to determine the cause of death.
 					synonyms:	autopsy, postmortem examination, necropsy
 					"the hospital carried out a postmortem"
+
+praise	vs.	blame	<-[preiz 프레이즈] 칭찬, 호평
 					
 prenup			<- a prenuptial agreement. 결혼 전 계약서
 					"did you get her to sign a prenup?"
+
+
+
 
 primitive		<- relating to, denoting, or preserving the character of an early stage in the 
 					evolutionary or historical development of something.

@@ -1205,9 +1205,21 @@ Command Stream		bash [options] -s [SHELL [ARGS]]	sh [options] -s [SHELL [ARGS]]
 --------------------------------------------------------------------------	
 # Touch 
 --------------------------------------------------------------------------	
+Creating an 'empty' file
+  $ touch this_is_empty_file.txt
+  $ echo "this is test" >> this_is_empty_file.txt
+
+Update the time stamp		<= Just update the time stamp
+  $ touch this_is_empty_file.txt
+  $ echo this_is_empty_file.txt
+	this is test
+	
+	
+	
+--------------------------------------------------------------------------	
 # Brace expansion
 --------------------------------------------------------------------------	
-
+	
 	$ touch apple banana cherry				<= creating multiple files
 	$ touch {apple,banana,cherry}			<= !NO SPACE!creating multiple files
 	

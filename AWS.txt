@@ -1018,8 +1018,8 @@ $ aws s3api list-buckets
 
 
 ##############################################################################
-### EKS  (Elastic Kubernetes Service)
-#   Training: https://www.linkedin.com/learning/running-kubernetes-on-aws-eks
+# EKS  (Elastic Kubernetes Service)
+# Training: https://www.linkedin.com/learning/running-kubernetes-on-aws-eks
 ##############################################################################
 
 API/CLI		---> Kubectl, Ajax, etc
