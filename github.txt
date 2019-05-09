@@ -30,14 +30,23 @@ $ git config --global credential.helper 'cache --timeout=3600'
 $ git config --list 
 # $ git config -l		<= same
 
-$ git config credential.helper store
+$ git config credential.helper store				<= 'store' in local home
 
 $ git push https://github.com/nozatech/books.git
 	
 	Username: 
 	Password: 
 	
-$ git help credentials		<= manual
+$ git help credentials				<= manual
+
+# Password location
+$ cat ~/.git-credentials
+	https://userID:Password@github.com
+
+$ cat ~/.gitconfig					<= User's home
+	  [user]
+        name = user_id
+        email = email@gmail.com
 
 
 ------------------------------------------------------------------------------------------
