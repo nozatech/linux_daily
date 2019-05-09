@@ -1,10 +1,11 @@
 How to use 'GIT'
 
 ---------------------------------------------
-git status	
-git add . 						<='-A' all, or a new file_name
-git commit -m "update message"
-git push
+$ git status	
+$ git add . 						<='-A' all, or a new file_name
+$ git commit -m "update message"
+$ git commit -am "update message"
+$ it push
 ------------------------------------------------------------------------------------------		
 
 # To resolve \n and \r\n issue for  Linux and Windows 
@@ -18,33 +19,19 @@ $ git config core.autocrlf input
 Use HTTPS	https://github.com/nozatech/jenkins.git
 Use SSH     git@github.com:nozatech/jenkins.git
 
+
 ------------------------------------------------------------------------------------------
-### User ID and Password Configuration Setup
-There are 3 levels of git config; project, global and system.
+# Remembering PW and ID for 3600sec(60mins)
 ------------------------------------------------------------------------------------------
-1. Project: 
-			Project configs are only available for the current project and stored in 
-			>> .git/config <<
-			
-	$ git config user.name "John Doe" 
-	
-2. Global: 
-			Global configs are available for all projects for the current user and stored in 
-			>> ~/.gitconfig <<
-			
-	$ git config --global user.name "John Doe"
-	
-3. System: 
-			System configs are available for all the users/projects and stored in 
-			>> /etc/gitconfig <<
-			
-	$ git config --global user.name "John Doe"
-------------------------------------------------------------------------------------------	
+#### Save ID and PW for 60mins ###
+$ git config --global credential.helper 'cache --timeout=3600'
+####
 
-
-
+$ git config --list 
+# $ git config -l		<= same
 
 $ git config credential.helper store
+
 $ git push https://github.com/nozatech/books.git
 	
 	Username: 
@@ -52,11 +39,63 @@ $ git push https://github.com/nozatech/books.git
 	
 $ git help credentials		<= manual
 
+
+------------------------------------------------------------------------------------------
+### Global Git Config: User ID and Password Configuration Setup
+There are 3 levels of git config; project, global and system.
+https://stackoverflow.com/questions/12254076/how-do-i-show-my-global-git-config/46986031
+------------------------------------------------------------------------------------------
+1. Project:
+			Repository level (specific to that single repository)
+			Project configs are only available for the current project and stored in 
+			>> .git/config <<
+			
+		$ git config --list --local		<= to view, 
+		$ git config --local core.ignorecase true (--local optional) <= to set, 
+		$ git config --edit --local (--local optional)		<= to edit repository config file,
+		
+		$ git config user.name "John Doe" 
+	
+2. Global: 
+			Global configs are available for all projects for the current user and stored in 
+			>> ~/.gitconfig <<
+		$ git config --list --global 			<= to view,
+		$ git config --global user.name xyz 	<= to set,
+		$ git config --edit --global			<= to edit global config file,
+		
+		$ git config --global user.name "John Doe"
+	
+3. System Level(applied to every user on the system and all their repositories) 
+			System configs are available for all the users/projects and stored in 
+			>> /etc/gitconfig <<
+	
+		$ git config --list --system 		<= to view (may need sudo)	
+		$ git config --system color.ui true	<= to set 
+		$ git config --edit --system		<= to edit system config file (sudo)
+	
+		$ git config --global user.name "John Doe"
+
+View All Setting
+	$ git config --list 
+	$ git config  -l
+	
+	$ git config --list --show-origin
+	$ git config user.name
+	
+------------------------------------------------------------------------------------------	
+
+
+
+
+
+
+
 ------------------------------------------------------------------------------------------
 ### Clone from repository
 ------------------------------------------------------------------------------------------
-$ mkdir   new_folder   &&   cd new_folder
+$ mkdir   New_Folder   &&   cd New_Folder
 $ git clone https://github.com/nozatech/linux_daily.git
+
 $ git clone https://nozatech:Password@github.com/nozatech/linux_daily.git   <= ID &PW
 
 1. Create a new repository on the command line
@@ -69,13 +108,14 @@ $ git clone https://nozatech:Password@github.com/nozatech/linux_daily.git   <= I
 	$ git push -u origin master
 
 
-2. push an existing repository from the command line
+2. push an existing repo as ORIGIN
 
 	$ git remote add origin https://github.com/nozatech/jenkins.git
+	
 	$ git push -u origin master
 
 	
-3. GIT how-to between Client A and B
+3. How-To PUSH and PULL between A and B Clients
 
 	### Client A: #### 
 		a. git clone https://github.com/nozatech/linux_daily.git    	<= first time
@@ -168,6 +208,7 @@ $ git clone https://nozatech:Password@github.com/nozatech/linux_daily.git   <= I
 #################################################################################################	
 
 1. Add a file in github through console(First Time)
+
 	Open "Git Bash"
 	Go to folder/directory where you want to keep your files @local system using "cd" command.
 	Create a folder and go inside that folder
@@ -188,6 +229,7 @@ $ git clone https://nozatech:Password@github.com/nozatech/linux_daily.git   <= I
 2. Add a new file in github
 	add a new file in folder (suppose file name is "arun1.php")
 	Execute following commands one by one
+	
 	$ git add filename
 	$ git commit -m "test file filename"
 	$ git push -u origin master
@@ -195,6 +237,7 @@ $ git clone https://nozatech:Password@github.com/nozatech/linux_daily.git   <= I
 3. Update a file in the github
 	Change one file and save
 	Execute the following commands one by one
+	
 	$ git add * (. or -A)
 	$ git commit -m "updated file"
 	$ git push -u origin master
@@ -208,22 +251,26 @@ $ git clone https://nozatech:Password@github.com/nozatech/linux_daily.git   <= I
 	
 
 
-### Please, commit your changes or stash them before you can merge.
-$ git stash
+### Please, commit your changes or 'stash' them before you can merge.
+$ git stash			<= Store your 'changes' temporarily and discard 
+						those changes from working directory 
+						
 $ git pull <remote name> <remote branch name> (or) switch branch
+					<= command you can pull / switch branches 
+
+$ git stash apply
 $ git stash apply --index
+					<= Restore the important changes which you have discarded temporarily. 
+		  (--index option is useful for those files are 'not staged' are being 'upstaged') 	
 
-	First command store your changes temporarily and discard those changes from working directory 
-	Second command you can pull / switch branches 
-	Third command to restore the important changes which you have discarded temporarily. 
-		(--index option is useful for those files are not staged are being upstaged) 	
-
-Git Reset
+#----------------------------------------------------------------------------------------
+# Git Reset
 http://stackoverflow.com/questions/1628088/reset-local-repository-branch-to-be-just-like-remote-repository-head		
+#----------------------------------------------------------------------------------------
 
-
-
+#----------------------------------------------------------------------------------------
 #### Troubleshooting ###
+#----------------------------------------------------------------------------------------
 1. Line feed(LF) will be replaced by CRLF(Carriage Return Line Feed) in GIT message
 	In Unix systems the end of a line is represented with a line feed (LF). In windows a line is represented 
 	with a carriage return (CR) and a line feed (LF) thus (CRLF). when you get code from git that was uploaded 
@@ -254,10 +301,12 @@ http://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-y
 	1. Commit the change using
 		$ git commit -m "My message"
 
-	2. Stash it.
-	Stashing acts as a stack, where you can push changes, and you pop them in reverse order.
+	2. Stash(hide the changes) it.
+		Stashing acts as a stack, where you can push changes, and you pop them in reverse order.
+		
 		#To stash type:
 		$ git stash
+		
 		# Do the merge, and then pull the stash:
 		$ git stash pop
 
@@ -290,11 +339,11 @@ $ git --version
 $ mkdir gitTest && cd gitTest
 
 # Create repository
-$ git init	
- 	Initialized empty Git repository in /home/apark/gitTest/.git/
-drwxrwxr-x.  3 apark apark   17 Jan 16 15:14 .
-drwx------. 11 apark apark 4096 Jan 16 15:14 ..
-drwxrwxr-x.  7 apark apark 4096 Jan 16 15:14 .git
+$ git init	<= Initialized empty Git repository in /home/apark/gitTest/.git/
+ 	
+	drwxrwxr-x.  3 apark apark   17 Jan 16 15:14 .
+	drwx------. 11 apark apark 4096 Jan 16 15:14 ..
+	drwxrwxr-x.  7 apark apark 4096 Jan 16 15:14 .git
 
 
 	
