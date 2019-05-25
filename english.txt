@@ -633,6 +633,10 @@ abscess			<- 종기   Dental Abscess, discharge pus 고름 짜내다
 
 
 A.F.A.I.K.		<- "As Far As I Know" 
+
+
+acute			<- 심각한, 절실한
+
 adept			<- very skilled or proficient at something.
 					"he is adept at cutting through red tape"
 					synonyms:	expert, proficient, accomplished, skillful, talented, 

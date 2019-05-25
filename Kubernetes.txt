@@ -19,7 +19,13 @@ https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-1-10
 https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-1-10-cluster-using-kubeadm-on-ubuntu-16-04
 
 
-------------------------------------------------------------------------------------
+
+
+$ kubectl --kubeconfig ~/.kube/config --context platform-dev get nodes
+$ kubectl --kubeconfig ~/.kube/config --context platform-stg get nodes
+$ kubectl --kubeconfig ~/.kube/config --context platform-prod get nodes
+
+--------------------------------------------------------------------------------
 Kubeadm 
 ------------------------------------------------------------------------------------	
 	automates the installation and configuration of Kubernetes components such as the 

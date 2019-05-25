@@ -2,6 +2,12 @@ Jenkins vs Travis
 http://stackoverflow.com/questions/32422264/jenkins-vs-travis-ci-which-one-would-you-use-for-a-open-source-project
 
 
+### Restart from Web
+	https://Jenkins_address:8080/safeRestart		<= Restart from web
+	
+	
+	
+
 https://dzone.com/articles/jenkins-operations-center-tutorial-cjoc
 # Jenkins Operation Center(Cloudbee)
 The CJOC is used for managing multiple Jenkins Masters. It makes it much easier to scale Jenkins 
@@ -496,8 +502,7 @@ import common
 	
 
 
-### Restart from Web
-	Jenkins_address/safeRestart
+
 	
 ### AWS CLI testing
 	$ aws iam apark
@@ -707,6 +712,26 @@ Paste Jenkins-B's /User/Shared/Jenkins/Home(or different directory)
 
 $ echo "export JENKINS_HOME=/Users/myUsername/jenkins" >> ~/.bashrc && source ~/.bashrc
 
+
+
+-----------------------------------------------------------------------------------
+# Perforce Connection issue 
+-----------------------------------------------------------------------------------
+******* WARNING P4PORT IDENTIFICATION HAS CHANGED! *******
+It is possible that someone is intercepting your connection
+to the Perforce P4PORT '10.10.100.80:1666'
+If this is not a scheduled key change, then you should contact
+your Perforce administrator.
+The fingerprint for the mismatched key sent to your client is
+E1:2E:A7:5C:00:5E:5A:B4:7B:F5:31:3A:86:5A:9F:A6:AC:27:76:23
+To allow connection use the 'p4 trust' command.
+
+  p4 set P4PORT=10.10.100.80:1666
+  p4 set P4USER=jenkins
+  p4 set P4PASSWD=bnga1740
+  p4 set P4PORT=ssl:10.10.100.80:1666
+  p4 trust -f
+  p4 info
 
 
 

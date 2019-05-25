@@ -73,7 +73,7 @@ $ PS1="#: " ; export PS1
 -----------------------------------------------------------------------------------	
 echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && source ~/.bashrc 
 
-# echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && 		. ~/.bashrc 
+# echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc &&   .  ~/.bashrc 
 -----------------------------------------------------------------------------------	
 
 ### Green & Red promt
@@ -666,6 +666,7 @@ console.log("Server running on port", port);
 	kill, killall, pkill
 	http://www.thegeekstuff.com/2009/12/4-ways-to-kill-a-process-kill-killall-pkill-xkill/
 	https://unix.stackexchange.com/questions/317492/list-of-kill-signals
+	
 	$ pidof    sleep
 	$ pgrep    sleep
 	$ kill     15558 15559 15560		<= same as kill -15(greacefull)
@@ -2658,29 +2659,46 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 	$ ip route add 192.168.1.0/24 dev eth0
 	$ ip route add 192.168.1.0/24 via 192.168.1.254
 	
-
+------------------------------------------------------------------------------------------
 ### Compression 	
-	
-    ## tar ('T'ape 'Ar'chive) compression for backup --> 'tarball')
+------------------------------------------------------------------------------------------
 
-	A. Creating tar file 
-	# tar -c(create)v(verbose)p(preserve permission)z(compression)f(filename)
-		  -cvpzf
-	# tar -czvf archive-name.tar.gz directory-name	
+tar -cvzf => tar -xvzf
+
+  ## tar ('T'ape 'Ar'chive) compression for backup --> 'tarball')
+
+  # Creating tar file 
+	# tar -cvpzf
+			-c(create)
+			 v(verbose)
+			 p(preserve permission)
+			 z(compression)
+			 f(filename)
+	
+				    <tar name>			 <from what>
+	$ tar -czvf   archive-name.tar.gz  directory-location	
 	
 	$ tar -czvf  backup.tar.gz /home/nozatech
 	$ tar -cvpzf backup.tar.gz /(root)        --exclude=/mnt /
 	$ tar -cvpzf backup.tar.gz /home/nozatech
 	
-	Extract tar file
-	# tar -x(extract)v(verbose)p(permission)z(uncompress)f(file name) backup.tar.gz -C(change to different directory) /recover
+  # Extract tar file
+				<tar name>			<target location>	
+  $ tar -xvzf   backup.tar.gz   -C  /recover
+			-x(extract)
+			v(verbose)
+			p(permission)
+			z(uncompress)
+			f(file name) 
+		-C (change to different directory) 
+	
 	$ tar -xvzf  backup.tar.gz /home/nozatech
 	$ tar -xvpzf backup.tar.gz /home/nozatech	
 	$ tar -xzvf nexus-3.2.0-01-unix.tar.gz   -C   /opt
 
 
-	$ tar -zcvf  <= create tar zip file
-	$ tar -zxvf  <= extract tar zip file
+	$ tar -czvf  <= create tar zip file
+	$ tar -xzvf  <= extract tar zip file
 	$ tar -tf    <= extract tar file
 	
 	#  Zipping or archiving
@@ -5747,7 +5765,7 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
 	
 	
 	$ rsync -avzp ssh  --progress jenkins@10.100.200.41:/Users/Shared/Jenkins/Home/jobs/Chroma* 	/tmp
-	$ rsync -avzp --progress jenkins@10.100.200.41:/Users/Shared/Jenkins/Home/jobs/Chroma* 	/tmp
+	$ rsync -avzp --progress      jenkins@10.100.200.41:/Users/Shared/Jenkins/Home/jobs/Chroma* 	/tmp
 	
 	
 	
@@ -9403,11 +9421,18 @@ a regular file and directory
 # mkdir
 
 
-# mktemp (https://stackoverflow.com/questions/11636790/why-do-we-need-mktemp)
+
+# mktemp <= create a temporary file or directory
+	
+	(https://stackoverflow.com/questions/11636790/why-do-we-need-mktemp)
+	https://www.cyberciti.biz/tips/shell-scripting-bash-how-to-create-empty-temporary-file-quickly.html
 	Create  a  temporary  file  or directory, safely, and print its name.  TEMPLATE must contain 
 	at least 3 consecutive 'X's in last component.  If TEMPLATE is not specified, 
 	use tmp.XXXXXXXXXX,	and --tmpdir is implied.  Files are  created  u+rw,  
 	and directories u+rwx, minus umask restrictions.
+	
+	$ mktemp		<= create a temp directory in /tmp 
+	  /tmp/tmp.Am5s8aDQpL
 	
 	$ mktemp -d -t 
 			 -d   <= create a directory, not a file
