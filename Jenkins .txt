@@ -505,13 +505,13 @@ import common
 
 	
 ### AWS CLI testing
-	$ aws iam apark
+	$ aws iam user_id
 	
 
 
 Backup using thinbackup and S3cmd
 	
-0 6 * * * bash -l -c 's3cmd sync Backup/ s3://outcast-dev/jenkins_backup/' >> /U                                                 sers/Shared/Jenkins/backup_log
+0 6 * * *     bash -l -c 's3cmd sync Backup/ s3://outcast-dev/jenkins_backup/' >> /Users/Shared/Jenkins/backup_log
 	
 
 ### On Jenkins thinbackup setup	
@@ -533,35 +533,35 @@ Force Jenkins to quiet mode after specified minutes		180
 ##########
 
 $ 
-$ export P4PORT=ssl:10.10.100.80:1666
+$ export P4PORT=ssl:10.xx.xx.xx:1666
 # Install
-$ p4 trust -i 38:E7:8C:AE:8F:5C:FE:97:D0:B9:F2:35:42:71:B7:FC:59:4D:22:F8
+$ p4 trust -i 38:E7:8C:AE:8F:5C:FE:97:xxxxx
 # Installed List
 $ p4 trust -l
 $ p4 info
-$ p4 -p ssl:10.10.100.80:1666 info
+$ p4 -p ssl:10.xx.xx.xx:1666 info
 
-User name: apark
+User name: axxxx
 Client name: jenkins-resign
 Client host: jenkins-resign.local
 Client unknown.
-Current directory: /Users/apark
-Peer address: 10.100.200.43:49197
-Client address: 10.100.200.43
-Server address: BNEA-Perforce.namco.local:1666
+Current directory: /Users/user_id
+Peer address: 10.xx.xx.xx:49197
+Client address: 10.xx.xx.xx
+Server address: perforce.local:1666
 Server root: /home/perforce
 Server date: 2017/05/08 10:03:15 -0700 PDT
 Server uptime: 3159:29:00
 Server version: P4D/LINUX26X86_64/2015.1/1240625 (2015/09/29)
 Server encryption: encrypted
 Server cert expires: Oct 17 22:03:00 2017 GMT
-Server license: BANDAI NAMCO Entertainment America Inc. 51 users (support expired 2017/03/30)
-Server license-ip: 10.10.100.80:1666
+Server license: Company Inc. 51 users (support expired 2017/03/30)
+Server license-ip: 10.xx.xx.xx:1666
 Case Handling: sensitive
 
 
 ### Login test
-$ p4 -u jenkins login -a	
+$ p4 -u jenkins_user_id login -a	
 
 
 
@@ -570,20 +570,19 @@ OSX:
 https://serverfault.com/questions/194832/how-to-start-stop-restart-launchd-services-from-the-command-line
 https://stackoverflow.com/questions/6959327/how-to-stop-jenkins-installed-on-mac-snow-leopard
 
-### From Mac OSX SHELL ###
-# SSH Start
+### From Mac OSX SHELL Start | Restart ###
+
+# SSH Start | Stop
 	$ sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist 
-# SSH Stop
 	$ sudo launchctl unload  /System/Library/LaunchDaemons/ssh.plist 
+	$ sudo launchctl reload  /System/Library/LaunchDaemons/ssh.plist 
 
 
 
-# Jenkins Start	
-$ sudo launchctl load /Library/LaunchDaemons/org.jenkins-ci.plist
-
-
-# Jenkins Stop
+# Jenkins Start	| Start | Restart
+$ sudo launchctl load   /Library/LaunchDaemons/org.jenkins-ci.plist
 $ sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist
+$ sudo launchctl reload /Library/LaunchDaemons/org.jenkins-ci.plist
 
 	
 	
@@ -670,18 +669,18 @@ Enter keystore password: doctor_who
 
 
 What is your first and last name?
-	Bandai Namco
+	Bxxxx
 What is the name of your organizational unit?
-    Bandainamecoent
+    Bxxx
 What is the name of your organization?
    DoctorWho
 What is the name of your City or Locality?
-	Santa Clara
+	Sxxxx
 What is the name of your State or Province?
 	CA
 What is the two-letter country code for this unit?
 	us
-Is CN=Bandai Namco, OU=Bandainamecoent, O=DoctorWho, L=Santa Clara, ST=CA, C=us correct?
+Is CN=Bxxx, OU=Baxxxx, O=DoctorWho, L=Sxxxx, ST=CA, C=us correct?
   [no]:  yes
 
 Enter key password for <DOCTOR_WHO>
@@ -693,8 +692,8 @@ $ ls -l
 -rw-rw-r--. 1 apark apark 2266 Mar 15 15:22 KeyStore.jks
 
 
-fI&M)T0yNHFe=KW0dXX”Ia6jNCae7NyFiQ;Acvyl 
-keystore password is just 'bngaxxxx'
+fI&xxxxxx 
+keystore password is just 'xxxxxxxx'
 
 
 
@@ -726,12 +725,123 @@ The fingerprint for the mismatched key sent to your client is
 E1:2E:A7:5C:00:5E:5A:B4:7B:F5:31:3A:86:5A:9F:A6:AC:27:76:23
 To allow connection use the 'p4 trust' command.
 
-  p4 set P4PORT=10.10.100.80:1666
-  p4 set P4USER=jenkins
-  p4 set P4PASSWD=bnga1740
   p4 set P4PORT=ssl:10.10.100.80:1666
+  p4 set P4USER=jenkins
+  p4 set P4PASSWD=xxxx
   p4 trust -f
   p4 info
+
+
+-----------------------------------------------------------------------------------
+# Jenkins Mac to Mac Migration
+-----------------------------------------------------------------------------------
+
+# User accounts have been overwrited and can't login
+vi /Users/jenkins/.jenkins/config.xml
+
+Change from true to false to disable password
+
+<useSecurity>false</useSecurity>
+
+
+
+
+# Jenkins Setup http://10.100.200.43:8080/
+
+https://www.macminivault.com/installing-jenkins-on-macos/
+http://10.100.200.43:8080/
+
+Jenkins Restart
+http://10.100.200.43:8080/safeRestart
+
+#-----------------------------------------------------------------------------------
+ brew services start | stop | restart   jenkins-lts
+#-----------------------------------------------------------------------------------
+safeRestart
+
+Issue: 
+clang: error: unable to locate xcodebuild
+
+
+sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer 
+
+
+time rsync -av --delete -e "ssh -i /root/.ssh/<keyfile>" /var/lib/jenkins/* <targethost>:/var/lib/jenkins/
+
+rsync -av user@1.2.3.4:/var/lib/jenkins /var/lib --exclude workspace/ --exclude cache/ --exclude .cache/ --exclude node_modules/ --exclude .npm/
+
+# Jenkins -> Manage Jenkins -> Configure Global Security
+
+
+
+
+
+# Mac OS KeyChain Access
+Password save program
+
+e.g.  gmail.com
+'Save Password'	=> will save into
+
+
+# Check KeyChain is actually valid
+
+$ security find-identity -p codesigning
+
+### Can't read any 
+Policy: Code Signing
+  Matching identities
+     0 identities found
+
+  Valid identities only
+     0 valid identities found
+
+### Correct settings		<= Which CSR was generated and Resigned by Apple
+Policy: Code Signing
+  Matching identities
+  1) 2BB03E54E955FB3FFE359B957451AC196F8718F7 "iPhone Distribution: BANDAI NAMCO ENTERTAINMENT AMERICA INC" (CSSMERR_TP_CERT_EXPIRED)
+  2) 6BF96F8DEBABE0EE6F145C449B898E66A354E697 "iPhone Distribution: BANDAI NAMCO Entertainment America Inc. (BVL688YC98)" (CSSMERR_TP_CERT_EXPIRED)
+     2 identities found
+
+  Valid identities only
+     0 valid identities found
+
+
+
+
+To reset the jenkins admin password, You can simply disable the security in the config.xml file.
+
+1. If your jenkins is running on the Linux OS, edit the below file.
+
+vi /var/lib/jenkins/config.xml file.
+
+2. Search for the word <useSecurity>true</useSecurity>
+and change the word 'true' to 'false'.  
+
+3. Restart the Jenkins server.
+	service jenkins restart
+
+
+4. Now go to Jenkins portal and set the password again.
+go to 'Configure Global Security'
+Authorization
+	Matrix-based security
+
+
+5. Enable the security again by changing settings to <useSecurity>true</useSecurity> and restart the Jenkins again.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

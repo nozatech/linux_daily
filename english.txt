@@ -636,6 +636,9 @@ A.F.A.I.K.		<- "As Far As I Know"
 
 
 acute			<- 심각한, 절실한
+					(of a bad, difficult, or unwelcome situation or phenomenon) present or experienced to a severe or intense degree.
+					"an acute housing shortage" "The copper shortage could be particularly acute."
+					synonyms:	severe, critical, drastic, dire, dreadful, terrible, awful, grave, bad, serious, profound; More
 
 adept			<- very skilled or proficient at something.
 					"he is adept at cutting through red tape"
@@ -949,9 +952,9 @@ binge			<- a short period devoted to indulging in an activity to excess,
 					"TV Shows You Can Binge in a Weekend"
 					
 					
-bleak			<- [adj]
+bleak			<- [adj] 
 					1. (of an area of land) lacking vegetation and exposed to the elements.
-					"a bleak and barren moor"
+					"a bleak and barren moor" 어두운, 참담한
 					synonyms:	bare, exposed, desolate, stark, desert, lunar, open, empty, windswept
 					antonyms:	lush
 					2. (of a building or room) charmless and inhospitable; dreary.
@@ -960,6 +963,8 @@ bleak			<- [adj]
 						"he paints a bleak picture of a company that has lost its way"
 						synonyms:	unpromising, unfavorable, unpropitious, inauspicious
 						antonyms:	promising
+					"An under-the-radar way to measure economic growth in China is painting a bleak picture"
+					
 					
 blemish			<- a small mark or flaw that spoils the appearance of something.
 
@@ -1403,6 +1408,12 @@ eatable[먹을수있는] vs edible[식용가능한] <-> inedible  palatable[맛�
 				
 				
 e.g				<- for expample
+
+embody 			<- 	be an expression of or give a tangible or visible form to (an idea, quality, or feeling).
+					"a team that embodies competitive spirit and skill"
+					"Leveraged Chip ETFs Embody Trade War Volatility"
+					synonyms:	personify, incorporate, give human form/shape to, realize, manifest,
+					express, concretize, symbolize, represent, epitomize, stand for, encapsulate, typify, exemplify;
 
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
 
@@ -2553,6 +2564,9 @@ scrutiny		<- critical observation or examination. 조사
 					"every aspect of local government was placed under scrutiny"
 					synonyms:	examination, inspection, survey, study, perusal
 
+seething		<-  화가 끓고 있는 - filled with or characterized by intense but unexpressed anger.
+					"Mueller’s Seething Message: This Isn’t a Hoax, This Is a Crime"
+					
 setup VS set up <- setup [noun], set up [verb] 
 
 serpentine		<= winding curve(구불한) e.g. serpentine belt(fan belt) for car
@@ -2926,6 +2940,8 @@ wash out of my eyes	<=
 					
 wane			<- weaker, (especially of a condition or feeling) decrease in vigor, power, or extent; become weaker.
 
+well-meaning	<- 1.선의에 의한2.	선의의3.	악의 없는
+					"Trump: Whoever Ordered USS John S. McCain Hidden Was ‘Well-Meaning’"
 whatnot			<- informal(이것저것)
 					used to refer to an item or items that are not identified but are felt to have something 
 					in common with items already named.

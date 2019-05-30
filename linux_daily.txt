@@ -5725,6 +5725,18 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
     $ sudo dpkg -l | grep linux-headers | grep ii | awk '{print $3}'
 	
 
+
+# scp
+---------------------------------------------------------------------------------------------
+#!/bin/bash
+set -e
+
+tar -zcvf jenkins-proxy.tar.gz jenkins-proxy/
+scp -v jenkins-proxy.tar.gz jproxy@10.10.100.130:/var/app/
+ssh -v -t jproxy@10.10.100.130 'cd /var/app && tar -zxvf jenkins-proxy.tar.gz && \
+			rm jenkins-proxy.tar.gz && chmod -R a+w jenkins-proxy/ && sudo service jenkins_proxy restart'
+---------------------------------------------------------------------------------------------
+
 82. rsync
 	https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps
 	-v  --verbose
@@ -7115,7 +7127,7 @@ $ iptables -A INPUT -p ICMP --icmp-type 8 -j DROP
 	
 	$ yum -y update
 	$ yum install -y mailx
-	$ ln -s /bin/mailx /bin/email
+	$ ln -s     /bin/mailx     /bin/email
 	
 	# Sending an email to G-mail
 		## Method 1
@@ -9437,8 +9449,11 @@ a regular file and directory
 	$ mktemp -d -t 
 			 -d   <= create a directory, not a file
 			 -t   <= interpret  TEMPLATE  as  a  single file name component, 
-
+	
+	### From Mac OS ##
 	$ temp_dir=`mktemp -d -t floatsign`
+	$ echo $temp_dir
+	  /var/folders/72/4j_6w5xx23n76_0kxl_ck5jh0000gs/T/floatsign.B9CqI61B
 
 
 
