@@ -1898,15 +1898,20 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 ### Verify the API Token
 $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/apps
 
-curl -fsSL 		-f  (fail silently(no output))
+
+Curl -fsSL  ('f'ail 's'ilently but 'S'how errors in this 'L'ocation"
+$ curl -fsSL 		-f  (fail silently(no output))
 				-sS (silence, --show-error_)When used with -s it makes curl show an error message if it fails.
 				-L (location)	
+				
+				
+				
 ----------------------------------------------------------------------------------------------------	
 ### text browser ###
 https://www.tecmint.com/command-line-web-browser-download-file-in-linux/
 
 	$ sudo apt-get install -y links
-	$ links http://www.google.com
+	$ links http://www.google.com 
 	
 	'q' to quit
 
@@ -2485,8 +2490,16 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 		
 		
 10. Disk usage / folder size / disk space
+https://www.tecmint.com/find-top-large-directories-and-files-sizes-in-linux/
+
 	$ du -hs * | sort -rh | head -5
-	$ find / -type f -exec du -Sh {} + | sort -rh | head -n 5
+	
+### Find top 5 biggest files in MB/GB ###	
+
+	$ find  /  -type f -exec du -Sh {} + | sort -rh | head -n 5
+	
+	
+	#$ find  /  -type f -printf "%s %p\n" | sort -rn | head -n 5
 	
 	$ du -ah              					<= all total size files & directories, -a all, -h human 
 	$ du -ah *   							<= No total size

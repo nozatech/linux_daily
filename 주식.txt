@@ -241,6 +241,8 @@ bonds(채권) <-	A bond is an IOU.
 
 Beige Book 	<- Summary of Commentary on 'Current Economic Conditions' By Federal Reserve District
 
+effective lower bound (ELB)
+
 ETF 		<- Exchange Traded Fund(e.g. QQQ(FAANG Stocks), SPY(S&P), 
 
 Mutual Fund <- 주식회사 방식으로 운영되는 펀드

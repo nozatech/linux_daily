@@ -651,14 +651,18 @@ adhere			<- stick fast to (a surface or substance).
 					synonyms:	stick (fast), cohere, cling, bond, attach; be stuck, be fixed, 
 					be glued, be cemented
 					"a dollop of cream adhered to her nose"
-					
+	
+amid or amidst	<- [전치사] (한편에서 상황이 발생하고 있는) 가운데/와중에
+					http://blog.naver.com/PostView.nhn?blogId=gogogohany&logNo=100145940149
+
+	
 adverse			<- preventing success or development; harmful; unfavorable.
 					"taxes are having an adverse effect on production"
 					synonyms:	unfavorable, disadvantageous, inauspicious, unpropitious, 
 								unfortunate, unlucky, untimely, untoward More
 					antonyms:	favorable, auspicious, beneficial, positive, friendly
 					
-adversary		<- one's opponent in a contest, conflict, or dispute.
+adversary		<- 적들, one's opponent in a contest, conflict, or dispute.
 					"Davis beat his old adversary in the quarterfinals"
 					synonyms:	opponent, rival, enemy, antagonist, combatant, challenger, 
 								contender, competitor, opposer; 
@@ -845,6 +849,10 @@ avid			<- having or showing a keen interest in or enthusiasm for something.
 
 
 # B 
+
+back			<- "Throwing Out Your Back" <- you’ve experienced this intense, sharp pain
+				   "My mom threw her back out and my dad is out of town" 
+				   
 ballot			<- [bǽlət 밸렛]
 					[noun] a process of voting, in writing and typically in secret.
 					"the commissioners were elected by ballot"
@@ -1033,6 +1041,14 @@ cavern			<- a cave, or a chamber in a cave, typically a large one.
 caveat			<- a warning or proviso of specific stipulations, conditions, or limitations.
 					synonyms:	warning, caution, admonition
 
+
+capitulation	<- giving in 
+					the action of surrendering or ceasing to resist an opponent or demand.
+					"a capitulation to wage demands"
+					synonyms:	surrender, submission, yielding, giving in, succumbing, acquiescence, 
+								laying down of arms
+					‘Panic and capitulation’
+					
 cf.				<-  as "compare"
 					an abbreviation for the Latin word confer (the imperative singular form of "conferre"), 
 					literally meaning "bring together", is used to refer to other material or ideas which 
@@ -2345,7 +2361,10 @@ placate			<- make (someone) less angry(calm) or hostile.
 					"John did his best to placate her"
 					antonyms:	provoke
 
-
+plumes			<- (보통 plumes) (특히 큰) 깃털; 솜깃털(feather).
+					"TV images showed huge, thick plumes of smoke and fire billowing from one of the 
+					tankers as it lay out to sea."
+					
 poised			<- be ready 
 
 posh			<- [adj] elegant or stylishly luxurious.
@@ -2424,6 +2443,10 @@ rampage			<- [Verb](especially of a large group of people) rush around in a viol
 					[Noun] a period of violent and uncontrollable behavior, typically involving a large 
 					group of people.
 					"thugs went on a rampage and wrecked a classroom"
+
+ramped up		<- increased
+					"The comments came after both sides ramped up threats in the ongoing trade war since the negotiations 
+						fell through in early May."
 
 rationales		<- a set of reasons or a logical basis for a course of action or a particular belief.
 					"he explained the rationale behind the change"
@@ -2718,6 +2741,9 @@ status quo		<- [kwou 쿠오우](라틴어) 현상
 startle			<- excited by sudden surprise or alarm and making a quick involuntary movement
 
 stay put		<- (of a person or object) remain somewhere without moving or being moved.
+
+stem from		<- …에서 기인하다
+
 
 stickler		<- a person who insists on a certain quality or type of behavior.
 					"a stickler for accuracy"
