@@ -25,6 +25,7 @@ $ kubectl --kubeconfig ~/.kube/config --context platform-dev get nodes
 $ kubectl --kubeconfig ~/.kube/config --context platform-stg get nodes
 $ kubectl --kubeconfig ~/.kube/config --context platform-prod get nodes
 
+
 --------------------------------------------------------------------------------
 Kubeadm 
 ------------------------------------------------------------------------------------	
@@ -412,8 +413,17 @@ Cluster-level Logging	save container logs to a central log store with search/bro
 							
 							
 							
-							
-							
+$ kubectl --kubeconfig ~/.kube/config --context platform-prod get nodes
+NAME                             STATUS   ROLES    AGE   VERSION
+ip-172-16-107-120.ec2.internal   Ready    <none>   63d   v1.11.5
+ip-172-16-69-95.ec2.internal     Ready    <none>   63d   v1.11.5
+ip-172-16-77-231.ec2.internal    Ready    <none>   63d   v1.11.5
+ip-172-16-82-18.ec2.internal     Ready    <none>   63d   v1.11.5
+ip-172-16-83-138.ec2.internal    Ready    <none>   63d   v1.11.5
+
+
+Retiring: This instance is scheduled for retirement after May 27, 2019 at 12:00:00 PM UTC-7.							
+platform-prod-worker-Node i-0c0aed94d2a0f284b m5.xlarge us-east-1b						
 							
 							
 							

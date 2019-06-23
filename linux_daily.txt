@@ -1898,15 +1898,20 @@ curl -m 1800 -Y 3000 -y 60 servername/filename 									# speed must be greater 
 ### Verify the API Token
 $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/apps
 
-curl -fsSL 		-f  (fail silently(no output))
+
+Curl -fsSL  ('f'ail 's'ilently but 'S'how errors in this 'L'ocation"
+$ curl -fsSL 		-f  (fail silently(no output))
 				-sS (silence, --show-error_)When used with -s it makes curl show an error message if it fails.
 				-L (location)	
+				
+				
+				
 ----------------------------------------------------------------------------------------------------	
 ### text browser ###
 https://www.tecmint.com/command-line-web-browser-download-file-in-linux/
 
 	$ sudo apt-get install -y links
-	$ links http://www.google.com
+	$ links http://www.google.com 
 	
 	'q' to quit
 
@@ -2485,8 +2490,16 @@ http://www.tecmint.com/sysstat-commands-to-monitor-linux/
 		
 		
 10. Disk usage / folder size / disk space
+https://www.tecmint.com/find-top-large-directories-and-files-sizes-in-linux/
+
 	$ du -hs * | sort -rh | head -5
-	$ find / -type f -exec du -Sh {} + | sort -rh | head -n 5
+	
+### Find top 5 biggest files in MB/GB ###	
+
+	$ find  /  -type f -exec du -Sh {} + | sort -rh | head -n 5
+	
+	
+	#$ find  /  -type f -printf "%s %p\n" | sort -rn | head -n 5
 	
 	$ du -ah              					<= all total size files & directories, -a all, -h human 
 	$ du -ah *   							<= No total size
@@ -5725,6 +5738,18 @@ GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/swap vconsole.font=latarcyrheb-sun16 rd.lvm
     $ sudo dpkg -l | grep linux-headers | grep ii | awk '{print $3}'
 	
 
+
+# scp
+---------------------------------------------------------------------------------------------
+#!/bin/bash
+set -e
+
+tar -zcvf jenkins-proxy.tar.gz jenkins-proxy/
+scp -v jenkins-proxy.tar.gz jproxy@10.10.100.130:/var/app/
+ssh -v -t jproxy@10.10.100.130 'cd /var/app && tar -zxvf jenkins-proxy.tar.gz && \
+			rm jenkins-proxy.tar.gz && chmod -R a+w jenkins-proxy/ && sudo service jenkins_proxy restart'
+---------------------------------------------------------------------------------------------
+
 82. rsync
 	https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps
 	-v  --verbose
@@ -7115,7 +7140,7 @@ $ iptables -A INPUT -p ICMP --icmp-type 8 -j DROP
 	
 	$ yum -y update
 	$ yum install -y mailx
-	$ ln -s /bin/mailx /bin/email
+	$ ln -s     /bin/mailx     /bin/email
 	
 	# Sending an email to G-mail
 		## Method 1
@@ -9437,8 +9462,11 @@ a regular file and directory
 	$ mktemp -d -t 
 			 -d   <= create a directory, not a file
 			 -t   <= interpret  TEMPLATE  as  a  single file name component, 
-
+	
+	### From Mac OS ##
 	$ temp_dir=`mktemp -d -t floatsign`
+	$ echo $temp_dir
+	  /var/folders/72/4j_6w5xx23n76_0kxl_ck5jh0000gs/T/floatsign.B9CqI61B
 
 
 

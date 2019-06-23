@@ -601,6 +601,10 @@ accommodate		<- (of physical space, especially a building) provide lodging or su
 					synonyms:	lodge, house, put up, billet, quarter, board, take in, 
 								shelter, give someone a roof over their head; 수용하다
 								
+accommodate		<- 	(of physical space, especially a building) provide lodging or sufficient space for.
+					"The 2020 Palisade, as stunning as it is accommodating, is more than just a pretty face." 
+					He has the ability to accommodate himself to circumstances.	그는 임기응변에 능하다
+								
 abject			<- 	 (of something bad) experienced or present to the maximum degree.
 						"his letter plunged her into abject misery"
 					synonyms:	wretched, miserable, hopeless, pathetic, pitiful, pitiable, piteous, 
@@ -636,6 +640,9 @@ A.F.A.I.K.		<- "As Far As I Know"
 
 
 acute			<- 심각한, 절실한
+					(of a bad, difficult, or unwelcome situation or phenomenon) present or experienced to a severe or intense degree.
+					"an acute housing shortage" "The copper shortage could be particularly acute."
+					synonyms:	severe, critical, drastic, dire, dreadful, terrible, awful, grave, bad, serious, profound; More
 
 adept			<- very skilled or proficient at something.
 					"he is adept at cutting through red tape"
@@ -648,14 +655,18 @@ adhere			<- stick fast to (a surface or substance).
 					synonyms:	stick (fast), cohere, cling, bond, attach; be stuck, be fixed, 
 					be glued, be cemented
 					"a dollop of cream adhered to her nose"
-					
+	
+amid or amidst	<- [전치사] (한편에서 상황이 발생하고 있는) 가운데/와중에
+					http://blog.naver.com/PostView.nhn?blogId=gogogohany&logNo=100145940149
+
+	
 adverse			<- preventing success or development; harmful; unfavorable.
 					"taxes are having an adverse effect on production"
 					synonyms:	unfavorable, disadvantageous, inauspicious, unpropitious, 
 								unfortunate, unlucky, untimely, untoward More
 					antonyms:	favorable, auspicious, beneficial, positive, friendly
 					
-adversary		<- one's opponent in a contest, conflict, or dispute.
+adversary		<- 적들, one's opponent in a contest, conflict, or dispute.
 					"Davis beat his old adversary in the quarterfinals"
 					synonyms:	opponent, rival, enemy, antagonist, combatant, challenger, 
 								contender, competitor, opposer; 
@@ -842,6 +853,10 @@ avid			<- having or showing a keen interest in or enthusiasm for something.
 
 
 # B 
+
+back			<- "Throwing Out Your Back" <- you’ve experienced this intense, sharp pain
+				   "My mom threw her back out and my dad is out of town" 
+				   
 ballot			<- [bǽlət 밸렛]
 					[noun] a process of voting, in writing and typically in secret.
 					"the commissioners were elected by ballot"
@@ -949,9 +964,9 @@ binge			<- a short period devoted to indulging in an activity to excess,
 					"TV Shows You Can Binge in a Weekend"
 					
 					
-bleak			<- [adj]
+bleak			<- [adj] 
 					1. (of an area of land) lacking vegetation and exposed to the elements.
-					"a bleak and barren moor"
+					"a bleak and barren moor" 어두운, 참담한
 					synonyms:	bare, exposed, desolate, stark, desert, lunar, open, empty, windswept
 					antonyms:	lush
 					2. (of a building or room) charmless and inhospitable; dreary.
@@ -960,6 +975,8 @@ bleak			<- [adj]
 						"he paints a bleak picture of a company that has lost its way"
 						synonyms:	unpromising, unfavorable, unpropitious, inauspicious
 						antonyms:	promising
+					"An under-the-radar way to measure economic growth in China is painting a bleak picture"
+					
 					
 blemish			<- a small mark or flaw that spoils the appearance of something.
 
@@ -1028,6 +1045,14 @@ cavern			<- a cave, or a chamber in a cave, typically a large one.
 caveat			<- a warning or proviso of specific stipulations, conditions, or limitations.
 					synonyms:	warning, caution, admonition
 
+
+capitulation	<- giving in 
+					the action of surrendering or ceasing to resist an opponent or demand.
+					"a capitulation to wage demands"
+					synonyms:	surrender, submission, yielding, giving in, succumbing, acquiescence, 
+								laying down of arms
+					‘Panic and capitulation’
+					
 cf.				<-  as "compare"
 					an abbreviation for the Latin word confer (the imperative singular form of "conferre"), 
 					literally meaning "bring together", is used to refer to other material or ideas which 
@@ -1403,6 +1428,12 @@ eatable[먹을수있는] vs edible[식용가능한] <-> inedible  palatable[맛�
 				
 				
 e.g				<- for expample
+
+embody 			<- 	be an expression of or give a tangible or visible form to (an idea, quality, or feeling).
+					"a team that embodies competitive spirit and skill"
+					"Leveraged Chip ETFs Embody Trade War Volatility"
+					synonyms:	personify, incorporate, give human form/shape to, realize, manifest,
+					express, concretize, symbolize, represent, epitomize, stand for, encapsulate, typify, exemplify;
 
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
 
@@ -2334,7 +2365,10 @@ placate			<- make (someone) less angry(calm) or hostile.
 					"John did his best to placate her"
 					antonyms:	provoke
 
-
+plumes			<- (보통 plumes) (특히 큰) 깃털; 솜깃털(feather).
+					"TV images showed huge, thick plumes of smoke and fire billowing from one of the 
+					tankers as it lay out to sea."
+					
 poised			<- be ready 
 
 posh			<- [adj] elegant or stylishly luxurious.
@@ -2414,9 +2448,16 @@ rampage			<- [Verb](especially of a large group of people) rush around in a viol
 					group of people.
 					"thugs went on a rampage and wrecked a classroom"
 
+ramped up		<- increased
+					"The comments came after both sides ramped up threats in the ongoing trade war since the negotiations 
+						fell through in early May."
+
 rationales		<- a set of reasons or a logical basis for a course of action or a particular belief.
 					"he explained the rationale behind the change"
 					synonyms:	reason(s), reasoning, thinking, logic, grounds, sense
+
+see/read the writing/handwriting on the wall <- to be aware that something bad will probably happen soon
+					"As the saying goes, China could read the writing on the wall."
 
 recapitulate	<- "RECAP"
 					summarize and state again the main points of.
@@ -2553,6 +2594,9 @@ scrutiny		<- critical observation or examination. 조사
 					"every aspect of local government was placed under scrutiny"
 					synonyms:	examination, inspection, survey, study, perusal
 
+seething		<-  화가 끓고 있는 - filled with or characterized by intense but unexpressed anger.
+					"Mueller’s Seething Message: This Isn’t a Hoax, This Is a Crime"
+					
 setup VS set up <- setup [noun], set up [verb] 
 
 serpentine		<= winding curve(구불한) e.g. serpentine belt(fan belt) for car
@@ -2704,6 +2748,9 @@ status quo		<- [kwou 쿠오우](라틴어) 현상
 startle			<- excited by sudden surprise or alarm and making a quick involuntary movement
 
 stay put		<- (of a person or object) remain somewhere without moving or being moved.
+
+stem from		<- …에서 기인하다
+
 
 stickler		<- a person who insists on a certain quality or type of behavior.
 					"a stickler for accuracy"
@@ -2926,6 +2973,8 @@ wash out of my eyes	<=
 					
 wane			<- weaker, (especially of a condition or feeling) decrease in vigor, power, or extent; become weaker.
 
+well-meaning	<- 1.선의에 의한2.	선의의3.	악의 없는
+					"Trump: Whoever Ordered USS John S. McCain Hidden Was ‘Well-Meaning’"
 whatnot			<- informal(이것저것)
 					used to refer to an item or items that are not identified but are felt to have something 
 					in common with items already named.

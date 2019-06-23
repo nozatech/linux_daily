@@ -107,17 +107,42 @@ $ docker build -f Dockerfile.golang -t golang .
 
 
 
+#------------------------------------------------------------------------------------------------------------------------
+1. Go Install on MAC OS
+How To Install Go and Set Up a Local Programming Environment on macOS
+https://www.digitalocean.com/community/tutorials/how-to-install-go-and-set-up-a-local-programming-environment-on-macos
+#------------------------------------------------------------------------------------------------------------------------
+Go was designed to have all three available at the same time: 
+	1. fast compilation
+	2. ease of programming
+	3. efficient execution in production
+	
+	Go is a versatile programming language that can be used for many different programming projects, 
+	it's particularly well suited for networking/distributed systems programs, and has earned a 
+	reputation as "the language of the cloud." 
 
+1. Open Mac OS Terminal using "Command+Space"
+  # Installing Xcode #
+	  $ xcode-select -p		<= Check if Xcode(IDE) is installed.
+		=> /Library/Developer/CommandLineTools
 
+	  $ xcode-select --install  
 
-
-
-
-
-
-
-
-
+  # Installing and Setting Up Homebrew
+  Homebrew is made with Ruby, so it will be modifying your computer’s Ruby path. The 'curl' command pulls a script 
+  from the specified URL. This script will explain what it will do and then pauses the process to prompt you to 
+  confirm. This provides you with a lot of feedback on what the script is going to be doing to your system and 
+  gives you the opportunity to verify the process.
+	
+	$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	
+		ruby -e 		<= -e  Specifies script from command-line while telling Ruby not to search the rest
+								of the arguments for a script file name.
+		-f --fail 		<= the Terminal window to give no HTML document output on server errors.
+		-s --silent		<= mutes curl so that it does not show the progress meter, and combined with the 
+		-S --show-error	<= -S or --show-error flag it will ensure that curl shows an error message if it fails.
+		-L --location	<= --location flag will tell curl to redo the request to a new place if the server 
+							reports that the requested page has moved to a different location.
 
 
 

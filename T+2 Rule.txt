@@ -1,0 +1,19 @@
+T+2 Rule Settlement Fund 관련입니다.
+
+처음 브로커 Cash 어카운트를 트시고 돈을 $1000 을 넣어 넣으셨다면 Settlement Fund가 $1000 불이 됩니다.  
+
+아침에 CRWD 주식을 $1000불어치 $50에 20주를 샀다가 20주를 $60불에 팔았다면 Settlement(주식 소유쯩)하는데  2일(T+2 rule)이 소요가 됩니다. 
+내 어카운트에는 $60불에 판 '$1,200'있지만 Settlement Balance는 '$0'이며 $1200불이 되는데 2일(T+2)을 기다려야합니다.
+    
+하필 같은날 오후에 Lulu가 갑자기 뛰어 $169에 샀다가 $180에 팔려는데 Settlement Violation이 걸린다고 Warning이 뜹니다. 
+그래도 남았을때 팔껴~~ 해서 팔았는데.....
+  
+T+2 Settlement violation이라며.. 3개월 거래정지+ warning+ 거래못함.. 등등.. 으로 발이 묶이게됩니다.   
+
+Cash나 IRA Account는 'T+2 Rule'을 준수해야 하기 때문에 아래 내용을 꼭 알아 두셔야 합니다.
+ 
+Cash liquidation violation, Good faith violation, Free riding violation
+https://www.fidelity.com/learning-center/trading-investing/trading/avoiding-cash-trading-violations
+
+
+Margin Account로 업하시면 위와같은 Restriction이 전혀없습니다.
