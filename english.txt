@@ -601,6 +601,10 @@ accommodate		<- (of physical space, especially a building) provide lodging or su
 					synonyms:	lodge, house, put up, billet, quarter, board, take in, 
 								shelter, give someone a roof over their head; 수용하다
 								
+accommodate		<- 	(of physical space, especially a building) provide lodging or sufficient space for.
+					"The 2020 Palisade, as stunning as it is accommodating, is more than just a pretty face." 
+					He has the ability to accommodate himself to circumstances.	그는 임기응변에 능하다
+								
 abject			<- 	 (of something bad) experienced or present to the maximum degree.
 						"his letter plunged her into abject misery"
 					synonyms:	wretched, miserable, hopeless, pathetic, pitiful, pitiable, piteous, 
@@ -2451,6 +2455,9 @@ ramped up		<- increased
 rationales		<- a set of reasons or a logical basis for a course of action or a particular belief.
 					"he explained the rationale behind the change"
 					synonyms:	reason(s), reasoning, thinking, logic, grounds, sense
+
+see/read the writing/handwriting on the wall <- to be aware that something bad will probably happen soon
+					"As the saying goes, China could read the writing on the wall."
 
 recapitulate	<- "RECAP"
 					summarize and state again the main points of.
