@@ -601,9 +601,11 @@ accommodate		<- (of physical space, especially a building) provide lodging or su
 					synonyms:	lodge, house, put up, billet, quarter, board, take in, 
 								shelter, give someone a roof over their head; 수용하다
 								
-accommodate		<- 	(of physical space, especially a building) provide lodging or sufficient space for.
+				<- 	(of physical space, especially a building) provide lodging or sufficient space for.
 					"The 2020 Palisade, as stunning as it is accommodating, is more than just a pretty face." 
 					He has the ability to accommodate himself to circumstances.	그는 임기응변에 능하다
+
+accommodating	<- 1.다루기 쉬운 2.친절한 3.남이 시키는 대로 하는
 								
 abject			<- 	 (of something bad) experienced or present to the maximum degree.
 						"his letter plunged her into abject misery"
@@ -1159,6 +1161,9 @@ contention		<- heated disagreement.
 
 contiguous		<- sharing a common border; touching. next or together in sequence.
 
+contour			<- 1.	윤곽2.	외형
+					"Contours of Trump-Xi Bargain Emerge Before G-20 Showdown"
+					
 converse		<- engage in conversation.
 					"he fell in beside her and they began to converse amicably"
 					synonyms:	talk, speak, chat, have a conversation, discourse, communicate
@@ -1314,14 +1319,14 @@ disband			<- (of an organized group) break up or cause to break up and stop func
 
 discrete		<- individually separate and distinct(분리된, 결개의)
 
-discretion		<- [n] the quality of behaving or speaking in such a way as to avoid causing offense or 
-						revealing private information.
+discretion		<- [n]자율재량, the quality of behaving or speaking in such a way as to avoid causing 
+					offense or revealing private information.
 					"she knew she could rely on his discretion"
 					"we will repair it without charge, or replace it, at our discretion."
 					synonyms:	circumspection, care, carefulness, caution, wariness, chariness, guardedness;
 					
-					2. the freedom to decide what should be done in a particular situation.
-
+				2. the freedom to decide what should be done in a particular situation.
+				"At your discretion, your employees may leave after 1pm this Wednesday in anticipation of the long weekend."
 
 disparate		<- [adj] essentially different in kind; not allowing comparison. 본질적으로 다른
 
@@ -1628,6 +1633,11 @@ gratification	<- pleasure, especially when gained from the satisfaction of a des
 				"a thirst for sexual gratification"
 				synonyms: satisfaction, fulfillment, indulgence, relief, appeasement
 
+grappling		<- 1.잡는 도구2.걸어잡는 갈고리3.갈퀴를 쓰기
+					"The question my colleagues and I are grappling with is whether these uncertainties 
+					will continue to weigh on the outlook and thus call for additional policy 
+					accommodation," Powell said in prepared remarks.
+
 grave consequences <- a bleak outcome, a deleterious outcome, a deleterious outgrowth, 
 						a malignant scenario, an extremely unfortunate sequence of events, 
 						deleterious aftermath, deleterious developments, deleteeious effects, 
@@ -1790,6 +1800,9 @@ indulging		<- allow oneself to enjoy the pleasure of.
 					synonyms:	wallow in, give oneself up to, give way to, yield to, abandon oneself to, 
 							give free rein to;
 					indulge in A [A(욕망·쾌락 등)에] 빠지다, 탐닉하다; [A를] 마음껏 누리다, 실컷 즐기다
+
+indictment		<- 기소, 고발
+
 indulgence		<- [n]the action or fact of indulging.
 					"indulgence in self-pity"
 					synonyms:	satisfaction, gratification, fulfillment, satiation, appeasement
@@ -2532,7 +2545,13 @@ repercussions	<- an unintended consequence occurring some time after an event or
 
 reprimand		<- [n][래프러맨드] 질책, 비난; 견책, 징계, 계고
 				<- [v] […의 이유로] …을 질책[비난]하다, (공식적으로) 견책[징계, 계고]하다
-				
+
+
+reprieve		<- [n]집행 유예/ 일시적인 모면
+					a cancellation or postponement of a punishment.
+
+				   [v] 형의 집행을 유예하다
+					cancel or postpone the punishment of (someone, especially someone condemned to death).
 				
 resilient		<- (of a person or animal) able to withstand or recover quickly from difficult conditions.
 					"babies are generally far more resilient than new parents realize"
@@ -2837,7 +2856,7 @@ tenacity		<- 	the quality or fact of being able to grip something firmly; grip.
 					the quality or fact of continuing to exist; persistence.
 					"the tenacity of certain myths within the historical record"					
 
-tenure			<- 	보유 기간, 보유권, 임기, 재직
+tenure			<- 	보유 기간, 보유권, 임기, 재직,	종신 재직권
 					제84조 대통령은 내란 또는 외환의 죄를 범한 경우를 제외하고는 '재직중' 
 					형사상의 소추를 받지 아니한다. 
 					Article 84 	"The President shall not be charged with a criminal offense 
@@ -3032,6 +3051,8 @@ underlying		<- gerund or present participle: underlying
 					synonyms: fundamental, basic, primary, prime, central, principal, root, 
 								chief, cardinal, key, elementary, intrinsic, essential
 					"the underlying aims of the research"
+
+underscore		<- 1.	강조하다2.	부각3.	확연히4.	분명히5.	여실히
 					
 unkempt			<- [adj](especially of a person) having an untidy or disheveled appearance.
 					"they were unwashed and unkempt"
@@ -4167,7 +4188,8 @@ I don't know. If we'd seen a kid, we wouldn't have left it in a crack house.
 	He is helpful		<= This is something he always does or is part of his character.
 	He is being helpful <= This describes his current or recent actions.
 
-
+	I reached out to support and they confirmed that the domain has indeed expired, 
+	and it is not being charged back to us anymore.
 
 
 

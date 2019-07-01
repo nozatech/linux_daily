@@ -1735,7 +1735,7 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	$ ifconfig | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}'|head -1  <= RegEx 
 	$ ifconfig -a
 	$ ip addr 
-	$ ip a
+	$ ip a  
 	$ hostname -I | awk '{print $1}'
 	$ ip route get 1 | awk '{print $NF;exit}'
 	$ ip route get 8.8.4.4 | head -1 | awk '{print $7}'
@@ -1760,7 +1760,7 @@ curl -O  http://file.com/get.zip
 
 Data Integrity  and Authenticity check using "SHA256SUM"
 $ wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
-$ sha256sum       go1.10.3.linux-amd64.tar.gz
+$ sha256sum       go1.10.3.linux-amd64 .tar.gz
 	fa1b0........f901035  go1.10.3.linux-amd64.tar.gz  <= compare the value from downloaded site
 
 
@@ -5269,7 +5269,8 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	$ ping -c 1 www.google.com | gawk -F'[()]' '/PING/{print $2}'
   
 
-### Domain Lookup
+
+# DNS # Domain Lookup
 http://www.beetlebrow.co.uk/what-do-you-need/help-and-documentation/unix-tricks-and-information/dns-checking-with-whois-nslookup-and-dig
 https://securityonline.info/tutorial-nslookuphostdigwhois-dns-information-gathering/
 
@@ -5281,7 +5282,9 @@ https://securityonline.info/tutorial-nslookuphostdigwhois-dns-information-gather
 	
 	# DNS Detail info
 	$ nslookup
-    
+      return IP addresses and domain names for a network server.
+	
+	
 	$ dig 
 	
 	$ whois  	domainName.com
