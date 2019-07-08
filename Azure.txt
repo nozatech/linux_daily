@@ -1,0 +1,35 @@
+1.
+
+
+
+
+
+RTO vs. RPO
+RTO <- Recovery Time Objective
+	<- Duration or length of time that business must be functional after disaster
+
+RPO	<- Recovery Point Objective
+	<- Max amount of data that can be lost after a disaster
+	
+   RPO (Azure Backup)				RTO(Azure Site Recovery)
+|--------6 hrs------------->|-----------12 hrs ---------------------->|
+|  < How much date are you 	|	< How long can you be down? >		  |	
+|    willing to lose?	 >	|										  |
+|							|										  |
+Last Backup				 FAILURE	 							Restored Data					
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

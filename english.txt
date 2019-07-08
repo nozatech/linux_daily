@@ -991,6 +991,10 @@ boggle 			<- (of a person or a person's mind) be astonished or overwhelmed when 
 					"this data makes the mind boggle"
 
 boggle the mind	<- (of a person or a person's mind) be astonished or overwhelmed when trying to imagine something
+
+boonies			<- [n]오지  GPS satellite is generally more reliable in the boonies.
+boondocks		<- [n] 산림지대 rough, remote, or isolated country.
+
 brag 			<- say in a boastful[자랑] manner.
 
 brace	{}		<- a device that clamps things tightly together or that gives support, in particular.
@@ -1086,6 +1090,11 @@ circumvent		<- find a way around (an obstacle).
 					synonyms:	avoid, get around, get past, evade, bypass, sidestep, dodge; informalduck
 					"the checkpoints were easy to circumvent"
 					
+cleaning your clock <- To thoroughly trounce(혼내주다), defeat, or beat up someone.					
+					https://writingexplained.org/idiom-dictionary/clean-your-clock
+					
+					
+					
 cliche			<- a phrase or opinion that is 'overused' and betrays a lack of original thought. 진부한
 
 cling			<- (of a person or animal) hold on tightly to.
@@ -1115,12 +1124,12 @@ comply			<- [v] (of a person or group) act in accordance with a wish or command.
 					"we are unable to comply with your request"
 					synonyms:	abide by, observe, obey, adhere to, conform to, hew to, follow, respect
 
-compliance		<- [n]	the action or fact of complying with a wish or command.
+compliance		<- [n]법율 준수	the action or fact of complying with a wish or command.
 					"they must secure each other's cooperation or compliance"
 					synonyms:	obedience to, observance of, adherence to, conformity to, respect for
 					"compliance with international law"
 					
-compliant		<- [Adj] inclined to agree with others or obey rules, especially to an excessive degree; acquiescent.
+compliant		<- [Adj] 순응하는 inclined to agree with others or obey rules, especially to an excessive degree; acquiescent.
 					"good-humored, eagerly compliant girls"
 					synonyms:	acquiescent, amenable, biddable, tractable, complaisant, accommodating, cooperative
 					antonyms:	recalcitrant
@@ -1455,6 +1464,12 @@ emblazon		<- [v] conspicuously inscribe or display a design on.
 embody			<- be an expression of or give a tangible or visible form to (an idea, quality, or feeling).
 					"a team that embodies competitive spirit and skill"
 					synonyms: personify · incorporate · give human form/shape to 
+
+emergent		<-[adj] in the process of coming into being or becoming prominent(important; famous 눈에 띄는)
+				  	"rocks emergent above the waves" 파도 위로 솟아 있는 바위
+					"the emergent nations of Africa" 아프리카의 신생 국가들.
+					"an emergent situation" 긴급 사태.
+					
 					
 encompasses 	<- surround and have or hold within
 
@@ -2781,6 +2796,9 @@ strata			<- a layer of material, naturally or artificially formed, often one of 
 strife			<- angry or bitter disagreement over fundamental issues; conflict.
 					synonyms:	conflict, friction, discord, disagreement, dissension, dispute, argument, 
 								quarreling, wrangling, bickering, controversy;
+
+strive			<- 
+
 
 streak			<- [striːk] Noun: a long, thin line or mark of a different substance or color from its surroundings.
 					Verb: move very fast in a specified direction.
