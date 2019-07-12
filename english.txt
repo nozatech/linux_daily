@@ -630,6 +630,8 @@ Abroad 			<- [adverb]
 					‘here, there, and everywhere’
 					[noun]1. foreign countries considered collectively.
 					"servicemen returning from abroad"
+					
+adjourn			<- 1.	휴회하다2.	회의를 연기하다
 								
 adorn 			<- make more beautiful or attractive.
 					synonyms: decorate, embellish, ornament, enhance;
@@ -783,7 +785,7 @@ any update		<- If you're expecting one piece of information, for example whether
 					"Do you have an update for me?"
 
 any updates		<- If you're expecting several possible pieces of information: 
-					"Do you have any updates for me?					"
+					"Do you have any updates for me?"
 
 anticoagulation	<-> coagulation  <= blood thinner
 
@@ -1466,10 +1468,12 @@ embody			<- be an expression of or give a tangible or visible form to (an idea, 
 					synonyms: personify · incorporate · give human form/shape to 
 
 emergent		<-[adj] in the process of coming into being or becoming prominent(important; famous 눈에 띄는)
-				  	"rocks emergent above the waves" 파도 위로 솟아 있는 바위
+				  	불시에나타나는, 뜻밖의, 긴급한
+					"rocks emergent above the waves" 파도 위로 솟아 있는 바위
 					"the emergent nations of Africa" 아프리카의 신생 국가들.
 					"an emergent situation" 긴급 사태.
-					
+				<- emergency vs. emergent   https://wikidiff.com/emergent/emergency	
+				
 					
 encompasses 	<- surround and have or hold within
 
@@ -1759,6 +1763,10 @@ idiocy			<- extremely stupid behavior.
 					
 i.e.			<- in other words
 
+If you have any questions vs "Should you have any questions" <- more formal.
+
+
+
 indicative		<- 암시하는, 나타내는, 
 
 indie			<- (of a pop group, record label, or film company) not belonging to or affiliated 
@@ -1775,7 +1783,10 @@ impair			<- weaken or damage something (especially a human faculty or function).
 					synonyms:	have a negative effect on, damage, harm, diminish, reduce, 
 								weaken, lessen, decrease, impede, hinder, hobble
 					antonyms:	improve, enhanc
-					
+				
+				•	System Impaired - < 12 AWS business hours	
+
+				
 impaired hearing <- 난청
 
 impasse			<- a situation in which no progress is possible, especially because of disagreement; 
@@ -1995,7 +2006,9 @@ leeway			<- [여지]the amount of freedom to move or act that is available.
 					freedom from restriction, a free hand, flexibility, independence, license, 
 					self-determination, free rein, free play, unrestrictedness, indulgence, margin, 
 					play, give, laxity, leisure; More
+					
 
+					
 leg down		<- Another big leg down means another big fall in value for Sterling(Pounds) vs 
 					other currencies, mainly vs the US dollar.
 
@@ -2571,6 +2584,11 @@ reprieve		<- [n]집행 유예/ 일시적인 모면
 resilient		<- (of a person or animal) able to withstand or recover quickly from difficult conditions.
 					"babies are generally far more resilient than new parents realize"
 					synonyms:	strong, tough, hardy; 
+
+revere			<- 우러러 공경하다
+reveal			<- 밝히다
+
+
 rhetoric		<- the art of effective or persuasive speaking or writing, especially the use of figures 
 					of speech and other compositional techniques.
 					synonyms:	oratory, eloquence, command of language, way with words
@@ -2700,7 +2718,11 @@ slack			<- [adj] not taut or held tightly in position; loose.
 					"I picked up the rod and wound in the slack"
 					synonyms:	looseness, play, give
 					"the rope had some slack in it"
-
+					
+					"Cut him a little slack – his father just died."
+					"Give me some slack."
+					"Cut  me some slack" is exactly as "Give me a break!"
+					"I'm going to cut you some slack."
 					
 snippet			<- a small piece or brief extract. "snippet code"
 					synonyms:	piece, bit, scrap, fragment, particle, shred
@@ -3019,7 +3041,7 @@ whatnot			<- informal(이것저것)
 
 while vs awhile	<- while is a period of time vs awhile is a short period of time
 					awhile "stand here awhile"
-					synonyms:	for a moment, for a (little) while, for a short time; informalfor a bit
+					synonyms:	for a moment, for a (little) while, for a short time; informal for a bit
 					"please wait just awhile"
 					
 which			<- 
