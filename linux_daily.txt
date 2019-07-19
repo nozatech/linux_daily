@@ -1671,13 +1671,33 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	$ for i in $(cat doUpdateList.txt); do ssh -t apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
 	$ for i in `cat doUpdateList.txt` ; do ssh -t apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
 	
-	### Ignoring 'adding remote host (yes/no)'
-	$ for i in $(cat doUpdateList.txt); do ssh -t -o "StrictHostkeyChecking no" apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
+### Ignoring 'adding remote host (yes/no)'
+for i in $(cat doUpdateList.txt) ; do ssh -t -o "StrictHostkeyChecking no" apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
+for i in `cat do_server_list.txt`; do ssh -t -o "StrictHostkeyChecking no" apark@$i 'sudo yum remove do-agent -y && curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash'; done
+
+
+The authenticity of host '162.243.17.101 (162.243.17.101)' can't be established.
+ECDSA key fingerprint is SHA256:6dyWrwSEQq0wgjRHRE+F95PsNsnNfr2ZquWA/qqnhJ8.
+ECDSA key fingerprint is MD5:cf:42:fc:60:a0:80:ae:57:a7:bc:e6:4d:25:8a:11:6d.
+Are you sure you want to continue connecting (yes/no)?
+
+
+for i in `cat do_server_list.txt`; do ssh -t apark@$i 'sudo yum remove do-agent -y && curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash'; done
+
+
+
+RSA, DSA, and ECDSA keys that ssh uses
+https://security.stackexchange.com/questions/178958/what-are-the-differences-between-the-rsa-dsa-and-ecdsa-keys-that-ssh-uses?noredirect=1&lq=1
+
+
+
 
 --------------------------------------------------------------------------		
 ### PSSH ###
 --------------------------------------------------------------------------	
 	$ pssh -O StrictHostKeyChecking=no -h HostList.txt -l apark -A -i   -x '-t -t'    "sudo /etc/init.d/newrelic-sysmond restart"
+ 
+ 
  
 --------------------------------------------------------------------------	
 ### PRSYNC ###	
@@ -1900,11 +1920,11 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 
 
 Curl -fsSL  ('f'ail 's'ilently but 'S'how errors in this 'L'ocation"
-$ curl -fsSL 		-f  (fail silently(no output))
+$ curl -fsSL 	-f  (fail silently(no output)) with -s option
 				-sS (silence, --show-error_)When used with -s it makes curl show an error message if it fails.
-				-L (location)	
+				-L  (location)	
 				
-				
+    $ curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash				
 				
 ----------------------------------------------------------------------------------------------------	
 ### text browser ###

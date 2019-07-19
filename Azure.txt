@@ -1,5 +1,11 @@
 1.
 
+ea.azure.com
+Subscription check
+https://ea.azure.com/manage/subscription/managedaccounts
+7d0750b4-xxx-4a0ffd12d16f
+
+
 
 Installing PowerShell Core on Linux
 https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6
@@ -34,6 +40,13 @@ Without an Browser, from bash shell doesn't work.
 
 
 
+# Creating Container Registry
+https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal
+you create a container registry with the Azure portal. Then, use Docker commands to push 
+a container image into the registry, and finally pull and run the image from your registry.
+
+# Check version
+az --version
 
 
 

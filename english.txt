@@ -1445,6 +1445,17 @@ eatable[먹을수있는] vs edible[식용가능한] <-> inedible  palatable[맛�
 				
 e.g				<- for expample
 
+eke				<- [v][eek 익~] to increase; enlarge; lengthen.
+
+eke out 		<- [숙어] to make (a living) or support (existence) laboriously:
+					모자라는 것을 가까스로, 겨우 채우다, 부족분을 보충하다'를 나타내는 숙어.
+					eke Out을 달리 표현하려면 To fill out or add a little to,; increase a little
+					https://www.voakorea.com/a/a-35-2006-06-28-voa2-91234404/1301732.html
+				"They managed to eke out a living by farming a small piece of land."
+				"Stocks eke out a record close, but Wall Street remains cautious on upcoming earnings reports "
+				(하루종일 마이너스 상태에서 막장에 +로 겨우 돌아섬)
+
+				
 embody 			<- 	be an expression of or give a tangible or visible form to (an idea, quality, or feeling).
 					"a team that embodies competitive spirit and skill"
 					"Leveraged Chip ETFs Embody Trade War Volatility"
@@ -1740,6 +1751,13 @@ holistic		<- characterized by comprehension of the parts of something as intimat
 					## MEDICINE ##
 					characterized by the treatment of the whole person, taking into account mental and 
 					social factors, rather than just the physical symptoms of a disease.
+
+horror			<- 	
+Horrable		<-
+				 A "Horrible" is something unpleasant or low-quality
+
+horrific 		<-[Adj] is a somewhat stronger adjective used to describe things which upset and frighten by their sheer mention.
+				 A "horrific" movie is a movie that's very scary or traumatizing.
 
 horrid			<- [a] causing horror (frightful)
 					"a horrid beast"
@@ -2170,6 +2188,13 @@ muscle spasm	<- 경련, 쥐, most common and are often due to overuse and muscle
 
 
 # N
+nail in the coffin	<-
+				another nail in the coffin <- Smoking is considered deadly, so each cigarette is another nail in the coffin.
+										   <- when someone says something confirming your doubts.
+				"VW pounds another nail in the coffin of the station wagon."
+				
+				
+				
 namely			<- i.e.(즉 …이다) 앞서 말한 것을 부연 설명.
 					"Two boys came, namely, Bill and Jack."
 
@@ -2541,6 +2566,16 @@ refrain			<- stop oneself from doing something.(자제하다)
 refrigerator(냉장고) <- 냉장실-(냉장고, fridge)와 
 					  냉동실-(냉동고, freezer)가 함께 있는 것을 통칭 
 
+registry		<- 등록
+repository		<- 저장, 창고
+				" Docker Hub and other third party repository hosting services are called “registries”. 
+				A registry stores a collection of repositories. As a registry can have many repositories 
+				and a repository can have many different versions of the same image which are individually 
+				versioned with tags"
+
+registration	<- 등록, 기재
+
+
 relapse			<- (of someone suffering from a disease) suffer deterioration after a period of improvement.
 					synonyms:	get ill/worse again, have/suffer a relapse, deteriorate, 
 								degenerate, take a turn for the worse
@@ -2726,7 +2761,27 @@ slack			<- [adj] not taut or held tightly in position; loose.
 					
 snippet			<- a small piece or brief extract. "snippet code"
 					synonyms:	piece, bit, scrap, fragment, particle, shred
+
+https://docs.microsoft.com/en-us/azure/devops/learn/devops-at-microsoft/moving-cloud-cadence#instrument-everythingsnag			<- https://m.blog.naver.com/PostView.nhn?blogId=dohyuni1018&logNo=80194075611&proxyReferer=https%3A%2F%2Fwww.google.com%2F
+					an unexpected or hidden obstacle or drawback.
 					
+					"IBM 'snags' AT&T in new cloud deal worth ‘billions’"
+					(snag <- to catch or obtain usually by quick action or good fortune)
+					
+					"My sweater has a snag where I caught it on a nail."
+					
+				[n] An example of a snag is a sharp piece of wood sticking out from a cabinet.
+					An example of a snag is a pulled thread in a sweater.	
+				[v]	To snag is defined as to break, destroy or tear by getting caught on something.
+					An example of to snag is for a shirt to get caught on a nail and rip.
+				
+				"He ran against a snag in his enterprise."	그는 사업의 장애(암초)에 부딪쳤다.
+				(run into a snag 장애에 부딪히다)
+				"All the articles are about how to snag a boyfriend." 낚아채는지에 .
+				
+				
+
+				
 snoop			<- investigate or look around furtively in an attempt to find out something, 
 					especially information about someone's private affairs.
 					souvenir 
@@ -2901,7 +2956,11 @@ tenure			<- 	보유 기간, 보유권, 임기, 재직,	종신 재직권
 					형사상의 소추를 받지 아니한다. 
 					Article 84 	"The President shall not be charged with a criminal offense 
 							during 'his tenure of office' except for insurrection or treason."
-						
+
+terrible 		<- It was a terrible movie.
+terrific		<- It was a terrific movie.	(그 영화 정말 재미 있었어)
+
+					
 that is			<- used to introduce or follow a clarification, interpretation, or correction of something already said.
 that is to say	<- i.e. same
 that said		<- "Having said that" is same. "However" 
