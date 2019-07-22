@@ -2367,12 +2367,16 @@ fi
 -----------------------------------------------------------------------	
 #!/bin/bash
 # String matches using REGEX   =~ [0-9]+
-a="This is my 1st string!"
+
+a="This is my 1st strings!"
+
 if [[ $a =~ [0-9]+ ]]; then
     echo "There are Numbers in the string: $a"
 else
     echo "There are no numbers in the string: $a"
 fi
+
+
 -----------------------------------------------------------------------
 #!/bin/bash
 # empty variable or not

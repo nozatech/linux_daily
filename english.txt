@@ -601,9 +601,11 @@ accommodate		<- (of physical space, especially a building) provide lodging or su
 					synonyms:	lodge, house, put up, billet, quarter, board, take in, 
 								shelter, give someone a roof over their head; 수용하다
 								
-accommodate		<- 	(of physical space, especially a building) provide lodging or sufficient space for.
+				<- 	(of physical space, especially a building) provide lodging or sufficient space for.
 					"The 2020 Palisade, as stunning as it is accommodating, is more than just a pretty face." 
 					He has the ability to accommodate himself to circumstances.	그는 임기응변에 능하다
+
+accommodating	<- 1.다루기 쉬운 2.친절한 3.남이 시키는 대로 하는
 								
 abject			<- 	 (of something bad) experienced or present to the maximum degree.
 						"his letter plunged her into abject misery"
@@ -628,6 +630,8 @@ Abroad 			<- [adverb]
 					‘here, there, and everywhere’
 					[noun]1. foreign countries considered collectively.
 					"servicemen returning from abroad"
+					
+adjourn			<- 1.	휴회하다2.	회의를 연기하다
 								
 adorn 			<- make more beautiful or attractive.
 					synonyms: decorate, embellish, ornament, enhance;
@@ -781,7 +785,7 @@ any update		<- If you're expecting one piece of information, for example whether
 					"Do you have an update for me?"
 
 any updates		<- If you're expecting several possible pieces of information: 
-					"Do you have any updates for me?					"
+					"Do you have any updates for me?"
 
 anticoagulation	<-> coagulation  <= blood thinner
 
@@ -989,6 +993,10 @@ boggle 			<- (of a person or a person's mind) be astonished or overwhelmed when 
 					"this data makes the mind boggle"
 
 boggle the mind	<- (of a person or a person's mind) be astonished or overwhelmed when trying to imagine something
+
+boonies			<- [n]오지  GPS satellite is generally more reliable in the boonies.
+boondocks		<- [n] 산림지대 rough, remote, or isolated country.
+
 brag 			<- say in a boastful[자랑] manner.
 
 brace	{}		<- a device that clamps things tightly together or that gives support, in particular.
@@ -1084,6 +1092,11 @@ circumvent		<- find a way around (an obstacle).
 					synonyms:	avoid, get around, get past, evade, bypass, sidestep, dodge; informalduck
 					"the checkpoints were easy to circumvent"
 					
+cleaning your clock <- To thoroughly trounce(혼내주다), defeat, or beat up someone.					
+					https://writingexplained.org/idiom-dictionary/clean-your-clock
+					
+					
+					
 cliche			<- a phrase or opinion that is 'overused' and betrays a lack of original thought. 진부한
 
 cling			<- (of a person or animal) hold on tightly to.
@@ -1113,12 +1126,12 @@ comply			<- [v] (of a person or group) act in accordance with a wish or command.
 					"we are unable to comply with your request"
 					synonyms:	abide by, observe, obey, adhere to, conform to, hew to, follow, respect
 
-compliance		<- [n]	the action or fact of complying with a wish or command.
+compliance		<- [n]법율 준수	the action or fact of complying with a wish or command.
 					"they must secure each other's cooperation or compliance"
 					synonyms:	obedience to, observance of, adherence to, conformity to, respect for
 					"compliance with international law"
 					
-compliant		<- [Adj] inclined to agree with others or obey rules, especially to an excessive degree; acquiescent.
+compliant		<- [Adj] 순응하는 inclined to agree with others or obey rules, especially to an excessive degree; acquiescent.
 					"good-humored, eagerly compliant girls"
 					synonyms:	acquiescent, amenable, biddable, tractable, complaisant, accommodating, cooperative
 					antonyms:	recalcitrant
@@ -1159,6 +1172,9 @@ contention		<- heated disagreement.
 
 contiguous		<- sharing a common border; touching. next or together in sequence.
 
+contour			<- 1.	윤곽2.	외형
+					"Contours of Trump-Xi Bargain Emerge Before G-20 Showdown"
+					
 converse		<- engage in conversation.
 					"he fell in beside her and they began to converse amicably"
 					synonyms:	talk, speak, chat, have a conversation, discourse, communicate
@@ -1314,14 +1330,14 @@ disband			<- (of an organized group) break up or cause to break up and stop func
 
 discrete		<- individually separate and distinct(분리된, 결개의)
 
-discretion		<- [n] the quality of behaving or speaking in such a way as to avoid causing offense or 
-						revealing private information.
+discretion		<- [n]자율재량, the quality of behaving or speaking in such a way as to avoid causing 
+					offense or revealing private information.
 					"she knew she could rely on his discretion"
 					"we will repair it without charge, or replace it, at our discretion."
 					synonyms:	circumspection, care, carefulness, caution, wariness, chariness, guardedness;
 					
-					2. the freedom to decide what should be done in a particular situation.
-
+				2. the freedom to decide what should be done in a particular situation.
+				"At your discretion, your employees may leave after 1pm this Wednesday in anticipation of the long weekend."
 
 disparate		<- [adj] essentially different in kind; not allowing comparison. 본질적으로 다른
 
@@ -1429,6 +1445,17 @@ eatable[먹을수있는] vs edible[식용가능한] <-> inedible  palatable[맛�
 				
 e.g				<- for expample
 
+eke				<- [v][eek 익~] to increase; enlarge; lengthen.
+
+eke out 		<- [숙어] to make (a living) or support (existence) laboriously:
+					모자라는 것을 가까스로, 겨우 채우다, 부족분을 보충하다'를 나타내는 숙어.
+					eke Out을 달리 표현하려면 To fill out or add a little to,; increase a little
+					https://www.voakorea.com/a/a-35-2006-06-28-voa2-91234404/1301732.html
+				"They managed to eke out a living by farming a small piece of land."
+				"Stocks eke out a record close, but Wall Street remains cautious on upcoming earnings reports "
+				(하루종일 마이너스 상태에서 막장에 +로 겨우 돌아섬)
+
+				
 embody 			<- 	be an expression of or give a tangible or visible form to (an idea, quality, or feeling).
 					"a team that embodies competitive spirit and skill"
 					"Leveraged Chip ETFs Embody Trade War Volatility"
@@ -1450,6 +1477,14 @@ emblazon		<- [v] conspicuously inscribe or display a design on.
 embody			<- be an expression of or give a tangible or visible form to (an idea, quality, or feeling).
 					"a team that embodies competitive spirit and skill"
 					synonyms: personify · incorporate · give human form/shape to 
+
+emergent		<-[adj] in the process of coming into being or becoming prominent(important; famous 눈에 띄는)
+				  	불시에나타나는, 뜻밖의, 긴급한
+					"rocks emergent above the waves" 파도 위로 솟아 있는 바위
+					"the emergent nations of Africa" 아프리카의 신생 국가들.
+					"an emergent situation" 긴급 사태.
+				<- emergency vs. emergent   https://wikidiff.com/emergent/emergency	
+				
 					
 encompasses 	<- surround and have or hold within
 
@@ -1628,6 +1663,11 @@ gratification	<- pleasure, especially when gained from the satisfaction of a des
 				"a thirst for sexual gratification"
 				synonyms: satisfaction, fulfillment, indulgence, relief, appeasement
 
+grappling		<- 1.잡는 도구2.걸어잡는 갈고리3.갈퀴를 쓰기
+					"The question my colleagues and I are grappling with is whether these uncertainties 
+					will continue to weigh on the outlook and thus call for additional policy 
+					accommodation," Powell said in prepared remarks.
+
 grave consequences <- a bleak outcome, a deleterious outcome, a deleterious outgrowth, 
 						a malignant scenario, an extremely unfortunate sequence of events, 
 						deleterious aftermath, deleterious developments, deleteeious effects, 
@@ -1712,6 +1752,13 @@ holistic		<- characterized by comprehension of the parts of something as intimat
 					characterized by the treatment of the whole person, taking into account mental and 
 					social factors, rather than just the physical symptoms of a disease.
 
+horror			<- 	
+Horrable		<-
+				 A "Horrible" is something unpleasant or low-quality
+
+horrific 		<-[Adj] is a somewhat stronger adjective used to describe things which upset and frighten by their sheer mention.
+				 A "horrific" movie is a movie that's very scary or traumatizing.
+
 horrid			<- [a] causing horror (frightful)
 					"a horrid beast"
 
@@ -1734,6 +1781,10 @@ idiocy			<- extremely stupid behavior.
 					
 i.e.			<- in other words
 
+If you have any questions vs "Should you have any questions" <- more formal.
+
+
+
 indicative		<- 암시하는, 나타내는, 
 
 indie			<- (of a pop group, record label, or film company) not belonging to or affiliated 
@@ -1750,7 +1801,10 @@ impair			<- weaken or damage something (especially a human faculty or function).
 					synonyms:	have a negative effect on, damage, harm, diminish, reduce, 
 								weaken, lessen, decrease, impede, hinder, hobble
 					antonyms:	improve, enhanc
-					
+				
+				•	System Impaired - < 12 AWS business hours	
+
+				
 impaired hearing <- 난청
 
 impasse			<- a situation in which no progress is possible, especially because of disagreement; 
@@ -1790,6 +1844,9 @@ indulging		<- allow oneself to enjoy the pleasure of.
 					synonyms:	wallow in, give oneself up to, give way to, yield to, abandon oneself to, 
 							give free rein to;
 					indulge in A [A(욕망·쾌락 등)에] 빠지다, 탐닉하다; [A를] 마음껏 누리다, 실컷 즐기다
+
+indictment		<- 기소, 고발
+
 indulgence		<- [n]the action or fact of indulging.
 					"indulgence in self-pity"
 					synonyms:	satisfaction, gratification, fulfillment, satiation, appeasement
@@ -1967,7 +2024,9 @@ leeway			<- [여지]the amount of freedom to move or act that is available.
 					freedom from restriction, a free hand, flexibility, independence, license, 
 					self-determination, free rein, free play, unrestrictedness, indulgence, margin, 
 					play, give, laxity, leisure; More
+					
 
+					
 leg down		<- Another big leg down means another big fall in value for Sterling(Pounds) vs 
 					other currencies, mainly vs the US dollar.
 
@@ -2129,6 +2188,13 @@ muscle spasm	<- 경련, 쥐, most common and are often due to overuse and muscle
 
 
 # N
+nail in the coffin	<-
+				another nail in the coffin <- Smoking is considered deadly, so each cigarette is another nail in the coffin.
+										   <- when someone says something confirming your doubts.
+				"VW pounds another nail in the coffin of the station wagon."
+				
+				
+				
 namely			<- i.e.(즉 …이다) 앞서 말한 것을 부연 설명.
 					"Two boys came, namely, Bill and Jack."
 
@@ -2500,6 +2566,16 @@ refrain			<- stop oneself from doing something.(자제하다)
 refrigerator(냉장고) <- 냉장실-(냉장고, fridge)와 
 					  냉동실-(냉동고, freezer)가 함께 있는 것을 통칭 
 
+registry		<- 등록
+repository		<- 저장, 창고
+				" Docker Hub and other third party repository hosting services are called “registries”. 
+				A registry stores a collection of repositories. As a registry can have many repositories 
+				and a repository can have many different versions of the same image which are individually 
+				versioned with tags"
+
+registration	<- 등록, 기재
+
+
 relapse			<- (of someone suffering from a disease) suffer deterioration after a period of improvement.
 					synonyms:	get ill/worse again, have/suffer a relapse, deteriorate, 
 								degenerate, take a turn for the worse
@@ -2532,11 +2608,22 @@ repercussions	<- an unintended consequence occurring some time after an event or
 
 reprimand		<- [n][래프러맨드] 질책, 비난; 견책, 징계, 계고
 				<- [v] […의 이유로] …을 질책[비난]하다, (공식적으로) 견책[징계, 계고]하다
-				
+
+
+reprieve		<- [n]집행 유예/ 일시적인 모면
+					a cancellation or postponement of a punishment.
+
+				   [v] 형의 집행을 유예하다
+					cancel or postpone the punishment of (someone, especially someone condemned to death).
 				
 resilient		<- (of a person or animal) able to withstand or recover quickly from difficult conditions.
 					"babies are generally far more resilient than new parents realize"
 					synonyms:	strong, tough, hardy; 
+
+revere			<- 우러러 공경하다
+reveal			<- 밝히다
+
+
 rhetoric		<- the art of effective or persuasive speaking or writing, especially the use of figures 
 					of speech and other compositional techniques.
 					synonyms:	oratory, eloquence, command of language, way with words
@@ -2666,11 +2753,35 @@ slack			<- [adj] not taut or held tightly in position; loose.
 					"I picked up the rod and wound in the slack"
 					synonyms:	looseness, play, give
 					"the rope had some slack in it"
-
+					
+					"Cut him a little slack – his father just died."
+					"Give me some slack."
+					"Cut  me some slack" is exactly as "Give me a break!"
+					"I'm going to cut you some slack."
 					
 snippet			<- a small piece or brief extract. "snippet code"
 					synonyms:	piece, bit, scrap, fragment, particle, shred
+
+https://docs.microsoft.com/en-us/azure/devops/learn/devops-at-microsoft/moving-cloud-cadence#instrument-everythingsnag			<- https://m.blog.naver.com/PostView.nhn?blogId=dohyuni1018&logNo=80194075611&proxyReferer=https%3A%2F%2Fwww.google.com%2F
+					an unexpected or hidden obstacle or drawback.
 					
+					"IBM 'snags' AT&T in new cloud deal worth ‘billions’"
+					(snag <- to catch or obtain usually by quick action or good fortune)
+					
+					"My sweater has a snag where I caught it on a nail."
+					
+				[n] An example of a snag is a sharp piece of wood sticking out from a cabinet.
+					An example of a snag is a pulled thread in a sweater.	
+				[v]	To snag is defined as to break, destroy or tear by getting caught on something.
+					An example of to snag is for a shirt to get caught on a nail and rip.
+				
+				"He ran against a snag in his enterprise."	그는 사업의 장애(암초)에 부딪쳤다.
+				(run into a snag 장애에 부딪히다)
+				"All the articles are about how to snag a boyfriend." 낚아채는지에 .
+				
+				
+
+				
 snoop			<- investigate or look around furtively in an attempt to find out something, 
 					especially information about someone's private affairs.
 					souvenir 
@@ -2763,6 +2874,9 @@ strife			<- angry or bitter disagreement over fundamental issues; conflict.
 					synonyms:	conflict, friction, discord, disagreement, dissension, dispute, argument, 
 								quarreling, wrangling, bickering, controversy;
 
+strive			<- 
+
+
 streak			<- [striːk] Noun: a long, thin line or mark of a different substance or color from its surroundings.
 					Verb: move very fast in a specified direction.
 
@@ -2837,12 +2951,16 @@ tenacity		<- 	the quality or fact of being able to grip something firmly; grip.
 					the quality or fact of continuing to exist; persistence.
 					"the tenacity of certain myths within the historical record"					
 
-tenure			<- 	보유 기간, 보유권, 임기, 재직
+tenure			<- 	보유 기간, 보유권, 임기, 재직,	종신 재직권
 					제84조 대통령은 내란 또는 외환의 죄를 범한 경우를 제외하고는 '재직중' 
 					형사상의 소추를 받지 아니한다. 
 					Article 84 	"The President shall not be charged with a criminal offense 
 							during 'his tenure of office' except for insurrection or treason."
-						
+
+terrible 		<- It was a terrible movie.
+terrific		<- It was a terrific movie.	(그 영화 정말 재미 있었어)
+
+					
 that is			<- used to introduce or follow a clarification, interpretation, or correction of something already said.
 that is to say	<- i.e. same
 that said		<- "Having said that" is same. "However" 
@@ -2982,7 +3100,7 @@ whatnot			<- informal(이것저것)
 
 while vs awhile	<- while is a period of time vs awhile is a short period of time
 					awhile "stand here awhile"
-					synonyms:	for a moment, for a (little) while, for a short time; informalfor a bit
+					synonyms:	for a moment, for a (little) while, for a short time; informal for a bit
 					"please wait just awhile"
 					
 which			<- 
@@ -3032,6 +3150,8 @@ underlying		<- gerund or present participle: underlying
 					synonyms: fundamental, basic, primary, prime, central, principal, root, 
 								chief, cardinal, key, elementary, intrinsic, essential
 					"the underlying aims of the research"
+
+underscore		<- 1.	강조하다2.	부각3.	확연히4.	분명히5.	여실히
 					
 unkempt			<- [adj](especially of a person) having an untidy or disheveled appearance.
 					"they were unwashed and unkempt"
@@ -4167,7 +4287,8 @@ I don't know. If we'd seen a kid, we wouldn't have left it in a crack house.
 	He is helpful		<= This is something he always does or is part of his character.
 	He is being helpful <= This describes his current or recent actions.
 
-
+	I reached out to support and they confirmed that the domain has indeed expired, 
+	and it is not being charged back to us anymore.
 
 
 

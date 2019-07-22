@@ -119,7 +119,7 @@ $ rename 's/\s/_/g' *
 
 ------------------------------------------------------------------------------
 1. Jenkins install 
-	
+------------------------------------------------------------------------------	
 ### Web Server install	
 	apt-get -y install apache2
 
@@ -176,8 +176,9 @@ $ rename 's/\s/_/g' *
 	
 	$ iptables -nL	
 
-	
+------------------------------------------------------------------------------	
 ### Java 8 install
+------------------------------------------------------------------------------
 	sudo add-apt-repository ppa:webupd8team/java
 	sudo apt update; sudo apt install oracle-java8-installer
 	javac -version	# java -version
@@ -271,8 +272,9 @@ WebGL https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
 ###############################################################################
 
 -------------------------------------------------------------------------------------------------------------------------
-
+------------------------------------------------------------------------------
 ### CentOS7 creating jenkins.service
+
 https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
 https://www.digitalocean.com/community/tutorials/how-to-set-up-jenkins-for-continuous-development-integration-on-centos-7
 
@@ -292,6 +294,7 @@ Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 -----------------------------------------------------------
+
 
 [Unit] 	The bracketed text denotes a section heading. This means that, for instance, [Service] declares a section called 
 		"Service," and all the assignments below it contain relevant information that the system will then know how to 
@@ -323,9 +326,12 @@ ExecStart=/usr/bin/java -jar /usr/local/bin/jenkins.war
 			a sense of what resources to provide this service and what amount of intensity will be required by the user.
 
 Once your file is created and saved, you should be able to start up your new Jenkins service!
+
+
 $ sudo systemctl daemon-reload
 
 $ sudo systemctl start jenkins.service
+------------------------------------------------------------------------------
 
 
 
@@ -333,28 +339,9 @@ $ sudo systemctl start jenkins.service
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+------------------------------------------------------------------------------
 1. Puppet Agent install
+------------------------------------------------------------------------------
 cd ~; wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
 sudo dpkg -i puppetlabs-release-trusty.deb
 sudo apt-get update
@@ -417,7 +404,7 @@ class { 'timezone':
 # Classes
 	Code blocks that can be called in a code elsewhere.  Reuses the Puppet codes & manifest
 # Class Definition
-	
+------------------------------------------------------------------------------	
 
 
 
@@ -426,10 +413,9 @@ class { 'timezone':
 
 
 
-
+------------------------------------------------------------------------------
 ### How to set up Jenkins CI on a Mac
-
-
+------------------------------------------------------------------------------
 
 
 ### nvm (node version manager)
@@ -442,8 +428,9 @@ class { 'timezone':
 
 
 	
-
+------------------------------------------------------------------------------
 ### Install AWS CLI
+------------------------------------------------------------------------------
 $ aws configure
 AWS Access Key ID [****************3QNA]:
 AWS Secret Access Key [****************jnlW]:
@@ -500,21 +487,19 @@ import common
 
 
 	
-
-
-
 	
 ### AWS CLI testing
 	$ aws iam user_id
 	
 
-
+------------------------------------------------------------------------------
 Backup using thinbackup and S3cmd
-	
+------------------------------------------------------------------------------	
 0 6 * * *     bash -l -c 's3cmd sync Backup/ s3://outcast-dev/jenkins_backup/' >> /Users/Shared/Jenkins/backup_log
 	
 
 ### On Jenkins thinbackup setup	
+
 Backup settings
 Backup directory	 						${HOME}/Backup ('/Users/Shared/Jenkins/Backup'0
 Backup schedule for full backups			H 2 * * *
@@ -528,12 +513,15 @@ Force Jenkins to quiet mode after specified minutes		180
 'check' Clean up differential backups	Help for feature: Clean up differential backups
 'check' Move old backups to ZIP files	
 
+
+
 ##########
 ### P4 ###   Binary needs to be installed 
 ##########
 
-$ 
+
 $ export P4PORT=ssl:10.xx.xx.xx:1666
+
 # Install
 $ p4 trust -i 38:E7:8C:AE:8F:5C:FE:97:xxxxx
 # Installed List
@@ -570,6 +558,13 @@ OSX:
 https://serverfault.com/questions/194832/how-to-start-stop-restart-launchd-services-from-the-command-line
 https://stackoverflow.com/questions/6959327/how-to-stop-jenkins-installed-on-mac-snow-leopard
 
+
+$ brew services start jenkins-lts
+Could not find domain for		<= ERROR
+
+Fix: use VNC to Remote Desktop In, login as Jenkins user.
+
+
 ### From Mac OSX SHELL Start | Restart ###
 
 # SSH Start | Stop
@@ -584,7 +579,7 @@ $ sudo launchctl load   /Library/LaunchDaemons/org.jenkins-ci.plist
 $ sudo launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist
 $ sudo launchctl reload /Library/LaunchDaemons/org.jenkins-ci.plist
 
-	
+	 sudo launchctl list | grep ssh
 	
 ### Restart From Web command ###
 http://10.100.200.45:8080/restart
@@ -726,10 +721,13 @@ E1:2E:A7:5C:00:5E:5A:B4:7B:F5:31:3A:86:5A:9F:A6:AC:27:76:23
 To allow connection use the 'p4 trust' command.
 
   p4 set P4PORT=ssl:10.10.100.80:1666
-  p4 set P4USER=jenkins
+  p4 set P4USER=jenkins_user_id
   p4 set P4PASSWD=xxxx
   p4 trust -f
   p4 info
+
+
+
 
 
 -----------------------------------------------------------------------------------

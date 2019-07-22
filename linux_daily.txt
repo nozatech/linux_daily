@@ -1671,13 +1671,33 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	$ for i in $(cat doUpdateList.txt); do ssh -t apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
 	$ for i in `cat doUpdateList.txt` ; do ssh -t apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
 	
-	### Ignoring 'adding remote host (yes/no)'
-	$ for i in $(cat doUpdateList.txt); do ssh -t -o "StrictHostkeyChecking no" apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
+### Ignoring 'adding remote host (yes/no)'
+for i in $(cat doUpdateList.txt) ; do ssh -t -o "StrictHostkeyChecking no" apark@$i 'sudo curl -sSL https://agent.digitalocean.com/install.sh | sh'; done
+for i in `cat do_server_list.txt`; do ssh -t -o "StrictHostkeyChecking no" apark@$i 'sudo yum remove do-agent -y && curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash'; done
+
+
+The authenticity of host '162.243.17.101 (162.243.17.101)' can't be established.
+ECDSA key fingerprint is SHA256:6dyWrwSEQq0wgjRHRE+F95PsNsnNfr2ZquWA/qqnhJ8.
+ECDSA key fingerprint is MD5:cf:42:fc:60:a0:80:ae:57:a7:bc:e6:4d:25:8a:11:6d.
+Are you sure you want to continue connecting (yes/no)?
+
+
+for i in `cat do_server_list.txt`; do ssh -t apark@$i 'sudo yum remove do-agent -y && curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash'; done
+
+
+
+RSA, DSA, and ECDSA keys that ssh uses
+https://security.stackexchange.com/questions/178958/what-are-the-differences-between-the-rsa-dsa-and-ecdsa-keys-that-ssh-uses?noredirect=1&lq=1
+
+
+
 
 --------------------------------------------------------------------------		
 ### PSSH ###
 --------------------------------------------------------------------------	
 	$ pssh -O StrictHostKeyChecking=no -h HostList.txt -l apark -A -i   -x '-t -t'    "sudo /etc/init.d/newrelic-sysmond restart"
+ 
+ 
  
 --------------------------------------------------------------------------	
 ### PRSYNC ###	
@@ -1735,7 +1755,7 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 	$ ifconfig | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}'|head -1  <= RegEx 
 	$ ifconfig -a
 	$ ip addr 
-	$ ip a
+	$ ip a  
 	$ hostname -I | awk '{print $1}'
 	$ ip route get 1 | awk '{print $NF;exit}'
 	$ ip route get 8.8.4.4 | head -1 | awk '{print $7}'
@@ -1760,7 +1780,7 @@ curl -O  http://file.com/get.zip
 
 Data Integrity  and Authenticity check using "SHA256SUM"
 $ wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
-$ sha256sum       go1.10.3.linux-amd64.tar.gz
+$ sha256sum       go1.10.3.linux-amd64 .tar.gz
 	fa1b0........f901035  go1.10.3.linux-amd64.tar.gz  <= compare the value from downloaded site
 
 
@@ -1900,11 +1920,11 @@ $ curl -H "X-HockeyAppToken: 756408....da91"   https://rink.hockeyapp.net/api/2/
 
 
 Curl -fsSL  ('f'ail 's'ilently but 'S'how errors in this 'L'ocation"
-$ curl -fsSL 		-f  (fail silently(no output))
+$ curl -fsSL 	-f  (fail silently(no output)) with -s option
 				-sS (silence, --show-error_)When used with -s it makes curl show an error message if it fails.
-				-L (location)	
+				-L  (location)	
 				
-				
+    $ curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash				
 				
 ----------------------------------------------------------------------------------------------------	
 ### text browser ###
@@ -5269,7 +5289,8 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	$ ping -c 1 www.google.com | gawk -F'[()]' '/PING/{print $2}'
   
 
-### Domain Lookup
+
+# DNS # Domain Lookup
 http://www.beetlebrow.co.uk/what-do-you-need/help-and-documentation/unix-tricks-and-information/dns-checking-with-whois-nslookup-and-dig
 https://securityonline.info/tutorial-nslookuphostdigwhois-dns-information-gathering/
 
@@ -5281,7 +5302,9 @@ https://securityonline.info/tutorial-nslookuphostdigwhois-dns-information-gather
 	
 	# DNS Detail info
 	$ nslookup
-    
+      return IP addresses and domain names for a network server.
+	
+	
 	$ dig 
 	
 	$ whois  	domainName.com
