@@ -736,10 +736,7 @@ To allow connection use the 'p4 trust' command.
 
 # User accounts have been overwrited and can't login
 vi /Users/jenkins/.jenkins/config.xml
-
-Change from true to false to disable password
-
-<useSecurity>false</useSecurity>
+ curity>false</useSecurity>
 
 
 

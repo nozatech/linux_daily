@@ -4489,6 +4489,8 @@ A. CentOS 6.5(sysV)
 B. CentOS 7(systemd)
 	a.List of all services for system
 	  systemctl list-units --type service --all
+	  systemctl list-units 
+
 	b.
 	  /etc/systemd.system
 
@@ -4942,7 +4944,13 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 	$ sudo iptables -L			<=  -L, --list 		 [List  all  rules  in the selected chain.]
 	$ sudo iptables -S 			<=  -S, --list-rules [chain - Print all rules in the selected chain. ]
 	$ sudo iptables -nL			<= List  all rules in the selected chain. '-n' NO DNS lookup (Faster)
-	
+
+# IPtables Block all but 80(http),443(https)
+iptables -A INPUT -p tcp -m tcp -m multiport ! --dports 80,443 -j DROP	
+
+# IPtables Block all but 22
+iptables -A INPUT -p tcp -m tcp -m multiport ! --dports 22 -j DROP	
+
 	
 # NAT
 # Reroute
@@ -4950,7 +4958,7 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 	# Check NAT List
 	https://unix.stackexchange.com/questions/205867/viewing-all-iptables-rules
 	
-	$ sudo iptables -t nat -L  (티네 리스트)
+	$ sudo iptables -t nat -L  (iptables 티넷 리스트)
 	
 	Chain PREROUTING (policy ACCEPT)
 	target     prot opt source               destination
@@ -4975,19 +4983,20 @@ accept before flushing the current rules, and then add a rule at the start to ex
 allow yourself access to prevent against locking yourself out.
 We will use an example based approach to examine the various iptables commands. In this 
 first example, we will create a very simple set of rules to set up a Stateful Packet 
-Inspection (SPI) firewall that will allow all outgoing connections but block all 
-unwanted incoming connections:
+Inspection (SPI) firewall that will 'allow all outgoing connections' but 'block all 
+unwanted incoming connections':
 
 
 # iptables -P INPUT ACCEPT
 # iptables -F
-# iptables -A INPUT -i lo -j ACCEPT
+# iptables -A INPUT -i lo -j ACCEPT									#Localhost Interface 
 # iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 # iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 # iptables -P INPUT DROP
 # iptables -P FORWARD DROP
 # iptables -P OUTPUT ACCEPT
 # iptables -L -v
+
 which should give the following output:
 
 
@@ -5000,41 +5009,50 @@ Chain FORWARD (policy DROP 0 packets, 0 bytes)
  pkts bytes target     prot opt in     out     source               destination
 Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
  pkts bytes target     prot opt in     out     source               destination
+
+
 Now lets look at each of the 8 commands above in turn and understand exactly what we've just done:
 
 iptables -P INPUT ACCEPT 
 	If connecting remotely we must first temporarily set the default policy on the INPUT chain to ACCEPT 
-	otherwise once we flush the current rules we will be locked out of our server.
+	otherwise once we flush the current rules we will be 'locked out' of our server.
 iptables -F 
-	We used the -F switch to flush all existing rules so we start with a clean state from which to add new rules.
+	We used the '-F' switch to 'flush' all existing rules so we start with a clean state from which to add new rules.
+	
 iptables -A INPUT -i lo -j ACCEPT 
-	Now it's time to start adding some rules. We use the -A switch to append (or add) a rule to a specific chain, 
-	the INPUT chain in this instance. Then we use the -i switch (for interface) to specify packets matching or 
+	Now it's time to start adding some rules. We use the -A switch to 'append' (or add) a rule to a specific chain, 
+	the INPUT chain in this instance. Then we use the '-i' switch (for interface) to specify packets matching or 
 	destined for the lo (localhost, 127.0.0.1) interface and finally -j (jump) to the target action for packets 
 	matching the rule - in this case ACCEPT. So this rule will allow all incoming packets destined for the 
-	localhost interface to be accepted. This is generally required as many software applications expect to be 
+	'localhost interface' to be accepted. This is generally required as many software applications expect to be 
 	able to communicate with the localhost adaptor.
+	
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT 
 	This is the rule that does most of the work, and again we are adding (-A) it to the INPUT chain. Here we're 
 	using the -m switch to load a module (state). The state module is able to examine the state of a packet 
 	and determine if it is NEW, ESTABLISHED or RELATED. NEW refers to incoming packets that are new incoming 
 	connections that weren't initiated by the host system. ESTABLISHED and RELATED refers to incoming packets 
 	that are part of an already established connection or related to and already established connection.
+
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT 
 	Here we add a rule allowing SSH connections over tcp port 22. This is to prevent accidental lockouts when 
 	working on remote systems over an SSH connection. We will explain this rule in more detail later.
+
 iptables -P INPUT DROP 
 	The -P switch sets the default policy on the specified chain. So now we can set the default policy on the 
 	INPUT chain to DROP. This means that if an incoming packet does not match one of the following rules it 
 	will be dropped. If we were connecting remotely via SSH and had not added the rule above, we would have 
 	just locked ourself out of the system at this point.
+
 iptables -P FORWARD DROP 
 	Similarly, here we've set the default policy on the FORWARD chain to DROP as we're not using our computer 
 	as a router so there should not be any packets passing through our computer.
+
 iptables -P OUTPUT ACCEPT 
 	and finally, we've set the default policy on the OUTPUT chain to ACCEPT as we want to allow all outgoing 
 	traffic (as we trust our users).
-iptables -L -v 	
+
+$ iptables -L -v 	
 	Finally, we can list (-L) the rules we've just added to check they've been loaded correctly.
 
 
@@ -5042,7 +5060,35 @@ iptables -L -v
 	https://unix.stackexchange.com/questions/124624/what-a-input-j-reject-reject-with-icmp-host-prohibited-iptables-line-does-ex
 	
 
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
 
+
+
+
+REJECT
+This is used to send back an error packet in response to the matched packet: otherwise it is equivalent to DROP so it is a 
+terminating TARGET, ending rule traversal. This target is only valid in the INPUT, FORWARD and OUTPUT chains, and 
+user-defined chains which are only called from those chains. The following option controls the nature of the error 
+packet returned:
+
+--reject-with type
+The type given can be:
+
+icmp-net-unreachable
+icmp-host-unreachable
+icmp-port-unreachable
+icmp-proto-unreachable
+icmp-net-prohibited
+icmp-host-prohibited or
+icmp-admin-prohibited (*)
+
+which return the appropriate ICMP error message (port-unreachable is the default). The option tcp-reset can be used 
+on rules which only match the TCP protocol: this causes a TCP RST packet to be sent back. This is mainly useful for 
+blocking ident (113/tcp) probes which frequently occur when sending mail to broken mail hosts (which won't accept 
+your mail otherwise).
+
+(*) Using icmp-admin-prohibited with kernels that do not support it will result in a plain DROP instead of REJECT
 
 
 
@@ -5307,6 +5353,7 @@ https://securityonline.info/tutorial-nslookuphostdigwhois-dns-information-gather
 	
 	$ dig 
 	
+	
 	$ whois  	domainName.com
 	
     $ yum install bind-utils
@@ -5315,8 +5362,37 @@ https://securityonline.info/tutorial-nslookuphostdigwhois-dns-information-gather
 	
 	$ dig +short +trace www.name.com
 	
-	
 
+
+# dig
+$ type -a dig
+	dig is /usr/bin/dig
+$ which dig
+	/usr/bin/dig
+
+
+
+
+
+
+
+
+
+
+	
+# CentOS7 DNS IP Change
+https://www.techrepublic.com/article/how-to-configure-a-static-ip-address-in-centos-7/
+/etc/sysconfig/network-scripts/ifcfg-eth0
+
+
+IPADDR=192.168.1.200
+NETMASK=255.255.255.0
+GATEWAY=192.168.1.1
+DNS1=8.8.8.8
+DNS2=10.128.1.44
+DNS3=10.128.18.63
+
+ sudo systemctl restart network
 
   
   
@@ -7106,9 +7182,11 @@ $ sudo iptables -A INPUT -i eth0 -p tcp --dport 80 -m state --state NEW,ESTABLIS
 	
 	
 
+
 ######################################################################################################
 # Iptables <= Allow everything from single IP using cmd	
 ######################################################################################################
+
 ###------------------------------------------------------------------
 $ iptables -A INPUT -m state -s 65.87.26.0/24     --state NEW -j ACCEPT		<= BNEA Corp IP
 
@@ -7119,10 +7197,11 @@ $ iptables -A INPUT -m state -s 73.231.235.144/32 --state NEW -j ACCEPT   	<= Ap
 
 # iptables -t [filter|nat|mangle] [-A|-D|-L|-F] [INPUT|OUTPUT|FORWARD] -p [tcp|udp] -m [tcp|udp] -s [sourceip] -d [destip] --dport [port] -j [DROP|REJECT|ACCEPT] 
 
-# iptables -t [filter] [-A] [INPUT   ]   -p [tcp] -m [tcp] -s [sourceip] -d [destip] --dport [port] -j [ DROP   ] 	
-			   nat	    -D   OUTPUT          udp      udp												 REJECT
-			   mangle	-L   FORWARD																     ACCEPT
+# iptables -t [filter] [-A] [ INPUT   ]   -p [tcp] -m [tcp] -s [source_ip] -d [dest_ip] --dport [port] -j [ DROP   ] 	
+			   nat	    -D    OUTPUT          udp      udp												 REJECT
+			   mangle	-L    FORWARD																     ACCEPT
 						-F
+
 
 # http://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml#icmp-parameters-codes-8
 -----------------------------------------------------------------
@@ -8971,7 +9050,7 @@ $ cat /sys/module/nf_conntrack/parameters/hashsize
 
 
 ------------------------------------------------------------------------------
-# CentOS-7 min version setup
+# CentOS 7 minimum setup
 ------------------------------------------------------------------------------------
 
 1. dhclient
@@ -8982,12 +9061,16 @@ sudo yum install -y net-tools bind-utils yum-utils epel-release
 sudo yum install -y	ncdu iftop iotop mtr wget net-tools lsof nc vim tcpdump ntp
 
 
-# Iptables install
+# Iptables install on CentOS7
 sudo yum -y install iptables-services
 sudo systemctl enable iptables 
 sudo systemctl mask firewalld
 sudo systemctl stop firewalld
 sudo systemctl start iptables
+
+# Edit IPtables
+sudo vi /etc/sysconfig/iptables
+
 
 # ntp
 $ systemctl enable ntpd
@@ -9712,12 +9795,19 @@ files for VMware, OVF exports for VirtualBox, etc.
 
 
 
+What's special about 169.254.169.254 IP address for AWS? 
+https://stackoverflow.com/questions/42314029/whats-special-about-169-254-169-254-ip-address-for-aws
 
+169.254.169.254 is an IP address from the reserved IPv4 Link Local Address space 169.254.0.0/16 
+(169.254.0.0 through 169.254.255.255). Similar to the private address ranges in RFC-1918 (10.0.0.0/8, 
+172.16.0.0/12, and 192.168.0.0/16) in the sense that this block also can't be used on the Internet, 
+Link Local is further restricted to being unreachable via any router¹ -- by design, they only exist 
+on the directly-connected network.
 
+AWS needed to create a service endpoint accessible from any system and the selection of an address 
+in this block causes it to conflict with no commonly used IP address space. Clever choice.
 
-
-
-
+Presumably this specific address within the block was chosen for its aesthetic appeal or being easy to remember.
 
 
 

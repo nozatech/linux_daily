@@ -2385,7 +2385,7 @@ then
     echo "my_var is an Empty variable!!"
 fi
 
-
+-----------------------------------------------------------------------
 
 
 
@@ -2930,9 +2930,10 @@ e.g.
 	fi
 
 
-37. read -p "What year?[nnnn] " a
+37. read -p "What is this year?[nnnn] "   a
+
    while [[ ! $a =~ [0-9]{4} ]]; do
-       read -p "A year, pelase! [nnnn] " a
+       read -p "A year, pelase! [nnnn] "   a
    done
    echo "Selected year: $a"
 

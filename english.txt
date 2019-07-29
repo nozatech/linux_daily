@@ -3069,6 +3069,8 @@ vigilant		<- [adj]keeping careful watch for possible danger or difficulties.
 
 					
 # W
+wade into 		<- Trump wades into debate over controversial Fed speech Thursday, calls for end to tight policy
+
 wager			<- "You got a wager."
 					"I'll wager ten dollars that we won't get to Chicago on time."
 					make a wager with a person 남과 내기하다
