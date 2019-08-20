@@ -1,4 +1,7 @@
 Ansible
+Install on Ubuntu 18
+https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-18-04
+
 
 ### YAML Valicator 
 	https://codebeautify.org/yaml-validator

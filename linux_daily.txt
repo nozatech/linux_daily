@@ -485,8 +485,33 @@ CentOS 5, 6
 	# to Remove
 	$ sudo rm -r /etc/systemd/system/nginx.service.d	<= snippet
 	$ sudo rm /etc/systemd/system/nginx.service			<= full
+
+  
+  # systemctl Manager Lifecycle Commands <= from man page
+   
+       systemctl daemon-reload
+           Reload systemd manager configuration. This will rerun all generators (see systemd.generator(7)), 
+		   reload all unit files, and recreate the entire dependency tree. While the daemon is being 
+		   reloaded, all sockets systemd listens on behalf of user configuration will stay accessible.
+
+           This command should not be confused with the reload command.
+
+       systemctl daemon-reexec
+           Reexecute the systemd manager. This will serialize the manager state, reexecute the process and
+           deserialize the state again. This command is of little use except for debugging and package upgrades.
+           Sometimes, it might be helpful as a heavy-weight daemon-reload. While the daemon is being reexecuted,
+           all sockets systemd listening on behalf of user configuration will stay accessible.
+
+
 	# Restore default
 **  $ sudo systemctl daemon-reload						<= Restore to system default
+	
+	### Retart all daemon
+	$ systemctl daemon-reexec
+	
+	
+	
+	
 	
 	
 	### Journald ###
@@ -1488,6 +1513,9 @@ https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryptio
 	that the file is correct and safe to use. The MD5 calculation gives a checksum (called a hash value), 
 	which must equal the MD5 value of a correct ISO.
 	
+	 md5sum - compute and check MD5 message digest
+	
+	
 --------------------------------------------------------------------------	
 ###  basename 		<= 	strip directory and suffix from filenames
 --------------------------------------------------------------------------	
@@ -1886,7 +1914,7 @@ Delete
 	
 	
 ----------------------------------------------------------------------------------------------------
-### curl can download or upload through any protocol, http, ftp, sftp, scp, ldap, telnet
+# Curl(transfer a URL) can download or upload through any protocol, http, ftp, sftp, scp, ldap, telnet
 https://curl.haxx.se/docs/httpscripting.html
 --------------------------------------------------------------------------	
 
@@ -1924,7 +1952,20 @@ $ curl -fsSL 	-f  (fail silently(no output)) with -s option
 				-sS (silence, --show-error_)When used with -s it makes curl show an error message if it fails.
 				-L  (location)	
 				
-    $ curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash				
+# Download and Install 
+ execute the following command as the superuser
+ "Hey, take this stream of commands from this URL on the internet and run it on my computer with superuser access."
+ 
+  $ curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash				
+				
+
+
+Save the script		=> curl -sSL https://repos.insights.digitalocean.com/install.sh -o /tmp/install.sh   (-o output to /tmp/install.sh)
+View the contents 	=> less /tmp/install.sh 
+Run the script manually => sudo bash /tmp/install.sh 
+
+
+
 				
 ----------------------------------------------------------------------------------------------------	
 ### text browser ###
@@ -1942,15 +1983,17 @@ https://www.tecmint.com/command-line-web-browser-download-file-in-linux/
 ### base64 - base64 encode/decode data and print to standard output
 --------------------------------------------------------------------------	
 	http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
+	https://www.base64decode.org/
 	
 	# Encode
 	$ printf id:pw | base64
 		$ base64 data.txt > data.b64
+	
 	# Decode using -d option
 	$ base64 -d 
 		$ base64 -d data.b64 						<= on to SCREEN(STDOUT)
 		$ base64 -d data.b64 > data.txt				<= on to Files
-	https://www.base64decode.org/	
+		
 
 ----------------------------------------------------------------------------------------------------
 ### How to check SHELL type
@@ -2166,6 +2209,10 @@ https://www.tecmint.com/command-line-web-browser-download-file-in-linux/
             option is not specified, free subtracts buffer memory from the  used
             memory and adds it to the free memory reported.
 	$ egrep --color 'Mem|Cache|Swap' /proc/meminfo
+
+Swap file 
+ubuntu-18-04/
+	https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-18-04/
 	
 --------------------------------------------------------------------------	
 # vmstat   
@@ -4820,6 +4867,8 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 	
 	
 55. SElinux <= add port to security-enhanced linux 
+https://wiki.centos.org/TipsAndTricks/SelinuxBooleans
+
 	$ cat /etc/sysconfig/selinux
 
 	semange port -a -t http_port_t -p tcp 10051  
@@ -4832,7 +4881,12 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 	$ getenforce
 	Permissive
   
-  
+	#Enable nis_enable
+	  $ sudo setsebool -P nis_enabled on				<= -P  Permanent
+	
+	#Check
+	  $ getsebool nis_enabled
+
   
   
   
@@ -5323,6 +5377,7 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	 <<< Client Sending	>>>	 ====>	  <<< Server listening >>>
 	 
 	$ nc -v 192.168.110.220  22 	  $ nc -l 22 	  
+	$ nc -v google.com       80 	  $ nc -l 22 	  
 	
 		 -v verbose sending  		       -l <= listening mode
 	
@@ -7233,9 +7288,30 @@ $ iptables -A INPUT -p ICMP --icmp-type 8 -j DROP
 	Now reboot or run sudo /etc/rc.local to enable port forwarding. 
 	Additional info: https://gist.github.com/m5m1th/6870a54717c0387468c3
 
+-----------------------------------------------------------------
+Block out going port 80 
+-----------------------------------------------------------------
+From Command
+$ iptables -A OUTPUT -p tcp --dport 80 -j DROP
+$ iptables -A OUTPUT -p tcp -d 192.168.1.2 --dport 80 -j DROP  <= Specific IP
+
+From /etc/sysconfig/iptables
+A OUTPUT -p tcp --dport 80 -j DROP
+$ Iptables -A OUTPUT -p tcp -d 192.168.1.2 --dport 80 -j DROP  <= Specific IP
+
+
+
+######################################################################################################
+# Firewalld  <= Allow everything from single IP using cmd	
+######################################################################################################
+
+
+
+
+
 
 -----------------------------------------------------------------
-# Eemail setup and send out from shell ###
+# email setup and send out from shell ###
 -----------------------------------------------------------------
 	http://www.binarytides.com/linux-mailx-command/
 	https://www.digitalocean.com/community/tutorials/how-to-send-e-mail-alerts-on-a-centos-vps-for-system-monitoring

@@ -749,10 +749,58 @@ http://10.100.200.43:8080/
 Jenkins Restart
 http://10.100.200.43:8080/safeRestart
 
+
+### Login to Jenkins using VNC to MAC(GUI) first as Jenkins 
+
+[sudo] brew services list
 #-----------------------------------------------------------------------------------
  brew services start | stop | restart   jenkins-lts
 #-----------------------------------------------------------------------------------
-safeRestart
+
+
+ brew services status jenkins-lts
+Error: Unknown command `status`!
+Usage: brew services subcommand:
+
+Manage background services with macOS' launchctl(1) daemon manager
+
+     --all                           run subcommand on all services.
+
+[sudo] brew services list
+
+List all running services for the current user (or root).
+
+[sudo] brew services run (formula|--all)
+
+Run the service formula without registering to launch at login (or boot).
+
+[sudo] brew services start (formula|--all)
+
+Start the service formula immediately and register it to launch at login (or
+boot).
+
+[sudo] brew services stop (formula|--all)
+
+Stop the service formula immediately and unregister it from launching at login
+(or boot).
+
+[sudo] brew services restart (formula|--all)
+
+Stop (if necessary) and start the service formula immediately and register it
+to launch at login (or boot).
+
+[sudo] brew services cleanup
+
+Remove all unused services.
+
+If sudo is passed, operate on /Library/LaunchDaemons (started at boot).
+Otherwise, operate on ~/Library/LaunchAgents (started at login).
+
+
+
+
+
+
 
 Issue: 
 clang: error: unable to locate xcodebuild

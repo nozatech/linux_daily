@@ -1,0 +1,161 @@
+1) The public IP address of the droplet you're currently investigating this on.
+2) The output of the following commands:
+
+dig nyc2.sonar.digitalocean.com A
+
+curl -I https://nyc2.sonar.digitalocean.com/v1/metrics/droplet_id/105238998
+
+
+3. Check DNS issue query the DO Sonar server
+dig nyc2.sonar.digitalocean.com A <= OK
+
+4. Find Droplet's ID
+curl -s http://169.254.169.254/metadatav1/id     <= Failed because of port 80 blocked
+
+5. Verify on DO’s web 
+https://nyc2.sonar.digitalocean.com/v1/metrics/droplet_id/       <= Can’t get ID
+
+6. Check the connection 
+curl -I https://nyc2.sonar.digitalocean.com/v1/metrics/droplet_id/  
+
+
+$cat /var/log/messages | grep digital*
+do-agent[21751]: 2019/08/08 05:48:35 Sending metrics to DigitalOcean: 
+Post https://nyc2.sonar.digitalocean.com/v1/metrics/droplet_id/139478073: 
+net/http: request canceled (Client.Timeout exceeded while awaiting headers)
+
+
+Hi Shawn,
+Compare to the new CentOS7(165.22.149.167) this is 162.243.27.119(Not displaying graph - CentOS7) result.
+
+
+
+$curl -v http://169.254.169.254/metadata/v1/id
+* About to connect() to 169.254.169.254 port 80 (#0)
+*   Trying 169.254.169.254...
+* Connected to 169.254.169.254 (169.254.169.254) port 80 (#0)
+> GET /metadata/v1/id HTTP/1.1
+> User-Agent: curl/7.29.0
+> Host: 169.254.169.254
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< Connection: close
+< Content-Length: 9
+< Content-Type: text/plain; charset=utf-8
+< Date: Tue, 30 Jul 2019 17:16:00 GMT
+<
+* Closing connection 0
+139478073
+
+$curl -v http://169.254.169.254/metadat-token 
+* About to connect() to 169.254.169.254 port 80 (#0)
+*   Trying 169.254.169.254...
+* Connected to 169.254.169.254 (169.254.169.254) port 80 (#0)
+> GET /metadata/v1/auth-token HTTP/1.1
+> User-Agent: curl/7.29.0
+> Host: 169.254.169.254
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< Connection: close
+< Content-Length: 56
+< Content-Type: text/plain; charset=utf-8
+< Date: Tue, 30 Jul 2019 17:16:09 GMT
+<
+* Closing connection 0
+AAA5RFAIAAAAANyEd554Zsp6N7RLg8YG-WEdgnCjyBofK8udzQzPaUb_
+
+
+
+	
+#Check
+$ getsebool nis_enabled
+nis_enabled --> on
+
+$ cat /etc/systemd/system/do-agent.service
+
+
+$ getsebool nis_enabled
+nis_enabled --> off        
+
+#Enable nis_enable
+ $ sudo setsebool -P nis_enabled on				<= -P  Permanent
+
+
+$ getsebool nis_enabled
+getsebool:  SELinux is disabled  <= Hasn't activated yet
+
+
+           
+
+$ cat /etc/systemd/system/do-agent.service
+cat: /etc/systemd/system/do-agent.service: No such file or directory
+
+$systemctl status do-agent
+sudo yum remove do-agent
+systemctl status do-agent
+
+systemctl daemon-reload			<===
+
+
+curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash
+
+
+
+
+getsebool nis_enabled
+systemctl stop do-agent
+/opt/digitalocean/bin/do-agent --debug
+ip route get to 169.254.169.254
+
+ssh -t -o "StrictHostkeyChecking no" apark@$162.243.222.5  'sudo yum remove do-agent -y \
+&& sudo rm -f /etc/yum.repo.d/digitalocean-agent.repo* \
+&& curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash'
+
+
+#############################################################################################
+for i in `cat do_server_list.txt`; do ssh -t -o "StrictHostkeyChecking no" apark@$i \
+'sudo yum remove do-agent -y \
+&& sudo rm -f /etc/yum.repos.d/digitalocean-agent.repo* \
+&& sudo rm -f /etc/yum.repos.d/DigitalOcean-Sonar.repo \
+&& curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash'; done
+#############################################################################################
+
+
+Only runs if the new DO-Agent 3.x.x is installed.
+/opt/digitalocean/bin/do-agent --debug
+/opt/digitalocean/bin/do-agent --syslog
+
+
+
+
+
+1.	Create a new droplet CentOS7 165.22.149.167 
+2.	Install Iptables & blocks all ports except 22 
+nmap -sT 165.22.149.167 
+Result: Host seems down. 
+telnet 165.22.149.167 80 
+Result: connect to address 165.22.149.167: No route to host 
+telnet 165.22.149.167 443 
+Result:connect to address 165.22.149.167: No route to host 
+
+
+Chain OUTPUT (policy ACCEPT) 
+target prot opt source destination 
+DROP tcp -- 0.0.0.0/0 0.0.0.0/0 tcp dpt:80 
+DROP tcp -- 0.0.0.0/0 0.0.0.0/0 tcp dpt:443 
+
+  
+
+3. Check DNS issue query the DO Sonar server 
+dig nyc2.sonar.digitalocean.com A <= OK 
+
+4. Find Droplet's ID 
+curl -s http://169.254.169.254/metadatav1/id	<= Failed because of port 80 blocked 
+
+5. Verify on DO’s web 
+https://nyc2.sonar.digitalocean.com/v1/metrics/droplet_id/	<= Can’t get ID 
+
+6. Check the connection 
+curl -I https://nyc2.sonar.digitalocean.com/v1/metrics/droplet_id/ 

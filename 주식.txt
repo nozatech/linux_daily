@@ -1164,3 +1164,21 @@ per가 의미있는 것인지 정확히 평가하려면 연결재무제표를 �
 숙제 - 보유하신 종목의 per를 계산해 보세요.
 
 
+
+
+
+
+MDDVX	$0.00
+FKGRX	$0.00<= OK
+AICFX	$0.00
+DMCVX	$0.00
+PCKAX	$0.00
+NPFFX	$0.00
+NEIAX	$0.00
+FHAIX	$0.00
+PTTAX	$0.00
+MACFX	$0.00 <=ok
+MAMAX	$0.00<=ok
+MAGWX	$0.00<=ok
+PYAXX	$0.0
+

@@ -1273,6 +1273,14 @@ deed			<-  1.literary: an action that is performed intentionally or consciously.
 					synonyms:	legal document, contract, indenture, instrument
 						"a deed to the property"
 
+deep state		<- a body of people, typically influential members of government agencies or the military, 
+					believed to be involved in the secret manipulation or control of government policy.
+					Deep state(state within a stee) in the US.
+					Deep state- 반(反)민주주의 성향의 군부 세력이나 스파이 기관 등 숨겨진 권력집단을 가리킨다.
+				
+					미국에서는 막후세력을 가리킬 때 그림자 정부(shadow government) 등의 표현을 주로 사용해 왔다.
+
+
 deluge			<- [델유쥐] a severe flood.
 					synonyms:	flood, flash flood, torrent; spate
 					"many homes were swept away by the deluge"
@@ -1455,6 +1463,7 @@ eke out 		<- [숙어] to make (a living) or support (existence) laboriously:
 				"Stocks eke out a record close, but Wall Street remains cautious on upcoming earnings reports "
 				(하루종일 마이너스 상태에서 막장에 +로 겨우 돌아섬)
 
+elusive			<- 파악하기 어려운
 				
 embody 			<- 	be an expression of or give a tangible or visible form to (an idea, quality, or feeling).
 					"a team that embodies competitive spirit and skill"
