@@ -1639,7 +1639,14 @@ formidable		<- [adj] inspiring fear or respect through being impressively large,
 					"a formidable opponent" 무서운, 만만치 않은
 					synonyms:	intimidating, forbidding, daunting, disturbing, alarming, frightening, disquieting, 
 					brooding, awesome, fearsome, ominous, foreboding, sinister, menacing, threatening, dangerous More
-
+					
+					"However, formidable competition from Microsoft's recent Teams release leads us to assign Slack 
+					a no-moat(성주위에 둘러싼 호수) rating,"
+					
+					"A 'narrow moat' is still an advantage for a company, but it is one that only provides a limited 
+					amount of economic benefit and will typically last for only a relatively short period of time 
+					before competition marginalizes its importance."
+					
 forgo			<- stopping (고스톱 4(for) go에서 "멈추다")
 					omit or decline to take (something pleasant or valuable); go without.
 					"she wanted to forgo the dessert and leave while they could"
@@ -1741,6 +1748,14 @@ hit the ground running 	<- to be ready to work immediately on a new activity
 					 
 					"She hits the ground running, sounding like a presidential candidate."
 					
+hiatus				<-[하이에터스- 공백] a pause or gap in a sequence, series, or process.
+					"there was a brief hiatus in the war with France"
+					"Google News inventor returns to Google after four-year hiatus"
+					synonyms:	pause, break, interval, interruption, suspension, intermission, 
+								interlude, gap, lacuna, lull, rest, respite, breathing space, 
+								time out; More
+
+
 					
 hit a snag			<- to run into an unexpected problem
 
@@ -3173,7 +3188,9 @@ unkempt			<- [adj](especially of a person) having an untidy or disheveled appear
 uptake			<- the action of taking up or making use of something that is available.
 					"a recent uptake in cigar smoking"
 					 "Vitamin C increases your 'uptake of' minerals such as iron." <- 섭취
-
+					1.	이해 2.	섭취 3.	양해
+					
+					
 unbound			<- not bound or tied up.
 
 underwrite		<- ~에 동의하여 서명하다, [주식·회사채 등을] 인수하다, 

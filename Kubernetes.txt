@@ -449,9 +449,81 @@ coredns:v1.1.3
 
 amazon-k8s-cni:1.2.1							
 							
-							
-							
-							
+# kubectl config get,set,use	
+Available Commands:
+  current-context Displays the current-context
+  delete-cluster  Delete the specified cluster from the kubeconfig
+  delete-context  Delete the specified context from the kubeconfig
+  get-clusters    Display clusters defined in the kubeconfig
+  get-contexts    Describe one or many contexts
+  rename-context  Renames a context from the kubeconfig file.
+  set             Sets an individual value in a kubeconfig file
+  set-cluster     Sets a cluster entry in kubeconfig
+  set-context     Sets a context entry in kubeconfig
+  set-credentials Sets a user entry in kubeconfig
+  unset           Unsets an individual value in a kubeconfig file
+  use-context     Sets the current-context in a kubeconfig file
+  view            Display merged kubeconfig settings or a specified kubeconfig file
+
+Usage:
+  kubectl config SUBCOMMAND [options]
+##########################################################################################						
+
+
+Check config env							
+kubectl config current-context
+				
+
+$ kubectl config get-contexts
+CURRENT   NAME            CLUSTER         AUTHINFO        NAMESPACE
+          platform-dev    platform-dev    platform-dev
+*         platform-prod   platform-prod   platform-prod
+          platform-stg    platform-stg    platform-stg
+
+$ kubectl config set-context platform-dev
+Context "platform-dev" modified.  <= modified to ~/.kube/config file
+
+....
+current-context: platform-dev   <= dev, stg, pro로 바뀜
+....
+
+$ kubectl config use-context platform-dev
+Switched to context "platform-dev".
+
+
+$ kubectl get nodes		<dev environment로 보여줌>
+NAME                            STATUS   ROLES    AGE   VERSION
+ip-172-18-101-32.ec2.internal   Ready    <none>   22d   v1.12.7
+ip-172-18-66-183.ec2.internal   Ready    <none>   19d   v1.12.7
+ip-172-18-86-246.ec2.internal   Ready    <none>   19d   v1.12.7
+
+
+$ kubectl config set-context platform-apark
+Context "platform-apark" modified.  <= modified to ~/.kube/config file
+
+
+
+Check list
+$ kubectl get nodes
+NAME                             STATUS   ROLES    AGE    VERSION
+ip-172-16-103-73.ec2.internal    Ready    <none>   19h    v1.12.7
+ip-172-16-107-120.ec2.internal   Ready    <none>   153d   v1.11.5
+ip-172-16-65-172.ec2.internal    Ready    <none>   19h    v1.12.7
+ip-172-16-69-24.ec2.internal     Ready    <none>   19h    v1.12.7
+ip-172-16-69-95.ec2.internal     Ready    <none>   153d   v1.11.5
+ip-172-16-77-231.ec2.internal    Ready    <none>   153d   v1.11.5
+ip-172-16-81-85.ec2.internal     Ready    <none>   89d    v1.11.5
+ip-172-16-82-71.ec2.internal     Ready    <none>   19h    v1.12.7
+ip-172-16-83-138.ec2.internal    Ready    <none>   153d   v1.11.5
+ip-172-16-83-223.ec2.internal    Ready    <none>   19h    v1.12.7
+
+
+$ kubectl config use-context platform-dev
+Switched to context "platform-dev".
+
+$ kubectl get nodes
+Error from server (Forbidden): nodes is forbidden: User "arn:aws:iam::162780728042:user/apark" cannot list resource "nodes" in API group "" at the cluster scope
+				
 							
 							
 							
