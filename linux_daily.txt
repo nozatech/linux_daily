@@ -71,14 +71,14 @@ $ man -k REGEX or UNIXCOMMAND
 # PS1 (Prompt Setting 1~ 4) <=  Green 
 $ PS1="#: " ; export PS1
 -----------------------------------------------------------------------------------	
-echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc && source ~/.bashrc 
+echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '"  >> ~/.bashrc && source ~/.bashrc 
 
-# echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\]'"  >> ~/.bashrc &&   .  ~/.bashrc 
+# echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '"  >> ~/.bashrc &&   .  ~/.bashrc 
 -----------------------------------------------------------------------------------	
 
 ### Green & Red promt
 ========================================================================================
-echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"' >> ~/.bashrc	&& source ~/.bashrc	 
+echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$ "' >> ~/.bashrc	&& source ~/.bashrc	 
 ========================================================================================
 
 -----------------------------------------------------------------------------------	
@@ -4536,6 +4536,7 @@ A. CentOS 6.5(sysV)
 B. CentOS 7(systemd)
 	a.List of all services for system
 	  systemctl list-units --type service --all
+	  systemctl list-units --type service --all | grep running
 	  systemctl list-units 
 
 	b.
@@ -9889,16 +9890,56 @@ Presumably this specific address within the block was chosen for its aesthetic a
 
 
 
+Ansible vs Terraform: What are the differences?
+
+Every growing startup or tech organization wants to automate apps and IT infrastructure. 
+
+Ansible - is a simple way to do that. An open-source software provisioning, configuration management(CM), 
+		  and application-deployment tool comes with its own declarative language. Ansible is an 
+		  automation tool that helps drive complexity away and accelerate DevOps initiatives. 
+		  
+
+Terraform - is more of an infrastructure provisioning tool. Terraform talks to VMWare, AWS, GCP, 
+		and deploys infrastructure. From the house of HashiCorp, Terraform allows the creation, 
+		management and improvement of infrastructure. An open source code drives APIs into 
+		declarative configuration files.
+		Backed by RedHat Terraform acts like an orchestrator, using Packer for automation. 
+
+
+What are some alternatives to Ansible and Terraform?
+Puppet Labs
+Puppet is an automated administrative engine for your Linux, Unix, and Windows systems 
+	and performs administrative tasks (such as adding users, installing 
+	packages, and updating server configurations) based on a centralized specification.
+
+Chef
+Chef enables you to manage and scale cloud infrastructure with no downtime or interruptions. 
+	Freely move applications and configurations from one cloud to another. Chef is integrated 
+	with all major cloud providers including Amazon EC2, VMWare, IBM Smartcloud, Rackspace, 
+	OpenStack, Windows Azure, HP Cloud, Google Compute Engine, Joyent Cloud and others.
+
+Salt
+Salt is a new approach to infrastructure management. Easy enough to get running in minutes, 
+	scalable enough to manage tens of thousands of servers, and fast enough to communicate 
+	with them in seconds.
+   Salt delivers a dynamic communication bus for infrastructures that can be used for 
+	orchestration, remote execution, configuration management and much more.
+
+Jenkins
+	In a nutshell Jenkins CI is the leading open-source continuous integration server. 
+	Built with Java, it provides over 300 plugins to support building and testing virtually any project.
+
+AWS CloudFormation
+	You can use AWS CloudFormation’s sample templates or create your own templates to 
+	describe the AWS resources, and any associated dependencies or runtime parameters, 
+	required to run your application. You don’t need to figure out the order in which 
+	AWS services need to be provisioned or the subtleties of how to make those dependencies work.
 
 
 
 
-
-
-
-
-
-
+### YAML Valicator 
+	https://codebeautify.org/yaml-validator
 
 
 

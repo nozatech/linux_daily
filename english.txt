@@ -708,6 +708,8 @@ agnostic		<- [n] A person who believes that nothing is known or can be known of 
 						(in a nonreligious context) having a doubtful or noncommittal attitude toward something.
 						"until now I've been fairly agnostic about electoral reform"
 
+agree with		<- lunch has turned out to not agree with me
+
 airworthy		<- [adj] (of an aircraft) safe to fly.
 						
 alleviate 		<- provide physical relief, as from pain alliviate
@@ -1472,6 +1474,8 @@ embody 			<- 	be an expression of or give a tangible or visible form to (an idea
 					express, concretize, symbolize, represent, epitomize, stand for, encapsulate, typify, exemplify;
 
 embrace			<- accept or support (a belief, theory, or change) willingly and enthusiastically.
+				
+				embrace(포용, 받아들이다) <-> spurn	(쳐내다)
 
 embezzle		<- 횡령
 
@@ -2015,6 +2019,9 @@ lapse			<-[noun] a temporary failure of concentration, memory, or judgment.
 					synonyms:	failure, failing, slip, error, mistake, blunder, fault, omission, 
 					oversight, negligence, dereliction; More
 
+lash out		<- 1.채찍질하다2.강타하다
+lash out at		<- 후려갈기려 들다
+lash out on something	<- ~에 돈을 흥청망청 쓰다
 
 legitimacy		<- [레짓트머씨 합법성, 전통 ability to be defended with logic or justification; validity.
 
@@ -2366,12 +2373,29 @@ pragmatic		<- [adj 실리적인]dealing with things sensibly and realistically i
 					on practical rather than theoretical considerations.
 					"a pragmatic approach to politics"
 
+
 precedence		<- [n] the condition of being considered more important than someone or something else; 
 						priority in importance, order, or rank.
 						"his desire for power soon took precedence over any other consideration"
 						synonyms:	priority, rank, seniority, superiority, primacy, preeminence, 
 									eminence More
 					"by order of precedence"
+
+precede			<- [V]  come before in order or position.
+					"take time to read the chapters that precede the recipes"
+					synonyms:	foregoing, previous, prior, former, precursory, earlier, above, 
+					above-mentioned, aforementioned, above-stated, above-named, antecedent; More
+					come before (something) in time.
+					"a gun battle had preceded the explosions"
+					synonyms:	go/come before, go in advance of, lead up to, lead to, pave the 
+								way for, prepare the way for, set the scene for, herald, introduce, 
+								usher in, antecede, predate, antedate; More
+					antonyms:	follow, succeed
+
+
+preceding		<- [Adj][선행]coming before something in order, position, or time.
+					"the preceding pages"
+
 
 prerogative		<- [n][prəˈräɡədiv] [프라게티브][특권]
 					a right or privilege exclusive to a particular individual or class.
