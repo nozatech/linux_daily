@@ -1917,6 +1917,9 @@ invocation		<- the action of invoking something or someone for assistance or as 
 invert			<- [v] put upside down or in the opposite position, order, or arrangement.
 intricacy		<- complicated, details, especially of an involved or perplexing subject.
 
+ire	= anger		<-[아이어 aier] anger
+				Trump has fixed his ire on the Fed in recent weeks as fears about a slowdown mount.
+
 irrigator		<- To supply (land or crops) with water by means of pipes, sprinklers, ditches, or streams.
 
 
@@ -2589,10 +2592,12 @@ reconcile		<- restore friendly relations between.
 					"reconcile A to B" (종종 재귀 용법 또는 수동태) [A(남)에게 B(손해·운명 등)를] 
 					감수[체념]하게 하다
 					'reconcile oneself to a fact'
+					사실을 (체념하고) 인정하다
 					
-사실을 (체념하고) 인정하다
 redact			<- Edit (text) for publication.(
 					censor or obscure (part of a text) for legal or security purposes.
+
+reign			<- [레인] 지내, 세력을(dominate)쥐다, 지배력
 
 remainder		<- Something left over after other parts have been taken away.
 					"I will most likely be out for the remainder of the day."
@@ -2722,6 +2727,10 @@ saunter			<- walk in a slow, relaxed manner, without hurry or effort.
 
 sacred			<- [seikrid] connected with God (or the gods) or dedicated to a religious 
 					purpose and so deserving veneration.  종교적인
+
+scapegoat		<- 희생양
+				‘Excuses!’ Trump claims ‘badly run and weak companies’ are using China tariffs as a scapegoat.
+
 
 secular			<- Denoting attitudes, activities, or other things that have no religious or spiritual basis.
 

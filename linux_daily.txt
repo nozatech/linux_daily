@@ -229,8 +229,11 @@ https://ss64.com/bash/syntax-keyboard.html
 	!$ or Alt+.	<= the last word of the previous command
 	
 -----------------------------------------------------------------------------------------	
-
-
+# vim file explorer
+# netrw
+	Netrw is file explorer plugin for vim and comes installed on Vim 7.0 and higher (netrw v155)
+	https://shapeshed.com/vim-netrw/
+	https://www.youtube.com/watch?v=3lqzc77carU
 
 
 
@@ -1710,6 +1713,9 @@ ECDSA key fingerprint is MD5:cf:42:fc:60:a0:80:ae:57:a7:bc:e6:4d:25:8a:11:6d.
 Are you sure you want to continue connecting (yes/no)?
 
 
+--------------------------------------------------------------------------		
+### curl -FsSL link | sudo bash
+--------------------------------------------------------------------------	
 for i in `cat do_server_list.txt`; do ssh -t apark@$i 'sudo yum remove do-agent -y && curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash'; done
 
 

@@ -11,9 +11,11 @@ https://www.edureka.co/blog/cheatsheets/ansible-cheat-sheet-guide/
 	https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-18-04
 
 	$ ansible --version
-		ansible --version
-		ansible 2.8.4
+	    ansible 2.8.4
 	$ ansible --help
+
+Ansible Loops
+https://docs.ansible.com/ansible/2.4/playbooks_loops.html
 
 
 
@@ -88,23 +90,23 @@ https://www.edureka.co/blog/cheatsheets/ansible-cheat-sheet-guide/
 	### Playbook ###
 	----------------------------------------------------------------
 	Create non-root user account in Ubuntu
-	
+----------------------------------------------------------------	
 	$ vi ~/kube-cluster/initial.yml
 ----------------------------------------------------------------
 - hosts: all
   become: yes
   tasks:
-    - name: create the 'apark' user
-      user: name=apark append=yes state=present createhome=yes shell=/bin/bash
+    - name: create the 'netops' user
+      user: name=netops append=yes state=present createhome=yes shell=/bin/bash
 
-    - name: allow 'apark' to have passwordless sudo
+    - name: allow 'netops' to have passwordless sudo
       lineinfile:
         dest: /etc/sudoers
-        line: 'apark ALL=(ALL) NOPASSWD: ALL'
+        line: 'netops ALL=(ALL) NOPASSWD: ALL'
         validate: 'visudo -cf %s'
 
-    - name: set up authorized keys for the ubuntu user
-      authorized_key: user=apark key="{{item}}"
+    - name: set up authorized keys for the netops user
+      authorized_key: user=netops key="{{item}}"
       with_file:
         - ~/.ssh/id_rsa.pub
 
@@ -133,6 +135,14 @@ kubectl - a CLI tool used for issuing commands to the cluster through its API Se
 
 ----------------------------------------------------------------
 
+### Installing Kubernetes' Dependencies
+	Docker 	<= a container runtime. It is the component that runs your containers. 
+				Support for other runtimes such as rkt is under active development in Kubernetes.
+	kubeadm <= a CLI tool that will install and configure the various components of a cluster 
+				in a standard way.
+	kubelet <= a system service/program that runs on all nodes and handles node-level operations.
+	kubectl <= a CLI tool used for issuing commands to the cluster through its API Server.
+----------------------------------------------------------------	
 $ vi ~/kube-cluster/kube-dependencies.yml
 ----------------------------------------------------------------
 - hosts: all
@@ -194,6 +204,17 @@ $ vi ~/kube-cluster/kube-dependencies.yml
        name: kubectl=1.14.0-00
        state: present
        force: yes
+
+
+
+----------------------------------------------------------------
+    - name: install Aptitude
+      apt:
+        name: aptitude
+        state: present			<= absent, latest, present, removed, present,
+
+https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/
+https://raw.githubusercontent.com/do-community/ansible-playbooks/master/docker/ubuntu1804.yml
 
 ----------------------------------------------------------------
 Step 4 — Setting Up the Master Node
@@ -440,7 +461,7 @@ $ vi ~/k8-cluster/initial.yml
   become: yes
   tasks:
     - name: create the 'noza' user
-      user: name=ubuntu append=yes state=present createhome=yes shell=/bin/bash
+      user: name=noza append=yes state=present createhome=yes shell=/bin/bash
 
     - name: allow 'noza' to have passwordless sudo
       lineinfile:
@@ -449,7 +470,7 @@ $ vi ~/k8-cluster/initial.yml
         validate: 'visudo -cf %s'
 
     - name: set up authorized keys for the ubuntu user
-      authorized_key: user=ubuntu key="{{item}}"
+      authorized_key: user=noza key="{{item}}"
       with_file:
         - ~/.ssh/id_rsa.pub
 ---------------------------------------------------------------
@@ -578,12 +599,7 @@ Gathering Facts
 	$ ansible-playbook   -i	hosts  ~/kubernetes/workersSetup.yml
 
 
-### Installing Kubernetes' Dependencies
-	Docker 	<= a container runtime. It is the component that runs your containers. 
-				Support for other runtimes such as rkt is under active development in Kubernetes.
-	kubeadm <= a CLI tool that will install and configure the various components of a cluster in a standard way.
-	kubelet <= a system service/program that runs on all nodes and handles node-level operations.
-	kubectl <= a CLI tool used for issuing commands to the cluster through its API Server.
+
 
 
 							
