@@ -526,11 +526,33 @@ Error from server (Forbidden): nodes is forbidden: User "arn:aws:iam::1627807280
 				
 							
 							
+$ kubectl taint nodes ip-172-16-81-85.ec2.internal key=value:NoSchedule
+node/ip-172-16-81-85.ec2.internal tainted
+						
 							
+$ kubectl describe node ip-172-16-81-85.ec2.internal | egrep -i "taint|sched"
+Taints:             key=value:NoSchedule
+Unschedulable:      false
+
+$ kubectl get nodes
+$ kubectl get pods
+$ kubectl get pods -o wide | grep ip-172-16-81-85.ec2.internal
 							
-							
-							
-							
-							
-							
+$ kubectl delete node ip-172-16-83-138.ec2.internal   <= remove this instance from Kube Cluster			
+
+$ kubectl get nodes
+NAME                            STATUS                     ROLES    AGE    VERSION
+ip-172-16-103-73.ec2.internal   Ready                      <none>   25h    v1.12.7
+ip-172-16-65-172.ec2.internal   Ready                      <none>   25h    v1.12.7
+ip-172-16-69-24.ec2.internal    Ready                      <none>   25h    v1.12.7
+ip-172-16-82-71.ec2.internal    Ready                      <none>   25h    v1.12.7
+ip-172-16-83-138.ec2.internal   Ready,SchedulingDisabled   <none>   154d   v1.11.5		<==
+
+$ kubectl describe nodes ip-172-16-83-138.ec2.internal | egrep -i "taint|sched"
+Taints:             key=value:NoSchedule
+                    node.kubernetes.io/unschedulable:NoSchedule
+Unschedulable:      true <<<<<<
+  Normal  NodeNotSchedulable  2m9s  kubelet, ip-172-16-83-138.ec2.internal  Node ip-172-16-83-138.ec2.internal status is now: NodeNotSchedulable
+
+
 							

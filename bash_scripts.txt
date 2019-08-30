@@ -261,7 +261,7 @@ $ enable --help
 	:12									<= Go to particular line number in vi editor 
 	
 ----------------------------------------------------------------------------------------
-# VI: Search and replace 	( http://vim.wikia.com/wiki/Search_and_replace )
+# VI: sed Search and replace 	( http://vim.wikia.com/wiki/Search_and_replace )
 ----------------------------------------------------------------------------------------
     :s/foo/bar/g					<= current line only
 	:%s/foo/bar/gc					<= % -all, c - to confirm first but also INSENSITVE
