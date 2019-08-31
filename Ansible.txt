@@ -71,17 +71,17 @@ https://docs.ansible.com/ansible/2.4/playbooks_loops.html
 	master ansible_host=167.71.126.234 ansible_user=netops
 
 	[workers]
-	worker1 ansible_host=157.230.143.79 ansible_user=netops
-	worker2 ansible_host=157.230.167.95 ansible_user=netops
+	w1 ansible_host=157.230.143.79 ansible_user=netops
+	w2 ansible_host=157.230.167.95 ansible_user=netops
 
 	[all:vars]
 	ansible_python_interpreter=/usr/bin/python3
 	--------------------------------------------------------
 
 	$ ansible -m ping all		<= ping all servers 			 in /etc/ansible/hosts file
-	$ ansible -m ping servers	<= ping all group name 'servers' in /etc/ansible/hosts file
-	$ ansible -m ping k8-m1		<= ping indivisual server 		 in /etc/ansible/hosts file
-	$ ansible -m ping k8-n1:k8-n2
+	$ ansible -m ping masters	<= ping all group name 'servers' in /etc/ansible/hosts file
+	$ ansible -m ping workers		<= ping indivisual server 		 in /etc/ansible/hosts file
+	$ ansible -m ping w1:w2
 	$ ansible -m shell -a 'free -m' host1	<= -m shell module shell
 
 
@@ -89,7 +89,7 @@ https://docs.ansible.com/ansible/2.4/playbooks_loops.html
 	----------------------------------------------------------------
 	### Playbook ###
 	----------------------------------------------------------------
-	Create non-root user account in Ubuntu
+	Create non-root user account in Ubuntu 16
 ----------------------------------------------------------------	
 	$ vi ~/kube-cluster/initial.yml
 ----------------------------------------------------------------
@@ -114,9 +114,10 @@ https://docs.ansible.com/ansible/2.4/playbooks_loops.html
 	  service:
         name: sshd
         state: restarted	
-
-----------------------------------------------------------------
-  $ ansible-playbook -i ~/kube-cluster/hosts ~/kube-cluster/initial.yml  <= -i Inventory
+----------------------------------------------------------------------------
+	# state: <= absent, latest, present, removed, present, restarted
+----------------------------------------------------------------------------
+  $ ansible-playbook -i ~/kube-cluster/hosts ~/kube-cluster/initial.yml  		<= -i Inventory host file
 
 
 ----------------------------------------------------------------
@@ -142,6 +143,7 @@ kubectl - a CLI tool used for issuing commands to the cluster through its API Se
 				in a standard way.
 	kubelet <= a system service/program that runs on all nodes and handles node-level operations.
 	kubectl <= a CLI tool used for issuing commands to the cluster through its API Server.
+	
 ----------------------------------------------------------------	
 $ vi ~/kube-cluster/kube-dependencies.yml
 ----------------------------------------------------------------
@@ -211,7 +213,7 @@ $ vi ~/kube-cluster/kube-dependencies.yml
     - name: install Aptitude
       apt:
         name: aptitude
-        state: present			<= absent, latest, present, removed, present,
+        state: present			<= absent, latest, present, removed, present, restarted
 
 https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/
 https://raw.githubusercontent.com/do-community/ansible-playbooks/master/docker/ubuntu1804.yml

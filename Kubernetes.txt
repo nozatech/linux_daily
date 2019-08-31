@@ -50,7 +50,7 @@ Kunelet(Node Agent)
 	$ kubelet
 	
 ------------------------------------------------------------------------------------	
-Kubectl(
+Kubectl
 ------------------------------------------------------------------------------------
 	A CLI tool used for issuing commands to the cluster through its API Server(Master)
 
@@ -77,8 +77,8 @@ Pod Network Plugins
                             
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###                             
                             
-$kubectl --kubeconfig=''    <= Path to the kubeconfig file to use for CLI requests.      
-                            $ kubectl config view --raw
+$ kubectl --kubeconfig=''    <= Path to the kubeconfig file to use for CLI requests.      
+                             $ kubectl config view --raw
 
 $ kubectl --kubeconfig='bnea-k8-config.yml' get nodes
     NAME                STATUS   ROLES    AGE    VERSION
