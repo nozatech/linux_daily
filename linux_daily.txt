@@ -230,13 +230,21 @@ https://ss64.com/bash/syntax-keyboard.html
 	
 -----------------------------------------------------------------------------------------	
 # vim file explorer
-# netrw
-	Netrw is file explorer plugin for vim and comes installed on Vim 7.0 and higher (netrw v155)
-	https://shapeshed.com/vim-netrw/
-	https://www.youtube.com/watch?v=3lqzc77carU
 
 
-
+	# netrw
+		Netrw is file explorer plugin for vim and comes installed on Vim 7.0 and 
+		higher (netrw v155)
+		https://shapeshed.com/vim-netrw/
+		https://www.youtube.com/watch?v=3lqzc77carU
+		https://shapeshed.com/vim-netrw/
+	  Network oriented reading, writing, and browsing (keywords: netrw ftp scp) 
+	
+	$ vi .ssh
+	# quit  
+	  :q
+		
+		
 #########################################################################################
 #   Boot Process   
 #########################################################################################
@@ -582,12 +590,97 @@ server.listen(port);
 // Put a friendly message on the terminal
 console.log("Server running on port", port);
 -------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Package Management
+-------------------------------------------------------------------------------
+Ubuntu Package Manager
+-------------------------------------------------------------------------------
+apt   <= provides a high-level commandline interface for the package
+	     management system. It is intended as an end user interface and enables
+         some options better suited for interactive usage by default compared to
+         more specialized APT tools like apt-get(8) and apt-cache(8).
+	$ apt-get
+			  update (apt-get(8))
+				   update is used to download package information from all configured
+				   sources. Other commands operate on this data to e.g. perform
+				   package upgrades or search in and display details about all
+				   packages available for installation.
+			  upgrade (apt-get(8))
+				   upgrade is used to install available upgrades of all packages
+				   currently installed on the system from the sources configured via
+				   sources.list(5). New packages will be installed if required to
+				   satisfy dependencies, but existing packages will never be removed.
+				   If an upgrade for a package requires the remove of an installed
+				   package the upgrade for this package isn't performed.	   
+			  install
+			  remove
+			  purge
+			  autoremove (apt-get(8))
+				   autoremove is used to remove packages that were automatically
+				   installed to satisfy dependencies for other packages and are now no
+				   longer needed as dependencies changed or the package(s) needing
+				   them were removed in the meantime.
 
+	$ apt-cache
+			    search (apt-cache(8))
+				   search can be used to search for the given regex(7) term(s) in the
+				   list of available packages and display matches. This can e.g. be
+				   useful if you are looking for packages having a specific feature.
+				   If you are looking for a package including a specific file try apt-
+				   file(1).
 
+	
 
+-------------------------------------------------------------------------------
+CentOS Package Manager
+-------------------------------------------------------------------------------
+  yum  is an interactive, rpm based, package manager. It can automatically perform 
+	   system updates, including dependency analysis  and  obsolete  processing
+       based on "repository" metadata. It can also perform installation of new packages, 
+	   removal of old packages and perform queries  on  the  installed  and/or
+       available  packages  among  many  other commands/services (see below). yum is
+       similar to other high level package managers like apt-get and smart.
 
-
-
+	    * install package1 [package2] [...]
+        * update [package1] [package2] [...]
+        * update-to [package1] [package2] [...]
+        * update-minimal [package1] [package2] [...]
+        * check-update
+        * upgrade [package1] [package2] [...]
+        * upgrade-to [package1] [package2] [...]
+        * distribution-synchronization [package1] [package2] [...]
+        * remove | erase package1 [package2] [...]
+        * autoremove [package1] [...]
+        * list [...]
+        * info [...]
+        * provides | whatprovides feature1 [feature2] [...]
+        * clean [ packages | metadata | expire-cache | rpmdb | plugins | all ]
+        * makecache [fast]
+        * groups [...]
+        * search string1 [string2] [...]
+        * shell [filename]
+        * resolvedep dep1 [dep2] [...]
+           (maintained for legacy reasons only - use repoquery or yum provides)
+        * localinstall rpmfile1 [rpmfile2] [...]
+           (maintained for legacy reasons only - use install)
+        * localupdate rpmfile1 [rpmfile2] [...]
+           (maintained for legacy reasons only - use update)
+        * reinstall package1 [package2] [...]
+        * downgrade package1 [package2] [...]
+        * deplist package1 [package2] [...]
+        * repolist [all|enabled|disabled]
+        * repoinfo [all|enabled|disabled]
+        * repository-packages   <enabled-repoid>   <install|remove|remove-or-rein‐
+			stall|remove-or-distribution-synchronization> [package2] [...]
+        * version [ all | installed | available | group-* | nogroups* | grouplist|groupinfo ]
+        * history [info|list|packages-list|packages-info|summary|addoninfo|redo|undo|rollback|new|sync|stats]
+        * load-transaction [txfile]
+        *  updateinfo  [summary  | list | info | remove-pkgs-ts | exclude-updates |
+			exclude-all | check-running-kernel]
+        * fssnapshot [summary | list | have-space | create | delete]
+        * fs [filters | refilter | refilter-cleanup | du]
+        * check
+        * help [command]
 
 	
 	
