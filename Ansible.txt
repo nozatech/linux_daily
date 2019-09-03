@@ -1,22 +1,29 @@
+Ansible + Kubernetes
+
+https://www.edureka.co/blog/cheatsheets/ansible-cheat-sheet-guide/
+
 ### YAML Valicator 
 	https://codebeautify.org/yaml-validator
-	
-	
-Ansible 2.0 Install on Ubuntu 18
-https://www.edureka.co/blog/cheatsheets/ansible-cheat-sheet-guide/
+
+# Configuration Management 101: Writing Ansible Playbooks
+	https://www.digitalocean.com/community/tutorials/configuration-management-101-writing-ansible-playbooks
+
+
 # Ansible Setup
-	# CentOS7
-	https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-centos-7
+	# CentOS7  <== Works better
+		https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-centos-7
 	# Ubuntu 18
-	https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-18-04
+		https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-18-04
 
 	$ ansible --version
-	    ansible 2.8.4
+	    ansible 2.4.2
 	$ ansible --help
 
-Ansible Loops
-https://docs.ansible.com/ansible/2.4/playbooks_loops.html
-
+	Ansible Loops
+	https://docs.ansible.com/ansible/2.4/playbooks_loops.html
+	
+	$ kubectl version
+		v1.15.3
 
 
 1. SSH Key Setup
@@ -64,32 +71,35 @@ https://docs.ansible.com/ansible/2.4/playbooks_loops.html
 	$ mkdir ~/kube-cluster
 	$ vi    ~/kube-cluster/hosts			
 	--------------------------------------------------------
-	[gitlab_ansible]
-	gitlab ansible_host=167.71.121.107 ansible_user=netops
+	#[gitlab_ansible]
+	#gitlab ansible_host=167.71.121.107 ansible_user=netops
 
 	[masters]
-	master ansible_host=167.71.126.234 ansible_user=netops
+	mc1     ansible_host=134.209.6.242    ansible_user=root
 
 	[workers]
-	w1 ansible_host=157.230.143.79 ansible_user=netops
-	w2 ansible_host=157.230.167.95 ansible_user=netops
+	wc1     ansible_host=157.230.128.122  ansible_user=root
+	wc2     ansible_host=68.183.163.158   ansible_user=root
 
-	[all:vars]
-	ansible_python_interpreter=/usr/bin/python3
+
+	#[all:vars]
+	#ansible_python_interpreter=/usr/bin/python3
 	--------------------------------------------------------
 
-	$ ansible -m ping all		<= ping all servers 			 in /etc/ansible/hosts file
-	$ ansible -m ping masters	<= ping all group name 'servers' in /etc/ansible/hosts file
+	$ ansible -m ping all			<= ping all servers 			 in /etc/ansible/hosts file
+	$ ansible -m ping masters		<= ping all group name 'servers' in /etc/ansible/hosts file
 	$ ansible -m ping workers		<= ping indivisual server 		 in /etc/ansible/hosts file
 	$ ansible -m ping w1:w2
 	$ ansible -m shell -a 'free -m' host1	<= -m shell module shell
 
 
-	
+### CentOS7 + Ansible + Docker + Kubernetes Setup	
+	# How To Create a Kubernetes Cluster Using Kubeadm on CentOS 7
+	# https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-cluster-using-kubeadm-on-centos-7
 	----------------------------------------------------------------
 	### Playbook ###
 	----------------------------------------------------------------
-	Create non-root user account in Ubuntu 16
+	Create non-root user account in sudoer 
 ----------------------------------------------------------------	
 	$ vi ~/kube-cluster/initial.yml
 ----------------------------------------------------------------
@@ -110,12 +120,14 @@ https://docs.ansible.com/ansible/2.4/playbooks_loops.html
       with_file:
         - ~/.ssh/id_rsa.pub
 
-	- name: 'Restart SSH daemon'
-	  service:
+    - name: 'Restart SSH daemon'
+      service:
         name: sshd
-        state: restarted	
+        state: restarted
+	
 ----------------------------------------------------------------------------
-	# state: <= absent, latest, present, removed, present, restarted
+	# state:   <= absent, latest, present, removed, present, restarted
+	# enabled: <= yes
 ----------------------------------------------------------------------------
   $ ansible-playbook -i ~/kube-cluster/hosts ~/kube-cluster/initial.yml  		<= -i Inventory host file
 
@@ -150,62 +162,75 @@ $ vi ~/kube-cluster/kube-dependencies.yml
 - hosts: all
   become: yes
   tasks:
-    - name: install Aptitude
-      apt:
-        name: aptitude
-        state: present
+   - name: install Docker
+     yum:
+       name: docker
+       state: present
+       update_cache: true
 
-    - name: install Docker
-      apt:
-        name: docker.io
+   - name: start Docker
+     service:
+       name: docker
+       state: started
+
+   - name: Enable service Docker
+     service:
+       name: docker
+       enabled: yes
+
+   - name: disable SELinux
+     command: setenforce 0
+
+   - name: disable SELinux on reboot
+     selinux:
+       state: disabled
+
+   - name: ensure net.bridge.bridge-nf-call-ip6tables is set to 1
+     sysctl:
+      name: net.bridge.bridge-nf-call-ip6tables
+      value: 1
+      state: present
+
+   - name: ensure net.bridge.bridge-nf-call-iptables is set to 1
+     sysctl:
+      name: net.bridge.bridge-nf-call-iptables
+      value: 1
+      state: present
+
+   - name: add Kubernetes' YUM repository
+     yum_repository:
+      name: Kubernetes
+      description: Kubernetes YUM repository
+      baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+      gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+      gpgcheck: yes
+
+   - name: install kubelet
+     yum:
+        name: kubelet-1.14.0
         state: present
         update_cache: true
 
-    - name: install APT Transport HTTPS
-      apt:
-        name: apt-transport-https
+   - name: install kubeadm
+     yum:
+        name: kubeadm-1.14.0
         state: present
 
-    - name: add Kubernetes apt-key
-      apt_key:
-        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-        state: present
+   - name: start kubelet
+     service:
+       name: kubelet
+       enabled: yes
+       state: started
 
-    - name: add Kubernetes' ATP repo
-      apt_repository:
-        repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
-        state: present
-        filename: 'kubernetes'
-
-    - name: install kubelet
-      apt:
-        name: kubelet=1.14.0-00
-        state: present
-        update_cache: true
-
-    - name: install kubeadm
-      apt:
-        name: kubeadm=1.14.0-00
-        state: present
-
-    - name: Restart sshd daemon
-      service:
-        name: sshd
-        state: restarted
-
-    - name: Enable service Docker
-      service:
-        name: docker
-        enabled: yes
-
-- hosts: master
+- hosts: mc1
   become: yes
   tasks:
    - name: install kubectl
-     apt:
-       name: kubectl=1.14.0-00
-       state: present
-       force: yes
+     yum:
+        name: kubectl-1.14.0
+        state: present
+        allow_downgrade: yes
+
 
 
 
@@ -234,9 +259,10 @@ This functionality is provided by pod network plugins. For this cluster, you wil
 a stable and performant option.
 ----------------------------------------------------------------
 
-$ vi ~/kube-cluster/master.yml
+$ vi ~/kube-cluster/master.yml   
+	mc1 <= master1 CentOS
 ----------------------------------------------------------------
-- hosts: master
+- hosts: mc1
   become: yes
   tasks:
     - name: initialize the cluster
@@ -256,7 +282,7 @@ $ vi ~/kube-cluster/master.yml
     - name: copy admin.conf to user's kube config
       copy:
         src: /etc/kubernetes/admin.conf
-        dest: $HOME/.kube/config
+        dest: /home/netops/.kube/config
         remote_src: yes
         owner: netops
 
@@ -268,28 +294,87 @@ $ vi ~/kube-cluster/master.yml
         chdir: $HOME
         creates: pod_network_setup.txt
 
-    - name: 'Configure cgroup driver used by kubelet on Master node'
-      become: yes
-      replace:
-        path: /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-        regexp: 'cgroup-driver=systemd'
-        replace: 'cgroup-driver="cgroupfs"'
-        backup: yes
-
-    - name: 'Reload configs and restart kubelet'
-      become: yes
-      systemd:
-        state: restarted
-        daemon_reload: yes
-        name: kubelet
 ----------------------------------------------------------------
 
 ----------------------------------------------------------------
+$ kubectl get nodes
+	NAME   STATUS   ROLES    AGE    VERSION
+	mc1    Ready    master   2d1h   v1.14.0
+	wc1    Ready    <none>   40h    v1.14.0
+	wc2    Ready    <none>   40h    v1.14.0
+----------------------------------------------------------------
+Creating Nginx POD
+----------------------------------------------------------------
+	$ kubectl create deployment nginx --image=nginx
+
+	$ kubectl get pods
+		NAME                     READY   STATUS    RESTARTS   AGE
+		nginx-65f88748fd-m6skk   1/1     Running   0          38h
+
+	$ kubectl expose deploy nginx --port 80 --target-port 80 --type NodePort
+
+	$ kubectl get services
+		NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+		kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP        2d1h
+		nginx        NodePort    10.97.180.139   <none>        80:32467/TCP   38h		<= 80:32467/TCP Nginx's Port Forwarding
+
+	# Test
+		http://master_1_ip:nginx_port
+		http://worker_1_ip:nginx_port
+		http://worker_1_ip:nginx_port
+	
+----------------------------------------------------------------
+Removing the Nginx application
+----------------------------------------------------------------
+	$ kubectl delete service nginx
+		service "nginx" deleted
+
+	$ kubectl get services			<= To check
+		NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+		kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2d1h
 
 ----------------------------------------------------------------
+Delete the deployment
+----------------------------------------------------------------
+	$ kubectl delete deployment nginx
+		deployment.extensions "nginx" deleted
+
+	$ kubectl get deployments
+		No resources found.
+
+
+
+
+
+
+
 
 ----------------------------------------------------------------
+----------------------------------------------------------------
+----------------------------------------------------------------
+----------------------------------------------------------------
 
+
+
+
+----------------------------------------------------------------
+# Troubleshooting after Kubectl failed
+	The connection to the server 134.209.6.242:6443 was refused - 
+	did you specify the right host or port?
+https://www.thegeekdiary.com/troubleshooting-kubectl-error-the-connection-to-the-server-x-x-x-x6443-was-refused-did-you-specify-the-right-host-or-port/	
+----------------------------------------------------------------
+    $ env | grep -i kube					<= 
+		KUBECONFIG=/root/.kube/config                    
+	$ systemctl status docker
+	$ systemctl status kubelet
+	$ netstat -plnt | grep 6443
+
+    $ journalctl -xeu kubelet
+	$ firewall-cmd --list-all
+
+	$ kubeadm-setup.sh restart  
+	
+						
 ----------------------------------------------------------------
 
 ----------------------------------------------------------------
