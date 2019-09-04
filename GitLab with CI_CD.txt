@@ -1,19 +1,30 @@
 GitLab with CI/CD
 
+--------------------------------------------------------------------------------
 GitLab provides a broad set of functionality: 
+
 	- issue tracking 
 	- git repositories 
 	- continuous integration 
 	- container registry 
 	- deployment 
 	- monitoring 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
 
 CI Runners 	<= The components that run the automated tests		
 			<= are the servers that check out the code and run automated tests to validate new changes
 
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
 CloudFlare DNS Record			
 https://gitlab.namcowireless.com
-root/Noza5571~~
+root/Passwd
+--------------------------------------------------------------------------------
 
 GitLab(CI/CD) Setup
 
