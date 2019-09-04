@@ -23,40 +23,40 @@ https://www.edureka.co/blog/cheatsheets/ansible-cheat-sheet-guide/
 	https://docs.ansible.com/ansible/2.4/playbooks_loops.html
 	
 	$ kubectl version
-		v1.15.3
+		v1.14.0
 
 
 1. SSH Key Setup
 
 	#Setting Up SSH Command
-	$ sudo apt-get install openssh-server
+	  $ sudo apt-get install openssh-server
 	#Generating SSH Key 
-	$ ssh-keygen
+	  $ ssh-keygen
 	#Copy the SSH Key on the Hosts
-	$ ssh-copy-id hostname
+	  $ ssh-copy-id hostname
 	#Check the SSH Connection 
-	$ ssh user_id@<nodeName>
+	  $ ssh user_id@<nodeName>
 
 2. Install Ansible
 
 	#Add Ansible repository 
-	$ sudo apt-add-repository ppa:ansible/ansible
+	  $ sudo apt-add-repository ppa:ansible/ansible
 	#Run the update command 
-	$ sudo apt-get update
+	  $ sudo apt-get update
 	#Install Ansible package 
-	$ sudo apt-get install ansible
+	  $ sudo apt-get install ansible
 	#Check Ansible Version
-	$ ansible –version
+	  $ ansible –version
 
 
 3. Inventory Files & Hosts Patterns
 
 	#Set up hosts by editing the hosts' file in the Ansible directory
-	$ sudo vi /etc/ansible/hosts
+	  $ sudo vi /etc/ansible/hosts
 
 	#To check the connection to hosts
 	#Change your directory to /etc/ansible 
-	$ cd /etc/ansible
+	  $ cd /etc/ansible
 
 	#Ansible’s 'ping module' allows you to check whether Ansible is connecting to hosts 
 	$ ansible –m ping all				
