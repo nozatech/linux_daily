@@ -390,9 +390,15 @@ https://www.thegeekdiary.com/troubleshooting-kubectl-error-the-connection-to-the
 ----------------------------------------------------------------
 
 ----------------------------------------------------------------
-
+# Ansible Commands
 ----------------------------------------------------------------
 
+ansible-2             ansible-console-2.7   ansible-galaxy-2.7    ansible-pull-2
+ansible-2.7           ansible-doc           ansible-inventory     ansible-pull-2.7
+ansible-config        ansible-doc-2         ansible-playbook      ansible-vault
+ansible-connection    ansible-doc-2.7       ansible-playbook-2    ansible-vault-2
+ansible-console       ansible-galaxy        ansible-playbook-2.7  ansible-vault-2.7
+ansible-console-2     ansible-galaxy-2      ansible-pull
 
 
 
@@ -696,7 +702,9 @@ Gathering Facts
 	$ ansible-playbook   -i	hosts  ~/kubernetes/workersSetup.yml
 
 
-
-
+BNER Git Clone
+Gitlab -> Projects -> DevOps/Ansible -> Clone
+Cone with SSH or HTTPS
+git@git.ops.bandainamcoent.ro:devops/ansible.git
 
 							

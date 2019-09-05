@@ -26,19 +26,22 @@ https://gitlab.namcowireless.com
 root/Passwd
 --------------------------------------------------------------------------------
 
+
+--------------------------------------------------------------------------------
 GitLab(CI/CD) Setup
+--------------------------------------------------------------------------------
+
 
 1. GitLab install on Ubuntu 16.04 
 
------------
-#! /bin/bash
 sudo apt-get update
 sudo apt-get install ca-certificates curl openssh-server postfix -y
 
 curl -LO https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh && sudo bash script.deb.sh
-# wgethttps://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh && sudo bash script.deb.sh
+wget     https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh && sudo bash script.deb.sh
 
 sudo apt-get install gitlab-ce -y
+
 
 2. Firewall Setup(UFW  <- Uncomplicated Firewall, is a front-end to iptables) 
 https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server
@@ -77,7 +80,27 @@ Synchronizing Cookbooks:
   - acme (3.1.0)
   - crond (0.1.0)
   - compat_resource (12.19.0)
+  
+https://docs.gitlab.com/omnibus/settings/logs.html
+  # Tail logs in a console on the server
+	# Tail all logs; press Ctrl-C to exit
+	sudo gitlab-ctl tail
 
+	# Drill down to a sub-directory of /var/log/gitlab
+	sudo gitlab-ctl tail gitlab-rails
+
+	# Drill down to an individual file
+	sudo gitlab-ctl tail nginx/gitlab_error.log
+	
+  # Configure default log directories	
+	# For example:
+	gitlab_rails['log_directory'] = "/var/log/gitlab/gitlab-rails"
+	unicorn['log_directory'] = "/var/log/gitlab/unicorn"
+	registry['log_directory'] = "/var/log/gitlab/registry"
+	
+  
+	
+	
   
 $ sudo gitlab-ctl status |start service-name | restart
 run: alertmanager: (pid 15254) 71s; run: log: (pid 15266) 70s
