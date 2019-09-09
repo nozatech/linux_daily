@@ -7403,13 +7403,260 @@ $ Iptables -A OUTPUT -p tcp -d 192.168.1.2 --dport 80 -j DROP  <= Specific IP
 
 ######################################################################################################
 # Firewalld  <= Allow everything from single IP using cmd	
+Firewalld is a complete firewall solution available by default on CentOS 7 servers.
 ######################################################################################################
+firewall-cmd administrative tool
+https://www.linode.com/docs/security/firewalls/introduction-to-firewalld-on-centos/
 
+	drop: 	The lowest level of trust. All incoming connections are dropped without reply and only 
+			outgoing connections are possible.
+	block:  Similar to the above, but instead of simply dropping connections, incoming requests are 
+			rejected with an 'icmp-host-prohibited' or 'icmp6-adm-prohibited' message.
 
+	public: Represents public, untrusted networks. You don't trust other computers but may allow selected 
+			incoming connections on a case-by-case basis.
+	external: External networks in the event that you are using the firewall as your gateway. It is configured 
+			  for NAT masquerading so that your internal network remains private but reachable.
+	internal: The other side of the external zone, used for the internal portion of a gateway. The computers 
+			  are fairly trustworthy and some additional services are available.
+	dmz: 	Used for computers located in a DMZ (isolated computers that will not have access to the rest of 
+			your network). Only certain incoming connections are allowed.
+	work: 	Used for work machines. Trust most of the computers in the network. A few more services might be allowed.
+	home: 	A home environment. It generally implies that you trust most of the other computers and that a few 
+			more services will be accepted.
+	trusted: Trust all of the machines in the network. The most open of the available options and should be 
+			used sparingly.
+	
+	To use the firewall, we can create rules and alter the properties of our zones and then assign our network 
+	interfaces to whichever zones are most appropriate.
+	
+	Rule Permanence
+		In firewalld, rules can be designated as either 'permanent' or 'immediate'. If a rule is added or modified, 
+		by default, the behavior of the currently running firewall is modified. At the next boot, the old rules will
+		be reverted.
+		e.g firewall-cmd --permanant 				<- reloaded upon boot
+	
+# Install firewalld
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7
 
+	$ sudo yum install firewalld -y	
+	$ sudo systemctl start firewalld
+	$ sudo systemctl status firewalld
+	$ sudo systemctl enable firewalld
+	# $ sudo reboot
+	
+	
+		
+	Turning on the Firewall
+		$sudo systemctl start firewalld.service
+	
+	status of the service:
+		$ firewall-cmd --state
+			running  
+		$ systemctl status firewalld
+			Active: active (running) 
 
+	Defaults Zone Info
+		$ firewall-cmd --get-default-zone
+			public
+	
+		$ firewall-cmd --get-active-zones
+	
+		$ firewall-cmd --list-all				<= same as 'iptables -nL'
+			public
+			  target: default
+			  icmp-block-inversion: no
+			  interfaces:
+			  sources:
+			  services: ssh dhcpv6-client
+			  ports:
+			  protocols:
+			  masquerade: no
+			  forward-ports:
+			  source-ports:
+			  icmp-blocks:
+			  rich rules:
+		
+		# information about other zones 
+		$ firewall-cmd --get-zones		
+			block dmz drop external home internal public trusted work
+		
+		# specific configuration associated with a zone
+		$ sudo firewall-cmd --zone=home --list-all
+			home
+			  target: default
+			  icmp-block-inversion: no
+			  interfaces:
+			  sources:
+			  services: ssh mdns samba-client dhcpv6-client
+			  ports:
+			  protocols:
+			  masquerade: no
+			  forward-ports:
+			  source-ports:
+			  icmp-blocks:
+			  rich rules:
 
+		# Selecting Zones for your Interfaces
+		  Changing the Zone of an Interface
+			# transition our eth0 interface to the “home” zone
+			$ sudo firewall-cmd --zone=public --change-interface=eth0
+			$ sudo firewall-cmd --zone=home --change-interface=eth1
+			$ sudo firewall-cmd --get-active-zones
+				home
+				  interfaces: eth1
+				public
+				  interfaces: eth0
+			
+		# Adjusting the Default Zone
+			change any interface that had fallen back on the default to the new zone
+			$ sudo firewall-cmd --set-default-zone=home
+		
+	
+	# Setting Rules for your Applications
+		$ firewall-cmd --get-services
+			RH-Satellite-6 amanda-client amanda-k5-client bacula bacula-client bgp bitcoin....
+			
+		# .xml file within the '/usr/lib/firewalld/services' directory
+		$ cat /usr/lib/firewalld/services/ssh.xml
+		------------------------------------------------------------------------
+			<?xml version="1.0" encoding="utf-8"?>
+			<service>
+			  <short>SSH</short>
+			  <description>Secure Shell (SSH) is a protocol for logging into and executing commands on remote machines. It provides secure encrypted communications. If you plan on accessing your machine remotely via SSH over a firewalled interface, enable this option. You need the openssh-server package installed for this option to be useful.</description>
+			  <port protocol="tcp" port="22"/>
+			</service>
+		------------------------------------------------------------------------
 
+		HTTP traffic, we can allow this traffic for interfaces in our “public” zone
+			$ sudo firewall-cmd --zone=public --add-service=http
+				success
+			$ sudo firewall-cmd --zone=public --list-services
+				ssh dhcpv6-client http
+			
+			# Add to Permanent rule
+			$ sudo firewall-cmd --zone=public --permanent --add-service=http
+			
+			$ sudo firewall-cmd --zone=public --permanent --list-services
+	
+			# “public” zone will now allow HTTP/HTTPS web traffic on port 80/443
+				web server is configured to use SSL/TLS
+			$ sudo firewall-cmd --zone=public --add-service=https
+			$ sudo firewall-cmd --zone=public --permanent --add-service=https
+	
+		Opening a specific 5000 Port for Public Zones
+			$ sudo firewall-cmd --zone=public --add-port=5000/tcp
+			$ firewall-cmd --zone=public --list-port
+				5000/tcp
+			$ sudo firewall-cmd --zone=public --add-port=4990-4999/udp
+			
+			$ sudo firewall-cmd --zone=public --permanent --add-port=5000/tcp
+			$ sudo firewall-cmd --zone=public --permanent --add-port=4990-4999/udp
+			
+			$ sudo firewall-cmd --zone=public --permanent --list-ports
+	
+	Defining a Service
+		Services are simply collections of ports with an associated name and description. Using services is easier 
+		to administer than ports, but requires a bit of upfront work. The easiest way to start is to copy an 
+		existing script found in '/usr/lib/firewalld/services' to the '/etc/firewalld/services' directory where the 
+		firewall looks for non-standard definitions.	
+		
+		$ sudo cp /usr/lib/firewalld/services/ssh.xml /etc/firewalld/services/example.xml
+	
+		$ cat /etc/firewalld/services/example.xml
+		-------------------------------------------------------------
+			<?xml version="1.0" encoding="utf-8"?>
+			<service>
+			  <short>SSH</short>
+			  <description>Secure Shell (SSH) is a protocol for logging into and executing commands on remote machines. 
+							It provides secure encrypted communications. If you plan on accessing your machine remotely 
+							via SSH over a firewalled interface, enable this option. You need the openssh-server package 
+							installed for this option to be useful.
+			  </description>
+			  <port protocol="tcp" port="22"/>
+			</service>
+		-------------------------------------------------------------
+
+		# The majority of this definition is actually metadata.
+		# Change to open up port 7777 for TCP and 8888 for UDP
+		  
+		  $ vi /etc/firewalld/services/example.xml
+		-------------------------------------------------------------
+			<?xml version="1.0" encoding="utf-8"?>
+			<service>
+			  <short>Example Service</short>
+			  <description>This is just an example service.  It probably shouldn't be used on a real system.</description>
+			  <port protocol="tcp" port="7777"/>
+			  <port protocol="udp" port="8888"/>
+			</service>
+		-------------------------------------------------------------
+		
+		$ sudo firewall-cmd --reload	
+	
+		$ firewall-cmd --get-services
+		
+	
+	Creating Your Own Zones
+		$ sudo firewall-cmd --permanent --new-zone=publicweb
+		$ sudo firewall-cmd --permanent --new-zone=privateDNS
+		$ sudo firewall-cmd --permanent --get-zones
+			output
+			block dmz drop external home internal privateDNS public publicweb trusted work
+												   ^^^^^^		     ^^^^^^^				
+	
+		$ firewall-cmd --get-zones
+			block dmz drop external home internal public trusted work
+		
+		$ sudo firewall-cmd --reload		<= Need to RELOAD
+		$ firewall-cmd --get-zones
+	
+		
+		$ sudo firewall-cmd --zone=publicweb --add-service=ssh
+		$ sudo firewall-cmd --zone=publicweb --add-service=http
+		$ sudo firewall-cmd --zone=publicweb --add-service=https
+		$ sudo firewall-cmd --zone=publicweb --list-all
+			
+		$ sudo firewall-cmd --zone=privateDNS --add-service=dns
+		$ sudo firewall-cmd --zone=privateDNS --list-all
+	
+	
+		# We could then change our interfaces over to these new zones to test them out:
+		$ sudo firewall-cmd --zone=publicweb --change-interface=eth0
+		$ sudo firewall-cmd --zone=privateDNS --change-interface=eth1
+	
+		sudo firewall-cmd --zone=publicweb --permanent --add-service=ssh
+		sudo firewall-cmd --zone=publicweb --permanent --add-service=http
+		sudo firewall-cmd --zone=publicweb --permanent --add-service=https
+		sudo firewall-cmd --zone=privateDNS --permanent --add-service=dns
+		
+		# After permanently applying these your rules, you can restart your network and reload your firewall service:
+		sudo systemctl restart network
+		sudo systemctl reload firewalld
+	
+		# Validate that the correct zones were assigned:
+		$ firewall-cmd --get-active-zones
+	
+		sudo firewall-cmd --zone=publicweb --list-services
+	
+		You have successfully set up your own zones! If you want to make one of these zones the default for other interfaces, 
+		remember to configure that behavior with the --set-default-zone= parameter:
+		sudo firewall-cmd --set-default-zone=publicweb
+	
+	
+	# Add source IP, port, protocol
+	sudo firewall-cmd --add-rich-rule='rule family="ipv4" source address="172.28.60.42/32" port port=21 protocol="tcp" accept'
+	sudo firewall-cmd --add-rich-rule='rule family="ipv4" source address="172.28.60.45/32" port port=21 protocol="tcp" accept'
+	
+	sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="172.28.60.42/32" port port=21 protocol="tcp" accept'
+	sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="172.28.60.45/32" port port=21 protocol="tcp" accept'
+	
+	
+	
+	
+	
+	
+	
+	
 -----------------------------------------------------------------
 # email setup and send out from shell ###
 -----------------------------------------------------------------
