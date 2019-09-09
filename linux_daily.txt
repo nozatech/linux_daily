@@ -1614,9 +1614,13 @@ https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryptio
 	
 --------------------------------------------------------------------------	
 ###  basename 		<= 	strip directory and suffix from filenames
+
 --------------------------------------------------------------------------	
+	basename에 경로 이름을 지정하면 마지막 슬래시('/') 전까지의 앞 글자들을 지우고 결과를 반환한다.
+	
 	basename prints filename NAME with any leading directory components removed. 
 	It can optionally also remove any trailing suffix.
+	
 	
 	EXAMPLES
        basename /usr/bin/sort
@@ -1625,12 +1629,52 @@ https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryptio
        basename include/stdio.h .h
               => "stdio"
 
-       basename -s .h include/stdio.h
-              => "stdio"
+       basename -s .h include/stdio.h					<-  -s, --suffix=SUFFIX
+			  => "stdio"								remove a trailing SUFFIX		
 
-       basename -a any/str1 any/str2
-              => "str1" followed by "str2"
-			  
+            
+       basename -a any/str1 any/str2					<- -a, --multiplemultiple arguments 
+              => "str1" followed by "str2"				support multiple arguments and treat each as a NAME
+			
+	
+	http://bahndal.egloos.com/595136
+	특정 파일에 대해 작업을 할 때, 해당 파일의 디렉토리는 제외하고 파일명만 추출해야 할 필요가 
+	있는 경우가 생기면 basename으로 간편하게 해결할 수 있다. 아래의 예시를 보자.
+
+	# /home/john/Documents/my_doc.txt에서 파일명만 추출
+	basename "/home/john/Documents/my_doc.txt"
+	my_doc.txt
+
+	만약 파일명 맨 뒤에 있는 확장자를 제거하고 싶다면 -s 옵션을 추가해 주자.
+
+	# .txt 확장자 제거
+	basename -s ".txt" "/home/john/Documents/my_doc.txt"
+	my_doc
+
+	여러개의 인자를 사용하고 싶다면 -a 옵션을 사용하면 된다.
+
+	basename -a "/home/john/Documents/my_doc.txt" "/home/john/Downloads/my_data.bin"
+	my_doc.txt
+	my_data.bin
+
+	예를 들어 디렉토리 정보가 포함된 특정 파일이 있을 때, 해당 파일을 임시 디렉토리에 복사하여 
+	뭔가 작업을 하는 상황을 생각해 보자. 아래의 간단한 예시를 보면 금방 감이 잡힐 것이다.
+
+	# 임시 디렉토리를 지정하여 변수 tmp_dir에 저장
+		tmp_dir="/tmp/"
+	
+	# 파일 정보를 사용자 입력으로 받아 변수 file_info에 저장
+		read -p "작업할 파일을 지정해 주세요: " file_info
+	
+	# 임시 디렉토리에 파일 복사
+		cp "$file_info" "$tmp_dir"
+	
+	# 파일명만 추출해서 변수 f_name에 저장
+		f_name=`basename "$file_info"`
+	
+	# 복사된 파일에 대한 grep 명령을 실행, 문자열 "ABCD"가 있는지 확인
+		grep "ABCD" "$tmp_dir/$f_name"
+
 --------------------------------------------------------------------------
 ### System OS start up  
 --------------------------------------------------------------------------

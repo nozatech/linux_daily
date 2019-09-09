@@ -184,16 +184,93 @@ Swap:             0           0           0
 
 
 
+Let's Encrypt on CentOS7 + GitLab
+https://kb.yourwebhoster.eu/knowledge-base/secure-gitlab-with-lets-encrypt-on-centos-7/
+
+$ mkdir -p /var/www/public/letsencrypt
+
+$ vi /etc/gitlab/gitlab.rb
+
+	# web_server['home'] = '/var/opt/gitlab/nginx'
+	
+	Add below this:
+	-------------------------------------------------------------------
+	nginx['custom_gitlab_server_config'] = "location ^~ /.well-known {
+		root /var/www/public/letsencrypt;
+	}"
+	-------------------------------------------------------------------
+
+$ gitlab-ctl reconfigure
+
+# Request the Let’s encrypt certificate
+
+	$ certbot certonly --webroot --webroot-path=/var/www/public/letsencrypt -d gitlab.namcowireless.com
+
+	Saving debug log to /var/log/letsencrypt/letsencrypt.log
+	Plugins selected: Authenticator webroot, Installer None
+	Starting new HTTPS connection (1): acme-v02.api.letsencrypt.org
+	Obtaining a new certificate
+	Performing the following challenges:
+	http-01 challenge for gitlab.namcowireless.com
+	Using the webroot path /var/www/public/letsencrypt for all unmatched domains.
+	Waiting for verification...
+	Cleaning up challenges
+
+	IMPORTANT NOTES:
+	 - Congratulations! Your certificate and chain have been saved at:
+	   /etc/letsencrypt/live/gitlab.namcowireless.com/fullchain.pem
+	   Your key file has been saved at:
+	   /etc/letsencrypt/live/gitlab.namcowireless.com/privkey.pem
+	   Your cert will expire on 2019-12-05. To obtain a new or tweaked
+	   version of this certificate in the future, simply run certbot
+	   again. To non-interactively renew *all* of your certificates, run
+	   "certbot renew"
+	 - If you like Certbot, please consider supporting our work by:
+
+	   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+	   Donating to EFF:                    https://eff.org/donate-le
+
+# Configure Gitlab with the new certificates
+
+$ vi /etc/gitlab/gitlab.rb
+	#external_url 'http://gitlab.example.com'
+	external_url 'https://gitlab.namcowireless.com'
 
 
+	# nginx['redirect_http_to_https'] = false
+	nginx['redirect_http_to_https'] = true
+
+	# nginx['ssl_certificate'] = "/etc/gitlab/ssl/#{node['fqdn']}.crt"
+	# nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/#{node['fqdn']}.key"
+	nginx['ssl_certificate'] = "/etc/letsencrypt/live/yourdomain.com/fullchain.pem"
+	nginx['ssl_certificate_key'] = "/etc/letsencrypt/live/yourdomain.com/privkey.pem"
+
+Reconfigure gitlab for https
+$ gitlab-ctl reconfigure
 
 
+# Certificate renewal
+The downside of Let’s encrypt is that a certificate is only valid for 90 days.
+$ crontab -e
+#0 2 1 * * /usr/bin/certbot renew --quiet --renew-hook "/usr/bin/gitlab-ctl restart nginx"
+0 2 1 * * /usr/bin/certbot renew --renew-hook "/usr/bin/gitlab-ctl restart nginx" 2>&1 ~/certbot_renewal.log
 
 
+cat /etc/letsencrypt/renewal/gitlab.namcowireless.com.conf
+# renew_before_expiry = 30 days
+version = 0.36.0
+archive_dir = /etc/letsencrypt/archive/gitlab.namcowireless.com
+cert = /etc/letsencrypt/live/gitlab.namcowireless.com/cert.pem
+privkey = /etc/letsencrypt/live/gitlab.namcowireless.com/privkey.pem
+chain = /etc/letsencrypt/live/gitlab.namcowireless.com/chain.pem
+fullchain = /etc/letsencrypt/live/gitlab.namcowireless.com/fullchain.pem
 
-
-
-
-
-
+# Options used in the renewal process
+[renewalparams]
+authenticator = webroot
+account = 93b7dc9853a39e6b58dd74d7d85dad8f
+webroot_path = /var/www/public/letsencrypt,
+server = https://acme-v02.api.letsencrypt.org/directory
+[[webroot_map]]
+gitlab.namcowireless.com = /var/www/public/letsencrypt
 
