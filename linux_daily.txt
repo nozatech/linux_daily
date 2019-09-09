@@ -4797,7 +4797,7 @@ From 10.04 up to 17.04:
 46. List of package installed
 	$ rpm -qa | grep ^httpd
 	
-# CentOS 'YUM'
+# CentOS 'YUM' package list
 	$ yum list *httpd  											<= online
     $ yum list installed (same as 'rpm -qa') | grep httpd		<= on system 
     $ yum info httpd  											<= version and detail pkg info
@@ -6252,10 +6252,23 @@ two cases:
 
    $ ssh-copy-id 	       		user_id@IP_Address			# copy .ssh/id_rsa.pub to remote
    
-   
+-------------------------  
+# ssh-agent vs ssh-add  #
+-------------------------
+https://www.ssh.com/ssh/agent
+	
+  # SSH-AGENT 	<= SINGLE SIGN-ON USING SSH
+	ssh-agent is a program to hold private keys used for public key authentication(RSA, DSA, ECDSA, Ed25519).  
+	ssh-agent is usually started in the beginning of an X-session or a login session, and all other windows 
+		         or programs are started as clients to the ssh-agent program. 
+	
+  #	ssh-add
+	 ssh-add — adds private key identities to the authentication agent
+
+  
    $ ssh-agent bash
    $ ssh-add
-    $ ssh-add --help
+   $ ssh-add --help
    
    https://stackoverflow.com/questions/22272299/what-is-the-difference-between-ssh-add-and-ssh-agent
    So you can give your passphrase to 'ssh-agent' once and it will use it whenever required. 
@@ -6278,8 +6291,22 @@ two cases:
 	16867 pts/1    00:00:00 ps
 	
 	###the agent would remain running, but inaccessible###
-    $ eval `ssh-agent` 			<= this runs the agent in background, and sets the apropriate 
-								   environment variables for the current shell instance.
+
+	
+	$ eval 	<= The args are read and concatenated together into  a  single  command.   This
+               command  is  then  read  and  executed  by the shell, and its exit status is
+               returned as the value of eval.  
+			   If there are no args, or  only  null  arguments, eval returns 0.
+			$ eval `something`
+			$ echo $?
+				0   <= null arguments
+				
+	# If ssh-agent is not automatically started at login, it can be started manually						  
+    $ eval `ssh-agent` 	<= this runs the agent in background, and sets the apropriate 
+						   environment variables for the current shell instance.
+	  Agent pid 17599	<= return arguments
+						   
+								   
 	
 	###	automatically kills ssh-agent when you close the terminal window###
 	$ exec ssh-agent bash 		<= starts a new instance of the 'bash shell', replacing the 

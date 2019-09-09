@@ -708,3 +708,7 @@ Cone with SSH or HTTPS
 git@git.ops.bandainamcoent.ro:devops/ansible.git
 
 							
+							
+							
+ansible-galaxy
+reusable Roles for server configuration or application installation.
