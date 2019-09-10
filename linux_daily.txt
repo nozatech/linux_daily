@@ -65,7 +65,7 @@ $ man -k REGEX or UNIXCOMMAND
 -----------------------------------------------------------------------------------	
 # Bash Shell Setting	 
 -----------------------------------------------------------------------------------	
-### Font Type <= Lucia Console, 12pt
+### Font Type    <= Lucia Console, 12pt
 ### Shell's Color, History, Time stamp, Size ### 
 
 # PS1 (Prompt Setting 1~ 4) <=  Green 
@@ -77,9 +77,9 @@ echo "export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '"  >> ~/.bashrc && source ~
 -----------------------------------------------------------------------------------	
 
 ### Green & Red promt
-========================================================================================
+============================================================================================
 echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$ "' >> ~/.bashrc	&& source ~/.bashrc	 
-========================================================================================
+============================================================================================
 
 -----------------------------------------------------------------------------------	
 # Reload .bashrc within current shell without re-login
@@ -111,8 +111,8 @@ echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
 	Issue occurs after uninstalling kubectl but new binary file is in /usr/local/bin
 	bash: /usr/bin/kubectl: No such file or directory
 	
-	Reload profile wiill fix
-	$ . ./bash_profile
+	Reload profile without log off
+	$ .      ./bash_profile
 	$ source ./bash_profile
 
 -----------------------------------------------------------------------------------	
@@ -120,7 +120,7 @@ echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
 # .bash_logout
 -----------------------------------------------------------------------------------		
 	$ vi ~/.bash_logout			<= user account
-		echo "You are logging out! GoodBye ^^*
+		echo "You are logging out! GoodBye~~"
 	$ vi /etc/bash.bashrc
 
 	
@@ -4093,12 +4093,18 @@ https://www.computerhope.com/unix/ushutdow.htm
 	$ let arg [arg ...]  same as (( )) <- ARITHMETIC EVALUATION
         Each  arg  is an arithmetic expression let == (( )) to be evaluated.
         If the last arg evaluates to 0, let returns 1; 0 is returned otherwise.
+	
 	e.g.  using 'let'
 	$ numA=4 numB=5
 	$ let result=numA+numB
 	$ echo $result
 	  9
 	  
+	$ let r=1024*8
+	$ echo $r
+	  8192
+ 
+	 
 	$ let numA++ 
 	$ let numB-- 
 	
@@ -4107,11 +4113,16 @@ https://www.computerhope.com/unix/ushutdow.htm
 	$ result=(( numA + numB ))
 	$ echo $result
 	  9
+	  
 	$ result=`expr 3 + 4`				<= If no spze 3+4 out put will be 3+4, not 7
 	$ result=$(expr numA + 4)			<= If no spze no1 +4 out put will Syntax error!
 	
 
 	$ no1=4
+	
+	# BC   - An arbitrary precision calculator language
+		$ yum install bc -y
+	
 	$ echo "4 * 0.56" | bc
 	$ result=`echo "$no1 * 1.5" | bc`	<= BC for decimal
 	
