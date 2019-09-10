@@ -129,7 +129,7 @@ echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
 	<< EOF here document method  << STDIN >> STDOUT 
 -----------------------------------------------------------------------------------
 cat << EOF >> ~/.bashrc
-	export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$"				# Color
+	export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$ "			# Color
 	export HISTCONTROL="ignorespace:erasedups:ignoredups"		# Ignore space, dups, 
 	export HISTIGNORE="history*:ll*:ls*:"						# Ignore ls ll
 	export HISTTIMEFORMAT="%F > " 								# Date format
