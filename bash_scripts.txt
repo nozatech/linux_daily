@@ -753,8 +753,20 @@ MyArray2["hotdog"]="baseball"
 echo 'MyArray2[hotdog]= ' ${MyArray2["hotdog"]}
 ----------------------------------------------------
 
- 	 
-	 
+
+---------------------------------------------------
+# upper  to lower
+# lowder to upper
+---------------------------------------------------
+ 	$ echo `uname`| tr '[:upper:]' '[:lower:]'			<= tr - translate or delete characters
+	
+	$ OS=$(echo `uname`| tr '[:upper:]' '[:lower:]')
+	
+	$ uname
+		Linux
+	$ echo `uname`| tr '[:upper:]' '[:lower:]'
+		linux
+
 
 ---------------------------------------------------
 # Combines Commands
@@ -4777,6 +4789,12 @@ done
 
 
 
+
+namespace(이름 공간)은 그 안에서 선언된 기호(변수, 클래스, 함수 등)들을 유일한 범위에 
+		두게하는 선언영역(declarative region)이다. 선언된 심벌을 namespace와 연관시킴으로써,
+		그렇지 않으면 발생할지도 모르는 이름 충돌(naming conflict)을 피할 수 있다. 
+		namespace 명칭은 문맥에 따라, 명시적으로 혹은 묵시적으로 주어질 수 있다.
+		http://blog.naver.com/PostView.nhn?blogId=novan21&logNo=120010390311
 
 
 

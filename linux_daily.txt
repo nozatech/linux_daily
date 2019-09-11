@@ -1026,12 +1026,20 @@ colorscheme desert
 
 ----------------------------------------------------------------------------------------------------	
 # Environment variable check
+# env
+# set
+# unset
 ----------------------------------------------------
 	### to check the environment variables
 	$ printenv     			
 	$ env					
 	### env == printenv ### they are same
 	$ set	
+	
+	
+	$ envsubst 		<=  substitutes environment variables in shell format strings
+	
+	
 ----------------------------------------------------	
 # Check $SHELL variable	
 ----------------------------------------------------
@@ -1045,6 +1053,7 @@ colorscheme desert
 	
 	$ env <= modified the environment variables
 		-  Set each NAME to VALUE in the environment and run COMMAND.
+		
 ----------------------------------------------------	
 # set and unset
 ----------------------------------------------------
@@ -1056,23 +1065,28 @@ http://linuxcommand.org/lc3_man_pages/seth.html
 	- Change the value of shell attributes and positional parameters, or
 		display the names and values of shell variables.
 	
-	e.g.
-	$ i=10
-	$ echo $i
-	  10
-	
+	# set variable $i
+		$ i=variable
+		$ set i
+		$ echo $i
+		  variable
+		$ set | grep i
+		  i=variable
+
+
 	# Unset
-	$ unset i
-	$ echo $i
+		$ unset i
+		$ echo $i
 		
 		
 	$ foo=(4 5 6)
 	$ foo[2]=
 	$ echo ${#foo[*]}
 		3
+		
 	$ unset foo[2]
 	$ echo ${#foo[*]}	
-	2	
+		2	
 
 	/home/user1> var=""
 	/home/user1> echo $var
@@ -2128,16 +2142,17 @@ https://www.tecmint.com/command-line-web-browser-download-file-in-linux/
 	http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
 	https://www.base64decode.org/
 	
-	# Encode
-	$ printf id:pw | base64
-		$ base64 data.txt > data.b64
+	# Encoding
+	  $ printf id:pw | base64 > encoded_data.b64	<= on to Files
+	  $ base64 data.txt > data.b64
 	
-	# Decode using -d option
-	$ base64 -d 
-		$ base64 -d data.b64 						<= on to SCREEN(STDOUT)
-		$ base64 -d data.b64 > data.txt				<= on to Files
+	# Decoding using -d option
+	  $ base64 -d encoded_data.b64 					<= on to SCREEN(STDOUT)
+	  $ base64 -d data.b64 > data.txt				<= on to Files
 		
 
+	$ export GRAFANA_PASSWORD="$(echo -n 'your_grafana_password' | base64)"
+	
 ----------------------------------------------------------------------------------------------------
 ### How to check SHELL type
 --------------------------------------------------------------------------	
@@ -3984,7 +3999,9 @@ https://www.computerhope.com/unix/ushutdow.htm
 25. a="hello"
 	echo ${#a}   <= 5 number for character
 	
-
+---------------------------------------------------------------------------------------		
+# symbolic links (softlink vs hardlink)
+---------------------------------------------------------------------------------------	
 
 
 
@@ -8421,9 +8438,14 @@ $ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{prin
 	http://www.thegeekstuff.com/2010/01/8-powerful-awk-built-in-variables-fs-ofs-rs-ors-nr-nf-filename-fnr/?ref=binfind.com/web
 	
 	1. Awk FS Example: Input field separator variable.
+	gawk - pattern scanning and processing language
+
 	
-	
-	
+	awk는 파일로부터 레코드(record)를 선택하고, 선택된 레코드에 포함된 값을 조작하거나 데이터화하는 
+	것을 목적으로 사용하는 프로그램입니다. 즉, awk 명령의 입력으로 지정된 파일로부터 데이터를 
+	분류한 다음, 분류된 텍스트 데이터를 바탕으로 패턴 매칭 여부를 검사하거나 데이터 조작 및 
+	연산 등의 액션을 수행하고, 그 결과를 출력하는 기능을 수행합니다
+	https://recipes4dev.tistory.com/171
 	
 ------------------------------------------------------------------------------------	
 # Remove a space in string

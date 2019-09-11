@@ -132,10 +132,9 @@ $ kubectl get services   <= List services
                             
 ### Terminology                            
                             
-kops <= Kubernetes Operations
-
+kops 	<= Kubernetes Operations
 kubeadm <= easily bootstrap a secure Kubernetes cluster.
-        $ kubeadm --help
+  $ kubeadm --help
                             
 # docker: Got permission denied
 $ sudo usermod -a -G docker $USER                            
@@ -555,4 +554,445 @@ Unschedulable:      true <<<<<<
   Normal  NodeNotSchedulable  2m9s  kubelet, ip-172-16-83-138.ec2.internal  Node ip-172-16-83-138.ec2.internal status is now: NodeNotSchedulable
 
 
-							
+------------------------------------------------------------------------------------------
+# How To Install Software on Kubernetes Clusters with the Helm Package Manager
+	https://www.digitalocean.com/community/tutorials/how-to-install-software-on-kubernetes-clusters-with-the-helm-package-manager
+------------------------------------------------------------------------------------------
+
+Helm 	<= is a package manager for Kubernetes that allows developers and operators to 
+			more easily configure and deploy applications on Kubernetes clusters.					
+
+Tiller 	<= is a companion to the helm command that runs on your cluster, receiving 
+			commands from helm and communicating directly with the Kubernetes API to do the 
+			actual work of creating and deleting resources.
+
+
+
+
+
+
+------------------------------------------------------------------------------------------
+
+Role-based Access Control
+https://helm.sh/docs/using_helm/#role-based-access-control
+https://docs.oracle.com/cd/E26925_01/html/E25888/rbac-1.html
+------------------------------------------------------------------------------------------
+
+Kubernetes Dashboard 
+
+$ kubectl -n kube-system create serviceaccount t
+serviceaccount/tiller created
+
+#bind the tiller serviceaccount to the cluster-admin role:
+$ kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+clusterrolebinding.rbac.authorization.k8s.io/tiller created
+
+
+$ helm init --service-account tiller
+
+	Creating /home/netops/.helm
+	Creating /home/netops/.helm/repository
+	Creating /home/netops/.helm/repository/cache
+	Creating /home/netops/.helm/repository/local
+	Creating /home/netops/.helm/plugins
+	Creating /home/netops/.helm/starters
+	Creating /home/netops/.helm/cache/archive
+	Creating /home/netops/.helm/repository/repositories.yaml
+
+
+$ kubectl get pods --namespace kube-system
+
+	NAME                             READY   STATUS    RESTARTS   AGE
+	coredns-584795fc57-gjr8r         1/1     Running   3          10d
+	coredns-584795fc57-pkzvv         1/1     Running   3          10d
+	etcd-mc1                         1/1     Running   2          10d
+	kube-apiserver-mc1               1/1     Running   2          10d
+	kube-controller-manager-mc1      1/1     Running   2          10d
+	kube-flannel-ds-amd64-btfsh      1/1     Running   0          10d
+	kube-flannel-ds-amd64-pgwgs      1/1     Running   1          10d
+	kube-flannel-ds-amd64-v752t      1/1     Running   0          10d
+	kube-proxy-895v5                 1/1     Running   0          10d
+	kube-proxy-9jd7q                 1/1     Running   0          10d
+	kube-proxy-glzpf                 1/1     Running   1          10d
+	kube-scheduler-mc1               1/1     Running   7          10d
+	tiller-deploy-7f4d76c4b6-8bpx7   1/1     Running   0          16m  <==
+
+Step 3 — Installing a Helm Chart
+$ helm install stable/kubernetes-dashboard --name dashboard-demo	<= 
+	
+	NAME:   dashboard-demo
+	LAST DEPLOYED: Wed Sep 11 18:23:23 2019
+	NAMESPACE: default
+	STATUS: DEPLOYED
+
+	RESOURCES:
+	==> v1/Deployment
+	NAME                                 READY  UP-TO-DATE  AVAILABLE  AGE
+	dashboard-demo-kubernetes-dashboard  0/1    1           0          0s
+
+	------
+
+	NOTES:
+	*********************************************************************************
+	*** PLEASE BE PATIENT: kubernetes-dashboard may take a few minutes to install ***
+	*********************************************************************************
+
+	Get the Kubernetes Dashboard URL by running:
+	  export POD_NAME=$(kubectl get pods -n default -l "app=kubernetes-dashboard,release=dashboard-demo" -o jsonpath="{.items[0].metadata.name}")
+	  echo https://127.0.0.1:8443/
+	  kubectl -n default port-forward $POD_NAME 8443:8443	
+
+$ helm list
+	NAME            REVISION        UPDATED                         STATUS          CHART                           APP VERSION     NAMESPACE
+	dashboard-demo  1               Wed Sep 11 18:23:23 2019        DEPLOYED        kubernetes-dashboard-1.8.0      1.10.1          default
+
+$  kubectl get services
+	NAME                                  TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+	dashboard-demo-kubernetes-dashboard   ClusterIP   10.111.109.142   <none>        443/TCP   3m7s
+	kubernetes                            ClusterIP   10.96.0.1        <none>        443/TCP   10d
+
+
+$ helm upgrade dashboard-demo stable/kubernetes-dashboard --set fullnameOverride="dashboard"
+
+
+$  kubectl get services
+	NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+	dashboard    ClusterIP   10.111.108.205   <none>        443/TCP   15s
+	kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP   10d
+
+$ kubectl proxy
+
+
+
+$ kubectl cluster-info
+
+	Kubernetes master is running at https://134.209.6.242:6443
+	
+	KubeDNS is running at https://134.209.6.242:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+----------------------------------------------------------------------------------------
+https://134.209.6.242:6443
+----------------------------------------------------------------------------------------
+	{
+	  "kind": "Status",
+	  "apiVersion": "v1",
+	  "metadata": {
+		
+	  },
+	  "status": "Failure",
+	  "message": "forbidden: User \"system:anonymous\" cannot get path \"/\"",
+	  "reason": "Forbidden",
+	  "details": {
+		
+	  },
+	  "code": 403
+	}
+----------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------
+https://134.209.6.242:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+----------------------------------------------------------------------------------------
+	{
+	  "kind": "Status",
+	  "apiVersion": "v1",
+	  "metadata": {
+		
+	  },
+	  "status": "Failure",
+	  "message": "services \"kube-dns:dns\" is forbidden: User \"system:anonymous\" cannot get resource \"services/proxy\" in API group \"\" in the namespace \"kube-system\"",
+	  "reason": "Forbidden",
+	  "details": {
+		"name": "kube-dns:dns",
+		"kind": "services"
+	  },
+	  "code": 403
+	}
+----------------------------------------------------------------------------------------
+
+# Roll Back(REVERT)
+
+  $ helm list
+	NAME            REVISION        UPDATED                         STATUS          CHART                           APP VERSION NAMESPACE
+	dashboard-demo  2               Wed Sep 11 18:27:13 2019        DEPLOYED        kubernetes-dashboard-1.8.0      1.10.1      default
+	
+  $ helm rollback dashboard-demo 1
+
+  $ helm delete dashboard-demo
+
+  $ helm list --deleted	
+
+  $ helm delete dashboard-demo --purge
+	release "dashboard-demo" deleted
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------
+# Monitoring
+----------------------------------------------------------------------------------------
+https://github.com/do-community/doks-monitoring
+
+Monitoring Stack on DigitalOcean Kubernetes
+	Prometheus 
+	Grafana  
+	Alertmanager 
+	
+	
+Step 2 — Creating the Monitoring Stack
+	The DigitalOcean Kubernetes Monitoring Quickstart repo contains manifests for the 
+	following monitoring, scraping, and visualization components:
+
+  Prometheus <= is a time series database and monitoring tool that works by polling metrics 
+			endpoints and scraping and processing the data exposed by these endpoints. 
+			It allows you to query this data using PromQL, a time series data query 
+			language. Prometheus will be deployed into the cluster as a StatefulSet 
+			with 2 replicas that uses Persistent Volumes with DigitalOcean Block Storage. 
+			In addition, a preconfigured set of Prometheus Alerts, Rules, and Jobs will 
+			be stored as a ConfigMap. To learn more about these, skip ahead to the 
+			Prometheus section of Configuring the Monitoring Stack.
+  Alertmanager	<= usually deployed alongside Prometheus, forms the alerting layer of the stack, 
+			handling alerts generated by Prometheus and deduplicating, grouping, and routing 
+			them to integrations like email or PagerDuty. Alertmanager will be installed as 
+			a StatefulSet with 2 replicas. To learn more about Alertmanager, consult Alerting 
+			from the Prometheus docs.
+  
+  Grafana 	<= is a data visualization and analytics tool that allows you to build dashboards and 
+			graphs for your metrics data. Grafana will be installed as a StatefulSet with one 
+			replica. In addition, a preconfigured set of Dashboards generated by kubernetes-mixin 
+			will be stored as a ConfigMap.
+
+  kube-state-metrics <= is an add-on agent that listens to the Kubernetes API server and generates 
+			metrics about the state of Kubernetes objects like Deployments and Pods. These metrics 
+			are served as plaintext on HTTP endpoints and consumed by Prometheus. kube-state-metrics 
+			will be installed as an auto-scalable Deployment with one replica.
+  
+  node-exporter	<= a Prometheus exporter that runs on cluster nodes and provides OS and hardware 
+			metrics like CPU and memory usage to Prometheus. These metrics are also served as 
+			plaintext on HTTP endpoints and consumed by Prometheus. node-exporter will be 
+			installed as a DaemonSet.	
+
+
+
+
+
+
+$ kubectl apply -f "${APP_INSTANCE_NAME}_manifest.yaml" --namespace "${
+		serviceaccount/alertmanager created
+		configmap/cluster-monitoring-alertmanager-config created
+		service/cluster-monitoring-alertmanager-operated created
+		service/cluster-monitoring-alertmanager created
+		statefulset.apps/cluster-monitoring-alertmanager created
+		configmap/cluster-monitoring-dashboards created
+		serviceaccount/grafana created
+		configmap/cluster-monitoring-grafana-ini created
+		configmap/cluster-monitoring-grafana-datasources created
+		configmap/cluster-monitoring-grafana-dashboardproviders created
+		secret/cluster-monitoring-grafana created
+		service/cluster-monitoring-grafana created
+		statefulset.apps/cluster-monitoring-grafana created
+		serviceaccount/kube-state-metrics created
+		clusterrole.rbac.authorization.k8s.io/kube-state-metrics created
+		clusterrolebinding.rbac.authorization.k8s.io/kube-state-metrics created
+		deployment.apps/cluster-monitoring-kube-state-metrics created
+		service/cluster-monitoring-kube-state-metrics created
+		serviceaccount/node-exporter created
+		daemonset.extensions/cluster-monitoring-node-exporter created
+		serviceaccount/prometheus created
+		clusterrole.rbac.authorization.k8s.io/prometheus created
+		clusterrolebinding.rbac.authorization.k8s.io/prometheus created
+		configmap/cluster-monitoring-prometheus-config created
+		service/cluster-monitoring-prometheus created
+		statefulset.apps/cluster-monitoring-prometheus created
+
+
+
+
+
+
+----------------------------------------------------------------------------------------
+# Terminology
+----------------------------------------------------------------------------------------
+kube-apiserver
+		The Kubernetes API server validates and configures data for the api objects which 
+		include pods, services, replicationcontrollers, and others. The API Server services 
+		REST operations and provides the frontend to the cluster’s shared state through 
+		which all other components interact.
+		
+	$ kube-apiserver [flags]
+
+kubelet 
+		the primary node agent that interacts with kube-apiserver to manage Pods and containers 
+		on a node.
+
+cAdvisor
+		a node agent that discovers running containers and collects their CPU, memory, 
+		filesystem, and network usage metrics.
+		https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/#cadvisor
+
+
+
+
+----------------------------------------------------------------------------------------
+# Troubleshooting
+----------------------------------------------------------------------------------------
+STATUS: CrashLoopBackOff
+https://sysdig.com/blog/debug-kubernetes-crashloopbackoff/
+
+$ kubectl get pods
+	NAME                        READY   STATUS             RESTARTS   AGE
+	dashboard-95589d86d-jpjzd   0/1     CrashLoopBackOff   30         133m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
