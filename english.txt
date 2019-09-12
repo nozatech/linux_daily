@@ -1,55 +1,55 @@
-*뭐더라공부법 
-순서
-1.한문장 구간반복으로 모든 문장 입에 붙이기
-2.메모지에 문장 입력
-3.라이트너(flash card) 박스 실행
+*뭐더라 공부법 
+	순서
+	1.한문장 구간반복으로 모든 문장 입에 붙이기
+	2.메모지에 문장 입력
+	3.라이트너(flash card) 박스 실행
 
-라이트너(FlashCards) 박스 단계
-1단계 : 매일			
-2단계 : 2일에 한번			<- 1단계에서 성공한뒤 옮기기, 틀리면 다시 1단계로 옮김
-3단계 : 4일에 한번
-4단계 : 8일에 한번
-5단계 : 16일에 한번
-6단계 : 32일에 한번
-7단계 : 64일에 한번
+	라이트너(FlashCards) 박스 단계
+	1단계 : 매일			
+	2단계 : 2일에 한번			<- 1단계에서 성공한뒤 옮기기, 틀리면 다시 1단계로 옮김
+	3단계 : 4일에 한번
+	4단계 : 8일에 한번
+	5단계 : 16일에 한번
+	6단계 : 32일에 한번
+	7단계 : 64일에 한번
 
 
 Listening: Speaking: Reading: Grammar: Writing
 
 8품사: 명사, 대명사, 동사, 형용사, 부사, 전치사, 접속사, 감탄사
 
-1. 명사 <- 이름씨: 사람, 사물, 물질, 개념, 행동
-		Tom, car, water, peach, answer
-	a. 동명사  	<- 동사를 명사화한 명사
-		
-2. 대명사 <- 명사를 대신 받아주는 명사		
-	a. 인칭 대명사: I, you, he, she, it, her, him, me, you, self
-	b. 지시 대명사: This, these, that, those
-	c. 부정 대명사: (부정확하게 많은, 막연하게) all, some, any, none, each, one, ones, 
-	d. 수량 대명사: others, one, ones, much, little, few
-3. 동사 
-	a. 동사: wants & go
-	b. 술어: wants
-		He wants to go there.
-4. 형용사 <- 명사를 꿈여주는 말
-	a. 명사 수식
-		형용사 + 명사 + 형용사
-	b. 보어 <주어 보어, 목적어 보어>
+	1. 명사 <- 이름씨: 사람, 사물, 물질, 개념, 행동
+			Tom, car, water, peach, answer
+		a. 동명사  	<- 동사를 명사화한 명사
+			
+	2. 대명사 <- 명사를 대신 받아주는 명사		
+		a. 인칭 대명사: I, you, he, she, it, her, him, me, you, self
+		b. 지시 대명사: This, these, that, those
+		c. 부정 대명사: (부정확하게 많은, 막연하게) all, some, any, none, each, one, ones, 
+		d. 수량 대명사: others, one, ones, much, little, few
+	3. 동사 
+		a. 동사: wants & go
+		b. 술어: wants
+			He wants to go there.
+	4. 형용사 <- 명사를 꿈여주는 말
+		a. 명사 수식
+			형용사 + 명사 + 형용사
+		b. 보어 <주어 보어, 목적어 보어>
 
-5. 전치사<- 명사 뒤에 붙는 토시어
-	He killed the animal __ Tom.  <- with, for  
+	5. 전치사<- 명사 뒤에 붙는 토시어
+		He killed the animal __ Tom.  <- with, for  
 
-6. 접속사 
-	구+접+구, 절+접+절
-	a.  and, but, that, or, where, so, because, unless, since, as
+	6. 접속사 
+		구+접+구, 절+접+절
+		a.  and, but, that, or, where, so, because, unless, since, as
 
-7. 부사(Adverb): 수식어(꾸미는 말)(형용사, 부사, 동사, 절 전체 꾸며줌) 매우 머머한, 머마하게
-		자세한 정보를 제공: 시간, 장소, 방법, 정도, etc)
-	Unfortunately, S + V
-	He is 'very' smart.
-	~ly: He looks 'carefully' at my face.  ~ly를 붙이면 동사 꾸며줌
+	7. 부사(Adverb): 수식어(꾸미는 말)(형용사, 부사, 동사, 절 전체 꾸며줌) 매우 머머한, 머마하게
+			자세한 정보를 제공: 시간, 장소, 방법, 정도, etc)
+		Unfortunately, S + V
+		He is 'very' smart.
+		~ly: He looks 'carefully' at my face.  ~ly를 붙이면 동사 꾸며줌
 
-8. 감탄사
+	8. 감탄사
 
 
 to+부정사(동사원형)  <- 부정확하게 많은 동사원형을 갖어다 명사, 형용사, 부사적으로 쓰이는 말.
@@ -63,18 +63,19 @@ https://namu.wiki/w/to%20%EB%B6%80%EC%A0%95%EC%82%AC
 		두 문장을 한 문장으로 연결하는 역할을 하는 단어의 일종으로, 크게 관계대명사, 유사관계대명사, 관계부사로 나뉜다
 		
 
-선행사			주격		소유격			목적격
----------------------------------------------------
-사람				who		of whom/whose	whom
-사물, 동물			which	of which/whose	which
-사람, 사물, 동물	that	-				that
-사물(선행사 포함)	what	-				what
+		선행사			주격		소유격			목적격
+		---------------------------------------------------
+		사람				who		of whom/whose	whom
+		사물, 동물			which	of which/whose	which
+		사람, 사물, 동물	that	-				that
+		사물(선행사 포함)	what	-				what
 
 		He's reading a wiki. (그는 위키를 읽고 있다.)
 		The wiki has useful information. (그 위키에는 유용한 정보가 있다.)
 		=> He's reading a wiki 'which' has useful information. (그는 유용한 정보가 있는 위키를 읽고 있다.)
 
-1. 단어 		<= word
+1. 단어 		<= a word
+
 2. 구(phrase) 	<= word + word
 	He wants 'to be with you.'	
 	S	V		O (to 부정사 '구') == 명사 '구'
@@ -105,8 +106,8 @@ https://namu.wiki/w/to%20%EB%B6%80%EC%A0%95%EC%82%AC
 ##
 영어문법 용어(English Grammar Term)
 ##
-출처: http://englishgate.tistory.com/256 [공부의 진리 예습 복습]
-
+	출처: http://englishgate.tistory.com/256 [공부의 진리 예습 복습]
+----------------------------------------------------------------------------------------
 Abstract noun  				추상명사
 Active voice   				능동태
 Adjective  					형용사
@@ -211,6 +212,7 @@ Uncountable nouns			불가산명사
 Verb						동사
 Voice						태
 Vowel						모음
+----------------------------------------------------------------------------------------
 
 
 
@@ -220,6 +222,7 @@ Continuous Infinitive         (긴)                   — to be asking
 Perfect Infinitive            (완벽)                  — to have asked
 Perfect Passive Infinitive    (수동태에 완벽) 			— to have been asked
 Perfect Continuous Infinitive (긴 완벽)     			— to have been asking
+----------------------------------------------------------------------------------------
 
 
 
@@ -330,10 +333,10 @@ learn 	 learnt     learnt
 do       did          done         하다                   
               
 draw      drew         drawn        그리다      
-leave    left       	left          떠나다     
+leave    	left       	left          떠나다     
 dream     dreamed   	dreamed      꿈꾸다      
 dream     dreamt   		dreamt  
-lend     lent          lent          빌려주다    
+lend     	lent          lent          빌려주다    
 let      	let           let           -하게 하다  
 eat       	ate          eaten        먹이다      
 lie      	lay           lain          눕다      
@@ -341,36 +344,36 @@ fall      	fell         fallen       떨어지다
 lie      	lied          lied           거짓말하다  
 feel      	felt         felt         느끼다      
 light     	lighted/lit  lighted/lit   밝게 하다   
-lose   	lost          lost          잃어버리다  
+lose   		lost          lost          잃어버리다  
 spill      spilled/spilt  spilled/spilt  엎지르다     
-make   	made          made          만들다    
+make   		made          made          만들다    
 spin       spun           spun           (실을)잦다   
-mean   	meant         meant         의미하다   
+mean   		meant         meant         의미하다   
 spit       spit/spat      spit/spat      침을 뱉다    
-meet   	met           met           만나다    
+meet   		met           met           만나다    
 split      split          split          찢다       
-mislay 	mislaid       mislaid       잘못 두다  
+mislay 		mislaid       mislaid       잘못 두다  
 spoil      spoiled/spoilt spoiled/spoilt 펴다       
-pay    	paid          paid          지불하다   
+pay    		paid          paid          지불하다   
 spread     spread         spread         퍼지다      
-put    	put           put           놓다     
+put    		put           put           놓다     
 spring     sprang         sprung         튀다.뛰어오르다 
-quit   	quit          quit          그만두다   
+quit   		quit          quit          그만두다   
 /sprung                                           
-read   	read          read          읽다     
+read   		read          read          읽다     
 stand      stood          stood          서다       
-rid    	rid           rid           자유롭게하다 
+rid    		rid           rid           자유롭게하다 
 steal      stole          stolen         홈치다      
-ride   	rode          ridden        타다     
+ride   		rode          ridden        타다     
 stick      stuck          stuck          찌르다      
-ring   	rang          rung          울리다    
+ring   		rang          rung          울리다    
 sting      stung          stung          찌르다      
-rise   	rose          risen         뜨다     
+rise   		rose          risen         뜨다     
 stink      stank/stunk    stunk          악취를 풍기다  
-run    	ran           run           뛰다     
+run    		ran           run           뛰다     
 strike     struck         struck         치다       
 strike     stricken      stricken      치다       
-say    said          said          말하다    
+say    		said          said          말하다    
 strive     strove         striven        노력하다    
 strive 	   strafed        strafed   
 see    		saw           seen          보다                
@@ -405,20 +408,20 @@ sit    		sat           sat           앉다
 upset      upset          upset          뒤엎다      
 sleep  		slept         slept         자다     
 wake       woke/waked     waken/waked    일어나다     
-slide  		slid          slid          미끄러지다  
+slide  	   slid          slid          미끄러지다  
 wear       wore           worn           입다       
-slit   		slit          slit          쪼개다    
+slit   	   slit          slit          쪼개다    
 weave      wove           woven          짜다 . 뜨다  
-smell  smelled/smelt      smelled/smelt       냄새나다   
+smell  	   smelled/smelt  smelled/smelt       냄새나다   
 weep       wept           wept           울다       
 win        won            won            이기다      
-speak  		spoke         spoken        말하다    
+speak  	   spoke         spoken        말하다    
 wind       wound          wound          구불거리다    
-speed  		sped/speeded  sped/speeded  서두르다   
+speed  	   sped/speeded  sped/speeded  서두르다   
 withdraw   withdrew       withdrawn      배대앗다     
-spell  		spelled/spelt spelled/spelt 철자-되다  
+spell  	   spelled/spelt spelled/spelt 철자-되다  
 wring      wrung          wrung          비틀다      
-spend  s		pent         spent         쓰다     
+spend      spent          spent         쓰다     
 write      wrote          written        쓰다  
 
      
@@ -857,6 +860,9 @@ avid			<- having or showing a keen interest in or enthusiasm for something.
 					"Being a avid gamer"
 					synonyms: keen, eager, enthusiastic, ardent, passionate, zealous, hard-core
 
+azure			<- 1.	하늘색2.	하늘빛3.	창공
+
+
 
 # B 
 
@@ -1150,6 +1156,9 @@ Compromised		<- "Compromised" is a nice way of saying that someone or something 
 					copy to compare them with, and you probably won't ever know what's been done with 
 					your personal information, including your passwords, or where they've been sent.
 					"My Computer has been Disabled because it is Compromised"
+
+compulsory		<- 강제적인/의무적인 required by law or a rule; obligatory.
+
 					
 condemnation	<- 심한비난
 
@@ -1165,7 +1174,10 @@ conscientious 	<- [kὰnʃiénʃəs] 양심있는
 					"a conscientious and hardworking clerk"
 					synonyms:	diligent, industrious, punctilious, painstaking, sedulous, assiduous, dedicated, 
 							careful, meticulous, thorough, attentive, hard-working, studious, rigorous, particular
-							
+
+consolation		<- (보통 a consolation) […에(게)] 위로가 되는 사람[사물][to ‥].
+					a consolation match[race] <- 패자 부활전		
+
 contention		<- heated disagreement.
 					synonyms:	disagreement, dispute, disputation, argument, discord, conflict, 
 								friction, strife, dissension, disharmony "a point of contention"
@@ -3078,6 +3090,9 @@ treacherous		<- [adj] guilty of or involving betrayal or deception.(배반하는
 					(of ground, water, conditions, etc.) hazardous because of presenting hidden or unpredictable dangers.
 					"a vacationer was swept away by treacherous currents"
 					synonyms:	dangerous, hazardous, perilous, unsafe, precarious, risky, deceptive, unreliable
+
+treble hook		<- 수량·가치 등이) 3배인, 세 부분으로 된(threefold), 세 가지의; (구조 등이) 3중의(triple)
+
 
 
 triage			<- (in medical use) the assignment of degrees of urgency to wounds or illnesses to decide the order of 

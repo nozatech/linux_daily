@@ -98,31 +98,59 @@ https://docs.gitlab.com/omnibus/settings/logs.html
 	unicorn['log_directory'] = "/var/log/gitlab/unicorn"
 	registry['log_directory'] = "/var/log/gitlab/registry"
 	
-  
 	
-	
-  
-$ sudo gitlab-ctl status |start service-name | restart
-run: alertmanager: (pid 15254) 71s; run: log: (pid 15266) 70s
-run: crond: (pid 15336) 69s; run: log: (pid 15332) 69s
-run: gitaly: (pid 15192) 72s; run: log: (pid 15201) 72s
-run: gitlab-monitor: (pid 15209) 72s; run: log: (pid 15226) 71s
-run: gitlab-workhorse: (pid 15172) 73s; run: log: (pid 15234) 71s
-run: logrotate: (pid 14568) 144s; run: log: (pid 15185) 72s
-run: nginx: (pid 14984) 99s; run: log: (pid 15235) 71s
-run: node-exporter: (pid 14783) 132s; run: log: (pid 15202) 72s
-run: postgres-exporter: (pid 15270) 70s; run: log: (pid 15277) 70s
-run: postgresql: (pid 14256) 215s; run: log: (pid 15212) 72s
-run: prometheus: (pid 15236) 71s; run: log: (pid 15245) 71s
-run: redis: (pid 14191) 221s; run: log: (pid 15211) 72s
-run: redis-exporter: (pid 14839) 119s; run: log: (pid 15227) 71s
-run: sidekiq: (pid 14503) 168s; run: log: (pid 15165) 73s
-run: unicorn: (pid 14465) 174s; run: log: (pid 15213) 72s
-
+------------------------------------------------	
 $ sudo gitlab-ctl start service-name
 $ sudo gitlab-ctl restart
+$ sudo gitlab-ctl reconfigure 
+------------------------------------------------	
 
-$ sudo gitlab-ctl reconfigure
+------------------------------------------------	
+$ sudo gitlab-ctl status	
+$ sudo gitlab-ctl start
+$ sudo gitlab-ctl stop
+$ sudo gitlab-ctl restart
+------------------------------------------------	
+  
+$ sudo gitlab-ctl status |start service-name | restart | stop
+
+	run: alertmanager: (pid 15254) 71s; run: log: (pid 15266) 70s
+	run: crond: (pid 15336) 69s; run: log: (pid 15332) 69s
+	run: gitaly: (pid 15192) 72s; run: log: (pid 15201) 72s
+	run: gitlab-monitor: (pid 15209) 72s; run: log: (pid 15226) 71s
+	run: gitlab-workhorse: (pid 15172) 73s; run: log: (pid 15234) 71s
+	run: logrotate: (pid 14568) 144s; run: log: (pid 15185) 72s
+	run: nginx: (pid 14984) 99s; run: log: (pid 15235) 71s
+	run: node-exporter: (pid 14783) 132s; run: log: (pid 15202) 72s
+	run: postgres-exporter: (pid 15270) 70s; run: log: (pid 15277) 70s
+	run: postgresql: (pid 14256) 215s; run: log: (pid 15212) 72s
+	run: prometheus: (pid 15236) 71s; run: log: (pid 15245) 71s
+	run: redis: (pid 14191) 221s; run: log: (pid 15211) 72s
+	run: redis-exporter: (pid 14839) 119s; run: log: (pid 15227) 71s
+	run: sidekiq: (pid 14503) 168s; run: log: (pid 15165) 73s
+	run: unicorn: (pid 14465) 174s; run: log: (pid 15213) 72s
+
+$ sudo gitlab-ctl stop
+	ok: down: alertmanager: 0s, normally up
+	ok: down: crond: 1s, normally up
+	ok: down: gitaly: 0s, normally up
+	ok: down: gitlab-monitor: 0s, normally up
+	ok: down: gitlab-workhorse: 1s, normally up
+	ok: down: grafana: 0s, normally up
+	ok: down: logrotate: 1s, normally up
+	ok: down: nginx: 0s, normally up
+	ok: down: node-exporter: 1s, normally up
+	ok: down: postgres-exporter: 0s, normally up
+	ok: down: postgresql: 0s, normally up
+	ok: down: prometheus: 1s, normally up
+	ok: down: redis: 0s, normally up
+	ok: down: redis-exporter: 1s, normally up
+	ok: down: sidekiq: 0s, normally up
+	ok: down: unicorn: 0s, normally up
+
+
+
+
 
 ### Free 'HTTPS' using Let's Encrypt ###
 https://www.youtube.com/watch?v=ksqTu7TX83g
