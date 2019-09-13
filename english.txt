@@ -1913,9 +1913,31 @@ insight			<- the capacity to gain an accurate and deep intuitive understanding o
 					synonyms:	intuition, discernment, perception, awareness, understanding, comprehension, 
 						apprehension, appreciation, penetration, acumen, perspicacity, judgment, acuity
 in place of 	<- instead of
+
+interim			<- [n 인터럼]the intervening(중개) time. 당분간의
+					'Trump says he would consider an interim(일시적인) trade deal with China'
+					"in the interim I'll just keep my fingers crossed"
+					synonyms:	meantime, meanwhile, intervening time, interval, interlude; interregnum
+					"in the interim they agreed to carry out further research"
+					
+					[adj]in or for the intervening period; provisional or temporary.
+					"an interim arrangement"
+					synonyms:	provisional, temporary, pro tem, stopgap, short-term, fill-in, 
+								caretaker, acting, intervening, transitional, changeover, 
+								make-do, makeshift, improvised, impromptu, emergency; More	
+					
+					[adverb] meanwhile.	
+					
+					
+
 intervene		<- [v] come between so as to prevent or alter a result or course of events.
+						1.사이에 오는2.개재하는
 					"he acted outside his authority when he intervened in the dispute"
-intervention	<- [n]
+intervening		<- 중개
+
+intervening variable <- 중개(仲介) 변수
+
+intervention	<- [n]1.	개입2.	간섭3.	치료4.	접근5.	조치
 
 intimidate		<- frighten or overawe (someone), especially in order to make them do what one wants.
 					synonyms:	frighten, menace, terrify, scare, terrorize, cow, dragoon, subdue;
@@ -11657,7 +11679,10 @@ Quantitative Easing
 Quantitative Tightening	
 	
 	
-	
-	
+
+대동소이	
+
+大 : 큰 대 | 同 : 한가지 동 | 小 : 작을 소 | 異 : 다를 이
+크게 같고 작게 다르다는 말로, 크게 보면 서로 같지만 작게 보면 각각 다르다는 뜻.	
 	
 	

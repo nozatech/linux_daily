@@ -1,0 +1,747 @@
+Prometheus
+	is a powerful, open-source monitoring system that collects metrics from your services and 
+	stores them in a time-series database. It offers a multi-dimensional data model, a flexible 
+	query language, and diverse visualization possibilities through tools like Grafana.
+
+How To Install Prometheus on Ubuntu 16.04
+https://www.digitalocean.com/community/tutorials/how-to-install-prometheus-on-ubuntu-16-04
+
+Exporters — provide information about everything from infrastructure, databases, and web servers to 
+			messaging systems, APIs, and more.
+	https://prometheus.io/docs/instrumenting/exporters/
+	
+	node_exporter - This produces metrics about infrastructure, including the current CPU, memory 
+					and disk usage, as well as I/O and network statistics, such as the number of 
+					bytes read from a disk or a server’s average load.
+	blackbox_exporter - This generates metrics derived from probing protocols like HTTP and HTTPS to 
+						determine endpoint availability, response time, and more.
+	mysqld_exporter - This gathers metrics related to a MySQL server, such as the number of executed 
+					queries, average query response time, and cluster replication status.
+	rabbitmq_exporter - This outputs metrics about the RabbitMQ messaging system, including the number 
+						of messages published, the number of messages ready to be delivered, and the 
+						size of all the messages in the queue.
+	nginx-vts-exporter - This provides metrics about an Nginx web server using the Nginx VTS module, 
+					including the number of open connections, the number of sent responses (grouped by 
+					response codes), and the total size of sent or received requests in bytes.
+
+# Prerequisites					
+					
+	Nginx installed by following the first two steps of the How To Install Nginx on Ubuntu 16.04 tutorial.
+	
+Step 1 — Creating Service Users
+	# these users can’t log into the server
+	$ sudo useradd --no-create-home --shell /bin/false prometheus
+	$ sudo useradd --no-create-home --shell /bin/false node_exporter
+	
+	sudo mkdir /etc/prometheus
+	sudo mkdir /var/lib/prometheus
+	
+	sudo chown prometheus:prometheus /etc/prometheus
+	sudo chown prometheus:prometheus /var/lib/prometheus
+	
+Step 2 — Downloading Prometheus
+	$ curl -LO https://github.com/prometheus/prometheus/releases/download/v2.0.0/prometheus-2.0.0.linux-amd64.tar.gz
+				-O <= Write  output to a local file named like the remote file we get
+				-L <- location
+				
+	# genuine and not corrupted.
+		$ sha256sum prometheus-2.0.0.linux-amd64.tar.gz
+		e12917b25b32980daee0e9cf879d9ec197e2893924bd1574604eb0f550034d46  prometheus-2.0.0.linux-amd64.tar.gz
+	
+	# tar xvf prometheus-2.0.0.linux-amd64.tar.gz
+	
+	
+	sudo cp prometheus-2.0.0.linux-amd64/prometheus /usr/local/bin/
+sudo cp prometheus-2.0.0.linux-amd64/promtool /usr/local/bin/
+	
+	
+	sudo chown prometheus:prometheus /usr/local/bin/prometheus
+sudo chown prometheus:prometheus /usr/local/bin/promtool
+	
+	sudo cp -r prometheus-2.0.0.linux-amd64/consoles /etc/prometheus
+sudo cp -r prometheus-2.0.0.linux-amd64/console_libraries /etc/prometheus
+	
+	sudo chown -R prometheus:prometheus /etc/prometheus/consoles
+sudo chown -R prometheus:prometheus /etc/prometheus/console_libraries
+	
+	
+	
+	rm -rf prometheus-2.0.0.linux-amd64.tar.gz prometheus-2.0.0.linux-amd64
+	
+Step 3 — Configuring Prometheus
+	$ vi /etc/prometheus/prometheus.yml
+----------------------------------------------------------------------------------------------
+# my global config
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+    - targets: ['localhost:9090']
+
+----------------------------------------------------------------------------------------------
+	$sudo chown prometheus:prometheus /etc/prometheus/prometheus.yml
+
+Step 4 — Running Prometheus	
+	$ sudo -u prometheus /usr/local/bin/prometheus \
+    --config.file /etc/prometheus/prometheus.yml \
+    --storage.tsdb.path /var/lib/prometheus/ \
+    --web.console.templates=/etc/prometheus/consoles \
+    --web.console.libraries=/etc/prometheus/console_libraries
+	
+	
+	=> level=info ts=2019-09... "Server is ready to receive requests."
+
+	halt Prometheus by pressing CTRL+C, and then open a new systemd service file.
+	$ vi /etc/systemd/system/prometheus.service
+		----------------------------------------------------------------------
+			[Unit]
+		Description=Prometheus
+		Wants=network-online.target	
+		After=network-online.target
+
+		[Service]
+		User=prometheus
+		Group=prometheus
+		Type=simple
+		ExecStart=/usr/local/bin/prometheus \
+			--config.file /etc/prometheus/prometheus.yml \
+			--storage.tsdb.path /var/lib/prometheus/ \
+			--web.console.templates=/etc/prometheus/consoles \
+			--web.console.libraries=/etc/prometheus/console_libraries
+
+		[Install]
+		WantedBy=multi-user.target
+		----------------------------------------------------------------------
+	
+	# To use the newly created service, reload systemd.
+		$ sudo systemctl daemon-reload
+	
+		$ sudo systemctl start prometheus
+		
+		$ sudo systemctl status prometheus
+		  ● prometheus.service - Prometheus
+		   Loaded: loaded (/etc/systemd/system/prometheus.service; disabled; vendor preset: enabled)
+		   Active: active (running)
+	
+		$ sudo systemctl enable prometheus
+	
+	# Check Prometheus Website
+		Http://localhost:9090
+	
+	
+Step 5 — Downloading Node Exporter	
+	
+	$ curl -LO https://github.com/prometheus/node_exporter/releases/download/v0.15.1/node_exporter-0.15.1.linux-amd64.tar.gz
+	$ sha256sum node_exporter-0.15.1.linux-amd64.tar.gz
+	$ tar xvf node_exporter-0.15.1.linux-amd64.tar.gz
+		node_exporter-0.15.1.linux-amd64/
+		node_exporter-0.15.1.linux-amd64/LICENSE
+		node_exporter-0.15.1.linux-amd64/NOTICE
+		node_exporter-0.15.1.linux-amd64/node_exporter
+
+	# Copy the binary to the /usr/local/bin directory and set the user and group ownership 
+		to the node_exporter user that you created in Step 1.
+	$ sudo cp node_exporter-0.15.1.linux-amd64/node_exporter /usr/local/bin
+	$ sudo chown node_exporter:node_exporter /usr/local/bin/node_exporter
+	
+	
+	$ rm -rf node_exporter-0.15.1.linux-amd64.tar.gz node_exporter-0.15.1.linux-amd64
+	
+Step 6 — Running Node Exporter
+	The steps for running Node Exporter are similar to those for running Prometheus itself. 
+	Start by creating the Systemd service file for Node Exporter.
+	
+	Collectors define which metrics Node Exporter will generate. You can see Node Exporter’s 
+	complete list of collectors — including which are enabled by default and which are 
+	deprecated — in the Node Exporter README file.
+	
+	https://github.com/prometheus/node_exporter/blob/master/README.md#enabled-by-default
+	If you ever need to override the default list of collectors, you can use the 
+	--collectors.enabled flag, like:
+	
+	
+	$	vi /etc/systemd/system/node_exporter.service
+		----------------------------------------------------------------------	
+			[Unit]
+		Description=Node Exporter
+		Wants=network-online.target
+		After=network-online.target
+
+		[Service]
+		User=node_exporter
+		Group=node_exporter
+		Type=simple
+		ExecStart=/usr/local/bin/node_exporter 
+		# ExecStart=/usr/local/bin/node_exporter --collectors.enabled meminfo,loadavg,filesystem
+
+		[Install]
+		WantedBy=multi-user.target
+		----------------------------------------------------------------------	
+	
+	
+	The preceding example would tell Node Exporter to generate metrics using only the meminfo, loadavg, 
+	and filesystem collectors. You can limit the collectors to however few or many you need, but note 
+	that there are no blank spaces before or after the commas.
+	
+	
+	sudo systemctl start  node_exporter
+	sudo systemctl status node_exporter
+	sudo systemctl enable node_exporter
+	
+Step 7 — Configuring Prometheus to Scrape Node Exporter
+	Because Prometheus only scrapes exporters which are defined in the scrape_configs portion of its 
+	configuration file, we’ll need to add an entry for Node Exporter, just like we did for Prometheus 
+	itself.
+	
+	$ vi /etc/prometheus/prometheus.yml
+	
+	At the end of the scrape_configs block, add a new entry called node_exporter.
+	
+----------------------------------------------
+# my global config
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+    - targets: ['localhost:9090']
+
+  - job_name: 'node_exporter'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['localhost:9100']
+----------------------------------------------
+
+	Because this exporter is also running on the same server as Prometheus itself, we can use localhost 
+	instead of an IP address again along with Node Exporter’s default port, 9100.
+	
+	$ sudo systemctl restart prometheus
+	$ sudo systemctl status prometheus
+
+	
+	# Check Node Exporter website
+	  Http://localhost:9100
+	
+		Node Exporter
+		  Metrics
+			# HELP go_gc_duration_seconds A summary of the GC invocation durations.
+			# TYPE go_gc_duration_seconds summary
+			go_gc_duration_seconds{quantile="0"} 1.7022e-05
+			go_gc_duration_seconds{quantile="0.25"} 1.9444e-05
+			go_gc_duration_seconds{quantile="0.5"} 2.1642e-05
+			...
+
+	
+Step 8 — Securing Prometheus	
+Prometheus does not include built-in authentication or any other general purpose security mechanism.	
+	
+	# Adding 
+	Use Nginx to add basic HTTP authentication to our installation, which both Prometheus and 
+	its preferred data visualization tool, Grafana, fully support.	
+	
+	Create a password file by telling htpasswd where you want to store the file and which username 
+	you’d like to use for authentication
+	
+	
+	$ htpasswd -c /etc/nginx/.htpasswd netops  
+		New password: 테스트빵빵
+		Re-type new password:
+		Adding password for user netops
+
+	$  cat /etc/nginx/.htpasswd
+		netops:$apr1$Gjopk.vx$tiYqGb21Y5zQdaWicpKzk
+	
+	
+	# Configure Nginx to use the newly-created passwords.
+		First, make a Prometheus-specific copy of the default Nginx configuration file so that you can 
+		revert back to the defaults later if you run into a problem.
+	
+	$ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/prometheus
+	
+	$ vi /etc/nginx/sites-available/prometheus
+	
+	# Locate the location / block under the server block. It should look like:
+	----------------------------------------------
+    location / {
+        try_files $uri $uri/ =404;
+    }
+	----------------------------------------------
+	
+	Change TO:
+	----------------------------------------------
+    location / {
+        auth_basic "Prometheus server authentication";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+        proxy_pass http://localhost:9090;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+	----------------------------------------------
+	
+	# Now, deactivate the default Nginx configuration file by removing the link to it 
+	  in the /etc/nginx/sites-enabled directory, and activate the new configuration file 
+	  by creating a link to it.
+	
+	$ sudo rm /etc/nginx/sites-enabled/default
+	$ sudo ln -s /etc/nginx/sites-available/prometheus /etc/nginx/sites-enabled/
+	$ nginx -t
+		
+ 
+	$ systemctl reload nginx
+	$ systemctl status nginx
+
+Step 9 — Testing Prometheus
+	http://your_server_ip
+	Username:
+	Password:
+	
+	# check 
+	Staus -> Target
+		
+	node_exporter (1/1 up)
+		Endpoint: http://localhost:9100/metrics
+		
+	prometheus (1/1 up)
+		Endpoint: http://localhost:9090/metrics
+	
+	
+	
+	# Next, to make sure that the exporters are working correctly, we’ll execute a few expressions 
+		against Node Exporter.
+	
+	Prometheus -> type
+	node_memory_MemAvailable
+	node_memory_MemAvailable/1024/1024			<- 1MB is 1024  
+	
+	# Result
+	Element	Value
+	{instance="localhost:9100",job="node_exporter"}	235.52734375
+	
+	From Node
+	$ free -h
+		available
+		234M
+	
+	235.52734375 =  234M
+	
+	# In addition to basic operators, the Prometheus query language also provides many functions 
+	  for aggregating results.
+	
+	Type: avg_over_time(node_memory_MemAvailable[5m])/1024/1024	
+	Execute -> Graph tab to display the executed expression as a graph instead of as text.
+	
+http://157.245.160.60/consoles/node.html
+Now we are all set to access both 
+
+
+Step 10 — setting up consoles and console_libraries sections
+
+	http://<you_ip_address>/consoles/node.html 
+		Node
+			Node | Up | CPU Used | Memory Available
+						
+		No nodes found.
+
+	http://<you_ip_address>/consoles/prometheus.html 
+		Prometheus
+		Prometheus    | Up	| Ingested Samples	| Memory
+		localhost:9090	Yes	  218.1/s	         53.99MiB
+	
+	
+sudo cp -R ~/prometheus-2.0.0.linux-amd64/consoles /etc/prometheus
+sudo cp -R ~/prometheus-2.0.0.linux-amd64/console_libraries /etc/prometheus	
+	
+	
+	
+	
+	
+# Alert Manager
+	
+Alertmanager is a tool developed by the same prometheus guys and in my vision is quite important.
+Based on this marvelous tutorial i have developed a set of commands to install alertmanager as well. Since i did not find this anywhere here goes:
+
+------------------------------------------------------------------------------------------
+!/bin/bash
+
+sudo useradd --no-create-home --shell /bin/false alertmanager
+
+
+wget https://github.com/prometheus/alertmanager/releases/download/v0.12.0/alertmanager-0.12.0.linux-amd64.tar.gz
+tar xvf alertmanager-0.12.0.linux-amd64.tar.gz
+cd alertmanager-0.12.0.linux-amd64.tar.gz
+
+sudo cp alertmanager /usr/local/bin/
+sudo cp amtool /usr/local/bin/
+
+sudo chown alertmanager:alertmanager /usr/local/bin/alertmanager
+sudo chown alertmanager:alertmanager /usr/local/bin/amtool
+
+sudo mkdir /etc/alertmanager
+sudo mkdir /etc/alertmanager/data
+
+sudo mv simple.yml /etc/alertmanager/alertmanager.yml
+sudo chown alertmanager:alertmanager /etc/alertmanager/alertmanager.yml
+sudo chown alertmanager:alertmanager /etc/alertmanager/data
+
+cd /etc/systemd/system/
+
+cat << EOF >> alertmanager.service
+[Unit]
+Description=Alertmanager
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=alertmanager
+Group=alertmanager
+Type=simple
+ExecStart=/usr/local/bin/alertmanager -config.file /etc/alertmanager/alertmanager.yml -storage.path /etc/alertmanager/data
+
+[Install]
+WantedBy=multi-user.target”	
+EOF	
+
+echo -e $SCRIPT >> alertmanager.service
+
+sudo systemctl daemon-reload
+sudo systemctl enable alertmanager
+sudo systemctl start alertmanager	
+------------------------------------------------------------------------------------------	
+	
+
+	
+	
+	
+### RabbitMQ <- MSG Broker
+a broker: someone who will accept messages (e.g. jobs, tasks) from various senders (i.e. a web application), 
+queue them up, and distribute them to the relevant parties (i.e. workers) to make use of them - all asynchronously and on demand.	
+	
+	
+Messaging, Message Brokers and Queues
+	Messaging is a way of exchanging certain data between processes, applications, and servers
+	(virtual and physical). These messages exchanged, helping with certain engineering needs, 
+	can consist of anything from plain text messages to blobs of binary data serving to address 
+	different needs. For this to work, an interface managed by a third party program (a middleware) 
+	is needed… welcome Message Brokers.
+	
+	Why use them?
+	These message brooking solutions act like a middleman for various services (e.g. your web application).
+	They can be used to greatly reduce loads and delivery times by web application servers since tasks, 
+	which would normally take quite bit of time to process, can be delegated for a third party whose sole 
+	job is to perform them (e.g. workers). They also come in handy when a more “guaranteed” persistence 
+	is needed to pass information along from one place to another.
+
+When to use them?
+	All put together, the core functionality explained expands to cover a multitude of areas, including-but-not-limited-to:
+
+	- Allowing web servers to respond to requests quickly instead of being forced to perform resource-heavy procedures on the spot
+	- Distributing a message to multiple recipients for consumption (e.g. processing)
+	- Letting offline parties (i.e. a disconnected user) fetch data at a later time instead of having it lost permanently
+	- Introducing fully asynchronous functionality to the backend systems
+	- Ordering and prioritising tasks
+	- Balancing loads between workers
+	- Greatly increase reliability and uptime of your application
+	- and much more
+
+How does it work?
+	RabbitMQ works by offering an interface, connecting message senders (Publishers) with receivers (Consumers) 
+	through an exchange (Broker) which distributes the data to relevant lists (Message Queues).
+	
+	a fully-fledged application stack (i.e. a message broker).
+	
+APPLICATION       EXCHANGE        TASK LIST        WORKER
+   [DATA] -------> [DATA] ---> [D]+[D][D][D] --->  [DATA]
+ Publisher        EXCHANGE          Queue         Consumer 	
+	
+	
+		
+	# wget -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | sudo apt-key add -
+	# echo "deb https://packages.erlang-solutions.com/ubuntu bionic contrib" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+	# udo apt -y install erlang
+	
+	$ sudo apt update
+	$ sudo apt-get -y install erlang		<= 611MB
+	 
+	$ erl
+	# erl
+		Ctrl+C  then q  to quit
+	
+	$ sudo apt -y install rabbitmq-server
+	
+	$ systemctl is-enabled rabbitmq-server.service 		<= Check
+	$ sudo systemctl enable rabbitmq-server
+	
+	# ss  is  used to dump socket statistics.
+	The Web service should be listening on TCP port 15672
+	$ ss -tunelp | grep 15672
+	
+	sudo apt -y install rabbitmq-server
+	sudo ufw allow proto tcp from any to any port 5672,15672
+	
+	
+	 useradd --no-create-home --shell /bin/false alertmanager
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

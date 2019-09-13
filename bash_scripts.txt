@@ -52,7 +52,7 @@ _	<= Undercore
 	Set +ex  		<= Unset debug
 	
 	set -e          # Exit as soon as any line in the bash script fails
-	set -x          # Prints each command executed (prefix with ++)
+	set         # Prints each command executed (prefix with ++)
 
 	set -f	(set -o noglob)		Disable file name generation using metacharacters(globbing).
 	set -v	(set -o verbose)	Prints shell input lines as they are read.
@@ -80,6 +80,42 @@ _	<= Undercore
 	set -u 			<= checks Undefined variables
 	
 	$ ls -Al | tee -a output.file 			<= 'tee -a' append - A <- removed . & ..
+----------------------------------------------------
+# VI - number line and tab stop
+----------------------------------------------------
+	$ vi -V 			<= version check
+	:set nu 			<= set number On
+	:set nu!   			<= set number Off
+	:e file_name        <= open & create  file
+ 	:w new_name 	    <= save as to new_name
+	
+	:set tabstop=4		<= Tab will stop at 4 spaces
+	
+	# Cut and Paste(v/V-d/y-p/P)
+
+		 a. Position the cursor where you want to begin cutting.
+	V    b. Press v to select characters (or V - whole lines).
+		 c. Move the cursor to the end of what you want to cut.
+	d    d. Press d to cut (or y to copy).
+		 e. Move to where you would like to paste.
+	p    f. Press P to paste before the cursor, or p to paste after.
+
+	yy 	<=	shift+v to copy 
+	pp	<=	shift+p to paste
+
+
+	# Undo & Redo
+	Esc u
+	Ctrl + r
+	
+	# Change String like "SED" stream editor
+	http://vim.wikia.com/wiki/Search_and_replace
+	
+	# within VI, change 'foo' to 'bar'
+	:%s/foo/bar/g				<=
+	
+	# Search with in VI
+	/search_word
 
 -------------------------------------------------------------------- 
 # Syntex error only
@@ -886,6 +922,7 @@ n <& m         # 'Merge' input from stream  n with stream m.
 	> Test2
 	> EOF
 	
+	
 
 # stdin, stdout, stderr
 	$ ls +
@@ -934,6 +971,62 @@ echo ------------------------------------------
 echo "Redirect both STDOUT & STDERR using '&>'"
 find /etc -name grub &> both.out
 cat both.out
+
+
+Examples of cat <<EOF syntax usage in Bash:
+https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
+
+1. Assign multi-line string to a shell variable
+
+$ sql=$(cat <<EOF
+SELECT foo, bar FROM db
+WHERE foo='baz'
+EOF
+)
+
+The $sql variable now holds the new-line characters too. You can verify with echo -e "$sql".
+
+2. Pass multi-line string to a file in Bash
+
+$ cat <<EOF > print.sh
+#!/bin/bash
+echo \$PWD		# \ <- ignore or echo '$PWD'
+echo $PWD
+EOF
+
+The print.sh file now contains:
+
+#!/bin/bash
+echo $PWD
+echo /home/user
+
+3. Pass multi-line string to a pipe in Bash
+
+$ cat <<EOF | grep 'b' | tee b.txt
+foo
+bar
+baz
+EOF
+The b.txt file contains bar and baz lines. The same output is printed to stdout.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ---------------------------------------------------	
@@ -1822,13 +1915,19 @@ fooThis is my environment variable!bar
 
 
 
+# User add Script
+--------------------------------------------------------------
+#!/bin/bash
+for i in $( cat users.txt ); do
+    useradd $i
+    echo "user $i added successfully!"
+    echo $i:$i"123" | chpasswd
+    echo "Password for user $i changed successfully"
+done
+--------------------------------------------------------------
 
-
-
-
-
-
-
+https://stackoverflow.com/questions/5431909/returning-a-boolean-from-a-bash-function/5431932#5431932
+Returning a boolean from a Bash function
 
 
 
@@ -1870,6 +1969,14 @@ if [ $id -u = 0 ];then				# if (id -u) 0 = 0 are True
     echo "You are root" >&2			# 	
     exit 0
 fi
+----------------------------------------------	
+
+$ grep -i  prometheus /etc/passwd >/dev/null ; echo $?
+0
+
+$ `grep -i  prometheus /etc/passwd >/dev/null`
+$ echo $?
+$ 0
 
 ---------------------------
 #!/bin/bash
@@ -1932,11 +2039,13 @@ detect_os ()
         echo "Your OS is Ubuntu."
 
     else
-        unknown_os
+        echo "unknown OS"
 
     fi
 }
+# Run detect_os funcation when Bash script is executed.
 detect_os
+
 ----------------------------------------------------------------------------------------------------
 	#!/bin/bash
 	# Detecting OS using $OSTYPE variable
@@ -3772,15 +3881,14 @@ Skip	I love cogs
 # 7. DEBUGGING SHELL PROGRAMS. #
 ################################
 
-bash -n scriptname   # don't run commands; check for syntax errors only
-set  -o noexec       # alternative (set option in script file)
-
 bash -v scriptname   # echo commands before running them
 set  -o verbose      # alternative (set option in script file)
 
 bash -x scriptname   # echo commands after command-line processing
 set  -o xtrace       # alternative (set option in script file)
 
+bash -n scriptname   # don't run commands; check for syntax errors only
+set  -o noexec       # alternative (set option in script file)
 
 ### Trap : using signals
 		to catch the listed SIGNALS, which may be signal names with or without 
