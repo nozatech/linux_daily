@@ -88,6 +88,7 @@ echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$ "' >> ~/.bashrc	&& source ~
 
 -----------------------------------------------------------------------------------	
 # History Control Options for Bash
+https://www.shellhacks.com/tune-command-line-history-bash/
 -----------------------------------------------------------------------------------	
 echo 'export HISTCONTROL="ignorespace:erasedups:ignoredups"' >> ~/.bashrc	<= Ignore Duplication
 echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc					<= Ignore list
@@ -1923,6 +1924,9 @@ https://security.stackexchange.com/questions/178958/what-are-the-differences-bet
 ----------------------------------------------------------------------------------------------------	
 ### Finding my ip (Gateway IP)
 --------------------------------------------------------------------------	
+	$ curl ifconfig.me
+	$ curl ifconfig.me/all
+	
 	$ curl ifconfig.io	
 	$ curl icanhazip.com
 
@@ -1938,6 +1942,7 @@ https://security.stackexchange.com/questions/178958/what-are-the-differences-bet
 	
 	$ dig +short myip.opendns.com @resolver1.opendns.com
 	$ host myip.opendns.com resolver1.opendns.com
+	
 
 	### The following commands will get you the private IP address of your interfaces:
 	$ ifconfig | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}'|head -1  <= RegEx 
@@ -3729,7 +3734,15 @@ $ nc localhost 9999
 	$ echo "PC name is $HOSTNAME." 				<= PC name is PC.
 	$ echo "PC name is $(hostname)."			<= PC name is PC.
 	$ echo "PC name is $(HOSTNAME)."			<= PC name is PC.
-
+	
+	---------------------------
+	$ HOSTNAME=$($(which hostname))
+	$ which hostname
+	  /bin/hostname
+	$ echo $HOSTNAME
+	  mc1
+	---------------------------
+	
 --------------------------------------------------------------------------
 # \ ingnore special character
 --------------------------------------------------------------------------
@@ -3818,7 +3831,14 @@ $ brctl show
 # $ last reboot
 	reboot system boot 3.2.13-grsec-xxx Tue Apr 3 07:34 - 09:17 (9     + 01 : 42) 
 																 ^9days 1hr 42mins after restart
-	$ last						<=last, lastb - show listing of last logged in users
+																 
+																 $ last reboot
+	reboot   system boot  3.10.0-862.11.6. Tue Sep 18 12:24 - 16:00 (363+03:36)	
+							     ^ Kerenl's version has been updated
+	reboot   system boot  3.10.0-862.2.3.e Tue Sep 18 12:19 - 16:00 (363+03:40)
+									^ Old Kerenl version
+
+	$ last						<= last, lastb - show listing of last logged in users
 	$ last -x
 	$ last -x reboot
 	$ last -x shutdown
@@ -7554,16 +7574,16 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-
 	
 	
 		
-	Turning on the Firewall
+	# Turning on the Firewall
 		$sudo systemctl start firewalld.service
 	
-	status of the service:
+	# status of the service:
 		$ firewall-cmd --state
 			running  
 		$ systemctl status firewalld
 			Active: active (running) 
 
-	Defaults Zone Info
+	# Defaults Zone Info
 		$ firewall-cmd --get-default-zone
 			public
 	

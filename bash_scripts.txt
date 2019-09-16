@@ -4906,11 +4906,37 @@ namespace(이름 공간)은 그 안에서 선언된 기호(변수, 클래스, �
 
 
 
+------------------------------------------------------------------------------------------
+# backup
+------------------------------------------------------------------------------------------
+$ cat /backup/backup-all
+------------------------------------------------------------------------------------------
+#!/bin/bash
 
+S3_BUCKET="bner-backups-pacman"
+S3_CONFIG="/backup/.backup-to-s3-cfg"
+EXCLUDE_FROM="/backup/.backup-exclude"
 
+DATE_FORMAT="%Y-%m-%d";
 
+######### No configuration under this
+DUMPDATE=$(date +$DATE_FORMAT)
+LOGMARKER="[backup]"
+LOGGER=$(which logger)
+AWSCLI=$(which aws 2>/dev/null)
+HOSTNAME=$($(which hostname))
+GZIP=$(which gzip)
 
+$LOGGER -t $LOGMARKER "Starting running backup ..."
 
+if [ ! -s ${EXCLUDE_FROM} ]; then
+        touch ${EXCLUDE_FROM}
+fi
+
+tar -C / -X ${EXCLUDE_FROM} --warning='no-file-ignored' --ignore-failed-read --one-file-system -n -czSf - . | $AWSCLI s3 --quiet --no-progress cp - s3://$S3_BUCKET/$HOSTNAME/$DUMPDATE/all-${HOSTNAME}.tar.gz
+
+$LOGGER -t $LOGMARKER "Backup completed!!!";
+------------------------------------------------------------------------------------------
 
 
 

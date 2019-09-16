@@ -11521,7 +11521,7 @@ wearily			<- 지루하게, 피곤하여, 싫증나서
 I thought it would rain today.								<= 비가 올줄 알았어
 She promised(that) she wouldn't talk about that again.		<= 않기로
 I told him (that) I would try my best.						<= 
-They told me they would give me an answer by this Friday.	<=
+They told me (that) they would give me an answer by this Friday.	<=
 
 I thought you would know about that.	<= 난 네가 그거에 대해서 		'알줄' 알았어
 I thought you already knew about that.	<= 난 네가 그거에 대해서 이미 '아는줄'(알고있는줄) 알았어
@@ -11680,9 +11680,13 @@ Quantitative Tightening
 	
 	
 
+----------------------------------------------------------------------------------------
+한자 한글 사자성어 풀이  
+----------------------------------------------------------------------------------------
 대동소이	
-
-大 : 큰 대 | 同 : 한가지 동 | 小 : 작을 소 | 異 : 다를 이
-크게 같고 작게 다르다는 말로, 크게 보면 서로 같지만 작게 보면 각각 다르다는 뜻.	
+	大 : 큰 대 | 同 : 한가지 동 | 小 : 작을 소 | 異 : 다를 이
+	크게 같고 작게 다르다는 말로, 크게 보면 서로 같지만 작게 보면 각각 다르다는 뜻.	
 	
-	
+일축  
+	一蹴은 '한[一]번에 차버림[蹴]', '단번에 물리침'을 이른다.
+	출처 : http://news.chosun.com/site/data/html_dir/2008/11/23/2008112300609.html	
