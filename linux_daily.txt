@@ -2194,7 +2194,29 @@ https://www.tecmint.com/command-line-web-browser-download-file-in-linux/
 --------------------------------------------------------------------------	
 
 
+--------------------------------------------------------------------------	
+### type
+	https://www.howtogeek.com/426014/how-to-use-the-linux-type-command/
+--------------------------------------------------------------------------	
+	Find out if a command resolves to an alias, a disk file, a shell function, a built-in 
+		command, or a reserved word. 
+	Use type to discover how your Linux commands are executed and understand your system better.
+	
+	$ type date
+		date is /bin/date
+	$ type ls
+		ls is aliased to `ls --color=auto'
+	$ type pwd
+		pwd is a shell builtin
 
+	$ type elif
+		elif is a shell keyword
+	$ type date top ls
+	
+	$ type -t date top ls		<= -t 	option as standing for “terse,” you won’t be far wrong. 
+		file							It reduces the responses from type to single word answers.
+		file
+		alias
 
 --------------------------------------------------------------------------	
 ### mv 
@@ -4023,7 +4045,9 @@ https://www.computerhope.com/unix/ushutdow.htm
 	echo ${#a}   <= 5 number for character
 	
 ---------------------------------------------------------------------------------------		
-# symbolic links (softlink vs hardlink)
+# Symbolic vs Hard link (softlink vs hardlink)
+https://blog.usejournal.com/what-is-the-difference-between-a-hard-link-and-a-symbolic-link-8c0493041b62
+https://medium.com/@307/hard-links-and-symbolic-links-a-comparison-7f2b56864cdd
 ---------------------------------------------------------------------------------------	
 
 
@@ -4040,6 +4064,7 @@ https://www.computerhope.com/unix/ushutdow.htm
 	
 	$ printf '%s\n' "$var"				<= %s	Interprets the associated argument literally as String
 										<= %n	a new line
+	-------------------------------------------------------------------------												
 	$ echo "\n\t"
 		-n     do not output the trailing newline
 		-t     do not output the trailing horizontal
@@ -10138,37 +10163,49 @@ a regular file and directory
 	  /var/folders/72/4j_6w5xx23n76_0kxl_ck5jh0000gs/T/floatsign.B9CqI61B
 
 
-
+--------------------------------------------------------------------------
 # rmdir
+--------------------------------------------------------------------------
 
 
-# link  
+--------------------------------------------------------------------------
+# link 
+	link - call the link function to create a link to a file
+-------------------------------------------------------------------------- 
 	add directory entry
 	link('/alice/ian', '/ben/jill')
+
 # unlink
 	unlink('/alice/ian')
-	
+--------------------------------------------------------------------------
+
+--------------------------------------------------------------------------	
 # getdents
 	get directory entries
-	
+--------------------------------------------------------------------------	
 	f = open('/alice')
 	entries = getdents(f)
 	while len(entries) !=0:
 		print(entries)
 		entries = getdents(f)
 	close(f)
-	
+--------------------------------------------------------------------------	
 ### Directories
+--------------------------------------------------------------------------
 HD1: /alice/tim
 HD2: /
 SD : /tim/jim
 FD : /jess
 
+--------------------------------------------------------------------------
 # mount
+--------------------------------------------------------------------------
 # umount
+--------------------------------------------------------------------------
 
+--------------------------------------------------------------------------
 # Absolute path vs relative path
-
+--------------------------------------------------------------------------
 # chdir
 	chdir('/ben/ian')
 	f = open('/alice/tim')
@@ -10206,8 +10243,9 @@ block ...     <- last byte
 process									    		device
 		write ->	|output buffer |	output ->
 
-		
+--------------------------------------------------------------------------		
 # FIFOs 
+--------------------------------------------------------------------------
 	permanent objects and can be created using the mkfifo(1) or mknod(1) command. 
 	Inside the program, the FIFO can be created using the mknod command, 
 	then opened and read from or written to just like a normal file. 
@@ -10235,7 +10273,7 @@ process									    		device
 	/dev/random		<- returns random data
 	/dev/null
 	
-	
+--------------------------------------------------------------------------	
 # PIPE (a FIFO as a file)
 
 		  <-read	|FIFO|  <- Write	
@@ -10244,22 +10282,24 @@ process-A							  Process-B
 		  
 	$ ls | tee ls.txt
 	$ ls | tee -a ls.txt 			<= -a append		  
-
+--------------------------------------------------------------------------
 # mknode 
 	make node: create a regular file, device file, or named pipe
-	
+--------------------------------------------------------------------------	
 	mknod('/ryan/kim', BLOCK, deviceNum)
 	mknod('/ryan/erin', CHR, deviceNum)
 	mknod('/ryan/tina', FIFO)
-	
+--------------------------------------------------------------------------	
 # pipe 
 	creates a new, anonymouse pipe and returns two file descriptors
+--------------------------------------------------------------------------	
 	fs = pipe()
 	f1 = fs[0]
 	f2 = fs[1]
-	
-# memory-mapped files
 
+--------------------------------------------------------------------------	
+# memory-mapped files
+--------------------------------------------------------------------------
 	kernel code
 	stack
 	heap					/ byte n
@@ -10273,55 +10313,60 @@ address = mmap(500, f, 200)
 munmap(address)
 close(f)
 
+--------------------------------------------------------------------------
 ### Signals
 	signals are sent by KERNEL
-	
-	The receiving process
+--------------------------------------------------------------------------	
+  The receiving process
 	- performs a default action
 	- invokes a handler function
 	- blocks it
 	- ignores it
 
-	4 types
-		SIGSEGV
-		SIGFPE
-		SIGSTOP
-		SIGCONT
+  4 types
+	- SIGSEGV
+	- SIGFPE
+	- SIGSTOP
+	- SIGCONT
 	
-Signal Name	Number	Description
-SIGHUP	1	Hangup (POSIX)
-SIGINT	2	Terminal interrupt (ANSI)
-SIGQUIT	3	Terminal quit (POSIX)
-SIGILL	4	Illegal instruction (ANSI)
-SIGTRAP	5	Trace trap (POSIX)
-SIGIOT	6	IOT Trap (4.2 BSD)
-SIGBUS	7	BUS error (4.2 BSD)
-SIGFPE	8	Floating point exception (ANSI)
-SIGKILL	9	Kill(can't be caught or ignored) (POSIX)
-SIGUSR1	10	User defined signal 1 (POSIX)
-SIGSEGV	11	Invalid memory segment access (ANSI)
-SIGUSR2	12	User defined signal 2 (POSIX)
-SIGPIPE	13	Write on a pipe with no reader, Broken pipe (POSIX)
-SIGALRM	14	Alarm clock (POSIX)
-SIGTERM	15	Termination (ANSI)
-SIGSTKFLT	16	Stack fault
-SIGCHLD	17	Child process has stopped or exited, changed (POSIX)
-SIGCONT	18	Continue executing, if stopped (POSIX)
-SIGSTOP	19	Stop executing(can't be caught or ignored) (POSIX)
-SIGTSTP	20	Terminal stop signal (POSIX)
-SIGTTIN	21	Background process trying to read, from TTY (POSIX)
-SIGTTOU	22	Background process trying to write, to TTY (POSIX)
-SIGURG	23	Urgent condition on socket (4.2 BSD)
-SIGXCPU	24	CPU limit exceeded (4.2 BSD)
-SIGXFSZ	25	File size limit exceeded (4.2 BSD)
-SIGVTALRM	26	Virtual alarm clock (4.2 BSD)
-SIGPROF	27	Profiling alarm clock (4.2 BSD)
-SIGWINCH	28	Window size change (4.3 BSD, Sun)
-SIGIO	29	I/O now possible (4.2 BSD)
-SIGPWR	30	Power failure restart (System V)
+	Signal Name	Number	Description
+	SIGHUP	1	Hangup (POSIX)
+	SIGINT	2	Terminal interrupt (ANSI)
+	SIGQUIT	3	Terminal quit (POSIX)
+	SIGILL	4	Illegal instruction (ANSI)
+	SIGTRAP	5	Trace trap (POSIX)
+	SIGIOT	6	IOT Trap (4.2 BSD)
+	SIGBUS	7	BUS error (4.2 BSD)
+	SIGFPE	8	Floating point exception (ANSI)
+	SIGKILL	9	Kill(can't be caught or ignored) (POSIX)
+	SIGUSR1	10	User defined signal 1 (POSIX)
+	SIGSEGV	11	Invalid memory segment access (ANSI)
+	SIGUSR2	12	User defined signal 2 (POSIX)
+	SIGPIPE	13	Write on a pipe with no reader, Broken pipe (POSIX)
+	SIGALRM	14	Alarm clock (POSIX)
+	SIGTERM	15	Termination (ANSI)
+	SIGSTKFLT	16	Stack fault
+	SIGCHLD	17	Child process has stopped or exited, changed (POSIX)
+	SIGCONT	18	Continue executing, if stopped (POSIX)
+	SIGSTOP	19	Stop executing(can't be caught or ignored) (POSIX)
+	SIGTSTP	20	Terminal stop signal (POSIX)
+	SIGTTIN	21	Background process trying to read, from TTY (POSIX)
+	SIGTTOU	22	Background process trying to write, to TTY (POSIX)
+	SIGURG	23	Urgent condition on socket (4.2 BSD)
+	SIGXCPU	24	CPU limit exceeded (4.2 BSD)
+	SIGXFSZ	25	File size limit exceeded (4.2 BSD)
+	SIGVTALRM	26	Virtual alarm clock (4.2 BSD)
+	SIGPROF	27	Profiling alarm clock (4.2 BSD)
+	SIGWINCH	28	Window size change (4.3 BSD, Sun)
+	SIGIO	29	I/O now possible (4.2 BSD)
+	SIGPWR	30	Power failure restart (System V)
 
+--------------------------------------------------------------------------
 # kill
 	send a signal to a process
+--------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
 # signal
 	set a signal to be handled, ignored, or trigger its default action
 	kill (35, SIGSTOP)
@@ -10329,11 +10374,11 @@ SIGPWR	30	Power failure restart (System V)
 	
 	
 
-#################
+####################################################################
 HashiCorp Packer 
 https://www.packer.io/intro/index.html
 https://www.digitalocean.com/community/tutorials/how-to-create-digitalocean-snapshots-using-packer-on-ubuntu-16-04
-#################
+####################################################################
 Packer, by Hashicorp, is a command-line tool for quickly creating identical machine 
 images for multiple platforms and environments. With Packer, you use a configuration 
 file, called a template, to create a machine image containing a preconfigured operating 
@@ -10375,9 +10420,9 @@ Presumably this specific address within the block was chosen for its aesthetic a
 
 
 
-
+####################################################################
 Ansible vs Terraform: What are the differences?
-
+####################################################################
 Every growing startup or tech organization wants to automate apps and IT infrastructure. 
 
 Ansible - is a simple way to do that. An open-source software provisioning, configuration management(CM), 
@@ -10420,7 +10465,7 @@ AWS CloudFormation
 	describe the AWS resources, and any associated dependencies or runtime parameters, 
 	required to run your application. You don’t need to figure out the order in which 
 	AWS services need to be provisioned or the subtleties of how to make those dependencies work.
-
+####################################################################
 
 
 

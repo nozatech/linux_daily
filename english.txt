@@ -1158,7 +1158,8 @@ Compromised		<- "Compromised" is a nice way of saying that someone or something 
 					"My Computer has been Disabled because it is Compromised"
 
 compulsory		<- 강제적인/의무적인 required by law or a rule; obligatory.
-
+					obligatory => compulsory => mandatory
+					http://www.learnersdictionary.com/qa/compulsory-mandatory-and-obligatory
 					
 condemnation	<- 심한비난
 
@@ -1750,8 +1751,9 @@ hedge			<- [n] a fence or boundary formed by closely growing bushes or shrubs.
 					synonyms:	safeguard, protect, shield, guard, cushion; More
 					"Hedge fund"
 
-helm			<-	a tiller(키의 손잡이) or wheel and any associated equipment for 'steering' a ship or boat.
-					조타장치, 키를 잡다, 
+helm			<-	조타장치(배 운전대), 키를 잡다, 
+					a tiller(키의 손잡이) or wheel and any associated equipment for 'steering' a ship or boat.
+					
 
 				
 hit the ground running 	<- to be ready to work immediately on a new activity
