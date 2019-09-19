@@ -88,6 +88,7 @@ echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\w$ "' >> ~/.bashrc	&& source ~
 
 -----------------------------------------------------------------------------------	
 # History Control Options for Bash
+https://www.shellhacks.com/tune-command-line-history-bash/
 -----------------------------------------------------------------------------------	
 echo 'export HISTCONTROL="ignorespace:erasedups:ignoredups"' >> ~/.bashrc	<= Ignore Duplication
 echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc					<= Ignore list
@@ -1714,6 +1715,7 @@ https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryptio
 --------------------------------------------------------------------------
 # useradd vs adduser
 --------------------------------------------------------------------------	
+	https://www.tecmint.com/add-users-in-linux/
 	# https://askubuntu.com/questions/345974/what-is-the-difference-between-adduser-and-useradd
 	
 	addduser / deluser 			<= Perl script that creates /home/user & ssh in shell
@@ -1727,6 +1729,8 @@ https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryptio
 		so that these users can't log into the server.
 	$ useradd --no-create-home --shell /bin/false prometheus
 	$ useradd --no-create-home --shell /bin/false node_exporter
+
+	$ useradd --no-create-home -s /bin/false alertmanager
 
 --------------------------------------------------------------------------		
 # Change user name
@@ -1920,6 +1924,9 @@ https://security.stackexchange.com/questions/178958/what-are-the-differences-bet
 ----------------------------------------------------------------------------------------------------	
 ### Finding my ip (Gateway IP)
 --------------------------------------------------------------------------	
+	$ curl ifconfig.me
+	$ curl ifconfig.me/all
+	
 	$ curl ifconfig.io	
 	$ curl icanhazip.com
 
@@ -1935,6 +1942,7 @@ https://security.stackexchange.com/questions/178958/what-are-the-differences-bet
 	
 	$ dig +short myip.opendns.com @resolver1.opendns.com
 	$ host myip.opendns.com resolver1.opendns.com
+	
 
 	### The following commands will get you the private IP address of your interfaces:
 	$ ifconfig | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}'|head -1  <= RegEx 
@@ -3726,7 +3734,15 @@ $ nc localhost 9999
 	$ echo "PC name is $HOSTNAME." 				<= PC name is PC.
 	$ echo "PC name is $(hostname)."			<= PC name is PC.
 	$ echo "PC name is $(HOSTNAME)."			<= PC name is PC.
-
+	
+	---------------------------
+	$ HOSTNAME=$($(which hostname))
+	$ which hostname
+	  /bin/hostname
+	$ echo $HOSTNAME
+	  mc1
+	---------------------------
+	
 --------------------------------------------------------------------------
 # \ ingnore special character
 --------------------------------------------------------------------------
@@ -3815,7 +3831,14 @@ $ brctl show
 # $ last reboot
 	reboot system boot 3.2.13-grsec-xxx Tue Apr 3 07:34 - 09:17 (9     + 01 : 42) 
 																 ^9days 1hr 42mins after restart
-	$ last						<=last, lastb - show listing of last logged in users
+																 
+																 $ last reboot
+	reboot   system boot  3.10.0-862.11.6. Tue Sep 18 12:24 - 16:00 (363+03:36)	
+							     ^ Kerenl's version has been updated
+	reboot   system boot  3.10.0-862.2.3.e Tue Sep 18 12:19 - 16:00 (363+03:40)
+									^ Old Kerenl version
+
+	$ last						<= last, lastb - show listing of last logged in users
 	$ last -x
 	$ last -x reboot
 	$ last -x shutdown
@@ -4996,46 +5019,49 @@ chkconfig  provides  a  simple  command-line  tool to maintaining the
 
 
 54. List of groups
-	
-	# Check who owns folder?
+# getent <- 'get ent'ries from Name Service Switch libraries
+# stat   <- display file or file system status
+
+  # Check who owns folder?
 	$ stat -c %U /var/www/html			<= %U User
 		www-data
+		
 	$ stat -c %G /var/www/html			<= %G Group
 		www-data	
 	
 	$ cat /etc/group  <= Group List
  	$ getent group | cut -d: -f1
 	
-	# groups
+  # groups
 	$ getent - get entries from Name Service Switch libraries
 
 
 	
-	# Who(users list) is in the group
+  # Who(users list) is in the group
 	$ getent group www-data
 		www-data:x:33:
 	
-	# Add an User to Group
+  # Add an User to Group
 	$ sudo usermod -G www-data -a apark
 	
 	$ getent group www-data
 		www-data:x:33:apark  <= apark added
 	
-	# Delete group
+  # Delete group
 	$ groupdel Group_Name
 	
 	$sudo groupdel $(getent group | cut -d: -f1 | grep dock)
 
 	
-	### gpasswd
+  ### gpasswd
 	
 	$  adduser apark
     $  gpasswd -a apark wheel
     $  gpasswd -a apark root
     $  vi /etc/sudoers
 	
-		The term "WHELL" is derived from the slang phrase big wheel, 
-		referring to a person with great power or influence.
+	The term "WHELL" is derived from the slang phrase big wheel, 
+	referring to a person with great power or influence.
 	
 	
 55. SElinux <= add port to security-enhanced linux 
@@ -7260,11 +7286,13 @@ Notes:
 		
 		  
 ### EOF (End Of File <= Add some rows and text)
-$ cat << EOF >> /etc/puppet/puppet.conf
-[agent]
-server = puppetmaster.domain.tld
-EOF
+https://stackoverflow.com/questions/2500436/how-does-cat-eof-work-in-bash
 
+$ cat << EOF >> puppet.conf
+	[agent]
+	server = puppetmaster.domain.tld
+	EOF
+ 
 
 The 'cat << EOF' Bash syntax is very useful when one needs to work with multiline strings in Bash, 
 	eg. when passing multiline string to a variable, file or a piped command.
@@ -7275,7 +7303,7 @@ The 'cat << EOF' Bash syntax is very useful when one needs to work with multilin
 	  EOF
 	  )
 ------------------------------------------------------------------------------------------------------------
-# cat file.txt  VS.  cat < file.txt
+# cat  file.txt  VS.   cat < file.txt
 	http://unix.stackexchange.com/questions/258931/difference-between-cat-and-cat
 ------------------------------------------------------------------------------------------------------------
 
@@ -7442,11 +7470,17 @@ $ sudo iptables -A INPUT -i eth0 -p tcp --dport 80 -m state --state NEW,ESTABLIS
 ######################################################################################################
 
 ###------------------------------------------------------------------
-$ iptables -A INPUT -m state -s 65.87.26.0/24     --state NEW -j ACCEPT		<= BNEA Corp IP
+$ iptables -A INPUT -m state -s 65.87.26.0/24     --state NEW -j ACCEPT		<= Namcity  IP
 
-$ iptables -A INPUT -m state -s 64.95.137.0/24    --state NEW -j ACCEPT		<= BNEA PacCity WIFI Comcast IP
+$ iptables -A INPUT -m state -s 64.95.137.0/24    --state NEW -j ACCEPT		<= PacCity  IP
 
-$ iptables -A INPUT -m state -s 73.231.235.144/32 --state NEW -j ACCEPT   	<= Apark Home
+$ iptables -A INPUT -m state -s 73.231.235.144/32 --state NEW -j ACCEPT   	<= Home
+
+$ iptables -A INPUT -m state -s 74.217.69.192/26 --state NEW -j ACCEPT   	<= New Corp IP 
+
+
+
+
 ###	-----------------------------------------------------------------
 
 # iptables -t [filter|nat|mangle] [-A|-D|-L|-F] [INPUT|OUTPUT|FORWARD] -p [tcp|udp] -m [tcp|udp] -s [sourceip] -d [destip] --dport [port] -j [DROP|REJECT|ACCEPT] 
@@ -7546,16 +7580,16 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-
 	
 	
 		
-	Turning on the Firewall
+	# Turning on the Firewall
 		$sudo systemctl start firewalld.service
 	
-	status of the service:
+	# status of the service:
 		$ firewall-cmd --state
 			running  
 		$ systemctl status firewalld
 			Active: active (running) 
 
-	Defaults Zone Info
+	# Defaults Zone Info
 		$ firewall-cmd --get-default-zone
 			public
 	
@@ -8416,10 +8450,12 @@ $ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{prin
 
 	
 	
-	
-	
-	
-	
+------------------------------------------------------------------------------------	
+# complete -pr [-DE] [name ...]
+              Specify how arguments to each name should be completed.	
+------------------------------------------------------------------------------------	
+	$ alias     k=kubectl
+	$ complete  -F __start_kubectl k
 	
 	
 	
@@ -8432,7 +8468,7 @@ $ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{prin
 	
 	
 ------------------------------------------------------------------------------------	
-### Awk ### 
+# Awk 
 ------------------------------------------------------------------------------------
 	Built-in Variables – FS, OFS, RS, ORS, NR, NF, FILENAME, FNR
 	http://www.thegeekstuff.com/2010/01/8-powerful-awk-built-in-variables-fs-ofs-rs-ors-nr-nf-filename-fnr/?ref=binfind.com/web
@@ -10396,8 +10432,10 @@ AWS CloudFormation
 
 
 
-
-
+https://cloud.google.com/blog/products/gcp/sre-fundamentals-slis-slas-and-slos
+1. Service-Level Objective (SLO)
+2. Service-Level Agreement (SLA)
+3. Service-Level Indicator (SLI)
 
 
 

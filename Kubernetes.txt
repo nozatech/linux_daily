@@ -112,20 +112,62 @@ $ kubectl get services   <= List services
     $ kubectl describe pod <name>
 
 
-    
 
 
 
+------------------------------------------------------------------------------------
+kubectl Cheat Sheet
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+------------------------------------------------------------------------------------
+# Kubectl Autocompletion
+--------------------------------------------------
+	# setup autocomplete in bash into the current shell, bash-completion package should be installed first.
+		$ source <(kubectl completion bash) 
+		
+	# add autocomplete permanently to your bash shell.
+		$ echo "source <(kubectl completion bash)" >> ~/.bashrc 
+	
+	# If it is not working, Log out and Log in first.	
+	
+	# kubectl completion -h
+	
+	# alias for kubectl
+		$ alias     k=kubectl
+		$ complete  -F __start_kubectl k
+		
+	$ kubectl desc<TAB> p<TAB> my-nginx<TAB>	
 
+# Kubectl Context and Configuration
+--------------------------------------------------
+	$ kubectl config view <=  Show Merged kubeconfig settings.
 
+	# use multiple kubeconfig files at the same time and view merged config
+	KUBECONFIG=~/.kube/config:~/.kube/kubconfig2 
 
+	kubectl config view
 
+	# get the password for the e2e user
+	kubectl config view -o jsonpath='{.users[?(@.name == "e2e")].user.password}'
 
+	kubectl config view -o jsonpath='{.users[].name}'    # get a list of users
+	kubectl config get-contexts                          # display list of contexts 
+	kubectl config current-context			             # display the current-context
+	kubectl config use-context my-cluster-name           # set the default context to my-cluster-name
 
+	# add a new cluster to your kubeconf that supports basic auth
+	kubectl config set-credentials kubeuser/foo.kubernetes.com --username=kubeuser --password=kubepassword
 
+	# permanently save the namespace for all subsequent kubectl commands in that context.
+	kubectl config set-context --current --namespace=ggckad-s2
 
+	# set a context utilizing a specific username and namespace.
+	kubectl config set-context gce --user=cluster-admin --namespace=foo \
+	  && kubectl config use-context gce
+	 
+	kubectl config unset users.foo                       # delete user foo
+	
 
-                            
+--------------------------------------------------                            
                             
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 
@@ -153,16 +195,25 @@ https://github.com/kubernetes/dashboard/blob/master/README.md
                             
                             
                             
+Auto Completion
+   https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion                         
                             
-                            
-                            
+apt-get install bash-completion 
+yum install bash-completion
+
+ commands create '/usr/share/bash-completion/bash_completion'
+ source /usr/share/bash-completion/bash_completion
+ 
 
 
 
+Enable kubectl autocompletion
+ echo "source <(kubectl completion bash)" >> ~/.bashrc 
 
 
+kubectl completion bash >/etc/bash_completion.d/kubectl
 
-
+netops$ kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
 
 
 
@@ -215,7 +266,7 @@ Get pods sorted by restart count		kubectl get pods –sort-by=’.status.contain
 ------------------------------------------------------------------------------------
 Get node resource usage							kubectl top node
 Get pod resource usage							kubectl top pod
-Get resource usage for a given pod				kubectl top <podname> --containers
+Get resource usage for a given pod				kubectl top <pod_name> --containers
 List resource utilization for all containers	kubectl top pod --all-namespaces --containers=true
 
 ------------------------------------------------------------------------------------
@@ -784,35 +835,61 @@ Step 2 — Creating the Monitoring Stack
 
 
 
-$ kubectl apply -f "${APP_INSTANCE_NAME}_manifest.yaml" --namespace "${
+
+
+
+
+
+
+	$ su - netops
+	$ mkdir doks-monitoring&& cd doks-monitoring
+	$ git clone https://github.com:do-community/doks-monitoring.git
+
+	$ export APP_INSTANCE_NAME=cluster-monitoring
+	$ export NAMESPACE=monitoring
+	$ export GRAFANA_GENERATED_PASSWORD="$(echo -n 'Test00!!' | base64)"
+
+	$ kubectl create namespace "$NAMESPACE"
+
+Step 2 — Creating the Monitoring Stack
+	$ cd doks-monitoring
+
+	netops@mc1~/doks-monitoring$ awk 'FNR==1 {print "---"}{print}' manifest/* \
+	 | envsubst '$APP_INSTANCE_NAME $NAMESPACE $GRAFANA_GENERATED_PASSWORD' \
+	 > "${APP_INSTANCE_NAME}_manifest.yaml"
+
+	$ ls -l
+	-rw-r--r-- 1 netops netops 225622 Sep 11 23:32 cluster-monitoring_manifest.yaml
+	
+	$ kubectl apply -f "${APP_INSTANCE_NAME}_manifest.yaml" --namespace "${NAMESPACE}"
+		---------------------------------------------------------
 		serviceaccount/alertmanager created
 		configmap/cluster-monitoring-alertmanager-config created
-		service/cluster-monitoring-alertmanager-operated created
-		service/cluster-monitoring-alertmanager created
-		statefulset.apps/cluster-monitoring-alertmanager created
-		configmap/cluster-monitoring-dashboards created
-		serviceaccount/grafana created
-		configmap/cluster-monitoring-grafana-ini created
-		configmap/cluster-monitoring-grafana-datasources created
-		configmap/cluster-monitoring-grafana-dashboardproviders created
-		secret/cluster-monitoring-grafana created
-		service/cluster-monitoring-grafana created
-		statefulset.apps/cluster-monitoring-grafana created
-		serviceaccount/kube-state-metrics created
-		clusterrole.rbac.authorization.k8s.io/kube-state-metrics created
-		clusterrolebinding.rbac.authorization.k8s.io/kube-state-metrics created
-		deployment.apps/cluster-monitoring-kube-state-metrics created
-		service/cluster-monitoring-kube-state-metrics created
-		serviceaccount/node-exporter created
-		daemonset.extensions/cluster-monitoring-node-exporter created
-		serviceaccount/prometheus created
-		clusterrole.rbac.authorization.k8s.io/prometheus created
-		clusterrolebinding.rbac.authorization.k8s.io/prometheus created
-		configmap/cluster-monitoring-prometheus-config created
+		...
 		service/cluster-monitoring-prometheus created
 		statefulset.apps/cluster-monitoring-prometheus created
+		---------------------------------------------------------
+		
+	$ kubectl get all
 
+	$ kubectl get namespaces ( <= $ kubectl get ns )
+	
+	$ kubectl get pods --all-namespaces
+	
+		NAMESPACE     NAME                                                    READY   STATUS    RESTARTS   AGE
+	kube-system   coredns-584795fc57-gjr8r                                1/1     Running   3          11d
+	...
+	monitoring    cluster-monitoring-alertmanager-0                       0/1     Pending   0          103s
+	monitoring    cluster-monitoring-grafana-0                            0/1     Pending   0          102s
+	monitoring    cluster-monitoring-kube-state-metrics-f9c6c6f7b-lmcpw   2/2     Running   0          102s
+	monitoring    cluster-monitoring-node-exporter-4pp72                  1/1     Running   0          101s
+	monitoring    cluster-monitoring-node-exporter-m6lpx                  1/1     Running   0          101s
+	monitoring    cluster-monitoring-prometheus-0                         0/1     Pending   0          102s
+	monitoring    cluster-monitoring-prometheus-1                         0/1     Pending   0          102s
 
+	
+Step 3 — Accessing Grafana and Exploring Metrics Data
+kubectl port-forward --namespace ${NAMESPACE} ${APP_INSTANCE_NAME}-grafana-0 3000
 
 
 
@@ -851,6 +928,50 @@ $ kubectl get pods
 	dashboard-95589d86d-jpjzd   0/1     CrashLoopBackOff   30         133m
 
 
+$ kubectl get all
+
+$ kubectl describe pod
+
+
+# Check your Kubernetes deployments
+https://medium.com/polarsquad/check-your-kubernetes-deployments-46dbfbc47a7c
+
+
+
+
+
+# Deleting  Pods
+https://stackoverflow.com/questions/33509194/command-to-delete-all-pods-in-all-kubernetes-namespaces
+$ kubectl delete --all pods --namespace=monitoring
+$ kubectl get ns( <= $ kubectl get namespaces)
+$ kubectl delete --all monitoring
+$ kubectl get -n monitoring all
+
+	----------------------------------------------------------------------------------------
+	for each in $(kubectl get ns -o jsonpath="{.items[*].metadata.name}" | grep -v kube-system);
+	do
+	  kubectl delete ns $each
+	done
+	----------------------------------------------------------------------------------------
+
+
+
+# Debugging Pods
+https://kubernetes.io/docs/tasks/debug-application-cluster/debug-pod-replication-controller/
+
+# Get Nodes' CPU and Memory Info
+$ kubectl get nodes -o yaml | egrep '\sname:|cpu:|memory:'
+    name: mc1
+      cpu: "2"
+      memory: 3778092Ki
+	...
+	
+$ kubectl get pods --all-namespaces | grep -i pending
+	monitoring    cluster-monitoring-alertmanager-0                       0/1     Pending   0          10m
+	monitoring    cluster-monitoring-grafana-0                            0/1     Pending   0          10m
+	monitoring    cluster-monitoring-prometheus-0                         0/1     Pending   0          10m
+	monitoring    cluster-monitoring-prometheus-1                         0/1     Pending   0          10m
+	
 
 
 
@@ -862,34 +983,104 @@ $ kubectl get pods
 
 
 
+----------------------------------------------------------------------------------------
+kubectl
+	kubectl controls the Kubernetes cluster manager.
+	https://kubernetes.io/docs/reference/kubectl/overview/
+----------------------------------------------------------------------------------------
+$ kubectl <TAB>
+annotate       certificate    create         explain        patch          scale
+api-resources  cluster-info   delete         expose         plugin         set
+api-versions   completion     describe       get            port-forward   taint
+apply          config         diff           kustomize      proxy          top
+attach         convert        drain          label          replace        uncordon
+auth           cordon         edit           logs           rollout        version
+autoscale      cp             exec           options        run            wait
+
+Basic Commands (Beginner):
+  create         Create a resource from a file or from stdin.
+  expose         Take a replication controller, service, deployment or pod and expose it as a new
+
+Kubernetes Service
+  run            Run a particular image on the cluster
+  set            Set specific features on objects
+
+Basic Commands (Intermediate):
+  explain        Documentation of resources
+  get            Display one or many resources
+  edit           Edit a resource on the server
+  delete         Delete resources by filenames, stdin, resources and names, or by resources and
+
+label selector
+
+Deploy Commands:
+  rollout        Manage the rollout of a resource
+  scale          Set a new size for a Deployment, ReplicaSet, Replication Controller, or Job
+  autoscale      Auto-scale a Deployment, ReplicaSet, or ReplicationController
+
+Cluster Management Commands:
+  certificate    Modify certificate resources.
+  cluster-info   Display cluster info
+  top            Display Resource (CPU/Memory/Storage) usage.
+  cordon         Mark node as unschedulable
+  uncordon       Mark node as schedulable
+  drain          Drain node in preparation for maintenance
+  taint          Update the taints on one or more nodes
+
+Troubleshooting and Debugging Commands:
+  describe       Show details of a specific resource or group of resources
+  logs           Print the logs for a container in a pod
+  attach         Attach to a running container
+  exec           Execute a command in a container
+  port-forward   Forward one or more local ports to a pod
+  proxy          Run a proxy to the Kubernetes API server
+  cp             Copy files and directories to and from containers.
+  auth           Inspect authorization
+
+Advanced Commands:
+  diff           Diff live version against would-be applied version
+  apply          Apply a configuration to a resource by filename or stdin
+  patch          Update field(s) of a resource using strategic merge patch
+  replace        Replace a resource by filename or stdin
+  wait           Experimental: Wait for a specific condition on one or many resources.
+  convert        Convert config files between different API versions
+  kustomize      Build a kustomization target from a directory or a remote url.
+
+Settings Commands:
+  label          Update the labels on a resource
+  annotate       Update the annotations on a resource
+  completion     Output shell completion code for the specified shell (bash or zsh)
+
+Other Commands:
+  api-resources  Print the supported API resources on the server
+  api-versions   Print the supported API versions on the server, in the form of "group/version"
+  config         Modify kubeconfig files
+  plugin         Provides utilities for interacting with plugins.
+  version        Print the client and server version information
+
+Usage:
+  kubectl [flags] [options]
+
+
+
+
+# Managing Compute Resources for Containers
+https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+The expression 0.1 is equivalent to the expression 100m
 
 
 
 
 
 
+# Interactive Tutorial - Exploring Your App
+https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-interactive/
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+kubectl cluster-info
+kubectl config get-contexts
+kubectl get pods --namespace kube-system
 
 
 

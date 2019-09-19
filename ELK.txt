@@ -1,0 +1,117 @@
+
+
+Tools we use: Curator for Elasticsearch
+https://postmarkapp.com/blog/tools-we-use-curator-for-elasticsearch
+
+Removing time-series indices
+curator --host <ip address> delete indices --time-unit days --older-than 45 --timestring '%Y%m%d
+curator --dry-run --host <ip address> delete indices --time-unit days --older-than 45 --timestring '%Y%m%d'
+
+$ /usr/bin/curator --config /etc/elasticsearch-curator/curator.yml /etc/elasticsearch-curator/actions.yml
+
+
+$ cat /etc/elasticsearch-curator/curator.yml
+------------------------------------------------------
+---
+# Remember, leave a key empty if there is no value.  None will be a string,
+# not a Python "NoneType"
+client:
+  hosts: 10.128.6.137
+  port: 9200
+  url_prefix:
+  use_ssl: False
+  certificate:
+  client_cert:
+  client_key:
+  aws_key:
+  aws_secret_key:
+  aws_region:
+  ssl_no_validate: False
+  http_auth:
+  timeout: 30
+  master_only: False
+
+logging:
+  loglevel: INFO
+  logfile:
+  logformat: default
+  blacklist: [ 'elasticsearch','urllib3' ]
+
+------------------------------------------------------
+
+
+$ cat /etc/elasticsearch-curator/actions.yml
+------------------------------------------------------
+actions:
+  1:
+    action: delete_indices
+    description: >-
+      Delete indices older than 14 days
+    filters:
+      -
+        exclude:
+        kind: regex
+        filtertype: pattern
+        value: '.*'
+      -
+        direction: older
+        filtertype: age
+        source: name
+        timestring: '%Y.%m.%d'
+        exclude:
+        unit_count: 14
+        unit: days
+    options:
+      continue_if_exception: False
+      timeout_override:
+      ignore_empty_list: True
+      disable_action: False
+------------------------------------------------------
+
+$ cat /backup/backup-all
+
+#!/bin/bash
+
+S3_BUCKET="bner-backups-pacman"
+S3_CONFIG="/backup/.backup-to-s3-cfg"
+EXCLUDE_FROM="/backup/.backup-exclude"
+
+DATE_FORMAT="%Y-%m-%d";
+
+######### No configuration under this
+DUMPDATE=$(date +$DATE_FORMAT)
+LOGMARKER="[backup]"
+LOGGER=$(which logger)
+AWSCLI=$(which aws 2>/dev/null)
+HOSTNAME=$($(which hostname))
+GZIP=$(which gzip)
+
+$LOGGER -t $LOGMARKER "Starting running backup ..."
+
+if [ ! -s ${EXCLUDE_FROM} ]; then
+        touch ${EXCLUDE_FROM}
+fi
+
+tar -C / -X ${EXCLUDE_FROM} --warning='no-file-ignored' --ignore-failed-read --one-file-system -n -czSf - . | $AWSCLI s3 --quiet --no-progress cp - s3://$S3_BUCKET/$HOSTNAME/$DUMPDATE/all-${HOSTNAME}.tar.gz
+
+$LOGGER -t $LOGMARKER "Backup completed!!!";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1913,9 +1913,31 @@ insight			<- the capacity to gain an accurate and deep intuitive understanding o
 					synonyms:	intuition, discernment, perception, awareness, understanding, comprehension, 
 						apprehension, appreciation, penetration, acumen, perspicacity, judgment, acuity
 in place of 	<- instead of
+
+interim			<- [n 인터럼]the intervening(중개) time. 당분간의
+					'Trump says he would consider an interim(일시적인) trade deal with China'
+					"in the interim I'll just keep my fingers crossed"
+					synonyms:	meantime, meanwhile, intervening time, interval, interlude; interregnum
+					"in the interim they agreed to carry out further research"
+					
+					[adj]in or for the intervening period; provisional or temporary.
+					"an interim arrangement"
+					synonyms:	provisional, temporary, pro tem, stopgap, short-term, fill-in, 
+								caretaker, acting, intervening, transitional, changeover, 
+								make-do, makeshift, improvised, impromptu, emergency; More	
+					
+					[adverb] meanwhile.	
+					
+					
+
 intervene		<- [v] come between so as to prevent or alter a result or course of events.
+						1.사이에 오는2.개재하는
 					"he acted outside his authority when he intervened in the dispute"
-intervention	<- [n]
+intervening		<- 중개
+
+intervening variable <- 중개(仲介) 변수
+
+intervention	<- [n]1.	개입2.	간섭3.	치료4.	접근5.	조치
 
 intimidate		<- frighten or overawe (someone), especially in order to make them do what one wants.
 					synonyms:	frighten, menace, terrify, scare, terrorize, cow, dragoon, subdue;
@@ -2161,8 +2183,9 @@ marauder		<- a person who marauds; a raider.
 								bandit, bandito, highwayman, rustler
 Marshalling 	<- arrange or assemble (a group of people, especially soldiers) in order.
 
+maksing			<- 가장하다
 
-masquerade		<- [n]a false show or pretense.
+masquerade		<- [n] 가장 a false show or pretense.
 					"his masquerade ended when he was arrested"
 					synonyms:	pretense, deception, pose, act, front, facade, disguise, dissimulation, 
 								bluff, play-acting, make-believe; informalput-on
@@ -2511,6 +2534,8 @@ post mortem		<- an examination of a dead body to determine the cause of death.
 
 praise	vs.	blame	<-[preiz 프레이즈] 칭찬, 호평
 					
+predicate		<- [프레디케잇] 단정하다.
+
 prenup			<- a prenuptial agreement. 결혼 전 계약서
 					"did you get her to sign a prenup?"
 
@@ -11499,7 +11524,7 @@ wearily			<- 지루하게, 피곤하여, 싫증나서
 I thought it would rain today.								<= 비가 올줄 알았어
 She promised(that) she wouldn't talk about that again.		<= 않기로
 I told him (that) I would try my best.						<= 
-They told me they would give me an answer by this Friday.	<=
+They told me (that) they would give me an answer by this Friday.	<=
 
 I thought you would know about that.	<= 난 네가 그거에 대해서 		'알줄' 알았어
 I thought you already knew about that.	<= 난 네가 그거에 대해서 이미 '아는줄'(알고있는줄) 알았어
@@ -11657,7 +11682,14 @@ Quantitative Easing
 Quantitative Tightening	
 	
 	
+
+----------------------------------------------------------------------------------------
+한자 한글 사자성어 풀이  
+----------------------------------------------------------------------------------------
+대동소이	
+	大 : 큰 대 | 同 : 한가지 동 | 小 : 작을 소 | 異 : 다를 이
+	크게 같고 작게 다르다는 말로, 크게 보면 서로 같지만 작게 보면 각각 다르다는 뜻.	
 	
-	
-	
-	
+일축  
+	一蹴은 '한[一]번에 차버림[蹴]', '단번에 물리침'을 이른다.
+	출처 : http://news.chosun.com/site/data/html_dir/2008/11/23/2008112300609.html	
