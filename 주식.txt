@@ -126,6 +126,34 @@ OTOCO(One-Triggers-a-One-Cancels-the-Other)
 	6. XYZ drops to $23.
 	7. Your stop loss order executes and your limit order is automatically canceled.
 
+--------------------------------------------------------------------------------------
+1. If the Following Order Executes in Full:
+	Stock/ETF
+	Symbol: XXXX
+	Action: Buy 	Quantity: xxx
+	Price Type: Limit|Market  Limit Price  $: XXXX
+	Duration: Good for Day | 60Days
+	
+2. Then Place the Following One-Cancel-Other(OCO) Order:
+	Stock/ETF
+	Symbol: XXXX
+	Action: Sell 	Quantity: xxx
+	Price Type: Trailing Stop $ | %   Stop Value $: 5		        <=
+    #Price Type: Price Type: Limit|Market  Limit Price  $: XXXX     <=
+	
+	Duration: Good for Day | 60Days
+	-----------------------------------------------------------------------------------
+	OR
+	Stock/ETF
+	Symbol: XXXX
+	Action: Sell 	Quantity: xxx
+	Price Type: Stop on Quote| Limit	   Stop Value   $: 1975	    <=
+    #Price Type: Price Type: Limit|Market  Limit Price  $: XXXX     <=
+	
+	Duration: Good for Day | 60Days
+--------------------------------------------------------------------------------------
+
+
 
 
 
@@ -135,8 +163,6 @@ OTOCO(One-Triggers-a-One-Cancels-the-Other)
 --------------------------------------------------------------------------------------------
 잉여금	<- 쓰고난돈. a surplus (fund); balance in hand.
 
-Trading => Conditionals
-OTO(One-Triggers-Other)
 
 DART 	<- Daily Average Revenue Trades 
 			https://www.investopedia.com/terms/d/daily-average-revenue-trades.asp

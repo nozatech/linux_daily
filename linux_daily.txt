@@ -7470,11 +7470,17 @@ $ sudo iptables -A INPUT -i eth0 -p tcp --dport 80 -m state --state NEW,ESTABLIS
 ######################################################################################################
 
 ###------------------------------------------------------------------
-$ iptables -A INPUT -m state -s 65.87.26.0/24     --state NEW -j ACCEPT		<= BNEA Corp IP
+$ iptables -A INPUT -m state -s 65.87.26.0/24     --state NEW -j ACCEPT		<= Namcity  IP
 
-$ iptables -A INPUT -m state -s 64.95.137.0/24    --state NEW -j ACCEPT		<= BNEA PacCity WIFI Comcast IP
+$ iptables -A INPUT -m state -s 64.95.137.0/24    --state NEW -j ACCEPT		<= PacCity  IP
 
-$ iptables -A INPUT -m state -s 73.231.235.144/32 --state NEW -j ACCEPT   	<= Apark Home
+$ iptables -A INPUT -m state -s 73.231.235.144/32 --state NEW -j ACCEPT   	<= Home
+
+$ iptables -A INPUT -m state -s 74.217.69.192/26 --state NEW -j ACCEPT   	<= New Corp IP 
+
+
+
+
 ###	-----------------------------------------------------------------
 
 # iptables -t [filter|nat|mangle] [-A|-D|-L|-F] [INPUT|OUTPUT|FORWARD] -p [tcp|udp] -m [tcp|udp] -s [sourceip] -d [destip] --dport [port] -j [DROP|REJECT|ACCEPT] 
@@ -10426,8 +10432,10 @@ AWS CloudFormation
 
 
 
-
-
+https://cloud.google.com/blog/products/gcp/sre-fundamentals-slis-slas-and-slos
+1. Service-Level Objective (SLO)
+2. Service-Level Agreement (SLA)
+3. Service-Level Indicator (SLI)
 
 
 

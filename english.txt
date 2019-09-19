@@ -2183,8 +2183,9 @@ marauder		<- a person who marauds; a raider.
 								bandit, bandito, highwayman, rustler
 Marshalling 	<- arrange or assemble (a group of people, especially soldiers) in order.
 
+maksing			<- 가장하다
 
-masquerade		<- [n]a false show or pretense.
+masquerade		<- [n] 가장 a false show or pretense.
 					"his masquerade ended when he was arrested"
 					synonyms:	pretense, deception, pose, act, front, facade, disguise, dissimulation, 
 								bluff, play-acting, make-believe; informalput-on
@@ -2533,6 +2534,8 @@ post mortem		<- an examination of a dead body to determine the cause of death.
 
 praise	vs.	blame	<-[preiz 프레이즈] 칭찬, 호평
 					
+predicate		<- [프레디케잇] 단정하다.
+
 prenup			<- a prenuptial agreement. 결혼 전 계약서
 					"did you get her to sign a prenup?"
 

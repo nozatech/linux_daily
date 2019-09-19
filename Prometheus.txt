@@ -23,7 +23,7 @@ Exporters — provide information about everything from infrastructure, database
 	nginx-vts-exporter - This provides metrics about an Nginx web server using the Nginx VTS module, 
 					including the number of open connections, the number of sent responses (grouped by 
 					response codes), and the total size of sent or received requests in bytes.
-
+----------------------------------------------------------------------------------------------
 # Prerequisites					
 					
 	Nginx installed by following the first two steps of the How To Install Nginx on Ubuntu 16.04 tutorial.
@@ -38,7 +38,7 @@ Step 1 — Creating Service Users
 	
 	sudo chown prometheus:prometheus /etc/prometheus
 	sudo chown prometheus:prometheus /var/lib/prometheus
-	
+----------------------------------------------------------------------------------------------	
 Step 2 — Downloading Prometheus
 	$ curl -LO https://github.com/prometheus/prometheus/releases/download/v2.0.0/prometheus-2.0.0.linux-amd64.tar.gz
 				-O <= Write  output to a local file named like the remote file we get
@@ -67,7 +67,7 @@ sudo chown -R prometheus:prometheus /etc/prometheus/console_libraries
 	
 	
 	rm -rf prometheus-2.0.0.linux-amd64.tar.gz prometheus-2.0.0.linux-amd64
-	
+----------------------------------------------------------------------------------------------	
 Step 3 — Configuring Prometheus
 	$ vi /etc/prometheus/prometheus.yml
 ----------------------------------------------------------------------------------------------
@@ -104,6 +104,8 @@ scrape_configs:
 ----------------------------------------------------------------------------------------------
 	$sudo chown prometheus:prometheus /etc/prometheus/prometheus.yml
 
+
+----------------------------------------------------------------------------------------------
 Step 4 — Running Prometheus	
 	$ sudo -u prometheus /usr/local/bin/prometheus \
     --config.file /etc/prometheus/prometheus.yml \
@@ -114,8 +116,8 @@ Step 4 — Running Prometheus
 	
 	=> level=info ts=2019-09... "Server is ready to receive requests."
 
-	halt Prometheus by pressing CTRL+C, and then open a new systemd service file.
-	$ vi /etc/systemd/system/prometheus.service
+	# halt Prometheus by pressing CTRL+C, and then open a new systemd service file.
+	    $ vi /etc/systemd/system/prometheus.service
 		----------------------------------------------------------------------
 			[Unit]
 		Description=Prometheus
@@ -151,7 +153,7 @@ Step 4 — Running Prometheus
 	# Check Prometheus Website
 		Http://localhost:9090
 	
-	
+----------------------------------------------------------------------------------------------	
 Step 5 — Downloading Node Exporter	
 	
 	$ curl -LO https://github.com/prometheus/node_exporter/releases/download/v0.15.1/node_exporter-0.15.1.linux-amd64.tar.gz
@@ -169,7 +171,7 @@ Step 5 — Downloading Node Exporter
 	
 	
 	$ rm -rf node_exporter-0.15.1.linux-amd64.tar.gz node_exporter-0.15.1.linux-amd64
-	
+----------------------------------------------------------------------------------------------	
 Step 6 — Running Node Exporter
 	The steps for running Node Exporter are similar to those for running Prometheus itself. 
 	Start by creating the Systemd service file for Node Exporter.
@@ -210,6 +212,7 @@ Step 6 — Running Node Exporter
 	sudo systemctl start  node_exporter
 	sudo systemctl status node_exporter
 	sudo systemctl enable node_exporter
+----------------------------------------------------------------------------------------------
 	
 Step 7 — Configuring Prometheus to Scrape Node Exporter
 	Because Prometheus only scrapes exporters which are defined in the scrape_configs portion of its 
@@ -276,7 +279,7 @@ scrape_configs:
 			go_gc_duration_seconds{quantile="0.5"} 2.1642e-05
 			...
 
-	
+----------------------------------------------------------------------------------------------	
 Step 8 — Securing Prometheus	
 Prometheus does not include built-in authentication or any other general purpose security mechanism.	
 	
@@ -337,7 +340,8 @@ Prometheus does not include built-in authentication or any other general purpose
  
 	$ systemctl reload nginx
 	$ systemctl status nginx
-
+	
+----------------------------------------------------------------------------------------------
 Step 9 — Testing Prometheus
 	http://your_server_ip
 	Username:
@@ -381,7 +385,7 @@ Step 9 — Testing Prometheus
 http://157.245.160.60/consoles/node.html
 Now we are all set to access both 
 
-
+----------------------------------------------------------------------------------------------
 Step 10 — setting up consoles and console_libraries sections
 
 	http://<you_ip_address>/consoles/node.html 
@@ -398,11 +402,19 @@ Step 10 — setting up consoles and console_libraries sections
 	
 sudo cp -R ~/prometheus-2.0.0.linux-amd64/consoles /etc/prometheus
 sudo cp -R ~/prometheus-2.0.0.linux-amd64/console_libraries /etc/prometheus	
+----------------------------------------------------------------------------------------------
+
+Step 10 - check
+	from web
+	http://prometheus.domain.com:9090/status	
+	...
+	Version	2.0.0
+	Runtime Information
+	GoVersion	go1.9.2
+	....
 	
 	
-	
-	
-	
+----------------------------------------------------------------------------------------------	
 # Alert Manager
 	
 Alertmanager is a tool developed by the same prometheus guys and in my vision is quite important.
@@ -533,6 +545,14 @@ APPLICATION       EXCHANGE        TASK LIST        WORKER
 	
 	
 	
+#--------------------------------------------------------------------------------------------
+kubernetes-monitoring-with-prometheus
+	https://www.linkedin.com/learning/kubernetes-monitoring-with-prometheus
+#--------------------------------------------------------------------------------------------
+Logging vs. Monitoring
+
+
+
 	
 	
 	
