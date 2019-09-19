@@ -115,7 +115,34 @@ OCO(One-Cancels-the-Other)
 	4. ...a sell stop at $24.
 	5. XYZ stock hits $27, so your sell order executes and...
 	6. ...your sell stop order is canceled.
+--------------------------------------------------------------------------------------
+### When you Sell Existing Stocks, Orders 2 Conditions 'Limit|Trailing Stop' or 'Stop Loss'
+--------------------------------------------------------------------------------------
+  # If One of the Orders in the Group Triggers, Cancel All Other Orders.
+  # Place the Following One-Cancel-Other(OCO) Order:
+  
+	AMZN Current Price is 1800
+	-----------------------------------------------------------------------------------
+	Stock/ETF
+	Symbol: AMZN
+	Action: Sell 	Quantity: 1
+	Price Type: Trailing Stop $ | %   Stop Value $: 5		        <=
+    # Price Type: Price Type: Limit|Market  Limit Price  $1850       <=
+	
+	Duration: Good for Day | 60Days
+	-----------------------------------------------------------------------------------
+	OR
+	
+	Stock/ETF
+	Symbol: AMZN
+	Action: Sell 	Quantity: 1
+	Price Type: Stop on Quote| Limit	   Stop Value   $: 1785	 Limit 1780    <=
+    # Price Type: Price Type: Limit|Market  Limit Price  $: 1775     <=
+	
+	Duration: Good for Day | 60Days
+--------------------------------------------------------------------------------------
 
+--------------------------------------------------------------------------------------
 
 OTOCO(One-Triggers-a-One-Cancels-the-Other)
 	1. You place an order to buy XYZ at $25.
@@ -125,7 +152,8 @@ OTOCO(One-Triggers-a-One-Cancels-the-Other)
 	5. Simultaneously, your 2 sell orders are triggered.
 	6. XYZ drops to $23.
 	7. Your stop loss order executes and your limit order is automatically canceled.
-
+--------------------------------------------------------------------------------------
+### When you BUY, orders 2 Conditions Limit Sell or Stop Loss
 --------------------------------------------------------------------------------------
 1. If the Following Order Executes in Full:
 	Stock/ETF
@@ -152,7 +180,7 @@ OTOCO(One-Triggers-a-One-Cancels-the-Other)
 	
 	Duration: Good for Day | 60Days
 --------------------------------------------------------------------------------------
-
+--------------------------------------------------------------------------------------
 
 
 
