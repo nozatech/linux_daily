@@ -1680,6 +1680,12 @@ be fond of		<- to like someone very much, especially when you have known them fo
 					"Joe’s quite fond of her, isn’t he?"
 					"Over the years we’ve grown very fond of each other."
 
+furlough		<- (경제적 사정에 의한 노동자의) 일시적 해고(layoff).
+					grant leave of absence to/ lay off (workers), especially temporarily.
+					"Thousands more auto workers furloughed with more layoffs coming as GM and suppliers 
+						idle plants in UAW strike."
+
+
 
 # G
 
