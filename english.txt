@@ -2238,7 +2238,13 @@ mingle			<- mix or cause to mix together.
 					antonyms:	separate, be separated
 
 
-					
+mint			<- 1. 화페를 주조하다
+					ex) mint sliver coinage 은화를 주조하다
+				   2. '완전히 새로운 것을 만들어 내다' 라는 뜻이 있습니다.
+					ex) in a mint condion
+					3. a largely amount of money'라는 뜻이 있습니다~
+					ex)a mint of money 거액의 돈
+					"More $10 billion software companies are being minted than ever before — here’s why"
 					
 					
 misnomer		<- a wrong or inaccurate name or designation, a wrong or inaccurate use of a name or term.
