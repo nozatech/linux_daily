@@ -1,8 +1,8 @@
 *뭐더라 공부법 
 	순서
-	1.한문장 구간반복으로 모든 문장 입에 붙이기
-	2.메모지에 문장 입력
-	3.라이트너(flash card) 박스 실행
+	1. 한문장 구간반복으로 모든 문장 입에 붙이기
+	2. 메모지에 문장 입력
+	3. 라이트너(flash card) 박스 실행
 
 	라이트너(FlashCards) 박스 단계
 	1단계 : 매일			
@@ -16,7 +16,7 @@
 
 Listening: Speaking: Reading: Grammar: Writing
 
-8품사: 명사, 대명사, 동사, 형용사, 부사, 전치사, 접속사, 감탄사
+8품사: 명사(Noun), 대명사(, 동사(verb), 형용사(adjective), 부사, 전치사, 접속사, 감탄사
 
 	1. 명사 <- 이름씨: 사람, 사물, 물질, 개념, 행동
 			Tom, car, water, peach, answer
@@ -27,10 +27,12 @@ Listening: Speaking: Reading: Grammar: Writing
 		b. 지시 대명사: This, these, that, those
 		c. 부정 대명사: (부정확하게 많은, 막연하게) all, some, any, none, each, one, ones, 
 		d. 수량 대명사: others, one, ones, much, little, few
+		
 	3. 동사 
 		a. 동사: wants & go
 		b. 술어: wants
 			He wants to go there.
+			
 	4. 형용사 <- 명사를 꿈여주는 말
 		a. 명사 수식
 			형용사 + 명사 + 형용사
@@ -54,9 +56,11 @@ Listening: Speaking: Reading: Grammar: Writing
 
 to+부정사(동사원형)  <- 부정확하게 많은 동사원형을 갖어다 명사, 형용사, 부사적으로 쓰이는 말.
 https://namu.wiki/w/to%20%EB%B6%80%EC%A0%95%EC%82%AC
+
 		명사적		으로도 사용: To raise children is hard.
 		형용사적 		으로도 사용: He wants something to drink.
 		부사적		으로도 사용: He went to Busan 'to visit' his grandfather.	
+
 관사(a, an, the) + 명사	<= 명사를 수식해주는 '형용사'임
 	
 관계사 <- 접속사와 대명사의 역활을 동시에 함
@@ -88,18 +92,21 @@ https://namu.wiki/w/to%20%EB%B6%80%EC%A0%95%EC%82%AC
 
 5. 지문(Passage)
 
-6. 구문 독해(문장) <= 관용어구가 들어가 있는 문장
+6. 구문 독해(문장) <= 관용어구(가 들어가 있는 문장
 	I find it very hard to keep awake during the class.
 
 7. 보어(complement 보충해주는 말)	
 	S + V + C(주격보어, 목적격보어, 명사, 대명사, 동명사, to 부정사, 분사, 명사절, 형용사)
 	
-8. 분사 = 형용사 (Participle<- a word formed from a verb:  going, gone, being, been )
-	(현재 분사 +ing, 과거분사 +ed)
+8. 분사 = 형용사 (Participle <- a word formed from a verb:  going, gone, being, been )
+	 현재-분사 +ing 
+	 과거-분사 +ed 
+	
 	형용사의 기능을 가지는 동사의 부정형(infinite form). 상과 태의 기능을 주로 나타낸다.
 	happy, sad, tall, honest, pretty
+	
 	현재분사(present participle): tiring, exciting, intersting, satisfying
-	과거분사(past participle)   : tired, excied, intered, satisfied
+	과거분사(past participle)   : tired,  excied,   intered,    satisfied
 	
 	
 
@@ -109,7 +116,10 @@ https://namu.wiki/w/to%20%EB%B6%80%EC%A0%95%EC%82%AC
 	출처: http://englishgate.tistory.com/256 [공부의 진리 예습 복습]
 ----------------------------------------------------------------------------------------
 Abstract noun  				추상명사
-Active voice   				능동태
+
+Active  voice   			능동태
+Passive Voice				수동태
+
 Adjective  					형용사
 Adverb						부사
 Agreement					일치
@@ -121,13 +131,17 @@ Be verb 					be 동사
 Capital letter 				대문자
 Cardinal number 			기수
 Clause						절
-Collective noun				집합명사
+Collective noun				집합-명사
 Comma						쉼표
 Comparative					비교급
 Complement					보어
+
 Conjunction					접속사
 Conditional					가정법
+
 Consonant					자음
+Vowel						모음
+
 Countable nouns				가산명사
 Definite article			정관사
 Demonstrative pronouns		지시대명사
@@ -136,12 +150,17 @@ Emphasis					강조
 Exclamation point			느낌표
 Exclamatory sentence		감탄문
 Frequency adverb			빈도부사
+
 Future						미래
 Future perfect progressive	미래완료 진행
+
 Grammar						문법
+
 Gerund						동명사 (동사형 명사) = To 부정사 (To Infinitive)
+
 Imperative sentence			명령문
 Impersonal pronouns			비인칭대명사
+
 Incomplete verb				불완전 동사
 Indefinite article			부정관사
 Infinitive					부정사(부정확하게 많은 동사)
@@ -150,7 +169,9 @@ Interrogative				의문사
 Interrogative pronouns		의문대명사
 Interrogative sentence 		의문문
 Intransitive verb			자동사
+
 Inversion					도치
+
 Irregular					불규칙적
 Material noun				물질명사
 Modifier					수식어
@@ -162,7 +183,7 @@ Objective					목적격
 Objects						목적어
 Ordinal number				서수
 Participle					분사
-Passive						수동태
+
 Past						과거
 Past participle				과거분사
 Past perfect				과거완료
@@ -211,7 +232,8 @@ Transitive verb				타동사
 Uncountable nouns			불가산명사
 Verb						동사
 Voice						태
-Vowel						모음
+
+
 ----------------------------------------------------------------------------------------
 
 

@@ -550,10 +550,24 @@ kubernetes-monitoring-with-prometheus
 	https://www.linkedin.com/learning/kubernetes-monitoring-with-prometheus
 #--------------------------------------------------------------------------------------------
 Logging vs. Monitoring
+	Logging:	History of metering( cat /var/log/syslog)
+	Monitoring: Metering ( e.g. pop)
 
 
+Kubernetes monitors by Prometheus
 
+4-Monitoring Kubernetes
+	1. cAdvisor <- Devoloped by Google: Only 'Cotainer' monitoring solution exposing indivisual 
+					container metrics. e.g.	cpu, mem, network, etc.
 	
+	2. Heapster	<- A tool to collect 'cAdisor' data from Kubelet for central storage
+					Containter focus
+					
+  **3. Prometheus	<- A generi pull-based time-series capture, storage, and alerting service with 
+					  kubernetes integration.
+
+5 Enabling Prometheus monitoring, part 1
+	cat 02-promoperator.yml
 	
 	
 	
