@@ -1507,17 +1507,114 @@ $ kubectl get services
 
 -------------------------------------------------------------------------------------------
 16 Breaking down the Hello World application
--------------------------------------------------------------------------------------------
-$ kubectl get all		<= to see what actually deployed
+------------------------------------------------------------------------------------------
+$ kubectl get all		<- shows pods, services and deployments that are running that build the helloworld 
+							application.
 
-
-
--------------------------------------------------------------------------------------------
+$ kubectl get all					<= to see what actually deployed
+	NAME                            TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
+	service/hw                      NodePort       10.106.26.222    <none>        80:31103/TCP        6h1m
 	
+$ kubectl get deploy/hw
+	NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+	hw     1/1     1            1           6h5m
+
+
+$ kubectl get deploy -o yaml		<= -o, --output='': Output format.
+$ kubectl get deploy/hw -o yaml		<= This will return the YAML that composes the helloworld service
+	apiVersion: extensions/v1beta1
+	kind: Deployment
+	metadata:
+	  annotations:
+		deployment.kubernetes.io/revision: "1"
+	  creationTimestamp: "2019-09-23T23:51:54Z"
+	  generation: 1
+	  labels:
+		run: hw
+	  name: hw
+	  namespace: default
+	  resourceVersion: "2701032"
+	  selfLink: /apis/extensions/v1beta1/namespaces/default/deployments/hw
+	  uid: 1f2186a9-de5d-11e9-9941-62f9df03c49e
+
+$ kubectl get services
+	NAME                    TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)             AGE
+	hw                      NodePort       10.106.26.222    <none>           80:31103/TCP        6h5m
+
+
+
+$ vi helloworld-deploy-service.yml  <= use 1 single file to create for all ONCE(deployment + service)
 -------------------------------------------------------------------------------------------
+apiVersion: apps/v1beta1
+kind: Deployment				# <= Deployment	
+metadata:
+  name: helloworld-all-deployment	#<= Deployment name
+spec:
+  selector:
+    matchLabels:
+      app: helloworld
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - name: helloworld
+        image: karthequian/helloworld:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service				# <= Service
+metadata:
+  name: helloworld-all-service
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+  type: LoadBalancer
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: helloworld
+-------------------------------------------------------------------------------------------
+$ kubectl create -f helloworld-deploy-service.yml
+$ kubectl get services
+	NAME                     TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
+	helloworld-all-service   LoadBalancer   10.99.226.255    <pending>     80:30716/TCP        64s
+	hw                       NodePort       10.106.26.222    <none>        80:31103/TCP        6h20m
+
+$ kubectl get deployment
+	NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
+	helloworld-all-deployment   1/1     1            1           85s
+	hw                          1/1     1            1           6h23m
+
 
 -------------------------------------------------------------------------------------------
+17 Scaling the Hello World application
 -------------------------------------------------------------------------------------------
+	$ kubectl get replicaset
+	$ kubectl get rs
+		NAME                                   DESIRED   CURRENT   READY   AGE
+		helloworld-all-deployment-8597f99986   1         1         1       5m56s	<= 1
+		hw-5f6c6f9545                          1         1         1       6h28m
+
+	$ kubectl scale --replicas=3 deployment/helloworld-all-deployment
+		deployment.extensions/helloworld-all-deployment scaled
+
+	
+	$ kubectl get rs	
+	$ kubectl get replicaset	
+		NAME                                   DESIRED   CURRENT   READY   AGE
+		helloworld-all-deployment-8597f99986   3         3         3       9m45s	<= 3
+		hw-5f6c6f9545                          1         1         1       6h31m
+
+	$ kubectl get deploy/helloworld-all-deployment
+		NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
+		helloworld-all-deployment   3/3     3            3           10m
+
 	
 -------------------------------------------------------------------------------------------
 
