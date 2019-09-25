@@ -1233,6 +1233,10 @@ cornerstone		<- 토대,기초/an important quality or feature on which a particu
 					synonyms:	foundation, basis, keystone, mainspring, mainstay, linchpin, bedrock, 
 								base, backbone, key, centerpiece, core, heart, center, crux
 
+counterpart	<- A person or thing holding a position or performing a function that corresponds to that 
+					of another person or thing in another place.
+
+
 covert	vs	overt
 covert			<- [adj]not openly acknowledged or displayed.
 					"Something more covert in the rear of the vehicle."
@@ -1602,7 +1606,8 @@ exploit			<- make full use of and derive benefit from (a resource).…을 (이�
 							make the most of, capitalize on, benefit from; informal cash in on
 						"we should exploit this new technology"
 
-
+exuberance		<- The quality of being full of energy, excitement, and cheerfulness; ebullience.
+				1.	풍부2.	윤택3.	넘쳐흐름
 
 # F
 faculty			<- an aptitude or talent for doing something.
@@ -1789,7 +1794,7 @@ hedge			<- [n] a fence or boundary formed by closely growing bushes or shrubs.
 helm			<-	조타장치(배 운전대), 키를 잡다, 
 					a tiller(키의 손잡이) or wheel and any associated equipment for 'steering' a ship or boat.
 					
-
+hinder			<- 1.방해하다2.저해하다3.막다
 				
 hit the ground running 	<- to be ready to work immediately on a new activity
 						<- start something and proceed at a fast pace with enthusiasm.
@@ -2263,6 +2268,9 @@ meat			<- 책·토론 등의) 중심 부분, 요점, 골자, 급소, 실질, 내
 microcosm		<- a community, place, or situation regarded as encapsulating in miniature the characteristic 
 					qualities or features of something much larger.
 
+misdemeanor		<- 1.	경범죄 2.	비행 3.	행실이 나쁨
+
+
 					"Berlin is a microcosm of Germany, in unity as in division"
 mingle			<- mix or cause to mix together.
 					"the sound of voices mingled with a scraping of chairs"
@@ -2641,7 +2649,9 @@ proverbs		<- 명언집(proverbs collection)
 # Q
 quirk			<- 변덕 	e.g. by a quirk of fate 운명의 장난으로
 
-
+Quid pro quo 	<- ("something for something" in Latin) is a Latin phrase used in English to mean an exchange 
+					of goods or services, in which one transfer is contingent upon the other; "a favour for 
+					a favour".
 
 					
 # R

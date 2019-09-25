@@ -1193,18 +1193,19 @@ autoscale      cp             exec           options        run            wait
 
 
 # Basic Commands :
-  create         Create a resource from a file or from stdin.
+  create         Create a resource from a file or from stdin
+  delete         Delete resources by filenames, stdin, resources and names, or by resources 
+  get            Display one or many resources
+  
   expose         Take a replication controller, service, deployment or pod and expose it as a new
+  explain        Documentation of resources
+  edit           Edit a resource on the server
 
+  
 # Kubernetes Service
   run            Run a particular image on the cluster
   set            Set specific features on objects
 
-# Basic Commands :
-  explain        Documentation of resources
-  get            Display one or many resources
-  edit           Edit a resource on the server
-  delete         Delete resources by filenames, stdin, resources and names, or by resources and
 
 ### label selector
 
@@ -1855,24 +1856,24 @@ spec:
         ports:
         - containerPort: 80
         readinessProbe:
-          # length of time to wait for a pod to initialize
-          # after pod startup, before applying health checking
+          ### length of time to wait for a pod to initialize
+          ### after pod startup, before applying health checking
           initialDelaySeconds: 10
-          # Amount of time to wait before timing out
+          ### Amount of time to wait before timing out
           initialDelaySeconds: 1
-          # Probe for http
+          ### Probe for http
           httpGet:
             # Path to probe
             path: /
             # Port to probe
             port: 80
         livenessProbe:
-          # length of time to wait for a pod to initialize
-          # after pod startup, before applying health checking
+          ### length of time to wait for a pod to initialize
+          ### after pod startup, before applying health checking
           initialDelaySeconds: 100
-          # Amount of time to wait before timing out
+          ### Amount of time to wait before timing out
           timeoutSeconds: 1
-          # Probe for http
+          ### Probe for http
           httpGet:
             # Path to probe
             path: /
@@ -1881,13 +1882,173 @@ spec:
 
 -------------------------------------------------------------------------------------------
 
-	
+$ kubectl get deployment			<- without s	same
+$ kubectl get deployments			<- with s    	same
+
+		NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+		helloworld-all-deployment          3/3     3            3           15h
+		helloworld-deployment-with-probe   1/1     1            1           53s
+
+
+## Failed pod check
+$ kubectl create -f helloworld-BAD-liveness-probe.yml
+-------------------------------------------------------------------------------------------
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata: 
+  name: helloworld-deployment-with-bad-liveness-probe
+spec:
+  selector:
+    matchLabels:
+      app: helloworld
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - name: helloworld
+        image: karthequian/helloworld:latest
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          # length of time to wait for a pod to initialize
+          # after pod startup, before applying health checking
+          initialDelaySeconds: 10
+          # How often (in seconds) to perform the probe.
+          periodSeconds: 5
+          # Amount of time to wait before timing out
+          timeoutSeconds: 1
+          # Kubernetes will try failureThreshold times before giving up and restarting the Pod
+          failureThreshold: 2
+          # Probe for http
+          httpGet:
+            # Path to probe
+            path: /
+            # Port to probe
+            port: 90
 -------------------------------------------------------------------------------------------
 
+$ kubectl get deployments
+	helloworld-deployment-with-bad-liveness-probe   1/1     1            1           2m35s
+
+  $ kubectl get pods
+ #$ kubectl get pod
+ #$ kubectl get po
+	helloworld-deployment-with-bad-liveness-probe-575d9d65c5-m7dhx   1/1     Running   1          28s
+
+# Get specific PODs info( po/pod/pods all works)
+$ kubectl get   po/helloworld-deployment-with-bad-liveness-probe-575d9d65c5-m7dhx
+$ kubectl get  pod/helloworld-deployment-with-bad-liveness-probe-575d9d65c5-m7dhx
+$ kubectl get pods/helloworld-deployment-with-bad-liveness-probe-575d9d65c5-m7dhx
+
+	NAME                                            READY   STATUS             RESTARTS   AGE
+	helloworld-deployment-with-bad-liveness-probe   0/1     CrashLoopBackOff   5          3m57s
+										
+										^^^^^^^^^^^^^^^^^	
+$ kubectl describe pod/helloworld-deployment-with-bad-liveness-probe-575d9d65c5-m7dhx
+ Events:
+  Type     Reason     Age                    From               Message
+  ----     ------     ----                   ----               -------
+  Normal   Scheduled  9m44s                  default-scheduler  Successfully assigned default/helloworld-deployment-with-bad-liveness-probe-575d9d65c5-m7dhx to wc1
+  Normal   Pulling    8m45s (x4 over 9m43s)  kubelet, wc1       Pulling image "karthequian/helloworld:latest"
+**Warning  Unhealthy  8m45s (x6 over 9m30s)  kubelet, wc1       Liveness probe failed: Get http://10.244.1.29:90/: dial tcp 10.244.1.29:90: connect: connection refused
+  Normal   Killing    8m45s (x3 over 9m25s)  kubelet, wc1       Container helloworld failed liveness probe, will be restarted
+  Normal   Pulled     8m44s (x4 over 9m42s)  kubelet, wc1       Successfully pulled image "karthequian/helloworld:latest"
+  Normal   Created    8m44s (x4 over 9m42s)  kubelet, wc1       Created container helloworld
+  Normal   Started    8m44s (x4 over 9m42s)  kubelet, wc1       Started container helloworld
+**Warning  BackOff    4m34s (x17 over 8m5s)  kubelet, wc1       Back-off restarting failed container
+
+$ kubectl get pods
+$ kubectl get deployments
+	NAME                                            READY   UP-TO-DATE   AVAILABLE   AGE
+	helloworld-all-deployment                       3/3     3            3           16h
+	helloworld-deployment-with-bad-liveness-probe   0/1     1            0           12m	<= 0 Not Ready
+
 -------------------------------------------------------------------------------------------
+21 Handling application upgrades	
 -------------------------------------------------------------------------------------------
-	
+# Docker Images Location
+https://hub.docker.com/r/karthequian/helloworld/tags
+
+docker.io/karthequian/helloworld     blue                2be33d0f49e0        23 months ago       276 MB
+docker.io/karthequian/helloworld     black               bb894a7bfd14        23 months ago       276 MB
+
+$ sudo docker pull karthequian/helloworld:black
+$ sudo docker pull karthequian/helloworld:blue
 -------------------------------------------------------------------------------------------
+
+# Record rollout HISTORY
+
+$ kubectl create -f helloworld-black.yml --record		<- '--record' for keeping version for REVERT
+-------------------------------------------------------------------------------------------
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: navbar-deployment
+spec:
+  selector:
+    matchLabels:
+      app: helloworld
+  replicas: 3 # tells deployment to run 3 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - name: helloworld
+        image: karthequian/helloworld:black
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: navbar-service
+spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+  type: NodePort
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: helloworld
+-------------------------------------------------------------------------------------------
+
+
+
+$ kubectl get service navbar-service
+	NAME             TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+	navbar-service   NodePort   10.105.89.125   <none>        80:31583/TCP   68m
+
+# Check 
+	http://134.209.6.242:31583/	
+
+# Manually Change the images 'BLUE'
+  $ kubectl set image deployment/navbar-deployment helloworld=karthequian/helloworld:blue
+	-> deployment.extensions/navbar-deployment image updated
+
+# Change back to 'BLACK'	
+  $ kubectl set image deployment/navbar-deployment helloworld=karthequian/helloworld:black
+	-> deployment.extensions/navbar-deployment image updated
+
+$ kubectl get pods
+	navbar-deployment-64664cc7-4f2gh                                  1/1     Running            0          9m49s
+	navbar-deployment-64664cc7-kfngg                                  1/1     Running            0          9m50s
+	navbar-deployment-64664cc7-x82m6                                  1/1     Running            0          9m48s
+
+$ kubectl get pods/navbar-deployment-64664cc7-4f2gh
+	NAME                               READY   STATUS    RESTARTS   AGE
+	navbar-deployment-64664cc7-4f2gh   1/1     Running   0          8m7s
+
+$ kubectl get deployments
+	navbar-deployment                                3/3     3            3           114m
+
+
 
 -------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------
