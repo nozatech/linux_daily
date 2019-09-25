@@ -891,6 +891,9 @@ azure			<- 1.	하늘색2.	하늘빛3.	창공
 back			<- "Throwing Out Your Back" <- you’ve experienced this intense, sharp pain
 				   "My mom threw her back out and my dad is out of town" 
 				   
+				   "Investor and Democratic megadonor Alan Patricof decides to back Joe Biden for president"
+				   후원자
+				   
 ballot			<- [bǽlət 밸렛]
 					[noun] a process of voting, in writing and typically in secret.
 					"the commissioners were elected by ballot"
@@ -1090,6 +1093,10 @@ capitulation	<- giving in
 					synonyms:	surrender, submission, yielding, giving in, succumbing, acquiescence, 
 								laying down of arms
 					‘Panic and capitulation’
+
+caucus			<- 간부 회의
+					“Later today I will make an announcement after I meet with my chairmen, 
+					my leadership and my caucus,” Pelosi said.
 					
 cf.				<-  as "compare"
 					an abbreviation for the Latin word confer (the imperative singular form of "conferre"), 
@@ -1837,6 +1844,10 @@ hospice			<- a type of care and philosophy of care that focuses on the palliatio
 					of a chronically ill, terminally ill or seriously ill patient's pain and symptoms, 
 					and attending to their emotional and spiritual needs.
 					숙박소, 숙사(호스피스)
+
+hunker down		<-  to lower the body to the ground by bending the legs
+					The hikers hunkered down under a cliff until the storm passed.
+
 					
 hypoxia			<- 저산소증	
 
@@ -1934,6 +1945,8 @@ inhibition		<- the action of inhibiting(금지), restricting, or hindering a pro
 
 indorinatley	<- to an unusually or disproportionately large degree; excessively.
 					"the information was inordinately vetted and censored"
+
+inquiry			<- 1.	조사 2.	문의 3.	수사
 
 inquisitve		<- eager for knowledge; curious
 					"The inquisitive cat loves to sit in the windowsill."
@@ -2525,6 +2538,9 @@ promiscuous		<- extend beyond or above a surface.
 prospective		<- (of a person) expected or expecting to be something particular in the future. 미래의, 장래의
 					vs Retrospective  <- 회고의,looking back on or dealing with past events or situations. 
 
+protege			<- 1.	피보호자2.	부하3.	제자
+
+
 protrude		<- 
 
 pulling forward	<- speed up, accelerate, quicken...
@@ -2629,6 +2645,9 @@ quirk			<- 변덕 	e.g. by a quirk of fate 운명의 장난으로
 
 					
 # R
+ratchet (something)up	<-​to increase, or make something increase, repeatedly and by small amounts
+					" Oil falls 2.2% after Trump ratchets up US-China trade war"
+					
 rake			<- garden rake (갈퀴)
 
 rampage			<- [Verb](especially of a large group of people) rush around in a violent and uncontrollable manner.

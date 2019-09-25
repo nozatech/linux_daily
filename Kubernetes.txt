@@ -1191,28 +1191,29 @@ attach         convert        drain          label          replace        uncor
 auth           cordon         edit           logs           rollout        version
 autoscale      cp             exec           options        run            wait
 
-Basic Commands (Beginner):
+
+# Basic Commands :
   create         Create a resource from a file or from stdin.
   expose         Take a replication controller, service, deployment or pod and expose it as a new
 
-Kubernetes Service
+# Kubernetes Service
   run            Run a particular image on the cluster
   set            Set specific features on objects
 
-Basic Commands (Intermediate):
+# Basic Commands :
   explain        Documentation of resources
   get            Display one or many resources
   edit           Edit a resource on the server
   delete         Delete resources by filenames, stdin, resources and names, or by resources and
 
-label selector
+### label selector
 
-Deploy Commands:
+# Deploy Commands:
   rollout        Manage the rollout of a resource
   scale          Set a new size for a Deployment, ReplicaSet, Replication Controller, or Job
   autoscale      Auto-scale a Deployment, ReplicaSet, or ReplicationController
 
-Cluster Management Commands:
+# Cluster Management Commands:
   certificate    Modify certificate resources.
   cluster-info   Display cluster info
   top            Display Resource (CPU/Memory/Storage) usage.
@@ -1221,7 +1222,7 @@ Cluster Management Commands:
   drain          Drain node in preparation for maintenance
   taint          Update the taints on one or more nodes
 
-Troubleshooting and Debugging Commands:
+# Troubleshooting and Debugging Commands:
   describe       Show details of a specific resource or group of resources
   logs           Print the logs for a container in a pod
   attach         Attach to a running container
@@ -1231,7 +1232,7 @@ Troubleshooting and Debugging Commands:
   cp             Copy files and directories to and from containers.
   auth           Inspect authorization
 
-Advanced Commands:
+# Advanced Commands:
   diff           Diff live version against would-be applied version
   apply          Apply a configuration to a resource by filename or stdin
   patch          Update field(s) of a resource using strategic merge patch
@@ -1240,12 +1241,12 @@ Advanced Commands:
   convert        Convert config files between different API versions
   kustomize      Build a kustomization target from a directory or a remote url.
 
-Settings Commands:
+# Settings Commands:
   label          Update the labels on a resource
   annotate       Update the annotations on a resource
   completion     Output shell completion code for the specified shell (bash or zsh)
 
-Other Commands:
+# Other Commands:
   api-resources  Print the supported API resources on the server
   api-versions   Print the supported API versions on the server, in the form of "group/version"
   config         Modify kubeconfig files
@@ -1254,9 +1255,6 @@ Other Commands:
 
 Usage:
   kubectl [flags] [options]
-
-
-
 
 # Managing Compute Resources for Containers
 https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
@@ -1543,12 +1541,12 @@ $ kubectl get services
 
 
 
-$ vi helloworld-deploy-service.yml  <= use 1 single file to create for all ONCE(deployment + service)
+$ vi helloworld-deploy-service.yml  <= use 1(single) file to create for all ONCE(deployment + service)
 -------------------------------------------------------------------------------------------
 apiVersion: apps/v1beta1
-kind: Deployment				# <= Deployment	
+kind: Deployment					### <= Deployment	
 metadata:
-  name: helloworld-all-deployment	#<= Deployment name
+  name: helloworld-all-deployment	### <= Deployment name
 spec:
   selector:
     matchLabels:
@@ -1566,7 +1564,7 @@ spec:
         - containerPort: 80
 ---
 apiVersion: v1
-kind: Service				# <= Service
+kind: Service					### <= Service
 metadata:
   name: helloworld-all-service
 spec:
@@ -1615,16 +1613,274 @@ $ kubectl get deployment
 		NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
 		helloworld-all-deployment   3/3     3            3           10m
 
-	
--------------------------------------------------------------------------------------------
+	$ kubectl get pods
+		NAME                                         READY   STATUS              RESTARTS   AGE
+		helloworld-all-deployment-8597f99986-grtnf   0/1     ContainerCreating   0          3s
+		helloworld-all-deployment-8597f99986-klltv   1/1     Running             0          11h
+		helloworld-all-deployment-8597f99986-s8kt8   0/1     ContainerCreating   0          3s
+
+
 
 -------------------------------------------------------------------------------------------
+18 Add, change, and delete labels
 -------------------------------------------------------------------------------------------
+	1. Adding labels during build time
+	2. Viewing labels
+	2. Adding labels to running pods
+	3. Deleting a label
+	4. Searching by labels
+	5. Extending the label concept to deployments/services
+
+$ kubectl create -f helloworld-pod-with-labels.yml
+---------------------------------------------------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: helloworld
+  labels:
+    env: production
+    author: karthequian
+    application_type: ui
+    release-version: "1.0"
+spec:
+  containers:
+  - name: helloworld
+    image: karthequian/helloworld:latest
+---------------------------------------------------------
+$ kubectl get pods
+NAME                                         READY   STATUS    RESTARTS   AGE
+helloworld                                   1/1     Running   0          4s
+
+$ kubectl get pods --show-labels
+helloworld   1/1     Running   0  23m  application_type=ui,author=karthequian,env=production,release-version=1.0
+
+# Relabel
+$ kubectl label pod/helloworld app=helloworldapp --overwrite
 	
--------------------------------------------------------------------------------------------
+$ kubectl get pods --show-labels		
+helloworld   1/1     Running   0  23m  "app=helloworldapp",application_type=ui,author=karthequian,env=production,release-version=1.0
+													  
+$ kubectl label pod/helloworld app-			<= app- minus
+	pod/helloworld labeled
+$ kubectl get pods --show-labels
+	helloworld     1/1     Running    0   32m     application_type=ui,author=karthequian,env=production,release-version=1.0
+												<app=helloworldapp <=deleted >	
+												
+# Search by label
+$ vi sample-infrastructure-with-labels												
+---------------------------------------------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: homepage-dev
+  labels:
+    env: development
+    dev-lead: karthik
+    team: web
+    application_type: ui
+    release-version: "12.0"
+spec:
+  containers:
+  - name: helloworld
+    image: karthequian/helloworld:latest
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: homepage-staging
+  name: homepage-prod
+  name: cart-dev
+  name: cart-stg
+  name: cart-live
+  .... 
+  name: ordering-dev
+  ...
+---
+---------------------------------------------------
+$ kubectl crate -f sample-infrastructure-with-labels.yml
+	----------------------------
+	pod/homepage-dev created
+	pod/homepage-staging created
+	pod/homepage-prod created
+	pod/login-dev created
+	pod/login-staging created
+	pod/login-prod created
+	pod/cart-dev created
+	pod/cart-staging created
+	pod/cart-prod created
+	pod/social-dev created
+	pod/social-staging created
+	pod/social-prod created
+	pod/catalog-dev created
+	pod/catalog-staging created
+	pod/catalog-prod created
+	pod/quote-dev created
+	pod/quote-staging created
+	pod/quote-prod created
+	pod/ordering-dev created
+	pod/ordering-staging created
+	pod/ordering-prod created
+	----------------------------
+
+$ kubectl get pods
+$ kubectl get pods --show-labels
+
+quote-dev       1/1     Running  9    98m     application_type=api,dev-lead=amy,env=development,release-version=2.0,team=ecommerce
+quote-prod      1/1     Running  9    98m     application_type=api,dev-lead=amy,env=production,release-version=1.0,team=ecommerce
+quote-staging   1/1     Running  9    98m     application_type=api,dev-lead=amy,env=staging,release-version=2.0,team=ecommerce
+social-dev      1/1     Running  9    98m     application_type=api,dev-lead=carisa,env=development,release-version=2.0,team=marketing
+social-prod     1/1     Running  9    98m     application_type=api,dev-lead=marketing,env=production,release-version=1.0,team=marketing
+social-staging  1/1     Running  9    98m     application_type=api,dev-lead=marketing,env=staging,release-version=1.0,team=marketing
+
+# label search
+
+$ kubectl get pods --selector env=production
+	
+	NAME            READY   STATUS    RESTARTS   AGE
+	cart-prod       1/1     Running   11         115m
+	catalog-prod    1/1     Running   11         115m
+	helloworld      1/1     Running   0          167m
+	homepage-prod   1/1     Running   0          115m
+	login-prod      1/1     Running   11         115m
+	ordering-prod   1/1     Running   11         115m
+	quote-prod      1/1     Running   11         115m
+	social-prod     1/1     Running   11         115m
+	
+	
+$ kubectl get pods --selector env=production --show-labels
+
+	NAME            READY   STATUS    RESTARTS   AGE    LABELS
+	cart-prod       1/1     Running   11         115m   application_type=api,dev-lead=carisa,env=production,release-version=1.0,team=ecommerce
+	catalog-prod    1/1     Running   11         115m   application_type=api,dev-lead=daniel,env=production,release-version=4.0,team=ecommerce
+	helloworld      1/1     Running   0          168m   application_type=ui,author=karthequian,env=production,release-version=1.0
+	homepage-prod   1/1     Running   0          115m   application_type=ui,dev-lead=karthik,env=production,release-version=12.0,team=web
+	login-prod      1/1     Running   11         115m   application_type=api,dev-lead=jim,env=production,release-version=1.0,team=auth
+	ordering-prod   1/1     Running   11         115m   application_type=backend,dev-lead=chen,env=production,release-version=2.0,team=purchasing
+	quote-prod      1/1     Running   11         115m   application_type=api,dev-lead=amy,env=production,release-version=1.0,team=ecommerce
+	social-prod     1/1     Running   11         115m   application_type=api,dev-lead=marketing,env=production,release-version=1.0,team=marketing
+
+$ kubectl get pods --selector env=production --show-labels | grep env
+
+
+# Only list for dev-lead=carisa	<= user name
+$ kubectl get pods --selector dev-lead=carisa  					# <= dev name
+	kubectl get pods --selector dev-lead=carisa
+	NAME           READY   STATUS    RESTARTS   AGE
+	cart-dev       1/1     Running   11         118m
+	cart-prod      1/1     Running   11         118m
+	cart-staging   1/1     Running   11         118m
+	social-dev     1/1     Running   11         118m
+
+# Multiple Labels
+$ kubectl get pods --selector dev-lead=karthik,env=staging
+	NAME               READY   STATUS    RESTARTS   AGE
+	homepage-staging   1/1     Running   0          119m
+
+# != Not Equal to karthik
+$ kubectl get pods --selector dev-lead!=karthik,env=staging
+	NAME               READY   STATUS    RESTARTS   AGE
+	cart-staging       1/1     Running   14         143m
+	catalog-staging    1/1     Running   14         143m
+	login-staging      1/1     Running   14         143m
+	ordering-staging   1/1     Running   14         143m
+	quote-staging      1/1     Running   14         143m
+	social-staging     1/1     Running   14         143m
+	
+$ kubectl get pods --selector dev-lead!=karthik,env=staging --show-labels
+NAME               READY   STATUS    RESTARTS   AGE    LABELS
+cart-staging       1/1     Running   14         144m   application_type=api,dev-lead=carisa,env=staging,release-version=1.0,team=ecommerce
+catalog-staging    1/1     Running   14         144m   application_type=api,dev-lead=daniel,env=staging,release-version=4.0,team=ecommerce
+
+# 
+$ kubectl get pods -l 'release-version in (1.0,2.0)'
+
+NAME               READY   STATUS    RESTARTS   AGE
+cart-dev           1/1     Running   14         145m
+...
+social-staging     1/1     Running   14         145m
+
+
+$ kubectl get pods -l 'release-version in (1.0,2.0)' --show-labels
+NAME               READY   STATUS    RESTARTS   AGE     LABELS
+cart-dev           1/1     Running   14         145m    application_type=api,dev-lead=carisa,env=development,release-version=1.0,team=ecommerce
+cart-prod          1/1     Running   14         145m    application_type=api,dev-lead=carisa,env=production,release-version=1.0,team=ecommerce
+cart-staging       1/1     Running   14         145m    application_type=api,dev-lead=carisa,env=staging,release-version=1.0,team=ecommerce
+
+										vvv
+$ kubectl get pods -l 'release-version notin (1.0,2.0)' --show-labels
+homepage-dev      1/1     Running 0    147m    application_type=ui,dev-lead=karthik,env=development,release-version=12.0,team=web
+homepage-prod     1/1     Running 0    147m    application_type=ui,dev-lead=karthik,env=production,release-version=12.0,team=web
+homepage-staging  1/1     Running 0    147m    application_type=ui,dev-lead=karthik,env=staging,release-version=12.0,team=web
+	
+	
+# Delete
+
+$ kubectl get pods --show-labes
+
+$ kubectl delete pods -l dev-lead=karthik    		<-   '-l , --select' 
+
+$ kubectl get pods --show-labels
+
+# Delete all dev-lead 
+$ kubectl delete pods -l dev-lead		    		<-   '-l , --select' 
+
+
+
+
+
+
 
 -------------------------------------------------------------------------------------------
+20 Application health checks
 -------------------------------------------------------------------------------------------
+$ vi  helloworld-with-probes.yml
+-------------------------------------------------------------------------------------------
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: helloworld-deployment-with-probe
+spec:
+  selector:
+    matchLabels:
+      app: helloworld
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - name: helloworld
+        image: karthequian/helloworld:latest
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          # length of time to wait for a pod to initialize
+          # after pod startup, before applying health checking
+          initialDelaySeconds: 10
+          # Amount of time to wait before timing out
+          initialDelaySeconds: 1
+          # Probe for http
+          httpGet:
+            # Path to probe
+            path: /
+            # Port to probe
+            port: 80
+        livenessProbe:
+          # length of time to wait for a pod to initialize
+          # after pod startup, before applying health checking
+          initialDelaySeconds: 100
+          # Amount of time to wait before timing out
+          timeoutSeconds: 1
+          # Probe for http
+          httpGet:
+            # Path to probe
+            path: /
+            # Port to probe
+            port: 80
+
+-------------------------------------------------------------------------------------------
+
 	
 -------------------------------------------------------------------------------------------
 
