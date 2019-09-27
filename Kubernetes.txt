@@ -1991,8 +1991,8 @@ spec:
   selector:
     matchLabels:
       app: helloworld
-  replicas: 3 # tells deployment to run 3 pods matching the template
-  template: # create pods using pod definition in this template
+  replicas: 3 	# <- tells deployment to run 3 pods matching the template
+  template: 	# <- create pods using pod definition in this template
     metadata:
       labels:
         app: helloworld
@@ -2029,11 +2029,11 @@ $ kubectl get service navbar-service
 	http://134.209.6.242:31583/	
 
 # Manually Change the images 'BLUE'
-  $ kubectl set image deployment/navbar-deployment helloworld=karthequian/helloworld:blue
+  $ kubectl set image deployment/navbar-deployment helloworld=karthequian/helloworld:blue   <==BLUE
 	-> deployment.extensions/navbar-deployment image updated
 
 # Change back to 'BLACK'	
-  $ kubectl set image deployment/navbar-deployment helloworld=karthequian/helloworld:black
+  $ kubectl set image deployment/navbar-deployment helloworld=karthequian/helloworld:black  <==BLACK
 	-> deployment.extensions/navbar-deployment image updated
 
 $ kubectl get pods
@@ -2046,11 +2046,18 @@ $ kubectl get pods/navbar-deployment-64664cc7-4f2gh
 	navbar-deployment-64664cc7-4f2gh   1/1     Running   0          8m7s
 
 $ kubectl get deployments
+	NAME                                             READY   UP-TO-DATE   AVAILABLE   AGE
 	navbar-deployment                                3/3     3            3           114m
 
+$ kubectl get replicaset 
+$ kubectl get rs
 
 
 -------------------------------------------------------------------------------------------
+# Upgrade deployment
+
+
+
 -------------------------------------------------------------------------------------------
 	
 -------------------------------------------------------------------------------------------

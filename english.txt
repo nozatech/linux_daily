@@ -736,6 +736,10 @@ agnostic		<- [n] A person who believes that nothing is known or can be known of 
 agree with		<- lunch has turned out to not agree with me
 
 airworthy		<- [adj] (of an aircraft) safe to fly.
+
+allege			<- [v 얼레쥐][진술하다, 주장하다]claim or assert that someone has done something illegal 
+							or wrong, typically without proof that this is the case.
+					"Whistleblower alleges Trump White House moved records onto separate network"
 						
 alleviate 		<- provide physical relief, as from pain alliviate
 				"this is inappropriate sizing and aggravated my condition rather than alleviate it." 
@@ -1547,14 +1551,15 @@ emergent		<-[adj] in the process of coming into being or becoming prominent(impo
 					
 encompasses 	<- surround and have or hold within
 
-endeavro		<- [v]try hard to do or achieve something.
+endeavor		<- [v]try hard to do or achieve something.
 					"he is endeavoring to help the Third World"
 					synonyms:	try, attempt, seek, undertake, aspire, aim, set out
 
 				   [noun] an attempt to achieve a goal.
 					"an endeavor to reduce serious injury"
 					synonyms:	attempt, try, bid, effort, venture
-					
+						"It's quite an endeavor to respond to complaints within 24 hours."
+						
 					
 enlighten		<- give (someone) greater knowledge and understanding about a subject or situation.
 					"Christopher had not enlightened Frances as to their relationship"
@@ -1605,6 +1610,9 @@ exploit			<- make full use of and derive benefit from (a resource).…을 (이�
 					synonyms:	utilize, harness, use, make use of, turn/put to good use, 
 							make the most of, capitalize on, benefit from; informal cash in on
 						"we should exploit this new technology"
+
+extortion		<- (금전 등의) 강요, 강청; 강탈(rapacity); (터무니없는 이자·가격 등의) 억지 청구, 강청, 착취
+					[법률] (공무원의 직권 남용에 의한) 재물 강요(죄).
 
 exuberance		<- The quality of being full of energy, excitement, and cheerfulness; ebullience.
 				1.	풍부2.	윤택3.	넘쳐흐름
@@ -1783,6 +1791,9 @@ have out		<- to settle (a matter) or come to (a final decision), esp by fighting
 hay fever or asthma		<- 호흡기 알르레기
 				<- an allergy caused by pollen or dust in which the mucous membranes of the eyes 
 					and nose are itchy and inflamed, causing a runny nose and watery eyes.
+
+head and shoulders	<- be[stand] head and shoulders above ‥
+					  (구어/idiom) …보다 훨씬 뛰어나다
 				
 hedge			<- [n] a fence or boundary formed by closely growing bushes or shrubs.
 				
@@ -1900,6 +1911,14 @@ impasse			<- a situation in which no progress is possible, especially because of
 
 imperative		<- 반드시 …해야 하는
 
+impeachment		<- 1.	탄핵 2.	비난 3.	파면
+				charge      - 		혐의, 충전, 기소, 요금, 책임
+				prosecution - 		검찰, 기소, 검사, 고발, 처벌
+				accusation  -		비난, 고소, 고발, 죄, 기소
+				indictment  -		기소, 고발, 비난
+				summons     - 		소집, 호출 명령, 출두를 명하다		
+				incrimination -     죄를 씌움, 유죄로 함, 고소
+				
 implicitly		<- unclearly
 
 implicate		<- (종종 수동태) …을 [범죄 등에] 말려들게 하다, 
