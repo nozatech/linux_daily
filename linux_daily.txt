@@ -7596,7 +7596,8 @@ https://www.linode.com/docs/security/firewalls/introduction-to-firewalld-on-cent
 	
 # Install firewalld
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7
-
+	
+	# Installation
 	$ sudo yum install firewalld -y	
 	$ sudo systemctl start firewalld
 	$ sudo systemctl status firewalld
@@ -7788,8 +7789,8 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-
 		sudo firewall-cmd --zone=privateDNS --permanent --add-service=dns
 		
 		# After permanently applying these your rules, you can restart your network and reload your firewall service:
-		sudo systemctl restart network
-		sudo systemctl reload firewalld
+			sudo systemctl restart network
+			sudo systemctl reload firewalld
 	
 		# Validate that the correct zones were assigned:
 		$ firewall-cmd --get-active-zones
@@ -7798,22 +7799,41 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-
 	
 		You have successfully set up your own zones! If you want to make one of these zones the default for other interfaces, 
 		remember to configure that behavior with the --set-default-zone= parameter:
+		
 		sudo firewall-cmd --set-default-zone=publicweb
 	
+# firewalld	
+	sudo firewall-cmd --list-all-zones
 	
 	# Add source IP, port, protocol
 	sudo firewall-cmd --add-rich-rule='rule family="ipv4" source address="172.28.60.42/32" port port=21 protocol="tcp" accept'
 	sudo firewall-cmd --add-rich-rule='rule family="ipv4" source address="172.28.60.45/32" port port=21 protocol="tcp" accept'
 	
-	sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="172.28.60.42/32" port port=21 protocol="tcp" accept'
+	sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="74.217.69.194"    service name="https" accept'
+	sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="74.217.69.192/26" service name="https" accept'
 	sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="172.28.60.45/32" port port=21 protocol="tcp" accept'
+	sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="172.28.60.45/32" port port=22 protocol="tcp" accept'
 	
 	
+	sudo firewall-cmd --permanent --zone=public --add-source=74.217.69.194
+	sudo firewall-cmd --permanent --zone=public --add-source=74.217.69.192/26
+	
+	# holds default configurations like default zones and common services. Avoid updating them because those files will be 
+		overwritten by each firewalld package update.
+	/usr/lib/FirewallD 
+	
+	# holds system configuration files.
+	# Manually add IP address
+	sudo vi /etc/firewalld/zones/public.xml 
 	
 	
+	sudo iptables -A INPUT -m state -s 74.217.69.194    --state NEW -j ACCEPT
 	
-	
-	
+	https://game-api-stg.pacman.bner.ro
+	206.81.17.204
+	 
+	https://game-api-live.pacman.namcowireless.com/login
+	162.243.43.113
 	
 -----------------------------------------------------------------
 # email setup and send out from shell ###

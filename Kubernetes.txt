@@ -1093,7 +1093,7 @@ kubectl port-forward --namespace ${NAMESPACE} ${APP_INSTANCE_NAME}-grafana-0 300
 ----------------------------------------------------------------------------------------
 kube-apiserver
 		The Kubernetes API server validates and configures data for the api objects which 
-		include pods, services, replicationcontrollers, and others. The API Server services 
+		include pods, services, replication controllers, and others. The API Server services 
 		REST operations and provides the frontend to the cluster’s shared state through 
 		which all other components interact.
 		
@@ -1977,11 +1977,12 @@ docker.io/karthequian/helloworld     black               bb894a7bfd14        23 
 
 $ sudo docker pull karthequian/helloworld:black
 $ sudo docker pull karthequian/helloworld:blue
+
 -------------------------------------------------------------------------------------------
 
 # Record rollout HISTORY
 
-$ kubectl create -f helloworld-black.yml --record		<- '--record' for keeping version for REVERT
+$ kubectl create -f helloworld-black.yml --record		<- '--record' keeping version for 'REVERT'
 -------------------------------------------------------------------------------------------
 apiVersion: apps/v1beta1
 kind: Deployment
@@ -2019,8 +2020,6 @@ spec:
     app: helloworld
 -------------------------------------------------------------------------------------------
 
-
-
 $ kubectl get service navbar-service
 	NAME             TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
 	navbar-service   NodePort   10.105.89.125   <none>        80:31583/TCP   68m
@@ -2036,6 +2035,11 @@ $ kubectl get service navbar-service
   $ kubectl set image deployment/navbar-deployment helloworld=karthequian/helloworld:black  <==BLACK
 	-> deployment.extensions/navbar-deployment image updated
 
+
+$ kubectl get deployments
+	NAME                                             READY   UP-TO-DATE   AVAILABLE   AGE
+	navbar-deployment                                3/3     3            3           114m
+
 $ kubectl get pods
 	navbar-deployment-64664cc7-4f2gh                                  1/1     Running            0          9m49s
 	navbar-deployment-64664cc7-kfngg                                  1/1     Running            0          9m50s
@@ -2045,40 +2049,186 @@ $ kubectl get pods/navbar-deployment-64664cc7-4f2gh
 	NAME                               READY   STATUS    RESTARTS   AGE
 	navbar-deployment-64664cc7-4f2gh   1/1     Running   0          8m7s
 
-$ kubectl get deployments
-	NAME                                             READY   UP-TO-DATE   AVAILABLE   AGE
-	navbar-deployment                                3/3     3            3           114m
 
-$ kubectl get replicaset 
-$ kubectl get rs
+
+# check replica sets
+	$ kubectl get replicasets
+	$ kubectl get rs
 
 
 -------------------------------------------------------------------------------------------
 # Upgrade deployment
 
-
-
--------------------------------------------------------------------------------------------
+# Rollout History
+$ kubectl rollout history deployment/navbar-deployment
+	REVISION  CHANGE-CAUSE
+	1 kubectl create --filename=helloworld-black.yaml --record=true
+	2 kubectl set image deployment/navbar-deployment helloworld=karthquian/helloworld:blue
 	
+$ kubectl rollout undo deployment/navbar-deployment
+	deployment.extensions/navbar-deployment rolled back
+	
+	# Check 
+	http://134.209.6.242:31583/	
+	Blue => Black
+
+# Go to specific version
+	$kubectl rollout undo deployment/navbar-deployment --to-revision=
+
+-------------------------------------------------------------------------------------------
+# 22. Troubleshooting	
+-------------------------------------------------------------------------------------------
+$ kubectl get deployments
+	NAME                                             READY   UP-TO-DATE   AVAILABLE   AGE
+	helloworld-all-deployment                        3/3     3            3           9d
+	helloworld-deployment-with-bad-liveness-probe    1/1     1            1           8d
+	helloworld-deployment-with-bad-readiness-probe   0/1     1          >>0<<         8d
+
+$ Kubectl get pods
+	NAME                                                              READY   STATUS             RESTARTS   AGE
+	helloworld-deployment-with-bad-liveness-probe-575d9d65c5-m7dhx    0/1     CrashLoopBackOff   4523       9d
+
+$ kubectl describe deployment helloworld-deployment-with-bad-readiness-probe
+-------------------------------------------------------------------------------------------
+Name:                   helloworld-deployment-with-bad-readiness-probe
+Namespace:              default
+CreationTimestamp:      Tue, 24 Sep 2019 23:17:24 +0000
+Labels:                 app=helloworld
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=helloworld
+Replicas:               1 desired | 1 updated | 1 total | 0 available | 1 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=helloworld
+  Containers:
+   helloworld:
+    Image:        karthequian/helloworld:latest
+    Port:         80/TCP
+    Host Port:    0/TCP
+    Readiness:    http-get http://:90/ delay=1s timeout=1s period=10s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      False   MinimumReplicasUnavailable
+  Progressing    False   ProgressDeadlineExceeded
+OldReplicaSets:  <none>
+NewReplicaSet:   helloworld-deployment-with-bad-readiness-probe-865c6c4796 (1/1 replicas created)
+Events:          <none>
+
+-------------------------------------------------------------------------------------------
+$ kubectl get pods 
+$ kubectl describe pods/helloworld-deployment-with-bad-liveness-probe-575d9d65c5-m7dhx 
+-------------------------------------------------------------------------------------------
+Name:           helloworld-deployment-with-bad-liveness-probe-575d9d65c5-m7dhx
+Namespace:      default
+Priority:       0
+Node:           wc1/157.230.128.122
+Start Time:     Tue, 24 Sep 2019 22:56:59 +0000
+Labels:         app=helloworld
+                pod-template-hash=575d9d65c5
+Annotations:    <none>
+Status:         Running
+IP:             10.244.1.29
+Controlled By:  ReplicaSet/helloworld-deployment-with-bad-liveness-probe-575d9d65c5
+Containers:
+  helloworld:
+    Container ID:   docker://65eef3d2ef7e42671b7aa6fe95e3004f2213f3e8f988c74a06614a1396c44f03
+    Image:          karthequian/helloworld:latest
+    Image ID:       docker-pullable://docker.io/karthequian/helloworld@sha256:da1f6fc8eb1d02af1a2eaf48111c945c4e0fe5ac5476048db99a109a865531fd
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Thu, 03 Oct 2019 23:02:29 +0000
+      Finished:     Thu, 03 Oct 2019 23:02:48 +0000
+    Ready:          False
+    Restart Count:  4525
+    Liveness:       http-get http://:90/ delay=10s timeout=1s period=5s #success=1 #failure=2
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-4k6x2 (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             False
+  ContainersReady   False
+  PodScheduled      True
+Volumes:
+  default-token-4k6x2:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-4k6x2
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events: 
+    Type     Reason     Age                    From          Message
+    ----     ------     ----                   ----          -------
+>>  Warning  BackOff    13m (x55291 over 9d)   kubelet, wc1  Back-off restarting failed container
+>>  Warning  Unhealthy  8m59s (x9048 over 9d)  kubelet, wc1  Liveness probe failed: Get http://10.244.1.29:90/: 
+																dial tcp 10.244.1.29:90: connect: connection refused
+    Normal   Pulling    3m50s (x4525 over 9d)  kubelet, wc1  Pulling image "karthequian/helloworld:latest"
+-------------------------------------------------------------------------------------------
+$ kubectl get deployments
+$ Kubectl get pods
+	NAME                                                              READY   STATUS             RESTARTS   AGE
+	helloworld-deployment-with-bad-liveness-probe-575d9d65c5-m7dhx    0/1     CrashLoopBackOff   4523       9d
+
+# Get Pod's Log
+$ kubctl logs h <tab>
+$ kubctl logs helloworld-deployment-with-bad-liveness-probe-575d9d65c5-m7dhx
+
+# Specific pod's Nginx log
+$ kubectl logs helloworld-deployment-with-probe-65d8597578-vwkb7
+
+# Log in to a POD
+# for Sigle pod
+$ kubectl exec -it    helloworld-deployment-with-probe-65d8597578-vwkb7    /bin/bash
+	root@helloworld-deployment-with-probe-65d8597578-vwkb7:/#
+
+	root@helloworld-deployment-with-probe-65d8597578-vwkb7:/# ps -ef
+	UID        PID  PPID  C STIME TTY          TIME CMD
+	root         1     0  0 Sep24 ?        00:00:00 nginx: master process nginx
+	nobody       8     1  0 Sep24 ?        00:00:54 nginx: worker process
+	root         9     0  0 23:46 ?        00:00:00 /bin/bash
+	root        21     9  0 23:47 ?        00:00:00 ps -ef
+
+# Multi Pods 
+$ kubectl exec -it helloworld-deployment-with-probe-65d8597578-vwkb7 -c helloworld /bin/bash
+
+-------------------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------

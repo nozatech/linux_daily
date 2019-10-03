@@ -1114,6 +1114,8 @@ chauffeur		<- SHōˈfər 쇼펄
 				   [v] drive (a car or a passenger in a car), typically as part of one's job.
 						"she insisted on being chauffeured around" ...의 운전사로 일하다
 
+cheeky			<- impudent or irreverent, typically in an endearing or amusing way.
+					1.	건방진 2.	뻔뻔한 3.	볼이 처진
 					
 chime in		<- join in harmoniously. 맞장구 치다
 					"He started to laugh, and we chimed in"
@@ -1162,6 +1164,9 @@ commence		<- [v] begin; start.
 					synonyms:	begin, start;
 					
 commencing 		<- starting, beginning
+
+commual			<- 공동 사회의; 공동으로 사용하는
+					communal access 
 
 comply			<- [v] (of a person or group) act in accordance with a wish or command.
 					"we are unable to comply with your request"
@@ -1368,6 +1373,9 @@ despair			<- the complete loss or absence of hope.
 					synonyms:	hopelessness, disheartenment, discouragement, desperation, distress, anguish, unhappiness
 					antonyms:	hope, joy
 					"He rallies from the despair"
+
+devoid			<- [adj]entirely lacking or free from. 결여된
+					"In the past, commercial vans were devoid of any cutting-edge safety technologies."
 
 digress			<- off the subject
 
@@ -1676,6 +1684,7 @@ flair			<- a special or instinctive aptitude(재능) or ability for doing someth
 					"she dressed with flair"
 					synonyms:	style, stylishness, panache, dash, elan, poise, elegance
 
+flattery		<- 1.	아첨 2.	아부 [불가산] 아첨, 아부, 추켜세우기; [가산] 겉치렛말, 감언.
 								
 flock			<-[v] gerund or present participle: flocking
 					congregate or mass in a flock or large group.
@@ -1714,6 +1723,11 @@ frenzy			<- a state or period of uncontrolled excitement or wild behavior.
 					"Doreen worked herself into a frenzy of rage"
 					synonyms:	hysteria, madness, mania, delirium, feverishness, fever, wildness, 
 								agitation, turmoil, tumult;
+								
+fret			<- 1.초조하게 하다 	be constantly or visibly worried or anxious.
+					"she fretted about the cost of groceries"
+					"Stocks fell as investors fretted once again over the state of the U.S. economy.	"
+							
 full-fledged	<- completely developed or established; of full status.
 
 fullfillment	<- a sense of fulfillment 성취감,충족감, (기한 등의) 만료, 완료
@@ -3101,6 +3115,9 @@ tacky			<- (of glue, paint, or other substances) retaining a slightly sticky fee
 					synonyms:	tawdry, tasteless, kitsch, kitschy, vulgar, crude, garish, gaudy, 
 							showy, trashy, cheesy, cheap, common, second-rate
 
+take it up		<- take it upon oneself to do(1.	…하는 것을 받아들이다2.	…한다고 자신이 결정하다)
+					"McConnell: ‘I would have no choice but to take it up’ if House votes to impeach Trump"
+
 takeaway		<- a key fact, point, or idea to be remembered, 
 					typically one emerging from a discussion or meeting.
 					"What is your takeaway?"
@@ -3247,6 +3264,21 @@ vetted				"proposals for vetting large takeover bids"
 vigilant		<- [adj]keeping careful watch for possible danger or difficulties.
 					"Owners should be vigilant about.."
 
+revision vs. version
+	version     <- 기존의 데이터가 잘못되었거나 개선되어야 할 경우 수정하는 경우에 사용합니다. 
+					따라서 버전 4까지 있다면, 버전 1, 버전 2, 버전 3은 쓸모가 없는 데이터입니다. 
+
+	revision	<- [개정판] 버전과 달리 새 모델이나 파생 모델을 만들 때 사용합니다. 
+				예를 들어 2008년형 자동차를 약간 수정하여 2009년형으로 만들거나, 기본형 사양을 고급형 
+				사양으로 만든 것 등입니다. 이 경우 버전과 달리 모든 리비전의 데이터가 다 필요합니다. 
+				즉 2008년 리비전도 필요하고 2009년 리비전도 필요하며, 기본형 사양도 필요하고 고급형 
+				사양도 필요합니다.
+				
+				새로운 리비전을 만들 때에는 최신 버전으로 만듭니다. 새로 만들어진 리비전에서 수정 작업이 
+				일어나면 버전이 올라갑니다. 
+				예를 들어 버전이 1,2,3,... 으로 변하고 리비전이 A,B,C,...로 변한다고 하면, 
+				다음과 같이 버전과 리비전이 변화합니다.
+				 ex) A.1 → A.2 → A.3 → A.4 → B.1→ B.2 → B.3 → C.1 → C.2 → C.3 → C.4 → C.5 → 
 
 					
 # W
