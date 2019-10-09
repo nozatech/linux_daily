@@ -1,0 +1,77 @@
+Pritunl VPN Server setup on Ubuntu 18
+
+
+Installation
+https://docs.pritunl.com/docs/installation
+sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list << EOF
+deb https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse
+EOF
+
+sudo tee /etc/apt/sources.list.d/pritunl.list << EOF
+deb http://repo.pritunl.com/stable/apt bionic main
+EOF
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
+sudo apt-get update
+sudo apt-get --assume-yes install pritunl mongodb-server
+sudo systemctl start pritunl mongodb
+sudo systemctl enable pritunl mongodb
+
+Configuration
+https://docs.pritunl.com/docs/configuration-5
+
+Increase Open File Limit
+sudo lsof -p `pgrep pritunl-web` | wc -l 
+
+sudo sh -c 'echo "* hard nofile 64000" >> /etc/security/limits.conf'
+sudo sh -c 'echo "* soft nofile 64000" >> /etc/security/limits.conf'
+sudo sh -c 'echo "root hard nofile 64000" >> /etc/security/limits.conf'
+sudo sh -c 'echo "root soft nofile 64000" >> /etc/security/limits.conf'
+
+
+Database Setup
+https://localhost
+
+pritunl setup-key
+cb9edec21b5249cdb72fe0877dcb0a6c
+
+sudo pritunl default-password
+	[undefined][2019-10-08 21:29:19,310][INFO] Getting default administrator password
+	Administrator default password:
+	  username: "pritunl"
+	  password: "hIbBADFG1ksg"
+	  
+Add Server
+Add / attach / Restart	  
+https://www.howtoforge.com/how-to-setup-a-vpn-server-using-pritunl-on-ubuntu-1804/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
