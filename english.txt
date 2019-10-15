@@ -657,6 +657,11 @@ Abroad 			<- [adverb]
 					"servicemen returning from abroad"
 					
 adjourn			<- 1.	휴회하다2.	회의를 연기하다
+
+ado 			<- 야단법석, 소동
+					So without further ado, would you like to hear it? (TED)
+					그럼, 이것 저것 할 것 없이, 연주를 한번 들어보시겠어요?
+
 								
 adorn 			<- make more beautiful or attractive.
 					synonyms: decorate, embellish, ornament, enhance;
@@ -1047,6 +1052,11 @@ bravado			<- [브러바도우] 허세, 허장성세(swaggering); 무모함
 breadth			<- the distance or measurement from side to side of something; width.
 					"a black sweater outlined the breadth of his shoulders"
 					synonyms:	width, broadness, wideness, thickness
+
+bore vs boring	
+				I am bored to death <- 지루해 죽겠다	<- 수동태
+				I am boring			<- 나는 지루한 사람이다.
+				You are not bored, you are boring.  <- 너는 지루한게 아니라 지루한 사람이다.
 
 boobs			<- 가슴
 
@@ -2470,6 +2480,8 @@ pay their respect	<- make a polite visit to someone.
 								
 pep talk		<- a talk intended to make someone feel more courageous or enthusiastic.
 
+Per diem 		<- (Latin for "per day" or "for each day") 
+
 pertinent		<- relevant or applicable to a particular matter; apposite. synonyms:relevant
 
 periodontists	<- 치주염
@@ -3127,6 +3139,13 @@ takeaway		<- a key fact, point, or idea to be remembered,
 
 talk of the town <-	"Her conduct became the talk of the town."	그녀의 행실이 마을 사람들의 입에 올랐다
 
+tally			<- Counted
+				  "The aggregate cost of the outage on northern California businesses has yet to be tallied."
+				  
+				<- (표에서 한쪽이 다른 쪽에) 부합하다; [이야기 등이] […과] 일치하다, 맞다[with ‥]
+				  "The goods do not tally with the invoice."
+				   
+					
 tariff			<- a tax or duty to be paid on a particular class of imports or exports.
 					synonyms:	tax, duty, toll, excise, levy, charge, rate, fee, countervail; price list
 						"the lower tariffs across the border"

@@ -88,11 +88,41 @@ Last Backup				 FAILURE	 							Restored Data
 	
 	
 	
+
+# Availability Sets	
 	
 	
+# Fault Domain (Fault Tolerance)
+	https://docs.microsoft.com/en-us/windows-server/failover-clustering/fault-domains
+	A fault domain is a set of hardware components that share a single point of failure.
 	
+	Fault Doamin-1				Fault Doamin-2
+		Rack-1						Rack-2
+		VM1	 <=Availability Sets=>	VM2
+
+Azure continues to distribute them across fault domains.
+	VM	 Fault Domain
+	IIS1	0
+	IIS2	1
+
+
+# Update Domain	
+	Sometimes you need to update your app, or Microsoft needs to update the host on which your VM(s) are running.
 	
-	
+	VM	 Fault Domain	Update Domain
+	Srv0	0				0
+	Srv1	1				1
+	Srv2	0				2
+	Srv3	1				3
+	Srv4	0				4
+	Srv5	1				0
+	Srv6	0				1
+	Srv7	1				2
+	Srv8	0				3
+	Srv9	1				4
+	Srv10	0				0
+	Srv11	1				1
+	…you can see that UDs loop around a count of 5 (0, 1, 2, 3, 4).
 	
 	
 	
