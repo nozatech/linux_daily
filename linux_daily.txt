@@ -2014,10 +2014,10 @@ $ sha256sum       go1.10.3.linux-amd64 .tar.gz
 	F. Proxy
 		$ curl -p 
 	
-	G.	$ curl -u username:password URL
+	G. $ curl -u username:password URL
 	
-	H.  Verbose
-		$ curl -v http://google.com
+	H. Verbose
+	  $ curl -v http://google.com
 	
 	I. $ curl dict://dict.org/d:bash
 	
@@ -2052,6 +2052,15 @@ Delete
 	$ curl -u 
 
 	$ curl -X GET -H 
+	
+--------------------------------------------------------------------------	
+https://docs.microsoft.com/en-us/appcenter/transition/moving/bulk
+
+$ curl -X POST \												# -X <- request
+    -F "apps[]=69e641a599f64e4c8adbb221b05a5ab1" \				# -F <-form
+    -F "apps[]=096dea13e6244155b0a7733328dcff57" \
+    -H "X-HockeyAppToken: 182a66de22s040l591s014645b9d7c87" \ 	# -H	<- header
+    https://rink.hockeyapp.net/api/2/apps/move
 
 	
 ----------------------------------------------------------------------------------------------------
@@ -9707,6 +9716,8 @@ $ reboot
 	$ ip route | grep default
 
 	$ route -n
+	
+	$ netstat -r -n
 	
 	
 	
