@@ -1169,6 +1169,9 @@ clobber			<- hit (someone) hard.
 coffer			<- a strongbox or small chest for holding valuables.
 					synonyms:	strongbox, money box, cashbox, money chest, treasure chest, safe;
 
+collate			<- 1.	대조하다 2.	맞추어 보다 3.	비교하다
+collation		<- 1.	대조 2.	간단한 식사 3.	조사	
+
 commence		<- [v] begin; start.
 					"his design team commenced work"
 					synonyms:	begin, start;
@@ -1348,10 +1351,11 @@ deep state		<- a body of people, typically influential members of government age
 					미국에서는 막후세력을 가리킬 때 그림자 정부(shadow government) 등의 표현을 주로 사용해 왔다.
 
 
-deluge			<- [델유쥐] a severe flood.
+deluge			<- [델유쥐] a severe flood. 1.	쇄도 2.	대홍수 3.	엄청나다 4.	붓다 5.	범람
 					synonyms:	flood, flash flood, torrent; spate
 					"many homes were swept away by the deluge"
 					"Stocks end the day little changed as Wall Street braces for a corporate earnings deluge"
+					"Dow rises 100 points as Procter & Gamble and United Technologies lead earnings deluge"
 
 delve			<- [verb] reach inside a receptacle and search for something.[탐구하다]
 					"she delved in her pocket"
@@ -2937,7 +2941,8 @@ sliver			<- [none] a small, thin, narrow piece of something cut or split off a l
 						"a sliver of cheese"
 						synonyms:	splinter, shard, shiver, chip, flake, shred, scrap, 
 									shaving, paring, piece, fragment
-				"slivers of glass"				
+					"slivers of glass"	
+					"We have no hesitation owning at least a sliver position in this stock."
 				
 shortcomings	<- a fault or failure(flaw) to meet a certain standard, typically in a person's character, 
 				a plan, or a system.(단점)

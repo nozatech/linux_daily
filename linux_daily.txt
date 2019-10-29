@@ -9701,6 +9701,15 @@ $ reboot
 # yum clean all  <-clean all cache
 
 
+# gateway (find out default gateway)
+	https://linuxhandbook.com/find-gateway-linux/
+	
+	$ ip route | grep default
+
+	$ route -n
+	
+	
+	
 
 ### Static IP setup
 
