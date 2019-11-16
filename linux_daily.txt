@@ -7817,15 +7817,27 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-
 	# Add source IP, port, protocol
 	sudo firewall-cmd --add-rich-rule='rule family="ipv4" source address="172.28.60.42/32" port port=21 protocol="tcp" accept'
 	sudo firewall-cmd --add-rich-rule='rule family="ipv4" source address="172.28.60.45/32" port port=21 protocol="tcp" accept'
+	# June
+	sudo firewall-cmd --add-rich-rule='rule family="ipv4" source address="182.72.103.190" service name="ssh" accept'
 	
 	sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="74.217.69.194"    service name="https" accept'
 	sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="74.217.69.192/26" service name="https" accept'
 	sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="172.28.60.45/32" port port=21 protocol="tcp" accept'
 	sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="172.28.60.45/32" port port=22 protocol="tcp" accept'
 	
+	# Add full access from single ip
+	https://serverfault.com/questions/890370/open-all-ports-to-specific-ip-with-firewalld
 	
 	sudo firewall-cmd --permanent --zone=public --add-source=74.217.69.194
 	sudo firewall-cmd --permanent --zone=public --add-source=74.217.69.192/26
+	
+	sudo firewall-cmd --zone=trusted --add-source=64.39.96.0/20 <-???
+	# June
+	sudo firewall-cmd --zone=trusted --add-source=182.72.103.190
+	# temmp Jine's jumpbox
+	sudo firewall-cmd --zone=trusted --add-source=167.172.202.23
+	
+	
 	
 	# holds default configurations like default zones and common services. Avoid updating them because those files will be 
 		overwritten by each firewalld package update.
@@ -7835,8 +7847,15 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-
 	# Manually add IP address
 	sudo vi /etc/firewalld/zones/public.xml 
 	
+	# BNEA
+	sudo iptables -A INPUT -m state -s 74.217.69.194     --state NEW -j ACCEPT
+	sudo iptables -A INPUT -m state -s 74.217.69.192     --state NEW -j ACCEPT
 	
-	sudo iptables -A INPUT -m state -s 74.217.69.194    --state NEW -j ACCEPT
+	# JUNE
+	sudo iptables -A INPUT -m state -s 182.72.103.190    --state NEW -j ACCEPT			
+	
+
+
 	
 	https://game-api-stg.pacman.bner.ro
 	206.81.17.204
@@ -7950,9 +7969,21 @@ $ crontab -e
 	# NO - Use the system generated From: address
 	FromLineOverride=YES
 	-----------------------------------------------------------------------------------
-		
-		
+---------------------------------------------------------------
+# RSA Key
+# ECDSA Key
 
+a RSA key will work everywhere. ECDSA support is newer
+https://security.stackexchange.com/questions/23383/ssh-key-type-rsa-dsa-ecdsa-are-there-easy-answers-for-which-to-choose-when
+---------------------------------------------------------------		
+	RSA - A public-key encryption technology developed by RSA Data Security, Inc. 
+		The acronym stands for Rivest, Shamir, and Adelman, the inventors of the technique. 
+		
+	ECDSA <- (Elliptical curve Digital Signature Algorithm) is an Elliptic Curve implementation 
+			of DSA (Digital Signature Algorithm).
+			
+			
+			
 ---------------------------------------------------------------
 # SSL 
 # TLS
@@ -9799,16 +9830,47 @@ DNS2=8.8.4.4
 -A INPUT -m state -s 89.37.124.86/29   --state NEW -j ACCEPT
 -A INPUT -m state -s 162.243.3.59/32   --state NEW -j ACCEPT
 #
-### RR-US-Lobby ###
-##
-#
-###
 -A INPUT -j REJECT --reject-with icmp-host-prohibited
 -A FORWARD -j REJECT --reject-with icmp-host-prohibited
 ###
 COMMIT
 
 
+# BNEA's New iptables 
+---------------------------------------------------------------------------
+# sample configuration for iptables service
+# you can edit this manually or use system-config-firewall
+# please do not ask us to add additional ports/services to this default configuration
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo   -j ACCEPT
+
+### BNGA office ###
+-A INPUT -m state -s 65.87.26.0/24    --state NEW -j ACCEPT
+-A INPUT -m state -s 64.95.137.172/32 --state NEW -j ACCEPT
+-A INPUT -m state -s 74.217.69.194    --state NEW -j ACCEPT
+-A INPUT -m state -s 74.217.69.192    --state NEW -j ACCEPT
+-A INPUT -m state -s 107.0.238.61    --state NEW -j ACCEPT
+
+# June
+-A INPUT -m state -s 182.72.103.190 --state NEW -j ACCEPT
+
+#
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+---------------------------------------------------------------------------
+# Ubuntu-18 Iptables install
+https://www.digitalocean.com/community/tutorials/how-to-implement-a-basic-firewall-template-with-iptables-on-ubuntu-14-04
+
+sudo apt-get update
+sudo apt-get install iptables-persistent
+vi /etc/iptables/rules.v4
+sudo service netfilter-persistent start
 
 
 # CentOS7 Iptables install
@@ -9818,7 +9880,7 @@ sudo systemctl enable iptables
 sudo systemctl mask   firewalld
 sudo systemctl stop   firewalld
 
-sudo systemctl start   iptables
+sudo systemctl start  iptables
 sudo systemctl stop   iptables
 sudo systemctl status iptables
 
@@ -10536,9 +10598,65 @@ DC/OS (the Distributed Cloud Operating System) is an open-source, distributed op
 
 
 
+----------------------------------------------------------------------------------------------------	   
+Pritunl VPN Server setup on Ubuntu 18
+
+----------------------------------------------------------------------------------------------------
+Installation
+https://docs.pritunl.com/docs/installation
+----------------------------------------------------------------------------------------------------
+sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list << EOF
+deb https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse
+EOF
+
+sudo tee /etc/apt/sources.list.d/pritunl.list << EOF
+deb http://repo.pritunl.com/stable/apt bionic main
+EOF
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
+sudo apt-get update
+sudo apt-get --assume-yes install pritunl mongodb-server
+
+sudo systemctl start pritunl mongodb
+sudo systemctl enable pritunl mongodb
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Configuration
+https://docs.pritunl.com/docs/configuration-5
+----------------------------------------------------------------------------------------------------
+# Increase Open File Limit
+
+sudo lsof -p `pgrep pritunl-web` | wc -l 
+
+sudo sh -c 'echo "* hard nofile 64000" >> /etc/security/limits.conf'
+sudo sh -c 'echo "* soft nofile 64000" >> /etc/security/limits.conf'
+sudo sh -c 'echo "root hard nofile 64000" >> /etc/security/limits.conf'
+sudo sh -c 'echo "root soft nofile 64000" >> /etc/security/limits.conf'
+
+----------------------------------------------------------------------------------------------------
+Database Setup
+https://localhost
+----------------------------------------------------------------------------------------------------
+
+pritunl setup-key
+cb9edec21b5249cdb72fe0877dcb0a6c
+
+sudo pritunl default-password
+	[undefined][2019-10-08 21:29:19,310][INFO] Getting default administrator password
+	Administrator default password:
+	  username: "pritunl"
+	  password: "VoWfKxbAqrpz"
+	  apark/linuxpassword
+	  
+Add Server
+Add / attach / Restart	  
+https://www.howtoforge.com/how-to-setup-a-vpn-server-using-pritunl-on-ubuntu-1804/   
 	   
-	   
-	   
+----------------------------------------------------------------------------------------------------
+
+
 	   
 	   
 	

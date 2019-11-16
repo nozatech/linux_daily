@@ -2,6 +2,11 @@ Jenkins vs Travis
 http://stackoverflow.com/questions/32422264/jenkins-vs-travis-ci-which-one-would-you-use-for-a-open-source-project
 
 
+### Create an user account
+1. Create from 	-> Manage Users
+2. Add user 	-> Configure Global Security
+3. Give permissions
+
 ### Restart from Web
 	https://Jenkins_address:8080/safeRestart		<= Restart from web
 	
@@ -518,12 +523,46 @@ Force Jenkins to quiet mode after specified minutes		180
 ##########
 ### P4 ###   Binary needs to be installed 
 ##########
+https://community.perforce.com/s/article/2600
+Error Msg "Certificate date range invalid."
+*** Server's SSL Cert has been expired ***
+
+$ p4 -V
+------------------------------------------------------------------------------
+Perforce - The Fast Software Configuration Management System.
+.....
+Version of OpenSSL Libraries: OpenSSL 1.0.2k  26 Jan 2017
+Rev. P4/MACOSX105X86_64/2016.2/1509269 (2017/04/27).
+------------------------------------------------------------------------------
+
+$ p4 -ztag info
+******* WARNING P4PORT IDENTIFICATION HAS CHANGED! *******
+It is possible that someone is intercepting your connection
+to the Perforce P4PORT '10.10.100.80:1666'
+If this is not a scheduled key change, then you should contact
+your Perforce administrator.
+The fingerprint for the mismatched key sent to your client is
+DC:5C:8F:....
+To allow connection use the 'p4 trust' command.
 
 
 $ export P4PORT=ssl:10.xx.xx.xx:1666
 
 # Install
 $ p4 trust -i 38:E7:8C:AE:8F:5C:FE:97:xxxxx
+
+$ p4 trust -i DC:5C:8F:46:FC:.... 		### 11/1/2019 by CLI###
+******* WARNING P4PORT IDENTIFICATION HAS CHANGED! *******
+It is possible that someone is intercepting your connection
+to the Perforce P4PORT '10.10.100.80:1666'
+If this is not a scheduled key change, then you should contact
+your Perforce administrator.
+The fingerprint for the mismatched key sent to your client is
+DC:5C:8F:4....
+Added trust for P4PORT 'ssl:10.10.100.80:1666' (10.10.100.80:1666)
+
+
+
 # Installed List
 $ p4 trust -l
 $ p4 info
@@ -552,6 +591,56 @@ Case Handling: sensitive
 $ p4 -u jenkins_user_id login -a	
 
 
+
+
+
+
+--------------------------------------------------------------------------------
+$ p4 --help
+--------------------------------------------------------------------------------
+Usage:
+
+    p4 [ options ] command [ arg ... ]
+
+    Options:
+        -b batchsize    specify a batchsize to use with -x (default 128)
+        -h -?           print this message
+        -s              prepend message type to each line of server output
+        -v level        debug modes
+        -V              print client version
+        -x file         read named files as xargs
+        -G              format input/output as marshalled Python objects
+        -z tag          format output as 'tagged' (like fstat)
+        -I              show progress indicators
+
+        -c client       set client name (default $P4CLIENT)
+        -C charset      set character set (default $P4CHARSET)
+        -d dir          set current directory for relative paths
+        -H host         set host name (default $P4HOST)
+        -L language     set message language (default $P4LANGUAGE)
+        -p port         set server port (default $P4PORT)
+        -P password     set user's password (default $P4PASSWD)
+        -q              suppress all info messages
+        -r retries      Retry command if network times out
+        -Q charset      set command character set (default $P4COMMANDCHARSET)
+        -u user         set user's username (default $P4USER)
+
+    The Perforce client 'p4' requires a valid Perforce server network
+    address 'P4PORT' for most operations, including its help system.
+    Without an explicit P4PORT, the Perforce client will use a default
+    P4PORT of 'perforce:1666'.  That is to say, the host is named 'perforce'
+    and the port number is '1666'.
+
+    The Perforce client accepts configuration via command-line options,
+    P4CONFIG files, environmental variables and on Windows, the registry.
+    Run 'p4 set' to list the client's current settings.
+
+    Run 'p4 help' to ask the Perforce server for information on commands.
+
+    For administrators, see the Perforce server's help output in 'p4d -h'.
+
+    For further information, visit the documentation at www.perforce.com.
+--------------------------------------------------------------------------------
 
 OSX: 
 ### How to start/stop/restart launchd services from the command line?
@@ -881,7 +970,9 @@ Authorization
 
 
 
-
+Google Manual Resign
+https://github.com/onbiron/apk-resigner
+apk-resigner/signapk.sh PacMan_STAGING.apk       AndroidKeys.key          android            androiddebugkey
 
 
 

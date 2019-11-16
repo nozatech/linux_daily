@@ -1149,8 +1149,16 @@ cleaning your clock <- To thoroughly trounce(혼내주다), defeat, or beat up s
 					https://writingexplained.org/idiom-dictionary/clean-your-clock
 					
 					
+clinch			<- 매듭짓다
+					confirm or settle (a contract or bargain).
+					"to clinch a business deal"
+					"(clinches) (미·속어) 차의 브레이크."
+					"Clinch Knot (낚시)도래 매듭법"
 					
-cliche			<- a phrase or opinion that is 'overused' and betrays a lack of original thought. 진부한
+cliche			<- [클리세]진부한 
+					a phrase or opinion that is 'overused' and betrays a lack of original thought. 
+
+			
 
 cling			<- (of a person or animal) hold on tightly to.
 					매달리다, 집착하다, 고수하다
@@ -2552,7 +2560,8 @@ prerogative		<- [n][prəˈräɡədiv] [프라게티브][특권]
 					to no restriction.
 					noun: royal prerogative
 
-prestige		<- [명성]widespread respect and admiration felt for someone or something on the basis of a 
+prestige		<- 1.명성 2.위신 3.품격
+					widespread respect and admiration felt for someone or something on the basis of a 
 					perception of their achievements or quality.
 					"he experienced a tremendous increase in prestige following his victory"
 					synonyms: status, standing, stature, prestigiousness, reputation, repute, regard, fame, 
@@ -2568,7 +2577,7 @@ Procedure		<-  procedure; a process or series of acts especially of a practical 
 					2. Procedures are discontinuous / Processes flow to conclusion
 					3. Procedures define the sequence of steps to excute a task / 
 						Processes transform inputs into outputs through use of resources
-				legal[court] procedure 
+						legal[court] procedure 
 
 Process			<-[n]a series of actions or steps taken in order to achieve a particular end. 방법
 					"military operations could jeopardize the peace process"
