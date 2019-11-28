@@ -5,6 +5,10 @@ P069100
 # Tested and found blown fuse for cooling fan V7, caused by
 	excessive AMP draw of cooling fan. Replace fan and fuse(Replaced but not working)
 
+OEM Fan Part
+https://www.audiusaparts.com/auto-parts/2012/audi/a6-quattro/prestige-trim/3-0l-v6-gas-engine/cooling-system-cat/cooling-fan-scat
+
+
 #2.
 P162400
 	Requirement - malfunction lamp on active/static
@@ -24,3 +28,12 @@ P045600
 	=> Could be gas cap????
 
 
+#4. 00256
+	A/C Pressure/Temperature Sensor (G395) 
+	
+#5 U111300
+	Active/Statc
+	Function limitation due to received malfunction value
+	https://www.justanswer.com/audi/cw1fl-no-ac-fault-code-u111-300-function-limited-receive.html
+	https://www.audiworld.com/forums/a6-s6-c6-platform-discussion-58/ac-pressure-sensor-help-2845586/
+	https://www.audizine.com/forum/showthread.php/656877-AC-Help-00256-A-C-Pressure-Temperature-Sensor-(G395)

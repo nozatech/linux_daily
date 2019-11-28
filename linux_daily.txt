@@ -7009,9 +7009,24 @@ EXAMPLES
 	A pts is a Psuedo  Terminal Slave  (ssh, xterm, screen connection).
 	
 	$ who
+
 		apark    pts/1        2017-08-01 18:32 (65.87.26.124)
 		apark    pts/0        2017-08-01 16:25 (65.87.26.124)   <= need to kill!!!
-		
+	
+	$ who -la
+		           system boot  2019-11-19 21:12
+           run-level 5  2019-11-19 21:12
+			LOGIN      ttyS0        2019-11-19 21:12               853 id=tyS0
+			LOGIN      tty1         2019-11-19 21:12               866 id=tty1
+			apark    + pts/0        2019-11-19 21:13 01:55        1130 (74.217.69.194)
+			apark    + pts/1        2019-11-19 21:17 01:44        1130 (107.0.238.61)
+			apark    + pts/2        2019-11-19 21:37 01:23        1831 (107.0.238.61)
+			apark    + pts/3        2019-11-19 21:49 01:17        1966 (74.217.69.194)
+			apark    + pts/4        2019-11-19 22:42   .          2267 (74.217.69.194)
+	
+	# Kill TTY/PTS	
+	  $ kill -9 1130 1130 ....
+	
 	$ ps -ft pts/0				<= -f <-full-format listing,  -t <- by tty
 								
 		UID        PID  PPID  C STIME TTY          TIME CMD
@@ -7020,6 +7035,20 @@ EXAMPLES
 	$ kill -9  28110 28129 
 	$ who
 		apark    pts/1        2017-08-01 18:32 (65.87.26.124)
+
+# kill or terminate unwanted tty/pts sessions
+	https://www.crybit.com/kill-unwanted-tty-unix/
+	PTS <- stands for pseudo terminal.
+	
+	# Who is doing what
+	who <- show who is logged on
+	w	<- Show who is logged on and what they are doing.
+	who -la		<- l(login) -a(all)
+	
+	# your tty/pts session
+	tty		<- print the file name of the terminal connected to standard input
+	ps 		<- 
+	finger	<- user information lookup program
 
 		
 ###  How to kill zombie processTo suppress error message

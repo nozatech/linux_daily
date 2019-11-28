@@ -2163,7 +2163,12 @@ lash out		<- 1.채찍질하다2.강타하다
 lash out at		<- 후려갈기려 들다
 lash out on something	<- ~에 돈을 흥청망청 쓰다
 
+
+last few days vs past few days
+
+
 legitimacy		<- [레짓트머씨 합법성, 전통 ability to be defended with logic or justification; validity.
+legit
 
 					
 lie vs lay
