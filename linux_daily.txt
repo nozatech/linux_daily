@@ -936,6 +936,15 @@ https://mywiki.wooledge.org/BashGuide/CommandsAndArguments
 ### Vi environment set-up (setting)
 # vimrc
 -----------------------------------------------------------------------------------
+  # Open two files Right | Left
+	$ vi -o  file1 file2
+	
+  # Open tow files Up | Down
+	$ vi -O  file1 file2
+
+  # Save all files
+    :wqall   <-Write and Quit All files
+
 
 # Cywin
 Copy vimrc_expample.vim file from Ubuntu14 and create a ~/.vimrc file in Windows.
@@ -1011,15 +1020,27 @@ colorscheme desert
 	pp	<=	shift+p to paste
 
 
-	# Undo & Redo
-	Esc u
-	Ctrl + r
+	# Undo 
+	  Esc + u
+	
+	# Redo
+	  Ctrl + r
 	
 	# Change String like "SED" stream editor
 	http://vim.wikia.com/wiki/Search_and_replace
 	
 	# within VI, change 'foo' to 'bar'
-	:%s/foo/bar/g				<=
+	:%s/foo/bar/gc				<= c <- confirm first
+		
+	# Substitude(Replace) from domain1 to domain2	
+    :%s/domain1.com/domain2.com/g
+	FROM: ssl_certificate         /etc/nginx/ssl/domain1.com/server.crt;
+	TO:   ssl_certificate         /etc/nginx/ssl/domain2.com/server.crt;
+	
+	
+	
+	
+	
 	
 	# Search with in VI
 	/search_word
@@ -1718,19 +1739,23 @@ https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryptio
 	https://www.tecmint.com/add-users-in-linux/
 	# https://askubuntu.com/questions/345974/what-is-the-difference-between-adduser-and-useradd
 	
-	addduser / deluser 			<= Perl script that creates /home/user & ssh in shell
-								   add user with full profile and info (pass, quota, permission, etc.)
+	**$ addduser 			<= Perl script that creates /home/user & ssh in shell
+	**$ deluser 	     	    add user with full profile and info (pass, quota, permission, etc.)
 	
-	useradd / userdel /usermod 	<= low level utilities at add user name Only, No Shell, 
+		# System ID creation
+		$ useradd  
+		$ userdel  
+		$ usermod 			<= low level utilities at add user name Only, No Shell, 
 		# https://www.tecmint.com/add-users-in-linux/
 	
 	
-	# Create these two users, and use the --no-create-home and --shell /bin/false options 
-		so that these users can't log into the server.
-	$ useradd --no-create-home --shell /bin/false prometheus
-	$ useradd --no-create-home --shell /bin/false node_exporter
-
-	$ useradd --no-create-home -s /bin/false alertmanager
+	# Create system user accounts using 	--no-create-home 
+											--shell /bin/false 
+		options so that these users can't log into the server.
+		
+	$ useradd --no-create-home --shell /bin/false prometheus		<- System id
+	$ useradd --no-create-home --shell /bin/false node_exporter		<- System id
+	$ useradd --no-create-home -s      /bin/false alertmanager		<- System id
 
 --------------------------------------------------------------------------		
 # Change user name
@@ -1743,6 +1768,14 @@ https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryptio
 	
 	$ ln -s    /home/newname   /home/oldname   
 	
+
+--------------------------------------------------------------------------		
+# userdel: user is currently used by process 749 
+--------------------------------------------------------------------------
+	$ ps aux | grep 749
+	$ kill -15 749
+	$ killall -TERM -u userName
+	$
 
 --------------------------------------------------------------------------		
 # sudo
@@ -5694,13 +5727,59 @@ DNS3=10.128.18.63
 
 
 	
-62. Ubuntu Package Clean ### Package Clean ###
+62. Ubuntu/Debian Package Clean ### Package Clean ###
+https://www.cyberciti.biz/tips/linux-debian-package-management-cheat-sheet.html
+Both Debian and Ubuntu Linux provides a number of package management tools.
 
-# Installed package search
-  
-  apt-cache search mysql
+	apt-get : APT(Advanced Package Tool). It supports installing packages over 
+			  internet using ftp or http protocols. 
+	dpkg 	: Debian packaging tool which can be used to install, query, uninstall packages.
+	apt 	: Interactive and recommended command for all users.
+	aptitude: It is a text-based interface to the Debian GNU/Linux package system.
+	synaptic: GUI front end for APT
+	
+		rpm <- Red hat Linux package names 
+		deb <- Debian package names
+	
+	ex: apache_1.3.31-6_i386.deb
+			apache : Package name
+			1.3.31-6 : Version number
+			i386 : Hardware Platform on which this package will run (i386 == intel x86 based system)
+			.deb : Extension that suggest it is a Debian package
+	
+# Ubuntu/Debian package Search
+  apt-cache - query the APT cache
 
-  sudo apt-get update
+  syntax: apt-cache search {package-name} 
+		$ apt-cache search mysql
+		$ apt-cache search vim
+	
+  Syntax:  apt-get 		<- APT package handling utility -- command-line interface
+	
+		$ apt-get install -y mysql
+		$ apt-get install -y vim
+
+# Package Remove
+	# removes package but keeps the configuration files
+		Syntax: apt-get remove  				
+	
+	# removes package & configuration files	
+		$ sudo apt-get --purge remove {package-name}
+
+# Package Remove + Dependencies
+	# apt-get autoremove
+	# apt-get --purge autoremove
+
+# Update my system
+	# apt-get update
+	# apt-get upgrade
+
+# Upgrade individual package 	
+	$ apt-get install bash
+	$ apt-get install vim
+	
+	$ yum update bash
+	
 
 # Backing ups:
   sudo cp /etc/apt/sources.list /etc/apt/sources.list.original
@@ -5786,6 +5865,32 @@ sudo apt-get update
 	### MySQL remote login with different port ###
 	$ mysql -uroot -p`cat ~/.mysql_shadow` -h localhost -P 7506
 
+	
+	# To install only mysql (client) you should execute
+		$ yum install mysql
+		$ yum install mariadb
+	
+	# To install mysql client and mysql server:
+		$ yum install mysql mysql-server
+		$ yum install mysql mariadb-server
+	
+	grant all privileges on *.* to apark@localhost identified by 'passwd' with grant option;
+	GRANT ALL ON apark.* TO 'apark'@'74.217.69.194' IDENTIFIED BY 'apark';
+	
+	MariaDB [(none)]> select user, host from mysql.user
+    -> ;
++----------------------+---------------+
+| user                 | host          |
++----------------------+---------------+
+| root                 | 127.0.0.1     |
+| apark                | 74.217.69.194 |		<= access from remote ip
+| root                 | ::1           |
+| apark                | localhost     |		<= access from local
+| root                 | localhost     |
++----------------------+---------------+
+
+	
+	
 	
 	
 	
@@ -7032,6 +7137,7 @@ EXAMPLES
 		UID        PID  PPID  C STIME TTY          TIME CMD
 		apark    28110 28109  0 16:25 pts/0    00:00:00 -bash
 		root     28129 28110  0 16:25 pts/0    00:00:00 sudo su
+	
 	$ kill -9  28110 28129 
 	$ who
 		apark    pts/1        2017-08-01 18:32 (65.87.26.124)
@@ -10686,6 +10792,46 @@ https://www.howtoforge.com/how-to-setup-a-vpn-server-using-pritunl-on-ubuntu-180
 ----------------------------------------------------------------------------------------------------
 
 
+Rabbitmq
+
+Publisher  <======> Rabitmq(jobs1~4) <======>   Comsumer job1 
+												Comsumer job2 
+												Comsumer job3 
+												Comsumer job4 
+
+	Consumer <- In general in messaging a consumer is an application (or application instance) that 
+				consumes messages. The same application can also publish messages and thus be 
+				a publisher at the same time.
 	   
-	   
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	

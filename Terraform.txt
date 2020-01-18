@@ -1,0 +1,133 @@
+Terraform
+
+$ wget https://releases.hashicorp.com/terraform/0.12.19/terraform_0.12.19_linux_amd64.zip
+$ echo $PATH
+$ sudo unzip terraform_0.12.19_linux_amd64.zip -d /usr/bin
+
+
+
+
+
+terraform plan -var "do_token=${DO_PAT}" \
+	-var "pub_key=$HOME/.ssh/id_rsa.pub" \
+	-var "pvt_key=$HOME/.ssh/id_rsa" \
+	-var "ssh_fingerprint=dc:2d:35:xx4:c7:8f:4a" 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+==========================================================================================================	
+[apark@i7 loadbalancer]$ terraform init
+
+
+2020/01/17 09:55:21 [WARN] Invalid log level: "1". Defaulting to level: TRACE. Valid levels are: [TRACE DEBUG INFO WARN ERROR]
+2020/01/17 09:55:21 [INFO] Terraform version: 0.12.19
+2020/01/17 09:55:21 [INFO] Go runtime version: go1.12.13
+2020/01/17 09:55:21 [INFO] CLI args: []string{"/usr/bin/terraform", "init"}
+2020/01/17 09:55:21 [DEBUG] Attempting to open CLI config file: /home/apark/.terraformrc
+2020/01/17 09:55:21 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2020/01/17 09:55:21 [INFO] CLI command args: []string{"init"}
+
+Initializing the backend...
+2020/01/17 09:55:21 [TRACE] Meta.Backend: no config given or present on disk, so returning nil config
+2020/01/17 09:55:21 [TRACE] Meta.Backend: backend has not previously been initialized in this working directory
+2020/01/17 09:55:21 [DEBUG] New state was assigned lineage "557f37e8-073e-5c63-68df-70224de09849"
+2020/01/17 09:55:21 [TRACE] Meta.Backend: using default local state only (no backend configuration, and no existing initialized backend)
+2020/01/17 09:55:21 [TRACE] Meta.Backend: instantiated backend of type <nil>
+2020/01/17 09:55:21 [DEBUG] checking for provider in "."
+2020/01/17 09:55:21 [DEBUG] checking for provider in "/usr/bin"
+2020/01/17 09:55:21 [DEBUG] checking for provisioner in "."
+2020/01/17 09:55:21 [DEBUG] checking for provisioner in "/usr/bin"
+2020/01/17 09:55:21 [INFO] Failed to read plugin lock file .terraform/plugins/linux_amd64/lock.json: open .terraform/plugins/linux_amd64/lock.json: no such file or directory
+2020/01/17 09:55:21 [TRACE] Meta.Backend: backend <nil> does not support operations, so wrapping it in a local backend
+2020/01/17 09:55:21 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2020/01/17 09:55:21 [TRACE] statemgr.Filesystem: reading initial snapshot from terraform.tfstate
+2020/01/17 09:55:21 [TRACE] statemgr.Filesystem: snapshot file has nil snapshot, but that's okay
+2020/01/17 09:55:21 [TRACE] statemgr.Filesystem: read nil snapshot
+2020/01/17 09:55:21 [DEBUG] checking for provider in "."
+2020/01/17 09:55:21 [DEBUG] checking for provider in "/usr/bin"
+
+2020/01/17 09:55:21 [DEBUG] plugin requirements: "digitalocean"=""
+2020/01/17 09:55:21 [DEBUG] Service discovery for registry.terraform.io at https://registry.terraform.io/.well-known/terraform.json
+Initializing provider plugins...
+2020/01/17 09:55:21 [TRACE] HTTP client GET request to https://registry.terraform.io/.well-known/terraform.json
+- Checking for available provider plugins...
+2020/01/17 09:55:21 [DEBUG] fetching provider versions from "https://registry.terraform.io/v1/providers/-/digitalocean/versions"
+2020/01/17 09:55:21 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/-/digitalocean/versions
+2020/01/17 09:55:21 [DEBUG] fetching provider location from "https://registry.terraform.io/v1/providers/terraform-providers/digitalocean/1.12.0/download/linux/amd64"
+2020/01/17 09:55:21 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/terraform-providers/digitalocean/1.12.0/download/linux/amd64
+2020/01/17 09:55:21 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-digitalocean/1.12.0/terraform-provider-digitalocean_1.12.0_SHA256SUMS
+2020/01/17 09:55:21 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-digitalocean/1.12.0/terraform-provider-digitalocean_1.12.0_SHA256SUMS.sig
+2020/01/17 09:55:21 [DEBUG] verified GPG signature with key from HashiCorp Security <security@hashicorp.com>
+2020/01/17 09:55:21 [DEBUG] getting provider "digitalocean" (terraform-providers/digitalocean) version "1.12.0"
+2020/01/17 09:55:21 [DEBUG] plugin cache is disabled, so downloading digitalocean 1.12.0 from https://releases.hashicorp.com/terraform-provider-digitalocean/1.12.0/terraform-provider-digitalocean_1.12.0_linux_amd64.zip?checksum=sha256:df456a00365b2ea267a8eaee2a2404bbd352419cad32e39708addcf0680116ee
+- Downloading plugin for provider "digitalocean" (terraform-providers/digitalocean) 1.12.0...
+2020/01/17 09:55:21 [TRACE] HTTP client HEAD request to https://releases.hashicorp.com/terraform-provider-digitalocean/1.12.0/terraform-provider-digitalocean_1.12.0_linux_amd64.zip
+2020/01/17 09:55:21 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-digitalocean/1.12.0/terraform-provider-digitalocean_1.12.0_linux_amd64.zip
+2020/01/17 09:55:23 [DEBUG] looking for the digitalocean 1.12.0 plugin we just installed
+2020/01/17 09:55:23 [DEBUG] checking for provider in ".terraform/plugins/linux_amd64"
+2020/01/17 09:55:23 [DEBUG] found provider "terraform-provider-digitalocean_v1.12.0_x4"
+2020/01/17 09:55:23 [DEBUG] all plugins found discovery.PluginMetaSet{discovery.PluginMeta{Name:"digitalocean", Version:"1.12.0", Path:"/home/apark/terraform-learning/loadbalancer/.terraform/plugins/linux_amd64/terraform-provider-digitalocean_v1.12.0_x4"}:struct {}{}}
+2020/01/17 09:55:23 [DEBUG] filtered plugins discovery.PluginMetaSet{discovery.PluginMeta{Name:"digitalocean", Version:"1.12.0", Path:"/home/apark/terraform-learning/loadbalancer/.terraform/plugins/linux_amd64/terraform-provider-digitalocean_v1.12.0_x4"}:struct {}{}}
+2020/01/17 09:55:23 [DEBUG] checking for provider in "."
+2020/01/17 09:55:23 [DEBUG] checking for provider in "/usr/bin"
+2020/01/17 09:55:23 [DEBUG] checking for provider in ".terraform/plugins/linux_amd64"
+2020/01/17 09:55:23 [DEBUG] found provider "terraform-provider-digitalocean_v1.12.0_x4"
+2020/01/17 09:55:23 [DEBUG] found valid plugin: "digitalocean", "1.12.0", "/home/apark/terraform-learning/loadbalancer/.terraform/plugins/linux_amd64/terraform-provider-digitalocean_v1.12.0_x4"
+2020/01/17 09:55:23 [DEBUG] checking for provider in ".terraform/plugins/linux_amd64"
+2020/01/17 09:55:23 [DEBUG] found provider "terraform-provider-digitalocean_v1.12.0_x4"
+
+The following providers do not have any version constraints in configuration,
+so the latest version was installed.
+
+To prevent automatic upgrades to new major versions that may contain breaking
+changes, it is recommended to add version = "..." constraints to the
+corresponding provider blocks in configuration, with the constraint strings
+suggested below.
+
+* provider.digitalocean: version = "~> 1.12"
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.

@@ -1328,6 +1328,12 @@ dapper			<- [adj](typically of a man) neat and trim in dress, appearance, or bea
 					synonyms:	smart, spruce, trim, debonair, neat, well dressed, well groomed, 
 					well turned out, elegant, chic, dashing
 
+
+dearth			<-[…의] 부족, 결핍[of ‥]
+				“Not really anyone is saying this is a bad economic resolution,” U.S. Bankruptcy Judge Dennis 
+				Montali said at Tuesday’s hearing in San Francisco, noting a dearth of strong objections.
+				
+
 decapitate		<- cut off the head of (a person or animal).
 
 deceit 			<- fake or trick
@@ -1641,6 +1647,9 @@ exploit			<- make full use of and derive benefit from (a resource).…을 (이�
 							make the most of, capitalize on, benefit from; informal cash in on
 						"we should exploit this new technology"
 
+extravaganza	<- [ikstrӕvəgǽnzə: 익스트래버~갠저] 화려한 쇼[행사].
+
+
 extortion		<- (금전 등의) 강요, 강청; 강탈(rapacity); (터무니없는 이자·가격 등의) 억지 청구, 강청, 착취
 					[법률] (공무원의 직권 남용에 의한) 재물 강요(죄).
 
@@ -1655,7 +1664,7 @@ faculty			<- an aptitude or talent for doing something.
 
 fall through 	<- your plans didn't work out for some reaso, didn't work out
 
-fallcy			<- [팰러씨](격식) 잘못된 생각, 착오, 오신(誤信); 그릇된 논의, 궤변(sophism)
+fallacy			<- [팰러씨](격식) 잘못된 생각, 착오, 오신(誤信); 그릇된 논의, 궤변(sophism)
 
 fasting			<- 단식
 
@@ -2031,7 +2040,7 @@ interim			<- [n 인터럼]the intervening(중개) time. 당분간의
 					
 					[adverb] meanwhile.	
 					
-					
+interpolation	<- 1.	삽입2.	삽입된 사항3.	내삽법					
 
 intervene		<- [v] come between so as to prevent or alter a result or course of events.
 						1.사이에 오는2.개재하는
@@ -2155,7 +2164,8 @@ lapse			<-[noun] a temporary failure of concentration, memory, or judgment.
 					"a lapse of concentration in the second set cost her the match"
 					"The U.S. Department of Transportation launched a probe into whether there were lapses(과실) 
 					in the approval of Boeing 737 Max planes after a fatal crash in Indonesia last October, 
-					The Wall Street Journal reported on Sunday.
+					The Wall Street Journal reported on Sunday.To	Subject	Sent	Size	Categories	
+Toshihiko Naoe; Lee Hsiao; Kaz Miyata; Help Desk BNEA	Re: FW: Approval: blanket PO for LiquidWeb Mobile Services & Rackspace Cloud Servers	12/4/2019	42 KB		
 					synonyms:	failure, failing, slip, error, mistake, blunder, fault, omission, 
 					oversight, negligence, dereliction; More
 
@@ -2165,6 +2175,12 @@ lash out on something	<- ~에 돈을 흥청망청 쓰다
 
 
 last few days vs past few days
+
+
+leg up			<- 말(horse)에 오르는 사람을 돕는다는 뜻에서 유래한 
+					`give somebody a leg up' 
+					누구를 돕거나 유리한 입장에 놓이게 할 때 관용적으로 많이 사용된다
+head start		<- `give somebody a head start' `누구를 앞서도록 돕는다
 
 
 legitimacy		<- [레짓트머씨 합법성, 전통 ability to be defended with logic or justification; validity.
@@ -2981,6 +2997,19 @@ slack			<- [adj] not taut or held tightly in position; loose.
 					"Give me some slack."
 					"Cut  me some slack" is exactly as "Give me a break!"
 					"I'm going to cut you some slack."
+
+
+smolder			<- [v] burn slowly with smoke but no flame.
+					[화로에서 타는 연기만 나는 불
+					"the bonfire still smoldered, the smoke drifting over the paddock"
+					
+				   [N] smoke coming from a fire that is burning slowly without a flame.
+					"the last acrid smolder of his cigarette"
+					
+smoldering		<- 	showing scarcely suppressed anger				
+					A smile was plastered on his dark face, but it didn't reach the smoldering eyes.
+					A smoldering grief  <- 쌓여있는 슬픔
+
 					
 snippet			<- a small piece or brief extract. "snippet code"
 					synonyms:	piece, bit, scrap, fragment, particle, shred
@@ -4921,6 +4950,8 @@ She has brought up two children for herself.
 My sister burst into tears at the sad news. 
 
 
+https://ebpang.tistory.com/265
+
 73. by all means : 어떤 일이 있어도, 좋고 말고
 (=at all cost, certainly) 
 I will keep my promise by all means. 
@@ -4932,8 +4963,10 @@ May I use your pen?
 We express our thoughts by means of words. 
 
 75. by no means : 결코 ～아니다
-(=certainly not) 
+(=certainly not: not ~ by any means  어떤 수단에 의해서도 ~하지 않는) 
 He will go by no means. 
+He is by no means an experienced teacher.
+He is an experienced teacher by no means.
 
 76. by and by : 머지 않아
 (=before long) 
