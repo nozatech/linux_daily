@@ -1,0 +1,77 @@
+2019-12-02 16:09:16,319 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2019-12-02 16:09:16,384 INFO o.a.j.JMeter: Loading user properties from: /usr/local/Cellar/jmeter/5.2/libexec/bin/user.properties
+2019-12-02 16:09:16,386 INFO o.a.j.JMeter: Loading system properties from: /usr/local/Cellar/jmeter/5.2/libexec/bin/system.properties
+2019-12-02 16:09:16,390 INFO o.a.j.JMeter: Copyright (c) 1998-2019 The Apache Software Foundation
+2019-12-02 16:09:16,390 INFO o.a.j.JMeter: Version 5.2
+2019-12-02 16:09:16,391 INFO o.a.j.JMeter: java.version=11.0.3
+2019-12-02 16:09:16,391 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2019-12-02 16:09:16,391 INFO o.a.j.JMeter: os.name=Mac OS X
+2019-12-02 16:09:16,391 INFO o.a.j.JMeter: os.arch=x86_64
+2019-12-02 16:09:16,391 INFO o.a.j.JMeter: os.version=10.14.6
+2019-12-02 16:09:16,391 INFO o.a.j.JMeter: file.encoding=UTF-8
+2019-12-02 16:09:16,391 INFO o.a.j.JMeter: java.awt.headless=null
+2019-12-02 16:09:16,392 INFO o.a.j.JMeter: Max memory     =1073741824
+2019-12-02 16:09:16,392 INFO o.a.j.JMeter: Available Processors =4
+2019-12-02 16:09:16,409 INFO o.a.j.JMeter: Default Locale=English (EN)
+2019-12-02 16:09:16,409 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2019-12-02 16:09:16,409 INFO o.a.j.JMeter: JMeterHome=/usr/local/Cellar/jmeter/5.2/libexec
+2019-12-02 16:09:16,410 INFO o.a.j.JMeter: user.dir  =/Users/apark/Documents/linux_daily
+2019-12-02 16:09:16,410 INFO o.a.j.JMeter: PWD       =/Users/apark/Documents/linux_daily
+2019-12-02 16:09:16,416 INFO o.a.j.JMeter: IP: 10.0.1.139 Name: Air.local FullName: 10.0.1.139
+2019-12-02 16:09:20,877 INFO o.a.j.g.a.LookAndFeelCommand: Installing Darcula LAF
+2019-12-02 16:09:20,890 INFO o.a.j.g.a.LookAndFeelCommand: Using look and feel: com.bulenkov.darcula.DarculaLaf [Darcula]
+2019-12-02 16:09:20,891 INFO o.a.j.JMeter: Setting LAF to: com.bulenkov.darcula.DarculaLaf
+2019-12-02 16:09:21,151 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2019-12-02 16:09:24,539 INFO k.a.j.JMeterPluginsUtils: JMeter-Plugins.org v.1.4.0
+2019-12-02 16:09:26,197 WARN o.a.j.g.u.MenuFactory: Could not instantiate class: kg.apc.jmeter.reporters.LoadosophiaUploaderGui
+java.lang.reflect.InvocationTargetException: null
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:490) ~[?:?]
+	at org.apache.jmeter.gui.util.MenuFactory.getGUIComponent(MenuFactory.java:174) ~[ApacheJMeter_core.jar:5.2]
+	at org.apache.jmeter.gui.util.MenuFactory.initializeMenus(MenuFactory.java:141) ~[ApacheJMeter_core.jar:5.2]
+	at org.apache.jmeter.gui.util.MenuFactory.<clinit>(MenuFactory.java:106) ~[ApacheJMeter_core.jar:5.2]
+	at org.apache.jmeter.control.gui.TestPlanGui.createPopupMenu(TestPlanGui.java:92) ~[ApacheJMeter_core.jar:5.2]
+	at org.apache.jmeter.gui.tree.JMeterTreeNode.createPopupMenu(JMeterTreeNode.java:185) ~[ApacheJMeter_core.jar:5.2]
+	at org.apache.jmeter.gui.action.EditCommand.doAction(EditCommand.java:46) ~[ApacheJMeter_core.jar:5.2]
+	at org.apache.jmeter.gui.action.ActionRouter.performAction(ActionRouter.java:88) ~[ApacheJMeter_core.jar:5.2]
+	at org.apache.jmeter.gui.action.ActionRouter.lambda$actionPerformed$0(ActionRouter.java:70) ~[ApacheJMeter_core.jar:5.2]
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313) [?:?]
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770) [?:?]
+	at java.awt.EventQueue$4.run(EventQueue.java:721) [?:?]
+	at java.awt.EventQueue$4.run(EventQueue.java:715) [?:?]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:?]
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85) [?:?]
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:740) [?:?]
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203) [?:?]
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124) [?:?]
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113) [?:?]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109) [?:?]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101) [?:?]
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:90) [?:?]
+Caused by: java.lang.NoClassDefFoundError: org/apache/commons/httpclient/methods/multipart/PartSource
+	at kg.apc.jmeter.reporters.LoadosophiaUploaderGui.init(LoadosophiaUploaderGui.java:114) ~[JMeterPlugins-Standard.jar:?]
+	at kg.apc.jmeter.reporters.LoadosophiaUploaderGui.<init>(LoadosophiaUploaderGui.java:28) ~[JMeterPlugins-Standard.jar:?]
+	... 25 more
+Caused by: java.lang.ClassNotFoundException: org.apache.commons.httpclient.methods.multipart.PartSource
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:471) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:588) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at kg.apc.jmeter.reporters.LoadosophiaUploaderGui.init(LoadosophiaUploaderGui.java:114) ~[JMeterPlugins-Standard.jar:?]
+	at kg.apc.jmeter.reporters.LoadosophiaUploaderGui.<init>(LoadosophiaUploaderGui.java:28) ~[JMeterPlugins-Standard.jar:?]
+	... 25 more
+2019-12-02 16:09:30,009 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2019-12-02 16:09:30,011 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2019-12-02 16:09:30,012 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2019-12-02 16:09:30,012 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2019-12-02 16:09:30,012 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2019-12-02 16:09:30,013 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2019-12-02 16:09:31,762 INFO o.a.j.e.KeyToolUtils: keytool found at 'keytool'
+2019-12-02 16:09:31,763 INFO o.a.j.p.h.p.ProxyControl: HTTP(S) Test Script Recorder SSL Proxy will use keys that support embedded 3rd party resources in file /usr/local/Cellar/jmeter/5.2/libexec/bin/proxyserver.jks
+2019-12-02 16:09:32,314 INFO o.a.j.s.FileServer: Default base='/Users/apark/Documents/linux_daily'
+2019-12-02 16:09:33,554 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2019-12-02 16:09:33,554 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
+2019-12-02 16:09:33,555 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2019-12-02 16:09:33,556 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2019-12-02 16:09:33,635 INFO o.a.j.v.ViewResultsFullVisualizer: Add JavaFX to your Java installation if you want to use renderer: org.apache.jmeter.visualizers.RenderInBrowser

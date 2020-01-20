@@ -1,9 +1,14 @@
 #1. 
 P069100
-	Cooling Fan 1 Control Circuti low active/static
+	Cooling Fan 1 Control Circuit low active/static
 	
 # Tested and found blown fuse for cooling fan V7, caused by
-	excessive AMP draw of cooling fan. Replace fan and fuse(Replaced but not working)
+	excessive AMP draw of cooling fan. Replace fan and fuse(Replaced fuse but not working)
+
+
+Fan control module -> 8K0959501G
+
+
 
 OEM Fan Part
 https://www.audiusaparts.com/auto-parts/2012/audi/a6-quattro/prestige-trim/3-0l-v6-gas-engine/cooling-system-cat/cooling-fan-scat
@@ -12,7 +17,7 @@ https://www.audiusaparts.com/auto-parts/2012/audi/a6-quattro/prestige-trim/3-0l-
 #2.
 P162400
 	Requirement - malfunction lamp on active/static
-	Transmission coolinf valve N509 and found coolant migration from valve to wiring harness,
+	Transmission cooling valve N509 and found coolant migration from valve to wiring harness,
 	causing blown fuse for valve as well.  
 	Recommend replace N509, repair damaged wiring and replace fuse.
 	
@@ -22,9 +27,13 @@ P162400
 		https://www.engine-codes.com/p1624_audi.html
 
 
+
+
+
+
 #3.		
 P045600
-	EVAP Emission control sys(very small leak) Leak Detected, Passive/sporatic
+	EVAP Emission control sys(very small leak) Leak Detected, Passive/sporadic
 	=> Could be gas cap????
 
 
