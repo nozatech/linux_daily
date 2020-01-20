@@ -1,0 +1,21 @@
+Jmeter 5.1.x
+
+Test Plan (Jmeter Script) 	<- Name of test script e.g. web_testing_google.com
+	Thread Group			<- Thread.  Number of users
+	Samplers				<- Make a request
+								FTP, HTTP, SMTP, JDBC, etc
+	Listeners				<- Reporting, logging, debugging
+								Graph, table, tree, log
+	Configuration			<- CSV, HTTP Coookie, Http request, Login Config
+	Timer					<- Add a delay for random user simulation
+	Assertion(주장/단언)	<- Error checking
+	Pre Processor			<- Modify the request
+	Post Processor			<- Parse the response
+	Logic Controller		<-
+	WorkBench				<- Temp working space
+	
+	e.g
+		- Number of thread(Users)	: 10 
+		- Ramp-up period(sec)		: 60sec
+		- Loop count(times)			: 10   
+	
