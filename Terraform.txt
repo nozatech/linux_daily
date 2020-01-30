@@ -17,8 +17,24 @@ terraform plan -var "do_token=${DO_PAT}" \
 
 
 
+Java Query Install on CentOS7
 
-
+Step 1 : Install Pre-requisite
+	$ sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+Step 2 : Install jq
+	$ sudo yum install jq -y
+Step 3 : Verify
+	$ jq -Version
+Step 4 : Usage
+	$ echo '{
+	"response": [{
+	"id": "1",
+	"name": "Rachel Green"
+	}, {
+	"id": "2",
+	"name": "Sheldon Cooper"
+	}]
+	}' | jq .'response'
 
 
 

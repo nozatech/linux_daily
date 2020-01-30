@@ -1364,6 +1364,8 @@ deep state		<- a body of people, typically influential members of government age
 				
 					미국에서는 막후세력을 가리킬 때 그림자 정부(shadow government) 등의 표현을 주로 사용해 왔다.
 
+defer 			<- 1.연기하다 2.결정을 맡기다 3.경의를 표하다
+					I would defer to him.	나는 그의 의견을 따른다.
 
 deluge			<- [델유쥐] a severe flood. 1.	쇄도 2.	대홍수 3.	엄청나다 4.	붓다 5.	범람
 					synonyms:	flood, flash flood, torrent; spate
@@ -1823,7 +1825,10 @@ gurgle			<- make a hollow bubbling sound like that made by water running out of 
 					"my stomach gurgled"
 					synonyms:	babble, burble, tinkle, bubble, ripple, murmur, purl, splash; literaryplash
 					"the water swirled and gurglED"
-									
+
+gourmet			<- 미식가, 식도락가  
+					gourmet coffee 		<- 미식가를 위한 비싼 커피
+					gourment restaurant	<- 고급 레스토랑 
 									
 # H
 hardness of hearing <- 난청
@@ -3093,6 +3098,8 @@ sprint			<- run at full speed over a short distance.
 					gallop, career, charge, shoot, hurtle, speed, zoom, go like lightning, 
 					go hell-bent for leather, go like the wind
 					antonyms: walk
+
+squelch			<- 1.	…을 눌러 찌그러뜨리다2.	눌려서 찌그러진 물건
 					
 squealing 		<- 빽뺵소리 스피커에서
 
@@ -3184,6 +3191,10 @@ takeaway		<- a key fact, point, or idea to be remembered,
 					"the main takeaway for me is that we need to continue to communicate all the things 
 					  we're doing for our customers"
 
+taint 			<- 더럽히다, 감염, 얼룩
+					taints and honors <- 불명예와 명예
+					This meat taints quickly if not refrigerated. <- 이 고기는 냉장하지 않으면 곧 상한다.
+					
 
 talk of the town <-	"Her conduct became the talk of the town."	그녀의 행실이 마을 사람들의 입에 올랐다
 
@@ -3721,11 +3732,13 @@ choose 	chose 	chosen
 lay 	laid 	laid 
 do 		did 	done
 ----------------------------------------------------------------------------------
+소리 관련
+
+https://m.blog.naver.com/PostView.nhn?blogId=skybels&logNo=220996685939&proxyReferer=https%3A%2F%2Fwww.google.com%2F
 
 
-
-	
-	#
+----------------------------------------------------------------------------------	
+#
 #	
 Word	Alternate		Translation			Example						Meaning
 #
@@ -3811,9 +3824,9 @@ zing	ba-dum-tss, badum tish	"Haha, well said!"	"You're so stupid, you'd trip ove
 
 
 
-#
+#----------------------------------------------------------------------------------
 영문법 - 12가지 시제
-#
+#----------------------------------------------------------------------------------
 
 ~ed와 ~ing는 현재와 미래시제를 뺀 나머지 10개의 시제에 포함되어 있습니다. 그만큼 중요합니다.
 시제에 사용되는 과거분사(완료)와 현재분사(진행)는 형용사의 역할을 합니다.
@@ -4315,21 +4328,21 @@ I will have worked here since last year. 나는 지난해부터 여기서 일을
 
 ### 가정법 ###
 직설법 -> 명령법 -> 가정법
--------------------------------------------------
-가정				조건절(IF | V)  		주절 (S V)
--------------------------------------------------
-현실/미래 가능한 일	If | V				I will V
-				(현재시제로 쓰임)		(조동사 원형)
---------------------------------------------------
-현재 사실의 반대	If | V'ed			I would V
-(가정법 과거)		(과거형)				(조동사 과거형)
---------------------------------------------------
-과거 사실의 반대	If | Had P.P.		I would have P.P.
-(가정법 과거완료)	(과거 완료로 씀)		(과거 조동사 + have + P.P.)
---------------------------------------------------
-과거 사실의 반대	If | Had P.P.		I would V
-(가정법 혼합형)		(과거 완료로 쓰임)		(조동사 과거형)
---------------------------------------------------
+--------------------------------------------------------------------
+가정					조건절(IF | V)  		주절 (S V)
+--------------------------------------------------------------------
+현실/미래 가능한 일		If | V					I will V
+						(현재시제로 쓰임)		(조동사 원형)
+---------------------------------------------------------------------
+현재 사실의 반대		If | V'ed				I would V
+(가정법 과거)			(과거형)				(조동사 과거형)
+---------------------------------------------------------------------
+과거 사실의 반대		If | Had P.P.			I would have P.P.
+(가정법 과거완료)		(과거 완료로 씀)		(과거 조동사 + have + P.P.)
+---------------------------------------------------------------------
+과거 사실의 반대		If | Had P.P.			I would V
+(가정법 혼합형)			(과거 완료로 쓰임)		(조동사 과거형)
+---------------------------------------------------------------------
 
 
 <현재> 현실 조건  => 미래 결론  <- 조건절
@@ -4395,11 +4408,12 @@ If I had time, 	I would sell.				시간이 있었으면, 팔을텐데   <= 못�
 
 
 If I had had time, 	I would have sold the stocks.		
-If I'd had time, 	I would've sold the stocks.		
+If I'd had time, 	I would've   sold the stocks.		
 	시간이 있었더라면, 	팔았었을 텐데..
+	
 If I had sold the stock back in Sept, 	I would have made $50k.
-If I'd 	 sold the stock back in Sept, 	I would've made $50k.
-		9월에 팔았더라면, 					$50k 만들었을텐데. 
+If I'd 	 sold the stock back in Sept, 	I would've   made $50k.
+		9월에 팔았더라면, 					$50k 벌었을텐데. 
 
 
 
@@ -4598,7 +4612,8 @@ Fish abound in this river.
 3. abstain from : ～을 그만두다
 (=keep away from, refrain from, restrain oneself from doing or enjoying something.) 
 You must abstain from drinking. 
-
+You have to stop drinking. 
+You got  to stop drinking. 
 
 4. according as ＋ 절 : ～에 따라
 (=in proportion as) 

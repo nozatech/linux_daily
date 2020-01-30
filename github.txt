@@ -2,13 +2,16 @@ How to use 'GIT'
 
 ---------------------------------------------
 $ git status	
-$ git add . 						<='-A' all, or a new file_name
-$ git commit -m "update message"
-$ git commit -am "update message"
-$ it push
-------------------------------------------------------------------------------------------		
-
+$ git add . 								<='-A' all, or a new file_name
+$ git commit -m  "update message"
+ # $ git commit -am "update message"  		<= -am is combo of git add . + commit -m
+$ git commit --amend -m "Change message"
+$ git push
+------------------------------------------------------------------------------------------	
+	
+------------------------------------------------------------------------------------------	
 # To resolve \n and \r\n issue for  Linux and Windows 
+------------------------------------------------------------------------------------------	
 	\n		<= Linefeed	(Linux)  
 	\r\n	<= Carriage Return <= (Windows)
 # Remove '\r' from Windows baiss commit
@@ -18,6 +21,67 @@ $ git config core.autocrlf input
 		
 Use HTTPS	https://github.com/nozatech/jenkins.git
 Use SSH     git@github.com:nozatech/jenkins.git
+
+
+
+------------------------------------------------------------------------------------------	
+There are 3 levels of git config; project, global and system.
+------------------------------------------------------------------------------------------	
+project: Project configs are only available for the current project and stored in 
+		 in the project's directory.
+		.git/config 
+		
+		$ cat /home/apark/terraform/.git/config
+		
+global: Global configs are available for all projects for the current user and stored in 
+		~/.gitconfig
+		
+		$ cat ~/.gitconfig
+		[user]
+        email = albertpark5@gmail.com
+        name = albert park
+
+system: System configs are available for all the users/projects and stored in 
+		/etc/gitconfig
+------------------------------------------------------------------------------------------
+# Create a project specific config, you have to execute this under the project's directory:
+------------------------------------------------------------------------------------------	
+	# Project overrides > Global overrides > System.
+	--------------------------------------------------------
+	project specific config:
+	--------------------------------------------------------
+	$ mkdir git_project && cd ~/git_project
+
+	$ git config user.name "John Doe" 
+
+	--------------------------------------------------------
+	# Create a global config:
+	--------------------------------------------------------
+	$ git config --global user.name "John Doe"
+
+	--------------------------------------------------------
+	# Create a system config:
+	--------------------------------------------------------
+	$ git config --system user.name "John Doe" 
+	
+
+--------------------------------------------------------	
+…or create a new repository on the command line
+--------------------------------------------------------
+echo "# gitFolder" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/nozatech/gitFolder.git
+git push -u origin master
+
+--------------------------------------------------------
+…or push an existing repository from the command line
+--------------------------------------------------------
+git remote add origin https://github.com/nozatech/gitFolder.git
+git push -u origin master
+
+
 
 
 ------------------------------------------------------------------------------------------
@@ -154,47 +218,65 @@ $ git clone https://nozatech:Password@github.com/nozatech/linux_daily.git   <= I
 
 
 ------------------------------------------------------------------------------------------
-4. GIT BRANCHING
+4. git Branch
 ------------------------------------------------------------------------------------------
-		a. $ git pull
-		b. $ git branch
-				* master
-		c. $ git branch function01 				<= creating new 'function01' branch from Master
-		d. $ git branch
-			function01							<= complete copy of MASTER
+	Go to project folder
+	
+	a. Update codes first
+		$ git pull
+	
+	b. Check status of Current Branch name 
+		$ git branch
+			* master					
+				
+	c. Creating a new 'branch-1' branch from Master			
+		$ git branch branch-1 				
+		
+		$ git branch
 			* master
-		e. $ git checkout 'function01'
-			Switched to branch 'function01'     <= SWITCHED TO FUNCTION01 ****
+			  branch-1 							<= complete copy of MASTER
+	
+	e. Checkout to 	branch-1 	  
+		$ git checkout branch-1 
+			Switched to branch branch-1        <= SWITCHED TO branch-1  ****
 			<<... EDIT OR ADD NEW FILES ... >>	
-		f. $ git status
-			On branch function01
-			Changes not staged for commit:
+			
+		$ git status
+			On branch branch-1 
+				Changes not staged for commit:
 			(use "git add <file>..." to update what will be committed)
 			(use "git checkout -- <file>..." to discard changes in working directory)
 			modified:   linux_daily.txt
 			no changes added to commit (use "git add" and/or "git commit -a")
-		h. $ git add . ('-A' all, or a new file_name)
-		i. $ git commit -m "added branches "
+	
+	j. Create a file and add for commit
+		$ touch branch-1-aNewFile
+		$ git add . ('-A' all, or a new file_name)
+		
+		$ git commit -m "add a branch-1 file "
 			  [function01 def7db3] added branches
 		      1 file changed, 22 insertions(+), 15 deletions(-)
 		-------------------------------------------------------------------
-		j. $ git branch							<= checking which branch you are in 'function01'
-			* function01
+	
+	k. Checking which branch you are in 'function01'
+		$ git branch							
+			* branch-1 
 			master
 			
-		k. $ git checkout master				<= switch back to master if others has some updates one the same file while editing
+	k. switching back to master if others has some updates one the same file while editing
+		$ git checkout master				
 			Switched to branch 'master'
 			Your branch is up-to-date with 'origin/master'.
 		
-		l. $ git pull   <= check if MASTER has been modified by others
+	l. $ git pull   <= check if MASTER has been modified by other Users before Push
 		-------------------------------------------------------------------
-		m. 	$ git checkout function01
-		n.	$ git merge master
+		m. 	$ git checkout branch-1 
+		n.	$ git merge branch-1 		<= merge function01 branch to Master
 			
 		o.  $ git checkout master
 
 		p.	$ git status
-				On branch function01
+				On branch branch-1 
 				Your branch is up-to-date with 'origin/function01'.
 				nothing to commit, working directory clean
 
@@ -359,6 +441,9 @@ $ git init	<= Initialized empty Git repository in /home/apark/gitTest/.git/
 	
 	
 	
+GitHub Actions
+	Create workflows to automatically build, test and deploy your code, triage your issues, 
+	publish packages, and more.	
 	
 	
 	
