@@ -124,6 +124,12 @@ echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
 		echo "You are logging out! GoodBye~~"
 	$ vi /etc/bash.bashrc
 
+$ git help everyday
+	No manual entry for giteveryday
+https://codingbee.net/centos/man-how-to-fix-the-no-manual-entry-for
+
+
+
 	
 -----------------------------------------------------------------------------------
 # Copy & Paste or create a 'shellenv.sh' script and PSSH to all servers 
@@ -6020,15 +6026,17 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 		
 
 		
-71.  Transfer file using SCP + pem key
+71.  Transfer a file using SCP + pem key
 
 	$ scp -i /path/to/key.pem     /path/to/file.jpg    user_id@ip:/home/id/folder
 	
 	## -i Identity_file such as pem key
 	$ scp -i /AWS-OC-Key/oc-prod.pem /AWS-OC-Key/oc-sDATEe.pem ec2-user@ip_address:/home/ec2-user/.cert
-
+	------------------------
 	### Local ===> Remote 
-	$ scp -pv file.zip noza@192.168.221.128:/home/noza/download
+	------------------------
+	$ scp -pv file.zip noza@192.168.221.128:/home/noza/download   	<- -p      Preserves modification times, access times, and modes from the original file.
+																	<- -v verbose	
 	$ scp -r /home/id/.ssh  id@ip:/home/id/			<= -r recursive for sub directories
 	$ scp -i .ssh/oc.pem  ami.zip ubuntu@10.10.1.89:/home/ubuntu/
 
@@ -6038,9 +6046,10 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 	### Make a directory remotely
 	$ ssh apark@remote_ip "mkdir /path/to/dir"
 
-
+	------------------------
 	### Remote ===> Local 
-	$ scp -r id@ip:/home/id/.ssh    /home/id/.ssh
+	------------------------
+	$ scp -r id@ip:/home/id/.ssh    /home/id/.ssh			<- -r      Recursively copy entire directories.
 	
 
 	
@@ -7969,7 +7978,7 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-
 	sudo firewall-cmd --zone=trusted --add-source=64.39.96.0/20 <-???
 	# June
 	sudo firewall-cmd --zone=trusted --add-source=182.72.103.190
-	# temmp Jine's jumpbox
+	# temmp June's jumpbox
 	sudo firewall-cmd --zone=trusted --add-source=167.172.202.23
 	
 	

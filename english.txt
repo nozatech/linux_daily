@@ -838,6 +838,13 @@ apropos			<- [ӕprəpóu] with reference to; concerning.
 
 aorta			<- [eiɔ́ːrtə 에이올터] 대동맥
 
+
+acquittal		<- [무죄 석방]a judgment that a person is not guilty of the crime with which the person has been charged.
+					"the trial resulted in an acquittal"
+					‘It was hell’: Trump celebrates impeachment acquittal, while ripping Democrats and Romney
+					"President Trump celebrated his impeachment acquittal by excoriating 
+					 Democrats and reliving some of his prior grievances."
+
 aribtrage		<= [금융] (차액을 취득하는) 중개 매매
 					the simultaneous buying and selling of securities, currency, or commodities in different 
 					markets or in derivative forms in order to take advantage of differing prices for the same asset.
@@ -2858,6 +2865,8 @@ reprieve		<- [n]집행 유예/ 일시적인 모면
 resilient		<- (of a person or animal) able to withstand or recover quickly from difficult conditions.
 					"babies are generally far more resilient than new parents realize"
 					synonyms:	strong, tough, hardy; 
+
+restrospect		<- 1.	회상2.	회고3.	추억
 
 revere			<- 우러러 공경하다
 reveal			<- 밝히다

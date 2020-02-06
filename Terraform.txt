@@ -4,8 +4,9 @@ $ wget https://releases.hashicorp.com/terraform/0.12.19/terraform_0.12.19_linux_
 $ echo $PATH
 $ sudo unzip terraform_0.12.19_linux_amd64.zip -d /usr/bin
 
-
-
+https://www.terraform.io/docs/commands/index.html
+$ terraform -install-autocomplete
+$ terraform -uninstall-autocomplete
 
 
 terraform plan -var "do_token=${DO_PAT}" \

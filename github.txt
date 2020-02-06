@@ -8,6 +8,22 @@ $ git commit -m  "update message"
 $ git commit --amend -m "Change message"
 $ git push
 ------------------------------------------------------------------------------------------	
+
+### Auto Color
+	$ git config --global color.ui auto								<= output color
+	$ git config --global color.branch auto
+	$ git config --global color.status auto
+	
+	https://unix.stackexchange.com/questions/44266/how-to-colorize-output-of-git
+		git config --global color.ui always
+		git config --global color.branch always
+		git config --global color.diff always
+		git config --global color.interactive always
+		git config --global color.status always
+		git config --global color.grep always
+		git config --global color.pager true
+		git config --global color.decorate always
+		git config --global color.showbranch always
 	
 ------------------------------------------------------------------------------------------	
 # To resolve \n and \r\n issue for  Linux and Windows 
@@ -122,10 +138,11 @@ https://stackoverflow.com/questions/12254076/how-do-i-show-my-global-git-config/
 			Repository level (specific to that single repository)
 			Project configs are only available for the current project and stored in 
 			>> .git/config <<
-			
-		$ git config --list --local		<= to view, 
-		$ git config --local core.ignorecase true (--local optional) <= to set, 
-		$ git config --edit --local (--local optional)		<= to edit repository config file,
+
+		
+		$ git config --list --local										<= to view, 
+		$ git config --local core.ignorecase true (--local optional) 	<= to set, 
+		$ git config --edit --local (--local optional)					<= to edit repository config file,
 		
 		$ git config user.name "John Doe" 
 	
@@ -329,7 +346,7 @@ $ git clone https://nozatech:Password@github.com/nozatech/linux_daily.git   <= I
 	Change one file and save
 	Execute the following commands one by one
 	
-	$ git add * (. or -A)
+	$ git add * (. or -A)				<- all
 	$ git commit -m "updated file"
 	$ git push -u origin master
 
@@ -339,7 +356,11 @@ $ git clone https://nozatech:Password@github.com/nozatech/linux_daily.git   <= I
 	$ git commit -m "deleted file"
 	$ git push -u origin master
 	
-	
+
+
+###  git push origin vs. git push origin master
+$ git push origin master		<- This only pushes your master branch to origin
+$ git push origin				<- Pushes all your branches to origin	
 
 
 ### Please, commit your changes or 'stash' them before you can merge.
@@ -450,25 +471,131 @@ GitHub Actions
 	
 	
 	
+Introduction to Git - Branching and Merging
+https://www.youtube.com/watch?v=FyAAIHHClqI	
+
+$ mkdir gitBranchingMerging && cd gitBranchingMerging
+$ git init
+$ echo "IP 10.0.0.1" > switch1
+	# touch switch1
+$ git add switch1
+$ git commit -m "First commit switch1"
+
+$ cp swithch1 switch2
+$ git commit -am "Commit switch2"	
+	
+$ git log			<- look up git history	
 	
 	
+# git branch
+<Master Branch>  <Branch>
+		Prod3
+		  ^		^\		  <- Merge from Dev2 to Prod3
+		Prod2	 Dev2	
+		  ^		  ^
+		Prod1 -> Dev1
+		
+$ alias gg="git log --all --decorate --oneline --graph"
+
+# Create branches SDN and auth	
+$ git branch SDN	
+$ git branch auth
+
+$ git branch
+	  SDN
+	  auth
+	* master
+
+# Checkout work on branch
+$ git checkout SDN
+$ git branch
+	* SDN				<= Checked out branch
+	  auth
+	  master
+$ git status
+	# On branch SDN
+	nothing to commit, working directory clean  
+
+$ git checkout SDN
+	$ vi s1
+	$ git commit -am "Update file s1"
+	
+$ git checkout auth	
+$ gg 		<= (alias gg="git log --all --decorate --oneline --graph")
+	| * 1c766d3 (HEAD, auth) From Auth branch for S1
+				 ^^^ head location, branch location
+
+
+# Git merge
+# Fast forward merge
+
+# Shows Master pulls from SDN branch to Master branch	
+$ git diff master SDN		#git diff master..SDN  <-also works
+				
+	diff --git a/s1 b/s1
+	index 655c6e6..2583b4d 100644
+	--- a/s1
+	+++ b/s1
+	@@ -1 +1,2 @@
+	 s1
+	+adding from SDN branch 1st mod
+
+# Merge SDN branch to MASTER	
+$ git merge SDN	
+	Updating f7af19e..5cb3928
+	Fast-forward
+	 s1 | 3 ++-
+	 1 file changed, 2 insertions(+), 1 deletion(-)
+
+$ gg 	<= (alias gg="git log --all --decorate --oneline --graph") 
+	* 5cb3928 (HEAD, master, SDN) update s1 file context
+	* e4f654c update from SDN branch
+	| * fc03fac (auth) update s1 from auth branch
+	|/
+	* f7af19e s1 s2 update
+	* 2f1d0f6 git first commit
+	
+# SDN branch merge is done and delete SDN branch	
+# List and Check merged branch
+$ git branch --merged
+	  SDN			<= Master branch is merged with SDN branch already
+	* master
+
+$ git branch -d SDN
+	Deleted branch SDN (was 5cb3928).
+
+# List branches
+$ git branch
+	  auth
+	* master
+
+# Can't delete unmerged branch "auth"
+$ git branch -d auth
+	error: The branch 'auth' is not fully merged.
+	If you are sure you want to delete it, run 'git branch -D auth' <= Froce -D
 	
 	
+# 3-Way Merge
+$ git branch
+	  auth
+	* master
+$ git merge auth
+
+$ gg
+	*   e788293 (HEAD, master) Mater merge with SDN
+	|\
+	| * fc03fac (auth) update s1 from auth branch	<= pointing to Head, Master 
+	* | 5cb3928 update s1 file context
+	* | e4f654c update from SDN branch
+	|/
+	* f7af19e s1 s2 update
+	* 2f1d0f6 git first commit
+
+$ git branch -d auth
+Deleted branch auth (was fc03fac).
+
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+# Merge Conflicts
 	
 	
 	
