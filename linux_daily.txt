@@ -689,9 +689,23 @@ CentOS Package Manager
         * check
         * help [command]
 
+-----------------------------------------------------------------------------------------	
+Python3 brakes Yum
+https://stackoverflow.com/questions/11213520/yum-crashed-with-keyboard-interrupt-error/11220305
+-----------------------------------------------------------------------------------------
+	# Problem occur
+	$ yum
+	  File "/usr/bin/yum", line 30
+	   except KeyboardInterrupt, e:
+	   
+	   
+	# checky python version
+	This issue happens when user upgrades to python3, 
+	Just simply edit the file --> /usr/bin/yum and change to first line to --> "#!/usr/bin/python2"
 	
-	
-	
+	The above solution wouldn't solve the all yum dependency problems, its better to run the below commands.
+	sudo ln -s  /usr/local/bin/python3 /usr/bin/python3 (Mark latest python as python3)
+	sudo ln -sf /usr/bin/python2.7     /usr/bin/python  (make 2.7 as default python)
 	
 -----------------------------------------------------------------------------------------	
 # PROCESS
@@ -10822,9 +10836,30 @@ Publisher  <======> Rabitmq(jobs1~4) <======>   Comsumer job1
 	
 	
 	
-	
-	
-	
+https://gist.github.com/centminmod/e050cf02794fb5bcdf3090c28efab202	
+python-conflict-fix.sh
+-------------------------------------------------------------------------------------------------
+#!/bin/bash
+# fix python34/python34u and python36/python36u conflicts
+
+if [[ "$(rpm -qa python34u)" ]]; then
+  # remove ius community python34u
+  yum -y remove python34u python34u-devel python34u-pip python34u-setuptools python34u-tools python34u-libs python34u-tkinter
+  # install epel python34
+  yum -y install python34 python34-devel python34-pip python34-setuptools python34-tools python34-libs python34-tkinter
+fi
+# only apply to centos 7 as centos 6 epel doesn't have python36
+if [[ -f /bin/systemctl && "$(rpm -qa python36u)" ]]; then
+  # remove ius community python36u
+  yum -y remove python36u python36u-devel python36u-pip python36u-setuptools python36u-tools python36u-libs python36u-tkinter
+  # install epel python36
+  yum -y install python36 python36-devel python36-pip python36-setuptools python36-tools python36-libs python36-tkinter
+fi
+if [[ ! "$(rpm -qa cmake3)" ]]; then
+  # reinstall removed dependencies from above removed ius community packages
+  yum -y install cmake3 cmake3-data
+fi	
+-------------------------------------------------------------------------------------------------	
 	
 	
 	

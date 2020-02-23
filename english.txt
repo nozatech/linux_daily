@@ -814,7 +814,9 @@ anomaly			<-[ənάməli] something that deviates from what is standard, normal, 
 					synonyms:	oddity, peculiarity, abnormality, irregularity, inconsistency, 
 					incongruity, aberration, quirk, rarity
 
-
+any more vs anymore <- 	I don't play tennis anymore.
+						I don't want any more food.
+					
 any update VS any updates
 any update		<- If you're expecting one piece of information, for example whether the completion 
 					time of a project has changed: 
@@ -2439,7 +2441,9 @@ nitty-gritty	<- what is essential and basic :specific practical details(본격�
 
 no frill 		<- simple, plain, 과잉서비스를 제공하지 않는
 
-
+notch			<- 허리 벨트 구멍
+					Let's take it down a notch <- 진정/흥분좀 가라 앉히자고
+					
 
 
 # O
@@ -11904,3 +11908,12 @@ Quantitative Tightening
 일축  
 	一蹴은 '한[一]번에 차버림[蹴]', '단번에 물리침'을 이른다.
 	출처 : http://news.chosun.com/site/data/html_dir/2008/11/23/2008112300609.html	
+	
+	
+
+I’ve confirmed at this stage that there is a reference in the PAC-MAN Unity project to Perforce. I don’t think that it is required based on the current processes, however.
+
+I’m pulling the relevant repository to my computer just in case. Once that process is done it should be the case that Perforce is no longer needed for anything I’m aware of.
+
+Pulling from Perforce is taking a long time. I started pulling this morning and less than 1% of files have transferred so far, so it might take a while. I’ll keep you informed regarding when the process has finished and my access can be removed.
+	

@@ -9,8 +9,8 @@ Test Plan (Jmeter Script) 	<- Name of test script e.g. web_testing_google.com
 	Configuration			<- CSV, HTTP Coookie, Http request, Login Config
 	Timer					<- Add a delay for random user simulation
 	Assertion(주장/단언)	<- Error checking
-	Pre Processor			<- Modify the request
-	Post Processor			<- Parse the response
+	Pre Processor			<- Modify the request 
+	Post Processor			<- Parse the response(결과)
 	Logic Controller		<-
 	WorkBench				<- Temp working space
 	
@@ -19,3 +19,12 @@ Test Plan (Jmeter Script) 	<- Name of test script e.g. web_testing_google.com
 		- Ramp-up period(sec)		: 60sec
 		- Loop count(times)			: 10   
 	
+
+
+
+JMeter Beginner
+https://www.youtube.com/playlist?list=PLhW3qG5bs-L-zox1h3eIL7CZh5zJmci4c
+
+
+JMeter Beginner Tutorial 2 - How to create first Jmeter Test
+https://www.youtube.com/watch?v=8loLHbhfyh0

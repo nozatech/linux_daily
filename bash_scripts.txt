@@ -84,24 +84,26 @@ _	<= Undercore
 # VI - number line and tab stop
 ----------------------------------------------------
 	$ vi -V 			<= version check
-	:set nu 			<= set number On
-	:set nu!   			<= set number Off
-	:e file_name        <= open & create  file
- 	:w new_name 	    <= save as to new_name
+	# Add to ~/.vimrc for Default Setting
+		:set nu 			<= set number On
+		# :set nu!   			<= set number Off
+		
+		:e file_name        <= open & create  file
+		:w new_name 	    <= save as to new_name
 	
-	:set tabstop=4		<= Tab will stop at 4 spaces
+		:set tabstop=4		<= Tab will stop at 4 spaces
 	
 	# Cut and Paste(v/V-d/y-p/P)
 
-		 a. Position the cursor where you want to begin cutting.
-	V    b. Press v to select characters (or V - whole lines).
-		 c. Move the cursor to the end of what you want to cut.
-	d    d. Press d to cut (or y to copy).
-		 e. Move to where you would like to paste.
-	p    f. Press P to paste before the cursor, or p to paste after.
+			 a. Position the cursor where you want to begin cutting.
+		V    b. Press v to select characters (or V - whole lines).
+			 c. Move the cursor to the end of what you want to cut.
+		d    d. Press d to cut (or y to copy).
+			 e. Move to where you would like to paste.
+		p    f. Press P to paste before the cursor, or p to paste after.
 
-	yy 	<=	shift+v to copy 
-	pp	<=	shift+p to paste
+		yy 	<=	shift+v to copy 
+		pp	<=	shift+p to paste
 
 
 	# Undo & Redo
@@ -594,7 +596,7 @@ echo '$? is' $?
 		  let x*=5, ...
 		  
 ------------------------------------------------------------------------
-# When to use (List) <- Subshell  vs. { List; } <- Current Shell# in bash?	  
+# When to use (List) <- Subshell command vs. { List; } <- Current Shell# in bash?	  
 ------------------------------------------------------------------------
 https://askubuntu.com/questions/606378/when-to-use-vs-in-bash
 
@@ -670,6 +672,43 @@ $ cat <(ls -l)
 
 	Code in '{}' is executed in the current thread/process/environment and changes are preserved, 
 	to put it more succinctly, the code is run in the current scope.
+
+
+
+
+------------------------------------------------------------------------
+centos_ubuntu.sh
+------------------------------------------------------------------------
+#!/bin/bash
+if [ -f /etc/redhat-release ]; then
+        echo "CentOS"
+fi
+
+if [ -f /etc/lsb-release ]; then
+        echo "Ubuntu"
+fi
+------------------------------------------------------------------------
+#!/bin/bash
+#set -x
+
+detect_os()
+{
+ if [ -f /etc/redhat-release ]; then
+    echo "Your OS is CentOS."
+
+ elif [ -f /etc/lsb-release ]; then
+    echo "Your OS is Ubuntu."
+
+ else
+    unknown_os
+
+ fi
+}
+
+detect_os
+------------------------------------------------------------------------
+
+
 
 
 ------------------------------------------

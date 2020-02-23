@@ -1,0 +1,241 @@
+Daily Tasks
+
+-----------------------------------------------------------------------------------
+# EKS <- Kubernetes setup, change, upgrade, destroy
+-----------------------------------------------------------------------------------
+
+### Run Pritunl VPN Client first ###
+# VPN Connection first dev, stg, prod
+	# Personal Pin
+	# Google Authenticator Number from PHONE.
+
+
+
+$ kubectl config current-context
+
+$ kubectl config use-context platform-stg
+$ kubectl config use-context platform-dev
+$ kubectl config use-context platform-prod
+
+$ kubectl get pods
+$ kubectl get pods -n kube-system
+$ curl https://stg-api.xxxx.io
+
+$ kubectl get nodes
+
+
+$ kubectl get all -n kube-system
+$ kubectl get ns
+$ kubectl -n kube-system get all
+$ kubectl -n kube-system get deployment alb-ingress-controller -o wide
+
+$ cat /Users/apark/XXXX/XXXX-Platform-Infrastructure/eks/dev/manifests/kube-system/deployments/alb-ingress-controller.yaml
+$ cat /Users/apark/XXXX/XXXX-Platform-Infrastructure/eks/stg/manifests/kube-system/deployments/alb-ingress-controller.yaml
+$ cat /Users/apark/XXXX/XXXX-Platform-Infrastructure/eks/prod/manifests/kube-system/deployments/alb-ingress-controller.yaml
+
+
+
+
+$ kubectl --kubeconfig ~/.kube/config --context platform-stg -n kube-system get deployment.apps/alb-ingress-controller -o wide
+
+NAME     READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS      IMAGES                                           SELECTOR
+
+alb-ingress-controller   1/1     1            1           454d   alb-ingress-controller   docker.io/amazon/aws-alb-ingress-controller:v1.1.2   app=alb-ingress-controller
+
+$ vi  eks/stg/manifests/kube-system/deployments/alb-ingress-controller.yaml
+
+$ git status
+
+$ git pull
+
+$ git diff
+
+-          image: docker.io/amazon/aws-alb-ingress-controller:v1.1.2
+
++          image: docker.io/amazon/aws-alb-ingress-controller:v1.1.3
+
+$ git add .
+
+$ git status
+
+$ git commit -m "Platform-stg alb-ingress-controller upgrade from 1.1.2 -> 1.1.3"
+ 
+$ git push
+
+ 
+
+deployment GitHub Actions
+
+ 
+ user-name
+Ref
+refs/heads/master
+Event
+push
+Actions URL
+https://github.com/xxxx-engineering/xxxx-Platform-Infrastructure/commit/xxx
+Kubetnetes resource deployment
+Deployment triggered.
+Platform-stg alb-ingress-controller upgrade from 1.1.2 -> 1.1.3
+ 
+$ kubectl --kubeconfig ~/.kube/config --context platform-stg -n kube-system get deployment.apps/alb-ingress-controller -o wide
+
+NAME     READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS      IMAGES                                           SELECTOR
+
+alb-ingress-controller   1/1     1            1           454d   alb-ingress-controller   docker.io/amazon/aws-alb-ingress-controller:v1.1.3   app=alb-ingress-controller
+
+ 
+
+$ kubectl get pods -n kube-system
+
+NAME                                     READY   STATUS    RESTARTS   AGE
+
+alb-ingress-controller-795f86cff-zqgtr   1/1     Running   0          15m
+
+
+-----------------------------------------------------------------------------------
+# AWS
+-----------------------------------------------------------------------------------
+cat .aws/credentials
+$ aws configure
+
+# Checking mandatory upgrade
+$ aws rds describe-pending-maintenance-actions
+
+
+[default]
+	aws_access_key_id =
+	aws_secret_access_key =
+	
+[test1]
+	aws_access_key_id =
+	aws_secret_access_key =
+
+[test2]
+	aws_access_key_id =
+	aws_secret_access_key =
+
+....
+
+
+aws eks describe-cluster --name platform-dev --query cluster
+aws eks describe-cluster --name platform-dev | jq '.cluster[] |.name'
+aws eks describe-cluster --name platform-dev | jq '.cluster[] |.subnetIds'
+
+
+aws ec2 describe-instances
+
+
+#brew install jq   <- java query 
+
+
+
+-----------------------------------------------------------------------------------
+# Terraform		 <- for AWS Infrastructure setup or change
+-----------------------------------------------------------------------------------
+cd 
+terraform
+terraform 	init	
+			plan
+			apply
+			show
+			refresh
+			state       list
+			
+terraform state show aws_instance.billing-test
+	### Shows actual resource AWS info ###
+	
+
+
+
+
+
+-----------------------------------------------------------------------------------
+# Git		
+-----------------------------------------------------------------------------------
+cd folder/directory
+git status
+git pull
+git branch
+git checkout branch
+mod file
+git diff
+git add .
+git commit -m "msg"
+
+# if file has conflict
+git stash
+git pull
+
+
+-----------------------------------------------------------------------------------
+# alb-ingress-controller upgrade procedure
+-----------------------------------------------------------------------------------
+$ git pull
+
+$ kubectl config current-context
+
+$ kubectl config use-context platform-stg
+
+$ kubectl --kubeconfig ~/.kube/config --context platform-stg -n kube-system get deployment.apps/alb-ingress-controller -o wide
+
+NAME     READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS      IMAGES                                           SELECTOR
+
+alb-ingress-controller   1/1     1            1           454d   alb-ingress-controller   docker.io/amazon/aws-alb-ingress-controller:v1.1.2   app=alb-ingress-controller
+
+$ vi  eks/stg/manifests/kube-system/deployments/alb-ingress-controller.yaml
+
+$ git status
+
+$ git pull
+
+$ git diff
+
+-          image: docker.io/amazon/aws-alb-ingress-controller:v1.1.2
+
++          image: docker.io/amazon/aws-alb-ingress-controller:v1.1.3
+
+$ git add .
+
+$ git status
+ 
+$ git commit -m "Platform-stg alb-ingress-controller upgrade from 1.1.2 -> 1.1.3"
+
+$ git push
+
+ 
+
+GitHub Actions
+
+ 
+ 
+Ref
+refs/heads/master
+Event
+push
+Actions URL
+https://github.com/xxxx-engineering/xxxx-Platform-Infrastructure/commit/xxxx
+Kubetnetes resource deployment
+Deployment triggered.
+Platform-stg alb-ingress-controller upgrade from 1.1.2 -> 1.1.3
+ 
+$ kubectl --kubeconfig ~/.kube/config --context platform-stg -n kube-system get deployment.apps/alb-ingress-controller -o wide
+
+NAME     READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS      IMAGES                                           SELECTOR
+
+alb-ingress-controller   1/1     1            1           454d   alb-ingress-controller   docker.io/amazon/aws-alb-ingress-controller:v1.1.3   app=alb-ingress-controller
+
+ 
+
+$ kubectl get pods -n kube-system
+
+NAME                                     READY   STATUS    RESTARTS   AGE
+
+alb-ingress-controller-795f86cff-zqgtr   1/1     Running   0          15m
+
+
+
+
+
+
+
