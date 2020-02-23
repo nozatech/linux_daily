@@ -103,30 +103,49 @@ git push -u origin master
 ------------------------------------------------------------------------------------------
 # Remembering PW and ID for 3600sec(60mins)
 ------------------------------------------------------------------------------------------
+# Register user name in global config
+  $ git config --global user.email "you@example.com"
+  $ git config --global user.name "Your Name"
+
+# Permanently authenticating with Git repositories
+ https://stackoverflow.com/questions/6565357/git-push-requires-username-and-password
+
+	$ git config credential.helper store
+	$ git push https://github.com/owner/repo.git
+
+Username for 'https://github.com': <USERNAME>
+Password for 'https://USERNAME@github.com': <PASSWORD>
+
+# You should also specify caching expire,
+
+	$ git config --global credential.helper 'cache --timeout 7200'
+
+# Password location
+	$ cat ~/.git-credentials
+		https://userID:Password@github.com
+
+	$ cat ~/.gitconfig					<= User's home
+		  [user]
+			name = user_id
+			email = email@gmail.com
+
 #### Save ID and PW for 60mins ###
 $ git config --global credential.helper 'cache --timeout=3600'
 ####
 
-$ git config --list 
-# $ git config -l		<= same
+	$ git config --list 
+	$ git config -l		<= same
 
-$ git config credential.helper store				<= 'store' in local home
+	$ git config credential.helper store				<= 'store' in local home
 
-$ git push https://github.com/nozatech/books.git
-	
-	Username: 
-	Password: 
-	
-$ git help credentials				<= manual
+	$ git push https://github.com/nozatech/books.git
+		
+		Username: 
+		Password: 
+		
+	$ git help credentials				<= manual
 
-# Password location
-$ cat ~/.git-credentials
-	https://userID:Password@github.com
 
-$ cat ~/.gitconfig					<= User's home
-	  [user]
-        name = user_id
-        email = email@gmail.com
 
 
 ------------------------------------------------------------------------------------------
@@ -401,12 +420,12 @@ http://stackoverflow.com/questions/16103810/force-my-local-master-to-be-origin-m
 http://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me
 
 	$ git stash				<= stores the changes temporarily 
-	$ git stash	-l			<= list current stashes
+	  # $ git stash	-l			<= list current stashes
 	$ git pull 				<= switches branches
-	# $ git pull <remote name> <remote branch name> (or) switch branch
+	  # $ git pull <remote name> <remote branch name> (or) switch branch
 	
 	$ git stash apply 			<= Restore stashed
-	$ git stash apply --index	<= Restore the changes from temporarily backed up
+	  # $ git stash apply --index	<= Restore the changes from temporarily backed up
 								   --index <= staged files are still staged
 	
 

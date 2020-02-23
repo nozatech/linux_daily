@@ -1,0 +1,12 @@
+Complete the platform Kubernetes upgrade of production which is still 1.11.x.
+
+$ for ENV in $(eksctl get cluster | awk 'NR>1 {print $1}'); do echo ">>>>> $ENV <<<<<"; eksctl get cluster $ENV; done
+>>>>> platform-dev <<<<<
+NAME		VERSION	STATUS	CREATED			VPC		SUBNETS			SECURITYGROUPS
+platform-dev	1.12	ACTIVE	2018-11-12T19:53:08Z	vpc-b3b9b5d7	subnet-a17270f9,subnet-ae22d0e7,subnet-eb3230c1	sg-0142425ff9958944b
+>>>>> platform-prod <<<<<
+NAME		VERSION	STATUS	CREATED			VPC		SUBNETS			SECURITYGROUPS
+platform-prod	1.11	ACTIVE	2019-01-03T19:32:31Z	vpc-3ad5225d	subnet-7c3d9b35,subnet-a1dc2a8c,subnet-f88773a3	sg-04e7369f4712228ff
+>>>>> platform-stg <<<<<
+NAME		VERSION	STATUS	CREATED			VPC		SUBNETS			SECURITYGROUPS
+platform-stg	1.12	ACTIVE	2018-11-09T00:48:04Z	vpc-5ad5223d	subnet-be69cff7,subnet-da9462f7,subnet-f359aca8	sg-0246c108cc8e6bfcf
