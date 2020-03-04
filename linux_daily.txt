@@ -90,6 +90,17 @@ echo 'export PS1="\e[1;32m\u\e[0m@\e[1;31m\h\e[0m\W$ "' >> ~/.bashrc	&& source ~
 -----------------------------------------------------------------------------------	
 	$ source ~/.bashrc	
 
+
+# Bash Moves
+
+$ is 	 /var/log/msg
+$^is^cat /var/log/msg			<= change is to cat command
+
+	# visual block
+	
+
+
+
 -----------------------------------------------------------------------------------	
 # History Control Options for Bash
 https://www.shellhacks.com/tune-command-line-history-bash/
@@ -5715,8 +5726,8 @@ $ which dig
 	/usr/bin/dig
 
 
-
-
+cento7 initial setup
+$ yum install bind-utils -y
 
 
 
@@ -9865,6 +9876,7 @@ $ cat /sys/module/nf_conntrack/parameters/hashsize
 
 1. dhclient
 2. yum -y update
+3. yum install bind-utils -y
 
 
 sudo yum install -y net-tools bind-utils yum-utils epel-release 

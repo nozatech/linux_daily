@@ -1110,7 +1110,7 @@ caveat			<- a warning or proviso of specific stipulations, conditions, or limita
 					synonyms:	warning, caution, admonition
 
 
-capitulation	<- giving in 
+capitulation	<- giving in(굴북, 항복)
 					the action of surrendering or ceasing to resist an opponent or demand.
 					"a capitulation to wage demands"
 					synonyms:	surrender, submission, yielding, giving in, succumbing, acquiescence, 
@@ -1413,6 +1413,8 @@ despair			<- the complete loss or absence of hope.
 					antonyms:	hope, joy
 					"He rallies from the despair"
 
+deviations		<- 편차
+
 devoid			<- [adj]entirely lacking or free from. 결여된
 					"In the past, commercial vans were devoid of any cutting-edge safety technologies."
 
@@ -1636,6 +1638,10 @@ entitlements	<- the amount to which a person has a right.
 errand			<- a short journey undertaken in order to deliver or collect something, often on someone else's behalf.
 					"she asked Tim to run an errand for her"
 					synonyms:	task, job, chore, assignment
+
+
+euphoria		<- 다행증, 도취감, 행복감
+					
 					
 eye stye		<- 눈다락지
 
@@ -2499,7 +2505,8 @@ pandemonium		<- 아수라장 대혼란
 					"pandemonium broke out"
 					synonyms: bedlam, chaos, mayhem, uproar, turmoil, tumult, commotion, 
 							confusion, anarchy, furor, hubbub, rumpus; More
-
+							
+parabolic		<- 1.포물선의 2.우화의 3.비유적인
 					
 Pavilion		<- [정원 정자, 누각]
 					In architectural terminology it refers to a subsidiary building that is either positioned 
@@ -2917,6 +2924,10 @@ rudimentary		<- involving or limited to basic principles.(초보, 기본, 미발
 revelation		<- a surprising and previously unknown fact, especially one that is made known in a dramatic way
 					폭로, 적발, synonyms:	disclosure, surprising fact, announcement, report;				   
 
+rout			<- [raut] 패주시키다
+					"Dow drops 300 points, extending Monday’s rout as bond yields dive."
+					
+					
 rune			<- a letter of an ancient Germanic alphabet, related to the Roman alphabet.
 
 
@@ -3491,7 +3502,10 @@ urticaria		<- hive; a rash of round, red welts on the skin that itch intensely, 
 
 
 
-					
+# y
+
+yet				<- The CDC on Wednesday reported 129 cases of coronavirus in the country, which includes 
+					cases reported by individual states that were yet to be confirmed by the agency. 					
 					
 					
 					

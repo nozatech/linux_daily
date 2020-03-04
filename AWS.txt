@@ -1,5 +1,31 @@
+AWS CLI
+
+aws 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --------------------------------------------------------------------------------------------
-AWS Terminology	
+Terminology	
 --------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------
@@ -1341,7 +1367,9 @@ aws_secret_access_key = j8/8a....Rmgf2
 		]
 	}
 	------------------------------------------
-
+	
+	
+https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html
 
 -------------------------------------------------------------------------------
 # EKS is Kubernetes Master Server
@@ -3348,11 +3376,174 @@ https://www.linkedin.com/learning/aws-for-devops-monitoring-metrics-and-logging
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
+
+
 -------------------------------------------------------------------------------
+Route53 Query
 -------------------------------------------------------------------------------
 
+$ ZONE="xxx.xxxx.com."					<= Dont forget the '.' at the END!!
+
+$ aws route53 list-hosted-zones
+		-----------------------------------------------------------------------
+		{
+			"HostedZones": [
+				{
+					"Id": "/hostedzone/xxxxxxxxxxxxxxxx",
+					"Name": "xxx.xxxxx.com.",
+					"CallerReference": "6449019A-B8FA-BFC5-92F9-80109BEC305A",
+					"Config": {
+						"Comment": "Delegated sub-zone for XXXXXX",
+						"PrivateZone": false
+					},
+					"ResourceRecordSetCount": 161
+				}
+			]
+		}
+		-----------------------------------------------------------------------
+$ aws route53 list-hosted-zones --query "HostedZones"
+		-----------------------------------------------------------------------
+		[
+			{
+				"Id": "/hostedzone/Z335IK22PUX3B8",
+				"Name": "xxx.xxxxx.com.",
+				"CallerReference": "6449019A-B8FA-BFC5-92F9-80109BEC305A",
+				"Config": {
+					"Comment": "Delegated sub-zone for PacMan",
+					"PrivateZone": false
+				},
+				"ResourceRecordSetCount": 161
+			}
+		]
+		-----------------------------------------------------------------------
+
+		
+$ aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].ID"
+
+		-----------------------------------------------------------------------
+		[
+			"/hostedzone/Z335IK22PUX3B8"
+		]
+		-----------------------------------------------------------------------
+
+$ aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].Id" --o text		<= Output to txt file
+
+	/hostedzone/Z335IK22PUX3B8
+
+$ aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].Name" 				<= change to Name or Config	
+
+	# aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE']"
+	# aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Name"
+	# aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Id"
+	# aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Config"
 
 
+# ZONE_ID variable 
+$ ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].Id" --o text)
+$ echo $ZONE_ID
+	/hostedzone/Z335IK22PUX3B8
+
+$  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID
+-----------------------------------------------------------------------
+{
+    "ResourceRecordSets": [
+        {
+		...................  too many	
+     
+		-----------------------------------------------------------------------
+
+$ aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets"
+
+$ aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[?Name == '"$ZONE"']"
+		-----------------------------------------------------------------------
+		[
+			{
+				"Name": "xxx.xxx.com.",
+				"Type": "NS",
+				"TTL": 172800,
+				"ResourceRecords": [
+					{
+						"Value": "ns-1372.awsdns-43.org."
+					},
+					{
+						"Value": "ns-65.awsdns-08.com."
+					},
+					{
+						"Value": "ns-1944.awsdns-51.co.uk."
+					},
+					{
+						"Value": "ns-552.awsdns-05.net."
+					}
+				]
+			},
+			{
+				"Name": "xxx.xxx.com.",
+				"Type": "SOA",
+				"TTL": 900,
+				"ResourceRecords": [
+					{
+						"Value": "ns-1372.awsdns-43.org. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"
+					}
+				]
+			},
+			{
+				"Name": "xxx.xxx.com.",
+				"Type": "TXT",
+				"TTL": 300,
+				"ResourceRecords": [
+					{
+						"Value": "\"children=children.pacman.namcowireless.com;other=pacman.namcowireless.com\""
+					}
+				]
+			}
+		]
+	
+		-----------------------------------------------------------------------
+	
+	
+$ aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName" --o text
+$ ELB1=$(aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName" --o text)
+
+$ aws elbv2 describe-load-balancers
+
+ 
+ 
+ 2294  aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Id" --o text
+ 2295  ZONE_ID=text
+ 2296  ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Id" --o text)
+ 2297  echo $ZONE_ID
+ 2298  aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Id" --o text
+ 2299  ZONE_ID=aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Id" --o text
+ 2300  echo $ZONE_ID
+ 2301  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID
+ 2302  echo $ZONE
+ 2303  ZONE=billadmin-dev.bnea.io.
+ 2304  echo $ZONE
+ 2305  ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Id" --o text)
+ 2306  echo $ZONE_ID
+ 2307  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID
+ 2308   host billadmin-dev.bnea.io
+ 2309  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets"
+ 2310  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[]"
+ 2311  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[0]"
+ 2312  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget"
+ 2313  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName"
+ 2314  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName" --o text
+ 2315  ELB1=$(aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName" --o text)
+ 2316  echo $ELB1
+ 2317  aws elb2 help
+ 2318  aws elbv2 help
+ 2319  aws elbv2 help | egrep -i "describe|list|get"
+ 2320  aws elbv2 describe-load-balancers
+ 2321  echo $ELB1
+ 2322  aws elbv2 describe-load-balancers | grep devbillad
+ 2323  aws elbv2 describe-load-balancers | head -2
+ 2324  aws elbv2 describe-load-balancers --query "LoadBalancers"
+ 2325  aws elbv2 describe-load-balancers --query "LoadBalancers[]"
+ 2326  aws elbv2 describe-load-balancers --query "LoadBalancers[*]"
+ 2327  aws elbv2 describe-load-balancers --query "LoadBalancers[*].DNSName"
+ 2328  aws elbv2 describe-load-balancers --query "LoadBalancers[?DNSName == '66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com']"
+ 2329  host 66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com
 
 
 
