@@ -108,7 +108,7 @@ https://www.shellhacks.com/tune-command-line-history-bash/
 echo 'export HISTCONTROL="ignorespace:erasedups:ignoredups"' >> ~/.bashrc	<= Ignore Duplication
 echo 'export HISTIGNORE="history*:ll*:ls*:"' >> ~/.bashrc					<= Ignore list
 echo 'export HISTTIMEFORMAT="%F > "' >> ~/.bashrc							<= History time stamp(man date)
-echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Default is 1000
+echo 'export HISTSIZE=10000' >> ~/.bashrc									<= Increate to 10k from Default set 1000
 
 
 # History with time stamp
@@ -991,8 +991,8 @@ http://vimdoc.sourceforge.net/htmldoc/syntax.html#%3ahighlight
 Create a .vimrc file in home directory
 
 
-	
-$ vi .vimrc
+# vimrc setup (vim editor environment)	
+$ vi ~/.vimrc
 ----------------------------------------------------
 :set nu
 :set tabstop=4
@@ -1001,8 +1001,9 @@ colorscheme desert
 ----------------------------------------------------
 	# To check
 	$ vi test				
-	:echo $MYVIMRC			<=Vim variable $MYVIMRC
-	/home/apark/.vimrc
+		# from cmd mode
+		:echo $MYVIMRC			<=Vim variable $MYVIMRC
+			/home/userId/.vimrc	<= output should be this
 
 
 	----------------------------------------------------
@@ -1037,7 +1038,7 @@ colorscheme desert
 	$ vi -V 			<= version check
 	:set nu 			<= set number On
 	:set nu!   			<= set number Off
-	:e file_name        <= open & create  file
+	:e file_name        <= open & create a new file
  	:w new_name 	    <= save as to new_name
 	
 	:set tabstop=4		<= Tab will stop at 4 spaces
@@ -1079,7 +1080,7 @@ colorscheme desert
 	
 	# Search with in VI
 	/search_word
-	
+	 n 					<- next word
 
 ----------------------------------------------------------------------------------------------------	
 # Environment variable check
@@ -7269,6 +7270,20 @@ wait                  # waits until all background jobs have finished
 
 
 
+	
+	$ grep A 1 B 1 -i "finding_word"  file.txt
+		# B 1 < -before line 
+		# A 1 <- after line 
+	
+	-B, --before-context=NUM  print NUM lines of leading context
+	-A, --after-context=NUM   print NUM lines of trailing context
+	-C, --context=NUM         print NUM lines of output context
+	-NUM                      same as --context=NUM
+
+
+
+
+
 #####################################################################
 mkdir /var/www/html/status && chown apark: /var/www/html/status
 #####################################################################
@@ -9871,16 +9886,13 @@ $ cat /sys/module/nf_conntrack/parameters/hashsize
 
 
 ------------------------------------------------------------------------------
-# CentOS 7 minimum setup
+# CentOS 7 minimum setup Initial Setup
 ------------------------------------------------------------------------------------
 
 1. dhclient
 2. yum -y update
-3. yum install bind-utils -y
-
-
-sudo yum install -y net-tools bind-utils yum-utils epel-release 
-sudo yum install -y	ncdu iftop iotop mtr wget net-tools lsof nc vim tcpdump ntp
+3. sudo yum install -y net-tools bind-utils yum-utils epel-release 
+4. sudo yum install -y	ncdu iftop iotop mtr wget net-tools lsof nc vim tcpdump ntp
 
 
 # Iptables install on CentOS7

@@ -3376,6 +3376,56 @@ https://www.linkedin.com/learning/aws-for-devops-monitoring-metrics-and-logging
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Cognito Query
+-------------------------------------------------------------------------------
+$ aws cognito-idp list-user-pools --max-result 10
+	{
+		"UserPools": [
+			{
+				"Id": "us-east-1_0WBePhxxx",
+				"Name": "bu-chatlog-viewer",
+				"LambdaConfig": {},
+				"LastModifiedDate": "2020-02-27T11:34:15.936000-05:00",
+				"CreationDate": "2019-03-12T19:11:51.332000-04:00"
+			},
+			..............................
+			{
+				"Id": "us-east-1_vxRCCpxxx",
+				"Name": "alb-auth",
+				"LambdaConfig": {},
+				"LastModifiedDate": "2020-02-27T11:34:15.857000-05:00",
+				"CreationDate": "2019-07-12T00:36:33.556000-04:00"
+			}
+		]
+	}
+
+$ aws cognito-idp list-user-pools --max-result 10  --query "UserPools[?Name == '"alb-auth"'].Id" --o text
+
+# Create a Variable "$USER_POOL"
+$ USER_POOL=$(aws cognito-idp list-user-pools --max-result 10  --query "UserPools[?Name == '"alb-auth"'].Id" --o text)
+
+# echo $USER_POOL
+	us-east-1_vxRCCpxxx
+
+
+$ aws cognito-idp list-users
+	aws: error: the following arguments are required: --user-pool-id
+	
+$ aws cognito-idp list-users --user-pool-id $USER_POOL
+{
+    "Users": [
+        {
+            "Username": "user_id",
+            "Attributes": [
+	...
+	
+# Use grep for email address user account
+	After '-A 1' Before '-B 17' line option 
+$ aws cognito-idp list-users --user-pool-id us-east-1_vxRCCpxxx | grep -A 1 -B 17 "user_id@domain.com"
+
+$ aws cognito-idp list-users --user-pool-id us-east-1_vxRCCpxxx
+
 
 
 -------------------------------------------------------------------------------
@@ -3438,10 +3488,13 @@ $ aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].Name" 	
 	# aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Config"
 
 
-# ZONE_ID variable 
+# "$ZONE_ID" variable creation
+
 $ ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].Id" --o text)
+
 $ echo $ZONE_ID
 	/hostedzone/Z335IK22PUX3B8
+
 
 $  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID
 -----------------------------------------------------------------------
@@ -3502,27 +3555,52 @@ $ aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "Resou
 	
 	
 $ aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName" --o text
+
+# Create "$ELB1" variable
 $ ELB1=$(aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName" --o text)
 
-$ aws elbv2 describe-load-balancers
+$ echo $ELB1
+		dualstack.66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com.
 
+$ host $ELB1
+
+	dualstack.66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com has address IP
+	dualstack.66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com has address IP
+	dualstack.66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com has address IP
+
+$ aws elbv2 describe-load-balancers | grep -i xxxx
+
+            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:16278xxxx:loadbalancer/app/alb-stg-xxxx/15350c18e164ec91",
+            "DNSName": "alb-stg-xxxx-1921507778.us-east-1.elb.amazonaws.com",
+            "LoadBalancerName": "alb-stg-xxxx",
+            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:16278xxxx:loadbalancer/app/alb-prod-xxxx/273314f8818d84ff",
+            "DNSName": "alb-prod-xxxx-1611071774.us-east-1.elb.amazonaws.com",
+            "LoadBalancerName": "alb-prod-xxxx",
+            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:16278xxxx:loadbalancer/app/alb-dev-xxxx/298d29d2a16af4e9",
+            "DNSName": "alb-dev-xxxx-773493211.us-east-1.elb.amazonaws.com",
+            "LoadBalancerName": "alb-dev-xxxx",
+
+$ aws elbv2 describe-load-balancers | head -2
+	{
+		"LoadBalancers": [
+
+		# aws elbv2 describe-load-balancers --query "LoadBalancers"
+		# aws elbv2 describe-load-balancers --query "LoadBalancers[]"
+		# aws elbv2 describe-load-balancers --query "LoadBalancers[*]"
+	
+$ aws elbv2 describe-load-balancers --query "LoadBalancers[*].DNSName"
+
+$ aws elbv2 describe-load-balancers --query "LoadBalancers[?DNSName == '66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com']" 
+
+
+$ host 66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com
+	66636b01-default-devbillad-ac59-1176xxx.us-east-1.elb.amazonaws.com has address IP_address
+	66636b01-default-devbillad-ac59-1176xxx.us-east-1.elb.amazonaws.com has address IP_address
+	66636b01-default-devbillad-ac59-1176xxx.us-east-1.elb.amazonaws.com has address IP_address
+
+$ 
  
- 
- 2294  aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Id" --o text
- 2295  ZONE_ID=text
- 2296  ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Id" --o text)
- 2297  echo $ZONE_ID
- 2298  aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Id" --o text
- 2299  ZONE_ID=aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Id" --o text
- 2300  echo $ZONE_ID
- 2301  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID
- 2302  echo $ZONE
- 2303  ZONE=billadmin-dev.bnea.io.
- 2304  echo $ZONE
- 2305  ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Id" --o text)
- 2306  echo $ZONE_ID
- 2307  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID
- 2308   host billadmin-dev.bnea.io
+
  2309  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets"
  2310  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[]"
  2311  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[0]"
@@ -3542,8 +3620,85 @@ $ aws elbv2 describe-load-balancers
  2325  aws elbv2 describe-load-balancers --query "LoadBalancers[]"
  2326  aws elbv2 describe-load-balancers --query "LoadBalancers[*]"
  2327  aws elbv2 describe-load-balancers --query "LoadBalancers[*].DNSName"
- 2328  aws elbv2 describe-load-balancers --query "LoadBalancers[?DNSName == '66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com']"
- 2329  host 66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com
+ 2328  aws elbv2 describe-load-balancers --query "LoadBalancers[?DNSName == '66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com']"
+ 2329  host 66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------
+Cognito
+-----------------------------------------------------------------------
+Get Congnito User Pool Info
+$ aws cognito-idp list-user-pools --max-results 10
+
+{
+"Id": "us-east-1_vxRCCpQEx",
+"Name": "alb-auth",
+"LambdaConfig": {},
+"LastModifiedDate": "2020-02-27T11:34:15.857000-05:00",
+"CreationDate": "2019-07-12T00:36:33.556000-04:00"
+}
+
+2. Get UserPools ID
+
+$ aws cognito-idp list-user-pools --max-result 10 --query "UserPools[?Name == '"alb-auth"'].Id" --o text
+
+us-east-1_vxRCCpQEx
+
+3. Get user info using email & user ID
+
+$ aws cognito-idp list-users --user-pool-id us-east-1_vxRCCpQEx | grep -A 1 -B 17 "keitaro.kuroda@drecom.co.jp"
+
+4. Verify with User ID
+
+$ aws cognito-idp list-users --user-pool-id us-east-1_vxRCCpQEx --query "Users[?Username == 'kkuroda']"
+
+[
+{
+"Username": "kkuroda",
+"Attributes": [
+
+{ "Name": "sub", "Value": "99f25689-d13f-4240-a0cd-71cb2a4c6216" }
+,
+
+{ "Name": "email_verified", "Value": "true" }
+,
+
+{ "Name": "email", "Value": "keitaro.kuroda@drecom.co.jp" }
+],
+"UserCreateDate": "2019-08-23T17:59:20.503000-04:00",
+"UserLastModifiedDate": "2020-03-04T10:53:49.488000-05:00",
+"Enabled": false,
+"UserStatus": "CONFIRMED"
+}
+]
+
+ 5. Disable or delete user account
+
+$ aws cognito-idp admin-disable-user --user-pool-id us-east-1_vxRCCpQEx --username userId@domain.com
+
+$ aws cognito-idp admin-delete-user --user-pool-id us-east-1_vxRCCpQEx --username userId@domain.com
+
+----------------------------------------------------------------------- 
 
 
 
@@ -3578,31 +3733,7 @@ $ aws elbv2 describe-load-balancers
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+LOGIN="apark"; POOLS=($(aws cognito-idp list-user-pools --max-results 10 --query "UserPools[].Id" --o text)) ; for POOL in ${POOLS[*]}; do FOUND=$(aws cognito-idp admin-get-user --user-pool-id $POOL --username $LOGIN --query "Username" --o text) ; if [[ "$FOUND" = "$LOGIN" ]] ; then echo "FOUND in $POOL" ; aws cognito-idp admin-get-user --user-pool-id $POOL --username $LOGIN --query "UserAttributes[?Name == 'email'].Value" --o text; fi; unset FOUND; done
 
 
 

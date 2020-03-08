@@ -57,7 +57,7 @@ A ; B 		<= Run A and then B, regardless of success of A
 A && B 		<= Run B if A succeeded
 A || B 		<= Run B if A failed
 A & 		<= Run A in background.
-------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 cmd1 ; cmd2     		<= Do cmd1 first, then(;) cmd2(cmd1 has failed or not)
 	$ sleep 5 ; ls -l
 

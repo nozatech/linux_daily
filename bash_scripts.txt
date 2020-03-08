@@ -119,6 +119,18 @@ _	<= Undercore
 	# Search with in VI
 	/search_word
 
+
+----------------------------------------------------
+# VI - number line and tab stop
+----------------------------------------------------
+
+
+
+
+
+
+
+
 -------------------------------------------------------------------- 
 # Syntex error only
 https://stackoverflow.com/questions/171924/how-do-i-syntax-check-a-bash-script-without-running-it

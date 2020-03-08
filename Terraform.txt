@@ -39,7 +39,7 @@ Step 4 : Usage
 
 
 
-
+# terraform state list
 
 
 
