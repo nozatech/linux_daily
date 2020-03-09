@@ -689,7 +689,11 @@ adhere			<- stick fast to (a surface or substance).
 					synonyms:	stick (fast), cohere, cling, bond, attach; be stuck, be fixed, 
 					be glued, be cemented
 					"a dollop of cream adhered to her nose"
-	
+					
+					"He was noted for his strict adherence to the rules." 	그는 규칙을 충실하게 지키는 것으로 유명했다.
+					Adhere to architectural guidelines and standards.		아키텍처 지침 및 표준을 준수합니다.
+					
+					
 amid or amidst	<- [전치사] (한편에서 상황이 발생하고 있는) 가운데/와중에
 					http://blog.naver.com/PostView.nhn?blogId=gogogohany&logNo=100145940149
 

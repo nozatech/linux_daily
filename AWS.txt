@@ -3376,10 +3376,22 @@ https://www.linkedin.com/learning/aws-for-devops-monitoring-metrics-and-logging
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
--------------------------------------------------------------------------------
-Cognito Query
--------------------------------------------------------------------------------
+
+###############################################################################
+
+
+
+
+
+
+
+
+###############################################################################
+# Cognito 
+###############################################################################
+
 $ aws cognito-idp list-user-pools --max-result 10
+	-------------------------------------------------------------------------------
 	{
 		"UserPools": [
 			{
@@ -3390,16 +3402,8 @@ $ aws cognito-idp list-user-pools --max-result 10
 				"CreationDate": "2019-03-12T19:11:51.332000-04:00"
 			},
 			..............................
-			{
-				"Id": "us-east-1_vxRCCpxxx",
-				"Name": "alb-auth",
-				"LambdaConfig": {},
-				"LastModifiedDate": "2020-02-27T11:34:15.857000-05:00",
-				"CreationDate": "2019-07-12T00:36:33.556000-04:00"
-			}
-		]
-	}
-
+	-------------------------------------------------------------------------------
+	
 $ aws cognito-idp list-user-pools --max-result 10  --query "UserPools[?Name == '"alb-auth"'].Id" --o text
 
 # Create a Variable "$USER_POOL"
@@ -3422,20 +3426,95 @@ $ aws cognito-idp list-users --user-pool-id $USER_POOL
 	
 # Use grep for email address user account
 	After '-A 1' Before '-B 17' line option 
+	
+	
 $ aws cognito-idp list-users --user-pool-id us-east-1_vxRCCpxxx | grep -A 1 -B 17 "user_id@domain.com"
 
 $ aws cognito-idp list-users --user-pool-id us-east-1_vxRCCpxxx
 
 
 
+
+###
+LOGIN="apark"; POOLS=($(aws cognito-idp list-user-pools --max-results 10 --query "UserPools[].Id" --o text)) ;\
+ for POOL in ${POOLS[*]}; do FOUND=$(aws cognito-idp admin-get-user --user-pool-id $POOL --username $LOGIN \
+ --query "Username" --o text) ; if [[ "$FOUND" = "$LOGIN" ]] ; then echo "FOUND in $POOL" ; \
+ aws cognito-idp admin-get-user --user-pool-id $POOL --username $LOGIN --query "UserAttributes\
+ [?Name == 'email'].Value" --o text; fi; unset FOUND; done
+###
+
+
 -------------------------------------------------------------------------------
-Route53 Query
+# Get Congnito User Pool Info
 -------------------------------------------------------------------------------
 
+$ aws cognito-idp list-user-pools --max-results 10
+	------------------------------------------------------------------
+	{
+	"Id": "us-east-1_xxx",
+	"Name": "alb-auth",
+	"LambdaConfig": {},
+	"LastModifiedDate": "2020-02-27T11:34:15.857000-05:00",
+	"CreationDate": "2019-07-12T00:36:33.556000-04:00"
+	}
+	------------------------------------------------------------------
+	
+2. Get UserPools ID
+$ aws cognito-idp list-user-pools --max-result 10 --query "UserPools[?Name == '"alb-auth"'].Id" --o text
+
+	us-east-1_xxx
+
+3. Get user info using email & user ID
+$ aws cognito-idp list-users --user-pool-id us-east-1_xxx | grep -A 1 -B 17 "keitaro.kuroda@drecom.co.jp"
+
+
+4. Verify with User ID
+$ aws cognito-idp list-users --user-pool-id us-east-1_xxx --query "Users[?Username == 'kkuroda']"
+	------------------------------------------------------------------
+	[
+	{
+	"Username": "kkuroda",
+	"Attributes": [
+
+	{ "Name": "sub", "Value": "99f25689-d13f-4240-a0cd-xxx" }
+	,
+
+	{ "Name": "email_verified", "Value": "true" }
+	,
+
+	{ "Name": "email", "Value": "keitaro.kuroda@drecom.co.jp" }
+	],
+	"UserCreateDate": "2019-08-23T17:59:20.503000-04:00",
+	"UserLastModifiedDate": "2020-03-04T10:53:49.488000-05:00",
+	"Enabled": false,
+	"UserStatus": "CONFIRMED"
+	}
+	]
+	------------------------------------------------------------------
+	
+5. Disable or delete user account
+
+$ aws cognito-idp admin-disable-user --user-pool-id us-east-1_xxx --username userId@domain.com
+
+$ aws cognito-idp admin-delete-user  --user-pool-id us-east-1_xxx --username userId@domain.com
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+
+
+###############################################################################
+Route53 
+	DNS management 
+	Hosted Zones 	<- A hosted zone tell route53 how to respond to DNS queries 
+						for a domain such as "example.com"
+###############################################################################
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 $ ZONE="xxx.xxxx.com."					<= Dont forget the '.' at the END!!
 
-$ aws route53 list-hosted-zones
-		-----------------------------------------------------------------------
+$ aws route53 list-hosted-zones			<= Finding 'ARecord' name  
+
+	-----------------------------------------------------------------------
 		{
 			"HostedZones": [
 				{
@@ -3447,10 +3526,21 @@ $ aws route53 list-hosted-zones
 						"PrivateZone": false
 					},
 					"ResourceRecordSetCount": 161
-				}
-			]
-		}
+					.....
+	-----------------------------------------------------------------------
+$ aws route53 list-hosted-zones | grep "Name"
+
+		
+$ aws route53 list-hosted-zones | head -n 5  (or | head -5)
 		-----------------------------------------------------------------------
+		{
+			"HostedZones": [
+				{
+					"Id": "/hostedzone/ZVYH4FMS9U8WP",
+					"Name": "test.doman.com.",
+		-----------------------------------------------------------------------
+	
+		
 $ aws route53 list-hosted-zones --query "HostedZones"
 		-----------------------------------------------------------------------
 		[
@@ -3459,7 +3549,7 @@ $ aws route53 list-hosted-zones --query "HostedZones"
 				"Name": "xxx.xxxxx.com.",
 				"CallerReference": "6449019A-B8FA-BFC5-92F9-80109BEC305A",
 				"Config": {
-					"Comment": "Delegated sub-zone for PacMan",
+					"Comment": "Delegated sub-zone for xx",
 					"PrivateZone": false
 				},
 				"ResourceRecordSetCount": 161
@@ -3467,23 +3557,22 @@ $ aws route53 list-hosted-zones --query "HostedZones"
 		]
 		-----------------------------------------------------------------------
 
+$ ZONE="dev.domain.com."
 		
 $ aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].ID"
 
 		-----------------------------------------------------------------------
 		[
-			"/hostedzone/Z335IK22PUX3B8"
+			"/hostedzone/Z335IK22xxxxx"
 		]
 		-----------------------------------------------------------------------
 
 $ aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].Id" --o text		<= Output to txt file
 
-	/hostedzone/Z335IK22PUX3B8
+	/hostedzone/Z335IK2xxxxxx
 
-$ aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].Name" 				<= change to Name or Config	
-
+	# aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].Name" 				<= change to Name or Config	
 	# aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE']"
-	# aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Name"
 	# aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Id"
 	# aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Config"
 
@@ -3496,13 +3585,14 @@ $ echo $ZONE_ID
 	/hostedzone/Z335IK22PUX3B8
 
 
+### Lists the 'resource-record-sets' in a specified hosted zone ###		<= Getting DNS Info "address"
+
 $  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID
------------------------------------------------------------------------
-{
-    "ResourceRecordSets": [
-        {
-		...................  too many	
-     
+		-----------------------------------------------------------------------
+		{
+			"ResourceRecordSets": [
+				{
+				...
 		-----------------------------------------------------------------------
 
 $ aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets"
@@ -3520,190 +3610,284 @@ $ aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "Resou
 					},
 					{
 						"Value": "ns-65.awsdns-08.com."
-					},
-					{
-						"Value": "ns-1944.awsdns-51.co.uk."
-					},
-					{
-						"Value": "ns-552.awsdns-05.net."
-					}
-				]
-			},
-			{
-				"Name": "xxx.xxx.com.",
-				"Type": "SOA",
-				"TTL": 900,
-				"ResourceRecords": [
-					{
-						"Value": "ns-1372.awsdns-43.org. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"
-					}
-				]
-			},
-			{
-				"Name": "xxx.xxx.com.",
-				"Type": "TXT",
-				"TTL": 300,
-				"ResourceRecords": [
-					{
-						"Value": "\"children=children.pacman.namcowireless.com;other=pacman.namcowireless.com\""
-					}
-				]
-			}
-		]
-	
+				...
 		-----------------------------------------------------------------------
 	
 	
+$ aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName" 
+		-----------------------------------------------------------------------
+		[
+			{
+				"HostedZoneId": "Z35SXDOTRQ7X7K",
+				"DNSName": "dualstack.xxxx-default-devbillad-ac59.us-east-1.elb.amazonaws.com.",   		<= A Record
+				"EvaluateTargetHealth": true
+			}
+		]
+		-----------------------------------------------------------------------
+
+
 $ aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName" --o text
 
+	dualstack.xxxx-default-devbillad-ac59-.us-east-1.elb.amazonaws.com.								<= ELB's A Record 
+
+
+# Use "host" utils to find  DNS lookup 
+# Finding how many
+
+$ host dualstack.xxxx-default-devbillad-ac59.us-east-1.elb.amazonaws.com.
+
+	dualstack.xxxx-default-devbillad-ac59.us-east-1.elb.amazonaws.com has address 52.55.IP_address
+	dualstack.xxxx-default-devbillad-ac59.us-east-1.elb.amazonaws.com has address 52.204.IP_address
+	dualstack.xxxx-default-devbillad-ac59.us-east-1.elb.amazonaws.com has address 34.206.IP_address
+
+# From AWS Console
+$ host 66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com
+
+	66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com has address 34.206.IP_address
+	66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com has address 52.204.IP_address
+	66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com has address 52.55.IP_address
+
+$ host billadmin-dev.domain.com
+
+	billadmin-dev.doman.com has address 52.55.IP_address
+	billadmin-dev.doman.com has address 52.204.IP_address
+	billadmin-dev.doman.com has address 34.206.IP_address
+
+
+# Availability 3-Zones
+	subnet-361ea61c - us-east-1a  		IPv4 address: Assigned by AWS
+
+	subnet-8e48b0c7 - us-east-1b 		IPv4 address: Assigned by AWS
+
+	subnet-a06b63f8 - us-east-1c 		IPv4 address: Assigned by AWS
+
+
+
+-----------------------------------------------------------------------
+###############################################################################
+# ELBV2  Elastic Load Balancer (ALB uses 'elbv2' command)
+###############################################################################
+-----------------------------------------------------------------------
 # Create "$ELB1" variable
 $ ELB1=$(aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName" --o text)
 
 $ echo $ELB1
-		dualstack.66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com.
+		dualstack.xxxx-default-xxx-c59-1176.us-east-1.elb.amazonaws.com.
 
 $ host $ELB1
 
-	dualstack.66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com has address IP
-	dualstack.66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com has address IP
-	dualstack.66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com has address IP
+	dualstack.xxxx-default-xxx-c59-1176.us-east-1.elb.amazonaws.com has address IP
+	dualstack.xxxx-default-xxx-c59-1176.us-east-1.elb.amazonaws.com has address IP
+	dualstack.xxxx-default-xxx-c59-1176.us-east-1.elb.amazonaws.com has address IP
 
-$ aws elbv2 describe-load-balancers | grep -i xxxx
-
-            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:16278xxxx:loadbalancer/app/alb-stg-xxxx/15350c18e164ec91",
-            "DNSName": "alb-stg-xxxx-1921507778.us-east-1.elb.amazonaws.com",
-            "LoadBalancerName": "alb-stg-xxxx",
-            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:16278xxxx:loadbalancer/app/alb-prod-xxxx/273314f8818d84ff",
-            "DNSName": "alb-prod-xxxx-1611071774.us-east-1.elb.amazonaws.com",
-            "LoadBalancerName": "alb-prod-xxxx",
-            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:16278xxxx:loadbalancer/app/alb-dev-xxxx/298d29d2a16af4e9",
-            "DNSName": "alb-dev-xxxx-773493211.us-east-1.elb.amazonaws.com",
-            "LoadBalancerName": "alb-dev-xxxx",
-
-$ aws elbv2 describe-load-balancers | head -2
+$ aws elbv2 describe-load-balancers | head -2  (head 인데 아래로 -2 줄까지)
 	{
 		"LoadBalancers": [
 
-		# aws elbv2 describe-load-balancers --query "LoadBalancers"
-		# aws elbv2 describe-load-balancers --query "LoadBalancers[]"
-		# aws elbv2 describe-load-balancers --query "LoadBalancers[*]"
-	
+$ aws elbv2 describe-load-balancers | grep  -A 5 -B5 -i "alb-dev"
+		-----------------------------------------------------------------------
+        {
+            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:162780728042:loadbalancer/app/alb-dev/298d29d2a16af4e9",
+            "DNSName": "alb-dev-773493211.us-east-1.elb.amazonaws.com",
+            "CanonicalHostedZoneId": "Z35SXDOTRQ7X7K",
+            "CreatedTime": "2020-02-26T18:35:39.850000+00:00",
+            "LoadBalancerName": "alb-dev",
+            "Scheme": "internet-facing",
+            "VpcId": "vpc-b3b9b5d7",
+            "State": {
+                "Code": "active"
+			...
+		-----------------------------------------------------------------------
+		
+$ aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName == 'alb-dev']"
+		-----------------------------------------------------------------------
+        {
+            "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:162780728042:loadbalancer/app/alb-dev/298d29d2a16af4e9",
+            "DNSName": "alb-dev-773493211.us-east-1.elb.amazonaws.com",
+            "CanonicalHostedZoneId": "Z35SXDOTRQ7X7K",
+            "CreatedTime": "2020-02-26T18:35:39.850000+00:00",
+            "LoadBalancerName": "alb-dev",
+            "Scheme": "internet-facing",
+            "VpcId": "vpc-b3b9b5d7",
+            "State": {
+                "Code": "active"
+			...
+		-----------------------------------------------------------------------
+
+		# aws elbv2 describe-load-balancers --query "LoadBalancers"			<=same
+		# aws elbv2 describe-load-balancers --query "LoadBalancers[]"		<=same
+		# aws elbv2 describe-load-balancers --query "LoadBalancers[*]"		<=same
+
+
+$ aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName == 'alb-dev-billadmin'].LoadBalancerArn" --o text
+	arn:aws:elasticloadbalancing:us-east-1:162780728042:loadbalancer/app/alb-dev-billadmin/298d29d2a16af4e9
+
+# Create Variable "ALB1"
+$ ALB1=(aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName == 'alb-dev-billadmin'].LoadBalancerArn" --o text)
+	arn:aws:elasticloadbalancing:us-east-1:16278072:loadbalancer/app/alb-dev/298d29d2a
+
+$ aws elbv2 describe-listeners --load-balancer-arn $ALB1
+		-----------------------------------------------------------------------
+		{
+			"Listeners": [
+				{
+					"ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:16278072:loadbalancer/app/alb-dev/298d29d2a",
+					"LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:162780728042:loadbalancer/app/alb-dev-billadmin/298d29d2a16af4e9",
+					"Port": 443,
+					"Protocol": "HTTPS",
+					"Certificates": [
+						{
+							"CertificateArn": "arn:aws:acm:us-east-1:162780728042:certificate/d934b6c9-7928-4d4c-bf1d-062f0a0bee6d"
+						}
+					],
+					"SslPolicy": "ELBSecurityPolicy-2016-08",
+					"DefaultActions": [
+						{
+							"Type": "forward",
+							"TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:162780728042:targetgroup/tg-dev-billadmin/f55d9b25d8beede8",
+							"Order": 1,
+							"ForwardConfig": {
+								"TargetGroups": [
+									{
+										"TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:162780728042:targetgroup/tg-dev-billadmin/f55d9b25d8beede8",
+										"Weight": 1
+									}
+								],
+								"TargetGroupStickinessConfig": {
+									"Enabled": false
+					....
+		-----------------------------------------------------------------------			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 $ aws elbv2 describe-load-balancers --query "LoadBalancers[*].DNSName"
+    "66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com",
 
-$ aws elbv2 describe-load-balancers --query "LoadBalancers[?DNSName == '66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com']" 
+
+$ aws elbv2 describe-load-balancers --query "LoadBalancers[?DNSName == 'xxxx-default-xxx-c59-1176.us-east-1.elb.amazonaws.com']" 
 
 
-$ host 66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com
-	66636b01-default-devbillad-ac59-1176xxx.us-east-1.elb.amazonaws.com has address IP_address
-	66636b01-default-devbillad-ac59-1176xxx.us-east-1.elb.amazonaws.com has address IP_address
-	66636b01-default-devbillad-ac59-1176xxx.us-east-1.elb.amazonaws.com has address IP_address
-
-$ 
- 
-
- 2309  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets"
- 2310  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[]"
- 2311  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[0]"
- 2312  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget"
- 2313  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName"
- 2314  aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName" --o text
- 2315  ELB1=$(aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName" --o text)
- 2316  echo $ELB1
- 2317  aws elb2 help
- 2318  aws elbv2 help
- 2319  aws elbv2 help | egrep -i "describe|list|get"
- 2320  aws elbv2 describe-load-balancers
- 2321  echo $ELB1
- 2322  aws elbv2 describe-load-balancers | grep devbillad
- 2323  aws elbv2 describe-load-balancers | head -2
- 2324  aws elbv2 describe-load-balancers --query "LoadBalancers"
- 2325  aws elbv2 describe-load-balancers --query "LoadBalancers[]"
- 2326  aws elbv2 describe-load-balancers --query "LoadBalancers[*]"
- 2327  aws elbv2 describe-load-balancers --query "LoadBalancers[*].DNSName"
- 2328  aws elbv2 describe-load-balancers --query "LoadBalancers[?DNSName == '66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com']"
- 2329  host 66636b01-default-xxx-c59-1176.us-east-1.elb.amazonaws.com
+$ host xxxx-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com
+	xxxx-default-devbillad-ac59-1176xxx.us-east-1.elb.amazonaws.com has address IP_address
+	xxxx-default-devbillad-ac59-1176xxx.us-east-1.elb.amazonaws.com has address IP_address
+	xxxx-default-devbillad-ac59-1176xxx.us-east-1.elb.amazonaws.com has address IP_address
 
 
 
 
 
 
+###############################################################################
+# WAF 
+	Web Application Firewall
+###############################################################################
+----------------------------------------------------------------------
+# WAF 1: waf-regional
+----------------------------------------------------------------------
+
+$ aws waf-regional help | egrep -i "list|describe|get"
+
+$ aws waf-regional list-web-acls
+	----------------------------------------------------------------------
+	{
+		"NextMarker": "7cd927b4-8ef1-4979-a27c-981cbc9dae7e",
+		"WebACLs": [
+			{
+				"WebACLId": "468c8199-767b-47c2-a932-xxxx",
+				"Name": "platform-dev"
+			},
+			{
+				"WebACLId": "6006774f-b5c3-46f0-b63e-xxxx",
+				"Name": "platform-prod"
+			},
+			{
+				"WebACLId": "7cd927b4-8ef1-4979-a27c-xxxx",
+				"Name": "platform-stg"
+			}
+		]
+	}
+	----------------------------------------------------------------------
+
+$ aws waf-regional list-web-acls --query "WebACLs"
+
+$ aws waf-regional list-web-acls --query "WebACLs[?Name == 'platform-dev']"
+	[
+		{
+			"WebACLId": "468c8199-767b-47c2-a932-xxxx",
+			"Name": "platform-dev"
+		}
+	]
 
 
+$ aws waf-regional list-web-acls --query "WebACLs[?Name == 'platform-dev'].WebACLId" --o text
+
+	468c8199-767b-47c2-a932-xxxx		<=  WebACLId
+
+$ aws waf-regional list-resources-for-web-acl --web-acl-id 468c8199-767b-47c2-a932-xxxx
 
 
+# WAF Info
+$ aws waf-regional get-web-acl-for-resource --resource-arn arn:aws:elasticloadbalancing:us-east-1:162780728042:loadbalancer/app/xxx-default-devbillad-ac59/078a26760cc0d6cf
+	----------------------------------------------------------------------
+	{
+		"WebACLSummary": {
+			"WebACLId": "468c8199-767b-47c2-a932-xxxx",
+			"Name": "platform-dev"
+		}
+	}
+	----------------------------------------------------------------------
 
 
+#
+
+----------------------------------------------------------------------
+# ALB 1
+----------------------------------------------------------------------
+$ aws elbv2 describe-load-balancers | grep "LoadBalancerName"
+            "LoadBalancerName": "4663dd16-default-stgbillad-6139",
+            "LoadBalancerName": "b2aec514-default-prodbilla-84fc",
+            "LoadBalancerName": "66636b01-default-devbillad-ac59",		<=  dev
 
 
+$ aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName == '66636b01-default-devbillad-ac59']"
 
+$ aws elbv2 describe-listeners --load-balancer-arn arn:aws:elasticloadbalancing:us-east-1:162780728042:loadbalancer/app/66636b01-default-devbillad-ac59/078a26760cc0d6cf
 
+$ aws elbv2 describe-rules --listener-arn arn:aws:elasticloadbalancing:us-east-1:162780728042:listener/app/66636b01-default-devbillad-ac59/078a26760cc0d6cf/b66e416dc1cc1b9e --query "Rules[].Actions[?Type == 'forward'].ForwardConfig.TargetGroups[]"
 
+$ aws elbv2 describe-target-groups --query "TargetGroups[?TargetGroupName == '66636b01-b52349373f289c3fa88']"
 
-
-
-
-
------------------------------------------------------------------------
-Cognito
------------------------------------------------------------------------
-Get Congnito User Pool Info
-$ aws cognito-idp list-user-pools --max-results 10
-
-{
-"Id": "us-east-1_vxRCCpQEx",
-"Name": "alb-auth",
-"LambdaConfig": {},
-"LastModifiedDate": "2020-02-27T11:34:15.857000-05:00",
-"CreationDate": "2019-07-12T00:36:33.556000-04:00"
-}
-
-2. Get UserPools ID
-
-$ aws cognito-idp list-user-pools --max-result 10 --query "UserPools[?Name == '"alb-auth"'].Id" --o text
-
-us-east-1_vxRCCpQEx
-
-3. Get user info using email & user ID
-
-$ aws cognito-idp list-users --user-pool-id us-east-1_vxRCCpQEx | grep -A 1 -B 17 "keitaro.kuroda@drecom.co.jp"
-
-4. Verify with User ID
-
-$ aws cognito-idp list-users --user-pool-id us-east-1_vxRCCpQEx --query "Users[?Username == 'kkuroda']"
+$ aws elbv2 describe-target-health --target-group-arn arn:aws:elasticloadbalancing:us-east-1:162780728042:targetgroup/66636b01-b52349373f289c3fa88/cc0b422d6e6cd1a2 --query "TargetHealthDescriptions[].Target.Id"
 
 [
-{
-"Username": "kkuroda",
-"Attributes": [
 
-{ "Name": "sub", "Value": "99f25689-d13f-4240-a0cd-71cb2a4c6216" }
-,
+    "i-0a412a770445ab326",
 
-{ "Name": "email_verified", "Value": "true" }
-,
+    "i-04bc4e6134be88626",
 
-{ "Name": "email", "Value": "keitaro.kuroda@drecom.co.jp" }
-],
-"UserCreateDate": "2019-08-23T17:59:20.503000-04:00",
-"UserLastModifiedDate": "2020-03-04T10:53:49.488000-05:00",
-"Enabled": false,
-"UserStatus": "CONFIRMED"
-}
+    "i-0a6100df30ff085dd"
+
 ]
 
- 5. Disable or delete user account
 
-$ aws cognito-idp admin-disable-user --user-pool-id us-east-1_vxRCCpQEx --username userId@domain.com
 
-$ aws cognito-idp admin-delete-user --user-pool-id us-east-1_vxRCCpQEx --username userId@domain.com
-
------------------------------------------------------------------------ 
+----------------------------------------------------------------------
+# ALB Target
+----------------------------------------------------------------------
 
 
 
 
+$ aws ec2 describe-instances | jq ".Reservations[] | .Instances[] | select(.InstanceId == \"i-0a412a770445ab326\") | .Tags[] | select(.Key==\"Name\") | .Value"
 
+"platform-dev-worker-Node"
 
 
 
