@@ -3390,6 +3390,7 @@ https://www.linkedin.com/learning/aws-for-devops-monitoring-metrics-and-logging
 # Cognito 
 ###############################################################################
 
+# Finding User-Pool-ID
 $ aws cognito-idp list-user-pools --max-result 10
 	-------------------------------------------------------------------------------
 	{
@@ -3428,7 +3429,8 @@ $ aws cognito-idp list-users --user-pool-id $USER_POOL
 	After '-A 1' Before '-B 17' line option 
 	
 	
-$ aws cognito-idp list-users --user-pool-id us-east-1_vxRCCpxxx | grep -A 1 -B 17 "user_id@domain.com"
+ $ aws cognito-idp list-users --user-pool-id us-east-1_vxRCCpxxx | grep -A 1 -B 17 "user_id@domain.com"
+#$ aws cognito-idp list-users --user-pool-id $USER_POOL          | grep -A 1 -B 17 "user_id@domain.com"
 
 $ aws cognito-idp list-users --user-pool-id us-east-1_vxRCCpxxx
 
@@ -3465,15 +3467,15 @@ $ aws cognito-idp list-user-pools --max-result 10 --query "UserPools[?Name == '"
 	us-east-1_xxx
 
 3. Get user info using email & user ID
-$ aws cognito-idp list-users --user-pool-id us-east-1_xxx | grep -A 1 -B 17 "keitaro.kuroda@drecom.co.jp"
+$ aws cognito-idp list-users --user-pool-id us-east-1_xxx | grep -A 1 -B 17 "user_id@domain.com"
 
 
 4. Verify with User ID
-$ aws cognito-idp list-users --user-pool-id us-east-1_xxx --query "Users[?Username == 'kkuroda']"
+$ aws cognito-idp list-users --user-pool-id us-east-1_xxx --query "Users[?Username == 'user_id']"
 	------------------------------------------------------------------
 	[
 	{
-	"Username": "kkuroda",
+	"Username": "user_id",
 	"Attributes": [
 
 	{ "Name": "sub", "Value": "99f25689-d13f-4240-a0cd-xxx" }
@@ -3482,7 +3484,7 @@ $ aws cognito-idp list-users --user-pool-id us-east-1_xxx --query "Users[?Userna
 	{ "Name": "email_verified", "Value": "true" }
 	,
 
-	{ "Name": "email", "Value": "keitaro.kuroda@drecom.co.jp" }
+	{ "Name": "email", "Value": "user_id@domain.com" }
 	],
 	"UserCreateDate": "2019-08-23T17:59:20.503000-04:00",
 	"UserLastModifiedDate": "2020-03-04T10:53:49.488000-05:00",
@@ -3510,7 +3512,7 @@ Route53
 ###############################################################################
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
-$ ZONE="xxx.xxxx.com."					<= Dont forget the '.' at the END!!
+$ ZONE="test.doman.com."					<= Dont forget the '.' at the END!!
 
 $ aws route53 list-hosted-zones			<= Finding 'ARecord' name  
 
@@ -3528,7 +3530,7 @@ $ aws route53 list-hosted-zones			<= Finding 'ARecord' name
 					"ResourceRecordSetCount": 161
 					.....
 	-----------------------------------------------------------------------
-$ aws route53 list-hosted-zones | grep "Name"
+$ aws route53 list-hosted-zones | grep "Name" | grep -i "test.doman.com"
 
 		
 $ aws route53 list-hosted-zones | head -n 5  (or | head -5)
@@ -3536,7 +3538,7 @@ $ aws route53 list-hosted-zones | head -n 5  (or | head -5)
 		{
 			"HostedZones": [
 				{
-					"Id": "/hostedzone/ZVYH4FMS9U8WP",
+					"Id": "/hostedzone/ZVYH4FMS9",
 					"Name": "test.doman.com.",
 		-----------------------------------------------------------------------
 	
@@ -3557,20 +3559,26 @@ $ aws route53 list-hosted-zones --query "HostedZones"
 		]
 		-----------------------------------------------------------------------
 
-$ ZONE="dev.domain.com."
+
+# ARecord name(Domain Name)
+
+$ ZONE="dev.domain.com."			<= set variable	
 		
+$ aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"']"
+
 $ aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].ID"
 
-		-----------------------------------------------------------------------
-		[
-			"/hostedzone/Z335IK22xxxxx"
-		]
-		-----------------------------------------------------------------------
+	-----------------------------------------------------------------------
+	[
+		"/hostedzone/Z335IK22xxxxx"
+	]
+	-----------------------------------------------------------------------
 
 $ aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].Id" --o text		<= Output to txt file
 
 	/hostedzone/Z335IK2xxxxxx
-
+	
+	# You can also get the Id, Config values after .Id, .Config, .Name
 	# aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].Name" 				<= change to Name or Config	
 	# aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE']"
 	# aws route53 list-hosted-zones --query "HostedZones[?Name == '$ZONE'].Id"
@@ -3582,7 +3590,7 @@ $ aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].Id" --o
 $ ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[?Name == '"$ZONE"'].Id" --o text)
 
 $ echo $ZONE_ID
-	/hostedzone/Z335IK22PUX3B8
+	/hostedzone/Z335IK22
 
 
 ### Lists the 'resource-record-sets' in a specified hosted zone ###		<= Getting DNS Info "address"
@@ -3613,13 +3621,15 @@ $ aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "Resou
 				...
 		-----------------------------------------------------------------------
 	
-	
+
+# Finding "Alias Name for 	"dev.domain.com"
+
 $ aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "ResourceRecordSets[].AliasTarget.DNSName" 
 		-----------------------------------------------------------------------
 		[
 			{
 				"HostedZoneId": "Z35SXDOTRQ7X7K",
-				"DNSName": "dualstack.xxxx-default-devbillad-ac59.us-east-1.elb.amazonaws.com.",   		<= A Record
+				"DNSName": "dualstack.xxxx-default-devbillad-ac59.us-east-1.elb.amazonaws.com.",   		<= Alias
 				"EvaluateTargetHealth": true
 			}
 		]
@@ -3631,8 +3641,10 @@ $ aws route53 list-resource-record-sets --hosted-zone-id $ZONE_ID --query "Resou
 	dualstack.xxxx-default-devbillad-ac59-.us-east-1.elb.amazonaws.com.								<= ELB's A Record 
 
 
-# Use "host" utils to find  DNS lookup 
-# Finding how many
+# Use "host" utils to find DNS NAME  (DNS lookup)
+	In simple words, this command is used to find the IP address of a particular domain name or if you want to 
+	find out the domain name of a particular IP address the host command becomes handy. 
+# Finding how many servers are responding
 
 $ host dualstack.xxxx-default-devbillad-ac59.us-east-1.elb.amazonaws.com.
 
@@ -3647,14 +3659,14 @@ $ host 66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com
 	66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com has address 52.204.IP_address
 	66636b01-default-devbillad-ac59-1176930751.us-east-1.elb.amazonaws.com has address 52.55.IP_address
 
-$ host billadmin-dev.domain.com
+$ host dev.domain.com
 
-	billadmin-dev.doman.com has address 52.55.IP_address
-	billadmin-dev.doman.com has address 52.204.IP_address
-	billadmin-dev.doman.com has address 34.206.IP_address
+	dev.doman.com has address 52.55.IP_address
+	dev.doman.com has address 52.204.IP_address
+	dev.doman.com has address 34.206.IP_address
 
-
-# Availability 3-Zones
+???
+# Availability 3-Zones ???
 	subnet-361ea61c - us-east-1a  		IPv4 address: Assigned by AWS
 
 	subnet-8e48b0c7 - us-east-1b 		IPv4 address: Assigned by AWS
@@ -3666,6 +3678,7 @@ $ host billadmin-dev.domain.com
 -----------------------------------------------------------------------
 ###############################################################################
 # ELBV2  Elastic Load Balancer (ALB uses 'elbv2' command)
+### Finding Load Balancer using ARecord
 ###############################################################################
 -----------------------------------------------------------------------
 # Create "$ELB1" variable
