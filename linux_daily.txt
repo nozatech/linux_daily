@@ -10996,7 +10996,7 @@ split
 	
 Slack
 Webhook testing
-$>>> curl -X POST -H 'Content-type: application/json' --data '{"text":"Connection Testing!"}' https://hooks.slack.com/services/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
+$>>> curl -X POST -H 'Content-type: application/json' --data '{"text":"Connection Testing!"}' https://hooks.slack.com/services/T0L71L0HZ/BA64RKL3
 	
 	
 	
