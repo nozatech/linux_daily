@@ -1,5 +1,8 @@
 Kubernetes 
 
+Upgrading kubeadm clusters from v1.14 to v1.15
+https://v1-15.docs.kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade-1-15/
+
 
 aws-iam-authenticator
 https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
@@ -2210,24 +2213,140 @@ $ kubectl exec -it    helloworld-deployment-with-probe-65d8597578-vwkb7    /bin/
 $ kubectl exec -it helloworld-deployment-with-probe-65d8597578-vwkb7 -c helloworld /bin/bash
 
 -------------------------------------------------------------------------------------------
+  804  kubectl -n kube-system
 
+  805  kubectl -n kube-system get all
+
+  806  kubectl get ns
+
+  807  kubectl get nodes
+
+  808  kubectl -n kube-system get nodes
+
+  809  kubectl -n kube-system get pods
+
+  810  kubectl -n default get pods
+
+  811  kubectl  get pods
+  
+  814  kubectl -n kube-system get all
+
+  815  kubectl -n kube-system get deployment.apps/alb-ingress-controller
+
+  816  kubectl -n kube-system get deployment coredns
+
+  817  kubectl -n kube-system get deployment.apps/coredns
+
+  818  kubectl -n kube-system get deployment alb-ingress-controller
+
+  819  kubectl -n kube-system edit deployment alb-ingress-controller
+
+  820  kubectl -n kube-system edit deployment alb-ingress-controller -o wide
+
+  821  kubectl -n kube-system get  deployment alb-ingress-controller -o wide
+
+  822  kubectl -n kube-system get  deployment alb-ingress-controller -o yaml
+
+  847  kubectl -n kube-system get deployment alb-ingress-controller -o wide
+
+  848  kubectl get all -n kube-system
+
+  849  kubectl get all
+
+  850  kubectl --namespace default get all
+
+  851  kubectl --namespace default get all | tail -1
+
+  852  kubectl --namespace default get all | tail -1 ; kubectl get all | tail -1
+
+  853  kubectl config current-context
+
+  854  kubectl config use-context platform-dev
+
+  855  kubectl config current-context
+
+ 1885  kubectl config current-use
+
+ 1886  kubectl config current-context
+
+ 1887  kubectl config current-use platform-prod
+
+ 1888  kubectl config use-context platform-prod
+
+ 1889  kubectl get nodes
+
+ 1890  kubectl get pos
+
+ 1891  kubectl get pods
+
+ 1892  kubectl get pods | grep platform-api
+
+ 1893  kubectl get pods | grep "platform-api"
+
+ 1894  kubectl get pods | grep "platform-api"
+
+ 1895  kubectl get nodes
+
+ 1896  kubectl get pods | grep platform-api
+
+ 1931  kubectl get nodes
+
+ 1932  kubectl get pods | grep platform-prod-api
+
+ 1933  kubectl get pods
+
+ 1934  kubectl get hpa                                  <= Horizontal Pod Autoscaler
+ 
+ 2122  kubectl config current-context
+
+ 2123  kubectl config use-context platform-dev
+
+ 2124  kubectl config current-context
+
+ 2125  kubectl get ingress
+
+ 2126  kubectl get ing
+
+ 2127  kubectl get pods
+
+ 2128  kubectl get pod nginx-proxy-6b5cd479c5-lp6mp
+
+ 2129  kubectl get ing
+
+ 2130  kubectl describe ingress dev-billadmin
+
+ 2131  kubectl eit ingress dev-billadmin
+
+ 2132  kubectl edit ingress dev-billadmin
+
+ 2141  cat  eks/dev/manifests/default/ingress/alb-dev-billadmin-ing.yaml 
+
+ 2142  cvi  eks/dev/manifests/default/ingress/alb-dev-billadmin-ing.yaml 
+
+ 2143  vi  eks/dev/manifests/default/ingress/alb-dev-billadmin-ing.yaml 
+
+ 2144  curl -v https://billadmin-dev.bnea.io
+
+ 2150  cat   manifests/default/ingress/alb-dev-billadmin-ing.yaml
+-------------------------------------------------------------------------------------------
+$ cat switch.sh
+
+#!/bin/bash
+set -ex
+
+aws s3 cp s3://bnea.dev/kube/config-platform-dev /tmp/config-platform-dev
+
+KUBECONFIG=~/.kube/config:/tmp/config-platform-dev kubectl config view --flatten >| /tmp/kubeconfig && cp -f /tmp/kubeconfig ~/.kube/config
+rm -f /tmp/config-platform-dev && rm -f /tmp/kubeconfig
+
+echo ${KUBECONFIG}
+
+kubectl config use-context platform-dev
+kubectl cluster-info
+kubectl get nodes
 -------------------------------------------------------------------------------------------
 
--------------------------------------------------------------------------------------------
 
--------------------------------------------------------------------------------------------
-
--------------------------------------------------------------------------------------------
-
--------------------------------------------------------------------------------------------
-
--------------------------------------------------------------------------------------------
-
--------------------------------------------------------------------------------------------
-
--------------------------------------------------------------------------------------------
-
--------------------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------------------
 

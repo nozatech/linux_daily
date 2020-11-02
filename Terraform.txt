@@ -1,52 +1,109 @@
 Terraform
 
-$ wget https://releases.hashicorp.com/terraform/0.12.19/terraform_0.12.19_linux_amd64.zip
-$ echo $PATH
-$ sudo unzip terraform_0.12.19_linux_amd64.zip -d /usr/bin
+https://stackoverflow.com/questions/56283424/upgrade-terraform-to-specific-version
+
+	$ wget https://releases.hashicorp.com/terraform/0.12.19/terraform_0.12.19_linux_amd64.zip
+	$ echo $PATH
+	$ sudo unzip terraform_0.12.19_linux_amd64.zip -d /usr/bin
 
 https://www.terraform.io/docs/commands/index.html
-$ terraform -install-autocomplete
-$ terraform -uninstall-autocomplete
+	$ terraform -install-autocomplete
+	$ terraform -uninstall-autocomplete
 
 
 terraform plan -var "do_token=${DO_PAT}" \
 	-var "pub_key=$HOME/.ssh/id_rsa.pub" \
 	-var "pvt_key=$HOME/.ssh/id_rsa" \
 	-var "ssh_fingerprint=dc:2d:35:xx4:c7:8f:4a" 
-
-
-
-
+ 
 
 Java Query Install on CentOS7
 
-Step 1 : Install Pre-requisite
-	$ sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-Step 2 : Install jq
-	$ sudo yum install jq -y
-Step 3 : Verify
-	$ jq -Version
-Step 4 : Usage
-	$ echo '{
-	"response": [{
-	"id": "1",
-	"name": "Rachel Green"
-	}, {
-	"id": "2",
-	"name": "Sheldon Cooper"
-	}]
-	}' | jq .'response'
+	Step 1 : Install Pre-requisite
+		$ sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+	Step 2 : Install jq
+		$ sudo yum install jq -y
+	Step 3 : Verify
+		$ jq -Version
+	Step 4 : Usage
+		$ echo '{
+		"response": [{
+		"id": "1",
+		"name": "Rachel Green"
+		}, {
+		"id": "2",
+		"name": "Sheldon Cooper"
+		}]
+		}' | jq .'response'
 
 
 
-# terraform state list
+# Inital Setup
+$ export AWS_ACCESS_KEY_ID=AKIA2AU3
+$ export AWS_SECRET_ACCESS_KEY=S5W8J7D+
+$ mkdir terraform_aws
+$ cd terraform_aws
+$ vi main.tf
+	--------------------------------------------
+	provider "aws" {
+	  region = "us-east-2"
+	}
+
+	resource "aws_instance" "example" {
+	  ami           = "ami-0da02e7a84ce1734c"			<= us-east-2 EKS optimized AMI
+	  instance_type = "t2.micro"
+	}
+	--------------------------------------------
+
+$ terraform init
+
+$ terraform plan
+
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+---
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+$ terraform apply
+
+$ Check from AWS Console
+
+
+$ terraform state list <- List resources in the state(setup 된 상태를 '.terraform' folder 안에 저장 as 'terraform.tfstate')
+$ terraform show 		<-
 
 
 
+Usage: terraform [-version] [-help] <command> [args]
 
+	Common commands:
+		apply              **Builds or changes infrastructure
+		console            Interactive console for Terraform interpolations
+		destroy            Destroy Terraform-managed infrastructure
+		env                Workspace management
+		fmt                Rewrites config files to canonical format
+		get                Download and install modules for the configuration
+		graph              Create a visual graph of Terraform resources
+		import             **Import existing infrastructure into Terraform
+		init               **Initialize a Terraform working directory
+		output             Read an output from a state file
+		plan               **Generate and show an execution plan
+		providers          Prints a tree of the providers used in the configuration
+		refresh            Update local state file against real resources
+		show               **Inspect Terraform state or plan
+		taint              Manually mark a resource for recreation(taint 더럽히다, 못쓰게하다)
+		untaint            Manually unmark a resource as tainted
+		validate           **Validates the Terraform files
+		version            Prints the Terraform version
+		workspace          Workspace management
 
-
-
+	All other commands:
+		0.12upgrade        Rewrites pre-0.12 module source code for v0.12
+		debug              Debug output management (experimental)
+		force-unlock       Manually unlock the terraform state
+		push               Obsolete command for Terraform Enterprise legacy (v1)
+		state              **Advanced state management  e.g. terraform state list
 
 
 

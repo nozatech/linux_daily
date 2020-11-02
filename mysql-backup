@@ -1,0 +1,31 @@
+#!/bin/bash
+
+IGNORE_DBS="'information_schema', 'test', 'performance_schema', 'common_schema'";
+
+S3_BUCKET="bner-backups-pacman";
+S3_CONFIG="/backup/.backup-to-s3-cfg"
+
+DATE_FORMAT="%Y-%m-%d";
+
+######### No configuration under this
+DUMPDATE=$(date +$DATE_FORMAT);
+LOGMARKER="[backup]";
+LOGGER=$(which logger);
+AWSCLI=$(which aws 2>/dev/null)
+HOSTNAME=$($(which hostname))
+GZIP=$(which gzip)
+
+$LOGGER -t $LOGMARKER "Creating a list of databases...";
+DBS=$(mysql --skip-column-names --batch -e "SELECT SCHEMA_NAME FROM information_schema.SCHEMATA WHERE SCHEMA_NAME NOT IN ($IGNORE_DBS)")
+for DB in $DBS
+do
+
+  $LOGGER -t $LOGMARKER "Dumping database: $DB...";
+  mysqldump --allow-keywords --flush-logs --opt --quick --quote-names --skip-lock-tables $DB | $GZIP | $AWSCLI s3 --quiet --no-progress cp - s3://$S3_BUCKET/$HOSTNAME/$DUMPDATE/database-${DB}.sql.gz
+  $LOGGER -t $LOGMARKER "DONE Dumping database: $DB.";
+
+  sleep 2;
+
+done
+
+$LOGGER -t $LOGMARKER "Backup finalized!!!";

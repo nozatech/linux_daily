@@ -1566,3 +1566,6 @@ MAMAX	$0.00<=ok
 MAGWX	$0.00<=ok
 PYAXX	$0.0
 
+Option
+
+https://optionsmanual.com/secondary-informational-articles/what-does-net-credit-mean-in-options-trading/

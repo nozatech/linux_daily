@@ -1,12 +1,21 @@
 How to use 'GIT'
 
 ---------------------------------------------
+$ git diff
 $ git status	
+
 $ git add . 								<='-A' all, or a new file_name
+$ git add file_name
+# Remove file_name from the git add file list
+$ git reset file_name
+
 $ git commit -m  "update message"
  # $ git commit -am "update message"  		<= -am is combo of git add . + commit -m
 $ git commit --amend -m "Change message"
+
 $ git push
+
+
 ------------------------------------------------------------------------------------------	
 
 ### Auto Color
@@ -619,6 +628,8 @@ Deleted branch auth (was fc03fac).
 	
 	
 	
+### Github Actions ###
+https://jonnung.dev/devops/2020/01/31/github_action_getting_started/
 	
 	
 	

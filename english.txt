@@ -12,7 +12,16 @@
 	5단계 : 16일에 한번
 	6단계 : 32일에 한번
 	7단계 : 64일에 한번
-
+	
+How we stay laser-focused and productive
+1. ‘Take a walk, but leave your devices at home.’
+2. ‘Find a quiet place and make a list.’
+3. ‘Establish a plan and routine.’
+4. ‘Create a clear process for each and every task.’
+5. ‘Schedule tasks for no more than 2 to 30 minutes.’
+6. ‘Brain dump on paper.’
+7. ‘I never multitask.’
+8. ‘Start with hiring a good coach.’
 
 Listening: Speaking: Reading: Grammar: Writing
 
@@ -694,8 +703,11 @@ adhere			<- stick fast to (a surface or substance).
 					Adhere to architectural guidelines and standards.		아키텍처 지침 및 표준을 준수합니다.
 					
 					
-amid or amidst	<- [전치사] (한편에서 상황이 발생하고 있는) 가운데/와중에
+amid (or amidst) <- [전치사] 다른 한편에서 ~한 상황이 발생하고 있는 가운데/와중에
 					http://blog.naver.com/PostView.nhn?blogId=gogogohany&logNo=100145940149
+					
+					"Chip stocks dive after Broadcom rescinds guidance, questions second-half rebound amid coronavirus"
+					amid coronavirus <= 코로나 바이러스가 발생하고 있는 상황에
 
 	
 adverse			<- preventing success or development; harmful; unfavorable.
@@ -784,12 +796,17 @@ amenity			<- a desirable or useful feature or facility of a building or place.
 					synonyms:	facility, service, convenience, resource, appliance, aid, 
 								comfort, benefit, feature, advantage
 					"basic amenities"
+
+amid			<- in the middle of 
+					"Google tells more than 100,000 North American employees to stay home amid coronavirus fears"
 					
 amicably		<- in a friendly and peaceable manner.
 
 ample			<- [a] enough or more than enough; plentiful.
 					synonyms:	enough, sufficient, adequate, plenty of, more than enough, enough and to spare More
 					antonyms:	insufficient, meager
+
+anecdotally		<- 일화로, 일화적으로(어떤 사건이나 인물에 대해 세상에 널리 알려지지 않은 흥미로운 이야기) 
 					
 annihilation	<- complete destruction or obliteration, t otal defeat.
 					"the threat of global annihilation"
@@ -802,7 +819,7 @@ anticipate		<- regard as probable; expect or predict. 기대하다
 				   guess or be aware of (what will happen) and take action in order to be prepared.
 					"quicker than anticipated "
 					
-
+analogous		<- 1.	유사한 2.	비슷한 3.	닮은
 
 anemia			<- 빈혈(Noun)
 					 is a condition in which you don't have enough healthy red blood cells to carry 
@@ -915,6 +932,15 @@ back			<- "Throwing Out Your Back" <- you’ve experienced this intense, sharp p
 				   
 				   "Investor and Democratic megadonor Alan Patricof decides to back Joe Biden for president"
 				   후원자
+
+backlash		<- 	[…에 대한] 반발, 반동[against ‥]; (사회 관계·인종 사이의) 심한 반발;
+					[기계] 기계·기어 등의 풀린 부분의 역행(Transmission?).
+					
+
+				  
+
+
+				   
 				   
 ballot			<- [bǽlət 밸렛]
 					[noun] a process of voting, in writing and typically in secret.
@@ -1015,6 +1041,9 @@ betide			<- happen.
 					synonyms:	happen, occur, take place, come about, transpire, arise, chance; More
 					happen to (someone).
 					"she was trembling with fear lest worse might betide her"
+					
+between			<- Can you come between 9 and 10 pm tonight?  9시와 10시 사이(between 9pm and 10pm).
+					https://ilikeen.tistory.com/1680
 
 binge			<- a short period devoted to indulging in an activity to excess, 
 					especially drinking alcohol or eating.
@@ -1060,11 +1089,20 @@ bracket []
 brat			<- a child, typically a badly behaved one.
 					synonyms:	badly behaved child, spoiled child;
 
-bravado			<- [브러바도우] 허세, 허장성세(swaggering); 무모함
+bravado			<- [브러바도우] 허세, 허장성세(swaggering); 무모함, 허세, 가짜 용기
+					"bear oneself with considerable bravado'
+					무던히 허세를 부리다
 	
-breadth			<- the distance or measurement from side to side of something; width.
+breadth			<- [bretθ 브렛뜨]the distance or measurement from side to side of something; width. 1.	폭2.	범위3.	효과
 					"a black sweater outlined the breadth of his shoulders"
 					synonyms:	width, broadness, wideness, thickness
+
+breath vs breather
+				<- take a breath  [브래뜨] - 숨쉬어 draw air into, and expel out of, the lungs; "I can breathe better when the air is clean"
+				<- take a breather[브리덜] - 잠깐쉼 take a short break from one's activities in order to relax.
+				
+
+
 
 bore vs boring	
 				I am bored to death <- 지루해 죽겠다	<- 수동태
@@ -1102,8 +1140,20 @@ cadence			<- 억양, 음율, 리듬
 					synonyms:	intonation, modulation, lilt, accent, inflection
 
 call out		<- To announce something. 
+					It is too late for call out.
+					(잘못한 점을 공개적으로) 비판하다.
+					They held a press conference to call out the Governor.
+					
+				
+
+calamity		<- 1.	재난2.	불행3.	참화
 
 capped out		<- when you’ve reached the maximum, or cap, of your insurance benefits
+
+carnage			<- 칼니지 대량 살상, (특히, 인간의) 대학살, 살육
+
+				The battlefield was a scene of great carnage. 듣기
+				전쟁터는 대학살의 현장이었다.
 
 caret vs carat	vs carrot <=  '^' Caret[캐릿] vs. diamond 1-Carat[캐럿] vs. carrot[캐럿] 당근
 				
@@ -1186,9 +1236,13 @@ clobber			<- hit (someone) hard.
 					"if he does that I'll clobber him!"
 					treat or deal with harshly. 
 					"the recession clobbered other parts of the business"
+
+cloture			<- 1.	토론 종결2.	종결시켜 곧바로 표결에 들어가다3.	종결에 붙이다
 					
 coffer			<- a strongbox or small chest for holding valuables.
 					synonyms:	strongbox, money box, cashbox, money chest, treasure chest, safe;
+
+cohort			<- 무리, 집단
 
 collate			<- 1.	대조하다 2.	맞추어 보다 3.	비교하다
 collation		<- 1.	대조 2.	간단한 식사 3.	조사	
@@ -1249,6 +1303,9 @@ conscientious 	<- [kὰnʃiénʃəs] 양심있는
 							careful, meticulous, thorough, attentive, hard-working, studious, rigorous, particular
 
 consolation		<- (보통 a consolation) […에(게)] 위로가 되는 사람[사물][to ‥].
+					the comfort received by a person after a loss or disappointment.
+					"there was consolation in knowing that others were worse off"
+					
 					a consolation match[race] <- 패자 부활전		
 
 contention		<- heated disagreement.
@@ -1297,8 +1354,8 @@ overt			<- [adj] one or shown openly; plainly or readily apparent, not secret or
 					"an overt attempt to sidestep the truth"
 					antonyms:	covert
 
-crater			<- a large, bowl-shaped cavity in the ground or on the surface of a planet or the moon,분화구 
-				typically one caused by an explosion or the impact of a meteorite or other celestial body.
+crater			<- 분화구, a large, bowl-shaped cavity in the ground or on the surface of a planet or the moon,
+				   typically one caused by an explosion or the impact of a meteorite or other celestial body.
 					synonyms:	hollow, bowl, basin, hole, cavity, depression; caldera
 					"the crater has become a lake"
 					"Amazon shares are cratering"
@@ -1407,6 +1464,9 @@ detest			<- dislike intensely.
 
 atopic dermatitis(eczema 습진) <- (아토피 피부염)
 
+demise			<- 소멸
+
+
 dereference		<- opposit of reference	
 
 degradation		<- changing to a lower state
@@ -1421,6 +1481,8 @@ deviations		<- 편차
 
 devoid			<- [adj]entirely lacking or free from. 결여된
 					"In the past, commercial vans were devoid of any cutting-edge safety technologies."
+
+
 
 digress			<- off the subject
 
@@ -1629,7 +1691,7 @@ enthused		<- say something that expresses one's eager enjoyment, interest, or ap
 					synonyms:	rave about, be enthusiastic about, gush over, wax lyrical about, 
 							be effusive about, get all worked up about, rhapsodize about; More
 					
-entice			<- attract or tempt by offering pleasure or advantage.
+entice			<- attract oF# ur tempt by offering pleasure or advantage.
 					synonyms:	tempt, lure, allure, attract, appeal to; 유혹하다
 					
 entitlements	<- the amount to which a person has a right.
@@ -1639,15 +1701,41 @@ entitlements	<- the amount to which a person has a right.
 					"full entitlement to fees and maintenance should be offered"
 					synonyms:	right, prerogative, claim; More
 
+endemic vs. epidemic vs. pandemic
+				Endemic	 <- 은 특정 지역의 주민들 사이에서 주기적으로 발생하는 풍토병을 가리킨다.
+				
+				Epidemic <- is a term that is often broadly used to describe any problem that has grown out of control. 
+							An epidemic is defined as "an outbreak of a disease that occurs over a wide geographic area 
+							and affects an exceptionally high proportion of the population.
+							전염병 피해가 특정 지역으로 한정되는 경우다. 
+							
+				Pandemic <- geographic spread and is used to describe a disease that affects a whole country or the entire world.	
+							신종 전염병이 전 세계에 번져 많은 사람의 목숨을 앗아가는 상황을 말한다.
+
+err				<- 	[에어] [판단 등에서] 틀리다, 잘못 생각하다[in ‥]; […이라는] 잘못을 범하다[in doing]
+					https://m.blog.naver.com/PostView.nhn?blogId=hankahn2008&logNo=220705436084&proxyReferer=https:%2F%2Fwww.google.com%2F
+					"To err on the side of caution" <- 잘못을 저지르기 보다는
+					“We will definitely err on the side of caution,” Kerr said before the game.
+					 “err on the side of A”는 ‘리스크를 택하거나 잘못을 저지르기 보다는 극도로 조심스럽게 행동한다’	
+				
 errand			<- a short journey undertaken in order to deliver or collect something, often on someone else's behalf.
 					"she asked Tim to run an errand for her"
-					synonyms:	task, job, chore, assignment
+					synonyms:	task, job, chore, assignment 볼일
+					https://m.blog.naver.com/PostView.nhn?blogId=m1269&logNo=110149951113&proxyReferer=https:%2F%2Fwww.google.com%2F
+					
+
+error prone 	<- 발생하기 쉬운
 
 
 euphoria		<- 다행증, 도취감, 행복감
 					
+
+eviction		<- Trump’s order does little to stop impending(절박한) eviction(쫓아냄) crisis, experts say
 					
 eye stye		<- 눈다락지
+
+exacerbate		<- make (a problem, bad situation, or negative feeling) worse.
+					더욱 심하게 하다
 
 exalt			<- hold (someone or something) in very high regard; think or speak very highly of.
 					to glorify or place above others
@@ -1655,6 +1743,8 @@ exalt			<- hold (someone or something) in very high regard; think or speak very 
 					"the party will continue to exalt its hero"
 					synonyms:	extol, praise, acclaim, esteem
 					antonyms:	disparage, despise
+
+executive order	<- 대통령 명령, 행정 명령
 					
 expat			<- a person who lives outside their native country.
 					"a British expat who's been living in Amsterdam for 14 years"
@@ -1678,6 +1768,12 @@ exuberance		<- The quality of being full of energy, excitement, and cheerfulness
 				1.	풍부2.	윤택3.	넘쳐흐름
 
 # F
+facism			<- 국가를 무조건 우선시하고 결속을 통해 힘을 강조하는 사상을
+     				말하며 현대에서는 강권적이고 독재적인 성격을 띠는 정치운동 및 이념을 말합니다.
+
+
+파시스트는 이런 파시즘을 주장(신봉)하는 사람을 말하고요.
+
 faculty			<- an aptitude or talent for doing something.
 					"the author's faculty for philosophical analysis"
 					synonyms:	ability, proficiency, competence, capability, potential, 
@@ -1690,6 +1786,8 @@ fallacy			<- [팰러씨](격식) 잘못된 생각, 착오, 오신(誤信); 그�
 fasting			<- 단식
 
 fatigue			<- 피로
+
+fate vs faith	<- 운명 vs 믿음
 
 feasible		<- possible to do easily or conveniently.
 
@@ -1755,6 +1853,15 @@ flout			<- [v] openly disregard (a rule, law or convention).
 							transgress against
 				antonyms:	observe
 
+fluke			<- 요행
+
+forbearance 	<- 인내, 관용 patient self-control; restraint and tolerance.
+
+					Forbearance(보류) of Student Loan Payments
+					Under forbearance, your loan payments are postponed (or reduced) but interest continues to accrue 
+					during the period of forbearance. If you don't pay the interest during that period, the interest 
+					may be “capitalized,” which means it is added to your principal balance.
+
 formidable		<- [adj] inspiring fear or respect through being impressively large, powerful, intense, or capable.
 					"a formidable opponent" 무서운, 만만치 않은
 					synonyms:	intimidating, forbidding, daunting, disturbing, alarming, frightening, disquieting, 
@@ -1776,7 +1883,7 @@ frenzy			<- a state or period of uncontrolled excitement or wild behavior.
 					synonyms:	hysteria, madness, mania, delirium, feverishness, fever, wildness, 
 								agitation, turmoil, tumult;
 								
-fret			<- 1.초조하게 하다 	be constantly or visibly worried or anxious.
+fret			<- 1.초조하게 하다, 침식하다, 초조하게 하다 	be constantly or visibly worried or anxious.
 					"she fretted about the cost of groceries"
 					"Stocks fell as investors fretted once again over the state of the U.S. economy.	"
 							
@@ -1792,7 +1899,7 @@ furlough		<- (경제적 사정에 의한 노동자의) 일시적 해고(layoff).
 					grant leave of absence to/ lay off (workers), especially temporarily.
 					"Thousands more auto workers furloughed with more layoffs coming as GM and suppliers 
 						idle plants in UAW strike."
-
+					"GE Aviation to furlough 50% of its engine manufacturing staff as coronavirus weighs"
 
 
 # G
@@ -1810,6 +1917,9 @@ gratification	<- pleasure, especially when gained from the satisfaction of a des
 				"a thirst for sexual gratification"
 				synonyms: satisfaction, fulfillment, indulgence, relief, appeasement
 
+grapple			<- 잡다 engage in a close fight or struggle without weapons; wrestle.
+					Traders grapple to find the bottom as Dow enters bear market territory with S&P 500 not far behind
+					
 grappling		<- 1.잡는 도구2.걸어잡는 갈고리3.갈퀴를 쓰기
 					"The question my colleagues and I are grappling with is whether these uncertainties 
 					will continue to weigh on the outlook and thus call for additional policy 
@@ -1958,6 +2068,9 @@ indie			<- (of a pop group, record label, or film company) not belonging to or a
 					characteristic of the deliberately unpolished or uncommercial style of small 
 					independent pop groups.
 
+inflammatory	<- [병리] 염증성의[을 일으키는].
+					"Coronavirus could be causing new inflammatory condition in children, UK health officials warn"
+
 imminent		<- 임박한, 일측측발
 					be in imminent danger  위급하게 되다
 					be in imminent peril   누란의 위기에 처하다
@@ -2020,6 +2133,9 @@ indulging		<- allow oneself to enjoy the pleasure of.
 					indulge in A [A(욕망·쾌락 등)에] 빠지다, 탐닉하다; [A를] 마음껏 누리다, 실컷 즐기다
 
 indictment		<- 기소, 고발
+
+induce			<- 이끌어내다/유도하다
+					"U.S. import prices climb in May on higher oil costs, signaling end of coronavirus-induced deflation"
 
 indulgence		<- [n]the action or fact of indulging.
 					"indulgence in self-pity"
@@ -2086,6 +2202,10 @@ invocation		<- the action of invoking something or someone for assistance or as 
 					ex) application process invocation(호출	)
 invert			<- [v] put upside down or in the opposite position, order, or arrangement.
 intricacy		<- complicated, details, especially of an involved or perplexing subject.
+
+irate			<- feeling or characterized by great anger. 1. 화나게하다
+				"a barrage of irate letters"
+				"Trump grows more irate as his attempts to contain coronavirus fallout fail"
 
 ire	= anger		<-[아이어 aier] anger
 				Trump has fixed his ire on the Fed in recent weeks as fears about a slowdown mount.
@@ -2253,6 +2373,9 @@ liaise			<- [v]리-애이즈 establish a working relationship, typically in orde
 lieu			<- place; stead
 					in lieu of, in place of; instead of  
 					e.g. In lieu of the below mail, 
+
+ lilliputians	<- [릴리퓨션] 난쟁이 나라의 난쟁이
+					Cramer says Tesla CEO Elon Musk is a ‘big thinker’ who makes us look like ‘Lilliputians’
 					
 lobe			<- [n] a roundish and flattish part of something, typically each of 
 						two or more such parts divided by a fissure, and often projecting 
@@ -2281,6 +2404,10 @@ lump sum		<- a single payment made at a particular time, as opposed to a number 
 
 
 # M
+malleable		<- 맬리어블 
+					Gold (of a metal or other material) able to be hammered or pressed permanently out of shape without 
+					breaking or cracking.
+
 manage			<-  1. I managed to forget my wife's birthday every year for the last ten years.
 					2. I managed to miss the train.
 					3. The easterlies started the day I headed south for Rutland, 
@@ -2364,6 +2491,9 @@ meager			<- [adj](of something provided or available) lacking in quantity or qua
 meat			<- 책·토론 등의) 중심 부분, 요점, 골자, 급소, 실질, 내용.
 					"the meat of the video 
 
+Merit Increase 	<- A merit increase, also known as a merit bonus, means that an employee will get a bump in their normal salary, 
+					based on a previously agreed upon policy of conduct, such as above average efficiency and performance.
+					"merit increase raise"
 					
 microcosm		<- a community, place, or situation regarded as encapsulating in miniature the characteristic 
 					qualities or features of something much larger.
@@ -2448,6 +2578,12 @@ nitty-gritty	<- what is essential and basic :specific practical details(본격�
 					the most important aspects or practical details of a subject or situation.
 					"get down to the nitty-gritty of the problem"
 					synonyms:	basics, essentials, fundamentals, substance, quintessence, heart of the matter	
+					
+nix				<- 1.(속어) 아무것도 없음2.(불찬성·불허가를 나타내어) 아니다3.(미·속어) (놀람·분노 등) 아니4.…을 거부하다5.무
+					"get something for nix"
+					거저 얻다
+					"Pandemic has companies dropping earnings guidance, and some say it should be nixed altogether."
+					"A growing number of companies has nixed earnings guidance amid the coronavirus pandemic."
 
 no frill 		<- simple, plain, 과잉서비스를 제공하지 않는
 
@@ -2479,6 +2615,9 @@ omnibus			<- [adj] comprising several items.
 				<- [n] a volume containing several novels or other items previously published separately.
 					"an omnibus of her first trilogy(3부작)"
 					영화·드라마 등에서 몇 개의 독립된 짧은 이야기를 모아 하나의 작품으로 만든 것
+
+onerous			<- 부담이 따르다, 성가신, 귀찮은, 부담스러운
+
 
 outset			<- 	the start or beginning of something.				
 					"a field of which he had known nothing at the outset and learned on the job"
@@ -2750,6 +2889,16 @@ proverbs		<- 명언집(proverbs collection)
 					https://www.phrases.org.uk/meanings/proverbs.html
 					http://likumc.org/cp/?p=11946
 
+pull one's punches' <- 사정을 봐주다'라고 할때의 재미있는 관용구.
+					= cut a person some slack
+
+				   "Trump pulls punches and clings(집착) to his China trade deal as backlash against Beijing grows."	
+					backlash <- (사회 관계·인종 사이의) 심한 반발
+					
+				   “Don't pull any punches when you break up with your girlfriend.”
+				   "여자친구와 헤어질 때는 칼로 물 베듯이 결단을 내려야 해”
+
+      				"The colonel does n't pull any punches when it comes to discipline.
 					
 							
 # Q
@@ -2777,7 +2926,9 @@ ramped up		<- increased
 					"The comments came after both sides ramped up threats in the ongoing trade war since the negotiations 
 						fell through in early May."
 
-rationales		<- a set of reasons or a logical basis for a course of action or a particular belief.
+rationalize		<- [v]합리적으로 생각하다
+
+rationale(s)		<- [n 래셔낼 합리적]a set of reasons or a logical basis for a course of action or a particular belief.
 					"he explained the rationale behind the change"
 					synonyms:	reason(s), reasoning, thinking, logic, grounds, sense
 
@@ -2932,7 +3083,7 @@ rout			<- [raut] 패주시키다
 					"Dow drops 300 points, extending Monday’s rout as bond yields dive."
 					
 					
-rune			<- a letter of an ancient Germanic alphabet, related to the Roman alphabet.
+rune			<- [룬]a letter of an ancient Germanic alphabet, related to the Roman alphabet.
 
 
 					
@@ -2941,6 +3092,9 @@ saunter			<- walk in a slow, relaxed manner, without hurry or effort.
 
 sacred			<- [seikrid] connected with God (or the gods) or dedicated to a religious 
 					purpose and so deserving veneration.  종교적인
+
+scale			<-  Scale Out and in    <= Horizontal Scaling 
+					Scale Up  and down  <= Vertical   Scaling
 
 scapegoat		<- 희생양
 				‘Excuses!’ Trump claims ‘badly run and weak companies’ are using China tariffs as a scapegoat.
@@ -2958,6 +3112,16 @@ seething		<-  화가 끓고 있는 - filled with or characterized by intense but
 setup VS set up <- setup [noun], set up [verb] 
 
 serpentine		<= winding curve(구불한) e.g. serpentine belt(fan belt) for car
+
+sever			<- [세벌]분리하다, 잘라내다,가르다
+					sever husband and wife 듣기
+					부부 사이를 갈라놓다
+					
+					sever relations with 듣기
+					…과 관계를 끊다
+
+					…을 […과] 식별하다, 분간하다[from ‥]
+					sever the good from the bad 
 
 scold 			<- remonstrate with or rebuke 꾸짓다 (someone) angrily.
 					"Mom took Anna away, scolding her for her bad behavior"
@@ -3000,6 +3164,9 @@ seasoned IT		<- a veteran; [숙련자] an expert.
 
 skim			<- I skimmed the material.  I did a quick readthrough. 훑다.
 
+shelter in place
+
+
 sliver			<- [none] a small, thin, narrow piece of something cut or split off a larger piece.
 						"a sliver of cheese"
 						synonyms:	splinter, shard, shiver, chip, flake, shred, scrap, 
@@ -3030,6 +3197,13 @@ slack			<- [adj] not taut or held tightly in position; loose.
 					"Give me some slack."
 					"Cut  me some slack" is exactly as "Give me a break!"
 					"I'm going to cut you some slack."
+
+slay		
+slew			<- 1.많음2.다량3.slay의 과거형
+					(보통 measures) […에 대한] 수단, 행동, 조치, 방책[against ‥]
+					
+					The Chinese government announced Tuesday a slew of additional measures(예방책) to support 
+					small and medium-sized enterprises, including smaller banks.
 
 
 smolder			<- [v] burn slowly with smoke but no flame.
@@ -3092,6 +3266,10 @@ solicit			<- ask for or try to obtain (something) from someone.
 					synonyms:	ask for, request, seek, apply for, put in for, call for, press for, beg, plead for
 
 solicitor		<- a person who tries to obtain business orders, advertising, etc.; a canvasser. 방문판매원
+
+sound			<- 의성어
+					https://micanica.tistory.com/12
+					
 
 sound bite		<- TV나 라디오를 통해 방송되는 정치가 등의 짧은 인상적인 발언(Interview)
 				"Don't rely on headlines, don't rely on sound bites, don't rely on one-sided conversations.
@@ -3186,7 +3364,10 @@ subtle			<- [sΛtl](especially of a change or distinction) so delicate or
 suede			<- [sweid 스웨이드] 가죽: 안쪽에 보풀이 있는 부드러운 가죽.
 					"Suede leather car seat 
 
-
+subvert			<- 파괘하다
+					undermine the power and authority of (an established system or institution).
+					"an attempt to subvert democratic government"
+					
 succinctly		<= [səksíŋktli] in a brief and clearly expressed manner.
 
 superfluous		<= unnecessary, especially through being more than enough.
@@ -3199,6 +3380,9 @@ supersede 		<- replace; take the place of (a person or thing previously in autho
 superintendent	<- a person who manages or superintends an organization or activity.
 					synonyms:	manager, director, administrator, supervisor, overseer, 
 								controller, chief, head, governor; informalboss
+
+symptomatic vs asymptomatic
+				<- symptomatic(증상이 있는) vs asymptomatic(무증상)
 
 # T 
 tacky			<- (of glue, paint, or other substances) retaining a slightly sticky feel; not fully dry.
@@ -3291,6 +3475,10 @@ toggle			<- a short rod of wood or plastic sewn to one side of a coat or other g
 
 tongue in cheek <- without really meaning what one is saying or writing.
 
+torrent 		<- 급류, A strong and fast-moving stream of water or other liquid.
+					Coronavirus live updates: US cases top 226,000 as torrent of jobless claims continues
+
+
 tout			<- [타웃]attempt to sell (something), typically by pestering people in an aggressive or bold manner.
 					(거래·일 등을) 성가시게 조르다[요구하다]; […을] 강매하다, 
 					"Jim was touting his wares(물건, 상품)"
@@ -3330,6 +3518,8 @@ treble hook		<- 수량·가치 등이) 3배인, 세 부분으로 된(threefold),
 triage			<- (in medical use) the assignment of degrees of urgency to wounds or illnesses to decide the order of 
 					treatment of a large number of patients or casualties.
 
+trough			<- [트로우프] 경기의 바닥
+
 truce			<- 휴전
 					at the truce village of Panmunjom on April 27, 2018.
 
@@ -3358,6 +3548,9 @@ valet 			<-  (…에게) 하인·보이로 시중들다; (남의 옷을) 세탁�
 valet parking		대리추차
 
 vanquish		<- come out better in a competition, race, or conflict
+
+vanguard		<- 선봉
+
 
 veteran			<- (베테랑)a person who has had long experience in a particular field.
 					synonyms:	expert, old hand, past master, doyen, vet
@@ -3412,8 +3605,18 @@ wash out of my eyes	<=
 					
 wane			<- weaker, (especially of a condition or feeling) decrease in vigor, power, or extent; become weaker.
 
+wean it off		<- to make (someone or something) stop doing or using (something) efforts to wean 
+					the country from its dependence on foreign oil I'm gradually weaning myself off cigarettes.
+					https://m.blog.naver.com/jelpy/221711138875
+				
+weep			<- 슬피울다
+
 well-meaning	<- 1.선의에 의한2.	선의의3.	악의 없는
 					"Trump: Whoever Ordered USS John S. McCain Hidden Was ‘Well-Meaning’"
+					
+what			<-  That really I think is the tip of iceberg for a number of different reasons
+
+					
 whatnot			<- informal(이것저것)
 					used to refer to an item or items that are not identified but are felt to have something 
 					in common with items already named.
@@ -3443,6 +3646,8 @@ whimsical		<-[adjective]
 				
 whodunit		<- 추리 극 a story or play about a murder in which the identity of the murderer 
 					is not revealed until the end.
+
+wield			<- 휘두르다, 행사하다, 교묘하게 쓰다
 				
 wilt			<- [v] (of a plant, leaf, or flower) become limp through heat(풀이죽다), 
 						loss of water, or disease; droop.
@@ -3457,13 +3662,27 @@ woe				<- sorrow
 woefully		<- [adv] in a manner expressing sorrow or misery.
 					"The fourth-leading cause of death in the U.S. is woefully underdiagnosed"
 
+worked up		<- 1.신경을 곤두세운 2.흥분한 3.끙끙거리며 괴로워하는
+					worked up about  ~의 일로 흥분하는
+					"What are you so worked up about?"
+					
+					get worked up about 흥분해서 소동을 부리다
+
+
 worriedly		<-	[adj]					
 
 wrap-up party	<- 뒷풀이
 
+wretched		<-1.	녀석2.	불행한 사람3.	철면피
+
+
 # U
 ugh				<- used to express disgust or horror.
 					"Ugh! What's this disgusting object?"
+					
+unanimous		<- [유나너머스]	(of two or more people) fully in agreement. 만장일치				
+					"After the unanimous Senate vote, the bill heads to the House, which aims to approve it by Thursday."
+					
 underlying		<- gerund or present participle: underlying
 					(especially of a layer of rock or soil) lie or be situated under (something).
 					be the cause or basis of (something).
@@ -3479,6 +3698,8 @@ unkempt			<- [adj](especially of a person) having an untidy or disheveled appear
 					synonyms:	untidy, messy, scruffy, straggly, disordered, disheveled, 
 							disarranged, rumpled, windblown, ungroomed, bedraggled, in a mess, 
 							mussed, messed up
+							
+upend			<- Coronavirus outbreak is already upending(상승세) health insurance premiums and copays for next year
 
 uptake			<- the action of taking up or making use of something that is available.
 					"a recent uptake in cigar smoking"
@@ -3491,6 +3712,8 @@ unbound			<- not bound or tied up.
 underwrite		<- ~에 동의하여 서명하다, [주식·회사채 등을] 인수하다, 
 
 unduly			<- to an unwarranted degree; inordinately. 과도하게
+
+uproar			<- 소동 소란
 
 unwarranted		<- not justified or authorized.
 					synonyms:	unjustified, uncalled for, unnecessary, unreasonable, unjust, groundless, 
@@ -11935,3 +12158,233 @@ I’m pulling the relevant repository to my computer just in case. Once that pro
 
 Pulling from Perforce is taking a long time. I started pulling this morning and less than 1% of files have transferred so far, so it might take a while. I’ll keep you informed regarding when the process has finished and my access can be removed.
 	
+
+
+
+
+
+
+
+
+Hey All,
+
+Happy Friday! BNER delivered a Feature Complete playable build of PAC-MAN with Red Bull content! 
+Please check it out and provide any feedback to Chieze and myself by Sunday afternoon if possible!
+
+ The build includes:
+
+·   Updated Main Menu Screen. Includes:
+
+		Updates to the UI on the Top Tool Bar
+		A Large clickable Red Bull Banner
+A Red Bull Menu screen
+Includes 1 free demo maze + 3 purchasable mazes (though the demo maze is not free on this build)
+·        4 Red Bull themed mazes in total
+
+Includes upsell art for each maze
+A Red Bull icon that acknowledges whether a level has been completed or not
+·        1 unique power-up at consumption of a Red Bull can in maze
+
+·        Red Bull fruits
+
+·        Code Validation
+
+·        IAPs
+
+·        Red Bull Coins
+
+available with Code Validation or IAPs
+·        Continues
+
+ 
+
+The build does not include:
+
+Disclaimer pop-up after the free demo maze
+ 
+
+Known Issues:
+
+The demo maze is not free in this build
+IAPs are not functional on iOS
+The Red Bull Coin ribbon does not update when buying Red Bull Coins via IAP
+The Red Bull Coin ribbon is cut off on iPhone X and other large devices
+ 
+
+Hockeyapp links are below; If you don’t have permission and wish to play, please let me know and 
+we’ll work on sending you over an invite:
+
+iOS: https://rink.hockeyapp.net/apps/8b635600f1e14282831186e8c47b2992/app_versions/7
+
+Android: https://rink.hockeyapp.net/apps/0f48fa17ee904e2184b09ba34556fbd5/app_versions/2
+
+ 
+
+Once you’ve got the app on your phone, please use the attached spreadsheet to unlock the mazes. 
+Please use the codes assigned to your name only. Please let me know if you need additional codes.
+
+ 
+
+If you do get a chance to play, we kindly ask that you provide feedback to Chieze and myself by 
+Sunday afternoon so we can compile and send all feedback to xxxx by their working Monday. 
+(Please include your device.)
+
+ 
+Please remember financial and banking information would never be requested from you via email. 
+
+
+
+-------------------------------------------------------------------------------------
+Dear all.
+
+ 
+
+I really hope this mail finds all of you and your family, friends well. Please please take care. Your safety and health is the first priority.
+
+Based on your safety and health, I would like to share my thought as below.
+
+ 
+
+The world faces unprecedented difficulty by a spread of the coronavirus. Sorrow, uneasiness, feeling of isolation, irritation. . .
+
+Our hearts are sinking, but since it is very hard time like this, it is us, as an Entertainment provider, to cheer the world, aren’t we?
+
+The role of the entertainment becomes bigger when the time is tougher.
+
+Let’s have a pride of a member of company, a world class entertainment company, face up and smile, and light up the heart of people and world!!
+
+ 
+
+See all of you in near future with big big smiles!!
+
+ 
+
+Best regards
+-------------------------------------------------------------------------------------
+THE FOLLOWING IS INFORMATION FROM ANTHEM:
+
+ 
+
+ 
+
+Good afternoon –
+
+ 
+
+I wanted to share a quick recap of some of the resources we’ve made available to you and your employees over the past several weeks in response to the COVID-19 pandemic.
+
+ 
+
+Plan Sponsor Support:
+
+Client Directives for adopting CARES Act provisions were distributed on Tuesday. If you haven’t returned your directive yet and you have any questions or need additional support, just let me know.
+Prudential will be ready tomorrow, Friday April 10th, to start accepting CARES Act transactions via our call center. Please note the stock  market is closed for Good Friday, however our Service Center will be open as an exception this year from 8am-5pm ET.
+We are still hosting Weekly Market Volatility Calls every Wednesday at noon Central Time. You should be getting separate invites for those calls with a signup opportunity and if you are not able to attend you can listen to the replays here.
+I am available to you at any time to discuss how we can support you and your employees during this rapidly changing environment. I would love to hear from you and to know how you’re doing personally and professionally in this unusual time.
+ 
+
+Participant Support:
+
+Free 1:1 appointments with retirement counselors. Accessed through our Market Volatility Communications Center, interested participants can click on a link to schedule a 1:1 appointment to review their accounts. You are welcome to promote the new and exciting feature: https://www.prudential.com/links/about/covid19. Feel free to use the content below to promote the counselor sessions.
+CONTENT FOR 1:1 SESSIONS
+Questions about market volatility?
+
+Schedule a free virtual video session with a Prudential Retirement Counselor.
+During your 30-minute online session:
+
+Get answers to your questions
+Receive assistance for your goals
+Learn what’s right for you
+ 
+
+Click here to schedule your session or https://www.prudential.com/links/about/covid19]
+ 
+
+We are creating CARES Act employee communication materials to help educate employees about their options under the new legislation. I am hopeful we will have those materials ready to share by Monday or Tuesday of next week.
+There are a lot of great resources available on the Market Volatility Communications Center, including videos, articles, and the ability to schedule a virtual 1x1 meeting.
+ 
+
+Please reach out with any questions or concerns and let me know how I can assist.
+
+ 
+
+Happy Easter and have a wonderful weekend!
+-------------------------------------------------------------------------------------
+Hey there Dave,
+
+I understand you are getting an error message when trying to purchase more RIs on your account, and I'm sorry for any concerns that may be causing. And it'll be my pleasure to provide you more information and help you with this.
+
+All AWS services have certain limitations that are are put in place to help you gradually ramp up activity and decrease the likelihood of large bills due to sudden, unexpected spikes.
+
+When it comes to RIs specifically, the limit is the number of RIs that can be purchased in each AZ in a given calendar month. For example, if the your default limit is 20 then you would be able to purchase 20 RIs in each AZ in the current month and another set of 20 RIs in each AZ in the following month.
+
+Great news are that I can help you submitting a request for these limits to be increased for your account, I would just need your cooperation in replying to this case, providing us the answers to the pieces of information I'm adding below:
+
+• Service: i.e: EC2, RDS, etc.
+• Region:
+• Limit name: Reserved Instances.
+• New limit value: New maximum monthly purchase limit desired?
+
+Once we receive the information above, we will go ahead and forward it to the team in charge in reviewing these requests.
+
+I truly hope this information helps, and we look forward in hearing back from you.
+
+Have a wonderful weekend ahead!
+
+Best regards,
+-------------------------------------------------------------------------------------
+Dear All:
+
+ 
+
+I hope you and your family are staying safe and healthy.
+Due to the shelter-in-place (SIP) order and the need to WFH, we are experiencing delays in processing merit increases and bonus payments. 
+Below is our payroll schedule planned for these 2 processes.
+
+Pertaining to the bonus payments, KPMG is asking us to delay our final audit by 1-2 weeks due to the SIP and WFH situation. As we get 
+closer to the actual date for payroll processing, we will update everyone.
+ 
+In the meantime, I encourage you to complete your performance reviews if you have not done that yet, as there is still a number of 
+employees still in incomplete status. This may further delay the above 2 processes if the performance reviews are incomplete.
+
+Thank you for your cooperation and understanding.
+
+Best,
+-------------------------------------------------------------------------------------
+
+Hi,
+
+Please, disregard the earlier email sent by App Center. The email was mistakenly sent to a wider group of an audience than 
+it was intended to. There is no action required from your side. We apologize for the inconvenience this may have caused. 
+We have put in a process so as not to repeat this mistake. 
+
+Thank you
+App Center Team
+-------------------------------------------------------------------------------------
+Good News!
+
+We are happy to announce that we are slowly beginning to re open our office and we will be starting this process over the next few weeks! Silicon Valley Eye Physicians will be implementing some changes to keep our services running as smoothly as possible while keeping everyone safe.
+
+We will begin prioritizing the patients who we have had to cancel over the past 2 months with medically necessary concerns and begin seeing these patients starting Wednesday May 6th. Our office will continue to be open for emergencies as well as virtually through our telemedicine app. We ask that you please be patient with us as we are trying to be fair to everyone. 
+
+Entry into the building including our Optical Department will be controlled and by appointment only.
+
+As of April 1, 2020 we are no longer contracted with Eyemed. Our office is happy to continue to see our patients with Eyemed out of network.
+
+If you are sick with any respiratory symptoms, we ask that you do not come into the office. Please contact us to cancel your appointment and we will reschedule when you are feeling better.
+
+These are stressful times for everyone and our office is taking steps to protect and care for those who work with us, our patients and the public during our reopening process.
+
+We may run behind at times as we adjust to these changes and we ask for your patience and understanding through this process.
+
+Thank you for your understanding.
+Sincerely,
+
+Silicon Valley Eye Physicians
+SVEP| Visit Our Website
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------

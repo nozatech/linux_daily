@@ -48,11 +48,11 @@ _	<= Undercore
 ----------------------------------------------------------------------------------------
 	set -xeu		<= x<-틀린(debug) eu<-이유(exit,undefine vars)를 알아야 고친다
 	
-	set -ex         # Do both for good practice 
+	set -ex         #  'Exit with command traces'   <= Do both for good practice
 	Set +ex  		<= Unset debug
 	
 	set -e          # Exit as soon as any line in the bash script fails
-	set         # Prints each command executed (prefix with ++)
+	set             # Prints each command executed (prefix with ++)
 
 	set -f	(set -o noglob)		Disable file name generation using metacharacters(globbing).
 	set -v	(set -o verbose)	Prints shell input lines as they are read.
@@ -118,8 +118,14 @@ _	<= Undercore
 	
 	# Search with in VI
 	/search_word
-
-
+----------------------------------------------------
+# VI - Move Keys
+----------------------------------------------------
+	Shift + a  	<= go to end of the line and Insert Mode
+	Shift + g  	<= bottom of page
+	Shift + c	<= delete rest of line and Insert Mode
+	
+	
 ----------------------------------------------------
 # VI - number line and tab stop
 ----------------------------------------------------
@@ -180,6 +186,16 @@ $ sh -n   script.sh						<= prints out Syntex error only
 	
 	$ bash -n ./script.sh 			<= checking syntax error
 	
+----------------------------------------------------------------------------------------
+# Variables
+----------------------------------------------------------------------------------------
+	The dash (-) character is a break character and not allowed as part of variable names.
+	
+	VAR_Name="Variable Name NOT Using -"
+	
+	VAR-NAME 
+	-bash: VAR-Name="Variable Name NOT Using -": command not found
+
 ----------------------------------------------------------------------------------------
 # How to run a script
 ----------------------------------------------------------------------------------------

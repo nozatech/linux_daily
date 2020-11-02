@@ -1011,7 +1011,6 @@ colorscheme desert
 	----------------------------------------------------
 	http://www.server-world.info/en/note?os=CentOS_7&p=initial_conf&f=7
 
-	1. Install vim-enhanced
 	$ yum -y install vim-enhanced 
 
 	2. E dit profile(global profile configuration for all users)
@@ -1087,6 +1086,8 @@ colorscheme desert
 # env
 # set
 # unset
+	
+	https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-a-linux-vps
 ----------------------------------------------------
 	### to check the environment variables
 	$ printenv     			
@@ -1900,6 +1901,7 @@ $ useradd -m -d /home/ipetcu -s /bin/bash  apark2			<= new user name 'apark2'
 		
 ----------------------------------------------------------------------------------------------------
 ### Run command on remote
+# 
 http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ssh-on-many-servers
 ----------------------------------------------------------------------------------------------------
 ### Run command on remote
@@ -1916,7 +1918,7 @@ http://unix.stackexchange.com/questions/19008/automatically-run-commands-over-ss
 ### run script remotely
 --------------------------------------------------------------------------	
 	$ ssh apark@remote_server  'bash -s' < from_local_script.sh		<= run a script remotely from local using sudoer
-	$ ssh apark@45.55.5.69     'bash -s' < do_agent.sh              <= installing as sudo	
+	$ ssh apark@45.55.5.69     'bash -s' < ~/do/do_agent.sh              <= installing as sudo	
 
 --------------------------------------------------------------------------		
 ### Create a server list text file and a update script first
@@ -3027,8 +3029,10 @@ tar -cvzf => tar -xvzf
 	$ tar -czvf  backup.tar.gz /home/nozatech
 	$ tar -cvpzf backup.tar.gz /(root)        --exclude=/mnt /
 	$ tar -cvpzf backup.tar.gz /home/nozatech
-	
+  
+  ----------------------------
   # Extract tar file
+  ----------------------------
 				<tar name>			<target location>	
   $ tar -xvzf   backup.tar.gz   -C  /recover
 			-x(extract)
@@ -3130,7 +3134,7 @@ H H 1,15 1-11 * 		<= once a day on the 1st and 15th of every month except Decemb
 
 0 12 * * 1-5			<= 12:00 every weekday (Mo-Fr)
 H 2 * * *				<= Every 2am
-
+ss
 
 
 	
@@ -3441,7 +3445,9 @@ H 2 * * *				<= Every 2am
 	
 	/dev/mapper/U14--vg-root on / type ext4 (rw,errors=remount-ro)
 	
-	
+	$ lsof -i:3306
+		kill the running process with
+		kill -9 PID
 
 --------------------------------------------------------------------------	
 # Kernel supports filesystem
@@ -4989,6 +4995,8 @@ https://www.tecmint.com/best-linux-file-diff-tools-comparison/
 # cmp		<= compare two files byte by byte
 # diffstat
 # colordiff	<= https://www.colordiff.org/
+  vim -d   <= https://www.tutorialspoint.com/vim/vim_diff.htm
+ 
 --------------------------------------------------------------------------------------------------
 	https://www.lifewire.com/compare-two-text-files-linux-3861434
      
@@ -5671,6 +5679,15 @@ vi /etc/selinux/config #replace SELINUX=enforcing with SELINUX=disabled
 	
 	$ tcpdump -i any -n tcp port not 22 and host 1.2.3.4
 		
+  https://www.cyberciti.biz/faq/tcpdump-capture-record-protocols-port/
+	
+   $ /usr/sbin/tcpdump -n -c 30000 -w /root/port80debug.txt
+	 Capturing traffic information using cronjobs
+	tcpdump can be used to find out about attacks and other problems. Let us say your webserver facing problem everday at midnight. Enter following command into cron. It will schedule capturing of 30,000 packets and writing raw data to a file called port.80.debug.txt:
+	$/usr/sbin/tcpdump -n -c 30000 -w /root/port.80.debug.txt
+
+	Next day you can log into your box and read the /root/port.80.debug.txt file:
+	tcpdump -X -vv -r /root/port.80.debug.txt
   
 ###	NetCat (nc)
 
@@ -6055,6 +6072,12 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 	  ^option	
 		
 
+
+
+
+ifconfig eth1 down | up
+
+
 		
 71.  Transfer a file using SCP + pem key
 
@@ -6070,17 +6093,17 @@ $ ssh -o 		"ProxyCommand nc %h %p" id@x.com
 	$ scp -r /home/id/.ssh  id@ip:/home/id/			<= -r recursive for sub directories
 	$ scp -i .ssh/oc.pem  ami.zip ubuntu@10.10.1.89:/home/ubuntu/
 
-	### install unzip
-	$ unzip file.zip -d /tmp/name			<= -d destin directory
-    
-	### Make a directory remotely
-	$ ssh apark@remote_ip "mkdir /path/to/dir"
-
 	------------------------
 	### Remote ===> Local 
 	------------------------
 	$ scp -r id@ip:/home/id/.ssh    /home/id/.ssh			<- -r      Recursively copy entire directories.
 	
+
+	### install unzip
+	$ unzip file.zip -d /tmp/name			<= -d destin directory
+    
+	### Make a directory remotely
+	$ ssh apark@remote_ip "mkdir /path/to/dir"
 
 	
 72. Combine Xargs with Find command 
@@ -6294,7 +6317,7 @@ ssh -v -t jproxy@10.10.100.130 'cd /var/app && tar -zxvf jenkins-proxy.tar.gz &&
 	
 ### LOCAL >>>> REMOTE ###  **PUSH to Remote**
 	###			LOCAL file location  >>>>   REMOTE 'creating' remote folder
-	rsync -avn  /home/apark/rtest  			apark@45.55.5.69:/home/apark/      
+	rsync -avn  /home/apark/testFile  		apark@45.55.5.69:/home/apark/      
 			<= -a, -v verbose -n dry-run
 	rsync -av   ~/rtest          	 		apark@45.55.5.69:/home/apark/   
 		
@@ -8022,10 +8045,67 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-
 	sudo firewall-cmd --zone=trusted --add-source=64.39.96.0/20 <-???
 	# June
 	sudo firewall-cmd --zone=trusted --add-source=182.72.103.190
+	
+	# APARK
+	sudo firewall-cmd --zone=trusted --add-source=73.231.230.24
+	
 	# temmp June's jumpbox
 	sudo firewall-cmd --zone=trusted --add-source=167.172.202.23
+	$ sudo firewall-cmd --permanent --zone=trusted --add-source=3.220.95.248
 	
 	
+	
+sudo firewall-cmd --permanent --zone=trusted --add-source=3.220.95.248	  <= AWS JUNE
+
+sudo firewall-cmd --permanent --zone=trusted --add-source=3.127.96.152	
+
+
+sudo firewall-cmd --permanent --zone=trusted --add-source=18.195.95.147	
+
+sudo firewall-cmd --permanent --zone=trusted --add-source=18.194.224.122
+
+sudo firewall-cmd --permanent --zone=trusted --add-source=10.138.24.132 
+
+###################################################################
+HOME
+sudo firewall-cmd --permanent --zone=trusted --add-source=98.234.54.81
+sudo firewall-cmd --permanent --zone=trusted --add-source=3.220.95.248
+sudo firewall-cmd --permanent --zone=trusted --add-source=18.195.92.147
+sudo firewall-cmd --permanent --zone=trusted --add-source=192.241.178.95
+June-VPN
+sudo firewall-cmd --permanent --zone=trusted --add-source=10.128.5.187
+June-VPN-STG
+sudo firewall-cmd --permanent --zone=trusted --add-source=10.135.35.99
+
+#########################################################################
+
+sudo firewall-cmd --permanent --zone=trusted --add-source=167.172.202.23   <= June DO jumpbox
+sudo firewall-cmd --permanent --zone=trusted --add-source=10.138.24.132     <= June jumpbox
+sudo firewall-cmd --permanent --zone=trusted --add-source=10.128.2.48
+sudo systemctl restart firewalld
+
+
+### apark home
+sudo firewall-cmd --permanent --zone=trusted --add-source=98.234.54.81
+sudo systemctl restart firewalld
+
+##  Jpark
+sudo firewall-cmd --permanent --zone=trusted --add-source=162.243.29.144
+sudo systemctl restart firewalld
+
+
+
+
+
+
+
+
+
+	# Home 3/13/2020
+	$ sudo firewall-cmd --zone=trusted --add-source=98.234.54.81
+		
+	$ sudo firewall-cmd --permanent --zone=trusted --add-source=98.234.54.81
+
 	
 	# holds default configurations like default zones and common services. Avoid updating them because those files will be 
 		overwritten by each firewalld package update.
@@ -8038,6 +8118,7 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-
 	# BNEA
 	sudo iptables -A INPUT -m state -s 74.217.69.194     --state NEW -j ACCEPT
 	sudo iptables -A INPUT -m state -s 74.217.69.192     --state NEW -j ACCEPT
+	sudo iptables -A INPUT -m state -s 98.234.54.81      --state NEW -j ACCEPT
 	
 	# JUNE
 	sudo iptables -A INPUT -m state -s 182.72.103.190    --state NEW -j ACCEPT			
@@ -8699,7 +8780,7 @@ $ while true; do tail -n0 -f /var/log/apache2/access.log > /tmp/tmp.log & sleep 
  
 	A. View Apache requests per minute
 
-$ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{print $2":"$3}' | sort -nk1 -nk2 | uniq -c | awk '{ if ($1 > 10) print $0}'
+$ grep -i "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{print $2":"$3}' | sort -nk1 -nk2 | uniq -c | awk '{ if ($1 > 10) print $0}'
 
 	# grep "16/Mar/2015:06" example.com	
 	  <= Use the grep command to only show hits from today during the 06th hour 
@@ -8755,6 +8836,9 @@ $ grep "16/Mar/2015:06" example.com | cut -d[ -f2 | cut -d] -f1 | awk -F: '{prin
 	분류한 다음, 분류된 텍스트 데이터를 바탕으로 패턴 매칭 여부를 검사하거나 데이터 조작 및 
 	연산 등의 액션을 수행하고, 그 결과를 출력하는 기능을 수행합니다
 	https://recipes4dev.tistory.com/171
+	
+	
+	
 	
 ------------------------------------------------------------------------------------	
 # Remove a space in string
@@ -9887,6 +9971,7 @@ $ cat /sys/module/nf_conntrack/parameters/hashsize
 
 ------------------------------------------------------------------------------
 # CentOS 7 minimum setup Initial Setup
+# iptables install
 ------------------------------------------------------------------------------------
 
 1. dhclient
@@ -9989,7 +10074,7 @@ DNS2=8.8.4.4
 
 
 ########################################################################
-# IPTables #
+# IPTables # iptables
 ########################################################################
 
 *filter
@@ -10007,7 +10092,7 @@ DNS2=8.8.4.4
 #
 ###
 ### Apark Home ###
--A INPUT -m state -s 73.231.235.144/32 --state NEW -j ACCEPT
+-A INPUT -m state -s 98.234.54.81/32 --state NEW -j ACCEPT
 ###
 #
 ### BNER ###
@@ -10021,8 +10106,8 @@ DNS2=8.8.4.4
 ###
 COMMIT
 
-
-# BNEA's New iptables 
+---------------------------------------------------------------------------
+# BNEA's New  # iptables 
 ---------------------------------------------------------------------------
 # sample configuration for iptables service
 # you can edit this manually or use system-config-firewall
@@ -10900,13 +10985,18 @@ fi
 -------------------------------------------------------------------------------------------------	
 	
 	
+	cd 
+	
+iTerm2
+split 
+	CMD+d	
 	
 	
 	
 	
-	
-	
-	
+Slack
+Webhook testing
+$>>> curl -X POST -H 'Content-type: application/json' --data '{"text":"Connection Testing!"}' https://hooks.slack.com/services/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
 	
 	
 	

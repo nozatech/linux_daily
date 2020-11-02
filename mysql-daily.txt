@@ -2,6 +2,59 @@
 # MySQL CRUD Daily ###
 ######################
 
+## User List
+mysql> SELECT user, host FROM mysql.user;
+ 
+### Login to MySQL 
+$ mysql -r root -p -e -h ip --port=xxx
+
+mysql
+show databases;
+use db_name;
+show tables;
+select * from table_name;
+
+
+select * from player order by id desc  limit 100;
+ 
+ 
+
+  # table => lookup 	
+	$ select * from item;
+	$ select count(*) from item; 	<= If too many, just count number of items.  same as wc -l 
+	+----------+					   Function call COUNT argument in (*) 
+	| count(*) |
+	+----------+
+	|     4079 |
+	+----------+
+
+
+cat /var/lib/mysql/grastate.dat
+
+mysqld --help --verbose | grep 'log-error' | tail -1
+mysqld --help --verbose | grep 'datadir' | tail -1
+
+mysqld --print-defaults
+
+
+getenforce
+Permissive
+
+
+### Slow Query
+sudo -i mysqldumpslow /var/log/mysql/mysql-slow.log
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### auto command completion 
@@ -172,6 +225,11 @@ scp -pv /tmp/master-dump.db apark@10.128.69.203:/tmp
 
 
 
+
+
+
+
+
 #--------------------------------------------------------------------------------------------------------------
 ### Create DB ###
 #--------------------------------------------------------------------------------------------------------------
@@ -295,13 +353,15 @@ INSERT INTO model (id, name, price, engine, speed)
 
 
 # SELECT * FROM model where engine ='v8' AND speed ='153';
+
 +----+------+--------+--------+-------+
 | id | name | price  | engine | speed |
 +----+------+--------+--------+-------+
 |  1 | mega | 135000 | V8     |   153 |
 +----+------+--------+--------+-------+
 
-# select count(*) from model;  		<= Using count function to total count
+# select count(*) from model;  		<= Using count function to total count from model Table
+
 # SELECT * FROM model LIMIT 10;		<= View 10 lines
 
 # UPDATE model SET engine ='v6' WHERE id =1;
@@ -1162,6 +1222,7 @@ mysql> exit
 	1. Create DB name in MySQL
 	$ mysql -u root -p -e 'create db_name;'
 	$ mysql -u root -p db_name < /tmp/db_name.db
+	https://stackoverflow.com/questions/105776/how-do-i-restore-a-dump-file-from-mysqldump
 
 
 # Login to mysql
@@ -1927,6 +1988,7 @@ DROP DATABASE db_name;		<= **Warning**Delete & Empty DB at same time
 	| numerics       |
 	| sale           |
 	+----------------+
+  # table => lookup 	
 	$ select * from item;
 	$ select count(*) from item; 	<= If too many, just count number of items.  same as wc -l 
 	+----------+					   Function call COUNT argument in (*) 
@@ -2547,13 +2609,29 @@ To force cluster bootstrap with this node, edit the grastate.dat file manually a
  mysql -uroot -psd61nU7%36mg			<= https://lastpass.com/generatepassword.php
 
 
+MariaDB [pacman]> select * from external_player where id = '77303d37-7021-11ea-9b9e-22864cb8332d';
++--------------------------------------+-----------+-------------------+-------------+-------------+-----------+----------------------+---------------------+---------------------+-------------+---------+
+| id                                   | player_id | name              | google_play | game_center | legacy_id | legal                | legal_update        | bnea_update         | app_version | country |
++--------------------------------------+-----------+-------------------+-------------+-------------+-----------+----------------------+---------------------+---------------------+-------------+---------+
+| 77303d37-7021-11ea-9b9e-22864cb8332d |  86435037 | Player-8643503737 | NULL        | NULL        |         0 | {"103":"20191022V4"} | 2020-03-27 11:52:42 | 2020-03-27 11:52:42 |     8000003 | IN      |
++--------------------------------------+-----------+-------------------+-------------+-------------+-----------+----------------------+---------------------+---------------------+-------------+---------+
+1 row in set (0.00 sec)
+
+MariaDB [pacman]> select * from external_player where id = '77303d37-7021-11ea-9b9e-22864cb8332d';
++--------------------------------------+-----------+-------------------+-------------+-------------+-----------+----------------------+---------------------+---------------------+-------------+---------+
+| id                                   | player_id | name              | google_play | game_center | legacy_id | legal                | legal_update        | bnea_update         | app_version | country |
++--------------------------------------+-----------+-------------------+-------------+-------------+-----------+----------------------+---------------------+---------------------+-------------+---------+
+| 77303d37-7021-11ea-9b9e-22864cb8332d |  86435037 | Player-8643503737 | NULL        | NULL        |         0 | {"103":"20191022V4"} | 2020-03-27 11:52:42 | 2020-03-27 11:52:42 |     8000003 | IN      |
++--------------------------------------+-----------+-------------------+-------------+-------------+-----------+----------------------+---------------------+---------------------+-------------+---------+
+1 row in set (0.00 sec)
 
 
 
 
 
 
-
+mysql -u root --exec="SHOW STATUS LIKE 'wsrep%';"
+mysqld --skip-grant-tables --user=mysql --pid-file=installdir/mariadb/data/mysqld.pid --skip-external-locking --port=3306 --sock=installdir/mariadb/tmp/mysql.sock
 
 
 
@@ -2623,4 +2701,30 @@ Granting User Connections From Remote Hosts
 
 MySQL Galera Cluster 
 	FINDING SLOW NODES
-http://galeracluster.com/documentation-webpages/detectingaslownode.html
+	
+	
+	
+	
+	
+	
+MariaDB Galera Cluster Out of sync suddenly (Only sync the schema change but data not) Innodb engine
+https://mariadb.com/kb/en/mariadb-galera-cluster-mariadb-galera-cluster-out-of-sync-suddenly-only-syn/
+Did not find the root cause, resolved by reboot the cluster
+
+
+https://www.symmcom.com/docs/how-tos/databases/how-to-recover-mariadb-galera-cluster-after-partial-or-full-crash	
+
+
+https://jira.mariadb.org/browse/MDEV-10420
+	
+https://tunnelix.com/mariadb-galera-cluster-installation/
+
+
+MariaDB Sync check
+mysql -u root -p<your_password> --exec="SHOW STATUS LIKE 'wsrep%';"
+	
+	
+	
+	
+	
+	

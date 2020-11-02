@@ -1,5 +1,34 @@
 ### Python ###
 
+
+-----------------------------------------------------
+Python3. ImportError: no module named 'myfile'
+$ which   python  <=
+$ whereis python
+
+$ python
+>>> import sys
+>>> print(sys.path)
+Python PATH: [/home/apark/google-cloud-sdk/lib/third_party:/home/apark/google-cloud-sdk/lib:/usr/lib64/python27.zip:/usr/lib64/python2.7/:/usr/lib64/python2.7/plat-linux2:/usr/lib64/python2.7/lib-tk:/usr/lib64/python2.7/lib-old:/usr/lib64/python2.7/lib-dynload]
+
+
+
+
+-----------------------------------------------------
+Python Dev Environment
+https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04
+
+
+https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-an-ubuntu-16-04-server
+
+$ source my_env/bin/activate
+
+$ deactivate 
+$ source deactivate
+
+
+
+
 ### IDE(Integrated Development Environment) ### 
 # PyCharm
 Ctrl+Y 		<= Remove a Line

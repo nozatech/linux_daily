@@ -1,0 +1,227 @@
+Google Cloud Platfrom(GCP)
+https://www.linkedin.com/learning/google-cloud-platform-essential-training-3/google-compute-engine?u=40992332
+
+##############################################################################################
+# Using the Google Cloud SDK installer
+	https://cloud.google.com/sdk/docs/downloads-interactive
+	https://cloud.google.com/sdk/gcloud
+	
+##############################################################################################
+$ Google Cloud Shell
+	https://cloud.google.com/sdk/gcloud 	
+	https://cloud.google.com/sdk/gcloud/reference
+	https://cloud.google.com/sdk/gcloud/reference/auth
+
+##############################################################################################
+# gcloud -version
+	Google Cloud SDK 298.0.0
+	bq 2.0.58
+	core 2020.06.19
+	gsutil 4.51
+
+# Update
+	Updates are available for some Cloud SDK components.  To install them,
+	please run:
+	  $ gcloud components update
+
+# Revert  
+	To revert your SDK to the previously installed version, you may run:
+	  $ gcloud components update --version 297.0.0
+
+##############################################################################################
+
+
+
+
+$ gcloud init
+
+$ gcloud compute project-info describe --project bnea-platform
+
+##############################################################################################
+  gcloud auth list
+  gcloud builds list
+  gcloud components list
+  gcloud config list
+  gcloud functions list
+  gcloud organizations list
+  gcloud projects list
+  gcloud secrets list
+  gcloud services list
+  gcloud tasks list
+##############################################################################################
+  
+$ gcloud auth list
+	 Credentialed Accounts
+	ACTIVE  ACCOUNT
+	*       apark@namco.net
+
+	To set the active account, run:
+		$ gcloud config set account `ACCOUNT`   <= ??
+
+
+
+
+##############################################################################################
+
+ 
+##############################################################################################
+$ gcloud auth
+	ERROR: (gcloud.auth) Command name argument expected.
+
+	Available groups for gcloud auth:
+
+		  application-default     Manage your active Application Default
+								  Credentials.
+
+	Available commands for gcloud auth:
+
+		  activate-service-account  Authorize access to Google Cloud Platform with a
+									service account.
+		  configure-docker          Register `gcloud` as a Docker credential helper.
+		  list                      Lists credentialed accounts.
+		  login                     Authorize gcloud to access the Cloud Platform
+									with Google user credentials.
+		  print-access-token        Print an access token for the specified account.
+		  print-identity-token      Print an identity token for the specified
+									account.
+		  revoke                    Revoke access credentials for an account.
+
+	For detailed information on this command and its flags, run:
+	  gcloud auth --help
+
+
+##############################################################################################
+
+
+##############################################################################################
+$ gcould
+
+Available command groups for gcloud:
+
+  AI and Machine Learning
+      ai-platform             Manage AI Platform jobs and models.
+      ml                      Use Google Cloud machine learning capabilities.
+      ml-engine               Manage AI Platform jobs and models.
+
+  API Platform and Ecosystems
+      endpoints               Create, enable and manage API services.
+      recommender             Manage Cloud recommendations and recommendation
+                              rules.
+      service-management      Create, enable and manage API services.
+      services                List, enable and disable APIs and services.
+
+  Anthos CLI
+      anthos                  Anthos command Group.
+
+  CI/CD
+      scheduler               Manage Cloud Scheduler jobs and schedules.
+      tasks                   Manage Cloud Tasks queues and tasks.
+
+  Compute
+      app                     Manage your App Engine deployments.
+      compute                 Create and manipulate Compute Engine resources.
+      container               Deploy and manage clusters of machines for running
+                              containers.
+      functions               Manage Google Cloud Functions.
+      run                     Manage your Cloud Run applications.
+
+  Data Analytics
+      composer                Create and manage Cloud Composer Environments.
+      data-catalog            Manage Cloud Data Catalog resources.
+      dataflow                Manage Google Cloud Dataflow resources.
+      dataproc                Create and manage Google Cloud Dataproc clusters
+                              and jobs.
+      pubsub                  Manage Cloud Pub/Sub topics, subscriptions, and
+                              snapshots.
+
+  Databases
+      bigtable                Manage your Cloud Bigtable storage.
+      datastore               Manage your Cloud Datastore resources.
+      firestore               Manage your Cloud Firestore resources.
+      spanner                 Command groups for Cloud Spanner.
+      sql                     Create and manage Google Cloud SQL databases.
+
+  Identity
+      active-directory        Manage Managed Microsoft AD resources.
+
+  Identity and Security
+      access-context-manager  Manage Access Context Manager resources.
+      auth                    Manage oauth2 credentials for the Google Cloud
+                              SDK.
+      iam                     Manage IAM service accounts and keys.
+      iap                     Manage IAP policies.
+      kms                     Manage cryptographic keys in the cloud.
+      policy-troubleshoot     Troubleshoot Google Cloud Platform policies.
+      resource-manager        Manage Cloud Resources.
+      secrets                 Manage secrets on Google Cloud.
+
+  Internet of Things
+      iot                     Manage Cloud IoT resources.
+
+
+  Management Tools
+      builds                  Create and manage builds for Google Cloud Build.
+      debug                   Commands for interacting with the Cloud Debugger.
+      deployment-manager      Manage deployments of cloud resources.
+      logging                 Manage Stackdriver Logging.
+      organizations           Create and manage Google Cloud Platform
+                              Organizations.
+      projects                Create and manage project access policies.
+
+  Mobile
+      firebase                Work with Google Firebase.
+
+  Monitoring
+      monitoring              Manage Cloud Monitoring dashboards.
+
+  Networking
+      dns                     Manage your Cloud DNS managed-zones and
+                              record-sets.
+      domains                 Manage domains for your Google Cloud projects.
+      network-management      Manage Network Management resources.
+
+  SDK Tools
+      components              List, install, update, or remove Google Cloud SDK
+                              components.
+      config                  View and edit Cloud SDK properties.
+      meta                    Cloud meta introspection commands.
+      source                  Cloud git repository commands.
+      topic                   gcloud supplementary help.
+
+  Security
+      asset                   Manage the Cloud Asset Inventory.
+
+  Solutions
+      healthcare              Manage Cloud Healthcare resources.
+
+  Storage
+      filestore               Create and manipulate Cloud Filestore resources.
+      redis                   Manage Cloud Memorystore Redis resources.
+
+Available commands for gcloud:
+
+  Other
+      docker                  *(DEPRECATED)*  Enable Docker CLI access to Google
+                              Container Registry.
+      survey                  Invoke a customer satisfaction survey for Cloud
+                              SDK.
+
+  SDK Tools
+      feedback                Provide feedback to the Google Cloud SDK team.
+      help                    Search gcloud help text.
+      info                    Display information about the current gcloud
+                              environment.
+      init                    Initialize or reinitialize gcloud.
+      version                 Print version information for Cloud SDK
+                              components.
+##############################################################################################
+
+
+
+
+
+
+
+
+
+
