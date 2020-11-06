@@ -688,15 +688,15 @@ platform-prod-worker-Node i-0c0aed94d2a0f284b m5.xlarge us-east-1b
 							
 can you upgrade kube-proxy, coredns, and CNI in platform-prod? It’s running older version. 
 
-[DavidHPark@~]$ kubectl --kubeconfig ~/.kube/config --context platform-prod describe ds kube-proxy -n kube-system | grep Image
+$ kubectl --kubeconfig ~/.kube/config --context platform-prod describe ds kube-proxy -n kube-system | grep Image
   
   Image:      602401143452.dkr.ecr.us-east-1.amazonaws.com/eks/kube-proxy:v1.11.5
    
-[DavidHPark@~]$ kubectl --kubeconfig ~/.kube/config --context platform-prod describe deployment coredns --namespace kube-system | grep Image | cut -d '/' -f 3
+$ kubectl --kubeconfig ~/.kube/config --context platform-prod describe deployment coredns --namespace kube-system | grep Image | cut -d '/' -f 3
 
 coredns:v1.1.3
 
-[DavidHPark@~]$ kubectl --kubeconfig ~/.kube/config --context platform-prod describe daemonset aws-node --namespace kube-system | grep Image | cut -d '/' -f 2
+$ kubectl --kubeconfig ~/.kube/config --context platform-prod describe daemonset aws-node --namespace kube-system | grep Image | cut -d '/' -f 2
 
 amazon-k8s-cni:1.2.1							
 							
