@@ -15,7 +15,7 @@ https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 	$ kubectl get nodes -o yaml
 	$ kubectl cluster-info
 	$ kubectl get nodes; kubectl describe node <node>;
-	$ kubectl verion
+	$ kubectl version --short
 		Client Version: version.Info{Major:"1", Minor:"15",  ..., Platform:"linux/amd64"}
 		Server Version: version.Info{Major:"1", Minor:"14",  ..., Platform:"linux/amd64"}
 	

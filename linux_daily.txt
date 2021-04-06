@@ -1,5 +1,8 @@
 ### LINUX ### 
 
+removing empty space with ()
+rm terraform_0.14.7_darwin_amd64\ '(1)'.zip
+
 Bash Command List https://ss64.com/bash/
 
 ------------------------------------------------------------
