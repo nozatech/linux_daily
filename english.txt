@@ -1791,6 +1791,9 @@ fate vs faith	<- 운명 vs 믿음
 
 feasible		<- possible to do easily or conveniently.
 
+feat			<- [1.위업2.공적3.묘기]Tesla is joining the S&P 500 in December, but given the electric vehicle company’s size, 
+					adding it to the index is no easy feat, said CNBC’s Jim Cramer.
+
 fed up			<- [adjective] annoyed or upset at a situation or treatment.
 					"he was fed up with doing all the work"
 					synonyms:	sick and tired of, weary of, tired of, sick of
