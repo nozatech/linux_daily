@@ -95,6 +95,7 @@ spec:
     - sleep
     - "1000"
 EOF
+------------------------------------------------------------
 
 # Create a secret with several keys
 cat <<EOF | kubectl apply -f -
@@ -278,7 +279,7 @@ Kubeadm
 	$ kubeadm version
 
 ------------------------------------------------------------------------------------
-Kunelet(Node Agent)
+Kubelet(Node Agent)
 	https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
 ------------------------------------------------------------------------------------
 	A system service/program that runs on all nodes(worker servers) and handles node-level(workers) operation
