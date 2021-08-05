@@ -2232,8 +2232,12 @@ https://www.tecmint.com/command-line-web-browser-download-file-in-linux/
 --------------------------------------------------------------------------	
 	http://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
 	https://www.base64decode.org/
-	
+        	
 	# Encoding
+          $ echo -n "password1234" | base64
+          $ echo -n "password1234" | base64 > base64EncriptedPW.txt
+          $ base64 base64EncriptedPW.txt > originalPW.b64
+
 	  $ printf id:pw | base64 > encoded_data.b64	<= on to Files
 	  $ base64 data.txt > data.b64
 	
