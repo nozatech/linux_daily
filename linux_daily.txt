@@ -4575,7 +4575,7 @@ ord
 	8. 
 
 # Network Troubleshooting
-	# mtr(Mutli function TRracert) 
+	# mtr ('M'utli function 'TR'raceroute)
 	
 	https://www.linode.com/docs/networking/diagnostics/diagnosing-network-issues-with-mtr
 	combines  the  functionality  of the traceroute and ping in a single network diagnostic tool.
