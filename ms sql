@@ -1,0 +1,11 @@
+Setup
+  MAC
+    Install mssql cli tool
+    
+    $> mssql -s address_ip -u root -p -o 1433
+    mssql> sp_databases;
+    DATABASE_NAME        DATABASE_SIZE  REMARKS
+    -------------------  -------------  -------
+    db1                  6144           null
+    db2                  135040         null
+
