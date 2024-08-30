@@ -3013,7 +3013,112 @@ https://www.tecmint.com/find-top-large-directories-and-files-sizes-in-linux/
 	
 	$ ip route add 192.168.1.0/24 dev eth0
 	$ ip route add 192.168.1.0/24 via 192.168.1.254
-	
+------------------------------------------------------------------------------------------
+### Linux network troubleshooting tool ###
+------------------------------------------------------------------------------------------
+Here's a list of essential Linux network troubleshooting tools along with brief descriptions of each:
+
+ping:
+
+	Used to test the reachability of a host and measure round-trip time for messages sent.
+	Example: ping google.com
+
+traceroute:
+	Traces the path packets take from the source to the destination, showing each hop along the route.
+	Example: traceroute google.com
+netstat:
+
+	Displays network connections, routing tables, interface statistics, masquerade connections, and multicast memberships.
+	Example: netstat -an
+
+ifconfig (deprecated, replaced by ip):
+
+	Configures network interfaces, used to view or change network interface parameters.
+	Example: ifconfig eth0
+
+ip:
+
+A modern replacement for ifconfig, used for network interface configuration, routing, and tunnel setup.
+Example: ip addr show
+
+nslookup:
+
+Queries Domain Name System (DNS) to find the IP address associated with a domain name.
+Example: nslookup google.com
+dig:
+
+A powerful DNS query tool, often used for DNS troubleshooting.
+Example: dig google.com
+arp:
+
+Displays and modifies the ARP (Address Resolution Protocol) cache, which maps IP addresses to MAC addresses.
+Example: arp -a
+route (deprecated, replaced by ip route):
+
+Used to display and manipulate the IP routing table.
+Example: route -n
+ip route:
+
+A modern command to display and manipulate the routing table.
+Example: ip route show
+netcat (nc):
+
+A versatile networking tool that can be used for reading from and writing to network connections using TCP or UDP.
+Example: nc -zv 192.168.1.1 80
+tcpdump:
+
+A powerful command-line packet analyzer, used to capture and display network traffic.
+Example: tcpdump -i eth0
+wireshark:
+
+A graphical network protocol analyzer that lets you capture and interactively browse the traffic running on a computer network.
+Example: wireshark (runs the GUI)
+ethtool:
+
+Used to display and change Ethernet device settings, such as speed, duplex mode, and auto-negotiation.
+Example: ethtool eth0
+mtr:
+
+Combines the functionality of ping and traceroute in a single tool for network diagnostics.
+Example: mtr google.com
+nmap:
+
+A network exploration tool and security/port scanner, useful for discovering hosts and services on a network.
+Example: nmap 192.168.1.1
+ss:
+
+A utility to investigate sockets, showing detailed network and socket connection information.
+Example: ss -tuln
+hostname:
+
+Displays or sets the system's hostname.
+Example: hostname
+iptables:
+
+A command-line firewall utility that allows or denies traffic based on rules.
+Example: iptables -L
+curl:
+
+A command-line tool to transfer data from or to a server, using various protocols like HTTP, HTTPS, FTP.
+Example: curl -I https://www.google.com
+wget:
+
+A command-line utility to download files from the web.
+Example: wget https://example.com/file.zip
+nmcli:
+
+A command-line tool for managing NetworkManager, useful for managing network connections.
+Example: nmcli dev status
+iperf3:
+
+A tool to measure the bandwidth between two networked devices.
+Example: iperf3 -c 192.168.1.1
+tshark:
+
+The command-line version of Wireshark, useful for capturing and analyzing network traffic without a GUI.
+Example: tshark -i eth0
+These tools cover a wide range of network troubleshooting needs, from basic connectivity checks to in-depth analysis of network traffic and configurations.
+
 ------------------------------------------------------------------------------------------
 ### Compression 	
 ------------------------------------------------------------------------------------------
@@ -6896,8 +7001,8 @@ Linux CentOS or Ubuntu Version check
 	
 	/home/ubuntu/jarvis/ami/tcg/production/
 	
-    $ sudo sh -c "export OC_AWS_ACCESS_KEY=AKIAI6FBDACL5LFOEACA; \
-				  export OC_AWS_SECRET_KEY=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; \
+    $ sudo sh -c "export OC_AWS_ACCESS_KEY=AKIAIxxx; \
+				  export OC_AWS_SECRET_KEY=4VchTYj3YmzmtzNyKexxxx; \
 				  fab tcg.credit_gems:host=10.10.1.50,player_id="544053a5c66354d43f5f07d3",amount=50"
 		
 	To make a usage listing of the directories in the /home partition.  Note that this runs the commands in a
